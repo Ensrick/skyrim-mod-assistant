@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-31",
+  "mods": [
+    {
+      "name": "Lost LongSwords",
+      "author": "Mr Brownstone",
+      "game": "Skyrim (2011)",
+      "nexusModId": 26261,
+      "sourceFile": "Lost LongSwords 2-HANDED-26261-1-1.rar",
+      "sourceSha256": "51B08826468746B661AB81B3526C8D79925A8F1C021214EC265F525A3998E52D",
+      "redistribution": "prohibited",
+      "modification": "permission required",
+      "localPolicy": "user-supplied archive; locally generated output only",
+      "publicListPolicy": "reference the Nexus download and run a local patch recipe; do not bundle source or converted assets/plugin"
+    },
+    {
+      "name": "Lost LongSwords SSE",
+      "uploader": "VigorousWhale",
+      "creditedAuthor": "MrBrownstone",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 126568,
+      "nexusFileId": 531643,
+      "sourceFile": "Lost LongSwords SSE-126568-1-1-1723686586.rar",
+      "sourceSha256": "D18A57CADF09A46C050032A052B69BBFF1C7A803F274C3AECA86B305EB2E97B9",
+      "redistribution": "prohibited",
+      "modification": "permission required",
+      "auditResult": "not used: one-handed ESP remains form 40 and all NIF files remain Skyrim LE stream version 83",
+      "duplicateDownload": "Lost LongSwords SSE-126568-1-1-1723686586(1).rar is byte-identical and was left untouched."
+    }
+  ]
+}

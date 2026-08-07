@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "name": "Katana Two-Handed Combat",
+  "version": "0.1.0",
+  "generatedAt": "2026-08-01",
+  "plugin": {
+    "path": "package/KatanaTwoHandedPatch.esp",
+    "sha256": "58DBEB911FF40068458D09A3A4FFD2F747379201D7F53B29DECE65C6D8F3CE72",
+    "weaponOverrides": 14,
+    "newKeywords": 1
+  },
+  "archive": {
+    "path": "Katana-Two-Handed-Combat-0.1.0.zip",
+    "sha256": "68E09760860236522FA2B3B99282297C755610A48628934A3C334ACC820AB4D8"
+  },
+  "redistribution": "original patcher and generated record-only plugin may be redistributed under the repository license; third-party animation assets are not included",
+  "validation": [
+    "patcher self-test passed",
+    "14/14 field-level weapon audits passed",
+    "two headless generations were byte-identical",
+    "ESL flag and local 000800 allocation verified",
+    "Spriggit 0.41.0 checked serialization round-trip passed"
+  ]
+}

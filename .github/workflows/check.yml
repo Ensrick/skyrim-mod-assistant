@@ -1,0 +1,50 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Parse PowerShell and JSON
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $failures = [System.Collections.Generic.List[string]]::new()
+
+          foreach ($path in @(git ls-files '*.ps1')) {
+            $tokens = $null
+            $errors = $null
+            [void] [System.Management.Automation.Language.Parser]::ParseFile(
+              $path,
+              [ref] $tokens,
+              [ref] $errors
+            )
+            foreach ($error in @($errors)) {
+              $failures.Add("${path}: $($error.Message)")
+            }
+          }
+
+          foreach ($path in @(git ls-files '*.json')) {
+            try {
+              Get-Content -LiteralPath $path -Raw | ConvertFrom-Json | Out-Null
+            } catch {
+              $failures.Add("${path}: $($_.Exception.Message)")
+            }
+          }
+
+          if ($failures.Count -gt 0) {
+            $failures | Write-Error
+            exit 1
+          }

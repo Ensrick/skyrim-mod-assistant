@@ -1,0 +1,35 @@
+# This repository lives beside a private working tree containing downloaded
+# tools, game files, generated plugins, logs, and restricted mod assets. Keep
+# the public source set deny-by-default.
+*
+
+!/.gitignore
+!/LICENSE
+!/README.md
+!/CONTRIBUTING.md
+!/SECURITY.md
+!/REDISTRIBUTION.md
+!/INVENTORY.md
+!/TOOLCHAIN.md
+!/toolchain.example.json
+!/run-headless-tool.ps1
+!/run-through-mo2.ps1
+
+!/.github/
+!/.github/dependabot.yml
+!/.github/workflows/
+!/.github/workflows/check.yml
+
+!/records/
+!/records/restricted-mods.json
+
+!/mods/
+!/mods/katana-two-handed/
+!/mods/katana-two-handed/*.md
+!/mods/katana-two-handed/*.json
+!/mods/katana-two-handed/*.ps1
+
+!/ports/
+!/ports/lost-longswords/
+!/ports/lost-longswords/*.md
+!/ports/lost-longswords/*.ps1

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "auditedAtUtc": "2026-08-01T00:00:00Z",
+  "privateDotnetRoot": "C:\\Path\\To\\dotnet",
+  "runLogRoot": "C:\\Path\\To\\private-logs",
+  "tools": {
+    "mo2": {
+      "path": "C:\\Path\\To\\MO2Headless.exe",
+      "guiPath": "C:\\Path\\To\\ModOrganizer.exe",
+      "sha256": "REPLACE_WITH_SHA256"
+    },
+    "loot": {
+      "path": "C:\\Path\\To\\lootcli.exe",
+      "workingDirectory": "C:\\Path\\To\\LootCLI",
+      "sha256": "REPLACE_WITH_SHA256",
+      "headlessLauncher": true
+    },
+    "synthesis": {
+      "path": "C:\\Path\\To\\Synthesis.Bethesda.CLI.exe",
+      "sha256": "REPLACE_WITH_SHA256",
+      "headlessLauncher": true
+    },
+    "spriggit": {
+      "path": "C:\\Path\\To\\Spriggit.CLI.exe",
+      "sha256": "REPLACE_WITH_SHA256",
+      "headlessLauncher": true
+    }
+  }
+}
