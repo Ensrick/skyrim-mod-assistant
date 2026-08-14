@@ -65,21 +65,54 @@ CC Survival Mode + Camping content already installed (`ccqdrsse001-survivalmode.
 
 ## Decision frame for this modlist
 
-Constraints that matter here: no USSEP (kills RND), vanilla-plus minimalism, preference for
-maintained/native code, cleaned-masters + QAC pipeline, CC content owned, SkyUI 6.11 + Address
-Library already pinned, Campfire decision pending.
+Target scale: **1000-2000 plugins** ("minimal" relative to 8-10k builds, not a small list).
+Hard constraints: no USSEP (kills RND), CC content owned, SkyUI 6.11 + Address Library pinned,
+Campfire decision pending. At this scale the deciding criteria are **patch-ecosystem reach, full
+esp-slot economy (~250 full slots against thousands of ESLs), and Papyrus budget shared with
+hundreds of other script mods** - not raw mod count.
 
-1. **Recommended: SMI-SKSE on the owned CC Survival Mode** (+ Campfire if camping is wanted - the
-   integration is compiled into SMI's DLL). Modern native architecture, ESL, actively maintained by
-   the SunHelm author, near-zero script load, config in ini. Gap: **no thirst**.
-2. **Optional layer: Starfrost core** (+VanillaHunger, skip Injuries) on top of SMI for
-   armor-weight warmth and gentler tuning, at the cost of one extra dependency (KID). Works without
-   Simonrim - verified from masters, contrary to the mod page's framing.
-3. **If thirst is a must**: SunHelm standalone (all-in-one, replaces SM usage) - accept 2022 vintage
-   and a real esp slot. The maximalist alternative (Frostfall + Last Seed + Campfire) is the richest
-   simulation but ~340 Papyrus scripts, three non-ESL cores, a 2016 exposure engine, and the biggest
-   conflict surface; it fights this list's minimalism.
-4. **Skip regardless**: RND (USSEP master), iNeed (2017 alpha, superseded by SunHelm/Last Seed).
+Two coherent endpoint stacks, one middle option:
+
+1. **Modern native stack: SMI-SKSE + Starfrost core (+VanillaHunger, skip Injuries) + Campfire.**
+   Zero full slots, ~25 scripts total, maintained 2026. The big-list advantage is structural:
+   Starfrost's KID rule assigns warmth by armor class, so **every armor mod in a 2000-plugin list is
+   covered automatically, no per-mod patches**; SMI's weather/worldspace integrations (Obsidian,
+   Wyrmstooth, Bruma) are compiled in. Gap: no thirst, and cold simulation is simpler than
+   Frostfall's (no wetness/coverage).
+2. **Classic deep-sim stack: Campfire + Frostfall (+ Unofficial SSE Update + Script Optimization) +
+   Last Seed.** Richest simulation (wetness, gear coverage, spoilage, wellness) and at this scale
+   Last Seed's 32-patch FOMOD web (CACO, Hunterborn, Requiem, Bruma, Falskaar, SotW...) flips from
+   liability to asset - it is built to sit inside big lists. Cost: 3 full esp slots, ~340 Papyrus
+   scripts sharing the VM with the rest of the list, a 2016 exposure engine, and Frostfall warmth
+   needs its datastore/patch route for mod-added armor (the ecosystem exists but is per-mod).
+3. **Middle: SunHelm** - one full slot, all-in-one WITH thirst, moderate scripts, its own compat
+   patch hub, Campfire skill esp included; cold layer can be disabled later if migrating to SMI.
+4. **Skip regardless of scale**: RND (USSEP master), iNeed (2017 alpha, superseded by
+   SunHelm/Last Seed).
+
+The stacks are mutually exclusive at the cold layer (two exposure systems cannot coexist), but
+either pairs with Campfire.
+
+One list-direction criterion: the build aims to replace as much vanilla content as possible with
+diverse, high-performance assets. Rule-driven systems (KID warmth by armor class, BOS-style swaps)
+absorb asset churn automatically; datastore/per-mod-patch systems (Frostfall warmth values, Last
+Seed food patches) need a patch touch every time a replacer swaps or adds items. Weight that by how
+often the asset layer will change.
+
+## Verdict against the owner's stated goals (2026-08-14)
+
+Goals: comprehensive and in-depth; no player burden or tedium; seamless; no save restrictions.
+
+That maps to **Stack 1 almost verbatim** - Starfrost's stated design goal is "Survival mechanics
+with the least amount of tedium possible," and the teardown shows it is implemented as data over
+SMI's native engine (penalty cap softened to 0.5, vampire cold off, food poisoning kept for depth):
+
+- **SMI-SKSE + Starfrost core + KID** (+ StarfrostVanillaHunger until a food overhaul is chosen)
+- **Campfire** for opt-in camping depth; Skills of the Wild later if progression depth is wanted
+- Save restrictions: **none exist in any Skyrim candidate** (save-locking is a Fallout 4 Survival
+  trait). CC SM's fast-travel lock is a one-line SMI ini toggle (`bDisableFastTravel`).
+- Deliberately skipped as tedium engines: thirst micromanagement (SunHelm/Last Seed/iNeed), food
+  spoilage timers, Frostfall's wetness/firewood micro-loop.
 
 Archives + extracted trees stay in ignored `work/survival-comparison/` for deeper record-level
 diffing (xEdit/Spriggit) if wanted.
