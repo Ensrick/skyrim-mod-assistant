@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "status": "private-draft",
+  "workingTitle": "Historical-Mythic Skyrim",
+  "game": {
+    "name": "Skyrim Special Edition",
+    "nexusDomain": "skyrimspecialedition",
+    "nexusGameId": 1704,
+    "runtimeVersion": "1.6.1170.0"
+  },
+  "management": {
+    "authoritativeLocalManager": "Mod Organizer 2",
+    "collectionAuthoringManager": "Vortex",
+    "detectedVortexVersion": "1.13.7",
+    "minimumVortexVersion": "2.5.0",
+    "vortexInstaller": {
+      "version": "2.5.0",
+      "source": "https://github.com/Nexus-Mods/Vortex/releases/tag/v2.5.0",
+      "bytes": 369749984,
+      "sha256": "53CF2EDC3DFC1324FED14E8BF0268EE5C4449378C2960D7F5C1F7B07050B2DC6",
+      "sha512ReleaseManifestMatch": true,
+      "authenticodeStatus": "valid",
+      "signer": "Black Tree Gaming Ltd"
+    },
+    "isolateVortexFromLiveMo2Profile": true,
+    "generatedVortexStateCommitted": false
+  },
+  "prerequisites": [
+    {
+      "name": "Skyrim Script Extender",
+      "kind": "external-runtime",
+      "status": "already-managed",
+      "requiredBy": [
+        "Music Type Distributor",
+        "powerofthree's Tweaks",
+        "SkyUI"
+      ]
+    },
+    {
+      "name": "Microsoft Visual C++ Redistributable",
+      "kind": "system-runtime",
+      "status": "x64-verified-x86-not-detected",
+      "detectedX64Version": "14.51.36247.0",
+      "requiredBy": [
+        "Music Type Distributor"
+      ]
+    }
+  ],
+  "mods": [
+    {
+      "name": "Address Library for SKSE Plugins",
+      "author": "meh321",
+      "role": "runtime-dependency",
+      "required": true,
+      "nexusModId": 32444,
+      "nexusFileId": 720756,
+      "version": "11",
+      "fileName": "Address Library - All in one (all game versions)-32444-11-1770897704.7z",
+      "sha256": "D345CCDAC52C096FE9628A62FF3764BBF23111BA30E3D282CD3B1FB66968863A",
+      "runtimeValidation": "archive contains versionlib-1-6-1170-0.bin",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "SkyUI",
+      "author": "SkyUI Team",
+      "role": "ui-framework",
+      "required": true,
+      "nexusModId": 12604,
+      "nexusFileId": 749043,
+      "version": "6.11",
+      "fileName": "SkyUI-12604-6-11-1778020881.zip",
+      "sha256": "4EB0C9FC5241E5C3DD2FD773EE8A89627C924BF4445CF70373D3A4C7C4393FF1",
+      "runtimeValidation": "current MAIN file on Nexus as of 2026-08-14; archive contains SkyUI_SE.bsa + SkyUI_SE.esp; plugin header is ESL-flagged (0x200) with single master Skyrim.esm",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "powerofthree's Tweaks",
+      "author": "powerofthree",
+      "role": "runtime-dependency",
+      "required": true,
+      "nexusModId": 51073,
+      "nexusFileId": 775213,
+      "version": "1.16.0",
+      "fileName": "powerofthree's Tweaks-51073-1-16-0-1783875583.7z",
+      "sha256": "7B4CC8B9F6D520C9449197105D962F31881BD64867C1978A43155F9A6FED3312",
+      "fomodPreset": "SSE v1.6.629+ (Anniversary Edition)",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Music Type Distributor",
+      "author": "ThirdEyeSqueegee",
+      "role": "music-runtime",
+      "required": true,
+      "nexusModId": 119571,
+      "nexusFileId": 531900,
+      "version": "1.4.0",
+      "fileName": "Music Type Distributor-119571-1-4-0-1723771252.zip",
+      "archiveFormat": "7z-content-with-zip-file-name",
+      "sha256": "0F0643FDC550143431938ABDD906A49B348F9753B79A6D3053E031745941406C",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Personal Music Framework",
+      "author": "Clofas",
+      "role": "selected-music-framework",
+      "required": true,
+      "nexusModId": 134467,
+      "nexusFileId": 742217,
+      "version": "1.1",
+      "fileName": "Personal Music Framework - FOMOD-134467-1-1-1776279481.7z",
+      "sha256": "17BA4EFC93A16813DAB5CA4BAF98682D38353E90BCC58EF0B75ADF089F102ECF",
+      "installState": "pinned-not-deployed",
+      "fomodPreset": {
+        "corePlugin": "selected",
+        "playlistChoices": "none",
+        "reason": "The supplied audio is silent scaffolding; playlist choices remain disabled until rights-cleared music replaces selected slots."
+      },
+      "redistribution": "reference-only-do-not-bundle"
+    }
+  ],
+  "authoringResources": [
+    {
+      "name": "SkyUI SDK",
+      "purpose": "MCM authoring kit (SKI_ConfigBase/SKI_QuestBase sources, SKI_PlayerLoadGameAlias.pex, example config menu); development resource only, never deployed to the game",
+      "nexusModId": 12604,
+      "nexusFileId": 734848,
+      "version": "1.0",
+      "fileName": "SkyUI SDK-12604-1-0-1774393133.zip",
+      "sha256": "7D4826405CAF7F587EE8152DA1F91D7A11927D08300FE9B2A6BB0DB906A71E73",
+      "location": "work/tools/skyui-sdk"
+    }
+  ]
+}
