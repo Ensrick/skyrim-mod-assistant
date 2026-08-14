@@ -2,6 +2,11 @@
   "schemaVersion": 1,
   "status": "private-draft",
   "workingTitle": "Historical-Mythic Skyrim",
+  "designPillars": [
+    "Bedrock: multiple characters playable in the same game world without breaking anything. Every mod is screened for player-bound state (player-alias scripts, quest variables keyed to the player, per-character needs/skill/appearance state) and must tolerate character switching.",
+    "Scale: 1000-2000 plugins; replace vanilla content broadly with diverse, quality, high-performance assets; prefer rule-driven systems (KID/BOS/SkyPatcher) that absorb asset churn.",
+    "Survival: comprehensive and in-depth with zero tedium, no save restrictions."
+  ],
   "game": {
     "name": "Skyrim Special Edition",
     "nexusDomain": "skyrimspecialedition",
