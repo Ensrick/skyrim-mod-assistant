@@ -38,7 +38,12 @@
       "requiredBy": [
         "Music Type Distributor",
         "powerofthree's Tweaks",
-        "SkyUI"
+        "SkyUI",
+        "Proteus",
+        "JContainers SE",
+        "ConsoleUtilSSE NG",
+        "RaceMenu",
+        "powerofthree's Papyrus Extender"
       ]
     },
     {
@@ -47,7 +52,8 @@
       "status": "x64-verified-x86-not-detected",
       "detectedX64Version": "14.51.36247.0",
       "requiredBy": [
-        "Music Type Distributor"
+        "Music Type Distributor",
+        "Proteus"
       ]
     }
   ],
@@ -76,6 +82,86 @@
       "fileName": "SkyUI-12604-6-11-1778020881.zip",
       "sha256": "4EB0C9FC5241E5C3DD2FD773EE8A89627C924BF4445CF70373D3A4C7C4393FF1",
       "runtimeValidation": "current MAIN file on Nexus as of 2026-08-14; archive contains SkyUI_SE.bsa + SkyUI_SE.esp; plugin header is ESL-flagged (0x200) with single master Skyrim.esm",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "JContainers SE",
+      "author": "silvericed",
+      "role": "runtime-dependency",
+      "required": true,
+      "nexusModId": 16495,
+      "nexusFileId": 771673,
+      "version": "4.2.13.1",
+      "fileName": "JContainers SE 16495 4.2.13.1 2026-07-04T17-30Z GkqKVMPbm.7z",
+      "sha256": "2EDD555821E70D94784C79B9A80A34D235F682D4D69F956F28E0411FD43A020A",
+      "requiredBy": ["Proteus"],
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "ConsoleUtilSSE NG",
+      "author": "VersuchDrei / Podagrius",
+      "role": "runtime-dependency",
+      "required": true,
+      "nexusModId": 76649,
+      "nexusFileId": 456904,
+      "version": "1.5.1",
+      "fileName": "ConsoleUtilSSE NG-76649-1-5-1-1704108553.7z",
+      "sha256": "17AE5C0912F1E40A53A40F0AAC1B47209DA04516ED0DEB3863E0ECCA082106B3",
+      "requiredBy": ["Proteus"],
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "UIExtensions",
+      "author": "expired6978",
+      "role": "runtime-dependency",
+      "required": true,
+      "nexusModId": 17561,
+      "nexusFileId": 55628,
+      "version": "1.2.0",
+      "fileName": "UIExtensions v1-2-0-17561-1-2-0.7z",
+      "sha256": "3D5CD2E3A5BEAD043AD2FD2713138FAA07CF5D81F1DEAEBEAF597D00B41637A6",
+      "requiredBy": ["Proteus"],
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "RaceMenu",
+      "author": "expired6978",
+      "role": "appearance-framework",
+      "required": true,
+      "nexusModId": 19080,
+      "nexusFileId": 743640,
+      "version": "0.4.20.0",
+      "fileName": "RaceMenu Anniversary Edition v0-4-20-0-19080-0-4-20-0-1776620918.7z",
+      "sha256": "E0F5E923F1EAAEFEFCB0A98822DF091C5B96B010D2DF2B52DC377AAE539097DA",
+      "requiredBy": ["Proteus"],
+      "configNote": "Proteus appearance save/load needs skee64.ini bExternalHeads=1",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "powerofthree's Papyrus Extender",
+      "author": "powerofthree",
+      "role": "runtime-dependency",
+      "required": true,
+      "nexusModId": 22854,
+      "nexusFileId": 778854,
+      "version": "6.4.3",
+      "fileName": "Papyrus Extender 22854 6.4.3 2026-07-20T04-04Z OyYrPubih.7z",
+      "sha256": "7D31BE5949EEF75583DE0972CA7BFF2109C9B2473EB00B98505D40411C0AA637",
+      "requiredBy": ["Proteus"],
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Proteus",
+      "author": "phenderix",
+      "role": "character-system",
+      "required": true,
+      "nexusModId": 62934,
+      "nexusFileId": 497484,
+      "version": "3.4.0",
+      "fileName": "PROTEUS - 3.4.0-62934-3-4-0-1714763289.zip",
+      "sha256": "847A241F965436B13475A2A057AB061408BE2D9A3DF62C34AA4925BB1324C63B",
+      "designPillar": "bedrock enabler: multiple characters in one game world; close teardown + in-game QA still owed before deploy (alternative under evaluation: Multiple Characters of Skyrim, 186444)",
+      "runtimeValidation": "hard requirements per mod page: SKSE, Address Library, JContainers, ConsoleUtil NG, UIExtensions, RaceMenu, SkyUI, Papyrus Extender, VC++ x64 - all pinned or tracked as prerequisites",
       "installState": "pinned-not-deployed"
     },
     {
