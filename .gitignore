@@ -10,7 +10,9 @@
 !/SECURITY.md
 !/REDISTRIBUTION.md
 !/INVENTORY.md
+!/TARLAZO_REVIEW.md
 !/TOOLCHAIN.md
+!/NEXUS_API.md
 !/toolchain.example.json
 !/run-headless-tool.ps1
 !/run-through-mo2.ps1
@@ -22,6 +24,10 @@
 
 !/records/
 !/records/restricted-mods.json
+
+!/collections/
+!/collections/*.md
+!/collections/*.json
 
 !/mods/
 !/mods/katana-two-handed/
