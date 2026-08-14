@@ -63,6 +63,98 @@ CC Survival Mode + Camping content already installed (`ccqdrsse001-survivalmode.
 ### RND All-In-One 1.0.5c
 - 1220-record esp with **USSEP as a hard master** (disqualifying for this no-USSEP list) + 53 scripts using timer-based polling (`rnd_hungertimerscript` etc.). LE-era design, repacked 2023.
 
+## Close review - pros, cons, and quality/QA signals
+
+Evidence base: plugin form versions, Papyrus source reading, BSA raw scans, packaging contents,
+full changelog histories (v1 API), endorsement/unique-download ratios. All 44 plugins across the
+seven archives are form version 44 (properly ported; no LE leftovers anywhere). Endorsement ratios
+are NOT comparable across eras (2016 mods sit near 5-7%, 2022+ mods near 1.5% regardless of
+quality); use changelog behavior instead.
+
+### Survival Mode Improved - SKSE (2.3M dl)
+**Pros:** near-everything lives in the DLL - only 4 Papyrus scripts (159 LOC), zero polling, zero
+debug spam; ships a 6-function **global-native modder API** (`SurvivalModeImprovedApi.psc`) so other
+mods can restore needs cleanly; ships PDBs for crash-log symbolication (community best practice);
+36 changelog entries with mature engineering judgment - 1.6.6 *reverted* a minor bugfix because it
+correlated with unreproducible CTDs ("not worth potential crashes"); actively removes vanilla SM's
+scripts from aliases to prevent AV corruption; AE+SE dual builds in FOMOD.
+**Cons:** no thirst; no MCM (ini only - config changes need a file edit, not in-game UI); CommonLib
+DLL means each future runtime break waits on the author (single-maintainer bus factor); vanilla SM
+look-and-feel retained.
+**QA signals:** all positive. This is the cleanest engineering in the field.
+
+### Starfrost 2.0.0 (196k unique dl)
+**Pros:** all-ESL, tiny (474-record core, 21 scripts, all RegisterForSingleUpdate); v2.0.0 (Aug
+2026) consolidated its Hunger onto SM's native infrastructure specifically to kill bugs (Hunger
+progressing in Oblivion, stalling during waits) - architectural convergence, not divergence; KID
+warmth-by-armor-class auto-covers any armor mod (ideal under heavy asset replacement); tuning
+shipped as data (SMI ini override, penalty cap 0.5); modular FOMOD - Injury addon cleanly isolated
+behind its 4 Simonrim masters, VanillaHunger addon removes the Gourmet assumption.
+**Cons:** young v2 (4 days old at review); hunger balance still designed around Gourmet portions
+even with VanillaHunger; adds KID as a dependency; SimonMagus's strong design opinions arrive with
+it (no thirst by philosophy, specific debuff curves); no MCM by design.
+**QA signals:** positive - 14 changelogs, each fix specific and testable. One `mag_simonisnice_script`
+easter egg tells you the code is hand-written, not generated.
+
+### SunHelm 3.1.4 (681k unique dl)
+**Pros:** the only maintained-era all-in-one WITH thirst; clean system decomposition visible in
+script names (separate cold/hunger/thirst/fatigue/region/weather systems); 47 changelogs; honest
+release discipline (3.1.3a: "Sorry everyone, it was a mistake with the last upload"); modular esps
+(force-disable-cold for Frostfall pairing, separate diseases, Campfire skill tree); vampire/lich/
+werewolf edge cases explicitly scripted; final release even removed an accidentally-shipped stray
+file - they audit their own packaging.
+**Cons:** frozen since 2022-08 because the author moved on to SMI - it is the author's own
+superseded system; full esp slot; all-Papyrus cold system duplicates what SM now does natively;
+the odd `EWM_SunhelmSurvivalSE.esp` is a 354-byte header-only dummy plugin (harmless but inelegant).
+**QA signals:** good hygiene, but "superseded by its own author" is the loudest signal here.
+
+### Frostfall 3.4.1SE (779k unique dl)
+**Pros:** still the deepest exposure simulation ever built for the game (wetness, gear coverage,
+climate zones, rescue system); the architecture is genuinely professional - a five-script fallback
+event bus, armor-protection datastores, 58 single-update registrations vs only 2 legacy
+`RegisterForUpdate` sites; Chesko's engineering reputation is earned.
+**Cons:** zero updates since 2016-12 and zero changelogs on SE; requires the third-party Unofficial
+SSE Update (2021) just to fully function on current runtimes, and Script Optimization (2025) to fix
+accumulated script errors - the mod now depends on community life support; 112 Debug.Trace call
+sites in source (papyrus log noise when enabled); per-armor warmth datastore fights an
+asset-replacement-heavy list; SkyUI-5-era meter widgets under SkyUI 6.x [untested against 6.11].
+**QA signals:** excellent code from a departed author. "Abandonware with a fan-run pit crew."
+
+### Last Seed 5.3 (62k unique dl)
+**Pros:** the most feature-complete needs system (wellness, spoilage, per-food data, wells); 54
+changelogs, active through 2024; 84 `GetFormFromFile` soft-dependency checks = patches degrade
+gracefully; 32 curated compat patches is real ecosystem work; 5.3 tracked AE's update.esm water
+record changes - they follow Bethesda updates.
+**Cons - and this is where the QA flags live:** shipped a 1.3 MB `.psc.BACKUP` file, a Windows
+`Source - Shortcut.lnk` from the author's desktop, a stray nested zip, and an xEdit `.pas` script;
+`_Seed_FoodDatastoreHandler` (379 KB source, 125 KB **compiled and shipped**) opens with "NOT
+CURRENTLY USED"; `_Seed_SpoilSystem_old.psc` dead legacy source shipped; 84 TODO/FIXME markers and
+148 debug call sites across 32k LOC; 5.2.1 changed the plugin header version 1.71 -> 1.7 after
+shipping CTDs to pre-1.6.1130 users; a patch esp still named `TaberuAnimation_iNeed Patch.esp`
+(copy-pasted from an iNeed patch) and it is one of several patches left un-ESL-flagged.
+**QA signals:** enthusiastic, feature-rich, sloppy. A working-directory snapshot, not a release
+pipeline. Functional, but you will be the QA.
+
+### iNeed 1.90 Alpha 1 (536k unique dl)
+**Pros:** the most compact classic needs implementation (27 scripts); clean single-update
+architecture; low debug noise (7 traces).
+**Cons:** the current MAIN file has been literally named "Alpha 1" since 2017 with no changelog
+after 1.83 - abandoned mid-release; isoku is inactive on SE.
+**QA signals:** was tidy for its day; the version string is the tombstone.
+
+### RND All-In-One 1.0.5c (141k unique dl)
+**Pros:** the fullest disease/inebriation simulation of the classic era; 2023 repack keeps it
+installable.
+**Cons:** hard USSEP master (disqualifying here); LE-era timer-polling design (`rnd_hungertimerscript`
+etc.); changelog shows the same "added back a missing interface file" fix twice in a row and a
+vague "fixed some reported issues" - packaging fumbles with low-information notes.
+**QA signals:** maintenance is custodial, not developmental.
+
+### CC Survival Mode (owned baseline)
+**Pros:** engine-native hooks, zero cost, Bethesda QA'd, the substrate SMI/Starfrost build on.
+**Cons:** by itself: no thirst, blunt penalties, art-direction warmth (the exact thing Starfrost's
+KID rule fixes), fast-travel lock not configurable without a tweak mod.
+
 ## Decision frame for this modlist
 
 Target scale: **1000-2000 plugins** ("minimal" relative to 8-10k builds, not a small list).
