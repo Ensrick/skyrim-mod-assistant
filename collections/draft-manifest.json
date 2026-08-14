@@ -116,6 +116,20 @@
         "reason": "The supplied audio is silent scaffolding; playlist choices remain disabled until rights-cleared music replaces selected slots."
       },
       "redistribution": "reference-only-do-not-bundle"
+    },
+    {
+      "name": "Main Menu Spinning Skyrim Emblem",
+      "author": "Brumbek",
+      "role": "menu-cosmetic",
+      "required": false,
+      "nexusModId": 725,
+      "nexusFileId": 241067,
+      "version": "4.5",
+      "fileName": "Main Menu Spinning Skyrim Emblem - Anniversary Edition-725-4-5-1636828881.7z",
+      "sha256": "F7DD318EBBF4B821374FB9B5C8B6098CACB6129BB5693A7C87ADC1DEA2E884B3",
+      "runtimeValidation": "asset-only, no plugin; style x speed variant folders with AE-updated logo01ae.nif meshes",
+      "installChoice": "install exactly one variant folder; suggested default: Special Edition Steel - Average Speed (owner may re-pick)",
+      "installState": "pinned-not-deployed"
     }
   ],
   "authoringResources": [
