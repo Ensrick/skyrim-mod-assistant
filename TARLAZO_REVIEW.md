@@ -74,6 +74,8 @@ Long tail (browse if the theme appeals): Vigilants Pursuing Vampire, Thieves, He
 
 These are his second-most-downloaded cluster and the community standard for post-war cleanup. Zero value until a playthrough actually ends the war.
 
+**Alternatives on SE (checked 2026-08-14):** only one real competitor exists: **Immersive Civil War Cleanup - SSE** (153928, 1.3k dl, port of telamont's LE mod) - talk to Tullius/Ulfric after the questline and the battle damage is tidied up on request, no repair-crew simulation. The LE-era options (Civil War Repairs = Solitude/Windhelm Repaired + Whiterun Repaired Plus; Steam Workshop "Civil War Cleanup") have no SE ports on Nexus. tarlazo's set is the SE standard by ~2500x downloads and has an Extended Repair Times addon (85667). Adjacent but not siege repair: Kynareth Replaces Talos - Civil War Consequence (91440); Siberpunk's Environs series (world-heals-over-time for non-CW damage, pairs thematically).
+
 ## 5. Conditional - only with the named mod installed (you currently run NONE of these hosts)
 
 | Patch | Host mod required |
