@@ -15,7 +15,7 @@ QoL worth a look: **Convenient Carriages**, **State Your Claw**, **Courier Notif
 
 | Mod | ID | DL | Note |
 |---|---|---|---|
-| Navigator - Navmesh Fixes | 52641 | 3.7M | His flagship. Navmesh-only fixes. Caveat: navmesh edits conflict with city/settlement overhauls editing the same cells; you run none today, so clean. |
+| Navigator - Navmesh Fixes | 52641 | 3.7M | His flagship. Navmesh-only fixes across ~170 vanilla interiors. Use the all-in-one Navigator.esl, placed as high as possible (page: after USSEP if present, overridden by anything editing the same cells). **NEVER run it through SSEEditQuickAutoClean - the page warns its ITMs are intentional.** |
 | dunPOISoldiersRaidOnStart Script Tweak | 62925 | 1.7M | Stops a vanilla POI quest script misbehaving. |
 | Dwemer Gates Don't Reset | 26331 | 1.7M | Dwemer shortcut gates stay open across cell resets. |
 | Source of Stalhrim Quest Fix | 32329 | 1.2M | Un-sticks "A New Source of Stalhrim". |
