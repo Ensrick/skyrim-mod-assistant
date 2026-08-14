@@ -128,8 +128,32 @@
       "fileName": "Main Menu Spinning Skyrim Emblem - Anniversary Edition-725-4-5-1636828881.7z",
       "sha256": "F7DD318EBBF4B821374FB9B5C8B6098CACB6129BB5693A7C87ADC1DEA2E884B3",
       "runtimeValidation": "asset-only, no plugin; style x speed variant folders with AE-updated logo01ae.nif meshes",
-      "installChoice": "install exactly one variant folder; suggested default: Special Edition Steel - Average Speed (owner may re-pick)",
+      "installChoice": "install exactly one variant folder; owner pick 2026-08-14: Gaudy Gold - Slow Speed",
       "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Static Mesh Improvement Mod - SMIM",
+      "author": "Brumbek",
+      "role": "mesh-overhaul",
+      "required": true,
+      "nexusModId": 659,
+      "nexusFileId": 59069,
+      "version": "2.08",
+      "fileName": "SMIM SE 2-08-659-2-08.7z",
+      "sha256": "BB6C3BB5B3F7A8AEEFBC14098E3265D272E7F454A98F89EAC3059A3F0CC60300",
+      "runtimeValidation": "current MAIN file (1008 MB); author-updated 2025-02; supersession checked 2026-08-14: Assorted Mesh Fixes / SMIM Quality Addon / High Poly Project layer on top, none replace it",
+      "fomodPreset": "full install; option choices pending owner review",
+      "installState": "pinned-not-deployed"
+    }
+  ],
+  "portCandidates": [
+    {
+      "name": "Zikoru celestial swords (LUNA, SOL, VENUS, TERRA, MARS)",
+      "game": "skyrim (LE originals, 2014)",
+      "nexusModIds": [55644, 55767, 56492, 56049, 57182],
+      "location": "work/ports/zikoru-swords (archives + manifest.json with per-file SHA256)",
+      "plan": "private LE-to-SE port via nif-port-cli per the ports/lost-longswords pattern; verify per-page permissions before any redistribution",
+      "note": "hidden SE collection 5004 repackaged these; live satellites (SPID 177115, rebalance 71286) expect the collection's esp, so a port should document its own plugin naming"
     }
   ],
   "authoringResources": [
