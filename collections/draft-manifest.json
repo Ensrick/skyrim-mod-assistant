@@ -72,6 +72,46 @@
       "installState": "pinned-not-deployed"
     },
     {
+      "name": "Unofficial Skyrim Special Edition Patch - USSEP",
+      "author": "The Unofficial Patch Project Team",
+      "role": "bugfix-foundation",
+      "required": true,
+      "nexusModId": 266,
+      "nexusFileId": 733846,
+      "version": "4.3.8a",
+      "fileName": "Unofficial Skyrim Special Edition Patch-266-4-3-8a-1774132896.7z",
+      "sha256": "5036E8B4ABEF7234A1F35D43E33780F529BE8F85F449E41211EC4876D03E95D9",
+      "loadOrder": "immediately after CC content, before everything else (USMP doc ordering)",
+      "runtimeValidation": "adopted 2026-08-16 after owner review; requires full AE upgrade (verified: 64 cc plugins in Data); opinionated-change reverts to be curated separately (e.g. Tenuous Nirnroots 33598)",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Unofficial Skyrim Creation Club Content Patches - USCCCP",
+      "author": "garthand",
+      "role": "bugfix-foundation",
+      "required": true,
+      "nexusModId": 18975,
+      "nexusFileId": 784827,
+      "version": "8.5",
+      "fileName": "Unofficial Creation Club Content Patch 18975 8.5 2026-08-03T02-18Z Dc5uGktyp.zip",
+      "sha256": "09EB5BEE7FA951FAB142AA656CF70CC7E6D0D514059DAD36F0C3C6FFE6AE4133",
+      "loadOrder": "after USSEP",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "USSEP Nemesis or Pandora Patch",
+      "author": "Blackread",
+      "role": "compat-patch",
+      "required": true,
+      "nexusModId": 139572,
+      "nexusFileId": 587040,
+      "version": "1.1",
+      "fileName": "USSEP Behaviour Patch-139572-1-1-1737767400.7z",
+      "sha256": "E32CBE09FC6A982A10D5C6413B77C63400BF24723C7CB02886100623F36E03A8",
+      "requiredBy": ["USSEP behavior fixes under Pandora Behaviour Engine Plus"],
+      "installState": "pinned-not-deployed"
+    },
+    {
       "name": "SkyUI",
       "author": "SkyUI Team",
       "role": "ui-framework",

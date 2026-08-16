@@ -112,8 +112,8 @@ These are his second-most-downloaded cluster and the community standard for post
 ## 7. Skip
 
 - **Followers Sit on Carriages** (166738): explicitly the standalone offshoot for people NOT running Convenient Carriages; redundant if you take CC.
-- **Dynamic Bards** (77410): requires USSEP, which you don't run.
-- **Tenuous Nirnroots** (33598): its purpose is reverting a USSEP change; meaningless without USSEP.
+- ~~**Dynamic Bards** (77410): requires USSEP, which you don't run.~~ **Update 2026-08-16:** USSEP adopted into the manifest - Dynamic Bards is now eligible (taste call).
+- ~~**Tenuous Nirnroots** (33598): its purpose is reverting a USSEP change; meaningless without USSEP.~~ **Update 2026-08-16:** with USSEP adopted, this is now a live revert option for the nirnroot beacon change.
 - **DefaultActivateSelf Tweak** (90955): author's own summary says "only for complete noobs".
 - **8 Oblivion mods** (Shadowbanish Quest Markers, Find the Trainers, Populated Priory of the Nine, etc.): wrong game.
 
