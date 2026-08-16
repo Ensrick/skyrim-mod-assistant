@@ -209,6 +209,20 @@
       "redistribution": "reference-only-do-not-bundle"
     },
     {
+      "name": "Pandora Behaviour Engine Plus",
+      "author": "Monitor221hz",
+      "role": "animation-engine",
+      "required": true,
+      "nexusModId": 133232,
+      "nexusFileId": 788583,
+      "version": "4.4.0-beta",
+      "fileName": "Pandora Behaviour Engine v4.4.0-beta 133232 v4.4.0-beta 2026-08-11T18-15Z UK35Xn22h.zip",
+      "sha256": "BF7C5AE96482908C5B78C2B0558D37DBF956229E77AA8F91AE557E541B966C13",
+      "runtimeValidation": "supersession checked 2026-08-15: FNIS SE frozen 2020 (caretaker-owned), Nemesis frozen 2021 v0.84-beta; Pandora active (updated 2026-08-12), consumes both FNIS animlists and Nemesis patches",
+      "toolingNote": "build-time engine run through MO2 (output into a generated-behaviors mod), not a runtime plugin",
+      "installState": "pinned-not-deployed"
+    },
+    {
       "name": "Main Menu Spinning Skyrim Emblem",
       "author": "Brumbek",
       "role": "menu-cosmetic",
