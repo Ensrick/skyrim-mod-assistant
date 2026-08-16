@@ -108,7 +108,9 @@
       "version": "1.1",
       "fileName": "USSEP Behaviour Patch-139572-1-1-1737767400.7z",
       "sha256": "E32CBE09FC6A982A10D5C6413B77C63400BF24723C7CB02886100623F36E03A8",
-      "requiredBy": ["USSEP behavior fixes under Pandora Behaviour Engine Plus"],
+      "requiredBy": [
+        "USSEP behavior fixes under Pandora Behaviour Engine Plus"
+      ],
       "installState": "pinned-not-deployed"
     },
     {
@@ -134,7 +136,9 @@
       "version": "4.2.13.1",
       "fileName": "JContainers SE 16495 4.2.13.1 2026-07-04T17-30Z GkqKVMPbm.7z",
       "sha256": "2EDD555821E70D94784C79B9A80A34D235F682D4D69F956F28E0411FD43A020A",
-      "requiredBy": ["Proteus"],
+      "requiredBy": [
+        "Proteus"
+      ],
       "installState": "pinned-not-deployed"
     },
     {
@@ -147,7 +151,9 @@
       "version": "1.5.1",
       "fileName": "ConsoleUtilSSE NG-76649-1-5-1-1704108553.7z",
       "sha256": "17AE5C0912F1E40A53A40F0AAC1B47209DA04516ED0DEB3863E0ECCA082106B3",
-      "requiredBy": ["Proteus"],
+      "requiredBy": [
+        "Proteus"
+      ],
       "installState": "pinned-not-deployed"
     },
     {
@@ -160,7 +166,9 @@
       "version": "1.2.0",
       "fileName": "UIExtensions v1-2-0-17561-1-2-0.7z",
       "sha256": "3D5CD2E3A5BEAD043AD2FD2713138FAA07CF5D81F1DEAEBEAF597D00B41637A6",
-      "requiredBy": ["Proteus"],
+      "requiredBy": [
+        "Proteus"
+      ],
       "installState": "pinned-not-deployed"
     },
     {
@@ -173,7 +181,9 @@
       "version": "0.4.20.0",
       "fileName": "RaceMenu Anniversary Edition v0-4-20-0-19080-0-4-20-0-1776620918.7z",
       "sha256": "E0F5E923F1EAAEFEFCB0A98822DF091C5B96B010D2DF2B52DC377AAE539097DA",
-      "requiredBy": ["Proteus"],
+      "requiredBy": [
+        "Proteus"
+      ],
       "configNote": "Proteus appearance save/load needs skee64.ini bExternalHeads=1",
       "installState": "pinned-not-deployed"
     },
@@ -187,7 +197,9 @@
       "version": "6.4.3",
       "fileName": "Papyrus Extender 22854 6.4.3 2026-07-20T04-04Z OyYrPubih.7z",
       "sha256": "7D31BE5949EEF75583DE0972CA7BFF2109C9B2473EB00B98505D40411C0AA637",
-      "requiredBy": ["Proteus"],
+      "requiredBy": [
+        "Proteus"
+      ],
       "installState": "pinned-not-deployed"
     },
     {
@@ -263,6 +275,187 @@
       "installState": "pinned-not-deployed"
     },
     {
+      "name": "Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-core",
+      "required": true,
+      "nexusModId": 86492,
+      "nexusFileId": 786669,
+      "version": "1.8.3",
+      "fileName": "Community Shaders 86492 1.8.3 2026-08-07T18-54Z n0oTCm8m2.zip",
+      "sha256": "CCCAB54F02FC57D30A172037B513915534855016FA7E99FAC998625A210E8F7F",
+      "installState": "pinned-not-deployed",
+      "runtimeValidation": "graphics core decision 2026-08-16: Community Shaders over ENB (open-source, active, on-Nexus, performance-first); makes all ENB helpers unnecessary; Light Limit Fix / Terrain Shadows / Frame Generation folded into core since 1.4.x - standalone versions deliberately not pinned"
+    },
+    {
+      "name": "Grass Lighting - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 86502,
+      "nexusFileId": 569735,
+      "version": "2.0.0",
+      "fileName": "Grass Lighting-86502-2-0-0-1733537978.7z",
+      "sha256": "E9B421FCA577BA7096EFB1DF79480D24705C4C0F1FC276C09B85AC1705CB9B6E",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Grass Collision - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 87816,
+      "nexusFileId": 718214,
+      "version": "3.0.2",
+      "fileName": "Grass Collision-87816-3-0-1-1770385573.7z",
+      "sha256": "471DF32E830DC93F47AE0B43C514F8EB8DD9D6800DE3F84E291C9E4005CA7F67",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Screen Space Shadows - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 93209,
+      "nexusFileId": 669300,
+      "version": "2.0.0",
+      "fileName": "Screen Space Shadows-93209-2-0-0-1758808941.7z",
+      "sha256": "8838C8023816EF6C1A693F4DF85DBB8C9573C09AED638B73CD7A8599F18D791A",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Wetness Effects - Community Shaders",
+      "author": "theriverwoodmodder",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 112739,
+      "nexusFileId": 747765,
+      "version": "3.1.0",
+      "fileName": "Wetness Effects-112739-3-1-0-1777700350.7z",
+      "sha256": "42F321757897166B149314722432B0A6D7678F877E86B622469F8DEF252BF821",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Subsurface Scattering - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 114114,
+      "nexusFileId": 718213,
+      "version": "3.0.1",
+      "fileName": "Subsurface Scattering-114114-3-0-1-1770385535.7z",
+      "sha256": "356FF30B126EE236ACF62C4A6D590AE650CA3B45018DCE96FE2985F2B2A711C5",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Water Effects - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 112762,
+      "nexusFileId": 604015,
+      "version": "1.0.1",
+      "fileName": "Water Effects-112762-1-0-1-1741616552.7z",
+      "sha256": "5A48C0419636C4AC7054ECF235840C8E203A5EDD17D2B88B1B702873C0F63AAF",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Screen Space Global Illumination (SSGI) - Community Shaders",
+      "author": "ProfJack",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 130375,
+      "nexusFileId": 763934,
+      "version": "4.2.0",
+      "fileName": "Screen Space GI 130375 4.2.0 2026-06-15T11-09Z miUDjFWE7.7z",
+      "sha256": "675A02455D3A6B9B50B2F9E174A239F94042406E66F4BCE574DED22856A492EE",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Skylighting - Community Shaders",
+      "author": "ProfJack",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 139352,
+      "nexusFileId": 786154,
+      "version": "1.5.1",
+      "fileName": "Skylighting 139352 1.5.1 2026-08-06T11-51Z IoFlhf7uo.zip",
+      "sha256": "8807A8423F25C051CE55C0C26E3B800C385949FBD03D6D17E8003B4780EFF975",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Cloud Shadows - Community Shaders",
+      "author": "ProfJack",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 139185,
+      "nexusFileId": 752480,
+      "version": "1.4.0",
+      "fileName": "Cloud Shadows-139185-1-4-0-1778823267.7z",
+      "sha256": "8BCAC3E7FFA12EEBFE0B3DB0DC62977DF4053EC53C20E6A60F53B08EB0083D0A",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Terrain Blending - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 157076,
+      "nexusFileId": 763935,
+      "version": "1.2.0",
+      "fileName": "Terrain Blending 157076 1.2.0 2026-06-15T11-09Z 587RqTuZB.7z",
+      "sha256": "ABC4EEA3D222944D551FFF7CA07622BA907C94D92C4100183678088ADDFA4C13",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Sky Sync - Community Shaders",
+      "author": "sicsix1",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 153543,
+      "nexusFileId": 748132,
+      "version": "1.1.0",
+      "fileName": "Sky Sync-153543-1-1-0-1777772776.7z",
+      "sha256": "437046B618190BA24FEBC306327D427C23505737550025652710D04CED38C96F",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Upscaling - Community Shaders",
+      "author": "doodlum",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 156952,
+      "nexusFileId": 758189,
+      "version": "1.4.0",
+      "fileName": "Upscaling 156952 1.4.0 2026-05-31T10-27Z L5WQbqiov.7z",
+      "sha256": "AC089585C252C76303D3B5F40294775462A6981F8D9FF1C90A3D1032F8123898",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Hair Specular - Community Shaders",
+      "author": "jiayev",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 149011,
+      "nexusFileId": 765252,
+      "version": "1.1.2",
+      "fileName": "Hair Specular 149011 1.1.2 2026-06-18T17-36Z N2AYL5OnR.7z",
+      "sha256": "93CEA0178922F4C1A55CE6048EC2FC5FF560E58CBE979D0AD245DC41556E158A",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "Terrain Variation - Community Shaders",
+      "author": "Davo0411",
+      "role": "graphics-feature",
+      "required": false,
+      "nexusModId": 148123,
+      "nexusFileId": 786155,
+      "version": "1.1.0",
+      "fileName": "Terrain Variation 148123 1.1.0 2026-08-06T11-51Z Ks18n0BX8.zip",
+      "sha256": "0A4636E1B79772C2D6F01C31815BA7B91235444835F4C2F64A7AF8982A6813A5",
+      "installState": "pinned-not-deployed"
+    },
+    {
       "name": "Main Menu Spinning Skyrim Emblem",
       "author": "Brumbek",
       "role": "menu-cosmetic",
@@ -295,7 +488,13 @@
     {
       "name": "Zikoru celestial swords (LUNA, SOL, VENUS, TERRA, MARS)",
       "game": "skyrim (LE originals, 2014)",
-      "nexusModIds": [55644, 55767, 56492, 56049, 57182],
+      "nexusModIds": [
+        55644,
+        55767,
+        56492,
+        56049,
+        57182
+      ],
       "location": "work/ports/zikoru-swords (archives + manifest.json with per-file SHA256)",
       "plan": "private LE-to-SE port via nif-port-cli per the ports/lost-longswords pattern; verify per-page permissions before any redistribution",
       "note": "hidden SE collection 5004 repackaged these; live satellites (SPID 177115, rebalance 71286) expect the collection's esp, so a port should document its own plugin naming"
