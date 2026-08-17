@@ -275,6 +275,49 @@
       "installState": "pinned-not-deployed"
     },
     {
+      "name": "Kaputt - Melee Killmove Manager",
+      "author": "ProfJack",
+      "role": "killmove-melee",
+      "required": false,
+      "nexusModId": 78063,
+      "nexusFileId": 779052,
+      "version": "1.3.1",
+      "fileName": "Kaputt 78063 1.3.1 2026-07-20T15-39Z RHaV1O97c.7z",
+      "sha256": "B095F68028457A31ACB3021F857ECF4775E47FEEFBBECF6901F5BC68FB780AD4",
+      "runtimeValidation": "active (2026-07); post-hit trigger, per-killmove tag control; melee only; AE-compat claim tested to 1.6.640 on page - verify on 1.6.1170 at deploy",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "FLICK - Fuzz's Legally Intelligible Core Kit",
+      "author": "Fuzzlesz",
+      "role": "ui-framework",
+      "required": false,
+      "nexusModId": 181603,
+      "nexusFileId": 779322,
+      "version": "1.3.0",
+      "fileName": "FLICK NG 181603 1.3.0 2026-07-21T07-23Z 4t2yDcX2t.7z",
+      "sha256": "604E8D504B348F215E3B1400B6CF8A7D5B84107FDB57305C57D12B45B27390F6",
+      "requiredBy": [
+        "Kaputt - Melee Killmove Manager"
+      ],
+      "runtimeValidation": "successor to deprecated CatMenu; in-game config UI host (default F7)",
+      "installState": "pinned-not-deployed"
+    },
+    {
+      "name": "VioLens - A Killmove Mod SE",
+      "author": "Reko",
+      "role": "killmove-ranged",
+      "required": false,
+      "nexusModId": 668,
+      "nexusFileId": 255970,
+      "version": "2.30",
+      "fileName": "VioLens - A Killmove Mod SE 2.30-668-2-30-1641929178.7z",
+      "sha256": "3A07EBDB8418C683064B8DE059B8583FE77A50E5185DF5342272D6F42E17BE9B",
+      "configNote": "disable VioLens melee handling in its MCM - Kaputt owns melee; VioLens covers ranged/magic killcams",
+      "runtimeValidation": "frozen 2022 but stable Papyrus; ecosystem alive (Settings Loader 2025, SkyPatcher creature ext 2026)",
+      "installState": "pinned-not-deployed"
+    },
+    {
       "name": "Community Shaders",
       "author": "doodlum",
       "role": "graphics-core",
