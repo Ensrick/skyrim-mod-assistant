@@ -138,9 +138,14 @@ pipeline. Functional, but you will be the QA.
 ### iNeed 1.90 Alpha 1 (536k unique dl)
 **Pros:** the most compact classic needs implementation (27 scripts); clean single-update
 architecture; low debug noise (7 traces).
-**Cons:** the current MAIN file has been literally named "Alpha 1" since 2017 with no changelog
+**Cons:** the original's MAIN file has been literally named "Alpha 1" since 2017 with no changelog
 after 1.83 - abandoned mid-release; isoku is inactive on SE.
 **QA signals:** was tidy for its day; the version string is the tombstone.
+**Correction (2026-08-19):** the original is abandoned, but a maintained fork exists -
+**iNeed - Food Water and Sleep - Continued** (19390, nodude2016, updated 2025-09-26). The
+"iNeed is dead" framing above applies only to mod 645; the Continued fork is a live thirst-bearing
+option alongside SunHelm and Last Seed. Verdict for this list is unchanged (thirst micromanagement
+is the tedium we are avoiding), but it belongs in the field, not the graveyard.
 
 ### RND All-In-One 1.0.5c (141k unique dl)
 **Pros:** the fullest disease/inebriation simulation of the classic era; 2023 repack keeps it
@@ -179,8 +184,9 @@ Two coherent endpoint stacks, one middle option:
    needs its datastore/patch route for mod-added armor (the ecosystem exists but is per-mod).
 3. **Middle: SunHelm** - one full slot, all-in-one WITH thirst, moderate scripts, its own compat
    patch hub, Campfire skill esp included; cold layer can be disabled later if migrating to SMI.
-4. **Skip regardless of scale**: RND (USSEP master), iNeed (2017 alpha, superseded by
-   SunHelm/Last Seed).
+4. **Skip regardless of scale**: RND (USSEP master). iNeed's original (645) is abandoned at its
+   2017 alpha, but see the correction below - its maintained fork (19390) is a live option if
+   thirst is ever wanted.
 
 The stacks are mutually exclusive at the cold layer (two exposure systems cannot coexist), but
 either pairs with Campfire.
