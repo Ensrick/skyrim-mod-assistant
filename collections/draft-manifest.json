@@ -568,5 +568,39 @@
       "sha256": "7D4826405CAF7F587EE8152DA1F91D7A11927D08300FE9B2A6BB0DB906A71E73",
       "location": "work/tools/skyui-sdk"
     }
-  ]
+  ],
+  "decisions": {
+    "skinAndBody": {
+      "decided": "2026-08-20",
+      "female": {
+        "pick": "Reverie - Skin",
+        "nexusModId": 64314,
+        "why": "Full body+face set (diffuse/normal/specular/subsurface), ships vanilla, UNP and CBBE UV variants so it does not force the body-mesh decision, explicit Community Shaders subsurface support, covers elderly and Afflicted.",
+        "note": "4K and 2K variants both in archive; user does not need 4K."
+      },
+      "male": {
+        "pick": "SkySight Skins 2025",
+        "nexusModId": 6580,
+        "why": "Scratch-made 2025 textures for all non-beast male races, true to vanilla style, options for body hair, age and dirt."
+      },
+      "beast": {
+        "pick": "MONSTERaider Feminine/Masculine Khajiit and Argonian",
+        "nexusModIds": [
+          183,
+          184,
+          185,
+          186
+        ],
+        "open": "Flawn\u2019s Vanilla Argonians Redux (43389) remains the vanilla-faithful alternative if the real-animal patterns clash with Reverie/SkySight."
+      },
+      "rejected": {
+        "BnP family": "User judged male skins clearly worse than SkySight and female not preferable. Kept as fallback only.",
+        "Racial Skin Variance (81668)": "Diffuses come from the BnP family and the archive is CBBE-centric body-shape variance (Normal Maps/CBBE/Big Breasts), not race authenticity.",
+        "Tempered Skins": "Author excluded by user.",
+        "Simply Skin (98131/107637)": "Strong lore-friendly match but vanilla-UV only, which would lock the body mesh to vanilla."
+      },
+      "fallback": "If Reverie or SkySight disappoint in game, revisit BnP Female (65274) and Simply Skin (98131 female / 107637 male).",
+      "constraint": "Skin textures come in three incompatible UV families (vanilla, UNP, CBBE); the skin choice and body-mesh choice are one decision. Reverie covers all three."
+    }
+  }
 }
