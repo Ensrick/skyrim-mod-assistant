@@ -17,6 +17,7 @@ community addons that fill the gaps it leaves.
 | file | job |
 |---|---|
 | `modasset.py` | download, extract, read BSAs (incl. SSE's LZ4-framed entries), parse DDS and NIF headers |
+| `esp.py` | plugin parser: ARMO/ARMA equip slots, item classes, masters, ESL flag |
 | `vanilla_index.py` | index the game's own BSAs; run once, produces `vanilla_index.json` |
 | `inspect_mod.py` | the findings sheet |
 | `calibrate_detail.py` | rebuilds the detail-index controls used below |
@@ -31,12 +32,32 @@ normal maps, normals stored as BC1, flat or diffuse-embossed normals, solid
 gloss alpha, absent mipmaps, uncompressed textures, JPEG blocking, resolution
 below the vanilla asset being replaced, diffuse/normal resolution mismatch.
 
-**Meshes** - unconverted LE-format meshes, parallax shader flags with no `_p`
+**Meshes** - unconverted Oldrim meshes (NIF user version other than 100, using
+`NiTriShape` instead of `BSTriShape`), parallax shader flags with no `_p`
 texture shipped, triangle budget.
 
-**Apparel** - no physics data at all, or CBPC-only rather than HDT-SMP.
-Absence of a PBR material set is reported as a note, not a warning, since it
-only matters under TruePBR.
+Triangle counts cover static meshes only. Skinned meshes keep geometry in
+`NiSkinPartition`, which this does not parse, so they are reported as unread
+rather than counted as zero.
+
+**Apparel** - equip slot and item class come from the plugin's ARMO records, so
+findings apply only to items where loose cloth is actually visible. A ring is
+not asked about physics. For those that qualify, the mesh's bone list decides
+what is reported:
+
+| mesh is weighted to | reported as |
+|---|---|
+| bones outside the vanilla skeleton, no SMP config | rig present but inert without a physics patch |
+| the vanilla `Skirt*Bone` chain, no SMP config | canned skirt animation only, no simulation |
+| no cloth bones at all | rigid geometry welded to the body |
+
+The vanilla bone set is read from the game's own
+`actors/character/character assets/skeleton.nif`, because `SkirtBBone01-03`
+look custom but are stock. Absence of a PBR material set is a note, not a
+warning, since it only matters under TruePBR.
+
+Contested biped slots (45, 46, 47) are reported too, since two mods on slot 46
+cannot be worn together no matter how good either one is.
 
 **Packaging** - `.psd`, `Thumbs.db`, `__MACOSX` and similar junk.
 

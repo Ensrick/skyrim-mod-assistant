@@ -11,6 +11,7 @@ import json, os, re, sys, io, glob, struct, subprocess, math
 from collections import Counter, defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import modasset as M
+import esp
 
 SP = os.path.dirname(os.path.abspath(__file__))
 TEXCONV = os.path.join(os.environ['LOCALAPPDATA'],
@@ -219,9 +220,20 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
     # ---------------- meshes
     nifs = {k: v for k, v in ents.items() if k.endswith('.nif')}
     if nifs:
-        legacy = [k for k, v in nifs.items() if v.get('shapes', 0) == 0 and v.get('size', 0) > 2000]
+        # SSE meshes report NIF user version 100; Oldrim ones report 11/34/83 and
+        # use NiTriShape rather than BSTriShape. That is a hard fact, not a guess.
+        legacy = [k for k, v in nifs.items() if v.get('ver') and v['ver'] != '100']
+        # Skinned meshes keep their geometry in NiSkinPartition, which this does
+        # not parse, so their triangles are unknown rather than zero. Counting
+        # them as zero would understate the budget badly.
+        skinned = [k for k, v in nifs.items() if v.get('skinned')]
         tris = sum(v.get('tris', 0) for v in nifs.values())
-        out['notes'].append(f'{len(nifs)} meshes, {tris:,} triangles total')
+        if skinned:
+            out['notes'].append(f'{len(nifs)} meshes: {tris:,} triangles across the '
+                                f'{len(nifs)-len(skinned)} static ones, plus {len(skinned)} '
+                                f'skinned meshes whose counts are not read')
+        else:
+            out['notes'].append(f'{len(nifs)} meshes, {tris:,} triangles total')
         para = [k for k, v in nifs.items() if v.get('parallax')]
         if para:
             has_p = [k for k in ents if k.endswith('_p.dds')]
@@ -232,24 +244,75 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
             else:
                 out['features'].append(f'parallax-ready meshes ({len(para)})')
         if legacy:
-            out['findings'].append(f'{len(legacy)} meshes parsed with no BSTriShape blocks, '
-                                   f'possible unconverted LE format: {legacy[0]}')
+            vers = Counter(nifs[k]['ver'] for k in legacy)
+            out['findings'].append(
+                f'{len(legacy)} of {len(nifs)} meshes are unconverted Oldrim format '
+                f'(NIF user version {", ".join(vers)} instead of 100, NiTriShape instead of '
+                f'BSTriShape): {legacy[0]}')
 
-    # ---------------- what an apparel/body mod is expected to ship
-    wearable = [k for k in ents if re.match(r'meshes/(clothes|armor|actors/character/character assets)/', k)
-                and k.endswith('.nif')]
-    if wearable:
-        feat = ' '.join(out['features'])
-        if 'HDT-SMP' not in feat and 'CBPC' not in feat:
-            out['findings'].append(
-                f'{len(wearable)} wearable meshes and no physics data of any kind ships '
-                f'(no HDT-SMP config, no CBPC config), so cloth and hanging parts stay rigid')
-        elif 'CBPC' in feat and 'HDT-SMP' not in feat:
-            out['findings'].append(
-                'physics is CBPC only, which is collision-less bone jiggle rather than '
-                'true cloth simulation; no HDT-SMP config ships')
+    # ---------------- equipment: what the items are and where they sit
+    root0 = os.path.join(M.CACHE, [x for x in os.listdir(M.CACHE)
+                                   if x.startswith(f'x{mid}-')][0])
+    items = []
+    for pf in glob.glob(root0 + '/**/*.es[pml]', recursive=True):
+        try:
+            pl = esp.Plugin(pf)
+        except Exception:
+            continue
+        items += pl.armo
+        if pl.esl:
+            out['notes'].append(f'{os.path.basename(pf)} is ESL-flagged (no load-order slot)')
+    if items:
+        kinds = Counter(esp.classify(r) for r in items)
+        out['notes'].append(f'{len(items)} equippable items: ' +
+                            ', '.join(f'{v} {k}' for k, v in kinds.most_common(6)))
+        slots = Counter()
+        for r in items:
+            for s in r['slots']:
+                slots[s] += 1
+        out['notes'].append('biped slots used: ' + ', '.join(
+            f'{s} {esp.SLOTS.get(s, "?")} ({n})' for s, n in slots.most_common(6)))
+        contested = [s for s in slots if s in (45, 46, 47, 44, 55)]
+        if contested:
+            out['notes'].append('slots ' + ', '.join(str(s) for s in contested) +
+                                ' are the commonly contested ones; anything else using them '
+                                'will not equip at the same time')
+
+        cloth = [r for r in items if esp.cloth_relevant(r)]
+        if cloth:
+            feat = ' '.join(out['features'])
+            nifs_all = {k: v for k, v in ents.items() if k.endswith('.nif')}
+            custom = [k for k, v in nifs_all.items() if v.get('custom_bones')]
+            skirt = [k for k, v in nifs_all.items() if v.get('skirt_chain')]
+            rigid = [k for k, v in nifs_all.items()
+                     if v.get('skinned') is False and v.get('shapes')]
+            kindstr = ', '.join(f'{v} {k}' for k, v in
+                                Counter(esp.classify(r) for r in cloth).most_common(3))
+            has_smp = 'HDT-SMP' in feat
+            if custom and not has_smp:
+                sample = nifs_all[custom[0]].get('custom_bones', [])[:4]
+                out['findings'].append(
+                    f'{len(custom)} meshes are weighted to bones outside the vanilla skeleton '
+                    f'({", ".join(sample)}) but no HDT-SMP config ships, so that rig does nothing '
+                    f'without a separate physics patch')
+            elif skirt and not has_smp:
+                out['findings'].append(
+                    f'{len(cloth)} cloth items ({kindstr}) are weighted to the vanilla skirt bone '
+                    f'chain, which only moves with the canned skirt animation. No HDT-SMP config '
+                    f'ships, so there is no simulation and no response to wind or movement')
+            elif not custom and not skirt and not has_smp:
+                out['findings'].append(
+                    f'{len(cloth)} cloth items ({kindstr}) carry no cloth bones at all and no '
+                    f'physics config, so they are rigid geometry welded to the body')
+            if 'CBPC' in feat and not has_smp:
+                out['findings'].append(
+                    'physics here is CBPC only, which is bone jiggle without collision rather '
+                    'than cloth simulation')
+        else:
+            out['notes'].append('no loose-cloth items here (rings, headgear, boots and the like '
+                                'do not need physics)')
         if not any('PBR' in f for f in out['features']):
-            out['notes'].append('no PBR material set (fine unless you are running TruePBR)')
+            out['notes'].append('no PBR material set (only matters under TruePBR)')
 
     # ---------------- textures
     dds = {k: v for k, v in ents.items() if k.endswith('.dds')}

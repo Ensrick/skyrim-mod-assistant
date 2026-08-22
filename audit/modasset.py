@@ -278,8 +278,10 @@ def nif_info(data):
     idx = struct.unpack_from('<%dH' % nblocks, data, p); p += 2 * nblocks
     sizes = struct.unpack_from('<%dI' % nblocks, data, p); p += 4 * nblocks
     nstr, _maxlen = struct.unpack_from('<II', data, p); p += 8
+    strings = []
     for _ in range(nstr):
-        _s, p = _sized_str(data, p)
+        s, p = _sized_str(data, p)
+        strings.append(s)
     ngroups = struct.unpack_from('<I', data, p)[0]; p += 4 + 4 * ngroups
 
     counts = {}
@@ -322,8 +324,42 @@ def nif_info(data):
                 continue
     parallax = b'_p.dds' in data or b'_P.DDS' in data
     pbr = b'_rmaos' in data.lower() if isinstance(data, bytes) else False
+    skinned = any(t in counts and counts[t] for t in
+                  ('BSSkin::Instance', 'NiSkinInstance', 'BSDismemberSkinInstance'))
+    van = vanilla_bones()
+    boneish = {s for s in strings if s in van or BONEISH.search(s)}
     return {'ver': f'{uver2}', 'blocks': nblocks, 'shapes': shapes, 'tris': tris,
-            'verts': verts, 'types': counts, 'parallax': parallax, 'pbr': pbr}
+            'verts': verts, 'types': counts, 'parallax': parallax, 'pbr': pbr,
+            'skinned': skinned, 'strings': strings,
+            'skirt_chain': sorted(b for b in boneish if b in van and 'Skirt' in b),
+            'custom_bones': sorted(b for b in boneish if b not in van)}
+
+
+# A string is treated as a bone if the vanilla skeleton names it, or if it looks
+# like one. Node names like "Cape Outer" are not bones and must not count.
+BONEISH = re.compile(r'^(NPC |CME |NINODE |HDT|SMP)|Bone\d*$|_skin$', re.I)
+_VBONES = None
+
+
+def vanilla_bones():
+    """Bone names the stock character skeleton defines. Anything a mesh is
+    weighted to beyond this set is a custom rig, which is what actually
+    distinguishes a physics-ready mesh from one riding the canned animation."""
+    global _VBONES
+    if _VBONES is not None:
+        return _VBONES
+    _VBONES = set()
+    data = r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data'
+    try:
+        b = BSA(os.path.join(data, 'Skyrim - Meshes0.bsa'))
+        for j, (k, _o, _s) in enumerate(b.entries):
+            if k.lower().startswith('meshes\\actors\\character\\character assets\\skeleton'):
+                info = nif_info(b.read(j))
+                if info:
+                    _VBONES |= set(info['strings'])
+    except Exception:
+        pass
+    return _VBONES
 
 
 # ---------------------------------------------------------------- indexing
@@ -392,7 +428,8 @@ def _facts(key, blob):
         except Exception:
             n = None
         if n:
-            return {k: n[k] for k in ('shapes', 'tris', 'verts', 'parallax') if k in n}
+            return {k: n[k] for k in ('shapes', 'tris', 'verts', 'parallax', 'ver',
+                                      'skinned', 'skirt_chain', 'custom_bones') if k in n}
     return {}
 
 
