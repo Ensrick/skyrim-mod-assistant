@@ -41,3 +41,7 @@
 !/ports/lost-longswords/
 !/ports/lost-longswords/*.md
 !/ports/lost-longswords/*.ps1
+
+!/audit/
+!/audit/*.py
+!/audit/*.md
