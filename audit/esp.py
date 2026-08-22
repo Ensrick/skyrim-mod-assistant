@@ -133,7 +133,7 @@ class Plugin:
             if typ in (b'ARMO', b'ARMA'):
                 self._item(typ, body)
             elif typ == b'CELL':
-                self.cells[formid] = {'refs': 0, 'interior': None, 'name': None}
+                self.cells[formid] = {'refs': 0, 'navm': 0, 'interior': None, 'name': None}
                 for st, pay in _subrecords(body):
                     if st == b'DATA' and pay:
                         self.cells[formid]['interior'] = bool(pay[0] & 1)
@@ -145,6 +145,8 @@ class Plugin:
                 self.refs += 1
             elif typ == b'NAVM':
                 self.navmesh += 1
+                if cell in self.cells:
+                    self.cells[cell]['navm'] = self.cells[cell].get('navm', 0) + 1
             elif typ == b'QUST':
                 n_alias = sum(1 for st, _pay in _subrecords(body) if st == b'ALST' or st == b'ALLS')
                 self.quests.append((formid, n_alias))

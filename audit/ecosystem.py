@@ -41,7 +41,7 @@ import re
 LANG = re.compile(r'translat|russian|deutsch|german|spanish|polish|italian|chinese|'
                   r'portugu|turkish|korean|japanese|fran|\bchs\b|\bcht\b|\bpl\b', re.I)
 
-for label, mid in TARGETS:
+def report(label, mid):
     hits = [h for h in search(label) if h['modId'] != mid and not LANG.search(h['name'])]
     print(f'\n{"="*70}\n{label} (mod {mid}): {len(hits)} companion mods on Nexus')
     years = Counter((h.get('updatedAt') or '')[:4] for h in hits)
@@ -58,3 +58,14 @@ for label, mid in TARGETS:
     for h in sorted(hits, key=lambda x: -(x.get('endorsements') or 0))[:6]:
         print(f"      {h['modId']:<8}{(h.get('updatedAt') or '')[:7]}  "
               f"{h['name'][:52]:<54}{h.get('endorsements')}")
+
+
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) > 1:
+        for a in sys.argv[1:]:
+            label, mid = a.rsplit(':', 1)
+            report(label, int(mid))
+    else:
+        for label, mid in TARGETS:
+            report(label, mid)
