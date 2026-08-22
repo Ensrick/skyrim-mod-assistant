@@ -9,7 +9,7 @@ Handles the three things that make this awkward:
 Everything is keyed on the Data-relative path, which is what the game actually
 resolves and therefore what decides who overwrites whom.
 """
-import json, os, re, struct, subprocess, glob, sys, urllib.request, urllib.parse, hashlib
+import json, os, re, struct, subprocess, glob, sys, zlib, urllib.request, urllib.parse, hashlib
 
 SEVENZ = r'C:\Program Files\7-Zip\7z.exe'
 KEY = json.load(open(r'C:\Users\danjo\source\repos\crusader-de-tweaker\scripts\nexus\nexus.local.json'))['ApiKey']
@@ -196,32 +196,38 @@ class BSA:
         return [e[0] for e in self.entries]
 
     def read(self, index, limit=None, head=False):
-        """Bytes of entry `index`. head=True stops after the first LZ4 block,
-        which is all a DDS/NIF header needs and avoids decompressing whole
-        4K textures in pure python."""
+        """Bytes of entry `index`.
+
+        head=True reads only enough to cover the first compressed block, which
+        is all a DDS or NIF header needs. If that short read decodes to nothing
+        the entry's first block was larger than the window, so it re-reads in
+        full: returning empty instead would silently drop exactly the largest
+        textures, which is the opposite of what the caller wants."""
         _name, off, szf = self.entries[index]
         size = szf & 0x3FFFFFFF
         inverted = bool(szf & 0x40000000)
         compressed = bool(self.flags & self.COMPRESSED) ^ inverted
         with open(self.path, 'rb') as fh:
+            if head and size > (1 << 17):
+                fh.seek(off)
+                probe = self._decode(fh.read(1 << 17), compressed)
+                if probe:
+                    return probe
             fh.seek(off)
-            raw = fh.read(min(size, 1 << 17) if head else size)
-        p = 0
-        if self.flags & self.EMBEDNAME:
-            ln = raw[0]
-            p = 1 + ln
+            raw = fh.read(size)
+        return self._decode(raw, compressed, want_check=True)
+
+    def _decode(self, raw, compressed, want_check=False):
+        p = 1 + raw[0] if (self.flags & self.EMBEDNAME and raw) else 0
         if not compressed:
-            return raw[p:p + limit] if limit else raw[p:]
-        want = struct.unpack_from('<I', raw, p)[0]
-        payload = raw[p + 4:]
-        if self.ver >= 105:
-            out = lz4_frame(payload, max_blocks=1 if head else 0)
-        else:
-            import zlib
-            out = zlib.decompressobj().decompress(payload, limit or 0) if head else zlib.decompress(payload)
-        if head:
-            return out
-        if want and len(out) != want:
+            return raw[p:]
+        try:
+            want = struct.unpack_from('<I', raw, p)[0]
+            payload = raw[p + 4:]
+            out = lz4_frame(payload) if self.ver >= 105 else zlib.decompress(payload)
+        except Exception:
+            return b''
+        if want_check and want and len(out) != want:
             raise ValueError(f'size mismatch: got {len(out)}, header says {want}')
         return out
 
