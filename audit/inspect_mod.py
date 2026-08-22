@@ -12,6 +12,7 @@ from collections import Counter, defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import modasset as M
 import esp
+import tagger
 
 SP = os.path.dirname(os.path.abspath(__file__))
 TEXCONV = os.path.join(os.environ['LOCALAPPDATA'],
@@ -253,12 +254,13 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
     # ---------------- equipment: what the items are and where they sit
     root0 = os.path.join(M.CACHE, [x for x in os.listdir(M.CACHE)
                                    if x.startswith(f'x{mid}-')][0])
-    items = []
+    items, parsed = [], []
     for pf in glob.glob(root0 + '/**/*.es[pml]', recursive=True):
         try:
             pl = esp.Plugin(pf)
         except Exception:
             continue
+        parsed.append(pl)
         items += pl.armo
         if pl.esl:
             out['notes'].append(f'{os.path.basename(pf)} is ESL-flagged (no load-order slot)')
@@ -315,9 +317,10 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
             out['notes'].append('no PBR material set (only matters under TruePBR)')
 
     # ---------------- textures
+    out['_replaced'] = sum(1 for k in ents if k in (vanilla or {}))
     dds = {k: v for k, v in ents.items() if k.endswith('.dds')}
     if not dds:
-        return out
+        return _finish(out, ents, parsed, items)
     kinds = Counter(map_kind(k) for k in dds)
     out['notes'].append('texture map types: ' + ', '.join(f'{k}={v}' for k, v in kinds.most_common()))
 
@@ -469,6 +472,10 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
                                f'source: {blocky[0][0]} (grid ratio {blocky[0][1]})')
     if upscaled:
         major = [x for x in upscaled if map_kind(x[0]) in ('diffuse', 'normal', 'model-normal')]
+        # an upscaled glow or env mask is trivia; an upscaled diffuse is the
+        # whole mod being vanilla in a bigger container
+        out.setdefault('_flags', []).append(
+            'flag:upscaled-textures' if major else 'flag:upscaled-masks-only')
         out['findings'].append(
             f'{len(upscaled)} sampled textures are near-identical to the vanilla asset at higher '
             f'stored resolution, i.e. upscaled vanilla ({len(major)} of them diffuse/normal maps, '
@@ -484,6 +491,15 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
                 ', '.join(f'{os.path.basename(k)} {w}px detail={e:.2f}' for k, e, w in low[:3]))
         out['notes'].append(f'detail index (higher = more real texture information): ' +
                             f'{sum(e for _k, e, _w in eff)/len(eff):.2f} mean over {len(eff)} sampled')
+    return _finish(out, ents, parsed, items)
+
+
+def _finish(out, ents, plugins, items):
+    """Tag from contents and record both tags and the path set in the index."""
+    out['tags'] = tagger.derive(out, ents, plugins, items)
+    n = tagger.save(out['modId'], out['label'], out['tags'], list(ents),
+                    out['findings'], out['size_mb'])
+    out['_indexed'] = n
     return out
 
 
@@ -560,6 +576,8 @@ def report(res, dependents=None):
     print(f"\n{'='*78}\n{res['label'] or ''}  (mod {res['modId']})")
     print(f"  file: {res['file']}  [{res['size_mb']} MB]")
     print(f"  contents: " + ', '.join(f'{v} {k}' for k, v in res['inventory'].items()))
+    if res.get('tags'):
+        print('  TAGS: ' + '  '.join(res['tags']))
     for n in res['notes']:
         print(f'  - {n}')
     if res['features']:

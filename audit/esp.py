@@ -54,7 +54,41 @@ class Plugin:
         self.records = {}
         self.armo = []
         self.arma = []
+        self.formids = []       # (type, formid, payload size)
+        self.deleted = []       # records flagged deleted, i.e. UDR candidates
+        self.cells = {}         # formid -> {refs, interior, name}
+        self.refs = 0
+        self.navmesh = 0
+        self.quests = []        # (formid, alias count) - aliases bake into saves
         self._parse()
+
+    @property
+    def new_records(self):
+        """Records this plugin originates, as opposed to overrides of a master.
+        The index is the top byte of the FormID: it equals the master count for
+        a plugin's own records."""
+        n = len(self.masters)
+        return [(t, f, s) for t, f, s in self.formids if (f >> 24) == n]
+
+    @property
+    def overrides(self):
+        n = len(self.masters)
+        return [(t, f, s) for t, f, s in self.formids if (f >> 24) < n]
+
+    def esl_capable(self):
+        """Could this be ESL-flagged? New records must fit the compact FormID
+        range, and a few record types cannot be ESL-ified at all."""
+        blockers = {b'CELL', b'WRLD', b'NAVM', b'NAVI', b'DIAL', b'INFO', b'LAND'}
+        new = self.new_records
+        bad_types = sorted({t.decode() for t, _f, _s in new if t in blockers})
+        ids = [f & 0xFFFFFF for _t, f, _s in new]
+        over = [i for i in ids if i > 0xFFF]
+        return {'new_records': len(new), 'blocking_types': bad_types,
+                'out_of_range': len(over), 'already_esl': self.esl,
+                # flag it today, without touching anything
+                'capable': not bad_types and not over and len(new) <= 4096,
+                # or after compacting FormIDs in xEdit, which is the usual route
+                'capable_compacted': not bad_types and len(new) <= 4096}
 
     def _parse(self):
         d = self.raw
@@ -69,17 +103,23 @@ class Plugin:
                 self.masters.append(_zstring(payload))
         self._walk(24 + size, len(d))
 
-    def _walk(self, start, end):
+    def _walk(self, start, end, cell=None):
         d = self.raw
         p = start
         while p + 24 <= end:
             typ = d[p:p + 4]
             size = struct.unpack_from('<I', d, p + 4)[0]
             if typ == b'GRUP':
-                self._walk(p + 24, min(p + size, end))
+                gtype = struct.unpack_from('<I', d, p + 12)[0]
+                label = d[p + 8:p + 12]
+                # group types 6-9 are the children of the CELL whose FormID is
+                # the label, which is how references get attributed to a cell
+                nxt = struct.unpack_from('<I', label, 0)[0] if gtype in (6, 7, 8, 9) else cell
+                self._walk(p + 24, min(p + size, end), nxt)
                 p += size
                 continue
             flags = struct.unpack_from('<I', d, p + 8)[0]
+            formid = struct.unpack_from('<I', d, p + 12)[0]
             body = d[p + 24:p + 24 + size]
             if flags & 0x00040000 and len(body) > 4:      # compressed record
                 try:
@@ -87,8 +127,27 @@ class Plugin:
                 except zlib.error:
                     body = b''
             self.records[typ] = self.records.get(typ, 0) + 1
+            self.formids.append((typ, formid, len(body)))
+            if flags & 0x20:
+                self.deleted.append((typ.decode(), formid))
             if typ in (b'ARMO', b'ARMA'):
                 self._item(typ, body)
+            elif typ == b'CELL':
+                self.cells[formid] = {'refs': 0, 'interior': None, 'name': None}
+                for st, pay in _subrecords(body):
+                    if st == b'DATA' and pay:
+                        self.cells[formid]['interior'] = bool(pay[0] & 1)
+                    elif st == b'FULL':
+                        self.cells[formid]['name'] = _zstring(pay)
+            elif typ in (b'REFR', b'ACHR', b'PGRE', b'PHZD'):
+                if cell in self.cells:
+                    self.cells[cell]['refs'] += 1
+                self.refs += 1
+            elif typ == b'NAVM':
+                self.navmesh += 1
+            elif typ == b'QUST':
+                n_alias = sum(1 for st, _pay in _subrecords(body) if st == b'ALST' or st == b'ALLS')
+                self.quests.append((formid, n_alias))
             p += 24 + size
 
     def _item(self, typ, body):
