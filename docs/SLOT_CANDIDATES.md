@@ -1,10 +1,14 @@
-# Slot candidates - harvested during the overnight deep-read
+# Slot candidates - deep-read harvest
 
-Regenerated automatically; latest harvest through batch 400 (15,680 mods read individually, endorsement-descending). These are NOT decisions - each entry is a candidate you may want when its slot comes up. **504 candidate entries across 128 slots.**
+Auto-generated from the overnight deep-read pass; latest harvest through batch 450
+(17,680 mods read individually of 21,356 sweep survivors, endorsement-descending).
+These are NOT keeps - they are the rivals worth knowing about when you decide each
+slot. **523 candidate entries across 131 slots.**
 
-## alchemy (2)
+## alchemy (3)
 - [52130](https://www.nexusmods.com/skyrimspecialedition/mods/52130) - Apothecary - direct CACO rival, sharpens the CACO seam decision
 - [96876](https://www.nexusmods.com/skyrimspecialedition/mods/96876) - Gourmet cooking overhaul - CACO-seam participant
+- [89493](https://www.nexusmods.com/skyrimspecialedition/mods/89493) - The Hermetic Art - Alchemy Reimagined - grind/calcinate/distill mechanics overhaul; rival in the CACO-seam alchemy decision
 
 ## alternate start (2)
 - [272](https://www.nexusmods.com/skyrimspecialedition/mods/272) - LAL - the losing rival itself, awaiting confirm like AFT/EFF
@@ -133,7 +137,7 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [131148](https://www.nexusmods.com/skyrimspecialedition/mods/131148) - SkyTactics via SkyPatcher
 - [65625](https://www.nexusmods.com/skyrimspecialedition/mods/65625) - Elden Rim Weapon Arts - BFCO branch evidence
 
-## community shaders features (8)
+## community shaders features (9)
 - [112739](https://www.nexusmods.com/skyrimspecialedition/mods/112739) - Wetness Effects - official CS feature module
 - [138443](https://www.nexusmods.com/skyrimspecialedition/mods/138443) - CS Light 138443 - Light Placer config hub for emissive objects
 - [76776](https://www.nexusmods.com/skyrimspecialedition/mods/76776) - SMP Wind - weather-driven wind for FSMP (we run FSMP cloth-only)
@@ -142,6 +146,7 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [158207](https://www.nexusmods.com/skyrimspecialedition/mods/158207) - Dynamic Wetness 158207 - SKSE character wetness, pairs with CS Wetness Effects
 - [179371](https://www.nexusmods.com/skyrimspecialedition/mods/179371) - HDR - Community Shaders 179371 - native 10-bit HDR output for CS
 - [179824](https://www.nexusmods.com/skyrimspecialedition/mods/179824) - Effects 11 - CS feature enabling most ENB PRESETS under Community Shaders (2026-08; may reopen preset options previously ENB-only)
+- [165498](https://www.nexusmods.com/skyrimspecialedition/mods/165498) - CS Crash Fix - Ultimate Markarth - fixes persistent CS Skylighting crashes in Ultimate Markarth; evidence CS Skylighting can crash heavy city cells
 
 ## creature visuals (1)
 - [23665](https://www.nexusmods.com/skyrimspecialedition/mods/23665) - Skeleton-replacer creature family: Trolls 23665, Giants 23889, Bear 16343, Gargoyles 21907, Spiders 24058
@@ -180,13 +185,14 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 ## dodge (1)
 - [115408](https://www.nexusmods.com/skyrimspecialedition/mods/115408) - TK Dodge NG - AE build of TK Dodge RE
 
-## dragons (6)
+## dragons (7)
 - [74983](https://www.nexusmods.com/skyrimspecialedition/mods/74983) - Infinite Dragon Variants - SPID visual variety
 - [156824](https://www.nexusmods.com/skyrimspecialedition/mods/156824) - Dragons Actually Fall Down 156824 + Dragon models modernized 122491
 - [51310](https://www.nexusmods.com/skyrimspecialedition/mods/51310) - Dragon War - SKSE dragon AI/fight overhaul, heavyweight candidate
 - [19051](https://www.nexusmods.com/skyrimspecialedition/mods/19051) - KS Dragon Overhaul 2 - rival to Dragon War
 - [87085](https://www.nexusmods.com/skyrimspecialedition/mods/87085) - Dragons Use Thuum - voiced dragon shout AI
 - [5133](https://www.nexusmods.com/skyrimspecialedition/mods/5133) - Bellyaches New Dragon Species - 13 non-replacing species
+- [176594](https://www.nexusmods.com/skyrimspecialedition/mods/176594) - Dragon and Vampire Attacks Restored - restores city dragon/vampire attack events SE removed; feeds the dragons-as-late-game pillar
 
 ## dungeons (1)
 - [2218](https://www.nexusmods.com/skyrimspecialedition/mods/2218) - EasierRiders Dungeon Pack - 8 lore-friendly dungeons
@@ -221,8 +227,9 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [98579](https://www.nexusmods.com/skyrimspecialedition/mods/98579) - Madmen - Forsworn overhaul (Lawless family; raw material for the Beyond Reach Witchmen retarget idea)
 - [30017](https://www.nexusmods.com/skyrimspecialedition/mods/30017) - Heritage Reflexive Enemies 30017; Know Your Enemy 2 93258 supersession-line over KYE 13807
 
-## equipment display (1)
+## equipment display (2)
 - [28833](https://www.nexusmods.com/skyrimspecialedition/mods/28833) - AllGUD vs kept Immersive Equipment Displays 62001 - classic rival pair
+- [187128](https://www.nexusmods.com/skyrimspecialedition/mods/187128) - Skyrim Fitting System - SKSE visual-equipment layer (hide/display gear independent of equipped); pairs with the Underwear.dll underlayer design; updated 2026-08-22
 
 ## equipment distribution (2)
 - [100985](https://www.nexusmods.com/skyrimspecialedition/mods/100985) - Sentinel - modular curated armory distributed via SkyPatcher
@@ -443,8 +450,9 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [172](https://www.nexusmods.com/skyrimspecialedition/mods/172) - Phenderix Magic Evolved - contested balance/quality, Proteus author
 - [6551](https://www.nexusmods.com/skyrimspecialedition/mods/6551) - Phenderix Magic World
 
-## magic overhaul (1)
+## magic overhaul (2)
 - [188102](https://www.nexusmods.com/skyrimspecialedition/mods/188102) - Simonrim SKSE Addons (2026-08-19) - collection of SKSE addons for the Simonrim suite; grab if the SimonRim line wins
+- [188573](https://www.nexusmods.com/skyrimspecialedition/mods/188573) - Lost Arcana - SimonRim addon overhauling the 5 AE Creation spell packs to Mysticism standards; pairs with Simonrim SKSE Addons 188102; 2026-08-17
 
 ## magic systems (6)
 - [20983](https://www.nexusmods.com/skyrimspecialedition/mods/20983) - Spell Research - research/discovery system over spell mods
@@ -454,13 +462,14 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [95196](https://www.nexusmods.com/skyrimspecialedition/mods/95196) - Sorcerer - staff/scroll crafting addon for Mysticism
 - [11215](https://www.nexusmods.com/skyrimspecialedition/mods/11215) - Spectraverse - Magna-Ge questline w/ 42 destruction spells
 
-## map markers (6)
+## map markers (7)
 - [4138](https://www.nexusmods.com/skyrimspecialedition/mods/4138) - Map Markers Complete vs kept Atlas
 - [56123](https://www.nexusmods.com/skyrimspecialedition/mods/56123) - CoMAP framework
 - [29932](https://www.nexusmods.com/skyrimspecialedition/mods/29932) - Flat World Map Framework - alternative map branch vs AQWM
 - [56367](https://www.nexusmods.com/skyrimspecialedition/mods/56367) - A Clear Map of Skyrim - covers Bruma/Beyond Reach worldspaces, strong fit
 - [188483](https://www.nexusmods.com/skyrimspecialedition/mods/188483) - Map Menu Extension (2026-08) - ESO-style menu to travel between worldspaces; directly serves the Bruma/Gray Cowl/Wyrmstooth multi-worldspace build
 - [171391](https://www.nexusmods.com/skyrimspecialedition/mods/171391) - CS - FWMF Map Brightness Fix - fixes overbright world map under Community Shaders when using Flat World Map Framework paper maps
+- [147105](https://www.nexusmods.com/skyrimspecialedition/mods/147105) - No Google Maps Skyrim - SKSE rework of map navigation (immersive no-overview-map rival approach); note req lists ReShade add-on support
 
 ## marriage (2)
 - [21625](https://www.nexusmods.com/skyrimspecialedition/mods/21625) - Multiple Marriages
@@ -483,6 +492,9 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [21654](https://www.nexusmods.com/skyrimspecialedition/mods/21654) - AI Overhaul
 - [1104](https://www.nexusmods.com/skyrimspecialedition/mods/1104) - SkyTEST animals
 
+## NPC appearance tooling (1)
+- [187138](https://www.nexusmods.com/skyrimspecialedition/mods/187138) - EasyNPC Next - rebuilt EasyNPC (NPC appearance merge tool, many fixes); key tooling for the planned manual NPC-replacer pass; updated 2026-08-21
+
 ## npc density (1)
 - [2005](https://www.nexusmods.com/skyrimspecialedition/mods/2005) - Populated Cities Towns Villages
 
@@ -497,6 +509,9 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [35352](https://www.nexusmods.com/skyrimspecialedition/mods/35352) - Jampion NPCs - 500+ males, vanilla-true
 - [122164](https://www.nexusmods.com/skyrimspecialedition/mods/122164) - Children of... per-race named-NPC series: Green/Bosmer 122164, Ash/Dunmer 122165, First/Altmer 122167
 
+## NPC weather gear (1)
+- [185408](https://www.nexusmods.com/skyrimspecialedition/mods/185408) - ICE - Immersive Conditional Effects - NPCs dress for weather via engine conditions, scriptless modern alternative to Wet and Cold; 2026-07-14
+
 ## occlusion/perf (5)
 - [14084](https://www.nexusmods.com/skyrimspecialedition/mods/14084) - Skyrim Project Optimization - needs lighting-slot patch alignment
 - [50755](https://www.nexusmods.com/skyrimspecialedition/mods/50755) - Lightened Skyrim
@@ -507,8 +522,9 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 ## perf textures (1)
 - [21166](https://www.nexusmods.com/skyrimspecialedition/mods/21166) - UPOT; keeps also hold VRAMr - overlapping approaches
 
-## performance (1)
+## performance (2)
 - [80343](https://www.nexusmods.com/skyrimspecialedition/mods/80343) - Skyrim Upscaler DLSS/FSR2/XeSS
+- [189151](https://www.nexusmods.com/skyrimspecialedition/mods/189151) - Automatic CRDW - MO2 companion that auto-rebuilds Cached Recursive Directory Watcher cache, faster load times for big MO2 builds; updated 2026-08-23
 
 ## perks (4)
 - [1137](https://www.nexusmods.com/skyrimspecialedition/mods/1137) - Ordinator
@@ -575,6 +591,9 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [77530](https://www.nexusmods.com/skyrimspecialedition/mods/77530) - Northern Roads - alive; kept NR Tents patch attaches
 - [2640](https://www.nexusmods.com/skyrimspecialedition/mods/2640) - SkyBeRoads - pair
 
+## save management (1)
+- [170714](https://www.nexusmods.com/skyrimspecialedition/mods/170714) - Save It Name It - hotkey named saves; directly serves multi-character Proteus playthrough (per-character save names)
+
 ## seasons (4)
 - [63623](https://www.nexusmods.com/skyrimspecialedition/mods/63623) - Turn of the Seasons - content pack for Seasons of Skyrim SKSE
 - [66903](https://www.nexusmods.com/skyrimspecialedition/mods/66903) - Seasonal Landscapes - region-wide seasonal flora for Seasons of Skyrim
@@ -586,11 +605,17 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [36276](https://www.nexusmods.com/skyrimspecialedition/mods/36276) - Forceful Tongue - lightweight shout overhaul (3rd rival)
 - [41950](https://www.nexusmods.com/skyrimspecialedition/mods/41950) - Dragonborn - standalone CSF shout perk tree (4th option)
 
-## small bug fixes (4)
+## small bug fixes (10)
 - [88238](https://www.nexusmods.com/skyrimspecialedition/mods/88238) - Not Another Dragon Stalking Fix - stops endless dragon circling, complements late-game dragon plan
 - [172046](https://www.nexusmods.com/skyrimspecialedition/mods/172046) - Block Cancel Fix (2026 SKSE) - movement lock when cancelling attack with block; supports MCO/BFCO/vanilla
 - [151846](https://www.nexusmods.com/skyrimspecialedition/mods/151846) - RMB Actor Reference Fixes - XLCN assignment fixes improving SPID reliability (SPID is a pillar of the underwear build)
 - [34244](https://www.nexusmods.com/skyrimspecialedition/mods/34244) - CRITICAL SSE BUG FIX MOD (updated 2026-08-23) - claims a since-2011 engine bug fixed via SKSE; page does not name the bug in the summary, verify what it fixes before adopting
+- [95908](https://www.nexusmods.com/skyrimspecialedition/mods/95908) - Save Game Encoding - SKSE fix so special characters in save filenames do not corrupt; relevant to multi-character Proteus saves with custom names; updated 2026-08-22
+- [146226](https://www.nexusmods.com/skyrimspecialedition/mods/146226) - Cure Poison Potion Fix - vanilla bug: Cure Poison fails against some poison effects; KID+po3 Tweaks
+- [42042](https://www.nexusmods.com/skyrimspecialedition/mods/42042) - Small dragon collision fix - mesh replacer for broken SSE small-dragon collisions; dragons are late-game core
+- [186413](https://www.nexusmods.com/skyrimspecialedition/mods/186413) - Equip Camera Behavior Fixes - fixes draw/equip camera bugs while moving/sneaking; runs on Pandora (installed); 2026-07-31
+- [29495](https://www.nexusmods.com/skyrimspecialedition/mods/29495) - High Frame Rate Crafting Fix - stuck crafting-menu animations at high FPS; verify overlap with installed SSE Display Tweaks before adopting
+- [152276](https://www.nexusmods.com/skyrimspecialedition/mods/152276) - Dialogue Text Refresher - SKSE fix for dialogue lines showing stale global values
 
 ## sound (3)
 - [12466](https://www.nexusmods.com/skyrimspecialedition/mods/12466) - Audio Overhaul
@@ -601,11 +626,12 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [72653](https://www.nexusmods.com/skyrimspecialedition/mods/72653) - POISE - Stagger Overhaul SKSE, fighting-game poise system
 - [74032](https://www.nexusmods.com/skyrimspecialedition/mods/74032) - Poisebreaker - POISE addon
 
-## standing stones (4)
+## standing stones (5)
 - [33411](https://www.nexusmods.com/skyrimspecialedition/mods/33411) - Mundus - 4th rival (Simonrim)
 - [64969](https://www.nexusmods.com/skyrimspecialedition/mods/64969) - Ryns Standing Stones - visual layer, compatible with gameplay overhauls
 - [59927](https://www.nexusmods.com/skyrimspecialedition/mods/59927) - Menhir - standing stones overhaul w/ new models (the NEW-slot rival to Andromeda/Sacred Stones)
 - [4688](https://www.nexusmods.com/skyrimspecialedition/mods/4688) - SSE Standing Stones Overhaul 4688 - vanilla-faithful balance pole
+- [66235](https://www.nexusmods.com/skyrimspecialedition/mods/66235) - Old Fashioned Birthsigns - Morrowind/Oblivion-style standing stone overhaul (passives + lesser powers that scale); rival for the standing-stones slot
 
 ## stealth (3)
 - [76086](https://www.nexusmods.com/skyrimspecialedition/mods/76086) - Book of Shadows - behavior-based sneak additions
@@ -690,8 +716,10 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 - [9510](https://www.nexusmods.com/skyrimspecialedition/mods/9510) - Better Vampire NPCs - NPC-side companion
 - [41639](https://www.nexusmods.com/skyrimspecialedition/mods/41639) - Scion - 6th rival
 
-## Vicn trilogy support (1)
+## Vicn trilogy support (3)
 - [33024](https://www.nexusmods.com/skyrimspecialedition/mods/33024) - Hunters Essence SE English Translation - the English text for Vicns lesser-known Hunters Essence mod (base is Japanese)
+- [147775](https://www.nexusmods.com/skyrimspecialedition/mods/147775) - DAc0da/Vigilant/Glen-Moril/Unslaad instant-quest-start remover (Choice is Yours style) - late-game gating across all four Vicn mods
+- [100710](https://www.nexusmods.com/skyrimspecialedition/mods/100710) - VIGILANT Windhelm Dungeon Gap Fix - tiny mesh gap fix for the VIGILANT Windhelm dungeon
 
 ## vigilant attached (2)
 - [45026](https://www.nexusmods.com/skyrimspecialedition/mods/45026) - Custom Skills - VIGILANT perk tree (CSF modern, stale NSF req)
@@ -761,4 +789,3 @@ Regenerated automatically; latest harvest through batch 400 (15,680 mods read in
 
 ## worldspaces future (1)
 - [28120](https://www.nexusmods.com/skyrimspecialedition/mods/28120) - Midwood Isle - earlier flagged candidate, alive
-
