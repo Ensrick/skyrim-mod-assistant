@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "powerofthree's Papyrus Extender FOMOD Installer/Required",
+      "destination": "."
+    },
+    {
+      "source": "powerofthree's Papyrus Extender FOMOD Installer/AE/SKSE/Plugins",
+      "destination": "SKSE/Plugins"
+    }
+  ]
+}
