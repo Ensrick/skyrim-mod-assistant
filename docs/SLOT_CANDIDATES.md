@@ -1,6 +1,6 @@
 # Slot candidates - harvested during the overnight deep-read
 
-Regenerated automatically; latest harvest through batch 250 (9,681 mods read individually, endorsement-descending). These are NOT decisions - each entry is a candidate you may want when its slot comes up. **497 candidate entries across 126 slots.**
+Regenerated automatically; latest harvest through batch 350 (13,681 mods read individually, endorsement-descending). These are NOT decisions - each entry is a candidate you may want when its slot comes up. **503 candidate entries across 128 slots.**
 
 ## alchemy (2)
 - [52130](https://www.nexusmods.com/skyrimspecialedition/mods/52130) - Apothecary - direct CACO rival, sharpens the CACO seam decision
@@ -340,13 +340,15 @@ Regenerated automatically; latest harvest through batch 250 (9,681 mods read ind
 - [46217](https://www.nexusmods.com/skyrimspecialedition/mods/46217) - Tamrielic Grass - all-biome overhaul; page reqs ENB binary (complex grass) - verify CS grass-lighting path before use
 - [139896](https://www.nexusmods.com/skyrimspecialedition/mods/139896) - Wildlands Renewal - built against CS Grass Lighting; CS-native grass candidate
 
-## gray cowl support (6)
+## gray cowl support (8)
 - [19724](https://www.nexusmods.com/skyrimspecialedition/mods/19724) - Gray Cowl Addons+Patches 19724 and Alikr Flora Overhaul 10141 - support stack for the kept Gray Cowl
 - [89977](https://www.nexusmods.com/skyrimspecialedition/mods/89977) - Betalille Hammerfell Quests Bundle - 31 Alikr quests layered onto the kept Gray Cowl
 - [88683](https://www.nexusmods.com/skyrimspecialedition/mods/88683) - AI Revoice for Gray Cowl (ElevenLabs, vanilla-voice models) - pairs with the kept 10th Anniversary edition
 - [126661](https://www.nexusmods.com/skyrimspecialedition/mods/126661) - Gray Cowl addons repository (FLM-based) - collection of small integration addons
 - [54690](https://www.nexusmods.com/skyrimspecialedition/mods/54690) - Duneripper Fix - makes Gray Cowl dunerippers breathe fire as scripted
 - [96864](https://www.nexusmods.com/skyrimspecialedition/mods/96864) - Music Overhaul for the Gray Cowl desert region
+- [155390](https://www.nexusmods.com/skyrimspecialedition/mods/155390) - World Map Fix - Gray Cowl map renders correctly under Community Shaders and repairs the Engine Fixes breakage; both CS and Engine Fixes are in our base
+- [145788](https://www.nexusmods.com/skyrimspecialedition/mods/145788) - World Map Edge Fix - hides the hard map edges of the 10th Anniversary desert map; pairs with the CS map fix 155390
 
 ## guard dialogue (1)
 - [20791](https://www.nexusmods.com/skyrimspecialedition/mods/20791) - GDO Redux - NFF ships patches for it
@@ -441,6 +443,9 @@ Regenerated automatically; latest harvest through batch 250 (9,681 mods read ind
 - [172](https://www.nexusmods.com/skyrimspecialedition/mods/172) - Phenderix Magic Evolved - contested balance/quality, Proteus author
 - [6551](https://www.nexusmods.com/skyrimspecialedition/mods/6551) - Phenderix Magic World
 
+## magic overhaul (1)
+- [188102](https://www.nexusmods.com/skyrimspecialedition/mods/188102) - Simonrim SKSE Addons (2026-08-19) - collection of SKSE addons for the Simonrim suite; grab if the SimonRim line wins
+
 ## magic systems (6)
 - [20983](https://www.nexusmods.com/skyrimspecialedition/mods/20983) - Spell Research - research/discovery system over spell mods
 - [153401](https://www.nexusmods.com/skyrimspecialedition/mods/153401) - Perfectly Valid Wards - SKSE ward mechanics
@@ -449,11 +454,12 @@ Regenerated automatically; latest harvest through batch 250 (9,681 mods read ind
 - [95196](https://www.nexusmods.com/skyrimspecialedition/mods/95196) - Sorcerer - staff/scroll crafting addon for Mysticism
 - [11215](https://www.nexusmods.com/skyrimspecialedition/mods/11215) - Spectraverse - Magna-Ge questline w/ 42 destruction spells
 
-## map markers (4)
+## map markers (5)
 - [4138](https://www.nexusmods.com/skyrimspecialedition/mods/4138) - Map Markers Complete vs kept Atlas
 - [56123](https://www.nexusmods.com/skyrimspecialedition/mods/56123) - CoMAP framework
 - [29932](https://www.nexusmods.com/skyrimspecialedition/mods/29932) - Flat World Map Framework - alternative map branch vs AQWM
 - [56367](https://www.nexusmods.com/skyrimspecialedition/mods/56367) - A Clear Map of Skyrim - covers Bruma/Beyond Reach worldspaces, strong fit
+- [188483](https://www.nexusmods.com/skyrimspecialedition/mods/188483) - Map Menu Extension (2026-08) - ESO-style menu to travel between worldspaces; directly serves the Bruma/Gray Cowl/Wyrmstooth multi-worldspace build
 
 ## marriage (2)
 - [21625](https://www.nexusmods.com/skyrimspecialedition/mods/21625) - Multiple Marriages
@@ -579,10 +585,11 @@ Regenerated automatically; latest harvest through batch 250 (9,681 mods read ind
 - [36276](https://www.nexusmods.com/skyrimspecialedition/mods/36276) - Forceful Tongue - lightweight shout overhaul (3rd rival)
 - [41950](https://www.nexusmods.com/skyrimspecialedition/mods/41950) - Dragonborn - standalone CSF shout perk tree (4th option)
 
-## small bug fixes (3)
+## small bug fixes (4)
 - [88238](https://www.nexusmods.com/skyrimspecialedition/mods/88238) - Not Another Dragon Stalking Fix - stops endless dragon circling, complements late-game dragon plan
 - [172046](https://www.nexusmods.com/skyrimspecialedition/mods/172046) - Block Cancel Fix (2026 SKSE) - movement lock when cancelling attack with block; supports MCO/BFCO/vanilla
 - [151846](https://www.nexusmods.com/skyrimspecialedition/mods/151846) - RMB Actor Reference Fixes - XLCN assignment fixes improving SPID reliability (SPID is a pillar of the underwear build)
+- [34244](https://www.nexusmods.com/skyrimspecialedition/mods/34244) - CRITICAL SSE BUG FIX MOD (updated 2026-08-23) - claims a since-2011 engine bug fixed via SKSE; page does not name the bug in the summary, verify what it fixes before adopting
 
 ## sound (3)
 - [12466](https://www.nexusmods.com/skyrimspecialedition/mods/12466) - Audio Overhaul
@@ -681,6 +688,9 @@ Regenerated automatically; latest harvest through batch 250 (9,681 mods read ind
 - [1925](https://www.nexusmods.com/skyrimspecialedition/mods/1925) - Better Vampires - 5th rival
 - [9510](https://www.nexusmods.com/skyrimspecialedition/mods/9510) - Better Vampire NPCs - NPC-side companion
 - [41639](https://www.nexusmods.com/skyrimspecialedition/mods/41639) - Scion - 6th rival
+
+## Vicn trilogy support (1)
+- [33024](https://www.nexusmods.com/skyrimspecialedition/mods/33024) - Hunters Essence SE English Translation - the English text for Vicns lesser-known Hunters Essence mod (base is Japanese)
 
 ## vigilant attached (2)
 - [45026](https://www.nexusmods.com/skyrimspecialedition/mods/45026) - Custom Skills - VIGILANT perk tree (CSF modern, stale NSF req)
