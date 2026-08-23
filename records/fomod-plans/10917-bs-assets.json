@@ -1,0 +1,25 @@
+{
+ "schemaVersion": 1,
+ "mappings": [
+  {
+   "source": "interface",
+   "destination": "interface"
+  },
+  {
+   "source": "MapMarkers",
+   "destination": "MapMarkers"
+  },
+  {
+   "source": "BSAssets.esm",
+   "destination": "BSAssets.esm"
+  },
+  {
+   "source": "BSAssets.bsa",
+   "destination": "BSAssets.bsa"
+  },
+  {
+   "source": "BSAssets - Textures.bsa",
+   "destination": "BSAssets - Textures.bsa"
+  }
+ ]
+}
