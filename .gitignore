@@ -31,6 +31,7 @@
 !/records/
 !/records/restricted-mods.json
 !/records/installed-mods.json
+!/records/overnight-audit-2026-08-23.jsonl
 !/records/fomod-plans/
 !/records/fomod-plans/*.json
 

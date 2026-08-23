@@ -30,7 +30,7 @@ everything below is the evidence tables. Headlines:
 - Verified with file lists overnight: Khajiit/Argonian textures are NOT
   body-locked (CBBE variants ship); Combat Music Fix NG is standalone.
 
-## 3. Undecided sweep - IN PROGRESS
+## 3. Undecided sweep - COMPLETE
 
 Skip-only, evidence-cited, live blocklist (20,761 authors), aesthetic and
 adult categories untouched per your instruction. Every verdict appended to
@@ -41,13 +41,40 @@ false-positive classes (ReShade-presets-for-CS, and content mods with
 non-English pages); both classes were guarded in code and all nine affected
 verdicts reversed to undecided before they could apply.
 
-## 4. Numbers (updated as the night ends)
+## 4. Numbers - final
 
-- sweep: [PENDING]
-- deep-read pass: [PENDING]
+**Rule sweep: the entire catalogue, 137,746 offsets.** Untouched wholesale per
+your instruction: 93k blocked-author entries, 7.6k aesthetic-category mods,
+~950 adult-flagged. Verdicts written: **996 rule-based skips**, every one with
+evidence in `records/overnight-audit-2026-08-23.jsonl`:
+
+| rule | skips |
+|---|---|
+| translation / non-English | 486 |
+| ENB/ReShade preset (CS decided; CS-compatible presets guarded) | 198 |
+| author-declared dead/superseded | 179 |
+| Legacy of the Dragonborn exclusive | 72 |
+| requires Live Another Life (slot decided: SUR) | 45 |
+| VR-only | 29 |
+| joke/meme | 7 + 1 parody |
+
+**Deep-read pass: 500 top-endorsement survivors read individually, 15 skips**
+(each cited: TDM-conflicting movement mods, Gray Cowl 2017 vs the kept 10th
+Anniversary, Sky Sync standalone vs CS core, Trainwreck vs installed
+CrashLogger, engine-fix duplicates, Falskaar support stack, QuickLoot RE...).
+The top of the curve is clean - its real yield was **167 slot candidates
+across 66 slots** in `docs/SLOT_CANDIDATES.md`: Lux, Mysticism, NotWL,
+Folkvangr, Skyland, NORDIC UI, Valhalla, SunHelm and the perk trio were never
+purged, just undecided.
+
+**Quality control:** two spot-check rounds caught two false-positive classes
+early (ReShade-for-CS presets; content mods with non-English pages - iNeed was
+nearly lost to that one). Both were guarded in code and all 9 affected
+verdicts reversed. One lost-update race on the relay queue was detected
+(sweep vs keep-queue writers) and the five affected keeps re-queued post-sweep.
 
 ## 5. Queued for the curator (applies when Firefox is up)
 
-Keeps: Pandora, CBBE, SkySight, Crash Logger, Skill Uncapper (re-acquired
-winners). Skips: the sweep's evidence-cited verdicts. Reversals: nine
-unreviewed restores.
+1,068 total: 1,011 skips, 35 keeps (every installed mod is now curated as a
+keep, including the race-lost five), 9 unreviewed restores. Applies when
+Firefox opens.
