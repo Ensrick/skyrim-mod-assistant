@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "01 Required/Interface",
+      "destination": "Interface"
+    },
+    {
+      "source": "01 Required/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "01 Required/Readme",
+      "destination": "Readme"
+    },
+    {
+      "source": "01 Required/Scripts",
+      "destination": "Scripts"
+    },
+    {
+      "source": "01 Required/Seq",
+      "destination": "Seq"
+    },
+    {
+      "source": "01 Required/sound",
+      "destination": "sound"
+    },
+    {
+      "source": "04 SkyUILib/Interface",
+      "destination": "Interface"
+    },
+    {
+      "source": "04 SkyUILib/Scripts",
+      "destination": "Scripts"
+    },
+    {
+      "source": "00 Main SSE/nwsFollowerFramework.esp",
+      "destination": "nwsFollowerFramework.esp"
+    },
+    {
+      "source": "10 Traps/Scripts",
+      "destination": "Scripts"
+    },
+    {
+      "source": "22 BAT Leveling/nfflevel.txt",
+      "destination": "nfflevel.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffassassin.txt",
+      "destination": "nffassassin.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffbarbarian.txt",
+      "destination": "nffbarbarian.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffconjurer.txt",
+      "destination": "nffconjurer.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffdestruction.txt",
+      "destination": "nffdestruction.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffelemental.txt",
+      "destination": "nffelemental.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffmonk.txt",
+      "destination": "nffmonk.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffmystic.txt",
+      "destination": "nffmystic.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffnecromancer.txt",
+      "destination": "nffnecromancer.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffnightblade.txt",
+      "destination": "nffnightblade.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffnightingale.txt",
+      "destination": "nffnightingale.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffranger.txt",
+      "destination": "nffranger.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffrogue.txt",
+      "destination": "nffrogue.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffscout.txt",
+      "destination": "nffscout.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffsorcerer.txt",
+      "destination": "nffsorcerer.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffspellsword.txt",
+      "destination": "nffspellsword.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffthief.txt",
+      "destination": "nffthief.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffwarrior1h.txt",
+      "destination": "nffwarrior1h.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffwarrior2h.txt",
+      "destination": "nffwarrior2h.txt"
+    },
+    {
+      "source": "23 BAT Classes/nffwitchblade.txt",
+      "destination": "nffwitchblade.txt"
+    }
+  ]
+}
