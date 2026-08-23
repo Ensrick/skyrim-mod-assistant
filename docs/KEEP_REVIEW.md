@@ -1,6 +1,80 @@
 # Keep review - overlap and conflict groups
 
-Generated 2026-08-23 overnight, from 1037 keeps (installed and settled slots excluded). Nothing here is decided; each group is one decision to make, with the members as the options. Slot rivals from BASELINE.md Tier 4 are not repeated here.
+Generated overnight 2026-08-23 from 1,037 keeps (installed and settled excluded).
+Each group below is ONE decision. This summary is the read-first layer; full
+tables follow it. Nothing was decided for you.
+
+## Read this first - what actually needs your call
+
+### A. Fallout from slots you already decided (confirm and I queue the skips)
+
+| mod | id | why it lost |
+|---|---|---|
+| Amazing Follower Tweaks | 6656 | NFF is the framework (Proteus hard req) - pending since yesterday |
+| EFF - Extensible Follower Framework | 7003 | same slot, same reason |
+| HDT-SMP (original 2020 build) | 30872 | FSMP - Faster HDT-SMP is its successor and is the decided physics engine |
+| Unofficial Skyrim SE Downgrade Patcher | 57618 | policy is latest runtime + address-independent DLLs; downgrading is the opposite strategy |
+| BnP - Female Skin | 65274 | female skin decided: Reverie. Also requires 3BA (body decided CBBE) |
+| Tempered Skins for Females | 8505 | same slot as Reverie |
+
+### B. Verify-before-judging (the Water-for-ENB class - do NOT bulk-skip)
+
+- **Feminine/Masculine Khajiit + Argonian textures (183/186/184)** are listed as
+  "requires BHUNP", but for texture packs that is usually the optional-variant
+  file, not the base. Verify the file list before treating as body-locked.
+- **ENB-named keeps** (Word Wall Transparency 41463, Sky Reflection Fix 110604,
+  Rudy More Lights 22819, ENB Lights For Effect Shaders 56362, ENB Light
+  Detection Fix 107693): several are known to work with or have CS analogues.
+  Each needs its page read, not a rule.
+- **DAR-requiring keeps** (Elden Counter 65579, Stances 1st-person 65309,
+  Automatic Animations 59484): DAR is skipped, but installed OAR *emulates DAR*
+  - these are satisfied, not orphaned.
+- **Adaptive Leveling (17560)** points at the OLD Skill Uncapper id; the
+  successor (82558) is installed - satisfied.
+
+### C. Genuinely broken pairs found (small, fix now)
+
+- **The Night Mother Revoiced (92873)** requires "New Night Mother" - skipped.
+  Keep both or neither.
+- **Combat Music Fix NG Updated (110459)** lists the original Combat Music Fix
+  (skipped) as requirement - check whether NG-Updated is standalone.
+- **FISSES AE patch (107513)** without FISSES itself - patch to nothing.
+- **LOD Grass ini files (143386)** requires a specific DrJacopo grass not kept.
+- **Vivid Landscapes CPO Tundra (81816)** requires the old Parallax Occlusion
+  Mapping mod; under Community Shaders that role moved into CS features -
+  verify before keeping.
+
+### D. Succession pairs - keep the successor, drop the original (confirm)
+
+- NIF Preview 69813 -> **NIF Preview Updated 137741**
+- Player Rotation in ShowRaceMenu 36095 -> **ShowRaceMenu NG 173086**
+- Horse Save Load Fix 132110 -> **Saving on Steed SKSE 173629** (same author
+  lineage, SKSE-native, updated today) - verify page confirms supersession
+- ElDruin 18372 vs Dawnbreaker Reborn 44787 - aesthetic pick, yours
+
+### E. NEW slots discovered in the keeps that BASELINE Tier 4 did not list
+
+These are real either-or decisions the slot table missed:
+
+| new slot | rivals in keeps |
+|---|---|
+| Standing stones | Andromeda 14910, Evenstar 41256, Freyr 88043 (+ Disparity 110789 overlaps) |
+| Religion | Wintersun 22506 vs Trua 32549 |
+| Vampire overhaul | Sacrosanct 3928, Sacrilege 42408, Sanguinair 11259, Bloodlines 42938 (4-way; also gates Proteus vampire patches) |
+| Children | TK Children 5916 (visual) + Killable 1108 / Slayable 46826 / Savage 49377 (policy - pick one lethality approach) |
+| Dragon package | Diverse Dragons 695 + Splendor 9670 + Ultimate Dragons 26374 + Simply Stronger 9917 - layerable but Ultimate vs Simply-Stronger overlap; and Ultimate Combat/Dragons NG DLL 163377 exists precisely to modernize 26374 |
+| Stagger | POISE NG 72692 vs Wildcat's built-in stagger (combat-feel dependency) |
+| Alchemy/needs seam | CACO 19924 overlaps iNeed food module and CCOR crafting - decide CACO first, it forces the others |
+
+### F. Coherent families (no internal conflict, listed so you see the spend)
+
+JK interiors/temples (large family, all compatible), Security Overhaul SKSE
+family (4), Majestic Mountains family (5 incl. Complex Material for CS),
+Bloodmoon Creature Restoration set (5), DrJacopo 3D flora set, DDV/Vergi set
+(but 4 of them are 3BA-fitted - see body note), Obsidian weather family
+(pending weather slot), Dynamic Cubemaps family.
+
+---
 
 ## 1. Mods whose own pages declare a conflict with another keep
 
@@ -676,92 +750,42 @@ Aesthetic clusters are listed for identification only - the look is your call.
 
 ## 3. Functional overlaps (systems that may fight or double up)
 
-### map / world map  (10)
+### map / world map  (4)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [A Quality World Map](https://www.nexusmods.com/skyrimspecialedition/mods/5804) | 5804 | User Interface | 251,154 | 2016-12-11 |
-| [Point The Way](https://www.nexusmods.com/skyrimspecialedition/mods/352) | 352 | Immersion | 42,833 | 2024-07-26 |
-| [Screen Space Shadows - Community Shaders](https://www.nexusmods.com/skyrimspecialedition/mods/93209) | 93209 | Visuals and Graphics | 9,386 | 2025-09-25 |
 | [HD Local Map](https://www.nexusmods.com/skyrimspecialedition/mods/74722) | 74722 | Visuals and Graphics | 7,629 | 2026-08-22 |
 | [Unique Map Weather](https://www.nexusmods.com/skyrimspecialedition/mods/59919) | 59919 | User Interface | 5,530 | 2026-08-22 |
-| [Cathedral Snow (SSE or VR)](https://www.nexusmods.com/skyrimspecialedition/mods/18033) | 18033 | Visuals and Graphics | 4,707 | 2021-03-14 |
-| [Weather of World](https://www.nexusmods.com/skyrimspecialedition/mods/58782) | 58782 | Environmental | 2,553 | 2021-11-20 |
-| [ACMOS Road Generator](https://www.nexusmods.com/skyrimspecialedition/mods/79205) | 79205 | Utilities | 2,436 | 2026-01-31 |
 | [Map Menu Clouds Fix](https://www.nexusmods.com/skyrimspecialedition/mods/187452) | 187452 | Bug Fixes | 103 | 2026-08-11 |
-| [Controlmap.txt Fixed and Cleaned - Updated](https://www.nexusmods.com/skyrimspecialedition/mods/175609) | 175609 | Bug Fixes | 46 | 2026-03-30 |
 
-### map markers  (3)
+### map markers  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Stones of Barenziah Quest Markers](https://www.nexusmods.com/skyrimspecialedition/mods/684) | 684 | Gameplay | 81,904 | 2016-11-21 |
-| [SkyHUD](https://www.nexusmods.com/skyrimspecialedition/mods/463) | 463 | User Interface | 67,220 | 2018-09-08 |
 | [Atlas Map Markers SE - Updated with MCM](https://www.nexusmods.com/skyrimspecialedition/mods/24104) | 24104 | User Interface | 20,621 | 2025-03-24 |
 
-### lockpicking  (5)
+### lockpicking  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Destructible Display Cases](https://www.nexusmods.com/skyrimspecialedition/mods/13625) | 13625 | Immersion | 4,878 | 2018-06-22 |
-| [Stealth Skills Rebalanced SE](https://www.nexusmods.com/skyrimspecialedition/mods/52768) | 52768 | Stealth | 511 | 2026-05-01 |
 | [LockpickMenu Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/176903) | 176903 | Bug Fixes | 51 | 2026-04-09 |
 | [Requiem - Lockpicking SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/172898) | 172898 | Bug Fixes | 44 | 2026-02-21 |
-| [Requiem - Locking Script Optimization](https://www.nexusmods.com/skyrimspecialedition/mods/170893) | 170893 | Bug Fixes | 41 | 2026-01-29 |
 
-### message/notification UI  (2)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Better MessageBox Controls](https://www.nexusmods.com/skyrimspecialedition/mods/1428) | 1428 | User Interface | 65,990 | 2016-11-26 |
-| [Elephant's Script Latency Tester](https://www.nexusmods.com/skyrimspecialedition/mods/24124) | 24124 | Utilities | 3,749 | 2019-03-12 |
-
-### inventory/item UI  (2)
+### crosshair / sneak eye  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Inventory Interface Information Injector](https://www.nexusmods.com/skyrimspecialedition/mods/85702) | 85702 | User Interface | 22,725 | 2024-04-24 |
-| [I4 - SkyUI Weapons Pack](https://www.nexusmods.com/skyrimspecialedition/mods/85703) | 85703 | User Interface | 1,809 | 2023-02-25 |
-
-### loading screens  (2)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Lore-Based Loading Screens](https://www.nexusmods.com/skyrimspecialedition/mods/1185) | 1185 | User Interface | 19,887 | 2018-10-11 |
-| [Pause After Load Unscripted NG](https://www.nexusmods.com/skyrimspecialedition/mods/60958) | 60958 | Utilities | 1,586 | 2026-01-22 |
-
-### main menu  (2)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Remove Bethesda Logo Among Other Things](https://www.nexusmods.com/skyrimspecialedition/mods/2340) | 2340 | User Interface | 309 | 2016-11-07 |
-| [Start Game Settings](https://www.nexusmods.com/skyrimspecialedition/mods/180690) | 180690 | User Interface | 184 | 2026-06-12 |
-
-### hotkeys / equipment sets  (2)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Simplest Horses (and other mounts)](https://www.nexusmods.com/skyrimspecialedition/mods/54225) | 54225 | Creatures and Mounts | 8,988 | 2022-12-14 |
-| [Smart Optimal Salves - Optimal Potion Hotkey MCM](https://www.nexusmods.com/skyrimspecialedition/mods/42402) | 42402 | Utilities | 2,081 | 2025-09-28 |
-
-### crosshair / sneak eye  (4)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [SkyHUD](https://www.nexusmods.com/skyrimspecialedition/mods/463) | 463 | User Interface | 67,220 | 2018-09-08 |
-| [Better Third Person Selection - BTPS](https://www.nexusmods.com/skyrimspecialedition/mods/64339) | 64339 | Gameplay | 27,334 | 2025-06-07 |
 | [Contextual Crosshair](https://www.nexusmods.com/skyrimspecialedition/mods/63980) | 63980 | User Interface | 7,611 | 2026-08-22 |
 | [Small HUD ft Dot Crosshair and Stealth Remetered](https://www.nexusmods.com/skyrimspecialedition/mods/1548) | 1548 | User Interface | 2,387 | 2016-12-01 |
 
-### stagger  (6)
+### stagger  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Wildcat - Combat of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/1368) | 1368 | Combat | 51,427 | 2024-01-13 |
 | [Stagger Effect Fix](https://www.nexusmods.com/skyrimspecialedition/mods/110508) | 110508 | Bug Fixes | 4,540 | 2026-01-09 |
-| [Locational Damage(SKSE Plugin)](https://www.nexusmods.com/skyrimspecialedition/mods/46932) | 46932 | Combat | 4,023 | 2021-03-13 |
 | [POISE - Stagger Overhaul - NG](https://www.nexusmods.com/skyrimspecialedition/mods/72692) | 72692 | Combat | 2,117 | 2026-08-22 |
-| [Bow Bash and Archery Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/173614) | 173614 | Bug Fixes | 62 | 2026-06-07 |
 | [For Honor Parry Stagger Fix](https://www.nexusmods.com/skyrimspecialedition/mods/182355) | 182355 | Bug Fixes | 16 | 2026-06-12 |
 
 ### jump behavior  (2)
@@ -771,250 +795,169 @@ Aesthetic clusters are listed for identification only - the look is your call.
 | [Better Jumping SE](https://www.nexusmods.com/skyrimspecialedition/mods/18967) | 18967 | Miscellaneous | 69,546 | 2026-08-22 |
 | [Horse Jump Fix](https://www.nexusmods.com/skyrimspecialedition/mods/165468) | 165468 | Bug Fixes | 1,112 | 2025-11-25 |
 
-### sprint behavior  (4)
+### horse riding  (10)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Better Jumping SE](https://www.nexusmods.com/skyrimspecialedition/mods/18967) | 18967 | Miscellaneous | 69,546 | 2026-08-22 |
-| [Classic Sprinting Redone (SKSE64)](https://www.nexusmods.com/skyrimspecialedition/mods/20166) | 20166 | Miscellaneous | 12,998 | 2024-02-25 |
-| [Stamina of Steeds](https://www.nexusmods.com/skyrimspecialedition/mods/58742) | 58742 | Bug Fixes | 3,151 | 2021-11-20 |
-| [Combat Collision Dialogue Fix](https://www.nexusmods.com/skyrimspecialedition/mods/53658) | 53658 | Bug Fixes | 533 | 2021-08-11 |
-
-### horse riding  (14)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Amazing Follower Tweaks SE](https://www.nexusmods.com/skyrimspecialedition/mods/6656) | 6656 | Followers & Companio | 76,465 | 2017-03-03 |
 | [Convenient Horses](https://www.nexusmods.com/skyrimspecialedition/mods/9519) | 9519 | Creatures and Mounts | 60,839 | 2022-01-07 |
-| [Immersive First Person View](https://www.nexusmods.com/skyrimspecialedition/mods/22306) | 22306 | User Interface | 15,280 | 2021-08-10 |
 | [Horses Simply Turn Better](https://www.nexusmods.com/skyrimspecialedition/mods/57790) | 57790 | Gameplay | 11,279 | 2021-11-01 |
 | [Simplest Horses (and other mounts)](https://www.nexusmods.com/skyrimspecialedition/mods/54225) | 54225 | Creatures and Mounts | 8,988 | 2022-12-14 |
 | [Horse Stamina HUD - Script-Free](https://www.nexusmods.com/skyrimspecialedition/mods/47076) | 47076 | User Interface | 5,929 | 2022-10-08 |
 | [Raven Rock - Fix Exit on Horseback](https://www.nexusmods.com/skyrimspecialedition/mods/14075) | 14075 | Bug Fixes | 5,089 | 2022-08-14 |
 | [Simple Horse SE](https://www.nexusmods.com/skyrimspecialedition/mods/12650) | 12650 | Creatures and Mounts | 5,053 | 2020-07-24 |
 | [Horse Save Load Fix](https://www.nexusmods.com/skyrimspecialedition/mods/132110) | 132110 | Bug Fixes | 3,395 | 2024-10-25 |
-| [Stamina of Steeds](https://www.nexusmods.com/skyrimspecialedition/mods/58742) | 58742 | Bug Fixes | 3,151 | 2021-11-20 |
-*...and 4 more*
+| [Saving on Steed - Horse Save Load Fix SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/173629) | 173629 | Bug Fixes | 1,114 | 2026-08-23 |
+| [Horse Jump Fix](https://www.nexusmods.com/skyrimspecialedition/mods/165468) | 165468 | Bug Fixes | 1,112 | 2025-11-25 |
+| [USSEP Arvak and Dwarven Horse Idle Sounds Fix](https://www.nexusmods.com/skyrimspecialedition/mods/175143) | 175143 | Bug Fixes | 388 | 2026-03-20 |
 
-### fast travel  (3)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [LOD Unloading Bug Fix](https://www.nexusmods.com/skyrimspecialedition/mods/61251) | 61251 | Bug Fixes | 8,247 | 2024-10-12 |
-| [Guard Distributor](https://www.nexusmods.com/skyrimspecialedition/mods/188161) | 188161 | Immersion | 37 | 2026-08-21 |
-| [VR Travel Rations - Immersive Fast Travel](https://www.nexusmods.com/skyrimspecialedition/mods/66400) | 66400 | VR | 19 | 2022-04-12 |
-
-### torch / light source  (4)
+### torch / light source  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Wearable Lanterns](https://www.nexusmods.com/skyrimspecialedition/mods/7560) | 7560 | Items and Objects -  | 41,946 | 2017-01-17 |
 | [Rudy HQ - More Lights for ENB SE - Torchbugs and Mot](https://www.nexusmods.com/skyrimspecialedition/mods/22819) | 22819 | Items and Objects -  | 10,007 | 2020-09-30 |
-| [Better Stealth AI for Followers](https://www.nexusmods.com/skyrimspecialedition/mods/17600) | 17600 | Stealth | 7,420 | 2024-08-28 |
 | [Torch Mechanics Fixed](https://www.nexusmods.com/skyrimspecialedition/mods/108299) | 108299 | Bug Fixes | 203 | 2026-07-19 |
 
-### leveled lists / loot  (3)
+### leveled lists / loot  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [LeveledList Crash Fix](https://www.nexusmods.com/skyrimspecialedition/mods/129136) | 129136 | Bug Fixes | 4,792 | 2026-06-08 |
 | [Automated Leveled List Addition](https://www.nexusmods.com/skyrimspecialedition/mods/25395) | 25395 | Utilities | 1,369 | 2021-01-03 |
 | [Dynamic Leveled Lists (SKSE)](https://www.nexusmods.com/skyrimspecialedition/mods/172083) | 172083 | Utilities | 1,156 | 2026-02-22 |
 
-### economy / trade  (5)
+### economy / trade  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Trade and Barter](https://www.nexusmods.com/skyrimspecialedition/mods/23081) | 23081 | Gameplay | 17,707 | 2025-01-24 |
 | [JK's Riverwood Trader](https://www.nexusmods.com/skyrimspecialedition/mods/55959) | 55959 | Buildings | 16,366 | 2022-05-25 |
 | [Barter Limit Fix](https://www.nexusmods.com/skyrimspecialedition/mods/77173) | 77173 | Bug Fixes | 12,735 | 2022-10-20 |
-| [Traveling Merchant Caravans SE AE](https://www.nexusmods.com/skyrimspecialedition/mods/66869) | 66869 | NPC | 728 | 2024-07-10 |
-| [Pirates of The North SSE](https://www.nexusmods.com/skyrimspecialedition/mods/28985) | 28985 | Cities, Towns, Villa | 726 | 2025-08-14 |
 
-### stealth AI  (6)
+### stealth AI  (5)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [No BS AI Projectile Dodge (Magic and Arrows) - Immer](https://www.nexusmods.com/skyrimspecialedition/mods/1763) | 1763 | Gameplay | 22,935 | 2018-09-18 |
-| [Improved Traps](https://www.nexusmods.com/skyrimspecialedition/mods/17592) | 17592 | Gameplay | 7,663 | 2024-12-04 |
 | [Better Stealth AI for Followers](https://www.nexusmods.com/skyrimspecialedition/mods/17600) | 17600 | Stealth | 7,420 | 2024-08-28 |
 | [Small HUD ft Dot Crosshair and Stealth Remetered](https://www.nexusmods.com/skyrimspecialedition/mods/1548) | 1548 | User Interface | 2,387 | 2016-12-01 |
 | [ENB Light Detection Fix](https://www.nexusmods.com/skyrimspecialedition/mods/107693) | 107693 | Bug Fixes | 2,164 | 2026-08-22 |
 | [Stealth Skills Rebalanced SE](https://www.nexusmods.com/skyrimspecialedition/mods/52768) | 52768 | Stealth | 511 | 2026-05-01 |
 
-### crime / bounty  (4)
+### werewolf  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Hoth](https://www.nexusmods.com/skyrimspecialedition/mods/16137) | 16137 | Followers & Companio | 10,280 | 2019-06-20 |
-| [dTry Plugin Updates](https://www.nexusmods.com/skyrimspecialedition/mods/85740) | 85740 | Utilities | 7,094 | 2026-08-22 |
-| [Bounty Preview](https://www.nexusmods.com/skyrimspecialedition/mods/33877) | 33877 | Miscellaneous | 3,600 | 2020-03-28 |
-| [Alik'r Warriors Aren't Welcome](https://www.nexusmods.com/skyrimspecialedition/mods/25384) | 25384 | Guilds/Factions | 1,226 | 2020-04-30 |
-
-### werewolf  (8)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Growl - Werebeasts of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/31245) | 31245 | Gameplay | 22,163 | 2026-06-08 |
-| [Immersive First Person View](https://www.nexusmods.com/skyrimspecialedition/mods/22306) | 22306 | User Interface | 15,280 | 2021-08-10 |
-| [Diverse Werewolves Collection SE](https://www.nexusmods.com/skyrimspecialedition/mods/7009) | 7009 | Creatures and Mounts | 10,867 | 2020-07-30 |
-| [Improved Companions - Questline Tweaks](https://www.nexusmods.com/skyrimspecialedition/mods/22300) | 22300 | Guilds/Factions | 8,693 | 2019-01-02 |
-| [More Werewolves SE](https://www.nexusmods.com/skyrimspecialedition/mods/7259) | 7259 | Creatures and Mounts | 6,358 | 2018-08-03 |
 | [Werewolf Perks Expanded](https://www.nexusmods.com/skyrimspecialedition/mods/1285) | 1285 | Gameplay | 3,734 | 2020-04-12 |
 | [Faster Transform - To Werewolf and VampireLord](https://www.nexusmods.com/skyrimspecialedition/mods/15254) | 15254 | Animation | 3,691 | 2018-02-12 |
 | [Skinned werewolf fix for various hunting mods](https://www.nexusmods.com/skyrimspecialedition/mods/156878) | 156878 | Bug Fixes | 23 | 2026-04-28 |
 
-### vampire  (11)
+### vampire  (7)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Amazing Follower Tweaks SE](https://www.nexusmods.com/skyrimspecialedition/mods/6656) | 6656 | Followers & Companio | 76,465 | 2017-03-03 |
 | [Sacrosanct - Vampires of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/3928) | 3928 | Overhauls | 44,397 | 2024-10-12 |
-| [Immersive First Person View](https://www.nexusmods.com/skyrimspecialedition/mods/22306) | 22306 | User Interface | 15,280 | 2021-08-10 |
-| [Stendarr Rising - The Hall of the Vigilant Rebuild](https://www.nexusmods.com/skyrimspecialedition/mods/49346) | 49346 | Buildings | 9,605 | 2023-06-16 |
 | [Sacrilege - Minimalistic Vampires of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/42408) | 42408 | Gameplay | 5,783 | 2026-06-23 |
 | [Faster Transform - To Werewolf and VampireLord](https://www.nexusmods.com/skyrimspecialedition/mods/15254) | 15254 | Animation | 3,691 | 2018-02-12 |
 | [Vampire Lord Perks Expanded](https://www.nexusmods.com/skyrimspecialedition/mods/2630) | 2630 | Skills and Leveling | 1,972 | 2016-11-27 |
-| [Gargoyle Overhaul- Mihail Monsters and Animals (SE-A](https://www.nexusmods.com/skyrimspecialedition/mods/55620) | 55620 | Creatures and Mounts | 729 | 2025-04-14 |
 | [Sanguinair Vampirism](https://www.nexusmods.com/skyrimspecialedition/mods/11259) | 11259 | Overhauls | 291 | 2020-04-14 |
 | [Bloodlines of Tamriel - A Vampire Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/42938) | 42938 | Overhauls | 273 | 2020-12-14 |
-*...and 1 more*
+| [Khajiit Overhaul Vampire Fix and Race Patches](https://www.nexusmods.com/skyrimspecialedition/mods/162051) | 162051 | Bug Fixes | 39 | 2025-10-19 |
 
-### shouts  (8)
+### shouts  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Thunderchild - Epic Shouts and Immersion](https://www.nexusmods.com/skyrimspecialedition/mods/1460) | 1460 | Shouts | 29,269 | 2017-12-03 |
-| [Word Wall Transparency Fix for ENB](https://www.nexusmods.com/skyrimspecialedition/mods/41463) | 41463 | Visuals and Graphics | 10,718 | 2023-08-16 |
-| [Ultimate Dragons SE](https://www.nexusmods.com/skyrimspecialedition/mods/26374) | 26374 | Overhauls | 8,737 | 2020-07-23 |
-| [KS Dragonrend Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/24180) | 24180 | Overhauls | 717 | 2025-05-11 |
-| [Storm(AOE) Spell Targetting Fix - Block Friendly Fir](https://www.nexusmods.com/skyrimspecialedition/mods/156153) | 156153 | Bug Fixes | 46 | 2025-08-07 |
-| [Marked for Death - Voice acting fix](https://www.nexusmods.com/skyrimspecialedition/mods/156919) | 156919 | Bug Fixes | 24 | 2025-08-15 |
 | [Throw Voice Shout - Audio Fix](https://www.nexusmods.com/skyrimspecialedition/mods/175466) | 175466 | Bug Fixes | 16 | 2026-06-22 |
 | [Infinite Loop Script Fix for Dragonborn - Shouts Per](https://www.nexusmods.com/skyrimspecialedition/mods/184688) | 184688 | Bug Fixes | 10 | 2026-07-07 |
 
-### standing stones  (6)
+### standing stones  (4)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Andromeda - Unique Standing Stones of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/14910) | 14910 | Gameplay | 41,048 | 2020-02-23 |
 | [Evenstar - Minimalistic Standing Stones of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/41256) | 41256 | Gameplay | 3,928 | 2020-10-11 |
 | [Freyr - Integrated Standing Stones of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/88043) | 88043 | Magic - Gameplay | 2,155 | 2023-07-09 |
-| [Disparity SE - Character Classes - Greater Racial Di](https://www.nexusmods.com/skyrimspecialedition/mods/110789) | 110789 | Races, Classes, and  | 729 | 2026-05-29 |
-| [Choose Your Sign](https://www.nexusmods.com/skyrimspecialedition/mods/23673) | 23673 | Cheats and God items | 549 | 2020-03-17 |
 | [Simple and Dynamic Skills - Improved Standing Stones](https://www.nexusmods.com/skyrimspecialedition/mods/25567) | 25567 | Skills and Leveling | 55 | 2020-06-29 |
 
-### religion / shrines  (5)
+### religion / shrines  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Wintersun - Faiths of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/22506) | 22506 | Immersion | 38,221 | 2021-06-17 |
 | [Daedric Shrines - All in One](https://www.nexusmods.com/skyrimspecialedition/mods/78772) | 78772 | Environmental | 12,504 | 2024-08-28 |
-| [Trua - Minimalistic Faiths of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/32549) | 32549 | Immersion | 2,585 | 2020-09-13 |
-| [Disparity SE - Character Classes - Greater Racial Di](https://www.nexusmods.com/skyrimspecialedition/mods/110789) | 110789 | Races, Classes, and  | 729 | 2026-05-29 |
 | [Pray With Amulets](https://www.nexusmods.com/skyrimspecialedition/mods/35248) | 35248 | Immersion | 267 | 2023-02-05 |
 
-### marriage  (2)
-
-| mod | id | category | endorse | updated |
-|---|---|---|---|---|
-| [Relationship Dialogue Overhaul - RDO SE](https://www.nexusmods.com/skyrimspecialedition/mods/1187) | 1187 | Immersion | 139,161 | 2018-01-20 |
-| [Romance of NPCs for Flower Girls](https://www.nexusmods.com/skyrimspecialedition/mods/22992) | 22992 | Immersion | 9,670 | 2023-07-01 |
-
-### children  (5)
+### children  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Killable Children SSE](https://www.nexusmods.com/skyrimspecialedition/mods/1108) | 1108 | NPC | 12,097 | 2020-03-30 |
 | [TK Children SE](https://www.nexusmods.com/skyrimspecialedition/mods/5916) | 5916 | NPC | 8,393 | 2020-09-13 |
 | [Khajiit Child Maisha SE](https://www.nexusmods.com/skyrimspecialedition/mods/8649) | 8649 | NPC | 5,599 | 2019-02-17 |
-| [Slayable Offspring SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/46826) | 46826 | Immersion | 3,871 | 2022-10-12 |
-| [Savage Offspring SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/49377) | 49377 | Immersion | 1,973 | 2022-10-12 |
 
-### fishing  (3)
+### fishing  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [EMPEROR - Giant Crab Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/58612) | 58612 | Creatures and Mounts | 2,681 | 2021-11-23 |
 | [Solstheim - Skaal Fishing Camp](https://www.nexusmods.com/skyrimspecialedition/mods/14450) | 14450 | Locations -  New | 2,406 | 2026-02-12 |
 | [Streamlined Fishing](https://www.nexusmods.com/skyrimspecialedition/mods/80683) | 80683 | Gameplay | 1,638 | 2022-12-15 |
 
-### hunting  (5)
+### hunting  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Hoth](https://www.nexusmods.com/skyrimspecialedition/mods/16137) | 16137 | Followers & Companio | 10,280 | 2019-06-20 |
 | [Simple Hunting Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/95943) | 95943 | Gameplay | 5,555 | 2025-12-18 |
-| [Unicorn - The Steed of Hircine SE](https://www.nexusmods.com/skyrimspecialedition/mods/14966) | 14966 | Creatures and Mounts | 705 | 2018-01-30 |
 | [Simple Food Hunting and Cooking Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/26083) | 26083 | Gameplay | 227 | 2019-07-11 |
 | [Skinned werewolf fix for various hunting mods](https://www.nexusmods.com/skyrimspecialedition/mods/156878) | 156878 | Bug Fixes | 23 | 2026-04-28 |
 
-### cooking / food  (13)
+### cooking / food  (8)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [iNeed - Food Water and Sleep](https://www.nexusmods.com/skyrimspecialedition/mods/645) | 645 | Immersion | 36,065 | 2017-10-14 |
 | [Complete Alchemy and Cooking Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/19924) | 19924 | Alchemy | 29,915 | 2026-07-18 |
-| [Complete Crafting Overhaul Remastered](https://www.nexusmods.com/skyrimspecialedition/mods/28608) | 28608 | Crafting | 22,936 | 2026-06-24 |
-| [Solstheim - Skaal Fishing Camp](https://www.nexusmods.com/skyrimspecialedition/mods/14450) | 14450 | Locations -  New | 2,406 | 2026-02-12 |
-| [Automated Leveled List Addition](https://www.nexusmods.com/skyrimspecialedition/mods/25395) | 25395 | Utilities | 1,369 | 2021-01-03 |
 | [New Tasty Food](https://www.nexusmods.com/skyrimspecialedition/mods/67367) | 67367 | Items and Objects -  | 1,138 | 2022-05-05 |
-| [Fury - Animal Taming of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/108212) | 108212 | Immersion | 850 | 2024-01-14 |
 | [Cooking Pots in Inns](https://www.nexusmods.com/skyrimspecialedition/mods/24507) | 24507 | Cities, Towns, Villa | 721 | 2019-03-28 |
 | [Give Beggars Food SE](https://www.nexusmods.com/skyrimspecialedition/mods/66838) | 66838 | Gameplay | 697 | 2022-04-20 |
 | [Simple Food Hunting and Cooking Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/26083) | 26083 | Gameplay | 227 | 2019-07-11 |
-*...and 3 more*
+| [Smart HUD for Vinis Legit Food and Rest](https://www.nexusmods.com/skyrimspecialedition/mods/19554) | 19554 | Patches | 38 | 2018-08-26 |
+| [Vinis Legit Food and Rest Add-ons](https://www.nexusmods.com/skyrimspecialedition/mods/19553) | 19553 | Patches | 35 | 2018-08-26 |
 
-### alchemy  (10)
+### alchemy  (7)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Complete Alchemy and Cooking Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/19924) | 19924 | Alchemy | 29,915 | 2026-07-18 |
-| [JK's Skyhaven forge](https://www.nexusmods.com/skyrimspecialedition/mods/8706) | 8706 | Locations - Vanilla | 7,473 | 2017-03-05 |
 | [Alchemy XP Fix](https://www.nexusmods.com/skyrimspecialedition/mods/117389) | 117389 | Bug Fixes | 3,910 | 2024-04-22 |
 | [Alchemy Plus](https://www.nexusmods.com/skyrimspecialedition/mods/80882) | 80882 | Alchemy | 2,404 | 2023-12-17 |
 | [Smart Optimal Salves - Optimal Potion Hotkey MCM](https://www.nexusmods.com/skyrimspecialedition/mods/42402) | 42402 | Utilities | 2,081 | 2025-09-28 |
-| [Item Property Manipulator - IPM](https://www.nexusmods.com/skyrimspecialedition/mods/95795) | 95795 | Utilities | 914 | 2025-02-24 |
 | [Seasonal Alchemy Add-on - Critters and Fungi and Far](https://www.nexusmods.com/skyrimspecialedition/mods/83636) | 83636 | Alchemy | 745 | 2026-05-20 |
 | [Tonics Heal Over Time (Restoration Potion Duration)](https://www.nexusmods.com/skyrimspecialedition/mods/28416) | 28416 | Alchemy | 380 | 2019-08-20 |
 | [Alchemy Effect Randomizer SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/107301) | 107301 | Alchemy | 213 | 2023-12-21 |
-| [Fortify Attribute Refill Fix](https://www.nexusmods.com/skyrimspecialedition/mods/171105) | 171105 | Bug Fixes | 157 | 2026-01-29 |
 
-### enchanting  (10)
+### enchanting  (5)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Summermyst - Enchantments of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/6285) | 6285 | Magic - Spells & Enc | 52,522 | 2026-07-04 |
-| [Essential Favorites](https://www.nexusmods.com/skyrimspecialedition/mods/42997) | 42997 | Gameplay | 9,726 | 2026-07-12 |
-| [JK's Skyhaven forge](https://www.nexusmods.com/skyrimspecialedition/mods/8706) | 8706 | Locations - Vanilla | 7,473 | 2017-03-05 |
 | [Enchantable Special Item Fix](https://www.nexusmods.com/skyrimspecialedition/mods/65154) | 65154 | Crafting | 1,622 | 2022-09-30 |
-| [Automated Leveled List Addition](https://www.nexusmods.com/skyrimspecialedition/mods/25395) | 25395 | Utilities | 1,369 | 2021-01-03 |
 | [More Craftable Equipment - Unenchanted Clothing and ](https://www.nexusmods.com/skyrimspecialedition/mods/44666) | 44666 | Crafting | 1,364 | 2023-02-26 |
 | [Zim's Fortify Enchantments](https://www.nexusmods.com/skyrimspecialedition/mods/12129) | 12129 | Magic - Spells & Enc | 723 | 2022-05-14 |
 | [Passive Enchantment Recharging](https://www.nexusmods.com/skyrimspecialedition/mods/32304) | 32304 | Magic - Gameplay | 353 | 2020-02-17 |
-| [Fortify Attribute Refill Fix](https://www.nexusmods.com/skyrimspecialedition/mods/171105) | 171105 | Bug Fixes | 157 | 2026-01-29 |
-| [Chaos Damage Perk Fix](https://www.nexusmods.com/skyrimspecialedition/mods/23691) | 23691 | Skills and Leveling | 61 | 2019-02-24 |
 
-### smithing  (5)
+### smithing  (2)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
 | [Ars Metallica - Smithing Enhancement](https://www.nexusmods.com/skyrimspecialedition/mods/321) | 321 | Crafting | 66,377 | 2024-07-22 |
-| [Complete Crafting Overhaul Remastered](https://www.nexusmods.com/skyrimspecialedition/mods/28608) | 28608 | Crafting | 22,936 | 2026-06-24 |
 | [Smithing Perks Overhaul SE](https://www.nexusmods.com/skyrimspecialedition/mods/19246) | 19246 | Crafting | 4,335 | 2025-05-13 |
-| [Equipment Durability System](https://www.nexusmods.com/skyrimspecialedition/mods/19023) | 19023 | Gameplay | 2,135 | 2019-11-23 |
-| [Automated Leveled List Addition](https://www.nexusmods.com/skyrimspecialedition/mods/25395) | 25395 | Utilities | 1,369 | 2021-01-03 |
 
-### archery  (7)
+### archery  (3)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Ars Metallica - Smithing Enhancement](https://www.nexusmods.com/skyrimspecialedition/mods/321) | 321 | Crafting | 66,377 | 2024-07-22 |
 | [No BS AI Projectile Dodge (Magic and Arrows) - Immer](https://www.nexusmods.com/skyrimspecialedition/mods/1763) | 1763 | Gameplay | 22,935 | 2018-09-18 |
-| [Angi's Camp Tweaks](https://www.nexusmods.com/skyrimspecialedition/mods/44914) | 44914 | Quests and Adventure | 1,462 | 2021-01-28 |
 | [Smooth Arrow Trails and Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/176275) | 176275 | Bug Fixes | 1,023 | 2026-08-01 |
-| [Spooky Philter of the Phantom](https://www.nexusmods.com/skyrimspecialedition/mods/32256) | 32256 | Quests and Adventure | 513 | 2020-02-02 |
-| [Combat Kinetics](https://www.nexusmods.com/skyrimspecialedition/mods/26086) | 26086 | Gameplay | 89 | 2019-11-23 |
 | [Bow Bash and Archery Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/173614) | 173614 | Bug Fixes | 62 | 2026-06-07 |
 
 ### frost/cold survival  (3)
@@ -1025,37 +968,34 @@ Aesthetic clusters are listed for identification only - the look is your call.
 | [Frostfall - Hypothermia Camping Survival](https://www.nexusmods.com/skyrimspecialedition/mods/671) | 671 | NPC | 44,979 | 2016-12-22 |
 | [Daughter Of Coldharbour SSE](https://www.nexusmods.com/skyrimspecialedition/mods/18118) | 18118 | Races, Classes, and  | 714 | 2020-08-08 |
 
-### camping  (24)
+### camping  (8)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Cutting Room Floor - SSE](https://www.nexusmods.com/skyrimspecialedition/mods/276) | 276 | Gameplay | 109,893 | 2026-05-05 |
 | [Campfire - Complete Camping System (Supports Skyrim ](https://www.nexusmods.com/skyrimspecialedition/mods/667) | 667 | NPC | 78,114 | 2018-09-05 |
 | [Frostfall - Hypothermia Camping Survival](https://www.nexusmods.com/skyrimspecialedition/mods/671) | 671 | NPC | 44,979 | 2016-12-22 |
-| [Complete Alchemy and Cooking Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/19924) | 19924 | Alchemy | 29,915 | 2026-07-18 |
-| [SSE NIF Optimizer](https://www.nexusmods.com/skyrimspecialedition/mods/4089) | 4089 | Utilities | 24,571 | 2024-10-06 |
-| [Save Unbaker](https://www.nexusmods.com/skyrimspecialedition/mods/85565) | 85565 | Utilities | 9,395 | 2023-02-26 |
 | [aMidianBorn Content Addon](https://www.nexusmods.com/skyrimspecialedition/mods/35390) | 35390 | Weapons and Armour | 8,227 | 2026-08-22 |
-| [SkyrimSE.exe Auto-Backup](https://www.nexusmods.com/skyrimspecialedition/mods/12480) | 12480 | Utilities | 4,411 | 2017-09-24 |
-| [Smithing Perks Overhaul SE](https://www.nexusmods.com/skyrimspecialedition/mods/19246) | 19246 | Crafting | 4,335 | 2025-05-13 |
 | [Anniversary Edition Content Picker](https://www.nexusmods.com/skyrimspecialedition/mods/58890) | 58890 | Utilities | 2,966 | 2023-12-16 |
-*...and 14 more*
+| [Usable Unlit Campfires - A Campfire Addon](https://www.nexusmods.com/skyrimspecialedition/mods/108712) | 108712 | Utilities | 2,101 | 2025-07-26 |
+| [Intellightent](https://www.nexusmods.com/skyrimspecialedition/mods/172423) | 172423 | Visuals and Graphics | 913 | 2026-02-20 |
+| [House Telvanni Banners Restored - Cut Content Restor](https://www.nexusmods.com/skyrimspecialedition/mods/57443) | 57443 | Environmental | 727 | 2021-10-24 |
+| [Diverse Hunter Camps Campfire Integration and Patch ](https://www.nexusmods.com/skyrimspecialedition/mods/181860) | 181860 | Immersion | 40 | 2026-08-15 |
 
-### sleep / fatigue  (29)
+### sleep / fatigue  (17)
 
 | mod | id | category | endorse | updated |
 |---|---|---|---|---|
-| [Cutting Room Floor - SSE](https://www.nexusmods.com/skyrimspecialedition/mods/276) | 276 | Gameplay | 109,893 | 2026-05-05 |
 | [iNeed - Food Water and Sleep](https://www.nexusmods.com/skyrimspecialedition/mods/645) | 645 | Immersion | 36,065 | 2017-10-14 |
-| [Inventory Interface Information Injector](https://www.nexusmods.com/skyrimspecialedition/mods/85702) | 85702 | User Interface | 22,725 | 2024-04-24 |
 | [JK's Sleeping Giant Inn](https://www.nexusmods.com/skyrimspecialedition/mods/35806) | 35806 | Buildings | 20,129 | 2025-05-13 |
-| [Survival Control Panel](https://www.nexusmods.com/skyrimspecialedition/mods/41891) | 41891 | Utilities | 13,660 | 2022-10-02 |
 | [Cannibal Draugr on Solstheim (Bloodmoon Creature Res](https://www.nexusmods.com/skyrimspecialedition/mods/21238) | 21238 | Creatures and Mounts | 6,569 | 2021-06-07 |
 | [Whiterun Forest Borealis](https://www.nexusmods.com/skyrimspecialedition/mods/11343) | 11343 | Environmental | 4,393 | 2026-05-08 |
 | [Karstaag - The Frost King Reborn (Bloodmoon Creature](https://www.nexusmods.com/skyrimspecialedition/mods/14328) | 14328 | Creatures and Mounts | 4,347 | 2017-12-30 |
-| [Durnehviir Resurrected SE](https://www.nexusmods.com/skyrimspecialedition/mods/14272) | 14272 | Creatures and Mounts | 4,342 | 2017-12-28 |
 | [GRAHL - The Ice Troll (Bloodmoon Creature Restoratio](https://www.nexusmods.com/skyrimspecialedition/mods/9311) | 9311 | Creatures and Mounts | 3,737 | 2017-10-31 |
-*...and 19 more*
+| [The Blood Horker (Bloodmoon Creature Restoration Pro](https://www.nexusmods.com/skyrimspecialedition/mods/13938) | 13938 | Creatures and Mounts | 3,263 | 2021-04-07 |
+| [Item Equip Restrictor](https://www.nexusmods.com/skyrimspecialedition/mods/108665) | 108665 | Utilities | 1,647 | 2026-01-09 |
+| [Nightingale Hall Restored - Karliah as a Follower](https://www.nexusmods.com/skyrimspecialedition/mods/59324) | 59324 | Player homes | 1,608 | 2023-01-16 |
+| [Sensible Sleepwalking - Wake up at nearest All-Maker](https://www.nexusmods.com/skyrimspecialedition/mods/64680) | 64680 | Immersion | 1,397 | 2022-03-08 |
+*...and 7 more*
 
 ## 4. Keeps that collide with decided slots
 
@@ -1063,10 +1003,10 @@ Aesthetic clusters are listed for identification only - the look is your call.
 |---|---|---|
 | Feminine Khajiit Textures (Grey Cat and Leopard) | 183 | requires BHUNP - body decided: CBBE |
 | Feminine Argonian Textures (Chameleon and Lizard | 184 | requires BHUNP - body decided: CBBE |
-| BnP - Female Skin | 65274 | requires CBBE 3BA - body decided: CBBE base, no jiggle |
 | BnP - Female Skin | 65274 | requires BHUNP - body decided: CBBE |
-| Manticore Armor 3BA-CBBE-BHUNP-UNP | 132109 | requires CBBE 3BA - body decided: CBBE base, no jiggle |
+| BnP - Female Skin | 65274 | requires CBBE 3BA - body decided: CBBE base, no jiggle |
 | Manticore Armor 3BA-CBBE-BHUNP-UNP | 132109 | requires BHUNP - body decided: CBBE |
+| Manticore Armor 3BA-CBBE-BHUNP-UNP | 132109 | requires CBBE 3BA - body decided: CBBE base, no jiggle |
 | DDV - Vergi jewelry III | 148596 | requires CBBE 3BA - body decided: CBBE base, no jiggle |
 | DDV - Tara Dress by Vergi | 154626 | requires CBBE 3BA - body decided: CBBE base, no jiggle |
 | Daedric Lord Armor Retexture SE | 73444 | requires Legacy of the Dragonborn - LotD intentionally excluded |
@@ -1085,29 +1025,12 @@ Aesthetic clusters are listed for identification only - the look is your call.
 
 | mod | id | skipped requirement |
 |---|---|---|
-| No Grass In Objects | 42161 | Skyrim Script Extender for VR  |
-| Inventory Interface Information Injector | 85702 | Skyrim Script Extender for VR  |
 | BnP - Female Skin | 65274 | CBBE 3BA (3BBB) |
-| Constructible Object Custom Keyword System | 81409 | Skyrim Script Extender for VR  |
-| Survival Control Panel | 41891 | SkyUI - Survival Mode Integrat |
 | The Night Mother Revoiced | 92873 | New Night Mother SE |
-| Elden Counter | 65579 | Dynamic Animation Replacer |
 | FISSES patch for Skyrim AE 1.6.1130 (or later) | 107513 | FileAccess Interface for Skyri |
-| Beard Mask Fix - Beards Use Slot 44 SKSE Plugin | 80232 | Skyrim Script Extender for VR  |
-| Combat Music Fix NG Updated | 110459 | Combat Music Fix SKSE |
-| Better Telekinesis | 42906 | Skyrim Script Extender for VR , Skyrim VR ESL Support |
-| Alchemy Plus | 80882 | Skyrim Script Extender for VR  |
-| Disabled Reference Integrity Fix (SKSE) | 175062 | Skyrim Script Extender for VR  |
-| Faster Decompression | 174643 | Skyrim Script Extender for VR  |
-| Luma Utility | 177961 | Skyrim Script Extender for VR  |
-| Faster Cell Lookup | 178777 | Skyrim Script Extender for VR  |
-| DDV - Vergi jewelry III | 148596 | CBBE 3BA (3BBB) |
-| DDV - Tara Dress by Vergi | 154626 | CBBE 3BA (3BBB) |
 | Stances based animations for 1st person combat | 65309 | Dynamic Animation Replacer |
 | Vivid Landscapes - Complex Parallax Occlusion Tu | 81816 | Parallax Occlusion Mapping |
 | Daedric Lord Armor Retexture SE | 73444 | Legacy of the Dragonborn SSE |
-| Automatic Animations - Including Icon Identifica | 59484 | Dynamic Animation Replacer |
-| DDV - Vergi Jewellery | 126514 | CBBE 3BA (3BBB) |
 | Adaptive Leveling (Skyrim Skill Uncapper presets | 17560 | Skyrim Skill Uncapper |
 | LOD Grass ini files | 143386 | DrJacopo's - 3D Pine Grass (Ol |
 | Nova INPC - Deadly Wenches Addon English Transla | 159152 | Apachii Sky Hair SSE |
@@ -1117,46 +1040,46 @@ Aesthetic clusters are listed for identification only - the look is your call.
 | mod | id | undecided requirement |
 |---|---|---|
 | Expressive Facial Animation -Female Edition- | 19181 | Fair Skin Complexion |
-| Papyrus Tweaks NG | 77779 | VR Address Library for SKSEVR |
-| Immersive Equipment Displays | 62001 | Simple Dual Sheath, Weapon Styles - Draw-Sheathe a |
 | Behavior Data Injector Universal Support | 78159 | Behavior Data Injector |
-| NPC AI Process Position Fix  - NG | 69326 | VR Address Library for SKSEVR |
-| Mu Joint Fix (Knee Fix dll edition) | 61479 | VR Address Library for SKSEVR |
-| Seasons of Skyrim SKSE | 62861 | DynDOLOD 3 Alpha |
 | Romance of NPCs for Flower Girls | 22992 | Flower Girls SE and VR, Immersive Wenches |
 | Regional Save Names | 49698 | Unique Region Names SE |
-| Shadow Boost | 73133 | VR Address Library for SKSEVR |
-| HD Local Map | 74722 | Local Map Upgrade |
-| NVIDIA Reflex Support | 74498 | VR Address Library for SKSEVR |
-| Animated Static Reload Fix - NG | 69331 | VR Address Library for SKSEVR |
-| Dynamic Female Table Leaning | 151307 | Dovahkiin can lean Sit Kneel L, Sonders Keyword Distribution R |
 | Save the Icerunner - Lights Out Alternate Routes | 34681 | Missing Follower Dialogue Edit |
 | Simple Hunting Overhaul | 95943 | Dynamic Activation Key |
-| Unique Map Weather | 59919 | VR Address Library for SKSEVR |
-| Seamless Varied Feminine Idles OAR | 92226 | Seamless Varied Masculine Idle, Sonders Keyword Distribution R |
-| Better Combat Escape - NG | 72901 | Better Combat Escape - SSE |
-| VRAMr | 90557 | BSA Browser (with .BA2 support |
-| Stagger Effect Fix | 110508 | VR Address Library for SKSEVR |
-| Dynamic Female Ledge Sitting | 90252 | Sonders Keyword Distribution R |
 | Whiterun Forest Borealis | 11343 | Dynamic Distant Objects LOD -  |
-| Quest Journal Overhaul | 141295 | Scaleform Translation Plus Plu |
-| Locational Encounter Zones | 85212 | Arena - An Encounter Zone Over |
-| The Green Den - A Lush Drunken Huntsman Overhaul | 165520 | High Quality Ivy Replacer - Ba |
-| MIF - Mu Impact Framework | 95624 | VR Address Library for SKSEVR |
-| NPCs Names Distributor | 73081 | SKSE Menu Framework |
-| Mu Dynamic NormalMap | 154657 | VR Address Library for SKSEVR |
 | SkyPatcher Keyword Framework | 127024 | SkyPatcher |
 | NIF Preview (3D Model Viewer) for Mod Organizer | 69813 | Mod Organizer 2 |
-| Mu Skeleton Editor | 91563 | VR Address Library for SKSEVR |
-| Sandbox When Idle | 131350 | Backported Extended ESL Suppor |
-| XEMI Utility | 159084 | VR Address Library for SKSEVR |
 | Aspens Ablaze Add-On - DynDOLOD 3 | 51135 | Aspens Ablaze, DynDOLOD 3 Alpha |
-| OnHit Animations Framework - NG | 69298 | OnHit Animations Framework - S |
 | Bethesda Plugin Manager for Mod Organizer | 111236 | Mod Organizer 2 |
-| ShowRaceMenu - NG | 173086 | VR Address Library for SKSEVR |
 | POISE - Stagger Overhaul - NG | 72692 | POISE - Stagger Overhaul SKSE |
-| ConsoleUtil Extended | 133569 | VR Address Library for SKSEVR |
-*...and 73 more*
+| Set CPU Affinity for Mod Organizer | 94636 | Skyrim Priority SE AE - CPU Pe, Mod Organizer 2 |
+| .lip and .fuz plugin for xVASynth | 55605 | xVASynth v3 - SKVA Synth, SSE CreationKit Fixes |
+| NIF Preview Updated for Mod Organizer 2 | 137741 | Mod Organizer 2 |
+| Remember Installation Choices - Mod Organizer 2  | 140678 | Mod Organizer 2 |
+| Horse Jump Fix | 165468 | Animation Motion Revolution |
+| Golden Dwemer Pipeworks Redone - Unofficial Upda | 94440 | Dwemer Pipework Reworked, Golden Dwemer Pipeworks Redone |
+| Snazzy Raven Rock AIO | 147623 | Snazzy Location Resources |
+| Optimized Meshes - Chickens and Chicks- Mihail M | 95363 | Chickens and Chicks- Mihail Mo, Chicks - Mihail Animal Fluffy  |
+| Snazzy Dawnstar AIO | 147758 | Snazzy Location Resources |
+| Snazzy Towns and Settlements | 147761 | Snazzy Location Resources |
+| Vanaheimr - Farmhouses - II - Complex Material a | 158524 | PGPatcher |
+| Silent Moons Camp | 111465 | Backported Extended ESL Suppor, Snozz's Resource Pack |
+| Wolves of the Wild - Fluffy Bellyache Textures | 67010 | Wolves Reshaped |
+| Daughter Of Coldharbour SSE | 18118 | RaceCompatibility for Skyrim S |
+| Drelas' Cottage | 39829 | Interesting NPCs SE (3DNPC) |
+| First Person FOV and Tween Menu Fix SKSE | 172417 | SKSE Menu Framework |
+| Morekvior-Myrkvior Visual Enhancement-DynDOLOD | 54141 | Morekvior - Myrkvior Visual En, Myrkvior - The Flora Of Skyrim, DynDOLOD Resources SE 3 |
+| Grand Solitude - The Walls of High King Erling - | 168369 | Grand Solitude - The Walls of  |
+| Whiterun City Walls - Collision Redone | 163348 | FYX - 3D Whiterun Guard Towers, Major Cities Mesh Overhaul |
+| 3D Signs and Wizkid Signs Compatibility Patch | 67438 | WiZkiD Signs, Skyrim 3D Signs, Lanterns Of Skyrim II |
+| Better Blended Mushrooms Fix | 157604 | Better Blended Mushrooms |
+| Dark Elf Voices for Bandits - SkyPatched | 171614 | SkyPatcher, Lawless - A Bandit Overhaul, Bandit Lines Expansion |
+| COtR Mouth patch NON ESP | 77202 | COtR - HQ Characters creation  |
+| Vilja Brawl Bug Fix | 167735 | Vilja in Skyrim |
+| Requiem - Exhaustion and Stamina Fix | 170787 | Requiem - The Roleplaying Over |
+| Milandriel - A small piece of Valenwood in Skyri | 160164 | Backported Extended ESL Suppor, Elden Root - A Tale Of Valenwo, Gorgeous Giant Camps Compilati |
+| Humanoid Dragon Priests - Remove Ash Pile | 162310 | Draugrs New Model - Dragon Pri, Humanoid Dragon Priests |
+| Vanilla Table Replacers PBR Conversion | 175105 | Vanilla Table Replacers, PGPatcher |
+*...and 17 more*
 
 ## 6. Succession pairs - original kept alongside a successor
 
