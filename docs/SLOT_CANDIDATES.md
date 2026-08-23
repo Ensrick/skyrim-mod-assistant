@@ -1,10 +1,10 @@
 # Slot candidates - harvested overnight from the undecided pool
 
-Built by deep-reading the top ~500 undecided survivors by endorsement, plus
-targeted verification. Nothing here is decided; these are the comparison sets
-for BASELINE Tier-4 and newly discovered slots.
+Built by deep-reading 605 top-endorsement undecided survivors, plus targeted
+verification. Nothing here is decided; these are the comparison sets for
+BASELINE Tier-4 and the newly discovered slots.
 
-## cities  (13)
+## cities  (14)
 - [9074](https://www.nexusmods.com/skyrimspecialedition/mods/9074) - Dawn of Skyrim - alive
 - [20272](https://www.nexusmods.com/skyrimspecialedition/mods/20272) - Great Cities Minor - alive
 - [35910](https://www.nexusmods.com/skyrimspecialedition/mods/35910) - JK Interiors Patch Collection - family glue
@@ -17,6 +17,8 @@ for BASELINE Tier-4 and newly discovered slots.
 - [34505](https://www.nexusmods.com/skyrimspecialedition/mods/34505) - GT Ivarstead
 - [37982](https://www.nexusmods.com/skyrimspecialedition/mods/37982) - Capital Whiterun Expansion; kept Windhelm navmesh fix suggests the Capital family
 - [42990](https://www.nexusmods.com/skyrimspecialedition/mods/42990) - Capital Windhelm Expansion - its kept navmesh fix attaches
+- [27816](https://www.nexusmods.com/skyrimspecialedition/mods/27816) - Enhanced Solitude merge
+- [150246](https://www.nexusmods.com/skyrimspecialedition/mods/150246) - Orc Strongholds AIO
 
 ## animation packs  (11)
 - [54351](https://www.nexusmods.com/skyrimspecialedition/mods/54351) - Vanargand sneak
@@ -30,6 +32,16 @@ for BASELINE Tier-4 and newly discovered slots.
 - [58326](https://www.nexusmods.com/skyrimspecialedition/mods/58326) - Vanargand 1h attacks
 - [63471](https://www.nexusmods.com/skyrimspecialedition/mods/63471) - NPC Remix
 - [59250](https://www.nexusmods.com/skyrimspecialedition/mods/59250) - Sleeping Expanded
+
+## combat framework  (8)
+- [33767](https://www.nexusmods.com/skyrimspecialedition/mods/33767) - CGO - legacy 3rd option
+- [72347](https://www.nexusmods.com/skyrimspecialedition/mods/72347) - Precision - pairs with MCO/BFCO
+- [72014](https://www.nexusmods.com/skyrimspecialedition/mods/72014) - SCAR - AI combos, pairs MCO
+- [72966](https://www.nexusmods.com/skyrimspecialedition/mods/72966) - MCO Nordic complete pack - moveset evidence for MCO branch
+- [86950](https://www.nexusmods.com/skyrimspecialedition/mods/86950) - Combat Pathing Revolution - SCAR dependency
+- [146873](https://www.nexusmods.com/skyrimspecialedition/mods/146873) - Core Impact Framework - modern impacts
+- [131148](https://www.nexusmods.com/skyrimspecialedition/mods/131148) - SkyTactics via SkyPatcher
+- [65625](https://www.nexusmods.com/skyrimspecialedition/mods/65625) - Elden Rim Weapon Arts - BFCO branch evidence
 
 ## grass  (7)
 - [2296](https://www.nexusmods.com/skyrimspecialedition/mods/2296) - Verdant
@@ -57,6 +69,13 @@ for BASELINE Tier-4 and newly discovered slots.
 - [386](https://www.nexusmods.com/skyrimspecialedition/mods/386) - Sovngarde font
 - [46546](https://www.nexusmods.com/skyrimspecialedition/mods/46546) - Dialogue Interface ReShaped - required by kept Lydia mod
 
+## weather  (5)
+- [2237](https://www.nexusmods.com/skyrimspecialedition/mods/2237) - Climates of Tamriel
+- [2472](https://www.nexusmods.com/skyrimspecialedition/mods/2472) - True Storms - additive layer
+- [12842](https://www.nexusmods.com/skyrimspecialedition/mods/12842) - NAT - alive
+- [694](https://www.nexusmods.com/skyrimspecialedition/mods/694) - Darker Nights - attaches to weather winner
+- [11578](https://www.nexusmods.com/skyrimspecialedition/mods/11578) - Mythical Ages - alive
+
 ## dev tools  (5)
 - [19250](https://www.nexusmods.com/skyrimspecialedition/mods/19250) - More Informative Console
 - [17563](https://www.nexusmods.com/skyrimspecialedition/mods/17563) - AddItemMenu
@@ -77,29 +96,35 @@ for BASELINE Tier-4 and newly discovered slots.
 - [18515](https://www.nexusmods.com/skyrimspecialedition/mods/18515) - 3PCO - older rival
 - [12201](https://www.nexusmods.com/skyrimspecialedition/mods/12201) - Customizable Camera - alive
 
-## combat framework  (4)
-- [33767](https://www.nexusmods.com/skyrimspecialedition/mods/33767) - CGO - legacy 3rd option
-- [72347](https://www.nexusmods.com/skyrimspecialedition/mods/72347) - Precision - pairs with MCO/BFCO
-- [72014](https://www.nexusmods.com/skyrimspecialedition/mods/72014) - SCAR - AI combos, pairs MCO
-- [72966](https://www.nexusmods.com/skyrimspecialedition/mods/72966) - MCO Nordic complete pack - moveset evidence for MCO branch
-
-## weather  (4)
-- [2237](https://www.nexusmods.com/skyrimspecialedition/mods/2237) - Climates of Tamriel
-- [2472](https://www.nexusmods.com/skyrimspecialedition/mods/2472) - True Storms - additive layer
-- [12842](https://www.nexusmods.com/skyrimspecialedition/mods/12842) - NAT - alive
-- [694](https://www.nexusmods.com/skyrimspecialedition/mods/694) - Darker Nights - attaches to weather winner
-
 ## interior lighting  (4)
 - [43158](https://www.nexusmods.com/skyrimspecialedition/mods/43158) - Lux - alive in undecided
 - [63588](https://www.nexusmods.com/skyrimspecialedition/mods/63588) - Lux Via
 - [30817](https://www.nexusmods.com/skyrimspecialedition/mods/30817) - Lanterns of Skyrim II - exterior lighting adjacency
 - [25498](https://www.nexusmods.com/skyrimspecialedition/mods/25498) - ELFX Fixes - attached to ELFX
 
+## landscape tex  (4)
+- [3820](https://www.nexusmods.com/skyrimspecialedition/mods/3820) - Skyland - alive
+- [20102](https://www.nexusmods.com/skyrimspecialedition/mods/20102) - Better Dynamic Majestic Mountains bridge patch
+- [29842](https://www.nexusmods.com/skyrimspecialedition/mods/29842) - Septentrional - alive
+- [27041](https://www.nexusmods.com/skyrimspecialedition/mods/27041) - Northern Shores - alive
+
 ## map markers  (4)
 - [4138](https://www.nexusmods.com/skyrimspecialedition/mods/4138) - Map Markers Complete vs kept Atlas
 - [56123](https://www.nexusmods.com/skyrimspecialedition/mods/56123) - CoMAP framework
 - [29932](https://www.nexusmods.com/skyrimspecialedition/mods/29932) - Flat World Map Framework - alternative map branch vs AQWM
 - [56367](https://www.nexusmods.com/skyrimspecialedition/mods/56367) - A Clear Map of Skyrim - covers Bruma/Beyond Reach worldspaces, strong fit
+
+## renderer components  (4)
+- [148123](https://www.nexusmods.com/skyrimspecialedition/mods/148123) - Terrain Variation CS - one of the 7 non-bundled features, install with CS
+- [120946](https://www.nexusmods.com/skyrimspecialedition/mods/120946) - PGPatcher - parallax/CM/PBR load-order patcher, pairs with kept Auto Parallax
+- [139352](https://www.nexusmods.com/skyrimspecialedition/mods/139352) - Skylighting CS - one of the 7 separate features
+- [130375](https://www.nexusmods.com/skyrimspecialedition/mods/130375) - SSGI CS - separate feature
+
+## npc overhauls  (4)
+- [42349](https://www.nexusmods.com/skyrimspecialedition/mods/42349) - Northbourne Rift - per-NPC facegen conflict class
+- [98103](https://www.nexusmods.com/skyrimspecialedition/mods/98103) - Children of the Hist - Argonians
+- [52313](https://www.nexusmods.com/skyrimspecialedition/mods/52313) - EasyNPC - the merge tool for this whole class
+- [27330](https://www.nexusmods.com/skyrimspecialedition/mods/27330) - Cuyima - visual layer for Interesting NPCs
 
 ## perks  (3)
 - [1137](https://www.nexusmods.com/skyrimspecialedition/mods/1137) - Ordinator
@@ -115,6 +140,11 @@ for BASELINE Tier-4 and newly discovered slots.
 - [17004](https://www.nexusmods.com/skyrimspecialedition/mods/17004) - Immersive College of Winterhold
 - [1539](https://www.nexusmods.com/skyrimspecialedition/mods/1539) - Magical College - alive
 - [66666](https://www.nexusmods.com/skyrimspecialedition/mods/66666) - Quest Expansion - alive
+
+## vampire overhaul  (3)
+- [1925](https://www.nexusmods.com/skyrimspecialedition/mods/1925) - Better Vampires - 5th rival
+- [9510](https://www.nexusmods.com/skyrimspecialedition/mods/9510) - Better Vampire NPCs - NPC-side companion
+- [41639](https://www.nexusmods.com/skyrimspecialedition/mods/41639) - Scion - 6th rival
 
 ## ui skin  (3)
 - [49881](https://www.nexusmods.com/skyrimspecialedition/mods/49881) - NORDIC UI - alive
@@ -141,18 +171,14 @@ for BASELINE Tier-4 and newly discovered slots.
 - [57264](https://www.nexusmods.com/skyrimspecialedition/mods/57264) - DynDOLOD DLL SE -> DLL NG (97720) for DynDOLOD 3
 - [76927](https://www.nexusmods.com/skyrimspecialedition/mods/76927) - Stay At The System Page NG over Updated 19832 - prefer NG
 
-## npc overhauls  (3)
-- [42349](https://www.nexusmods.com/skyrimspecialedition/mods/42349) - Northbourne Rift - per-NPC facegen conflict class
-- [98103](https://www.nexusmods.com/skyrimspecialedition/mods/98103) - Children of the Hist - Argonians
-- [52313](https://www.nexusmods.com/skyrimspecialedition/mods/52313) - EasyNPC - the merge tool for this whole class
+## follower content  (3)
+- [135085](https://www.nexusmods.com/skyrimspecialedition/mods/135085) - Ashe - Crystal Heart
+- [38473](https://www.nexusmods.com/skyrimspecialedition/mods/38473) - Improved Follower Dialogue Lydia
+- [119226](https://www.nexusmods.com/skyrimspecialedition/mods/119226) - Follower Dialogue Expansion Lydia - RIVAL pair, pick one
 
 ## water  (2)
 - [2182](https://www.nexusmods.com/skyrimspecialedition/mods/2182) - Realistic Water Two - alive in undecided, not purged after all
 - [87261](https://www.nexusmods.com/skyrimspecialedition/mods/87261) - Natural Waterfalls - locational overhaul layer
-
-## vampire overhaul  (2)
-- [1925](https://www.nexusmods.com/skyrimspecialedition/mods/1925) - Better Vampires - 5th rival
-- [9510](https://www.nexusmods.com/skyrimspecialedition/mods/9510) - Better Vampire NPCs - NPC-side companion
 
 ## npc ai  (2)
 - [21654](https://www.nexusmods.com/skyrimspecialedition/mods/21654) - AI Overhaul
@@ -218,10 +244,6 @@ for BASELINE Tier-4 and newly discovered slots.
 - [148746](https://www.nexusmods.com/skyrimspecialedition/mods/148746) - Inertia floating-gear fix
 - [151590](https://www.nexusmods.com/skyrimspecialedition/mods/151590) - Death Drop Overhaul - overlapping pair
 
-## renderer components  (2)
-- [148123](https://www.nexusmods.com/skyrimspecialedition/mods/148123) - Terrain Variation CS - one of the 7 non-bundled features, install with CS
-- [120946](https://www.nexusmods.com/skyrimspecialedition/mods/120946) - PGPatcher - parallax/CM/PBR load-order patcher, pairs with kept Auto Parallax
-
 ## ui wheel  (2)
 - [97345](https://www.nexusmods.com/skyrimspecialedition/mods/97345) - Wheeler
 - [97221](https://www.nexusmods.com/skyrimspecialedition/mods/97221) - dMenu dependency
@@ -230,11 +252,16 @@ for BASELINE Tier-4 and newly discovered slots.
 - [4652](https://www.nexusmods.com/skyrimspecialedition/mods/4652) - Animated Eating Redux
 - [42602](https://www.nexusmods.com/skyrimspecialedition/mods/42602) - Eating Animations - pair
 
+## marriage  (2)
+- [21625](https://www.nexusmods.com/skyrimspecialedition/mods/21625) - Multiple Marriages
+- [8589](https://www.nexusmods.com/skyrimspecialedition/mods/8589) - To Have And To Hold - pair
+
+## vigilant attached  (2)
+- [45026](https://www.nexusmods.com/skyrimspecialedition/mods/45026) - Custom Skills - VIGILANT perk tree (CSF modern, stale NSF req)
+- [22146](https://www.nexusmods.com/skyrimspecialedition/mods/22146) - VIGILANT NPC Overhaul - no-esp facegen layer
+
 ## magic  (1)
 - [27839](https://www.nexusmods.com/skyrimspecialedition/mods/27839) - Mysticism - alive in undecided
-
-## landscape tex  (1)
-- [3820](https://www.nexusmods.com/skyrimspecialedition/mods/3820) - Skyland - alive
 
 ## travel  (1)
 - [8379](https://www.nexusmods.com/skyrimspecialedition/mods/8379) - Carriage and Ferry Travel Overhaul
@@ -296,9 +323,21 @@ for BASELINE Tier-4 and newly discovered slots.
 ## enemies  (1)
 - [14598](https://www.nexusmods.com/skyrimspecialedition/mods/14598) - Skyrim Revamped - alive
 
-## follower content  (1)
-- [135085](https://www.nexusmods.com/skyrimspecialedition/mods/135085) - Ashe - Crystal Heart
-
 ## movement values  (1)
 - [15649](https://www.nexusmods.com/skyrimspecialedition/mods/15649) - Immersive Movement vs kept-adjacent Mortal Enemies - overlapping pair
+
+## quest timing  (1)
+- [2399](https://www.nexusmods.com/skyrimspecialedition/mods/2399) - Dawnguard Delayed; pairs with Timing is Everything class
+
+## religion  (1)
+- [54099](https://www.nexusmods.com/skyrimspecialedition/mods/54099) - Pilgrim - third rival (Simonrim)
+
+## architecture  (1)
+- [13015](https://www.nexusmods.com/skyrimspecialedition/mods/13015) - Skyland Whiterun - module family alive
+
+## fire/embers  (1)
+- [109731](https://www.nexusmods.com/skyrimspecialedition/mods/109731) - Diverse Campfires - Embers XD chain
+
+## worldspaces future  (1)
+- [28120](https://www.nexusmods.com/skyrimspecialedition/mods/28120) - Midwood Isle - earlier flagged candidate, alive
 
