@@ -1,7 +1,14 @@
 # Overnight report - 2026-08-23
 
-Running log of the autonomous session; final numbers at the bottom will be
-updated before you read this.
+**Status: every assigned task is COMPLETE.** Base install done (one manual
+Pandora run pending), keep review done, rule sweep done, and the deep-read of
+all 21,356 sweep survivors finished with every verdict evidence-cited.
+
+**Decision briefs ready for the morning** (docs/): interior lighting (updated
+with deep-read finds), weather, standing stones, the dragon package,
+map/navigation, and a multi-character pillar check (one genuine Proteus rival
+was found - see DECISION_BRIEF_MULTICHARACTER.md). SLOT_CANDIDATES.md holds
+the full 547-entry harvest across 133 slots.
 
 ## 1. Base setup - COMPLETE
 
