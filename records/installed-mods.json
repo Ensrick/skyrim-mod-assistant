@@ -46,6 +46,23 @@
       "transaction": "20260823T041224662Z-a8f21a54a3b1"
     },
     {
+      "modId": 55653,
+      "modName": "Nether's Follower Framework",
+      "nexusName": "Nether's Follower Framework - Universal Installer",
+      "version": "2.8.6b",
+      "fileId": 489439,
+      "fileName": "Nether's Follower Framework - Universal Installer-55653-2-8-6b-1712793520.zip",
+      "sizeMb": 9.56,
+      "sha256": "92862b08953a95a31d80e529ca268eb092e2d17f09244a7fde640f3434e36006",
+      "plugins": [
+        "nwsFollowerFramework.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:24:01Z",
+      "transaction": "20260823T042400017Z-e0f1d002ebed",
+      "fomodPlan": "records/fomod-plans/55653-nethers-follower-framework.json"
+    },
+    {
       "modId": 13048,
       "modName": "PapyrusUtil SE",
       "nexusName": "PapyrusUtil AE SE - Scripting Utility Functions",
