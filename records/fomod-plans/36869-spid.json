@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Spell Perk Item Distributor FOMOD Installer/AE/SKSE/Plugins",
+      "destination": "SKSE/Plugins"
+    }
+  ]
+}
