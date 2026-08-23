@@ -6,7 +6,7 @@ tables follow it. Nothing was decided for you.
 
 ## Read this first - what actually needs your call
 
-### A. Fallout from slots you already decided (confirm and I queue the skips)
+### A. Fallout from slots you already decided - RESOLVED 2026-08-23 (all six confirmed and queued)
 
 | mod | id | why it lost |
 |---|---|---|
