@@ -36,9 +36,33 @@
 !/collections/*.json
 
 !/mods/
+!/mods/period-underlayers/
+!/mods/period-underlayers/*.ini
+!/mods/period-underlayers/skse/
+!/mods/period-underlayers/skse/plugins/
+!/mods/period-underlayers/skse/plugins/*.ini
+
 !/mods/katana-two-handed/
+!/mods/period-underlayers/
+!/mods/period-underlayers/*.ini
+!/mods/period-underlayers/skse/
+!/mods/period-underlayers/skse/plugins/
+!/mods/period-underlayers/skse/plugins/*.ini
+
 !/mods/katana-two-handed/*.md
+!/mods/period-underlayers/
+!/mods/period-underlayers/*.ini
+!/mods/period-underlayers/skse/
+!/mods/period-underlayers/skse/plugins/
+!/mods/period-underlayers/skse/plugins/*.ini
+
 !/mods/katana-two-handed/*.json
+!/mods/period-underlayers/
+!/mods/period-underlayers/*.ini
+!/mods/period-underlayers/skse/
+!/mods/period-underlayers/skse/plugins/
+!/mods/period-underlayers/skse/plugins/*.ini
+
 !/mods/katana-two-handed/*.ps1
 
 !/ports/
