@@ -1,6 +1,6 @@
 # Slot candidates - harvested during the overnight deep-read
 
-Regenerated automatically; latest harvest through batch 350 (13,681 mods read individually, endorsement-descending). These are NOT decisions - each entry is a candidate you may want when its slot comes up. **503 candidate entries across 128 slots.**
+Regenerated automatically; latest harvest through batch 400 (15,680 mods read individually, endorsement-descending). These are NOT decisions - each entry is a candidate you may want when its slot comes up. **504 candidate entries across 128 slots.**
 
 ## alchemy (2)
 - [52130](https://www.nexusmods.com/skyrimspecialedition/mods/52130) - Apothecary - direct CACO rival, sharpens the CACO seam decision
@@ -454,12 +454,13 @@ Regenerated automatically; latest harvest through batch 350 (13,681 mods read in
 - [95196](https://www.nexusmods.com/skyrimspecialedition/mods/95196) - Sorcerer - staff/scroll crafting addon for Mysticism
 - [11215](https://www.nexusmods.com/skyrimspecialedition/mods/11215) - Spectraverse - Magna-Ge questline w/ 42 destruction spells
 
-## map markers (5)
+## map markers (6)
 - [4138](https://www.nexusmods.com/skyrimspecialedition/mods/4138) - Map Markers Complete vs kept Atlas
 - [56123](https://www.nexusmods.com/skyrimspecialedition/mods/56123) - CoMAP framework
 - [29932](https://www.nexusmods.com/skyrimspecialedition/mods/29932) - Flat World Map Framework - alternative map branch vs AQWM
 - [56367](https://www.nexusmods.com/skyrimspecialedition/mods/56367) - A Clear Map of Skyrim - covers Bruma/Beyond Reach worldspaces, strong fit
 - [188483](https://www.nexusmods.com/skyrimspecialedition/mods/188483) - Map Menu Extension (2026-08) - ESO-style menu to travel between worldspaces; directly serves the Bruma/Gray Cowl/Wyrmstooth multi-worldspace build
+- [171391](https://www.nexusmods.com/skyrimspecialedition/mods/171391) - CS - FWMF Map Brightness Fix - fixes overbright world map under Community Shaders when using Flat World Map Framework paper maps
 
 ## marriage (2)
 - [21625](https://www.nexusmods.com/skyrimspecialedition/mods/21625) - Multiple Marriages
