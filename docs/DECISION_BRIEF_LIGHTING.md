@@ -29,6 +29,22 @@ older mods matter less, and one candidate is built *for* CS.
   not transform interiors.
 - RLO and Luminosity are functional but neither has CS-era momentum.
 
+## Deep-read additions (found after this brief was first written)
+
+- **ELFX - SkyPatcher (150615)**: auto-restores ELFX lighting wherever other
+  mods override it - this shrinks the "ELFX = patch hell" argument above by a
+  lot. ELFX + Fixes + SkyPatcher is now a more credible third finalist.
+- **Modern Lighting Overhaul 2 (160748) + MLO MISC (152850)**: CS-required
+  SKSE light-source upgrade line (2026-08). COMPOSES with a placement mod
+  rather than competing - candidate to stack on top of whichever wins.
+- **Umbrae Lucem (115616)**: one-mod interior+exterior lighting/shadows with
+  torch/candle smoke - a lighter-weight all-in-one if the Lux stack feels
+  heavy.
+- Darkness layers that stack with any winner: Dynamic Seriously Dark
+  Dungeons 7535, Ambiance 46383 (stealth-balanced ambient recalibration).
+- Native Mesh Light Flicker Fix 186432 - engine light-slot fix worth taking
+  regardless of winner.
+
 ## Recommendation shape (not a decision)
 
 Two honest finalists: **Lux + Lux CS** (modern, CS-native, heavier patching)
