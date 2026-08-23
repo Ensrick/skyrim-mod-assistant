@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Data/MCM",
+      "destination": "MCM"
+    },
+    {
+      "source": "Data/Source",
+      "destination": "Source"
+    },
+    {
+      "source": "SkyrimSE/SKSE/Plugins/MCMHelper.dll",
+      "destination": "SKSE/Plugins/MCMHelper.dll"
+    },
+    {
+      "source": "ESL/MCMHelper.esp",
+      "destination": "MCMHelper.esp"
+    },
+    {
+      "source": "BSA/MCMHelper.bsa",
+      "destination": "MCMHelper.bsa"
+    }
+  ]
+}

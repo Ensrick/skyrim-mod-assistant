@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Keyword Item Distributor FOMOD Installer/Required",
+      "destination": "."
+    },
+    {
+      "source": "Keyword Item Distributor FOMOD Installer/AE/SKSE/Plugins",
+      "destination": "SKSE/Plugins"
+    }
+  ]
+}
