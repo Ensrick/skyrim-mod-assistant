@@ -18,6 +18,20 @@
       "transaction": "20260823T035430739Z-1f3efe18d5fe"
     },
     {
+      "modId": 33261,
+      "modName": "Bug Fixes SSE",
+      "nexusName": "Bug Fixes SSE - Anniversary Edition (1.6.629.0 and later)",
+      "version": "10",
+      "fileId": 368384,
+      "fileName": "Bug Fixes SSE - Anniversary Edition (1.6.629.0 and later)-33261-10-1678780224.7z",
+      "sizeMb": 1.78,
+      "sha256": "d5dcfec3d1318b258e1c0ea6adb47b5dc746cea98b9da4e44e1c49dd6d0b2e8c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:01:46Z",
+      "transaction": "20260823T060145899Z-6e3c2b210872"
+    },
+    {
       "modId": 198,
       "modName": "CBBE",
       "nexusName": "Caliente's Beautiful Bodies Enhancer CBBE - v2.0.3",
@@ -48,6 +62,20 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:40Z",
       "transaction": "20260823T035440489Z-a373f32f6e2d"
+    },
+    {
+      "modId": 59818,
+      "modName": "Crash Logger",
+      "nexusName": "CrashLogger",
+      "version": "1.25.0",
+      "fileId": 792670,
+      "fileName": "CrashLogger 59818 1.25.0 2026-08-21T09-21Z yIjvuh041.7z",
+      "sizeMb": 6.87,
+      "sha256": "ce8592d60a2394bc05874d4cc759d3513686c3e26f841fe831a98c9d66fa979c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:01:49Z",
+      "transaction": "20260823T060148806Z-f06816a649e4"
     },
     {
       "modId": 46311,
@@ -236,6 +264,34 @@
       "fomodPlan": "records/fomod-plans/64314-reverie.json"
     },
     {
+      "modId": 43532,
+      "modName": "Scrambled Bugs",
+      "nexusName": "Scrambled Bugs - Anniversary Edition (1.6.629.0 and later)",
+      "version": "21",
+      "fileId": 368378,
+      "fileName": "Scrambled Bugs - Anniversary Edition (1.6.629.0 and later)-43532-21-1678779028.7z",
+      "sizeMb": 1.92,
+      "sha256": "8412974b83426e10925865527e7d4764ea79db0e88a3666e79c108fad9d88ebd",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:01:47Z",
+      "transaction": "20260823T060147020Z-534645bf7a7d"
+    },
+    {
+      "modId": 82558,
+      "modName": "Skill Uncapper",
+      "nexusName": "Skyrim Skill Uncapper for SE and AE",
+      "version": "2.2.3",
+      "fileId": 429047,
+      "fileName": "Skyrim Skill Uncapper for SE and AE-82558-2-2-3-1695703184.zip",
+      "sizeMb": 0.06,
+      "sha256": "3f86436ec576e065fbcae61420b5f0dc584d7a5e56facb17813a78435f27d434",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:01:51Z",
+      "transaction": "20260823T060151082Z-62354416ac2a"
+    },
+    {
       "modId": 27962,
       "modName": "Skyrim Unbound Reborn",
       "nexusName": "Skyrim Unbound Reborn",
@@ -299,6 +355,35 @@
       "fomodPlan": "records/fomod-plans/36869-spid.json"
     },
     {
+      "modId": 34705,
+      "modName": "SSE Display Tweaks",
+      "nexusName": "SSE Display Tweaks",
+      "version": "0.5.16",
+      "fileId": 454679,
+      "fileName": "SSE Display Tweaks-34705-0-5-16-1703410713.zip",
+      "sizeMb": 0.18,
+      "sha256": "08b8bc6f548cf12aa82a234166efe10851bfb994d02393f2e716754e6b3174e0",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:01:50Z",
+      "transaction": "20260823T060150223Z-be8d1441d5e5"
+    },
+    {
+      "modId": 17230,
+      "modName": "SSE Engine Fixes",
+      "nexusName": "Engine Fixes - Main File",
+      "version": "7.0.20",
+      "fileId": 725753,
+      "fileName": "Engine Fixes - Main File-17230-7-0-20-1772078239.7z",
+      "sizeMb": 7.6,
+      "sha256": "21330c95011f41859139635b43ce95ffb5fbadd3cd375d2f4358abcc3cb99407",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:02:19Z",
+      "transaction": "20260823T060218840Z-dd94b8e5acd2",
+      "fomodPlan": "records/fomod-plans/17230-engine-fixes.json"
+    },
+    {
       "modId": 104215,
       "modName": "The New Gentleman",
       "nexusName": "The New Gentleman",
@@ -347,6 +432,22 @@
       "installedUtc": "2026-08-23T05:50:07Z",
       "transaction": "20260823T055006995Z-2df144bbc776",
       "fomodPlan": "records/fomod-plans/99021-underwear-dll.json"
+    },
+    {
+      "modId": 266,
+      "modName": "USSEP",
+      "nexusName": "Unofficial Skyrim Special Edition Patch",
+      "version": "4.3.9",
+      "fileId": 792961,
+      "fileName": "Unofficial Skyrim Special Edition Patch 266 4.3.9 2026-08-21T22-02Z oPpNfUaon.7z",
+      "sizeMb": 172.26,
+      "sha256": "63f68b23343b81ba6eed3f987c87e27d5d8f3f2ad1d7a47c32f436e4000a3cfd",
+      "plugins": [
+        "unofficial skyrim special edition patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:01:42Z",
+      "transaction": "20260823T060134726Z-ab1003b1b7a6"
     },
     {
       "modId": 1988,

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "EngineFixes FOMOD Installer/Required",
+      "destination": "."
+    },
+    {
+      "source": "EngineFixes FOMOD Installer/AE/SKSE/Plugins",
+      "destination": "SKSE/Plugins"
+    }
+  ]
+}

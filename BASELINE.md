@@ -36,13 +36,13 @@ far passed despite predating 1.7.99.
 |---|---|---|
 | SKSE64 2.3.0 | 30379 | **installed** (game root, matches 1.7.99) |
 | Address Library v12 | 32444 | **installed** |
-| SSE Engine Fixes | 17230 | in keeps - install next `[verify]` |
-| Crash logger (CrashLoggerSSE or Trainwreck) | 59818 / 106440 | **GAP** - purged as "duplicate pair"; re-pick one |
-| USSEP | 266 | in keeps |
-| Bug Fixes SSE | 33261 | in keeps `[verify]` |
-| Scrambled Bugs | 43532 | in keeps `[verify]` |
-| SSE Display Tweaks | 34705 | in keeps - v0.5.16 is 2023-era `[verify]` |
-| Skill Uncapper for AE | 82558 | **GAP** - we skipped 8889 *because* 82558 supersedes it, then never kept 82558 |
+| SSE Engine Fixes | 17230 | **installed** v7.0.20 AE dll + preloader d3dx9_42.dll in game root |
+| Crash logger | 59818 | **installed** CrashLoggerSSE 1.25.0 (updated for 1.7.99 two days ago; Trainwreck stale since 2024) |
+| USSEP | 266 | **installed** 4.3.9 (2026-08-21) |
+| Bug Fixes SSE | 33261 | **installed** v10, address-independent |
+| Scrambled Bugs | 43532 | **installed** v21, address-independent |
+| SSE Display Tweaks | 34705 | **installed** 0.5.16, address-independent - config pass pending (fps cap / borderless decisions) |
+| Skill Uncapper for AE | 82558 | **installed** 2.2.3, address-independent |
 
 ## Tier 1 - frameworks (everything else assumes these)
 
