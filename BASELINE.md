@@ -104,6 +104,12 @@ design, not a compromise.
 | Combat feel | Wildcat, Smilodon (2) | same author, heavy vs light - read + play |
 | Crafting | Ars Metallica, CCOR (2) | CCOR pulls WACCF family, already kept |
 
+**A2. Slots discovered by the overnight keep review** (docs/KEEP_REVIEW.md sec E):
+standing stones (3 rivals kept), religion (Wintersun vs Trua), vampire overhaul
+(4 rivals kept, gates Proteus vampire patches), children policy, dragon package
+layering, stagger (POISE vs combat-feel built-ins), and the CACO seam (CACO
+overlaps iNeed food + CCOR crafting - decide CACO first).
+
 **B. Gap-search slots** (11) - the purge or the original sweep left nothing/one:
 perks (0 of 5 remain), grass (0), cities (0), camera (0), enemies (0), UI skin
 (0), combat framework (0), architecture (0), survival (0 rivals; SMI-SKSE +
