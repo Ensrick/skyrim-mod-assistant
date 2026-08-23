@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "MeshPayload/RequiredHighPolyFeet",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/Shared",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/HEAD/DEFAULT",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/HEAD/SHARED",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/HEAD/SPEC/DEFAULT_VANILLA",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/HANDS/DIFFUSE/CleanHairy",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/HANDS/SHARED",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/BODY/BETTERMALES_UNCUT/NORMAL_SPEC",
+      "destination": "."
+    },
+    {
+      "source": "TexturePayload/BODY/BETTERMALES_UNCUT/DIFFUSE/CleanHairy",
+      "destination": "."
+    }
+  ]
+}

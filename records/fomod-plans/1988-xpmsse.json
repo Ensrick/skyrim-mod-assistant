@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Skeleton Meshes",
+      "destination": "."
+    },
+    {
+      "source": "Creature Meshes",
+      "destination": "."
+    },
+    {
+      "source": "Skeleton Rig/HDT",
+      "destination": "."
+    },
+    {
+      "source": "Creature Rig/HDT",
+      "destination": "."
+    },
+    {
+      "source": "Character Creation/RaceMenu/assets",
+      "destination": "."
+    },
+    {
+      "source": "Character Creation/RaceMenuMCM/assets",
+      "destination": "."
+    },
+    {
+      "source": "Character Creation/RaceMenuMCM/plugin",
+      "destination": "."
+    },
+    {
+      "source": "Animations/Base/Default Vanilla Animations",
+      "destination": "."
+    },
+    {
+      "source": "Character Creation/MCM/assets",
+      "destination": "."
+    },
+    {
+      "source": "Character Creation/Translations/assets",
+      "destination": "."
+    },
+    {
+      "source": "Character Creation/Common/assets",
+      "destination": "."
+    },
+    {
+      "source": "Animations/Base/FNIS Alternate Animations",
+      "destination": "."
+    }
+  ]
+}
