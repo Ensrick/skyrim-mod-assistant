@@ -1,7 +1,7 @@
 # Slot candidates - harvested from the deep-read pass
 
-Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Each line: nexus id - note. These are NOT keeps - they are the live options list for each undecided slot.
-**453 candidate entries across 124 slots.**
+Regenerated automatically; latest harvest through batch 150 (5,681 mods read). Each line: nexus id - note. These are NOT keeps - they are the live options list for each undecided slot.
+**486 candidate entries across 124 slots.**
 
 ## alchemy (2)
 - **52130** - Apothecary - direct CACO rival, sharpens the CACO seam decision
@@ -104,7 +104,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **1539** - Magical College - alive
 - **66666** - Quest Expansion - alive
 
-## combat (13)
+## combat (14)
 - **117052** - BFCO attack behavior framework - MCO rival line
 - **32063** - Enhanced Enemy AI - script-free combat-style AI
 - **17932** - Armor Rating Redux - Morrowind-style AR formula, no-cap fix
@@ -118,6 +118,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **34412** - Deflection - dynamic combat overhaul, composable
 - **117908** - NPCs Learn to Aim - skill-based NPC projectile aim
 - **53050** - Strike Obstruction Systems - block mitigation/timed block
+- **65698** - Combat AI 65698 - SKSE replacement of combat styles
 
 ## combat feel (2)
 - **64741** - Valhalla Combat - alive in undecided
@@ -133,12 +134,15 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **131148** - SkyTactics via SkyPatcher
 - **65625** - Elden Rim Weapon Arts - BFCO branch evidence
 
-## community shaders features (5)
+## community shaders features (8)
 - **112739** - Wetness Effects - official CS feature module
 - **138443** - CS Light 138443 - Light Placer config hub for emissive objects
 - **76776** - SMP Wind - weather-driven wind for FSMP (we run FSMP cloth-only)
 - **179132** - ISL Helper SKSE - dynamic inverse-square falloff conversion (Lux CS lists ISL as req)
 - **174812** - Particle Wind SKSE - engine-level particle wind
+- **158207** - Dynamic Wetness 158207 - SKSE character wetness, pairs with CS Wetness Effects
+- **179371** - HDR - Community Shaders 179371 - native 10-bit HDR output for CS
+- **179824** - Effects 11 - CS feature enabling most ENB PRESETS under Community Shaders (2026-08; may reopen preset options previously ENB-only)
 
 ## creature visuals (1)
 - **23665** - Skeleton-replacer creature family: Trolls 23665, Giants 23889, Bear 16343, Gargoyles 21907, Spiders 24058
@@ -151,7 +155,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **148746** - Inertia floating-gear fix
 - **151590** - Death Drop Overhaul - overlapping pair
 
-## dev tools (11)
+## dev tools (14)
 - **19250** - More Informative Console
 - **17563** - AddItemMenu
 - **32382** - DynDOLOD - required tool
@@ -163,6 +167,9 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **31720** - Root Builder MO2 plugin - manages game-root files (SKSE/preloader class) inside MO2
 - **83757** - KreatE - in-game real-time visual tuning, multi-preset
 - **121578** - BENDr - bake raycast AO/self-shadowing across the whole modlist
+- **158681** - In-Game Patcher - author BOS/KID patches at runtime, no CK/xEdit
+- **124796** - QUI Unofficial Update 124796 - 1.6.1130+ dll for QUI
+- **97595** - EasyNPC ecosystem sighted: Natural Lighting Mugshots 97595 (NPC-overhaul merge tooling)
 
 ## dialogue expansions (5)
 - **168432** - Immersive/Follower Dialogue Expansion family: Thalmor 168432, Falmer Servants 120995, FDE series
@@ -197,10 +204,11 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 ## enchanting (1)
 - **57138** - Thaumaturgy vs kept Summermyst
 
-## encounter zones (3)
+## encounter zones (4)
 - **33487** - Arena - Simonrim EZ overhaul
 - **23609** - MEZF - missing encounter zones fixed; complement/floor for Arena
 - **78847** - Enemies Respect Encounter Zones - EZ-based scaling glue
+- **155430** - Valorbound - SkyPatcher EZ overhaul, covers mod-added zones
 
 ## enemies (10)
 - **14598** - Skyrim Revamped - alive
@@ -221,8 +229,9 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **100985** - Sentinel - modular curated armory distributed via SkyPatcher
 - **71372** - Tamrielic Distribution - modular integration/distribution suite
 
-## equipment dynamics (1)
+## equipment dynamics (2)
 - **21744** - Loot and Degradation - NPC tempering/degradation economy
+- **109899** - Equipment Durability System NG - degradation + tempering widgets
 
 ## exterior lighting (3)
 - **2371** - CLARALUX SSE - 2017 controllable exterior light fixtures, Lux Via/Orbis rival
@@ -259,7 +268,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **157012** - Follower Dialogue Expansion series sighted (Eola 157012)
 - **69622** - Katana - 3 voiced companions, 8k+ lines
 
-## foundation (32)
+## foundation (40)
 - **49616** - USMP - community bugfix compilation, Tier-0 candidate
 - **38438** - SSE FPS Stabilizer
 - **168903** - A-Pose Bug Fix Universal Behavior Runtime - Pandora-era safety net
@@ -292,14 +301,23 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **57816** - FUS RO DONT - PushActorAway crash prevention script tweak
 - **46753** - Andrealletius Exploit Fixes - closes common exploits
 - **134772** - Bound Weapon Fix - dual-cast bound weapon hand bug
+- **117234** - .1130 _ResourcePack fixes - repairs Bethesda resource-pack models (our runtime ships it)
+- **121872** - Dragon Leveled List Fixes - missing fire dragon bug
+- **88219** - Clean Save Auto-reloader - prevents cross-save state corruption (multi-character relevant!)
+- **67925** - Notification Filter - rule-based notification hiding
+- **164370** - MCM super SEEDED 164370 - Infinity-UI MCM navigation + 128-cap override, rival to MCM Unlocked 180186
+- **133286** - Skyrim Misc Bugfix Compilation 133286
+- **177313** - Precision Attack Collision Fixes - Pandora-compatible collision cleanup
+- **186434** - Cached Recursive Directory Walk 186434 - startup-time cache (matters at our mod count)
 
-## frameworks (6)
+## frameworks (7)
 - **106659** - SkyPatcher - Tier-1 candidate, was installed pre-purge
 - **99486** - Container Item Distributor - SPID-for-containers
 - **62423** - Custom Skills Menu - unified CSF tween-menu access
 - **63625** - RMB SPIDified Core - keyword extension for SPID distributions
 - **148718** - Prisma UI - web-standard SKSE UI framework
 - **85252** - Andrealletius Papyrus Functions - req of Dragon War
+- **155120** - Overlay Distribution Framework - RaceMenu overlays to NPCs
 
 ## gameplay (5)
 - **67489** - NPCs use Potions - SKSE potion AI
@@ -323,8 +341,9 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **46217** - Tamrielic Grass - all-biome overhaul; page reqs ENB binary (complex grass) - verify CS grass-lighting path before use
 - **139896** - Wildlands Renewal - built against CS Grass Lighting; CS-native grass candidate
 
-## gray cowl support (1)
+## gray cowl support (2)
 - **19724** - Gray Cowl Addons+Patches 19724 and Alikr Flora Overhaul 10141 - support stack for the kept Gray Cowl
+- **89977** - Betalille Hammerfell Quests Bundle - 31 Alikr quests layered onto the kept Gray Cowl
 
 ## guard dialogue (1)
 - **20791** - GDO Redux - NFF ships patches for it
@@ -366,7 +385,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **24859** - Realistic Room Rental Enhanced - inn overhaul + rental system
 - **97542** - Candlehearth - extended rentals + safe storage
 
-## interior lighting (7)
+## interior lighting (8)
 - **43158** - Lux - alive in undecided
 - **63588** - Lux Via
 - **30817** - Lanterns of Skyrim II - exterior lighting adjacency
@@ -374,10 +393,12 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **7535** - Dynamic Seriously Dark Dungeons - darkness layer over any lighting choice
 - **46383** - Ambiance - vanilla-plus ambient recalibration, stealth-balanced
 - **160748** - Modern Lighting Overhaul 2 - CS-required SKSE light-source upgrade (2026-08); composes rather than competes
+- **186432** - Native Mesh Light Flicker Fix 186432 - engine light-slot bottleneck fix (2026-08)
 
-## khajiit flavor (2)
+## khajiit flavor (3)
 - **441** - Khajiit Speak - full dialogue overhaul to Khajiit patterns (fits the Khajiit-protagonist idea)
 - **18441** - Khajiit Speak Extended 18441 - extends 441 to content mods
+- **37197** - BA Khajiit Speak Redux 37197 - ground-up reboot of Khajiit Speak (vs original 441)
 
 ## landscape (1)
 - **3212** - Great Forest of Whiterun Hold - tundra afforestation, big conflict surface
@@ -433,7 +454,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 ## movement values (1)
 - **15649** - Immersive Movement vs kept-adjacent Mortal Enemies - overlapping pair
 
-## new lands (7)
+## new lands (8)
 - **31472** - Land of Vominheim - DLC-sized, larger than Solstheim
 - **4016** - Nyhus - JvD border trilogy, compatible with big land mods
 - **4018** - JvD border trilogy: Nyhus 4016 + Folkstead/Hammerfell 4018
@@ -441,6 +462,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **79828** - Warden of the Coast - ME-style loyalty RPG island; The Shire 18903 also sighted
 - **72004** - Summerset Isle - DLC-size Altmer expansion; Skygerfall 29416 (Daggerfall MQ) also sighted
 - **133579** - Olenveld - small-DLC island w/ recapture system
+- **114518** - Journey to Baan Malur - NW Morrowind region, voiced
 
 ## npc ai (2)
 - **21654** - AI Overhaul
@@ -449,7 +471,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 ## npc density (1)
 - **2005** - Populated Cities Towns Villages
 
-## npc overhauls (8)
+## npc overhauls (9)
 - **42349** - Northbourne Rift - per-NPC facegen conflict class
 - **98103** - Children of the Hist - Argonians
 - **52313** - EasyNPC - the merge tool for this whole class
@@ -458,6 +480,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **35404** - Northbourne NPCs (per-hold high-poly redesign family)
 - **73153** - Tamrielic Names - names for anonymous NPCs via NND
 - **35352** - Jampion NPCs - 500+ males, vanilla-true
+- **122164** - Children of... per-race named-NPC series: Green/Bosmer 122164, Ash/Dunmer 122165, First/Altmer 122167
 
 ## occlusion/perf (5)
 - **14084** - Skyrim Project Optimization - needs lighting-slot patch alignment
@@ -485,8 +508,9 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 ## physics (1)
 - **101564** - Flex SMP - faster/smarter SMP rival to installed FSMP, in-game config
 
-## qol (1)
+## qol (2)
 - **37091** - Smart Harvest NG - rules-based autoloot
+- **108262** - Quick Loot AE 108262 - QuickLoot RE dll updated for 1.7.xx (our runtime); the loot-menu slot answer, updated today
 
 ## quest expansions (5)
 - **114054** - Infiltration Quest Expansion - vanilla-quest expansion family
@@ -495,7 +519,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **6126** - Blood on the Ice Redux - catch the Butcher early
 - **33461** - Save the Dark Brotherhood - spare the DB10 victims
 
-## quest packages (14)
+## quest packages (15)
 - **15996** - Project AHO
 - **6180** - Undeath
 - **4155** - Clockwork
@@ -510,6 +534,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **39634** - Identity Crisis - Sheogorath asylum quest w/ playable ending
 - **33146** - GLEN-MORIL + EN translation 33146 + CSF witch-hunter tree 45120 - 4th Vicn title
 - **57966** - Vicn delayed-start trio complete: VIGILANT 57961, DAC0DA 136031, UNSLAAD 57966 - the exact late-game gating plan
+- **138716** - Death Consumes All Revamped 138716 - the live version (its (OLD) page was skipped)
 
 ## quest timing (1)
 - **2399** - Dawnguard Delayed; pairs with Timing is Everything class
@@ -555,9 +580,11 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **72653** - POISE - Stagger Overhaul SKSE, fighting-game poise system
 - **74032** - Poisebreaker - POISE addon
 
-## standing stones (2)
+## standing stones (4)
 - **33411** - Mundus - 4th rival (Simonrim)
 - **64969** - Ryns Standing Stones - visual layer, compatible with gameplay overhauls
+- **59927** - Menhir - standing stones overhaul w/ new models (the NEW-slot rival to Andromeda/Sacred Stones)
+- **4688** - SSE Standing Stones Overhaul 4688 - vanilla-faithful balance pole
 
 ## stealth (3)
 - **76086** - Book of Shadows - behavior-based sneak additions
@@ -632,9 +659,10 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **45277** - Equippable Underwear for NPCs - CBBE+DAV based; the pre-existing rival to our Underwear.dll + SPID home build
 - **12250** - Comprehensive Sleeves Pack - warm sleeved replacers for all vanilla clothes/armors; fits the period-layers direction
 
-## vampire (2)
+## vampire (3)
 - **96817** - DVA - staged feral vampire appearance
 - **89445** - Better Vampire Lords 89445 - VL perk tree over Better Vampires 9.1
+- **58621** - Molags Will - CSF vampirism skill tree
 
 ## vampire overhaul (3)
 - **1925** - Better Vampires - 5th rival
@@ -648,10 +676,13 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 ## vigilant equipment (1)
 - **45735** - Vigilant Armors and Weapons Retexture SE - exactly the fix-ugly-equipment path the user wants
 
-## vigilant support (3)
+## vigilant support (6)
 - **57961** - VIGILANT Delayed Start - gates the questline behind conditions; exactly the late-game-content plan
 - **70958** - Vicn gear-fix arsenal: VIGILANT Xtudo patch hub 70958, Vigilant retexture 45735, Unslaad retexture 68526, footprints 60239, Obsidian integration 24357
 - **82040** - Vigilant Molag Bal dragon retexture 82040
+- **102544** - VIGILANT - Tweaks 102544 - modular content edits
+- **103222** - VIGILANT NPCs Refined 103222 - 27 NPC visual overhaul
+- **69400** - VIGILANT Adjustments and Addons 69400 - balance/reward pass
 
 ## water (3)
 - **2182** - Realistic Water Two - alive in undecided, not purged after all
@@ -686,7 +717,7 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **65628** - Conquest of Skyrim - player faction/government
 - **32997** - Faction Warfare - dynamic faction war
 
-## worldspace support (13)
+## worldspace support (15)
 - **11069** - Bruma-Moonpath Synergy Patch - moves Moonpath caravan to County Bruma (both kept)
 - **69323** - DynDOLOD TexGen Fixes covering Beyond Reach/Gray Cowl LOD generation
 - **59459** - Wyrmstooth CC ingredient patches (Rare Curios/The Cause)
@@ -700,6 +731,8 @@ Regenerated automatically; latest harvest through batch 92 (3,361 mods read). Ea
 - **55190** - Lawbringer expansions: Wyrmstooth 55190, Solstheim 57243 (claimable holdings)
 - **37492** - Moonpath stuck-combat-music fix 37492
 - **56542** - Beyond Reach Dialogue Conditions Fix 56542 - fixes NPCs refusing to talk (directly answers the users BR complaint); patch pack 42752 alongside
+- **67765** - Beyond Reach Unofficial Fixes Hub 67765 - community crash/bug fixes (BR complaint 1)
+- **91305** - Lawless Bruma 91305 - extends the Lawless bandit systems into Bruma
 
 ## worldspaces future (1)
 - **28120** - Midwood Isle - earlier flagged candidate, alive
