@@ -8,6 +8,8 @@ transaction journal and visible in one file.
   py -3 audit/install_mod.py 12604 "SkyUI"
   py -3 audit/install_mod.py 12604 "SkyUI" --prefer "2K"     # pick a file variant
   py -3 audit/install_mod.py --list                          # show the ledger
+  py -3 audit/install_mod.py --sort                          # LOOT sort, then re-enable
+  py -3 audit/install_mod.py 27962 "Skyrim Unbound Reborn" --plan records/fomod-plans/x.json
 
 Order matters after a LOOT sort: LootCLI rewrites plugins.txt and drops the
 enable markers on managed plugins, so plugin-enable has to run afterwards.
@@ -55,13 +57,16 @@ def plugins_of(mod_name):
                   if f.lower().endswith(('.esp', '.esm', '.esl'))) if os.path.isdir(d) else []
 
 
-def install(mid, mod_name, prefer=None):
+def install(mid, mod_name, prefer=None, plan=None):
     import modasset as M
     f = M.pick_file(mid, prefer=prefer)
     archive = M.download(mid, f)
     sha = hashlib.sha256(open(archive, 'rb').read()).hexdigest()
 
-    res = mo2('mod-install', archive, mod_name, '--enable')
+    args = ['mod-install', archive, mod_name, '--enable']
+    if plan:
+        args += ['--install-plan', os.path.abspath(plan)]
+    res = mo2(*args)
     if not res.get('ok'):
         print('install failed:', res); return 1
     print(f"installed {mod_name}  transaction {res.get('transaction')}")
@@ -82,6 +87,7 @@ def install(mid, mod_name, prefer=None):
         'installedUtc': datetime.datetime.now(datetime.timezone.utc)
                                  .strftime('%Y-%m-%dT%H:%M:%SZ'),
         'transaction': res.get('transaction'),
+        **({'fomodPlan': plan} if plan else {}),
     })
     save(led)
     print(f'ledger now holds {len(led["mods"])} mods -> {LEDGER}')
@@ -107,6 +113,38 @@ def verify():
     return 1 if bad else 0
 
 
+def sort_order():
+    """Sort with LootCLI through MO2's VFS, then restore enable markers.
+
+    LootCLI rewrites plugins.txt and drops the '*' on managed plugins, so the
+    re-enable is not optional housekeeping - skip it and the mods you just
+    installed are silently inactive."""
+    plugins = os.path.join(INSTANCE, 'profiles', PROFILE, 'plugins.txt')
+    out = os.path.join(INSTANCE, 'loot-report.json')
+    game = r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
+    # `--` does not survive `pwsh -File`; PowerShell then tries to bind --game
+    # as a parameter name. Pass the tool arguments as an explicit array instead.
+    def q(s):
+        return "'" + str(s).replace("'", "''") + "'"
+    targs = ','.join(q(x) for x in ['--game', 'SkyrimSE', '--gamePath', game,
+                                    '--pluginListPath', plugins, '--out', out])
+    script = (f"& {q(os.path.join(REPO, 'run-through-mo2.ps1'))} -Tool loot "
+              f"-Profile {q(PROFILE)} -Instance {q(INSTANCE)} -TimeoutSeconds 900 "
+              f"-ToolArguments @({targs})")
+    p = subprocess.run(['pwsh', '-NoProfile', '-Command', script],
+                       capture_output=True, text=True, timeout=1200, cwd=REPO)
+    print('loot exit', p.returncode)
+    if p.returncode != 0:
+        print((p.stdout or p.stderr)[-500:])
+        return 1
+    led = load()
+    for m in led['mods']:
+        for pl in m['plugins']:
+            mo2('plugin-enable', pl)
+    print(f'sorted, then re-enabled plugins for {len(led["mods"])} mods')
+    return verify()
+
+
 def show():
     led = load()
     print(f"{len(led['mods'])} installed, instance {led['instance']}\n")
@@ -122,8 +160,13 @@ if __name__ == '__main__':
         show()
     elif a[0] == '--verify':
         sys.exit(verify())
+    elif a[0] == '--sort':
+        sys.exit(sort_order())
     else:
         prefer = None
+        plan = None
         if '--prefer' in a:
             i = a.index('--prefer'); prefer = a[i + 1]; a = a[:i] + a[i + 2:]
-        sys.exit(install(int(a[0]), a[1], prefer))
+        if '--plan' in a:
+            i = a.index('--plan'); plan = a[i + 1]; a = a[:i] + a[i + 2:]
+        sys.exit(install(int(a[0]), a[1], prefer, plan))

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "auditedAt": "2026-07-31",
+  "auditedAt": "2026-08-12",
   "mods": [
     {
       "name": "Lost LongSwords",
@@ -27,6 +27,19 @@
       "modification": "permission required",
       "auditResult": "not used: one-handed ESP remains form 40 and all NIF files remain Skyrim LE stream version 83",
       "duplicateDownload": "Lost LongSwords SSE-126568-1-1-1723686586(1).rar is byte-identical and was left untouched."
+    },
+    {
+      "name": "Personal Music Framework",
+      "author": "Clofas",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 134467,
+      "nexusFileId": 742217,
+      "sourceFile": "Personal Music Framework - FOMOD-134467-1-1-1776279481.7z",
+      "sourceSha256": "17BA4EFC93A16813DAB5CA4BAF98682D38353E90BCC58EF0B75ADF089F102ECF",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "bug fixes and improvements allowed with credit",
+      "localPolicy": "official archive retained only in ignored work storage",
+      "publicListPolicy": "reference Nexus mod 134467 file 742217; never bundle the archive"
     }
   ]
 }
