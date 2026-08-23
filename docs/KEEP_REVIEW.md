@@ -35,21 +35,24 @@ tables follow it. Nothing was decided for you.
 
 ### C. Genuinely broken pairs found (small, fix now)
 
-- **The Night Mother Revoiced (92873)** requires "New Night Mother" - skipped.
-  Keep both or neither.
+- **The Night Mother Revoiced (92873)** - user ruled DROP BOTH 2026-08-23;
+  revoice skip queued, base stays skipped.
 - **Combat Music Fix NG Updated (110459)** - VERIFIED overnight: its MAIN file
   is the full NG rebuild, standalone; the listed requirement is legacy credit.
   Not an orphan.
-- **FISSES AE patch (107513)** without FISSES itself - patch to nothing.
-- **LOD Grass ini files (143386)** requires a specific DrJacopo grass not kept.
+- **FISSES AE patch (107513)** - HELD, not skipped: FISSES is undecided, not
+  rejected. Decide with the settings-export slot. (User rule 2026-08-23:
+  undecided base does not orphan a patch.)
+- **LOD Grass ini files (143386)** - HELD for the same reason; ties to the
+  grass slot decision.
 - **Vivid Landscapes CPO Tundra (81816)** requires the old Parallax Occlusion
   Mapping mod; under Community Shaders that role moved into CS features -
   verify before keeping.
 
 ### D. Succession pairs - keep the successor, drop the original (confirm)
 
-- NIF Preview 69813 -> **NIF Preview Updated 137741**
-- Player Rotation in ShowRaceMenu 36095 -> **ShowRaceMenu NG 173086**
+- NIF Preview 69813 -> **NIF Preview Updated 137741** - APPLIED (mechanical rule), old skipped 2026-08-23
+- Player Rotation in ShowRaceMenu 36095 -> **ShowRaceMenu NG 173086** - APPLIED (mechanical rule), old skipped 2026-08-23
 - Horse Save Load Fix 132110 vs **Saving on Steed SKSE 173629** - different
   authors, page did not state supersession; treat as a rival pair to read, not
   a settled succession
