@@ -432,6 +432,21 @@
       "transaction": "20260823T060151082Z-62354416ac2a"
     },
     {
+      "modId": 30379,
+      "modName": "SKSE64 Scripts",
+      "nexusName": "Skyrim Script Extender (SKSE64) Steam",
+      "version": "2.3.0",
+      "fileId": 792372,
+      "fileName": "Skyrim Script Extender (SKSE64) Steam 30379 2.3.0 2026-08-20T15-09Z pQ0AZ3hhL.7z",
+      "sizeMb": 0.91,
+      "sha256": "03dba906bf4c47c1b9c6cf9a5de730e04eaf3997ca64842240590e602a0ec968",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T20:41:51Z",
+      "transaction": "20260823T204151650Z-d5530cdb15e6",
+      "fomodPlan": "records/fomod-plans/30379-skse-scripts.json"
+    },
+    {
       "modId": 27962,
       "modName": "Skyrim Unbound Reborn",
       "nexusName": "Skyrim Unbound Reborn",
