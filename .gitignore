@@ -27,6 +27,8 @@
 !/records/
 !/records/restricted-mods.json
 !/records/installed-mods.json
+!/records/fomod-plans/
+!/records/fomod-plans/*.json
 
 !/collections/
 !/collections/*.md

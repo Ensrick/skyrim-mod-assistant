@@ -4,6 +4,65 @@
   "profile": "Default",
   "mods": [
     {
+      "modId": 32444,
+      "modName": "Address Library",
+      "nexusName": "Address Library All in One (1.7.99.0) v12",
+      "version": "12",
+      "fileId": 792404,
+      "fileName": "Address Library All in One (1.7.99.0) v12 32444 12 2026-08-20T16-14Z 4t2yDcMnG.zip",
+      "sizeMb": 5.69,
+      "sha256": "628434e6ecbf18ffeffd1d58106b3d8ea25e6991e4f18130824025c93dc64076",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T03:54:30Z",
+      "transaction": "20260823T035430739Z-1f3efe18d5fe"
+    },
+    {
+      "modId": 76649,
+      "modName": "ConsoleUtilSSE NG",
+      "nexusName": "ConsoleUtilSSE NG",
+      "version": "1.6.1",
+      "fileId": 793316,
+      "fileName": "ConsoleUtilSSE NG 76649 1.6.1 2026-08-22T12-59Z Yj6wQRl9M.zip",
+      "sizeMb": 12.31,
+      "sha256": "df531d4f1061565b1b4225f4ac88473f2afc97d1f6ab6df6e9f1f7509c43d966",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T03:54:40Z",
+      "transaction": "20260823T035440489Z-a373f32f6e2d"
+    },
+    {
+      "modId": 13048,
+      "modName": "PapyrusUtil SE",
+      "nexusName": "PapyrusUtil AE SE - Scripting Utility Functions",
+      "version": "4.6",
+      "fileId": 462773,
+      "fileName": "PapyrusUtil AE SE - Scripting Utility Functions-13048-4-6-1705639805.zip",
+      "sizeMb": 0.55,
+      "sha256": "441b3bdaf8215ac76a57a292a9ad2c3e21597eab40ba4aa39f81098494ef1e3d",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T03:54:31Z",
+      "transaction": "20260823T035431410Z-7ecae05f6ad5"
+    },
+    {
+      "modId": 27962,
+      "modName": "Skyrim Unbound Reborn",
+      "nexusName": "Skyrim Unbound Reborn",
+      "version": "3.0.17",
+      "fileId": 773521,
+      "fileName": "27962-773521.7z",
+      "sizeMb": 8.81,
+      "sha256": "45e39918316ec96feb3cb7a215a5f373323ed1e0abb9072de88a6a0986a195ba",
+      "plugins": [
+        "Skyrim Unbound.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T03:55:58Z",
+      "transaction": "20260823T035558945Z-9c0280ef14c9",
+      "fomodPlan": "records/fomod-plans/27962-skyrim-unbound-reborn.json"
+    },
+    {
       "modId": 12604,
       "modName": "SkyUI",
       "nexusName": "SkyUI",
