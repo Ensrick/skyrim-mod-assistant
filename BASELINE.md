@@ -52,7 +52,7 @@ PapyrusUtil, po3 Papyrus Extender, po3 Tweaks, ConsoleUtilSSE NG.
 | mod | id | status |
 |---|---|---|
 | MCM Helper | 53000 | in keeps |
-| SPID | 36869 | in keeps |
+| SPID | 36869 | **installed** (AE dll, address-independent) |
 | KID | 55728 | in keeps |
 | Base Object Swapper | 60805 | in keeps |
 | Open Animation Replacer | 92109 | in keeps |
@@ -86,6 +86,7 @@ design, not a compromise.
 | Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |
 | Follower framework | NFF | forced by Proteus; **AFT (6656) is the one surviving loser - confirm skip** |
 | Killmoves | VioLens + Kaputt | 3 challengers in additive pool to check against the pair, low priority |
+| Underlayers | Underwear.dll 1.3 as engine, pool overridden to 10 vanilla poor/common garments (Roughspun, Belted Tunic, Farm/Miner sets, Ragged Robes) + our Period Underlayers SPID config (bandits Roughspun, jarls/merchants Fine Clothes) | **installed**; skimpy default meshes inert, TNG patch unnecessary (full-coverage); v1.3 is a "test version for 1.7.99" - watch first session; expand tiers with modded garment packs later |
 
 ## Tier 4 - the actual remaining work: 20 slot decisions
 
