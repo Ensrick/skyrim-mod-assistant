@@ -4,6 +4,25 @@ Generated overnight 2026-08-23 from 1,037 keeps (installed and settled excluded)
 Each group below is ONE decision. This summary is the read-first layer; full
 tables follow it. Nothing was decided for you.
 
+## Session log - 2026-08-23 afternoon walk-through
+
+- **A resolved**: all 6 fallout skips confirmed and applied (AFT, EFF, old
+  HDT-SMP, Downgrade Patcher, BnP skin, Tempered Skins).
+- **C**: Night Mother pair - drop both, applied. FISSES patch + LOD-grass ini
+  reclassified HELD (undecided base is not rejected - user rule).
+- **D**: successions applied mechanically (NIF Preview Updated, ShowRaceMenu
+  NG); Horse Save Load vs Saving on Steed remains a rival pair to read.
+- **DEFERRED by user, revisit when ready** (no action queued, briefs stand):
+  ecosystem direction (Enairim-lean in keeps vs Simonrim pivot), survival
+  stack (iNeed+Frostfall kept vs SunHelm), perks slot, INIGO vs Convenient
+  Horses (user will read the pages), Pelts o' Plenty fix (tied to survival),
+  and all E-slots (stones, religion, vampire 4-way, children, dragons,
+  stagger, CACO seam).
+- Ground truth pulled this session: iNeed/CACO/Frostfall/Wintersun/INIGO/CH/
+  Apocalypse/Odin/Andromeda/Evenstar/Freyr/Sacrosanct+3/POISE/Wildcat and the
+  dragon four are all KEEPS; Adamant/Vokrii/Ordinator/Mysticism/Apothecary/
+  SunHelm/Mundus are NOT kept (undecided candidates only).
+
 ## Read this first - what actually needs your call
 
 ### A. Fallout from slots you already decided - RESOLVED 2026-08-23 (all six confirmed and queued)
