@@ -1,0 +1,132 @@
+# BASELINE - the build manifest
+
+2026-08-23. This document is the modlist, built top-down from requirements.
+The keep list is not a to-do queue: it is an **approved-parts inventory** that
+gets consulted when a line in this manifest wants filling. Anything in keeps
+that no line ever pulls simply never gets installed, and that is fine.
+
+**The arithmetic that dissolves the overwhelm** (1,071 keeps as of today):
+
+| bucket | count | decisions required |
+|---|---|---|
+| already installed | 8 | 0 |
+| claimed by decided slots | 10 | 0 |
+| rivals awaiting a slot decision | 33 | **9 slot picks** |
+| attached (follow whichever rival wins) | 12 | 0 |
+| loser of a decided slot (AFT) | 1 | confirm skip |
+| additive pool - textures, fixes, QoL, quests | **1,007** | **0** |
+
+Nothing else "still needs review". The unreviewed Nexus catalogue is consulted
+only per-slot during gap searches, never wholesale - that lesson is paid for.
+
+The August purge deleted rivals *and* some decided winners (CBBE's base mod,
+Pandora, the male skin, the crash logger). Those show below as **GAP**: decided
+on paper, absent from keeps, re-acquire at install time. This is why the build
+runs from this manifest downward, not from the keep list upward.
+
+`[verify]` = old SKSE DLL; check `SKSEPlugin_Version` export at install (the
+address-independence test). Never pre-filter on it - all 7 DLLs installed so
+far passed despite predating 1.7.99.
+
+---
+
+## Tier 0 - engine floor (install before first real session)
+
+| mod | id | status |
+|---|---|---|
+| SKSE64 2.3.0 | 30379 | **installed** (game root, matches 1.7.99) |
+| Address Library v12 | 32444 | **installed** |
+| SSE Engine Fixes | 17230 | in keeps - install next `[verify]` |
+| Crash logger (CrashLoggerSSE or Trainwreck) | 59818 / 106440 | **GAP** - purged as "duplicate pair"; re-pick one |
+| USSEP | 266 | in keeps |
+| Bug Fixes SSE | 33261 | in keeps `[verify]` |
+| Scrambled Bugs | 43532 | in keeps `[verify]` |
+| SSE Display Tweaks | 34705 | in keeps - v0.5.16 is 2023-era `[verify]` |
+| Skill Uncapper for AE | 82558 | **GAP** - we skipped 8889 *because* 82558 supersedes it, then never kept 82558 |
+
+## Tier 1 - frameworks (everything else assumes these)
+
+Installed: SkyUI, RaceMenu (`bExternalHeads=1` set), UIExtensions, JContainers,
+PapyrusUtil, po3 Papyrus Extender, po3 Tweaks, ConsoleUtilSSE NG.
+
+| mod | id | status |
+|---|---|---|
+| MCM Helper | 53000 | in keeps |
+| SPID | 36869 | in keeps |
+| KID | 55728 | in keeps |
+| Base Object Swapper | 60805 | in keeps |
+| Open Animation Replacer | 92109 | in keeps |
+| Pandora Behaviour Engine | 133232 | **GAP** - decided winner, purged from keeps |
+| XPMSSE | 1988 | in keeps (skeleton; Skeleton Replacer HD 52845 layers on top rather than replacing the decision) |
+| FSMP | 57339 | in keeps - cloth-only policy, no body jiggle |
+| BodySlide and Outfit Studio | 201 | in keeps |
+| Crafting Recipe Distributor | 52276 | in keeps |
+
+## Tier 2 - identity systems (the premise) - all installed
+
+Proteus 3.4.0 + Nether's Follower Framework (its hard requirement) + Skyrim
+Unbound Reborn. Operating policy from the leak analysis: questlines are
+**assigned to characters, not isolated** - quest state is save-global (DB is 1%
+faction-gated, TG 6%), so one questline per character and content mods are
+preferred quarantined (Vigilant: 3 NPCs in vanilla space out of 1,755). Main
+quest deferred = no character reads as Dragonborn until late game, which is the
+design, not a compromise.
+
+## Tier 3 - decided content slots
+
+| slot | decision | notes |
+|---|---|---|
+| Renderer | Community Shaders + the 7 non-bundled features | ENB excluded; core bundles Sky Sync/LLF/grass/SSS |
+| Worldspaces | Bruma, Wyrmstooth, Beyond Reach, Moonpath, Gray Cowl 10th (141327), Vigilant (11849+11894 EN) | Falskaar and its 4 support mods skipped, evidence on file |
+| Female body | CBBE Curvy preset, no jiggle | **GAP: CBBE base (198) purged** - re-acquire with BodySlide |
+| Female skin | Reverie (64314) | in keeps |
+| Male body | HIMBO (46311) | in keeps |
+| Male skin | SkySight Skins | **GAP** - purged |
+| Animation | Pandora | GAP above |
+| Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |
+| Follower framework | NFF | forced by Proteus; **AFT (6656) is the one surviving loser - confirm skip** |
+| Killmoves | VioLens + Kaputt | 3 challengers in additive pool to check against the pair, low priority |
+
+## Tier 4 - the actual remaining work: 20 slot decisions
+
+**A. Compare what's already in keeps** (9 slots, 33 mods):
+
+| slot | candidates surviving in keeps | how it gets decided |
+|---|---|---|
+| Weather | Vivid, Obsidian, Cathedral, Dolomite, Azurite, Weather of World (6) | in-game A/B - `bat` bridge can force each mod's weathers by FormID |
+| Landscape tex | Majestic Mtns, Cathedral Landscapes, aMidianBorn B&L, Majestic Landscapes, Gecko's 4K, RUSTIC MOUNTAINS (6) | file-level: coverage overlap + the audit tooling; mountains vs full-landscape are partly complementary |
+| Interior lighting | ELFX, RLO, Relighting Skyrim, Luminosity (4) | **decide first - gates every city/patch choice.** Lux was purged; decide whether it re-enters via gap search |
+| Water | Cathedral Water, Simplicity of Sea, A Water Made For CS (3) | last two are CS-era; RWT purged |
+| Horses | Convenient Horses, Simple Horse, Simplest Horses (3) | feature-set read; CH vs INIGO conflict already on file |
+| Skeleton | XPMSSE + Skeleton Replacer HD (2) | layering question, not rivalry |
+| Trees | SFO, Happy Little Trees (2) | NotWL purged despite its Wyrmstooth patch - candidate to re-enter |
+| Combat feel | Wildcat, Smilodon (2) | same author, heavy vs light - read + play |
+| Crafting | Ars Metallica, CCOR (2) | CCOR pulls WACCF family, already kept |
+
+**B. Gap-search slots** (11) - the purge or the original sweep left nothing/one:
+perks (0 of 5 remain), grass (0), cities (0), camera (0), enemies (0), UI skin
+(0), combat framework (0), architecture (0), survival (0 rivals; SMI-SKSE +
+Starfrost + Campfire recommendation stands in `SURVIVAL_COMPARISON.md`,
+Campfire kept), magic (Odin survives, Mysticism purged), sound (ISC survives,
+AOS purged - both-with-patch was the note), college (JK's survives).
+
+For each: search Nexus fresh, compare with the audit tooling, decide, install.
+This is the "we might have to search" half - correct, and bounded to 11 slots.
+
+## Decision order
+
+1. **Interior lighting** - most patch-heavy slot, gates cities
+2. Weather - in-game eyes, A/B protocol via console bridge
+3. Landscape / trees / grass cluster - then DynDOLOD once, not per-change
+4. Water
+5. Gameplay cluster: perks, magic, combat framework + feel, survival confirm
+6. Cities, per city, after lighting
+7. Small slots: crafting, horses, college, camera, sound, UI skin, enemies, killmove challengers
+
+## Standing tools
+
+Install: `py -3 audit/install_mod.py <id> "<name>" [--prefer rx] [--plan file]`
+then `--sort` (LOOT + re-enable), `--verify`, ledger in
+`records/installed-mods.json`. Comparison: `audit/inspect_mod.py`,
+`worldspace.py`, `ecosystem.py`, `integration.py`, `playfeel.py`. In-game:
+`audit/console.py` writes `claude.txt`, run with `bat claude`.
