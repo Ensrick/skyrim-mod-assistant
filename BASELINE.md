@@ -117,8 +117,11 @@ Starfrost + Campfire recommendation stands in `SURVIVAL_COMPARISON.md`,
 Campfire kept), magic (Odin survives, Mysticism purged), sound (ISC survives,
 AOS purged - both-with-patch was the note), college (JK's survives).
 
-For each: search Nexus fresh, compare with the audit tooling, decide, install.
-This is the "we might have to search" half - correct, and bounded to 11 slots.
+OVERNIGHT UPDATE: the gap-search half is largely done - the candidates were in
+the undecided pool all along. docs/SLOT_CANDIDATES.md maps ~30 slots to their
+harvested candidates (Lux, Mysticism, Folkvangr, NotWL, Skyland, NORDIC UI,
+Valhalla, SunHelm, Vokrii/Adamant/Ordinator all alive there). Remaining work
+per slot is comparison, not search.
 
 ## Decision order
 
