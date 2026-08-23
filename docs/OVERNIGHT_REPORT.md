@@ -103,9 +103,11 @@ verdicts reversed. One lost-update race on the relay queue was detected
 
 ## 5. Queued for the curator (applies when Firefox is up)
 
-1,068 total: 1,011 skips, 35 keeps (every installed mod is now curated as a
-keep, including the race-lost five), 9 unreviewed restores. Applies when
-Firefox opens.
+**1,848 total: 1,803 skips** (996 rule-sweep + 761 deep-read + earlier
+misc), **36 keeps** (every installed mod is curated as a keep, including the
+race-lost five), 9 unreviewed restores. Verified after the final batch: no
+duplicate ids, every operative deep-read skip present. Applies when Firefox
+opens.
 
 ## 6. Follow-ups surfaced by the requirement cross-check
 
