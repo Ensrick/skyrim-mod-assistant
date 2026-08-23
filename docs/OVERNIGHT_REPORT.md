@@ -58,7 +58,7 @@ evidence in `records/overnight-audit-2026-08-23.jsonl`:
 | VR-only | 29 |
 | joke/meme | 7 + 1 parody |
 
-**Deep-read pass (still running): 5,681 survivors read individually so far, 84
+**Deep-read pass (still running): 7,681 survivors read individually so far, 121
 skips** - new skip classes found while you slept: author-marked
 OUTDATED/deprecated/superseded pages, patches whose base mod was deleted from
 Nexus, wrong-runtime backports (1.5.97-only), guide/modlist pages that aren't

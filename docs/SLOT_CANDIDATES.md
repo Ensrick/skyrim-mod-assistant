@@ -1,6 +1,6 @@
 # Slot candidates - harvested from the deep-read pass
 
-Regenerated automatically; latest harvest through batch 150 (5,681 mods read). Each line: nexus id - note. These are NOT keeps - they are the live options list for each undecided slot.
+Regenerated automatically; latest harvest through batch 200 (7,681 mods read). Each line: nexus id - note. These are NOT keeps - they are the live options list for each undecided slot.
 **486 candidate entries across 124 slots.**
 
 ## alchemy (2)
