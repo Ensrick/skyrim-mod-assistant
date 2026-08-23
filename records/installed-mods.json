@@ -50,6 +50,39 @@
       "fomodPlan": "records/fomod-plans/10917-bs-assets.json"
     },
     {
+      "modId": 10917,
+      "modName": "Beyond Skyrim - Bruma",
+      "nexusName": "Beyond Skyrim Bruma",
+      "version": "1.6.4",
+      "fileId": 775180,
+      "fileName": "Beyond Skyrim Bruma 10917 1.6.4 2026-07-12T15-23Z IoFlhf0Ez.7z",
+      "sizeMb": 2535.74,
+      "sha256": "006ef609f37dc172dbcbf82532ceeac5122a6bb3ba7368ec5f68d1b759538736",
+      "plugins": [
+        "BSHeartland.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T20:27:17Z",
+      "transaction": "20260823T202512580Z-077e250cb046",
+      "fomodPlan": "records/fomod-plans/10917-bs-bruma.json"
+    },
+    {
+      "modId": 10917,
+      "modName": "Beyond Skyrim - DLC Integration Patch",
+      "nexusName": "Beyond Skyrim DLC Integration Patch",
+      "version": "1.6.4",
+      "fileId": 775106,
+      "fileName": "Beyond Skyrim DLC Integration Patch 10917 1.6.4 2026-07-12T13-30Z 4t2yDcVoT.7z",
+      "sizeMb": 2.06,
+      "sha256": "f3858216e3c1109bee0b1d285061364a87dfa66c50f4e4a1e8b4479919a0b920",
+      "plugins": [
+        "BS_DLC_patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T20:27:34Z",
+      "transaction": "20260823T202734300Z-1e497a22550a"
+    },
+    {
       "modId": 201,
       "modName": "BodySlide and Outfit Studio",
       "nexusName": "BodySlide and Outfit Studio - v5.8.2",
