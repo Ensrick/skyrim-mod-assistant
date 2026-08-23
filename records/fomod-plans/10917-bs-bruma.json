@@ -1,0 +1,17 @@
+{
+ "schemaVersion": 1,
+ "mappings": [
+  {
+   "source": "BSHeartland.esm",
+   "destination": "BSHeartland.esm"
+  },
+  {
+   "source": "BSHeartland.bsa",
+   "destination": "BSHeartland.bsa"
+  },
+  {
+   "source": "BSHeartland - Textures.bsa",
+   "destination": "BSHeartland - Textures.bsa"
+  }
+ ]
+}
