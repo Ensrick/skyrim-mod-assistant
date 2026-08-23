@@ -33,6 +33,23 @@
       "fomodPlan": "records/fomod-plans/60805-bos.json"
     },
     {
+      "modId": 10917,
+      "modName": "Beyond Skyrim - Assets",
+      "nexusName": "Beyond Skyrim Assets",
+      "version": "1.6.4",
+      "fileId": 775191,
+      "fileName": "Beyond Skyrim Assets 10917 1.6.4 2026-07-12T15-59Z UK35XnzVq.7z",
+      "sizeMb": 632.19,
+      "sha256": "f0f5b88d3a8ead85561a26f12fd3fa8ffd7454939fb7e6f41df586482486c198",
+      "plugins": [
+        "BSAssets.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T20:17:23Z",
+      "transaction": "20260823T201650690Z-3357b31008fb",
+      "fomodPlan": "records/fomod-plans/10917-bs-assets.json"
+    },
+    {
       "modId": 201,
       "modName": "BodySlide and Outfit Studio",
       "nexusName": "BodySlide and Outfit Studio - v5.8.2",
