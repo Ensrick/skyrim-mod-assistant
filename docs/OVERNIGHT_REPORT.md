@@ -78,3 +78,18 @@ verdicts reversed. One lost-update race on the relay queue was detected
 1,068 total: 1,011 skips, 35 keeps (every installed mod is now curated as a
 keep, including the race-lost five), 9 unreviewed restores. Applies when
 Firefox opens.
+
+## 6. Follow-ups surfaced by the requirement cross-check
+
+- **Water for ENB was still "skip" in the curator** despite your verbal
+  correction that it supports Community Shaders - a keep is queued to fix the
+  record.
+- **Project ja-Kha'jay (Khajiit NPC diversity) is skipped**, but the Moonpath
+  review praised its Moonpath integration patch. If you want that integration,
+  the base needs un-skipping; its patch collection was skipped tonight as a
+  companion of a skipped base.
+- 18 companion mods (settings loaders, patch collections, addons) were skipped
+  because their base mod is skipped - rule `req-skipped` in the audit.
+- ConsoleUtilSSE-, old-Uncapper-, and FISS-requiring mods were deliberately NOT
+  skipped: those requirements are satisfied by installed successors or are
+  soft dependencies.
