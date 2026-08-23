@@ -19,9 +19,10 @@ tables follow it. Nothing was decided for you.
 
 ### B. Verify-before-judging (the Water-for-ENB class - do NOT bulk-skip)
 
-- **Feminine/Masculine Khajiit + Argonian textures (183/186/184)** are listed as
-  "requires BHUNP", but for texture packs that is usually the optional-variant
-  file, not the base. Verify the file list before treating as body-locked.
+- **Feminine/Masculine Khajiit + Argonian textures (183/186/184)** - VERIFIED
+  overnight: each ships CBBE / Vanilla / UNP-BHUNP file variants; the BHUNP
+  requirement is variant-specific. Not body-locked - keep, install the CBBE
+  files.
 - **ENB-named keeps** (Word Wall Transparency 41463, Sky Reflection Fix 110604,
   Rudy More Lights 22819, ENB Lights For Effect Shaders 56362, ENB Light
   Detection Fix 107693): several are known to work with or have CS analogues.
@@ -36,8 +37,9 @@ tables follow it. Nothing was decided for you.
 
 - **The Night Mother Revoiced (92873)** requires "New Night Mother" - skipped.
   Keep both or neither.
-- **Combat Music Fix NG Updated (110459)** lists the original Combat Music Fix
-  (skipped) as requirement - check whether NG-Updated is standalone.
+- **Combat Music Fix NG Updated (110459)** - VERIFIED overnight: its MAIN file
+  is the full NG rebuild, standalone; the listed requirement is legacy credit.
+  Not an orphan.
 - **FISSES AE patch (107513)** without FISSES itself - patch to nothing.
 - **LOD Grass ini files (143386)** requires a specific DrJacopo grass not kept.
 - **Vivid Landscapes CPO Tundra (81816)** requires the old Parallax Occlusion
@@ -48,8 +50,9 @@ tables follow it. Nothing was decided for you.
 
 - NIF Preview 69813 -> **NIF Preview Updated 137741**
 - Player Rotation in ShowRaceMenu 36095 -> **ShowRaceMenu NG 173086**
-- Horse Save Load Fix 132110 -> **Saving on Steed SKSE 173629** (same author
-  lineage, SKSE-native, updated today) - verify page confirms supersession
+- Horse Save Load Fix 132110 vs **Saving on Steed SKSE 173629** - different
+  authors, page did not state supersession; treat as a rival pair to read, not
+  a settled succession
 - ElDruin 18372 vs Dawnbreaker Reborn 44787 - aesthetic pick, yours
 
 ### E. NEW slots discovered in the keeps that BASELINE Tier 4 did not list
