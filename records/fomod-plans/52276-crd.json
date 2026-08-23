@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Crafting Recipe Distributor FOMOD Installer/Required",
+      "destination": "."
+    },
+    {
+      "source": "Crafting Recipe Distributor FOMOD Installer/AE/SKSE/Plugins",
+      "destination": "SKSE/Plugins"
+    }
+  ]
+}

@@ -18,6 +18,35 @@
       "transaction": "20260823T035430739Z-1f3efe18d5fe"
     },
     {
+      "modId": 60805,
+      "modName": "Base Object Swapper",
+      "nexusName": "Base Object Swapper",
+      "version": "3.4.1",
+      "fileId": 647525,
+      "fileName": "Base Object Swapper-60805-3-4-1-1752606013.7z",
+      "sizeMb": 6.89,
+      "sha256": "ae1f681c91522a5545eb0bd6b2b174491b34d50591c98a3a8dad6538a791ba9f",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:16:14Z",
+      "transaction": "20260823T061614110Z-891bae829820",
+      "fomodPlan": "records/fomod-plans/60805-bos.json"
+    },
+    {
+      "modId": 201,
+      "modName": "BodySlide and Outfit Studio",
+      "nexusName": "BodySlide and Outfit Studio - v5.8.2",
+      "version": "5.8.2",
+      "fileId": 767958,
+      "fileName": "BodySlide and Outfit Studio - v5.8.2 201 5.8.2 2026-06-25T14-52Z Yj6wQRCsS.7z",
+      "sizeMb": 9.96,
+      "sha256": "bd7a61938a2b3f36fbf926e6b4fe2bfc7c3ead617c6152b6664b6a2629c60738",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:15:18Z",
+      "transaction": "20260823T061517308Z-49d7d2e62794"
+    },
+    {
       "modId": 33261,
       "modName": "Bug Fixes SSE",
       "nexusName": "Bug Fixes SSE - Anniversary Edition (1.6.629.0 and later)",
@@ -62,6 +91,21 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:40Z",
       "transaction": "20260823T035440489Z-a373f32f6e2d"
+    },
+    {
+      "modId": 52276,
+      "modName": "Crafting Recipe Distributor",
+      "nexusName": "Crafting Recipe Distributor",
+      "version": "4.1.0",
+      "fileId": 711891,
+      "fileName": "Crafting Recipe Distributor-52276-4-1-0-1768923023.7z",
+      "sizeMb": 5.26,
+      "sha256": "6b6188323d05da094e6f09e39b33f35fd2bace591a906f787ef76398c5b76571",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:16:15Z",
+      "transaction": "20260823T061615101Z-0b5ae567114f",
+      "fomodPlan": "records/fomod-plans/52276-crd.json"
     },
     {
       "modId": 59818,
@@ -123,6 +167,38 @@
       "transaction": "20260823T041224662Z-a8f21a54a3b1"
     },
     {
+      "modId": 55728,
+      "modName": "Keyword Item Distributor",
+      "nexusName": "Keyword Item Distributor",
+      "version": "4.0.6",
+      "fileId": 770033,
+      "fileName": "Keyword Item Distributor 55728 4.0.6 2026-06-30T14-22Z hfH9s6Iim.7z",
+      "sizeMb": 10.03,
+      "sha256": "e6020b5c3a0496e1920c705c801ec9a55afab22dd5f7c0ea7b114dc258b27b80",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:16:13Z",
+      "transaction": "20260823T061612851Z-cb20e793fb86",
+      "fomodPlan": "records/fomod-plans/55728-kid.json"
+    },
+    {
+      "modId": 53000,
+      "modName": "MCM Helper",
+      "nexusName": "MCM Helper",
+      "version": "1.6.2",
+      "fileId": 746161,
+      "fileName": "MCM Helper-53000-1-6-2-1777219181.7z",
+      "sizeMb": 7.74,
+      "sha256": "24b07dadc471f58929255b5c189847e5a0b2c883c1834887ca9cb558e521be30",
+      "plugins": [
+        "MCMHelper.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:16:12Z",
+      "transaction": "20260823T061611548Z-1505c26a6afa",
+      "fomodPlan": "records/fomod-plans/53000-mcm-helper.json"
+    },
+    {
       "modId": 55653,
       "modName": "Nether's Follower Framework",
       "nexusName": "Nether's Follower Framework - Universal Installer",
@@ -138,6 +214,20 @@
       "installedUtc": "2026-08-23T04:24:01Z",
       "transaction": "20260823T042400017Z-e0f1d002ebed",
       "fomodPlan": "records/fomod-plans/55653-nethers-follower-framework.json"
+    },
+    {
+      "modId": 92109,
+      "modName": "Open Animation Replacer",
+      "nexusName": "Open Animation Replacer",
+      "version": "3.2.0",
+      "fileId": 781784,
+      "fileName": "Open Animation Replacer 92109 3.2.0 2026-07-26T22-20Z Yj6wQRvYX.7z",
+      "sizeMb": 7.88,
+      "sha256": "1f31058b7cc9a28bca25b6c379ca2142c369eeb3d194831fefc11f234d3f28c0",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T06:15:13Z",
+      "transaction": "20260823T061513133Z-56615f9a8bfe"
     },
     {
       "modId": 133232,

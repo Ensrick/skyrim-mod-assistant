@@ -51,16 +51,16 @@ PapyrusUtil, po3 Papyrus Extender, po3 Tweaks, ConsoleUtilSSE NG.
 
 | mod | id | status |
 |---|---|---|
-| MCM Helper | 53000 | in keeps |
-| SPID | 36869 | **installed** (AE dll, address-independent) |
-| KID | 55728 | in keeps |
-| Base Object Swapper | 60805 | in keeps |
-| Open Animation Replacer | 92109 | in keeps |
-| Pandora Behaviour Engine | 133232 | **installed** v4.4.0-beta; run once via MO2 before playing so XPMSSE weapon-style animations generate |
+| MCM Helper | 53000 | **installed** (ESL + BSA) |
+| SPID | 36869 | **installed** |
+| KID | 55728 | **installed** |
+| Base Object Swapper | 60805 | **installed** |
+| Open Animation Replacer | 92109 | **installed** |
+| Pandora Behaviour Engine | 133232 | **installed** v4.4.0-beta; ONE interactive run via MO2 pending (headless --auto_run attempt timed out; only XPMSSE weapon styles depend on it) |
 | XPMSSE | 1988 | **installed** (Extended + latest rig + RaceMenu MCM weapon styles); Skeleton Replacer HD 52845 layers on top later |
 | FSMP | 57339 | in keeps - cloth-only policy, no body jiggle - install with first physics outfit |
-| BodySlide and Outfit Studio | 201 | in keeps |
-| Crafting Recipe Distributor | 52276 | in keeps |
+| BodySlide and Outfit Studio | 201 | **installed** (tool; Curvy batch build pending) |
+| Crafting Recipe Distributor | 52276 | **installed** |
 
 ## Tier 2 - identity systems (the premise) - all installed
 
