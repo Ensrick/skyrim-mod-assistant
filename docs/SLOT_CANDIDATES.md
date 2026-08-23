@@ -1,14 +1,16 @@
-# Slot candidates - deep-read harvest
+# Slot candidates - deep-read harvest (COMPLETE)
 
-Auto-generated from the overnight deep-read pass; latest harvest through batch 450
-(17,680 mods read individually of 21,356 sweep survivors, endorsement-descending).
-These are NOT keeps - they are the rivals worth knowing about when you decide each
-slot. **523 candidate entries across 131 slots.**
+Auto-generated from the overnight deep-read pass, now FINISHED: every one of the
+21,356 sweep survivors was read (20,900 individually, endorsement-descending;
+the other 456 were claimed mid-run by the evidence-cited rule sweep).
+These are NOT keeps - they are the rivals worth knowing about when you decide
+each slot. **547 candidate entries across 133 slots.**
 
-## alchemy (3)
+## alchemy (4)
 - [52130](https://www.nexusmods.com/skyrimspecialedition/mods/52130) - Apothecary - direct CACO rival, sharpens the CACO seam decision
 - [96876](https://www.nexusmods.com/skyrimspecialedition/mods/96876) - Gourmet cooking overhaul - CACO-seam participant
 - [89493](https://www.nexusmods.com/skyrimspecialedition/mods/89493) - The Hermetic Art - Alchemy Reimagined - grind/calcinate/distill mechanics overhaul; rival in the CACO-seam alchemy decision
+- [61943](https://www.nexusmods.com/skyrimspecialedition/mods/61943) - Apothecary New Effects for CACO - bridge patch porting Apothecary effects onto CACO; direct evidence for the CACO-seam decision
 
 ## alternate start (2)
 - [272](https://www.nexusmods.com/skyrimspecialedition/mods/272) - LAL - the losing rival itself, awaiting confirm like AFT/EFF
@@ -137,7 +139,7 @@ slot. **523 candidate entries across 131 slots.**
 - [131148](https://www.nexusmods.com/skyrimspecialedition/mods/131148) - SkyTactics via SkyPatcher
 - [65625](https://www.nexusmods.com/skyrimspecialedition/mods/65625) - Elden Rim Weapon Arts - BFCO branch evidence
 
-## community shaders features (9)
+## community shaders features (10)
 - [112739](https://www.nexusmods.com/skyrimspecialedition/mods/112739) - Wetness Effects - official CS feature module
 - [138443](https://www.nexusmods.com/skyrimspecialedition/mods/138443) - CS Light 138443 - Light Placer config hub for emissive objects
 - [76776](https://www.nexusmods.com/skyrimspecialedition/mods/76776) - SMP Wind - weather-driven wind for FSMP (we run FSMP cloth-only)
@@ -147,6 +149,7 @@ slot. **523 candidate entries across 131 slots.**
 - [179371](https://www.nexusmods.com/skyrimspecialedition/mods/179371) - HDR - Community Shaders 179371 - native 10-bit HDR output for CS
 - [179824](https://www.nexusmods.com/skyrimspecialedition/mods/179824) - Effects 11 - CS feature enabling most ENB PRESETS under Community Shaders (2026-08; may reopen preset options previously ENB-only)
 - [165498](https://www.nexusmods.com/skyrimspecialedition/mods/165498) - CS Crash Fix - Ultimate Markarth - fixes persistent CS Skylighting crashes in Ultimate Markarth; evidence CS Skylighting can crash heavy city cells
+- [163761](https://www.nexusmods.com/skyrimspecialedition/mods/163761) - Seasonal Landscapes CS Grass Lighting Edits - grass texture edits for consistent CS grass lighting; pairs with Seasonal Landscapes if adopted
 
 ## creature visuals (1)
 - [23665](https://www.nexusmods.com/skyrimspecialedition/mods/23665) - Skeleton-replacer creature family: Trolls 23665, Giants 23889, Bear 16343, Gargoyles 21907, Spiders 24058
@@ -185,7 +188,7 @@ slot. **523 candidate entries across 131 slots.**
 ## dodge (1)
 - [115408](https://www.nexusmods.com/skyrimspecialedition/mods/115408) - TK Dodge NG - AE build of TK Dodge RE
 
-## dragons (7)
+## dragons (9)
 - [74983](https://www.nexusmods.com/skyrimspecialedition/mods/74983) - Infinite Dragon Variants - SPID visual variety
 - [156824](https://www.nexusmods.com/skyrimspecialedition/mods/156824) - Dragons Actually Fall Down 156824 + Dragon models modernized 122491
 - [51310](https://www.nexusmods.com/skyrimspecialedition/mods/51310) - Dragon War - SKSE dragon AI/fight overhaul, heavyweight candidate
@@ -193,6 +196,8 @@ slot. **523 candidate entries across 131 slots.**
 - [87085](https://www.nexusmods.com/skyrimspecialedition/mods/87085) - Dragons Use Thuum - voiced dragon shout AI
 - [5133](https://www.nexusmods.com/skyrimspecialedition/mods/5133) - Bellyaches New Dragon Species - 13 non-replacing species
 - [176594](https://www.nexusmods.com/skyrimspecialedition/mods/176594) - Dragon and Vampire Attacks Restored - restores city dragon/vampire attack events SE removed; feeds the dragons-as-late-game pillar
+- [115893](https://www.nexusmods.com/skyrimspecialedition/mods/115893) - Ominous Boss Weather - dragons bring dark ambient weather when attacking; cheap atmosphere for the late-game dragon design
+- [79742](https://www.nexusmods.com/skyrimspecialedition/mods/79742) - Sons of Akatosh - overhaul of the dragon magical arsenal (distinct ES-dragon identity); rival material for the dragon package
 
 ## dungeons (1)
 - [2218](https://www.nexusmods.com/skyrimspecialedition/mods/2218) - EasierRiders Dungeon Pack - 8 lore-friendly dungeons
@@ -347,7 +352,7 @@ slot. **523 candidate entries across 131 slots.**
 - [46217](https://www.nexusmods.com/skyrimspecialedition/mods/46217) - Tamrielic Grass - all-biome overhaul; page reqs ENB binary (complex grass) - verify CS grass-lighting path before use
 - [139896](https://www.nexusmods.com/skyrimspecialedition/mods/139896) - Wildlands Renewal - built against CS Grass Lighting; CS-native grass candidate
 
-## gray cowl support (8)
+## gray cowl support (11)
 - [19724](https://www.nexusmods.com/skyrimspecialedition/mods/19724) - Gray Cowl Addons+Patches 19724 and Alikr Flora Overhaul 10141 - support stack for the kept Gray Cowl
 - [89977](https://www.nexusmods.com/skyrimspecialedition/mods/89977) - Betalille Hammerfell Quests Bundle - 31 Alikr quests layered onto the kept Gray Cowl
 - [88683](https://www.nexusmods.com/skyrimspecialedition/mods/88683) - AI Revoice for Gray Cowl (ElevenLabs, vanilla-voice models) - pairs with the kept 10th Anniversary edition
@@ -356,6 +361,9 @@ slot. **523 candidate entries across 131 slots.**
 - [96864](https://www.nexusmods.com/skyrimspecialedition/mods/96864) - Music Overhaul for the Gray Cowl desert region
 - [155390](https://www.nexusmods.com/skyrimspecialedition/mods/155390) - World Map Fix - Gray Cowl map renders correctly under Community Shaders and repairs the Engine Fixes breakage; both CS and Engine Fixes are in our base
 - [145788](https://www.nexusmods.com/skyrimspecialedition/mods/145788) - World Map Edge Fix - hides the hard map edges of the 10th Anniversary desert map; pairs with the CS map fix 155390
+- [156923](https://www.nexusmods.com/skyrimspecialedition/mods/156923) - Talk to the Hand Arenar - fixes Arenar forced-greet conditions for early Alikr Desert access outside the Gray Cowl questline
+- [186361](https://www.nexusmods.com/skyrimspecialedition/mods/186361) - Umbranox - The Gray Cowl Returns Redone - overhauls the AE Creation cowl quest into a voiced Thieves Guild scavenger hunt; distinct from the 10th Anniversary quest mod; 2026-08-10
+- [167890](https://www.nexusmods.com/skyrimspecialedition/mods/167890) - Gray Cowl 10th Anniversary ESLified plugin variant - saves a full plugin slot for the kept quest mod
 
 ## guard dialogue (1)
 - [20791](https://www.nexusmods.com/skyrimspecialedition/mods/20791) - GDO Redux - NFF ships patches for it
@@ -397,7 +405,7 @@ slot. **523 candidate entries across 131 slots.**
 - [24859](https://www.nexusmods.com/skyrimspecialedition/mods/24859) - Realistic Room Rental Enhanced - inn overhaul + rental system
 - [97542](https://www.nexusmods.com/skyrimspecialedition/mods/97542) - Candlehearth - extended rentals + safe storage
 
-## interior lighting (10)
+## interior lighting (11)
 - [43158](https://www.nexusmods.com/skyrimspecialedition/mods/43158) - Lux - alive in undecided
 - [63588](https://www.nexusmods.com/skyrimspecialedition/mods/63588) - Lux Via
 - [30817](https://www.nexusmods.com/skyrimspecialedition/mods/30817) - Lanterns of Skyrim II - exterior lighting adjacency
@@ -408,6 +416,7 @@ slot. **523 candidate entries across 131 slots.**
 - [186432](https://www.nexusmods.com/skyrimspecialedition/mods/186432) - Native Mesh Light Flicker Fix 186432 - engine light-slot bottleneck fix (2026-08)
 - [152850](https://www.nexusmods.com/skyrimspecialedition/mods/152850) - MLO MISC - Modern Lighting Overhaul continuation lighting misc meshes; CS+LLF native, pairs with MLO2 if the MLO line wins
 - [150615](https://www.nexusmods.com/skyrimspecialedition/mods/150615) - ELFX - SkyPatcher (2025) - auto-restores ELFX lighting when other mods override; shrinks the manual patch burden cited against ELFX in the brief
+- [115616](https://www.nexusmods.com/skyrimspecialedition/mods/115616) - Umbrae Lucem - one-mod interior+exterior lighting/shadows overhaul incl. torch/candle smoke; lighter-weight rival to the Lux stack
 
 ## inventory UI (1)
 - [188733](https://www.nexusmods.com/skyrimspecialedition/mods/188733) - Grid Inventory (released today 2026-08-23) - SKSE grid-based inventory/container/merchant UI, radical SkyUI alternative
@@ -462,7 +471,7 @@ slot. **523 candidate entries across 131 slots.**
 - [95196](https://www.nexusmods.com/skyrimspecialedition/mods/95196) - Sorcerer - staff/scroll crafting addon for Mysticism
 - [11215](https://www.nexusmods.com/skyrimspecialedition/mods/11215) - Spectraverse - Magna-Ge questline w/ 42 destruction spells
 
-## map markers (7)
+## map markers (8)
 - [4138](https://www.nexusmods.com/skyrimspecialedition/mods/4138) - Map Markers Complete vs kept Atlas
 - [56123](https://www.nexusmods.com/skyrimspecialedition/mods/56123) - CoMAP framework
 - [29932](https://www.nexusmods.com/skyrimspecialedition/mods/29932) - Flat World Map Framework - alternative map branch vs AQWM
@@ -470,6 +479,7 @@ slot. **523 candidate entries across 131 slots.**
 - [188483](https://www.nexusmods.com/skyrimspecialedition/mods/188483) - Map Menu Extension (2026-08) - ESO-style menu to travel between worldspaces; directly serves the Bruma/Gray Cowl/Wyrmstooth multi-worldspace build
 - [171391](https://www.nexusmods.com/skyrimspecialedition/mods/171391) - CS - FWMF Map Brightness Fix - fixes overbright world map under Community Shaders when using Flat World Map Framework paper maps
 - [147105](https://www.nexusmods.com/skyrimspecialedition/mods/147105) - No Google Maps Skyrim - SKSE rework of map navigation (immersive no-overview-map rival approach); note req lists ReShade add-on support
+- [187315](https://www.nexusmods.com/skyrimspecialedition/mods/187315) - World Map Selector - view/fast-travel across other worldspaces maps; companion-rival to Map Menu Extension 188483 for Bruma/Wyrmstooth/Gray Cowl travel
 
 ## marriage (2)
 - [21625](https://www.nexusmods.com/skyrimspecialedition/mods/21625) - Multiple Marriages
@@ -477,6 +487,9 @@ slot. **523 candidate entries across 131 slots.**
 
 ## movement values (1)
 - [15649](https://www.nexusmods.com/skyrimspecialedition/mods/15649) - Immersive Movement vs kept-adjacent Mortal Enemies - overlapping pair
+
+## multi-character (Proteus slot) (1)
+- [186444](https://www.nexusmods.com/skyrimspecialedition/mods/186444) - Multiple Characters of Skyrim - per-character level/perks/spells/inventory/appearance/marriage in ONE save - direct rival to Proteus for the core multi-character pillar; updated 2026-08-04
 
 ## new lands (8)
 - [31472](https://www.nexusmods.com/skyrimspecialedition/mods/31472) - Land of Vominheim - DLC-sized, larger than Solstheim
@@ -492,8 +505,9 @@ slot. **523 candidate entries across 131 slots.**
 - [21654](https://www.nexusmods.com/skyrimspecialedition/mods/21654) - AI Overhaul
 - [1104](https://www.nexusmods.com/skyrimspecialedition/mods/1104) - SkyTEST animals
 
-## NPC appearance tooling (1)
+## NPC appearance tooling (2)
 - [187138](https://www.nexusmods.com/skyrimspecialedition/mods/187138) - EasyNPC Next - rebuilt EasyNPC (NPC appearance merge tool, many fixes); key tooling for the planned manual NPC-replacer pass; updated 2026-08-21
+- [60326](https://www.nexusmods.com/skyrimspecialedition/mods/60326) - NPC Batch Spawn PLUS - bat files spawning crowds of NPCs to eyeball appearance overhauls in bulk; pairs with EasyNPC Next for the manual NPC pass
 
 ## npc density (1)
 - [2005](https://www.nexusmods.com/skyrimspecialedition/mods/2005) - Populated Cities Towns Villages
@@ -519,12 +533,20 @@ slot. **523 candidate entries across 131 slots.**
 - [3354](https://www.nexusmods.com/skyrimspecialedition/mods/3354) - Insignificant Object Remover
 - [111475](https://www.nexusmods.com/skyrimspecialedition/mods/111475) - Lightened Skyrim BOS edition - pairs/supersedes esp edition 50755
 
+## parallax and terrain tooling (2)
+- [188398](https://www.nexusmods.com/skyrimspecialedition/mods/188398) - AutoBlend - PGPatcher addon that auto-patches landscape meshes to alpha-blend texture variants (generalizes hand-shipped fixes); 2026-08-21
+- [188713](https://www.nexusmods.com/skyrimspecialedition/mods/188713) - Really Blended Bridges - generates SMIM bridge dirt overlays matched to your landscape textures (MO2 builder incl.)
+
 ## perf textures (1)
 - [21166](https://www.nexusmods.com/skyrimspecialedition/mods/21166) - UPOT; keeps also hold VRAMr - overlapping approaches
 
-## performance (2)
+## performance (6)
 - [80343](https://www.nexusmods.com/skyrimspecialedition/mods/80343) - Skyrim Upscaler DLSS/FSR2/XeSS
 - [189151](https://www.nexusmods.com/skyrimspecialedition/mods/189151) - Automatic CRDW - MO2 companion that auto-rebuilds Cached Recursive Directory Watcher cache, faster load times for big MO2 builds; updated 2026-08-23
+- [184884](https://www.nexusmods.com/skyrimspecialedition/mods/184884) - Auto BSA - MO2 plugin auto-packing non-conflicting loose mods into BSAs (load-time win for big builds); 2026-08-07
+- [187947](https://www.nexusmods.com/skyrimspecialedition/mods/187947) - AutoMeta - MO2 plugin auto-filling Nexus ID/version from archive names in bulk; keeps a 2000-mod list update-trackable; 2026-08-17
+- [177876](https://www.nexusmods.com/skyrimspecialedition/mods/177876) - AlphaBloom - Texture Forge - texture optimization tool tailored for Skyrim (VRAM diet for the texture-heavy build)
+- [188542](https://www.nexusmods.com/skyrimspecialedition/mods/188542) - BOSPriority - explicit priority control over which Base Object Swapper SWAP.ini wins conflicts; 2026-08-20
 
 ## perks (4)
 - [1137](https://www.nexusmods.com/skyrimspecialedition/mods/1137) - Ordinator
@@ -591,8 +613,9 @@ slot. **523 candidate entries across 131 slots.**
 - [77530](https://www.nexusmods.com/skyrimspecialedition/mods/77530) - Northern Roads - alive; kept NR Tents patch attaches
 - [2640](https://www.nexusmods.com/skyrimspecialedition/mods/2640) - SkyBeRoads - pair
 
-## save management (1)
+## save management (2)
 - [170714](https://www.nexusmods.com/skyrimspecialedition/mods/170714) - Save It Name It - hotkey named saves; directly serves multi-character Proteus playthrough (per-character save names)
+- [96261](https://www.nexusmods.com/skyrimspecialedition/mods/96261) - Delete Saves - rotating save cleanup that can manage multiple characters; useful for the multi-character Proteus save discipline
 
 ## seasons (4)
 - [63623](https://www.nexusmods.com/skyrimspecialedition/mods/63623) - Turn of the Seasons - content pack for Seasons of Skyrim SKSE
@@ -605,7 +628,7 @@ slot. **523 candidate entries across 131 slots.**
 - [36276](https://www.nexusmods.com/skyrimspecialedition/mods/36276) - Forceful Tongue - lightweight shout overhaul (3rd rival)
 - [41950](https://www.nexusmods.com/skyrimspecialedition/mods/41950) - Dragonborn - standalone CSF shout perk tree (4th option)
 
-## small bug fixes (10)
+## small bug fixes (11)
 - [88238](https://www.nexusmods.com/skyrimspecialedition/mods/88238) - Not Another Dragon Stalking Fix - stops endless dragon circling, complements late-game dragon plan
 - [172046](https://www.nexusmods.com/skyrimspecialedition/mods/172046) - Block Cancel Fix (2026 SKSE) - movement lock when cancelling attack with block; supports MCO/BFCO/vanilla
 - [151846](https://www.nexusmods.com/skyrimspecialedition/mods/151846) - RMB Actor Reference Fixes - XLCN assignment fixes improving SPID reliability (SPID is a pillar of the underwear build)
@@ -616,6 +639,7 @@ slot. **523 candidate entries across 131 slots.**
 - [186413](https://www.nexusmods.com/skyrimspecialedition/mods/186413) - Equip Camera Behavior Fixes - fixes draw/equip camera bugs while moving/sneaking; runs on Pandora (installed); 2026-07-31
 - [29495](https://www.nexusmods.com/skyrimspecialedition/mods/29495) - High Frame Rate Crafting Fix - stuck crafting-menu animations at high FPS; verify overlap with installed SSE Display Tweaks before adopting
 - [152276](https://www.nexusmods.com/skyrimspecialedition/mods/152276) - Dialogue Text Refresher - SKSE fix for dialogue lines showing stale global values
+- [183610](https://www.nexusmods.com/skyrimspecialedition/mods/183610) - Maximum Carnage Null Guard - SKSE guard stopping Maximum Carnage death-effect CTDs; essential companion if that gore mod is adopted
 
 ## sound (3)
 - [12466](https://www.nexusmods.com/skyrimspecialedition/mods/12466) - Audio Overhaul
@@ -626,12 +650,16 @@ slot. **523 candidate entries across 131 slots.**
 - [72653](https://www.nexusmods.com/skyrimspecialedition/mods/72653) - POISE - Stagger Overhaul SKSE, fighting-game poise system
 - [74032](https://www.nexusmods.com/skyrimspecialedition/mods/74032) - Poisebreaker - POISE addon
 
-## standing stones (5)
+## standing stones (9)
 - [33411](https://www.nexusmods.com/skyrimspecialedition/mods/33411) - Mundus - 4th rival (Simonrim)
 - [64969](https://www.nexusmods.com/skyrimspecialedition/mods/64969) - Ryns Standing Stones - visual layer, compatible with gameplay overhauls
 - [59927](https://www.nexusmods.com/skyrimspecialedition/mods/59927) - Menhir - standing stones overhaul w/ new models (the NEW-slot rival to Andromeda/Sacred Stones)
 - [4688](https://www.nexusmods.com/skyrimspecialedition/mods/4688) - SSE Standing Stones Overhaul 4688 - vanilla-faithful balance pole
 - [66235](https://www.nexusmods.com/skyrimspecialedition/mods/66235) - Old Fashioned Birthsigns - Morrowind/Oblivion-style standing stone overhaul (passives + lesser powers that scale); rival for the standing-stones slot
+- [39858](https://www.nexusmods.com/skyrimspecialedition/mods/39858) - Dragonstone - The Standing Stones - standing stone overhaul rival
+- [72412](https://www.nexusmods.com/skyrimspecialedition/mods/72412) - Passive standing stones - minimal all-passive stones rival
+- [51280](https://www.nexusmods.com/skyrimspecialedition/mods/51280) - Stones of the Stars - lightweight Morrowind/Oblivion-inspired standing stone overhaul rival
+- [141786](https://www.nexusmods.com/skyrimspecialedition/mods/141786) - Breaded Birthsigns - lore-friendly roleplay-focused standing stone overhaul rival
 
 ## stealth (3)
 - [76086](https://www.nexusmods.com/skyrimspecialedition/mods/76086) - Book of Shadows - behavior-based sneak additions
@@ -716,10 +744,11 @@ slot. **523 candidate entries across 131 slots.**
 - [9510](https://www.nexusmods.com/skyrimspecialedition/mods/9510) - Better Vampire NPCs - NPC-side companion
 - [41639](https://www.nexusmods.com/skyrimspecialedition/mods/41639) - Scion - 6th rival
 
-## Vicn trilogy support (3)
+## Vicn trilogy support (4)
 - [33024](https://www.nexusmods.com/skyrimspecialedition/mods/33024) - Hunters Essence SE English Translation - the English text for Vicns lesser-known Hunters Essence mod (base is Japanese)
 - [147775](https://www.nexusmods.com/skyrimspecialedition/mods/147775) - DAc0da/Vigilant/Glen-Moril/Unslaad instant-quest-start remover (Choice is Yours style) - late-game gating across all four Vicn mods
 - [100710](https://www.nexusmods.com/skyrimspecialedition/mods/100710) - VIGILANT Windhelm Dungeon Gap Fix - tiny mesh gap fix for the VIGILANT Windhelm dungeon
+- [168245](https://www.nexusmods.com/skyrimspecialedition/mods/168245) - Unslaad Adjustments and Addons - removes scripted boss attacks for MCO/BFCO combat-mod compatibility
 
 ## vigilant attached (2)
 - [45026](https://www.nexusmods.com/skyrimspecialedition/mods/45026) - Custom Skills - VIGILANT perk tree (CSF modern, stale NSF req)
