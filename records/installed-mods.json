@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "instance": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se",
+  "profile": "Default",
+  "mods": [
+    {
+      "modId": 12604,
+      "modName": "SkyUI",
+      "nexusName": "SkyUI",
+      "version": "6.11",
+      "fileId": 749043,
+      "fileName": "SkyUI-12604-6-11-1778020881.zip",
+      "sizeMb": 2.57,
+      "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1",
+      "plugins": [
+        "SkyUI_SE.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T03:15:23Z",
+      "transaction": "20260823T031523730Z-2453226d41b0"
+    }
+  ]
+}
