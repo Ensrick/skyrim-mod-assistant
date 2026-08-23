@@ -32,6 +32,20 @@
       "transaction": "20260823T035440489Z-a373f32f6e2d"
     },
     {
+      "modId": 16495,
+      "modName": "JContainers SE",
+      "nexusName": "JContainers SE",
+      "version": "4.2.13.1",
+      "fileId": 771673,
+      "fileName": "JContainers SE 16495 4.2.13.1 2026-07-04T17-30Z GkqKVMPbm.7z",
+      "sizeMb": 0.8,
+      "sha256": "2edd555821e70d94784c79b9a80a34d235f682d4d69f956f28e0411fd43a020a",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:12:24Z",
+      "transaction": "20260823T041224662Z-a8f21a54a3b1"
+    },
+    {
       "modId": 13048,
       "modName": "PapyrusUtil SE",
       "nexusName": "PapyrusUtil AE SE - Scripting Utility Functions",
@@ -44,6 +58,70 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:31Z",
       "transaction": "20260823T035431410Z-7ecae05f6ad5"
+    },
+    {
+      "modId": 22854,
+      "modName": "powerofthree's Papyrus Extender",
+      "nexusName": "Papyrus Extender",
+      "version": "6.4.3",
+      "fileId": 778854,
+      "fileName": "Papyrus Extender 22854 6.4.3 2026-07-20T04-04Z OyYrPubih.7z",
+      "sizeMb": 13.59,
+      "sha256": "7d31be5949eef75583de0972ca7bff2109c9b2473eb00b98505d40411c0aa637",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:13:25Z",
+      "transaction": "20260823T041324657Z-30d20432259a",
+      "fomodPlan": "records/fomod-plans/22854-po3-papyrus-extender.json"
+    },
+    {
+      "modId": 51073,
+      "modName": "powerofthree's Tweaks",
+      "nexusName": "powerofthree's Tweaks",
+      "version": "1.16.0",
+      "fileId": 775213,
+      "fileName": "powerofthree's Tweaks 51073 1.16.0 2026-07-12T16-59Z 587RqTEnz.7z",
+      "sizeMb": 6.1,
+      "sha256": "7b4cc8b9f6d520c9449197105d962f31881bd64867c1978a43155f9a6fed3312",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:13:26Z",
+      "transaction": "20260823T041326074Z-3b660e831776",
+      "fomodPlan": "records/fomod-plans/51073-po3-tweaks.json"
+    },
+    {
+      "modId": 62934,
+      "modName": "Proteus",
+      "nexusName": "PROTEUS - 3.4.0",
+      "version": "3.4.0",
+      "fileId": 497484,
+      "fileName": "PROTEUS - 3.4.0-62934-3-4-0-1714763289.zip",
+      "sizeMb": 14.15,
+      "sha256": "847a241f965436b13475a2a057ab061408be2d9a3df62c34aa4925bb1324c63b",
+      "plugins": [
+        "PROTEUS.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:14:11Z",
+      "transaction": "20260823T041411165Z-7d0dbdbb0105",
+      "fomodPlan": "records/fomod-plans/62934-proteus.json"
+    },
+    {
+      "modId": 19080,
+      "modName": "RaceMenu",
+      "nexusName": "RaceMenu Anniversary Edition v0-4-20-0",
+      "version": "0.4.20.0",
+      "fileId": 743640,
+      "fileName": "RaceMenu Anniversary Edition v0-4-20-0-19080-0-4-20-0-1776620918.7z",
+      "sizeMb": 8.26,
+      "sha256": "e0f5e923f1eaaefefcb0a98822df091c5b96b010d2df2b52dc377aae539097da",
+      "plugins": [
+        "RaceMenu.esp",
+        "RaceMenuPlugin.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:12:36Z",
+      "transaction": "20260823T041235407Z-d15a32c2c159"
     },
     {
       "modId": 27962,
@@ -77,6 +155,22 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:15:23Z",
       "transaction": "20260823T031523730Z-2453226d41b0"
+    },
+    {
+      "modId": 17561,
+      "modName": "UIExtensions",
+      "nexusName": "UIExtensions v1-2-0",
+      "version": "1.2.0",
+      "fileId": 55628,
+      "fileName": "UIExtensions v1-2-0-17561-1-2-0.7z",
+      "sizeMb": 0.44,
+      "sha256": "3d5cd2e3a5bead043ad2fd2713138faa07cf5d81f1deaebeaf597d00b41637a6",
+      "plugins": [
+        "UIExtensions.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T04:12:25Z",
+      "transaction": "20260823T041225609Z-21c3cd5bbfd9"
     }
   ]
 }

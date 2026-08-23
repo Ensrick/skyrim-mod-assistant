@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Data/Interface",
+      "destination": "Interface"
+    },
+    {
+      "source": "Data/Scripts",
+      "destination": "Scripts"
+    },
+    {
+      "source": "Data/Source",
+      "destination": "Source"
+    },
+    {
+      "source": "Data/PROTEUS.esp",
+      "destination": "PROTEUS.esp"
+    },
+    {
+      "source": "Data/SKSE/plugins/Proteus.dll",
+      "destination": "SKSE/plugins/Proteus.dll"
+    }
+  ]
+}
