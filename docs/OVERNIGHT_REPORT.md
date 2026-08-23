@@ -58,12 +58,13 @@ evidence in `records/overnight-audit-2026-08-23.jsonl`:
 | VR-only | 29 |
 | joke/meme | 7 + 1 parody |
 
-**Deep-read pass (still running): 7,681 survivors read individually so far, 121
+**Deep-read pass (still running): 9,681 survivors read individually so far, 166
 skips** - new skip classes found while you slept: author-marked
 OUTDATED/deprecated/superseded pages, patches whose base mod was deleted from
-Nexus, wrong-runtime backports (1.5.97-only), guide/modlist pages that aren't
-mods, features folded into Community Shaders 1.4.7, and two more USSEP
-translations. Slot harvest grew to **453 candidate entries** in
+Nexus, wrong-runtime backports (1.5.97-only), guide/modlist/Wabbajack pages that
+aren't mods, features folded into Community Shaders 1.4.7, clean-save archives,
+downgrade patchers (runtime decided: 1.7.99), and more USSEP/RDO/Beyond Reach
+translations. Slot harvest grew to **497 candidate entries** in
 `docs/SLOT_CANDIDATES.md` - headline finds: NAT.CS III (CS-native weather),
 Lux CS + MLO2 + ISL Helper (CS lighting stack), USSEP-Pandora patch 139572,
 xVASynth (the Vigilant/Beyond Reach revoice tool), Beyond Reach
