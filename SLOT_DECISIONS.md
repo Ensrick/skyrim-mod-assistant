@@ -1,5 +1,15 @@
 # Slot decisions - mutually exclusive candidates
 
+> **2026-08-23: superseded as the operating document by `BASELINE.md`**, the
+> top-down build manifest. This file remains the reference for slot membership
+> and rival lists. Decided since generation: alternate start = Skyrim Unbound
+> Reborn (installed), follower framework = NFF (Proteus hard requirement,
+> installed; AFT is the surviving loser), worldspaces = Bruma / Wyrmstooth /
+> Beyond Reach / Moonpath / Gray Cowl 141327 / Vigilant (Falskaar skipped with
+> evidence), bodies = CBBE Curvy + Reverie / HIMBO + SkySight, physics = FSMP
+> cloth-only. Note the counts below predate the August purge - many rivals
+> listed here are no longer in keeps; BASELINE.md carries the current state.
+
 Generated 2026-08-19 from the live curator database (2,200 keeps, 1,135 skips, 11 trims).
 
 **How this was built.** A regex pass over mod names assigns each keep to a functional slot
