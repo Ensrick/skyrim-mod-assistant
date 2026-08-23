@@ -58,13 +58,16 @@ evidence in `records/overnight-audit-2026-08-23.jsonl`:
 | VR-only | 29 |
 | joke/meme | 7 + 1 parody |
 
-**Deep-read pass (still running): 17,680 survivors read individually so far
-(83%), 491 skips** - new skip classes found while you slept: author-marked
+**Deep-read pass: COMPLETE. All 21,356 survivors are accounted for - 20,900
+read individually (endorsement-descending, batch by batch), the other 456
+claimed mid-run by the evidence-cited rule ledger. 776 deep-read skips**, every
+one with a quoted reason in the audit - the classes: author-marked
 OUTDATED/deprecated/superseded pages, patches whose base mod was deleted from
 Nexus, wrong-runtime backports (1.5.97-only), guide/modlist/Wabbajack pages that
 aren't mods, features folded into Community Shaders 1.4.7, clean-save archives,
-downgrade patchers (runtime decided: 1.7.99), and dozens more DV/FR/RU/CHS
-translations. Slot harvest grew to **523 candidate entries** in
+downgrade patchers (runtime decided: 1.7.99), joke/meme one-liners, and
+hundreds more DV/FR/RU/CHS translations. Slot harvest finished at **547
+candidate entries across 133 slots** in
 `docs/SLOT_CANDIDATES.md` - headline finds: NAT.CS III (CS-native weather),
 Lux CS + MLO2 + ISL Helper (CS lighting stack), USSEP-Pandora patch 139572,
 xVASynth (the Vigilant/Beyond Reach revoice tool), Beyond Reach
@@ -72,6 +75,16 @@ dialogue-conditions fix 56542 (fixes your "NPCs won't talk" complaint), the
 Vicn delayed-start trio (late-game gating exactly as planned), Equippable
 Underwear for NPCs 45277 (rival to our home build), Auto Skeleton Patch 176724
 (may remove the Pandora requirement), and Modex 137877 (modern AddItemMenu).
+Late-pass headliners: **Multiple Characters of Skyrim 186444 - a direct rival
+to Proteus for the core multi-character pillar** (per-character
+level/perks/inventory/appearance in one save, updated Aug 2026); EasyNPC Next
+187138 + NPC Batch Spawn 60326 (tooling for your manual NPC pass); CS Crash
+Fix - Ultimate Markarth 165498 (documents a CS Skylighting crash class); ICE
+185408 (scriptless Wet-and-Cold alternative); a 6-way standing-stones rival
+cluster now in the slot doc; Save It Name It 170714 + Delete Saves 96261
+(multi-character save discipline); Umbranox 186361 (AE cowl-quest overhaul);
+and MO2 build tooling (Auto BSA 184884, AutoMeta 187947, BOSPriority 188542,
+AlphaBloom 177876, Automatic CRDW 189151).
 
 Original first-500 summary: top of the curve clean, 15 skips
 (each cited: TDM-conflicting movement mods, Gray Cowl 2017 vs the kept 10th
