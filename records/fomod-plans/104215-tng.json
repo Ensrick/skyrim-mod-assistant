@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Core",
+      "destination": "."
+    },
+    {
+      "source": "Body/Main/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Patches/Vigilant_TNG.ini",
+      "destination": "skse/plugins/TNG/Vigilant_TNG.ini"
+    }
+  ]
+}

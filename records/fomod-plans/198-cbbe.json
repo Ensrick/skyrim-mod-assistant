@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "00 Required (Slim)",
+      "destination": "."
+    },
+    {
+      "source": "01 Curvy",
+      "destination": "."
+    },
+    {
+      "source": "07 Outfits Curvy",
+      "destination": "."
+    },
+    {
+      "source": "10 Face Pack",
+      "destination": "."
+    },
+    {
+      "source": "26 RaceMenu Morphs",
+      "destination": "."
+    },
+    {
+      "source": "27 Morph Files (Body)",
+      "destination": "."
+    },
+    {
+      "source": "28 Morph Files (Outfits)",
+      "destination": "."
+    }
+  ]
+}

@@ -77,7 +77,7 @@ def install(mid, mod_name, prefer=None, plan=None):
         print(f"   plugin {p}: {'enabled' if r.get('ok') else r}")
 
     led = load()
-    led['mods'] = [m for m in led['mods'] if m['modId'] != mid]
+    led['mods'] = [m for m in led['mods'] if m.get('fileId') != f['file_id']]
     led['mods'].append({
         'modId': mid, 'modName': mod_name,
         'nexusName': f['name'], 'version': f.get('version'),

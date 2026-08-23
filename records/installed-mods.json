@@ -18,6 +18,24 @@
       "transaction": "20260823T035430739Z-1f3efe18d5fe"
     },
     {
+      "modId": 198,
+      "modName": "CBBE",
+      "nexusName": "Caliente's Beautiful Bodies Enhancer CBBE - v2.0.3",
+      "version": "2.0.3",
+      "fileId": 489053,
+      "fileName": "Caliente's Beautiful Bodies Enhancer CBBE - v2.0.3-198-2-0-3-1712683181.7z",
+      "sizeMb": 474.85,
+      "sha256": "97ec02715ff60465e6e888cc449df856ad712508edb5af31cad2db098987a216",
+      "plugins": [
+        "CBBE.esp",
+        "RaceMenuMorphsCBBE.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:24:35Z",
+      "transaction": "20260823T052403250Z-f39638b3280e",
+      "fomodPlan": "records/fomod-plans/198-cbbe.json"
+    },
+    {
       "modId": 76649,
       "modName": "ConsoleUtilSSE NG",
       "nexusName": "ConsoleUtilSSE NG",
@@ -30,6 +48,37 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:40Z",
       "transaction": "20260823T035440489Z-a373f32f6e2d"
+    },
+    {
+      "modId": 46311,
+      "modName": "HIMBO",
+      "nexusName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)",
+      "version": "5.8",
+      "fileId": 728971,
+      "fileName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)-46311-5-8-1772908511.7z",
+      "sizeMb": 42.14,
+      "sha256": "13a356f54608feddd93b7301c5a3b169a3e22964205589dd8ddcf6574a35c7b5",
+      "plugins": [
+        "HIMBO.esp",
+        "RaceMenuMorphsHIMBO.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:25:47Z",
+      "transaction": "20260823T052545402Z-446c30a67fec"
+    },
+    {
+      "modId": 46311,
+      "modName": "HIMBO Refits",
+      "nexusName": "02) HIMBO V5 - BG-DG-DB Refits",
+      "version": "5.8a",
+      "fileId": 731729,
+      "fileName": "02) HIMBO V5 - BG-DG-DB Refits-46311-5-8a-1773592661.7z",
+      "sizeMb": 803.02,
+      "sha256": "0b947e2ac3c526454cc35a390662af84c56a541d95a252fb645130170996e96d",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:26:33Z",
+      "transaction": "20260823T052549675Z-6cfec5c42545"
     },
     {
       "modId": 16495,
@@ -61,6 +110,22 @@
       "installedUtc": "2026-08-23T04:24:01Z",
       "transaction": "20260823T042400017Z-e0f1d002ebed",
       "fomodPlan": "records/fomod-plans/55653-nethers-follower-framework.json"
+    },
+    {
+      "modId": 133232,
+      "modName": "Pandora Behaviour Engine",
+      "nexusName": "Pandora Behaviour Engine v4.4.0-beta",
+      "version": "v4.4.0-beta",
+      "fileId": 788583,
+      "fileName": "Pandora Behaviour Engine v4.4.0-beta 133232 v4.4.0-beta 2026-08-11T18-15Z UK35Xn22h.zip",
+      "sizeMb": 50.98,
+      "sha256": "bf7c5ae96482908c5b78c2b0558d37dbf956229e77aa8f91ae557e541b966c13",
+      "plugins": [
+        "FNIS.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:24:01Z",
+      "transaction": "20260823T052401143Z-1e64c98a03c3"
     },
     {
       "modId": 13048,
@@ -141,6 +206,21 @@
       "transaction": "20260823T041235407Z-d15a32c2c159"
     },
     {
+      "modId": 64314,
+      "modName": "Reverie - Skin",
+      "nexusName": "Reverie",
+      "version": "1.11.2",
+      "fileId": 546430,
+      "fileName": "Reverie-64314-1-11-2-1727366169.7z",
+      "sizeMb": 693.31,
+      "sha256": "3eb87beac79434d17691992b387bb2e84c6b97ad6a681456252ceb5755b1f653",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:25:13Z",
+      "transaction": "20260823T052436895Z-5f3e1313c0fd",
+      "fomodPlan": "records/fomod-plans/64314-reverie.json"
+    },
+    {
       "modId": 27962,
       "modName": "Skyrim Unbound Reborn",
       "nexusName": "Skyrim Unbound Reborn",
@@ -156,6 +236,21 @@
       "installedUtc": "2026-08-23T03:55:58Z",
       "transaction": "20260823T035558945Z-9c0280ef14c9",
       "fomodPlan": "records/fomod-plans/27962-skyrim-unbound-reborn.json"
+    },
+    {
+      "modId": 6580,
+      "modName": "SkySight Skins",
+      "nexusName": "01 - Skysight Skins ULTRA - FOMOD Installer",
+      "version": "2.0.2",
+      "fileId": 631385,
+      "fileName": "01 - Skysight Skins ULTRA - FOMOD Installer-6580-2-0-2-1748249727.rar",
+      "sizeMb": 1489.85,
+      "sha256": "5d72976582a2b32dbadfd49bfbf8f456e1062bd2fbe7c457d2dae189aca8c3eb",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:25:38Z",
+      "transaction": "20260823T052516402Z-3e322c2814cf",
+      "fomodPlan": "records/fomod-plans/6580-skysight.json"
     },
     {
       "modId": 12604,
@@ -174,6 +269,23 @@
       "transaction": "20260823T031523730Z-2453226d41b0"
     },
     {
+      "modId": 104215,
+      "modName": "The New Gentleman",
+      "nexusName": "The New Gentleman",
+      "version": "4.2.5",
+      "fileId": 687485,
+      "fileName": "The New Gentleman-104215-4-2-5-1763155655.7z",
+      "sizeMb": 209.54,
+      "sha256": "fc2fd7afd798f0d4d86940d47eaa9aaedc28c762f3984aa19b5fd5d38883bf3c",
+      "plugins": [
+        "TheNewGentleman.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:26:48Z",
+      "transaction": "20260823T052637107Z-be3115a14f9b",
+      "fomodPlan": "records/fomod-plans/104215-tng.json"
+    },
+    {
       "modId": 17561,
       "modName": "UIExtensions",
       "nexusName": "UIExtensions v1-2-0",
@@ -188,6 +300,23 @@
       "enabled": true,
       "installedUtc": "2026-08-23T04:12:25Z",
       "transaction": "20260823T041225609Z-21c3cd5bbfd9"
+    },
+    {
+      "modId": 1988,
+      "modName": "XPMSSE",
+      "nexusName": "XP32 Maximum Skeleton Special Extended",
+      "version": "5.06",
+      "fileId": 469854,
+      "fileName": "XP32 Maximum Skeleton Special Extended-1988-5-06-1707663131.7z",
+      "sizeMb": 2.26,
+      "sha256": "62335bad563800402a4f47e410bf96b5a6b3b920a6b5ea606cd723d03973ed41",
+      "plugins": [
+        "XPMSE.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-23T05:26:36Z",
+      "transaction": "20260823T052634398Z-3d68fa6366cd",
+      "fomodPlan": "records/fomod-plans/1988-xpmsse.json"
     }
   ]
 }

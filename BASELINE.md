@@ -56,9 +56,9 @@ PapyrusUtil, po3 Papyrus Extender, po3 Tweaks, ConsoleUtilSSE NG.
 | KID | 55728 | in keeps |
 | Base Object Swapper | 60805 | in keeps |
 | Open Animation Replacer | 92109 | in keeps |
-| Pandora Behaviour Engine | 133232 | **GAP** - decided winner, purged from keeps |
-| XPMSSE | 1988 | in keeps (skeleton; Skeleton Replacer HD 52845 layers on top rather than replacing the decision) |
-| FSMP | 57339 | in keeps - cloth-only policy, no body jiggle |
+| Pandora Behaviour Engine | 133232 | **installed** v4.4.0-beta; run once via MO2 before playing so XPMSSE weapon-style animations generate |
+| XPMSSE | 1988 | **installed** (Extended + latest rig + RaceMenu MCM weapon styles); Skeleton Replacer HD 52845 layers on top later |
+| FSMP | 57339 | in keeps - cloth-only policy, no body jiggle - install with first physics outfit |
 | BodySlide and Outfit Studio | 201 | in keeps |
 | Crafting Recipe Distributor | 52276 | in keeps |
 
@@ -78,11 +78,11 @@ design, not a compromise.
 |---|---|---|
 | Renderer | Community Shaders + the 7 non-bundled features | ENB excluded; core bundles Sky Sync/LLF/grass/SSS |
 | Worldspaces | Bruma, Wyrmstooth, Beyond Reach, Moonpath, Gray Cowl 10th (141327), Vigilant (11849+11894 EN) | Falskaar and its 4 support mods skipped, evidence on file |
-| Female body | CBBE Curvy preset, no jiggle | **GAP: CBBE base (198) purged** - re-acquire with BodySlide |
-| Female skin | Reverie (64314) | in keeps |
-| Male body | HIMBO (46311) | in keeps |
-| Male skin | SkySight Skins | **GAP** - purged |
-| Animation | Pandora | GAP above |
+| Female body | CBBE Curvy, nude, vanilla outfit replacers, face pack, RaceMenu morphs | **installed** v2.0.3 |
+| Female skin | Reverie: Athletic body normal, Sleek face, CBBE compat | **installed** v1.11.2 |
+| Male body | HIMBO core 01b nude + BG-DG-DB refits + The New Gentleman 4.2.5 (framework, incl. Vigilant ini) | **installed** |
+| Male skin | SkySight 2025 Ultra: HIMBO-Uncut, Clean+Hairy, vanilla head/age, default SSS | **installed** (6580) |
+| Animation | Pandora | installed |
 | Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |
 | Follower framework | NFF | forced by Proteus; **AFT (6656) is the one surviving loser - confirm skip** |
 | Killmoves | VioLens + Kaputt | 3 challengers in additive pool to check against the pair, low priority |

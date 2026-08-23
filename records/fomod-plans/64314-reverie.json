@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "0. Required Installations",
+      "destination": "."
+    },
+    {
+      "source": "1. Customisation/2. Body/2. Normal/1. Athletic",
+      "destination": "Textures/Actors/Character/Female"
+    },
+    {
+      "source": "2. Compatibility/2. Body/2. CBBE/0. Core",
+      "destination": "Textures/Actors/Character"
+    }
+  ]
+}
