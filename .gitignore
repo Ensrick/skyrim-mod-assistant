@@ -25,6 +25,9 @@
 !/.github/workflows/
 !/.github/workflows/check.yml
 
+!/docs/
+!/docs/*.md
+
 !/records/
 !/records/restricted-mods.json
 !/records/installed-mods.json
