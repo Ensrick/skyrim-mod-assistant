@@ -58,7 +58,21 @@ evidence in `records/overnight-audit-2026-08-23.jsonl`:
 | VR-only | 29 |
 | joke/meme | 7 + 1 parody |
 
-**Deep-read pass: 500 top-endorsement survivors read individually, 15 skips**
+**Deep-read pass (still running): 3,361 survivors read individually so far, 51
+skips** - new skip classes found while you slept: author-marked
+OUTDATED/deprecated/superseded pages, patches whose base mod was deleted from
+Nexus, wrong-runtime backports (1.5.97-only), guide/modlist pages that aren't
+mods, features folded into Community Shaders 1.4.7, and two more USSEP
+translations. Slot harvest grew to **453 candidate entries** in
+`docs/SLOT_CANDIDATES.md` - headline finds: NAT.CS III (CS-native weather),
+Lux CS + MLO2 + ISL Helper (CS lighting stack), USSEP-Pandora patch 139572,
+xVASynth (the Vigilant/Beyond Reach revoice tool), Beyond Reach
+dialogue-conditions fix 56542 (fixes your "NPCs won't talk" complaint), the
+Vicn delayed-start trio (late-game gating exactly as planned), Equippable
+Underwear for NPCs 45277 (rival to our home build), Auto Skeleton Patch 176724
+(may remove the Pandora requirement), and Modex 137877 (modern AddItemMenu).
+
+Original first-500 summary: top of the curve clean, 15 skips
 (each cited: TDM-conflicting movement mods, Gray Cowl 2017 vs the kept 10th
 Anniversary, Sky Sync standalone vs CS core, Trainwreck vs installed
 CrashLogger, engine-fix duplicates, Falskaar support stack, QuickLoot RE...).
