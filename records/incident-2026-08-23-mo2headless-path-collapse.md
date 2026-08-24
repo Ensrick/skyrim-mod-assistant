@@ -39,3 +39,11 @@ the declared destination, refuse install when the rebuild is undersized.
 Doctrine addition: a repack is not done until the payload audit shows only
 plugin/meshes/textures-class top entries AND the moved-file count is sane
 against the archive's totals.
+
+**Guard doctrine v2 (same day):** when an archive has a single top-level
+entry that is a wrapper directory (not a game-data dir like meshes/SKSE and
+not a plugin), re-root INTO it during repack - adding a marker file beside it
+defeats the one case where MO2's auto-collapse was actually correct. Caught
+live twice: EVLaS (Data\ wrapper -> DLL would never load) and Slightly
+Brighter Water Effects Fix (named wrapper folder -> meshes inert). Both
+fixed by filesystem re-root, verified.
