@@ -44,9 +44,9 @@ is `py -3 audit/launch_triage.py` after EVERY launch (parses skse64.log).
 **1.7.99 ecosystem hold (2026-08-23 launch triage):** four DLLs refused the
 new runtime and are parked: SSE Engine Fixes 7.0.20 (address library format 5
 unsupported; MO2 mod DISABLED to kill the popup, preloader in game root is a
-harmless no-op), RaceMenu 0.4.20 (skee64 version-gated; MO2 mod DISABLED -
-author says the 1.7.99 build is done, gated on an SKSE Papyrus fix + a
-Bethesda NIF regression), PapyrusUtil 4.6 and JContainers 4.2.13.1 (SKSE
+harmless no-op), RaceMenu RESTORED 2026-08-24 via self-built skee64 from the author's own
+1.7.99 commit (records/selfbuild-2026-08-24-skse-skee64.md; overlay NIF
+regression untested in-game), PapyrusUtil 4.6 and JContainers 4.2.13.1 (SKSE
 disables the DLLs silently; mods left enabled - scripts are inert without
 them). Consequences until updates land: NO character creation via RaceMenu,
 Proteus (JContainers) and NFF (PapyrusUtil) storage broken - shakedown is
@@ -58,7 +58,7 @@ VISUALS ONLY, do not build real characters yet.
 
 | mod | id | status |
 |---|---|---|
-| SKSE64 2.3.0 | 30379 | **installed** (game root, matches 1.7.99) |
+| SKSE64 2.3.0 | 30379 | **SELF-BUILT master 2026-08-24** (ianpatt/skse64@14db212 incl. Expired PC-offset fixes; Nexus 2.3.0 backed up beside it; official release supersedes) |
 | Address Library v12 | 32444 | **installed** |
 | SSE Engine Fixes | 17230 | **PARKED 2026-08-23** - 7.0.20 rejects address library format 5 (1.7.99); mod disabled, preloader stays; watcher armed |
 | Crash logger | 59818 | **installed** CrashLoggerSSE 1.25.0 (updated for 1.7.99 two days ago; Trainwreck stale since 2024) |
