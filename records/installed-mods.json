@@ -709,23 +709,6 @@
       "fomodPlan": "records/fomod-plans/62934-proteus.json"
     },
     {
-      "modId": 19080,
-      "modName": "RaceMenu",
-      "nexusName": "RaceMenu Anniversary Edition v0-4-20-0",
-      "version": "0.4.20.0",
-      "fileId": 743640,
-      "fileName": "RaceMenu Anniversary Edition v0-4-20-0-19080-0-4-20-0-1776620918.7z",
-      "sizeMb": 8.26,
-      "sha256": "e0f5e923f1eaaefefcb0a98822df091c5b96b010d2df2b52dc377aae539097da",
-      "plugins": [
-        "RaceMenu.esp",
-        "RaceMenuPlugin.esp"
-      ],
-      "enabled": true,
-      "installedUtc": "2026-08-23T04:12:36Z",
-      "transaction": "20260823T041235407Z-d15a32c2c159"
-    },
-    {
       "modId": 64314,
       "modName": "Reverie - Skin",
       "nexusName": "Reverie",
@@ -921,21 +904,6 @@
       "enabled": true,
       "installedUtc": "2026-08-23T06:01:50Z",
       "transaction": "20260823T060150223Z-be8d1441d5e5"
-    },
-    {
-      "modId": 17230,
-      "modName": "SSE Engine Fixes",
-      "nexusName": "Engine Fixes - Main File",
-      "version": "7.0.20",
-      "fileId": 725753,
-      "fileName": "Engine Fixes - Main File-17230-7-0-20-1772078239.7z",
-      "sizeMb": 7.6,
-      "sha256": "21330c95011f41859139635b43ce95ffb5fbadd3cd375d2f4358abcc3cb99407",
-      "plugins": [],
-      "enabled": true,
-      "installedUtc": "2026-08-23T06:02:19Z",
-      "transaction": "20260823T060218840Z-dd94b8e5acd2",
-      "fomodPlan": "records/fomod-plans/17230-engine-fixes.json"
     },
     {
       "modId": 104215,

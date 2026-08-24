@@ -25,8 +25,22 @@ on paper, absent from keeps, re-acquire at install time. This is why the build
 runs from this manifest downward, not from the keep list upward.
 
 `[verify]` = old SKSE DLL; check `SKSEPlugin_Version` export at install (the
-address-independence test). Never pre-filter on it - all 7 DLLs installed so
-far passed despite predating 1.7.99.
+address-independence test). Never pre-filter on it - but 2026-08-23's first
+launch proved it necessary-NOT-sufficient: version data can still whitelist
+older runtimes, and address-library format bumps bite at load. The real gate
+is `py -3 audit/launch_triage.py` after EVERY launch (parses skse64.log).
+`py -3 audit/plugin_watch.py` polls the blocked pages for new uploads.
+
+**1.7.99 ecosystem hold (2026-08-23 launch triage):** four DLLs refused the
+new runtime and are parked: SSE Engine Fixes 7.0.20 (address library format 5
+unsupported; MO2 mod DISABLED to kill the popup, preloader in game root is a
+harmless no-op), RaceMenu 0.4.20 (skee64 version-gated; MO2 mod DISABLED -
+author says the 1.7.99 build is done, gated on an SKSE Papyrus fix + a
+Bethesda NIF regression), PapyrusUtil 4.6 and JContainers 4.2.13.1 (SKSE
+disables the DLLs silently; mods left enabled - scripts are inert without
+them). Consequences until updates land: NO character creation via RaceMenu,
+Proteus (JContainers) and NFF (PapyrusUtil) storage broken - shakedown is
+VISUALS ONLY, do not build real characters yet.
 
 ---
 
@@ -36,7 +50,7 @@ far passed despite predating 1.7.99.
 |---|---|---|
 | SKSE64 2.3.0 | 30379 | **installed** (game root, matches 1.7.99) |
 | Address Library v12 | 32444 | **installed** |
-| SSE Engine Fixes | 17230 | **installed** v7.0.20 AE dll + preloader d3dx9_42.dll in game root |
+| SSE Engine Fixes | 17230 | **PARKED 2026-08-23** - 7.0.20 rejects address library format 5 (1.7.99); mod disabled, preloader stays; watcher armed |
 | Crash logger | 59818 | **installed** CrashLoggerSSE 1.25.0 (updated for 1.7.99 two days ago; Trainwreck stale since 2024) |
 | USSEP | 266 | **installed** 4.3.9 (2026-08-21) |
 | Bug Fixes SSE | 33261 | **installed** v10, address-independent |
