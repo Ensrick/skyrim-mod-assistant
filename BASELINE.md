@@ -18,9 +18,13 @@ that no line ever pulls simply never gets installed, and that is fine.
 
 **Selection principle (user, 2026-08-23): prefer open source where possible** -
 source availability is a first-class tiebreaker between rivals so problems can
-be fixed via Claude instead of waiting on authors. Accepted closed-source
-risks (no open alternative exists): RaceMenu (skee64) and Proteus - both also
-the 1.7.99 blockers that taught this lesson.
+be fixed via Claude instead of waiting on authors. Risk register (corrected
+2026-08-23 after actually checking): RaceMenu skee64 IS source-available
+(expired6978/SKSE64Plugins; author committed "Update RM to 1.7.99" on
+2026-08-23 itself - self-buildable from the author's own port ahead of the
+gated Nexus release). Proteus is MIT (phenderix/PROTEUS, Papyrus scripts);
+only its small Nightfallstorm-converted SKSE DLL has no located source yet.
+No fully-closed load-bearing mods remain confirmed in the build.
 
 Nothing else "still needs review". The unreviewed Nexus catalogue is consulted
 only per-slot during gap searches, never wholesale - that lesson is paid for.
