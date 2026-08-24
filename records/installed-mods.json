@@ -18,38 +18,22 @@
       "transaction": "20260823T035430739Z-1f3efe18d5fe"
     },
     {
-      "modId": 42731,
-      "modName": "Azurite III Darker Nights",
-      "nexusName": "Azurite Weathers III - Darker Nights",
-      "version": "3.x",
-      "fileId": 579699,
-      "fileName": "Azurite Weather III - Darker Nights-42731-3-x-1736096568.7z",
-      "sizeMb": 0.0,
-      "sha256": "ad8c124f1dc54eb166ab5adac5e9d57702b72375ef84e5677c95b6d65587bfaf",
+      "modId": 162153,
+      "modName": "Azurite III CS",
+      "nexusName": "Azurite III CS",
+      "version": "1.2.1",
+      "fileId": 779030,
+      "fileName": "Azurite III CS 162153 1.2.1 2026-07-20T14-15Z yIjvuhq22.zip",
+      "sizeMb": 0.11,
+      "sha256": "5576949e320741281acd557953c4292bc307593a19ef2c5c87ea94169eccf9bf",
       "plugins": [
-        "Azurite Weathers III - Darker Nights.esp"
+        "Azurite III CS - Darker Nights.esp",
+        "Azurite III CS.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-24T03:08:56Z",
-      "transaction": "20260824T030856068Z-ba963200b6b8",
-      "note": "author optional addon; user dark-nights taste"
-    },
-    {
-      "modId": 138991,
-      "modName": "Azurite III HDR",
-      "nexusName": "Azurite III - HDR",
-      "version": "1.0.1",
-      "fileId": 582921,
-      "fileName": "Azurite III - HDR-138991-1-0-1-1736783017.zip",
-      "sizeMb": 0.0,
-      "sha256": "ecf75bf9478c98e6f36855706673f3abdf2bfb1004819ece6ea6facffa063847",
-      "plugins": [
-        "Azurite III - HDR.esp"
-      ],
-      "enabled": true,
-      "installedUtc": "2026-08-24T03:08:57Z",
-      "transaction": "20260824T030856800Z-9248db680837",
-      "note": "CS-side HDR companion by doodlum (\"Azurite CS\")"
+      "installedUtc": "2026-08-24T03:45:43Z",
+      "transaction": "20260824T034543558Z-1fdf3d90a24a",
+      "note": "Dlizzio CS companion (user-named); own Darker Nights addon; IBL configs for core feature; replaces doodlum HDR + DrJacopo DN addon"
     },
     {
       "modId": 42731,

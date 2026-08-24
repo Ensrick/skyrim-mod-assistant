@@ -1158,3 +1158,12 @@ per entry in the sweep2 audit log:
   Subsurface Scattering 114114 (standalone would downgrade core 1.8.3).
 Winners untouched; Azurite Weathers III - Enhanced 150269 left undecided (a
 tweak layer for the winner, not a contender).
+
+**Azurite CS correction (2026-08-23, same evening):** the user's "Azurite CS"
+meant Dlizzio's Azurite III CS (162153, v1.2.1 active Jul 2026, the base of
+the Azurite tweak ecosystem) - not doodlum's Azurite III - HDR (138991, frozen
+Jan 2025) which I had installed from the brief's shorthand. 162153's page
+declares HDR + the DrJacopo Darker Nights addon + Enhanced 150269 + Alluring
+Sunsets 119148 incompatible. Swapped: HDR + DN addon disabled (dirs kept),
+162153 installed with its own Darker Nights + Image Based Lighting options;
+queued keep 162153, skips 138991/150269/119148. Verify clean, 63 mods.
