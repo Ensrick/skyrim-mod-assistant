@@ -232,6 +232,139 @@
       "fomodPlan": "records/fomod-plans/55728-kid.json"
     },
     {
+      "modId": 43158,
+      "modName": "Lux",
+      "nexusName": "Lux (main)",
+      "version": "7.0",
+      "fileId": 649989,
+      "fileName": "Lux (main)-43158-7-0-1753427726.rar",
+      "sizeMb": 89.33,
+      "sha256": "30dbe2cafb314e9dd18a3c537732ec6485783872a7fa2733a3dd6071b9343f42",
+      "plugins": [
+        "Lux - Master plugin.esm",
+        "Lux - USSEP patch.esp",
+        "Lux.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:36:34Z",
+      "transaction": "20260824T023633168Z-eb05a5927423",
+      "note": "fixed repack; dim beams/mists, no optimized meshes (CS LLF), USSEP latest"
+    },
+    {
+      "modId": 43158,
+      "modName": "Lux CC Patches",
+      "nexusName": "Creation Club content bundle",
+      "version": "6.3",
+      "fileId": 415225,
+      "fileName": "Creation Club content bundle-43158-6-3-1691504625.rar",
+      "sizeMb": 0.94,
+      "sha256": "1963cf42adf781e70a1dada453bd8a735c72e7d995f33c2660747c00ec6241aa",
+      "plugins": [
+        "Lux - Bittercup Patch.esp",
+        "Lux - Bloodchill Manor patch.esp",
+        "Lux - CC Fish patch.esp",
+        "Lux - Dawnfang CC.esp",
+        "Lux - Dead Mans Dread Patch.esp",
+        "Lux - Elite Crossbows.esp",
+        "Lux - Farmer patch.esp",
+        "Lux - Forgotten Seasons.esp",
+        "Lux - Ghosts of the Tribunal CC.esp",
+        "Lux - Goblins CC.esp",
+        "Lux - Goldbrand CC.esp",
+        "Lux - Hendraheim patch.esp",
+        "Lux - Myrwatch patch.esp",
+        "Lux - Nchuanthumz Dwarven Home patch.esp",
+        "Lux - Necrohouse patch.esp",
+        "Lux - Pets of Skyrim CC.esp",
+        "Lux - Saints and Seducers patch.esp",
+        "Lux - Shadowfoot Sanctum patch.esp",
+        "Lux - Staff of Hasedoki CC.esp",
+        "Lux - The Cause patch.esp",
+        "Lux - Tundra Homestead patch.esp",
+        "Lux - Umbra CC.esp",
+        "Lux - Vigil Enforcer CC.esp",
+        "Lux - Wraithguard patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:33:10Z",
+      "transaction": "20260824T023307966Z-ab781df844c9",
+      "note": "all 31 CC patch plugins; full AE CC present (74 cc plugins)"
+    },
+    {
+      "modId": 153919,
+      "modName": "Lux CS",
+      "nexusName": "Lux CS",
+      "version": "2.6.0",
+      "fileId": 785223,
+      "fileName": "Lux CS 153919 2.6.0 2026-08-04T03-41Z hfH9s6ocx.zip",
+      "sizeMb": 0.29,
+      "sha256": "3df3f3b96a7f6e10922d3b7cf5f92af5f773a8783616466183adf54e0825cba8",
+      "plugins": [
+        "Lux - HDR.esp",
+        "Lux CS - Bulbs.esp",
+        "Lux CS Templates - Default.esp",
+        "Lux Orbis CS.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:33:14Z",
+      "transaction": "20260824T023314305Z-aa66c405e84a",
+      "note": "No Effect 11, Orbis Tweaks, Default templates"
+    },
+    {
+      "modId": 56095,
+      "modName": "Lux Orbis",
+      "nexusName": "Lux Orbis (main)",
+      "version": "4.5",
+      "fileId": 567228,
+      "fileName": "Lux Orbis (main)-56095-4-5-1732873513.rar",
+      "sizeMb": 30.82,
+      "sha256": "7d20009016abf410b46d92a0334e48ac09e524588423577bae5b44d363df8464",
+      "plugins": [
+        "Lux Orbis - Master plugin.esm",
+        "Lux Orbis - Riften Sconce Patch.esp",
+        "Lux Orbis - USSEP patch.esp",
+        "Lux Orbis.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:36:37Z",
+      "transaction": "20260824T023636831Z-7ab987a2ae89",
+      "note": "fixed repack; parallax meshes, Solitude SMIM, vanilla well, Mara fix, USSEP"
+    },
+    {
+      "modId": 113002,
+      "modName": "Lux Patch Hub",
+      "nexusName": "Lux (patch hub)",
+      "version": "7.1",
+      "fileId": 695703,
+      "fileName": "Lux (patch hub)-113002-7-1-1765181180.rar",
+      "sizeMb": 0.18,
+      "sha256": "a02f6b02b6ccf08c8582b8e709bef66f2ea1de587ad972973164ade5c2789316",
+      "plugins": [
+        "Lux - BS Bruma patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:33:11Z",
+      "transaction": "20260824T023311442Z-135339477270",
+      "note": "Bruma patch only; re-run for Wyrmstooth/Vicn when those install"
+    },
+    {
+      "modId": 63588,
+      "modName": "Lux Resources",
+      "nexusName": "Optional Lux Resource Pack (ENB light)",
+      "version": "2.2",
+      "fileId": 490664,
+      "fileName": "Optional Lux Resource Pack (ENB light)-63588-2-2-1713094414.rar",
+      "sizeMb": 597.71,
+      "sha256": "0b14fd64c581b1a422e03086684fd5960c09cbe3a4138c7f942b056a374472f5",
+      "plugins": [
+        "Lux - Resources.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:33:01Z",
+      "transaction": "20260824T023254063Z-733d6bc822f9",
+      "note": "ENB-light variant for CS particle lights; satisfies Lux hard req"
+    },
+    {
       "modId": 53000,
       "modName": "MCM Helper",
       "nexusName": "MCM Helper",
@@ -493,6 +626,53 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:15:23Z",
       "transaction": "20260823T031523730Z-2453226d41b0"
+    },
+    {
+      "modId": 659,
+      "modName": "SMIM",
+      "nexusName": "SMIM SE 2-08",
+      "version": "2.08",
+      "fileId": 59069,
+      "fileName": "SMIM SE 2-08-659-2-08.7z",
+      "sizeMb": 793.73,
+      "sha256": "d7095d5215d3f79759c606e5cd41c20f6d6347c527b7176fe48ee74a72c9df97",
+      "plugins": [
+        "SMIM-SE-Merged-All.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:36:27Z",
+      "transaction": "20260824T023621807Z-16ee9776813e",
+      "note": "fixed repack: dest-aware, case-insensitive; Everything+recommended; Merged-All esp"
+    },
+    {
+      "modId": 659,
+      "modName": "SMIM Farming CC Patch",
+      "nexusName": "SMIM SE 'Farming Creation Club' Patch",
+      "version": "1.0",
+      "fileId": 595607,
+      "fileName": "SMIM SE 'Farming Creation Club' Patch-659-1-0-1739741945.7z",
+      "sizeMb": 0.53,
+      "sha256": "c90cf497b6a8d6feeacea46a3c9c19d76c03ff2d920257860aa80ec45d0ed91f",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:29:55Z",
+      "transaction": "20260824T022955299Z-a544d549f210",
+      "note": "direct archive (loose meshes)"
+    },
+    {
+      "modId": 44388,
+      "modName": "SMIM Quality Addon",
+      "nexusName": "SMIM Quality Addon 1.5",
+      "version": "1.5",
+      "fileId": 445248,
+      "fileName": "SMIM Quality Addon 1.5-44388-1-5-1700735143.7z",
+      "sizeMb": 53.34,
+      "sha256": "22d0da8efd1f54b8e7ec47b29bcea33b9de5b06e3b71e0fcb8fe29c011e85dcc",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:29:58Z",
+      "transaction": "20260824T022955700Z-1477cffea32a",
+      "note": "direct archive"
     },
     {
       "modId": 36869,

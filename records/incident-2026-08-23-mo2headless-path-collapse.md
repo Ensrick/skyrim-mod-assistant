@@ -23,3 +23,19 @@ recorded here instead. Until the controller is fixed: after ANY mod-install,
 verify payload paths (the dll-location audit in this incident is the check);
 prefer repacked archives with final layouts over install-plan destination
 mapping.
+
+## Sequel lesson (same day, evening): repack pipeline defects
+
+First bulk FOMOD repack (SMIM/Lux/Orbis) shipped two defects the payload audit
+caught immediately: (1) FOMOD source paths were matched against archive paths
+CASE-SENSITIVELY - SMIM's config says `00 Core\Meshes`, archive says `meshes`,
+so 93 of 97 sources silently resolved to nothing and SMIM installed 4 files;
+(2) sources were flattened by stripping the full source path instead of
+honoring each entry's FOMOD `destination` attribute, spilling mesh subfolders
+to mod root (Lux/Orbis). Fix: `fix_lux_chain.py` - parse
+`<file|folder source destination>` pairs from ModuleConfig, resolve
+case-insensitively (tolerating one wrapper folder), copy source CONTENTS into
+the declared destination, refuse install when the rebuild is undersized.
+Doctrine addition: a repack is not done until the payload audit shows only
+plugin/meshes/textures-class top entries AND the moved-file count is sane
+against the archive's totals.
