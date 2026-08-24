@@ -1129,3 +1129,13 @@ ENB Light 22574 (CS particle lights consume its assets), CS feature quartet
 (Wetness 112739, Skylighting 139352, SSGI 130375, Terrain Variation 148123 -
 all still genuine separate downloads at core 1.8.3). NotWL LOD addon 133619 is
 a TEST build for DynDOLOD 3 alpha - shakedown item.
+
+**Interior lighting follow-up (2026-08-23):** empirical patch-coverage check.
+Lux - Patch Hub (113002, kept, hard req of Lux since 7.x, updated 2026-08-09,
+282 MB) ships official patches for Beyond Skyrim Bruma, Wyrmstooth, Vigilant,
+Glenmoril and Unslaad. ELFX Shadows 1.6.2 FOMOD (36 MB) contains none of those;
+ELFX base (2424, kept) frozen at 3.06 since 2017-10, alive via ELFX Fixes
+(25498, 2022) + ELFX Shadows (63790, active). RLO not found in keeps by name
+and dormant. Recommendation on record: Lux + Lux CS + Orbis + Via + hub as
+primary shakedown stack, ELFX trio shelved as A/B fallback (per-cell exclusive,
+mid-save swappable). User decides after seeing it in-game.
