@@ -1111,3 +1111,21 @@ Aesthetic clusters are listed for identification only - the look is your call.
 - **ElDruin Dawnbreaker - mesh and texture replacer** (18372) alongside **Dawnbreaker Reborn** (44787)
 - **Player Rotation in ShowRaceMenu** (36095) alongside **ShowRaceMenu - NG** (173086)
 
+
+## 7. Ask Claude batch evals (running log)
+
+### 2026-08-23 - Visuals and Graphics, top-30 by endorsements
+All 30 were already keeps. Full per-mod re-audit against the CS pillar found six
+supersessions (skips queued via relay, evidence in sweep2 audit log):
+Skyland landscape 3820 + Whiterun 13015 + Nordic Ruins 19116 + Solitude 24252
+(all bundled in kept, active Skyland AIO 34179); Skyrim Upscaler 80343
+(CS-native Upscaling 156952 kept); Window Shadows RT 37831 (author-deleted 2021
+beta, incompatible with both interior-lighting finalists, CS core ships InteriorSun).
+Flagged for user decision: interior lighting Lux+LuxCS+Orbis vs ELFX Shadows
+(True Light already skipped in Lux's favor); landscape art direction Skyland AIO
+vs Fantasia 107256; RASS 22780 rain-wetness component off at install (CS Wetness
+Effects covers it - ash/frost/breath stay unique). Confirmed intentional keeps:
+ENB Light 22574 (CS particle lights consume its assets), CS feature quartet
+(Wetness 112739, Skylighting 139352, SSGI 130375, Terrain Variation 148123 -
+all still genuine separate downloads at core 1.8.3). NotWL LOD addon 133619 is
+a TEST build for DynDOLOD 3 alpha - shakedown item.
