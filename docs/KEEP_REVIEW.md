@@ -1139,3 +1139,22 @@ ELFX base (2424, kept) frozen at 3.06 since 2017-10, alive via ELFX Fixes
 and dormant. Recommendation on record: Lux + Lux CS + Orbis + Via + hub as
 primary shakedown stack, ELFX trio shelved as A/B fallback (per-cell exclusive,
 mid-save swappable). User decides after seeing it in-game.
+
+### 2026-08-23 - decided-slot loser sweep (user-ordered)
+User: "remove all contenders for the weather, lighting, and shader slots from
+the keeps list, and mark them as skips." 30 skips queued via relay, evidence
+per entry in the sweep2 audit log:
+- Weather rivals (12): Vivid 2187, Obsidian 12125, Cathedral 24791, CoT 2237,
+  Dolomite 7895, Mythical Ages 11578, RAID 63116, Weather of World 58782,
+  Rustic 8398, NAT classic 12842, NAT.CS III 139567, NAT Effect 11 186575.
+- Weather satellites (5): Cathedral MCM 24940, Obsidian Darker Nights 15137,
+  Dolomite Precipitation 8006, Azurite Mists 106559 (author: III needs no mist
+  mods), Darker Nights 694 (Azurite author addon supersedes).
+- Lighting (8): ELFX 2424 + Fixes 25498 + Shadows 63790 + Enhancer 16618 (A/B
+  shelf revoked by this instruction), RLO 844, Relighting Skyrim 8586,
+  Luminosity 16830, ELFX SMIM fps patch 5520.
+- Renderer (5): core-bundled stale CS feature pages Grass Lighting 86502,
+  Grass Collision 87816, Screen Space Shadows 93209, Water Effects 112762,
+  Subsurface Scattering 114114 (standalone would downgrade core 1.8.3).
+Winners untouched; Azurite Weathers III - Enhanced 150269 left undecided (a
+tweak layer for the winner, not a contender).
