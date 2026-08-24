@@ -96,7 +96,7 @@ design, not a compromise.
 |---|---|---|
 | Weather | Vivid, Obsidian, Cathedral, Dolomite, Azurite, Weather of World (6) | in-game A/B - `bat` bridge can force each mod's weathers by FormID |
 | Landscape tex | Majestic Mtns, Cathedral Landscapes, aMidianBorn B&L, Majestic Landscapes, Gecko's 4K, RUSTIC MOUNTAINS (6) | file-level: coverage overlap + the audit tooling; mountains vs full-landscape are partly complementary |
-| Interior lighting | ELFX, RLO, Relighting Skyrim, Luminosity (4) | **decide first - gates every city/patch choice.** Lux was purged; decide whether it re-enters via gap search |
+| Interior lighting | **DECIDED 2026-08-23: Lux family** - Lux + Via + Orbis + Patch Hub + Lux CS + CC bundle (installing; dim beam/mist variants) | Lux re-entered via keeps and won on facts: every component active 2024-26, purpose-built CS bridge, hub officially patches Bruma/Wyrmstooth/Vigilant/Glenmoril/Unslaad (ELFX FOMOD: none). ELFX trio stays shelved as mid-save A/B fallback |
 | Water | Cathedral Water, Simplicity of Sea, A Water Made For CS (3) | last two are CS-era; RWT purged |
 | Horses | Convenient Horses, Simple Horse, Simplest Horses (3) | feature-set read; CH vs INIGO conflict already on file |
 | Skeleton | XPMSSE + Skeleton Replacer HD (2) | layering question, not rivalry |

@@ -7,8 +7,14 @@
 > installed; AFT is the surviving loser), worldspaces = Bruma / Wyrmstooth /
 > Beyond Reach / Moonpath / Gray Cowl 141327 / Vigilant (Falskaar skipped with
 > evidence), bodies = CBBE Curvy + Reverie / HIMBO + SkySight, physics = FSMP
-> cloth-only. Note the counts below predate the August purge - many rivals
-> listed here are no longer in keeps; BASELINE.md carries the current state.
+> cloth-only, **interior lighting = Lux family (2026-08-23: Lux 43158 + Via
+> 63588 + Orbis 56095 + Patch Hub 113002 + Lux CS 153919 + CC bundle; dim
+> "Effect lighting without PARTICLE" beam/mist variants per user's taste; ELFX
+> trio 2424/25498/63790 stays kept as shelved A/B fallback, mid-save swappable;
+> RLO/Relighting/Luminosity out of contention - evidence in
+> docs/KEEP_REVIEW.md §7)**. Note the counts below predate the August purge -
+> many rivals listed here are no longer in keeps; BASELINE.md carries the
+> current state.
 
 Generated 2026-08-19 from the live curator database (2,200 keeps, 1,135 skips, 11 trims).
 
@@ -53,7 +59,7 @@ of Weather (13044).
 Deciding factor: whether the weather mod ships Community Shaders-aware interiors and how its
 night brightness reads without ENB. Cathedral and Azurite are the two built for the CS era.
 
-### Interior lighting (5 rivals)
+### Interior lighting: settled 2026-08-23 - Lux family (see header note)
 | ID | Mod | Endorse |
 |---|---|---|
 | 2424 | Enhanced Lights and FX | 139,018 |
