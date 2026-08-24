@@ -119,3 +119,14 @@ fallback. It is not represented as a source build of 4.1.5q.
 - LOOT and xEdit must run through the chosen MO2 profile/VFS for a real mod list;
   invoking either directly against the physical game `Data` folder would miss
   MO2-managed files.
+
+## Game launch (2026-08-23)
+
+The Steam Play button IS the modded launch: Skyrim SE's Steam LaunchOptions
+(userdata\250855163\config\localconfig.vdf, backup .bak.v2026-08-23 beside it)
+run `mo2-instances\skyrim-se\ModOrganizer.exe "moshortcut://:SKSE" %command%`,
+so Steam starts MO2 portable, which mounts the VFS and runs the SKSE entry
+(#1 in customExecutables). Steam shows "Running" while MO2/game are open -
+normal. Revert: clear Launch Options in game Properties or restore the backup.
+Never launch the game from a shell; edits to localconfig.vdf require Steam to
+be fully exited first (steam.exe -shutdown).
