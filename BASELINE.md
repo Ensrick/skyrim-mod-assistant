@@ -16,6 +16,12 @@ that no line ever pulls simply never gets installed, and that is fine.
 | loser of a decided slot (AFT) | 1 | confirm skip |
 | additive pool - textures, fixes, QoL, quests | **1,007** | **0** |
 
+**Selection principle (user, 2026-08-23): prefer open source where possible** -
+source availability is a first-class tiebreaker between rivals so problems can
+be fixed via Claude instead of waiting on authors. Accepted closed-source
+risks (no open alternative exists): RaceMenu (skee64) and Proteus - both also
+the 1.7.99 blockers that taught this lesson.
+
 Nothing else "still needs review". The unreviewed Nexus catalogue is consulted
 only per-slot during gap searches, never wholesale - that lesson is paid for.
 
