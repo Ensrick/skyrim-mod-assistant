@@ -130,3 +130,13 @@ so Steam starts MO2 portable, which mounts the VFS and runs the SKSE entry
 normal. Revert: clear Launch Options in game Properties or restore the backup.
 Never launch the game from a shell; edits to localconfig.vdf require Steam to
 be fully exited first (steam.exe -shutdown).
+
+## Post-launch triage + update watch (2026-08-23)
+
+After EVERY launch attempt: `py -3 audit/launch_triage.py` - parses skse64.log
+for refused plugins and scans fresh per-plugin logs for error lines. The SKSE
+stack logs everything; the failure mode was nobody reading it.
+`py -3 audit/plugin_watch.py` - polls the 1.7.99-blocked pages (Engine Fixes,
+RaceMenu, PapyrusUtil, JContainers, SKSE) and prints NEW when files appear;
+state in records/plugin-watch.json. When a page updates: install the new
+build, re-enable the parked MO2 mod, rerun triage on next launch.
