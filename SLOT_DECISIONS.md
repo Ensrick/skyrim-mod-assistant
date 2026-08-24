@@ -13,11 +13,11 @@
 > trio 2424/25498/63790 stays kept as shelved A/B fallback, mid-save swappable;
 > RLO/Relighting/Luminosity out of contention - evidence in
 > docs/KEEP_REVIEW.md §7)**, **weather = Azurite line (2026-08-23: Azurite
-Weathers III 3.35 + author Darker Nights addon + doodlum's Azurite III - HDR
-+ author recs EVLaS 63725 (skip flipped to keep per user instruction, veto
-open) and Slightly Brighter Water Effects Fix 126683; Azurite Mists NOT
-installed - author: III is designed misty without mist mods; CS grass/shadow
-rec pages skipped as core-bundled)**. Note the counts below predate the August purge -
+> Weathers III 3.35 + author Darker Nights addon + doodlum's Azurite III - HDR
+> + author recs EVLaS 63725 (skip flipped to keep per user instruction, veto
+> open) and Slightly Brighter Water Effects Fix 126683; Azurite Mists NOT
+> installed - author: III is designed misty without mist mods; CS grass/shadow
+> rec pages skipped as core-bundled)**. Note the counts below predate the August purge -
 > many rivals listed here are no longer in keeps; BASELINE.md carries the
 > current state.
 
