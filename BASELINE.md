@@ -76,7 +76,7 @@ design, not a compromise.
 
 | slot | decision | notes |
 |---|---|---|
-| Renderer | Community Shaders + the 7 non-bundled features | ENB excluded; core bundles Sky Sync/LLF/grass/SSS |
+| Renderer | Community Shaders 1.8.3 + Skylighting/SSGI/Wetness/TerrainVariation/TerrainBlending/Upscaling + Particle Patch + ENB Light | **installed** 2026-08-23; Hair Specular undecided-not-installed; effects-11 pipeline NOT in stable core - Lux CS Effect 11 flip parked |
 | Worldspaces | Bruma, Wyrmstooth, Beyond Reach, Moonpath, Gray Cowl 10th (141327), Vigilant (11849+11894 EN) | Falskaar and its 4 support mods skipped, evidence on file |
 | Female body | CBBE Curvy, nude, vanilla outfit replacers, face pack, RaceMenu morphs | **installed** v2.0.3 |
 | Female skin | Reverie: Athletic body normal, Sleek face, CBBE compat | **installed** v1.11.2 |

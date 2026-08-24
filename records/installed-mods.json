@@ -129,6 +129,21 @@
       "fomodPlan": "records/fomod-plans/198-cbbe.json"
     },
     {
+      "modId": 86492,
+      "modName": "Community Shaders",
+      "nexusName": "Community Shaders",
+      "version": "1.8.3",
+      "fileId": 786669,
+      "fileName": "Community Shaders 86492 1.8.3 2026-08-07T18-54Z n0oTCm8m2.zip",
+      "sizeMb": 42.05,
+      "sha256": "cccab54f02fc57d30a172037b513915534855016fa7e99fac998625a210e8f7f",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:20Z",
+      "transaction": "20260824T030319481Z-7798d4820044",
+      "note": "core 1.8.3; renderer pillar; LLF/TruePBR/InteriorSun etc in core"
+    },
+    {
       "modId": 76649,
       "modName": "ConsoleUtilSSE NG",
       "nexusName": "ConsoleUtilSSE NG",
@@ -170,6 +185,113 @@
       "enabled": true,
       "installedUtc": "2026-08-23T06:01:49Z",
       "transaction": "20260823T060148806Z-f06816a649e4"
+    },
+    {
+      "modId": 130375,
+      "modName": "CS Screen Space GI",
+      "nexusName": "Screen Space GI",
+      "version": "4.2.0",
+      "fileId": 763934,
+      "fileName": "Screen Space GI 130375 4.2.0 2026-06-15T11-09Z miUDjFWE7.7z",
+      "sizeMb": 2.55,
+      "sha256": "a0928c3d9107f231680397be8268055f27b00d97130d53674aa8d4d7031596c2",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:21Z",
+      "transaction": "20260824T030321064Z-48e553e70afc",
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+    },
+    {
+      "modId": 139352,
+      "modName": "CS Skylighting",
+      "nexusName": "Skylighting",
+      "version": "1.5.1",
+      "fileId": 786154,
+      "fileName": "Skylighting 139352 1.5.1 2026-08-06T11-51Z IoFlhf7uo.zip",
+      "sizeMb": 0.01,
+      "sha256": "3ba8f14d210450364889ae6775095b7c45e23b4abb22741e9d0d3e163526c336",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:20Z",
+      "transaction": "20260824T030320416Z-5f4fca892d5b",
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+    },
+    {
+      "modId": 157076,
+      "modName": "CS Terrain Blending",
+      "nexusName": "Terrain Blending",
+      "version": "1.2.0",
+      "fileId": 763935,
+      "fileName": "Terrain Blending 157076 1.2.0 2026-06-15T11-09Z 587RqTuZB.7z",
+      "sizeMb": 0.0,
+      "sha256": "1ffe158048f92cc191b81c93746164dc00dea197768c1895ed3059c77d23a8e2",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:22Z",
+      "transaction": "20260824T030322781Z-c5d3e658fd38",
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+    },
+    {
+      "modId": 148123,
+      "modName": "CS Terrain Variation",
+      "nexusName": "Terrain Variation",
+      "version": "1.1.0",
+      "fileId": 786155,
+      "fileName": "Terrain Variation 148123 1.1.0 2026-08-06T11-51Z Ks18n0BX8.zip",
+      "sizeMb": 0.0,
+      "sha256": "97ded8f6257a611652d5e6c69f202bd79518ee42ee38c691d1239c05156bc381",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:22Z",
+      "transaction": "20260824T030322010Z-6d5f9ac9843d",
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+    },
+    {
+      "modId": 156952,
+      "modName": "CS Upscaling",
+      "nexusName": "Upscaling",
+      "version": "1.4.0",
+      "fileId": 758189,
+      "fileName": "Upscaling 156952 1.4.0 2026-05-31T10-27Z L5WQbqiov.7z",
+      "sizeMb": 56.23,
+      "sha256": "4171c4e37862ef540a6734a60bbd207bddcdb6f8b9d73072286d68b6b4619846",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:25Z",
+      "transaction": "20260824T030325544Z-c10116e1cb19",
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+    },
+    {
+      "modId": 112739,
+      "modName": "CS Wetness Effects",
+      "nexusName": "Wetness Effects",
+      "version": "3.1.0",
+      "fileId": 747765,
+      "fileName": "Wetness Effects-112739-3-1-0-1777700350.7z",
+      "sizeMb": 0.01,
+      "sha256": "9be9332b591e1009d5a647bf5b43b7838c937b4e36afd1178d8f348c2cd284a0",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:21Z",
+      "transaction": "20260824T030321557Z-c3e097d04995",
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+    },
+    {
+      "modId": 22574,
+      "modName": "ENB Light",
+      "nexusName": "ENB Light",
+      "version": "0.94",
+      "fileId": 85143,
+      "fileName": "ENB Light-22574-0-94-1552759521.7z",
+      "sizeMb": 1.9,
+      "sha256": "852784e90e947a5905c074e4eec636169a1fecb40b0c1b19e4277de5997852e9",
+      "plugins": [
+        "ENB Light.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:31Z",
+      "transaction": "20260824T030331359Z-895b38f20f4e",
+      "note": "full install + low/moderate-cost extras + creatures; no STAC/TCS/EmbersHD patches; assets feed CS particle lights"
     },
     {
       "modId": 46311,
@@ -230,6 +352,21 @@
       "installedUtc": "2026-08-23T06:16:13Z",
       "transaction": "20260823T061612851Z-cb20e793fb86",
       "fomodPlan": "records/fomod-plans/55728-kid.json"
+    },
+    {
+      "modId": 127557,
+      "modName": "Light Placer",
+      "nexusName": "Light Placer",
+      "version": "4.2.1",
+      "fileId": 749822,
+      "fileName": "Light Placer-127557-4-2-1-1778212502.7z",
+      "sizeMb": 8.73,
+      "sha256": "9fcba9d2dc5c865626dcc35bafe501bd23dda0077e68479f6a918df41a14ba3b",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T02:53:46Z",
+      "transaction": "20260824T025345875Z-78180da2aec4",
+      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs"
     },
     {
       "modId": 43158,
@@ -297,8 +434,8 @@
       "version": "2.6.0",
       "fileId": 785223,
       "fileName": "Lux CS 153919 2.6.0 2026-08-04T03-41Z hfH9s6ocx.zip",
-      "sizeMb": 0.29,
-      "sha256": "3df3f3b96a7f6e10922d3b7cf5f92af5f773a8783616466183adf54e0825cba8",
+      "sizeMb": 0.3,
+      "sha256": "7aeb2b454b7b0c096d2914f60ea3a215c49328de08f2966ae84cf07d9f2960a8",
       "plugins": [
         "Lux - HDR.esp",
         "Lux CS - Bulbs.esp",
@@ -306,9 +443,9 @@
         "Lux Orbis CS.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-24T02:33:14Z",
-      "transaction": "20260824T023314305Z-aa66c405e84a",
-      "note": "No Effect 11, Orbis Tweaks, Default templates"
+      "installedUtc": "2026-08-24T02:53:46Z",
+      "transaction": "20260824T025346520Z-8eaa4d4ad133",
+      "note": "No Effect 11 + base LightPlacer configs + Orbis Tweaks + Default templates; Effect 11 flip staged for CS install"
     },
     {
       "modId": 56095,
@@ -441,6 +578,23 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:31Z",
       "transaction": "20260823T035431410Z-7ecae05f6ad5"
+    },
+    {
+      "modId": 65720,
+      "modName": "Particle Patch",
+      "nexusName": "Particle Patch",
+      "version": "1.4.6",
+      "fileId": 790711,
+      "fileName": "Particle Patch 65720 1.4.6 2026-08-16T10-10Z CmfxYj1Gq.zip",
+      "sizeMb": 110.98,
+      "sha256": "f7093535ae429049ccfb36322c2d1b8c6d118ff1ae66c18d73ce0117da91f554",
+      "plugins": [
+        "Particle Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-24T03:03:30Z",
+      "transaction": "20260824T030329188Z-b3ab0a4abf87",
+      "note": "BSA format, light shafts, fake glow as particle lights, custom textures"
     },
     {
       "modId": 0,
