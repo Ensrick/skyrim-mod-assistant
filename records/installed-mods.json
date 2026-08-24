@@ -716,13 +716,13 @@
       "fileId": 743640,
       "fileName": "RaceMenu Anniversary Edition v0-4-20-0-19080-0-4-20-0.7z",
       "sizeMb": 0,
-      "sha256": "b1266a74b3db0e13a92952b11436f1d81aff5c6c4f56bf5fc7362643c8979c48",
+      "sha256": "b73e9a998f27a99939be4a067ef1453bac074726ea98cee9ef058166dc752a11",
       "plugins": [
         "RaceMenu.esp",
         "RaceMenuPlugin.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-24T16:16:05Z",
+      "installedUtc": "2026-08-24T17:17:57Z",
       "note": "skee64.dll self-built from expired6978/SKSE64Plugins@9ebcb73 (author 1.7.99 port) + ILogger fmt-compat patch; runs on self-built SKSE master (ianpatt/skse64@14db212 incl. Expired PC-offset fixes). Official release supersedes on arrival (plugin_watch)."
     },
     {

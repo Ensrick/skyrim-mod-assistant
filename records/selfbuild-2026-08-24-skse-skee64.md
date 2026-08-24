@@ -39,3 +39,15 @@ Official releases supersede these builds on arrival (plugin_watch).
 **Upstream sharing:** after user's in-game verification - PR/report to Expired
 (ILogger patch + "9ebcb73 pairing builds and runs on 1.7.99") and ianpatt
 (round/static + loader vcxproj); clean CRLF churn from diffs first.
+
+## Addendum (same day, after first launch attempt)
+
+First staged loader popped SKSE's own "newer version than supported" gate:
+`sheets/Runtime.props` in ianpatt's repo hardcodes
+`RUNTIME_VERSION=0x01061430` (1.6.323) for all solution builds - the release
+process overrides it externally, the sln sheet rotted. Bumped to 0x01070630
+(1.7.99) + Common.props TargetName `_1_6_323` -> `_1_7_99`; rebuilt dll,
+loader, and relinked skee64 (it statically links skse64 objs compiled with
+that macro). Restaged: loader 88008075, skse64_1_7_99.dll c13e0569,
+skee64.dll b73e9a99. Added to the ianpatt upstream report: sln version sheet
+needs bumping at release time (or derive RUNTIME_VERSION from skse_version.h).

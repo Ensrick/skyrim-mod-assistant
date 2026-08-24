@@ -1,3 +1,29 @@
+diff --git a/sheets/Common.props b/sheets/Common.props
+index 8cf29aa..1132e7b 100644
+--- a/sheets/Common.props
++++ b/sheets/Common.props
+@@ -3,7 +3,7 @@
+   <ImportGroup Label="PropertySheets" />
+   <PropertyGroup Label="UserMacros" />
+   <PropertyGroup>
+-    <TargetName>$(ProjectName)_1_6_323</TargetName>
++    <TargetName>$(ProjectName)_1_7_99</TargetName>
+   </PropertyGroup>
+   <ItemDefinitionGroup>
+     <ClCompile>
+diff --git a/sheets/Runtime.props b/sheets/Runtime.props
+index bd25fd2..044eabf 100644
+--- a/sheets/Runtime.props
++++ b/sheets/Runtime.props
+@@ -5,7 +5,7 @@
+   <PropertyGroup />
+   <ItemDefinitionGroup>
+     <ClCompile>
+-      <PreprocessorDefinitions>RUNTIME_VERSION=0x01061430;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <PreprocessorDefinitions>RUNTIME_VERSION=0x01070630;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+     </ClCompile>
+   </ItemDefinitionGroup>
+   <ItemGroup />
 diff --git a/skse64/ScaleformExtendedData.cpp b/skse64/ScaleformExtendedData.cpp
 index 96c6b07..038c54d 100644
 --- a/skse64/ScaleformExtendedData.cpp
