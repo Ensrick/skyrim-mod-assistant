@@ -923,6 +923,21 @@
       "transaction": "20260823T060150223Z-be8d1441d5e5"
     },
     {
+      "modId": 17230,
+      "modName": "SSE Engine Fixes",
+      "nexusName": "Engine Fixes 7.0.21 beta for Skyrim AE 1.7.99",
+      "version": "7.0.21",
+      "fileId": 794484,
+      "fileName": "Engine Fixes 7.0.21 beta for Skyrim AE 1.7.99 17230 7.0.21 2026-08-24T16-52Z vlGiB9OkV.7z",
+      "sizeMb": 10.24,
+      "sha256": "8119285cd9801bc9af30592a6606d3dc8ddcd43ec2f2358f361021cb950bc38f",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-24T20:03:44Z",
+      "transaction": "20260824T200344173Z-c0c74671ee81",
+      "note": "7.0.21 BETA official (1.7.99); AE dll + required config; preloader retired per author notes"
+    },
+    {
       "modId": 104215,
       "modName": "The New Gentleman",
       "nexusName": "The New Gentleman",
