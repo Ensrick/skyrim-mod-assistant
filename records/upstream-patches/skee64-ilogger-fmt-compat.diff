@@ -1,0 +1,45 @@
+diff --git a/skee64/ILogger.h b/skee64/ILogger.h
+index 7a37f42..7c872a7 100644
+--- a/skee64/ILogger.h
++++ b/skee64/ILogger.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <memory>
++#include <type_traits>
+ #include <cstdarg>
+ 
+ #define SPDLOG_WCHAR_TO_UTF8_SUPPORT
+@@ -42,6 +43,23 @@ public:
+ 
+ 	void SetLogLevel(LogLevel logLevel);
+ 
++	// fmt's printf emulation rejects non-void pointers (fmt/core.h static_assert).
++	// Callers (including skse64 headers compiled into these TUs) pass typed
++	// pointers to printf-style %p/%08X, so degrade them to const void* here;
++	// character strings pass through untouched.
++	template<typename T>
++	static decltype(auto) SanitizeArg(const T& v)
++	{
++		using Decayed = std::decay_t<T>;
++		if constexpr (std::is_pointer_v<Decayed> &&
++		              !std::is_same_v<Decayed, char*> &&
++		              !std::is_same_v<Decayed, const char*>) {
++			return static_cast<const void*>(v);
++		} else {
++			return v;
++		}
++	}
++
+ 	template<typename ...T>
+ 	void Log(LogLevel level, const char* fmt, const T&... args)
+ 	{
+@@ -50,7 +68,7 @@ public:
+ 			for (int32_t i = 0; i < m_indentLevel; ++i)
+ 				str += "\t";
+ 		}
+-		str += fmt::sprintf(fmt, args...);
++		str += fmt::sprintf(fmt, SanitizeArg(args)...);
+ 		if (m_logger) {
+ 			m_logger->log(gSpdLogLevelMap[level], str);
+ 		}
