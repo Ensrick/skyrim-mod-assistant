@@ -110,3 +110,26 @@ FINAL: VERDICT STABLE - 156s uptime, 1.9GB, zero popups, 58 plugins enabled,
 7 DLLs loaded (ConsoleUtil, CrashLogger, EngineFixes 7.0.21, KID, po3 Tweaks,
 skee64 self-built+overlay-guard, Underwear 1.3.1). Game closed per user
 instruction. Popup watchdog: scratchpad popup_watchdog.ps1 (WM_CLOSE mode).
+
+## Addendum 5 (Aug 25 evening): REBUILD-FORWARD PROGRAM (user directive)
+
+USER RULES (permanent): never downgrade the game version; REBUILD OR REMAKE
+any mod not updated for the latest runtime; no idle waiting. The staged
+1.6.1170 downgrade was cancelled and its watcher killed.
+
+Launch-blocker discovered by screenshot: user was playing Octopath Traveler -
+Steam refuses a second game; all "no process appeared" launches during that
+window were Steam refusals, not failures. No launch attempts while Steam is
+occupied.
+
+Rebuild queue (sources cloned to repos/_rebuild_*): MCM-Helper (Exit-9B; in
+progress - CommonLibSSE submodule retargeted to alandtse/CommonLibSSE-NG
+6.7.0, vcpkg baseline pinned ddd0023b, NG deps added), SSEDisplayTweaks
+(SlavicPotato), KernalsEgg/SKSE64Plugins (Bug Fixes + Scrambled Bugs),
+TheNewGentleman (ModiLogist), OpenAnimationReplacer (ersh1), JContainers
+(ryobg), po3 suite (SPID/BOS/PapyrusExtender/LightPlacer - author actively
+shipping, ours is insurance). Skill Uncapper = Rust rewrite
+(TheDreadedAndy/SkyrimAEUncapper-Rust, needs cargo). PapyrusUtil/EVLaS: no
+repo linked on page - source hunt pending. SKSE master dll init-AV diagnosis
+pending a free Steam slot (WER LocalDumps armed, RVA symbolication tooling
+ready in scratchpad/symbolicate.py).
