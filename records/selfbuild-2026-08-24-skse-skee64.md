@@ -81,3 +81,32 @@ dll still has the Papyrus natives Expired called broken - IF showracemenu
 crashes, RaceMenu re-parks until SKSE's next official release (page active
 Aug 20, author committing daily; watcher armed). Game itself is playable for
 visual shakedown either way.
+
+## Addendum 4 (Aug 25 overnight): STABLE LAUNCH ACHIEVED
+
+Closed-loop launch session (user authorized autonomous launching). Root causes
+found and fixed, in order:
+1. Popup-then-abort class: stale CommonLib DLLs pop format-5 box, abort on
+   dismiss (= every "ucrtbase 0xc0000409 crash"). Popup spammers found by the
+   watchdog: Skill Uncapper (9 boxes/8s), SSE Display Tweaks. All stale DLL
+   mods PARKED: Bug Fixes SSE, Scrambled Bugs, TNG, Skill Uncapper, Display
+   Tweaks, JContainers, PapyrusUtil (SKSE's disabled-plugin summary box was
+   the "plugin failed, recommends exiting" popup).
+2. MO2 FLUSHES modlist.txt from memory on exit - edits made while
+   ModOrganizer.exe runs get silently reverted. Protocol: kill MO2 BEFORE
+   editing profile files. (Also: two self-inflicted PowerShell file
+   corruptions - modlist newlines, plugins.txt stars. PS file edits banned
+   from this pipeline; python only.)
+3. THE crash: engine NIF-parser regression (Expired's exact description) -
+   AV at SkyrimSE.exe+0EDBAB6 parsing overlay NiTriShapes ("Body [Ovly]",
+   "Feet [Ovly]") during SUR player build. skee64's bEnableOverlays=0 did NOT
+   stop it (ungated InstallOverlay path - upstream bug for Expired). Fixed in
+   OUR skee64 build: choke-point guard at OverlayInterface::InstallOverlay.
+   Two symbolicated crash logs on file (crash-2026-08-25-00-50-55/00-56-11).
+4. Steam launch chain needs no stale MO2 holding the lock; a Steam cycle
+   cleared a stuck rungameid state.
+
+FINAL: VERDICT STABLE - 156s uptime, 1.9GB, zero popups, 58 plugins enabled,
+7 DLLs loaded (ConsoleUtil, CrashLogger, EngineFixes 7.0.21, KID, po3 Tweaks,
+skee64 self-built+overlay-guard, Underwear 1.3.1). Game closed per user
+instruction. Popup watchdog: scratchpad popup_watchdog.ps1 (WM_CLOSE mode).

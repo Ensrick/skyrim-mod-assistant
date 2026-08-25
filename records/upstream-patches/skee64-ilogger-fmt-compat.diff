@@ -43,3 +43,20 @@ index 7a37f42..7c872a7 100644
  		if (m_logger) {
  			m_logger->log(gSpdLogLevelMap[level], str);
  		}
+diff --git a/skee64/OverlayInterface.cpp b/skee64/OverlayInterface.cpp
+index a354336..74855c8 100644
+--- a/skee64/OverlayInterface.cpp
++++ b/skee64/OverlayInterface.cpp
+@@ -88,6 +88,12 @@ void OverlayInterface::UninstallOverlay(const char * nodeName, TESObjectREFR * r
+ 
+ void OverlayInterface::InstallOverlay(const char * nodeName, const char * path, TESObjectREFR * refr, BSGeometry * source, NiNode * destination, BGSTextureSet * textureSet)
+ {
++	// bEnableOverlays=0 must suppress every install path: some callers reach
++	// here without checking the flag, and on runtime 1.7.99 the engine's NIF
++	// parser crashes on the overlay template meshes (NiTriShape without
++	// NiTriShapeData). Single choke point for all overlay installation.
++	if (!g_enableOverlays)
++		return;
+ 	NiNode * rootNode = NULL;
+ 	NiAVObjectPtr newShape;
+ 	NiPropertyPtr alphaProperty;
