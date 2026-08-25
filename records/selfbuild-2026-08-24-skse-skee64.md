@@ -51,3 +51,15 @@ loader, and relinked skee64 (it statically links skse64 objs compiled with
 that macro). Restaged: loader 88008075, skse64_1_7_99.dll c13e0569,
 skee64.dll b73e9a99. Added to the ianpatt upstream report: sln version sheet
 needs bumping at release time (or derive RUNTIME_VERSION from skse_version.h).
+
+## Addendum 2 (Aug 25): loader swap-back
+
+Self-built master loader passed the version gate after the props fix but hit
+"something has started the runtime outside of skse64_loader's control" (Steam
+re-spawn race) and the chain exited - master's launch flow includes WIP
+sig-check/date-range logic the release does not exercise. Resolution: restored
+the RELEASED 2.3.0 loader (accepts 1.7.99, battle-tested launch flow) while
+keeping the self-built master runtime dll c13e0569 (the piece carrying
+Expired's fixes). Self-built loader preserved as
+skse64_loader.exe.selfbuilt-master. For the ianpatt report, not worth
+debugging further locally.
