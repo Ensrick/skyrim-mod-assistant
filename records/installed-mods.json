@@ -62,10 +62,11 @@
       "sizeMb": 6.89,
       "sha256": "ae1f681c91522a5545eb0bd6b2b174491b34d50591c98a3a8dad6538a791ba9f",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:16:14Z",
       "transaction": "20260823T061614110Z-891bae829820",
-      "fomodPlan": "records/fomod-plans/60805-bos.json"
+      "fomodPlan": "records/fomod-plans/60805-bos.json",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 10917,
@@ -173,10 +174,10 @@
       "sizeMb": 42.05,
       "sha256": "cccab54f02fc57d30a172037b513915534855016fa7e99fac998625a210e8f7f",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-24T03:03:20Z",
       "transaction": "20260824T030319481Z-7798d4820044",
-      "note": "core 1.8.3; renderer pillar; LLF/TruePBR/InteriorSun etc in core"
+      "note": "core 1.8.3; renderer pillar; LLF/TruePBR/InteriorSun etc in core | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 76649,
@@ -202,10 +203,11 @@
       "sizeMb": 5.26,
       "sha256": "6b6188323d05da094e6f09e39b33f35fd2bace591a906f787ef76398c5b76571",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:16:15Z",
       "transaction": "20260823T061615101Z-0b5ae567114f",
-      "fomodPlan": "records/fomod-plans/52276-crd.json"
+      "fomodPlan": "records/fomod-plans/52276-crd.json",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 59818,
@@ -338,10 +340,10 @@
       "sizeMb": 0.07,
       "sha256": "c01dd67ad13f987ccf07f996f2b10adb7482be3e9bc299dc14acf4df664f7b09",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-24T03:08:58Z",
       "transaction": "20260824T030858735Z-e2ee826f8f47",
-      "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields"
+      "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 46311,
@@ -413,10 +415,10 @@
       "sizeMb": 8.73,
       "sha256": "9fcba9d2dc5c865626dcc35bafe501bd23dda0077e68479f6a918df41a14ba3b",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-24T02:53:46Z",
       "transaction": "20260824T025345875Z-78180da2aec4",
-      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs"
+      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 43158,
@@ -560,13 +562,12 @@
       "fileName": "MCM Helper-53000-1-6-2-1777219181.7z",
       "sizeMb": 7.74,
       "sha256": "24b07dadc471f58929255b5c189847e5a0b2c883c1834887ca9cb558e521be30",
-      "plugins": [
-        "MCMHelper.esp"
-      ],
-      "enabled": true,
+      "plugins": [],
+      "enabled": false,
       "installedUtc": "2026-08-23T06:16:12Z",
       "transaction": "20260823T061611548Z-1505c26a6afa",
-      "fomodPlan": "records/fomod-plans/53000-mcm-helper.json"
+      "fomodPlan": "records/fomod-plans/53000-mcm-helper.json",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 55653,
@@ -595,9 +596,10 @@
       "sizeMb": 7.88,
       "sha256": "1f31058b7cc9a28bca25b6c379ca2142c369eeb3d194831fefc11f234d3f28c0",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:15:13Z",
-      "transaction": "20260823T061513133Z-56615f9a8bfe"
+      "transaction": "20260823T061513133Z-56615f9a8bfe",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 133232,
@@ -671,10 +673,11 @@
       "sizeMb": 13.59,
       "sha256": "7d31be5949eef75583de0972ca7bff2109c9b2473eb00b98505d40411c0aa637",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T04:13:25Z",
       "transaction": "20260823T041324657Z-30d20432259a",
-      "fomodPlan": "records/fomod-plans/22854-po3-papyrus-extender.json"
+      "fomodPlan": "records/fomod-plans/22854-po3-papyrus-extender.json",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 51073,
@@ -700,13 +703,12 @@
       "fileName": "PROTEUS - 3.4.0-62934-3-4-0-1714763289.zip",
       "sizeMb": 14.15,
       "sha256": "847a241f965436b13475a2a057ab061408be2d9a3df62c34aa4925bb1324c63b",
-      "plugins": [
-        "PROTEUS.esp"
-      ],
-      "enabled": true,
+      "plugins": [],
+      "enabled": false,
       "installedUtc": "2026-08-23T04:14:11Z",
       "transaction": "20260823T041411165Z-7d0dbdbb0105",
-      "fomodPlan": "records/fomod-plans/62934-proteus.json"
+      "fomodPlan": "records/fomod-plans/62934-proteus.json",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 19080,
@@ -903,10 +905,11 @@
       "sizeMb": 8.56,
       "sha256": "ecd9322eb652b035fa41a3b587655f0a3b0c780637174b7e6eb12f7b50c9984e",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T05:50:45Z",
       "transaction": "20260823T055044478Z-a67028b4d8cb",
-      "fomodPlan": "records/fomod-plans/36869-spid.json"
+      "fomodPlan": "records/fomod-plans/36869-spid.json",
+      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 34705,
