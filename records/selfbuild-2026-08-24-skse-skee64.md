@@ -63,3 +63,21 @@ keeping the self-built master runtime dll c13e0569 (the piece carrying
 Expired's fixes). Self-built loader preserved as
 skse64_loader.exe.selfbuilt-master. For the ianpatt report, not worth
 debugging further locally.
+
+## Addendum 3 (Aug 25): SKSE runtime reverted to Nexus pair
+
+Pairing matrix, empirically established:
+- release loader + self-built dll: REJECTED ("Bad SKSE DLL" - release loader
+  Authenticode-verifies the dll; ours is unsigned by design)
+- self-built loader + self-built dll: injects, then game process dies pre-init
+  (no skse64.log; ResumeThread anomaly; master carries WIP addr-lib
+  declaration logic never shipped in a release) - steam_appid.txt did not help
+- release loader + release dll: the Aug-23 known-good launch config -> RESTORED
+
+Kept: self-built skee64.dll (its header fixes describe GAME structs, valid on
+any SKSE), Engine Fixes 7.0.21 official, all wave updates. Both self-built
+SKSE binaries preserved as *.selfbuilt-master. Consequence: ianpatt's release
+dll still has the Papyrus natives Expired called broken - IF showracemenu
+crashes, RaceMenu re-parks until SKSE's next official release (page active
+Aug 20, author committing daily; watcher armed). Game itself is playable for
+visual shakedown either way.
