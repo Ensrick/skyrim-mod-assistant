@@ -12,8 +12,10 @@
 > "Effect lighting without PARTICLE" beam/mist variants per user's taste; ELFX
 > trio 2424/25498/63790 stays kept as shelved A/B fallback, mid-save swappable;
 > RLO/Relighting/Luminosity out of contention - evidence in
-> docs/KEEP_REVIEW.md §7)**, **weather = Azurite line (2026-08-23: Azurite
-> Weathers III 3.35 + author Darker Nights addon + doodlum's Azurite III - HDR
+> docs/KEEP_REVIEW.md §7)**, **weather = Azurite line (corrected same evening:
+> Azurite Weathers III 3.35 + Dlizzio's Azurite III CS 162153, which REPLACES
+> doodlum's HDR 138991 and the DrJacopo Darker Nights addon - both parked on
+> disk as superseded; see BASELINE weather row)
 > + author recs EVLaS 63725 (skip flipped to keep per user instruction, veto
 > open) and Slightly Brighter Water Effects Fix 126683; Azurite Mists NOT
 > installed - author: III is designed misty without mist mods; CS grass/shadow

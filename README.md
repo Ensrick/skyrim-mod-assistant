@@ -28,6 +28,10 @@ a private working tree, but only the reviewed allowlist can be committed.
 - `ports/lost-longswords` records a private, asset-free port recipe and its
   validation criteria. It does not grant or imply redistribution permission.
 - `records/restricted-mods.json` is the machine-readable redistribution ledger.
+- `NEXUS_API.md` records the non-secret Nexus credential lookup and read-only
+  metadata/download procedure used by the local tooling.
+- `collections/draft-manifest.json` is the reviewed source-of-truth for the
+  private collection while Vortex's generated working state remains local.
 
 ## Local setup
 

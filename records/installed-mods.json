@@ -24,8 +24,8 @@
       "version": "1.2.1",
       "fileId": 779030,
       "fileName": "Azurite III CS 162153 1.2.1 2026-07-20T14-15Z yIjvuhq22.zip",
-      "sizeMb": 0.11,
-      "sha256": "5576949e320741281acd557953c4292bc307593a19ef2c5c87ea94169eccf9bf",
+      "sizeMb": 8.64,
+      "sha256": "bb874f175b8e8a4c8921c442af868fb0cabba2179c0a1c04c0f862f6a9e3128f",
       "plugins": [
         "Azurite III CS - Darker Nights.esp",
         "Azurite III CS.esp"
@@ -33,7 +33,37 @@
       "enabled": true,
       "installedUtc": "2026-08-24T03:45:43Z",
       "transaction": "20260824T034543558Z-1fdf3d90a24a",
-      "note": "Dlizzio CS companion (user-named); own Darker Nights addon; IBL configs for core feature; replaces doodlum HDR + DrJacopo DN addon"
+      "note": "Dlizzio CS companion (user-named); own Darker Nights addon; IBL configs for core feature; replaces doodlum HDR + DrJacopo DN addon | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 42731,
+      "modName": "Azurite III Darker Nights",
+      "nexusName": "Azurite III Darker Nights",
+      "version": null,
+      "fileId": 579699,
+      "fileName": "",
+      "sizeMb": 0,
+      "sha256": "",
+      "plugins": [],
+      "enabled": false,
+      "installedUtc": "2026-08-23T00:00:00Z",
+      "transaction": null,
+      "note": "OPTIONAL file from Azurite Weathers III page 42731, not its own mod page; SUPERSEDED by Azurite III CS Darker Nights esp; folder parked, kept for rollback"
+    },
+    {
+      "modId": 138991,
+      "modName": "Azurite III HDR",
+      "nexusName": "Azurite III HDR",
+      "version": null,
+      "fileId": 582921,
+      "fileName": "",
+      "sizeMb": 0,
+      "sha256": "",
+      "plugins": [],
+      "enabled": false,
+      "installedUtc": "2026-08-23T00:00:00Z",
+      "transaction": null,
+      "note": "SUPERSEDED by Azurite III CS (162153) which bundles HDR; folder parked, kept for rollback"
     },
     {
       "modId": 42731,
@@ -59,13 +89,13 @@
       "version": "3.5.0",
       "fileId": 794962,
       "fileName": "Base Object Swapper 60805 3.5.0 2026-08-25T12-33Z Ae46W7Fxr.7z",
-      "sizeMb": 7.34,
-      "sha256": "0d623d3fe027cf84fb6b43262e666fc1ef34ceffb4655f2d30eae44a7323ab5e",
+      "sizeMb": 8.55,
+      "sha256": "d1f21425b608775d9e324218ab1e1e2a7ba1e3fe55b911019572fe7c67898f66",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-25T23:25:42Z",
       "transaction": "20260825T232542686Z-b2d9f787d410",
-      "note": "official 1.7.99 wave build"
+      "note": "official 1.7.99 wave build | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 10917,
@@ -141,9 +171,10 @@
       "sizeMb": 1.78,
       "sha256": "d5dcfec3d1318b258e1c0ea6adb47b5dc746cea98b9da4e44e1c49dd6d0b2e8c",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:01:46Z",
-      "transaction": "20260823T060145899Z-6e3c2b210872"
+      "transaction": "20260823T060145899Z-6e3c2b210872",
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 198,
@@ -220,7 +251,8 @@
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-23T06:01:49Z",
-      "transaction": "20260823T060148806Z-f06816a649e4"
+      "transaction": "20260823T060148806Z-f06816a649e4",
+      "note": "PDB pack fileId 794129 (2026-08-23) installed in-folder but unrecorded; CrashLogger.log reports PDB signature mismatch vs the 1.7.99 exe - exe frames fall back to address-library IDs"
     },
     {
       "modId": 130375,
@@ -229,13 +261,13 @@
       "version": "4.2.0",
       "fileId": 763934,
       "fileName": "Screen Space GI 130375 4.2.0 2026-06-15T11-09Z miUDjFWE7.7z",
-      "sizeMb": 2.55,
-      "sha256": "a0928c3d9107f231680397be8268055f27b00d97130d53674aa8d4d7031596c2",
+      "sizeMb": 2.57,
+      "sha256": "675a02455d3a6b9b50b2f9e174a239f94042406e66f4bce574ded22856a492ee",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:21Z",
       "transaction": "20260824T030321064Z-48e553e70afc",
-      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 139352,
@@ -244,13 +276,13 @@
       "version": "1.5.1",
       "fileId": 786154,
       "fileName": "Skylighting 139352 1.5.1 2026-08-06T11-51Z IoFlhf7uo.zip",
-      "sizeMb": 0.01,
-      "sha256": "3ba8f14d210450364889ae6775095b7c45e23b4abb22741e9d0d3e163526c336",
+      "sizeMb": 0.0,
+      "sha256": "8807a8423f25c051ce55c0c26e3b800c385949fbd03d6d17e8003b4780eff975",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:20Z",
       "transaction": "20260824T030320416Z-5f4fca892d5b",
-      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 157076,
@@ -260,12 +292,12 @@
       "fileId": 763935,
       "fileName": "Terrain Blending 157076 1.2.0 2026-06-15T11-09Z 587RqTuZB.7z",
       "sizeMb": 0.0,
-      "sha256": "1ffe158048f92cc191b81c93746164dc00dea197768c1895ed3059c77d23a8e2",
+      "sha256": "abc4eea3d222944d551fff7ca07622ba907c94d92c4100183678088addfa4c13",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:22Z",
       "transaction": "20260824T030322781Z-c5d3e658fd38",
-      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 148123,
@@ -275,12 +307,12 @@
       "fileId": 786155,
       "fileName": "Terrain Variation 148123 1.1.0 2026-08-06T11-51Z Ks18n0BX8.zip",
       "sizeMb": 0.0,
-      "sha256": "97ded8f6257a611652d5e6c69f202bd79518ee42ee38c691d1239c05156bc381",
+      "sha256": "0a4636e1b79772c2d6f01c31815ba7b91235444835f4c2f64a7af8982a6813a5",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:22Z",
       "transaction": "20260824T030322010Z-6d5f9ac9843d",
-      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 156952,
@@ -289,13 +321,13 @@
       "version": "1.4.0",
       "fileId": 758189,
       "fileName": "Upscaling 156952 1.4.0 2026-05-31T10-27Z L5WQbqiov.7z",
-      "sizeMb": 56.23,
-      "sha256": "4171c4e37862ef540a6734a60bbd207bddcdb6f8b9d73072286d68b6b4619846",
+      "sizeMb": 39.11,
+      "sha256": "ac089585c252c76303d3b5f40294775462a6981f8d9ff1c90a3d1032f8123898",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:25Z",
       "transaction": "20260824T030325544Z-c10116e1cb19",
-      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 112739,
@@ -304,13 +336,13 @@
       "version": "3.1.0",
       "fileId": 747765,
       "fileName": "Wetness Effects-112739-3-1-0-1777700350.7z",
-      "sizeMb": 0.01,
-      "sha256": "9be9332b591e1009d5a647bf5b43b7838c937b4e36afd1178d8f348c2cd284a0",
+      "sizeMb": 0.0,
+      "sha256": "42f321757897166b149314722432b0a6d7678f877e86b622469f8def252bf821",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:21Z",
       "transaction": "20260824T030321557Z-c3e097d04995",
-      "note": "kept CS feature module; verified ships files core 1.8.3 lacks"
+      "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 22574,
@@ -319,15 +351,15 @@
       "version": "0.94",
       "fileId": 85143,
       "fileName": "ENB Light-22574-0-94-1552759521.7z",
-      "sizeMb": 1.9,
-      "sha256": "852784e90e947a5905c074e4eec636169a1fecb40b0c1b19e4277de5997852e9",
+      "sizeMb": 4.26,
+      "sha256": "58d3cc86357611c14b4c40dd9a6ecc6ca970acb5aa27101559f4e363f83bc738",
       "plugins": [
         "ENB Light.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:31Z",
       "transaction": "20260824T030331359Z-895b38f20f4e",
-      "note": "full install + low/moderate-cost extras + creatures; no STAC/TCS/EmbersHD patches; assets feed CS particle lights"
+      "note": "full install + low/moderate-cost extras + creatures; no STAC/TCS/EmbersHD patches; assets feed CS particle lights | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 63725,
@@ -336,13 +368,13 @@
       "version": "1.3.1",
       "fileId": 317304,
       "fileName": "EVLaS-63725-1-3-1-1663514779.7z",
-      "sizeMb": 0.07,
-      "sha256": "c01dd67ad13f987ccf07f996f2b10adb7482be3e9bc299dc14acf4df664f7b09",
+      "sizeMb": 0.05,
+      "sha256": "8a384c3ca5c303bc4de7b32507f6e14faa4e032ebeba81b9a8dc2d74bde211a1",
       "plugins": [],
       "enabled": false,
       "installedUtc": "2026-08-24T03:08:58Z",
       "transaction": "20260824T030858735Z-e2ee826f8f47",
-      "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 46311,
@@ -378,16 +410,17 @@
     {
       "modId": 16495,
       "modName": "JContainers SE",
-      "nexusName": "JContainers SE",
-      "version": "4.2.13.1",
-      "fileId": 771673,
-      "fileName": "JContainers SE 16495 4.2.13.1 2026-07-04T17-30Z GkqKVMPbm.7z",
+      "nexusName": "JContainers64 v4.3.1 (GitHub prerelease)",
+      "version": "4.3.1",
+      "fileId": -2,
+      "fileName": "16495-gh-v4.3.1.7z",
       "sizeMb": 0.8,
-      "sha256": "2edd555821e70d94784c79b9a80a34d235f682d4d69f956f28e0411fd43a020a",
+      "sha256": "66e9181f27e5f089f8b47c8bb7e7bb34fad7bed439a83eaca5e3eed3a4a1ae43",
       "plugins": [],
-      "enabled": true,
-      "installedUtc": "2026-08-23T04:12:24Z",
-      "transaction": "20260823T041224662Z-a8f21a54a3b1"
+      "enabled": false,
+      "installedUtc": "2026-08-26T00:24:12Z",
+      "transaction": "20260826T002412464Z-bd33c91c9408",
+      "note": "official author artifact github.com/ryobg/JContainers release v4.3.1 \"SKSE 2.3.0 / SSE 1.7.99\" 2026-08-25; Nexus 16495 still ships 4.2.13.1 - switch back to Nexus fileId when mirrored | RE-PARKED 2026-08-26: 4.3.1 refused by skse64 master plugin gate (disabled, incompatible - built 08-25 without AddressLibraryV5 compat declaration); rebuild from source with the V5 flag or wait for author rebuild"
     },
     {
       "modId": 55728,
@@ -396,13 +429,13 @@
       "version": "4.1.0",
       "fileId": 794743,
       "fileName": "Keyword Item Distributor (SE AE) 55728 4.1.0 2026-08-25T01-04Z 587RqTfrf.7z",
-      "sizeMb": 8.71,
-      "sha256": "66b0fd77a113f68fe470cd36cedd7d46b46831b9e52e77fe3446ba0963ae9041",
+      "sizeMb": 10.41,
+      "sha256": "f36b79a459d115634dd3abf2cb86bdca8f41e81a0c155945348de0a156a8003f",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-25T04:32:23Z",
       "transaction": "20260825T043223216Z-b400864d5ced",
-      "note": "official 4.1.0 post-CommonLib-6.7.0 rebuild"
+      "note": "official 4.1.0 post-CommonLib-6.7.0 rebuild | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 127557,
@@ -411,13 +444,13 @@
       "version": "4.2.1",
       "fileId": 749822,
       "fileName": "Light Placer-127557-4-2-1-1778212502.7z",
-      "sizeMb": 8.73,
-      "sha256": "9fcba9d2dc5c865626dcc35bafe501bd23dda0077e68479f6a918df41a14ba3b",
+      "sizeMb": 8.09,
+      "sha256": "efd052703b8376477c09df4c2e5abd35bbc36e20f58dfdf08cc872053877a0b5",
       "plugins": [],
       "enabled": false,
       "installedUtc": "2026-08-24T02:53:46Z",
       "transaction": "20260824T025345875Z-78180da2aec4",
-      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 43158,
@@ -426,8 +459,8 @@
       "version": "7.0",
       "fileId": 649989,
       "fileName": "Lux (main)-43158-7-0-1753427726.rar",
-      "sizeMb": 89.33,
-      "sha256": "30dbe2cafb314e9dd18a3c537732ec6485783872a7fa2733a3dd6071b9343f42",
+      "sizeMb": 286.86,
+      "sha256": "0512844f80010c8ab9a367c035c7781e762803009345a68759e6eaba06102af0",
       "plugins": [
         "Lux - Master plugin.esm",
         "Lux - USSEP patch.esp",
@@ -436,7 +469,7 @@
       "enabled": true,
       "installedUtc": "2026-08-24T02:36:34Z",
       "transaction": "20260824T023633168Z-eb05a5927423",
-      "note": "fixed repack; dim beams/mists, no optimized meshes (CS LLF), USSEP latest"
+      "note": "fixed repack; dim beams/mists, no optimized meshes (CS LLF), USSEP latest | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 43158,
@@ -476,7 +509,11 @@
       "enabled": true,
       "installedUtc": "2026-08-24T02:33:10Z",
       "transaction": "20260824T023307966Z-ab781df844c9",
-      "note": "all 31 CC patch plugins; full AE CC present (74 cc plugins)"
+      "note": "24 CC patch plugins; full AE CC present (74 cc plugins) | Myrwatch+Wraithguard patches deliberately unstarred: masters myrwatchhomefixer.esp/wraithguardvaultfixer.esp not installed (starring would be missing-master launch block)",
+      "disabledPlugins": [
+        "Lux - Myrwatch patch.esp",
+        "Lux - Wraithguard patch.esp"
+      ]
     },
     {
       "modId": 153919,
@@ -485,8 +522,8 @@
       "version": "2.6.0",
       "fileId": 785223,
       "fileName": "Lux CS 153919 2.6.0 2026-08-04T03-41Z hfH9s6ocx.zip",
-      "sizeMb": 0.3,
-      "sha256": "7aeb2b454b7b0c096d2914f60ea3a215c49328de08f2966ae84cf07d9f2960a8",
+      "sizeMb": 27.29,
+      "sha256": "c28cb9f716516763b451d716ad084cf3870b3aae732b53755169a2053480d5a6",
       "plugins": [
         "Lux - HDR.esp",
         "Lux CS - Bulbs.esp",
@@ -496,7 +533,7 @@
       "enabled": true,
       "installedUtc": "2026-08-24T02:53:46Z",
       "transaction": "20260824T025346520Z-8eaa4d4ad133",
-      "note": "No Effect 11 + base LightPlacer configs + Orbis Tweaks + Default templates; Effect 11 flip staged for CS install"
+      "note": "No Effect 11 + base LightPlacer configs + Orbis Tweaks + Default templates; Effect 11 flip staged for CS install | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 56095,
@@ -505,8 +542,8 @@
       "version": "4.5",
       "fileId": 567228,
       "fileName": "Lux Orbis (main)-56095-4-5-1732873513.rar",
-      "sizeMb": 30.82,
-      "sha256": "7d20009016abf410b46d92a0334e48ac09e524588423577bae5b44d363df8464",
+      "sizeMb": 47.7,
+      "sha256": "003790e7847ce1349f618371f2690ec32a1673e4c1fabc072045220257845b3d",
       "plugins": [
         "Lux Orbis - Master plugin.esm",
         "Lux Orbis - Riften Sconce Patch.esp",
@@ -516,7 +553,7 @@
       "enabled": true,
       "installedUtc": "2026-08-24T02:36:37Z",
       "transaction": "20260824T023636831Z-7ab987a2ae89",
-      "note": "fixed repack; parallax meshes, Solitude SMIM, vanilla well, Mara fix, USSEP"
+      "note": "fixed repack; parallax meshes, Solitude SMIM, vanilla well, Mara fix, USSEP | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 113002,
@@ -525,15 +562,15 @@
       "version": "7.1",
       "fileId": 695703,
       "fileName": "Lux (patch hub)-113002-7-1-1765181180.rar",
-      "sizeMb": 0.18,
-      "sha256": "a02f6b02b6ccf08c8582b8e709bef66f2ea1de587ad972973164ade5c2789316",
+      "sizeMb": 281.9,
+      "sha256": "90a71f107383b46eb9a7d1927037e96046de6a5f2d110af96c147e0729490fc4",
       "plugins": [
         "Lux - BS Bruma patch.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-24T02:33:11Z",
       "transaction": "20260824T023311442Z-135339477270",
-      "note": "Bruma patch only; re-run for Wyrmstooth/Vicn when those install"
+      "note": "Bruma patch only; re-run for Wyrmstooth/Vicn when those install | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 63588,
@@ -620,15 +657,15 @@
       "modId": 13048,
       "modName": "PapyrusUtil SE",
       "nexusName": "PapyrusUtil AE SE - Scripting Utility Functions",
-      "version": "4.6",
-      "fileId": 462773,
-      "fileName": "PapyrusUtil AE SE - Scripting Utility Functions-13048-4-6-1705639805.zip",
+      "version": "4.7",
+      "fileId": 795182,
+      "fileName": "PapyrusUtil AE SE - Scripting Utility Functions 13048 4.7 2026-08-25T23-42Z miUDjFJXi.zip",
       "sizeMb": 0.55,
-      "sha256": "441b3bdaf8215ac76a57a292a9ad2c3e21597eab40ba4aa39f81098494ef1e3d",
+      "sha256": "00eb9e3bf31929b68033cc10592a902695481fe04770708e046555f8af4af533",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-08-23T03:54:31Z",
-      "transaction": "20260823T035431410Z-7ecae05f6ad5"
+      "installedUtc": "2026-08-26T00:23:42Z",
+      "transaction": "20260826T002342309Z-861f5d19dda5"
     },
     {
       "modId": 65720,
@@ -637,15 +674,15 @@
       "version": "1.4.6",
       "fileId": 790711,
       "fileName": "Particle Patch 65720 1.4.6 2026-08-16T10-10Z CmfxYj1Gq.zip",
-      "sizeMb": 110.98,
-      "sha256": "f7093535ae429049ccfb36322c2d1b8c6d118ff1ae66c18d73ce0117da91f554",
+      "sizeMb": 173.94,
+      "sha256": "4fe0e966b7d63b3c9136454eb724f34e4e1a3b36a41dc08867a5b52969f2eecd",
       "plugins": [
         "Particle Patch.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-24T03:03:30Z",
       "transaction": "20260824T030329188Z-b3ab0a4abf87",
-      "note": "BSA format, light shafts, fake glow as particle lights, custom textures"
+      "note": "BSA format, light shafts, fake glow as particle lights, custom textures | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 0,
@@ -669,13 +706,13 @@
       "version": "6.5.1",
       "fileId": 795172,
       "fileName": "Papyrus Extender 22854 6.5.1 2026-08-25T23-16Z RHaV1OLNk.7z",
-      "sizeMb": 12.1,
-      "sha256": "fc7116ca79921fc672d9e0aa7180c74a0e5f91e29208de939f15c23f5e2f12b2",
+      "sizeMb": 14.66,
+      "sha256": "fc8f61cf32ca18141b685a3e4b3409d94f23821a3d8238c4ec056aff7ea82c9a",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-25T23:25:47Z",
       "transaction": "20260825T232547322Z-97534d176c3b",
-      "note": "official 1.7.99 wave build"
+      "note": "official 1.7.99 wave build | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 51073,
@@ -684,13 +721,13 @@
       "version": "1.17.1",
       "fileId": 794717,
       "fileName": "powerofthree's Tweaks 51073 1.17.1 2026-08-25T00-11Z zYsEpQvXg.7z",
-      "sizeMb": 7.09,
-      "sha256": "3366d4950f42d7ba40866a233cbe6112ab67ecee68ebd251e85bc93672fd0c6c",
+      "sizeMb": 8.16,
+      "sha256": "5aeadd195dce06e3d72d7684373bab9116f8eadf3833af5cdf45c0d2ad4f9268",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-25T04:32:25Z",
       "transaction": "20260825T043224962Z-d35c254ae689",
-      "note": "official 1.17.1 post-CommonLib-6.7.0 rebuild"
+      "note": "official 1.17.1 post-CommonLib-6.7.0 rebuild | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 62934,
@@ -715,15 +752,15 @@
       "version": "0.4.20.0+skee-9ebcb73-selfbuilt",
       "fileId": 743640,
       "fileName": "RaceMenu Anniversary Edition v0-4-20-0-19080-0-4-20-0.7z",
-      "sizeMb": 0,
-      "sha256": "b73e9a998f27a99939be4a067ef1453bac074726ea98cee9ef058166dc752a11",
+      "sizeMb": 8.26,
+      "sha256": "e0f5e923f1eaaefefcb0a98822df091c5b96b010d2df2b52dc377aae539097da",
       "plugins": [
         "RaceMenu.esp",
         "RaceMenuPlugin.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-24T17:17:57Z",
-      "note": "skee64.dll self-built from expired6978/SKSE64Plugins@9ebcb73 (author 1.7.99 port) + ILogger fmt-compat patch; runs on self-built SKSE master (ianpatt/skse64@14db212 incl. Expired PC-offset fixes). Official release supersedes on arrival (plugin_watch)."
+      "note": "skee64.dll self-built from expired6978/SKSE64Plugins@9ebcb73 (author 1.7.99 port) + ILogger fmt-compat patch; runs on self-built SKSE master (ianpatt/skse64@14db212 incl. Expired PC-offset fixes). Official release supersedes on arrival (plugin_watch). | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | no transaction: skee64.dll self-built outside the transactional path; deployed skee64.dll sha256 5c7997fc... (overlay-guard rebuild 2026-08-25 00:58)"
     },
     {
       "modId": 64314,
@@ -750,9 +787,10 @@
       "sizeMb": 1.92,
       "sha256": "8412974b83426e10925865527e7d4764ea79db0e88a3666e79c108fad9d88ebd",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:01:47Z",
-      "transaction": "20260823T060147020Z-534645bf7a7d"
+      "transaction": "20260823T060147020Z-534645bf7a7d",
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 82558,
@@ -764,9 +802,10 @@
       "sizeMb": 0.06,
       "sha256": "3f86436ec576e065fbcae61420b5f0dc584d7a5e56facb17813a78435f27d434",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:01:51Z",
-      "transaction": "20260823T060151082Z-62354416ac2a"
+      "transaction": "20260823T060151082Z-62354416ac2a",
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 30379,
@@ -838,13 +877,13 @@
       "version": "1.0",
       "fileId": 531223,
       "fileName": "Slightly Brighter Water FX Fix-126683-1-0-1723563516.7z",
-      "sizeMb": 1.6,
-      "sha256": "3fcbcbab59b925ec91de9f57c1236d1943aec4c118b91f1142fe2f1f235e71d8",
+      "sizeMb": 0.99,
+      "sha256": "f9b09aa4e4f5ff46fcd1a3a1970bf24d5bb69250c219b206f0a134e35f56b8ff",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T03:08:58Z",
       "transaction": "20260824T030857914Z-06534997dc2b",
-      "note": "author-recommended variant of wSkeever water fix"
+      "note": "author-recommended variant of wSkeever water fix | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 659,
@@ -853,15 +892,15 @@
       "version": "2.08",
       "fileId": 59069,
       "fileName": "SMIM SE 2-08-659-2-08.7z",
-      "sizeMb": 793.73,
-      "sha256": "d7095d5215d3f79759c606e5cd41c20f6d6347c527b7176fe48ee74a72c9df97",
+      "sizeMb": 1008.18,
+      "sha256": "bb6c3bb5b3f7a8aeefbc14098e3265d272e7f454a98f89eac3059a3f0cc60300",
       "plugins": [
         "SMIM-SE-Merged-All.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-24T02:36:27Z",
       "transaction": "20260824T023621807Z-16ee9776813e",
-      "note": "fixed repack: dest-aware, case-insensitive; Everything+recommended; Merged-All esp"
+      "note": "fixed repack: dest-aware, case-insensitive; Everything+recommended; Merged-All esp | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 659,
@@ -919,9 +958,10 @@
       "sizeMb": 0.18,
       "sha256": "08b8bc6f548cf12aa82a234166efe10851bfb994d02393f2e716754e6b3174e0",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:01:50Z",
-      "transaction": "20260823T060150223Z-be8d1441d5e5"
+      "transaction": "20260823T060150223Z-be8d1441d5e5",
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 17230,
@@ -930,13 +970,13 @@
       "version": "7.0.21",
       "fileId": 794484,
       "fileName": "Engine Fixes 7.0.21 beta for Skyrim AE 1.7.99 17230 7.0.21 2026-08-24T16-52Z vlGiB9OkV.7z",
-      "sizeMb": 10.24,
-      "sha256": "8119285cd9801bc9af30592a6606d3dc8ddcd43ec2f2358f361021cb950bc38f",
+      "sizeMb": 9.07,
+      "sha256": "b6de89ec76d426e2f9701dce0cba44dd07619abe1ed885bfafd34cceb3225744",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-24T20:03:44Z",
       "transaction": "20260824T200344173Z-c0c74671ee81",
-      "note": "7.0.21 BETA official (1.7.99); AE dll + required config; preloader retired per author notes"
+      "note": "7.0.21 BETA official (1.7.99); AE dll + required config; preloader retired per author notes | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 104215,
@@ -950,10 +990,11 @@
       "plugins": [
         "TheNewGentleman.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T05:26:48Z",
       "transaction": "20260823T052637107Z-be3115a14f9b",
-      "fomodPlan": "records/fomod-plans/104215-tng.json"
+      "fomodPlan": "records/fomod-plans/104215-tng.json",
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
       "modId": 17561,
@@ -978,15 +1019,15 @@
       "version": "1.3.1",
       "fileId": 794289,
       "fileName": "Underwear.dll 99021 1.3.1 2026-08-24T05-45Z EwgfAeiHb.7z",
-      "sizeMb": 14.84,
-      "sha256": "462af9859b79890e67302f3589bc4ea4b5a26da9cbeaa036c176cbdef4a7be6a",
+      "sizeMb": 8.74,
+      "sha256": "362d6436183ac110c7cbc42f2e8bca475b2ea45092802f498a6f9866002124f1",
       "plugins": [
         "Underwear.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-25T04:32:26Z",
       "transaction": "20260825T043226662Z-854bd7e5725d",
-      "note": "1.3.1 supersedes 1.3 test build; core + CBBE variant per body pillar"
+      "note": "1.3.1 supersedes 1.3 test build; core + CBBE variant per body pillar | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
       "modId": 266,

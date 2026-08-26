@@ -133,3 +133,36 @@ shipping, ours is insurance). Skill Uncapper = Rust rewrite
 repo linked on page - source hunt pending. SKSE master dll init-AV diagnosis
 pending a free Steam slot (WER LocalDumps armed, RVA symbolication tooling
 ready in scratchpad/symbolicate.py).
+
+## Addendum 5 (2026-08-26): CMake rebuild WORKS - .sln path was the whole bug
+
+Root causes found by the 2026-08-26 audit (workflow wf_35880592-44a):
+- The .sln path never passed skse64/skse64.def to the linker: StartSKSE was
+  not exported and LTCG dead-stripped the runtime (255,488 B dll, 1 export).
+  The loader's inject shellcode calls export ORDINAL 1 unconditionally; with
+  the .def absent, ordinal 1 was the SKSECore_Version DATA object, so the
+  remote thread executed .data -> DEP AV 0xc0000005 at +0x3ab08, pre-init.
+- The official Nexus 2.3.0 dll was compiled with pre-1.7.99 struct offsets:
+  1.7.99 inserted BSTEventSink<BSSystemEvent> into PlayerCharacter at 0x2D0
+  (tintMasks 0xB18->0xB20 etc.). papyrusGame::GetNthTintMaskColor indexed the
+  stale-offset NULL array -> the +0x420D0 Papyrus crash. Fixed upstream in
+  master commit 6498c52 (unreleased).
+
+Rebuilt via ianpatt's own CI recipe (VS2022 + CMake, sibling common repo,
+CMAKE_INSTALL_PREFIX=repos/extern). Acceptance gates: dll ~1.2 MB, exports
+exactly StartSKSE @1 + SKSECore_Version @2 - PASSED.
+
+Additional source patch (popup doctrine, user mandate 2026-08-26: everything
+logs, nothing pops): PluginManager::ReportPluginErrors +
+UpdateAddressLibraryPrompt + PrintLoaderError are log-only, no MessageBox,
+no TerminateProcess. Maintained on fork github.com/Ensrick/skse64 branch
+ensrick/headless-log-only (commit 9e9f9fa); skee64 patches (ILogger fmt +
+InstallOverlay ini guard) on github.com/Ensrick/SKSE64Plugins branch
+ensrick/1.7.99-headless (commit 748ca80).
+
+DEPLOYED 2026-08-26 ~00:33: game root skse64_loader.exe FE4AD0F0 (246,784 B) +
+skse64_1_7_99.dll 7536E8DD (1,201,152 B) + matching PDB; official 2.3.0 pair
+preserved as .bak.v2.3.0-nexus. First launch through the full Steam->MO2->SKSE
+chain: STABLE (83s+/2.2GB, 11 plugins checked, 0 refused, no popups, no crash
+log). The prior Papyrus-crash trigger (gameplay scripts) still needs the user's
+in-game New Game pass for final confirmation.
