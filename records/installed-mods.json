@@ -377,21 +377,37 @@
       "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 172417,
+      "modName": "First Person FOV SKSE",
+      "nexusName": "First Person FOV SKSE",
+      "version": "1.0.11",
+      "fileId": 793571,
+      "fileName": "First Person FOV SKSE 172417 1.0.11 2026-08-22T22-08Z 587RqTfXD.zip",
+      "sizeMb": 7.47,
+      "sha256": "b711574c60a5684624da627668ddde5c16cf730cea4876047fc2b747886cab8b",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T00:55:11Z",
+      "transaction": "20260826T005511051Z-7702fc4b5c19",
+      "note": "FOV control per user request 2026-08-26: FP world 120 / TP 90 / hands 80 in FirstPersonFOV.ini (1.0.11 dll string-verified to read the TP override keys). INSTALL BUG worked around: MO2Headless stripped the archive top-level skse/ dir as data root - files hand-moved to SKSE\\\\Plugins (fork bug to fix in Ensrick/modorganizer headless). In-game sliders need SKSE Menu Framework - NOT installed: its dll predates addr-lib format 5 and would popup-abort; rebuild assessment running. Base Skyrim.ini fDefaultWorldFOV=120 kept as fallback."
+    },
+    {
       "modId": 46311,
       "modName": "HIMBO",
-      "nexusName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)",
+      "nexusName": "01a) HIMBO V5 - Core (Nevernude Body)",
       "version": "5.8",
-      "fileId": 728971,
-      "fileName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)-46311-5-8-1772908511.7z",
-      "sizeMb": 42.14,
-      "sha256": "13a356f54608feddd93b7301c5a3b169a3e22964205589dd8ddcf6574a35c7b5",
+      "fileId": 728973,
+      "fileName": "01a) HIMBO V5 - Core (Nevernude Body)-46311-5-8-1772908656.7z",
+      "sizeMb": 41.91,
+      "sha256": "3e2cb8cb1f2c497452be2b87dbe19ed178d3bf97453504c553cca247f07d6d72",
       "plugins": [
         "HIMBO.esp",
         "RaceMenuMorphsHIMBO.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-23T05:25:47Z",
-      "transaction": "20260823T052545402Z-446c30a67fec"
+      "installedUtc": "2026-08-26T00:46:03Z",
+      "transaction": "20260826T004600913Z-5cf0f5d3af00",
+      "note": "INTERIM 01a Nevernude 2026-08-26: 01b (nude w/ SOS or TNG cut) showed a crotch hole with TNG parked - user report in-game. Swap back to 01b (fileId 728971) when TNG unparks."
     },
     {
       "modId": 46311,
@@ -415,12 +431,13 @@
       "fileId": -2,
       "fileName": "16495-gh-v4.3.1.7z",
       "sizeMb": 0.8,
-      "sha256": "66e9181f27e5f089f8b47c8bb7e7bb34fad7bed439a83eaca5e3eed3a4a1ae43",
+      "sha256": "961156ed59a02d76e9b5bb8d793b0dc38f966c7b196b617bd313ca8b5d7c8877",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-26T00:24:12Z",
       "transaction": "20260826T002412464Z-bd33c91c9408",
-      "note": "official author artifact github.com/ryobg/JContainers release v4.3.1 \"SKSE 2.3.0 / SSE 1.7.99\" 2026-08-25; Nexus 16495 still ships 4.2.13.1 - switch back to Nexus fileId when mirrored | RE-PARKED 2026-08-26: 4.3.1 refused by skse64 master plugin gate (disabled, incompatible - built 08-25 without AddressLibraryV5 compat declaration); rebuild from source with the V5 flag or wait for author rebuild"
+      "note": "official author artifact github.com/ryobg/JContainers v4.3.1 (SKSE 2.3.0 / SSE 1.7.99). UPSTREAM BUG found 2026-08-26: dll declares compatibleVersions=[0x10613E0]=1.6.318, the bugged RUNTIME_VERSION_1_7_99 constant from the skse64 v2.3.0 tag (fixed upstream by commit 614c755 oops #59) - every SKSE refuses it on 1.7.99. LOCAL 4-byte data patch applied: compat[0] -> 0x1070630 (the value the author intended); pristine dll preserved as JContainers64.dll.bak.v4.3.1-as-released; in-code runtime check at file offset 871543 ALSO patched after JContainers64.log said: unsupported runtime version 01070630. Upstream issue text staged for user OK. Supersede with author re-release or Nexus mirror.",
+      "sha256Note": "hash of the PATCHED deployed dll, not the archive"
     },
     {
       "modId": 55728,
@@ -961,7 +978,7 @@
       "enabled": false,
       "installedUtc": "2026-08-23T06:01:50Z",
       "transaction": "20260823T060150223Z-be8d1441d5e5",
-      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 0.5.12-fmt5 dll (sha256 47143dfb... (rev 2: 4 stale pre-1.6.1130 ids rebound, full 3641-id inventory resolves), Ensrick/SSEDisplayTweaks branch ensrick/1.7.99-format5 @18c1485 + Ensrick/sse-build-resources) - format-5 versionlib parser validated offline vs meh321 offsets dump (7/7 ids), versionIndependenceEx=0x3 passes the skse64 master gate, popups converted to log-only. Official 0.5.16 dll+ini preserved as .bak.v0.5.16-official; kept the 0.5.16 ini (upstream 0.5.13-0.5.16 source never published, dll base is 0.5.12). CAVEAT: MenuManager offset for menu-gated framerate limits not 1.7.99-verified - first suspect if menu fps behaves oddly. Supersede when SlavicPotato ships an official 1.7.99 build. | RE-PARKED 2026-08-26 01:4x: rev-2 loads past addrlib but FATAL [Events] Could not install event hooks (unverified MenuManager offset - the flagged suspect) and self-refuses; park until event sink + 1.6.629-era patch-site displacements are ported. Static Skyrim.ini fMaxTime=0.0083 covers 120Hz physics meanwhile"
     },
     {
       "modId": 17230,
@@ -1027,7 +1044,7 @@
       "enabled": true,
       "installedUtc": "2026-08-25T04:32:26Z",
       "transaction": "20260825T043226662Z-854bd7e5725d",
-      "note": "1.3.1 supersedes 1.3 test build; core + CBBE variant per body pillar | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+      "note": "1.3.1 supersedes 1.3 test build; core + CBBE variant per body pillar | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | 2026-08-26: vanilla-garment pool IMPLEMENTED in Underwear.ini (10 slot-32 forms read from Skyrim.esm - Roughspun/Belted/Farm/Miner/Ragged), replacing the 4 default meshes the user called garbo; dead Vilja/Sofia blacklist entries removed. VERIFY in-game: pool garments appear on stripped NPCs; whether the PLAYER also gets auto-underwear (if so and nudity is wanted, try Ignore = 0x7~Skyrim.esm)"
     },
     {
       "modId": 266,

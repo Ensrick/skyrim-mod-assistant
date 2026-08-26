@@ -65,6 +65,21 @@ def main():
             print(f'   {fn}:')
             for h in hits:
                 print(f'      {h.strip()[:120]}')
+    # steam-wedge check: chain dead but Steam still thinks the app runs
+    # (recurring 1.7.99-era issue; heal = Steam cycle, launch_skyrim does it
+    # pre-launch automatically)
+    try:
+        import subprocess, winreg
+        k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\Valve\Steam\Apps\489830')
+        running = winreg.QueryValueEx(k, 'Running')[0]
+        tl = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq SkyrimSE.exe'],
+                            capture_output=True, text=True).stdout
+        if running and 'SkyrimSE.exe' not in tl:
+            print('STEAM-WEDGE: Steam flags the app as running but no game process '
+                  'exists - Steam missed the exit; next launch_skyrim run self-heals '
+                  '(pre-launch Steam cycle), or cycle Steam to clear the badge now')
+    except Exception:
+        pass
     silent = [c for c in checked if not os.path.exists(os.path.join(SKSE_DIR, c.replace('.dll', '.log')))]
     print(f'({len(silent)} plugins keep no log here - popups like EngineFixes format errors '
           f'only surface on screen; treat any load-time popup as a triage item)')

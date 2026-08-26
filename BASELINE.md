@@ -120,7 +120,7 @@ design, not a compromise.
 | Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |
 | Follower framework | NFF | forced by Proteus; **AFT (6656) is the one surviving loser - confirm skip** |
 | Killmoves | VioLens + Kaputt | 3 challengers in additive pool to check against the pair, low priority |
-| Underlayers | Underwear.dll 1.3 as engine, pool overridden to 10 vanilla poor/common garments (Roughspun, Belted Tunic, Farm/Miner sets, Ragged Robes) + our Period Underlayers SPID config (bandits Roughspun, jarls/merchants Fine Clothes) | **installed**; skimpy default meshes inert, TNG patch unnecessary (full-coverage); v1.3 is a "test version for 1.7.99" - watch first session; expand tiers with modded garment packs later |
+| Underlayers | Underwear.dll 1.3 as engine, pool TO BE overridden to 10 vanilla poor/common garments (Roughspun, Belted Tunic, Farm/Miner sets, Ragged Robes) + our Period Underlayers SPID config (bandits Roughspun, jarls/merchants Fine Clothes) | **installed** BUT audit 2026-08-26 found the pool override was NEVER WRITTEN - Underwear.ini still lists the mod's 4 default garments (user verdict on the resulting look: garbo). Implement the vanilla pool (form IDs via skyrim-record-cli, no guessed IDs) when TNG lands; Period Underlayers also inert until SPID unparks. User directive 2026-08-26: underwear system working AND full nudity possible -> HIMBO 01b + TNG rebuild (in flight) + removable garments |
 
 ## Tier 4 - the actual remaining work: 20 slot decisions
 
