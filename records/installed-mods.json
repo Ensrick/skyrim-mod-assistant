@@ -394,20 +394,20 @@
     {
       "modId": 46311,
       "modName": "HIMBO",
-      "nexusName": "01a) HIMBO V5 - Core (Nevernude Body)",
+      "nexusName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)",
       "version": "5.8",
-      "fileId": 728973,
-      "fileName": "01a) HIMBO V5 - Core (Nevernude Body)-46311-5-8-1772908656.7z",
-      "sizeMb": 41.91,
-      "sha256": "3e2cb8cb1f2c497452be2b87dbe19ed178d3bf97453504c553cca247f07d6d72",
+      "fileId": 728971,
+      "fileName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)-46311-5-8-1772908511.7z",
+      "sizeMb": 42.14,
+      "sha256": "13a356f54608feddd93b7301c5a3b169a3e22964205589dd8ddcf6574a35c7b5",
       "plugins": [
         "HIMBO.esp",
         "RaceMenuMorphsHIMBO.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-26T00:46:03Z",
-      "transaction": "20260826T004600913Z-5cf0f5d3af00",
-      "note": "INTERIM 01a Nevernude 2026-08-26: 01b (nude w/ SOS or TNG cut) showed a crotch hole with TNG parked - user report in-game. Swap back to 01b (fileId 728971) when TNG unparks."
+      "installedUtc": "2026-08-26T03:43:15Z",
+      "transaction": "20260826T034311605Z-6e445258821e",
+      "note": "RESTORED 01b nude core 2026-08-26 (fileId 728971) - TNG 1.7.99 self-build provides the genital counterpart; 01a interim retired"
     },
     {
       "modId": 46311,
@@ -825,6 +825,21 @@
       "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
+      "modId": 120352,
+      "modName": "SKSE Menu Framework",
+      "nexusName": "SKSE Menu Framework",
+      "version": "3.13-Hotfix2",
+      "fileId": 773663,
+      "fileName": "SKSE Menu Framework 120352 3.13-Hotfix2 2026-07-09T16-10Z 587RqTYjW.7z",
+      "sizeMb": 9.27,
+      "sha256": "e14895e0fac00cfd3880e4daba1f6649eac9734401b4b83e43267b642ed8bde7",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T03:54:08Z",
+      "transaction": "20260826T035407704Z-70cbd1bbbf52",
+      "note": "SELF-BUILT 1.7.99 dll (sha256 d800ab7f9382bb4f..., QTR-Modding/SKSE-Menu-Framework-3 + NG 6.7.0, 4 hook displacements derived+byte-verified - only RenderUI2 moved 0x19A->0x1A0, report_and_fail made log-only) over the official 3.13-Hotfix2 payload; official dll preserved as .bak.v3.13-official. Enables First Person FOV in-game sliders. MO2Headless data-root bug hit AGAIN (SKSE top-level stripped; hand-fixed) - fix queued for Ensrick/modorganizer headless. Missing V5 viEx flag (date-window passes; tidy upstream). In-game verification pending"
+    },
+    {
       "modId": 30379,
       "modName": "SKSE64 Scripts",
       "nexusName": "Skyrim Script Extender (SKSE64) Steam",
@@ -975,10 +990,10 @@
       "sizeMb": 0.18,
       "sha256": "08b8bc6f548cf12aa82a234166efe10851bfb994d02393f2e716754e6b3174e0",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-23T06:01:50Z",
       "transaction": "20260823T060150223Z-be8d1441d5e5",
-      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 0.5.12-fmt5 dll (sha256 47143dfb... (rev 2: 4 stale pre-1.6.1130 ids rebound, full 3641-id inventory resolves), Ensrick/SSEDisplayTweaks branch ensrick/1.7.99-format5 @18c1485 + Ensrick/sse-build-resources) - format-5 versionlib parser validated offline vs meh321 offsets dump (7/7 ids), versionIndependenceEx=0x3 passes the skse64 master gate, popups converted to log-only. Official 0.5.16 dll+ini preserved as .bak.v0.5.16-official; kept the 0.5.16 ini (upstream 0.5.13-0.5.16 source never published, dll base is 0.5.12). CAVEAT: MenuManager offset for menu-gated framerate limits not 1.7.99-verified - first suspect if menu fps behaves oddly. Supersede when SlavicPotato ships an official 1.7.99 build. | RE-PARKED 2026-08-26 01:4x: rev-2 loads past addrlib but FATAL [Events] Could not install event hooks (unverified MenuManager offset - the flagged suspect) and self-refuses; park until event sink + 1.6.629-era patch-site displacements are ported. Static Skyrim.ini fMaxTime=0.0083 covers 120Hz physics meanwhile"
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 0.5.12-fmt5 dll (sha256 47143dfb... (rev 2: 4 stale pre-1.6.1130 ids rebound, full 3641-id inventory resolves), Ensrick/SSEDisplayTweaks branch ensrick/1.7.99-format5 @18c1485 + Ensrick/sse-build-resources) - format-5 versionlib parser validated offline vs meh321 offsets dump (7/7 ids), versionIndependenceEx=0x3 passes the skse64 master gate, popups converted to log-only. Official 0.5.16 dll+ini preserved as .bak.v0.5.16-official; kept the 0.5.16 ini (upstream 0.5.13-0.5.16 source never published, dll base is 0.5.12). CAVEAT: MenuManager offset for menu-gated framerate limits not 1.7.99-verified - first suspect if menu fps behaves oddly. Supersede when SlavicPotato ships an official 1.7.99 build. | REV-3 UNPARKED 2026-08-26 02:2x: sha256 1e07820d..., 26/26 patch sites byte-verified vs 1.7.99 exe, events non-fatal, BranchTrampoline Destroy-ownership patch (shared-pool unload crash structurally fixed), 4 niche features gated off with log warnings (DisableActorFade, VLS dragon/horse, PCDialogueLookSpeedSE smoothing, LoadScreenFilter). ONE unreceipted judgment: LoadPluginINI call-site 0xB06 (flip to 0xAFA if config-load events fire twice). Ensrick/SSEDisplayTweaks @2981fe3. In-game verification pending"
     },
     {
       "modId": 17230,
@@ -1007,11 +1022,11 @@
       "plugins": [
         "TheNewGentleman.esp"
       ],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-23T05:26:48Z",
       "transaction": "20260823T052637107Z-be3115a14f9b",
       "fomodPlan": "records/fomod-plans/104215-tng.json",
-      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 1.7.99 dll (sha256 d1c7d54b4dc8acd8..., NG 6.7.0, gate-verified vi=0x5 viEx=0x2 compat 0x1070630, popups converted to log-only per doctrine) from _rebuild_TheNewGentleman; official 4.2.5 dll preserved as .bak.v4.2.5-official. MCM DAK hotfix 793745 applied over scripts/. Plugin re-starred (ESL, end of order). In-game verification pending | rev-2 2026-08-26: uncut defaults baked in (cVanillaDefaults C->R for default/bosmer/saxhleel rows), sha256 269d9cdae4a26a76..."
     },
     {
       "modId": 17561,
