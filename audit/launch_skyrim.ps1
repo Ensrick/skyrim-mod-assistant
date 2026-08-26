@@ -12,12 +12,16 @@ Start-Sleep -Seconds 3
 
 Write-Host "[2] seeding game-side Plugins.txt from profile"
 $stars = Get-Content "$PROF\plugins.txt" | Where-Object { $_.StartsWith('*') }
+if (@($stars).Count -eq 0) {
+    # a failed read must never seed an empty file - that deactivates every plugin
+    Write-Host "[ABORT] profile plugins.txt unreadable or has no active plugins - not seeding"
+    exit 1
+}
 $hdr = "# This file is used by Skyrim to keep track of your downloaded content."
-Set-Content "$env:LOCALAPPDATA\Skyrim Special Edition\Plugins.txt" -Value (@($hdr) + $stars) -Encoding utf8
+[IO.File]::WriteAllLines("$env:LOCALAPPDATA\Skyrim Special Edition\Plugins.txt", @($hdr) + $stars)
 Write-Host ("    {0} plugins seeded" -f @($stars).Count)
 
 Write-Host "[3] cycling Steam (clears wedged launcher state)"
-& "$env:ProgramFiles(x86)\Steam\steam.exe" -shutdown 2>$null
 & "C:\Program Files (x86)\Steam\steam.exe" -shutdown
 $t = 45
 while ((Get-Process steam) -and $t -gt 0) { Start-Sleep -Seconds 3; $t -= 3 }

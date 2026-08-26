@@ -57,13 +57,15 @@ def plugins_of(mod_name):
                   if f.lower().endswith(('.esp', '.esm', '.esl'))) if os.path.isdir(d) else []
 
 
-def install(mid, mod_name, prefer=None, plan=None):
+def install(mid, mod_name, prefer=None, plan=None, replace=False):
     import modasset as M
     f = M.pick_file(mid, prefer=prefer)
     archive = M.download(mid, f)
     sha = hashlib.sha256(open(archive, 'rb').read()).hexdigest()
 
     args = ['mod-install', archive, mod_name, '--enable']
+    if replace:
+        args += ['--replace']
     if plan:
         args += ['--install-plan', os.path.abspath(plan)]
     res = mo2(*args)
@@ -77,7 +79,11 @@ def install(mid, mod_name, prefer=None, plan=None):
         print(f"   plugin {p}: {'enabled' if r.get('ok') else r}")
 
     led = load()
-    led['mods'] = [m for m in led['mods'] if m.get('fileId') != f['file_id']]
+    # an update replaces the old ledger row for the same mod folder, not just
+    # a re-download of the identical file
+    led['mods'] = [m for m in led['mods']
+                   if m.get('fileId') != f['file_id']
+                   and not (replace and m.get('modName') == mod_name)]
     led['mods'].append({
         'modId': mid, 'modName': mod_name,
         'nexusName': f['name'], 'version': f.get('version'),
@@ -104,7 +110,17 @@ def verify():
         for p in m['plugins']:
             ok = live.get(p)
             flag = 'enabled' if ok else ('DISABLED' if p in live else 'MISSING')
-            if not ok:
+            if not m.get('enabled'):
+                # parked mod: its plugins are expected to be undiscovered
+                flag = 'parked' if not ok else 'ACTIVE-WHILE-PARKED'
+                if ok:
+                    bad += 1
+            elif p in m.get('disabledPlugins', []):
+                # deliberately unstarred (e.g. its master is not installed)
+                flag = 'deliberately-disabled' if not ok else 'ACTIVE-BUT-MARKED-DISABLED'
+                if ok:
+                    bad += 1
+            elif not ok:
                 bad += 1
             print(f"   {m['modName']:<28}{p:<28}{flag}")
         if not m['plugins']:
@@ -165,8 +181,11 @@ if __name__ == '__main__':
     else:
         prefer = None
         plan = None
+        replace = False
         if '--prefer' in a:
             i = a.index('--prefer'); prefer = a[i + 1]; a = a[:i] + a[i + 2:]
         if '--plan' in a:
             i = a.index('--plan'); plan = a[i + 1]; a = a[:i] + a[i + 2:]
-        sys.exit(install(int(a[0]), a[1], prefer, plan))
+        if '--replace' in a:
+            a.remove('--replace'); replace = True
+        sys.exit(install(int(a[0]), a[1], prefer, plan, replace))

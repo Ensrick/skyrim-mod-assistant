@@ -41,16 +41,21 @@ older runtimes, and address-library format bumps bite at load. The real gate
 is `py -3 audit/launch_triage.py` after EVERY launch (parses skse64.log).
 `py -3 audit/plugin_watch.py` polls the blocked pages for new uploads.
 
-**1.7.99 ecosystem hold (2026-08-23 launch triage):** four DLLs refused the
-new runtime and are parked: SSE Engine Fixes 7.0.20 (address library format 5
-unsupported; MO2 mod DISABLED to kill the popup, preloader in game root is a
-harmless no-op), RaceMenu RESTORED 2026-08-24 via self-built skee64 from the author's own
-1.7.99 commit (records/selfbuild-2026-08-24-skse-skee64.md; overlay NIF
-regression untested in-game), PapyrusUtil 4.6 and JContainers 4.2.13.1 (SKSE
-disables the DLLs silently; mods left enabled - scripts are inert without
-them). Consequences until updates land: NO character creation via RaceMenu,
-Proteus (JContainers) and NFF (PapyrusUtil) storage broken - shakedown is
-VISUALS ONLY, do not build real characters yet.
+**1.7.99 ecosystem hold (rewritten 2026-08-26, receipts in
+docs/HANDOFF-2026-08-27.md):** 15 mods are parked awaiting 1.7.99 builds
+(modlist.txt `-` rows; ledger notes carry per-mod reasons), including the
+Community Shaders RENDERER CORE (its 6 feature packs + Lux CS/Azurite III CS
+stay enabled - inert/visual-mismatch only until core unparks), Proteus (no
+build since 2024, closed source - campaign-pillar risk), SPID (po3 7.3.3
+tagged upstream, release imminent), MCM Helper/OAR/Light Placer/CRD/EVLaS/
+Display Tweaks/Scrambled Bugs/Bug Fixes/Skill Uncapper/TNG/JContainers.
+UNPARKED 2026-08-26: SSE Engine Fixes 7.0.21 (official), PapyrusUtil 4.7
+(official 1.7.99 build - Skyrim Unbound/NFF/CBBE-morph scripts unblocked).
+JContainers 4.3.1 (author GitHub prerelease) installed but RE-PARKED: the
+skse64 master plugin gate refuses it pending an AddressLibraryV5 compat
+declaration - rebuild from source or await re-release. RaceMenu runs via
+self-built skee64 (overlays OFF - engine NIF regression, no Bethesda hotfix);
+official RaceMenu 1.7.99 is done per author, gated on the SKSE release.
 
 ---
 
@@ -58,38 +63,43 @@ VISUALS ONLY, do not build real characters yet.
 
 | mod | id | status |
 |---|---|---|
-| SKSE64 2.3.0 | 30379 | **SELF-BUILT master 2026-08-24** (ianpatt/skse64@14db212 incl. Expired PC-offset fixes; Nexus 2.3.0 backed up beside it; official release supersedes) |
+| SKSE64 2.3.0+ | 30379 | **SELF-BUILT master DEPLOYED 2026-08-26** (Ensrick/skse64 branch ensrick/headless-log-only = ianpatt@14db212 + log-only error reporting; CMake build, exports gate passed; fixes the official 2.3.0 GetNthTintMaskColor stale-offset Papyrus crash; Nexus 2.3.0 preserved as .bak.v2.3.0-nexus; official 2.3.1 release supersedes) |
 | Address Library v12 | 32444 | **installed** |
-| SSE Engine Fixes | 17230 | **PARKED 2026-08-23** - 7.0.20 rejects address library format 5 (1.7.99); mod disabled, preloader stays; watcher armed |
-| Crash logger | 59818 | **installed** CrashLoggerSSE 1.25.0 (updated for 1.7.99 two days ago; Trainwreck stale since 2024) |
+| SSE Engine Fixes | 17230 | **installed** 7.0.21 beta (official 1.7.99 build; preloader retired) |
+| Crash logger | 59818 | **installed** CrashLoggerSSE 1.25.0 + PDB pack 794129 (pack signature-mismatches the 1.7.99 exe - exe frames fall back to address-library IDs; self-built skse64 PDB deployed beside the dll) |
 | USSEP | 266 | **installed** 4.3.9 (2026-08-21) |
-| Bug Fixes SSE | 33261 | **installed** v10, address-independent |
-| Scrambled Bugs | 43532 | **installed** v21, address-independent |
-| SSE Display Tweaks | 34705 | **installed** 0.5.16, address-independent - config pass pending (fps cap / borderless decisions) |
-| Skill Uncapper for AE | 82558 | **installed** 2.2.3, address-independent |
+| Bug Fixes SSE | 33261 | **PARKED 2026-08-25** - v10 popped at load on 1.7.99 (not address-independent after all); closed source, no rebuild path |
+| Scrambled Bugs | 43532 | **PARKED 2026-08-25** - v21 popped at load on 1.7.99; open source (KernalsEgg/SKSE64Plugins), rebuild candidate |
+| SSE Display Tweaks | 34705 | **PARKED 2026-08-25** - 0.5.16 popped at load on 1.7.99; open source, rebuild candidate |
+| Skill Uncapper for AE | 82558 | **PARKED 2026-08-25** - 2.2.3 Rust versiondb asserts on address-library format 5; open source, porting work needed |
 
 ## Tier 1 - frameworks (everything else assumes these)
 
-Installed: SkyUI, RaceMenu (`bExternalHeads=1` set), UIExtensions, JContainers,
-PapyrusUtil, po3 Papyrus Extender, po3 Tweaks, ConsoleUtilSSE NG.
+Installed and active: SkyUI, RaceMenu (`bExternalHeads=1`, overlays OFF),
+UIExtensions, PapyrusUtil 4.7 (official 1.7.99), po3 Papyrus Extender, po3
+Tweaks, ConsoleUtilSSE NG. JContainers 4.3.1 installed but PARKED (SKSE
+master gate wants an AddressLibraryV5 declaration; rebuild or re-release).
 
 | mod | id | status |
 |---|---|---|
-| MCM Helper | 53000 | **installed** (ESL + BSA) |
-| SPID | 36869 | **installed** |
-| KID | 55728 | **installed** |
-| Base Object Swapper | 60805 | **installed** |
-| Open Animation Replacer | 92109 | **installed** |
+| MCM Helper | 53000 | **PARKED 2026-08-25** awaiting 1.7.99 build (ESL + BSA stay installed; local dll-target rebuild is the fallback path) |
+| SPID | 36869 | **PARKED 2026-08-25**; po3 tagged 7.3.3 upstream 08-25 - release imminent |
+| KID | 55728 | **installed** 4.1.0 (official 1.7.99) |
+| Base Object Swapper | 60805 | **installed** 3.5.0 (official 1.7.99) |
+| Open Animation Replacer | 92109 | **PARKED 2026-08-25** awaiting 1.7.99 build; open source, rebuild candidate |
 | Pandora Behaviour Engine | 133232 | **installed** v4.4.0-beta; ONE interactive run via MO2 pending (headless --auto_run attempt timed out; only XPMSSE weapon styles depend on it) |
 | XPMSSE | 1988 | **installed** (Extended + latest rig + RaceMenu MCM weapon styles); Skeleton Replacer HD 52845 layers on top later |
 | FSMP | 57339 | in keeps - cloth-only policy, no body jiggle - install with first physics outfit |
 | BodySlide and Outfit Studio | 201 | **installed** (tool; Curvy batch build pending) |
-| Crafting Recipe Distributor | 52276 | **installed** |
+| Crafting Recipe Distributor | 52276 | **PARKED 2026-08-25** awaiting 1.7.99 build (po3 porting wave) |
 
-## Tier 2 - identity systems (the premise) - all installed
+## Tier 2 - identity systems (the premise)
 
-Proteus 3.4.0 + Nether's Follower Framework (its hard requirement) + Skyrim
-Unbound Reborn. Operating policy from the leak analysis: questlines are
+Proteus 3.4.0 (**PARKED 2026-08-25**: no 1.7.99 build, closed source, author
+silent since 2023 - PILLAR RISK, contingency decision pending; also needs
+parked JContainers) + Nether's Follower Framework (installed+active; its
+PapyrusUtil dependency satisfied by 4.7) + Skyrim Unbound Reborn
+(installed+active; PapyrusUtil-dependent scripts unblocked by 4.7). Operating policy from the leak analysis: questlines are
 **assigned to characters, not isolated** - quest state is save-global (DB is 1%
 faction-gated, TG 6%), so one questline per character and content mods are
 preferred quarantined (Vigilant: 3 NPCs in vanilla space out of 1,755). Main
@@ -100,11 +110,11 @@ design, not a compromise.
 
 | slot | decision | notes |
 |---|---|---|
-| Renderer | Community Shaders 1.8.3 + Skylighting/SSGI/Wetness/TerrainVariation/TerrainBlending/Upscaling + Particle Patch + ENB Light | **installed** 2026-08-23; Hair Specular undecided-not-installed; effects-11 pipeline NOT in stable core - Lux CS Effect 11 flip parked |
+| Renderer | Community Shaders 1.8.3 + Skylighting/SSGI/Wetness/TerrainVariation/TerrainBlending/Upscaling + Particle Patch + ENB Light | CS CORE **PARKED 2026-08-25** - no 1.7.99 support yet (upstream draft PR #2674); feature packs stay enabled (inert without core); Lux CS/Azurite III CS esps render un-CS'd meanwhile; Hair Specular undecided-not-installed |
 | Worldspaces | Bruma, Wyrmstooth, Beyond Reach, Moonpath, Gray Cowl 10th (141327), Vigilant (11849+11894 EN) | Falskaar and its 4 support mods skipped, evidence on file |
 | Female body | CBBE Curvy, nude, vanilla outfit replacers, face pack, RaceMenu morphs | **installed** v2.0.3 |
 | Female skin | Reverie: Athletic body normal, Sleek face, CBBE compat | **installed** v1.11.2 |
-| Male body | HIMBO core 01b nude + BG-DG-DB refits + The New Gentleman 4.2.5 (framework, incl. Vigilant ini) | **installed** |
+| Male body | HIMBO core 01b nude + BG-DG-DB refits + The New Gentleman 4.2.5 (framework, incl. Vigilant ini) | HIMBO **installed**; TNG **PARKED 2026-08-25** awaiting 1.7.99 dll (01b body renders without its genital counterpart until then; TNG MCM hotfix file 793745 queued for unpark) |
 | Male skin | SkySight 2025 Ultra: HIMBO-Uncut, Clean+Hairy, vanilla head/age, default SSS | **installed** (6580) |
 | Animation | Pandora | installed |
 | Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |

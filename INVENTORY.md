@@ -1,5 +1,10 @@
 # Skyrim SE — Mod Inventory & Keep/Discard Tracker
 
+> **SUPERSEDED (2026-08-26):** historical 2026-06-09 snapshot of the old
+> Vortex-managed collection. Live state is BASELINE.md + the MO2 portable
+> instance (`repos\mo2-instances\skyrim-se`) + `records/installed-mods.json`.
+> Runtime is now 1.7.99; nothing below reflects current reality.
+
 Snapshot of the existing Vortex-managed collection, captured **2026-06-09** before resetting to a vanilla baseline.
 Source of truth: Vortex staging `%APPDATA%\Vortex\skyrimse\mods` (27 mods, 15.3 GB) + downloads (30 archives) + the two preserved deployment manifests in `records\`.
 

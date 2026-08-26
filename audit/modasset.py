@@ -14,7 +14,9 @@ import json, os, re, struct, subprocess, glob, sys, zlib, urllib.request, urllib
 SEVENZ = r'C:\Program Files\7-Zip\7z.exe'
 KEY = json.load(open(r'C:\Users\danjo\source\repos\crusader-de-tweaker\scripts\nexus\nexus.local.json'))['ApiKey']
 UA = {'apikey': KEY, 'User-Agent': 'SkyrimModAssistant/0.1', 'Accept': 'application/json'}
-CACHE = os.path.join(os.environ['TEMP'], 'modassets')
+# durable archive store (was %TEMP%\modassets - volatile, and it held the ONLY
+# copy of every source archive; moved 2026-08-26, 96 files / 16.4 GB)
+CACHE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se\downloads'
 os.makedirs(CACHE, exist_ok=True)
 
 

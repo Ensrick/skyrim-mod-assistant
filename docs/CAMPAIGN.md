@@ -19,8 +19,11 @@ keeps it clean:
 - Finish or park a questline at a quiet point before swapping.
 - Save + reload after a swap (page: player name display needs it).
 - Never hand inventory to a spawned copy of another character (spawns reset).
-- Physics hair on swap is the known crash source; we run FSMP (good), and
+- Physics hair on swap is the known crash source; FSMP is the DECIDED physics
+  engine but NOT yet installed (install with first physics outfit), and
   SMP-NPC Crash Fix is recommended by Proteus but NOT yet installed.
+  (Proteus itself is PARKED as of 2026-08-25: no 1.7.99 build, closed source,
+  author silent - the campaign mechanism is inert until that resolves.)
 
 **2. "Each new protagonist goes through the alternate start" - PARTLY, with a
 better substitute.** The alt-start scenario (SUR, installed) runs once per
@@ -66,8 +69,8 @@ The College arc floats freely.
 
 ## Action items opened by this design
 
-1. INSTALLING NOW: Beyond Skyrim Bruma (Assets + Bruma + DLC Integration,
-   v1.6.4) via headless MO2; curator keep queued (10917).
+1. DONE: Beyond Skyrim Bruma (Assets + Bruma + DLC Integration, v1.6.4)
+   installed via headless MO2 (3 ledger entries); curator keep queued (10917).
 2. Install when you green-light: Why I Came to Skyrim (167166) + Book addon
    (167957); Proteus companions it recommends that we lack: RemoveAllItems
    Freeze Fix and SMP-NPC Crash Fix (NFF and FSMP already installed).

@@ -11,12 +11,34 @@ SKSE_DIR = os.path.join(os.environ['USERPROFILE'], 'Documents', 'My Games',
                         'Skyrim Special Edition', 'SKSE')
 
 def main():
+    # --max-age-min N: fail if skse64.log predates the launch attempt by more
+    # than N minutes (catches failed-to-spawn, where a stale log looks green)
+    max_age = None
+    if '--max-age-min' in sys.argv:
+        max_age = float(sys.argv[sys.argv.index('--max-age-min') + 1])
     log = os.path.join(SKSE_DIR, 'skse64.log')
     if not os.path.exists(log):
         print('NO skse64.log - the game has not launched through SKSE')
         return 1
     age = datetime.datetime.now() - datetime.datetime.fromtimestamp(os.path.getmtime(log))
     print(f'skse64.log written {age.total_seconds()/60:.0f} min ago')
+    if max_age is not None and age.total_seconds() > max_age * 60:
+        print(f'STALE: skse64.log is older than {max_age:.0f} min - '
+              f'this launch attempt never reached SKSE init (failed-to-spawn)')
+        return 3
+    # a crash log newer than skse64.log = the session died after init
+    crashes = [fn for fn in os.listdir(SKSE_DIR)
+               if fn.startswith('crash-') and fn.endswith('.log')
+               and os.path.getmtime(os.path.join(SKSE_DIR, fn)) > os.path.getmtime(log)]
+    if crashes:
+        print(f'CRASHED after init: {sorted(crashes)[-1]} is newer than skse64.log')
+        for fn in sorted(crashes):
+            with open(os.path.join(SKSE_DIR, fn), encoding='utf-8', errors='replace') as fh:
+                for line in fh:
+                    if 'Unhandled exception' in line:
+                        print(f'   {fn}: {line.strip()[:160]}')
+                        break
+        return 4
     txt = open(log, encoding='utf-8', errors='replace').read()
     checked = re.findall(r'checking plugin (\S+)', txt)
     bad = []
