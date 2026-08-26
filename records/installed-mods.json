@@ -98,6 +98,22 @@
       "note": "official 1.7.99 wave build | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 3008,
+      "modName": "Beyond Reach",
+      "nexusName": "Beyond Reach 4.8",
+      "version": "4.8",
+      "fileId": 626299,
+      "fileName": "Beyond Reach 4.8-3008-4-8-1747019788.zip",
+      "sizeMb": 2572.32,
+      "sha256": "e3b3d90dd363a185443d83c486115e4883e78cb636fc75f13f6c27817d510e1f",
+      "plugins": [
+        "arnima.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:21:32Z",
+      "transaction": "20260826T222121154Z-e280f4d8c4df"
+    },
+    {
       "modId": 10917,
       "modName": "Beyond Skyrim - Assets",
       "nexusName": "Beyond Skyrim Assets",
@@ -177,6 +193,23 @@
       "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
+      "modId": 667,
+      "modName": "Campfire",
+      "nexusName": "Campfire 1.12.1SEVR Release",
+      "version": "1.12.1SEVR",
+      "fileId": 65049,
+      "fileName": "Campfire 1.12.1SEVR Release-667-1-12-1SEVR.zip",
+      "sizeMb": 24.38,
+      "sha256": "1ac97eb47546f742946db974c6f49a611b2e6ef444e9d4882e6174fb1f72c014",
+      "plugins": [
+        "Campfire.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:23:00Z",
+      "transaction": "20260826T222259753Z-f0e87e3799d0",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\667-campfire.json"
+    },
+    {
       "modId": 198,
       "modName": "CBBE",
       "nexusName": "Caliente's Beautiful Bodies Enhancer CBBE - v2.0.3",
@@ -190,9 +223,9 @@
         "RaceMenuMorphsCBBE.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-23T05:24:35Z",
-      "transaction": "20260823T052403250Z-f39638b3280e",
-      "fomodPlan": "records/fomod-plans/198-cbbe.json"
+      "installedUtc": "2026-08-26T22:23:46Z",
+      "transaction": "20260826T222309394Z-7cb9451ee1cd",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\198-cbbe.json"
     },
     {
       "modId": 86492,
@@ -392,6 +425,21 @@
       "note": "FOV control per user request 2026-08-26: FP world 120 / TP 90 / hands 80 in FirstPersonFOV.ini (1.0.11 dll string-verified to read the TP override keys). INSTALL BUG worked around: MO2Headless stripped the archive top-level skse/ dir as data root - files hand-moved to SKSE\\\\Plugins (fork bug to fix in Ensrick/modorganizer headless). In-game sliders need SKSE Menu Framework - NOT installed: its dll predates addr-lib format 5 and would popup-abort; rebuild assessment running. Base Skyrim.ini fDefaultWorldFOV=120 kept as fallback."
     },
     {
+      "modId": 57339,
+      "modName": "FSMP",
+      "nexusName": "FSMP 4.1.1",
+      "version": "4.1.1",
+      "fileId": 795580,
+      "fileName": "FSMP 4.1.1 57339 4.1.1 2026-08-26T19-57Z izKcFpr1Z.zip",
+      "sizeMb": 37.06,
+      "sha256": "fae3659452e6df66ad7ede0a53d39832ac5636d62e0abcf8e01bd6a607dc5094",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:56Z",
+      "transaction": "20260826T222254137Z-56907c87dbd0",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\57339-fsmp.json"
+    },
+    {
       "modId": 46311,
       "modName": "HIMBO",
       "nexusName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)",
@@ -579,15 +627,18 @@
       "version": "7.1",
       "fileId": 695703,
       "fileName": "Lux (patch hub)-113002-7-1-1765181180.rar",
-      "sizeMb": 281.9,
+      "sizeMb": 281.91,
       "sha256": "90a71f107383b46eb9a7d1927037e96046de6a5f2d110af96c147e0729490fc4",
       "plugins": [
-        "Lux - BS Bruma patch.esp"
+        "Lux - BS Bruma patch.esp",
+        "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
+        "Lux - Vigilant patch.esp",
+        "Lux - Wyrmstooth.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-24T02:33:11Z",
-      "transaction": "20260824T023311442Z-135339477270",
-      "note": "Bruma patch only; re-run for Wyrmstooth/Vicn when those install | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+      "installedUtc": "2026-08-26T22:23:08Z",
+      "transaction": "20260826T222301256Z-1b479926b743",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\113002-lux-patch-hub-with-vigilant.json"
     },
     {
       "modId": 63588,
@@ -607,6 +658,73 @@
       "note": "ENB-light variant for CS particle lights; satisfies Lux hard req"
     },
     {
+      "modId": 63588,
+      "modName": "Lux Resources Plugin Update",
+      "nexusName": "Updated Lux - Resources plugin",
+      "version": "2.2",
+      "fileId": 584835,
+      "fileName": "Updated Lux - Resources plugin-63588-2-2-1737226039.rar",
+      "sizeMb": 0.03,
+      "sha256": "81625072881d0f2a0f033b055e17447d2499f9f1ded69caa91f40a7e93505b6e",
+      "plugins": [
+        "Lux - Resources.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:53Z",
+      "transaction": "20260826T222253016Z-0c1253409fd7",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\63588-lux-resources-plugin-update.json"
+    },
+    {
+      "modId": 63588,
+      "modName": "Lux Via",
+      "nexusName": "Lux Via (main)",
+      "version": "2.2",
+      "fileId": 490662,
+      "fileName": "Lux Via (main)-63588-2-2-1713094342.rar",
+      "sizeMb": 1336.92,
+      "sha256": "63486d850d30d50c5dc1d490c641d342cae86ef33ad6ad358d15f021ff3a2ba5",
+      "plugins": [
+        "Lux Via - plugin.esp",
+        "Lux Via.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:49Z",
+      "transaction": "20260826T222232666Z-0997790a4bd2",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\63588-lux-via.json"
+    },
+    {
+      "modId": 63588,
+      "modName": "Lux Via Meshes Update",
+      "nexusName": "Lux Via meshes update",
+      "version": "2.2",
+      "fileId": 504018,
+      "fileName": "Lux Via meshes update-63588-2-2-1716445182.rar",
+      "sizeMb": 15.58,
+      "sha256": "4435e4390cce86a22466a0ea9ec7195b8cd210635c354227cf561ecc863b6fc7",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:51Z",
+      "transaction": "20260826T222250765Z-aba1ab49fbf4",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\63588-lux-via-bsa-update.json"
+    },
+    {
+      "modId": 63588,
+      "modName": "Lux Via Plugin Update",
+      "nexusName": "Lux Via main plugin update",
+      "version": "2.2",
+      "fileId": 589787,
+      "fileName": "Lux Via main plugin update-63588-2-2-1738417767.rar",
+      "sizeMb": 1.01,
+      "sha256": "b622d14d32f160a017dc0c0a587ddffad8cfff964d3c1cc5424d617f96c74e8c",
+      "plugins": [
+        "Lux Via.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:52Z",
+      "transaction": "20260826T222252073Z-8e0e71adbb18",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\63588-lux-via-plugin-update.json"
+    },
+    {
       "modId": 53000,
       "modName": "MCM Helper",
       "nexusName": "MCM Helper",
@@ -621,6 +739,77 @@
       "transaction": "20260823T061611548Z-1505c26a6afa",
       "fomodPlan": "records/fomod-plans/53000-mcm-helper.json",
       "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+    },
+    {
+      "modId": 11069,
+      "modName": "Moonpath Bruma Synergy Patch",
+      "nexusName": "Beyond Skyrim - Bruma Moonpath to Elsweyr Synergy Patch v2.4.0",
+      "version": "2.4.0",
+      "fileId": 49566,
+      "fileName": "Beyond Skyrim - Bruma Moonpath to Elsweyr Synergy Patch v2.4-11069-2-4.rar",
+      "sizeMb": 0.01,
+      "sha256": "f37a233493e1b654a61ba6092572dba73d3db45e74c2138528b6ec86b0f006cd",
+      "plugins": [
+        "JRMoonpathBrumaPatch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:21:38Z",
+      "transaction": "20260826T222138503Z-3b749f42a174",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\11069-moonpath-bruma-synergy.json"
+    },
+    {
+      "modId": 97517,
+      "modName": "Moonpath Music Weather Fixes",
+      "nexusName": "Moonpath to Elsweyr SSE - Fixes",
+      "version": "3.2",
+      "fileId": 638981,
+      "fileName": "Moonpath to Elsweyr SSE - Fixes-97517-3-2-1750188739.7z",
+      "sizeMb": 119.83,
+      "sha256": "0598277d236952eccfc6166ffa376c30aed6deae6dde85e623141c7d4c14840e",
+      "plugins": [
+        "JRMoonpathBrumaPatch.esp",
+        "Moonpath Blacksmith Forge Water Fix.esp",
+        "Moonpath Music, Weather and Other Fixes - JRMoonpathBrumaPatch.esp",
+        "Moonpath Music, Weather and Other Fixes.esp",
+        "moonpath.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:21:45Z",
+      "transaction": "20260826T222139740Z-62ffca345281",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\97517-moonpath-music-weather-fixes.json"
+    },
+    {
+      "modId": 4341,
+      "modName": "Moonpath to Elsweyr",
+      "nexusName": "Moonpath to Elsweyr SSE",
+      "version": "1.16.1",
+      "fileId": 19300,
+      "fileName": "Moonpath to Elsweyr SSE-4341-1-16-1.7z",
+      "sizeMb": 89.8,
+      "sha256": "81fdbed9a79f13ae00808aab69130f4e2be7553771ad0b84c1590d527fa2eb31",
+      "plugins": [
+        "moonpath.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:21:37Z",
+      "transaction": "20260826T222132827Z-e75d96360dda"
+    },
+    {
+      "modId": 15882,
+      "modName": "Moonpath Unofficial Patch",
+      "nexusName": "Unofficial Moonpath to Elsweyr Patch v1.5.0",
+      "version": "1.5.0",
+      "fileId": 48820,
+      "fileName": "Unofficial Moonpath to Elsweyr Patch v1.5-15882-1-5.rar",
+      "sizeMb": 0.05,
+      "sha256": "c7b75777836151274138db050d435b3bf84b349fb35b213079bf3cdf12c115e5",
+      "plugins": [
+        "JRMoonpathtoElsweyrPatch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:21:38Z",
+      "transaction": "20260826T222137767Z-184ff88e9288",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\15882-moonpath-unofficial-patch.json"
     },
     {
       "modId": 55653,
@@ -1011,6 +1200,40 @@
       "note": "7.0.21 BETA official (1.7.99); AE dll + required config; preloader retired per author notes | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 97536,
+      "modName": "Starfrost",
+      "nexusName": "Starfrost - A Survival Overhaul",
+      "version": "2.0.0",
+      "fileId": 788209,
+      "fileName": "Starfrost - A Survival Overhaul 97536 2.0.0 2026-08-10T21-24Z UK35Xn2DP.7z",
+      "sizeMb": 0.16,
+      "sha256": "800a3c4f7de4503f6ba315ca94d7f8142abb09e42bf9b495043822a28186eccc",
+      "plugins": [
+        "Starfrost.esp",
+        "StarfrostVanillaHunger.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:59Z",
+      "transaction": "20260826T222258909Z-55a09b162fe0",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\97536-starfrost.json"
+    },
+    {
+      "modId": 78244,
+      "modName": "Survival Mode Improved",
+      "nexusName": "Survival Mode Improved SKSE - Skyrim 1.7.99 BETA",
+      "version": "1.7.0",
+      "fileId": 794456,
+      "fileName": "Survival Mode Improved SKSE - Skyrim 1.7.99 BETA 78244 1.7.0 2026-08-24T15-52Z kATsMWj4g.7z",
+      "sizeMb": 4.56,
+      "sha256": "10f6397cda38e0982daac36d35f575617c2b13f51567ce025c479e574849d0a8",
+      "plugins": [
+        "SurvivalModeImproved.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:58Z",
+      "transaction": "20260826T222257887Z-cf70113c8270"
+    },
+    {
       "modId": 141327,
       "modName": "The Gray Cowl of Nocturnal",
       "nexusName": "The Gray Cowl of Nocturnal",
@@ -1092,6 +1315,57 @@
       "enabled": true,
       "installedUtc": "2026-08-23T06:01:42Z",
       "transaction": "20260823T060134726Z-ab1003b1b7a6"
+    },
+    {
+      "modId": 11849,
+      "modName": "VIGILANT",
+      "nexusName": "VIGILANT SE v182",
+      "version": "1.8.2",
+      "fileId": 764410,
+      "fileName": "VIGILANT SE v182 11849 1.8.2 2026-06-16T13-45Z pQ0AZ3NWv.rar",
+      "sizeMb": 1106.3,
+      "sha256": "7f44723212d5abac44075ccf959c9b42740f5d264bfa7238ab4535099eea9445",
+      "plugins": [
+        "Vigilant.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:25Z",
+      "transaction": "20260826T222147420Z-c9da71d06c88",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\11849-vigilant.json"
+    },
+    {
+      "modId": 11894,
+      "modName": "VIGILANT EN Voiced",
+      "nexusName": "VIGILANT - English Translation SE (Voiced)",
+      "version": "1.8.2",
+      "fileId": 764530,
+      "fileName": "VIGILANT - English Translation SE (Voiced) 11894 1.8.2 2026-06-16T21-02Z VMSnJrFIu.zip",
+      "sizeMb": 85.02,
+      "sha256": "cc170a12733a84fcf517e301d92921a055bc637e2d72777864a7c706f7453fb2",
+      "plugins": [
+        "Vigilant.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:29Z",
+      "transaction": "20260826T222226276Z-736efc91fc45",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\11894-vigilant-en-voiced.json"
+    },
+    {
+      "modId": 668,
+      "modName": "VioLens",
+      "nexusName": "VioLens - A Killmove Mod SE 2.30",
+      "version": "2.30",
+      "fileId": 255970,
+      "fileName": "VioLens - A Killmove Mod SE 2.30-668-2-30-1641929178.7z",
+      "sizeMb": 0.91,
+      "sha256": "3a07ebdb8418c683064b8de059b8583fe77a50e5185df5342272d6f42e17be9b",
+      "plugins": [
+        "VioLens SE.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T22:22:57Z",
+      "transaction": "20260826T222256991Z-4f2048e1b7da",
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\668-violens.json"
     },
     {
       "modId": 45565,

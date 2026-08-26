@@ -57,9 +57,17 @@ def plugins_of(mod_name):
                   if f.lower().endswith(('.esp', '.esm', '.esl'))) if os.path.isdir(d) else []
 
 
-def install(mid, mod_name, prefer=None, plan=None, replace=False):
+def install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
     import modasset as M
-    f = M.pick_file(mid, prefer=prefer)
+    if file_id:
+        # an exact, dossier-verified file: never re-pick, because pick_file only
+        # scans MAIN and would silently choose a different (or newer) variant
+        files = M.v1(f'/mods/{mid}/files.json')['files']
+        f = next((x for x in files if x['file_id'] == file_id), None)
+        if not f:
+            print(f'mod {mid}: no file {file_id}'); return 1
+    else:
+        f = M.pick_file(mid, prefer=prefer)
     archive = M.download(mid, f)
     sha = hashlib.sha256(open(archive, 'rb').read()).hexdigest()
 
@@ -154,10 +162,17 @@ def sort_order():
         print((p.stdout or p.stderr)[-500:])
         return 1
     led = load()
+    n = 0
     for m in led['mods']:
+        if not m.get('enabled'):
+            continue                      # parked mods stay parked
         for pl in m['plugins']:
+            if pl in m.get('disabledPlugins', []):
+                continue                  # deliberately unstarred (absent master)
             mo2('plugin-enable', pl)
-    print(f'sorted, then re-enabled plugins for {len(led["mods"])} mods')
+            n += 1
+    print(f'sorted, then re-enabled {n} plugins '
+          f'(parked mods and recorded disabledPlugins left alone)')
     return verify()
 
 
@@ -188,4 +203,7 @@ if __name__ == '__main__':
             i = a.index('--plan'); plan = a[i + 1]; a = a[:i] + a[i + 2:]
         if '--replace' in a:
             a.remove('--replace'); replace = True
-        sys.exit(install(int(a[0]), a[1], prefer, plan, replace))
+        file_id = None
+        if '--file' in a:
+            i = a.index('--file'); file_id = int(a[i + 1]); a = a[:i] + a[i + 2:]
+        sys.exit(install(int(a[0]), a[1], prefer, plan, replace, file_id))
