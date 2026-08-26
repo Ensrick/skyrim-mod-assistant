@@ -22,8 +22,9 @@ keeps it clean:
 - Physics hair on swap is the known crash source; FSMP is the DECIDED physics
   engine but NOT yet installed (install with first physics outfit), and
   SMP-NPC Crash Fix is recommended by Proteus but NOT yet installed.
-  (Proteus itself is PARKED as of 2026-08-25: no 1.7.99 build, closed source,
-  author silent - the campaign mechanism is inert until that resolves.)
+  (Proteus is active as of 2026-08-26: the official 3.4.0 scripts/plugin run
+  with the source-built Ensrick 1.7.99 native overlay. Native registration has
+  passed; extended multi-character persistence testing remains mandatory.)
 
 **2. "Each new protagonist goes through the alternate start" - PARTLY, with a
 better substitute.** The alt-start scenario (SUR, installed) runs once per
