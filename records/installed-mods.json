@@ -1011,6 +1011,22 @@
       "note": "7.0.21 BETA official (1.7.99); AE dll + required config; preloader retired per author notes | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 141327,
+      "modName": "The Gray Cowl of Nocturnal",
+      "nexusName": "The Gray Cowl of Nocturnal",
+      "version": "1.51",
+      "fileId": 735498,
+      "fileName": "The Gray Cowl of Nocturnal-141327-1-51-1774565910.rar",
+      "sizeMb": 481.97,
+      "sha256": "08dbcd5ca06775a38544c78e347d6fecb81ee381cf4b429b242d056faed6407f",
+      "plugins": [
+        "Gray Fox Cowl.esm"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T21:52:42Z",
+      "transaction": "20260826T215235477Z-999e790929a0"
+    },
+    {
       "modId": 104215,
       "modName": "The New Gentleman",
       "nexusName": "The New Gentleman",
@@ -1076,6 +1092,22 @@
       "enabled": true,
       "installedUtc": "2026-08-23T06:01:42Z",
       "transaction": "20260823T060134726Z-ab1003b1b7a6"
+    },
+    {
+      "modId": 45565,
+      "modName": "Wyrmstooth",
+      "nexusName": "Wyrmstooth",
+      "version": "1.20.3",
+      "fileId": 670394,
+      "fileName": "Wyrmstooth-45565-1-20-3-1759129708.zip",
+      "sizeMb": 219.52,
+      "sha256": "e996175c2b49ab07cc86647cda837ff8930f39eb212f62affe749fad847e6c4d",
+      "plugins": [
+        "Wyrmstooth.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-26T21:52:30Z",
+      "transaction": "20260826T215229168Z-e2cc1d8dde18"
     },
     {
       "modId": 1988,
