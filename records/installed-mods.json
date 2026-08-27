@@ -1154,6 +1154,55 @@
       "note": "direct archive"
     },
     {
+      "modId": 68656,
+      "modName": "Sons of Skyrim",
+      "nexusName": "Main Files",
+      "version": "2.0.2",
+      "fileId": 448133,
+      "fileName": "Main Files-68656-2-0-2-1701526801.7z",
+      "sizeMb": 336.42,
+      "sha256": "3ec662e95d5415787ea17e4426ea97e094c9f2a28cbed39335947b2875003061",
+      "plugins": [
+        "NW_Sons_of_Skyrim.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-27T01:51:47Z",
+      "transaction": "20260827T015128941Z-1815257ae43d"
+    },
+    {
+      "modId": 104261,
+      "modName": "Sons of Skyrim - Lux Orbis Patch",
+      "nexusName": "Sons of Skyrim Patches - FOMOD",
+      "version": "1.3.1",
+      "fileId": 782421,
+      "fileName": "Sons of Skyrim Patches - FOMOD 104261 1.3.1 2026-07-28T12-04Z oPpNfUOEt.7z",
+      "sizeMb": 0.01,
+      "sha256": "8efa01fcbd8d408d04ff1d227dcf79e72ad6d76eb03e224755ed2b6908816d33",
+      "plugins": [
+        "Sons of Skyrim - Lux Orbis Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-27T01:51:49Z",
+      "transaction": "20260827T015149365Z-6423fa3165af",
+      "fomodPlan": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records\\fomod-plans\\104261-sons-of-skyrim-lux-orbis.json"
+    },
+    {
+      "modId": 104126,
+      "modName": "Sons of Skyrim - Xtudo Fixes",
+      "nexusName": "SOS V2.0 - SE by Xtudo - Fixes",
+      "version": "3.3",
+      "fileId": 617660,
+      "fileName": "SOS V2.0 - SE by Xtudo - Fixes-104126-3-3-1744748191.7z",
+      "sizeMb": 0.62,
+      "sha256": "ec3af23a6f1bd2691f0a550f344010eb6a50c7efc9eb2fb37991f60a515607d9",
+      "plugins": [
+        "NW_Sons_of_Skyrim - My fixes by Xtudo.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-27T01:51:48Z",
+      "transaction": "20260827T015148427Z-4543791fea3d"
+    },
+    {
       "modId": 36869,
       "modName": "Spell Perk Item Distributor",
       "nexusName": "Spell Perk Item Distributor",

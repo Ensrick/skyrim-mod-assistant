@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "auditedAt": "2026-08-12",
+  "auditedAt": "2026-08-26",
   "mods": [
     {
       "name": "Lost LongSwords",
@@ -40,6 +40,45 @@
       "modification": "bug fixes and improvements allowed with credit",
       "localPolicy": "official archive retained only in ignored work storage",
       "publicListPolicy": "reference Nexus mod 134467 file 742217; never bundle the archive"
+    },
+    {
+      "name": "Sons of Skyrim",
+      "author": "NordwarUA",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 68656,
+      "nexusFileId": 448133,
+      "sourceFile": "Main Files-68656-2-0-2-1701526801.7z",
+      "sourceSha256": "3EC662E95D5415787EA17E4426EA97E094C9F2A28CBED39335947B2875003061",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "bug fixes and improvements allowed with credit",
+      "localPolicy": "official archive retained only in ignored work storage",
+      "publicListPolicy": "reference Nexus mod 68656 file 448133; never bundle the archive"
+    },
+    {
+      "name": "Sons of Skyrim v2.0 - My patches and fixes SE",
+      "author": "Xtudo",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 104126,
+      "nexusFileId": 617660,
+      "sourceFile": "SOS V2.0 - SE by Xtudo - Fixes-104126-3-3-1744748191.7z",
+      "sourceSha256": "EC3AF23A6F1BD2691F0A550F344010EB6A50C7EFC9EB2FB37991F60A515607D9",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "permission required",
+      "localPolicy": "official archive retained only in ignored work storage",
+      "publicListPolicy": "reference Nexus mod 104126 file 617660; never bundle the archive"
+    },
+    {
+      "name": "Sons of Skyrim - More Patches",
+      "author": "Blackread",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 104261,
+      "nexusFileId": 782421,
+      "sourceFile": "Sons of Skyrim Patches - FOMOD 104261 1.3.1 2026-07-28T12-04Z oPpNfUOEt.7z",
+      "sourceSha256": "8EFA01FCBD8D408D04FF1D227DCF79E72AD6D76EB03E224755ED2B6908816D33",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "bug fixes and improvements allowed",
+      "localPolicy": "install only the Lux Orbis compatibility plugin selected by the reviewed FOMOD plan",
+      "publicListPolicy": "reference Nexus mod 104261 file 782421; never bundle the archive"
     }
   ]
 }
