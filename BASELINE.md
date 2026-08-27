@@ -26,6 +26,14 @@ gated Nexus release). Proteus is MIT (phenderix/PROTEUS, Papyrus scripts);
 only its small Nightfallstorm-converted SKSE DLL has no located source yet.
 No fully-closed load-bearing mods remain confirmed in the build.
 
+**Texture resolution policy (user, 2026-08-26): match the replaced source by
+default.** Permit no more than one justified resolution step upward, cap
+dedicated small-clutter textures at 1K on either axis, and cap every texture at
+4K on either axis. Dimensions come from DDS headers rather than marketing
+labels; rectangular atlases, companion maps, UV coverage, and actual added
+detail are reviewed explicitly. The enforceable rules and exception evidence
+requirements are in `docs/TEXTURE_POLICY.md`.
+
 Nothing else "still needs review". The unreviewed Nexus catalogue is consulted
 only per-slot during gap searches, never wholesale - that lesson is paid for.
 

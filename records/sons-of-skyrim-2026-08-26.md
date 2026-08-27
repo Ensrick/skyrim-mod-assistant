@@ -21,6 +21,12 @@ The optional 940 MB HD texture archive was omitted. The standard archive has
 and three 4K maps used by the Riften shield. This is the performance-oriented
 choice while preserving the authored appearance.
 
+The 2026-08-26 texture-policy review found vanilla shields ranging from 1K to
+2K, with the comparable Stormcloak shield at 2K. The Riften shield's 4K maps
+therefore occupy the permitted single step above that analogue and exactly the
+absolute ceiling; they are not precedent for selecting 4K elsewhere. See
+`docs/TEXTURE_POLICY.md`.
+
 ## Compatibility and validation
 
 - Xtudo's patch carries USSEP fixes, adds Survival warm keywords, repairs
