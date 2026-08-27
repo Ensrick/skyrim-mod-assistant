@@ -138,12 +138,12 @@ design, not a compromise.
 | slot | candidates surviving in keeps | how it gets decided |
 |---|---|---|
 | Weather | **DECIDED 2026-08-23: Azurite III** + Azurite III CS 162153 (Dlizzio; incl. its own Darker Nights + IBL) + EVLaS + water fx fix - **installed** | swap same day: doodlum HDR 138991 + DrJacopo Darker Nights addon disabled (162153 page: incompatible) after user identified the mod he meant; rivals skipped per user order; Azurite Mists out (author: III needs no mist mods) |
-| Landscape tex | Majestic Mtns, Cathedral Landscapes, aMidianBorn B&L, Majestic Landscapes, Gecko's 4K, RUSTIC MOUNTAINS (6) | file-level: coverage overlap + the audit tooling; mountains vs full-landscape are partly complementary |
+| Landscape tex | **PROVISIONAL 2026-08-26: Vanaheimr Landscapes 5.5 PBR 2K**; previous six candidates retained pending repair/A-B | Best current art-direction fit and <=4K, but two shipped road meshes report Oldrim format; hold install until repaired/excluded and CS/PGPatcher path is ready. Evidence: `docs/LANDSCAPE-TREES-2026-08-26.md` |
 | Interior lighting | **DECIDED 2026-08-23: Lux family** - Lux + Via + Orbis + Patch Hub + Lux CS + CC bundle (installing; dim beam/mist variants) | Lux re-entered via keeps and won on facts: every component active 2024-26, purpose-built CS bridge, hub officially patches Bruma/Wyrmstooth/Vigilant/Glenmoril/Unslaad (ELFX FOMOD: none). ELFX trio stays shelved as mid-save A/B fallback |
 | Water | Cathedral Water, Simplicity of Sea, A Water Made For CS (3) | last two are CS-era; RWT purged |
 | Horses | Convenient Horses, Simple Horse, Simplest Horses (3) | feature-set read; CH vs INIGO conflict already on file |
 | Skeleton | XPMSSE + Skeleton Replacer HD (2) | layering question, not rivalry |
-| Trees | SFO, Happy Little Trees (2) | NotWL purged despite its Wyrmstooth patch - candidate to re-enter |
+| Trees | **PROVISIONAL 2026-08-26: NotWL 3.14 + Nordic Cut 1.2.2 + Nature of the Mild Lands 3.14**; HLT retained as performance fallback | Nordic Cut restores mostly vanilla placement while retaining NotWL character. Base and PBR archives contain one 8K map; use the permitted downscale and hold PBR/animation. Not installed; new-game only. Evidence: `docs/LANDSCAPE-TREES-2026-08-26.md` |
 | Combat feel | Wildcat, Smilodon (2) | same author, heavy vs light - read + play |
 | Crafting | Ars Metallica, CCOR (2) | CCOR pulls WACCF family, already kept |
 
