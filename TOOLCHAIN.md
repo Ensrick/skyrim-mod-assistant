@@ -1,6 +1,6 @@
 # Skyrim Toolchain Decision Record
 
-Audited: 2026-08-01 (America/Chicago)
+Audited: 2026-08-27 (America/Chicago)
 
 ## Selected stack
 
@@ -14,6 +14,7 @@ Audited: 2026-08-01 (America/Chicago)
 | NIF inspection and LE-to-SE conversion | local `nif-port-cli` + current nifly | `ousnius/SSE-NIF-Optimizer@dbba8b3`, `nifly@846518b` | Source-built, fully headless, fail-closed conversion with post-save reload validation |
 | Installed-master record inspection | local `skyrim-record-cli` + Mutagen 0.54.2 | local source | Source-built, fully headless JSONL export used for balance checks |
 | Katana conversion and balance | local `KatanaTwoHandedPatcher` + Synthesis 0.36.5 / Mutagen 0.54.2 | local source | Source-built, fully headless load-order patcher with conservative detection and explicit include/exclude settings |
+| Conditional plugin merging | zMerge Headless 0.6.7-headless.1 | `Ensrick/zedit@fd8df93` | Source-built JSON worker; zero visible UI; inventory, validation, and external-output builds tested through MO2 |
 | Programmatic MO2/plugin control | houseCARL 1.9.0 | `Ensrick/houseCARL@6386941` | Built, audited, and staged; deliberately not installed into live Codex/MO2 yet |
 
 Exact executable paths and SHA-256 values are recorded locally in the ignored
@@ -22,16 +23,18 @@ Exact executable paths and SHA-256 values are recorded locally in the ignored
 ## Supersession decisions
 
 - **zEdit** is not the general-purpose core. Its last published version is 0.6.7
-  (2022), its build stack is old Electron/Python 2.7-era technology, and current
-  work is sparse. Keep it only when a chosen mod explicitly requires a legacy
-  zPatcher or zMerge workflow.
-- **zMerge** is not our default merge strategy. Skyrim SE's ESL/ESL-flagged
+  (2022), so our fork packages only zMerge automation as a fail-closed JSON
+  worker. Production builds cannot display the legacy desktop interface,
+  networking is blocked, and native dependencies are rebuilt from pinned source.
+- **zMerge** is available but is not our default merge strategy. Skyrim SE's ESL/ESL-flagged
   plugins remove much of the old need to merge plugins, and merging can obscure
-  provenance and complicate updates. MergeMapper 1.6.1 is current, Apache-2.0,
-  source-buildable, and statically 1.7.99-compatible, but it is conditional
-  zMerge runtime infrastructure rather than a reason to merge. The current
-  profile uses only 26 full slots and contains no zMerge output, so MergeMapper
-  remains uninstalled. Source/package audit: `docs/MERGEMAPPER-REVIEW-2026-08-27.md`.
+  provenance and complicate updates. Our source build can inventory, validate,
+  and build externally without changing the profile. MergeMapper 1.6.1 is
+  current, Apache-2.0, source-buildable, and statically 1.7.99-compatible, but it
+  is conditional runtime infrastructure rather than a reason to merge. The
+  profile contains no adopted zMerge output, so MergeMapper remains uninstalled.
+  Reviews: `docs/ZMERGE-HEADLESS-REVIEW-2026-08-27.md` and
+  `docs/MERGEMAPPER-REVIEW-2026-08-27.md`.
 - **Mator Smash** is not our unattended conflict-resolution core. It has no
   comparably current, well-tested source/headless path.
 - **Wrye Bash** remains useful for a Bashed Patch when leveled-list/import-tag
@@ -83,6 +86,10 @@ Exact executable paths and SHA-256 values are recorded locally in the ignored
 - Hidden launcher: Synthesis and Spriggit help invocations completed without a
   visible window and wrote separate stdout/stderr logs under
   `records/tool-runs`.
+- zMerge Headless: 7 contract tests and the complete pinned native source build
+  passed; bare launch, MO2 inventory, validation, and a disposable build all had
+  zero window handles. The build produced 51 hashed files outside the profile;
+  post-build plugin membership exactly matched the pre-build inventory.
 
 ## Security hardening
 
@@ -116,6 +123,8 @@ fallback. It is not represented as a source build of 4.1.5q.
 
 - Every background executable is checksum-pinned before launch. The MO2
   controller, GUI executable, and distributable archive are pinned separately.
+  Electron workers also pin `app.asar` and native companions because their EXE
+  is a generic host and does not identify the application code.
 - Runs use hidden processes and per-run logs.
 - Writes target a new patch/output location by default.
 - No live MO2 profile or Codex plugin registration is changed until the selected

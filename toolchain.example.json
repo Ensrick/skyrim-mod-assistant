@@ -24,6 +24,18 @@
       "path": "C:\\Path\\To\\Spriggit.CLI.exe",
       "sha256": "REPLACE_WITH_SHA256",
       "headlessLauncher": true
+    },
+    "zmerge": {
+      "path": "C:\\Path\\To\\zMergeHeadless.exe",
+      "workingDirectory": "C:\\Path\\To\\zMergeHeadless",
+      "sha256": "REPLACE_WITH_SHA256",
+      "companionFiles": [
+        {
+          "path": "C:\\Path\\To\\zMergeHeadless\\resources\\app.asar",
+          "sha256": "REPLACE_WITH_SHA256"
+        }
+      ],
+      "headlessLauncher": true
     }
   }
 }
