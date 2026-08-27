@@ -27,7 +27,11 @@ Exact executable paths and SHA-256 values are recorded locally in the ignored
   zPatcher or zMerge workflow.
 - **zMerge** is not our default merge strategy. Skyrim SE's ESL/ESL-flagged
   plugins remove much of the old need to merge plugins, and merging can obscure
-  provenance and complicate updates.
+  provenance and complicate updates. MergeMapper 1.6.1 is current, Apache-2.0,
+  source-buildable, and statically 1.7.99-compatible, but it is conditional
+  zMerge runtime infrastructure rather than a reason to merge. The current
+  profile uses only 26 full slots and contains no zMerge output, so MergeMapper
+  remains uninstalled. Source/package audit: `docs/MERGEMAPPER-REVIEW-2026-08-27.md`.
 - **Mator Smash** is not our unattended conflict-resolution core. It has no
   comparably current, well-tested source/headless path.
 - **Wrye Bash** remains useful for a Bashed Patch when leveled-list/import-tag
