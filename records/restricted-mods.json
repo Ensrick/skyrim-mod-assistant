@@ -79,6 +79,84 @@
       "modification": "bug fixes and improvements allowed",
       "localPolicy": "install only the Lux Orbis compatibility plugin selected by the reviewed FOMOD plan",
       "publicListPolicy": "reference Nexus mod 104261 file 782421; never bundle the archive"
+    },
+    {
+      "name": "Legacy of Ysgramor",
+      "author": "NordwarUA",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 109963,
+      "nexusFileId": 464173,
+      "sourceFile": "109963-464173.7z",
+      "sourceSha256": "B186E6D10F98915490C5B24F06A0196289C15EDBECCA70AF5FA98234F68FD8E8",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "bug fixes and improvements allowed with credit",
+      "localPolicy": "official 2K archive retained only in ignored local storage; optional 4K archive not selected",
+      "publicListPolicy": "reference Nexus mod 109963 file 464173; never bundle the archive"
+    },
+    {
+      "name": "Legacy of Ysgramor - HIMBO Conversion",
+      "author": "Trexasle",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 110002,
+      "nexusFileId": 464314,
+      "sourceFile": "110002-464314.7z",
+      "sourceSha256": "9D3F10D3BB023B5DD552047E348EE451B19D75F46D36697B8D42E1B3C3BE67F6",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "bug fixes and improvements allowed with credit; some assets have additional authors",
+      "localPolicy": "official archive retained only in ignored local storage",
+      "publicListPolicy": "reference Nexus mod 110002 file 464314; never bundle the archive"
+    },
+    {
+      "name": "RMB SPIDified - Core Framework",
+      "author": "RowanMaBoot",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 63625,
+      "nexusFileId": 754890,
+      "sourceFile": "63625-754890.zip",
+      "sourceSha256": "59AA7240BC7CACB3C8E29D0FEE8F3B282730A2A054D35D0E9340628E7BE6960D",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "permission required; keywords may be referenced with credit but the author recommends a dependency rather than copying files",
+      "localPolicy": "selected FOMOD files retained only in the local MO2 mod directory",
+      "publicListPolicy": "reference Nexus mod 63625 file 754890 as a required download; never bundle its files"
+    },
+    {
+      "name": "RMB SPIDified - Legacy of Ysgramor",
+      "author": "RowanMaBoot",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 140349,
+      "nexusFileId": 749746,
+      "sourceFile": "140349-749746.zip",
+      "sourceSha256": "80A4F36FF736036AC430D07D59DEE58E48246D94BB724DC1D9043DC185420723",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "permission required",
+      "localPolicy": "deterministic FOMOD selection retained only in the local MO2 mod directory",
+      "publicListPolicy": "reference Nexus mod 140349 file 749746 and reproduce the documented choices; never bundle its files"
+    },
+    {
+      "name": "Legacy of Ysgramor - My patches and fixes SE",
+      "author": "Xtudo",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 111121,
+      "nexusFileId": 614646,
+      "sourceFile": "111121-614646.7z",
+      "sourceSha256": "43070F1A38A92FE18C870068E6688026534204584C5E91B2A7134880F6D34F2B",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "permission required",
+      "localPolicy": "only the two plugins matching the selected RMB stack are installed; the ESP Skyforge alternative is omitted",
+      "publicListPolicy": "reference Nexus mod 111121 file 614646; never bundle the archive or patched plugins"
+    },
+    {
+      "name": "SkyPatcher",
+      "author": "Zzyxzz",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 106659,
+      "nexusFileId": 796107,
+      "sourceFile": "106659-796107.zip",
+      "sourceSha256": "195E5E8CF1EB7517E7D3C9EA581098EB5E5776441F7DBE20C256DC0F896DD38B",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "permission required",
+      "localPolicy": "official AE 7.0.3 binary retained only in ignored local storage",
+      "publicListPolicy": "reference Nexus mod 106659 file 796107 as a required download; never bundle the binary"
     }
   ]
 }
