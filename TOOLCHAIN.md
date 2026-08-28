@@ -6,7 +6,7 @@ Audited: 2026-08-27 (America/Chicago)
 
 | Role | Selection | Pinned source | Background status |
 |---|---|---|---|
-| Mod/profile manager and VFS | Mod Organizer 2 2.5.2 + MO2Headless 0.1.0 | `Ensrick/modorganizer@23de14e` | Source-built full distribution; transactional JSON controller and USVFS launcher are fully background-safe |
+| Mod/profile manager and VFS | Mod Organizer 2 2.5.2 + MO2Headless 0.1.0 | `Ensrick/modorganizer@3769ece` | Source-built full distribution; transactional JSON controller and USVFS launcher are fully background-safe; Bethesda Data-root preservation regression tested |
 | Load-order metadata and sorting | MO2 LootCLI 1.8.0 + libloot 0.29.6 | `Ensrick/modorganizer-lootcli@c455fe0` + `Ensrick/libloot@136f398` | Source-built, tested, and hidden-launch ready; designed for MO2's virtual filesystem |
 | Record editor, inspection, cleaning | xEdit 4.1.5q source | `Ensrick/TES5Edit@fd1e360` | Source and every recursive submodule pinned; build blocked on a user-licensed Delphi 12 toolchain |
 | Reproducible patch pipelines | Synthesis 0.36.5 | `Ensrick/Synthesis@e585f45` | Built and tested; hidden CLI supports `run-pipeline` |
@@ -56,8 +56,9 @@ Exact executable paths and SHA-256 values are recorded locally in the ignored
   redirected help, version, invalid-option, and missing-command probes returned
   with no window; a disposable Steam Skyrim SE instance passed profile/mod/plugin
   operations, deterministic FOMOD installation, byte-exact rollback,
-  snapshot/apply, unmanaged DLC preservation, audit, USVFS exit propagation, and
-  a five-process hidden-window observation. The real katana archive audited
+  snapshot/apply, unmanaged DLC preservation, audit, USVFS exit propagation,
+  a five-process hidden-window observation, and preservation of a single
+  `SKSE/Plugins` Data-root staging tree. The real katana archive audited
   cleanly, and source-built LootCLI produced an 81-plugin sorted list and a
   41,749-byte report through the virtual filesystem.
 - Synthesis: 426 unit tests passed, 1 skipped; all 48 integration tests passed;
