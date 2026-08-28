@@ -36,6 +36,16 @@ a private working tree, but only the reviewed allowlist can be committed.
 - `docs/TEXTURE_POLICY.md` defines the source-matched resolution budget: at
   most one justified step upward, a 1K cap for dedicated small clutter, and an
   absolute 4K-per-axis ceiling.
+- `docs/MODPACK-ROADMAP-2026-08-28.md` indexes the playable-baseline roadmap and
+  its canonical GitHub issues.
+- `docs/MONOREPO-CONSOLIDATION-PLAN.md` defines this repository's role as the
+  Skyrim modpack control plane without absorbing unlicensed third-party work.
+- `docs/MCM-PERSISTENCE-2026-08-28.md` defines how save-local MCM choices and
+  file-backed settings become reproducible across characters and profiles.
+- `docs/WILDLIFE-WOLVES-2026-08-28.md` records the vanilla spawning evidence
+  and the cross-worldspace generated-patch design for non-routine wolf combat.
+- `docs/ENCOUNTER-POPULATION-2026-08-28.md` audits the current dynamic-spawn
+  candidate and defines the allowlist-first population requirement.
 
 ## Local setup
 

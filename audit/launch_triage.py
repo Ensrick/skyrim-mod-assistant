@@ -56,15 +56,17 @@ def main():
         p = os.path.join(SKSE_DIR, fn)
         if fn.lower().endswith('.log') and os.path.getmtime(p) >= os.path.getmtime(log) - 120:
             body = open(p, encoding='utf-8', errors='replace').read()
-            hits = re.findall(r'.*(?:error|fail|unsupported|incompatib).*', body, re.I)[:3]
+            hits = re.findall(r'.*(?:error|fail|unsupported|incompatib).*', body, re.I)
             if hits and fn not in ('skse64.log', 'skse64_loader.log'):
                 fresh.append((fn, hits))
     if fresh:
         print('per-plugin logs with error lines this session:')
         for fn, hits in fresh:
             print(f'   {fn}:')
-            for h in hits:
+            for h in hits[:3]:
                 print(f'      {h.strip()[:120]}')
+            if len(hits) > 3:
+                print(f'      ... {len(hits) - 3} additional matching line(s); inspect {fn}')
     # steam-wedge check: chain dead but Steam still thinks the app runs
     # (recurring 1.7.99-era issue; heal = Steam cycle, launch_skyrim does it
     # pre-launch automatically)

@@ -2,6 +2,30 @@
 
 This report distinguishes proved runtime results from items that still need an interactive user test. It does not authorize installing additional mods.
 
+## Latest foreground session — 2026-08-28 16:58 local
+
+The post-launch triage checked 21 native plug-ins and found zero SKSE loader
+refusals. No crash log newer than this session exists.
+
+- Papyrus Extender logged a failed dispatch to `DescriptionFramework`, then
+  immediately recorded that Description Framework is not installed. Treat this
+  as optional-integration detection unless an adopted mod later requires that
+  framework.
+- RaceMenu logged 42 failed default-morph binding lines for Argonian, Khajiit,
+  and Orc parts. The source compares each race-part TRI against the configured
+  Nord template and binds only equal vertex counts; beast-race meshes cannot
+  satisfy that comparison. This is noisy optional binding failure rather than a
+  native-loader refusal. Beast-race character creation still needs a visual
+  acceptance test.
+- `launch_triage.py` now reports how many matching error lines it omits after
+  the three-line preview, so a repeated family like this can no longer look like
+  only three isolated errors.
+
+Community Shaders detected an HDR-capable display but selected SDR
+(`supported=true, enabled=false`), confirming the intended HDR correction. Its
+remaining feature-package and optional-integration warnings are tracked in
+GitHub issue #37.
+
 ## Proteus dependency chain — native loader gate passed
 
 ### Original failure
