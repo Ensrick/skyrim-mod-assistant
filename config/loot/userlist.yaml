@@ -1,0 +1,30 @@
+groups:
+  - name: 'Ensrick Compatibility Patches'
+    after: [ 'Late Loaders' ]
+  - name: 'Ensrick Generated Patches'
+    after: [ 'Ensrick Compatibility Patches' ]
+
+plugins:
+  # Lux CS' own FOMOD says its Orbis plugin must load after Orbis and all
+  # Orbis patches. The upstream masterlist does not currently enforce this.
+  - name: 'Lux Orbis CS.esp'
+    after:
+      - 'Lux Orbis.esp'
+      - 'Lux Orbis - Riften Sconce Patch.esp'
+      - 'Lux Orbis - USSEP patch.esp'
+      - 'Sons of Skyrim - Lux Orbis Patch.esp'
+
+  # The upstream masterlist currently matches an older, shorter filename and
+  # otherwise sorts this official patch after the generated conflict patch.
+  - name: 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+    group: 'Ensrick Compatibility Patches'
+    after:
+      - 'WENB Shades USSEP.esp'
+
+  # Generated from the complete active load order and therefore must remain
+  # after every input winner, including the official compatibility patch.
+  - name: 'Ensrick Lux Water CS Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+      - 'WENB Shades USSEP.esp'

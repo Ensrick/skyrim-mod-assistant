@@ -12,7 +12,7 @@ Audited: 2026-08-27 (America/Chicago)
 | Reproducible patch pipelines | Synthesis 0.36.5 | `Ensrick/Synthesis@e585f45` | Built and tested; hidden CLI supports `run-pipeline` |
 | Plugin text serialization and review | Spriggit 0.41.0 | `Ensrick/Spriggit@8edce84` | Built and tested; hidden CLI supports deterministic serialize/deserialize |
 | NIF inspection and LE-to-SE conversion | local `nif-port-cli` + current nifly | `ousnius/SSE-NIF-Optimizer@dbba8b3`, `nifly@846518b` | Source-built, fully headless, fail-closed conversion with post-save reload validation |
-| Installed-master record inspection | local `skyrim-record-cli` + Mutagen 0.54.2 | local source | Source-built, fully headless JSONL export used for balance checks |
+| Installed-master record inspection | local `skyrim-record-cli` + Mutagen 0.54.3 | `Ensrick/skyrim-record-cli@1f3c8d9` | Source-built, fully headless JSONL inventory and selected-field export used for balance and semantic conflict checks |
 | Katana conversion and balance | local `KatanaTwoHandedPatcher` + Synthesis 0.36.5 / Mutagen 0.54.2 | local source | Source-built, fully headless load-order patcher with conservative detection and explicit include/exclude settings |
 | Conditional plugin merging | zMerge Headless 0.6.7-headless.1 | `Ensrick/zedit@fd8df93` | Source-built JSON worker; zero visible UI; inventory, validation, and external-output builds tested through MO2 |
 | Programmatic MO2/plugin control | houseCARL 1.9.0 | `Ensrick/houseCARL@6386941` | Built, audited, and staged; deliberately not installed into live Codex/MO2 yet |

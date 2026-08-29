@@ -42,10 +42,17 @@
 !/records/synthesis/water-seams-fix/
 !/records/synthesis/water-seams-fix/*.json
 !/records/synthesis/water-seams-fix/*.md
+!/records/synthesis/compatibility-sweep-2026-08-29/
+!/records/synthesis/compatibility-sweep-2026-08-29/*.json
+!/records/synthesis/compatibility-sweep-2026-08-29/*.md
 
 !/collections/
 !/collections/*.md
 !/collections/*.json
+
+!/config/
+!/config/loot/
+!/config/loot/*.yaml
 
 !/mods/
 !/mods/period-underlayers/
