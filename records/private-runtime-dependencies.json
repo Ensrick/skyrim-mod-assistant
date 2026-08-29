@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-08-29",
+  "scope": "Active private artifacts whose exact local form is required by the current profile and cannot presently be included in a public release.",
+  "publicationBlockers": [
+    {
+      "component": "PapyrusUtil",
+      "mo2Mod": "PapyrusUtil 1.7.104 Native Overlay - Ensrick",
+      "artifact": "SKSE/Plugins/PapyrusUtil.dll",
+      "sha256": "0D5648E2415E1F48248D14774F19DC0DBFDF2A733D5149BB0F1E9CEF04CA2953",
+      "requiredFor": [
+        "Proteus native functionality on Skyrim 1.7.104"
+      ],
+      "reasonPrivate": "No clear top-level redistribution license was found in the audited source tree.",
+      "releaseGate": "Obtain explicit permission or replace it with an officially supported or independently licensed implementation, then reproduce the build from reviewed source.",
+      "active": true
+    },
+    {
+      "component": "RaceMenu / SKEE",
+      "mo2Mod": "RaceMenu 1.7.104 Native Overlay - Ensrick",
+      "artifact": "SKSE/Plugins/skee64.dll",
+      "sha256": "7290EAFD4116E742AA7477D34BF137ABBEFED936CD44E67FDC829F2E36925ED1",
+      "requiredFor": [
+        "RaceMenu on Skyrim 1.7.104",
+        "Proteus appearance capture and restoration"
+      ],
+      "reasonPrivate": "No clear top-level redistribution license was found in the audited SKSE64Plugins source tree.",
+      "releaseGate": "Establish redistribution permission or replace it with an officially supported or independently licensed implementation, then reproduce the build from reviewed source.",
+      "active": true
+    },
+    {
+      "component": "Ensrick Lux Water CS Patch",
+      "mo2Mod": "Ensrick - Lux Water CS Patch",
+      "artifact": "Ensrick Lux Water CS Patch.esp",
+      "sha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+      "requiredFor": [
+        "Preserving Lux and other late CELL/WRLD edits while forwarding Water for ENB water fields"
+      ],
+      "reasonPrivate": "The generator source is GPL-3.0-only, but redistribution rights for the generated plugin's third-party override data have not yet been reviewed.",
+      "releaseGate": "Regenerate locally from authorized user downloads, or complete and document a generated-output redistribution review before bundling the ESP.",
+      "active": true,
+      "reproducibleSource": "https://github.com/Ensrick/WaterForENBPatcherCS/tree/f7d459bdade1e6c04aeb8426f02e2191907c9d35"
+    }
+  ],
+  "externalDownloadPolicy": {
+    "manifest": "records/restricted-mods.json",
+    "classification": "required external download, not a publication blocker when an authorized source remains available",
+    "rule": "Never bundle the archive or extracted files; record the exact source, version, file identifier, checksum, installer choices, and load-order role."
+  },
+  "shareableAfterReleaseReview": [
+    {
+      "component": "Proteus native overlay",
+      "license": "GPL-3.0",
+      "status": "Local build works at the loader gate; source cleanup, reproducible build, notices, and gameplay acceptance remain."
+    },
+    {
+      "component": "JContainers native overlay",
+      "license": "MIT",
+      "status": "Local build works at the loader gate; source cleanup, reproducible build, notices, and gameplay acceptance remain."
+    },
+    {
+      "component": "ConsoleUtilSSE native overlay",
+      "license": "GPL-3.0-or-later with upstream exceptions",
+      "status": "Clean CI artifact exists; runtime acceptance and release packaging remain."
+    }
+  ]
+}

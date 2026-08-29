@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "textures-2K",
+      "destination": "."
+    },
+    {
+      "source": "data-common",
+      "destination": "."
+    },
+    {
+      "source": "data-shades-cs",
+      "destination": "."
+    },
+    {
+      "source": "plugin-shades-cs-nat/Water for ENB (Shades of Skyrim).esp",
+      "destination": "Water for ENB (Shades of Skyrim).esp"
+    },
+    {
+      "source": "data-shades-2k",
+      "destination": "."
+    },
+    {
+      "source": "waterfalls-common",
+      "destination": "."
+    },
+    {
+      "source": "waterfalls-2k-shades",
+      "destination": "."
+    },
+    {
+      "source": "waterfalls-2k-common",
+      "destination": "."
+    },
+    {
+      "source": "patches/beyond-reach-cs/Water for ENB - Patch - Beyond Reach.esp",
+      "destination": "Water for ENB - Patch - Beyond Reach.esp"
+    },
+    {
+      "source": "patches/beyond-skyrim-cs/Water for ENB - Patch - Beyond Skyrim.esp",
+      "destination": "Water for ENB - Patch - Beyond Skyrim.esp"
+    },
+    {
+      "source": "patches/wyrmstooth-shades/Water for ENB - Patch - Wyrmstooth.esp",
+      "destination": "Water for ENB - Patch - Wyrmstooth.esp"
+    },
+    {
+      "source": "waterfalls-parallax",
+      "destination": "."
+    }
+  ]
+}
