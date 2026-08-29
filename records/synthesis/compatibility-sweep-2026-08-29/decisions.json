@@ -2,7 +2,14 @@
   "schemaVersion": 1,
   "profile": "Default",
   "capturedUtc": "2026-08-29T07:49:00Z",
-  "status": "awaiting-user-approval",
+  "status": "approved-built-not-promoted",
+  "approval": {
+    "decision": "A",
+    "approvedDate": "2026-08-29",
+    "implementation": "mods/general-compatibility-patch",
+    "activeProfilePromoted": false,
+    "gameplayAcceptance": "pending"
+  },
   "baseline": {
     "modlistSha256": "58DF125EC754D31DA69D4D90C9A0750F393B0B7B15ED8167D71555CC7EB789DA",
     "pluginsSha256": "798D089AE4C49ADC9225B9D629D8515DC8C5583D373C2B6ACE2BE9B701492C69",

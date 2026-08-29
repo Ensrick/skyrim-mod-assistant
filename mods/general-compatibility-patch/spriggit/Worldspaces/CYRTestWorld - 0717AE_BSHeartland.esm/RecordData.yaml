@@ -1,0 +1,23 @@
+FormKey: 0717AE:BSHeartland.esm
+EditorID: CYRTestWorld
+Name:
+  TargetLanguage: English
+  Value: Funland
+Location: 0DB0E3:BSHeartland.esm
+Climate: 00015F:Skyrim.esm
+Water: 000018:Skyrim.esm
+LodWater: 000800:Water for ENB - Patch - Beyond Skyrim.esp
+LodWaterHeight: 0
+LandDefaults:
+  DefaultLandHeight: -2048
+  DefaultWaterHeight: -6000
+MapData:
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+ObjectBoundsMin: -5, -2
+ObjectBoundsMax: 5, 5

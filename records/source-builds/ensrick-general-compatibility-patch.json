@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick General Compatibility Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/47",
+  "sourcePath": "mods/general-compatibility-patch",
+  "generatorPath": "mods/general-compatibility-patch/generator",
+  "manifestPath": "mods/general-compatibility-patch/manifest.json",
+  "spriggitPath": "mods/general-compatibility-patch/spriggit",
+  "outputPlugin": "Ensrick General Compatibility Patch.esp",
+  "outputSha256": "1C034213707F5EB9B10B51CC9DA0E70CBDA8E80D00463AD2635B7A216F657E8E",
+  "sourceLicense": "MIT",
+  "vendorFilesModified": false,
+  "installed": false,
+  "gameplayAcceptance": "pending"
+}

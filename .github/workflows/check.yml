@@ -48,3 +48,22 @@ jobs:
             $failures | Write-Error
             exit 1
           }
+
+      - name: Install locked generator runtimes
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: |
+            9.0.x
+            10.0.x
+
+      - name: Build and self-test compatibility generator
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $project = 'mods/general-compatibility-patch/generator/GeneralCompatibilityPatcher.csproj'
+          dotnet restore $project --locked-mode
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet build $project -c Release --no-restore
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet run --project $project -c Release --no-build -- --self-test
+          exit $LASTEXITCODE

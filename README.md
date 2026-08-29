@@ -8,9 +8,10 @@ for generated compatibility patches and private ports.
 ## Publication boundary
 
 This repository contains only original scripts, documentation, configuration
-examples, and factual audit metadata. It does **not** contain Bethesda game
-files, Nexus downloads, third-party binaries, generated ESP files, converted
-meshes or textures, deployment manifests, logs, or private build output. See
+examples, factual audit metadata, and reviewable Spriggit text sources for
+owned override-only plugins. It does **not** contain Bethesda game files,
+Nexus downloads, third-party binaries, generated ESP files, converted meshes
+or textures, deployment manifests, logs, or private build output. See
 [`REDISTRIBUTION.md`](REDISTRIBUTION.md) for the full policy.
 
 The deny-by-default `.gitignore` is intentional: this checkout may coexist with
@@ -26,6 +27,9 @@ a private working tree, but only the reviewed allowlist can be committed.
 - `mods/katana-two-handed` documents and audits a generated, load-order-aware
   katana patch. The patcher itself is maintained in
   [KatanaTwoHandedPatcher](https://github.com/Ensrick/KatanaTwoHandedPatcher).
+- `mods/general-compatibility-patch` reproducibly generates and audits the
+  approved Lux Orbis CS, Water for ENB, and Bruma override-only patch without
+  installing it or editing vendor mods.
 - `ports/lost-longswords` records a private, asset-free port recipe and its
   validation criteria. It does not grant or imply redistribution permission.
 - `records/restricted-mods.json` is the machine-readable redistribution ledger.

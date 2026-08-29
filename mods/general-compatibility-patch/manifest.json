@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick General Compatibility Patch",
+  "version": "0.1.0",
+  "generatedDate": "2026-08-29",
+  "decision": {
+    "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/47",
+    "choice": "A",
+    "input": "records/synthesis/compatibility-sweep-2026-08-29/decisions.json"
+  },
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warningsAsErrors": true
+  },
+  "inputs": {
+    "profile": "Compatibility Audit LOOT Rules 2026-08-29",
+    "activeSourceProfile": "Default",
+    "effectiveLoadOrderEntries": 174,
+    "effectiveLoadOrderSha256": "5556BC4D50B08747B72712AA348FF41E650A56C34779C217FD0A02001EDA9A73",
+    "frozenDefault": {
+      "modlistSha256": "58DF125EC754D31DA69D4D90C9A0750F393B0B7B15ED8167D71555CC7EB789DA",
+      "pluginsSha256": "798D089AE4C49ADC9225B9D629D8515DC8C5583D373C2B6ACE2BE9B701492C69",
+      "loadorderSha256": "0F2B6939535B6679719533A52E6F637DA40744C0E61B99761ECCF830504DA5B4"
+    }
+  },
+  "output": {
+    "plugin": "Ensrick General Compatibility Patch.esp",
+    "sha256": "1C034213707F5EB9B10B51CC9DA0E70CBDA8E80D00463AD2635B7A216F657E8E",
+    "bytes": 7593,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 14,
+    "recordTypes": {
+      "WRLD": 12,
+      "CELL": 2
+    },
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Dragonborn.esm",
+      "BSAssets.esm",
+      "BSHeartland.esm",
+      "Water for ENB - Patch - Beyond Skyrim.esp",
+      "Water for ENB (Shades of Skyrim).esp"
+    ]
+  },
+  "spriggit": {
+    "package": "Spriggit.Yaml.Skyrim",
+    "version": "0.41.0",
+    "path": "spriggit",
+    "treeSha256": "179AB60E1A9CD74B2CC3391A0A0BB17C0AC493D8755DCA695A8F458C87EB51F3",
+    "checkedRoundTrip": true
+  },
+  "archive": {
+    "localPath": "work/Ensrick-General-Compatibility-Patch-0.1.0.zip",
+    "sha256": "40272AC543781C070D30AB1A672CA3B9330BF64C2800D312064624FA175540CC",
+    "bytes": 2848,
+    "entries": 1,
+    "deterministicTimestamp": "2000-01-01T00:00:00Z",
+    "committed": false
+  },
+  "validation": {
+    "selfTest": "pass",
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "knownVulnerablePackages": 0,
+    "recordsChecked": 14,
+    "selectedFieldsChecked": 374,
+    "waterFieldsComparedToFinalWinner": 48,
+    "linksChecked": 62,
+    "unresolvedLinks": 0,
+    "missingOrLateMasters": 0,
+    "packageAudit": "pass",
+    "gameplayAcceptance": "pending"
+  },
+  "deployment": {
+    "installed": false,
+    "activeProfileChanged": false,
+    "gameLaunched": false,
+    "vendorFilesModified": false
+  }
+}

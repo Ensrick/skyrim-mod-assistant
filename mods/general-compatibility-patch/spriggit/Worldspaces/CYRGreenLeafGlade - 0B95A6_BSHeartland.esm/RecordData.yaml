@@ -1,0 +1,22 @@
+FormKey: 0B95A6:BSHeartland.esm
+EditorID: CYRGreenLeafGlade
+Name:
+  TargetLanguage: English
+  Value: Green Leaf Glade
+Climate: 00015F:Skyrim.esm
+Water: 000018:Skyrim.esm
+LodWater: 000800:Water for ENB - Patch - Beyond Skyrim.esp
+LodWaterHeight: -10000
+LandDefaults:
+  DefaultLandHeight: -2048
+  DefaultWaterHeight: -10000
+MapData:
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+ObjectBoundsMin: -3, -3
+ObjectBoundsMax: 4, 3
