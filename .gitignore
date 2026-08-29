@@ -30,11 +30,18 @@
 
 !/records/
 !/records/restricted-mods.json
+!/records/private-runtime-dependencies.json
 !/records/installed-mods.json
 !/records/overnight-audit-2026-08-23.jsonl
 !/records/sons-of-skyrim-2026-08-26.md
 !/records/fomod-plans/
 !/records/fomod-plans/*.json
+!/records/source-builds/
+!/records/source-builds/*.json
+!/records/synthesis/
+!/records/synthesis/water-seams-fix/
+!/records/synthesis/water-seams-fix/*.json
+!/records/synthesis/water-seams-fix/*.md
 
 !/collections/
 !/collections/*.md
