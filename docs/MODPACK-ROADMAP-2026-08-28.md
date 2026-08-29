@@ -43,7 +43,7 @@ licensing review, and its resulting profile state is recorded.
 | Repository consolidation | [#30](https://github.com/Ensrick/skyrim-mod-assistant/issues/30) | Control plane selected | Inventory ownership/licenses and migrate original work without disturbing dirty third-party forks. |
 | Survival visibility/depth | [#31](https://github.com/Ensrick/skyrim-mod-assistant/issues/31) | Current stack is deliberately light | Choose one coherent needs/exposure model, then add compatible widgets, wetness, clothing warmth, and cloak physics. |
 | Imperial armor | [#32](https://github.com/Ensrick/skyrim-mod-assistant/issues/32) | Candidate direction identified | Audit NordwarUA New Legion plus current SPID/SkyPatcher distribution before approval. |
-| Attributes/injuries/disease | [#33](https://github.com/Ensrick/skyrim-mod-assistant/issues/33) | Design required | Verify post-start regeneration, define zero-magicka progression, then select one injury/disease system. |
+| Attributes/injuries/disease | [#33](https://github.com/Ensrick/skyrim-mod-assistant/issues/33) | Design required; zero starting gold is now specified | Verify Skyrim Unbound can enforce exactly 0 starting gold, verify post-start regeneration, define zero-magicka progression, then select one injury/disease system. |
 | Leveling curve | [#34](https://github.com/Ensrick/skyrim-mod-assistant/issues/34) | No curve mod active | Model target levels by playtime and implement the smallest reproducible settings patch. |
 | 4K UI | [#35](https://github.com/Ensrick/skyrim-mod-assistant/issues/35) | SkyUI 6 active | Compare Norden UI/current Nordic stacks without overwriting or downgrading SkyUI 6 files. |
 | Inventory/visible gear | [#36](https://github.com/Ensrick/skyrim-mod-assistant/issues/36) | IED disabled | Restore IED first, then define visible slots and a realistic but playable carry model. |
@@ -55,6 +55,10 @@ licensing review, and its resulting profile state is recorded.
 | Wolves as wildlife | [#42](https://github.com/Ensrick/skyrim-mod-assistant/issues/42) | Record-level design needed | Audit fixed and leveled wolves across all adopted worldspaces before creating a narrow generated patch. |
 | Selective extra enemies | [#43](https://github.com/Ensrick/skyrim-mod-assistant/issues/43) | Upstream 3.1 held after source audit | Design an allowlist-first 1.7.104 implementation for humanoid and undead categories only. |
 | Music | [#44](https://github.com/Ensrick/skyrim-mod-assistant/issues/44) | Current framework identified | Evaluate Personalized Music SSE - Modernized and keep user-owned audio in a local-only manifest. |
+| Informative console | [#48](https://github.com/Ensrick/skyrim-mod-assistant/issues/48) | Selection and provenance visibility required | Research a maintained 1.7.104-compatible console that exposes selected reference/base-form and source/winning plugin information; do not install without approval. |
+| Face-paint/beard artifact | [#49](https://github.com/Ensrick/skyrim-mod-assistant/issues/49) | Angle-dependent loading-screen defect observed once | Capture the exact Nord model, cosmetics, camera angle, and runtime evidence before isolating shader, alpha/depth, mesh, and texture interactions. |
+| Period underlayers | [#50](https://github.com/Ensrick/skyrim-mod-assistant/issues/50) | Vendor-default pool is not accepted; Ragged Robes are an approved candidate garment | Build a verified FormID pool in an Ensrick-owned overlay while retaining removable garments and full nudity. |
+| Guard level scaling | [#51](https://github.com/Ensrick/skyrim-mod-assistant/issues/51) | Target rule specified: player level at 1:1, minimum 5, no +20 offset | Audit ordinary and special guard winners separately, then generate a narrow ESL patch and test several player levels. |
 
 ## Current candidate shortlist
 
