@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "profile": "Default",
+  "activePluginCount": 99,
+  "profileHashes": {
+    "modlist.txt": "58DF125EC754D31DA69D4D90C9A0750F393B0B7B15ED8167D71555CC7EB789DA",
+    "plugins.txt": "798D089AE4C49ADC9225B9D629D8515DC8C5583D373C2B6ACE2BE9B701492C69",
+    "loadorder.txt": "0F2B6939535B6679719533A52E6F637DA40744C0E61B99761ECCF830504DA5B4"
+  },
+  "effectiveSortedLoadOrder": {
+    "entries": 174,
+    "sha256": "5556BC4D50B08747B72712AA348FF41E650A56C34779C217FD0A02001EDA9A73"
+  },
+  "requiredHardMasters": [
+    "Skyrim.esm",
+    "Dragonborn.esm",
+    "BSAssets.esm",
+    "BSHeartland.esm",
+    "Lux Orbis CS.esp",
+    "Water for ENB (Shades of Skyrim).esp",
+    "Water for ENB - Patch - Beyond Skyrim.esp"
+  ],
+  "inputPluginHashes": {
+    "BSHeartland.esm": "65781748BF6FB64D32A29787B7F7087068DA2C44015D4C26E831A61C9D133357",
+    "Ensrick Lux Water CS Patch.esp": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+    "Lux Orbis CS.esp": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+    "Skyrim Unbound.esp": "AED19403857A5EFDDEFDE0B05B1F9CBF90FD0EF3F7A00EBD758258CCBC7E6A77",
+    "Water for ENB - Patch - Beyond Skyrim.esp": "FD7C0AED93C84C93E5F00379445A0B5D4C7762CF83AE6FBF3D2AFD8BD28CA886"
+  },
+  "targets": [
+    {
+      "formKey": "00003C:Skyrim.esm",
+      "editorId": "Tamriel",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Ensrick Lux Water CS Patch.esp",
+      "winnerPluginSha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+      "ownedValues": {
+        "MaxHeight": null
+      },
+      "finalWaterValues": {
+        "LodWater": "00F534:Water for ENB (Shades of Skyrim).esp",
+        "LodWaterHeight": -14000,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "000800:Dragonborn.esm",
+      "editorId": "DLC2SolstheimWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Ensrick Lux Water CS Patch.esp",
+      "winnerPluginSha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+      "ownedValues": {
+        "MaxHeight": null
+      },
+      "finalWaterValues": {
+        "LodWater": "01DF23:Water for ENB (Shades of Skyrim).esp",
+        "LodWaterHeight": 256,
+        "Water": "028644:Dragonborn.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "01691D:Skyrim.esm",
+      "editorId": "WindhelmWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Skyrim Unbound.esp",
+      "winnerPluginSha256": "AED19403857A5EFDDEFDE0B05B1F9CBF90FD0EF3F7A00EBD758258CCBC7E6A77",
+      "ownedValues": {
+        "Flags": "SmallWorld, NoGrass",
+        "MaxHeight": null,
+        "Parent": {
+          "Flags": "UseLandData, UseLodData, UseMapData, UseWaterData, UseClimateData, UseSkyCell",
+          "Worldspace": "00003C:Skyrim.esm"
+        }
+      },
+      "finalWaterValues": {
+        "LodWater": "Null",
+        "LodWaterHeight": null,
+        "Water": "Null",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "016BB4:Skyrim.esm",
+      "editorId": "RiftenWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Ensrick Lux Water CS Patch.esp",
+      "winnerPluginSha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+      "ownedValues": {
+        "Flags": "SmallWorld, NoGrass",
+        "MaxHeight": null,
+        "Parent": {
+          "Flags": "UseLandData, UseLodData, UseMapData, UseClimateData, UseSkyCell",
+          "Worldspace": "00003C:Skyrim.esm"
+        }
+      },
+      "finalWaterValues": {
+        "LodWater": "Null",
+        "LodWaterHeight": null,
+        "Water": "0F2407:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "016D71:Skyrim.esm",
+      "editorId": "MarkarthWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Skyrim Unbound.esp",
+      "winnerPluginSha256": "AED19403857A5EFDDEFDE0B05B1F9CBF90FD0EF3F7A00EBD758258CCBC7E6A77",
+      "ownedValues": {
+        "Flags": "SmallWorld, NoGrass",
+        "MaxHeight": null
+      },
+      "finalWaterValues": {
+        "LodWater": "000018:Skyrim.esm",
+        "LodWaterHeight": 0,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "01A26F:Skyrim.esm",
+      "editorId": "WhiterunWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Ensrick Lux Water CS Patch.esp",
+      "winnerPluginSha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+      "ownedValues": {
+        "MaxHeight": null,
+        "Parent": {
+          "Flags": "UseLandData, UseLodData, UseMapData, UseWaterData, UseClimateData, UseSkyCell",
+          "Worldspace": "00003C:Skyrim.esm"
+        }
+      },
+      "finalWaterValues": {
+        "LodWater": "Null",
+        "LodWaterHeight": null,
+        "Water": "Null",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "01A276:Skyrim.esm",
+      "editorId": "WhiterunPlainsDistrict04",
+      "recordType": "Cell",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Lux Orbis CS.esp",
+      "winnerPluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "ownedValues": {
+        "Location": "018A56:Skyrim.esm"
+      },
+      "finalWaterValues": null
+    },
+    {
+      "formKey": "02EE41:Skyrim.esm",
+      "editorId": "Sovngarde",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Lux Orbis CS.esp",
+      "winnerPluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "ownedValues": {
+        "MaxHeight": null
+      },
+      "finalWaterValues": {
+        "LodWater": "000018:Skyrim.esm",
+        "LodWaterHeight": 0,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "037EDF:Skyrim.esm",
+      "editorId": "SolitudeWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Skyrim Unbound.esp",
+      "winnerPluginSha256": "AED19403857A5EFDDEFDE0B05B1F9CBF90FD0EF3F7A00EBD758258CCBC7E6A77",
+      "ownedValues": {
+        "Flags": "SmallWorld, NoGrass",
+        "MaxHeight": null,
+        "Parent": {
+          "Flags": "UseLandData, UseLodData, UseMapData, UseWaterData, UseClimateData, UseSkyCell",
+          "Worldspace": "00003C:Skyrim.esm"
+        }
+      },
+      "finalWaterValues": {
+        "LodWater": "Null",
+        "LodWaterHeight": null,
+        "Water": "Null",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "037EE9:Skyrim.esm",
+      "editorId": "SolitudeOrigin",
+      "recordType": "Cell",
+      "sourcePlugin": "Lux Orbis CS.esp",
+      "sourcePluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "winnerPlugin": "Lux Orbis CS.esp",
+      "winnerPluginSha256": "805EDB31FD25D4A6802B4D46A15B13472141A78897564750870562DEDA792652",
+      "ownedValues": {
+        "Location": "018A5A:Skyrim.esm"
+      },
+      "finalWaterValues": null
+    },
+    {
+      "formKey": "060B7D:BSHeartland.esm",
+      "editorId": "CYRBiomeTesting",
+      "recordType": "Worldspace",
+      "sourcePlugin": "BSHeartland.esm",
+      "sourcePluginSha256": "65781748BF6FB64D32A29787B7F7087068DA2C44015D4C26E831A61C9D133357",
+      "winnerPlugin": "Water for ENB - Patch - Beyond Skyrim.esp",
+      "winnerPluginSha256": "FD7C0AED93C84C93E5F00379445A0B5D4C7762CF83AE6FBF3D2AFD8BD28CA886",
+      "ownedValues": {
+        "Climate": "00015F:Skyrim.esm"
+      },
+      "finalWaterValues": {
+        "LodWater": "000800:Water for ENB - Patch - Beyond Skyrim.esp",
+        "LodWaterHeight": -5000,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "0717AE:BSHeartland.esm",
+      "editorId": "CYRTestWorld",
+      "recordType": "Worldspace",
+      "sourcePlugin": "BSHeartland.esm",
+      "sourcePluginSha256": "65781748BF6FB64D32A29787B7F7087068DA2C44015D4C26E831A61C9D133357",
+      "winnerPlugin": "Water for ENB - Patch - Beyond Skyrim.esp",
+      "winnerPluginSha256": "FD7C0AED93C84C93E5F00379445A0B5D4C7762CF83AE6FBF3D2AFD8BD28CA886",
+      "ownedValues": {
+        "Climate": "00015F:Skyrim.esm"
+      },
+      "finalWaterValues": {
+        "LodWater": "000800:Water for ENB - Patch - Beyond Skyrim.esp",
+        "LodWaterHeight": 0,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "0A764B:BSHeartland.esm",
+      "editorId": "BSHeartland",
+      "recordType": "Worldspace",
+      "sourcePlugin": "BSHeartland.esm",
+      "sourcePluginSha256": "65781748BF6FB64D32A29787B7F7087068DA2C44015D4C26E831A61C9D133357",
+      "winnerPlugin": "Ensrick Lux Water CS Patch.esp",
+      "winnerPluginSha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+      "ownedValues": {
+        "Climate": "00015F:Skyrim.esm",
+        "Location": "6036AD:BSAssets.esm",
+        "ObjectBoundsMax": {
+          "X": 64,
+          "Y": 73
+        }
+      },
+      "finalWaterValues": {
+        "LodWater": "000800:Water for ENB - Patch - Beyond Skyrim.esp",
+        "LodWaterHeight": -14000,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    },
+    {
+      "formKey": "0B95A6:BSHeartland.esm",
+      "editorId": "CYRGreenLeafGlade",
+      "recordType": "Worldspace",
+      "sourcePlugin": "BSHeartland.esm",
+      "sourcePluginSha256": "65781748BF6FB64D32A29787B7F7087068DA2C44015D4C26E831A61C9D133357",
+      "winnerPlugin": "Water for ENB - Patch - Beyond Skyrim.esp",
+      "winnerPluginSha256": "FD7C0AED93C84C93E5F00379445A0B5D4C7762CF83AE6FBF3D2AFD8BD28CA886",
+      "ownedValues": {
+        "Climate": "00015F:Skyrim.esm"
+      },
+      "finalWaterValues": {
+        "LodWater": "000800:Water for ENB - Patch - Beyond Skyrim.esp",
+        "LodWaterHeight": -10000,
+        "Water": "000018:Skyrim.esm",
+        "WaterEnvironmentMap": null
+      }
+    }
+  ],
+  "intentionalIdenticalToMasterOverrides": [
+    {
+      "formKey": "01A276:Skyrim.esm",
+      "purpose": "Lux Orbis CS Location assertion"
+    },
+    {
+      "formKey": "02EE41:Skyrim.esm",
+      "purpose": "Lux Orbis CS MaxHeight assertion"
+    },
+    {
+      "formKey": "037EE9:Skyrim.esm",
+      "purpose": "Lux Orbis CS Location assertion"
+    }
+  ],
+  "relationship": {
+    "existingPatch": "Ensrick Lux Water CS Patch.esp",
+    "existingPatchRemainsSeparate": true,
+    "newPatchRecords": 14,
+    "existingPatchRecords": 559
+  }
+}

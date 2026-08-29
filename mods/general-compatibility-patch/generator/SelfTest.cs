@@ -23,6 +23,10 @@ internal static class SelfTest
             Require(
                 Program.CellTargets.All(target => target.SourcePlugin == Program.LuxOrbisCs),
                 "both CELL locations must come from Lux Orbis CS");
+            Require(Program.RequiredMasters.Count == 7, "expected seven hard masters");
+            Require(
+                Program.RequiredMasters[4].FileName.String == Program.LuxOrbisCs,
+                "Lux Orbis CS must be an explicit hard master");
 
             var allowed = Program.WorldspaceFields.Flags |
                           Program.WorldspaceFields.MaxHeight |

@@ -1,5 +1,6 @@
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Binary.Translations;
 using Mutagen.Bethesda.Plugins.Cache;
 using Mutagen.Bethesda.Plugins.Order;
 using Mutagen.Bethesda.Plugins.Records;
@@ -13,6 +14,17 @@ public static class Program
     public const string OutputPlugin = "Ensrick General Compatibility Patch.esp";
     public const string LuxOrbisCs = "Lux Orbis CS.esp";
     public const string Bruma = "BSHeartland.esm";
+
+    internal static readonly IReadOnlyList<ModKey> RequiredMasters =
+    [
+        ModKey.FromNameAndExtension("Skyrim.esm"),
+        ModKey.FromNameAndExtension("Dragonborn.esm"),
+        ModKey.FromNameAndExtension("BSAssets.esm"),
+        ModKey.FromNameAndExtension("BSHeartland.esm"),
+        ModKey.FromNameAndExtension(LuxOrbisCs),
+        ModKey.FromNameAndExtension("Water for ENB (Shades of Skyrim).esp"),
+        ModKey.FromNameAndExtension("Water for ENB - Patch - Beyond Skyrim.esp"),
+    ];
 
     private const int CompressedRecordFlag = 0x00040000;
 
@@ -73,7 +85,7 @@ public static class Program
             return LinkAudit.Run(dataFolder, loadOrderFile, pluginPath);
         }
 
-        return await SynthesisPipeline.Instance
+        var result = await SynthesisPipeline.Instance
             .AddPatch<ISkyrimMod, ISkyrimModGetter>(RunPatch, new PatcherPreferences
             {
                 ExclusionMods =
@@ -87,6 +99,11 @@ public static class Program
             })
             .SetTypicalOpen(GameRelease.SkyrimSE, OutputPlugin)
             .Run(args);
+        if (result == 0 && TryGetOption(args, "--OutputPath", out var outputPath))
+        {
+            EnforceHardMasters(outputPath);
+        }
+        return result;
     }
 
     public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
@@ -234,6 +251,53 @@ public static class Program
     private static void ClearCompression(IMajorRecord record)
     {
         record.MajorRecordFlagsRaw &= ~CompressedRecordFlag;
+    }
+
+    private static void EnforceHardMasters(string outputPath)
+    {
+        // The ordinary Mutagen writer correctly infers masters from FormLinks,
+        // but Lux Orbis CS contributes only scalar/vanilla-linked fields here.
+        // Reopen the generated plugin and preserve the reviewed semantic master
+        // list explicitly rather than manufacturing a record reference.
+        var plugin = SkyrimMod.CreateFromBinary(outputPath, SkyrimRelease.SkyrimSE);
+        plugin.ModHeader.MasterReferences.Clear();
+        foreach (var master in RequiredMasters)
+        {
+            plugin.ModHeader.MasterReferences.Add(new MasterReference
+            {
+                Master = master,
+            });
+        }
+
+        var temporary = outputPath + ".masters.tmp";
+        if (File.Exists(temporary))
+        {
+            File.Delete(temporary);
+        }
+        plugin.BeginWrite
+            .ToPath(temporary)
+            .WithLoadOrder(RequiredMasters)
+            .WithKnownMasters([])
+            .NoMastersListContentCheck()
+            .NoModKeySync()
+            .Write();
+        File.Move(temporary, outputPath, true);
+        Console.WriteLine($"Declared hard masters ({RequiredMasters.Count}): " +
+                          string.Join(", ", RequiredMasters.Select(master => master.FileName.String)));
+    }
+
+    private static bool TryGetOption(string[] args, string option, out string value)
+    {
+        for (var index = 0; index < args.Length - 1; index++)
+        {
+            if (string.Equals(args[index], option, StringComparison.OrdinalIgnoreCase))
+            {
+                value = args[index + 1];
+                return true;
+            }
+        }
+        value = string.Empty;
+        return false;
     }
 
     private static void RequireEditorId(FormKey formKey, string expected, string? actual)

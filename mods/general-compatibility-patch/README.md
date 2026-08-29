@@ -24,7 +24,20 @@ order. The generator then changes only the fields approved in Decision A:
 The complete target allowlist lives in
 `records/synthesis/compatibility-sweep-2026-08-29/decisions.json`. The patcher
 fails if any target or EditorID is missing, if the output is not exactly twelve
-WRLD plus two CELL overrides, or if a new FormKey is allocated.
+WRLD plus two CELL overrides, if the current 99-plugin profile differs from the
+pinned `expected-values.json`, if the exact seven-master set differs, or if a
+new FormKey is allocated. `Lux Orbis CS.esp` is deliberately retained as a
+hard master even though its contributed scalar and vanilla-linked fields do not
+naturally create a FormLink dependency.
+
+Three records are intentional ITMs in the reviewed sorted order:
+
+- `Sovngarde` asserts Lux Orbis CS `MaxHeight`;
+- `WhiterunPlainsDistrict04` asserts Lux Orbis CS `Location`; and
+- `SolitudeOrigin` asserts Lux Orbis CS `Location`.
+
+They are future-order guards required by Decision A. Cleaning tools must not
+remove them merely because Lux Orbis CS currently wins those chains.
 
 ## Reproduction
 
@@ -38,7 +51,9 @@ selected disposable MO2 profile:
 5. serializes, checks, deserializes, and reserializes with Spriggit 0.41.0;
 6. compares all 374 selected WRLD/CELL fields to their approved source or final
    winner, including 48 explicit water-field comparisons; and
-7. creates and verifies a deterministic one-file MO2 archive.
+7. verifies the exact 99-plugin profile hashes, input plugin hashes, target
+   values, seven hard masters, and three intentional ITMs; and
+8. creates and verifies a deterministic one-file MO2 archive.
 
 Example:
 
@@ -55,7 +70,7 @@ does not contain the generated ESP or any vendor archive.
 
 ## Load order and acceptance
 
-The eventual plugin must load after its six binary masters and after the
+The eventual plugin must load after its seven binary masters and after the
 non-master semantic inputs listed in `config/loot/userlist.yaml`. Promotion is
 deliberately separate from generation:
 the live `Default` profile was not changed, Skyrim was not launched, and visual
@@ -63,3 +78,6 @@ acceptance for water, Lux Orbis CS behavior, and Bruma remains pending.
 
 Vendor mods are never edited. Updating Lux Orbis CS, Water for ENB, Bruma, or
 any later target winner requires deterministic regeneration and the full audit.
+This standalone 14-record plugin supplements rather than replaces the existing
+559-record `Ensrick Lux Water CS Patch.esp`; that patch remains separate and the
+tracked LOOT rule places this plugin after it.

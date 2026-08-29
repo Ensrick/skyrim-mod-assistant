@@ -20,6 +20,20 @@ CELL_FIELDS = semantic.FIELDS_BY_TYPE["Cell"]
 WATER_FIELDS = {"Water", "LodWater", "LodWaterHeight", "WaterEnvironmentMap"}
 OUTPUT_NAME = "Ensrick General Compatibility Patch.esp"
 ESL_FLAG = 0x00000200
+EXPECTED_MASTERS = [
+    "Skyrim.esm",
+    "Dragonborn.esm",
+    "BSAssets.esm",
+    "BSHeartland.esm",
+    "Lux Orbis CS.esp",
+    "Water for ENB (Shades of Skyrim).esp",
+    "Water for ENB - Patch - Beyond Skyrim.esp",
+]
+INTENTIONAL_ITMS = {
+    "02EE41:Skyrim.esm": "Lux Orbis CS MaxHeight assertion",
+    "01A276:Skyrim.esm": "Lux Orbis CS Location assertion",
+    "037EE9:Skyrim.esm": "Lux Orbis CS Location assertion",
+}
 INVENTORY_CACHE = os.path.join(
     os.environ.get("LOCALAPPDATA", os.environ.get("TEMP", ".")),
     "SkyrimModAssistant",
@@ -87,6 +101,13 @@ def sha256(path: str) -> str:
     return digest.hexdigest().upper()
 
 
+def file_hashes(profile_folder: str) -> dict[str, str]:
+    return {
+        name: sha256(os.path.join(profile_folder, name))
+        for name in ("modlist.txt", "plugins.txt", "loadorder.txt")
+    }
+
+
 def build_index(instance_root: str, profile: str, data_folder: str) -> dict[str, str]:
     index: dict[str, str] = {}
     modlist = os.path.join(instance_root, "profiles", profile, "modlist.txt")
@@ -118,6 +139,8 @@ def main() -> int:
     parser.add_argument("--instance-root", required=True)
     parser.add_argument("--provider-profile", required=True)
     parser.add_argument("--data-folder", required=True)
+    parser.add_argument("--expected-values")
+    parser.add_argument("--write-evidence")
     arguments = parser.parse_args()
 
     with open(arguments.decisions, encoding="utf-8") as stream:
@@ -166,6 +189,10 @@ def main() -> int:
         failures.append("output contains a newly allocated form")
     if not plugin_flags(arguments.plugin) & ESL_FLAG:
         failures.append("TES4 Small/ESL flag is absent")
+    if info["masters"] != EXPECTED_MASTERS:
+        failures.append(
+            f"hard-master set/order differs: {info['masters']} != {EXPECTED_MASTERS}"
+        )
 
     with open(arguments.load_order, encoding="utf-8") as stream:
         ordered_plugins = [
@@ -209,6 +236,8 @@ def main() -> int:
         "Cell": selected(arguments.record_cli, arguments.plugin, "Cell", CELL_FIELDS),
     }
     selected_cache: dict[tuple[str, str], dict[str, dict]] = {}
+    target_evidence: list[dict] = []
+    input_plugin_hashes: dict[str, str] = {}
 
     def row_for(path: str, record_type: str, form_key: str) -> dict | None:
         cache_key = (path.lower(), record_type)
@@ -232,6 +261,8 @@ def main() -> int:
                 failures.append(f"{target['source']} does not provide {form_key}")
                 continue
             source = sources[-1]
+            for plugin_name, plugin_path in ((winner[1], winner[2]), (source[1], source[2])):
+                input_plugin_hashes[plugin_name] = sha256(plugin_path)
             output_row = output_by_type[record_type].get(form_key)
             winner_row = row_for(winner[2], record_type, form_key)
             source_row = row_for(source[2], record_type, form_key)
@@ -254,6 +285,79 @@ def main() -> int:
                         f"{form_key} {field}: output differs from "
                         f"{'owned source ' + source[1] if field in target['owned'] else 'final winner ' + winner[1]}"
                     )
+            target_evidence.append({
+                "formKey": form_key,
+                "editorId": target["editorId"],
+                "recordType": record_type,
+                "sourcePlugin": source[1],
+                "sourcePluginSha256": input_plugin_hashes[source[1]],
+                "winnerPlugin": winner[1],
+                "winnerPluginSha256": input_plugin_hashes[winner[1]],
+                "ownedValues": {
+                    field: semantic.canonical(source_row["fields"].get(field), field)
+                    for field in sorted(target["owned"])
+                },
+                "finalWaterValues": {
+                    field: semantic.canonical(winner_row["fields"].get(field), field)
+                    for field in sorted(WATER_FIELDS)
+                } if record_type == "Worldspace" else None,
+            })
+
+            if form_key in INTENTIONAL_ITMS:
+                if winner[1].lower() != source[1].lower():
+                    failures.append(
+                        f"intentional ITM {form_key} no longer has its approved source as winner"
+                    )
+                for field in all_fields:
+                    actual = fingerprint(output_row["fields"].get(field), field)
+                    final = fingerprint(winner_row["fields"].get(field), field)
+                    if actual != final:
+                        failures.append(
+                            f"intentional ITM {form_key} is no longer identical to its final winner at {field}"
+                        )
+
+    provider_profile_folder = os.path.join(
+        arguments.instance_root, "profiles", arguments.provider_profile
+    )
+    with open(os.path.join(provider_profile_folder, "plugins.txt"), encoding="utf-8") as stream:
+        active_plugin_count = sum(line.strip().startswith("*") for line in stream)
+    if active_plugin_count != 99:
+        failures.append(f"expected 99 active profile plugins, found {active_plugin_count}")
+
+    evidence = {
+        "schemaVersion": 1,
+        "profile": arguments.provider_profile,
+        "activePluginCount": active_plugin_count,
+        "profileHashes": file_hashes(provider_profile_folder),
+        "effectiveSortedLoadOrder": {
+            "entries": len(ordered_plugins),
+            "sha256": sha256(arguments.load_order),
+        },
+        "requiredHardMasters": EXPECTED_MASTERS,
+        "inputPluginHashes": dict(sorted(input_plugin_hashes.items())),
+        "targets": sorted(target_evidence, key=lambda item: item["formKey"]),
+        "intentionalIdenticalToMasterOverrides": [
+            {"formKey": form_key, "purpose": purpose}
+            for form_key, purpose in sorted(INTENTIONAL_ITMS.items())
+        ],
+        "relationship": {
+            "existingPatch": "Ensrick Lux Water CS Patch.esp",
+            "existingPatchRemainsSeparate": True,
+            "newPatchRecords": 14,
+            "existingPatchRecords": 559,
+        },
+    }
+    if arguments.write_evidence:
+        temporary = arguments.write_evidence + ".tmp"
+        with open(temporary, "w", encoding="utf-8", newline="\n") as stream:
+            json.dump(evidence, stream, indent=2, ensure_ascii=False)
+            stream.write("\n")
+        os.replace(temporary, arguments.write_evidence)
+    if arguments.expected_values:
+        with open(arguments.expected_values, encoding="utf-8") as stream:
+            expected_evidence = json.load(stream)
+        if evidence != expected_evidence:
+            failures.append("current profile target evidence differs from expected-values.json")
 
     with zipfile.ZipFile(arguments.archive) as archive:
         entries = archive.infolist()
@@ -277,6 +381,10 @@ def main() -> int:
         "newForms": sum(
             row["formKey"].lower().endswith(f":{OUTPUT_NAME.lower()}") for row in records
         ),
+        "hardMasters": info["masters"],
+        "activeProfilePlugins": active_plugin_count,
+        "intentionalItms": len(INTENTIONAL_ITMS),
+        "expectedValuesVerified": bool(arguments.expected_values) and evidence == expected_evidence,
         "failures": failures,
     }
     print(json.dumps(result, indent=2))

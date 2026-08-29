@@ -25,6 +25,7 @@ $work = Join-Path $PSScriptRoot 'work'
 $package = Join-Path $PSScriptRoot 'package'
 $output = Join-Path $package $pluginName
 $spriggitText = Join-Path $PSScriptRoot 'spriggit'
+$expectedValues = Join-Path $PSScriptRoot 'expected-values.json'
 $effectiveLoadOrder = Join-Path $work 'effective-sorted-loadorder.txt'
 
 function Assert-OwnedPath {
@@ -211,7 +212,7 @@ function New-DeterministicArchive {
     finally { $stream.Dispose() }
 }
 
-foreach ($required in @($ToolchainManifest, $project, $InstanceRoot, $DataFolder)) {
+foreach ($required in @($ToolchainManifest, $project, $expectedValues, $InstanceRoot, $DataFolder)) {
     if (-not (Test-Path -LiteralPath $required)) {
         throw "Required path does not exist: $required"
     }
@@ -408,7 +409,8 @@ $auditOutput = Invoke-HiddenProcess -FileName $python -Arguments @(
     '--archive', $archive,
     '--instance-root', $InstanceRoot,
     '--provider-profile', $ActiveSourceProfile,
-    '--data-folder', $DataFolder
+    '--data-folder', $DataFolder,
+    '--expected-values', $expectedValues
 ) -WorkingDirectory $PSScriptRoot -LogStem (Join-Path $work 'record-audit')
 $recordAudit = $auditOutput | ConvertFrom-Json
 if (-not $recordAudit.ok) {
@@ -431,6 +433,10 @@ $result = [ordered]@{
     selectedFieldsChecked = [int] $recordAudit.selectedFieldsChecked
     waterFieldsComparedToFinalWinner = [int] $recordAudit.worldspaceWaterFieldsComparedToFinalWinner
     newForms = [int] $recordAudit.newForms
+    hardMasters = @($recordAudit.hardMasters)
+    activeProfilePlugins = [int] $recordAudit.activeProfilePlugins
+    intentionalItms = [int] $recordAudit.intentionalItms
+    expectedValuesVerified = [bool] $recordAudit.expectedValuesVerified
 }
 $resultPath = Join-Path $work 'regeneration-result.json'
 [System.IO.File]::WriteAllText(
