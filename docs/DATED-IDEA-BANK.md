@@ -4,21 +4,20 @@ Status: archival brainstorming only
 
 Source date recorded: 2026-08-28
 
-Approval state: none of these ideas is an approved requirement, implementation task, mod choice, or install request
+Approval state: The Vast Expanse and Lost Akaviri Island are explicitly
+rejected; none of the remaining ideas is an approved requirement,
+implementation task, mod choice, or install request
 
 This note preserves older ideas supplied by the user so they are not lost. The ideas may later be revised, expanded, split into separate projects, or dropped entirely. Nothing listed here should be downloaded, installed, distributed, or implemented without a new explicit instruction.
 
 ## The Vast Expanse
 
-Expand the perceived scale of the province by placing large wilderness buffers between major settled or authored areas.
+**Rejected by the user on 2026-08-29. Do not revisit or propose.**
 
-- Review the world map and divide it into large working regions.
-- Move those regions farther apart, leaving areas of equal or greater size between them.
-- Extend nearby terrain, climate, and regional characteristics into the new spaces.
-- Consider relocating selected dungeons or landmarks where doing so improves spacing.
-- Fill the additions primarily with wilderness rather than dense repeated points of interest.
-
-This is a major worldspace and compatibility project, not a current mod-list task.
+The user previously explored the concept with other mod authors and concluded
+that its worldspace, compatibility, and implementation costs were prohibitive.
+It is retained here only as a historical decision record so it cannot return to
+the backlog as an apparently unresolved idea.
 
 ## Armor and Weapon Derivative Variants
 
@@ -36,6 +35,39 @@ Create material, regional, historical, and lore-based variants of strong existin
 Replace anonymous bandit saturation with identifiable regional organizations, varied relationships, unique equipment, and small stories. The broad concept could integrate added lands such as Wyrmstooth, Falskaar, Beyond Skyrim, and Beyond Reach. Some groups might occupy selected forts or appear through regional encounters rather than merely replacing every bandit.
 
 Related idea: turn the Silver Hand into a credible, organized order of werewolf hunters rather than another bandit presentation.
+
+### Current direction — 2026-08-29
+
+Retain this as a major late-stage project and a central part of the user's
+ongoing effort to eliminate generic Skyrim content. Do not begin full
+implementation until the mod list and its equipment baseline are substantially
+settled.
+
+- Maintain a machine-readable catalog of every adopted armor and weapon source,
+  especially standalone equipment. Record asset provenance, permissions,
+  redistribution limits, body support, visual identity, material and power
+  tier, crafting and tempering behavior, and suitable races, regions, factions,
+  levels, and encounter roles.
+- Use the catalog to design authored enemy organizations and NPC archetypes
+  rather than giving unrelated equipment to generic actors at random.
+- Support roaming hostile parties, replacement or alternate occupants for
+  selected bandit and Reachfolk forts, and appropriate hostile groups in
+  Falmer spaces, Dwemer ruins, Nordic ruins, wilderness encounters, and added
+  worldspaces.
+- Expand equipment variety for undead, particularly draugr and skeletons, while
+  preserving recognizable historical and regional identities.
+- Replace shallow vanilla leveled-list repetition with more varied, controlled
+  actor and equipment pools.
+- Prefer a deterministic, reproducible generator that injects the approved NPC,
+  equipment, and leveled-list records into an owned patch. AI may assist with
+  catalog classification, proposal generation, and consistency review, but the
+  released game data must be fixed, inspectable, repeatable, and testable rather
+  than generated nondeterministically at runtime.
+- Treat equipment distribution, actor spawning, roaming encounters, and
+  location occupation as separate systems. Leveled-list injection can cover
+  much of the first two, but taking over forts or placing factions in authored
+  ruins also requires deliberate encounter-zone, marker, ownership, persistence,
+  quest, and compatibility work.
 
 ### Daedric and other cult concepts
 
@@ -97,9 +129,11 @@ Replace the vanilla Forsworn presentation—including relevant Witchmen in Beyon
 
 ## Lost Akaviri Island
 
-Create a relatively small but detailed Japanese-inspired island worldspace about remnants of an Akaviri people, including a new playable or non-player lineage, undead, and a focused quest line.
+**Rejected by the user on 2026-08-29. Do not revisit or propose.**
 
-This would require a new lore pass before development, including consistent spelling and a careful decision about how Akaviri identity should be represented.
+The former concept for a Japanese-inspired Akaviri island, new lineage, undead,
+and associated quest line is retained here only as a historical decision
+record. It is not deferred scope and must not return to the backlog.
 
 ## Revisit Rules
 
