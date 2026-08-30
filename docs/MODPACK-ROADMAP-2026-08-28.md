@@ -16,9 +16,11 @@ licensing review, and its resulting profile state is recorded.
 - The latest completed foreground session produced no new crash log. Community
   Shaders, Proteus, QuickLoot IE, FSMP, ConsoleUtil, and Survival Mode Improved
   loaded. Remaining warnings are tracked in issue #37.
-- Full Nature of the Wild Lands 3.14 is now the active tree overhaul; Skyland
-  AIO 1K 4.32 is the active broad architecture/landscape base. Nordic Cut and
-  Mild Lands are not installed. No hair overhaul is active.
+- Full Nature of the Wild Lands 3.14 is the active placement authority;
+  Ulvenwald 3.3.2 supplies lowest-priority assets through Tree Diversity
+  Project 1.0.1's controlled BOS mix. `Ulvenwald.esp` is deliberately disabled.
+  Skyland AIO 1K 4.32 is the active broad architecture/landscape base. Nordic
+  Cut and Mild Lands are not installed.
 - Immersive Equipment Displays, Open Animation Replacer, and Skill Uncapper
   are installed but disabled. MCM Helper is now active on its official 1.6.3
   runtime build; its foreground MCM/settings-write smoke test remains open.
@@ -39,7 +41,7 @@ licensing review, and its resulting profile state is recorded.
 | One-handed idles | [#26](https://github.com/Ensrick/skyrim-mod-assistant/issues/26) | Framework blocked | Select restrained OAR conditions and verify first/third person, shield, spell, and dual-wield transitions. |
 | Vanilla-plus hair | [#27](https://github.com/Ensrick/skyrim-mod-assistant/issues/27) | VHR SMP 1.0.3 player + 1.0.1 NPC package installed; USSEP/CRF FaceGen precedence reconciled | Foreground-check player/beast hair, helmets, the 31 preserved non-SMP faces, Proteus swaps, and crowded-scene frame time before closing. |
 | Vanilla asset coverage | [#28](https://github.com/Ensrick/skyrim-mod-assistant/issues/28) | Diagnostic candidate identified | Use johnskyrim's Visualize Vanilla only in a disposable diagnostic profile. |
-| Trees and plant shadows | [#29](https://github.com/Ensrick/skyrim-mod-assistant/issues/29) | Full NotWL 3.14 installed with exact active-stack patches; Nordic Cut absent | Runtime-test frame-time, shadows, clipping, routes, and LOD transitions for the selected full-placement stack. |
+| Trees and plant shadows | [#29](https://github.com/Ensrick/skyrim-mod-assistant/issues/29) | Full NotWL 3.14 placements plus verified Ulvenwald 3.3.2 assets through TDP 1.0.1; only NotWL patches active | Runtime-test frame-time, wind, shadows, clipping, routes, and LOD transitions for the selected mixed-asset/full-NotWL-placement stack. |
 | Repository consolidation | [#30](https://github.com/Ensrick/skyrim-mod-assistant/issues/30) | Control plane selected | Inventory ownership/licenses and migrate original work without disturbing dirty third-party forks. |
 | Survival visibility/depth | [#31](https://github.com/Ensrick/skyrim-mod-assistant/issues/31) | Current stack is deliberately light | Choose one coherent needs/exposure model, then add compatible widgets, wetness, clothing warmth, and cloak physics. |
 | Imperial armor | [#32](https://github.com/Ensrick/skyrim-mod-assistant/issues/32) | Candidate direction identified | Audit NordwarUA New Legion plus current SPID/SkyPatcher distribution before approval. |
@@ -66,11 +68,12 @@ These are research results, not an install queue:
 
 - Hair: [Vanilla Hair Remake](https://www.nexusmods.com/skyrimspecialedition/mods/63979), active on its optimized FSMP path. Main 1.0.3 replaces the player hairs; the optional 1.0.1 BSA supplies SMP FaceGen to 2,405 vanilla NPC paths after 29 USSEP and 2 CRF face winners are preserved.
 - Asset coverage: [Visualize Vanilla](https://www.nexusmods.com/skyrimspecialedition/mods/84265), disposable diagnostic profile only.
-- Trees: full Nature of the Wild Lands 3.14 is installed and enabled. Nordic
-  Cut is rejected from this stack and Mild Lands is not authorized. Happy
-  Little Trees remains only a measured-performance fallback if full NotWL
-  misses the runtime gate. See
-  `records/skyland-notwl-foundation-install-2026-08-30.md`.
+- Trees: full Nature of the Wild Lands 3.14 owns placements, while Ulvenwald
+  3.3.2 assets enter only through Tree Diversity Project's official NotWL-base
+  configuration. Nordic Cut is rejected and Mild Lands is not authorized.
+  Happy Little Trees remains only a measured-performance fallback if the mixed
+  stack misses the runtime gate. See
+  `records/notwl-ulvenwald-tree-diversity-2026-08-30.md`.
 - Draw/sheathe: [Weapon Styles - Draw-Sheathe Animations for IED](https://www.nexusmods.com/skyrimspecialedition/mods/85085), only after IED/OAR are working.
 - Imperial armor: [RMB SPIDified - New Legion](https://www.nexusmods.com/skyrimspecialedition/mods/84974), subject to distribution and balance audit.
 - UI: [Norden UI](https://www.nexusmods.com/skyrimspecialedition/mods/166086), subject to dependency and 4K scaling review.

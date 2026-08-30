@@ -34,6 +34,10 @@ inside a public release:
 - An author-hosted mod with restrictive permissions can remain a required
   external download. The installer or collection may identify the exact page,
   file, version, and checksum, but must acquire it from the authorized source.
+- The current tree blend follows that model: Ulvenwald 3.3.2 and Tree Diversity
+  Project 1.0.1 remain immutable Nexus-fetched dependencies. A public installer
+  may reproduce the recorded FOMOD choices and disable `Ulvenwald.esp`; it may
+  not bundle either vendor archive or extracted tree assets.
 - A locally rebuilt binary or generated asset that has no established right of
   redistribution is a **publication blocker** when the active profile cannot run
   without that exact private artifact.

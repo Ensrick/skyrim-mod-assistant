@@ -10,6 +10,10 @@
 > is deliberately absent because FSMP 3.0+ integrated the correction. Exact
 > hashes, conflict winners, and the remaining foreground checks are in
 > `records/vanilla-hair-remake-smp-2026-08-30.md`.
+> Current tree delta: full Nature of the Wild Lands 3.14 is the placement
+> authority, with Ulvenwald 3.3.2 assets consumed through Tree Diversity
+> Project 1.0.1; `Ulvenwald.esp` is deliberately disabled. Exact evidence is in
+> `records/notwl-ulvenwald-tree-diversity-2026-08-30.md`.
 
 Snapshot of the existing Vortex-managed collection, captured **2026-06-09** before resetting to a vanilla baseline.
 Source of truth: Vortex staging `%APPDATA%\Vortex\skyrimse\mods` (27 mods, 15.3 GB) + downloads (30 archives) + the two preserved deployment manifests in `records\`.

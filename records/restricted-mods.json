@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "auditedAt": "2026-08-29",
+  "auditedAt": "2026-08-30",
   "mods": [
     {
       "name": "Lost LongSwords",
@@ -345,6 +345,34 @@
       "modification": "permitted by the page with credit, but altered meshes/textures remain derivative assets and require a recorded credit and release-boundary review",
       "localPolicy": "official archive and installed vendor payload remain byte-identical in their own MO2 mod; balance, distribution, compatibility, and texture optimization belong in separate owned overlays",
       "publicListPolicy": "reference Nexus mod 29612 file 109963; distribute only original Ensrick patch records/configuration by default; do not bundle the vendor archive or derivative assets without a final permissions review"
+    },
+    {
+      "name": "Traverse the Ulvenwald - 3.3 - Trees and Forests of Skyrim",
+      "author": "Wigfrid09",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 57874,
+      "nexusFileId": 444742,
+      "sourceFile": "Ulvenwald 3.3.2-57874-3-3-2-1700583210.rar",
+      "sourceSha256": "6FD168C2F063A3C8DD4D3D5B8D1BC5D596B76721F3364542ACA80056DB0A7379",
+      "redistribution": "upload to other sites prohibited",
+      "modification": "permission required; asset use requires permission",
+      "runtimeRole": "required external asset dependency for the selected NotWL-base Tree Diversity Project configuration; Ulvenwald.esp remains deliberately disabled",
+      "localPolicy": "official archive and extracted vendor payload remain unmodified in a separate lowest-priority MO2 mod",
+      "publicListPolicy": "reference Nexus mod 57874 file 444742 and reproduce the recorded autumn/no-Seasons FOMOD selection; never bundle the archive, plugin, meshes, or textures"
+    },
+    {
+      "name": "Tree Diversity Project - Build Your Own Forests",
+      "author": "knightradiant2",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 155974,
+      "nexusFileId": 680001,
+      "sourceFile": "Tree Diversity Project-155974-1-0-1-1761333499.zip",
+      "sourceSha256": "606224ADE3AEE68444C681453712635DC45C4E66456D06E35EC7509F38185FCD",
+      "redistribution": "retain the official archive as an external Nexus dependency",
+      "modification": "configuration and plugin reuse is more permissive than the Ulvenwald assets, but incorporated source-asset permissions remain controlling",
+      "runtimeRole": "required BOS configuration and ESL-flagged tree-record library for the selected NotWL-base/Ulvenwald-swap route",
+      "localPolicy": "official archive remains unmodified; only the required plugin and exact swap INI are installed",
+      "publicListPolicy": "reference Nexus mod 155974 file 680001 and reproduce the recorded FOMOD choices; do not bundle the vendor archive by default"
     }
   ]
 }
