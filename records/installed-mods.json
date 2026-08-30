@@ -4,6 +4,58 @@
   "profile": "Default",
   "mods": [
     {
+      "modId": 25316,
+      "modName": "3rd Person Camera Stagger Remover",
+      "nexusName": "3rd Person Camera Stagger Remover",
+      "version": "1",
+      "fileId": 89592,
+      "fileName": "3rd Person Camera Stagger Remover-25316-1-1556164319.zip",
+      "sizeMb": 0.0,
+      "sha256": "1c84596b4b4cfcb024390a1b1980d05d010867d5fd16a3af8b866d62d50b1d62",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:56:29Z",
+      "transaction": "20260830T025629542Z-688a0b8e6c63"
+    },
+    {
+      "modId": 56367,
+      "modName": "A Clear Map of Skyrim and Other Worlds",
+      "nexusName": "A Clear Map of Skyrim and Other Worlds FOMOD",
+      "version": "4.0",
+      "fileId": 334140,
+      "fileName": "A Clear Map of Skyrim and Other Worlds FOMOD-56367-4-0-1669293184.7z",
+      "sizeMb": 13.81,
+      "sha256": "0a37a5ad7070b77caacc0a6c0774ce9df77ec0e359479aac8947c56934a51a6d",
+      "plugins": [
+        "A Clear Map of Skyrim.esp",
+        "ACMOS - Beyond Reach.esp",
+        "ACMOS - Bruma.esp",
+        "ACMOS - Wyrmstooth.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:33:20Z",
+      "transaction": "20260830T153318847Z-6d482bd11e11",
+      "fomodPlan": "records/fomod-plans/56367-acmos.json",
+      "note": "DoubleYou's map overhaul, v4.0. Supersedes A Quality World Map (5804), which was not installed, so nothing had to be disabled. FOMOD plan records/fomod-plans/56367-acmos.json selects: Core Files; LOD Setup = 'No DynDOLOD LOD32'; DynDOLOD rules = None; Other Worlds = Beyond Reach + Bruma + Wyrmstooth; Optional Components = Remove Clouds (the author's Recommended default - revert by reinstalling without it). NOT selected: Falskaar (skipped per BASELINE.md), Midwood Isle, Vominheim (not installed), Worldspace Transition Tweaks patch (WTT 48889 not installed). LOD32 IS THE DANGEROUS OPTION and was avoided: the author warns 'Do NOT install the With DynDOLOD LOD32 option if you are not going to use DynDOLOD 3! This will cause significant issues with LODS otherwise!' Verified by hash - the installed A Clear Map of Skyrim.ini matches 100 Default INI (uLockedObjectMapLOD=16), not 101 LOD32 INI (=32); that one line is the whole difference. MUST BE REINSTALLED with LOD32 + DynDOLOD 3 rules when DynDOLOD is first generated: #81 carries the full procedure including Expert=1 / Level32=1 and the FOLIP road path. All four plugins are ALREADY ESL-flagged despite the .esp extension (LOOT: isLightMaster true), so they cost zero of the 254 slots; LOOT's masterlist also marks all four verified clean. Core plugin: 36 records, 28 new, 8 overrides, 0 deleted - 15 IMGS, 14 WTHR and 7 WRLD (Tamriel, DLC2SolstheimWorld, DLC01FalmerValley, DLC01SoulCairn, Blackreach, SkuldafnWorld, Sovngarde). It edits base WRLD records and must load at the bottom; LOOT places it 200-203 of 206, satisfied. NO ROADS are installed: the 'ACMOS - Lazy Roads' optional file is mutually exclusive with the FOLIP path the build is heading for ('ONLY if you are NOT using ACMOS Road Generator and/or FOLIP'), so it was skipped rather than installed-then-removed. Moonpath to Elsweyr, Gray Cowl 10th and VIGILANT get the global camera and map-weather improvements but no height adjustment or roads - ACMOS ships no plugin for them and no official patch exists; FOLIP at DynDOLOD time is what covers them. Unique Map Weather (59919) is a SOFT requirement by the author's own wording and was not installed, so the six shipped MapWeathers/*.json files sit inert. No SKSE DLL."
+    },
+    {
+      "modId": 74342,
+      "modName": "ACMOS - Water for ENB Patch",
+      "nexusName": "ACMOS and Wyrmstooth - Water for ENB Patch",
+      "version": "1.0",
+      "fileId": 311738,
+      "fileName": "ACMOS and Wyrmstooth - Water for ENB Patch-74342-1-0-1661870372.zip",
+      "sizeMb": 0.04,
+      "sha256": "7e16a9ff5f44c78110665eeee965b6f9667cab9354c69f056c58dc24e9a27e29",
+      "plugins": [
+        "ACMOS and Wyrmstooth - Water for ENB Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:33:48Z",
+      "transaction": "20260830T153347930Z-384b63cb9599",
+      "note": "goddlike's ACMOS x Water for ENB patch (74342 v1.0). Installed because Water for ENB (37061) is the decided water mod and ACMOS's page links this patch by name. Took the OPTIONAL file 311738 'ACMOS and Wyrmstooth' rather than the MAIN Tamriel-only file, because Wyrmstooth is installed. 3 WRLD overrides, 0 new, 0 deleted, already ESL-flagged. KNOWN BROKEN AS SORTED - see #82: the patch page says 'Use LOOT to load after Water for ENB and ACMOS', but it does not master A Clear Map of Skyrim.esp and LOOT has no rule for it, so it lands at plugins.txt 132 while ACMOS sits at 134-137. All three of its records (Tamriel 00003C:Skyrim.esm, DLC2SolstheimWorld 000800:Dragonborn.esm, 000D62:Wyrmstooth.esp) are overridden by later ACMOS plugins, leaving zero records where the patch wins. Not hand-fixed: the load order is LOOT's to own."
+    },
+    {
       "modId": 32444,
       "modName": "Address Library",
       "nexusName": "Address Library All in One (1.7.99.0) v12",
@@ -16,6 +68,55 @@
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:30Z",
       "transaction": "20260823T035430739Z-1f3efe18d5fe"
+    },
+    {
+      "modId": 121553,
+      "modName": "Akatosh's Talon - Realistic Size",
+      "nexusName": "Akatoshs_Talon_Resized",
+      "version": "1.0",
+      "fileId": 510105,
+      "fileName": "Akatoshs_Talon_Resized-121553-1-0-1717984765.7z",
+      "sizeMb": 0.02,
+      "sha256": "e9f802434d582ac666c13934d669409a382a51cddaeb6384a0c70720e61c0c22",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:27:05Z",
+      "transaction": "20260830T032705514Z-789acb19674c"
+    },
+    {
+      "modId": 36761,
+      "modName": "Audio Overhaul - Immersive Sounds Integration",
+      "nexusName": "Audio Overhaul Skyrim - Immersive Sounds Compendium Integration (1.1.0)",
+      "version": "1.1.0",
+      "fileId": 280412,
+      "fileName": "Audio Overhaul Skyrim - Immersive Sounds Compendium Integration (1.1.0)-36761-1-1-0-1651282424.7z",
+      "sizeMb": 0.02,
+      "sha256": "c0b93c1ea08d9ec529400d236c46f4fa3c9d900e17de04d075a18948d2de21d7",
+      "plugins": [
+        "AOS_ISC_Integration.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:41:43Z",
+      "transaction": "20260830T154143473Z-5cd7738c0118",
+      "note": "The AOS-ISC compatibility patch 1.1.0 (36761), which LOOT requires whenever ISC and AOS are both active. Two files, no assets: AOS_ISC_Integration.esp plus its .modgroups. Already ESL-flagged. 848 overrides, 820 SNDR + 21 IPDS + 7 SNCT, masters Skyrim/Dawnguard/Dragonborn + both parents. LOOT sorts the trio consecutively and in the only correct order - AOS 22, ISC 23, this patch 24 - so the patch wins over both parents as intended."
+    },
+    {
+      "modId": 12466,
+      "modName": "Audio Overhaul for Skyrim SE",
+      "nexusName": "Audio Overhaul for Skyrim (4.1.3)",
+      "version": "4.1.3",
+      "fileId": 387525,
+      "fileName": "Audio Overhaul for Skyrim (4.1.3)-12466-4-1-3-1683940246.7z",
+      "sizeMb": 255.62,
+      "sha256": "49c115916e610c7cd7b6b2227aaa43346151d7c60e47161e18190ada20acdbb8",
+      "plugins": [
+        "Audio Overhaul Skyrim.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:41:42Z",
+      "transaction": "20260830T154129583Z-3f27d27bc92e",
+      "fomodPlan": "records/fomod-plans/12466-aos.json",
+      "note": "AOS 4.1.3, David Jegutidse. Hard requirements both satisfied: Sound Record Distributor (installed immediately before it) and SSE Engine Fixes 7.0.21. FOMOD Main Files only - the core payload includes the seven *_SRD.yaml files that are the whole point of the SRD path, among them Audio Overhaul Skyrim.esp_Magic_ImmersiveSounds_SRD.yaml, which is AOS's own ISC awareness. NO weather patch installed, per the AOS page's instruction to drop them on the SRD path; Azurite Weathers III is clean against AOS 4.x. The FOMOD's other addons were all skipped because their targets are absent: Enhanced Blood Textures, True Storms and Rumble Additions are none of them installed. Acoustic Space Improvement Fixes (78992) and Reverb Interior Sounds Expansion are marked Recommended by the FOMOD but are separate undecided slots and were not taken. Overrides 1,994 records: 1490 SNDR, 158 KYWD, 149 IPCT, 72 SOPM, 36 IPDS, 35 ARMA, 17 ASPC, 15 SNCT."
     },
     {
       "modId": 162153,
@@ -83,6 +184,22 @@
       "note": "weather slot winner; v3.35"
     },
     {
+      "modId": 29612,
+      "modName": "Baltimore Weapons",
+      "nexusName": "Baltimore Weapons",
+      "version": "1",
+      "fileId": 109963,
+      "fileName": "Baltimore Weapons-29612-1-1570791119.7z",
+      "sizeMb": 28.19,
+      "sha256": "94c0ce2974b4b0e184bf9b3cdbd3617d2f948653dbbbd4ab76d2149fee62510e",
+      "plugins": [
+        "Baltimore Weapons.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T14:44:51Z",
+      "transaction": "20260830T144449367Z-bb2554c1b0d4"
+    },
+    {
       "modId": 60805,
       "modName": "Base Object Swapper",
       "nexusName": "Base Object Swapper",
@@ -96,6 +213,34 @@
       "installedUtc": "2026-08-25T23:25:42Z",
       "transaction": "20260825T232542686Z-b2d9f787d410",
       "note": "official 1.7.99 wave build | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 69240,
+      "modName": "Better Fur - Fine Clothes",
+      "nexusName": "Better fur - Fine clothes",
+      "version": "2",
+      "fileId": 289832,
+      "fileName": "Better fur - Fine clothes-69240-2-1654733674.7z",
+      "sizeMb": 8.23,
+      "sha256": "7ffbeda6de0ca9b6cc3b9998338adc0941983c776588c17aa33e331295c21190",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T19:17:30Z",
+      "transaction": "20260830T191729739Z-6ada38d969fa"
+    },
+    {
+      "modId": 70589,
+      "modName": "Better Fur - Merchant's Hat",
+      "nexusName": "Better fur - Merchant's hat",
+      "version": "1",
+      "fileId": 295520,
+      "fileName": "Better fur - Merchant's hat-70589-1-1656723007.7z",
+      "sizeMb": 1.42,
+      "sha256": "78c42839041670d4ae83a55276bc29d68665196314f112107de029fc541e3f78",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T19:28:07Z",
+      "transaction": "20260830T192807324Z-5ebe1335560e"
     },
     {
       "modId": 3008,
@@ -112,6 +257,98 @@
       "enabled": true,
       "installedUtc": "2026-08-26T22:21:32Z",
       "transaction": "20260826T222121154Z-e280f4d8c4df"
+    },
+    {
+      "modId": 155244,
+      "modName": "Beyond Reach 4.8 - Loose FaceGen Textures",
+      "nexusName": "Beyond Reach Loose Facegen Textures Pack 0",
+      "version": "1.1",
+      "fileId": 649355,
+      "fileName": "Beyond Reach Loose Facegen Textures Pack 0-155244-1-1-1753205820.7z",
+      "sizeMb": 5.21,
+      "sha256": "5182e9cc49c0584e6e7827818acc1feb5b2cec13c97b80c35ef1d1bc01a5ff6d",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-29T04:50:26Z",
+      "transaction": "20260829T045025579Z-117cb6e42f68"
+    },
+    {
+      "modId": 155244,
+      "modName": "Beyond Reach 4.8 - Missing Textures Pack 1 Half",
+      "nexusName": "Pack 1 - half size version",
+      "version": "1.0",
+      "fileId": 649303,
+      "fileName": "Pack 1 - half size version-155244-1-0-1753191796.7z",
+      "sizeMb": 75.59,
+      "sha256": "f98656de99c44d00b759dbe126cedf76b3bf1fba358d3d8dceda8da54b4db302",
+      "plugins": [
+        "Beyond Reach missing textures.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-29T04:50:14Z",
+      "transaction": "20260829T045010851Z-54b130e1f691"
+    },
+    {
+      "modId": 155244,
+      "modName": "Beyond Reach 4.8 - Missing Textures Pack 2 Half",
+      "nexusName": "Pack 2 - half size version",
+      "version": "1.0",
+      "fileId": 649304,
+      "fileName": "Pack 2 - half size version-155244-1-0-1753191949.7z",
+      "sizeMb": 72.4,
+      "sha256": "6de5ab4b0028a1100802e0a129666174f9039e287cf0f83a43c898eb3e29b0c7",
+      "plugins": [
+        "Beyond Reach missing textures 2.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-29T04:50:18Z",
+      "transaction": "20260829T045015220Z-9239c2be3c50"
+    },
+    {
+      "modId": 155244,
+      "modName": "Beyond Reach 4.8 - Missing Textures Pack 3",
+      "nexusName": "Beyond Reach Missing Textures Pack 3",
+      "version": "1.0",
+      "fileId": 649302,
+      "fileName": "Beyond Reach Missing Textures Pack 3-155244-1-0-1753191301.7z",
+      "sizeMb": 58.42,
+      "sha256": "e9c1a87d643cb5c94c5b968959c46e507596708fd819c9f43a04ead5fc487c48",
+      "plugins": [
+        "Adabala Building System - Ayleid Transfusion.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-29T04:50:22Z",
+      "transaction": "20260829T045019325Z-6ed05597ca6e"
+    },
+    {
+      "modId": 155244,
+      "modName": "Beyond Reach 4.8 - Missing Textures Pack 4",
+      "nexusName": "Beyond Reach Missing Textures Pack 4",
+      "version": "1.1",
+      "fileId": 649349,
+      "fileName": "Beyond Reach Missing Textures Pack 4-155244-1-1-1753205469.7z",
+      "sizeMb": 0.82,
+      "sha256": "5347baf814adb602af712a7e979a042c31fe30305fac0c4e8ec35e54bdf1991a",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-29T04:50:22Z",
+      "transaction": "20260829T045022671Z-00d680d6dcec"
+    },
+    {
+      "modId": 155244,
+      "modName": "Beyond Reach 4.8 - Missing Textures Pack 5 GKB Trees",
+      "nexusName": "Beyond Reach Missing Textures Pack 5 GKB Trees",
+      "version": "1.0",
+      "fileId": 649444,
+      "fileName": "Beyond Reach Missing Textures - GKB Trees-155244-1-0-1753231254.7z",
+      "sizeMb": 37.68,
+      "sha256": "c303eaefbd1a7246dc87a5cc8a98c626cbac49718cdc5280507fb3b92c575927",
+      "plugins": [
+        "GKB Beyond Reach Trees.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-29T04:50:25Z",
+      "transaction": "20260829T045023331Z-c8cf56a86dfb"
     },
     {
       "modId": 10917,
@@ -162,6 +399,35 @@
       "enabled": true,
       "installedUtc": "2026-08-23T20:27:34Z",
       "transaction": "20260823T202734300Z-1e497a22550a"
+    },
+    {
+      "modId": 120399,
+      "modName": "Bloodskal Blade 4",
+      "nexusName": "Bloodskal Blade 4",
+      "version": "1",
+      "fileId": 505407,
+      "fileName": "Bloodskal Blade 4-120399-1-1716784677.7z",
+      "sizeMb": 14.98,
+      "sha256": "ac4620e71219ceb3ddc9413e70b42f67bca5015d0bcbd7493973bf00c95d7055",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:21:51Z",
+      "transaction": "20260830T032150298Z-1b6db524f6d6"
+    },
+    {
+      "modId": 120399,
+      "modName": "Bloodskal Blade 4 - No Glow",
+      "nexusName": "Bloodskal Blade 4 - No Glow",
+      "version": "1",
+      "fileId": 505409,
+      "fileName": "Bloodskal Blade 4 - No Glow-120399-1-1716784701.7z",
+      "sizeMb": 0.22,
+      "sha256": "a9a12dcbad8a15e755645464740a8b403626813a4c86a49017b12e6f9e975b15",
+      "plugins": [],
+      "enabled": false,
+      "installedUtc": "2026-08-30T03:21:53Z",
+      "transaction": "20260830T032153815Z-e326a6d42a52",
+      "note": "DISABLED 2026-08-30 and superseded by Ensrick - Bloodskal Blade 4 Static Glow. The user wanted a glow without the heartbeat pulse; No Glow removes the emissive entirely (22 blocks, no controllers, no fxglow/fxgradient/fxslowdusttiny). Kept installed but inactive so it can be re-enabled in one step."
     },
     {
       "modId": 201,
@@ -228,6 +494,57 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\198-cbbe.json"
     },
     {
+      "modId": 60111,
+      "modName": "CC Bow of Shadows Lingering Invisibility Fix",
+      "nexusName": "CC Bow of Shadows Lingering Invisibility Fix",
+      "version": "1.0.0",
+      "fileId": 249383,
+      "fileName": "CC Bow of Shadows Lingering Invisibility Fix-60111-1-0-0-1639591322.7z",
+      "sizeMb": 0.0,
+      "sha256": "87bd66627eab04508ced3120c2608e789b287b089f4a22df451cfb672aa9e89e",
+      "plugins": [
+        "BowOfShadowsFix.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:14:47Z",
+      "transaction": "20260830T161446997Z-049461a1c1ed",
+      "note": "Seally25's fix for the Creation Club Bow of Shadows leaving a lingering invisibility state, which makes Inigo and other AI-driven followers behave as though the player is invisible when they are not. Linked from Inigo's own page. Installed because the user owns all 74 CC items so ccbgssse038-bowofshadows.esl is active and the defect is live. One MGEF override, zero new, zero deleted, already ESL-flagged, plus one replacement script ccbgssse038_invisibilityscript.pex. The optional 'Distribute Bow of Shadows Perk to Everyone' file was NOT taken."
+    },
+    {
+      "modId": 162526,
+      "modName": "Chitin Bow SE",
+      "nexusName": "1ChitinBowSE",
+      "version": "2",
+      "fileId": 681232,
+      "fileName": "1ChitinBowSE-162526-2-1761637626.7z",
+      "sizeMb": 21.93,
+      "sha256": "889446b78c0b3d64b6db63aabeaffa1b6016985f0ddddfbb7032b917f800bedc",
+      "plugins": [
+        "1ChitinBow.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T04:10:31Z",
+      "transaction": "20260830T041030692Z-52e3786f178b",
+      "fomodPlan": "records/fomod-plans/162526-chitin-bow-se.json"
+    },
+    {
+      "modId": 130354,
+      "modName": "Collectibles Helper",
+      "nexusName": "Collectibles Helper",
+      "version": "1.0.3",
+      "fileId": 610268,
+      "fileName": "Collectibles Helper-130354-1-0-3-1743043259.zip",
+      "sizeMb": 0.23,
+      "sha256": "890868151f2717c5a508b36e0e228a6b83f6b2dc5bcc2a089b794a645b284015",
+      "plugins": [
+        "Collectibles Helper.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:19:22Z",
+      "transaction": "20260830T161921885Z-4f6a05587d1d",
+      "note": "Jonx0r's collectible quest-marker MCM. Requires SkyUI only - one script, ColHlp_MCMScript.pex, extending SKI_ConfigBase, so no MCM Helper and no DLL; plus one splash texture. Already ESL-flagged. 56 records: 9 new (8 GLOB + 1 QUST), 47 overrides, zero deleted. ALL 47 overrides are Dragonborn.esm (1 WRLD, 14 CELL, 32 REFR) and ZERO are Skyrim.esm, so it is unaffected by the open Solitude city decision. Supersedes Stones of Barenziah Quest Markers (684), which is NOT installed and should stay that way - 684 overrides QUST 0009DD77 TGCrown without a USSEP master; a load-order-wide scan found USSEP as the only current override of that quest. NEEDS THE #92 FORWARD PATCH, not yet generated: CH reverts USSEP on the three East Empire strongbox refs 03A4E6, 03A4E9 and 03AC5A (all base 024FA5 DLC2RRF05Strongbox) - USSEP makes all three keyless Expert locks, CH leaves two unlocked and restores the DLC2RRNetchKey requirement on the third. The CELL half of the original finding is now mostly moot: Lux.esp loads after CH and wins all nine target cells, already carrying USSEP's music and most of its water heights, leaving only XCLW on 017EC0, 018276 and 01BBFB. Emit set is therefore 9 records, not 12, and it is load-order dependent - re-check if Lux moves relative to CH."
+    },
+    {
       "modId": 86492,
       "modName": "Community Shaders",
       "nexusName": "Community Shaders",
@@ -243,6 +560,23 @@
       "note": "core 1.8.3; renderer pillar; LLF/TruePBR/InteriorSun etc in core | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
+      "modId": 0,
+      "modName": "Community Shaders AIO - 1.7.99 Source Build",
+      "nexusName": null,
+      "version": null,
+      "fileId": null,
+      "fileName": null,
+      "sizeMb": null,
+      "sha256": null,
+      "plugins": [
+        "TerrainHelper.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T17:17:26Z",
+      "transaction": null,
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now."
+    },
+    {
       "modId": 76649,
       "modName": "ConsoleUtilSSE NG",
       "nexusName": "ConsoleUtilSSE NG",
@@ -254,7 +588,8 @@
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-23T03:54:40Z",
-      "transaction": "20260823T035440489Z-a373f32f6e2d"
+      "transaction": "20260823T035440489Z-a373f32f6e2d",
+      "note": "Official 1.6.1 remains installed. Public source rebuild 1.6.1.104 (Ensrick/ConsoleUtilSSE commit ad5e6e5, CI run 33208154245) is enabled above it as DLL-only MO2 priority-110 overlay; CI DLL SHA-256 7775AA6E70C7608317ADF28D27B09673EA9C8DE98902CE16E08CF5986958722D; overlay transaction 20260828T204303046Z-84343993f71e. Post-install audit passed; runtime VM type-ID and Proteus selected-reference verification pending."
     },
     {
       "modId": 52276,
@@ -266,11 +601,11 @@
       "sizeMb": 5.26,
       "sha256": "6b6188323d05da094e6f09e39b33f35fd2bace591a906f787ef76398c5b76571",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-23T06:16:15Z",
       "transaction": "20260823T061615101Z-0b5ae567114f",
       "fomodPlan": "records/fomod-plans/52276-crd.json",
-      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "UNPARKED 2026-08-30 (#85): park reason was wrong - versionIndependence=1 (AddressLibraryPostAE), versionIndependenceEx=1 (NoStructUse), PE stamp 1768919415 (2026-01-20) ABOVE the 1748217600 SKSE cutoff, so PluginManager.cpp:663 never fires. No skse64.log refusal was ever recorded. Inert until a mod ships Data/CraftingRecipeDistributor configs - none installed as of unpark."
     },
     {
       "modId": 59818,
@@ -378,6 +713,55 @@
       "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 276,
+      "modName": "Cutting Room Floor",
+      "nexusName": "Cutting Room Floor",
+      "version": "3.1.26",
+      "fileId": 796288,
+      "fileName": "Cutting Room Floor 276 3.1.26 2026-08-28T05-29Z RHaV1OLK3.7z",
+      "sizeMb": 4.96,
+      "sha256": "5a007881a7239bdb2e71e7803b0435c0d882ddfe2d47390254252aedf14a3911",
+      "plugins": [
+        "cutting room floor.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T14:51:41Z",
+      "transaction": "20260830T145141131Z-f640a5af31c9",
+      "fomodPlan": "records\\fomod-plans\\276-cutting-room-floor.json"
+    },
+    {
+      "modId": 59581,
+      "modName": "Disable Screen Blood",
+      "nexusName": "Disable Screen Blood",
+      "version": "1.0",
+      "fileId": 292715,
+      "fileName": "Disable Screen Blood-59581-1-0-1655778988.7z",
+      "sizeMb": 0.0,
+      "sha256": "4ae84f0a9ce3c1c777598ee04a644e594f46fe4f883b339035ec0fc5ac02756d",
+      "plugins": [
+        "Disable Screen Blood.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:56:27Z",
+      "transaction": "20260830T025627455Z-14019fb979fd"
+    },
+    {
+      "modId": 96273,
+      "modName": "Dynamic Activation Key",
+      "nexusName": "Dynamic Activation Key",
+      "version": "1.02",
+      "fileId": 421305,
+      "fileName": "Dynamic Activation Key-96273-1-02-1693177288.zip",
+      "sizeMb": 0.0,
+      "sha256": "28ad717ed88dc0c5ca3b9c01dcf7849a74703e508a5560b21343496606982291",
+      "plugins": [
+        "Dynamic Activation Key.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:28:49Z",
+      "transaction": "20260830T152849272Z-0858430c6b1c"
+    },
+    {
       "modId": 22574,
       "modName": "ENB Light",
       "nexusName": "ENB Light",
@@ -393,6 +777,175 @@
       "installedUtc": "2026-08-24T03:03:31Z",
       "transaction": "20260824T030331359Z-895b38f20f4e",
       "note": "full install + low/moderate-cost extras + creatures; no STAC/TCS/EmbersHD patches; assets feed CS particle lights | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit",
+      "nexusName": "Ensrick-owned Better Fur body-refit overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit 2026-08-30.7z",
+      "sizeMb": 1.02,
+      "sha256": "d141ac4109a4804dc056e5b89238ef31c7efa28473338fb35c56314b33dda3cc",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T19:32:42Z",
+      "transaction": "20260830T193242200Z-95b407d38b1a",
+      "note": "Private, deterministic compatibility overlay for Better fur - Fine clothes (69240/289832). Each output starts with the installed CBBE or HIMBO Refits outfit mesh and clones only jg1's separately named weighted fur shape from the corresponding vendor _0/_1 NIF. Two clean generations were byte-identical. The four vendor meshes and both body-refit sources remain byte-identical and separately recoverable. jg1 permits modifications and asset use with credit; the derived meshes remain local and are not committed. Do not disable this overlay alone while Better Fur remains enabled, because the vendor's vanilla-body meshes would become the next winners; roll back or disable the overlay and vendor together to restore direct CBBE/HIMBO winners. Static NIF reload, shape/bone/texture assertions, and a Blender bind-pose front/side inspection passed; foreground animation and extreme-preset clipping remain gameplay acceptance work."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Bloodskal Blade 4 Static Glow",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:11:00Z",
+      "nexusName": "Ensrick-owned static-glow mesh overlay",
+      "fileName": "local overlay derived from Bloodskal Blade 4 file 505407",
+      "sizeMb": 0.41,
+      "sha256": "5d2b133d79559395b723f51a3cade14fcc1f612a8ddbf0587a7b6147bb6a824e",
+      "transaction": "20260830T160844471Z-c0be781fa651",
+      "note": "Static-glow variant of Bloodskal Blade 4 (120399), built here because the mod page ships no such option - only MAIN (pulsing + embers), No Glow, No Guard Engravings and a Sheath. User ruling 2026-08-30: 'The pulse looks bad on Bloodskal Blade, so no to that. Just the simple glow version.' MAIN's animation is three controllers on 40 blocks: [20] BSLightingShaderPropertyColorController drives Emissive Color on the fxglow shader via [24]/[25] NiPosData, cycling (0.694,0.392,0.369) -> (0.808,0.812,0.388) -> back over 4 s; [21] BSLightingShaderPropertyFloatController at freq 8 drives the brightness via [22]/[23] NiFloatData, 0.3 -> 0.8 -> 0; [31] BSEffectShaderPropertyFloatController scrolls the embers' V Offset via [32]/[33] NiFloatData, 0 -> 1. METHOD: rather than delete blocks and renumber every reference, all three key curves were FROZEN IN PLACE to constants with zero tangents - colour pinned to the authored t=0 value, brightness pinned to the authored resting 0.3, ember V-offset pinned to 0. 42 bytes changed, file length identical at 429,837 B, block table/type table/string table byte-identical, so no dangling reference is possible. Verified: header re-read matches on all counts and nif-port-cli inspect reports valid=true, unknownBlocks=false, 5 shapes, all 11 texture paths intact. Result is a constant red emissive glow with no heartbeat and no ember motion. TUNING: brightness lives at file offset 0x510DA (3 keys x 16 B), colour at 0x51122 (3 keys x 40 B). To remove the ember element entirely rather than freeze it, zero the BSEffectShaderProperty emissiveMultiple at 0x5E4F3 (currently 1.0; its emissiveColor is at 0x5E4E3). 'Bloodskal Blade 4 - No Glow' was DISABLED, not removed. Permissions: 'Feel free to use, just give due credits.' Local-only, nothing committed; the vendor mod folder is untouched. NOTE the vendor mesh is Oldrim format (NIF stream 83, NiTriShape) - same class as #77, not addressed here. Believable Weapons also ships this mesh path but loses on priority, which was already true before this overlay; a unique named weapon taking a distinct model is wanted per docs/PATCH_INTENTS.md."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Bloodskal Blade 4 Texture Cap",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "local overlay staged from Bloodskal Blade 4 file 505407",
+      "sizeMb": 5.33,
+      "sha256": "de2a83c7b390e3970495f880aaef9de31c8a892e74ec28aaf646436489917934",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:22:36Z",
+      "transaction": "20260830T032236622Z-40e9530b97af",
+      "note": "Enforces docs/TEXTURE_POLICY.md 4096-pixel axis cap on mod 120399, whose permissions read \"Feel free to use, just give due credits.\" Recipe, run on the installed file-505407 payload: texconv -w 4096 -h 1024 -f DXT1 -m 0 -dx9 bloodskal_d.dds (was 8192x2048 DXT1); texconv -w 4096 -h 512 -f DXT5 -m 0 -dx9 fxglow.dds (was 8192x1024 DXT5). No DDS is committed to this repo."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Collectibles Helper USSEP Forward",
+      "version": "2026-08-30",
+      "nexusName": "Ensrick-owned generated USSEP forward patch",
+      "fileName": "generated by CollectiblesHelperUssepForward through MO2 USVFS",
+      "fileId": 0,
+      "sizeMb": 0.0018,
+      "sha256": "e9978ffdbe9ad2e54d55c4a0bc31634ce424fbd7308fabe644dfb30d0124592f",
+      "plugins": [
+        "Ensrick - Collectibles Helper USSEP Forward.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T19:47:03Z",
+      "transaction": "20260830T194702775Z-d62a0214b2f6",
+      "note": "Generated ESL-flagged forward patch for #92, built from source at skyrim-tools-source/CollectiblesHelperUssepForward (Mutagen 0.54.3 + Synthesis 0.36.5, net10.0, TreatWarningsAsErrors, Deterministic; 0 warnings 0 errors). Generated THROUGH MO2's USVFS via MO2Headless run, so the patcher saw the real virtual Data folder rather than a staged copy; load order file was Skyrim.ccc entries followed by the profile plugins.txt, 267 entries / 265 active. POLICY: start from the WINNING record and forward only the fields USSEP owns - PlacedObject.Lock and Cell.WaterHeight/Music/SkyAndWeatherFromRegion - and forward a field ONLY where USSEP states a value, so a field USSEP leaves unset is never cleared. That rule is load-bearing: Lux adds SkyAndWeatherFromRegion 0374BC:Dragonborn.esm to four Raven Rock interiors where USSEP has none, and a naive forward-every-difference rule would have stripped it on 017EC0, 017EC2, 017EC4 and 01844F. EMITTED 6 records, not the 12 in the original issue, because Lux.esp loads after Collectibles Helper and already carries USSEP's music and most of its water heights: XLOC level 75 / key none / flags 0 onto REFR 03A4E6, 03A4E9 and 03AC5A, and WaterHeight -2147483648.0 onto CELL 017EC0 DLC2RRTheRetchingNetch, 018276 DLC2RRBulwark and 01BBFB DLC2BristlebackCave01. The plugin holds 8 records because a REFR override must carry its parent CELL - 01844F and 024D9D are those structural parents, copied from the winner unchanged, not ITMs of intent. VALIDATION: two generations byte-identical, plugin SHA-256 C121A2A52B4C21CA03190BC59089D49BB27CD67E433E417994F4EA1BAB0A0DEA; 0 new records, 0 deleted; ESL flag set. Masters are Skyrim.esm + Dragonborn.esm + Lux.esp - Collectibles Helper is NOT a master, but Lux is and Lux loads after CH, so the required ordering is transitively enforced and the #82 failure mode does not apply. Spriggit 0.41.0 serialize/deserialize round-trip completed and preserves every substantive field; it is semantic rather than byte-exact - the HEDR next-object-ID counter and cell group ordering/timestamps differ, neither of which carries meaning for a patch with no new records (this build of Spriggit has no 'check' verb). LOOT places it at plugins.txt 181, after CH at 52 and Lux at 139. Post-sort winner re-check: all six forwarded records now win and carry USSEP's values; the only remaining differences are the four deliberately-skipped XCCM cases where USSEP states no value. Emit set stable, no regeneration needed. Regenerate after any load-order change that moves Lux relative to Collectibles Helper."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Lux Water CS Patch",
+      "nexusName": null,
+      "version": null,
+      "fileId": null,
+      "fileName": null,
+      "sizeMb": null,
+      "sha256": null,
+      "plugins": [
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T17:17:26Z",
+      "transaction": null,
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; generated 559-record patch, issue #46. Was silently disabled by every ledger-driven sort until now."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Quicksilver's Sword Pack Texture Cap",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "local overlay staged from Quicksilver's Sword Pack file 326302",
+      "sizeMb": 30.0,
+      "sha256": "425c0a984db896a1e89a8bb6854b0c4f281ae222088ef6c87f9d6f997ce48bea",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T04:36:50Z",
+      "transaction": "20260830T043650770Z-8e6499ae4227",
+      "note": "Enforces docs/TEXTURE_POLICY.md source-plus-one-step on mod 77594, whose BSA ships all 12 maps at 4096x4096. Vanilla weapon analogues measured from Skyrim - Textures*.bsa: diffuse 2048, normal 1024, env-mask 256. Nine of the twelve maps also fall under the audit/inspect_mod.py soft/upscaled threshold (detail index <1.60 at >=2048): claymore 0.61/0.83/0.65, h&h 0.69/1.03/0.70, scabbard 1.11/0.14/1.13; qsicscab_m.dds holds 2 unique values across a 4096 grid. Recipe, run on the BSA payload with texconv -nologo -y -m 0: -f BC1_UNORM -w 2048 -h 2048 for h&h-sword_d, qsirishclaymore_d, qsicscab_d; -f BC3_UNORM -w 2048 -h 2048 for all four *_n; -f BC1_UNORM -w 512 -h 512 for all four *_m. executioner-sword_d.dds is NOT overridden: detail index 3.14 at 4096 is authored, and 4096 is one permitted step over the 2048 vanilla greatsword diffuse. Loose overlay wins over the BSA; MO2 priority 149 sits above the source mod. 172.2 MB of DDS becomes 30.0 MB overlay + the kept 10.7 MB 4K diffuse. Author permissions could not be read programmatically (Nexus returns HTTP 403 to scripted page fetches and the v1 API exposes no permission fields); this overlay is local-only and no DDS is committed or redistributed."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Scale Nord Armor Texture Cap",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:11:00Z",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "fileName": "local overlay staged from Scale Nord Armor file 163922",
+      "sizeMb": 2.0,
+      "sha256": "f526bbbcae2fb83c31cfac2d19ba949e7b4c4c70a9771efe960b5d2d48777e29",
+      "transaction": "20260830T161103813Z-057e60c1ac8b",
+      "note": "Enforces docs/TEXTURE_POLICY.md on mod 41118. The vendor env-masks are two to three steps above their vanilla analogue: every vanilla steel *_m measures 512, while ScaleArmor_m ships at 4096 and ScaleBG_m / ScaleHelmet_m at 2048. Capped at 1024, the single permitted step, since their detail justifies one step but not three. 16.00 MB -> 2.00 MB, 14.00 MB reclaimed; detail rises in every case (3.97->6.03, 2.40->3.11, 8.31->11.39). Recipe on the installed vendor payload: texconv -f BC1_UNORM -m 0 -w 1024 -h 1024 -y -nologo for ScaleArmor_m.dds, ScaleBG_m.dds and ScaleHelmet_m.dds. Not touched: all diffuse and normal maps (source match or a justified single step), FurCloack.dds 2048 (soft at detail 1.20 but there is no vanilla cloak analogue to step down from), and both cubemaps. MO2 priority 2, above the vendor mod at 3 - verified that ScaleArmor_m resolves from this overlay at 1024 while ScaleArmor still resolves from the vendor at 4096. Local-only, no DDS committed, vendor folder byte-identical."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - SSE Display Tweaks Configuration",
+      "nexusName": "Ensrick-owned configuration overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "overlays/ensrick-sse-display-tweaks-config",
+      "sizeMb": 0.0,
+      "sha256": "",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:32:01Z",
+      "transaction": "20260830T023201341Z-c0048f1a4ea9",
+      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Varinia Dialogue Fragment Fix",
+      "nexusName": "Private Ensrick-owned compiled-script overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "Ensrick - Varinia Dialogue Fragment Fix 2026-08-30.7z",
+      "sizeMb": 0.0,
+      "sha256": "fc31af46675bbc200d9012eb8cbc2d79205e76fdd899f0b516dafbb645c7f1fa",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:24:05Z",
+      "transaction": "20260830T032405369Z-9df63c188f32",
+      "note": "PRIVATE, NON-DISTRIBUTABLE six-PEX overlay correcting Varinia 1.1.0's referenced but omitted dialogue fragments. Vendor ESP/BSAs remain byte-identical. Reproducibility, bytecode validation, file hashes, and permissions boundary are recorded in records/varinia-private-fragment-fix-2026-08-30.md."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Vikings Weaponry SE Mesh Port",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:10:41Z",
+      "nexusName": "Ensrick-owned SE mesh-format overlay",
+      "fileName": "local overlay staged from Vikings Weaponry SE file 42845",
+      "sizeMb": 0.59,
+      "sha256": "0eb2c9b0d57f30710b9443a406ae8bed8b3152d0bdca9decfa0914e887ca9b24",
+      "transaction": "20260830T151041570Z-8c467b2d7fdc",
+      "note": "Ports all six Vikings Weaponry (14409) meshes from Oldrim to SE. The mod's own BSA ships them at NIF stream 83 / NiTriShape / isLE=true despite the SE listing; nif-port-cli convert-sse (SSE-NIF-Optimizer dbba8b3 + nifly 846518b) rewrites them to stream 100 / BSTriShape / isSSE=true, which also rescales the LE Havok collision. Post-convert audit: bhkCollisionObject + bhkRigidBody + bhkConvexVerticesShape retained on all six, Prn sheath nodes intact (WeaponAxe / WeaponSword / SHIELD), plus Scb / INV / EdgeBlood, texture paths unchanged. Tris: lothbrokaxe 6960, lagerthasword 4740, lothbrokshield and lagerthashield 3600 each, flokiaxe 1348, flokiadz 1148 (vanilla steel war axe 1446, sword 1522, shield 1124). Loose files beat the mod's BSA; the vendor mod folder stays byte-identical to the Nexus archive. Disable this overlay to fall straight back to the author's meshes. Needs an in-game check - #70."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Vikings Weaponry Texture Cap",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:10:41Z",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "fileName": "local overlay staged from Vikings Weaponry SE file 42845",
+      "sizeMb": 31.0,
+      "sha256": "03acb56924c8487d4c482ff1bd8491651ef22db33e82c267fe5e5de0ba408b30",
+      "transaction": "20260830T151041788Z-1dceff1c0c5d",
+      "note": "Enforces docs/TEXTURE_POLICY.md on mod 14409's 2K FOMOD option. Two violations fixed. (1) Envmasks were two steps over source: vanilla steel/dwarven weapon and shield *_m measure 512x512, the mod ships all four at 2048. lothbrok_m, floki_m and lagerthasword_m went to 1024 (one permitted step, detail 2.65/2.40/1.64 justifies it); lothbrokshield_m went to the source 512 (detail 0.38 does not). (2) All five *_n were stored uncompressed A8R8G8B8 at 21.33 MB each; recompressed to BC7 at the unchanged source resolution of 2048, 5.33 MB each. BC7 not BC5 because the alpha carries the specular mask (mean 104-139, std 60-82); verified preserved to within 0.4 mean and 0.16 std. 128.0 MB of payload becomes 31.0 MB, 97.0 MB reclaimed. Recipe on the mod's own Textures.bsa (2K), texconv -m 0 -y -nologo: -f BC3_UNORM -w 1024 -h 1024 for lothbrok_m/floki_m/lagerthasword_m; -f BC3_UNORM -w 512 -h 512 for lothbrokshield_m; -f BC7_UNORM -w 2048 -h 2048 for all five *_n. Not touched: five diffuse at 2048 BC3 (source match; four measure 0.53-0.73, a quality note rather than a violation since no step was taken) and the two cubemaps (32x32, 96x96, 0.24 MB combined; lagertha_c is non-power-of-two but a real 6-face cubemap). Page says \"DO NOT UPLOAD THIS FILE ANYWHERE ELSE\" - a redistribution ban, not a modification ban; this overlay is local-only and no DDS is committed. Vendor folder byte-identical (SHA-256 verified on both BSAs and the ESP). See #64."
     },
     {
       "modId": 63725,
@@ -440,6 +993,67 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\57339-fsmp.json"
     },
     {
+      "modId": 157506,
+      "modName": "Grand Solitude - The Walls of High King Erling",
+      "nexusName": "Grand Solitude - The Walls of High King Erling",
+      "version": "1.3.1",
+      "fileId": 796423,
+      "fileName": "Grand Solitude - The Walls of High King Erling 157506 1.3.1 2026-08-28T13-35Z 587RqTfLO.7z",
+      "sizeMb": 355.64,
+      "sha256": "6dd495804fae532727571b0b47e87c675e2b6b57d86d6248cbb74cbf43fe7eee",
+      "plugins": [
+        "Grand Solitude - The Walls of High King Erling.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:14:42Z",
+      "transaction": "20260830T161425126Z-5d6db5fa54b2",
+      "fomodPlan": "records/fomod-plans/157506-grand-solitude.json"
+    },
+    {
+      "modId": 157450,
+      "modName": "Grand Solitude Patch Collection",
+      "nexusName": "Grand Solitude Patch Collection",
+      "version": "1.5",
+      "fileId": 797296,
+      "fileName": "Grand Solitude Patch Collection 157450 1.5 2026-08-30T00-21Z 8gJHT4LnE.rar",
+      "sizeMb": 20.39,
+      "sha256": "fe58c5aca1025688ae74ba54df312135ee8715792ac3fd49b6a3febfc0e64233",
+      "plugins": [
+        "Grand Solitude - 3DNPC patch.esp",
+        "Grand Solitude - CC Alternative Armors - Dragon Plate patch.esp",
+        "Grand Solitude - CC Alternative Armors - Leather patch.esp",
+        "Grand Solitude - CC Civil War Champions patch.esp",
+        "Grand Solitude - CC Crossbows patch.esp",
+        "Grand Solitude - CC Gray Cowl Returns patch.esp",
+        "Grand Solitude - CC Lords Mail patch.esp",
+        "Grand Solitude - CRF patch.esp",
+        "Grand Solitude - Lux Via patch.esp",
+        "Grand Solitude - Solitude Docks patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:15:31Z",
+      "transaction": "20260830T161528235Z-a8f5ecdd379b",
+      "fomodPlan": "records/fomod-plans/157450-grand-solitude-patches.json"
+    },
+    {
+      "modId": 98175,
+      "modName": "High Poly 3D Wolf Skull - Werewolf Totem Replacer",
+      "nexusName": "Werewolf Totem Skull Replacer",
+      "version": "1.3",
+      "fileId": 416610,
+      "fileName": "Werewolf Totem Skull Replacer-98175-1-3-1691917263.7z",
+      "sizeMb": 4.01,
+      "sha256": "b2c81477efcdb240b305d781303d7e3ef39d07ab9bfb43b7e003a0e70c954639",
+      "plugins": [],
+      "enabled": false,
+      "installedUtc": "2026-08-30T00:47:05Z",
+      "transaction": "20260830T004704888Z-915365daf2cc",
+      "fomodPlan": "records/fomod-plans/98175-werewolf-totem-skull.json",
+      "effectiveOverlay": "Ensrick - Scoped Werewolf Totem Skull 98175",
+      "overlayTransaction": "20260830T004705248Z-1c7c5fc60cb5",
+      "note": "Pristine vendor payload retained disabled. The active local-only overlay carries the same 21,090-triangle SSE mesh with all eight supplied 1K texture references remapped under textures/ensrick/werewolf_totem_98175. This preserves the intended hag-feather decoration without globally replacing the vanilla hag-feather ingredient. SMIM remains a soft asset dependency for the two rope texture references. No plugin, script, DLL, or global hag-feather path is active."
+    },
+    {
       "modId": 46311,
       "modName": "HIMBO",
       "nexusName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)",
@@ -470,6 +1084,190 @@
       "enabled": true,
       "installedUtc": "2026-08-23T05:26:33Z",
       "transaction": "20260823T052549675Z-6cfec5c42545"
+    },
+    {
+      "modId": 523,
+      "modName": "Immersive Sounds - Compendium",
+      "nexusName": "Immersive Sounds Compendium 3.0",
+      "version": "3.0",
+      "fileId": 221873,
+      "fileName": "Immersive Sounds Compendium 3.0-523-3-0-1629219996.zip",
+      "sizeMb": 276.23,
+      "sha256": "16b76d511e977a7570780b7ca8b419a998ac0e31eb560eb5e02c501f07ce01a4",
+      "plugins": [
+        "Immersive Sounds - Compendium.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:41:28Z",
+      "transaction": "20260830T154117002Z-75c987fecf63",
+      "fomodPlan": "records/fomod-plans/523-isc.json",
+      "note": "lazygecko's ISC 3.0. Installed at the author's defaults: FOMOD Main Files only. Every one of the 14 taste groups (weapon impacts, unarmed, draw/sheathe, bow shot/pull, arrow impact, soul trap, restoration, firebolt, creatures, nirnroot, and the misc silencers) has a first option that adds no files, so defaults = Main Files; any of them can be added later by reinstalling. No dependencies, no DLL, frozen since 2021 which is fine for an asset pack. Plugin overrides 1,572 records: 1130 SNDR, 109 IPCT, 72 IPDS, 66 MGEF, 65 ARMA, 41 WEAP, 37 ARMO, 13 MISC. It is that item-record layer, not the sounds, that creates conflicts - see #89 and the ISC-SRDified option (78446) that would erase the class entirely. Missing from loot-report.json, the pre-existing gap in #75."
+    },
+    {
+      "modId": 1461,
+      "modName": "INIGO",
+      "nexusName": "INIGO_V2.4C SE",
+      "version": "2.4C",
+      "fileId": 10496,
+      "fileName": "INIGO_V2.4C SE-1461-2-4C.7z",
+      "sizeMb": 270.84,
+      "sha256": "3a1808d422ab7af0c43254ed308c57b381fa0b4f4bed51d0efe8f6e368bffd9e",
+      "plugins": [
+        "Inigo.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:23:20Z",
+      "transaction": "20260830T152308613Z-74f68078019e",
+      "fomodPlan": "records/fomod-plans/1461-inigo.json",
+      "note": "Fully voiced Khajiit follower on his OWN follower framework - the author's page says in capitals 'Do not try to control Inigo with options from other mods. You will break his brain!' and 'He is on his own framework and doesn't affect your follower count.' Same boundary as Varinia (records/varinia-148853-2026-08-29.md): coexist with NFF, NEVER import. Measured, not assumed: NFF's FOMOD has no Inigo option (its optional-support folders are iNPC, RDO, NTMD, Traps, BAT, Perk Distributor), and 'Inigo' appears nowhere in nwsFollowerFramework.esp or its .pex scripts, so NFF's 're-run the installer after installing a supported mod' rule does not apply here. NFF auto-import is deprecated and disabled (Readme/Updates.txt), so nothing grabs him automatically; he can only become NFF-managed if the player picks NFF's Import dialogue or uses the Command Followers power. Guard: NFF MCM System page, per-follower import toggle, follower under the crosshair while a teammate. Plugin: 10,948 records, 10,818 new, 130 overrides, ZERO deleted records; 33 quests / 81 aliases, 122 scenes, 43 packages, 34 NAVM, 730 REFR, 43 CELL, 5 WRLD, 9 LAND. Not ESL-flaggable (CELL/DIAL/INFO/NAVM blockers) - costs a full plugin slot. LOOT masterlist: itm 34, deletedNavmesh 0, deletedReferences 0, which matches the author's note that the nav ITMs are harmless and matches this audit; mod 89385 'xEdit cleaned esp' is therefore NOT needed and was not installed. Scripts: 516 .pex, none reference PapyrusUtil, JContainers, SKSE, SkyUI/MCM, po3 or ConsoleUtil - no parked plugin is involved. seq/inigo.seq ships. FOMOD plan re-roots INIGO/Data because the archive double-wraps. NEW GAME: 33 quests and 81 aliases bake into saves and the Official Patch riding fix must land at the start of a playthrough, so start him on a new game. See #74 (NFF import guard) and #77 (Oldrim meshes)."
+    },
+    {
+      "modId": 58317,
+      "modName": "Inigo - Bloodchill Manor Patch",
+      "nexusName": "Inigo - Bloodchill Manor Patch",
+      "version": "1.0.0",
+      "fileId": 240839,
+      "fileName": "Inigo - Bloodchill Manor Patch-58317-1-0-0-1636738152.7z",
+      "sizeMb": 0.03,
+      "sha256": "5edb33f8f6ed3fd542f0c489741085f46d95115b7a9523793b9afdbc9a919366",
+      "plugins": [
+        "Eli_InigoBloodchillPatch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:23:26Z",
+      "transaction": "20260830T152326703Z-baff4baed345",
+      "note": "Elianora's patch for the collision between the CC Bloodchill Manor entrance and an exterior area used by Inigo's quest, linked from Inigo's own page. Installed because the user owns all 74 CC items, so ccEEJSSE005-Cave.esm is active (present in the game Data folder and listed at Skyrim.ccc line 71) and the conflict is live. 9 records, all overrides, 0 new, 0 deleted: 3 Tamriel exterior CELL, 3 LAND, 2 Dawnguard REFR, 1 WRLD. Checked against the installed Lux CC Patches 'Lux - Bloodchill Manor patch.esp' (70 overrides): ZERO record overlap, so the later-loading Lux patch cannot undo this one. Plain ESP, ESL-capable, left unflagged - vendor plugins are not edited."
+    },
+    {
+      "modId": 62868,
+      "modName": "Inigo Official Patch SE",
+      "nexusName": "Inigo Official Patch SE (ESPFE)",
+      "version": "2.0.0fe",
+      "fileId": 549241,
+      "fileName": "Inigo Official Patch SE (ESPFE)-62868-2-0-0fe-1728131550.zip",
+      "sizeMb": 0.01,
+      "sha256": "9d34918e4c888a14f95ad4ea21e0ae1c6db14393d4813133fb1fb8b9e9f8ec28",
+      "plugins": [
+        "Inigo Official Patch SE (ESPFE).esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:23:26Z",
+      "transaction": "20260830T152325950Z-d8791a8ae999",
+      "note": "ESPFE variant of Eolhin's author-approved patch v2.0.0 (2024-10), installed WITH Inigo because the page says several fixes only take effect if the patch lands at the same time as Inigo and 'the Riding Patch part is particularly time sensitive'. Three of its fixes are live for this build specifically: (1) the riding bug that triggers for anyone running SKSE64 AND RaceMenu, both installed here; (2) Kinggath's Bards College Expansion CC breaking Inigo's singing system - the user owns all 74 CC items so that CC is active; (3) forwarding a USSEP Braidwood Inn music fix that Inigo was overwriting. Also carries the Story Manager fix that can otherwise block quests in other mods. 134 records, 1 new, 133 overrides, 0 deleted; already ESL-flagged, masters Skyrim.esm + Inigo.esp only."
+    },
+    {
+      "modId": 29194,
+      "modName": "Interesting NPCs",
+      "nexusName": "Interesting NPCs 3DNPC",
+      "version": "4.5",
+      "fileId": 308366,
+      "fileName": "Interesting NPCs 3DNPC-29194-4-5-1660791732.7z",
+      "sizeMb": 2209.34,
+      "sha256": "346dba78593e2b5d386b789cc7a00899241baf8d6df6f29c9e3bde31384af050",
+      "plugins": [
+        "3DNPC.esp",
+        "3DNPC0.esp",
+        "3DNPC1.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:58:46Z",
+      "transaction": "20260830T025640648Z-e6e85fda762b"
+    },
+    {
+      "modId": 129827,
+      "modName": "Interesting NPCs - Abandoned Prison Combat Fix",
+      "nexusName": "Fjona Familiar Fix",
+      "version": "1.0.0",
+      "fileId": 544787,
+      "fileName": "Fjona Familiar Fix-129827-1-0-0-1726975702.zip",
+      "sizeMb": 0.0,
+      "sha256": "ebaea078c9f23cfaa22b842fd51f3c3de8d6d42745f32e535bb7117a4eaf723e",
+      "plugins": [
+        "FjonaFamiliarFix.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:00:35Z",
+      "transaction": "20260830T030035143Z-fd625828d08f"
+    },
+    {
+      "modId": 87245,
+      "modName": "Interesting NPCs - Cat and Mouse Script Fix",
+      "nexusName": "3DNPC Script Fixes - FOMOD",
+      "version": "2.1",
+      "fileId": 473807,
+      "fileName": "3DNPC Script Fixes - FOMOD-87245-2-1-1708711470.7z",
+      "sizeMb": 0.0,
+      "sha256": "d35cce95fabc11328034da78fa8f5fc47156ecd8fde8bca020f653ee071438b6",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:00:36Z",
+      "transaction": "20260830T030036058Z-82b88f103ae8",
+      "fomodPlan": "records/fomod-plans/87245-3dnpc-script-fixes-cat-and-mouse.json"
+    },
+    {
+      "modId": 29194,
+      "modName": "Interesting NPCs - Cutting Room Floor Patch",
+      "nexusName": "Interesting NPCs SE - Cutting Room Floor SSE Patch",
+      "version": "1.0",
+      "fileId": 130592,
+      "fileName": "Interesting NPCs SE - Cutting Room Floor SSE Patch-29194-1-0-1585236858.7z",
+      "sizeMb": 0.0,
+      "sha256": "acb8ccb67fb7e0b5ba07f475cf1ca3a355a87c8094156adbe628d838fa724a07",
+      "plugins": [
+        "3DNPC - CRF Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:14:25Z",
+      "transaction": "20260830T151425265Z-3f0b434e9fc7"
+    },
+    {
+      "modId": 131848,
+      "modName": "Interesting NPCs - ILS Freeze Fix",
+      "nexusName": "Interesting NPCs ILS Freeze Fix",
+      "version": "0.1.1",
+      "fileId": 553928,
+      "fileName": "Interesting NPCs ILS Freeze Fix-131848-0-1-1-1729420149.7z",
+      "sizeMb": 0.02,
+      "sha256": "347a898be5296c2c2f94f2d5c0b8d2a6336ad72ca72735770f8bad476f4a8930",
+      "plugins": [
+        "interesting npcs ILS fix.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:00:34Z",
+      "transaction": "20260830T030034285Z-8de651c46471"
+    },
+    {
+      "modId": 73584,
+      "modName": "Interesting NPCs - Survival Mode",
+      "nexusName": "Interesting NPCs (3DNPC) - Survival Mode",
+      "version": "1.00",
+      "fileId": 308490,
+      "fileName": "Interesting NPCs (3DNPC) - Survival Mode-73584-1-00-1660848915.rar",
+      "sizeMb": 0.0,
+      "sha256": "4cda92a7673e9703644422e29aa143bba08450368bfb70800c95b607795f257a",
+      "plugins": [
+        "3DNPC - Survival Mode.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:00:37Z",
+      "transaction": "20260830T030037102Z-2bc456cd47c5"
+    },
+    {
+      "modId": 29194,
+      "modName": "Interesting NPCs - Update 4.54",
+      "nexusName": "Interesting NPCs - 4.5 to 4.54 Update",
+      "version": "4.54",
+      "fileId": 377786,
+      "fileName": "Interesting NPCs - 4.5 to 4.54 Update-29194-4-54-1681353795.zip",
+      "sizeMb": 7.47,
+      "sha256": "c5198e3bb31f005522f7faacc282b8ce92eac40ca35c4ff981d113db9a1937ab",
+      "plugins": [
+        "3DNPC.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:59:22Z",
+      "transaction": "20260830T025922193Z-bff48d27fbae",
+      "fomodPlan": "records/fomod-plans/29194-interesting-npcs-update-4.54.json"
     },
     {
       "modId": 16495,
@@ -503,6 +1301,56 @@
       "note": "official 4.1.0 post-CommonLib-6.7.0 rebuild | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 109963,
+      "modName": "Legacy of Ysgramor",
+      "nexusName": "Main Archive SE",
+      "version": "1.0",
+      "fileId": 464173,
+      "fileName": "Main Archive SE-109963-1-0-1706030620.7z",
+      "sizeMb": 80.31,
+      "sha256": "b186e6d10f98915490c5b24f06a0196289c15edbecca70af5fa98234f68fd8e8",
+      "plugins": [
+        "NW_Companions_Replacer_Light.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:44Z",
+      "transaction": "20260828T175044327Z-8762502eb3b7",
+      "note": "standard 2K Main Archive SE; optional HD archive omitted (list texture policy). Base layer for the RMB stack; its esp is overridden by Xtudo Fixes"
+    },
+    {
+      "modId": 110002,
+      "modName": "Legacy of Ysgramor - HIMBO Conversion",
+      "nexusName": "Legacy of Ysgramor - HIMBO",
+      "version": "1.0",
+      "fileId": 464314,
+      "fileName": "Legacy of Ysgramor - HIMBO-110002-1-0-1706063179.7z",
+      "sizeMb": 6.18,
+      "sha256": "9d3f10d3bb023b5dd552047e348ee451b19d75f46d36697b8d42e1b3c3be67f6",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:46Z",
+      "transaction": "20260828T175046380Z-900890dcea3a",
+      "note": "pre-zeroed male meshes + BodySlide sources; intentionally overrides 22 male armor meshes from the Legacy base layer"
+    },
+    {
+      "modId": 111121,
+      "modName": "Legacy of Ysgramor - Xtudo Fixes - RMB",
+      "nexusName": "LoY - SE by Xtudo - Fixes RMB version",
+      "version": "1.9",
+      "fileId": 614646,
+      "fileName": "LoY - SE by Xtudo - Fixes RMB version-111121-1-9-1743974325.7z",
+      "sizeMb": 0.01,
+      "sha256": "43070f1a38a92fe18c870068e6688026534204584c5e91b2a7134880f6d34f2b",
+      "plugins": [
+        "NW_Companions_Replacer_Light.esp",
+        "RMB SPID - Legacy of Ysgramor.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:50Z",
+      "transaction": "20260828T175050273Z-343279d03e21",
+      "note": "RMB-flavour Xtudo fixes; winning override for NW_Companions_Replacer_Light.esp and RMB SPID - Legacy of Ysgramor.esp"
+    },
+    {
       "modId": 127557,
       "modName": "Light Placer",
       "nexusName": "Light Placer",
@@ -512,10 +1360,42 @@
       "sizeMb": 8.09,
       "sha256": "efd052703b8376477c09df4c2e5abd35bbc36e20f58dfdf08cc872053877a0b5",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-24T02:53:46Z",
       "transaction": "20260824T025345875Z-78180da2aec4",
-      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | UNPARKED 2026-08-30: park reason was wrong - installed 4.2.1 declares versionIndependence=5 (AddressLibraryPostAE|StructsPost629), PE stamp 1778212284 (2026-05-08) is ABOVE the 1748217600 SKSE reject cutoff, so the master-plugin gate passes; no skse64.log refusal was ever recorded (issue #79) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 188291,
+      "modName": "Lords of the Reach - Forsworn Gear Replacer",
+      "nexusName": "Lords of the Reach - Forsworn Gear Replacer",
+      "version": "1",
+      "fileId": 789882,
+      "fileName": "Lords Of The Reach - Replacer 188291 1 2026-08-14T18-50Z cE8hkAvGF.rar",
+      "sizeMb": 4.62,
+      "sha256": "cd8a2c6e6c5c61235f98dcd154b42c32e77c061f57facae0b141d9185a0ce445",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T18:31:00Z",
+      "transaction": "20260828T183100746Z-7115c8e01484",
+      "note": "Pure mesh replacer for standard Forsworn and Briarheart armor plus Forsworn sword and axe; male and female weighted meshes; no plugin, scripts, textures, bows, leveled-list changes, or stat edits"
+    },
+    {
+      "modId": 75349,
+      "modName": "Lunar Guard Armor",
+      "nexusName": "Lunar Guard - 2k Textures",
+      "version": "1.3",
+      "fileId": 365343,
+      "fileName": "Lunar Guard - 2k Textures-75349-1-3-1677929821.zip",
+      "sizeMb": 76.45,
+      "sha256": "6fad498cc29a753edadc593d18e4481b47723f88682fb16c3f651f6d291e9436",
+      "plugins": [
+        "LunarGuardArmor.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T04:26:50Z",
+      "transaction": "20260830T042649558Z-b1bd540b1fcd",
+      "fomodPlan": "records/fomod-plans/75349-lunar-guard-armor.json"
     },
     {
       "modId": 43158,
@@ -535,6 +1415,22 @@
       "installedUtc": "2026-08-24T02:36:34Z",
       "transaction": "20260824T023633168Z-eb05a5927423",
       "note": "fixed repack; dim beams/mists, no optimized meshes (CS LLF), USSEP latest | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 113002,
+      "modName": "Lux - Solitude Docks Patch",
+      "nexusName": "Lux - Solitude Docks Patch",
+      "version": "7.1",
+      "fileId": 742497,
+      "fileName": "Lux - Solitude Docks Patch-113002-7-1-1776358262.zip",
+      "sizeMb": 0.02,
+      "sha256": "543f35bc3943247d54a9eba2cea3a9ad88304d2508c2cc868d6445db847bbf4e",
+      "plugins": [
+        "Lux - Solitude Docks patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:18:53Z",
+      "transaction": "20260830T161851743Z-16e5a9c0468d"
     },
     {
       "modId": 43158,
@@ -621,6 +1517,57 @@
       "note": "fixed repack; parallax meshes, Solitude SMIM, vanilla well, Mara fix, USSEP | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 114169,
+      "modName": "Lux Orbis - Grand Solitude Patch",
+      "nexusName": "Lux Orbis - Grand Solitude patch",
+      "version": "4.6",
+      "fileId": 796261,
+      "fileName": "Lux Orbis - Grand Solitude patch 114169 4.6 2026-08-28T04-09Z Ks18n0w9u.zip",
+      "sizeMb": 0.05,
+      "sha256": "351aff3ee64679f258541bfd602456a39c7d987c54fcc069957d443625ccabec",
+      "plugins": [
+        "Lux Orbis - Grand Solitude patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:19:23Z",
+      "transaction": "20260830T161923095Z-6c65930f0d88"
+    },
+    {
+      "modId": 114169,
+      "modName": "Lux Orbis - Solitude Docks Updated Patch",
+      "nexusName": "Lux Orbis - Solitude Docks Updated Patch",
+      "version": "4.7",
+      "fileId": 742495,
+      "fileName": "Lux Orbis - Solitude Docks Updated Patch-114169-4-7-1776358127.zip",
+      "sizeMb": 0.01,
+      "sha256": "d271c5a094938c30204972868d00d50ef94e7a8c4dacab04bc62459eec9affdb",
+      "plugins": [
+        "Lux Orbis - Solitude Docks Updated patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:19:31Z",
+      "transaction": "20260830T161931116Z-8d3c1f4fb736"
+    },
+    {
+      "modId": 114169,
+      "modName": "Lux Orbis Patch Hub - Active Profile",
+      "nexusName": "Lux Orbis - Patch Hub",
+      "version": "4.7",
+      "fileId": 695720,
+      "fileName": "Lux Orbis - Patch Hub-114169-4-7-1765186191.rar",
+      "sizeMb": 84.61,
+      "sha256": "48bc06968b2cdd8e3505ce0d080136a623c2d5c5c14183b50230cb8d71a487cb",
+      "plugins": [
+        "Lux Orbis - 3DNPC patch.esp",
+        "Lux Orbis - Cutting Room Floor patch.esp",
+        "Lux Orbis - Wyrmstooth.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:19:10Z",
+      "transaction": "20260830T161905627Z-66ba4441a1dd",
+      "fomodPlan": "records/fomod-plans/114169-lux-orbis-active-profile-patches.json"
+    },
+    {
       "modId": 113002,
       "modName": "Lux Patch Hub",
       "nexusName": "Lux (patch hub)",
@@ -630,15 +1577,20 @@
       "sizeMb": 281.91,
       "sha256": "90a71f107383b46eb9a7d1927037e96046de6a5f2d110af96c147e0729490fc4",
       "plugins": [
+        "Lux - 3DNPC patch.esp",
         "Lux - BS Bruma patch.esp",
+        "Lux - Cuting Room Floor.esp",
+        "Lux - Grand Solitude patch.esp",
+        "Lux - Skyrim Unbound patch.esp",
         "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
         "Lux - Vigilant patch.esp",
+        "Lux - Water for ENB (Shades of skyrim) patch.esp",
         "Lux - Wyrmstooth.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-26T22:23:08Z",
-      "transaction": "20260826T222301256Z-1b479926b743",
-      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\113002-lux-patch-hub-with-vigilant.json"
+      "installedUtc": "2026-08-30T16:18:35Z",
+      "transaction": "20260830T161824749Z-a18abc89d632",
+      "fomodPlan": "records/fomod-plans/113002-lux-patch-hub.json"
     },
     {
       "modId": 63588,
@@ -728,17 +1680,19 @@
       "modId": 53000,
       "modName": "MCM Helper",
       "nexusName": "MCM Helper",
-      "version": "1.6.2",
-      "fileId": 746161,
-      "fileName": "MCM Helper-53000-1-6-2-1777219181.7z",
-      "sizeMb": 7.74,
-      "sha256": "24b07dadc471f58929255b5c189847e5a0b2c883c1834887ca9cb558e521be30",
-      "plugins": [],
-      "enabled": false,
-      "installedUtc": "2026-08-23T06:16:12Z",
-      "transaction": "20260823T061611548Z-1505c26a6afa",
-      "fomodPlan": "records/fomod-plans/53000-mcm-helper.json",
-      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "version": "1.6.3",
+      "fileId": 795510,
+      "fileName": "MCM Helper 53000 1.6.3 2026-08-26T18-07Z kATsMWjPO.7z",
+      "sizeMb": 7.81,
+      "sha256": "505af9c27062febd497be09b661d5df82e013ae4a205ffbec99698adf4503f52",
+      "plugins": [
+        "MCMHelper.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:43:35Z",
+      "transaction": "20260830T154334926Z-1e5681066bbe",
+      "fomodPlan": "records\\fomod-plans\\53000-mcm-helper.json",
+      "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md"
     },
     {
       "modId": 11069,
@@ -824,9 +1778,41 @@
         "nwsFollowerFramework.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-23T04:24:01Z",
-      "transaction": "20260823T042400017Z-e0f1d002ebed",
+      "installedUtc": "2026-08-30T03:00:47Z",
+      "transaction": "20260830T030045361Z-5cb963b2f2e6",
       "fomodPlan": "records/fomod-plans/55653-nethers-follower-framework.json"
+    },
+    {
+      "modId": 54502,
+      "modName": "No More Blur on Hit",
+      "nexusName": "No Radial Blur on Hit - ESPFE",
+      "version": "1.0",
+      "fileId": 346106,
+      "fileName": "No Radial Blur on Hit - ESPFE-54502-1-0-1672715271.zip",
+      "sizeMb": 0.0,
+      "sha256": "eacffdf99550d00793144d9a5d8f9cef9c98718278076d5e9af68af865f048b7",
+      "plugins": [
+        "NoRadialBlurOnHit.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:56:28Z",
+      "transaction": "20260830T025628511Z-06240b44d2f6"
+    },
+    {
+      "modId": 62271,
+      "modName": "One-handed warhammers",
+      "nexusName": "One-handed warhammers",
+      "version": "1.1.2",
+      "fileId": 279497,
+      "fileName": "One-handed warhammers-62271-1-1-2-1650851096.7z",
+      "sizeMb": 0.87,
+      "sha256": "ab14517dcb0e96a482683cd19929e7528016a7ee92e7cd39b2de8bd772eaa55a",
+      "plugins": [
+        "One-handed warhammers.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:15:10Z",
+      "transaction": "20260830T021509860Z-afa37fcc71a1"
     },
     {
       "modId": 92109,
@@ -838,10 +1824,10 @@
       "sizeMb": 7.88,
       "sha256": "1f31058b7cc9a28bca25b6c379ca2142c369eeb3d194831fefc11f234d3f28c0",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-23T06:15:13Z",
       "transaction": "20260823T061513133Z-56615f9a8bfe",
-      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "UNPARKED 2026-08-30 (#84): park reason was wrong - 3.2.0 declares versionIndependence=1 (AddressLibraryPostAE), versionIndependenceEx=1 (NoStructUse), PE stamp 1785103405 (2026-07-26) ABOVE the 1748217600 SKSE cutoff, so PluginManager.cpp:663 never fires. No skse64.log refusal was ever recorded."
     },
     {
       "modId": 133232,
@@ -952,6 +1938,39 @@
       "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
+      "modId": 0,
+      "modName": "QuickLoot IE - Ensrick 1.7.99",
+      "nexusName": null,
+      "version": null,
+      "fileId": null,
+      "fileName": null,
+      "sizeMb": null,
+      "sha256": null,
+      "plugins": [
+        "QuickLootIE.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T17:17:26Z",
+      "transaction": null,
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now."
+    },
+    {
+      "modId": 77594,
+      "modName": "Quicksilver's Sword Pack",
+      "nexusName": "Quicksilver's Sword Pack",
+      "version": "1.0",
+      "fileId": 326302,
+      "fileName": "Quicksilver's Sword Pack-77594-1-0-1666629991.7z",
+      "sizeMb": 32.96,
+      "sha256": "92e4b58260e58bf73196eb9fa16869677abafcd75138b6e72cfe0b9767c838c8",
+      "plugins": [
+        "QSSwordPack.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T04:32:17Z",
+      "transaction": "20260830T043215599Z-8bd90044bf02"
+    },
+    {
       "modId": 19080,
       "modName": "RaceMenu",
       "nexusName": "RaceMenu Anniversary Edition v0-4-20-0",
@@ -969,6 +1988,37 @@
       "note": "skee64.dll self-built from expired6978/SKSE64Plugins@9ebcb73 (author 1.7.99 port) + ILogger fmt-compat patch; runs on self-built SKSE master (ianpatt/skse64@14db212 incl. Expired PC-offset fixes). Official release supersedes on arrival (plugin_watch). | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | no transaction: skee64.dll self-built outside the transactional path; deployed skee64.dll sha256 5c7997fc... (overlay-guard rebuild 2026-08-25 00:58)"
     },
     {
+      "modId": 81282,
+      "modName": "Rally's Market Stalls Animated - 2K",
+      "nexusName": "Rally's Market Stalls 2K",
+      "version": "1.3",
+      "fileId": 466020,
+      "fileName": "Rally's Market Stalls 2K-81282-1-3-1706544887.7z",
+      "sizeMb": 131.73,
+      "sha256": "9a1ca93b63885fa0a20e83a373e9306d00e23bcd92f35ab6079e3636369d1294",
+      "plugins": [
+        "RallysAnimMarket.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:14:07Z",
+      "transaction": "20260830T161400941Z-b380b3f853e6",
+      "fomodPlan": "records/fomod-plans/81282-rallys-market-stalls-2k.json"
+    },
+    {
+      "modId": 81282,
+      "modName": "Rally's Market Stalls Animated - Hotfix",
+      "nexusName": "Hotfix",
+      "version": "1.3",
+      "fileId": 632767,
+      "fileName": "Hotfix-81282-1-3-1748580363.7z",
+      "sizeMb": 0.04,
+      "sha256": "8d95dc9ce55f1d2e2efdfa2aebaa4586a881984bdc2ac531704d2b489483383c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:14:17Z",
+      "transaction": "20260830T161417341Z-0e53dd8016a7"
+    },
+    {
       "modId": 64314,
       "modName": "Reverie - Skin",
       "nexusName": "Reverie",
@@ -984,6 +2034,93 @@
       "fomodPlan": "records/fomod-plans/64314-reverie.json"
     },
     {
+      "modId": 166460,
+      "modName": "Ring of Khajiit - Replacer",
+      "nexusName": "Ring of Khajiit - Replacer",
+      "version": "1.2",
+      "fileId": 715474,
+      "fileName": "Ring of Khajiit - Replacer-166460-1-2-1769819660.7z",
+      "sizeMb": 50.99,
+      "sha256": "58c75d1196270361b688bfeb9f6afb058db8c2f25fa6f87d7b08395b111d43fd",
+      "plugins": [
+        "Ring of Khajiit - Replacer.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T00:21:50Z",
+      "transaction": "20260830T002148018Z-37972895b08c",
+      "fomodPlan": "records/fomod-plans/166460-ring-of-khajiit-replacer.json",
+      "note": "2K main archive; CBBE female and HIMBO male meshes; silver band with yellow eyes; UBE and Legacy of the Dragonborn patch omitted because neither matching runtime is active; vendor payload installed without modification"
+    },
+    {
+      "modId": 63625,
+      "modName": "RMB SPIDified - Core Framework",
+      "nexusName": "RMB SPIDified - Core Framework",
+      "version": "6.3.0",
+      "fileId": 754890,
+      "fileName": "RMB SPIDified - Core Framework-63625-6-3-0-1779405589.zip",
+      "sizeMb": 0.17,
+      "sha256": "59aa7240bc7cacb3c8e29d0fee8f3b282730a2a054d35d0e9340628e7be6960d",
+      "plugins": [
+        "RMB SPID - Core Definitions.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:42Z",
+      "transaction": "20260828T175042440Z-98c98e088ef4",
+      "note": "FOMOD: core definitions + SkyPatcher support; skip followers; skip unique outfits; no jailer distribution; no Galmar/Rikke/Tullius/Ulfric exclusions"
+    },
+    {
+      "modId": 140349,
+      "modName": "RMB SPIDified - Legacy of Ysgramor",
+      "nexusName": "RMB SPIDified - Legacy of Ysgramor",
+      "version": "1.2.3",
+      "fileId": 749746,
+      "fileName": "RMB SPIDified - Legacy of Ysgramor-140349-1-2-3-1778185548.zip",
+      "sizeMb": 4.07,
+      "sha256": "80a4f36ff736036ac430d07d59dee58e48246d94bb724dc1d9043dc185420723",
+      "plugins": [
+        "NW_Companions_Replacer_Light.esp",
+        "RMB SPID - Legacy of Ysgramor - Wuuthrad.esp",
+        "RMB SPID - Legacy of Ysgramor.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:48Z",
+      "transaction": "20260828T175048289Z-2deefe475bea",
+      "note": "FOMOD: core + Named Companions (Inner Circle only) + Wuuthrad replacer esp + Skyforge Steel SkyPatcher model swap; NO broad faction distribution, no ESP Skyforge override, no standalone Runic Steel"
+    },
+    {
+      "modId": 109490,
+      "modName": "Sagittarius - Real Bows",
+      "nexusName": "Sagittarius-Real Bows 1.2",
+      "version": "1.2",
+      "fileId": 468852,
+      "fileName": "Sagittarius-Real Bows-109490-1-2-1707378564.zip",
+      "sizeMb": 122.84,
+      "sha256": "bf0bb4785df66deeabecfbdba39eec8297ba7a3cd8e34f0cf850f724fd06f287",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T04:19:43Z",
+      "transaction": "20260830T041942131Z-3b87565886df",
+      "fomodPlan": "records/fomod-plans/109490-sagittarius-real-bows.json"
+    },
+    {
+      "modId": 41118,
+      "modName": "Scale Nord Armor",
+      "nexusName": "Main Archive",
+      "version": "1.0",
+      "fileId": 163922,
+      "fileName": "Main Archive-41118-1-0-1601840333.7z",
+      "sizeMb": 32.99,
+      "sha256": "640399f6201cf73ad30695c0b2529cb589e94c6b8a3bdf304e04fe89e00f31af",
+      "plugins": [
+        "DIS_NordScale.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:10:36Z",
+      "transaction": "20260830T161034636Z-0c3ce166f845",
+      "fomodPlan": "records/fomod-plans/41118-scale-nord-armor.json",
+      "note": "NordwarUA's Nordic scale set, MAIN file. 100% ADDITIVE: 43 new records (11 ARMO, 10 ARMA, 22 COBJ), ZERO overrides, zero deleted, masters Skyrim.esm + Update.esm only - no protected-gear risk. No LVLI and no NPC_, so it is craft-only and reaches nobody; distribution proposed on #96. Heavy set needs Steel Smithing, light needs Advanced Armors, the fur collar is Miscellaneous from a bear pelt. WATCH: both Fur Collar variants sit on biped slots 40 (tail) + 46 (cloak), the Cloaks of Skyrim / Winter Is Coming slot - no cloak mod is installed today but this is a future collision; helmets take slot 42 (circlet). FOMOD plan re-roots the archive's Data/ wrapper. Texture choice: MAIN over Medium and Full 4k. Vanilla steel is the analogue (steelarmor 2048, helmet/gauntlets/boots 1024, every steel *_m 512); MAIN's 4096 armor maps are one step up and the detail test justifies it (ScaleArmor 3.79, _n 2.30 vs a 1.60 threshold), while Full 4k is two steps up on the small pieces and the author himself says 'but why ...'. Medium is a clean swap if a smaller footprint is wanted. Env-masks were the real violation and are capped in 'Ensrick - Scale Nord Armor Texture Cap' (#64). Plugin is ESL-capable with no compaction needed but left unflagged - vendor plugins are not edited."
+    },
+    {
       "modId": 43532,
       "modName": "Scrambled Bugs",
       "nexusName": "Scrambled Bugs - Anniversary Edition (1.6.629.0 and later)",
@@ -997,6 +2134,79 @@
       "installedUtc": "2026-08-23T06:01:47Z",
       "transaction": "20260823T060147020Z-534645bf7a7d",
       "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+    },
+    {
+      "modId": 114482,
+      "modName": "SFCO3 Patch Collection - Active Profile",
+      "nexusName": "SFCO3 Patch Collection",
+      "version": "1.22",
+      "fileId": 797290,
+      "fileName": "SFCO3 Patch Collection 114482 1.22 2026-08-29T23-50Z miUDjFa2X.rar",
+      "sizeMb": 80.17,
+      "sha256": "c88db8fb91b8d5209601ef43bb502f3b823fbd29e4f65d547dcd201f152d0e32",
+      "plugins": [
+        "SFCO3-Addons - 3DNPC patch.esp",
+        "SFCO3-Addons - CRF patch.esp",
+        "SFCO3-Addons - Grand Solitude patch.esp",
+        "SFCO3-Addons - Snazzy Interiors - Solitude Bryling's House patch.esp",
+        "SFCO3-Addons - Snazzy Interiors - Solitude Erikur's House patch.esp",
+        "SFCO3-Addons - Snazzy Interiors - Solitude Vittoria Vici's House patch.esp",
+        "SFCO3-Addons - Snazzy Solitude Mid-Houses patch.esp",
+        "SFCO3-Addons - Solitude Docks Updated patch.esp",
+        "SFCO3-Addons - The Gray Cowl of Nocturnal Patch.esp",
+        "SFCO3-Addons - Vigilant Patch.esp",
+        "SFCO3-Addons - Wyrmstooth patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:17:59Z",
+      "transaction": "20260830T161755498Z-1e97e8703423",
+      "fomodPlan": "records/fomod-plans/114482-sfco3-active-profile-patches.json"
+    },
+    {
+      "modId": 50049,
+      "modName": "Simple Dual Sheath",
+      "nexusName": "Simple Dual Sheath for 1.6.629 and newer",
+      "version": "1.5.9",
+      "fileId": 797176,
+      "fileName": "Simple Dual Sheath for 1.6.629 and newer 50049 1.5.9 2026-08-29T20-25Z 8gJHT4LZB.zip",
+      "sizeMb": 0.24,
+      "sha256": "e8370fac03d94604bd836482e078aa8fd5a18bc45a782070efdbd7a0ad3e3c93",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:03:47Z",
+      "transaction": "20260830T160347405Z-cf9b88dd7826"
+    },
+    {
+      "modId": 95943,
+      "modName": "Simple Hunting Overhaul",
+      "nexusName": "Simple Hunting Overhaul",
+      "version": "1.16",
+      "fileId": 699215,
+      "fileName": "Simple Hunting Overhaul-95943-1-16-1766050937.7z",
+      "sizeMb": 27.09,
+      "sha256": "fb6a89ed4874891efacf75c5c9b1c2d2f99da5cee785cd1203a30866be9ce732",
+      "plugins": [
+        "Simple Hunting Overhaul.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:28:51Z",
+      "transaction": "20260830T152850076Z-dab31c590082"
+    },
+    {
+      "modId": 95943,
+      "modName": "Simple Hunting Overhaul - Bruma Patch",
+      "nexusName": "SHO - Beyond Skyrim Bruma Patch",
+      "version": "1.13",
+      "fileId": 535062,
+      "fileName": "SHO - Beyond Skyrim Bruma Patch-95943-1-13-1724571884.zip",
+      "sizeMb": 0.0,
+      "sha256": "b19236606a323846451579c353437a86d84d55d394ebc5fc3d1ef47bdae7b931",
+      "plugins": [
+        "SHO - Bruma Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:28:52Z",
+      "transaction": "20260830T152852491Z-15ed5821eda4"
     },
     {
       "modId": 82558,
@@ -1042,6 +2252,87 @@
       "installedUtc": "2026-08-23T20:41:51Z",
       "transaction": "20260823T204151650Z-d5530cdb15e6",
       "fomodPlan": "records/fomod-plans/30379-skse-scripts.json"
+    },
+    {
+      "modId": 112902,
+      "modName": "Skyking Signs",
+      "nexusName": "Skyking Signs",
+      "version": "2.1",
+      "fileId": 639271,
+      "fileName": "Skyking Signs-112902-2-1-1750270231.7z",
+      "sizeMb": 196.41,
+      "sha256": "32115ef5522f5b095b7c4357d5f9bd4bd101564f3e43cf2571086b67fc11609c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T00:41:20Z",
+      "transaction": "20260830T004110355Z-a037a3306b14",
+      "fomodPlan": "records\\fomod-plans\\112902-skyking-signs.json",
+      "note": "Deterministic main plus complex-parallax selection; 60 BC7 textures, all at or below 2K; no plugin, scripts, DLLs, or runtime config; intentionally wins 44 vanilla sign-mesh paths from SMIM; vendor payload installed without modification"
+    },
+    {
+      "modId": 112902,
+      "modName": "Skyking Signs - Bruma Patch",
+      "nexusName": "Skyking Signs - Bruma Patch",
+      "version": "1.0",
+      "fileId": 481004,
+      "fileName": "Skyking Signs - Bruma Patch-112902-1-0-1710561125.7z",
+      "sizeMb": 0.0,
+      "sha256": "ff49b5c37fdd58b1111088093cd2175e59356402d0b3b67df00a69a828628ac9",
+      "plugins": [
+        "Skyking Signs - Bruma.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:33:39Z",
+      "transaction": "20260830T023339490Z-5d453c949c7a"
+    },
+    {
+      "modId": 112902,
+      "modName": "Skyking Signs - Interesting NPCs Patch",
+      "nexusName": "Skyking Signs - Interesting NPCs",
+      "version": "1.01",
+      "fileId": 548771,
+      "fileName": "Skyking Signs - Interesting NPCs-112902-1-01-1727984478.7z",
+      "sizeMb": 4.24,
+      "sha256": "902a7b8d7445e04d022091260678cdfb27e7cebc7baf788854263df42986af80",
+      "plugins": [
+        "Skyking Signs - Interesting NPCs Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T03:01:57Z",
+      "transaction": "20260830T030156661Z-81d3b1e162c5"
+    },
+    {
+      "modId": 114940,
+      "modName": "Skyking Unique Signs",
+      "nexusName": "Skyking Unique Signs",
+      "version": "2.1",
+      "fileId": 639272,
+      "fileName": "Skyking Unique Signs-114940-2-1-1750270358.7z",
+      "sizeMb": 43.12,
+      "sha256": "cb6bb2884498faa44675c447f755837688003235351fa755f6547ea496e588db",
+      "plugins": [
+        "Skykings Unique Signs.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T00:41:23Z",
+      "transaction": "20260830T004121065Z-237c96376079",
+      "fomodPlan": "records\\fomod-plans\\114940-skyking-unique-signs.json",
+      "note": "Deterministic integrated BOS plus complex-parallax selection; 14 BC7 2K textures; 14-record ESL-flagged resource plugin and 14 exact BOS reference swaps; Base Object Swapper 3.5.0 and Skyking Signs are active; vendor payload installed without modification"
+    },
+    {
+      "modId": 106659,
+      "modName": "SkyPatcher",
+      "nexusName": "SkyPatcher - AE",
+      "version": "7.0.3",
+      "fileId": 796107,
+      "fileName": "SkyPatcher - AE 106659 7.0.3 2026-08-27T21-03Z 587RqTffM.zip",
+      "sizeMb": 10.37,
+      "sha256": "195e5e8cf1eb7517e7d3c9ea581098eb5e5776441f7dbe20c256dc0f896dd38b",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:40Z",
+      "transaction": "20260828T175040604Z-ebf5716c4c9d",
+      "note": "official AE binary (Nexus redistribution-restricted). DEFECT 2026-08-29: dll/ini staged at Plugins/ in the mod root, not SKSE/Plugins/ - the archive SKSE level was stripped at install, so SKSE cannot load it from Data/Plugins"
     },
     {
       "modId": 27962,
@@ -1101,10 +2392,10 @@
       "sizeMb": 0.99,
       "sha256": "f9b09aa4e4f5ff46fcd1a3a1970bf24d5bb69250c219b206f0a134e35f56b8ff",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-24T03:08:58Z",
       "transaction": "20260824T030857914Z-06534997dc2b",
-      "note": "author-recommended variant of wSkeever water fix | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+      "note": "author-recommended variant of wSkeever water fix | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | PARKED 2026-08-27: 49 of its 59 payload meshes overlap the selected Water for ENB waterfall/effects add-on; retained only for rollback"
     },
     {
       "modId": 659,
@@ -1152,6 +2443,101 @@
       "installedUtc": "2026-08-24T02:29:58Z",
       "transaction": "20260824T022955700Z-1477cffea32a",
       "note": "direct archive"
+    },
+    {
+      "modId": 113045,
+      "modName": "Snazzy Furniture and Clutter Overhaul 3 - BOS",
+      "nexusName": "SFCO3 - BOS",
+      "version": "3.50",
+      "fileId": 783076,
+      "fileName": "SFCO3 - BOS 113045 3.50 2026-07-30T01-11Z vlGiB97GH.7z",
+      "sizeMb": 651.73,
+      "sha256": "50bffcdbfc292080a2eef47f88ffc3840333b3d8017cab6c019a5bf84e2c5de3",
+      "plugins": [
+        "SFCO3-BOS - Addons.esp",
+        "SFCO3-BOS - Resources.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:17:47Z",
+      "transaction": "20260830T161707126Z-5b10bd003d4d",
+      "fomodPlan": "records/fomod-plans/113045-sfco3-bos.json"
+    },
+    {
+      "modId": 91604,
+      "modName": "Snazzy Interiors Patch Collection - Solitude Separated",
+      "nexusName": "Snazzy Interiors Patch Collection",
+      "version": "2.8",
+      "fileId": 786655,
+      "fileName": "Snazzy Interiors Patch Collection 91604 2.8 2026-08-07T18-27Z lNkz9LaLF.rar",
+      "sizeMb": 98.0,
+      "sha256": "d1cda0e5f3426cdcd68b161ec922c1a3b75a6576558bdb5319552d9ae3dc5889",
+      "plugins": [
+        "Snazzy Interiors - Solitude Bryling's House - Lux patch.esp",
+        "Snazzy Interiors - Solitude Erikur's House - CC Gray Cowl Returns patch.esp",
+        "Snazzy Interiors - Solitude Erikur's House - Lux patch.esp",
+        "Snazzy Interiors - Solitude Erikur's House - USSEP patch.esp",
+        "Snazzy Interiors - Solitude Vittoria Vici's House - Lux Patch.esp",
+        "Snazzy Solitude Mid-Houses - CC Fishing patch.esp",
+        "Snazzy Solitude Mid-Houses - Lux patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:16:59Z",
+      "transaction": "20260830T161655745Z-38df2d490838",
+      "fomodPlan": "records/fomod-plans/91604-snazzy-solitude-separated-patches.json"
+    },
+    {
+      "modId": 147670,
+      "modName": "Snazzy Location Resources",
+      "nexusName": "Snazzy Location Resources",
+      "version": "2.40",
+      "fileId": 785915,
+      "fileName": "Snazzy Location Resources 147670 2.40 2026-08-05T22-28Z UK35Xn2s8.7z",
+      "sizeMb": 960.6,
+      "sha256": "a55505844ec6d439f6c89149ded890f520875a77144a58f108d2d7717489ac74",
+      "plugins": [
+        "Snazzy Location Resources.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:16:36Z",
+      "transaction": "20260830T161540780Z-2d6b86ae2c8d",
+      "fomodPlan": "records/fomod-plans/147670-snazzy-location-resources.json"
+    },
+    {
+      "modId": 147618,
+      "modName": "Snazzy Solitude - Separated Houses",
+      "nexusName": "Snazzy Solitude AIO",
+      "version": "2.3",
+      "fileId": 760311,
+      "fileName": "Snazzy Solitude AIO-147618-2-3-1780799835.7z",
+      "sizeMb": 9.72,
+      "sha256": "8d09b5e7bada85424b01ec19e407381b7112fec1e94a426f8acf5b1970fc6470",
+      "plugins": [
+        "Snazzy Interiors - Solitude Bryling's House.esp",
+        "Snazzy Interiors - Solitude Erikur's House.esp",
+        "Snazzy Interiors - Solitude Vittoria Vici's House.esp",
+        "Snazzy Solitude Mid-Houses.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:16:46Z",
+      "transaction": "20260830T161644824Z-e98da6c18edf",
+      "fomodPlan": "records/fomod-plans/147618-snazzy-solitude-separated.json"
+    },
+    {
+      "modId": 33777,
+      "modName": "Solitude Docks Updated",
+      "nexusName": "Solitude Docks",
+      "version": "3.2c",
+      "fileId": 511162,
+      "fileName": "Solitude Docks-33777-3-2c-1718284401.zip",
+      "sizeMb": 37.26,
+      "sha256": "22b955384335cb253625075b88865eb0e62f5404d26da48eb3d0a581c7b21581",
+      "plugins": [
+        "Solitude Docks.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:14:50Z",
+      "transaction": "20260830T161449894Z-ec7d87472bd6",
+      "fomodPlan": "records/fomod-plans/33777-solitude-docks-updated.json"
     },
     {
       "modId": 68656,
@@ -1203,20 +2589,34 @@
       "transaction": "20260827T015148427Z-4543791fea3d"
     },
     {
+      "modId": 77815,
+      "modName": "Sound Record Distributor",
+      "nexusName": "Sound Record Distributor",
+      "version": "1.5.4",
+      "fileId": 794646,
+      "fileName": "Sound Record Distributor 77815 1.5.4 2026-08-24T21-06Z Ks18n0wtq.zip",
+      "sizeMb": 6.29,
+      "sha256": "44066a73dd6ef5a62a181602db3d1ee7d2966621f19087c6014f2b3319e554d3",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:38:28Z",
+      "transaction": "20260830T153828042Z-a45359c0fb22",
+      "note": "doodlum's SRD, MAIN file labelled 1.5.4; the DLL's own SKSEPlugin_Version reports pluginVersion 0x01050030 = 1.5.3.0, so the file label ran ahead of the binary. GPL-3, open source. Requires po3 Tweaks, installed. PASSES the 1.7.104 SKSE gate on every count, read from the PE export rather than inferred: versionIndependence=0x00000005 (kAddressLibrary | kStructsPost629), versionIndependenceEx=0x00000002 (kVersionIndependentEx_AddressLibraryV5 - the exact flag that re-parked JContainers), compatibleVersions array EMPTY so there is no whitelist to refuse it on, seVersionRequired 0. Its PE TimeDateStamp is 1787604543 (2026-08-24), above the 1748217600 cutoff in skse64/PluginManager.cpp:657-668, so the V5 refusal branch never fires either way. DLL-only, no ESP. Ships a 24.8 MB .pdb alongside the DLL, kept as the author shipped it - CrashLoggerSSE can use it."
+    },
+    {
       "modId": 36869,
       "modName": "Spell Perk Item Distributor",
       "nexusName": "Spell Perk Item Distributor",
-      "version": "7.3.2",
-      "fileId": 782996,
-      "fileName": "Spell Perk Item Distributor 36869 7.3.2 2026-07-29T20-36Z Ae46W7wdT.7z",
-      "sizeMb": 8.56,
-      "sha256": "ecd9322eb652b035fa41a3b587655f0a3b0c780637174b7e6eb12f7b50c9984e",
+      "version": "7.3.3",
+      "fileId": 795621,
+      "fileName": "Spell Perk Item Distributor 36869 7.3.3 2026-08-26T21-53Z rvwm2B1Z2.7z",
+      "sizeMb": 6.09,
+      "sha256": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71",
       "plugins": [],
-      "enabled": false,
-      "installedUtc": "2026-08-23T05:50:45Z",
-      "transaction": "20260823T055044478Z-a67028b4d8cb",
-      "fomodPlan": "records/fomod-plans/36869-spid.json",
-      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "enabled": true,
+      "installedUtc": "2026-08-28T17:50:38Z",
+      "transaction": "20260828T175038813Z-37dc1fcfcb1e",
+      "note": "unparked 2026-08-28, replaces the parked 7.3.2 row. Nexus dll+pdb were replaced by a local build of powerof3/Spell-Perk-Item-Distributor 7.3.3 branch ensrick/skyrim-1.7.104 commit b580f77 (dll 7.3.3.104.0, sha256 d9ca36fdd3e2a44a624babf53f19ef8fe62e420bd1f38118683a20e7cbd4850d). DEFECT 2026-08-29: dll staged at Plugins/ in the mod root, not SKSE/Plugins/ - SKSE cannot load it from Data/Plugins"
     },
     {
       "modId": 34705,
@@ -1228,10 +2628,24 @@
       "sizeMb": 0.18,
       "sha256": "08b8bc6f548cf12aa82a234166efe10851bfb994d02393f2e716754e6b3174e0",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-23T06:01:50Z",
       "transaction": "20260823T060150223Z-be8d1441d5e5",
-      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 0.5.12-fmt5 dll (sha256 47143dfb... (rev 2: 4 stale pre-1.6.1130 ids rebound, full 3641-id inventory resolves), Ensrick/SSEDisplayTweaks branch ensrick/1.7.99-format5 @18c1485 + Ensrick/sse-build-resources) - format-5 versionlib parser validated offline vs meh321 offsets dump (7/7 ids), versionIndependenceEx=0x3 passes the skse64 master gate, popups converted to log-only. Official 0.5.16 dll+ini preserved as .bak.v0.5.16-official; kept the 0.5.16 ini (upstream 0.5.13-0.5.16 source never published, dll base is 0.5.12). CAVEAT: MenuManager offset for menu-gated framerate limits not 1.7.99-verified - first suspect if menu fps behaves oddly. Supersede when SlavicPotato ships an official 1.7.99 build. | REV-3 UNPARKED 2026-08-26 02:2x: sha256 1e07820d..., 26/26 patch sites byte-verified vs 1.7.99 exe, events non-fatal, BranchTrampoline Destroy-ownership patch (shared-pool unload crash structurally fixed), 4 niche features gated off with log warnings (DisableActorFade, VLS dragon/horse, PCDialogueLookSpeedSE smoothing, LoadScreenFilter). ONE unreceipted judgment: LoadPluginINI call-site 0xB06 (flip to 0xAFA if config-load events fire twice). Ensrick/SSEDisplayTweaks @2981fe3. In-game verification pending"
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 0.5.12-fmt5 dll (sha256 47143dfb... (rev 2: 4 stale pre-1.6.1130 ids rebound, full 3641-id inventory resolves), Ensrick/SSEDisplayTweaks branch ensrick/1.7.99-format5 @18c1485 + Ensrick/sse-build-resources) - format-5 versionlib parser validated offline vs meh321 offsets dump (7/7 ids), versionIndependenceEx=0x3 passes the skse64 master gate, popups converted to log-only. Official 0.5.16 dll+ini preserved as .bak.v0.5.16-official; kept the 0.5.16 ini (upstream 0.5.13-0.5.16 source never published, dll base is 0.5.12). CAVEAT: MenuManager offset for menu-gated framerate limits not 1.7.99-verified - first suspect if menu fps behaves oddly. Supersede when SlavicPotato ships an official 1.7.99 build. | REV-3 UNPARKED 2026-08-26 02:2x: sha256 1e07820d..., 26/26 patch sites byte-verified vs 1.7.99 exe, events non-fatal, BranchTrampoline Destroy-ownership patch (shared-pool unload crash structurally fixed), 4 niche features gated off with log warnings (DisableActorFade, VLS dragon/horse, PCDialogueLookSpeedSE smoothing, LoadScreenFilter). ONE unreceipted judgment: LoadPluginINI call-site 0xB06 (flip to 0xAFA if config-load events fire twice). Ensrick/SSEDisplayTweaks @2981fe3. Disabled 2026-08-30 after official v0.5.25 superseded the emergency build; retained as rollback only."
+    },
+    {
+      "modId": 34705,
+      "modName": "SSE Display Tweaks Official",
+      "nexusName": "SSE Display Tweaks",
+      "version": "0.5.25",
+      "fileId": 797175,
+      "fileName": "SSE Display Tweaks 34705 0.5.25 2026-08-29T20-20Z QRde31FV2.zip",
+      "sizeMb": 0.18,
+      "sha256": "4f7a4980955eec472f3e73219df487fb990c48fd5ad0020c101cd8082b6b2c8c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:31:47Z",
+      "transaction": "20260830T023147461Z-9daac28ee8d4"
     },
     {
       "modId": 17230,
@@ -1265,6 +2679,38 @@
       "installedUtc": "2026-08-26T22:22:59Z",
       "transaction": "20260826T222258909Z-55a09b162fe0",
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\97536-starfrost.json"
+    },
+    {
+      "modId": 154073,
+      "modName": "Steel Plate Armors",
+      "nexusName": "Main archive",
+      "version": "1.0",
+      "fileId": 643838,
+      "fileName": "Main archive-154073-1-0-1751574907.7z",
+      "sizeMb": 92.96,
+      "sha256": "e0d12a2043feab53395d8a2da29355d635310ef9dc8222dd43e4f115536cc020",
+      "plugins": [
+        "NW_Steel_Plate_Armors.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:34:40Z",
+      "transaction": "20260830T023435235Z-0b4391ee1c42",
+      "fomodPlan": "records/fomod-plans/154073-steel-plate-armors.json"
+    },
+    {
+      "modId": 154073,
+      "modName": "Steel Plate Armors - HD Textures",
+      "nexusName": "HD Textures",
+      "version": "1.0",
+      "fileId": 643839,
+      "fileName": "HD Textures-154073-1-0-1751575281.7z",
+      "sizeMb": 262.06,
+      "sha256": "1199bdbd63117ebf11f1227e1ca180db9624629ba883886a0d21f62bf95d78dc",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T02:34:59Z",
+      "transaction": "20260830T023444164Z-28537eb2675c",
+      "fomodPlan": "records/fomod-plans/154073-steel-plate-armors-hd.json"
     },
     {
       "modId": 78244,
@@ -1366,6 +2812,22 @@
       "transaction": "20260823T060134726Z-ab1003b1b7a6"
     },
     {
+      "modId": 148853,
+      "modName": "Varinia - Custom Voiced Retired Spy and Companion",
+      "nexusName": "Varinia - Custom Voiced Follower",
+      "version": "1.1.0",
+      "fileId": 697835,
+      "fileName": "Varinia - Custom Voiced Follower-148853-1-1-0-1765697210.zip",
+      "sizeMb": 210.38,
+      "sha256": "4fdb7ebefba131ed392f2b2c17a9e0cc26af848e6392b96b2a4ee8d3981c1dff",
+      "plugins": [
+        "VLIOVarinia.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T01:34:01Z",
+      "transaction": "20260830T013400177Z-7965e3883cbf"
+    },
+    {
       "modId": 11849,
       "modName": "VIGILANT",
       "nexusName": "VIGILANT SE v182",
@@ -1400,6 +2862,24 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\11894-vigilant-en-voiced.json"
     },
     {
+      "modId": 14409,
+      "modName": "Vikings Weaponry SE - Johnskyrim",
+      "nexusName": "Vikings Weaponry - Johnskyrim",
+      "version": "1.3",
+      "fileId": 42845,
+      "fileName": "Vikings Weaponry - Johnskyrim-14409-1-3.rar",
+      "sizeMb": 270.78,
+      "sha256": "5693e08a15141ba371b2ca4ec013a1d2f44d5b35a3ca731ff59ccb95b552743d",
+      "plugins": [
+        "Vikings Weaponry - Johnskyrim.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T15:06:56Z",
+      "transaction": "20260830T150652834Z-f32db08aac19",
+      "fomodPlan": "records/fomod-plans/14409-vikings-weaponry.json",
+      "note": "FOMOD plan installs CORE + the 2K texture option only. The shipped OPTIONAL 'Vikings Weaponry LL - Johnskyrim.esp' was deliberately NOT installed: it overrides five Skyrim.esm bandit LVLIs and injects all 8 items from level 1 (LItemBanditBossWarAxe ~50%, LItemBanditBossShield ~50%, LItemBanditWarAxe ~20%), which conflicts with the master distribution mod plan in docs/PATCH_INTENTS.md - see #65. 4K rejected: vanilla steel weapon and shield diffuse/normal are already 2048, so 4K is an unjustified step up and its diffuse maps fail the detail test (0.74-1.18 against 1.60). Plugin is 30 new records, 0 overrides, 0 deleted, so no protected-gear risk; not ESL-flaggable as shipped (28 FormIDs above 0xFFF). Two Ensrick overlays sit above it: SE Mesh Port (#70) and Texture Cap (#64). Open defects: #68 shield recipes lack the Steel Smithing perk gate, #69 stats reach Dwarven-to-above-Glass at the Steel bench."
+    },
+    {
       "modId": 668,
       "modName": "VioLens",
       "nexusName": "VioLens - A Killmove Mod SE 2.30",
@@ -1415,6 +2895,59 @@
       "installedUtc": "2026-08-26T22:22:57Z",
       "transaction": "20260826T222256991Z-4f2048e1b7da",
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\668-violens.json"
+    },
+    {
+      "modId": 37061,
+      "modName": "Water for ENB",
+      "nexusName": "Water for ENB",
+      "version": "2.21",
+      "fileId": 784038,
+      "fileName": "Water for ENB 37061 2.21 2026-08-01T12-24Z N2AYL5rWs.zip",
+      "sizeMb": 662.91,
+      "sha256": "bfc4a9bb74c714e768fef10b55d09a68303f11ad2d08e76c2591a66f1f4fe5dd",
+      "plugins": [
+        "Water for ENB (Shades of Skyrim).esp",
+        "Water for ENB - Patch - Beyond Reach.esp",
+        "Water for ENB - Patch - Beyond Skyrim.esp",
+        "Water for ENB - Patch - Wyrmstooth.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-28T02:47:37Z",
+      "transaction": "20260828T024732460Z-5b2f1ec4c775",
+      "fomodPlan": "records/fomod-plans/37061-water-for-enb-cs.json",
+      "note": "Natural Shades of Skyrim for Community Shaders; 2K core textures; default brightness; transparent 2K waterfall/effects add-on; parallax-ready creek meshes; no legacy iNeed mode; Beyond Reach, Bruma, and Wyrmstooth patches"
+    },
+    {
+      "modId": 50394,
+      "modName": "Water for ENB - USSEP Patch",
+      "nexusName": "WENB Shades USSEP Patch",
+      "version": "1",
+      "fileId": 234346,
+      "fileName": "WENB Shades USSEP Patch-50394-1-1634032712.7z",
+      "sizeMb": 0.02,
+      "sha256": "62c4e86cce10242e3373523868cec16b3ef6110d26854f5bf7460736c80e9fb9",
+      "plugins": [
+        "WENB Shades USSEP.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-28T02:47:47Z",
+      "transaction": "20260828T024747338Z-1b4699f69098",
+      "fomodPlan": "records/fomod-plans/50394-water-for-enb-ussep.json",
+      "note": "Shades/Natural Shades USSEP location patch; still linked by the current Water for ENB page as of 2026-08-27"
+    },
+    {
+      "modId": 178881,
+      "modName": "Whiterun Simple 3D Wooden Trellis - AIO",
+      "nexusName": "Whiterun Simple 3D Wooden Trellis - AIO",
+      "version": "1",
+      "fileId": 752331,
+      "fileName": "Whiterun Simple 3D Wooden Trellis - AIO-178881-1-1778788988.rar",
+      "sizeMb": 2.22,
+      "sha256": "bc707c3834fa3efbe5de5af3956c8a43cf16b9189c6ee9608375c66255ece59e",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:13:07Z",
+      "transaction": "20260830T161307671Z-ead1abf659a3"
     },
     {
       "modId": 45565,

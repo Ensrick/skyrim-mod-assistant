@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "zbSFCO3-BOS - Mods and Patches_SWAP.ini",
+      "destination": "zbSFCO3-BOS - Mods and Patches_SWAP.ini"
+    },
+    {
+      "source": "zeSFCO3-GrandSolitude-BOS_SWAP.ini",
+      "destination": "zeSFCO3-GrandSolitude-BOS_SWAP.ini"
+    },
+    {
+      "source": "zbSFCO3-BOS - Snazzy Interiors - Solitude Bryling's House_SWAP.ini",
+      "destination": "zbSFCO3-BOS - Snazzy Interiors - Solitude Bryling's House_SWAP.ini"
+    },
+    {
+      "source": "zbSFCO3-BOS - Snazzy Interiors - Solitude Erikur's House_SWAP.ini",
+      "destination": "zbSFCO3-BOS - Snazzy Interiors - Solitude Erikur's House_SWAP.ini"
+    },
+    {
+      "source": "zbSFCO3-BOS - Snazzy Interiors - Solitude Vittoria Vici's House_SWAP.ini",
+      "destination": "zbSFCO3-BOS - Snazzy Interiors - Solitude Vittoria Vici's House_SWAP.ini"
+    },
+    {
+      "source": "SFCO3-Addons - CRF patch.esp",
+      "destination": "SFCO3-Addons - CRF patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - 3DNPC patch.esp",
+      "destination": "SFCO3-Addons - 3DNPC patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - The Gray Cowl of Nocturnal Patch.esp",
+      "destination": "SFCO3-Addons - The Gray Cowl of Nocturnal Patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Vigilant Patch.esp",
+      "destination": "SFCO3-Addons - Vigilant Patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Wyrmstooth patch.esp",
+      "destination": "SFCO3-Addons - Wyrmstooth patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Grand Solitude patch.esp",
+      "destination": "SFCO3-Addons - Grand Solitude patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Solitude Docks Updated patch.esp",
+      "destination": "SFCO3-Addons - Solitude Docks Updated patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Snazzy Interiors - Solitude Bryling's House patch.esp",
+      "destination": "SFCO3-Addons - Snazzy Interiors - Solitude Bryling's House patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Snazzy Interiors - Solitude Erikur's House patch.esp",
+      "destination": "SFCO3-Addons - Snazzy Interiors - Solitude Erikur's House patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Snazzy Solitude Mid-Houses patch.esp",
+      "destination": "SFCO3-Addons - Snazzy Solitude Mid-Houses patch.esp"
+    },
+    {
+      "source": "SFCO3-Addons - Snazzy Interiors - Solitude Vittoria Vici's House patch.esp",
+      "destination": "SFCO3-Addons - Snazzy Interiors - Solitude Vittoria Vici's House patch.esp"
+    }
+  ]
+}

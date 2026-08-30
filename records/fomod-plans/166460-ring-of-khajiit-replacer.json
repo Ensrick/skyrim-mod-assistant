@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "0base",
+      "destination": "."
+    },
+    {
+      "source": "1body types\\cbbe",
+      "destination": "."
+    },
+    {
+      "source": "1body types\\himbo",
+      "destination": "."
+    },
+    {
+      "source": "2texture options\\silver\\0base",
+      "destination": "."
+    },
+    {
+      "source": "2texture options\\silver\\yellow",
+      "destination": "."
+    }
+  ]
+}

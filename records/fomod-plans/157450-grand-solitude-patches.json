@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Grand Solitude - CC Alternative Armors - Dragon Plate patch.esp",
+      "destination": "Grand Solitude - CC Alternative Armors - Dragon Plate patch.esp"
+    },
+    {
+      "source": "Grand Solitude - CC Alternative Armors - Leather patch.esp",
+      "destination": "Grand Solitude - CC Alternative Armors - Leather patch.esp"
+    },
+    {
+      "source": "Grand Solitude - CC Civil War Champions patch.esp",
+      "destination": "Grand Solitude - CC Civil War Champions patch.esp"
+    },
+    {
+      "source": "Grand Solitude - CC Crossbows patch.esp",
+      "destination": "Grand Solitude - CC Crossbows patch.esp"
+    },
+    {
+      "source": "Grand Solitude - CC Gray Cowl Returns patch.esp",
+      "destination": "Grand Solitude - CC Gray Cowl Returns patch.esp"
+    },
+    {
+      "source": "Grand Solitude - CC Lords Mail (regular) patch.esp",
+      "destination": "Grand Solitude - CC Lords Mail patch.esp"
+    },
+    {
+      "source": "Grand Solitude - 3DNPC patch.esp",
+      "destination": "Grand Solitude - 3DNPC patch.esp"
+    },
+    {
+      "source": "Grand Solitude - CRF patch.esp",
+      "destination": "Grand Solitude - CRF patch.esp"
+    },
+    {
+      "source": "Grand Solitude - Lux Via patch.esp",
+      "destination": "Grand Solitude - Lux Via patch.esp"
+    },
+    {
+      "source": "Grand Solitude - Solitude Docks patch.esp",
+      "destination": "Grand Solitude - Solitude Docks patch.esp"
+    }
+  ]
+}

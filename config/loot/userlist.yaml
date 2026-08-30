@@ -28,3 +28,22 @@ plugins:
     after:
       - 'Lux - Water for ENB (Shades of skyrim) patch.esp'
       - 'WENB Shades USSEP.esp'
+
+  # Small owned semantic patches are generated from current-profile winners;
+  # keep them behind late map, water, and profile-specific compatibility layers.
+  - name: 'Ensrick General Compatibility Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick Lux Water CS Patch.esp'
+      - 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+      - 'A Clear Map of Skyrim.esp'
+      - 'ACMOS - Bruma.esp'
+
+  - name: 'Ensrick CRF Semantic Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick General Compatibility Patch.esp'
+      - 'Water for ENB (Shades of Skyrim).esp'
+      - 'nwsFollowerFramework.esp'
+      - 'Skyrim Unbound.esp'
+      - 'Lux.esp'

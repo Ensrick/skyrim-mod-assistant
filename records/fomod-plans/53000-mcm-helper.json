@@ -14,6 +14,10 @@
       "destination": "SKSE/Plugins/MCMHelper.dll"
     },
     {
+      "source": "SkyrimSE/SKSE/Plugins/MCMHelper.pdb",
+      "destination": "SKSE/Plugins/MCMHelper.pdb"
+    },
+    {
       "source": "ESL/MCMHelper.esp",
       "destination": "MCMHelper.esp"
     },

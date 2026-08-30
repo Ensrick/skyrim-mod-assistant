@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Snazzy Location Resources/Snazzy Location Resources",
+      "destination": "."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Snazzy Interiors - Solitude Bryling's House - Lux patch.esp",
+      "destination": "Snazzy Interiors - Solitude Bryling's House - Lux patch.esp"
+    },
+    {
+      "source": "Snazzy Interiors - Solitude Erikur's House - Lux patch.esp",
+      "destination": "Snazzy Interiors - Solitude Erikur's House - Lux patch.esp"
+    },
+    {
+      "source": "Snazzy Solitude Mid-Houses - Lux patch.esp",
+      "destination": "Snazzy Solitude Mid-Houses - Lux patch.esp"
+    },
+    {
+      "source": "Snazzy Interiors - Solitude Vittoria Vici's House - Lux Patch.esp",
+      "destination": "Snazzy Interiors - Solitude Vittoria Vici's House - Lux Patch.esp"
+    },
+    {
+      "source": "Snazzy Interiors - Solitude Erikur's House - CC Gray Cowl Returns patch.esp",
+      "destination": "Snazzy Interiors - Solitude Erikur's House - CC Gray Cowl Returns patch.esp"
+    },
+    {
+      "source": "Snazzy Interiors - Solitude Erikur's House - USSEP patch.esp",
+      "destination": "Snazzy Interiors - Solitude Erikur's House - USSEP patch.esp"
+    },
+    {
+      "source": "Snazzy Solitude Mid-Houses - CC Fishing patch.esp",
+      "destination": "Snazzy Solitude Mid-Houses - CC Fishing patch.esp"
+    }
+  ]
+}

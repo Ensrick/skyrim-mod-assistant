@@ -120,6 +120,10 @@
     {
       "source": "23 BAT Classes/nffwitchblade.txt",
       "destination": "nffwitchblade.txt"
+    },
+    {
+      "source": "30 iNPC/Scripts",
+      "destination": "Scripts"
     }
   ]
 }

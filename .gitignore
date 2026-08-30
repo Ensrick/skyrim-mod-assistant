@@ -34,6 +34,24 @@
 !/records/installed-mods.json
 !/records/overnight-audit-2026-08-23.jsonl
 !/records/sons-of-skyrim-2026-08-26.md
+!/records/skyking-signs-2026-08-29.md
+!/records/varinia-148853-2026-08-29.md
+!/records/varinia-private-fragment-fix-2026-08-30.md
+!/records/believable-weapons-retexture-compatibility-2026-08-29.md
+!/records/yoto-hatamonba-187162-2026-08-29.md
+!/records/interesting-npcs-party-banter-health-2026-08-29.md
+!/records/scrambled-updates-189511-health-2026-08-29.md
+!/records/blood-visuals-audit-2026-08-30.md
+!/records/cutting-room-floor-3.1.26-compatibility-audit-2026-08-30.md
+!/records/city-interior-layering-direction-2026-08-30.md
+!/records/solitude-city-interior-cell-matrix-2026-08-30.md
+!/records/orc-strongholds-aio-150246-exact-audit-2026-08-29.md
+!/records/baltimore-weapons-29612-2026-08-30.md
+!/records/texture-overhaul-base-stack-2026-08-30.md
+!/records/unique-artifact-progression-2026-08-30.md
+!/records/mcm-helper-1.6.3-2026-08-30.md
+!/records/simple-hunting-overhaul-95943-2026-08-30.md
+!/records/modern-cloak-system-research-2026-08-30.md
 !/records/fomod-plans/
 !/records/fomod-plans/*.json
 !/records/source-builds/
@@ -83,6 +101,19 @@
 !/mods/period-underlayers/skse/plugins/*.ini
 
 !/mods/katana-two-handed/*.ps1
+
+!/mods/crf-semantic-patch/
+!/mods/crf-semantic-patch/README.md
+!/mods/crf-semantic-patch/manifest.json
+!/mods/crf-semantic-patch/generator/
+!/mods/crf-semantic-patch/generator/*.cs
+!/mods/crf-semantic-patch/generator/*.csproj
+!/mods/crf-semantic-patch/generator/Directory.Build.props
+!/mods/crf-semantic-patch/generator/packages.lock.json
+!/mods/crf-semantic-patch/spriggit/
+!/mods/crf-semantic-patch/spriggit/**
+
+!/records/solitude-trellis-stalls-installation-2026-08-30.md
 
 !/ports/
 !/ports/lost-longswords/

@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "Data", "destination": "." }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Snazzy Solitude AIO/Bryling's House/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Bryling's House/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Bryling's House/Snazzy Interiors - Solitude Bryling's House.esp",
+      "destination": "Snazzy Interiors - Solitude Bryling's House.esp"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Bryling's House/Snazzy Interiors - Solitude Bryling's House_DISTR.ini",
+      "destination": "Snazzy Interiors - Solitude Bryling's House_DISTR.ini"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Erikur's House/Snazzy Interiors - Solitude Erikur's House.esp",
+      "destination": "Snazzy Interiors - Solitude Erikur's House.esp"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Mid-Houses/Snazzy Solitude Mid-Houses.esp",
+      "destination": "Snazzy Solitude Mid-Houses.esp"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Vittoria Vici's House/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Vittoria Vici's House/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Vittoria Vici's House/Snazzy Interiors - Solitude Vittoria Vici's House.esp",
+      "destination": "Snazzy Interiors - Solitude Vittoria Vici's House.esp"
+    },
+    {
+      "source": "Snazzy Solitude AIO/Vittoria Vici's House/Snazzy Interiors -  Solitude Vittoria Vici's House_DISTR.ini",
+      "destination": "Snazzy Interiors -  Solitude Vittoria Vici's House_DISTR.ini"
+    }
+  ]
+}

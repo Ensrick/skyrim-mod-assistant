@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Rally's Market Stalls 2K FOMOD/00 Data/Rally's Market Stalls 2K",
+      "destination": "."
+    },
+    {
+      "source": "Rally's Market Stalls 2K FOMOD/00 Data/3D Trellis",
+      "destination": "."
+    },
+    {
+      "source": "Rally's Market Stalls 2K FOMOD/00 Data/RAMS Animation Addon",
+      "destination": "."
+    }
+  ]
+}

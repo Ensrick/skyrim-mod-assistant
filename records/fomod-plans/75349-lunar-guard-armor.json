@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "LunarGuard_2k",
+      "destination": "."
+    }
+  ]
+}

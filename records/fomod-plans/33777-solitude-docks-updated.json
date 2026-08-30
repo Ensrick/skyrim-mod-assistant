@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Solitude Docks Updated",
+      "destination": "."
+    }
+  ]
+}
