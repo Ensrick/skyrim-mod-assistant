@@ -1,0 +1,29 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Ensrick CRF Semantic Patch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: Private profile patch preserving evidenced CRF 3.1.26 semantics with Water, NFF, Lux, and Skyrim Unbound.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Update.esm
+    FileSize: 0
+  - Master: Dawnguard.esm
+    FileSize: 0
+  - Master: HearthFires.esm
+    FileSize: 0
+  - Master: cutting room floor.esp
+    FileSize: 0
+  - Master: nwsFollowerFramework.esp
+    FileSize: 0
+  - Master: Skyrim Unbound.esp
+    FileSize: 0
+  - Master: Lux.esp
+    FileSize: 0
+  - Master: Water for ENB (Shades of Skyrim).esp
+    FileSize: 0

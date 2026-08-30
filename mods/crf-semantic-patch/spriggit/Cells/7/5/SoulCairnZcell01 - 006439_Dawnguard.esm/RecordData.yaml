@@ -1,0 +1,44 @@
+FormKey: 006439:Dawnguard.esm
+EditorID: SoulCairnZcell01
+Name:
+  TargetLanguage: English
+  Value: Dark Chasm
+Flags:
+- IsInteriorCell
+- HasWater
+- ShowSky
+Lighting:
+  AmbientColor: '#000A0A0A'
+  DirectionalColor: '#004D5B5E'
+  FogNearColor: '#00565B4A'
+  FogFar: 4000
+  DirectionalRotationZ: 90
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#00000000'
+    DirectionalXMinus: '#00000000'
+    DirectionalYPlus: '#00000000'
+    DirectionalYMinus: '#00000000'
+    DirectionalZPlus: '#00000000'
+    DirectionalZMinus: '#00000000'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#00606653'
+  FogMax: 0.8
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogNear
+  - FogFar
+  - DirectionalRotation
+  - DirectionalFade
+  - ClipDistance
+  - FogPower
+  - FogMax
+  - LightFadeDistances
+WaterHeight: 0
+Location: 005900:cutting room floor.esp
+WaterEnvironmentMap: data\textures\cubemaps\mx_genericinteriorcube_e.dds
+AcousticSpace: 01989F:Skyrim.esm
+Music: 094BDD:Skyrim.esm
+ImageSpace: 0A2687:Skyrim.esm

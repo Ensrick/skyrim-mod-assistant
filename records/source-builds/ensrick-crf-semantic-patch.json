@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick CRF Semantic Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/71",
+  "sourcePath": "mods/crf-semantic-patch",
+  "outputPlugin": "Ensrick CRF Semantic Patch.esp",
+  "outputSha256": "D3EA7952099EF73AC30B1C9BF4094A3886065FC781568FAA1F05AA3D0F8A257C",
+  "archiveSha256": "9214D7DC4AA2643E78AF58ED8207AEFF708A5A13E34A52D7338FE858D54910BC",
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "output": {
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 6,
+    "semanticOverrides": 5,
+    "requiredDialogTopicAnchor": 1,
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Update.esm",
+      "Dawnguard.esm",
+      "HearthFires.esm",
+      "cutting room floor.esp",
+      "nwsFollowerFramework.esp",
+      "Skyrim Unbound.esp",
+      "Lux.esp",
+      "Water for ENB (Shades of Skyrim).esp"
+    ]
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "spriggitVersion": "0.41.0",
+    "spriggitTreeSha256": "6F0032F9CE581B1641A70182644144CBD62508731AD72145CE74057711C149D3",
+    "linksChecked": 1601,
+    "unresolvedLinks": 0,
+    "wholeProfileParserFailures": 0,
+    "gameplayAcceptance": "pending"
+  },
+  "installation": {
+    "mo2Mod": "Ensrick - CRF Semantic Patch",
+    "profile": "Default",
+    "enabled": true,
+    "modPriorityAtInstall": 188,
+    "pluginLoadOrderLineAfterFinalSort": 192,
+    "transaction": "20260830T164449478Z-b0e04f73b959",
+    "pluginEnableTransaction": "20260830T164449919Z-97bfa0c64a42"
+  },
+  "distribution": {
+    "vendorFilesModified": false,
+    "status": "private pending CRF compatibility-patch permission"
+  }
+}

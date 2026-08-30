@@ -1,0 +1,75 @@
+FormKey: 01F7FD:Skyrim.esm
+EditorID: DushnikhYalBurguksLonghouseLocation
+LocationRefTypeReferencesAdded:
+- LocationRefType: 043566:Skyrim.esm
+  Ref: 01128B:Lux.esp
+  Location: 065AB5:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 019928:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 019929:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 01992A:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 01992B:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 01992C:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 01992D:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 01992E:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F7:Skyrim.esm
+  Ref: 019930:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 01BDF1:Skyrim.esm
+  Ref: 01F7FF:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 03F491:Skyrim.esm
+  Ref: 06A904:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 071061:Skyrim.esm
+  Ref: 097E36:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 070E64:Skyrim.esm
+  Ref: 097E59:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 071061:Skyrim.esm
+  Ref: 097E90:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 0130F9:Skyrim.esm
+  Ref: 0EC38A:Skyrim.esm
+  Location: 0198E2:Skyrim.esm
+  Grid: 32767, 32767
+LocationRefTypeReferencesRemoved:
+- 06A904:Skyrim.esm
+InitiallyDisabledReferencesAdded:
+- 06A904:Skyrim.esm
+- 01128B:Lux.esp
+Name:
+  TargetLanguage: English
+  Value: Burguk's Longhouse
+Keywords:
+- 0130DC:Skyrim.esm
+- 01CB85:Skyrim.esm
+ParentLocation: 019171:Skyrim.esm
