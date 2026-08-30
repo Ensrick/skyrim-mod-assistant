@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Scoped Werewolf Totem Skull 98175",
+  "mo2VendorMod": "High Poly 3D Wolf Skull - Werewolf Totem Replacer",
+  "mo2OverlayMod": "Ensrick - Scoped Werewolf Totem Skull 98175",
+  "purpose": "Use JJerem's complete werewolf-totem design without globally replacing the vanilla hag-feather ingredient.",
+  "source": {
+    "nexusUrl": "https://www.nexusmods.com/skyrimspecialedition/mods/98175",
+    "author": "JJerem",
+    "authorUserId": 125077838,
+    "version": "1.3",
+    "fileId": 416610,
+    "archiveSha256": "B2C81477EFCDB240B305D781303D7E3EF39D07AB9BFB43B7E003A0E70C954639",
+    "archiveBytes": 4201358,
+    "meshSha256": "99A02EF78C3260D99AF01B40320F1DF3C9DB9F80AE39321560BBADD4E7234030"
+  },
+  "sourceAudit": {
+    "plugins": 0,
+    "scripts": 0,
+    "dlls": 0,
+    "meshStreamVersion": 100,
+    "shapes": 5,
+    "triangles": 21090,
+    "vertices": 19112,
+    "collision": "one bhkBoxShape through bhkRigidBodyT",
+    "inventoryMarker": true,
+    "textures": {
+      "count": 8,
+      "dimensions": "all 1024x1024",
+      "mipLevels": "all 11",
+      "formats": {
+        "BC1": 3,
+        "BC7": 5
+      }
+    },
+    "scopeFinding": "The NIF intentionally uses the supplied hag-feather art, but two supplied files occupy textures/ingredients/hagfeather and therefore retexture the ingredient globally if the vendor mod is enabled unchanged.",
+    "softDependency": "The NIF also references two textures/SMIM/dungeons/mines rope assets that the archive does not contain. The active SMIM 2.08 installation supplies both."
+  },
+  "transformation": {
+    "toolRepository": "https://github.com/Ensrick/nif-port-cli",
+    "toolCommit": "e12079cdcc6b058bb032e0d275598715ebe28534",
+    "toolCommitPushed": false,
+    "toolBinarySha256": "5070ACD5A44E38A65D9AA39EE61B89BE324703CB2AD0A1FB83270732B7DC3646",
+    "command": "remap-textures",
+    "policy": "Write a new NIF; never modify or overwrite the vendor NIF. Remap all eight supplied texture references under textures/ensrick/werewolf_totem_98175 and leave the two SMIM rope references intact.",
+    "vendorFilesModified": false
+  },
+  "output": {
+    "meshSha256": "2ED97202B2932C74DFE04555D757E4AB24649495C39FFFA5EE85E33ECEA3538A",
+    "meshBytes": 675895,
+    "geometryPreserved": {
+      "streamVersion": 100,
+      "shapes": 5,
+      "triangles": 21090,
+      "vertices": 19112,
+      "blocks": 22
+    },
+    "textureFiles": {
+      "bird_feathers_d.dds": "1BBD30D17DBCB68B7D1BBC75A5147ED235C613D7EE877F65CBE6D02031AE37F3",
+      "bird_feathers_n.dds": "FD6DFCDD096F4C524340855D1F1E97A00B988C9937CABAF3861B7BA57267479F",
+      "hag_feathers_d.dds": "6062C2CE3A3C299D4942127AB2D68C427606F1AAD4DEE835365547AEA4F0E454",
+      "hag_feathers_n.dds": "56EA78239101E0EFE2723492CAEF3899F1F3ACF7345CD3283D4CE40795B496BB",
+      "skull_down_d.dds": "E2E237F574E76869EA620219FB6383845B3D6AA265D488A198F1D96C5842070A",
+      "skull_down_n.dds": "77C4F00BC056375476296F3AC0092A9CFBCCDD2FE78D29F57465448EE3A56061",
+      "skull_up_d.dds": "53ABE79A548CC2F3A621ACC3C5F70C3893AEAF1359805F44C00B8CC50BF46866",
+      "skull_up_n.dds": "C167218F1CF6D93853C9EBCC6392D9DA10F6ABD3334864E973F8E40BB0787E86"
+    },
+    "globalHagFeatherPathsPresent": false
+  },
+  "installation": {
+    "profile": "Default",
+    "vendorEnabled": false,
+    "vendorPriority": 121,
+    "vendorTransaction": "20260830T004704888Z-915365daf2cc",
+    "overlayEnabled": true,
+    "overlayPriority": 122,
+    "overlayTransaction": "20260830T004705248Z-1c7c5fc60cb5",
+    "profileSelectionAfter": "Default",
+    "postInstallModlistSha256": "7493E0947C3C16AEDA3283F99572421EE6115A5A2A2702E39EB9DECB8EADD737"
+  },
+  "validation": {
+    "vendorFilesByteIdenticalToArchiveSelection": true,
+    "niflyReload": "pass",
+    "unknownNifBlocks": false,
+    "sseGeometryCompatible": true,
+    "deterministicRemapSha256Match": true,
+    "activeAssetConflicts": 0,
+    "mo2AuditErrors": 0,
+    "gameplayAcceptance": "pending"
+  },
+  "alternatives": [
+    {
+      "name": "My PBR Conversion Hub - High Poly 3D Wolf Skull Werewolf Totem Replacer",
+      "nexusModId": 175588,
+      "fileId": 735170,
+      "uploaded": "2026-03-25",
+      "archiveSha256": "37B35F9293286388FEBDD26B27A62F776928E8CB7C722EEEE5AF947AC5E69DBB",
+      "installed": false,
+      "finding": "Current PBR companion, not a replacement mesh. Its 16 textures are 1K but uncompressed and contain no mip chain; its patcher rules use the original global hag-feather paths. Do not install as-is."
+    },
+    {
+      "name": "Rally's Werewolf Totems",
+      "nexusModId": 28882,
+      "version": "1.0",
+      "updated": "2019-09-13",
+      "installed": false,
+      "finding": "Vanilla-style texture replacer for all three totems, with a 2K-1K option, but it does not provide the scanned skull geometry and is not a successor. It could complement the drum and bone-wand later."
+    },
+    {
+      "name": "JJerem Skull Downscale",
+      "nexusModId": 98703,
+      "version": "1",
+      "updated": "2023-08-19",
+      "installed": false,
+      "finding": "Redundant for version 1.3: the selected archive already contains eight 1K textures with full mip chains."
+    }
+  ],
+  "distribution": {
+    "authorPolicy": "Modifications and asset use are allowed with credit, but upload to other sites is prohibited and the file credits third-party source assets.",
+    "publicPackStrategy": "Reference Nexus mod 98175 file 416610 and regenerate the local overlay from the user's authorized download. Do not commit or bundle the derived NIF or textures in GitHub or a non-Nexus installer without a separate permissions review.",
+    "vendorAssetsCommitted": false,
+    "derivedAssetsCommitted": false
+  },
+  "nexusCuration": {
+    "userDecision": "Keep",
+    "stateMutation": "none",
+    "reason": "The candidate came from the user's existing Keep review. Compare-before-write access to live Firefox storage was unavailable, so no curator batch or author-list mutation was attempted."
+  }
+}
