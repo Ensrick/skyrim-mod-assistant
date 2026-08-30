@@ -11,8 +11,10 @@ those.
 - **Dynamic Wetness 158207** - SKSE character wetness; pairs with the above.
 - **HDR - Community Shaders 179371** - native 10-bit HDR output.
 - **Effects 11 (179824)** - runs most ENB *presets* under CS (2026-08). This
-  may reopen preset-grade color grading without ENB; NAT Effect 11 (186575)
-  is the first weather-tuned example.
+  reopens preset-grade color grading without ENBSeries; NAT Effect 11 (186575)
+  is the first weather-tuned example. Effects 11 supplies CS-side alternatives
+  to core ENB Helper/Extender behavior and automatically patches unsupported
+  preset effects. ENBSeries itself must not be installed alongside CS.
 - **CS Light 138443** + Light Placer - emissive-object config hub; third-party
   relights (e.g. Lux CS-style location relights) hang off it.
 - **ISL Helper SKSE 179132** - inverse-square falloff conversion; Lux CS lists
@@ -36,6 +38,9 @@ those.
 
 ## Rule-of-thumb carried through the whole sweep
 
-ENB *presets* not built for CS, ENB-only support files, and ENB-artifact
-fixes were skipped with evidence; CS-compatible ReShade/Effects-11 presets,
-ENB-light mesh packs, and anything stating CS support were left for you.
+Never infer compatibility from “ENB” in a title. Read current requirements,
+variants, description, and shipped files. With Effects 11, even many ENB
+presets are CS candidates. Only files proven to require ENBSeries or to repair
+an ENBSeries-specific artifact should be excluded on that basis; CS-compatible
+ReShade/Effects-11 presets, ENB-light meshes, water/texture assets, and other
+dual-use payloads remain eligible.

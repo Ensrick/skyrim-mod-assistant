@@ -51,12 +51,14 @@ registered successfully.
 - Community Shaders, SSE Display Tweaks, FSMP, and several native frameworks
   have important file-backed settings outside SkyUI MCM. These belong in the
   configuration manifest even though they are not MCM state.
-- MCM Helper is installed but disabled, so no MCM Helper-dependent persistence
-  workflow is currently active.
+- Official MCM Helper 1.6.3 is installed and enabled on Skyrim 1.7.104. Static
+  DLL, dependency, plugin-order, conflict, ledger, and physical-Data audits are
+  clean. A foreground MCM/settings-write smoke test is still required; see
+  `records/mcm-helper-1.6.3-2026-08-30.md`.
 
 ## Proposed reproducible workflow
 
-1. Restore and validate a source-built MCM Helper for Skyrim 1.7.104.
+1. Foreground-smoke the installed official MCM Helper 1.6.3 on Skyrim 1.7.104.
 2. Create a dedicated disabled-by-default MO2 mod named `Modpack - Generated
    Settings`; direct configuration output there instead of leaving files in
    Overwrite.

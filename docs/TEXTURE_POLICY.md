@@ -54,6 +54,11 @@ readable surfaces, and atlases shared by many objects are not automatically
 small clutter, but they remain subject to the source-plus-one-step and 4096
 limits.
 
+Furniture is not small clutter. Chairs, stools, tables, counters, beds, cabinets,
+and comparable furnishings are evaluated by screen coverage, UV density, normal
+viewing distance, and the source-plus-one-step rule; they are not automatically
+subject to the dedicated small-clutter 1024-pixel cap.
+
 ## Review record
 
 For every accepted upward step, record:
@@ -69,3 +74,16 @@ download locally only when its permissions allow modification; otherwise choose
 an author-provided compliant file or omit the asset. Redistribution remains
 subject to the permissions ledger regardless of whether a private downscale is
 technically possible.
+
+## Record every downscale as an issue (user, 2026-08-29)
+
+"We can open issues to do downscale patches. We should put issues in for such as
+we go." Every time a mod's textures are capped or trimmed into an
+`Ensrick - ... Texture Cap` overlay, open a GitHub issue recording the mod, the
+measured before/after dimensions, the exact recipe, and the permissions basis.
+A ledger `note` alone is not enough - it makes the overlays invisible as a body
+of work, so they cannot be reviewed, revisited, or packaged.
+
+Overlays stay local-only and are never committed or redistributed
+(`REDISTRIBUTION.md`). The author's own mod folder always stays byte-identical
+to the Nexus archive.

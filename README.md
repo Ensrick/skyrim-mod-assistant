@@ -36,6 +36,9 @@ a private working tree, but only the reviewed allowlist can be committed.
 - `docs/TEXTURE_POLICY.md` defines the source-matched resolution budget: at
   most one justified step upward, a 1K cap for dedicated small clutter, and an
   absolute 4K-per-axis ceiling.
+- `docs/EQUIPMENT_INTAKE_POLICY.md` requires an item-by-item role, balance,
+  acquisition, permission, patch-ownership, compatibility, and verification
+  record for every adopted weapon, armor, clothing, or jewelry mod.
 - `docs/MODPACK-ROADMAP-2026-08-28.md` indexes the playable-baseline roadmap and
   its canonical GitHub issues.
 - `docs/MONOREPO-CONSOLIDATION-PLAN.md` defines this repository's role as the
