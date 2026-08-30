@@ -4,6 +4,19 @@ Generated overnight 2026-08-23 from 1,037 keeps (installed and settled excluded)
 Each group below is ONE decision. This summary is the read-first layer; full
 tables follow it. Nothing was decided for you.
 
+## Current state meaning (supersedes older wording below)
+
+As of 2026-08-30, **Keep means installed and enabled in the current Default
+MO2 profile**. **Skip means explicitly rejected.** Every non-installed candidate
+that is still being weighed, researched, deferred, or patched is Unreviewed,
+not Keep or Skip. Historical session text below records how decisions were
+reached but does not override this state model. See `docs/CURATION_POLICY.md`.
+
+Any reviewed mod that adds weapons, shields, armor, clothing, undergarments, or
+jewelry also enters the mandatory item-by-item workflow in
+`docs/EQUIPMENT_INTAKE_POLICY.md`; installation cannot silently decide its lore
+role, distribution, or balance.
+
 ## Session log - 2026-08-23 afternoon walk-through
 
 - **A resolved**: all 6 fallout skips confirmed and applied (AFT, EFF, old
@@ -37,6 +50,12 @@ tables follow it. Nothing was decided for you.
 | Tempered Skins for Females | 8505 | same slot as Reverie |
 
 ### B. Verify-before-judging (the Water-for-ENB class - do NOT bulk-skip)
+
+**Permanent curation rule (user, 2026-08-27): “for ENB” in a title is never a
+skip rule.** It is a search hint only. Inspect current requirements, variants,
+description, and files. Water for ENB now explicitly supports Community
+Shaders, ENB-light meshes can be consumed by CS, and Effects 11 - Community
+Shaders (179824) can run almost all ENB presets without ENBSeries.
 
 - **Feminine/Masculine Khajiit + Argonian textures (183/186/184)** - VERIFIED
   overnight: each ships CBBE / Vanilla / UNP-BHUNP file variants; the BHUNP
@@ -1167,3 +1186,153 @@ declares HDR + the DrJacopo Darker Nights addon + Enhanced 150269 + Alluring
 Sunsets 119148 incompatible. Swapped: HDR + DN addon disabled (dirs kept),
 162153 installed with its own Darker Nights + Image Based Lighting options;
 queued keep 162153, skips 138991/150269/119148. Verify clean, 63 mods.
+
+### 2026-08-29 - live one-at-a-time Keep review
+
+- **Charred Skeever Replacer** (189649): **Skip**, explicitly decided by the
+  user. The headless relay refused delivery because this mod has not appeared
+  in a curator page report dated 2026-08-29. No pending batch was created or
+  overwritten; apply this single decision when a current guarded page report
+  permits it. Do not alter the author's excluded/included status.
+- **WiZkiD Diverse Blacksmith Signs** (189646): **Skip**, explicitly decided
+  by the user. The guarded relay likewise refused delivery because this mod
+  has not appeared in a curator page report dated 2026-08-29. No pending batch
+  was created or overwritten; apply this single decision when a current page
+  report permits it. Do not alter the author's excluded/included status.
+- **Skyking Signs** (112902) and **Skyking Unique Signs** (114940): **Keep and
+  install**, explicitly decided by the user. Version 2.1 of each was installed
+  with the reviewed complex-parallax choices; Unique Signs uses its integrated
+  BOS implementation. The live curator delta is deliberately not queued until
+  a fresh per-mod state comparison is available, so a delayed relay cannot
+  overwrite a newer user decision.
+- **High Poly 3D Wolf Skull - Werewolf Totem Replacer** (98175): **Keep and
+  install**, explicitly decided by the user. Version 1.3 file 416610 is retained
+  byte-identical but disabled; the active local-only scoped overlay remaps its
+  eight supplied 1K texture references to a unique namespace. This keeps the
+  intended hag-feather decoration on the totem without globally retexturing the
+  vanilla hag-feather ingredient. No plugin is added. The live curator delta is
+  likewise not queued without a fresh compare-before-write state.
+- **SSE Display Tweaks - Updated** (189739): **Skip**, explicitly decided by
+  the user. Hardwehr's unofficial v0.5.21 build was superseded on 2026-08-29 by
+  original author SlavicPotato's official v0.5.25 release with AE 1.7.xx
+  support. An agent is comparing that official release against our source-built
+  fork before any installed DLL is changed. No live curator delta is queued
+  without a fresh compare-before-write state.
+- **Epic Cities - Solitude SSE** (41339) and **Epic Cities - Solitude -
+  Personal Edits** (177890): **Skip**, explicitly decided by the user after
+  comparison with Grand Solitude and the JK suite. Epic Cities remains an
+  abandoned 2020 v0.1 WIP with unresolved texture, FaceGen, and compatibility
+  reports; the Personal Edits package has no purpose without that base. No live
+  curator delta is queued without a fresh compare-before-write state.
+- **Varinia** (148853): **Keep and installed**, explicitly decided by the user
+  after evaluating the follower in game. Official 1.1.0 file 697835 is enabled,
+  byte-identical, LOOT-sorted, and passes MO2, master, asset-conflict, and ledger
+  checks. Varinia uses its own follower framework and must never be imported
+  into the active NFF; AFT is absent. The archive's six attached-but-uncompiled
+  dialogue fragments are a proven packaging defect. The enabled private
+  `Ensrick - Varinia Dialogue Fragment Fix` overlay supplies only the six PEX
+  files after strict compilation and exact functional sibling-bytecode checks;
+  vendor files remain immutable. The 17 shared Varinia/3DNPC chains need no
+  compatibility ESL in the current profile. Current permissions require author
+  consent before the derivative correction can be distributed.
+  No live curator mutation was queued because no fresh 2026-08-29 page report
+  exposes mod 148853 for a compare-before-write check.
+- **Interesting NPCs Party Banter** (104014): **Undecided; delegated for
+  review.** The user is potentially interested if the required Interesting NPCs
+  base remains technically healthy and its content has aged well, but is
+  concerned about weight and dated implementation. An agent is auditing both
+  Interesting NPCs (29194) and this ESP-FE addon. Do not install, Keep, or Skip
+  either mod until the user decides from that report.
+- **Additional Companions Members** (144315): **Skip**, explicitly decided by
+  the user. It adds seven vanilla-asset, generic-voice followers/trainers to
+  Jorrvaskr without substantial voiced dialogue or quests; that convenience and
+  crowding do not serve the modlist's anti-generic direction. Do not queue a
+  live curator mutation without a fresh guarded compare-before-write state.
+- **Additional Thieves Guild Members** (144351): **Skip**, explicitly decided
+  by the user. It is another tiny vanilla-voice faction-filler plugin whose
+  three followers/trainers have no substantive voiced dialogue or quests.
+- **Vexcation faction-filler rule:** Skip the same author's materially similar
+  mods that merely add generic vanilla-voice followers/trainers to guilds or
+  factions without substantive voiced dialogue or quest content. Match the
+  Nexus account by user ID **150251578**, not by a loose author-name search.
+  This rule does not pre-judge materially different work by that author. Apply
+  curator mutations only through a fresh guarded compare-before-write state.
+- **Katana - Yoto Hatamonba** (187162): **Undecided; delegated for inspection.**
+  The user likes its appearance but does not want generic standalone content.
+  An agent is auditing the current port, the competing RisingDragonRonin port,
+  provenance/permissions, mesh and scabbard quality, plugin balance, and its fit
+  as a future named NPC's unique two-handed weapon. Do not install, Keep, Skip,
+  or distribute it until the user decides from that report.
+- **Morthal Swamp Bald Cypress** (189488): **Undecided; delegated with the tree
+  overhaul decision.** The user wants its fit assessed against the best current
+  primary tree overhaul before deciding. The audit covers placement conflicts,
+  Community Shaders leaf/shadow behavior, performance, asset quality, patching,
+  and DynDOLOD. Do not install, Keep, or Skip until the user decides from that
+  comparison.
+- **Publican's Perch** (167277) and **Samples of Stools - A Barstool Replacer**
+  (189530): **Undecided; delegated as a paired tavern-furniture stack.** The
+  user likes both and corrected the texture policy: furniture is not governed
+  by the 1K dedicated-small-clutter ceiling. The audit will compare alternatives
+  and inspect BOS scope, furniture markers/collision, interior-overhaul and Lux
+  conflicts, visual cohesion, performance, permissions, and exact installation
+  order. Do not install, Keep, or Skip until the user decides from that report.
+- **Whiterun Simple 3D Wooden Trellis** (178881) and **Rally's Market Stalls**
+  (81282): **preferred but Unreviewed**, pending explicit installation. This is
+  the efficient selected pair; the unusually dense full 42472 package is not
+  selected. Under the 2026-08-30 state model they cannot be Keep before they
+  are installed and enabled.
+- **SSE Display Tweaks official migration:** original author SlavicPotato's
+  official v0.5.25 file 797175 is now the enabled immutable runtime. The owned
+  configuration-only overlay remains enabled above it; the emergency Ensrick
+  DLL build is disabled and retained only for rollback. No foreground game test
+  was launched.
+- **Skyking Signs - Bruma Patch** (112902 optional file 481004): **Installed**
+  after explicit user approval. The enabled ESL-flagged plugin has one Bruma
+  sign override and no scripts, cells, navmeshes, or new records.
+- **Disable Screen Blood** (59581), **No More Blur on Hit** (54502), and **3rd
+  Person Camera Stagger Remover** (25316): **Keep and installed**, explicitly
+  selected by the user. They remain three immutable external vendor mods. The
+  first two plugins are ESL flagged; the third is a zero-byte no-op animation
+  path with no plugin. Public distribution must fetch the exact Nexus files.
+- **Interesting NPCs** (29194): **Keep and installed**, explicitly decided by
+  the user. Effective stack is main 4.5 plus update 4.54, ILS freeze fix,
+  Skyrim-Unbound-relevant Abandoned Prison fix, Cat-and-Mouse script fix,
+  Survival food patch, native NFF support scripts, current Lux patch, and
+  Skyking Signs patch. Party Banter remains undecided and was not installed.
+- **Katana - Yoto Hatamonba** (187162): **Skip**, explicitly decided by the
+  user after the port/provenance/weapon-balance audit. Nothing was installed;
+  apply curator mutation only through a fresh guarded compare-before-write.
+- **Scrambled Updates** (189511): **Skip**, explicitly decided by the user on
+  2026-08-30. This is an AI-assisted compatibility shim for the older Scrambled
+  Bugs-family native plugins, not an upstream Scrambled Bugs release. Nexus
+  1.1.0 cannot work past the current SKSE 2.3.1 gate, and the unreleased
+  workaround mutates vendor DLLs and raises a restart modal. The underlying
+  source-rebuild/replacement problem remains tracked on GitHub issue #87.
+  Nothing was installed. The live curator mutation must wait for a fresh
+  guarded page report; the relay correctly refused to overwrite unreported
+  state on 2026-08-30.
+- **Daedra Heart Replacer - Mihail's Shards of Immersion** (189611): **Skip**,
+  explicitly decided by the user on 2026-08-30. Nothing was installed. The
+  guarded curator relay correctly refused the live mutation because this mod
+  had not appeared in a browser-page report that day; apply the recorded Skip
+  only after a fresh compare-before-write page state.
+- **Better fur - Fine clothes** (69240): **Keep and installed**, explicitly
+  decided by the user on 2026-08-30. Exact MAIN file 289832, version 2, is
+  enabled and remains byte-identical. The separate craftable mantle and wedding
+  outfit files were not approved and were not installed. Because the vendor's
+  vanilla-body outfit meshes collide with the active CBBE and HIMBO Refits, a
+  separate private Ensrick overlay starts from those exact refits and clones
+  only jg1's independently weighted fur shape for both sexes and both weight
+  endpoints. Two generations were byte-identical; NIF reload, bone/texture,
+  base-geometry, conflict-winner, and static bind-pose checks passed. No plugin
+  or new item is added. Foreground animation and extreme-preset clipping remain
+  gameplay acceptance work. Full provenance and rollback are in
+  `records/better-fur-jg1-adoption-2026-08-30.md`.
+- **Better fur - Merchant's hat** (70589): **Keep and installed**, explicitly
+  decided by the user on 2026-08-30 as an additional out-of-order adoption.
+  Exact sole MAIN file 295520, version 1, is enabled and byte-identical. It is a
+  plugin-free replacer for the world model and all vanilla human/Argonian/
+  Khajiit gender routes, with unique 1K fur textures and no active loose-file
+  collision. It adds no equipment record or item, so the equipment-intake
+  workflow is not opened. This early decision does not skip or advance past
+  frozen cursor entry 72351.
