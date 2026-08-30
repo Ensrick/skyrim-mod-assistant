@@ -292,10 +292,10 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
                                 Counter(esp.classify(r) for r in cloth).most_common(3))
             has_smp = 'HDT-SMP' in feat
             if custom and not has_smp:
-                sample = nifs_all[custom[0]].get('custom_bones', [])[:4]
+                bone_names = nifs_all[custom[0]].get('custom_bones', [])[:4]
                 out['findings'].append(
                     f'{len(custom)} meshes are weighted to bones outside the vanilla skeleton '
-                    f'({", ".join(sample)}) but no HDT-SMP config ships, so that rig does nothing '
+                    f'({", ".join(bone_names)}) but no HDT-SMP config ships, so that rig does nothing '
                     f'without a separate physics patch')
             elif skirt and not has_smp:
                 out['findings'].append(

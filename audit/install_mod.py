@@ -21,9 +21,9 @@ SP = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(SP)
 sys.path.insert(0, SP)
 
-MO2 = r'C:\Users\danjo\source\repos\mo2-builds\MO2-2.5.2-headless-23de14e2-full\MO2Headless.exe'
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
 PROFILE = 'Default'
+MO2 = os.path.join(INSTANCE, 'MO2Headless.exe')
 LEDGER = os.path.join(REPO, 'records', 'installed-mods.json')
 
 
@@ -142,7 +142,14 @@ def sort_order():
 
     LootCLI rewrites plugins.txt and drops the '*' on managed plugins, so the
     re-enable is not optional housekeeping - skip it and the mods you just
-    installed are silently inactive."""
+    installed are silently inactive.
+
+    The restore is driven by what was ACTIVE before the sort, not by the ledger.
+    Driving it from the ledger silently disabled every plugin whose mod had no
+    ledger row - it cost the Legacy of Ysgramor stack once and the 559-record
+    Ensrick Lux Water CS patch a second time, both discovered only by accident.
+    A hand-made patch or a locally built overlay legitimately has no ledger row,
+    so the ledger is the wrong authority for "should this be on"."""
     plugins = os.path.join(INSTANCE, 'profiles', PROFILE, 'plugins.txt')
     out = os.path.join(INSTANCE, 'loot-report.json')
     game = r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
@@ -152,6 +159,14 @@ def sort_order():
         return "'" + str(s).replace("'", "''") + "'"
     targs = ','.join(q(x) for x in ['--game', 'SkyrimSE', '--gamePath', game,
                                     '--pluginListPath', plugins, '--out', out])
+    # snapshot the pre-sort active set: this, not the ledger, decides what gets
+    # its marker back afterwards
+    state = mo2('plugin-list')
+    was_active = {p['name'] for p in state.get('plugins', []) if p.get('enabled')}
+    if not was_active:
+        print('refusing to sort: could not read the pre-sort active set, and '
+              'sorting without it would drop every enable marker')
+        return 1
     script = (f"& {q(os.path.join(REPO, 'run-through-mo2.ps1'))} -Tool loot "
               f"-Profile {q(PROFILE)} -Instance {q(INSTANCE)} -TimeoutSeconds 900 "
               f"-ToolArguments @({targs})")
@@ -162,18 +177,38 @@ def sort_order():
         print((p.stdout or p.stderr)[-500:])
         return 1
     led = load()
-    n = 0
-    for m in led['mods']:
-        if not m.get('enabled'):
-            continue                      # parked mods stay parked
-        for pl in m['plugins']:
-            if pl in m.get('disabledPlugins', []):
-                continue                  # deliberately unstarred (absent master)
-            mo2('plugin-enable', pl)
-            n += 1
-    print(f'sorted, then re-enabled {n} plugins '
-          f'(parked mods and recorded disabledPlugins left alone)')
-    return verify()
+    # everything that was active before the sort goes back on, full stop. A
+    # plugin that was deliberately off is by definition not in the snapshot, so
+    # no ledger row gets a say here - a stale parked row must never be able to
+    # force a live plugin off (process audit 2026-08-30, F2)
+    failed = []
+    for pl in sorted(was_active):
+        r = mo2('plugin-enable', pl)
+        if not r.get('ok'):
+            failed.append((pl, r))
+    # anything newly installed this run is not in the snapshot; the ledger is
+    # the right authority for those, since they have never been active before
+    deliberate = {pl for m in led['mods']
+                  for pl in (m.get('disabledPlugins', []) if m.get('enabled')
+                             else m.get('plugins', []))}
+    fresh = [pl for m in led['mods'] if m.get('enabled')
+             for pl in m['plugins']
+             if pl not in was_active and pl not in deliberate]
+    for pl in fresh:
+        r = mo2('plugin-enable', pl)
+        if not r.get('ok'):
+            failed.append((pl, r))
+    # prove it: the post-sort active set must contain the pre-sort one
+    after = {p['name'] for p in mo2('plugin-list').get('plugins', []) if p.get('enabled')}
+    lost = sorted(was_active - after)
+    print(f'sorted, then restored {len(was_active)} previously active plugins '
+          f'and enabled {len(fresh)} newly installed one(s)')
+    for pl, r in failed:
+        print(f'   ENABLE FAILED {pl}: {r}')
+    if lost:
+        print(f'   LOST AFTER SORT ({len(lost)}): ' + ', '.join(lost))
+    rc = verify()
+    return 1 if (failed or lost) else rc
 
 
 def show():

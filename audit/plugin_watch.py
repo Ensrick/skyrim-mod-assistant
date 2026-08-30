@@ -19,6 +19,11 @@ WATCH = {
     13048: 'PapyrusUtil (newest 4.6 predates 1.7.99)',
     16495: 'JContainers (4.2.13.1 whitelist stops before 1.7.99)',
     30379: 'SKSE64 page (RaceMenu waits on an SKSE Papyrus fix)',
+    # rebuild blocked: 51 ext/ headers deleted upstream; author returned
+    # 2026-08-29 and shipped SDS 1.5.9 with 1.7.x support, so an official
+    # IED build is the realistic path (issue #94)
+    62001: 'Immersive Equipment Displays (1.7.4 refused; needs 1.7.x build)',
+    50049: 'Simple Dual Sheath (same author; a new upload here signals IED work)',
 }
 
 def main():
