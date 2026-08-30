@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Modern Lighting Overhaul 2 (MLO2)/00 Main Module/Meshes",
+      "destination": "Meshes"
+    },
+    {
+      "source": "Modern Lighting Overhaul 2 (MLO2)/00 Main Module/SKSE",
+      "destination": "SKSE"
+    },
+    {
+      "source": "Modern Lighting Overhaul 2 (MLO2)/00 Main Module/Textures",
+      "destination": "Textures"
+    },
+    {
+      "source": "Modern Lighting Overhaul 2 (MLO2)/02 MLO.ini Whitelist/02 Shadow Casters Off/SKSE/Plugins/MLO.ini",
+      "destination": "SKSE/Plugins/MLO.ini"
+    }
+  ]
+}

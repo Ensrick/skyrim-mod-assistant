@@ -859,6 +859,21 @@
     },
     {
       "modId": 0,
+      "modName": "Ensrick - MLO2 Foundation Config",
+      "nexusName": "Ensrick-owned configuration overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "overlays/ensrick-mlo2-foundation-config",
+      "sizeMb": 0.0,
+      "sha256": "56571056a43edf58ea281949b07977afb244d7060a6724c0d8a14cbd2d99e227",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:36:08Z",
+      "transaction": "20260830T213608570Z-70e715a645a3",
+      "note": "Tracked configuration-only overlay above pristine MLO2 5.4.1. It explicitly preserves the source default disableLights=false, so MLO2 adds particle-light templates without deleting Lux or city/interior placed lights; future opt-in deletion remains guarded by Lux, Grand Solitude, Solitude Docks, and Snazzy whitelist fragments. Vendor files remain byte-identical."
+    },
+    {
+      "modId": 0,
       "modName": "Ensrick - Quicksilver's Sword Pack Texture Cap",
       "nexusName": "Ensrick-owned texture-policy overlay",
       "version": "2026-08-30",
@@ -1693,6 +1708,22 @@
       "transaction": "20260830T154334926Z-1e5681066bbe",
       "fomodPlan": "records\\fomod-plans\\53000-mcm-helper.json",
       "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md"
+    },
+    {
+      "modId": 160748,
+      "modName": "Modern Lighting Overhaul 2 (MLO2)",
+      "nexusName": "Modern Lighting Overhaul 2 (MLO2)",
+      "version": "5.4.1",
+      "fileId": 796941,
+      "fileName": "Modern Lighting Overhaul 2 (MLO2) 160748 5.4.1 2026-08-29T11-05Z hfH9s6P9N.7z",
+      "sizeMb": 8.25,
+      "sha256": "a1b4f65bf875383ed070f389b9e02f0ea254fb2d411e2c914c55ef07db1577e1",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:35:42Z",
+      "transaction": "20260830T213542127Z-b47fc699a2d1",
+      "fomodPlan": "records\\fomod-plans\\160748-mlo2-5.4.1.json",
+      "note": "Exact current Nexus main file, deterministic Main Module + official Shadow Casters Off selection. No ESP/ESL; source-visible SKSE DLL adds particle-light templates at runtime. Placed-light deletion remains explicitly off in the separate Ensrick configuration overlay. MO2 foundation priority 33 below Lux, Lux Orbis, Lux CS, Light Placer, and all adopted city/interior families; provenance, source audit, limitations, rollback, and foreground test matrix: records/mlo2-5.4.1-2026-08-30.md"
     },
     {
       "modId": 11069,

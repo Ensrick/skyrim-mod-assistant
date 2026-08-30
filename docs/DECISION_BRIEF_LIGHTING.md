@@ -34,9 +34,10 @@ older mods matter less, and one candidate is built *for* CS.
 - **ELFX - SkyPatcher (150615)**: auto-restores ELFX lighting wherever other
   mods override it - this shrinks the "ELFX = patch hell" argument above by a
   lot. ELFX + Fixes + SkyPatcher is now a more credible third finalist.
-- **Modern Lighting Overhaul 2 (160748) + MLO MISC (152850)**: CS-required
-  SKSE light-source upgrade line (2026-08). COMPOSES with a placement mod
-  rather than competing - candidate to stack on top of whichever wins.
+- **Modern Lighting Overhaul 2 (160748)**: CS-required SKSE light-source
+  upgrade line (2026-08). It composes with a placement mod rather than
+  competing. MLO2 5.4.1 is now installed as a foundation below Lux and the
+  city/interior stack; MLO MISC was not implicitly adopted.
 - **Umbrae Lucem (115616)**: one-mod interior+exterior lighting/shadows with
   torch/candle smoke - a lighter-weight all-in-one if the Lux stack feels
   heavy.
@@ -50,6 +51,12 @@ older mods matter less, and one candidate is built *for* CS.
 Two honest finalists: **Lux + Lux CS** (modern, CS-native, heavier patching)
 vs **Relighting Skyrim** (conservative, nearly patch-free). ELFX only if you
 already know you love its look and accept the four-mod stack to modernize it.
+
+The placement decision is no longer open in the active profile: Lux + Lux CS
+is the installed winner. MLO2 is a separate runtime particle-light layer, not
+a replacement for Lux. Exact version, source/licence review, ordering contract,
+configuration, rollback, and foreground acceptance are recorded in
+`records/mlo2-5.4.1-2026-08-30.md`.
 
 ## How to decide with your eyes
 

@@ -52,6 +52,7 @@
 !/records/mcm-helper-1.6.3-2026-08-30.md
 !/records/simple-hunting-overhaul-95943-2026-08-30.md
 !/records/modern-cloak-system-research-2026-08-30.md
+!/records/mlo2-5.4.1-2026-08-30.md
 !/records/fomod-plans/
 !/records/fomod-plans/*.json
 !/records/source-builds/
@@ -71,6 +72,12 @@
 !/config/
 !/config/loot/
 !/config/loot/*.yaml
+
+!/overlays/
+!/overlays/ensrick-mlo2-foundation-config/
+!/overlays/ensrick-mlo2-foundation-config/SKSE/
+!/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/
+!/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/MLO.ini
 
 !/mods/
 !/mods/period-underlayers/
