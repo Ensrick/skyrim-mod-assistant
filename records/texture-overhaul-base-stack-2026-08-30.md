@@ -1,7 +1,9 @@
 # Skyrim SE/AE texture-overhaul base stack — 2026-08-30
 
-Status: research complete; no install, enable/disable, Keep/Skip, plugin, MO2
-profile, game, or Nexus-curation state was changed.
+Status: **decision implemented 2026-08-30**. Skyland AIO 1K 4.32 is installed
+and enabled as the broad base in MO2 `Default`. Full Nature of the Wild Lands
+3.14 is installed separately as the tree overhaul. Nordic Cut and Nature of
+Mild Lands are not installed and are not part of this stack.
 
 ## Decision summary
 
@@ -42,7 +44,7 @@ not a replacement texture suite.
 
 ## What is currently in the live profile
 
-Read-only inspection of the active MO2 `Default` profile found:
+The implementation audit of the active MO2 `Default` profile found:
 
 - SMIM, SMIM Quality Addon and the Farming CC patch;
 - Community Shaders AIO, source-built for runtime 1.7.99;
@@ -51,11 +53,13 @@ Read-only inspection of the active MO2 `Default` profile found:
   patch;
 - Skyking Signs, Skyking Unique Signs and their Bruma/Interesting NPCs patches.
 
-It did **not** find Skyland AIO, standalone Skyland Landscapes, Fantasia,
-Vanaheimr, Skyrim 202X, Skyland Bits and Bobs, Skyland LODs, or Nature of the
-Wild Lands enabled. Nature of the Wild Lands remains a separate, explicitly
-deferred tree decision. The installed Skyking sign mods are not evidence that a
-Skyland texture base is installed.
+Skyland AIO 1K and full Nature of the Wild Lands 3.14 are now enabled.
+Standalone Skyland Landscapes, Fantasia, Vanaheimr, Skyrim 202X, Skyland Bits
+and Bobs, Skyland LODs, Nordic Cut, and Nature of Mild Lands remain absent.
+Skyland's water-colour and sign choices were omitted so Water for ENB and the
+installed Skyking sign packages remain the deliberate winners. Exact
+transactions, FOMOD selections, patches, and verification are recorded in
+`records/skyland-notwl-foundation-install-2026-08-30.md`.
 
 ## Do not conflate the Skyking products
 
@@ -180,14 +184,18 @@ aliasing/shimmer and unnecessary bandwidth. This is a concrete acceptance-test
 item: verify the winning files in the exact FOMOD selection and compare the 2K
 archive/author response before the base is frozen. Because Skyland's permissions
 require author approval for modifications, a public modpack must not ship
-privately regenerated versions without permission. No upstream or project issue
-was opened during this research because Skyland has not been accepted or
-installed yet and intent has not been established.
+privately regenerated versions without permission. The selected install
+contains eight world-space DDS files at 256 pixels or larger with only one mip
+level (four ice/cave diffuse maps plus mine floor, farmhouse rope, Riften
+marble, and a Windhelm log-end normal). The vendor payload remains unchanged.
+This is tracked for route-based shimmer/aliasing validation and
+author-permission review rather than silently regenerating restricted assets.
 
-## Recommended stable/performance branch
+## Implemented stable/performance branch
 
-This is an installation plan for later approval, not an installation performed
-by this task.
+Steps 1–6 below were implemented on 2026-08-30, with the exact restrained grey
+farmhouse/mountain choices recorded in the FOMOD plan. Bits and Bobs, complex
+parallax, and generated final LOD remain separate later decisions.
 
 1. Keep SMIM and its accepted mesh patches as the mesh foundation.
 2. Install **Skyland AIO 1K** after SMIM.
@@ -210,9 +218,9 @@ by this task.
 8. Let Lux/Lux CS win any lighting-specific meshes or textures only where that
    is required for functional light behaviour; resolve individual mesh conflicts
    by evidence, not a global “Lux always wins” rule.
-9. Install future city overhauls, trees/flora (including a later Nature of the
-   Wild Lands decision), water and targeted unique replacers after the broad
-   base according to their verified path/record requirements.
+9. Full Nature of the Wild Lands 3.14 is installed as the tree layer, with the
+   exact active-profile placement patches. Nordic Cut and Mild Lands are not
+   installed.
 10. After the worldspace, texture, tree and patch set is final, run PGPatcher if
     used, generate terrain LOD with xLODGen, then TexGen and DynDOLOD. The final
     generated outputs must reflect Bruma, Beyond Reach, later city expansions,
@@ -282,8 +290,8 @@ test.
   lighting, but mesh replacements can affect light placement, emissives and
   shadow behaviour. Preserve Lux functional meshes unless a verified patch
   deliberately combines both changes.
-- **Nature of the Wild Lands:** no tree overhaul is currently installed. Load
-  the eventual tree pack after the broad texture base, resolve any landscape or
+- **Nature of the Wild Lands:** full 3.14 is installed as the tree overhaul. Load
+  the tree layer after the broad texture base, resolve any landscape or
   plant-path overlaps intentionally, and generate tree LOD from final assets.
   Do not use third-party pre-generated tree billboards as the final answer.
 - **City overhauls:** texture replacers normally cover vanilla texture paths used
@@ -316,23 +324,22 @@ modified copies without the required permission. Project-authored ESP/ESL
 record patches, generator configs and original scripts can be distributed when
 their inputs and licenses permit it.
 
-## Decisions required from the user
+## Decisions resolved by the user
 
-1. **Grounded or colourful landscapes?** Recommended: grounded Skyland. Choose
-   Fantasia only if its bolder, brighter fantasy direction is wanted.
-2. **Baseline material model?** Recommended: ordinary Skyland first, then test
-   the current Skyland CP addon later. True PBR is a separate migration.
-3. **Broad base resolution?** Recommended: Skyland AIO 1K on the current 12 GiB
-   GPU and 4K display. The archive already retains selected 2K/4K surfaces.
-   Upgrade only specific large/hero surfaces after measured tests.
-4. **Clutter complement?** Decide whether Bits and Bobs Performance should move
-   to a full object-scale audit. It is not part of this report's automatic base
-   approval.
-5. **Mipmap gate:** decide whether Skyland remains provisional pending an author
-   answer/comparison for the eight no-mip files, or whether a controlled visual
-   test is acceptable before that is resolved.
+1. **Grounded landscape:** resolved to Skyland.
+2. **Baseline material model:** resolved to ordinary non-parallax Skyland.
+3. **Broad base resolution:** resolved to Skyland AIO 1K; its selected payload
+   retains 182 maps above 1K up to 2K and 10 maps above 2K up to 4K.
+## Separate later decisions
 
-No Keep/Skip decision should be recorded until the user answers these choices.
+- **Clutter complement:** Bits and Bobs Performance is not installed or
+  authorized by this decision.
+- **Mipmap follow-up:** Skyland is installed, but the eight no-mip world-space
+  maps remain a tracked visual/permission issue. No private vendor-derived
+  repair was guessed into the stack.
+
+Skyland AIO and Nature of the Wild Lands now qualify as Keep because their
+exact files are enabled. Nordic Cut and Mild Lands remain Unreviewed.
 
 ## Evidence and primary sources
 
@@ -369,4 +376,3 @@ Inspected archive provenance:
 | Skyrim 202X 1K 68307/652624 | `0494A89AD34D0F5DB263DC8276130557E950E23892371DB151EE039FC3182BF3` |
 | Bits and Bobs Performance 95032/538816 | `0394DD98189C827671E8F7FEF46F5E8B369870DF92A1FA3FEF2BF0DE3B0AFB89` |
 | Bits and Bobs CP 95032/780407 | `0E419620B1EE44A66AED2FAD177774BA099FA769160831A13DA5B3ECEAD511DE` |
-

@@ -1,88 +1,53 @@
-# Landscape and tree stack review — 2026-08-26
+# Landscape and tree stack decision — updated 2026-08-30
 
-Status: reviewed candidates, archives cached for inspection, **not installed**.
-This record distinguishes a visual preference from an installation decision.
+Status: **installed and enabled in MO2 `Default`**.
 
-## Provisional decision
+## Decided foundation
 
-- Landscape: [Vanaheimr - Landscapes - AIO](https://www.nexusmods.com/skyrimspecialedition/mods/145439)
-  5.5, PBR 2K variant. It is the closest current match for the grounded
-  historical-mythic art direction and has a maintained Community Shaders PBR
-  workflow.
-- Trees: [Nature of the Wild Lands](https://www.nexusmods.com/skyrimspecialedition/mods/63604)
-  3.14 with [Nordic Cut](https://www.nexusmods.com/skyrimspecialedition/mods/161936)
-  1.2.2. Nordic Cut uses vanilla placement for most normal trees while retaining
-  NotWL shrubs/debris and its regional character. This is the preferred
-  composition; the original dense placement is not the performance baseline.
-- Texture economy: use [Nature of the Mild Lands](https://www.nexusmods.com/skyrimspecialedition/mods/112765)
-  3.14 loose files over the NotWL base while PBR is disabled. It is an
-  author-permitted downscale made specifically for NotWL 3.14.
-- Hold [NotWL PBR](https://www.nexusmods.com/skyrimspecialedition/mods/150319)
-  1.0.4 until the Community Shaders/PGPatcher runtime path is active and its
-  texture budget has a compliant answer.
-- Hold the [NotWL animation add-on](https://www.nexusmods.com/skyrimspecialedition/mods/148132)
-  initially. Its author records CPU overhead and requires its meshes to be
-  disabled for TexGen/DynDOLOD generation.
+- **Landscape and architecture:** [Skyland AIO](https://www.nexusmods.com/skyrimspecialedition/mods/34179) 1K 4.32, file `443516`, is the broad vanilla/DLC base. It is installed after SMIM with Skyland's SMIM compatibility selected.
+- **Trees:** full [Nature of the Wild Lands](https://www.nexusmods.com/skyrimspecialedition/mods/63604) 3.14, file `661793`, using its normal dense placements and ordinary main textures.
+- **Not selected:** Nordic Cut is rejected from this stack and is not installed. Nature of Mild Lands is not installed or authorized. Vanaheimr, Skyland complex parallax, Skyland LODs, Skyland Bits and Bobs, tree animation, tree PBR, Seasons, autumn textures, and grass remain outside this installation.
 
-This is not yet an installation authorization. A new game is required for
-Nordic Cut; it must not enter a real campaign mid-save.
+This replaces the former provisional Vanaheimr + Mild Lands + Nordic Cut proposal. Nordic Cut must not be used as a dependency, patch master, or placement winner for the selected full-NotWL stack.
 
-## Archive evidence
+## Exact installed inputs
 
-| Component | Nexus file | SHA-256 | Findings |
+| Component | Nexus file | SHA-256 | Installed role |
 |---|---:|---|---|
-| Vanaheimr PBR 2K 5.5 | 700529 | `959e7127f5c025bc748b9bdda30982b59e8146b29effa7e043d759326cd19f51` | 521 DDS, 199 NIF, ESL-flagged ESP; every dimension is at most 4096. Two core road meshes report Oldrim user version 83 and require repair or exclusion before acceptance. |
-| NotWL 3.14 | 661793 | `86b83a9a3b26d5a54dbb3ea40c4e638b18e7be4ba47f880fea6779ecb011054a` | 413 DDS and 1,082 NIF across the archive; 6,276,345 static triangles counted. The selected main payload contains an 8192-square log diffuse and many 4096-square debris/log/stump maps despite the advertised 2K-trunk/1K-branch default. |
-| Nordic Cut 1.2.2 | 789072 | `5dbb82dcfe9d605ef6db882d0458f75b5dae628bc3259224a647fd31cadabe17` | One ESL-flagged plugin plus configuration metadata; no loose mesh or texture payload and no packaging warning detected. |
-| Nordic Cut patch collection 1.2.2 | 789073 | `d84e84c9c6de5744a2dce443af41444f48af3ec1a03b1918ce333078c118dfa1` | 78 selectable plugins. Includes current Lux, Lux Via, Bruma, Alternate Start, Northern Roads, city and Ryn patches. Install only patches whose masters are present. |
-| Nature of the Mild Lands loose 3.14 | 709121 | `0704fbf9b0c7a7626bf6c34b1673b780526d46cd15ec33b54b73a19a594823fa` | Replaces all 413 NotWL textures at half dimensions: mostly 1K/512, with 44 at 2K and one large log diffuse at the absolute 4K ceiling. No dimension exceeds 4096. |
-| NotWL PBR 1.0.4 | 792330 | `7bbb815eeda3c80b5be209c4ef46306844a4005431d28696942152bacc9d59d5` | 655 DDS and 187 TruePBR JSON files. It mirrors the base archive's 8192-square log diffuse and therefore fails the absolute texture ceiling as shipped. The non-PBR downscaler does not overwrite `textures/pbr`. |
-| Sprigganlands 2K Performance 1.3a | 794511 | `0ddb89bb40744b214e912ec63a03d4d473195cc77b1dd1d770ab245bc3e6573b` | 78 SSE-format NIFs, 840,574 triangles including supplied LOD meshes, and 413 DDS with no dimension over 4096. No plugin; it is a vanilla-path mesh/texture replacer. Ships a stray MO2 `meta.ini` containing the author's local path. |
+| Skyland AIO 1K 4.32 | `443516` | `490F02EC34487FA9CFFD76E9CCFB69A2C17AD5207A2416CC6B1AAD027D15D734` | Broad architecture/landscape base; no plugin. |
+| Nature of the Wild Lands 3.14 | `661793` | `86B83A9A3B26D5A54DBB3EA40C4E638B18E7BE4BA47F880FEA6779ECB011054A` | Full main plugin, meshes/textures, shipped DynDOLOD rules/hybrid meshes, and ENB Light nirnroot mesh. |
+| NotWL official patch collection 3.10 | `613478` | `F9D60425DDF14C73D353E6B47BC676573DF4088C4F6AA2D28D04FA159B157880` | Only Bruma, CC Tundra Homestead, Cutting Room Floor, and Lux Via patches whose exact masters are active. |
+| Grand Solitude Patch Collection 1.5 | `797296` | `FE58C5ACA1025688AE74BA54DF312135EE8715792AC3FD49B6A3FEBFC0E64233` | Adds the normal full-NotWL Grand Solitude patch, not a Nordic-specific patch. |
+| NotWL – Solitude Docks Patch 1 | `433438` | `6BFB0D45E3481D100F5BEBFB2C02C75B6D322F2FC9266BC59E08F7D48CE85A29` | Current full placement cleanup; its 19 NotWL target FormIDs still exist in 3.14. |
 
-The generic texture analyzer flags missing normals and solid normal-map alpha in
-both NotWL sets. These are not automatic rejection findings: leaf/subsurface
-materials and PBR RMAOS layouts do not obey the same basename and gloss-alpha
-assumptions as ordinary opaque materials. The 8K dimensions, however, are
-direct DDS-header facts.
+## Skyland FOMOD boundary
 
-## Why the alternatives did not win
+The deterministic plan is `records/fomod-plans/34179-skyland-aio-1k-4.32.json`. It selects the full landscape and vanilla/DLC architecture, Blended Roads compatibility, the SMIM patch, grey vanilla mountains, grey farmhouses/towns, and the normal city/dungeon/ship/shack/tent/window coverage. It omits Skyland water colouring, road signs and lit-sign options, dirt roads, night sky, lanterns, addons, and pre-generated LOD.
 
-- [Traverse the Ulvenwald](https://www.nexusmods.com/skyrimspecialedition/mods/57874)
-  3.3.2 and [Fabled Forests](https://www.nexusmods.com/skyrimspecialedition/mods/94462)
-  2.1A remain legitimate lighter alternatives, but their bases have not been
-  updated since 2023 and 2024 respectively.
-- Sprigganlands 1.3a is the newest serious challenger and its 2K Performance
-  archive obeys the hard texture ceiling. It is nevertheless a very young,
-  high-poly vanilla replacer: the author states 10,000–18,000 triangles per
-  tree and lists triangle reduction and further LOD work as future plans. It
-  does not yet have NotWL/Nordic Cut's placement, patch, and regression history.
-- Happy Little Trees remains the fallback when measured frame-time or draw-call
-  testing shows that NotWL/Nordic Cut is too costly. It is the performance
-  choice, not the visual-diversity choice.
+Consequently Water for ENB remains the only provider of `textures/water/defaultwater.dds` and `textures/water/riverflow.dds`; Skyking Signs/Unique Signs remain later dedicated sign winners. Skyland wins its intended 74 DDS and 15 NIF overlaps with SMIM, while Lux/Lux Orbis and the existing targeted fix layer win their narrow lighting/mesh paths.
 
-## Required installation and validation order
+## NotWL FOMOD and compatibility boundary
 
-1. Install NotWL 3.14 with only selected FOMOD options.
-2. Install Nature of the Mild Lands 3.14 loose files after NotWL while PBR is
-   held. Do not redistribute either archive.
-3. Install Nordic Cut 1.2.2, then only the relevant entries from its 1.2.2 patch
-   collection. Load the patch collection late as its author directs.
-4. Resolve conflicts against Lux/Lux Via, Bruma, Alternate Start, city mods and
-   Vanaheimr before generating LOD.
-5. Generate TexGen and DynDOLOD once the landscape/tree/grass set is frozen.
-6. Validate on a disposable new game: frame-time in Falkreath/Riften/Morthal,
-   VRAM use, tree pop/LOD transitions, floating or clipping trees, NPC pathing,
-   seasonal variants, and save/reload stability.
+The deterministic main and patch plans are:
 
-Do not enable Nordic Cut's unsupported larger-tree BOS scaling or its Happy
-Little Trees swap for the baseline. Both complicate clipping and matching LOD.
+- `records/fomod-plans/63604-nature-of-the-wild-lands-3.14.json`
+- `records/fomod-plans/63604-nature-of-the-wild-lands-active-patches-3.10.json`
+- `records/fomod-plans/157450-grand-solitude-patches.json`
 
-## Licensing and collection boundary
+The full main uses the ordinary roughly 2K-bark/1K-leaf texture defaults. It does not select autumn, Seasons, animation, PBR, Nordic Cut, or Mild Lands. No separate Snazzy patch is applicable because the active Snazzy Solitude set is interiors/separated houses; no Water for ENB tree-placement plugin is required. Bruma is handled by the exact official patch. Beyond Reach and Wyrmstooth are separate worldspaces and have no current full-NotWL placement patch requirement in this profile.
 
-NotWL assets may not be modified or redistributed without permission, although
-the author allows patches. Nordic Cut's plugin is closed for modification and
-distribution. Nature of the Mild Lands is also closed and explicitly disallows
-paid-modlist use. A public free collection may reference the original Nexus
-files; it must not embed these archives or derived textures. Record the
-collection's free/non-commercial status and re-check page permissions before
-publication.
+LOOT places `Nature of the Wild Lands.esp` early, ahead of Lux Orbis, Lux, Water for ENB, and the owned compatibility outputs. This preserves the tree additions while allowing the specialized CELL/WRLD water and lighting semantics to win. Official placement patches then win the intended Bruma, Tundra Homestead, CRF, Lux Via, Grand Solitude, and Solitude Docks records. The post-sort audit found no missing masters or parser failures, so no new owned ESP-FE was warranted.
+
+## Texture-policy overlay
+
+The 413-texture NotWL main has one policy violation: `textures/true forest/log/log01.dds` is 8192×8192 BC7 with 14 mips. The immutable vendor payload remains untouched. A separate local overlay, `Ensrick - Nature of the Wild Lands Texture Cap`, deterministically converts only that map to 4096×4096 BC7 with 13 mips:
+
+`texconv -w 4096 -h 4096 -f BC7_UNORM -m 0 -y -nologo`
+
+Two clean builds were byte-identical at SHA-256 `C86C89277B4DFADB7FF62451CB0B953007D956208B8BDEE2295154D44D118D2E`. The overlay is local-only and may not be redistributed with vendor assets.
+
+## Remaining validation
+
+Static installation is complete. Runtime acceptance remains deliberately separate because this task did not launch the game: measure frame-time/VRAM and inspect tree clipping, shadows, LOD transitions, routes, and the Grand Solitude/Docks/Bruma/Tundra/CRF/Lux Via areas on the next disposable visual-validation pass. Generate final TexGen/DynDOLOD only after the grass choice and all worldspace placements are frozen.
+
+Full transaction and verification evidence is in `records/skyland-notwl-foundation-install-2026-08-30.md`.

@@ -4,6 +4,10 @@ Status: **leading architecture, not installation authority.** The apparent
 three-mod recommendation is three layers, not permission to stack three blanket
 overhauls over the same records.
 
+Tree compatibility now targets full Nature of the Wild Lands 3.14. Nordic Cut
+is not installed; references to a NotWL/Nordic composition in the research
+below are superseded.
+
 ## The three layers
 
 1. [Grand Solitude - The Walls of High King Erling](https://www.nexusmods.com/skyrimspecialedition/mods/157506)

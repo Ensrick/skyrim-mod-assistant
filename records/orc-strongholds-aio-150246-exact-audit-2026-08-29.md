@@ -6,6 +6,11 @@ repair/compatibility files, and only the combinations relevant to the active or
 planned modlist. Nothing was installed or enabled in `Default`; no Keep/Skip,
 curator, game, UI, vendor, or load-order state was changed.
 
+**Superseding tree decision, 2026-08-30:** full Nature of the Wild Lands 3.14
+is the selected tree stack; Nordic Cut is not installed and must not be used as
+the Orc compatibility master. Any future Orc Strongholds adoption must
+re-audit the normal full-NotWL patch branch.
+
 ## Executive result
 
 `Orc Strongholds - All In One.esp` v1.2.1 is structurally loadable as a Skyrim
@@ -324,4 +329,3 @@ acceptance substitute.
   and [xEdit releases](https://github.com/TES5Edit/TES5Edit/releases)
 - [DynDOLOD large-reference documentation](https://dyndolod.info/Help/Large-References)
 - [USSEP 4.3.9 release/changelog](https://www.afkmods.com/index.php?/topic/10216-relz-unofficial-skyrim-special-edition-patch/)
-

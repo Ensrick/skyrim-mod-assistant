@@ -5,6 +5,11 @@ Status: **research complete; no installation or curation authority.** This is a
 this record authorizes enabling a mod in `Default`, changing Keep/Skip, or
 shipping another author's plugin.
 
+**Superseding tree decision, 2026-08-30:** full Nature of the Wild Lands 3.14
+is installed with the normal Grand Solitude and Solitude Docks patches. Nordic
+Cut is not installed and every Nordic-specific branch below is historical
+comparison evidence only.
+
 ## Executive result
 
 `Grand Solitude 1.3.1` and `Solitude Docks Updated 3.2c` are a technically
@@ -241,4 +246,3 @@ pathing rather than reconstructing them in an owned xEdit patch.
 - [AI Overhaul SSE](https://www.nexusmods.com/skyrimspecialedition/mods/21654)
 - [xEdit issue #1265: door/navmesh triangle checking limitations](https://github.com/TES5Edit/TES5Edit/issues/1265)
   and [xEdit 4.1.6 development notes](https://github.com/TES5Edit/TES5Edit/blob/dev-4.1.6/whatsnew.md)
-

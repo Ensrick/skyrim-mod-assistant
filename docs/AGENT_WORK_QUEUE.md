@@ -73,9 +73,10 @@ assignment is started.
   city architecture and, for Party Banter, an audio-quality decision.
 - Katana - Yoto Hatamonba competing-port, provenance, mesh, balance, and
   named-NPC fit audit. Hold / conditional Keep; nothing installed.
-- Current tree-overhaul comparison and Morthal Bald Cypress audit. NotWL plus
-  Mild Lands plus Nordic Cut remains the leading primary stack; Cypress is a
-  conditional user decision.
+- Current tree-overhaul comparison and Morthal Bald Cypress audit. The later
+  user decision supersedes its provisional composition: full NotWL 3.14 is
+  installed; Nordic Cut is rejected from this stack and Mild Lands is not
+  installed. Cypress remains a conditional future decision.
 - Scrambled Updates audit. Nexus 1.1.0 is Hold because SKSE 2.3.1 rejects its
   target legacy DLLs before preload and the available mutation/modal approach
   violates project policy.

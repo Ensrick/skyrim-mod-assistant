@@ -40,6 +40,10 @@
     {
       "source": "Grand Solitude - Solitude Docks patch.esp",
       "destination": "Grand Solitude - Solitude Docks patch.esp"
+    },
+    {
+      "source": "Grand Solitude - Nature of the Wild Lands patch.esp",
+      "destination": "Grand Solitude - Nature of the Wild Lands patch.esp"
     }
   ]
 }

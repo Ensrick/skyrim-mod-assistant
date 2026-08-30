@@ -874,6 +874,21 @@
     },
     {
       "modId": 0,
+      "modName": "Ensrick - Nature of the Wild Lands Texture Cap",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "local overlay staged from Nature of the Wild Lands file 661793",
+      "sizeMb": 21.33,
+      "sha256": "c86c89277b4dfadb7ff62451cb0b953007d956208b8bdee2295154d44d118d2e",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:26:04Z",
+      "transaction": "20260830T212604894Z-45c3cdc85532",
+      "note": "Enforces docs/TEXTURE_POLICY.md's absolute 4096-pixel axis cap on the full Nature of the Wild Lands 3.14 vendor main. The only violation is textures/true forest/log/log01.dds: 8192x8192, 14 mips, BC7_UNORM, 89,478,660 bytes. Recipe on the installed vendor payload: texconv -w 4096 -h 4096 -f BC7_UNORM -m 0 -y -nologo. Output is 4096x4096, 13 mips, BC7_UNORM, 22,369,796 bytes; two clean generations were byte-identical at SHA-256 C86C89277B4DFADB7FF62451CB0B953007D956208B8BDEE2295154D44D118D2E. Local-only, no DDS committed or redistributed; the vendor folder remains byte-identical."
+    },
+    {
+      "modId": 0,
       "modName": "Ensrick - Quicksilver's Sword Pack Texture Cap",
       "nexusName": "Ensrick-owned texture-policy overlay",
       "version": "2026-08-30",
@@ -1043,12 +1058,13 @@
         "Grand Solitude - CC Lords Mail patch.esp",
         "Grand Solitude - CRF patch.esp",
         "Grand Solitude - Lux Via patch.esp",
+        "Grand Solitude - Nature of the Wild Lands patch.esp",
         "Grand Solitude - Solitude Docks patch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-30T16:15:31Z",
-      "transaction": "20260830T161528235Z-a8f5ecdd379b",
-      "fomodPlan": "records/fomod-plans/157450-grand-solitude-patches.json"
+      "installedUtc": "2026-08-30T21:24:36Z",
+      "transaction": "20260830T212433508Z-056f5c588b19",
+      "fomodPlan": "records\\fomod-plans\\157450-grand-solitude-patches.json"
     },
     {
       "modId": 98175,
@@ -1797,6 +1813,60 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\15882-moonpath-unofficial-patch.json"
     },
     {
+      "modId": 63604,
+      "modName": "Nature of the Wild Lands",
+      "nexusName": "Nature of the Wild Lands",
+      "version": "3.14",
+      "fileId": 661793,
+      "fileName": "Nature of the Wild Lands-63604-3-14-1756825179.7z",
+      "sizeMb": 1634.38,
+      "sha256": "86b83a9a3b26d5a54dbb3ea40c4e638b18e7be4ba47f880fea6779ecb011054a",
+      "plugins": [
+        "Nature of the Wild Lands.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:23:34Z",
+      "transaction": "20260830T212334766Z-a04d527c7c35",
+      "fomodPlan": "records/fomod-plans/63604-nature-of-the-wild-lands-3.14.json",
+      "note": "The exact Nexus archive contains malformed empty-name entries that Windows tar rejects, so its already-audited extraction was mapped into a clean selected staging tree and installed through MO2Headless mod-stage. Selected vendor payload bytes remain unchanged: full main plugin/assets + shipped DynDOLOD rules/hybrid meshes + ENB-light nirnroot mesh; no autumn, Seasons, animation, PBR, Nordic Cut, or Mild Lands layer. The one shipped 8192-square log diffuse is capped only by a separate local Ensrick overlay; the vendor folder remains byte-identical."
+    },
+    {
+      "modId": 63604,
+      "modName": "Nature of the Wild Lands - Active Profile Patches",
+      "nexusName": "Nature of the Wild Lands - Patch Collection",
+      "version": "3.10",
+      "fileId": 613478,
+      "fileName": "Nature of the Wild Lands - Patch Collection-63604-3-10-1743706207.7z",
+      "sizeMb": 59.15,
+      "sha256": "f9d60425ddf14c73d353e6b47bc676573df4088c4f6aa2d28d04fa159b157880",
+      "plugins": [
+        "Nature of the Wild Lands - Bruma.esp",
+        "Nature of the Wild Lands - CC Tundra Homestead.esp",
+        "Nature of the Wild Lands - CuttingRoomFloor.esp",
+        "Nature of the Wild Lands - Lux Via.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:24:26Z",
+      "transaction": "20260830T212423153Z-3df90b4f4b11",
+      "fomodPlan": "records\\fomod-plans\\63604-nature-of-the-wild-lands-active-patches-3.10.json"
+    },
+    {
+      "modId": 102443,
+      "modName": "Nature of the Wild Lands - Solitude Docks Patch",
+      "nexusName": "Shadow's NotWL - Solitude Docks Patch",
+      "version": "1",
+      "fileId": 433438,
+      "fileName": "Shadow's NotWL - Solitude Docks Patch-102443-1-1697156248.zip",
+      "sizeMb": 0.03,
+      "sha256": "6bfb0d45e3481d100f5bebfb2c02c75b6d322f2fc9266bc59e08f7d48ce85a29",
+      "plugins": [
+        "Shadow's NotWL - Solitude Docks Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:25:16Z",
+      "transaction": "20260830T212515599Z-583f2ea6fb87"
+    },
+    {
       "modId": 55653,
       "modName": "Nether's Follower Framework",
       "nexusName": "Nether's Follower Framework - Universal Installer",
@@ -2349,6 +2419,21 @@
       "transaction": "20260830T004121065Z-237c96376079",
       "fomodPlan": "records\\fomod-plans\\114940-skyking-unique-signs.json",
       "note": "Deterministic integrated BOS plus complex-parallax selection; 14 BC7 2K textures; 14-record ESL-flagged resource plugin and 14 exact BOS reference swaps; Base Object Swapper 3.5.0 and Skyking Signs are active; vendor payload installed without modification"
+    },
+    {
+      "modId": 34179,
+      "modName": "Skyland AIO 1K",
+      "nexusName": "Skyland AIO 1k",
+      "version": "4.32",
+      "fileId": 443516,
+      "fileName": "Skyland AIO 1k-34179-4-32-1700282181.7z",
+      "sizeMb": 1998.13,
+      "sha256": "490f02ec34487fa9cffd76e9ccfb69a2c17ad5207a2416cc6b1aad027d15d734",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T21:22:32Z",
+      "transaction": "20260830T212020229Z-7f65325a83d6",
+      "fomodPlan": "records\\fomod-plans\\34179-skyland-aio-1k-4.32.json"
     },
     {
       "modId": 106659,

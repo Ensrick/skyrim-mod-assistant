@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "main/Nature of the Wild Lands.esp", "destination": "Nature of the Wild Lands.esp" },
+    { "source": "main/meshes", "destination": "meshes" },
+    { "source": "main/textures", "destination": "textures" },
+    { "source": "lods/dyndolod", "destination": "dyndolod" },
+    { "source": "lods/meshes", "destination": "meshes" },
+    { "source": "nirnroot enb light/meshes", "destination": "meshes" }
+  ]
+}
