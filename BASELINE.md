@@ -147,7 +147,8 @@ master gate wants an AddressLibraryV5 declaration; rebuild or re-release).
 | Open Animation Replacer | 92109 | **installed** 3.2.0, **UNPARKED 2026-08-30** (#84) - PE stamp 2026-07-26, above the reject window. No OAR/DAR config folder exists yet, so it drives nothing until an OAR-dependent mod arrives |
 | Pandora Behaviour Engine | 133232 | **installed** v4.4.0-beta; ONE interactive run via MO2 pending (headless --auto_run attempt timed out; only XPMSSE weapon styles depend on it) |
 | XPMSSE | 1988 | **installed** (Extended + latest rig + RaceMenu MCM weapon styles); Skeleton Replacer HD 52845 layers on top later |
-| FSMP | 57339 | in keeps - cloth-only policy, no body jiggle - install with first physics outfit |
+| FSMP | 57339 | **installed** 4.1.1 AVX on Skyrim 1.7.104 + SKSE 2.3.1; cloth/hair physics only, no body jiggle; 3 ms auto-adjust budget and helmet-hair suppression active |
+| Vanilla Hair Remake SMP | 63979 | **installed** 1.0.3 player replacer + 1.0.1 NPC FaceGen package; VHR main wins 93 shared XMLs, owned loose compatibility layer preserves 29 USSEP faces and repairs 3 stale XML references; foreground hair/helmet/Proteus smoke remains #27 |
 | BodySlide and Outfit Studio | 201 | **installed** (tool; Curvy batch build pending) |
 | Crafting Recipe Distributor | 52276 | **installed**, **UNPARKED 2026-08-30** (#85) - PE stamp 2026-01-20, above the reject window. No `Data/CraftingRecipeDistributor` configs installed, so it distributes nothing yet |
 

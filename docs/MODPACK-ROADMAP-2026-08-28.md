@@ -37,7 +37,7 @@ licensing review, and its resulting profile state is recorded.
 | Terrain seams | [#24](https://github.com/Ensrick/skyrim-mod-assistant/issues/24) | Needs location evidence | Capture cell, coordinates, view angle, and screenshot before choosing a mesh/landscape fix. |
 | Sword draw/sheathe | [#25](https://github.com/Ensrick/skyrim-mod-assistant/issues/25) | IED and OAR disabled | Restore the frameworks, then test placement-aware draw/sheathe animations against one- and two-handed swords. |
 | One-handed idles | [#26](https://github.com/Ensrick/skyrim-mod-assistant/issues/26) | Framework blocked | Select restrained OAR conditions and verify first/third person, shield, spell, and dual-wield transitions. |
-| Vanilla-plus hair | [#27](https://github.com/Ensrick/skyrim-mod-assistant/issues/27) | Candidate identified | Audit jg1's Vanilla Hair Remake SMP archive and performance before approval. |
+| Vanilla-plus hair | [#27](https://github.com/Ensrick/skyrim-mod-assistant/issues/27) | VHR SMP 1.0.3 player + 1.0.1 NPC package installed; USSEP/CRF FaceGen precedence reconciled | Foreground-check player/beast hair, helmets, the 31 preserved non-SMP faces, Proteus swaps, and crowded-scene frame time before closing. |
 | Vanilla asset coverage | [#28](https://github.com/Ensrick/skyrim-mod-assistant/issues/28) | Diagnostic candidate identified | Use johnskyrim's Visualize Vanilla only in a disposable diagnostic profile. |
 | Trees and plant shadows | [#29](https://github.com/Ensrick/skyrim-mod-assistant/issues/29) | Full NotWL 3.14 installed with exact active-stack patches; Nordic Cut absent | Runtime-test frame-time, shadows, clipping, routes, and LOD transitions for the selected full-placement stack. |
 | Repository consolidation | [#30](https://github.com/Ensrick/skyrim-mod-assistant/issues/30) | Control plane selected | Inventory ownership/licenses and migrate original work without disturbing dirty third-party forks. |
@@ -64,7 +64,7 @@ licensing review, and its resulting profile state is recorded.
 
 These are research results, not an install queue:
 
-- Hair: [Vanilla Hair Remake](https://www.nexusmods.com/skyrimspecialedition/mods/63979), including its optimized FSMP path.
+- Hair: [Vanilla Hair Remake](https://www.nexusmods.com/skyrimspecialedition/mods/63979), active on its optimized FSMP path. Main 1.0.3 replaces the player hairs; the optional 1.0.1 BSA supplies SMP FaceGen to 2,405 vanilla NPC paths after 29 USSEP and 2 CRF face winners are preserved.
 - Asset coverage: [Visualize Vanilla](https://www.nexusmods.com/skyrimspecialedition/mods/84265), disposable diagnostic profile only.
 - Trees: full Nature of the Wild Lands 3.14 is installed and enabled. Nordic
   Cut is rejected from this stack and Mild Lands is not authorized. Happy

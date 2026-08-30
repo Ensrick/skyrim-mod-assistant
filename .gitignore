@@ -50,6 +50,7 @@
 !/records/texture-overhaul-base-stack-2026-08-30.md
 !/records/tree-overhaul-and-morthal-cypress-audit-2026-08-29.md
 !/records/skyland-notwl-foundation-install-2026-08-30.md
+!/records/vanilla-hair-remake-smp-2026-08-30.md
 !/records/curator-profile-reconciliation-2026-08-30.md
 !/records/unique-artifact-progression-2026-08-30.md
 !/records/mcm-helper-1.6.3-2026-08-30.md
@@ -81,6 +82,8 @@
 !/overlays/ensrick-mlo2-foundation-config/SKSE/
 !/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/
 !/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/MLO.ini
+!/overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/
+!/overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py
 
 !/mods/
 !/mods/period-underlayers/

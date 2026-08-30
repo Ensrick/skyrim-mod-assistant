@@ -19,9 +19,11 @@ keeps it clean:
 - Finish or park a questline at a quiet point before swapping.
 - Save + reload after a swap (page: player name display needs it).
 - Never hand inventory to a spawned copy of another character (spawns reset).
-- Physics hair on swap is the known crash source; FSMP is the DECIDED physics
-  engine but NOT yet installed (install with first physics outfit), and
-  SMP-NPC Crash Fix is recommended by Proteus but NOT yet installed.
+- Physics hair on swap is the known crash-sensitive path. FSMP 4.1.1 AVX and
+  Vanilla Hair Remake SMP are now installed; the legacy SMP-NPC Crash Fix is
+  intentionally absent because FSMP 3.0+ integrated its correction and the
+  only public DLL targets Skyrim 1.6.x, not this build's 1.7.104. A foreground
+  Proteus swap/hair reset smoke remains required on #27.
   (Proteus is active as of 2026-08-26: the official 3.4.0 scripts/plugin run
   with the source-built Ensrick 1.7.99 native overlay. Native registration has
   passed; extended multi-character persistence testing remains mandatory.)
@@ -74,7 +76,8 @@ The College arc floats freely.
    installed via headless MO2 (3 ledger entries); curator keep queued (10917).
 2. Install when you green-light: Why I Came to Skyrim (167166) + Book addon
    (167957); Proteus companions it recommends that we lack: RemoveAllItems
-   Freeze Fix and SMP-NPC Crash Fix (NFF and FSMP already installed).
+   Freeze Fix (NFF, FSMP, and the VHR SMP hair baseline are already installed;
+   do not add the obsolete SMP-NPC Crash Fix alongside FSMP 4.1.1).
 3. Verify in-game later: SUR MCM - mid-save Dragonborn toggle, dragon-start
    timing options.
 4. Slot decisions this design now DRIVES: vampire 4-way (villain arc lens),
