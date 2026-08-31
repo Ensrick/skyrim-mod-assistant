@@ -1,0 +1,3 @@
+[submodule "mods/bounded-encounters/extern/CommonLibSSE-NG"]
+	path = mods/bounded-encounters/extern/CommonLibSSE-NG
+	url = https://github.com/Ensrick/CommonLibSSE-NG.git

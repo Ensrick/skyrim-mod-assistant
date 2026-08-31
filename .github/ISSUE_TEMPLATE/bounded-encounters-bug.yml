@@ -1,0 +1,65 @@
+name: Bounded Encounters defect
+description: Report a reproducible crash, incorrect spawn, lifecycle defect, or tool failure.
+title: "[Bounded Encounters Bug]: "
+labels: [bug, bounded-encounters]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The initial build is audit-only by default. Use disposable saves for active tests and redact personal paths from evidence.
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      options:
+        - label: I reproduced this with the latest published candidate.
+          required: true
+        - label: I verified the exact Skyrim, SKSE, and Address Library versions.
+          required: true
+        - label: I listed any other encounter multiplier below.
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version, commit, and package SHA-256
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Skyrim, SKSE, and Address Library versions
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include player level, cell, source actor, save state, and exact ordered steps.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Exact configuration and relevant load order
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs and evidence
+      description: Attach the plugin log and Crash Logger report when applicable. Redact personal paths.
+    validations:
+      required: true
+  - type: checkboxes
+    id: save
+    attributes:
+      label: Save safety
+      options:
+        - label: Any active-mode test used a disposable save with a pre-test backup.
+          required: true

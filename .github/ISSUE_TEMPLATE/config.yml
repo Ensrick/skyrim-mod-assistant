@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Private crash or save-integrity report
+    url: https://github.com/Ensrick/skyrim-mod-assistant/security/advisories/new
+    about: Use a private advisory when logs or saves may expose personal data.
+  - name: Bounded Encounters configuration reference
+    url: https://github.com/Ensrick/skyrim-mod-assistant/blob/main/mods/bounded-encounters/docs/configuration.md
+    about: Review field meanings and safe tuning guidance before reporting a configuration problem.
