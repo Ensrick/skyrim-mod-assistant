@@ -10,9 +10,13 @@
     "repository": "https://github.com/Ensrick/pandora-behaviour-engine",
     "branch": "ensrick/headless",
     "commit": "6adf04b218cf4361f775e6e74e2b0e87a29efa44",
-    "pushed": false,
+    "pushed": true,
     "license": "GPL-3.0-or-later",
-    "upstreamHeadlessWork": "None. Issue #114 (execution without GUI) closed by adding --auto_run, which still creates the window; preview branch (64 commits ahead, new patch format) renames projects but keeps the same Avalonia WinExe entry; no CLI/headless PR or branch exists."
+    "upstreamHeadlessWork": "None. Issue #114 (execution without GUI) closed by adding --auto_run, which still creates the window; preview branch (64 commits ahead, new patch format) renames projects but keeps the same Avalonia WinExe entry; no CLI/headless PR or branch exists.",
+    "publicRepos": [
+      "https://github.com/Ensrick/pandora-behaviour-engine",
+      "https://gitlab.com/ensrick7/pandora-behaviour-engine"
+    ]
   },
   "build": {
     "targetFramework": "net10.0",
@@ -24,7 +28,11 @@
   "artifact": {
     "sha256": "B545D97D045D8DD23A1476A6376D90358C170EBC992A79B7338299F0C299CDCB",
     "sizeBytes": 118079426,
-    "companions": ["FNIS.esp", "Nemesis_Engine/", "Pandora_Engine/"]
+    "companions": [
+      "FNIS.esp",
+      "Nemesis_Engine/",
+      "Pandora_Engine/"
+    ]
   },
   "diff": {
     "files": [
