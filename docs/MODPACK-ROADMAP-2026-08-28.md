@@ -21,6 +21,11 @@ licensing review, and its resulting profile state is recorded.
   Project 1.0.1's controlled BOS mix. `Ulvenwald.esp` is deliberately disabled.
   Skyland AIO 1K 4.32 is the active broad architecture/landscape base. Nordic
   Cut and Mild Lands are not installed.
+- Freak's Floral Fields 3.2.3 is the active grass overhaul with DrJacopo's
+  3D Grass Library 16.53. Its realistic regional FOMOD mix, seven light
+  plugins, and one-file 4096-axis texture-cap overlay are recorded in
+  `records/freaks-floral-fields-3.2.3-2026-08-30.md`. Grass utilities and
+  generated cache remain separate, unapproved decisions.
 - Immersive Equipment Displays, Open Animation Replacer, and Skill Uncapper
   are installed but disabled. MCM Helper is now active on its official 1.6.3
   runtime build; its foreground MCM/settings-write smoke test remains open.
@@ -42,6 +47,7 @@ licensing review, and its resulting profile state is recorded.
 | Vanilla-plus hair | [#27](https://github.com/Ensrick/skyrim-mod-assistant/issues/27) | VHR SMP 1.0.3 player + 1.0.1 NPC package installed; USSEP/CRF FaceGen precedence reconciled | Foreground-check player/beast hair, helmets, the 31 preserved non-SMP faces, Proteus swaps, and crowded-scene frame time before closing. |
 | Vanilla asset coverage | [#28](https://github.com/Ensrick/skyrim-mod-assistant/issues/28) | Diagnostic candidate identified | Use johnskyrim's Visualize Vanilla only in a disposable diagnostic profile. |
 | Trees and plant shadows | [#29](https://github.com/Ensrick/skyrim-mod-assistant/issues/29) | Full NotWL 3.14 placements plus verified Ulvenwald 3.3.2 assets through TDP 1.0.1; only NotWL patches active | Runtime-test frame-time, wind, shadows, clipping, routes, and LOD transitions for the selected mixed-asset/full-NotWL-placement stack. |
+| Grass | [#112](https://github.com/Ensrick/skyrim-mod-assistant/issues/112) | Freak's Floral Fields 3.2.3 realistic regional mix + required DrJacopo library enabled; static audits clean | Foreground-check density, biome fit, pop-in, seams and frame time, then decide utilities/cache and separate Solstheim coverage. |
 | Repository consolidation | [#30](https://github.com/Ensrick/skyrim-mod-assistant/issues/30) | Control plane selected | Inventory ownership/licenses and migrate original work without disturbing dirty third-party forks. |
 | Survival visibility/depth | [#31](https://github.com/Ensrick/skyrim-mod-assistant/issues/31) | Current stack is deliberately light | Choose one coherent needs/exposure model, then add compatible widgets, wetness, clothing warmth, and cloak physics. |
 | Imperial armor | [#32](https://github.com/Ensrick/skyrim-mod-assistant/issues/32) | Candidate direction identified | Audit NordwarUA New Legion plus current SPID/SkyPatcher distribution before approval. |

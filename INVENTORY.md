@@ -14,6 +14,11 @@
 > authority, with Ulvenwald 3.3.2 assets consumed through Tree Diversity
 > Project 1.0.1; `Ulvenwald.esp` is deliberately disabled. Exact evidence is in
 > `records/notwl-ulvenwald-tree-diversity-2026-08-30.md`.
+> Current grass delta: Freak's Floral Fields 3.2.3 and DrJacopo's 3D Grass
+> Library 16.53 are enabled using the recorded realistic regional mix. All
+> seven FFF plugins are light, and a private one-file overlay enforces the
+> 4096-axis texture cap. Exact evidence is in
+> `records/freaks-floral-fields-3.2.3-2026-08-30.md`.
 
 Snapshot of the existing Vortex-managed collection, captured **2026-06-09** before resetting to a vanilla baseline.
 Source of truth: Vortex staging `%APPDATA%\Vortex\skyrimse\mods` (27 mods, 15.3 GB) + downloads (30 archives) + the two preserved deployment manifests in `records\`.

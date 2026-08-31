@@ -38,6 +38,11 @@ inside a public release:
   Project 1.0.1 remain immutable Nexus-fetched dependencies. A public installer
   may reproduce the recorded FOMOD choices and disable `Ulvenwald.esp`; it may
   not bundle either vendor archive or extracted tree assets.
+- The current grass stack follows the same model: Freak's Floral Fields 3.2.3
+  and DrJacopo's 3D Grass Library 16.53 remain immutable Nexus-fetched
+  dependencies. The installer may reproduce the recorded FOMOD choices and
+  locally extract FFF's lower-tier `Twigs_Freak.dds` to enforce the 4096-axis
+  cap, but must not bundle that DDS or either vendor payload.
 - A locally rebuilt binary or generated asset that has no established right of
   redistribution is a **publication blocker** when the active profile cannot run
   without that exact private artifact.

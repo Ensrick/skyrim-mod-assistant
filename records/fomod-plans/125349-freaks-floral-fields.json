@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields.ini",
+      "destination": "Freak's Floral Fields.ini"
+    },
+    {
+      "source": "Freak's Floral Fields/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Freak's Floral Fields/textures 2k/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Freak's Floral Fields/zzDirtCliffs_BOS.ini",
+      "destination": "zzDirtCliffs_BOS.ini"
+    },
+    {
+      "source": "Freak's Floral Fields/meshes cliffs/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields.esp",
+      "destination": "Freak's Floral Fields.esp"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields- Realistic Tundra.esp",
+      "destination": "Freak's Floral Fields- Realistic Tundra.esp"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields-  Realistic Pine.esp",
+      "destination": "Freak's Floral Fields-  Realistic Pine.esp"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields- Realistic Rift.esp",
+      "destination": "Freak's Floral Fields- Realistic Rift.esp"
+    },
+    {
+      "source": "Freak's Floral Fields/textures 2k/Yellow  Leaves 2k/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields- Mixed Reach.esp",
+      "destination": "Freak's Floral Fields- Mixed Reach.esp"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields- Volcanic Wasteland.esp",
+      "destination": "Freak's Floral Fields- Volcanic Wasteland.esp"
+    },
+    {
+      "source": "Freak's Floral Fields/Freak's Floral Fields- Dead Snow Grass.esp",
+      "destination": "Freak's Floral Fields- Dead Snow Grass.esp"
+    }
+  ]
+}

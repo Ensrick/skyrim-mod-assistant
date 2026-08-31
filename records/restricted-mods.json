@@ -347,6 +347,34 @@
       "publicListPolicy": "reference Nexus mod 29612 file 109963; distribute only original Ensrick patch records/configuration by default; do not bundle the vendor archive or derivative assets without a final permissions review"
     },
     {
+      "name": "Freak's Floral Fields - A Grass Overhaul",
+      "author": "TheBloodyFreak",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 125349,
+      "nexusFileId": 788926,
+      "sourceFile": "Freaks Floral Fields-125349-3-2-3-1786549491.zip",
+      "sourceSha256": "D82616F1F6D25A392E86B2BA1B18F21E464A401F3909910E866E25D493EBBB9C",
+      "redistribution": "uploading this mod to other sites is prohibited; third-party source-asset permissions remain controlling",
+      "modification": "permission is required for modifications and conversions; asset-use statements do not override incorporated authors' permissions",
+      "runtimeRole": "selected Skyrim grass overhaul in the realistic regional configuration",
+      "localPolicy": "official archive and installed vendor payload remain unmodified; the texture-cap DDS is a private local extraction from the archive's lower-resolution tier",
+      "publicListPolicy": "reference Nexus mod 125349 file 788926 and reproduce the recorded FOMOD mapping and texture-cap extraction locally; never bundle the archive, plugins, meshes, textures, or derived DDS"
+    },
+    {
+      "name": "DrJacopo's 3D Grass Library - Meshes",
+      "author": "DrJacopo",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 80687,
+      "nexusFileId": 689307,
+      "sourceFile": "DrJacopos - 3D Grass Library - Meshes-80687-16-53-1763626250.zip",
+      "sourceSha256": "5026606FAAE2B72CC796242DBC2E3F13D0A22133F9AFAFE6E2A9A71ECB298C68",
+      "redistribution": "retain as an external author-hosted dependency pending a release-time permissions review",
+      "modification": "no modification is needed for the active stack",
+      "runtimeRole": "required mesh library beneath Freak's Floral Fields 3.2.3",
+      "localPolicy": "official archive and extracted vendor payload remain byte-preserving and separate from FFF",
+      "publicListPolicy": "reference Nexus mod 80687 file 689307; do not bundle the archive or extracted library assets by default"
+    },
+    {
       "name": "Traverse the Ulvenwald - 3.3 - Trees and Forests of Skyrim",
       "author": "Wigfrid09",
       "game": "Skyrim Special Edition",
