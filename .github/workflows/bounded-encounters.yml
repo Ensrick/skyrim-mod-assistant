@@ -29,6 +29,19 @@ jobs:
         working-directory: mods/bounded-encounters
 
     steps:
+      - name: Materialize tracked symlinks as archival placeholders
+        shell: pwsh
+        working-directory: ${{ github.workspace }}
+        run: |
+          # GitHub's Windows image can create tracked links as reparse points.
+          # Configure Git before checkout so every link is instead the regular
+          # placeholder file used by the reviewed source archive. The packager
+          # continues to reject every reparse point rather than dereferencing it.
+          git config --global core.symlinks false
+          if ((git config --global --get core.symlinks).Trim() -cne "false") {
+            throw "Could not enforce safe Windows symlink materialization."
+          }
+
       - name: Check out source and pinned submodules
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
