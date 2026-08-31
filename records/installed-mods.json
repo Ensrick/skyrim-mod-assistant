@@ -84,6 +84,21 @@
       "transaction": "20260830T032705514Z-789acb19674c"
     },
     {
+      "modId": 32117,
+      "modName": "Assorted Mesh Fixes",
+      "nexusName": "Assorted Mesh Fixes",
+      "version": "0.139.3",
+      "fileId": 768960,
+      "fileName": "Assorted Mesh Fixes 32117 0.139.3 2026-06-27T20-59Z s6Og0dhln.7z",
+      "sizeMb": 36.41,
+      "sha256": "bdfe22142157ebb38af65bc8fbb3c56064d09a9f918c77c0f7268b79934607f8",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:05:22Z",
+      "transaction": "20260831T030520238Z-bc84046fbe62",
+      "note": "Part of the #107 DLL-free fix floor. wankingSkeever's AMF 0.139.3: 417 meshes, 19 textures (largest 2048 on either axis, all inside the 4096 cap, so no texture work needed), a DynDOLOD rules folder, no plugin and no DLL. OLDRIM DEFECT: 57 of the 417 meshes shipped at NIF stream 83 - architecture/farmhouse 14, architecture/solitude 6, dungeons/dwemer 5, landscape/roads 5, dungeons/nordic 4, dlc01/landscape 3, landscape/trees 3, plus pairs under architecture/whiterun, architecture/windhelm, armor/steel, clutter/ingredients and weapons/staff02. All 57 are ported to stream 100 in 'Ensrick - Assorted Mesh Fixes SE Mesh Port' (#70 precedent); after that overlay, ZERO AMF mesh paths resolve to an Oldrim file anywhere in the enabled profile. CONFLICTS, measured: AMF shares just ONE mesh with the ERM trio - meshes/landscape/rocks/rockshelf02.nif - and wins it. ERM's 86 mountain meshes are NOT touched, so the feared AMF-clobbers-ERM's-mountains case does not arise; the single rock shelf is noted on #127. AMF also beats SMIM on 35 meshes and Unofficial Material Fix on 23, both the conventional ordering for a later fix layer. No overlap with Believable Weapons or Lux."
+    },
+    {
       "modId": 36761,
       "modName": "Audio Overhaul - Immersive Sounds Integration",
       "nexusName": "Audio Overhaul Skyrim - Immersive Sounds Compendium Integration (1.1.0)",
@@ -746,6 +761,21 @@
       "transaction": "20260830T025627455Z-14019fb979fd"
     },
     {
+      "modId": 80687,
+      "modName": "DrJacopo's - 3D Grass Library - Meshes",
+      "nexusName": "DrJacopo's 3D Grass Library - Meshes",
+      "version": "16.53",
+      "fileId": 689307,
+      "fileName": "DrJacopos - 3D Grass Library - Meshes-80687-16-53-1763626250.zip",
+      "sizeMb": 11.14,
+      "sha256": "5026606faae2b72cc796242dbc2e3f13d0a22133f9afafe6e2a9a71ecb298c68",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:15:43Z",
+      "transaction": "20260831T031543157Z-dfbb6e446aec",
+      "note": "Required mesh-only library for the adopted Freak's Floral Fields 3.2.3 stack. It remains a pristine external Nexus dependency; FFF intentionally wins its selected 44 mesh and 5 texture overlaps. No plugin and no full plugin slot."
+    },
+    {
       "modId": 96273,
       "modName": "Dynamic Activation Key",
       "nexusName": "Dynamic Activation Key",
@@ -777,6 +807,36 @@
       "installedUtc": "2026-08-24T03:03:31Z",
       "transaction": "20260824T030331359Z-895b38f20f4e",
       "note": "full install + low/moderate-cost extras + creatures; no STAC/TCS/EmbersHD patches; assets feed CS particle lights | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Assorted Mesh Fixes SE Mesh Port",
+      "nexusName": "Ensrick-owned SE mesh-format overlay",
+      "fileName": "local overlay derived from Assorted Mesh Fixes 32117",
+      "version": "2026-08-31",
+      "fileId": 0,
+      "sizeMb": 3.4,
+      "sha256": "c090ffebccc62a5154fc723192578755b88d3e0bb88c5d2e23e8f9a53d234e7d",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:06:04Z",
+      "transaction": "20260831T030604717Z-6385d1db1eef",
+      "note": "Ports the 57 Oldrim-format meshes that Assorted Mesh Fixes (32117) ships at NIF stream 83 to SSE stream 100, preserving the full directory tree. Built with nif-port-cli (SSE-NIF-Optimizer dbba8b3 + nifly 846518b), converting file by file rather than by directory so the paths survive. VERIFIED: 57 converted, 0 failed; every output re-reads as stream 100; nif-port-cli inspect over the overlay reports 57 files with invalid=0, unknownBlocks=0, isLE=0. Cross-checked against the whole enabled profile: zero AMF mesh paths still resolve to an Oldrim file. The vendor mod folder is untouched and stays byte-identical to the Nexus archive; disable this overlay to fall straight back to the author's meshes. Local-only, nothing committed. Overlay archive SHA-256 C090FFEBCCC62A5154FC723192578755B88D3E0BB88C5D2E23E8F9A53D234E7D."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Freak's Floral Fields Texture Cap",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "local overlay extracted from Freak's Floral Fields file 788926",
+      "sizeMb": 10.67,
+      "sha256": "e4cc21ae1bfc1e1fef15448362ba44244dac72bf7439cf38be4d74bc6bdfb3af",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:25:50Z",
+      "transaction": "20260831T032550872Z-ca076a6653fb",
+      "note": "Private one-file texture-policy overlay. The selected 2K FOMOD tier ships textures/Landscape/grass/Twigs_Freak.dds at 4096x8192; this overlay uses the vendor archive's corresponding 1K-tier BC7 atlas at 2048x4096 with 13 mip levels. Effective FFF audit: 129 DDS, zero axis above 4096, maximum axis 4096, and this overlay is the winning provider. The vendor mod remains untouched. Do not distribute the DDS; a public installer must fetch Nexus mod 125349 file 788926 and reproduce the recorded extraction locally."
     },
     {
       "modId": 0,
@@ -993,6 +1053,53 @@
       "note": "Enforces docs/TEXTURE_POLICY.md on mod 14409's 2K FOMOD option. Two violations fixed. (1) Envmasks were two steps over source: vanilla steel/dwarven weapon and shield *_m measure 512x512, the mod ships all four at 2048. lothbrok_m, floki_m and lagerthasword_m went to 1024 (one permitted step, detail 2.65/2.40/1.64 justifies it); lothbrokshield_m went to the source 512 (detail 0.38 does not). (2) All five *_n were stored uncompressed A8R8G8B8 at 21.33 MB each; recompressed to BC7 at the unchanged source resolution of 2048, 5.33 MB each. BC7 not BC5 because the alpha carries the specular mask (mean 104-139, std 60-82); verified preserved to within 0.4 mean and 0.16 std. 128.0 MB of payload becomes 31.0 MB, 97.0 MB reclaimed. Recipe on the mod's own Textures.bsa (2K), texconv -m 0 -y -nologo: -f BC3_UNORM -w 1024 -h 1024 for lothbrok_m/floki_m/lagerthasword_m; -f BC3_UNORM -w 512 -h 512 for lothbrokshield_m; -f BC7_UNORM -w 2048 -h 2048 for all five *_n. Not touched: five diffuse at 2048 BC3 (source match; four measure 0.53-0.73, a quality note rather than a violation since no step was taken) and the two cubemaps (32x32, 96x96, 0.24 MB combined; lagertha_c is non-power-of-two but a real 6-face cubemap). Page says \"DO NOT UPLOAD THIS FILE ANYWHERE ELSE\" - a redistribution ban, not a modification ban; this overlay is local-only and no DDS is committed. Vendor folder byte-identical (SHA-256 verified on both BSAs and the ESP). See #64."
     },
     {
+      "modId": 88754,
+      "modName": "ERM - DynDOLOD Add-On",
+      "nexusName": "ERM - Enhanced Rocks and Mountains - DynDOLOD",
+      "version": "1.0.1",
+      "fileId": 417049,
+      "fileName": "ERM - Enhanced Rocks and Mountains - DynDOLOD-88754-1-0-1-1692033180.7z",
+      "sizeMb": 1.15,
+      "sha256": "db0038c78e8440c66c86afaf2dd923fdcee8d9b33b11f59a51b5712a66ad1dd2",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T22:56:16Z",
+      "transaction": "20260830T225615802Z-c665895e1115",
+      "note": "STEP's vanilla-format LOD meshes for ERM, v1.0.1, MAIN file 417049. 149 NIFs, all under Meshes/LOD. Works as a drop-in LOD replacer BEFORE any DynDOLOD run, which is why it goes in now: distant mountains already match the near ones. The pending DynDOLOD generation in #41/#81 SUPERSEDES NOTHING here - DynDOLOD consumes whatever textures and LOD meshes are installed at generation time, so these meshes propagate into that output rather than being replaced by it. No textures ship, so the LOD inherits the same landscape rock textures the full-size meshes do. All three ERM mods are MESH-ONLY: zero DDS, zero ESP, so no plugin slot and nothing for the texture policy. All 448 NIFs across the trio are SE format (stream 100) - verified, no Oldrim. They sit at modlist positions 0-2, MO2's install default, and therefore win every shared mesh path; the Lux overlap is flagged in #127."
+    },
+    {
+      "modId": 121336,
+      "modName": "ERM - Enhanced Rocks and Mountains",
+      "nexusName": "ERM - Enhanced Rocks and Mountains",
+      "version": "1.1.2",
+      "fileId": 746642,
+      "fileName": "ERM - Enhanced Rocks and Mountains-121336-1-1-2-1777355132.7z",
+      "sizeMb": 8.49,
+      "sha256": "0c78993fef8ee9238db643692b670e362530f4374323a79eef52086162408aa3",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T22:56:12Z",
+      "transaction": "20260830T225612097Z-7b9bacb5c13c",
+      "fomodPlan": "records/fomod-plans/121336-erm.json",
+      "note": "ERM 1.1.2 meshes, MAIN file 746642 (8.49 MB). The 395 MB 'ERM - Textures' MAIN file 657038, the 'Complex Material Textures Collection' 642026 and 'Blended ERM' 615464 were all DELIBERATELY NOT installed - ERM must inherit whatever landscape mod owns the rock textures, currently Skyland AIO 1K. VERIFIED rather than assumed: all 87 meshes reference only VANILLA texture paths - textures/landscape/mountains/mountainslab02, textures/landscape/rocks01, dirt02, snow01, dirtcliffs01, fieldgrass01, tundramoss01 and the like, 36 distinct paths, zero ERM-specific ones - so installing meshes without the ERM texture pack leaves nothing untextured. There is no FOMOD in this file; the archive is a single wrapper folder, so the 'vanilla texture path' outcome is the default rather than an option to pick. 87 NIFs: 86 under Meshes/Landscape, 1 under Meshes/Effects. All three ERM mods are MESH-ONLY: zero DDS, zero ESP, so no plugin slot and nothing for the texture policy. All 448 NIFs across the trio are SE format (stream 100) - verified, no Oldrim. They sit at modlist positions 0-2, MO2's install default, and therefore win every shared mesh path; the Lux overlap is flagged in #127."
+    },
+    {
+      "modId": 142493,
+      "modName": "ERM - Fix and Addon",
+      "nexusName": "Enhanced Rocks and Mountains - Fix and Addon",
+      "version": "6.4",
+      "fileId": 791230,
+      "fileName": "Enhanced Rocks and Mountains - Fix and Addon 142493 6.4 2026-08-17T13-13Z N2AYL5SMp.7z",
+      "sizeMb": 18.74,
+      "sha256": "d98ecff982b087697d55bd3ef857a7008ed63ba612579ab8de9d532a41399ef4",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T22:56:15Z",
+      "transaction": "20260830T225613354Z-e5eaa0fc017d",
+      "fomodPlan": "records/fomod-plans/142493-erm-fix-addon.json",
+      "note": "Cl3mus/CaptainCockerel Fix and Addon v6.4, MAIN file 791230. FOMOD selections, all recorded in records/fomod-plans/142493-erm-fix-addon.json: ERM No Vertex Colors = Normal Version (NOT 'Blended ERM', which belongs to the Blended Roads path that is not installed); Mines and Caves = Rocks; Icy Caves = Vanilla (ICR and Skyrim Remastered are not installed); Ore Veins = Vanilla (the 'Pg' options target PGPatcher, not adopted - #115); Skyforge Fix = With Dirt; StoneRessource01 Fix = yes; Patch = ERM - Water for ENB Patch, which the FOMOD marks Recommended and which applies because Water for ENB is installed. NOT taken: both PBR Fix steps, because the PBR path is inactive with Community Shaders core parked and PGPatcher unadopted; and the Whiterun 3D Stone Walls Skyforge patch, because that mod is not installed (the installed 'Whiterun Simple 3D Wooden Trellis' is a different mod). Skyforge With Dirt versus Without Dirt is an aesthetic pick the FOMOD does not recommend either way - a one-line reinstall swaps it. 212 NIFs: 128 dungeons, 60 landscape, 19 dlc02, 3 architecture. All three ERM mods are MESH-ONLY: zero DDS, zero ESP, so no plugin slot and nothing for the texture policy. All 448 NIFs across the trio are SE format (stream 100) - verified, no Oldrim. They sit at modlist positions 0-2, MO2's install default, and therefore win every shared mesh path; the Lux overlap is flagged in #127."
+    },
+    {
       "modId": 63725,
       "modName": "EVLaS",
       "nexusName": "EVLaS",
@@ -1006,6 +1113,30 @@
       "installedUtc": "2026-08-24T03:08:58Z",
       "transaction": "20260824T030858735Z-e2ee826f8f47",
       "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 125349,
+      "modName": "Freak's Floral Fields 3.2.3 - Realistic Regional Mix",
+      "nexusName": "Freak's Floral Fields - A Grass Overhaul",
+      "version": "3.2.3",
+      "fileId": 788926,
+      "fileName": "Freaks Floral Fields-125349-3-2-3-1786549491.zip",
+      "sizeMb": 2060.77,
+      "sha256": "d82616f1f6d25a392e86b2ba1b18f21e464a401f3909910e866e25d493ebb9c",
+      "plugins": [
+        "Freak's Floral Fields.esp",
+        "Freak's Floral Fields- Realistic Tundra.esp",
+        "Freak's Floral Fields-  Realistic Pine.esp",
+        "Freak's Floral Fields- Realistic Rift.esp",
+        "Freak's Floral Fields- Mixed Reach.esp",
+        "Freak's Floral Fields- Volcanic Wasteland.esp",
+        "Freak's Floral Fields- Dead Snow Grass.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:19:07Z",
+      "transaction": "20260831T031907014Z-8713a863cda7",
+      "fomodPlan": "records/fomod-plans/125349-freaks-floral-fields.json",
+      "note": "Adopted grass overhaul. Deterministic FOMOD: 2K, no Seasons, dirt-cliff grass, Realistic Tundra/Pine/Rift, yellow 2K Rift leaves, Realistic Mix Marsh, Mixed Reach, Volcanic Wasteland, and Brown/Dead Snow Grass. All seven ESPs are ESL-flagged. The shipped INI supplies iMaxGrassTypesPerTexure=15 and iMinGrassSize=60. The separate Dirtcliffs02 Fix (173097 file 724092) is not installed because its only mesh is byte-identical to the fixed mesh already in FFF 3.2.3. No optional Solstheim module, Landscape Fixes, NGIO/cache, FPS booster, or other unapproved add-on was installed."
     },
     {
       "modId": 172417,
@@ -1024,7 +1155,22 @@
     },
     {
       "modId": 57339,
-      "modName": "FSMP",
+      "modName": "FSMP (disabled duplicate)",
+      "nexusName": "FSMP 4.1.1 - non-AVX-512 build",
+      "version": "4.1.1",
+      "fileId": 795580,
+      "fileName": "FSMP 4.1.1 57339 4.1.1 2026-08-26T19-57Z izKcFpr1Z.zip",
+      "sizeMb": 4.06,
+      "sha256": "ff9c7f3f78eca122ac0aa9bd58a0628d7200685f86ef63fbd18bfe7f2c6d667f",
+      "plugins": [],
+      "enabled": false,
+      "installedUtc": "2026-08-26T22:22:56Z",
+      "transaction": "20260830T225338087Z-637a1b6d0612",
+      "note": "DISABLED 2026-08-30, NOT a gap - do not re-enable. This is a redundant second copy of FSMP 4.1.1 from the same Nexus archive (57339 file 795580), installed 2026-08-26T22:22:56Z by the other assistant session and never given a ledger row, which is how the duplicate arose. It ships the NON-AVX-512 build of hdtsmp64.dll (4,260,352 B, PE stamp 2026-08-26 19:55:21Z, SHA-256 FF9C7F3F78ECA122AC0AA9BD58A0628D...). It passes the 1.7.104 gate identically - versionIndependence=1, versionIndependenceEx=3 with the V5 bit set - so this is purely a CPU-variant choice, not a compatibility one. Superseded by 'FSMP - Faster HDT-SMP', which ships the AVX-512 build matching the i9-11900. Kept installed but disabled so it is one click to fall back to if the AVX-512 build ever misbehaves. A reconcile pass must NOT read this as a missing mod."
+    },
+    {
+      "modId": 57339,
+      "modName": "FSMP - Faster HDT-SMP",
       "nexusName": "FSMP 4.1.1",
       "version": "4.1.1",
       "fileId": 795580,
@@ -1033,9 +1179,10 @@
       "sha256": "fae3659452e6df66ad7ede0a53d39832ac5636d62e0abcf8e01bd6a607dc5094",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-08-26T22:22:56Z",
-      "transaction": "20260826T222254137Z-56907c87dbd0",
-      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\57339-fsmp.json"
+      "installedUtc": "2026-08-30T22:27:32Z",
+      "transaction": "20260830T222730043Z-bef3906e34c7",
+      "fomodPlan": "records/fomod-plans/57339-fsmp.json",
+      "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row."
     },
     {
       "modId": 157506,
@@ -2451,6 +2598,38 @@
       "fomodPlan": "records\\fomod-plans\\34179-skyland-aio-1k-4.32.json"
     },
     {
+      "modId": 132292,
+      "modName": "SkyParkour v3 - Pandora Animation Cache",
+      "nexusName": "Pandora Animation Cache",
+      "version": "3.5.0",
+      "fileId": 747633,
+      "fileName": "Additional Pandora Patch For CRC32 Cache-132292-3-5-0-1777659026.7z",
+      "sizeMb": 0.0,
+      "sha256": "99a782cb7b12c2b28828cafbdc1d2a64c961026b0ed36b0a3bf5b47a0deb4f31",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T23:24:39Z",
+      "transaction": "20260830T232439195Z-da391ed61122",
+      "note": "The Pandora-user companion to SkyParkour v3, MAIN file 747633. Contains ONLY three animationsetdatasinglefile text files under Nemesis_Engine/mod/sppffp and sppftp (FirstPerson.txt, DefaultFemale.txt, DefaultMale.txt) - it is NOT generated behavior output and does NOT remove the need to run Pandora (#128). Must not be used alongside Nemesis, which is not installed. VERSION MISMATCH TO WATCH: this file is labelled 3.5.0 while the main mod is 3.6.3; confirm at the Pandora run that the author has not superseded it and that Pandora does not complain."
+    },
+    {
+      "modId": 132292,
+      "modName": "SkyParkour v3 - SPPF",
+      "nexusName": "SkyParkour V3 - Parkour Framework",
+      "version": "3.6.3",
+      "fileId": 793971,
+      "fileName": "SkyParkour V3 - Parkour Framework 132292 3.6.3 2026-08-23T17-35Z lNkz9LyGj.zip",
+      "sizeMb": 8.7,
+      "sha256": "9fb509e175c4a68332c423a0ecff2e41bcd590e058a712ea15f375e387deb852",
+      "plugins": [
+        "SkyParkour.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T23:24:38Z",
+      "transaction": "20260830T232437619Z-dcfe0aa8af15",
+      "note": "SkyParkour v3 3.6.3 (2026-08-23), 12,341 endorsements, 2.25M downloads - actively maintained. GATE PASSES on 1.7.104, read from the exported struct: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=1 (kNoStructUse, V5 bit NOT set), PE TimeDateStamp 1787503961 = 2026-08-23, ABOVE the 1748217600 cutoff - so it passes on the STAMP, not on the flag. Its compatibleVersions array is 16 copies of 1.0.0.0, i.e. placeholder garbage, but that is moot because a version-independent plugin bypasses the whitelist. The mod PAGE claims support only for 'Skyrim SE Version 1.5.97 to 1.7.99'; the binary says otherwise and the binary is what SKSE reads. Note the pass is stamp-dependent: a future rebuild with an older timestamp and still no V5 flag would fail. SkyParkour.esp is 9 NEW records (1 SNCT + 8 SNDR), zero overrides, zero deleted, already ESL-flagged - no plugin slot cost, no conflict surface. MECHANISM, established from the payload not the tagline: 'procedural' does NOT mean behavior-free. It ships Nemesis_Engine/mod/sppffp and sppftp behavior-mod definitions and describes itself as 'Native behavior integration with root motion driven animations' and 'Fully SKSE & Behavior Level'. A behavior-engine run is therefore REQUIRED - see #128, the parkour will not animate until Pandora is actually run. Nemesis is not installed, which is correct: the author forbids running both. REQUIREMENTS: SKSE + Address Library installed; SKSE Menu Framework installed (settings live in its in-game config, not in a shipped ini - SkyParkourNG_CustomVars.ini is only a custom parkour-BLOCKING hook file and ships empty); Pandora installed but never run (#128). True Directional Movement is OPTIONAL, not assumed - it only 'unlocks 360 parkour camera', so SkyParkour works without it and #109 stays independent. Animation Queue Fix, which the author calls semi-mandatory for OAR users, FAILS the gate and was not installed (#129); its absence causes only a transient post-load animation delay that clears once OAR finishes preloading. SETTINGS worth noting for a realism-lean taste: stamina is consumed as a configurable base plus equipment weight * 0.2, insufficient stamina plays a failed animation, and low-effort actions cost half - that is effort-scaled rather than arcade-free. Default key is the Jump key, with press-or-hold styles; sliding and rolling are always on the sneak key. No skill or perk gate ships. Vanilla attack behaviour is untouched and no MCO-lineage mod is installed."
+    },
+    {
       "modId": 106659,
       "modName": "SkyPatcher",
       "nexusName": "SkyPatcher - AE",
@@ -2894,6 +3073,45 @@
       "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 1.7.99 dll (sha256 d1c7d54b4dc8acd8..., NG 6.7.0, gate-verified vi=0x5 viEx=0x2 compat 0x1070630, popups converted to log-only per doctrine) from _rebuild_TheNewGentleman; official 4.2.5 dll preserved as .bak.v4.2.5-official. MCM DAK hotfix 793745 applied over scripts/. Plugin re-starred (ESL, end of order). In-game verification pending | rev-2 2026-08-26: uncut defaults baked in (cVanillaDefaults C->R for default/bosmer/saxhleel rows), sha256 269d9cdae4a26a76..."
     },
     {
+      "modId": 57874,
+      "modName": "Traverse the Ulvenwald 3.3.2 Assets",
+      "nexusName": "Ulvenwald 3.3.2",
+      "version": "3.3.2",
+      "fileId": 444742,
+      "fileName": "Ulvenwald 3.3.2-57874-3-3-2-1700583210.rar",
+      "sizeMb": 1050.59,
+      "sha256": "6fd168c2f063a3c8dd4d3d5b8d1bc5d596b76721f3364542aca80056db0a7379",
+      "plugins": [
+        "Ulvenwald.esp"
+      ],
+      "disabledPlugins": [
+        "Ulvenwald.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T23:32:07Z",
+      "transaction": "20260830T233143674Z-ac84df658c57",
+      "fomodPlan": "records\\fomod-plans\\57874-ulvenwald-3.3.2-assets.json",
+      "note": "Vendor archive is enabled strictly as an asset dependency for Tree Diversity Project's NotWL-base + Ulvenwald-swap route. Ulvenwald.esp is deliberately disabled so Nature of the Wild Lands remains the sole placement authority and only the existing NotWL patch family is active. The mod is lowest-priority in MO2: its two shared SMIM meshes lose, while all 12 selected Ulvenwald tree models and their 33 texture references still resolve from unique paths. No vendor files were modified."
+    },
+    {
+      "modId": 155974,
+      "modName": "Tree Diversity Project - NotWL Base Ulvenwald Mix",
+      "nexusName": "Tree Diversity Project",
+      "version": "1.0.1",
+      "fileId": 680001,
+      "fileName": "Tree Diversity Project-155974-1-0-1-1761333499.zip",
+      "sizeMb": 2.32,
+      "sha256": "606224ade3aee68444c681453712635dc45c4e66456d06e35ec7509f38185fcd",
+      "plugins": [
+        "Tree_Diversity_Project.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T23:32:41Z",
+      "transaction": "20260830T233240809Z-0f5adaaba3ef",
+      "fomodPlan": "records\\fomod-plans\\155974-tree-diversity-project-notwl-ulvenwald.json",
+      "note": "Official NOTWL base + Ulvenwald swap selection. Installs only the already-ESL-flagged 515-record STAT/TREE library and one 14-line BOS swap INI; no Vanilla dummy, Seasons files, or Ulvenwald-base meshes. The plugin has zero overrides, placed references, cells, worldspaces, navmeshes, scripts, or quests."
+    },
+    {
       "modId": 17561,
       "modName": "UIExtensions",
       "nexusName": "UIExtensions v1-2-0",
@@ -2927,6 +3145,21 @@
       "note": "1.3.1 supersedes 1.3 test build; core + CBBE variant per body pillar | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | 2026-08-26: vanilla-garment pool IMPLEMENTED in Underwear.ini (10 slot-32 forms read from Skyrim.esm - Roughspun/Belted/Farm/Miner/Ragged), replacing the 4 default meshes the user called garbo; dead Vilja/Sofia blacklist entries removed. VERIFY in-game: pool garments appear on stripped NPCs; whether the PLAYER also gets auto-underwear (if so and nudity is wanted, try Ignore = 0x7~Skyrim.esm)"
     },
     {
+      "modId": 21027,
+      "modName": "Unofficial Material Fix",
+      "nexusName": "Unofficial Material Fix",
+      "version": "1.18.0",
+      "fileId": 610851,
+      "fileName": "Unofficial Material Fix-21027-1-18-0-1743165030.7z",
+      "sizeMb": 15.28,
+      "sha256": "12ddcea897a7bafa48a616462c885c01b0f5200d6cd67ab0a6bba18e19eb78f7",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:01:07Z",
+      "transaction": "20260831T030106107Z-95516f98791c",
+      "note": "Part of the #107 DLL-free fix floor. Elzee's UMF 1.18.0: 217 meshes, ALL SE format (stream 100), no plugin, no textures, no DLL - it only corrects material/shader flags on vanilla meshes, so it costs no plugin slot and has no record surface."
+    },
+    {
       "modId": 266,
       "modName": "USSEP",
       "nexusName": "Unofficial Skyrim Special Edition Patch",
@@ -2954,7 +3187,8 @@
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-30T21:58:10Z",
-      "transaction": "20260830T215810031Z-2115c73434fc"
+      "transaction": "20260830T215810031Z-2115c73434fc",
+      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed."
     },
     {
       "modId": 63979,
@@ -2970,7 +3204,25 @@
       ],
       "enabled": true,
       "installedUtc": "2026-08-30T21:58:05Z",
-      "transaction": "20260830T215800258Z-6a006384c373"
+      "transaction": "20260830T215800258Z-6a006384c373",
+      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed."
+    },
+    {
+      "modId": 54061,
+      "modName": "Vanilla Script MicroOptimizations",
+      "nexusName": "Vanilla Script (micro)Optimizations",
+      "version": "1.17",
+      "fileId": 432771,
+      "fileName": "54061-432771.7z (repacked to plain Deflate)",
+      "sizeMb": 1.24,
+      "sha256": "",
+      "plugins": [
+        "Vanilla Script MicroOptimizations.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:01:39Z",
+      "transaction": "20260831T030139526Z-08fb47d9a0e0",
+      "note": "Part of the #107 DLL-free fix floor. ESL + BSA, 1 override, 0 new records, 0 deleted, masters Skyrim.esm + HearthFires.esm. Ships no DLL, no meshes, no textures. INSTALL TRAP: the Nexus archive uses ZIP compression method 9 (deflate64), which MO2Headless's tar.exe backend cannot read - the direct install failed with 'Unsupported ZIP compression method (9: deflation-64-bit)'. Worked around by extracting with 7-Zip and repacking as plain Deflate before installing; the payload is byte-identical. Any future deflate64 archive will hit the same wall - see #130."
     },
     {
       "modId": 148853,

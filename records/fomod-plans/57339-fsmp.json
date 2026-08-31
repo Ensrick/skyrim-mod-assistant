@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "SKSE", "destination": "SKSE" },
+    { "source": "Scripts", "destination": "Scripts" },
+    { "source": "Source", "destination": "Source" },
+    { "source": "raw-vs2022-windows-avx512/SKSE", "destination": "SKSE" },
+    { "source": "FSMPV/hdtSMP64.xsd", "destination": "SKSE/Plugins/hdtSkinnedMeshConfigs/hdtSMP64.xsd" },
+    { "source": "LICENSE", "destination": "LICENSE" },
+    { "source": "Readme.txt", "destination": "Readme.txt" }
+  ]
+}

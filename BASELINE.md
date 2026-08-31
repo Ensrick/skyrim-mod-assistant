@@ -193,12 +193,12 @@ design, not a compromise.
 | slot | candidates surviving in keeps | how it gets decided |
 |---|---|---|
 | Weather | **DECIDED 2026-08-23: Azurite III** + Azurite III CS 162153 (Dlizzio; incl. its own Darker Nights + IBL) + EVLaS + water fx fix - **installed** | swap same day: doodlum HDR 138991 + DrJacopo Darker Nights addon disabled (162153 page: incompatible) after user identified the mod he meant; rivals skipped per user order; Azurite Mists out (author: III needs no mist mods) |
-| Landscape tex | **PROVISIONAL 2026-08-26: Vanaheimr Landscapes 5.5 PBR 2K**; previous six candidates retained pending repair/A-B | Best current art-direction fit and <=4K, but two shipped road meshes report Oldrim format; hold install until repaired/excluded and CS/PGPatcher path is ready. Evidence: `docs/LANDSCAPE-TREES-2026-08-26.md` |
+| Landscape tex / mountains | **DECIDED 2026-08-30: Skyland AIO 1K 4.32 is the broad landscape and architecture base; Vanaheimr is not installed. ERM 1.1.2 + Fix/Addon 6.4 + STEP DynDOLOD Add-On are the active texture-agnostic rock/mountain mesh layer.** | This follows the user's explicit Skyland-base decision. ERM references vanilla texture paths and therefore inherits Skyland rather than requiring its own texture pack. Any future Vanaheimr use must be evaluated as a named regional override, not a replacement assumed from earlier research. Evidence: `records/skyland-notwl-foundation-install-2026-08-30.md` and the installed-mod ledger. |
 | Interior lighting | **DECIDED 2026-08-23: Lux family** - Lux + Via + Orbis + Patch Hub + Lux CS + CC bundle (installing; dim beam/mist variants) | Lux re-entered via keeps and won on facts: every component active 2024-26, purpose-built CS bridge, hub officially patches Bruma/Wyrmstooth/Vigilant/Glenmoril/Unslaad (ELFX FOMOD: none). ELFX trio stays shelved as mid-save A/B fallback |
 | Water | **DECIDED 2026-08-27: Water for ENB 2.21, Natural Shades of Skyrim for CS, 2K, transparent 2K waterfall/effects add-on with parallax; USSEP + Beyond Reach + Bruma + Wyrmstooth patches** | The ENB-named parent explicitly supports CS and is current as of 2026-08-15; Slightly Brighter Water FX Fix parked because its waterfall meshes overlap the selected add-on |
 | Horses | Convenient Horses, Simple Horse, Simplest Horses (3) | feature-set read; CH vs INIGO conflict already on file |
 | Skeleton | XPMSSE + Skeleton Replacer HD (2) | layering question, not rivalry |
-| Trees | **PROVISIONAL: NotWL 3.14 family; exact placement profile still requires the user's call** | The current NotWL main file already uses its standard 2K bark and 1K leaf profile. Mild Lands is held outside both Keep and Skip until performance is measured; it halves all 413 texture dimensions (mostly 1K/512, 44 at 2K, one at 4K). Nordic Cut restores vanilla placement for most normal trees while retaining NotWL debris/shrubs and stronger spruce silhouettes; it reduces placement conflicts but is not a guaranteed FPS improvement. Full NotWL versus Nordic Cut remains undecided and uninstalled; either path requires a new game and dedicated DynDOLOD. Evidence: `records/tree-overhaul-and-morthal-cypress-audit-2026-08-29.md`. |
+| Trees | **DECIDED 2026-08-30: full NotWL 3.14 placements + Ulvenwald 3.3.2 assets through Tree Diversity Project 1.0.1** | NotWL remains the sole placement authority and retains only its own Bruma/Tundra Homestead/CRF/Lux Via/Grand Solitude/Docks patch family. `Ulvenwald.esp` is deliberately disabled and its asset mod is lowest priority; Tree Diversity Project's NotWL-base configuration performs 14 controlled BOS swaps to 13 verified models. Nordic Cut and Mild Lands are absent. Runtime frame-time/shadow/clipping acceptance and final TexGen/DynDOLOD remain on #29/#41. Evidence: `records/notwl-ulvenwald-tree-diversity-2026-08-30.md`. |
 | Combat feel | Wildcat, Smilodon (2) | same author, heavy vs light - read + play |
 | Crafting | Ars Metallica, CCOR (2) | CCOR pulls WACCF family, already kept |
 
@@ -209,7 +209,8 @@ layering, stagger (POISE vs combat-feel built-ins), and the CACO seam (CACO
 overlaps iNeed food + CCOR crafting - decide CACO first).
 
 **B. Gap-search slots** (11) - the purge or the original sweep left nothing/one:
-perks (0 of 5 remain), grass (0), cities (0), camera (0), enemies (0), UI skin
+perks (0 of 5 remain), grass (**FFF 3.2.3 adopted 2026-08-30; utility/cache
+decisions remain**), cities (0), camera (0), enemies (0), UI skin
 (0), combat framework (0), architecture (0), survival (0 rivals; SMI-SKSE +
 Starfrost + Campfire recommendation stands in `SURVIVAL_COMPARISON.md`,
 Campfire kept), magic (Odin survives, Mysticism purged), **sound - SLOT CLOSED

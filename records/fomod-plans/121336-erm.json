@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "ERM - Enhanced Rocks and Mountains", "destination": "." }
+  ]
+}

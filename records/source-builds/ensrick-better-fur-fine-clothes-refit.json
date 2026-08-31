@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Better Fur Fine Clothes CBBE-HIMBO Refit",
+  "mo2VendorMod": "Better Fur - Fine Clothes",
+  "mo2OverlayMod": "Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit",
+  "purpose": "Preserve the active CBBE and HIMBO Refits outfit geometry while adding jg1's separately weighted Better Fur shell.",
+  "source": {
+    "nexusUrl": "https://www.nexusmods.com/skyrimspecialedition/mods/69240",
+    "author": "jg1",
+    "version": "2",
+    "fileId": 289832,
+    "archiveSha256": "7FFBEDA6DE0CA9B6CC3B9998338ADC0941983C776588C17AA33E331295C21190",
+    "furTextures": {
+      "textures/jg/clothes/fineclothes01/fur.dds": "B342232C7B61270CD49761DE3EDCB84CCE4BE38E90ED7DF9006DE746A68BF7F9",
+      "textures/jg/clothes/fineclothes01/fur_n.dds": "97ABDE27B3983602ADB676DE09B326903592305A3261DCE163FCBC14D2FEA873"
+    }
+  },
+  "transformation": {
+    "toolRepository": "https://github.com/Ensrick/nif-port-cli",
+    "toolCommit": "c63f74e1c45ea331494f88511840ed7222f32ef5",
+    "toolCommitPushed": false,
+    "toolBinarySha256": "CC4FFBE32AEAC905F9E24608C6495FA8CFEBE0EED52C37DCD594D78843902C5D",
+    "command": "clone-shape",
+    "policy": "Start from each exact installed body-refit NIF and clone only the matching separately named weighted fur shape from the exact Better Fur _0 or _1 donor. Write a new output; never overwrite a source or installed vendor file.",
+    "vendorFilesModified": false,
+    "bodyRefitFilesModified": false
+  },
+  "meshes": [
+    {
+      "path": "meshes/clothes/fineclothes01/outfitf_0.nif",
+      "bodySource": "CBBE",
+      "bodySourceSha256": "F457E9B653C176E92B024B012A2A50A2BE562B7BBD80E2C6955FD28EA344BAB4",
+      "vendorSourceSha256": "994DFF55EDF98FE59C7F06B420F36A55B58B8F94907795148A1B0A131A80F65F",
+      "clonedShape": "FineClothes01F:Fur",
+      "outputSha256": "6CDA779F9563DEA45C3BA30C8EE0922EA14DF60F8C21C830D57EAFE7223AEF7D",
+      "outputBytes": 768065
+    },
+    {
+      "path": "meshes/clothes/fineclothes01/outfitf_1.nif",
+      "bodySource": "CBBE",
+      "bodySourceSha256": "08110CE103A75BA3B3BA6D3187EBA750C493FAC2FB13A35AE370466392CABD25",
+      "vendorSourceSha256": "8DE5162AAFD134B42A65AE3C9C130836119CD11C689EAE1D13446BA67AA6C98B",
+      "clonedShape": "FineClothes01F:Fur",
+      "outputSha256": "6A0BF58EF7131677993A64CE15B6F425AC499F34F6FC3EF61B17834EA6B7EC2D",
+      "outputBytes": 768065
+    },
+    {
+      "path": "meshes/clothes/fineclothes01/outfitm_0.nif",
+      "bodySource": "HIMBO Refits",
+      "bodySourceSha256": "5DEC5301D89785741B13CC3AECF2D84DAE7574E399ABE9EB457D96568EF40E4F",
+      "vendorSourceSha256": "402B1564E91D65EBCAADB11A80902AE17B95A9C2E615A642FCB7CA4CCF404474",
+      "clonedShape": "FineClothes01M:Fur",
+      "outputSha256": "056E459FD2C7E9247128E2842CAD5A34D0D508462F1D007F057DD5E92EBDD380",
+      "outputBytes": 1164388
+    },
+    {
+      "path": "meshes/clothes/fineclothes01/outfitm_1.nif",
+      "bodySource": "HIMBO Refits",
+      "bodySourceSha256": "963E29B489F9AB5600248FCE00BBE2574A31B0C6582792F6FF6FD5AC293A4EE1",
+      "vendorSourceSha256": "CD7D47D2086F680F843CD0199FDC616440299961B09D69603595D95633D4AF15",
+      "clonedShape": "FineClothes01M:Fur",
+      "outputSha256": "516ED894A225483E52F0E1CB7B5F2BE1EF90833E2029D26D34E248475CE9CE9C",
+      "outputBytes": 1164388
+    }
+  ],
+  "output": {
+    "archiveFile": "Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit 2026-08-30.7z",
+    "archiveSha256": "D141AC4109A4804DC056E5B89238EF31C7EFA28473338FB35C56314B33DDA3CC",
+    "archiveBytes": 1069891,
+    "plugins": 0,
+    "scripts": 0,
+    "textures": 0
+  },
+  "installation": {
+    "profile": "Default",
+    "enabled": true,
+    "priorityAtInstall": 191,
+    "transaction": "20260830T193242200Z-95b407d38b1a"
+  },
+  "validation": {
+    "cleanGenerations": 2,
+    "byteIdenticalRuns": true,
+    "niflyReload": "pass",
+    "unknownNifBlocks": false,
+    "sseGeometryCompatible": true,
+    "baseGeometryObjPrefixByteExact": true,
+    "donorShapeCountsBonesAndTexturesExact": true,
+    "bindPoseBlenderFrontAndSideInspection": "pass",
+    "activeWinners": 4,
+    "mo2AuditErrors": 0,
+    "gameplayAcceptance": "pending animation and extreme-preset clipping check"
+  },
+  "distribution": {
+    "authorPolicy": "jg1 allows modifications and asset use with credit, including release of fixes and improvements; no sale is allowed.",
+    "publicPackStrategy": "Reference Nexus mod 69240 file 289832 and regenerate from the user's authorized archive plus their installed CBBE/HIMBO sources. Do not commit or bundle the derived NIFs in this repository.",
+    "vendorAssetsCommitted": false,
+    "derivedAssetsCommitted": false
+  },
+  "rollback": {
+    "transaction": "20260830T193242200Z-95b407d38b1a",
+    "effect": "Roll back or disable the owned overlay and Better Fur vendor mod together to restore direct CBBE/HIMBO winners. Never disable only the overlay while the vanilla-body vendor meshes remain enabled."
+  }
+}
