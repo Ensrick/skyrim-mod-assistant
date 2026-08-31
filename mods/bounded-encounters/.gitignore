@@ -1,0 +1,15 @@
+/build/
+/out/
+/package/
+/.vs/
+/.vscode/
+/.cache/
+/.vcpkg/
+*.user
+*.suo
+*.VC.db
+*.log
+*.pdb
+*.ilk
+*.zip
+!tests/fixtures/*.log

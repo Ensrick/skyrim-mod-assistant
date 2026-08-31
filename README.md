@@ -25,6 +25,9 @@ a private working tree, but only the reviewed allowlist can be committed.
 - `mods/katana-two-handed` documents and audits a generated, load-order-aware
   katana patch. The patcher itself is maintained in
   [KatanaTwoHandedPatcher](https://github.com/Ensrick/KatanaTwoHandedPatcher).
+- `mods/bounded-encounters` contains the source-built Bounded Encounters SKSE
+  population framework, deterministic simulator, tests, and reproducible
+  release tooling. Its first test candidate ships in observe-only mode.
 - `ports/lost-longswords` records a private, asset-free port recipe and its
   validation criteria. It does not grant or imply redistribution permission.
 - `records/restricted-mods.json` is the machine-readable redistribution ledger.

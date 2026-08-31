@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "bounded-encounters",
+  "version-string": "0.1.0-alpha.1",
+  "dependencies": [
+    "directxmath",
+    "directxtk",
+    "fmt",
+    "nlohmann-json",
+    "rapidcsv",
+    "simpleini",
+    "spdlog",
+    "xbyak"
+  ]
+}

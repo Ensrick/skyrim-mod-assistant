@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "observeOnly": true,
+  "debugLogging": false,
+  "seed": 1869507693,
+  "curves": {
+    "general": {
+      "enabled": true,
+      "ratePerLevel": 0.05,
+      "baselineLevel": 1,
+      "maxMultiplier": 3.0,
+      "maxExtrasPerSource": 2,
+      "maxExtrasPerCell": 12
+    },
+    "animalBeast": {
+      "enabled": true,
+      "ratePerLevel": 0.025,
+      "baselineLevel": 1,
+      "maxMultiplier": 2.0,
+      "maxExtrasPerSource": 1,
+      "maxExtrasPerCell": 6
+    },
+    "giantMammoth": {
+      "enabled": true,
+      "ratePerLevel": 0.01,
+      "baselineLevel": 1,
+      "maxMultiplier": 1.5,
+      "maxExtrasPerSource": 1,
+      "maxExtrasPerCell": 2
+    }
+  },
+  "limits": {
+    "maxAdditionalInterior": 12,
+    "maxAdditionalExterior": 20,
+    "maxHostilesInterior": 24,
+    "maxHostilesExterior": 40,
+    "maximumExteriorDistance": 12000.0,
+    "placementRadiusMin": 96.0,
+    "placementRadiusMax": 256.0,
+    "maximumNavmeshSnapDistance": 256.0
+  },
+  "exclusions": {
+    "dragons": true,
+    "unique": true,
+    "essential": true,
+    "protected": true,
+    "nonRespawning": true,
+    "persistentReferences": true,
+    "questAliases": true,
+    "locationBosses": true,
+    "summons": true,
+    "commandedActors": true
+  },
+  "allowedSourcePlugins": [
+    "Skyrim.esm",
+    "Update.esm",
+    "Dawnguard.esm",
+    "HearthFires.esm",
+    "Dragonborn.esm"
+  ],
+  "deniedPlugins": []
+}

@@ -1,0 +1,55 @@
+name: Bounded Encounters compatibility
+description: Submit evidence for a runtime or mod interaction; a report is not automatically a support claim.
+title: "[Bounded Encounters Compatibility]: "
+labels: [compatibility, bounded-encounters]
+body:
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Compatible in tested scenarios
+        - Behavioral conflict
+        - Crash or save-integrity concern
+        - Inconclusive
+    validations:
+      required: true
+  - type: input
+    id: subject
+    attributes:
+      label: Runtime or mod tested
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Bounded Encounters version, commit, and package SHA-256
+    validations:
+      required: true
+  - type: textarea
+    id: matrix
+    attributes:
+      label: Scenarios tested
+      description: Include new/existing save, interior/exterior, save/reload, actor categories, and duration.
+    validations:
+      required: true
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Exact configuration and load order
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Result evidence
+      description: Attach logs, counts, crash reports, save inspection, and reproduction steps as applicable.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope acknowledgement
+      options:
+        - label: I understand this report covers only the versions and scenarios listed above.
+          required: true

@@ -1,0 +1,238 @@
+name: Bounded Encounters
+
+on:
+  push:
+    branches: [main, "ensrick/**"]
+    tags: ["bounded-encounters/v*"]
+    paths:
+      - "mods/bounded-encounters/**"
+      - ".gitmodules"
+      - ".github/workflows/bounded-encounters.yml"
+  pull_request:
+    paths:
+      - "mods/bounded-encounters/**"
+      - ".gitmodules"
+      - ".github/workflows/bounded-encounters.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  windows-release:
+    runs-on: windows-2025
+    timeout-minutes: 90
+    env:
+      VCPKG_BINARY_SOURCES: clear
+
+    defaults:
+      run:
+        working-directory: mods/bounded-encounters
+
+    steps:
+      - name: Materialize tracked symlinks as archival placeholders
+        shell: pwsh
+        working-directory: ${{ github.workspace }}
+        run: |
+          # GitHub's Windows image can create tracked links as reparse points.
+          # Configure Git before checkout so every link is instead the regular
+          # placeholder file used by the reviewed source archive. The packager
+          # continues to reject every reparse point rather than dereferencing it.
+          git config --global core.symlinks false
+          if ((git config --global --get core.symlinks).Trim() -cne "false") {
+            throw "Could not enforce safe Windows symlink materialization."
+          }
+
+      - name: Check out source and pinned submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
+
+      - name: Initialize isolated vcpkg downloads
+        shell: pwsh
+        run: |
+          $downloads = Join-Path $env:RUNNER_TEMP "bounded-encounters-vcpkg-downloads"
+          New-Item -ItemType Directory -Path $downloads -Force | Out-Null
+          [System.IO.File]::AppendAllText(
+            $env:GITHUB_ENV,
+            "VCPKG_DOWNLOADS=$downloads`n",
+            [System.Text.UTF8Encoding]::new($false))
+
+      - name: Verify signed annotated release tag
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          $versionHeader = Get-Content .\src\Version.h -Raw
+          if ($versionHeader -notmatch 'Semantic\s*=\s*"([^"]+)"') {
+            throw "Unable to read the project semantic version."
+          }
+          $expectedTag = "bounded-encounters/v$($Matches[1])"
+          if ($env:RELEASE_TAG -cne $expectedTag) {
+            throw "Release tag '$env:RELEASE_TAG' does not match '$expectedTag'."
+          }
+
+          git fetch --force --no-tags origin "refs/tags/$env:RELEASE_TAG`:refs/tags/$env:RELEASE_TAG"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ((git cat-file -t "refs/tags/$env:RELEASE_TAG").Trim() -cne "tag") {
+            throw "Release ref is not an annotated tag object."
+          }
+          $head = (git rev-parse HEAD).Trim()
+          if ((git rev-parse "refs/tags/$env:RELEASE_TAG^{}").Trim() -ne $head) {
+            throw "Release tag does not peel to the checked-out commit."
+          }
+          $tagObject = git cat-file -p "refs/tags/$env:RELEASE_TAG" | Out-String
+          $normalizedTagObject = $tagObject.Replace("`r`n", "`n").Replace("`r", "`n")
+          $headerEnd = $normalizedTagObject.IndexOf("`n`n", [System.StringComparison]::Ordinal)
+          if ($headerEnd -lt 0) {
+            throw "Release tag object has no header/message boundary."
+          }
+          $tagHeaders = @($normalizedTagObject.Substring(0, $headerEnd).Split("`n"))
+          if (@($tagHeaders | Where-Object { $_ -ceq "object $head" }).Count -ne 1 -or
+              @($tagHeaders | Where-Object { $_ -ceq "type commit" }).Count -ne 1 -or
+              @($tagHeaders | Where-Object { $_ -ceq "tag $env:RELEASE_TAG" }).Count -ne 1) {
+            throw "Signed tag headers do not bind the exact release name directly to HEAD."
+          }
+          if ($tagObject -notmatch '-----BEGIN (?:SSH|PGP) SIGNATURE-----') {
+            throw "Release tag is not cryptographically signed."
+          }
+          # Reviewed SSH release key fingerprint:
+          # SHA256:wLKFaPWNivQgFTCbhQJSpNroFoekSoQHgtjHhzsM4ms
+          $allowedSigners = Join-Path $env:RUNNER_TEMP "bounded-encounters-allowed-signers"
+          [System.IO.File]::WriteAllText(
+            $allowedSigners,
+            "truthisfact@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFKFQFT3Ulgkds/m/9xgswbuhq4SxwKtVs7m6kdNLe3s`n",
+            [System.Text.UTF8Encoding]::new($false))
+          git -c gpg.format=ssh -c "gpg.ssh.allowedSignersFile=$allowedSigners" verify-tag "refs/tags/$env:RELEASE_TAG"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Release tag signature is not valid for the reviewed release signer."
+          }
+
+          $isShallow = (git rev-parse --is-shallow-repository).Trim()
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($isShallow -eq "true") {
+            git fetch --unshallow --no-tags origin "+refs/heads/main:refs/remotes/origin/main"
+          } else {
+            git fetch --no-tags origin "+refs/heads/main:refs/remotes/origin/main"
+          }
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git merge-base --is-ancestor HEAD origin/main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Release commit is not reachable from the protected main branch."
+          }
+
+      - name: Hydrate and verify reviewed CommonLib provenance
+        shell: pwsh
+        run: |
+          $commonLib = ".\extern\CommonLibSSE-NG"
+          $forkCommit = "a9d7d4523d5e1abc8b296bd99683b7df11df652f"
+          $upstreamCommit = "8b032fa992750d654d6d38a33731714d8b86be1f"
+
+          # actions/checkout intentionally gives submodules a depth-one clone.
+          # Fetch only the reviewed parent and tag needed by package.ps1's
+          # provenance gate; keep HEAD fixed at the monorepo's pinned gitlink.
+          $isShallow = (git -C $commonLib rev-parse --is-shallow-repository).Trim()
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if ($isShallow -eq "true") {
+            git -C $commonLib fetch --deepen=1 --no-tags origin $forkCommit
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+          git -C $commonLib fetch --force --no-tags origin "refs/tags/v7.0.0:refs/tags/v7.0.0"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          if ((git -C $commonLib rev-parse HEAD).Trim() -ne $forkCommit) {
+            throw "CommonLib HEAD moved away from the pinned fork commit."
+          }
+          if ((git -C $commonLib rev-parse HEAD^).Trim() -ne $upstreamCommit) {
+            throw "CommonLib fork parent does not match reviewed upstream v7.0.0."
+          }
+          if ((git -C $commonLib rev-list -n 1 v7.0.0).Trim() -ne $upstreamCommit) {
+            throw "CommonLib v7.0.0 tag does not resolve to the reviewed upstream commit."
+          }
+
+      - name: Check out pinned vcpkg
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: microsoft/vcpkg
+          ref: fab1c6dc7a944372a90a1e19ab5e8e32cd658fc2
+          path: mods/bounded-encounters/.vcpkg
+
+      - name: Bootstrap vcpkg
+        shell: pwsh
+        run: .\.vcpkg\bootstrap-vcpkg.bat -disableMetrics
+
+      - name: Build, test, simulate, and audit the DLL
+        shell: pwsh
+        env:
+          BE_VCPKG_ROOT: ${{ github.workspace }}\mods\bounded-encounters\.vcpkg
+          CMAKE_BUILD_PARALLEL_LEVEL: "3"
+          VCPKG_MAX_CONCURRENCY: "3"
+        run: |
+          .\tools\build.bat
+          if ($LASTEXITCODE -ne 0) {
+            Get-Content .\tools\build.log
+            exit $LASTEXITCODE
+          }
+          if ($env:VCPKG_BINARY_SOURCES -cne "clear") {
+            throw "Release CI must disable vcpkg binary caches."
+          }
+          if (Select-String -Path .\tools\build.log -Pattern 'Restored [1-9][0-9]* package') {
+            throw "Release CI restored dependencies from a vcpkg binary cache instead of building them from source."
+          }
+          Get-Content .\tools\build.log -Tail 120
+
+      - name: Package twice and verify reproducibility
+        shell: pwsh
+        run: |
+          $env:SOURCE_DATE_EPOCH = (git show -s --format=%ct HEAD).Trim()
+          $first = .\tools\package.ps1 -OutputDirectory .\build\release\packages-a | ConvertFrom-Json
+          $second = .\tools\package.ps1 -OutputDirectory .\build\release\packages-b | ConvertFrom-Json
+          $head = (git rev-parse HEAD).Trim()
+          if ($first.releaseEligible -ne $true -or $second.releaseEligible -ne $true) {
+            throw "CI produced a package that is not release eligible."
+          }
+          if ($first.sourceCommit -ne $head -or $second.sourceCommit -ne $head) {
+            throw "Package provenance does not identify the checked-out commit."
+          }
+          if ($env:GITHUB_REF_TYPE -eq "tag" -and $head -ne $env:GITHUB_SHA) {
+            throw "Tagged checkout HEAD does not match GITHUB_SHA."
+          }
+          if ($first.sha256 -ne $second.sha256) {
+            throw "Deterministic package check failed: $($first.sha256) != $($second.sha256)"
+          }
+          if ($first.correspondingSourceSha256 -ne $second.correspondingSourceSha256) {
+            throw "Deterministic source check failed: $($first.correspondingSourceSha256) != $($second.correspondingSourceSha256)"
+          }
+
+          $expectedNames = @(
+            "BoundedEncounters-0.1.0-alpha.1-Skyrim-1.7.104.0-win64.zip",
+            "BoundedEncounters-0.1.0-alpha.1-Skyrim-1.7.104.0-win64.zip.sha256",
+            "BoundedEncounters-0.1.0-alpha.1-corresponding-source.zip",
+            "BoundedEncounters-0.1.0-alpha.1-corresponding-source.zip.sha256")
+          foreach ($directory in @(".\build\release\packages-a", ".\build\release\packages-b")) {
+            $actualNames = @(Get-ChildItem -LiteralPath $directory -File | ForEach-Object Name | Sort-Object)
+            $sortedExpected = @($expectedNames | Sort-Object)
+            if ($actualNames.Count -ne $sortedExpected.Count -or
+                (Compare-Object -CaseSensitive $actualNames $sortedExpected)) {
+              throw "Package directory has missing, renamed, or unexpected files: $directory"
+            }
+          }
+
+      - name: Upload staged mod, simulator, and audits
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bounded-encounters-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            mods/bounded-encounters/build/release/stage/**
+            mods/bounded-encounters/build/release/simulation-smoke.json
+            mods/bounded-encounters/build/release/binary-audit.json
+
+      - name: Upload reproducible test-candidate packages
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bounded-encounters-package-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            mods/bounded-encounters/build/release/packages-a/*.zip
+            mods/bounded-encounters/build/release/packages-a/*.zip.sha256
