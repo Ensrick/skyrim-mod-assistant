@@ -4,6 +4,7 @@
 *
 
 !/.gitignore
+!/.gitmodules
 !/LICENSE
 !/README.md
 !/CONTRIBUTING.md
@@ -21,8 +22,17 @@
 !/run-through-mo2.ps1
 
 !/.github/
+!/.github/CODEOWNERS
 !/.github/dependabot.yml
+!/.github/ISSUE_TEMPLATE/
+!/.github/ISSUE_TEMPLATE/bounded-encounters-balance.yml
+!/.github/ISSUE_TEMPLATE/bounded-encounters-bug.yml
+!/.github/ISSUE_TEMPLATE/bounded-encounters-compatibility.yml
+!/.github/ISSUE_TEMPLATE/config.yml
+!/.github/PULL_REQUEST_TEMPLATE/
+!/.github/PULL_REQUEST_TEMPLATE/bounded-encounters.md
 !/.github/workflows/
+!/.github/workflows/bounded-encounters.yml
 !/.github/workflows/check.yml
 
 !/docs/
@@ -88,6 +98,8 @@
 !/overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py
 
 !/mods/
+!/mods/bounded-encounters/
+!/mods/bounded-encounters/**
 !/mods/period-underlayers/
 !/mods/period-underlayers/*.ini
 !/mods/period-underlayers/skse/

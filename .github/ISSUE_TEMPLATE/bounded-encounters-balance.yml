@@ -1,0 +1,31 @@
+name: Bounded Encounters balance
+description: Provide measured feedback on population curves and caps.
+title: "[Bounded Encounters Balance]: "
+labels: [balance, bounded-encounters]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version and test duration
+    validations:
+      required: true
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Exact configuration
+      description: Include observeOnly, seed, curves, caps, and both plugin lists.
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: Measured observations
+      description: List locations, authored/generated counts, category, level, and cap evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Suggested adjustment and rationale
+    validations:
+      required: true

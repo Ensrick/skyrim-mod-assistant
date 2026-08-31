@@ -1,0 +1,89 @@
+name: Bounded Encounters
+
+on:
+  push:
+    branches: [main, "ensrick/**"]
+    paths:
+      - "mods/bounded-encounters/**"
+      - ".gitmodules"
+      - ".github/workflows/bounded-encounters.yml"
+  pull_request:
+    paths:
+      - "mods/bounded-encounters/**"
+      - ".gitmodules"
+      - ".github/workflows/bounded-encounters.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  windows-release:
+    runs-on: windows-latest
+    timeout-minutes: 45
+
+    defaults:
+      run:
+        working-directory: mods/bounded-encounters
+
+    steps:
+      - name: Check out source and pinned submodules
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
+
+      - name: Check out pinned vcpkg
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: microsoft/vcpkg
+          ref: fab1c6dc7a944372a90a1e19ab5e8e32cd658fc2
+          path: mods/bounded-encounters/.vcpkg
+
+      - name: Bootstrap vcpkg
+        shell: pwsh
+        run: .\.vcpkg\bootstrap-vcpkg.bat -disableMetrics
+
+      - name: Build, test, simulate, and audit the DLL
+        shell: pwsh
+        env:
+          BE_VCPKG_ROOT: ${{ github.workspace }}\mods\bounded-encounters\.vcpkg
+          CMAKE_BUILD_PARALLEL_LEVEL: "3"
+          VCPKG_MAX_CONCURRENCY: "3"
+        run: |
+          .\tools\build.bat
+          if ($LASTEXITCODE -ne 0) {
+            Get-Content .\tools\build.log
+            exit $LASTEXITCODE
+          }
+          Get-Content .\tools\build.log -Tail 120
+
+      - name: Package twice and verify reproducibility
+        shell: pwsh
+        run: |
+          $env:SOURCE_DATE_EPOCH = (git show -s --format=%ct HEAD).Trim()
+          $first = .\tools\package.ps1 -OutputDirectory .\build\release\packages-a | ConvertFrom-Json
+          $second = .\tools\package.ps1 -OutputDirectory .\build\release\packages-b | ConvertFrom-Json
+          if ($first.sha256 -ne $second.sha256) {
+            throw "Deterministic package check failed: $($first.sha256) != $($second.sha256)"
+          }
+          if ($first.correspondingSourceSha256 -ne $second.correspondingSourceSha256) {
+            throw "Deterministic source check failed: $($first.correspondingSourceSha256) != $($second.correspondingSourceSha256)"
+          }
+
+      - name: Upload staged mod, simulator, and audits
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bounded-encounters-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            mods/bounded-encounters/build/release/stage/**
+            mods/bounded-encounters/build/release/simulation-smoke.json
+            mods/bounded-encounters/build/release/binary-audit.json
+
+      - name: Upload reproducible test-candidate packages
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bounded-encounters-package-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            mods/bounded-encounters/build/release/packages-a/*.zip
+            mods/bounded-encounters/build/release/packages-a/*.zip.sha256

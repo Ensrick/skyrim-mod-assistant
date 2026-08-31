@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Ensrick/skyrim-mod-assistant/raw/main/mods/bounded-encounters/config/BoundedEncounters.schema.json",
+  "title": "Bounded Encounters configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "enabled", "observeOnly", "debugLogging", "seed", "curves", "limits", "exclusions", "allowedSourcePlugins", "deniedPlugins"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "enabled": { "type": "boolean" },
+    "observeOnly": { "type": "boolean" },
+    "debugLogging": { "type": "boolean" },
+    "seed": { "type": "integer", "minimum": 0, "maximum": 18446744073709551615 },
+    "curves": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["general", "animalBeast", "giantMammoth"],
+      "properties": {
+        "general": { "$ref": "#/$defs/curve" },
+        "animalBeast": { "$ref": "#/$defs/curve" },
+        "giantMammoth": { "$ref": "#/$defs/curve" }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxAdditionalInterior", "maxAdditionalExterior", "maxHostilesInterior", "maxHostilesExterior", "maximumExteriorDistance", "placementRadiusMin", "placementRadiusMax"],
+      "properties": {
+        "maxAdditionalInterior": { "type": "integer", "minimum": 1, "maximum": 256 },
+        "maxAdditionalExterior": { "type": "integer", "minimum": 1, "maximum": 256 },
+        "maxHostilesInterior": { "type": "integer", "minimum": 1, "maximum": 512 },
+        "maxHostilesExterior": { "type": "integer", "minimum": 1, "maximum": 512 },
+        "maximumExteriorDistance": { "type": "number", "minimum": 0, "maximum": 100000 },
+        "placementRadiusMin": { "type": "number", "minimum": 0, "maximum": 100000 },
+        "placementRadiusMax": { "type": "number", "minimum": 0, "maximum": 100000 }
+      }
+    },
+    "exclusions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dragons", "unique", "essential", "protected", "nonRespawning", "persistentReferences", "questAliases", "locationBosses", "summons", "commandedActors"],
+      "properties": {
+        "dragons": { "const": true },
+        "unique": { "const": true },
+        "essential": { "const": true },
+        "protected": { "const": true },
+        "nonRespawning": { "const": true },
+        "persistentReferences": { "const": true },
+        "questAliases": { "const": true },
+        "locationBosses": { "const": true },
+        "summons": { "const": true },
+        "commandedActors": { "const": true }
+      }
+    },
+    "allowedSourcePlugins": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "deniedPlugins": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "curve": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "ratePerLevel", "baselineLevel", "maxMultiplier", "maxExtrasPerSource", "maxExtrasPerCell"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "ratePerLevel": { "type": "number", "minimum": 0, "maximum": 1 },
+        "baselineLevel": { "type": "integer", "minimum": 1, "maximum": 1000 },
+        "maxMultiplier": { "type": "number", "minimum": 1, "maximum": 10 },
+        "maxExtrasPerSource": { "type": "integer", "minimum": 1, "maximum": 32 },
+        "maxExtrasPerCell": { "type": "integer", "minimum": 1, "maximum": 256 }
+      }
+    }
+  }
+}
