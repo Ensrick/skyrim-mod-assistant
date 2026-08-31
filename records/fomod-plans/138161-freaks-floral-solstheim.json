@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Freak's Floral Solstheim - A Cathedral Grass Overhaul/Freak's Floral Solstheim.esp",
+      "destination": "Freak's Floral Solstheim.esp"
+    },
+    {
+      "source": "Freak's Floral Solstheim - A Cathedral Grass Overhaul/Freak's Floral Solstheim.ini",
+      "destination": "Freak's Floral Solstheim.ini"
+    },
+    {
+      "source": "Freak's Floral Solstheim - A Cathedral Grass Overhaul/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Freak's Floral Solstheim - A Cathedral Grass Overhaul/textures",
+      "destination": "textures"
+    }
+  ]
+}

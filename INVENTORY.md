@@ -15,9 +15,11 @@
 > Project 1.0.1; `Ulvenwald.esp` is deliberately disabled. Exact evidence is in
 > `records/notwl-ulvenwald-tree-diversity-2026-08-30.md`.
 > Current grass delta: Freak's Floral Fields 3.2.3 and DrJacopo's 3D Grass
-> Library 16.53 are enabled using the recorded realistic regional mix. All
-> seven FFF plugins are light, and a private one-file overlay enforces the
-> 4096-axis texture cap. Exact evidence is in
+> Library 16.53 are enabled using the recorded realistic regional mix, with
+> Freak's Floral Solstheim 1.0.1 and Freak's Floral Veil 1.0 extending it to
+> Solstheim and the Soul Cairn. All nine plugins are light, every effective
+> texture stays within the 4096-axis cap, and a private one-file overlay
+> enforces that cap for the base FFF package. Exact evidence is in
 > `records/freaks-floral-fields-3.2.3-2026-08-30.md`.
 
 Snapshot of the existing Vortex-managed collection, captured **2026-06-09** before resetting to a vanilla baseline.

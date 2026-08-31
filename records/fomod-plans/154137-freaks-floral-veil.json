@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Freak's Floral Veil/Freak's Floral Veil.esp",
+      "destination": "Freak's Floral Veil.esp"
+    },
+    {
+      "source": "Freak's Floral Veil/Freak's Floral Veil.ini",
+      "destination": "Freak's Floral Veil.ini"
+    },
+    {
+      "source": "Freak's Floral Veil/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Freak's Floral Veil/textures",
+      "destination": "textures"
+    }
+  ]
+}

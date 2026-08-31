@@ -375,6 +375,34 @@
       "publicListPolicy": "reference Nexus mod 80687 file 689307; do not bundle the archive or extracted library assets by default"
     },
     {
+      "name": "Freak's Floral Solstheim",
+      "author": "TheBloodyFreak",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 138161,
+      "nexusFileId": 606593,
+      "sourceFile": "Freak's Floral Solstheim-138161-1-0-1-1742206085.zip",
+      "sourceSha256": "D2CC68C96BF2257E23DE6F149B735912A3EFFFD99FA9C762081CDDD9DFB61488",
+      "redistribution": "retain as an external author-hosted dependency pending a release-time permissions review",
+      "modification": "no modification is needed for the active stack",
+      "runtimeRole": "official Solstheim and Dragonborn-worldspace extension for the selected Freak's Floral Fields stack",
+      "localPolicy": "official archive and installed vendor payload remain byte-preserving; the deterministic plan excludes only the stray packaged meta.ini",
+      "publicListPolicy": "reference Nexus mod 138161 file 606593 and reproduce the tracked file mapping; do not bundle the archive, plugin, meshes, or textures by default"
+    },
+    {
+      "name": "Freak's Floral Veil",
+      "author": "TheBloodyFreak",
+      "game": "Skyrim Special Edition",
+      "nexusModId": 154137,
+      "nexusFileId": 644292,
+      "sourceFile": "Freak's Floral Veil-154137-1-0-1751711904.zip",
+      "sourceSha256": "2C873BBCA96797BCF4CBE66831628DD444ACC04E65F50F9C80D765E478E8C6EE",
+      "redistribution": "retain as an external author-hosted dependency pending a release-time permissions review",
+      "modification": "no modification is needed for the active stack",
+      "runtimeRole": "official Soul Cairn and Dawnguard-worldspace extension for the selected Freak's Floral Fields stack",
+      "localPolicy": "official archive and installed vendor payload remain byte-preserving and separate from the Skyrim and Solstheim layers",
+      "publicListPolicy": "reference Nexus mod 154137 file 644292 and reproduce the tracked file mapping; do not bundle the archive, plugin, meshes, or textures by default"
+    },
+    {
       "name": "Traverse the Ulvenwald - 3.3 - Trees and Forests of Skyrim",
       "author": "Wigfrid09",
       "game": "Skyrim Special Edition",

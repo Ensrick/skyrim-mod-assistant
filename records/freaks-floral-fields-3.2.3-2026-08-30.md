@@ -2,16 +2,19 @@
 
 ## Decision
 
-Freak's Floral Fields (FFF) 3.2.3 is the adopted Skyrim grass overhaul. The
-installed composition favors realistic regional identity and variety over the
-FOMOD's more saturated fantasy choices. It uses the current required
-DrJacopo 3D Grass Library mesh package and the existing Community Shaders and
-Base Object Swapper foundation.
+Freak's Floral Fields (FFF) 3.2.3 is the adopted Skyrim grass overhaul. Its
+official Floral Solstheim 1.0.1 and Floral Veil 1.0 modules extend that choice
+to Solstheim and the Soul Cairn. The installed composition favors realistic
+regional identity and variety over the FOMOD's more saturated fantasy choices.
+It uses the current required DrJacopo 3D Grass Library mesh package and the
+existing Community Shaders and Base Object Swapper foundation.
 
 Sources:
 
 - [Freak's Floral Fields, Nexus 125349](https://www.nexusmods.com/skyrimspecialedition/mods/125349), main file 788926, version 3.2.3
 - [DrJacopo's 3D Grass Library - Meshes, Nexus 80687](https://www.nexusmods.com/skyrimspecialedition/mods/80687), file 689307, version 16.53
+- [Freak's Floral Solstheim, Nexus 138161](https://www.nexusmods.com/skyrimspecialedition/mods/138161), file 606593, version 1.0.1
+- [Freak's Floral Veil, Nexus 154137](https://www.nexusmods.com/skyrimspecialedition/mods/154137), file 644292, version 1.0
 
 ## Exact install
 
@@ -20,6 +23,8 @@ Sources:
 | DrJacopo's 3D Grass Library - Meshes 16.53 | `5026606FAAE2B72CC796242DBC2E3F13D0A22133F9AFAFE6E2A9A71ECB298C68` | `20260831T031543157Z-dfbb6e446aec` | enabled, priority 37, no plugin |
 | Freak's Floral Fields 3.2.3 | `D82616F1F6D25A392E86B2BA1B18F21E464A401F3909910E866E25D493EBBB9C` | `20260831T031907014Z-8713a863cda7` | enabled, priority 38, seven light plugins |
 | Ensrick - Freak's Floral Fields Texture Cap | effective DDS SHA-256 `E4CC21AE1BFC1E1FEF15448362BA44244DAC72BF7439CF38BE4D74BC6BDFB3AF` | `20260831T032550872Z-ca076a6653fb` | enabled, priority 39, one-file local overlay |
+| Freak's Floral Solstheim 1.0.1 | `D2CC68C96BF2257E23DE6F149B735912A3EFFFD99FA9C762081CDDD9DFB61488` | `20260831T035601955Z-fe9256c7f7cc` | enabled, one light plugin |
+| Freak's Floral Veil 1.0 | `2C873BBCA96797BCF4CBE66831628DD444ACC04E65F50F9C80D765E478E8C6EE` | `20260831T035603759Z-3a6d28bf30d7` | enabled, one light plugin |
 
 The deterministic FOMOD mapping is
 [`records/fomod-plans/125349-freaks-floral-fields.json`](fomod-plans/125349-freaks-floral-fields.json).
@@ -40,21 +45,27 @@ Selections:
 FFF's installed INI owns `iMaxGrassTypesPerTexure=15` and
 `iMinGrassSize=60`; the profile INIs were not edited separately.
 
+The two module mappings are
+[`records/fomod-plans/138161-freaks-floral-solstheim.json`](fomod-plans/138161-freaks-floral-solstheim.json)
+and
+[`records/fomod-plans/154137-freaks-floral-veil.json`](fomod-plans/154137-freaks-floral-veil.json).
+The Solstheim plan deliberately omits the archive's stray `meta.ini`. Both
+modules ship `iMinGrassSize=60`, so density remains coherent across all three
+worldspace layers.
+
 ## Plugin result
 
-LOOT completed with exit code 0 and retained all 209 previously active
-plugins. Its report identifies every FFF plugin as a light master:
+LOOT completed with exit code 0. Final verification reports no order violation;
+the current profile may continue gaining independently approved plugins. Its
+report identifies all nine Floral plugins as light masters. In the post-install
+`plugins.txt` snapshot:
 
-- `Freak's Floral Fields.esp` — `plugins.txt` line 54;
-- `Freak's Floral Fields- Realistic Tundra.esp` — line 150;
-- `Freak's Floral Fields-  Realistic Pine.esp` — line 151 (the doubled space is the upstream filename);
-- `Freak's Floral Fields- Realistic Rift.esp` — line 152;
-- `Freak's Floral Fields- Mixed Reach.esp` — line 153;
-- `Freak's Floral Fields- Volcanic Wasteland.esp` — line 154;
-- `Freak's Floral Fields- Dead Snow Grass.esp` — line 155.
+- `Freak's Floral Fields.esp` — line 56;
+- `Freak's Floral Solstheim.esp` — line 59;
+- the six selected FFF regional ESPs — lines 154–159;
+- `Freak's Floral Veil.esp` — line 161.
 
-The seven ESPFE files consume light-plugin indices, not seven full plugin
-slots.
+The nine ESPFE files consume light-plugin indices, not nine full plugin slots.
 
 ## Asset and conflict audit
 
@@ -66,6 +77,17 @@ slots.
 - MO2Headless final audit returned `errors: []`.
 - The effective FFF texture set contains 129 DDS files, has zero texture axis
   above 4096, and has a maximum effective axis of 4096.
+- Floral Solstheim contains 35 BC7 DDS files and Floral Veil contains 21; each
+  has a maximum axis of 4096 and therefore needs no texture-cap overlay.
+- The modules deliberately layer over shared FFF/library meshes and textures.
+  Eighty-three overlapping series files are byte-identical. The remaining
+  module-specific differences follow the author's required library -> FFF ->
+  Solstheim/Veil order; no critical file conflict was found.
+- Floral Veil introduces no shared FormKey conflict in the managed profile.
+  Floral Solstheim's expected CELL/LAND chains were checked semantically: later
+  patches discard no selected cell-header grass edit. The final worldspace map
+  bounds belong to the existing general compatibility patch and do not replace
+  grass data.
 
 The selected 2K FOMOD tier's `textures/Landscape/grass/Twigs_Freak.dds` is a
 4096x8192 BC7 atlas and breaches the project's absolute 4096-axis cap. The
@@ -78,36 +100,36 @@ The separate `Freak's Floral Fields - Dirtcliffs02 Fix` (Nexus 173097, file
 byte-identical to the corresponding mesh already shipped by FFF 3.2.3. It is
 therefore superseded upstream rather than an outstanding dependency.
 
-## Deliberately not installed
+## Deliberately deferred
 
-No optional mod was inferred from the grass approval. In particular, the
-following remain decisions rather than adopted content:
+The approved worldspace coverage is complete for Skyrim, Solstheim, and the
+Soul Cairn. The following remain separate decisions rather than inferred parts
+of that approval:
 
-- Landscape Fixes for Grass Mods;
 - No Grass In Objects, its FFF bounds patch, and any generated grass cache;
 - Grass FPS Booster;
-- FFF's separate Solstheim module;
 - Seasons support and other FOMOD fantasy variants.
 
-FFF covers Skyrim. Solstheim coverage is a separate future decision, and Bruma
-must not be assumed covered.
+Bruma and other new-land mods must not be assumed covered.
 
 ## Publication boundary and rollback
 
-FFF and the DrJacopo library remain author-hosted dependencies. Do not commit
-or bundle their archives, plugins, meshes, or textures. The one-file texture
-overlay is also not distributable as an asset: a public installer must fetch
-FFF file 788926 from its authorized source and reproduce the lower-tier atlas
-extraction locally. The recipe and hash may be distributed.
+FFF, its two worldspace modules, and the DrJacopo library remain author-hosted
+dependencies. Do not commit or bundle their archives, plugins, meshes, or
+textures. The one-file texture overlay is also not distributable as an asset:
+a public installer must fetch FFF file 788926 from its authorized source and
+reproduce the lower-tier atlas extraction locally. The recipe and hash may be
+distributed.
 
-Rollback is three independent disables, in this order: texture-cap overlay,
-FFF, then DrJacopo library. No vendor files were overwritten and no physical
-game `Data` deployment was performed.
+Rollback is five independent disables, in this order: Floral Veil, Floral
+Solstheim, texture-cap overlay, FFF, then DrJacopo library. No vendor files were
+overwritten and no physical game `Data` deployment was performed.
 
 ## Remaining acceptance test
 
 The static installation is complete. The foreground test should cover tundra,
-pine forest, Rift, marsh, Reach, volcanic tundra, snowy ground, and dirt
-cliffs while recording frame time, density, pop-in, floating grass, landscape
-seams, and obvious biome mismatches. Grass cache and final DynDOLOD generation
-remain deferred until the exterior stack is frozen.
+pine forest, Rift, marsh, Reach, volcanic tundra, snowy ground, dirt cliffs,
+representative Solstheim ash/coast cells, and the Soul Cairn while recording
+frame time, density, pop-in, floating grass, landscape seams, and obvious biome
+mismatches. Grass cache and final DynDOLOD generation remain deferred until the
+exterior stack is frozen.
