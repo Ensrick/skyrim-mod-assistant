@@ -139,3 +139,4 @@
 !/audit/
 !/audit/*.py
 !/audit/*.md
+!/audit/watched_configs.json

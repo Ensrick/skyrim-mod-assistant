@@ -43,12 +43,50 @@ approved.
   intake. They do not move either frozen cursor and therefore cannot silently
   cause overlap.
 
+## Instance work claim - both assistants (2026-09-01, #103)
+
+One owner mutates the live profile at a time. The claim is
+`mo2-instances/skyrim-se/.assistant-claim.json` and the tool is
+`audit/claim.py`; the FSMP double-install and the VHR near-collision were both
+"nobody knew the other side was mid-install".
+
+- Before ANY profile-mutating work - install, sort, park/unpark, INI or config
+  edit, DLL swap, launch - acquire it:
+  `py -3 audit/claim.py acquire --owner <you> --purpose "<why>" [--ttl 30]`.
+  Set `SKYRIM_CLAIM_OWNER=<you>` once per session and every audit script picks
+  it up (`install_mod.py`, `launch_verify.py`, `launch_skyrim.ps1` all check
+  or acquire it themselves and stop when someone else holds it).
+- Release when the work is done: `py -3 audit/claim.py release --owner <you>`.
+  Renew a long job with `renew`. `status` shows who holds it.
+- A claim past its TTL is stale and the next acquire takes it over with a
+  logged warning (`records/claim-log.jsonl`). Do not `--force` a live claim;
+  ask the owner or the user.
+- A dead claim under a live game is still a claim: check `status` before you
+  assume the profile is free.
+
+## Done means launch-verified - both assistants (2026-09-01, #140)
+
+An unpark, a DLL swap, a source-built overlay, an INI or config change is not
+DONE until a `py -3 audit/launch_verify.py` PASS follows it (main menu under
+60 s AND the save loaded), recorded in `records/launch-verify-*.md` and named
+in the changelog entry. A passing SKSE version gate is necessary, never
+sufficient (#140: OAR passed the gate and hung the load). Until that PASS the
+changelog entry stays `UNVERIFIED` and the work stays in the queue.
+
+Source-built mods carry one more gate (#144): the build record in
+`records/source-builds/` must hold a `featureDefaultsDiff` produced by
+`py -3 audit/feature_defaults_diff.py <upstream defaults> <built defaults>`,
+and every default that differs from upstream is a decision written down, not
+a surprise (Advanced Skin and Hair Specular shipped default-on from source
+headers and nobody had chosen them).
+
 ## Standing state checks - both assistants
 
 INIs and profile settings are build state, not user preference. Before and after
 every launch, and after any Steam update or vanilla-launcher run, verify the
 deliberate keys in `docs/INI_AND_PROFILE_STATE.md` and that the profile still has
-`LocalSettings=true`. The game silently reset them on 2026-08-31 (#98). The same
+`LocalSettings=true` **in `settings.ini`** - that is the file MO2 reads
+(`profile.cpp:94`); `settings.txt` is a stray nobody reads (#143). The game silently reset them on 2026-08-31 (#98). The same
 applies to the other silent-state failures already on file: plugin enable markers
 after any LOOT sort (#73, #100), SKSE DLL staging depth (#103), and ledger
 coverage (#102).

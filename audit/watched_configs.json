@@ -1,0 +1,32 @@
+{
+  "_comment": [
+    "Runtime configs that change how the game looks or feels, snapshotted by",
+    "audit/preflight_extra.py into records/config-history/ whenever their",
+    "content changes (same trail as records/ini-history/ for the profile INIs).",
+    "Paths are instance-relative globs unless absolute; `~docs~` expands to",
+    "Documents\\My Games\\Skyrim Special Edition. Files under mods/ are only",
+    "tracked while their mod is enabled in profiles/Default/modlist.txt",
+    "(enabledModsOnly, default true)."
+  ],
+  "watch": [
+    "overwrite/SKSE/Plugins/CommunityShaders/SettingsUser.json",
+    "overwrite/SKSE/Plugins/CommunityShaders/SettingsDefault.json",
+    "overwrite/SKSE/Plugins/CommunityShaders/Features/*.json",
+    "overwrite/SKSE/Plugins/CommunityShaders/Features/*/*.json",
+    "mods/*/SKSE/Plugins/CommunityShaders/SettingsUser.json",
+    "mods/*/SKSE/Plugins/CommunityShaders/Features/*.json",
+    "mods/*/SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json",
+    "overwrite/SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json",
+    "mods/*/SKSE/Plugins/SSEDisplayTweaks*.ini",
+    "overwrite/SKSE/Plugins/SSEDisplayTweaks*.ini",
+    "mods/*/skse/plugins/Underwear.ini",
+    "mods/*/SKSE/Plugins/Underwear.ini",
+    "overwrite/SKSE/Plugins/Underwear.ini",
+    "mods/*/SKSE/Plugins/MLO.ini",
+    "mods/*/SKSE/Plugins/FirstPersonFOV.ini",
+    "mods/*/SKSE/Plugins/SkyrimUnbound*.json",
+    "overwrite/SKSE/Plugins/SkyrimUnbound*.json",
+    "profiles/Default/initweaks.ini",
+    "profiles/Default/settings.ini"
+  ]
+}

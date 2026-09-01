@@ -12,6 +12,8 @@ Exit 0 = safe to launch. Non-zero = do not tell the user to launch.
 import io, json, os, re, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import preflight_extra   # 2026-09-01 hardening: DLL depth, ledger gap, watched configs,
+                         # saves mirror, the REAL profile settings.ini, work claim
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -32,7 +34,9 @@ DELIBERATE = {
     'skyrim.ini': {
         'fDefaultWorldFOV': '120', 'fDefault1stPersonFOV': '120',
         'fMaxTime': '0.0083',         # 120 Hz desktop
+        'fMoveLimitMass': '0',        # clutter triage 2026-09-01, player push off
         'bEnableLogging': '1',
+        'fPoissonRadiusScale': '8.0',  # #151 shadow edge softness (engine default 4.0)
     },
 }
 
@@ -158,8 +162,16 @@ def check_no_competing_writer():
     writer running right now means the state this gate just read can change
     before the game reads it."""
     if running('MO2Headless.exe'):
-        fails.append('MO2Headless.exe is running - an assistant-side writer may '
-                     'rewrite profile files under the launch (#103). Let it finish.')
+        if game_running():
+            # the hardened launch chain spawns the game through `MO2Headless run`,
+            # which stays alive (holding the instance lock, on purpose) for the
+            # whole session - that is the launcher, not a competing writer
+            warns.append('MO2Headless.exe is running alongside SkyrimSE.exe - the '
+                         'direct launch chain holds the instance lock for the session; '
+                         'no profile mutation is possible until the game exits')
+        else:
+            fails.append('MO2Headless.exe is running - an assistant-side writer may '
+                         'rewrite profile files under the launch (#103). Let it finish.')
     if running('ModOrganizer.exe'):
         warns.append('ModOrganizer.exe is running. Expected if this is the launcher; '
                      'a problem only if a second session is also driving it (#103).')
@@ -230,7 +242,79 @@ def check_game_side_plugin_list():
                  f'launch comes up missing content.')
 
 
+def snapshot_inis():
+    """INIs are the one non-modular piece of the build (user, 2026-09-01), so
+    give them the same revertibility as mods: every time a profile INI's
+    content changes, a dated copy lands in records/ini-history/ before anything
+    else runs. Reverting = copying a snapshot back; the history is the diff
+    trail LOOT/MO2 already provide for plugins."""
+    import hashlib, shutil
+    hist = os.path.join(REPO, 'records', 'ini-history')
+    os.makedirs(hist, exist_ok=True)
+    stamp = __import__('datetime').datetime.now().strftime('%Y%m%d-%H%M%S')
+    for name in ('skyrim.ini', 'skyrimprefs.ini', 'settings.txt'):
+        p = os.path.join(PROFILE, name)
+        if not os.path.exists(p):
+            continue
+        h = hashlib.sha256(open(p, 'rb').read()).hexdigest()[:16]
+        marker = os.path.join(hist, f'{name}.latest')
+        prev = open(marker).read().strip() if os.path.exists(marker) else ''
+        if h != prev:
+            shutil.copy2(p, os.path.join(hist, f'{name}.{stamp}.{h}'))
+            open(marker, 'w').write(h)
+            warns.append(f'{name} changed since last snapshot - archived as '
+                         f'{name}.{stamp}.{h} (diff it if the change is unexplained)')
+
+
+GAME = r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
+
+
+def check_game_folder_manifest():
+    """The game install is build state too, and it was the blind spot: on
+    2026-08-31 a mid-download kill truncated ccvsvsse004-beafarmer (bsa+esl),
+    and neither the truncation nor its later .bak rename was tracked anywhere -
+    the resulting hang burned 10+ launches to isolate. So: inventory every
+    plugin/archive/exe in the game root and Data (name, size, mtime), diff
+    against the last-known manifest, and surface every change. Steam updates,
+    foreign writes, renames and truncations all show up as diffs."""
+    import hashlib
+    man_path = os.path.join(REPO, 'records', 'game-folder-manifest.json')
+    cur = {}
+    for base, exts in ((GAME, ('.exe', '.dll', '.ccc', '.ini')),
+                       (os.path.join(GAME, 'Data'), ('.esm', '.esl', '.esp', '.bsa', '.bak'))):
+        if not os.path.isdir(base):
+            fails.append(f'game folder missing: {base}')
+            return
+        for f in os.listdir(base):
+            p = os.path.join(base, f)
+            if os.path.isfile(p) and (f.lower().endswith(exts) or '.bak' in f.lower()):
+                st = os.stat(p)
+                cur[f] = [st.st_size, int(st.st_mtime)]
+    if os.path.exists(man_path):
+        old = json.load(open(man_path, encoding='utf-8'))
+        added = sorted(set(cur) - set(old))
+        gone = sorted(set(old) - set(cur))
+        changed = sorted(k for k in set(cur) & set(old) if cur[k] != old[k])
+        for k in added:
+            warns.append(f'game folder NEW file: {k} ({cur[k][0]:,} B)')
+        for k in gone:
+            warns.append(f'game folder file GONE: {k} (was {old[k][0]:,} B)')
+        for k in changed:
+            warns.append(f'game folder file CHANGED: {k} {old[k][0]:,} -> {cur[k][0]:,} B')
+        if added or gone or changed:
+            hist = os.path.join(REPO, 'records', 'game-folder-manifest.history.jsonl')
+            with open(hist, 'a', encoding='utf-8') as fh:
+                fh.write(json.dumps({'at': __import__('datetime').datetime.now().isoformat(),
+                                     'added': added, 'gone': gone,
+                                     'changed': {k: [old[k], cur[k]] for k in changed}}) + '\n')
+    tmp = man_path + '.tmp'
+    json.dump(cur, open(tmp, 'w', encoding='utf-8'), indent=0)
+    os.replace(tmp, man_path)
+
+
 def main():
+    snapshot_inis()
+    check_game_folder_manifest()
     check_profile_owns_inis()
     check_deliberate_keys()
     check_no_competing_writer()
@@ -240,6 +324,7 @@ def main():
     check_game_side_plugin_list()
     check_steam_not_wedged()
     check_steam_overlay()
+    preflight_extra.run_all(fails, warns)
 
     for w in warns:
         print(f'  WARN  {w}')

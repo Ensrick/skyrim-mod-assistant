@@ -81,6 +81,26 @@ py -3 audit/launch_session.py
 | `launch_verify.py` | the automated pass/fail run: launches, times the menu, loads a save |
 | `launch_triage.py` | reads the SKSE logs afterwards and reports every plugin that failed |
 | `threaddump.py` | groups a CrashLogger thread dump and says what the process was doing |
+| `claim.py` | the instance work claim: one owner mutates the profile at a time (#103). `acquire` / `renew` / `release` / `check` / `status` |
+| `preflight_extra.py` | the 2026-09-01 gates: DLL depth (a `.dll` under `Plugins/` not `SKSE/Plugins/` in an enabled mod = FAIL), ledger gap (#102), watched-config snapshots (`watched_configs.json` -> `records/config-history/`), saves mirror (`records/save-backups/`, newest 5), the real profile `settings.ini`, the claim |
+| `feature_defaults_diff.py` | source builds: diff shipped defaults against upstream's for the build record (#144) |
+| `launch_skyrim.ps1` | the sanctioned launcher: claim check, harness-env scrub before the Steam cycle (#141), profile-INI sync over Documents (#143), `-Direct` spawn through `MO2Headless run` |
+
+### Work claim: `claim.py`
+
+```
+set SKYRIM_CLAIM_OWNER=<you>                # once per session; scripts pick it up
+py -3 audit/claim.py acquire --owner <you> --purpose "install X" --ttl 30
+py -3 audit/claim.py status
+py -3 audit/claim.py release --owner <you>
+```
+
+`install_mod.py` (install, `--sort`), `launch_verify.py` and `launch_skyrim.ps1`
+acquire or check it themselves and stop with exit 75 when another owner holds
+it. A claim past its TTL is stale and is taken over with a logged warning
+(`records/claim-log.jsonl`). `install_mod.py` additionally refuses to mutate the
+profile from any checkout but the canonical one (`--i-know-what-im-doing`
+overrides, #105).
 
 ### Verification: `launch_verify.py`
 

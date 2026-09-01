@@ -35,17 +35,51 @@ Always give the reason in `note` as well; the field says WHAT, the note says
 WHY. A plugin that is off with neither marker is a fault by definition - that
 is the whole point of the check, and it is how a disabled CBBE.esp was caught
 on 2026-08-31 after a bookkeeping explanation had nearly buried it.
+
+Two guards wrap every mutating path (install, --sort), both from the 2026-08-30
+process audit:
+
+  worktree guard   this file refuses to mutate the live profile unless it IS the
+                   canonical checkout (CANONICAL below). Three agent worktrees
+                   kept running a pre-fix copy against the same profile (#105);
+                   `--i-know-what-im-doing` overrides, and is logged.
+  work claim       install and sort run under audit/claim.py, so two sessions
+                   queue instead of racing (#103). Set SKYRIM_CLAIM_OWNER for the
+                   session, or acquire the claim from the shell first; a claim
+                   held by someone else stops this script before it downloads.
 """
 import json, os, re, sys, hashlib, subprocess, datetime
 
 SP = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(SP)
 sys.path.insert(0, SP)
+import claim
 
+CANONICAL = r'C:\Users\danjo\source\repos\skyrim-mod-assistant'
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
 PROFILE = 'Default'
 MO2 = os.path.join(INSTANCE, 'MO2Headless.exe')
 LEDGER = os.path.join(REPO, 'records', 'installed-mods.json')
+
+
+def guard_canonical(override):
+    """Refuse to mutate the live profile from any checkout but the canonical one.
+
+    Every git worktree and agent clone carries its own copy of this file and
+    its own idea of where the controller is; the 2026-08-30 recurrence (four
+    plugins unstarred twice in a day) came from exactly that (#105, audit F0)."""
+    here = os.path.normcase(os.path.realpath(REPO))
+    want = os.path.normcase(os.path.realpath(CANONICAL))
+    if here == want:
+        return
+    msg = (f'this install_mod.py lives in {REPO}, not the canonical checkout '
+           f'{CANONICAL}. Worktree copies have installed stale code against the '
+           f'live profile before (#105).')
+    if not override:
+        print('REFUSING: ' + msg + '\n   run the canonical copy, or pass '
+              '--i-know-what-im-doing if you have rebased this checkout onto it.')
+        sys.exit(78)
+    print('WARNING: ' + msg + ' (override given)')
 
 
 def mo2(*args, root=INSTANCE):
@@ -79,6 +113,11 @@ def plugins_of(mod_name):
 
 
 def install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
+    with claim.guard(None, f'install_mod {mid} "{mod_name}"', ttl=45):
+        return _install(mid, mod_name, prefer, plan, replace, file_id)
+
+
+def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
     import modasset as M
     if file_id:
         # an exact, dossier-verified file: never re-pick, because pick_file only
@@ -179,6 +218,11 @@ def verify():
 
 
 def sort_order():
+    with claim.guard(None, 'install_mod --sort (LOOT)', ttl=45):
+        return _sort_order()
+
+
+def _sort_order():
     """Sort with LootCLI through MO2's VFS, then restore enable markers.
 
     LootCLI rewrites plugins.txt and drops the '*' on managed plugins, so the
@@ -263,13 +307,21 @@ def show():
 
 if __name__ == '__main__':
     a = sys.argv[1:]
+    override = '--i-know-what-im-doing' in a
+    if override:
+        a.remove('--i-know-what-im-doing')
     if not a or a[0] == '--list':
         show()
     elif a[0] == '--verify':
         sys.exit(verify())
     elif a[0] == '--sort':
-        sys.exit(sort_order())
+        guard_canonical(override)
+        try:
+            sys.exit(sort_order())
+        except claim.ClaimHeld as e:
+            print(f'CLAIM HELD - not sorting: {e}'); sys.exit(claim.ExTempFail)
     else:
+        guard_canonical(override)
         prefer = None
         plan = None
         replace = False
@@ -282,4 +334,7 @@ if __name__ == '__main__':
         file_id = None
         if '--file' in a:
             i = a.index('--file'); file_id = int(a[i + 1]); a = a[:i] + a[i + 2:]
-        sys.exit(install(int(a[0]), a[1], prefer, plan, replace, file_id))
+        try:
+            sys.exit(install(int(a[0]), a[1], prefer, plan, replace, file_id))
+        except claim.ClaimHeld as e:
+            print(f'CLAIM HELD - not installing: {e}'); sys.exit(claim.ExTempFail)

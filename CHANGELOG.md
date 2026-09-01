@@ -34,6 +34,45 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-01 18:45 - Hardening package 1/3: instance work claim, canonical-checkout guard, preflight gates (#103, #105, #102, #143, #140, #144)
+
+- **What:** (1) `audit/claim.py` - the instance work claim
+  (`mo2-instances/skyrim-se/.assistant-claim.json`: owner, pid, purpose,
+  acquiredAt, ttlMinutes, expiresAt); acquire/renew/release/check/status,
+  atomic create, stale-TTL takeover with a logged warning
+  (`records/claim-log.jsonl`), `--selftest` 17/17. (2) `install_mod.py`:
+  install and `--sort` run under the claim (a claim held by someone else stops
+  the script before the download, exit 75) and refuse to mutate the live
+  profile from any checkout but `C:\Users\danjo\source\repos\skyrim-mod-assistant`
+  (`--i-know-what-im-doing` overrides, logged). (3) `audit/preflight_extra.py`,
+  wired into `preflight.py`: DLL-depth sweep (an enabled mod with a `.dll`
+  under `Plugins/` that is not `SKSE/Plugins/` = FAIL), modlist-vs-ledger gap
+  = WARN with names (11 today), watched-config snapshot+diff
+  (`audit/watched_configs.json` -> `records/config-history/`: CS
+  SettingsUser/SettingsDefault, FSMP configs.json, SSEDisplayTweaks*.ini,
+  Underwear.ini, MLO.ini, FirstPersonFOV.ini, profile settings.ini), saves
+  mirror before launch (`records/save-backups/<stamp>/`, 72 files, newest 5
+  kept, skipped when unchanged), the claim in the report. (4) FINDING: MO2
+  reads the profile's `settings.ini` (`modorganizer/src/profile.cpp:94`),
+  which says `LocalSettings=false`; the `settings.txt` every gate checked is a
+  stray nobody reads. That is why #143 happened with "LocalSettings=true".
+  Gate added as WARN now, promoted to FAIL when the flag is flipped under the
+  claim (package 3). (5) `audit/feature_defaults_diff.py` for source builds
+  (#144). (6) Policy: `docs/CURATION_POLICY.md` "Launch verification is the
+  definition of done" and "Source builds record their feature defaults";
+  `docs/AGENT_WORK_QUEUE.md` "Instance work claim" and "Done means
+  launch-verified"; `audit/README.md` tool rows. Also includes in-flight
+  `preflight.py` additions found uncommitted on disk (INI snapshots,
+  game-folder manifest, fMoveLimitMass / fPoissonRadiusScale deliberate keys)
+  so the file on disk and the file in git agree.
+- **Source:** user directive 2026-09-01 ("make sure we don't have the issues
+  we've already worked through today ever again"), team-lead hardening brief;
+  `docs/PROCESS-AUDIT-2026-08-30.md` F0, F2, F4, F5; #103 comment (FSMP
+  double-install, VHR near-collision).
+- **Verification:** UNVERIFIED as a launch (tooling only; `preflight.py` runs
+  clean apart from the live farming-store claim and its deliberate
+  `bUpsellOwned=0`); the package-3 smoke launch covers the chain.
+
 ## 2026-09-01 17:40 - LaunchProbe handler-wide bounds hardening (deploy queued)
 
 - **What:** per team-lead audit request, PayloadName (kPreLoadGame/kSaveGame/
