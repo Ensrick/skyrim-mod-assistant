@@ -20,8 +20,9 @@ a private working tree, but only the reviewed allowlist can be committed.
 
 - `run-headless-tool.ps1` verifies pinned SHA-256 values before launching LOOT,
   Synthesis, or Spriggit with redirected logs.
-- `run-through-mo2.ps1` runs those tools through an audited MO2 profile and
-  refuses ambiguous forwarding to an already-running MO2 process.
+- `run-through-mo2.ps1` runs those tools, including the source-built zMerge
+  Headless worker, through an audited MO2 profile and refuses ambiguous
+  forwarding to an already-running MO2 process.
 - `mods/katana-two-handed` documents and audits a generated, load-order-aware
   katana patch. The patcher itself is maintained in
   [KatanaTwoHandedPatcher](https://github.com/Ensrick/KatanaTwoHandedPatcher).
@@ -35,6 +36,9 @@ a private working tree, but only the reviewed allowlist can be committed.
   metadata/download procedure used by the local tooling.
 - `collections/draft-manifest.json` is the reviewed source-of-truth for the
   private collection while Vortex's generated working state remains local.
+- `docs/TEXTURE_POLICY.md` defines the source-matched resolution budget: at
+  most one justified step upward, a 1K cap for dedicated small clutter, and an
+  absolute 4K-per-axis ceiling.
 
 ## Local setup
 

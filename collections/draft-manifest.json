@@ -5,13 +5,14 @@
   "designPillars": [
     "Bedrock: multiple characters playable in the same game world without breaking anything. Every mod is screened for player-bound state (player-alias scripts, quest variables keyed to the player, per-character needs/skill/appearance state) and must tolerate character switching.",
     "Scale: 1000-2000 plugins; replace vanilla content broadly with diverse, quality, high-performance assets; prefer rule-driven systems (KID/BOS/SkyPatcher) that absorb asset churn.",
-    "Survival: comprehensive and in-depth with zero tedium, no save restrictions."
+    "Survival: comprehensive and in-depth with zero tedium, no save restrictions.",
+    "Textures: match the replaced source resolution by default; allow at most one evidence-backed step upward, cap dedicated small clutter at 1K per axis, and cap every texture at 4K per axis."
   ],
   "game": {
     "name": "Skyrim Special Edition",
     "nexusDomain": "skyrimspecialedition",
     "nexusGameId": 1704,
-    "runtimeVersion": "1.6.1170.0"
+    "runtimeVersion": "1.7.99.0"
   },
   "management": {
     "authoritativeLocalManager": "Mod Organizer 2",
@@ -212,9 +213,91 @@
       "version": "3.4.0",
       "fileName": "PROTEUS - 3.4.0-62934-3-4-0-1714763289.zip",
       "sha256": "847A241F965436B13475A2A057AB061408BE2D9A3DF62C34AA4925BB1324C63B",
-      "designPillar": "bedrock enabler: multiple characters in one game world; close teardown + in-game QA still owed before deploy (alternative under evaluation: Multiple Characters of Skyrim, 186444)",
-      "runtimeValidation": "hard requirements per mod page: SKSE, Address Library, JContainers, ConsoleUtil NG, UIExtensions, RaceMenu, SkyUI, Papyrus Extender, VC++ x64 - all pinned or tracked as prerequisites",
-      "installState": "pinned-not-deployed"
+      "designPillar": "bedrock enabler: multiple characters in one game world; extended character-switch and persistence QA remains required before a public release",
+      "runtimeValidation": "official 3.4.0 scripts and PROTEUS.esp are enabled; hard requirements SKSE, Address Library, JContainers, ConsoleUtil NG, UIExtensions, RaceMenu, SkyUI, Papyrus Extender, Nether's Follower Framework, and VC++ x64 are present; skee64.ini bExternalHeads=1; disposable SKSE smoke run registered all six native function groups without a crash",
+      "nativeOverlay": {
+        "source": "https://github.com/Ensrick/ProjectProteusUtils",
+        "commit": "324e07cd75196f444f6bafdfa09527d561a3c034",
+        "runtime": "Skyrim 1.7.99.0 / SKSE 2.3.0 / Address Library format 5",
+        "dllSha256": "316DF6BB9045B34F422087CFC127D314622AB8640EC7AD5CDEE13255D408B41A",
+        "deployment": "separate higher-priority MO2 DLL-only overlay; official Proteus files remain untouched"
+      },
+      "installState": "deployed-mo2-default-native-smoke-passed"
+    },
+    {
+      "name": "Believable Weapons",
+      "author": "jg1",
+      "role": "weapon-mesh-overhaul",
+      "required": true,
+      "nexusModId": 37737,
+      "nexusFileId": 260562,
+      "version": "1.5",
+      "fileName": "Believable weapons-37737-1-5-1643576065.7z",
+      "sha256": "C9F93A3F0690A8A601B1CE5BED83236021520132BFB32BB9D397838DC2FFB470",
+      "fomodPreset": "Full; Greatsword scabbards; Sword of Jyggalag normal-map fix; no absent-mod compatibility variants",
+      "installPlan": "records/fomod-plans/37737-believable-weapons.json",
+      "installState": "deployed-mo2-default"
+    },
+    {
+      "name": "Sons of Skyrim",
+      "author": "NordwarUA",
+      "role": "historical-guard-and-stormcloak-overhaul",
+      "required": true,
+      "nexusModId": 68656,
+      "nexusFileId": 448133,
+      "version": "2.0.2",
+      "fileName": "Main Files-68656-2-0-2-1701526801.7z",
+      "sha256": "3EC662E95D5415787EA17E4426EA97E094C9F2A28CBED39335947B2875003061",
+      "textureProfile": "standard archive: 315 DDS files, predominantly 1K/2K; three 4K Riften shield maps; optional 940 MB HD archive deliberately omitted",
+      "runtimeValidation": "asset and plugin only; no runtime DLL; masters/load-order audit clean; installed with Xtudo fixes and the Lux Orbis patch",
+      "redistribution": "reference-only-do-not-bundle",
+      "installState": "deployed-mo2-default-static-validated"
+    },
+    {
+      "name": "Sons of Skyrim v2.0 - My patches and fixes SE",
+      "author": "Xtudo",
+      "role": "guard-overhaul-fixes-and-survival-compatibility",
+      "required": true,
+      "nexusModId": 104126,
+      "nexusFileId": 617660,
+      "version": "3.3",
+      "fileName": "SOS V2.0 - SE by Xtudo - Fixes-104126-3-3-1744748191.7z",
+      "sha256": "EC3AF23A6F1BD2691F0A550F344010EB6A50C7EFC9EB2FB37991F60A515607D9",
+      "runtimeValidation": "current default fixes file; forwards USSEP changes, adds Survival warm keywords, fixes records and first-person meshes; ESL-flagged",
+      "redistribution": "reference-only-do-not-bundle",
+      "installState": "deployed-mo2-default-static-validated"
+    },
+    {
+      "name": "Sons of Skyrim - More Patches",
+      "author": "Blackread",
+      "role": "lux-orbis-compatibility",
+      "required": true,
+      "nexusModId": 104261,
+      "nexusFileId": 782421,
+      "version": "1.3.1",
+      "fileName": "Sons of Skyrim Patches - FOMOD 104261 1.3.1 2026-07-28T12-04Z oPpNfUOEt.7z",
+      "sha256": "8EFA01FCBD8D408D04FF1D227DCF79E72AD6D76EB03E224755ED2B6908816D33",
+      "fomodPreset": "Lux Orbis only",
+      "installPlan": "records/fomod-plans/104261-sons-of-skyrim-lux-orbis.json",
+      "runtimeValidation": "removes torches from Sons of Skyrim guard outfits so Lux Orbis lighting behavior is preserved; ESL-flagged",
+      "redistribution": "reference-only-do-not-bundle",
+      "installState": "deployed-mo2-default-static-validated"
+    },
+    {
+      "name": "Misc Effects ENB Light - Believable Weapons",
+      "author": "Mura",
+      "role": "compat-patch",
+      "required": true,
+      "nexusModId": 65070,
+      "nexusFileId": 270746,
+      "version": "1.2.1BoundOptionals",
+      "fileName": "Misc Effects ENB Light - Believable Weapons-65070-1-2-1BoundOptionals-1647541704.7z",
+      "sha256": "6409B9D843D9EED53C7E1FD3C2AB6ADDF9741BB1875D164125ADB6CC372F0592",
+      "requiredBy": [
+        "Believable Weapons",
+        "ENB Light"
+      ],
+      "installState": "deployed-mo2-default"
     },
     {
       "name": "powerofthree's Tweaks",

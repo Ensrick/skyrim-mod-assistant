@@ -1,8 +1,20 @@
 # One-shot Skyrim launcher: seed plugin activation, cycle Steam, launch, verify.
 # Born 2026-08-25: 1.7.99 "Creations" runtime reads LocalAppData Plugins.txt
 # which MO2 2.5.2 does not virtualize; Steam wedges after collisions/kills.
-param([int]$WaitSeconds = 200)
+param(
+    [int]$WaitSeconds = 200,
+    [switch]$AllowInteractiveDesktop
+)
 $ErrorActionPreference = 'SilentlyContinue'
+
+if (-not $AllowInteractiveDesktop) {
+    Write-Error 'Blocked: autonomous Skyrim launches may not use the active desktop. Pass -AllowInteractiveDesktop only after the user explicitly authorizes an interactive launch.'
+    exit 64
+}
+
+# Propagates through the freshly started Steam -> MO2 -> SKSE process chain.
+# Our SKSE core logs plugin MessageBoxA/W calls instead of showing modal UI.
+$env:SKSE_AUTOMATION_SILENT_UI = '1'
 $G = "C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition"
 $PROF = "C:\Users\danjo\source\repos\mo2-instances\skyrim-se\profiles\Default"
 

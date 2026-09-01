@@ -26,6 +26,14 @@ gated Nexus release). Proteus is MIT (phenderix/PROTEUS, Papyrus scripts);
 only its small Nightfallstorm-converted SKSE DLL has no located source yet.
 No fully-closed load-bearing mods remain confirmed in the build.
 
+**Texture resolution policy (user, 2026-08-26): match the replaced source by
+default.** Permit no more than one justified resolution step upward, cap
+dedicated small-clutter textures at 1K on either axis, and cap every texture at
+4K on either axis. Dimensions come from DDS headers rather than marketing
+labels; rectangular atlases, companion maps, UV coverage, and actual added
+detail are reviewed explicitly. The enforceable rules and exception evidence
+requirements are in `docs/TEXTURE_POLICY.md`.
+
 Nothing else "still needs review". The unreviewed Nexus catalogue is consulted
 only per-slot during gap searches, never wholesale - that lesson is paid for.
 
@@ -119,6 +127,7 @@ design, not a compromise.
 | Animation | Pandora | installed |
 | Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |
 | Follower framework | NFF | forced by Proteus; **AFT (6656) is the one surviving loser - confirm skip** |
+| Guards / Stormcloaks | Sons of Skyrim 2.0.2 + Xtudo Fixes 3.3 + More Patches 1.3.1 (Lux Orbis selection only) | **installed 2026-08-26**; historical-fantasy armor/weapon overhaul; standard predominantly 1K/2K textures; USSEP and Survival warm-keyword fixes forwarded; LOOT, master-order, and record-overlap audits clean |
 | Killmoves | VioLens + Kaputt | 3 challengers in additive pool to check against the pair, low priority |
 | Underlayers | Underwear.dll 1.3 as engine, pool TO BE overridden to 10 vanilla poor/common garments (Roughspun, Belted Tunic, Farm/Miner sets, Ragged Robes) + our Period Underlayers SPID config (bandits Roughspun, jarls/merchants Fine Clothes) | **installed** BUT audit 2026-08-26 found the pool override was NEVER WRITTEN - Underwear.ini still lists the mod's 4 default garments (user verdict on the resulting look: garbo). Implement the vanilla pool (form IDs via skyrim-record-cli, no guessed IDs) when TNG lands; Period Underlayers also inert until SPID unparks. User directive 2026-08-26: underwear system working AND full nudity possible -> HIMBO 01b + TNG rebuild (in flight) + removable garments |
 
@@ -129,12 +138,12 @@ design, not a compromise.
 | slot | candidates surviving in keeps | how it gets decided |
 |---|---|---|
 | Weather | **DECIDED 2026-08-23: Azurite III** + Azurite III CS 162153 (Dlizzio; incl. its own Darker Nights + IBL) + EVLaS + water fx fix - **installed** | swap same day: doodlum HDR 138991 + DrJacopo Darker Nights addon disabled (162153 page: incompatible) after user identified the mod he meant; rivals skipped per user order; Azurite Mists out (author: III needs no mist mods) |
-| Landscape tex | Majestic Mtns, Cathedral Landscapes, aMidianBorn B&L, Majestic Landscapes, Gecko's 4K, RUSTIC MOUNTAINS (6) | file-level: coverage overlap + the audit tooling; mountains vs full-landscape are partly complementary |
+| Landscape tex | **PROVISIONAL 2026-08-26: Vanaheimr Landscapes 5.5 PBR 2K**; previous six candidates retained pending repair/A-B | Best current art-direction fit and <=4K, but two shipped road meshes report Oldrim format; hold install until repaired/excluded and CS/PGPatcher path is ready. Evidence: `docs/LANDSCAPE-TREES-2026-08-26.md` |
 | Interior lighting | **DECIDED 2026-08-23: Lux family** - Lux + Via + Orbis + Patch Hub + Lux CS + CC bundle (installing; dim beam/mist variants) | Lux re-entered via keeps and won on facts: every component active 2024-26, purpose-built CS bridge, hub officially patches Bruma/Wyrmstooth/Vigilant/Glenmoril/Unslaad (ELFX FOMOD: none). ELFX trio stays shelved as mid-save A/B fallback |
 | Water | Cathedral Water, Simplicity of Sea, A Water Made For CS (3) | last two are CS-era; RWT purged |
 | Horses | Convenient Horses, Simple Horse, Simplest Horses (3) | feature-set read; CH vs INIGO conflict already on file |
 | Skeleton | XPMSSE + Skeleton Replacer HD (2) | layering question, not rivalry |
-| Trees | SFO, Happy Little Trees (2) | NotWL purged despite its Wyrmstooth patch - candidate to re-enter |
+| Trees | **PROVISIONAL 2026-08-26: NotWL 3.14 + Nordic Cut 1.2.2 + Nature of the Mild Lands 3.14**; HLT retained as performance fallback | Nordic Cut restores mostly vanilla placement while retaining NotWL character. Base and PBR archives contain one 8K map; use the permitted downscale and hold PBR/animation. Not installed; new-game only. Evidence: `docs/LANDSCAPE-TREES-2026-08-26.md` |
 | Combat feel | Wildcat, Smilodon (2) | same author, heavy vs light - read + play |
 | Crafting | Ars Metallica, CCOR (2) | CCOR pulls WACCF family, already kept |
 
