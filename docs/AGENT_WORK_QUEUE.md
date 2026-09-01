@@ -43,6 +43,26 @@ approved.
   intake. They do not move either frozen cursor and therefore cannot silently
   cause overlap.
 
+## Standing state checks - both assistants
+
+INIs and profile settings are build state, not user preference. Before and after
+every launch, and after any Steam update or vanilla-launcher run, verify the
+deliberate keys in `docs/INI_AND_PROFILE_STATE.md` and that the profile still has
+`LocalSettings=true`. The game silently reset them on 2026-08-31 (#98). The same
+applies to the other silent-state failures already on file: plugin enable markers
+after any LOOT sort (#73, #100), SKSE DLL staging depth (#103), and ledger
+coverage (#102).
+
+## Changelog rule - both assistants
+
+`CHANGELOG.md` at the repo root traces every change to its source (user
+directive 2026-08-31). Before moving on from any change - install, removal,
+park/unpark, INI key, generated overlay, tool change - write its entry with a
+named source. No batch is done until a verification launch passes (main menu
+in under 60 seconds AND the save loads); entries stay `UNVERIFIED` until then.
+A `FAILED` launch means the unverified pile gets bisected before anything else
+lands. Full policy: "Changelog discipline" in `docs/CURATION_POLICY.md`.
+
 ## Dispatch rule
 
 Dispatch the oldest authorized pending item when an agent slot becomes free.

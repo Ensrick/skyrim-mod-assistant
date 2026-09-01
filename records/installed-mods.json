@@ -586,10 +586,10 @@
       "plugins": [
         "TerrainHelper.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now."
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 76649,
@@ -825,21 +825,6 @@
     },
     {
       "modId": 0,
-      "modName": "Ensrick - Freak's Floral Fields Texture Cap",
-      "nexusName": "Ensrick-owned texture-policy overlay",
-      "version": "2026-08-30",
-      "fileId": 0,
-      "fileName": "local overlay extracted from Freak's Floral Fields file 788926",
-      "sizeMb": 10.67,
-      "sha256": "e4cc21ae1bfc1e1fef15448362ba44244dac72bf7439cf38be4d74bc6bdfb3af",
-      "plugins": [],
-      "enabled": true,
-      "installedUtc": "2026-08-31T03:25:50Z",
-      "transaction": "20260831T032550872Z-ca076a6653fb",
-      "note": "Private one-file texture-policy overlay. The selected 2K FOMOD tier ships textures/Landscape/grass/Twigs_Freak.dds at 4096x8192; this overlay uses the vendor archive's corresponding 1K-tier BC7 atlas at 2048x4096 with 13 mip levels. Effective FFF audit: 129 DDS, zero axis above 4096, maximum axis 4096, and this overlay is the winning provider. The vendor mod remains untouched. Do not distribute the DDS; a public installer must fetch Nexus mod 125349 file 788926 and reproduce the recorded extraction locally."
-    },
-    {
-      "modId": 0,
       "modName": "Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit",
       "nexusName": "Ensrick-owned Better Fur body-refit overlay",
       "version": "2026-08-30",
@@ -899,6 +884,21 @@
       "installedUtc": "2026-08-30T19:47:03Z",
       "transaction": "20260830T194702775Z-d62a0214b2f6",
       "note": "Generated ESL-flagged forward patch for #92, built from source at skyrim-tools-source/CollectiblesHelperUssepForward (Mutagen 0.54.3 + Synthesis 0.36.5, net10.0, TreatWarningsAsErrors, Deterministic; 0 warnings 0 errors). Generated THROUGH MO2's USVFS via MO2Headless run, so the patcher saw the real virtual Data folder rather than a staged copy; load order file was Skyrim.ccc entries followed by the profile plugins.txt, 267 entries / 265 active. POLICY: start from the WINNING record and forward only the fields USSEP owns - PlacedObject.Lock and Cell.WaterHeight/Music/SkyAndWeatherFromRegion - and forward a field ONLY where USSEP states a value, so a field USSEP leaves unset is never cleared. That rule is load-bearing: Lux adds SkyAndWeatherFromRegion 0374BC:Dragonborn.esm to four Raven Rock interiors where USSEP has none, and a naive forward-every-difference rule would have stripped it on 017EC0, 017EC2, 017EC4 and 01844F. EMITTED 6 records, not the 12 in the original issue, because Lux.esp loads after Collectibles Helper and already carries USSEP's music and most of its water heights: XLOC level 75 / key none / flags 0 onto REFR 03A4E6, 03A4E9 and 03AC5A, and WaterHeight -2147483648.0 onto CELL 017EC0 DLC2RRTheRetchingNetch, 018276 DLC2RRBulwark and 01BBFB DLC2BristlebackCave01. The plugin holds 8 records because a REFR override must carry its parent CELL - 01844F and 024D9D are those structural parents, copied from the winner unchanged, not ITMs of intent. VALIDATION: two generations byte-identical, plugin SHA-256 C121A2A52B4C21CA03190BC59089D49BB27CD67E433E417994F4EA1BAB0A0DEA; 0 new records, 0 deleted; ESL flag set. Masters are Skyrim.esm + Dragonborn.esm + Lux.esp - Collectibles Helper is NOT a master, but Lux is and Lux loads after CH, so the required ordering is transitively enforced and the #82 failure mode does not apply. Spriggit 0.41.0 serialize/deserialize round-trip completed and preserves every substantive field; it is semantic rather than byte-exact - the HEDR next-object-ID counter and cell group ordering/timestamps differ, neither of which carries meaning for a patch with no new records (this build of Spriggit has no 'check' verb). LOOT places it at plugins.txt 181, after CH at 52 and Lux at 139. Post-sort winner re-check: all six forwarded records now win and carry USSEP's values; the only remaining differences are the four deliberately-skipped XCCM cases where USSEP states no value. Emit set stable, no regeneration needed. Regenerate after any load-order change that moves Lux relative to Collectibles Helper."
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Freak's Floral Fields Texture Cap",
+      "nexusName": "Ensrick-owned texture-policy overlay",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "local overlay extracted from Freak's Floral Fields file 788926",
+      "sizeMb": 10.67,
+      "sha256": "e4cc21ae1bfc1e1fef15448362ba44244dac72bf7439cf38be4d74bc6bdfb3af",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:25:50Z",
+      "transaction": "20260831T032550872Z-ca076a6653fb",
+      "note": "Private one-file texture-policy overlay. The selected 2K FOMOD tier ships textures/Landscape/grass/Twigs_Freak.dds at 4096x8192; this overlay uses the vendor archive's corresponding 1K-tier BC7 atlas at 2048x4096 with 13 mip levels. Effective FFF audit: 129 DDS, zero axis above 4096, maximum axis 4096, and this overlay is the winning provider. The vendor mod remains untouched. Do not distribute the DDS; a public installer must fetch Nexus mod 125349 file 788926 and reproduce the recorded extraction locally."
     },
     {
       "modId": 0,
@@ -987,10 +987,10 @@
       "sizeMb": 0.0,
       "sha256": "",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T02:32:01Z",
       "transaction": "20260830T023201341Z-c0048f1a4ea9",
-      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical."
+      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 0,
@@ -1002,10 +1002,10 @@
       "sizeMb": 7.48,
       "sha256": "0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T22:05:46Z",
       "transaction": "20260830T220546414Z-660cdd66dc7b",
-      "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted."
+      "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 0,
@@ -1115,6 +1115,21 @@
       "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 172417,
+      "modName": "First Person FOV SKSE",
+      "nexusName": "First Person FOV SKSE",
+      "version": "1.0.11",
+      "fileId": 793571,
+      "fileName": "First Person FOV SKSE 172417 1.0.11 2026-08-22T22-08Z 587RqTfXD.zip",
+      "sizeMb": 7.47,
+      "sha256": "b711574c60a5684624da627668ddde5c16cf730cea4876047fc2b747886cab8b",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T00:55:11Z",
+      "transaction": "20260826T005511051Z-7702fc4b5c19",
+      "note": "FOV control per user request 2026-08-26: FP world 120 / TP 90 / hands 80 in FirstPersonFOV.ini (1.0.11 dll string-verified to read the TP override keys). INSTALL BUG worked around: MO2Headless stripped the archive top-level skse/ dir as data root - files hand-moved to SKSE\\\\Plugins (fork bug to fix in Ensrick/modorganizer headless). In-game sliders need SKSE Menu Framework - NOT installed: its dll predates addr-lib format 5 and would popup-abort; rebuild assessment running. Base Skyrim.ini fDefaultWorldFOV=120 kept as fallback."
+    },
+    {
       "modId": 125349,
       "modName": "Freak's Floral Fields 3.2.3 - Realistic Regional Mix",
       "nexusName": "Freak's Floral Fields - A Grass Overhaul",
@@ -1139,19 +1154,38 @@
       "note": "Adopted grass overhaul. Deterministic FOMOD: 2K, no Seasons, dirt-cliff grass, Realistic Tundra/Pine/Rift, yellow 2K Rift leaves, Realistic Mix Marsh, Mixed Reach, Volcanic Wasteland, and Brown/Dead Snow Grass. All seven ESPs are ESL-flagged. The shipped INI supplies iMaxGrassTypesPerTexure=15 and iMinGrassSize=60. The separate Dirtcliffs02 Fix (173097 file 724092) is not installed because its only mesh is byte-identical to the fixed mesh already in FFF 3.2.3. No optional Solstheim module, Landscape Fixes, NGIO/cache, FPS booster, or other unapproved add-on was installed."
     },
     {
-      "modId": 172417,
-      "modName": "First Person FOV SKSE",
-      "nexusName": "First Person FOV SKSE",
-      "version": "1.0.11",
-      "fileId": 793571,
-      "fileName": "First Person FOV SKSE 172417 1.0.11 2026-08-22T22-08Z 587RqTfXD.zip",
-      "sizeMb": 7.47,
-      "sha256": "b711574c60a5684624da627668ddde5c16cf730cea4876047fc2b747886cab8b",
-      "plugins": [],
+      "modId": 138161,
+      "modName": "Freak's Floral Solstheim 1.0.1",
+      "nexusName": "Freak's Floral Solstheim",
+      "version": "1.0.1",
+      "fileId": 606593,
+      "fileName": "Freak's Floral Solstheim-138161-1-0-1-1742206085.zip",
+      "sizeMb": 128.3,
+      "sha256": "d2cc68c96bf2257e23de6f149b735912a3efffd99fa9c762081cddd9dfb61488",
+      "plugins": [
+        "Freak's Floral Solstheim.esp"
+      ],
       "enabled": true,
-      "installedUtc": "2026-08-26T00:55:11Z",
-      "transaction": "20260826T005511051Z-7702fc4b5c19",
-      "note": "FOV control per user request 2026-08-26: FP world 120 / TP 90 / hands 80 in FirstPersonFOV.ini (1.0.11 dll string-verified to read the TP override keys). INSTALL BUG worked around: MO2Headless stripped the archive top-level skse/ dir as data root - files hand-moved to SKSE\\\\Plugins (fork bug to fix in Ensrick/modorganizer headless). In-game sliders need SKSE Menu Framework - NOT installed: its dll predates addr-lib format 5 and would popup-abort; rebuild assessment running. Base Skyrim.ini fDefaultWorldFOV=120 kept as fallback."
+      "installedUtc": "2026-08-31T03:56:03Z",
+      "transaction": "20260831T035601955Z-fe9256c7f7cc",
+      "fomodPlan": "records\\fomod-plans\\138161-freaks-floral-solstheim.json"
+    },
+    {
+      "modId": 154137,
+      "modName": "Freak's Floral Veil 1.0",
+      "nexusName": "Freak's Floral Veil",
+      "version": "1.0",
+      "fileId": 644292,
+      "fileName": "Freak's Floral Veil-154137-1-0-1751711904.zip",
+      "sizeMb": 78.26,
+      "sha256": "2c873bbca96797bcf4cbe66831628dd444acc04e65f50f9c80d765e478e8c6ee",
+      "plugins": [
+        "Freak's Floral Veil.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:56:06Z",
+      "transaction": "20260831T035603759Z-3a6d28bf30d7",
+      "fomodPlan": "records\\fomod-plans\\154137-freaks-floral-veil.json"
     },
     {
       "modId": 57339,
@@ -1178,11 +1212,11 @@
       "sizeMb": 37.06,
       "sha256": "fae3659452e6df66ad7ede0a53d39832ac5636d62e0abcf8e01bd6a607dc5094",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T22:27:32Z",
       "transaction": "20260830T222730043Z-bef3906e34c7",
       "fomodPlan": "records/fomod-plans/57339-fsmp.json",
-      "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row."
+      "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 157506,
@@ -1492,6 +1526,38 @@
       "installedUtc": "2026-08-25T04:32:23Z",
       "transaction": "20260825T043223216Z-b400864d5ced",
       "note": "official 4.1.0 post-CommonLib-6.7.0 rebuild | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 9005,
+      "modName": "Landscape Fixes For Grass Mods",
+      "nexusName": "Landscape Fixes For Grass Mods",
+      "version": "5.8",
+      "fileId": 632401,
+      "fileName": "Landscape Fixes For Grass Mods-9005-5-8-1748486785.zip",
+      "sizeMb": 7.49,
+      "sha256": "739fd9d0e44093f0e79a8296257b30b30f65b6817aee38407e258e17b20e1c18",
+      "plugins": [
+        "Landscape Fixes For Grass Mods.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:58:02Z",
+      "transaction": "20260831T035802235Z-0bfd87a056b3",
+      "fomodPlan": "records/fomod-plans/9005-lffgm.json"
+    },
+    {
+      "modId": 0,
+      "modName": "LaunchProbe",
+      "nexusName": "Ensrick-owned instrumentation (source build)",
+      "version": "2026-09-01",
+      "fileId": 0,
+      "fileName": "source-builds/launch-probe",
+      "sizeMb": 0.0,
+      "sha256": "ede74e03236be576c328495711b1575b2f9450fa3eff2f3395feb7d35ffa1131",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-01T12:14:54Z",
+      "transaction": "20260901T121454337Z-a0ba87af72df",
+      "note": "#142 bisect campaign instrumentation. SKSE micro-plugin logging MenuOpenClose + every SKSE message with timestamps to SKSE/LaunchProbe.log; the authoritative pass/fail signal for audit/launch_verify.py. Source C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe, SKSE-gate PASS. Remove after #142 closes if unwanted. Rebuilt 2026-09-01: _wfopen_s (deny-all sharing) -> _wfsopen _SH_DENYWR so the harness can tail the log mid-run."
     },
     {
       "modId": 109963,
@@ -1881,11 +1947,11 @@
       "plugins": [
         "MCMHelper.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T15:43:35Z",
       "transaction": "20260830T154334926Z-1e5681066bbe",
       "fomodPlan": "records\\fomod-plans\\53000-mcm-helper.json",
-      "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md"
+      "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 160748,
@@ -2027,6 +2093,26 @@
       "enabled": true,
       "installedUtc": "2026-08-30T21:25:16Z",
       "transaction": "20260830T212515599Z-583f2ea6fb87"
+    },
+    {
+      "modId": 52641,
+      "modName": "Navigator - Navmesh Fixes",
+      "nexusName": "Navigator - Navmesh Fixes",
+      "version": "1.8.3",
+      "fileId": 778076,
+      "fileName": "Navigator - Navmesh Fixes 52641 1.8.3 2026-07-18T12-49Z 8gJHT4w8z.7z",
+      "sizeMb": 8.56,
+      "sha256": "b5b5d29e809da2937135102b9aae0779d617235cbb7a682bc366b2a9e848b0cf",
+      "plugins": [
+        "3DNPCNavFix.esp",
+        "Navigator-NavFixes.esl",
+        "SightlessNavFix.esp",
+        "VigilantNavFix.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-31T03:54:46Z",
+      "transaction": "20260831T035444692Z-89df498a1121",
+      "fomodPlan": "records/fomod-plans/52641-navigator.json"
     },
     {
       "modId": 55653,
@@ -2212,10 +2298,10 @@
       "plugins": [
         "QuickLootIE.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now."
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 77594,
@@ -2435,9 +2521,10 @@
       "sizeMb": 0.24,
       "sha256": "e8370fac03d94604bd836482e078aa8fd5a18bc45a782070efdbd7a0ad3e3c93",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T16:03:47Z",
-      "transaction": "20260830T160347405Z-cf9b88dd7826"
+      "transaction": "20260830T160347405Z-cf9b88dd7826",
+      "note": "PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 95943,
@@ -2607,10 +2694,10 @@
       "sizeMb": 0.0,
       "sha256": "99a782cb7b12c2b28828cafbdc1d2a64c961026b0ed36b0a3bf5b47a0deb4f31",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T23:24:39Z",
       "transaction": "20260830T232439195Z-da391ed61122",
-      "note": "The Pandora-user companion to SkyParkour v3, MAIN file 747633. Contains ONLY three animationsetdatasinglefile text files under Nemesis_Engine/mod/sppffp and sppftp (FirstPerson.txt, DefaultFemale.txt, DefaultMale.txt) - it is NOT generated behavior output and does NOT remove the need to run Pandora (#128). Must not be used alongside Nemesis, which is not installed. VERSION MISMATCH TO WATCH: this file is labelled 3.5.0 while the main mod is 3.6.3; confirm at the Pandora run that the author has not superseded it and that Pandora does not complain."
+      "note": "The Pandora-user companion to SkyParkour v3, MAIN file 747633. Contains ONLY three animationsetdatasinglefile text files under Nemesis_Engine/mod/sppffp and sppftp (FirstPerson.txt, DefaultFemale.txt, DefaultMale.txt) - it is NOT generated behavior output and does NOT remove the need to run Pandora (#128). Must not be used alongside Nemesis, which is not installed. VERSION MISMATCH TO WATCH: this file is labelled 3.5.0 while the main mod is 3.6.3; confirm at the Pandora run that the author has not superseded it and that Pandora does not complain. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 132292,
@@ -2624,10 +2711,10 @@
       "plugins": [
         "SkyParkour.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T23:24:38Z",
       "transaction": "20260830T232437619Z-dcfe0aa8af15",
-      "note": "SkyParkour v3 3.6.3 (2026-08-23), 12,341 endorsements, 2.25M downloads - actively maintained. GATE PASSES on 1.7.104, read from the exported struct: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=1 (kNoStructUse, V5 bit NOT set), PE TimeDateStamp 1787503961 = 2026-08-23, ABOVE the 1748217600 cutoff - so it passes on the STAMP, not on the flag. Its compatibleVersions array is 16 copies of 1.0.0.0, i.e. placeholder garbage, but that is moot because a version-independent plugin bypasses the whitelist. The mod PAGE claims support only for 'Skyrim SE Version 1.5.97 to 1.7.99'; the binary says otherwise and the binary is what SKSE reads. Note the pass is stamp-dependent: a future rebuild with an older timestamp and still no V5 flag would fail. SkyParkour.esp is 9 NEW records (1 SNCT + 8 SNDR), zero overrides, zero deleted, already ESL-flagged - no plugin slot cost, no conflict surface. MECHANISM, established from the payload not the tagline: 'procedural' does NOT mean behavior-free. It ships Nemesis_Engine/mod/sppffp and sppftp behavior-mod definitions and describes itself as 'Native behavior integration with root motion driven animations' and 'Fully SKSE & Behavior Level'. A behavior-engine run is therefore REQUIRED - see #128, the parkour will not animate until Pandora is actually run. Nemesis is not installed, which is correct: the author forbids running both. REQUIREMENTS: SKSE + Address Library installed; SKSE Menu Framework installed (settings live in its in-game config, not in a shipped ini - SkyParkourNG_CustomVars.ini is only a custom parkour-BLOCKING hook file and ships empty); Pandora installed but never run (#128). True Directional Movement is OPTIONAL, not assumed - it only 'unlocks 360 parkour camera', so SkyParkour works without it and #109 stays independent. Animation Queue Fix, which the author calls semi-mandatory for OAR users, FAILS the gate and was not installed (#129); its absence causes only a transient post-load animation delay that clears once OAR finishes preloading. SETTINGS worth noting for a realism-lean taste: stamina is consumed as a configurable base plus equipment weight * 0.2, insufficient stamina plays a failed animation, and low-effort actions cost half - that is effort-scaled rather than arcade-free. Default key is the Jump key, with press-or-hold styles; sliding and rolling are always on the sneak key. No skill or perk gate ships. Vanilla attack behaviour is untouched and no MCO-lineage mod is installed."
+      "note": "SkyParkour v3 3.6.3 (2026-08-23), 12,341 endorsements, 2.25M downloads - actively maintained. GATE PASSES on 1.7.104, read from the exported struct: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=1 (kNoStructUse, V5 bit NOT set), PE TimeDateStamp 1787503961 = 2026-08-23, ABOVE the 1748217600 cutoff - so it passes on the STAMP, not on the flag. Its compatibleVersions array is 16 copies of 1.0.0.0, i.e. placeholder garbage, but that is moot because a version-independent plugin bypasses the whitelist. The mod PAGE claims support only for 'Skyrim SE Version 1.5.97 to 1.7.99'; the binary says otherwise and the binary is what SKSE reads. Note the pass is stamp-dependent: a future rebuild with an older timestamp and still no V5 flag would fail. SkyParkour.esp is 9 NEW records (1 SNCT + 8 SNDR), zero overrides, zero deleted, already ESL-flagged - no plugin slot cost, no conflict surface. MECHANISM, established from the payload not the tagline: 'procedural' does NOT mean behavior-free. It ships Nemesis_Engine/mod/sppffp and sppftp behavior-mod definitions and describes itself as 'Native behavior integration with root motion driven animations' and 'Fully SKSE & Behavior Level'. A behavior-engine run is therefore REQUIRED - see #128, the parkour will not animate until Pandora is actually run. Nemesis is not installed, which is correct: the author forbids running both. REQUIREMENTS: SKSE + Address Library installed; SKSE Menu Framework installed (settings live in its in-game config, not in a shipped ini - SkyParkourNG_CustomVars.ini is only a custom parkour-BLOCKING hook file and ships empty); Pandora installed but never run (#128). True Directional Movement is OPTIONAL, not assumed - it only 'unlocks 360 parkour camera', so SkyParkour works without it and #109 stays independent. Animation Queue Fix, which the author calls semi-mandatory for OAR users, FAILS the gate and was not installed (#129); its absence causes only a transient post-load animation delay that clears once OAR finishes preloading. SETTINGS worth noting for a realism-lean taste: stamina is consumed as a configurable base plus equipment weight * 0.2, insufficient stamina plays a failed animation, and low-effort actions cost half - that is effort-scaled rather than arcade-free. Default key is the Jump key, with press-or-hold styles; sliding and rolling are always on the sneak key. No skill or perk gate ships. Vanilla attack behaviour is untouched and no MCO-lineage mod is installed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 106659,
@@ -2643,6 +2730,40 @@
       "installedUtc": "2026-08-28T17:50:40Z",
       "transaction": "20260828T175040604Z-ebf5716c4c9d",
       "note": "official AE binary (Nexus redistribution-restricted). DEFECT 2026-08-29: dll/ini staged at Plugins/ in the mod root, not SKSE/Plugins/ - the archive SKSE level was stripped at install, so SKSE cannot load it from Data/Plugins"
+    },
+    {
+      "modId": 26138,
+      "modName": "Skyrim Landscape and Water Fixes",
+      "nexusName": "Skyrim Landscape and Water Fixes - FOMOD",
+      "version": "v10.6",
+      "fileId": 790624,
+      "fileName": "Skyrim Landscape and Water Fixes - FOMOD 26138 v10.6 2026-08-16T06-49Z yIjvuh0fB.7z",
+      "sizeMb": 78.75,
+      "sha256": "d4b6bc2a3729eaa6593b047437dc1531d3708b96e0149ae4a79c76bbaa478623",
+      "plugins": [
+        "Landscape and Water Fixes - CC Fishing patch.esp",
+        "Landscape and Water Fixes - Patch - Alternative Armors - Elven Hunter.esp",
+        "Landscape and Water Fixes - Patch - Farming.esp",
+        "Landscape and Water Fixes - Patch - Hendraheim.esp",
+        "Landscape and Water Fixes - Patch - LFfGM - GotT.esp",
+        "Landscape and Water Fixes - Patch - LFfGM - Water for ENB.esp",
+        "Landscape and Water Fixes - Patch - LFfGM.esp",
+        "Landscape and Water Fixes - Patch - Myrwatch - LFfGM.esp",
+        "Landscape and Water Fixes - Patch - Myrwatch.esp",
+        "Landscape and Water Fixes - Patch - Navigator ESL.esp",
+        "Landscape and Water Fixes - Patch - Tundra Homestead.esp",
+        "Landscape and Water Fixes - Patch - USMP.esp",
+        "Landscape and Water Fixes - Patch - Vigil Enforcer Armor Set.esp",
+        "Landscape and Water Fixes.esp",
+        "Skyrim Landscape and Water Fixes - Light Sources.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-01T00:29:19Z",
+      "transaction": "20260901T002911624Z-3963fd58bc3a",
+      "fomodPlan": "records/fomod-plans/26138-slawf.json",
+      "disabledPlugins": [
+        "Landscape and Water Fixes - Patch - LFfGM - Water for ENB.esp"
+      ]
     },
     {
       "modId": 27962,
@@ -2908,10 +3029,10 @@
       "sizeMb": 6.29,
       "sha256": "44066a73dd6ef5a62a181602db3d1ee7d2966621f19087c6014f2b3319e554d3",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T15:38:28Z",
       "transaction": "20260830T153828042Z-a45359c0fb22",
-      "note": "doodlum's SRD, MAIN file labelled 1.5.4; the DLL's own SKSEPlugin_Version reports pluginVersion 0x01050030 = 1.5.3.0, so the file label ran ahead of the binary. GPL-3, open source. Requires po3 Tweaks, installed. PASSES the 1.7.104 SKSE gate on every count, read from the PE export rather than inferred: versionIndependence=0x00000005 (kAddressLibrary | kStructsPost629), versionIndependenceEx=0x00000002 (kVersionIndependentEx_AddressLibraryV5 - the exact flag that re-parked JContainers), compatibleVersions array EMPTY so there is no whitelist to refuse it on, seVersionRequired 0. Its PE TimeDateStamp is 1787604543 (2026-08-24), above the 1748217600 cutoff in skse64/PluginManager.cpp:657-668, so the V5 refusal branch never fires either way. DLL-only, no ESP. Ships a 24.8 MB .pdb alongside the DLL, kept as the author shipped it - CrashLoggerSSE can use it."
+      "note": "doodlum's SRD, MAIN file labelled 1.5.4; the DLL's own SKSEPlugin_Version reports pluginVersion 0x01050030 = 1.5.3.0, so the file label ran ahead of the binary. GPL-3, open source. Requires po3 Tweaks, installed. PASSES the 1.7.104 SKSE gate on every count, read from the PE export rather than inferred: versionIndependence=0x00000005 (kAddressLibrary | kStructsPost629), versionIndependenceEx=0x00000002 (kVersionIndependentEx_AddressLibraryV5 - the exact flag that re-parked JContainers), compatibleVersions array EMPTY so there is no whitelist to refuse it on, seVersionRequired 0. Its PE TimeDateStamp is 1787604543 (2026-08-24), above the 1748217600 cutoff in skse64/PluginManager.cpp:657-668, so the V5 refusal branch never fires either way. DLL-only, no ESP. Ships a 24.8 MB .pdb alongside the DLL, kept as the author shipped it - CrashLoggerSSE can use it. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 36869,
@@ -2953,9 +3074,10 @@
       "sizeMb": 0.18,
       "sha256": "4f7a4980955eec472f3e73219df487fb990c48fd5ad0020c101cd8082b6b2c8c",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T02:31:47Z",
-      "transaction": "20260830T023147461Z-9daac28ee8d4"
+      "transaction": "20260830T023147461Z-9daac28ee8d4",
+      "note": "PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 17230,
@@ -3160,6 +3282,22 @@
       "note": "Part of the #107 DLL-free fix floor. Elzee's UMF 1.18.0: 217 meshes, ALL SE format (stream 100), no plugin, no textures, no DLL - it only corrects material/shader flags on vanilla meshes, so it costs no plugin slot and has no record surface."
     },
     {
+      "modId": 49616,
+      "modName": "Unofficial Skyrim Modders Patch",
+      "nexusName": "Unofficial Skyrim Modder'S Patch   USMP SE",
+      "version": "2.6.8b",
+      "fileId": 773384,
+      "fileName": "Unofficial Skyrim Modder'S Patch USMP SE 49616 2.6.8b 2026-07-08T20-46Z izKcFp4d1.7z",
+      "sizeMb": 20.78,
+      "sha256": "262cbd14a5e69e7202cffa79b68dd056009f9a56f7d29d768c87ca745817d399",
+      "plugins": [
+        "Unofficial Skyrim Modders Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-31T04:44:31Z",
+      "transaction": "20260831T044430544Z-b8a88e22949d"
+    },
+    {
       "modId": 266,
       "modName": "USSEP",
       "nexusName": "Unofficial Skyrim Special Edition Patch",
@@ -3185,10 +3323,10 @@
       "sizeMb": 8.17,
       "sha256": "baec986de9aaa7f35ff2dbc372844e8b9c4a609c929d1115f293fcacee14372e",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T21:58:10Z",
       "transaction": "20260830T215810031Z-2115c73434fc",
-      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed."
+      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 63979,
@@ -3202,10 +3340,10 @@
       "plugins": [
         "Vanilla hair remake SMP NPCs.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T21:58:05Z",
       "transaction": "20260830T215800258Z-6a006384c373",
-      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed."
+      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
     },
     {
       "modId": 54061,

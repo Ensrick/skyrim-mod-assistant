@@ -117,6 +117,13 @@ shows zero `cc*` rows by design - confirm CC presence from the game folder, and
 resolve which CC item owns an asset by indexing the BSAs rather than guessing
 from the in-game name.
 
+**INIs are build state - see `docs/INI_AND_PROFILE_STATE.md`.** The profile must
+keep `LocalSettings=true` so MO2 owns `skyrim.ini`/`skyrimprefs.ini`; with it off
+the game silently resets them (it did on 2026-08-31: 1080p windowed on a 4K
+panel, Ultra distances dropped, and `bUpsellOwned=0` produced a false
+Anniversary Edition first-run prompt). Verify the deliberate keys before AND
+after every launch, and after any Steam update or vanilla-launcher run.
+
 ## Tier 0 - engine floor (install before first real session)
 
 | mod | id | status |

@@ -3,6 +3,8 @@
 Inspects what a mod actually ships and reports findings. It does not decide
 anything: the output is evidence for a keep/skip call, not the call itself.
 
+Launch tooling lives here too - see [Launching](#launching) below.
+
 ```
 py -3 audit/inspect_mod.py "6369:Cloaks of Skyrim"
 py -3 audit/inspect_mod.py "5795:RUSTIC CLUTTER:2K$"     # third field picks a file variant
@@ -60,6 +62,129 @@ Contested biped slots (45, 46, 47) are reported too, since two mods on slot 46
 cannot be worn together no matter how good either one is.
 
 **Packaging** - `.psd`, `Thumbs.db`, `__MACOSX` and similar junk.
+
+## Launching
+
+Three consecutive broken launches in two days were all caused by state nobody
+looked at, and the third ended with the user watching a 2.5-minute stall unable
+to tell loading from dead. The launch path is now four gates in a fixed order,
+with one command that runs them:
+
+```
+py -3 audit/launch_session.py
+```
+
+| file | job |
+|---|---|
+| `preflight.py` | everything that must be true BEFORE the user is told to launch. Non-zero exit = do not tell them to launch |
+| `launch_watch.py` | samples the live process and names its state every few seconds |
+| `launch_verify.py` | the automated pass/fail run: launches, times the menu, loads a save |
+| `launch_triage.py` | reads the SKSE logs afterwards and reports every plugin that failed |
+| `threaddump.py` | groups a CrashLogger thread dump and says what the process was doing |
+
+### Verification: `launch_verify.py`
+
+User criterion: *"With each change we must successfully launch the game and load
+the save"* and *"It must reach the main menu in under 60 seconds or it's a
+failure."*
+
+```
+py -3 audit/launch_verify.py --dry-run     # rehearse: plan + blockers, no launch
+py -3 audit/launch_verify.py               # the real pass/fail run
+py -3 audit/launch_verify.py --selftest    # replay timelines through the rules
+```
+
+PASS requires **both** a real main menu within 60 s of process start **and** a
+save actually loaded. Exit 0 PASS, 1 otherwise; a record lands in
+`records/launch-verify-*.md` either way, with the timing breakdown
+(process start -> kDataLoaded -> main menu -> save loaded).
+
+It is the only file here that launches the game and the only one that kills it;
+the user authorized both for verification runs specifically. `--leave-running`
+turns the kill off. `launch_session.py --verify` is the same thing.
+
+**It refuses to certify a PASS without LaunchProbe.** The cheap main-menu
+signals lie: on both hung launches of 2026-08-31, CommunityShaders'
+`InitializeMenuIcons` and SkyParkour's log fired at about T+56s and the game
+never became playable. A signal that fires during the failure it is meant to
+exclude cannot gate a PASS. LaunchProbe is a micro SKSE plugin built for this
+(source `skyrim-tools-source/LaunchProbe`, artifact staged at
+`records/source-builds/launch-probe/`, record
+`records/source-builds/ensrick-launch-probe.json`) that logs, timestamped:
+
+| probe event | means |
+|---|---|
+| `MAIN_MENU_OPEN` / `MAIN_MENU_ALREADY_OPEN` | the game's own `MenuOpenCloseEvent` for `RE::MainMenu::MENU_NAME` |
+| `SKSE_MESSAGE name="kDataLoaded"` etc. | each SKSE messaging phase |
+| `SKSE_MESSAGE name="kPostLoadGame" success=1` | a save finished loading |
+
+It also drives the load: with `SKYRIM_LAUNCH_PROBE_AUTOLOAD=<save base name>` set
+it calls `BGSSaveLoadManager::Load` once the main menu is up. The env var must be
+set before Steam restarts, because the chain is Steam -> MO2 -> SKSE ->
+SkyrimSE and each link inherits its parent's environment; `launch_verify.py`
+handles that. Unset, the plugin only logs, so it is inert during normal play.
+
+ConsoleUtilSSE was considered for the save load and rejected: it executes
+console commands from Papyrus, and Papyrus is not running at the main menu.
+
+`launch_session.py` runs preflight, waits for the game (**it never launches it**
+- autonomous launches are not allowed), watches, triages, and analyses any
+thread dump taken during the session. Exit code is the first step that failed:
+1 preflight, 2 hang, 3 died before menu, 4 never started, 5 refused plugins.
+
+**preflight** checks INI ownership (`LocalSettings=true`) and the deliberate
+keys, plugin state via `install_mod --verify` and `verify_order`, whether the
+last launch died mid-plugin-load or crashed after init, whether a headless MO2
+writer is running (#103), whether Steam is wedged with a phantom Running flag,
+and whether the game-side `%LOCALAPPDATA%` `Plugins.txt` still matches the
+profile. It skips the MO2-driven checks when the game is already running rather
+than driving MO2Headless alongside a live session.
+
+**launch_watch** answers one question continuously: is this progressing?
+
+| state | what it means |
+|---|---|
+| `loading` | memory climbing or an SKSE-side log still being written |
+| `shaders` | shader cache growing - CPU pegged with flat memory is CORRECT here |
+| `at-menu` | LaunchProbe saw the real main menu open |
+| `stalled` | nothing advancing, not yet long enough to call |
+| `stalled-unconfirmed` | nothing advancing, window still pumping, and no authoritative menu signal - a real menu and a wedge are indistinguishable from outside |
+| `hung-spin` | burning CPU, nothing advancing |
+| `hung-idle` | no CPU and nothing advancing - a lock, not slow work |
+| `died` | process gone; names any crash log newer than `skse64.log` |
+
+Separating `shaders` from `hung-spin` is the point: a first launch after a
+shader-affecting change pegs a core with memory flat for minutes, which is the
+most hang-shaped thing this build does that is not a hang.
+
+Progress is movement between consecutive samples, never recency. Judging it by
+"a log was written in the last minute" reports `progressing` forty seconds into
+a hang, because one stale burst keeps satisfying the window. Sizes are compared
+with `!=` rather than `>`, because SKSE truncates `skse64.log` at startup and a
+`>` test scores the refill as a stall until it passes the old session's size.
+
+`stalled-unconfirmed` exists because honesty demanded it: without LaunchProbe,
+"sitting at a real main menu" and "wedged with a message loop still turning"
+produce identical readings, and the 2026-08-31 hang was the second one with a
+responsive window. The watcher says it cannot tell instead of guessing.
+
+On a hang it prints the verdict with its evidence, captures per-thread CPU
+attributed to the owning module, writes `records/launch-watch-<timestamp>.md`,
+and tells the user to press Ctrl+Shift+F12. **It never kills the game**, and it
+does not press the hotkey either: CrashLogger polls `GetAsyncKeyState` (no
+`RegisterHotKey`, no window hook, no event or pipe trigger in the DLL), so a
+synthetic trigger would mean injecting global keystrokes and hoping the poll
+catches them - delivery depends on the foreground window and fails silently
+against an elevated game.
+
+Sampling is native Win32 via ctypes (`GetProcessTimes`,
+`GetProcessMemoryInfo`, `SendMessageTimeout`), not a `pwsh` child per tick.
+Responsiveness is a modifier, never a verdict: a loading Skyrim is legitimately
+unresponsive, and a main thread parked in `GetMessage` answers promptly while
+rendering nothing - which is exactly what the 2026-08-31 hang looked like.
+
+`py -3 audit/launch_watch.py --selftest` exercises every branch of the state
+machine and both disk scanners without a game running.
 
 ## Calibration
 

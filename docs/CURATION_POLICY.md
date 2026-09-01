@@ -26,3 +26,20 @@ The live curator is reconciled against enabled MO2 state with
 `nexus-local-curator/scripts/reconcile-installed-keeps.py`. Its queued mutation
 uses compare-before-write guards and maps inactive Keeps to Unreviewed, never
 to Skip.
+
+## Changelog discipline
+
+Effective 2026-08-31, `CHANGELOG.md` at the repo root is part of build state.
+
+- No change lands without a changelog entry naming its source - the user's
+  words, the issue number, the agent, or the research record that caused it.
+  A change with no nameable source does not land.
+- No batch is called done until a verification launch passes: main menu in
+  under 60 seconds and the test save loaded. Until then every entry in the
+  batch stays `UNVERIFIED`.
+- A `FAILED` verification makes the whole unverified pile suspect. The batch
+  is bisected before anything else lands; installing forward past a failed
+  launch is how the 2026-08-29 to 2026-08-31 backlog happened.
+
+The entry format and the verification statuses are defined at the top of
+`CHANGELOG.md`.

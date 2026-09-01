@@ -14,6 +14,27 @@ transaction journal and visible in one file.
 Order matters after a LOOT sort: LootCLI rewrites plugins.txt and drops the
 enable markers on managed plugins, so plugin-enable has to run afterwards.
 `--verify` re-checks that every ledger plugin is still enabled.
+
+Ledger conventions for things that are OFF ON PURPOSE. `--verify` is a gate
+that must read `0 problem(s)`; a standing false positive trains everyone to
+skim the one line where a real regression appears, so intent has to be
+machine-readable, not just prose in `note`:
+
+  "enabled": false          the whole mod is parked. Its plugins are expected
+                            to be inactive; one that IS active fails instead.
+
+  "disabledPlugins": [...]  the mod is enabled but these specific plugins are
+                            deliberately unstarred - a patch whose target is
+                            absent, a variant superseded by another mod, an
+                            asset-only install whose ESP must not load. They
+                            are reported as `deliberately-disabled`, are not
+                            counted as problems, and `sort_order()` will not
+                            re-enable them. One that IS active fails instead.
+
+Always give the reason in `note` as well; the field says WHAT, the note says
+WHY. A plugin that is off with neither marker is a fault by definition - that
+is the whole point of the check, and it is how a disabled CBBE.esp was caught
+on 2026-08-31 after a bookkeeping explanation had nearly buried it.
 """
 import json, os, re, sys, hashlib, subprocess, datetime
 
@@ -114,6 +135,8 @@ def verify():
     live = {p['name']: p['enabled'] for p in state.get('plugins', [])}
     print(f"{len(led['mods'])} mods in ledger; {state.get('discoveredCount')} plugins discovered\n")
     bad = 0
+    off_on_purpose = []          # (mod, plugin, why) - expected off, never a fault
+    faults = []                  # the rows that actually matter
     for m in led['mods']:
         for p in m['plugins']:
             ok = live.get(p)
@@ -123,16 +146,34 @@ def verify():
                 flag = 'parked' if not ok else 'ACTIVE-WHILE-PARKED'
                 if ok:
                     bad += 1
+                    faults.append((m['modName'], p, flag))
+                else:
+                    off_on_purpose.append((m['modName'], p, 'mod parked'))
             elif p in m.get('disabledPlugins', []):
                 # deliberately unstarred (e.g. its master is not installed)
                 flag = 'deliberately-disabled' if not ok else 'ACTIVE-BUT-MARKED-DISABLED'
                 if ok:
                     bad += 1
+                    faults.append((m['modName'], p, flag))
+                else:
+                    off_on_purpose.append((m['modName'], p, 'listed in disabledPlugins'))
             elif not ok:
                 bad += 1
+                faults.append((m['modName'], p, flag))
             print(f"   {m['modName']:<28}{p:<28}{flag}")
         if not m['plugins']:
             print(f"   {m['modName']:<28}{'(no plugin)':<28}-")
+    # An off-on-purpose row is intent, not a fault, so it is summarised
+    # separately and never reaches the problem total. Anything off WITHOUT one
+    # of those two markers is a fault - see the ledger conventions at the top.
+    print(f'\ndeliberately off ({len(off_on_purpose)}):'
+          if off_on_purpose else '\ndeliberately off (0)')
+    for mod, p, why in off_on_purpose:
+        print(f'   {mod:<28}{p:<28}{why}')
+    if faults:
+        print(f'\nfaults ({len(faults)}):')
+        for mod, p, flag in faults:
+            print(f'   {mod:<28}{p:<28}{flag}')
     print(f'\n{bad} problem(s)')
     return 1 if bad else 0
 
