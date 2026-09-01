@@ -90,3 +90,12 @@ An edge-ringing detector for the sharpening case was written and **discarded**:
 native vanilla textures ring as hard as sharpened upscales (9.53 vs 12.40), so
 it separated nothing. Any metric that fails to separate the controls does not
 belong in the report.
+
+## Load-order safety
+
+`verify_order.py` reads each active plugin's TES4 master list and fails when a
+master has no provider, is present but inactive, or loads too late. Only the
+five official base masters and plugins explicitly listed in `Skyrim.ccc` are
+implicit; an arbitrary plugin sitting loose in the physical `Data` directory
+is not treated as active. Synthetic regression tests cover those activation
+rules and run in the repository's required `validate` check.
