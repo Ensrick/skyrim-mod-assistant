@@ -35,6 +35,11 @@ The pure model test binary must cover:
 - different source identities producing independent fractional thresholds;
 - domain-separated admission ranks whose cap winners remain statistically
   independent of low/high fractional success probabilities;
+- canonical uncapped expectation accumulation that is bit-stable when only the
+  admission seed changes;
+- explicit fractional-capacity projection semantics, including two half-unit
+  demands projecting to one capped unit rather than being mislabeled as their
+  `0.75` capped statistical expectation;
 - stable per-source results when source order changes before cap saturation;
 - actor-base respawn policy that admits a respawning base and rejects a
   non-respawning base without treating ACHR header bit 30 as affirmative;
@@ -55,10 +60,12 @@ For every shipping configuration:
 1. execute the simulator at source counts `1`, `4`, `8`, `16`, and `64`;
 2. inspect levels `1`, `5`, `10`, `20`, `30`, `40`, `50`, `75`, and `100`;
 3. confirm sampled additions never exceed any applicable cap;
-4. confirm expected totals are monotonic until capped;
+4. confirm uncapped expected totals and aggregate fractional-capacity
+   projections are monotonic until capped;
 5. repeat with the same seed and byte-compare output; and
-6. change only the seed and confirm expectations stay fixed while at least some
-   fractional outcomes change.
+6. change only the seed and confirm uncapped expectations stay bit-stable while
+   at least some fractional outcomes change; category allocation in a saturated
+   global fractional-capacity projection may change with admission rank.
 
 Archive the smoke output as a CI artifact.
 
@@ -66,7 +73,14 @@ Archive the smoke output as a CI artifact.
 
 - clean checkout with recursively pinned submodules;
 - pinned vcpkg baseline and no network-fetched unpinned source;
-- Release build produced with reproducibility flags;
+- Release build produced with `/experimental:deterministic`, source
+  `/pathmap`, `/cgthreads1`, and linker `/Brepro`; the generated-command audit
+  must prove that the compiler flags reached every production translation unit
+  and that every executable/shared-library link rule exposes, in order, the
+  complete `LINK_FLAGS`, `LINK_PATH`, and `LINK_LIBRARIES` surfaces. Their
+  expanded arguments must contain exactly one `/Brepro`, with `/GL`, `/LTCG`,
+  response files, and hidden MSVC option environments absent; the audit runs
+  before and after the build, and its rejection paths are fixture-tested;
 - x64 PE DLL and simulator executable;
 - expected SKSE exports and plugin metadata;
 - no imports or strings for `MessageBox` or other intentional modal UI;
@@ -106,11 +120,11 @@ Archive the smoke output as a CI artifact.
   configure without repeated CMake regeneration;
   record explicitly whether the acceptance run stopped after configure or also
   completed the build and CTest, without claiming an offline reconstruction;
-- two isolated, cache-disabled builds made from the same commit and
+- three isolated, cache-disabled builds made from the same commit and
   `SOURCE_DATE_EPOCH` produce byte-identical binary/source ZIPs and sibling hash
-  files, with identical DLL and simulator payloads; both ZIP entry sequences and
-  internal-manifest path sequences are strict ordinal orderings of their exact
-  path sets; all internal hashes, canonical manifest encoding, normalized ZIP
+  files, with identical DLL and simulator payloads; every ZIP entry sequence
+  and every internal-manifest path sequence is a strict ordinal ordering of its
+  exact path set; all internal hashes, canonical manifest encoding, normalized ZIP
   metadata, canonical sibling-hash encoding, and Windows-safe extraction paths
   pass the independent comparison gate; a signed-tag candidate must also
   reproduce the canonical successful protected-main artifact for that exact
@@ -123,20 +137,25 @@ Where an isolated harness is available, test plugin query/load against the exact
 supported runtime and matching Address Library. The test must not display a
 window, play audio, write into the user's active MO2 profile, or launch the game
 on the user's interactive desktop. A harness is not a substitute for an actual
-game test.
+game test. Add a negative startup case in which the bounded log destination is
+unavailable or unwritable: plugin load must return failure without displaying a
+popup, registering event sinks, scheduling work, or creating actors.
 
 ## In-game functional matrix
 
 Use a dedicated disposable MO2 profile with only required dependencies, a crash
 logger, a reproducible test save, and the candidate enabled. Run the entire
 classification matrix first with `observeOnly: true`; verify that `created=0`
-in every cell audit. Only then repeat the actor-creation scenarios with
-`observeOnly: false` on a disposable save.
+in every cell audit. For each stateful fixture, verify the per-source debug
+reason has the exact `stateful-reference-*` value and the ordinary cell summary
+increments `statefulReferenceRejections` even with `debugLogging: false`. Only
+then repeat the actor-creation scenarios with `observeOnly: false` on a
+disposable save.
 
 | Scenario | Expected result |
 | --- | --- |
 | Level at/below baseline | No added actors. |
-| Ordinary bandit leveled sources | Bounded additions; companions independently resolve from the original list when available. |
+| Ordinary bandit leveled sources | Bounded additions; companions independently resolve from the original list when available. The same list entry may legitimately be selected again. |
 | Fixed generic hostile | No additions in the initial safety candidate. |
 | Animals/beasts | Lower category curve and cap. |
 | Giants/mammoths | Strict category curve and cap. |
@@ -144,7 +163,13 @@ in every cell audit. Only then repeat the actor-creation scenarios with
 | Named/unique NPC | No additions. |
 | Essential/protected/quest-alias actor | No additions. |
 | Summoned/commanded/teammate actor | No additions. |
-| Location boss | No additions. |
+| Location boss | No additions; reason is `stateful-reference-location-boss`. |
+| Enable-state parent, encounter zone, linked ref, activate ref, or patrol-ref-data source | No additions; the corresponding deterministic `stateful-reference-*` reason is reported. |
+| Location or non-boss location-ref-type source | No additions; location metadata is not copied to a companion. |
+| Horse, multibound, from-alias, missing-ref-IDs, or missing-linked-ref-IDs source | No additions; the corresponding deterministic `stateful-reference-*` reason is reported. |
+| Attach-ref, scene-data, interaction, forced-target, or open-close-activate-ref source | No additions; the corresponding deterministic `stateful-reference-*` reason is reported. |
+| Source with only a reverse enable-state/linked/activate/attach child index | Not rejected for that index alone; no inbound index is copied. |
+| Otherwise eligible source with ordinary live package/process state | Not rejected for package/process ExtraData alone; a created actor receives fresh engine runtime state rather than copied source state. |
 | Denied source plugin | No additions. |
 | Unallowlisted override or leveled-list entry | Source graph rejected before creation. |
 | Mod-authored source absent from allowlist | No additions. |
@@ -153,10 +178,14 @@ in every cell audit. Only then repeat the actor-creation scenarios with
 | Dense interior/exterior | Category, addition, and total-hostile ceilings hold. |
 | Placement near walls/ledges | Active-mode acceptance test: no actor may remain embedded; any failure blocks activation beyond disposable testing. Nearest-vertex snapping alone does not prove this. |
 | Nearest navmesh vertex beyond configured bound | Created reference is rolled back and counted as a failed placement. |
+| Created actor lacks the exact expected leveled-source identity after resolution | Created reference is rolled back with `resolved-not-leveled-source` or `resolved-leveled-source-mismatch`; equality with the original actor's selected NPC entry is not itself a failure. |
 | Creation/post-classification/registry failure | Pending reference is disabled and marked for deletion; no stale registry entry remains. |
 
 At least one test should use a mod-added leveled list and one a scripted quest
-location, even though the latter should be excluded.
+location, even though the latter should be excluded. Build the stateful fixtures
+as disposable test content and inspect their ExtraData directly; do not infer
+coverage from display names or encounter behavior. Passing these classifier
+fixtures is only a prerequisite for active testing, not evidence of save safety.
 
 ## Save and lifecycle matrix
 

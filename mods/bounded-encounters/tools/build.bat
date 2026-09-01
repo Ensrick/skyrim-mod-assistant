@@ -35,11 +35,20 @@ set "PATH=%BE_VSROOT%\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;%PATH%"
 if not defined CMAKE_BUILD_PARALLEL_LEVEL set "CMAKE_BUILD_PARALLEL_LEVEL=3"
 if not defined VCPKG_MAX_CONCURRENCY set "VCPKG_MAX_CONCURRENCY=3"
 cd /d "%~dp0.."
+echo === BUILD FLAG AUDIT SELF-TEST START ===
+powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File tools\test-audit-build-flags.ps1
+if errorlevel 1 goto :fail
 echo === CONFIGURE START ===
 "%BE_CMAKE%" --fresh --preset release -DCMAKE_MAKE_PROGRAM="%BE_NINJA%" -DCOMMONLIB_PREBUILT=OFF -DENABLE_SKYRIM_VR=OFF
 if errorlevel 1 goto :fail
+echo === BUILD FLAG AUDIT START ===
+powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File tools\audit-build-flags.ps1 -OutputPath build\release\build-flag-audit.json
+if errorlevel 1 goto :fail
 echo === BUILD START ===
 "%BE_CMAKE%" --build build/release
+if errorlevel 1 goto :fail
+echo === POST-BUILD FLAG AUDIT START ===
+powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File tools\audit-build-flags.ps1 -OutputPath build\release\build-flag-audit.json
 if errorlevel 1 goto :fail
 echo === TEST START ===
 "%BE_CTEST%" --test-dir build/release --output-on-failure

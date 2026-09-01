@@ -11,6 +11,17 @@ namespace BoundedEncounters
 	{
 		constexpr std::uint64_t kAdmissionRankDomain = 0x41444D495452414EULL;
 		constexpr std::uint64_t kFractionRollDomain = 0x46524143524F4C4CULL;
+
+		[[nodiscard]] bool CanonicalSourceLess(
+			const SourceDescriptor& a_left,
+			const SourceDescriptor& a_right) noexcept
+		{
+			if (a_left.sourceKey != a_right.sourceKey) {
+				return a_left.sourceKey < a_right.sourceKey;
+			}
+			return static_cast<std::uint8_t>(a_left.category) <
+				static_cast<std::uint8_t>(a_right.category);
+		}
 	}
 
 	std::string ToString(const Category a_category)
@@ -93,6 +104,62 @@ namespace BoundedEncounters
 		return MixSeed(MixSeed(a_seed, kFractionRollDomain), a_sourceKey);
 	}
 
+	CapacityProjection ProjectFractionalCapacity(
+		const std::vector<SourceDescriptor>& a_sources,
+		const std::unordered_map<Category, Curve>& a_curves,
+		const std::uint32_t a_playerLevel,
+		const std::uint64_t a_seed,
+		const std::optional<std::uint32_t> a_globalCellCap)
+	{
+		CapacityProjection projection;
+		auto canonicalSources = a_sources;
+		std::ranges::sort(canonicalSources, CanonicalSourceLess);
+		for (const auto& source : canonicalSources) {
+			const auto curve = a_curves.find(source.category);
+			if (source.category == Category::Excluded || curve == a_curves.end()) {
+				continue;
+			}
+			const auto expected = ExpectedExtrasPerSource(curve->second, a_playerLevel);
+			projection.uncappedExpectedExtras += expected;
+			projection.uncappedExpectedByCategory[source.category] += expected;
+		}
+
+		std::unordered_map<Category, double> categoryTotals;
+		auto orderedSources = std::move(canonicalSources);
+		std::ranges::sort(orderedSources, [&](const SourceDescriptor& a_left, const SourceDescriptor& a_right) {
+			const auto leftRank = SpawnAdmissionRank(a_seed, a_left.sourceKey);
+			const auto rightRank = SpawnAdmissionRank(a_seed, a_right.sourceKey);
+			return leftRank != rightRank ? leftRank < rightRank : CanonicalSourceLess(a_left, a_right);
+		});
+
+		for (const auto& source : orderedSources) {
+			const auto curve = a_curves.find(source.category);
+			if (source.category == Category::Excluded || curve == a_curves.end()) {
+				continue;
+			}
+
+			const auto expected = ExpectedExtrasPerSource(curve->second, a_playerLevel);
+			auto admitted = expected;
+			const auto categoryCap = curve->second.maxExtrasPerCell;
+			if (categoryCap > 0) {
+				admitted = std::min(
+					admitted,
+					std::max(0.0, static_cast<double>(categoryCap) - categoryTotals[source.category]));
+			}
+			if (a_globalCellCap.has_value()) {
+				admitted = std::min(
+					admitted,
+					std::max(0.0, static_cast<double>(*a_globalCellCap) - projection.cappedFractionalCapacityExtras));
+			}
+
+			categoryTotals[source.category] += admitted;
+			projection.cappedFractionalCapacityExtras += admitted;
+			projection.cappedFractionalCapacityByCategory[source.category] += admitted;
+		}
+
+		return projection;
+	}
+
 	SpawnPlan BuildSpawnPlan(
 		const std::vector<SourceDescriptor>& a_sources,
 		const std::unordered_map<Category, Curve>& a_curves,
@@ -104,10 +171,17 @@ namespace BoundedEncounters
 		std::unordered_map<Category, std::uint32_t> categoryTotals;
 		plan.sources.reserve(a_sources.size());
 		auto orderedSources = a_sources;
+		std::ranges::sort(orderedSources, CanonicalSourceLess);
+		for (const auto& source : orderedSources) {
+			const auto curve = a_curves.find(source.category);
+			if (source.category != Category::Excluded && curve != a_curves.end()) {
+				plan.expectedExtras += ExpectedExtrasPerSource(curve->second, a_playerLevel);
+			}
+		}
 		std::ranges::sort(orderedSources, [&](const SourceDescriptor& a_left, const SourceDescriptor& a_right) {
 			const auto leftRank = SpawnAdmissionRank(a_seed, a_left.sourceKey);
 			const auto rightRank = SpawnAdmissionRank(a_seed, a_right.sourceKey);
-			return leftRank != rightRank ? leftRank < rightRank : a_left.sourceKey < a_right.sourceKey;
+			return leftRank != rightRank ? leftRank < rightRank : CanonicalSourceLess(a_left, a_right);
 		});
 
 		for (const auto& source : orderedSources) {
@@ -120,7 +194,6 @@ namespace BoundedEncounters
 
 			const auto& curve = curveIt->second;
 			roll.expectedExtras = ExpectedExtrasPerSource(curve, a_playerLevel);
-			plan.expectedExtras += roll.expectedExtras;
 
 			const auto whole = static_cast<std::uint32_t>(std::floor(roll.expectedExtras));
 			const auto fractional = roll.expectedExtras - static_cast<double>(whole);

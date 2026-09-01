@@ -3,7 +3,16 @@ cmake_minimum_required(VERSION 3.24)
 project(BoundedEncounters VERSION 0.1.0 LANGUAGES CXX)
 
 if(MSVC)
-    add_compile_options("/experimental:deterministic" "/pathmap:${CMAKE_SOURCE_DIR}=.")
+    # MSVC 19.51 produced two behaviorally equivalent encodings of a C++23
+    # <format> pick-any COMDAT across isolated clean builds. Keep Ninja's
+    # translation-unit parallelism, but serialize optimization/code generation
+    # inside each cl.exe process to mitigate the leading suspected source of
+    # that drift.
+    add_compile_options(
+        "/experimental:deterministic"
+        "/cgthreads1"
+        "/pathmap:${CMAKE_SOURCE_DIR}=."
+    )
     add_link_options("/Brepro")
 endif()
 

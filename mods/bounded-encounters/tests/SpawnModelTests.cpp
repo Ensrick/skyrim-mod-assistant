@@ -390,6 +390,103 @@ namespace
 		}
 	}
 
+	void TestFractionalCapacityAdmissionOrdering(TestSuite& a_tests)
+	{
+		using namespace BoundedEncounters;
+
+		constexpr std::uint64_t seed = 1;
+		constexpr std::uint64_t rawWinner = 1;
+		constexpr std::uint64_t admissionWinner = 2;
+		const std::vector<SourceDescriptor> sources{
+			{ rawWinner, Category::General },
+			{ admissionWinner, Category::AnimalBeast }
+		};
+		const Curve guaranteedOne{ true, 1.0, 0, 0.0, 1, 0 };
+		const std::unordered_map<Category, Curve> curves{
+			{ Category::General, guaranteedOne },
+			{ Category::AnimalBeast, guaranteedOne }
+		};
+
+		a_tests.Check(
+			MixSeed(seed, rawWinner) < MixSeed(seed, admissionWinner),
+			"projection admission fixture would select the other category with an undomained raw seed mix");
+		a_tests.Check(
+			SpawnAdmissionRank(seed, admissionWinner) < SpawnAdmissionRank(seed, rawWinner),
+			"projection admission fixture has a distinct domain-separated winner");
+
+		const auto projection = ProjectFractionalCapacity(sources, curves, 1, seed, 1);
+		const auto plan = BuildSpawnPlan(sources, curves, 1, seed, 1);
+		a_tests.CheckNear(projection.uncappedExpectedExtras, 2.0, 0.0, "projection preserves both uncapped source expectations");
+		a_tests.CheckNear(projection.cappedFractionalCapacityExtras, 1.0, 0.0, "projection applies the one-slot global cap");
+		a_tests.CheckNear(
+			projection.cappedFractionalCapacityByCategory.at(Category::General),
+			0.0,
+			0.0,
+			"projection blocks the lower-priority raw-mix winner");
+		a_tests.CheckNear(
+			projection.cappedFractionalCapacityByCategory.at(Category::AnimalBeast),
+			1.0,
+			0.0,
+			"projection admits the domain-separated rank winner");
+		a_tests.Check(RollFor(plan, rawWinner).extras == 0, "runtime planner blocks the same lower-priority source");
+		a_tests.Check(RollFor(plan, admissionWinner).extras == 1, "runtime planner admits the same winning source");
+
+		const Curve halfChance{ true, 0.5, 0, 0.0, 1, 0 };
+		const std::vector<SourceDescriptor> halfChanceSources{
+			{ 10, Category::General },
+			{ 11, Category::General }
+		};
+		const auto halfChanceProjection = ProjectFractionalCapacity(
+			halfChanceSources,
+			OneCurve(Category::General, halfChance),
+			1,
+			seed,
+			1);
+		a_tests.CheckNear(
+			halfChanceProjection.cappedFractionalCapacityExtras,
+			1.0,
+			0.0,
+			"two half-unit demands project to one full capacity unit, not their 0.75 capped statistical expectation");
+	}
+
+	void TestCanonicalExpectationAccumulation(TestSuite& a_tests)
+	{
+		using namespace BoundedEncounters;
+
+		const std::unordered_map<Category, Curve> curves{
+			{ Category::General, Curve{ true, 0.45, 1, 0.0, 0, 0 } },
+			{ Category::AnimalBeast, Curve{ true, 0.225, 1, 0.0, 0, 0 } },
+			{ Category::GiantMammoth, Curve{ true, 0.09, 1, 0.0, 0, 0 } }
+		};
+		std::vector<SourceDescriptor> sources;
+		sources.reserve(100000);
+		for (std::uint64_t key = 1; key <= 100000; ++key) {
+			const auto category = key % 8 == 0 ? Category::GiantMammoth :
+				(key % 4 == 0 ? Category::AnimalBeast : Category::General);
+			sources.push_back({ key, category });
+		}
+
+		constexpr std::uint64_t firstSeed = 0x0123456789ABCDEFULL;
+		constexpr std::uint64_t secondSeed = 0xFEDCBA9876543210ULL;
+		const auto firstPlan = BuildSpawnPlan(sources, curves, 2, firstSeed, std::nullopt);
+		const auto secondPlan = BuildSpawnPlan(sources, curves, 2, secondSeed, std::nullopt);
+		const auto firstProjection = ProjectFractionalCapacity(sources, curves, 2, firstSeed, std::nullopt);
+		const auto secondProjection = ProjectFractionalCapacity(sources, curves, 2, secondSeed, std::nullopt);
+
+		a_tests.Check(
+			firstPlan.expectedExtras == secondPlan.expectedExtras,
+			"uncapped planner expectation is bit-stable when only the admission seed changes");
+		a_tests.Check(
+			firstProjection.uncappedExpectedExtras == secondProjection.uncappedExpectedExtras,
+			"uncapped projection total is bit-stable when only the admission seed changes");
+		for (const auto category : { Category::General, Category::AnimalBeast, Category::GiantMammoth }) {
+			a_tests.Check(
+				firstProjection.uncappedExpectedByCategory.at(category) ==
+					secondProjection.uncappedExpectedByCategory.at(category),
+				"uncapped category projection is bit-stable when only the admission seed changes");
+		}
+	}
+
 	void TestStatisticalExpectations(TestSuite& a_tests)
 	{
 		using namespace BoundedEncounters;
@@ -1202,6 +1299,8 @@ int main()
 	Run("expected-value monotonicity", TestExpectedValueMonotonicity);
 	Run("deterministic plans", TestDeterministicPlans);
 	Run("input ordering", TestInputOrdering);
+	Run("fractional-capacity admission ordering", TestFractionalCapacityAdmissionOrdering);
+	Run("canonical expectation accumulation", TestCanonicalExpectationAccumulation);
 	Run("statistical expectations", TestStatisticalExpectations);
 	Run("caps and categories", TestCapsAndCategories);
 	Run("excluded and ineligible sources", TestExcludedAndIneligibleSources);

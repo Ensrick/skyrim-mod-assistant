@@ -23,7 +23,8 @@ namespace BoundedEncounters
 			RE::Actor* a_actor,
 			RE::PlayerCharacter* a_player,
 			const Config& a_config,
-			Category a_expectedCategory) const;
+			Category a_expectedCategory,
+			const RE::TESBoundObject* a_expectedLeveledSource) const;
 
 	private:
 		[[nodiscard]] Classification EvaluateImpl(

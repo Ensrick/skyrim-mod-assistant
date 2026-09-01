@@ -32,7 +32,7 @@ Nexus release approval.
       the release notes.
 - [ ] Release tests and simulator smoke test pass.
 - [ ] Archive is produced only by `tools/package.ps1`.
-- [ ] Two isolated, cache-disabled builds of the exact commit produce identical
+- [ ] Three isolated, cache-disabled builds of the exact commit produce identical
       four-file release directories, including byte-identical DLL and simulator
       payloads; a signed-tag build also matches the canonical successful
       protected-main artifact for that commit.
@@ -113,7 +113,9 @@ Nexus release approval.
 - [ ] Dragons, bosses, unique/essential/protected/quest actors, summons,
       commanded actors, and teammates remain excluded.
 - [ ] Leveled sources reroll companions rather than cloning resolved actors when
-      the original leveled form is available.
+      the original leveled form is available; the post-create actor retains that
+      exact leveled-source identity, while selecting the same NPC entry remains
+      a valid independent outcome.
 - [ ] Generated actors never multiply generated actors.
 - [ ] Observe-only matrix creates zero actors before active testing begins.
 - [ ] Non-allowlisted mod-authored and fixed resolved sources remain excluded.

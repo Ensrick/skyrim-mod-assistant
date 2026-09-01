@@ -35,8 +35,10 @@ decides which successful rolls survive a saturated cell cap.
 
 When an authored actor came from a leveled-actor list, the plugin reuses that
 original list so the companion is resolved independently instead of blindly
-cloning the already-selected bandit. The initial safety candidate rejects
-fixed resolved sources; expanding those requires a separately reviewed policy.
+cloning the already-selected bandit. Independent resolution can legitimately
+select the same list entry again; diversity is possible, not guaranteed. The
+initial safety candidate rejects fixed resolved sources; expanding those
+requires a separately reviewed policy.
 
 ## Safety defaults
 
@@ -61,7 +63,8 @@ maximum), and rotates a nonempty log when a new process opens it. Default
 observe-only logging emits one cell summary per evaluated cell; per-source
 FormID detail requires `debugLogging: true`. Exception diagnostics are capped
 at 4 KiB before reaching any log sink, including malformed-configuration
-errors. It does not use modal error dialogs.
+errors. It does not use modal error dialogs, and it refuses to load if the
+bounded audit log cannot be established.
 
 Configuration places independent limits on extras per source, category, cell,
 and interior/exterior population. Active test mode also rejects a spawn when
@@ -81,10 +84,12 @@ The archive also ships `BoundedEncounters.schema.json` beside the configuration
 for editor validation and automation.
 
 The same configuration is consumed by `BoundedEncounters.Simulate.exe`, which
-prints expected and sampled populations without launching Skyrim. The shipped
-configuration is deliberately conservative and remains easy to revise after
-playtesting. Simulator projections do not create actors even when
-`observeOnly` is `false`.
+prints uncapped expectations, deterministic fractional-capacity projections,
+and sampled populations without launching Skyrim. A fractional-capacity
+projection is not labeled as the statistical expectation after capped
+Bernoulli outcomes. The shipped configuration is deliberately conservative and
+remains easy to revise after playtesting. Simulator projections do not create
+actors even when `observeOnly` is `false`.
 
 ## Building
 

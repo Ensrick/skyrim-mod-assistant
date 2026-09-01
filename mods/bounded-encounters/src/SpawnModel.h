@@ -44,6 +44,14 @@ namespace BoundedEncounters
 		double expectedExtras{ 0.0 };
 	};
 
+	struct CapacityProjection
+	{
+		double uncappedExpectedExtras{ 0.0 };
+		double cappedFractionalCapacityExtras{ 0.0 };
+		std::unordered_map<Category, double> uncappedExpectedByCategory;
+		std::unordered_map<Category, double> cappedFractionalCapacityByCategory;
+	};
+
 	struct SourceDescriptor
 	{
 		std::uint64_t sourceKey{ 0 };
@@ -55,6 +63,12 @@ namespace BoundedEncounters
 	[[nodiscard]] std::uint64_t MixSeed(std::uint64_t a_seed, std::uint64_t a_value) noexcept;
 	[[nodiscard]] std::uint64_t SpawnAdmissionRank(std::uint64_t a_seed, std::uint64_t a_sourceKey) noexcept;
 	[[nodiscard]] std::uint64_t SpawnFractionRoll(std::uint64_t a_seed, std::uint64_t a_sourceKey) noexcept;
+	[[nodiscard]] CapacityProjection ProjectFractionalCapacity(
+		const std::vector<SourceDescriptor>& a_sources,
+		const std::unordered_map<Category, Curve>& a_curves,
+		std::uint32_t a_playerLevel,
+		std::uint64_t a_seed,
+		std::optional<std::uint32_t> a_globalCellCap);
 	[[nodiscard]] SpawnPlan BuildSpawnPlan(
 		const std::vector<SourceDescriptor>& a_sources,
 		const std::unordered_map<Category, Curve>& a_curves,

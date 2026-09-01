@@ -51,8 +51,11 @@ the player leveled up.
 
 `observeOnly` does not disable classification or planning. With the default
 `debugLogging: false`, it writes one bounded cell summary per evaluated cell and
-returns before actor creation. Temporarily set `debugLogging` to `true` only
-when per-source reference/base FormIDs and categories are needed. Set
+returns before actor creation. The summary's `statefulReferenceRejections`
+field remains visible without debug logging so a cell whose eligible coverage
+collapses under the active-safety gate is apparent. Temporarily set
+`debugLogging` to `true` only when per-source reference/base FormIDs, categories,
+and exact rejection reasons are needed. Set
 `observeOnly` to `false` only in a dedicated disposable test profile after
 reviewing observe-only logs; the configuration is loaded at startup rather than
 hot-reloaded.
@@ -120,7 +123,23 @@ configuration invalid and disables encounter scaling.
 
 Some safety rules are unconditional even though they have no JSON switch:
 generated actors cannot be sources; dead actors and player teammates are not
-sources; and unsafe or unresolved engine data is rejected.
+sources; and unsafe or unresolved engine data is rejected. In particular, an
+authored source is rejected with a deterministic `stateful-reference-*` reason
+when it carries any of these ExtraData conditions:
+
+- enable-state parent, encounter zone, linked reference, activation reference,
+  patrol data, location, or any location-reference type;
+- horse, multibound, alias provenance, missing reference IDs, or missing linked
+  reference IDs; or
+- attachment reference, scene data, interaction, forced target, or open/close
+  activation reference.
+
+The gate applies to the authored source, not to a newly created actor's fresh
+engine-owned package/process state. Reverse enable-state-, linked-, activation-,
+and attachment-child indexes identify inbound relationships rather than a
+condition to reproduce on the source, so they are neither copied nor rejected.
+This classification policy does not replace the active save/lifecycle
+acceptance tests.
 
 ## Source-plugin policy
 

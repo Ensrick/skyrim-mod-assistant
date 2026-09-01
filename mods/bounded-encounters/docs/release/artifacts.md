@@ -91,8 +91,9 @@ and saves. The alpha packager also rejects a shipping configuration that is not
 valid against the bundled declared Draft 2020-12 JSON Schema or is not enabled,
 observe-only schema version 1 with debug logging off, the reviewed 256-unit
 maximum navmesh-snap distance, and the five official masters in the reviewed
-source-allowlist order. CI exercises this gate in both isolated builds. Promoting
-a future active-by-default release requires a deliberate package-policy review.
+source-allowlist order. CI exercises this gate in all three isolated builds.
+Promoting a future active-by-default release requires a deliberate package-policy
+review.
 
 The reviewed schema was also independently validated offline with Ajv 8.17.1
 in strict Draft 2020-12 mode (`validateSchema: true`, followed by compilation
@@ -293,19 +294,40 @@ order. Byte-identical archives require the same:
 - PowerShell/.NET compression implementation; and
 - packaging-script version.
 
-The MSVC linker and compiler reproducibility flags address final-binary
-timestamps. Intermediate vcpkg static-library bytes are retained only as raw CI
-diagnostics and are not claimed reproducible; the released SPDX projection does
-not invent checksums for them. Release CI runs two isolated, cache-disabled
-builds and requires byte-identical DLL, simulator, binary archive,
-corresponding-source archive, and both sibling hash files. A tag build must also
-match the canonical successful protected-main artifact for the same commit. The
-comparison gate independently requires both ZIP entry sequences and both
-internal-manifest path sequences to be in strict ordinal order and to describe
-the exact same non-manifest path sets. It also recomputes every internal hash,
-requires canonical UTF-8-without-BOM/LF manifests and normalized ZIP metadata,
+The MSVC compiler uses deterministic metadata and remapped source paths, and
+serializes optimization/code generation inside each `cl.exe` process with
+`/cgthreads1`. Ninja can still compile independent translation units in
+parallel. The linker uses `/Brepro` for content-derived PE metadata. A
+post-configure audit fails the build unless every production compile command
+contains all three compiler controls and every executable/shared-library link
+rule exposes `LINK_FLAGS`, `LINK_PATH`, and `LINK_LIBRARIES` exactly once in
+that order after `link.exe`. The expanded three-variable surface must contain
+exactly one `/Brepro`. The same audit runs again after the build so Ninja cannot
+silently regenerate an unaudited command graph. It also rejects response files,
+`/GL`, and `/LTCG`, because a future LTCG build would need its own separately
+audited linker code-generation control.
+On a successful build, the retained audit JSON describes the post-build graph;
+`compile_commands.json`, `build.ninja`, and `CMakeFiles/rules.ninja` are retained
+with it in the raw CI diagnostics. Negative fixtures exercise every required
+and forbidden option family, hidden MSVC option environments, response files
+across linker surfaces, malformed/reordered Ninja rules, malformed CMake cache
+inputs, missing link records, and output confinement. Intermediate PCH and
+static-library container bytes are not release artifacts and are not claimed
+reproducible; the linked release outputs are. The released SPDX projection does
+not invent checksums for intermediate vcpkg archives. Release CI runs three
+isolated, cache-disabled builds and requires byte-identical DLL, simulator,
+binary archive, corresponding-source archive, and both sibling hash files. A
+tag build must also match the canonical successful protected-main artifact for
+the same commit. The comparison gate independently requires every ZIP entry
+sequence and every internal-manifest path sequence to be in strict ordinal order
+and to describe the exact same non-manifest path sets. It also recomputes every
+internal hash, requires canonical UTF-8-without-BOM/LF manifests and normalized
+ZIP metadata,
 requires canonical one-line UTF-8-without-BOM/LF sibling hashes, and rejects
 paths that are ambiguous or unsafe when extracted on Windows.
+The comparator attempts both A-to-B and A-to-C checks and uploads a bounded
+structured report even when either comparison fails; canonical packages are
+uploaded only after both comparisons pass.
 
 The signed `bounded-encounters/v0.1.0-alpha.1` tag was a build-validation tag
 and was never released. Its cross-run package comparison exposed the volatile
