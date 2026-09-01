@@ -53,18 +53,36 @@ def masters_of(path):
             raise ValueError("truncated TES4 record")
 
     out, sp = [], 0
-    while sp + 6 <= len(body):
+    extended_size = None
+    while sp < len(body):
+        if sp + 6 > len(body):
+            raise ValueError("truncated TES4 subrecord header")
         signature = body[sp : sp + 4]
         size = struct.unpack_from("<H", body, sp + 4)[0]
-        end = sp + 6 + size
+        data_start = sp + 6
+
+        if signature == b"XXXX":
+            if extended_size is not None:
+                raise ValueError("nested XXXX subrecord")
+            if size != 4 or data_start + 4 > len(body):
+                raise ValueError("malformed XXXX subrecord")
+            extended_size = struct.unpack_from("<I", body, data_start)[0]
+            sp = data_start + 4
+            continue
+
+        actual_size = extended_size if extended_size is not None else size
+        extended_size = None
+        end = data_start + actual_size
         if end > len(body):
             raise ValueError("truncated TES4 subrecord")
         if signature == b"MAST":
-            raw = body[sp + 6 : end]
+            raw = body[data_start:end]
             if not raw.endswith(b"\x00"):
                 raise ValueError("unterminated MAST name")
             out.append(raw[:-1].decode("cp1252", "replace"))
         sp = end
+    if extended_size is not None:
+        raise ValueError("dangling XXXX subrecord")
     return out
 
 

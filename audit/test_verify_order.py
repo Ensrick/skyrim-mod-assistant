@@ -126,6 +126,26 @@ class VerifyOrderTests(unittest.TestCase):
         )
         self.assertEqual(len(findings["unreadable"]), 1)
 
+    def test_extended_size_subrecord_preserves_master_alignment(self):
+        path = os.path.join(self.game_data, "Extended.esp")
+        master_name = b"Skyrim.esm\x00"
+        oversized_payload = b"x" * 70000
+        body = (
+            b"MAST"
+            + struct.pack("<H", len(master_name))
+            + master_name
+            + b"XXXX"
+            + struct.pack("<H", 4)
+            + struct.pack("<I", len(oversized_payload))
+            + b"ONAM"
+            + struct.pack("<H", 0)
+            + oversized_payload
+        )
+        with open(path, "wb") as stream:
+            stream.write(b"TES4" + struct.pack("<I", len(body)) + (b"\x00" * 16))
+            stream.write(body)
+        self.assertEqual(verify_order.masters_of(path), ["Skyrim.esm"])
+
 
 if __name__ == "__main__":
     unittest.main()
