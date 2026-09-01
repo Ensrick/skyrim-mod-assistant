@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "component": "MenuPilot (SKSE file-driven in-game menu/Scaleform/input pilot)",
+  "version": "1.0.0.0",
+  "deployPath": "records/source-builds/menu-pilot/SKSE/Plugins/MenuPilot.dll",
+  "purpose": "Let the assistant drive the game's own menus headlessly (user order via team lead 2026-09-01). Immediate need: open the Creations/Creation Club menu and trigger the re-download of the owned Farming creation whose ccvsvsse004-beafarmer.bsa was truncated (#142). File-based command bridge, VT2 console-bridge shape: assistant writes commands.jsonl, plugin consumes exactly once, results append to a flushed log.",
+  "staged": true,
+  "installed": true,
+  "source": {
+    "repository": "local only, not pushed",
+    "path": "C:/Users/danjo/source/repos/skyrim-tools-source/MenuPilot",
+    "branch": "master",
+    "commit": "93e5afa",
+    "pushed": false,
+    "license": "GPL-3.0-or-later (links CommonLibSSE-NG)",
+    "files": ["CMakeLists.txt", "CMakePresets.json", "vcpkg.json", "build.cmd", "cmake/version.rc.in", "src/PCH.h", "src/main.cpp"]
+  },
+  "build": {
+    "targetRuntime": "SkyrimSE.exe 1.7.104.0",
+    "targetSKSE": "2.3.1",
+    "commonLibSSE": {
+      "path": "C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1",
+      "version": "6.7.1",
+      "pin": "70c1acd5261210982bd52f6d4468a082fe04d798",
+      "pinEnforced": "CMake fails unless COMMONLIB_SSE_FOLDER is a git checkout at that exact revision"
+    },
+    "toolchain": "Identical to ensrick-launch-probe.json (Ninja + MSVC 19.44, x64-windows-static, RelWithDebInfo, /MT, IPO, C++23) plus vcpkg nlohmann-json for command parsing.",
+    "command": "build.cmd (vcvars64 + cmake --preset release + cmake --build build/release)",
+    "warnings": 0,
+    "errors": 0
+  },
+  "artifact": {
+    "dll": "MenuPilot.dll",
+    "sha256": "216F7564AEC2339CA3AD7ED64A0FDDC14B9F88A715C832711AD6CFF72E12BF1C",
+    "sizeBytes": 2665984,
+    "fileVersion": "1.0.0.0",
+    "pdb": "MenuPilot.pdb",
+    "pdbSha256": "E873B18376AA58BCC8A4A898E014644963DB1059D6823EEFD6D6E5290605F97D"
+  },
+  "behavior": {
+    "commandFile": "Documents/My Games/Skyrim Special Edition/SKSE/MenuPilot/commands.jsonl",
+    "logPath": "Documents/My Games/Skyrim Special Edition/SKSE/MenuPilot/menupilot.log",
+    "logPathResolution": "SHGetKnownFolderPath(FOLDERID_Documents), fixed real path outside the VFS - LaunchProbe rationale",
+    "lineFormat": "[YYYY-MM-DD HH:MM:SS.mmm] +<ms since DLL attach> EVENT key=value key=\"quoted\"",
+    "truncatesOnLaunch": true,
+    "flush": "fflush after every line; opened _wfsopen _SH_DENYWR so the harness can tail live",
+    "consumeOnce": "commands.jsonl is renamed to commands-<n>-working.jsonl BEFORE any byte is read; archived as commands-<n>-<stamp>-done.jsonl after the batch",
+    "ops": ["ping", "wait", "menu.list", "menu.open", "menu.close", "menu.query", "menu.msg", "gfx.get", "gfx.set", "gfx.invoke", "gfx.dump", "input.tap", "panic", "resume"],
+    "mainThreadDispatch": "poll thread (started at kInputLoaded, default 250ms, SKYRIM_MENU_PILOT_POLL_MS) hops every op onto SKSE::GetTaskInterface()->AddTask and waits up to 30s",
+    "inputSynthesis": "RE::ButtonEvent::Create + BSInputDeviceManager (BSTEventSource<InputEvent*>) SendEvent on the main thread - the same channel real device input takes to MenuControls; OS focus irrelevant. Events deliberately leaked (~0x30B each): ~ButtonEvent has no definition in the clib pin.",
+    "safety": "inert without a command file; every command echoed to the log before execution; panic halts all ops except ping/resume and kHides pilot-opened menus; no MessageBox ever (own-IAT stubs)",
+    "noPopups": "Same IAT patch as LaunchProbe, scoped to MenuPilot.dll's own user32 imports"
+  },
+  "apisVerified": {
+    "uiMessageQueue": "RE::UIMessageQueue::AddMessage(BSFixedString, UI_MESSAGE_TYPE kShow/kHide, IUIMessageData*) - include/RE/U/UIMessageQueue.h:25",
+    "menuEnumeration": "RE::UI::menuMap (BSTHashMap<BSFixedString, UIMenuEntry>) + menuStack + IsMenuOpen/GetMovieView - include/RE/U/UI.h:128-133",
+    "scaleform": "GFxMovie::Invoke/GetVariable/SetVariable (include/RE/G/GFxMovie.h:58-65), GFxValue::VisitMembers(ObjectVisitFn) + typed accessors (include/RE/G/GFxValue.h:358-365)",
+    "userEventMsg": "RE::BSUIMessageData::SendUIStringMessage(..., kUserEvent, ...) - include/RE/B/BSUIMessageData.h",
+    "buttonEvent": "RE::ButtonEvent::Create(INPUT_DEVICE, BSFixedString userEvent, idCode, value, heldSecs) - include/RE/B/ButtonEvent.h:36; BSInputDeviceManager is BSTEventSource<InputEvent*> (include/RE/B/BSInputDeviceManager.h:26)",
+    "creationClubMenu": "RE::CreationClubMenu MENU_NAME=\"Creation Club Menu\", IMenu+MenuEventHandler+GFxFunctionHandler over creationclub.swf - include/RE/C/CreationClubMenu.h"
+  },
+  "skseGate": {
+    "tool": "py -3 audit/skse_version_data.py records/source-builds/menu-pilot/SKSE/Plugins/MenuPilot.dll",
+    "verdict": "PASS (version independent)",
+    "versionIndependence": 1,
+    "versionIndependenceEx": 1,
+    "peTimestampUtc": "2026-09-01 22:22:50Z"
+  },
+  "installation": {
+    "mo2Mod": "MenuPilot",
+    "profile": "Default",
+    "enabled": true,
+    "note": "mods/MenuPilot/SKSE/Plugins/{MenuPilot.dll,MenuPilot.pdb} + meta.ini; +MenuPilot added to modlist.txt directly below +LaunchProbe via Python while ModOrganizer.exe was not running."
+  },
+  "verified": [
+    "Clean configure+build against the exact CommonLibSSE-NG pin, 0 warnings 0 errors (first pass).",
+    "skse_version_data.py PASS (version independent), same gate shape as LaunchProbe.",
+    "Every API used was read out of the pinned clib headers (paths above), not assumed."
+  ],
+  "notVerified": [
+    "Runtime behaviour pending the 2026-09-01 pilot test launch - see records/menupilot-cc-discovery-2026-09-01.log and the changelog entry for outcomes."
+  ],
+  "rebuild": "cmd /c C:/Users/danjo/source/repos/skyrim-tools-source/MenuPilot/build.cmd",
+  "distribution": {
+    "vendorFilesModified": false,
+    "status": "private instrumentation; not for redistribution. Links CommonLibSSE-NG (GPL-3.0-or-later)."
+  }
+}

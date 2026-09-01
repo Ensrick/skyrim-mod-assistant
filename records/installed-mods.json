@@ -586,10 +586,10 @@
       "plugins": [
         "TerrainHelper.esp"
       ],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 76649,
@@ -987,10 +987,10 @@
       "sizeMb": 0.0,
       "sha256": "",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T02:32:01Z",
       "transaction": "20260830T023201341Z-c0048f1a4ea9",
-      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 0,
@@ -1002,10 +1002,10 @@
       "sizeMb": 7.48,
       "sha256": "0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T22:05:46Z",
       "transaction": "20260830T220546414Z-660cdd66dc7b",
-      "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 0,
@@ -1212,11 +1212,11 @@
       "sizeMb": 37.06,
       "sha256": "fae3659452e6df66ad7ede0a53d39832ac5636d62e0abcf8e01bd6a607dc5094",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T22:27:32Z",
       "transaction": "20260830T222730043Z-bef3906e34c7",
       "fomodPlan": "records/fomod-plans/57339-fsmp.json",
-      "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 157506,
@@ -1557,7 +1557,22 @@
       "enabled": true,
       "installedUtc": "2026-09-01T12:14:54Z",
       "transaction": "20260901T121454337Z-a0ba87af72df",
-      "note": "#142 bisect campaign instrumentation. SKSE micro-plugin logging MenuOpenClose + every SKSE message with timestamps to SKSE/LaunchProbe.log; the authoritative pass/fail signal for audit/launch_verify.py. Source C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe, SKSE-gate PASS. Remove after #142 closes if unwanted. Rebuilt 2026-09-01: _wfopen_s (deny-all sharing) -> _wfsopen _SH_DENYWR so the harness can tail the log mid-run."
+      "note": "#142 bisect campaign instrumentation. SKSE micro-plugin logging MenuOpenClose + every SKSE message with timestamps to SKSE/LaunchProbe.log; the authoritative pass/fail signal for audit/launch_verify.py. Source C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe, SKSE-gate PASS. Remove after #142 closes if unwanted. Rebuilt 2026-09-01: _wfopen_s (deny-all sharing) -> _wfsopen _SH_DENYWR so the harness can tail the log mid-run. | FIXED 2026-09-01 (commit 12ce92e): kPostLoadGame success bool arrives BY VALUE in the data pointer on this SKSE build; dereferencing it AV'd on the first successful save load after the #142 fix (crashes 17:12:51 + 17:25:41 at LaunchProbe.dll+0002C51). New DLL sha256 47cfbe47c462b3ff6e6930b07c9b2fed9e0337bd507283157c7783a54bdbe210."
+    },
+    {
+      "modId": 0,
+      "modName": "MenuPilot",
+      "nexusName": "Ensrick-owned instrumentation (source build)",
+      "version": "2026-09-01",
+      "fileId": 0,
+      "fileName": "source-builds/menu-pilot",
+      "sizeMb": 2.54,
+      "sha256": "216f7564aec2339ca3ad7ed64a0fddc14b9f88a715c832711ad6cff72e12bf1c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-01T22:28:06Z",
+      "transaction": "20260901T222806553Z-ce6f355f7914",
+      "note": "Headless in-game menu pilot (user order 2026-09-01): consumes SKSE/MenuPilot/commands.jsonl exactly once, drives menus (UIMessageQueue kShow/kHide), Scaleform (Invoke/GetVariable/VisitMembers dump), and engine-layer input (ButtonEvent via BSInputDeviceManager SendEvent) on the game main thread; results append to menupilot.log. Inert without a command file; panic op; no popups (own-IAT MessageBox stubs). Driver audit/menupilot.py, docs docs/MENUPILOT.md, build record records/source-builds/ensrick-menu-pilot.json. Source skyrim-tools-source/MenuPilot commit 93e5afa; SKSE gate PASS."
     },
     {
       "modId": 109963,
@@ -1729,11 +1744,10 @@
       "enabled": true,
       "installedUtc": "2026-08-24T02:33:10Z",
       "transaction": "20260824T023307966Z-ab781df844c9",
-      "note": "24 CC patch plugins; full AE CC present (74 cc plugins) | Myrwatch+Wraithguard patches deliberately unstarred: masters myrwatchhomefixer.esp/wraithguardvaultfixer.esp not installed (starring would be missing-master launch block)",
+      "note": "24 CC patch plugins; full AE CC present (74 cc plugins) | Myrwatch+Wraithguard patches deliberately unstarred: masters myrwatchhomefixer.esp/wraithguardvaultfixer.esp not installed (starring would be missing-master launch block) | 2026-09-01: Farmer patches re-enabled - intact BeAFarmer.esl restored under canonical name (BSA still parked as truncated; Farming assets missing until store re-download, #142).",
       "disabledPlugins": [
         "Lux - Myrwatch patch.esp",
-        "Lux - Wraithguard patch.esp",
-        "Lux - Farmer patch.esp"
+        "Lux - Wraithguard patch.esp"
       ],
       "notes": "2026-09-01: plugin Lux - Farmer patch.esp disabled - master ccvsvsse004-beafarmer.esl parked (truncated by interrupted CC re-download 08-31, #142); re-enable after in-game Creations re-download of Farming"
     },
@@ -1949,11 +1963,11 @@
       "plugins": [
         "MCMHelper.esp"
       ],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T15:43:35Z",
       "transaction": "20260830T154334926Z-1e5681066bbe",
       "fomodPlan": "records\\fomod-plans\\53000-mcm-helper.json",
-      "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 160748,
@@ -2300,10 +2314,10 @@
       "plugins": [
         "QuickLootIE.esp"
       ],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 77594,
@@ -2523,10 +2537,10 @@
       "sizeMb": 0.24,
       "sha256": "e8370fac03d94604bd836482e078aa8fd5a18bc45a782070efdbd7a0ad3e3c93",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T16:03:47Z",
       "transaction": "20260830T160347405Z-cf9b88dd7826",
-      "note": "PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 95943,
@@ -2696,10 +2710,10 @@
       "sizeMb": 0.0,
       "sha256": "99a782cb7b12c2b28828cafbdc1d2a64c961026b0ed36b0a3bf5b47a0deb4f31",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T23:24:39Z",
       "transaction": "20260830T232439195Z-da391ed61122",
-      "note": "The Pandora-user companion to SkyParkour v3, MAIN file 747633. Contains ONLY three animationsetdatasinglefile text files under Nemesis_Engine/mod/sppffp and sppftp (FirstPerson.txt, DefaultFemale.txt, DefaultMale.txt) - it is NOT generated behavior output and does NOT remove the need to run Pandora (#128). Must not be used alongside Nemesis, which is not installed. VERSION MISMATCH TO WATCH: this file is labelled 3.5.0 while the main mod is 3.6.3; confirm at the Pandora run that the author has not superseded it and that Pandora does not complain. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "The Pandora-user companion to SkyParkour v3, MAIN file 747633. Contains ONLY three animationsetdatasinglefile text files under Nemesis_Engine/mod/sppffp and sppftp (FirstPerson.txt, DefaultFemale.txt, DefaultMale.txt) - it is NOT generated behavior output and does NOT remove the need to run Pandora (#128). Must not be used alongside Nemesis, which is not installed. VERSION MISMATCH TO WATCH: this file is labelled 3.5.0 while the main mod is 3.6.3; confirm at the Pandora run that the author has not superseded it and that Pandora does not complain. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 132292,
@@ -2713,10 +2727,10 @@
       "plugins": [
         "SkyParkour.esp"
       ],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T23:24:38Z",
       "transaction": "20260830T232437619Z-dcfe0aa8af15",
-      "note": "SkyParkour v3 3.6.3 (2026-08-23), 12,341 endorsements, 2.25M downloads - actively maintained. GATE PASSES on 1.7.104, read from the exported struct: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=1 (kNoStructUse, V5 bit NOT set), PE TimeDateStamp 1787503961 = 2026-08-23, ABOVE the 1748217600 cutoff - so it passes on the STAMP, not on the flag. Its compatibleVersions array is 16 copies of 1.0.0.0, i.e. placeholder garbage, but that is moot because a version-independent plugin bypasses the whitelist. The mod PAGE claims support only for 'Skyrim SE Version 1.5.97 to 1.7.99'; the binary says otherwise and the binary is what SKSE reads. Note the pass is stamp-dependent: a future rebuild with an older timestamp and still no V5 flag would fail. SkyParkour.esp is 9 NEW records (1 SNCT + 8 SNDR), zero overrides, zero deleted, already ESL-flagged - no plugin slot cost, no conflict surface. MECHANISM, established from the payload not the tagline: 'procedural' does NOT mean behavior-free. It ships Nemesis_Engine/mod/sppffp and sppftp behavior-mod definitions and describes itself as 'Native behavior integration with root motion driven animations' and 'Fully SKSE & Behavior Level'. A behavior-engine run is therefore REQUIRED - see #128, the parkour will not animate until Pandora is actually run. Nemesis is not installed, which is correct: the author forbids running both. REQUIREMENTS: SKSE + Address Library installed; SKSE Menu Framework installed (settings live in its in-game config, not in a shipped ini - SkyParkourNG_CustomVars.ini is only a custom parkour-BLOCKING hook file and ships empty); Pandora installed but never run (#128). True Directional Movement is OPTIONAL, not assumed - it only 'unlocks 360 parkour camera', so SkyParkour works without it and #109 stays independent. Animation Queue Fix, which the author calls semi-mandatory for OAR users, FAILS the gate and was not installed (#129); its absence causes only a transient post-load animation delay that clears once OAR finishes preloading. SETTINGS worth noting for a realism-lean taste: stamina is consumed as a configurable base plus equipment weight * 0.2, insufficient stamina plays a failed animation, and low-effort actions cost half - that is effort-scaled rather than arcade-free. Default key is the Jump key, with press-or-hold styles; sliding and rolling are always on the sneak key. No skill or perk gate ships. Vanilla attack behaviour is untouched and no MCO-lineage mod is installed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "SkyParkour v3 3.6.3 (2026-08-23), 12,341 endorsements, 2.25M downloads - actively maintained. GATE PASSES on 1.7.104, read from the exported struct: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=1 (kNoStructUse, V5 bit NOT set), PE TimeDateStamp 1787503961 = 2026-08-23, ABOVE the 1748217600 cutoff - so it passes on the STAMP, not on the flag. Its compatibleVersions array is 16 copies of 1.0.0.0, i.e. placeholder garbage, but that is moot because a version-independent plugin bypasses the whitelist. The mod PAGE claims support only for 'Skyrim SE Version 1.5.97 to 1.7.99'; the binary says otherwise and the binary is what SKSE reads. Note the pass is stamp-dependent: a future rebuild with an older timestamp and still no V5 flag would fail. SkyParkour.esp is 9 NEW records (1 SNCT + 8 SNDR), zero overrides, zero deleted, already ESL-flagged - no plugin slot cost, no conflict surface. MECHANISM, established from the payload not the tagline: 'procedural' does NOT mean behavior-free. It ships Nemesis_Engine/mod/sppffp and sppftp behavior-mod definitions and describes itself as 'Native behavior integration with root motion driven animations' and 'Fully SKSE & Behavior Level'. A behavior-engine run is therefore REQUIRED - see #128, the parkour will not animate until Pandora is actually run. Nemesis is not installed, which is correct: the author forbids running both. REQUIREMENTS: SKSE + Address Library installed; SKSE Menu Framework installed (settings live in its in-game config, not in a shipped ini - SkyParkourNG_CustomVars.ini is only a custom parkour-BLOCKING hook file and ships empty); Pandora installed but never run (#128). True Directional Movement is OPTIONAL, not assumed - it only 'unlocks 360 parkour camera', so SkyParkour works without it and #109 stays independent. Animation Queue Fix, which the author calls semi-mandatory for OAR users, FAILS the gate and was not installed (#129); its absence causes only a transient post-load animation delay that clears once OAR finishes preloading. SETTINGS worth noting for a realism-lean taste: stamina is consumed as a configurable base plus equipment weight * 0.2, insufficient stamina plays a failed animation, and low-effort actions cost half - that is effort-scaled rather than arcade-free. Default key is the Jump key, with press-or-hold styles; sliding and rolling are always on the sneak key. No skill or perk gate ships. Vanilla attack behaviour is untouched and no MCO-lineage mod is installed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 106659,
@@ -2764,10 +2778,10 @@
       "transaction": "20260901T002911624Z-3963fd58bc3a",
       "fomodPlan": "records/fomod-plans/26138-slawf.json",
       "disabledPlugins": [
-        "Landscape and Water Fixes - Patch - LFfGM - Water for ENB.esp",
-        "Landscape and Water Fixes - Patch - Farming.esp"
+        "Landscape and Water Fixes - Patch - LFfGM - Water for ENB.esp"
       ],
-      "notes": "2026-09-01: plugin Landscape and Water Fixes - Patch - Farming.esp disabled - master ccvsvsse004-beafarmer.esl parked (truncated by interrupted CC re-download 08-31, #142); re-enable after in-game Creations re-download of Farming"
+      "notes": "2026-09-01: plugin Landscape and Water Fixes - Patch - Farming.esp disabled - master ccvsvsse004-beafarmer.esl parked (truncated by interrupted CC re-download 08-31, #142); re-enable after in-game Creations re-download of Farming",
+      "note": "2026-09-01: Farmer patches re-enabled - intact BeAFarmer.esl restored under canonical name (BSA still parked as truncated; Farming assets missing until store re-download, #142)."
     },
     {
       "modId": 27962,
@@ -3033,10 +3047,10 @@
       "sizeMb": 6.29,
       "sha256": "44066a73dd6ef5a62a181602db3d1ee7d2966621f19087c6014f2b3319e554d3",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T15:38:28Z",
       "transaction": "20260830T153828042Z-a45359c0fb22",
-      "note": "doodlum's SRD, MAIN file labelled 1.5.4; the DLL's own SKSEPlugin_Version reports pluginVersion 0x01050030 = 1.5.3.0, so the file label ran ahead of the binary. GPL-3, open source. Requires po3 Tweaks, installed. PASSES the 1.7.104 SKSE gate on every count, read from the PE export rather than inferred: versionIndependence=0x00000005 (kAddressLibrary | kStructsPost629), versionIndependenceEx=0x00000002 (kVersionIndependentEx_AddressLibraryV5 - the exact flag that re-parked JContainers), compatibleVersions array EMPTY so there is no whitelist to refuse it on, seVersionRequired 0. Its PE TimeDateStamp is 1787604543 (2026-08-24), above the 1748217600 cutoff in skse64/PluginManager.cpp:657-668, so the V5 refusal branch never fires either way. DLL-only, no ESP. Ships a 24.8 MB .pdb alongside the DLL, kept as the author shipped it - CrashLoggerSSE can use it. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "doodlum's SRD, MAIN file labelled 1.5.4; the DLL's own SKSEPlugin_Version reports pluginVersion 0x01050030 = 1.5.3.0, so the file label ran ahead of the binary. GPL-3, open source. Requires po3 Tweaks, installed. PASSES the 1.7.104 SKSE gate on every count, read from the PE export rather than inferred: versionIndependence=0x00000005 (kAddressLibrary | kStructsPost629), versionIndependenceEx=0x00000002 (kVersionIndependentEx_AddressLibraryV5 - the exact flag that re-parked JContainers), compatibleVersions array EMPTY so there is no whitelist to refuse it on, seVersionRequired 0. Its PE TimeDateStamp is 1787604543 (2026-08-24), above the 1748217600 cutoff in skse64/PluginManager.cpp:657-668, so the V5 refusal branch never fires either way. DLL-only, no ESP. Ships a 24.8 MB .pdb alongside the DLL, kept as the author shipped it - CrashLoggerSSE can use it. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 36869,
@@ -3078,10 +3092,10 @@
       "sizeMb": 0.18,
       "sha256": "4f7a4980955eec472f3e73219df487fb990c48fd5ad0020c101cd8082b6b2c8c",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T02:31:47Z",
       "transaction": "20260830T023147461Z-9daac28ee8d4",
-      "note": "PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 17230,
@@ -3327,10 +3341,10 @@
       "sizeMb": 8.17,
       "sha256": "baec986de9aaa7f35ff2dbc372844e8b9c4a609c929d1115f293fcacee14372e",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T21:58:10Z",
       "transaction": "20260830T215810031Z-2115c73434fc",
-      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 63979,
@@ -3344,10 +3358,10 @@
       "plugins": [
         "Vanilla hair remake SMP NPCs.esp"
       ],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-30T21:58:05Z",
       "transaction": "20260830T215800258Z-6a006384c373",
-      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result."
+      "note": "HAIR CHAIN SATISFIED EXTERNALLY - recorded here so the intake record is complete. Vanilla Hair Remake SMP 1.0.3 (main, file 510409) and Vanilla Hair Remake SMP - NPCs 1.0.1 (file 500742) were installed by the other assistant session at 2026-08-30T21:58Z, with 'Ensrick - Vanilla Hair Remake SMP NPC Compatibility' layered above them at 22:05Z. Verified rather than assumed by this intake: the MAIN archive ships 271 NIF, 204 TRI and 93 SMP XMLs and ZERO DDS, confirming the author's statement that the new hairstyles reuse the vanilla hair textures, so any vanilla hair retexture still applies. The NPCs ESP is COMPLETELY EMPTY - 0 records, ESL-flagged, masters Skyrim + Update - and exists purely to load its BSA of 2,436 facegen NIFs, so it creates NO record conflict; ownership is decided by file path through MO2 priority, with the standing rule that a LOOSE facegen NIF always beats a BSA one. Contested meshes measured against the live profile: USSEP 29 and Cutting Room Floor 2, all 31 of which the Ensrick overlay already forwards as loose files (32 files total), so USSEP and CRF win their NPCs and VHR takes the remaining 2,404 uncontested. CLOTH/HAIR-ONLY POLICY holds: all 93 SMP XMLs live under meshes/actors/character/character assets/hair/smp/, the author states body collisions are deliberately omitted, and FSMP's own configs.json carries no body-collision switch. Wigs (file 510410) deliberately not installed. Nothing was installed by this intake; no action needed. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
       "modId": 54061,
