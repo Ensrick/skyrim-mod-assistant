@@ -19,8 +19,9 @@ no network requests.
    `-AllowDirty` can only produce a non-release engineering artifact.
 6. Preserve `tools/build.log` from that build. Packaging requires the completion
    marker, zero restored packages, and exact source-build/install operations for
-   the eight direct packages and two host helpers; it records the log SHA-256
-   and parsed audit but does not distribute the path-bearing log.
+   the eight direct packages and two host helpers. It records a SHA-256 over the
+   sorted parsed audit facts, not the volatile path/timing-bearing raw log. The
+   raw log remains a CI diagnostic and is not part of the release archives.
 7. Run packaging from PowerShell 7.4 or newer. PowerShell 7.4 is the minimum
    because that release moved `Test-Json` to JsonSchema.NET; packaging records
    the PowerShell, implementing-assembly, and JsonSchema.NET versions used.
@@ -44,7 +45,7 @@ Optional inputs:
 pwsh -NoProfile -File .\tools\package.ps1 `
   -StageRoot .\build\release\stage `
   -OutputDirectory .\build\release\packages `
-  -Version 0.1.0-alpha.1 `
+  -Version 0.1.0-alpha.2 `
   -Runtime 1.7.104.0
 ```
 
@@ -90,8 +91,8 @@ and saves. The alpha packager also rejects a shipping configuration that is not
 valid against the bundled declared Draft 2020-12 JSON Schema or is not enabled,
 observe-only schema version 1 with debug logging off, the reviewed 256-unit
 maximum navmesh-snap distance, and the five official masters in the reviewed
-source-allowlist order. CI exercises this gate in both package runs. Promoting a
-future active-by-default release requires a deliberate package-policy review.
+source-allowlist order. CI exercises this gate in both isolated builds. Promoting
+a future active-by-default release requires a deliberate package-policy review.
 
 The reviewed schema was also independently validated offline with Ajv 8.17.1
 in strict Draft 2020-12 mode (`validateSchema: true`, followed by compilation
@@ -118,7 +119,7 @@ dependencies/vcpkg/<direct-dependency>/
   source/                                     # exact post-patch source tree
   port/                                       # exact baseline port recipe
   installed/copyright
-  installed/vcpkg.spdx.json
+  installed/vcpkg.spdx.json                   # deterministic audit projection
   installed/vcpkg_abi_info.txt
   installed/info-list.txt
   installed/status.txt
@@ -127,7 +128,7 @@ dependencies/vcpkg/<direct-dependency>/
   PROVENANCE.json
 dependencies/vcpkg/<build-helper>/
   port/                                       # exact source-free helper recipe
-  installed/x64-windows/share/<helper>/       # full installed control scripts
+  installed/x64-windows/share/<helper>/       # control scripts + projected SPDX
   installed/info-list.txt
   installed/status.txt
   PROVENANCE.json
@@ -155,16 +156,26 @@ For each direct vcpkg dependency, packaging requires exactly one source tree
 whose reviewed file count and whole-tree SHA-256 match the release policy. It
 also checks the installed version, port version, ABI, status, SPDX port and
 binary records, upstream-resource records, installed/buildtree ABI metadata,
-baseline port-tree object, and installed file-inventory name. Missing,
-mismatched, or ambiguous input fails packaging. Source inputs containing Windows
-reparse points are rejected.
+baseline port-tree object, and installed file-inventory name. The raw vcpkg SPDX
+is validated, then projected deterministically: its random namespace and
+wall-clock creation time are normalized, undistributed per-run binary-file
+records are removed, the binary package is marked `filesAnalyzed: false`, and
+port/source records retain their genuine checksums. Missing, mismatched, or
+ambiguous input fails packaging. Source inputs containing Windows reparse points
+are rejected.
+
+All ten projected documents were independently validated against the official
+SPDX 2.2.2 JSON schema at Git object
+`9abf467472aff22ffe75cff75f6421527df98942`. The schema is review evidence,
+not a runtime or packaging-time network dependency.
 
 The two host-only helper packages are source-free ports: they fetch no upstream
 tree and install CMake control scripts. Packaging validates each helper's exact
 version and port tree, derives its host-specific ABI from status, requires that
-ABI to equal both installed and buildtree ABI-file hashes, and retains its full
-installed share tree, SPDX/license, inventory, status, recipe, tool-version/hash
-evidence, and provenance. It also gates the exact ten base packages plus the
+ABI to equal both installed and buildtree ABI-file hashes, and retains its
+installed control-script tree, deterministic SPDX projection, license,
+inventory, status, recipe, tool-version/hash evidence, and provenance. It also
+gates the exact ten base packages plus the
 `spdlog:fmt` and `spdlog:tz-offset` feature stanzas.
 
 The pinned target and host triplets and all other tracked vcpkg scripts are
@@ -247,8 +258,9 @@ dependency upgrade requires a deliberate source and documentation change.
 `SOURCE_DATE_EPOCH`, CommonLib and MinHook pins, resolved vcpkg baseline,
 target/host triplets, direct dependencies and build helpers, whether the binary
 cache-disabled source build was verified from `tools/build.log`, that log's
-SHA-256/cache audit, and the safety-critical shipping configuration mode and
-source allowlist, including the reviewed maximum navmesh-snap distance. It also
+canonical parsed evidence digest/cache audit, and the safety-critical shipping
+configuration mode and source allowlist, including the reviewed maximum
+navmesh-snap distance. It also
 records the exact CMake, Ninja, MSVC compiler/tools, Windows SDK, PowerShell,
 `Test-Json` implementing assembly, and JsonSchema.NET versions observed by the
 reviewed build and package gates.
@@ -269,17 +281,27 @@ order. Byte-identical archives require the same:
 - configuration and documentation bytes;
 - tracked project, monorepo release-workflow, CommonLibSSE-NG, and MinHook source
   bytes;
-- exact vcpkg post-patch source, port recipe, installed SPDX/license/provenance,
-  status, inventory, and ABI metadata bytes;
+- exact vcpkg post-patch source, port recipe, deterministic SPDX
+  projection/license/provenance, status, inventory, and ABI metadata bytes;
 - exact build-helper ports, installed control scripts, host status/inventory/ABI
   metadata, pinned vcpkg scripts (minus recorded unused PE exclusions), and
   target/host triplets;
-- the same completed cache-disabled `tools/build.log` bytes (only its hash and
-  parsed package-operation audit enter the archives);
+- the same canonical facts parsed from a completed cache-disabled
+  `tools/build.log`; raw paths, timings, scheduling order, and the raw-log hash
+  do not enter the archives;
 - `SOURCE_DATE_EPOCH`;
 - PowerShell/.NET compression implementation; and
 - packaging-script version.
 
-The MSVC linker and compiler reproducibility flags address binary timestamps,
-but reproducibility must still be verified by two clean builds. A successful
-second build is evidence, not an assumption.
+The MSVC linker and compiler reproducibility flags address final-binary
+timestamps. Intermediate vcpkg static-library bytes are retained only as raw CI
+diagnostics and are not claimed reproducible; the released SPDX projection does
+not invent checksums for them. Release CI runs two isolated, cache-disabled
+builds and requires byte-identical DLL, simulator, binary archive,
+corresponding-source archive, and both sibling hash files. A tag build must also
+match the canonical successful protected-main artifact for the same commit.
+
+The signed `bounded-encounters/v0.1.0-alpha.1` tag was a build-validation tag
+and was never released. Its cross-run package comparison exposed the volatile
+vcpkg SPDX and raw-log inputs described above. `0.1.0-alpha.2` supersedes it;
+the old signed tag remains unchanged as audit history.

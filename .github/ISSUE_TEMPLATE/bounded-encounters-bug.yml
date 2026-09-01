@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        The initial build is audit-only by default. Use disposable saves for active tests and redact personal paths from evidence.
+        The initial build is observe-only by default. Use disposable saves for active tests and redact personal paths from evidence.
   - type: checkboxes
     id: prerequisites
     attributes:

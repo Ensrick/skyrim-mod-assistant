@@ -2,7 +2,7 @@ name: Bounded Encounters
 
 on:
   push:
-    branches: [main, "ensrick/**"]
+    branches: [main]
     tags: ["bounded-encounters/v*"]
     paths:
       - "mods/bounded-encounters/**"
@@ -19,10 +19,16 @@ permissions:
 
 jobs:
   windows-release:
+    name: windows-release-${{ matrix.replica }}
     runs-on: windows-2025
     timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        replica: [a, b]
     env:
       VCPKG_BINARY_SOURCES: clear
+      BE_REPLICA: ${{ matrix.replica }}
 
     defaults:
       run:
@@ -45,7 +51,24 @@ jobs:
       - name: Check out source and pinned submodules
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           submodules: recursive
+
+      - name: Fix the source epoch before any build input is generated
+        shell: pwsh
+        run: |
+          $epoch = (git show -s --format=%ct HEAD).Trim()
+          if ($epoch -cnotmatch '^[0-9]+$') {
+            throw "Unable to derive SOURCE_DATE_EPOCH from the checked-out commit."
+          }
+          [System.IO.File]::AppendAllText(
+            $env:GITHUB_ENV,
+            "SOURCE_DATE_EPOCH=$epoch`n",
+            [System.Text.UTF8Encoding]::new($false))
+
+      - name: Test deterministic provenance normalization
+        shell: pwsh
+        run: .\tools\test-package-normalization.ps1
 
       - name: Initialize isolated vcpkg downloads
         shell: pwsh
@@ -153,6 +176,7 @@ jobs:
       - name: Check out pinned vcpkg
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           repository: microsoft/vcpkg
           ref: fab1c6dc7a944372a90a1e19ab5e8e32cd658fc2
           path: mods/bounded-encounters/.vcpkg
@@ -181,58 +205,186 @@ jobs:
           }
           Get-Content .\tools\build.log -Tail 120
 
-      - name: Package twice and verify reproducibility
+      - name: Package the isolated clean build
         shell: pwsh
         run: |
-          $env:SOURCE_DATE_EPOCH = (git show -s --format=%ct HEAD).Trim()
-          $first = .\tools\package.ps1 -OutputDirectory .\build\release\packages-a | ConvertFrom-Json
-          $second = .\tools\package.ps1 -OutputDirectory .\build\release\packages-b | ConvertFrom-Json
+          $packageDirectory = ".\build\release\packages-$env:BE_REPLICA"
+          $package = .\tools\package.ps1 -OutputDirectory $packageDirectory | ConvertFrom-Json
           $head = (git rev-parse HEAD).Trim()
-          if ($first.releaseEligible -ne $true -or $second.releaseEligible -ne $true) {
+          if ($package.releaseEligible -ne $true) {
             throw "CI produced a package that is not release eligible."
           }
-          if ($first.sourceCommit -ne $head -or $second.sourceCommit -ne $head) {
+          if ($package.sourceCommit -ne $head) {
             throw "Package provenance does not identify the checked-out commit."
           }
           if ($env:GITHUB_REF_TYPE -eq "tag" -and $head -ne $env:GITHUB_SHA) {
             throw "Tagged checkout HEAD does not match GITHUB_SHA."
           }
-          if ($first.sha256 -ne $second.sha256) {
-            throw "Deterministic package check failed: $($first.sha256) != $($second.sha256)"
-          }
-          if ($first.correspondingSourceSha256 -ne $second.correspondingSourceSha256) {
-            throw "Deterministic source check failed: $($first.correspondingSourceSha256) != $($second.correspondingSourceSha256)"
-          }
 
+          $versionHeader = Get-Content .\src\Version.h -Raw
+          if ($versionHeader -notmatch 'Semantic\s*=\s*"([^"]+)"') {
+            throw "Unable to read the project semantic version."
+          }
+          $version = $Matches[1]
+          if ($versionHeader -notmatch 'SupportedRuntime\s*\{\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\s*\}') {
+            throw "Unable to read the supported Skyrim runtime."
+          }
+          $runtime = "$($Matches[1]).$($Matches[2]).$($Matches[3]).$($Matches[4])"
           $expectedNames = @(
-            "BoundedEncounters-0.1.0-alpha.1-Skyrim-1.7.104.0-win64.zip",
-            "BoundedEncounters-0.1.0-alpha.1-Skyrim-1.7.104.0-win64.zip.sha256",
-            "BoundedEncounters-0.1.0-alpha.1-corresponding-source.zip",
-            "BoundedEncounters-0.1.0-alpha.1-corresponding-source.zip.sha256")
-          foreach ($directory in @(".\build\release\packages-a", ".\build\release\packages-b")) {
-            $actualNames = @(Get-ChildItem -LiteralPath $directory -File | ForEach-Object Name | Sort-Object)
-            $sortedExpected = @($expectedNames | Sort-Object)
-            if ($actualNames.Count -ne $sortedExpected.Count -or
-                (Compare-Object -CaseSensitive $actualNames $sortedExpected)) {
-              throw "Package directory has missing, renamed, or unexpected files: $directory"
+            "BoundedEncounters-$version-Skyrim-$runtime-win64.zip",
+            "BoundedEncounters-$version-Skyrim-$runtime-win64.zip.sha256",
+            "BoundedEncounters-$version-corresponding-source.zip",
+            "BoundedEncounters-$version-corresponding-source.zip.sha256")
+          [string[]]$actualNames = @(Get-ChildItem -LiteralPath $packageDirectory -File | ForEach-Object Name)
+          [string[]]$sortedExpected = @($expectedNames)
+          [System.Array]::Sort[string]($actualNames, [System.StringComparer]::Ordinal)
+          [System.Array]::Sort[string]($sortedExpected, [System.StringComparer]::Ordinal)
+          if ($actualNames.Count -ne $sortedExpected.Count) {
+            throw "Package directory has missing or unexpected files: $packageDirectory"
+          }
+          for ($index = 0; $index -lt $actualNames.Count; ++$index) {
+            if ($actualNames[$index] -cne $sortedExpected[$index]) {
+              throw "Package directory has missing, renamed, or unexpected files: $packageDirectory"
             }
           }
 
-      - name: Upload staged mod, simulator, and audits
+      - name: Upload staged mod, simulator, and raw build diagnostics
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: bounded-encounters-${{ github.sha }}
-          if-no-files-found: error
+          name: bounded-encounters-${{ github.sha }}-${{ matrix.replica }}
+          if-no-files-found: warn
+          overwrite: true
           path: |
             mods/bounded-encounters/build/release/stage/**
             mods/bounded-encounters/build/release/simulation-smoke.json
             mods/bounded-encounters/build/release/binary-audit.json
+            mods/bounded-encounters/tools/build.log
+            mods/bounded-encounters/build/release/vcpkg_installed/**/vcpkg.spdx.json
 
-      - name: Upload reproducible test-candidate packages
+      - name: Upload isolated test-candidate packages
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bounded-encounters-package-${{ github.sha }}-${{ matrix.replica }}
+          if-no-files-found: error
+          overwrite: true
+          path: |
+            mods/bounded-encounters/build/release/packages-${{ matrix.replica }}/*.zip
+            mods/bounded-encounters/build/release/packages-${{ matrix.replica }}/*.zip.sha256
+
+  release-candidate-reproducibility:
+    name: bounded-encounters-release-candidate
+    needs: windows-release
+    runs-on: windows-2025
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+
+    defaults:
+      run:
+        working-directory: mods/bounded-encounters
+
+    steps:
+      - name: Materialize tracked symlinks as archival placeholders
+        shell: pwsh
+        working-directory: ${{ github.workspace }}
+        run: |
+          git config --global core.symlinks false
+          if ((git config --global --get core.symlinks).Trim() -cne "false") {
+            throw "Could not enforce safe Windows symlink materialization."
+          }
+
+      - name: Check out comparison scripts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          submodules: false
+
+      - name: Download isolated candidate A
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: bounded-encounters-package-${{ github.sha }}-a
+          path: ${{ runner.temp }}/bounded-encounters-package-a
+
+      - name: Download isolated candidate B
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: bounded-encounters-package-${{ github.sha }}-b
+          path: ${{ runner.temp }}/bounded-encounters-package-b
+
+      - name: Require byte-identical independent clean builds
+        shell: pwsh
+        run: |
+          $report = .\tools\compare-package-directories.ps1 `
+            -ReferenceDirectory "$env:RUNNER_TEMP\bounded-encounters-package-a" `
+            -CandidateDirectory "$env:RUNNER_TEMP\bounded-encounters-package-b"
+          $reportPath = ".\build\release\independent-build-reproducibility.json"
+          New-Item -ItemType Directory -Path (Split-Path -Parent $reportPath) -Force | Out-Null
+          [System.IO.File]::WriteAllText(
+            $reportPath,
+            ($report | Out-String).Replace("`r`n", "`n").Replace("`r", "`n").TrimEnd() + "`n",
+            [System.Text.UTF8Encoding]::new($false))
+          Get-Content -LiteralPath $reportPath
+
+      - name: Require the signed tag to reproduce protected-main artifacts
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $runsResponse = gh api `
+            "repos/$env:GITHUB_REPOSITORY/actions/workflows/bounded-encounters.yml/runs?branch=main&event=push&status=success&head_sha=$env:GITHUB_SHA&per_page=20" |
+            ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $matchingRuns = @($runsResponse.workflow_runs | Where-Object {
+              [string]$_.head_sha -ceq $env:GITHUB_SHA -and
+              [string]$_.head_branch -ceq "main" -and
+              [string]$_.conclusion -ceq "success"
+            } | Sort-Object run_number -Descending)
+          if ($matchingRuns.Count -eq 0) {
+            throw "No successful protected-main Bounded Encounters run exists for $env:GITHUB_SHA."
+          }
+          $mainRunId = [long]$matchingRuns[0].id
+          $artifactName = "bounded-encounters-package-$env:GITHUB_SHA"
+          $artifactResponse = gh api `
+            "repos/$env:GITHUB_REPOSITORY/actions/runs/$mainRunId/artifacts?per_page=100" |
+            ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $matchingArtifacts = @($artifactResponse.artifacts | Where-Object {
+              [string]$_.name -ceq $artifactName -and $_.expired -eq $false
+            })
+          if ($matchingArtifacts.Count -ne 1) {
+            throw "Protected-main run $mainRunId does not expose exactly one unexpired canonical package artifact."
+          }
+          $mainDirectory = Join-Path $env:RUNNER_TEMP "bounded-encounters-package-main"
+          if (Test-Path -LiteralPath $mainDirectory) {
+            throw "Protected-main comparison destination already exists: $mainDirectory"
+          }
+          New-Item -ItemType Directory -Path $mainDirectory | Out-Null
+          gh run download $mainRunId `
+            --repo $env:GITHUB_REPOSITORY `
+            --name $artifactName `
+            --dir $mainDirectory
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\tools\compare-package-directories.ps1 `
+            -ReferenceDirectory $mainDirectory `
+            -CandidateDirectory "$env:RUNNER_TEMP\bounded-encounters-package-a"
+
+      - name: Upload canonical reproducible test-candidate packages
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: bounded-encounters-package-${{ github.sha }}
           if-no-files-found: error
+          overwrite: true
           path: |
-            mods/bounded-encounters/build/release/packages-a/*.zip
-            mods/bounded-encounters/build/release/packages-a/*.zip.sha256
+            ${{ runner.temp }}/bounded-encounters-package-a/*.zip
+            ${{ runner.temp }}/bounded-encounters-package-a/*.zip.sha256
+
+      - name: Upload independent-build reproducibility report
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: bounded-encounters-reproducibility-${{ github.sha }}
+          if-no-files-found: error
+          overwrite: true
+          path: mods/bounded-encounters/build/release/independent-build-reproducibility.json

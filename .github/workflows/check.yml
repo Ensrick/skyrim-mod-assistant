@@ -23,7 +23,7 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $failures = [System.Collections.Generic.List[string]]::new()
 
-          foreach ($path in @(git ls-files '*.ps1')) {
+          foreach ($path in @(git ls-files '*.ps1' '*.psm1')) {
             $tokens = $null
             $errors = $null
             [void] [System.Management.Automation.Language.Parser]::ParseFile(
