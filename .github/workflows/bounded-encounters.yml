@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        replica: [a, b]
+        replica: [a, b, c]
     env:
       VCPKG_BINARY_SOURCES: clear
       BE_REPLICA: ${{ matrix.replica }}
@@ -66,9 +66,13 @@ jobs:
             "SOURCE_DATE_EPOCH=$epoch`n",
             [System.Text.UTF8Encoding]::new($false))
 
-      - name: Test deterministic provenance normalization
+      - name: Test deterministic package primitives
         shell: pwsh
-        run: .\tools\test-package-normalization.ps1
+        run: |
+          .\tools\test-file-ordering.ps1
+          .\tools\test-package-comparison.ps1
+          .\tools\test-package-normalization.ps1
+          .\tools\test-audit-build-flags.ps1
 
       - name: Initialize isolated vcpkg downloads
         shell: pwsh
@@ -259,6 +263,10 @@ jobs:
             mods/bounded-encounters/build/release/stage/**
             mods/bounded-encounters/build/release/simulation-smoke.json
             mods/bounded-encounters/build/release/binary-audit.json
+            mods/bounded-encounters/build/release/build-flag-audit.json
+            mods/bounded-encounters/build/release/compile_commands.json
+            mods/bounded-encounters/build/release/build.ninja
+            mods/bounded-encounters/build/release/CMakeFiles/rules.ninja
             mods/bounded-encounters/tools/build.log
             mods/bounded-encounters/build/release/vcpkg_installed/**/vcpkg.spdx.json
 
@@ -313,12 +321,45 @@ jobs:
           name: bounded-encounters-package-${{ github.sha }}-b
           path: ${{ runner.temp }}/bounded-encounters-package-b
 
+      - name: Download isolated candidate C
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: bounded-encounters-package-${{ github.sha }}-c
+          path: ${{ runner.temp }}/bounded-encounters-package-c
+
       - name: Require byte-identical independent clean builds
         shell: pwsh
         run: |
-          $report = .\tools\compare-package-directories.ps1 `
-            -ReferenceDirectory "$env:RUNNER_TEMP\bounded-encounters-package-a" `
-            -CandidateDirectory "$env:RUNNER_TEMP\bounded-encounters-package-b"
+          $comparisons = @()
+          $comparisonFailed = $false
+          foreach ($replica in @("b", "c")) {
+            try {
+              $rawComparison = .\tools\compare-package-directories.ps1 `
+                -ReferenceDirectory "$env:RUNNER_TEMP\bounded-encounters-package-a" `
+                -CandidateDirectory "$env:RUNNER_TEMP\bounded-encounters-package-$replica"
+              $result = (($rawComparison | Out-String) | ConvertFrom-Json)
+            } catch {
+              $comparisonFailed = $true
+              $errorText = [string]$_.Exception.Message
+              if ($errorText.Length -gt 4096) {
+                $errorText = $errorText.Substring(0, 4081) + "... [truncated]"
+              }
+              $result = [ordered]@{
+                status = "fail"
+                error = $errorText
+              }
+            }
+            $comparisons += [ordered]@{
+              referenceReplica = "a"
+              candidateReplica = $replica
+              result = $result
+            }
+          }
+          $report = [ordered]@{
+            schemaVersion = 1
+            status = if ($comparisonFailed) { "fail" } else { "pass" }
+            comparisons = $comparisons
+          } | ConvertTo-Json -Depth 32
           $reportPath = ".\build\release\independent-build-reproducibility.json"
           New-Item -ItemType Directory -Path (Split-Path -Parent $reportPath) -Force | Out-Null
           [System.IO.File]::WriteAllText(
@@ -326,6 +367,9 @@ jobs:
             ($report | Out-String).Replace("`r`n", "`n").Replace("`r", "`n").TrimEnd() + "`n",
             [System.Text.UTF8Encoding]::new($false))
           Get-Content -LiteralPath $reportPath
+          if ($comparisonFailed) {
+            throw "At least one isolated build comparison failed; see the uploaded reproducibility report."
+          }
 
       - name: Require the signed tag to reproduce protected-main artifacts
         if: startsWith(github.ref, 'refs/tags/')
@@ -382,6 +426,7 @@ jobs:
             ${{ runner.temp }}/bounded-encounters-package-a/*.zip.sha256
 
       - name: Upload independent-build reproducibility report
+        if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: bounded-encounters-reproducibility-${{ github.sha }}

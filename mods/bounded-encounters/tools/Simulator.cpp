@@ -23,6 +23,8 @@ namespace
 {
 	using BoundedEncounters::Category;
 	using BoundedEncounters::Curve;
+	using BoundedEncounters::CapacityProjection;
+	using BoundedEncounters::ProjectFractionalCapacity;
 	using BoundedEncounters::SourceDescriptor;
 
 	constexpr std::uint32_t kDefaultSourceCount = 4;
@@ -52,14 +54,6 @@ namespace
 	{
 	public:
 		using std::runtime_error::runtime_error;
-	};
-
-	struct ExpectedProjection
-	{
-		double uncappedExtras{ 0.0 };
-		double cappedExtras{ 0.0 };
-		std::unordered_map<Category, double> uncappedByCategory;
-		std::unordered_map<Category, double> cappedByCategory;
 	};
 
 	struct Capacity
@@ -115,53 +109,6 @@ namespace
 	{
 		const auto found = a_values.find(a_category);
 		return found == a_values.end() ? 0U : found->second;
-	}
-
-	[[nodiscard]] ExpectedProjection ProjectExpected(
-		const std::vector<SourceDescriptor>& a_sources,
-		const std::unordered_map<Category, Curve>& a_curves,
-		const std::uint32_t a_playerLevel,
-		const std::uint64_t a_seed,
-		const std::optional<std::uint32_t> a_globalCellCap)
-	{
-		ExpectedProjection projection;
-		std::unordered_map<Category, double> categoryTotals;
-		auto orderedSources = a_sources;
-		std::ranges::sort(orderedSources, [&](const SourceDescriptor& a_left, const SourceDescriptor& a_right) {
-			const auto leftRank = BoundedEncounters::MixSeed(a_seed, a_left.sourceKey);
-			const auto rightRank = BoundedEncounters::MixSeed(a_seed, a_right.sourceKey);
-			return leftRank != rightRank ? leftRank < rightRank : a_left.sourceKey < a_right.sourceKey;
-		});
-
-		for (const auto& source : orderedSources) {
-			const auto curve = a_curves.find(source.category);
-			if (source.category == Category::Excluded || curve == a_curves.end()) {
-				continue;
-			}
-
-			const auto expected = BoundedEncounters::ExpectedExtrasPerSource(curve->second, a_playerLevel);
-			projection.uncappedExtras += expected;
-			projection.uncappedByCategory[source.category] += expected;
-
-			auto admitted = expected;
-			const auto categoryCap = curve->second.maxExtrasPerCell;
-			if (categoryCap > 0) {
-				admitted = std::min(
-					admitted,
-					std::max(0.0, static_cast<double>(categoryCap) - categoryTotals[source.category]));
-			}
-			if (a_globalCellCap.has_value()) {
-				admitted = std::min(
-					admitted,
-					std::max(0.0, static_cast<double>(*a_globalCellCap) - projection.cappedExtras));
-			}
-
-			categoryTotals[source.category] += admitted;
-			projection.cappedExtras += admitted;
-			projection.cappedByCategory[source.category] += admitted;
-		}
-
-		return projection;
 	}
 
 	[[nodiscard]] BoundedEncounters::SpawnPlan BuildCapacityPlan(
@@ -265,7 +212,7 @@ namespace
 
 	[[nodiscard]] nlohmann::json CategoryBreakdown(
 		const std::unordered_map<Category, std::uint32_t>& a_sourceCounts,
-		const ExpectedProjection& a_projection,
+		const CapacityProjection& a_projection,
 		const BoundedEncounters::SpawnPlan& a_plan)
 	{
 		std::unordered_map<Category, std::uint32_t> sampledByCategory;
@@ -277,8 +224,9 @@ namespace
 		for (const auto category : kCategories) {
 			breakdown[BoundedEncounters::ToString(category)] = {
 				{ "authoredSources", CategoryValue(a_sourceCounts, category) },
-				{ "uncappedExpectedExtras", CategoryValue(a_projection.uncappedByCategory, category) },
-				{ "cappedExpectedExtras", CategoryValue(a_projection.cappedByCategory, category) },
+				{ "uncappedExpectedExtras", CategoryValue(a_projection.uncappedExpectedByCategory, category) },
+				{ "cappedFractionalCapacityExtras",
+					CategoryValue(a_projection.cappedFractionalCapacityByCategory, category) },
 				{ "sampledExtras", CategoryValue(sampledByCategory, category) }
 			};
 		}
@@ -294,7 +242,7 @@ namespace
 	{
 		nlohmann::json rows = nlohmann::json::array();
 		for (const auto level : kLevels) {
-			const auto projection = ProjectExpected(
+			const auto projection = ProjectFractionalCapacity(
 				a_sources,
 				a_config.curves,
 				level,
@@ -309,16 +257,17 @@ namespace
 
 			rows.push_back({
 				{ "level", level },
-				{ "uncappedExpectedExtras", projection.uncappedExtras },
-				{ "cappedExpectedExtras", projection.cappedExtras },
+				{ "uncappedExpectedExtras", projection.uncappedExpectedExtras },
+				{ "cappedFractionalCapacityExtras", projection.cappedFractionalCapacityExtras },
 				{ "sampledExtras", plan.totalExtras },
 				{ "uncappedExpectedEligiblePopulation",
-					static_cast<double>(a_sources.size()) + projection.uncappedExtras },
-				{ "cappedExpectedEligiblePopulation",
-					static_cast<double>(a_sources.size()) + projection.cappedExtras },
+					static_cast<double>(a_sources.size()) + projection.uncappedExpectedExtras },
+				{ "cappedFractionalCapacityEligiblePopulation",
+					static_cast<double>(a_sources.size()) + projection.cappedFractionalCapacityExtras },
 				{ "sampledEligiblePopulation", a_sources.size() + plan.totalExtras },
-				{ "cappedExpectedCellHostiles",
-					static_cast<double>(a_capacity.existingCellHostiles) + projection.cappedExtras },
+				{ "cappedFractionalCapacityCellHostiles",
+					static_cast<double>(a_capacity.existingCellHostiles) +
+						projection.cappedFractionalCapacityExtras },
 				{ "sampledCellHostiles", a_capacity.existingCellHostiles + plan.totalExtras },
 				{ "byCategory", CategoryBreakdown(a_sourceCounts, projection, plan) }
 			});
@@ -372,13 +321,14 @@ int main(int a_argc, char** a_argv)
 			{ "enabled", config.enabled },
 			{ "observeOnly", config.observeOnly }
 		};
-		output["expectationSemantics"] = {
+		output["projectionSemantics"] = {
 			{ "uncappedExpectedExtras",
 				"Sum of per-source curve expectations after per-source multiplier and count limits, "
 				"before category and cell-cap competition." },
-			{ "cappedExpectedExtras",
-				"Fractional capacity projection admitted in deterministic source-rank order through "
-				"category and applicable cell caps; distinct from the sampled realization." },
+			{ "cappedFractionalCapacityExtras",
+				"Sum of fractional per-source expectations admitted in deterministic source-rank "
+				"order through category and applicable cell caps. This is a capacity projection, "
+				"not the statistical expected value after capped Bernoulli outcomes." },
 			{ "sampledExtras",
 				"Deterministic stable-threshold realization after the same applicable caps." }
 		};
@@ -388,7 +338,7 @@ int main(int a_argc, char** a_argv)
 			const auto sources = MakeCategorySources(sourceCount, category);
 			const auto& curve = config.curves.at(category);
 			for (const auto level : kLevels) {
-				const auto projection = ProjectExpected(
+				const auto projection = ProjectFractionalCapacity(
 					sources, config.curves, level, effectiveSeed, std::nullopt);
 				const auto plan = BoundedEncounters::BuildSpawnPlan(
 					sources, config.curves, level, effectiveSeed, std::nullopt);
@@ -396,11 +346,13 @@ int main(int a_argc, char** a_argv)
 					{ "level", level },
 					{ "authoredSources", sourceCount },
 					{ "expectedExtrasPerSource", BoundedEncounters::ExpectedExtrasPerSource(curve, level) },
-					{ "uncappedExpectedExtras", projection.uncappedExtras },
-					{ "cappedExpectedExtras", projection.cappedExtras },
+					{ "uncappedExpectedExtras", projection.uncappedExpectedExtras },
+					{ "cappedFractionalCapacityExtras", projection.cappedFractionalCapacityExtras },
 					{ "sampledExtras", plan.totalExtras },
-					{ "uncappedExpectedTotal", static_cast<double>(sourceCount) + projection.uncappedExtras },
-					{ "cappedExpectedTotal", static_cast<double>(sourceCount) + projection.cappedExtras },
+					{ "uncappedExpectedTotal",
+						static_cast<double>(sourceCount) + projection.uncappedExpectedExtras },
+					{ "cappedFractionalCapacityTotal",
+						static_cast<double>(sourceCount) + projection.cappedFractionalCapacityExtras },
 					{ "sampledTotal", sourceCount + plan.totalExtras }
 				});
 			}

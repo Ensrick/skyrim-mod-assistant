@@ -28,6 +28,23 @@ Each generated actor must satisfy all of these properties:
 The current alpha implements the first three properties. Non-serialization and
 cleanup behavior remain acceptance tests, not established guarantees.
 
+Before active planning, authored sources with stateful-reference ExtraData are
+rejected. The gate covers enable parents, encounter/location associations,
+linked/activation/attachment and patrol relationships, aliases and missing-ID
+recovery records, horse/multibound associations, and
+scene/interaction/forced-target state. The spawn path does not copy any of
+those records from its source.
+Reverse enable-state, linked, activation, and attachment child indexes are
+intentionally not rejected because they record other references pointing at the
+source rather than an authored condition imposed on it. Package/process
+ExtraData is also not copied or used as a rejection reason; the engine supplies
+fresh runtime package and process state to a created actor.
+
+That source-selection gate narrows the active test surface; it does not establish
+that generated actors are absent from saves or safe across every transition.
+Active save behavior remains an in-game gate and must pass the disposable-save
+matrix below before promotion.
+
 Immediately after creation, the alpha applies the temporary flag and reads the
 record flags back. A failed verification is disabled and marked for deletion
 instead of entering the registry. This narrows risk but does not replace save

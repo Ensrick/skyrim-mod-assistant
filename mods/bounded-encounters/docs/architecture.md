@@ -27,10 +27,14 @@ linear growth, not compounding growth.
 
 The source actor remains untouched. If the source resolved from a leveled actor
 list, that original list is submitted to the engine again so a companion can
-resolve to a different valid bandit, draugr, or creature. The initial safety
-candidate rejects fixed resolved actors because cloning one without its
-authored leveled selection is not yet an approved source policy. Generated
-actors are tagged in runtime state and can never become sources.
+resolve independently as a valid bandit, draugr, or creature. The reroll can
+legitimately select the same entry as the authored actor; it is not an exact
+clone operation, but visual uniqueness is not guaranteed. After creation, the
+runtime requires the actor to retain the exact authored leveled-source identity
+used for creation or rolls it back. The initial safety candidate rejects fixed
+resolved actors because cloning one without its authored leveled selection is
+not yet an approved source policy. Generated actors are tagged in runtime state
+and can never become sources.
 
 ## Components
 
@@ -87,6 +91,25 @@ their defining and effective providers, resolved actor base, and every form in
 the reachable leveled-template graph appear in the non-empty
 `allowedSourcePlugins` list; the default list contains only official masters.
 
+Active creation also requires an authored source with no ExtraData that imposes
+stateful reference behavior. The classifier rejects enable-state parents,
+encounter zones, linked/activation references, patrol data, locations and all
+location-reference types, horse/multibound associations, alias provenance,
+missing-reference recovery data, attachment references, scene/interaction
+state, forced targets, and open/close activation references. Each rejection has
+a deterministic `stateful-reference-*` reason, and the normal cell summary
+reports their aggregate count even when per-source debug logging is disabled.
+
+This gate is intentionally about conditions imposed on the source. Reverse
+child indexes (`ExtraEnableStateChildren`, `ExtraLinkedRefChildren`,
+`ExtraActivateRefChildren`, and `ExtraAttachRefChildren`) describe other
+references that point to the source; they are not copied and are not themselves
+a rejection reason. Package/process ExtraData is likewise neither copied nor
+rejected: a created actor receives fresh engine-owned runtime package and
+process state. These exclusions from the gate do not prove active lifecycle or
+save safety; active behavior remains subject to the disposable-profile in-game
+acceptance matrix.
+
 The alpha treats `ActorTypeAnimal`, `ActorTypeCreature`, `ActorTypeDragon`,
 `GiantRace`, `MammothRace`, and the `Skyrim.esm` boss location-reference type
 `000130F7` (editor ID `Boss`) as mandatory vanilla forms. The boss form's local
@@ -134,9 +157,11 @@ actor. See
 
 ### Simulator
 
-`BoundedEncounters.Simulate.exe` consumes the shipping JSON and reports expected
-and sampled populations at representative player levels. It performs no game
-or mod-manager discovery and writes no game files.
+`BoundedEncounters.Simulate.exe` consumes the shipping JSON and reports exact
+uncapped expectations, deterministic fractional-capacity projections, and
+sampled populations at representative player levels. The capped projection is
+not a statistical expectation after Bernoulli outcomes. The simulator performs
+no game or mod-manager discovery and writes no game files.
 
 ## Determinism and identity
 

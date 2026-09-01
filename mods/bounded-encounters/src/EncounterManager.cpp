@@ -187,11 +187,26 @@ namespace BoundedEncounters
 		const RE::TESCellFullyLoadedEvent* a_event,
 		RE::BSTEventSource<RE::TESCellFullyLoadedEvent>*)
 	{
-		const auto* player = RE::PlayerCharacter::GetSingleton();
-		if (a_event && a_event->cell && player &&
-			a_event->cell == player->GetParentCell() &&
-			_enabled.load(std::memory_order_acquire)) {
-			QueueCell(a_event->cell->GetFormID());
+		try {
+			const auto* player = RE::PlayerCharacter::GetSingleton();
+			if (a_event && a_event->cell && player &&
+				a_event->cell == player->GetParentCell() &&
+				_enabled.load(std::memory_order_acquire)) {
+				QueueCell(a_event->cell->GetFormID());
+			}
+		} catch (const std::exception& error) {
+			_enabled.store(false, std::memory_order_release);
+			const auto diagnostic = MakeBoundedDiagnostic(error.what());
+			try {
+				logger::critical("loaded-cell event failed closed: {}", diagnostic.View());
+			} catch (...) {
+			}
+		} catch (...) {
+			_enabled.store(false, std::memory_order_release);
+			try {
+				logger::critical("loaded-cell event failed closed with an unknown exception");
+			} catch (...) {
+			}
 		}
 		return RE::BSEventNotifyControl::kContinue;
 	}
@@ -200,13 +215,28 @@ namespace BoundedEncounters
 		const RE::BGSActorCellEvent* a_event,
 		RE::BSTEventSource<RE::BGSActorCellEvent>*)
 	{
-		if (!a_event || a_event->flags != RE::BGSActorCellEvent::CellFlag::kEnter ||
-			!_enabled.load(std::memory_order_acquire)) {
-			return RE::BSEventNotifyControl::kContinue;
-		}
-		auto eventActor = a_event->actor.get();
-		if (eventActor && eventActor.get() == RE::PlayerCharacter::GetSingleton()) {
-			QueueCell(a_event->cellID);
+		try {
+			if (!a_event || a_event->flags != RE::BGSActorCellEvent::CellFlag::kEnter ||
+				!_enabled.load(std::memory_order_acquire)) {
+				return RE::BSEventNotifyControl::kContinue;
+			}
+			auto eventActor = a_event->actor.get();
+			if (eventActor && eventActor.get() == RE::PlayerCharacter::GetSingleton()) {
+				QueueCell(a_event->cellID);
+			}
+		} catch (const std::exception& error) {
+			_enabled.store(false, std::memory_order_release);
+			const auto diagnostic = MakeBoundedDiagnostic(error.what());
+			try {
+				logger::critical("actor-cell event failed closed: {}", diagnostic.View());
+			} catch (...) {
+			}
+		} catch (...) {
+			_enabled.store(false, std::memory_order_release);
+			try {
+				logger::critical("actor-cell event failed closed with an unknown exception");
+			} catch (...) {
+			}
 		}
 		return RE::BSEventNotifyControl::kContinue;
 	}
@@ -224,13 +254,19 @@ namespace BoundedEncounters
 				} catch (const std::exception& error) {
 					_enabled.store(false, std::memory_order_release);
 					const auto diagnostic = MakeBoundedDiagnostic(error.what());
-					logger::critical(
-						"cell task failed closed: cell={:08X} error={}",
-						a_cellID,
-						diagnostic.View());
+					try {
+						logger::critical(
+							"cell task failed closed: cell={:08X} error={}",
+							a_cellID,
+							diagnostic.View());
+					} catch (...) {
+					}
 				} catch (...) {
 					_enabled.store(false, std::memory_order_release);
-					logger::critical("cell task failed closed: cell={:08X} unknown error", a_cellID);
+					try {
+						logger::critical("cell task failed closed: cell={:08X} unknown error", a_cellID);
+					} catch (...) {
+					}
 				}
 			});
 		} else {
@@ -343,6 +379,7 @@ namespace BoundedEncounters
 		std::vector<SourceCandidate> candidates;
 		std::uint32_t liveHostiles = 0;
 		std::uint32_t rejected = 0;
+		std::uint32_t statefulReferenceRejections = 0;
 		std::uint32_t leveledSources = 0;
 
 		for (const auto& actorHandle : actorHandles) {
@@ -367,6 +404,8 @@ namespace BoundedEncounters
 			const auto classification = _classifier.Evaluate(actor, player, _config);
 			if (classification.category == Category::Excluded || !classification.spawnBase) {
 				++rejected;
+				statefulReferenceRejections += static_cast<std::uint32_t>(
+					classification.reason.starts_with("stateful-reference-"));
 				if (_config.debugLogging) {
 					logger::debug(
 						"source rejected: cell={:08X} ref={:08X} reason={}",
@@ -446,7 +485,7 @@ namespace BoundedEncounters
 		}
 		if (_config.observeOnly) {
 			logger::info(
-				"cell audit: session={} cell={:08X} observeOnly=true interior={} playerLevel={} liveHostiles={} activeGenerated={} eligibleSources={} leveledSources={} rejected={} expectedExtras={:.3f} plannedExtras={} created=0 failures=0 cap={}",
+				"cell audit: session={} cell={:08X} observeOnly=true interior={} playerLevel={} liveHostiles={} activeGenerated={} eligibleSources={} leveledSources={} rejected={} statefulReferenceRejections={} expectedExtras={:.3f} plannedExtras={} created=0 failures=0 cap={}",
 				a_session,
 				a_cellID,
 				interior,
@@ -456,6 +495,7 @@ namespace BoundedEncounters
 				candidates.size(),
 				leveledSources,
 				rejected,
+				statefulReferenceRejections,
 				plan.expectedExtras,
 				plan.totalExtras,
 				effectiveCap);
@@ -555,7 +595,11 @@ namespace BoundedEncounters
 				}
 
 				const auto resolved = _classifier.EvaluateSpawn(
-					newActor, player, _config, candidate->category);
+					newActor,
+					player,
+					_config,
+					candidate->category,
+					candidate->rerollsLeveledList ? candidate->spawnBase : nullptr);
 				if (resolved.category == Category::Excluded) {
 					logger::warn(
 						"spawn rejected after resolution: cell={:08X} source={:08X} spawned={:08X} reason={}",
@@ -577,7 +621,7 @@ namespace BoundedEncounters
 		}
 
 		logger::info(
-			"cell audit: session={} cell={:08X} observeOnly=false interior={} playerLevel={} liveHostiles={} activeGenerated={} eligibleSources={} leveledSources={} rejected={} expectedExtras={:.3f} plannedExtras={} created={} failures={} cap={}",
+			"cell audit: session={} cell={:08X} observeOnly=false interior={} playerLevel={} liveHostiles={} activeGenerated={} eligibleSources={} leveledSources={} rejected={} statefulReferenceRejections={} expectedExtras={:.3f} plannedExtras={} created={} failures={} cap={}",
 			a_session,
 			a_cellID,
 			interior,
@@ -587,6 +631,7 @@ namespace BoundedEncounters
 			candidates.size(),
 			leveledSources,
 			rejected,
+			statefulReferenceRejections,
 			plan.expectedExtras,
 			plan.totalExtras,
 			created,

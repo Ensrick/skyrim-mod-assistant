@@ -39,6 +39,70 @@ namespace BoundedEncounters
 			}
 			return false;
 		}
+
+		[[nodiscard]] std::string_view StatefulReferenceReason(
+			RE::Actor& a_actor,
+			const RE::BGSLocationRefType* a_bossRefType,
+			const bool a_distinguishLocationBoss)
+		{
+			const auto& extraList = a_actor.extraList;
+			if (extraList.GetByType<RE::ExtraEnableStateParent>()) {
+				return "stateful-reference-enable-state-parent";
+			}
+			if (extraList.GetByType<RE::ExtraEncounterZone>()) {
+				return "stateful-reference-encounter-zone";
+			}
+			if (extraList.GetByType<RE::ExtraLinkedRef>()) {
+				return "stateful-reference-linked-ref";
+			}
+			if (extraList.GetByType<RE::ExtraActivateRef>()) {
+				return "stateful-reference-activate-ref";
+			}
+			if (extraList.GetByType<RE::ExtraPatrolRefData>()) {
+				return "stateful-reference-patrol-ref-data";
+			}
+			if (const auto* locationType = extraList.GetByType<RE::ExtraLocationRefType>()) {
+				if (a_distinguishLocationBoss && locationType->locRefType &&
+					locationType->locRefType == a_bossRefType) {
+					return "stateful-reference-location-boss";
+				}
+				return "stateful-reference-location-ref-type";
+			}
+			if (extraList.GetByType<RE::ExtraLocation>()) {
+				return "stateful-reference-location";
+			}
+			if (extraList.GetByType<RE::ExtraHorse>()) {
+				return "stateful-reference-horse";
+			}
+			if (extraList.GetByType<RE::ExtraMultiBoundRef>()) {
+				return "stateful-reference-multi-bound-ref";
+			}
+			if (extraList.GetByType<RE::ExtraFromAlias>()) {
+				return "stateful-reference-from-alias";
+			}
+			if (extraList.GetByType<RE::ExtraMissingRefIDs>()) {
+				return "stateful-reference-missing-ref-ids";
+			}
+			if (extraList.GetByType<RE::ExtraMissingLinkedRefIDs>()) {
+				return "stateful-reference-missing-linked-ref-ids";
+			}
+			if (extraList.GetByType<RE::ExtraAttachRef>()) {
+				return "stateful-reference-attach-ref";
+			}
+			if (extraList.GetByType<RE::ExtraSceneData>()) {
+				return "stateful-reference-scene-data";
+			}
+			if (extraList.GetByType<RE::ExtraInteraction>()) {
+				return "stateful-reference-interaction";
+			}
+			if (extraList.GetByType<RE::ExtraForcedTarget>()) {
+				return "stateful-reference-forced-target";
+			}
+			if (extraList.GetByType<RE::ExtraOpenCloseActivateRef>()) {
+				return "stateful-reference-open-close-activate-ref";
+			}
+			return {};
+		}
 	}
 
 	bool Classifier::Initialize()
@@ -193,9 +257,16 @@ namespace BoundedEncounters
 		RE::Actor* a_actor,
 		RE::PlayerCharacter* a_player,
 		const Config& a_config,
-		const Category a_expectedCategory) const
+		const Category a_expectedCategory,
+		const RE::TESBoundObject* a_expectedLeveledSource) const
 	{
 		auto result = EvaluateImpl(a_actor, a_player, a_config, true);
+		if (result.category != Category::Excluded && !result.rerollsLeveledList) {
+			return { .reason = "resolved-not-leveled-source" };
+		}
+		if (result.category != Category::Excluded && result.spawnBase != a_expectedLeveledSource) {
+			return { .reason = "resolved-leveled-source-mismatch" };
+		}
 		if (result.category != Category::Excluded && result.category != a_expectedCategory) {
 			return { .reason = "resolved-category-mismatch" };
 		}
@@ -222,6 +293,15 @@ namespace BoundedEncounters
 		}
 		if (a_actor->IsPlayerTeammate() || !a_actor->IsHostileToActor(a_player)) {
 			return { .reason = "not-hostile-to-player" };
+		}
+		if (!a_allowDynamicReference) {
+			const auto statefulReason = StatefulReferenceReason(
+				*a_actor,
+				_bossRefType,
+				a_config.exclusions.locationBosses);
+			if (!statefulReason.empty()) {
+				return { .reason = std::string(statefulReason) };
+			}
 		}
 		if (a_config.exclusions.persistentReferences && a_actor->IsPersistent()) {
 			return { .reason = "persistent-reference" };
@@ -266,13 +346,6 @@ namespace BoundedEncounters
 				return { .reason = "quest-alias" };
 			}
 		}
-		if (a_config.exclusions.locationBosses) {
-			if (const auto* locationType = a_actor->extraList.GetByType<RE::ExtraLocationRefType>();
-				locationType && locationType->locRefType && locationType->locRefType == _bossRefType) {
-				return { .reason = "location-boss" };
-			}
-		}
-
 		auto* spawnBase = static_cast<RE::TESBoundObject*>(actorBase);
 		bool rerollsLeveledList = false;
 		const RE::TESActorBase* leveledSource = nullptr;

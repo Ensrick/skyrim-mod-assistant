@@ -32,10 +32,17 @@ Nexus release approval.
       the release notes.
 - [ ] Release tests and simulator smoke test pass.
 - [ ] Archive is produced only by `tools/package.ps1`.
-- [ ] Two isolated, cache-disabled builds of the exact commit produce identical
+- [ ] Three isolated, cache-disabled builds of the exact commit produce identical
       four-file release directories, including byte-identical DLL and simulator
       payloads; a signed-tag build also matches the canonical successful
       protected-main artifact for that commit.
+- [ ] Binary and corresponding-source ZIP entries are in strict ordinal path
+      order, and each internal manifest lists its exact non-manifest path set in
+      the same strict ordinal order.
+- [ ] The independent comparison gate recomputes every internal hash, enforces
+      canonical UTF-8-without-BOM/LF manifests and normalized ZIP metadata, and
+      requires canonical one-line sibling hashes while rejecting Windows-unsafe
+      or ambiguous extraction paths.
 - [ ] `MANIFEST.sha256` verifies every payload file.
 - [ ] SPDX SBOM parses and identifies the release commit.
 - [ ] Binary archive contains the verbatim CommonLibSSE-NG `COPYING` and
@@ -106,7 +113,9 @@ Nexus release approval.
 - [ ] Dragons, bosses, unique/essential/protected/quest actors, summons,
       commanded actors, and teammates remain excluded.
 - [ ] Leveled sources reroll companions rather than cloning resolved actors when
-      the original leveled form is available.
+      the original leveled form is available; the post-create actor retains that
+      exact leveled-source identity, while selecting the same NPC entry remains
+      a valid independent outcome.
 - [ ] Generated actors never multiply generated actors.
 - [ ] Observe-only matrix creates zero actors before active testing begins.
 - [ ] Non-allowlisted mod-authored and fixed resolved sources remain excluded.

@@ -44,11 +44,16 @@ $expectedNames = @(
 function Get-ExactFiles {
     param([Parameter(Mandatory = $true)][string]$Directory)
 
-    $nestedDirectories = @(Get-ChildItem -LiteralPath $Directory -Directory -Force -Recurse)
-    if ($nestedDirectories.Count -ne 0) {
-        throw "Package comparison directory contains nested directories: $Directory"
+    $items = @(Get-ChildItem -LiteralPath $Directory -Force)
+    foreach ($item in $items) {
+        if (($item.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0) {
+            throw "Package comparison directory contains a reparse point: $Directory :: $($item.Name)"
+        }
+        if ($item -isnot [System.IO.FileInfo]) {
+            throw "Package comparison directory contains a non-file entry: $Directory :: $($item.Name)"
+        }
     }
-    $files = @(Get-ChildItem -LiteralPath $Directory -File -Force)
+    $files = @($items)
     [string[]]$actualNames = @($files | ForEach-Object Name)
     [System.Array]::Sort[string]($actualNames, [System.StringComparer]::Ordinal)
     if ($actualNames.Count -ne $expectedNames.Count) {
@@ -99,6 +104,110 @@ function Test-FilesByteEqual {
     }
 }
 
+function Assert-SafeArchiveEntryPath {
+    param(
+        [Parameter(Mandatory = $true)][string]$ArchivePath,
+        [Parameter(Mandatory = $true)][string]$EntryPath,
+        [AllowEmptyCollection()]
+        [Parameter(Mandatory = $true)]
+        [System.Collections.Generic.HashSet[string]]$CaseInsensitivePaths,
+        [AllowEmptyCollection()]
+        [Parameter(Mandatory = $true)]
+        [System.Collections.Generic.HashSet[string]]$CaseInsensitiveDirectoryPrefixes
+    )
+
+    $segments = @($EntryPath.Split('/'))
+    if ([string]::IsNullOrWhiteSpace($EntryPath) -or
+        $EntryPath.Contains('\', [System.StringComparison]::Ordinal) -or
+        [System.IO.Path]::IsPathRooted($EntryPath) -or
+        $EntryPath.Contains(':', [System.StringComparison]::Ordinal) -or
+        $EntryPath.StartsWith('/', [System.StringComparison]::Ordinal) -or
+        @($segments | Where-Object { $_ -in @("", ".", "..") }).Count -ne 0 -or
+        -not $CaseInsensitivePaths.Add($EntryPath)) {
+        throw "Archive contains an unsafe or duplicate path: $ArchivePath :: $EntryPath"
+    }
+    foreach ($segment in $segments) {
+        if ($segment.EndsWith('.', [System.StringComparison]::Ordinal) -or
+            $segment.EndsWith(' ', [System.StringComparison]::Ordinal) -or
+            $segment.IndexOfAny([char[]]'<>"|?*') -ge 0 -or
+            @($segment.ToCharArray() | Where-Object { [int]$_ -lt 32 }).Count -ne 0 -or
+            $segment -match '^(?i:con|prn|aux|nul|com[1-9¹²³]|lpt[1-9¹²³])(?:\.|$)') {
+            throw "Archive contains a path that is unsafe on Windows: $ArchivePath :: $EntryPath"
+        }
+    }
+    if ($CaseInsensitiveDirectoryPrefixes.Contains($EntryPath)) {
+        throw "Archive contains a file/directory prefix collision: $ArchivePath :: $EntryPath"
+    }
+    $prefix = ""
+    for ($index = 0; $index -lt $segments.Count - 1; ++$index) {
+        $prefix = if ($index -eq 0) {
+            $segments[$index]
+        } else {
+            "$prefix/$($segments[$index])"
+        }
+        if ($CaseInsensitivePaths.Contains($prefix)) {
+            throw "Archive contains a file/directory prefix collision: $ArchivePath :: $EntryPath"
+        }
+        $null = $CaseInsensitiveDirectoryPrefixes.Add($prefix)
+    }
+}
+
+function Get-StreamSha256 {
+    param([Parameter(Mandatory = $true)][System.IO.Stream]$Stream)
+
+    $algorithm = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        return [System.Convert]::ToHexString(
+            $algorithm.ComputeHash($Stream)).ToLowerInvariant()
+    } finally {
+        $algorithm.Dispose()
+    }
+}
+
+function ConvertFrom-StrictUtf8Bytes {
+    param(
+        [Parameter(Mandatory = $true)][byte[]]$Bytes,
+        [Parameter(Mandatory = $true)][string]$Description,
+        [Parameter(Mandatory = $true)][string]$Context
+    )
+
+    if ($Bytes.Length -ge 3 -and
+        $Bytes[0] -eq 0xEF -and $Bytes[1] -eq 0xBB -and $Bytes[2] -eq 0xBF) {
+        throw "$Description must be UTF-8 without a BOM: $Context"
+    }
+    try {
+        $text = [System.Text.UTF8Encoding]::new($false, $true).GetString($Bytes)
+    } catch {
+        throw "$Description is not valid UTF-8: $Context"
+    }
+    if ($text.Contains("`r", [System.StringComparison]::Ordinal)) {
+        throw "$Description must use LF line endings: $Context"
+    }
+    return $text
+}
+
+function Read-StrictManifestText {
+    param(
+        [Parameter(Mandatory = $true)]
+        [System.IO.Compression.ZipArchiveEntry]$Entry,
+        [Parameter(Mandatory = $true)][string]$ArchivePath
+    )
+
+    $entryStream = $Entry.Open()
+    $memory = [System.IO.MemoryStream]::new()
+    try {
+        $entryStream.CopyTo($memory)
+        $bytes = $memory.ToArray()
+    } finally {
+        $memory.Dispose()
+        $entryStream.Dispose()
+    }
+    return ConvertFrom-StrictUtf8Bytes `
+        -Bytes $bytes `
+        -Description "Archive manifest" `
+        -Context "$ArchivePath :: $($Entry.FullName)"
+}
+
 function Assert-SiblingHash {
     param(
         [Parameter(Mandatory = $true)][string]$Directory,
@@ -107,7 +216,16 @@ function Assert-SiblingHash {
 
     $archivePath = Join-Path $Directory $ArchiveName
     $hashPath = "$archivePath.sha256"
-    $line = (Get-Content -LiteralPath $hashPath -Raw).Replace("`r`n", "`n").Replace("`r", "`n").TrimEnd("`n")
+    $text = ConvertFrom-StrictUtf8Bytes `
+        -Bytes ([System.IO.File]::ReadAllBytes($hashPath)) `
+        -Description "Sibling hash file" `
+        -Context $hashPath
+    if (-not $text.EndsWith("`n", [System.StringComparison]::Ordinal) -or
+        $text.EndsWith("`n`n", [System.StringComparison]::Ordinal) -or
+        $text.Substring(0, $text.Length - 1).Contains("`n", [System.StringComparison]::Ordinal)) {
+        throw "Sibling hash file must contain exactly one LF-terminated line: $hashPath"
+    }
+    $line = $text.Substring(0, $text.Length - 1)
     if ($line -cnotmatch '^([0-9a-f]{64})  (.+)$' -or $Matches[2] -cne $ArchiveName) {
         throw "Malformed sibling hash file: $hashPath"
     }
@@ -116,6 +234,121 @@ function Assert-SiblingHash {
         throw "Sibling hash does not match its archive: $hashPath"
     }
     return $actual
+}
+
+function Assert-ZipOrderingAndManifest {
+    param(
+        [Parameter(Mandatory = $true)][string]$ArchivePath,
+        [Parameter(Mandatory = $true)][string]$ManifestPath
+    )
+
+    $stream = [System.IO.File]::OpenRead($ArchivePath)
+    try {
+        $archive = [System.IO.Compression.ZipArchive]::new(
+            $stream,
+            [System.IO.Compression.ZipArchiveMode]::Read,
+            $false)
+        try {
+            $caseInsensitivePaths = [System.Collections.Generic.HashSet[string]]::new(
+                [System.StringComparer]::OrdinalIgnoreCase)
+            $caseInsensitiveDirectoryPrefixes = [System.Collections.Generic.HashSet[string]]::new(
+                [System.StringComparer]::OrdinalIgnoreCase)
+            $entryPaths = [System.Collections.Generic.List[string]]::new()
+            $entriesByPath = [System.Collections.Generic.Dictionary[
+                string, System.IO.Compression.ZipArchiveEntry]]::new(
+                [System.StringComparer]::Ordinal)
+            $manifestEntry = $null
+            $previousPath = $null
+            foreach ($entry in $archive.Entries) {
+                $path = $entry.FullName
+                Assert-SafeArchiveEntryPath `
+                    -ArchivePath $ArchivePath `
+                    -EntryPath $path `
+                    -CaseInsensitivePaths $caseInsensitivePaths `
+                    -CaseInsensitiveDirectoryPrefixes $caseInsensitiveDirectoryPrefixes
+                $timestamp = $entry.LastWriteTime
+                if ($timestamp.Year -ne 1980 -or $timestamp.Month -ne 1 -or
+                    $timestamp.Day -ne 1 -or $timestamp.Hour -ne 0 -or
+                    $timestamp.Minute -ne 0 -or $timestamp.Second -ne 0 -or
+                    $entry.ExternalAttributes -ne 0) {
+                    throw "Archive entry metadata is not canonical: $ArchivePath :: $path"
+                }
+                if ($null -ne $previousPath -and
+                    [System.StringComparer]::Ordinal.Compare($previousPath, $path) -ge 0) {
+                    throw "Archive entries are not in strict ordinal path order: $ArchivePath :: $previousPath then $path"
+                }
+                $entryPaths.Add($path)
+                $entriesByPath.Add($path, $entry)
+                $previousPath = $path
+                if ($path -ceq $ManifestPath) {
+                    $manifestEntry = $entry
+                }
+            }
+            if ($null -eq $manifestEntry) {
+                throw "Archive manifest entry is missing: $ArchivePath :: $ManifestPath"
+            }
+
+            $manifestText = Read-StrictManifestText `
+                -Entry $manifestEntry `
+                -ArchivePath $ArchivePath
+            if (-not $manifestText.EndsWith("`n", [System.StringComparison]::Ordinal) -or
+                $manifestText.EndsWith("`n`n", [System.StringComparison]::Ordinal)) {
+                throw "Archive manifest must end with exactly one LF: $ArchivePath :: $ManifestPath"
+            }
+            $manifestLines = @($manifestText.Substring(0, $manifestText.Length - 1).Split("`n"))
+            $manifestPaths = [System.Collections.Generic.List[string]]::new()
+            $previousManifestPath = $null
+            foreach ($line in $manifestLines) {
+                if ($line -cnotmatch '^([0-9a-f]{64})  (.+)$') {
+                    throw "Archive manifest contains a malformed line: $ArchivePath :: $ManifestPath"
+                }
+                $expectedHash = $Matches[1]
+                $path = $Matches[2]
+                if ($null -ne $previousManifestPath -and
+                    [System.StringComparer]::Ordinal.Compare($previousManifestPath, $path) -ge 0) {
+                    throw "Archive manifest paths are not in strict ordinal order: $ArchivePath :: $previousManifestPath then $path"
+                }
+                $manifestPaths.Add($path)
+                $previousManifestPath = $path
+
+                if (-not $entriesByPath.ContainsKey($path) -or $path -ceq $ManifestPath) {
+                    throw "Archive manifest names an absent or self-referential path: $ArchivePath :: $path"
+                }
+                $entryStream = $entriesByPath[$path].Open()
+                try {
+                    $actualHash = Get-StreamSha256 -Stream $entryStream
+                } finally {
+                    $entryStream.Dispose()
+                }
+                if ($actualHash -cne $expectedHash) {
+                    throw "Archive manifest hash does not match its entry: $ArchivePath :: $path"
+                }
+            }
+
+            [string[]]$expectedManifestPaths = @($entryPaths | Where-Object { $_ -cne $ManifestPath })
+            if ($manifestPaths.Count -ne $expectedManifestPaths.Count) {
+                throw "Archive manifest does not cover the exact non-manifest entry count: $ArchivePath"
+            }
+            for ($index = 0; $index -lt $expectedManifestPaths.Count; ++$index) {
+                if ($manifestPaths[$index] -cne $expectedManifestPaths[$index]) {
+                    throw "Archive manifest path set or order differs from the archive: $ArchivePath"
+                }
+            }
+            return [pscustomobject]@{
+                entryCount = $entryPaths.Count
+                manifestEntryCount = $manifestPaths.Count
+                ordinalOrderVerified = $true
+                manifestHashesVerified = $true
+                strictUtf8LfVerified = $true
+                windowsSafePathsVerified = $true
+                canonicalMetadataVerified = $true
+            }
+        } finally {
+            $archive.Dispose()
+        }
+    } finally {
+        $stream.Dispose()
+    }
 }
 
 function Get-ZipEntryHash {
@@ -133,17 +366,16 @@ function Get-ZipEntryHash {
         try {
             $caseInsensitivePaths = [System.Collections.Generic.HashSet[string]]::new(
                 [System.StringComparer]::OrdinalIgnoreCase)
+            $caseInsensitiveDirectoryPrefixes = [System.Collections.Generic.HashSet[string]]::new(
+                [System.StringComparer]::OrdinalIgnoreCase)
             $selected = $null
             foreach ($entry in $archive.Entries) {
                 $path = $entry.FullName
-                if ([string]::IsNullOrWhiteSpace($path) -or
-                    $path.Contains('\', [System.StringComparison]::Ordinal) -or
-                    [System.IO.Path]::IsPathRooted($path) -or
-                    $path.StartsWith('/', [System.StringComparison]::Ordinal) -or
-                    @($path.Split('/') | Where-Object { $_ -in @("", ".", "..") }).Count -ne 0 -or
-                    -not $caseInsensitivePaths.Add($path)) {
-                    throw "Archive contains an unsafe or duplicate path: $ArchivePath :: $path"
-                }
+                Assert-SafeArchiveEntryPath `
+                    -ArchivePath $ArchivePath `
+                    -EntryPath $path `
+                    -CaseInsensitivePaths $caseInsensitivePaths `
+                    -CaseInsensitiveDirectoryPrefixes $caseInsensitiveDirectoryPrefixes
                 if ($path -ceq $EntryPath) {
                     $selected = $entry
                 }
@@ -153,13 +385,7 @@ function Get-ZipEntryHash {
             }
             $entryStream = $selected.Open()
             try {
-                $algorithm = [System.Security.Cryptography.SHA256]::Create()
-                try {
-                    return [System.Convert]::ToHexString(
-                        $algorithm.ComputeHash($entryStream)).ToLowerInvariant()
-                } finally {
-                    $algorithm.Dispose()
-                }
+                return Get-StreamSha256 -Stream $entryStream
             } finally {
                 $entryStream.Dispose()
             }
@@ -197,6 +423,13 @@ $null = Assert-SiblingHash -Directory $candidateRoot -ArchiveName $binaryName
 $sourceSha256 = Assert-SiblingHash -Directory $referenceRoot -ArchiveName $sourceName
 $null = Assert-SiblingHash -Directory $candidateRoot -ArchiveName $sourceName
 $binaryArchivePath = Join-Path $referenceRoot $binaryName
+$sourceArchivePath = Join-Path $referenceRoot $sourceName
+$binaryOrdering = Assert-ZipOrderingAndManifest `
+    -ArchivePath $binaryArchivePath `
+    -ManifestPath "MANIFEST.sha256"
+$sourceOrdering = Assert-ZipOrderingAndManifest `
+    -ArchivePath $sourceArchivePath `
+    -ManifestPath "SOURCE-MANIFEST.sha256"
 $dllSha256 = Get-ZipEntryHash -ArchivePath $binaryArchivePath -EntryPath "SKSE/Plugins/BoundedEncounters.dll"
 $simulatorSha256 = Get-ZipEntryHash -ArchivePath $binaryArchivePath -EntryPath "tools/BoundedEncounters.Simulate.exe"
 
@@ -211,5 +444,9 @@ $simulatorSha256 = Get-ZipEntryHash -ArchivePath $binaryArchivePath -EntryPath "
     correspondingSourceArchiveSha256 = $sourceSha256
     dllSha256 = $dllSha256
     simulatorSha256 = $simulatorSha256
+    ordering = [ordered]@{
+        binary = $binaryOrdering
+        correspondingSource = $sourceOrdering
+    }
     files = $fileEvidence
 } | ConvertTo-Json -Depth 6

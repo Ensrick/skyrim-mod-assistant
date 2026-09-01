@@ -7,18 +7,18 @@
 
 namespace
 {
-	void SetupLogging()
+	[[nodiscard]] bool SetupLogging() noexcept
 	{
-		constexpr std::size_t maxLogBytes = 8U * 1024U * 1024U;
-		// spdlog's max_files argument counts rotated archives in addition to
-		// the active file: two archives keeps the total footprint to three files.
-		constexpr std::size_t retainedLogArchives = 2U;
-		auto directory = SKSE::log::log_directory();
-		if (!directory) {
-			return;
-		}
-		*directory /= "BoundedEncounters.log";
 		try {
+			constexpr std::size_t maxLogBytes = 8U * 1024U * 1024U;
+			// spdlog's max_files argument counts rotated archives in addition to
+			// the active file: two archives keeps the total footprint to three files.
+			constexpr std::size_t retainedLogArchives = 2U;
+			auto directory = SKSE::log::log_directory();
+			if (!directory) {
+				return false;
+			}
+			*directory /= "BoundedEncounters.log";
 			auto sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
 				directory->string(), maxLogBytes, retainedLogArchives, true);
 			auto log = std::make_shared<spdlog::logger>("BoundedEncounters", std::move(sink));
@@ -26,8 +26,11 @@ namespace
 			log->flush_on(spdlog::level::warn);
 			spdlog::set_default_logger(std::move(log));
 			spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%l] %v");
+			return true;
 		} catch (...) {
-			// Logging must never interrupt the desktop or block plugin startup.
+			// Never surface a desktop interruption. Without the bounded audit log,
+			// however, the plugin must not run—even in observe-only mode.
+			return false;
 		}
 	}
 
@@ -50,8 +53,9 @@ namespace
 		if (!a_message) {
 			return;
 		}
-		auto* manager = BoundedEncounters::EncounterManager::GetSingleton();
+		BoundedEncounters::EncounterManager* manager = nullptr;
 		try {
+			manager = BoundedEncounters::EncounterManager::GetSingleton();
 			switch (a_message->type) {
 			case SKSE::MessagingInterface::kDataLoaded: {
 				auto config = BoundedEncounters::LoadConfig(ConfigPath());
@@ -81,19 +85,31 @@ namespace
 				break;
 			}
 		} catch (const std::exception& error) {
+			if (manager) {
+				manager->Disable();
+			}
 			const auto diagnostic = BoundedEncounters::MakeBoundedDiagnostic(error.what());
-			logger::critical("message handling failed safely: {}", diagnostic.View());
-			manager->Disable();
+			try {
+				logger::critical("message handling failed safely: {}", diagnostic.View());
+			} catch (...) {
+			}
 		} catch (...) {
-			logger::critical("message handling failed safely with an unknown exception");
-			manager->Disable();
+			if (manager) {
+				manager->Disable();
+			}
+			try {
+				logger::critical("message handling failed safely with an unknown exception");
+			} catch (...) {
+			}
 		}
 	}
 }
 
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
-	SetupLogging();
+	if (!SetupLogging()) {
+		return false;
+	}
 	try {
 		const auto skseVersion = REL::Version::unpack(a_skse->SKSEVersion());
 		logger::info(
@@ -124,10 +140,16 @@ SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 		return true;
 	} catch (const std::exception& error) {
 		const auto diagnostic = BoundedEncounters::MakeBoundedDiagnostic(error.what());
-		logger::critical("plugin load failed safely: {}", diagnostic.View());
+		try {
+			logger::critical("plugin load failed safely: {}", diagnostic.View());
+		} catch (...) {
+		}
 		return false;
 	} catch (...) {
-		logger::critical("plugin load failed safely with an unknown exception");
+		try {
+			logger::critical("plugin load failed safely with an unknown exception");
+		} catch (...) {
+		}
 		return false;
 	}
 }
