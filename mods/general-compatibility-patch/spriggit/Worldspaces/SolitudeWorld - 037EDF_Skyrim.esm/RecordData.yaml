@@ -1,0 +1,23 @@
+FormKey: 037EDF:Skyrim.esm
+EditorID: SolitudeWorld
+Name:
+  TargetLanguage: English
+  Value: Solitude
+Location: 018A5A:Skyrim.esm
+Parent:
+  Worldspace: 00003C:Skyrim.esm
+  Flags:
+  - UseLandData
+  - UseLodData
+  - UseMapData
+  - UseWaterData
+  - UseClimateData
+  - UseSkyCell
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+- NoGrass
+ObjectBoundsMin: -19, -3
+ObjectBoundsMax: 4, 30
+Music: 02C3CA:Skyrim.esm

@@ -1,0 +1,25 @@
+FormKey: 01A26F:Skyrim.esm
+EditorID: WhiterunWorld
+Version2: 7
+Name:
+  TargetLanguage: English
+  Value: Whiterun
+Location: 018A56:Skyrim.esm
+Parent:
+  Worldspace: 00003C:Skyrim.esm
+  Flags:
+  - UseLandData
+  - UseLodData
+  - UseMapData
+  - UseWaterData
+  - UseClimateData
+  - UseSkyCell
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 0.25
+Flags:
+- SmallWorld
+- NoLodWater
+- NoGrass
+ObjectBoundsMin: -3, -12
+ObjectBoundsMax: 17, 16
+Music: 02C3CA:Skyrim.esm

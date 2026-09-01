@@ -1,0 +1,25 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Ensrick General Compatibility Patch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: Generated override-only patch preserving Lux Orbis CS, Water for ENB, and Bruma field ownership.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Dragonborn.esm
+    FileSize: 0
+  - Master: BSAssets.esm
+    FileSize: 0
+  - Master: BSHeartland.esm
+    FileSize: 0
+  - Master: Lux Orbis CS.esp
+    FileSize: 0
+  - Master: Water for ENB (Shades of Skyrim).esp
+    FileSize: 0
+  - Master: Water for ENB - Patch - Beyond Skyrim.esp
+    FileSize: 0

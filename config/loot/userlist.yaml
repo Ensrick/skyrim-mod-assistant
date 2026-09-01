@@ -36,6 +36,10 @@ plugins:
     after:
       - 'Ensrick Lux Water CS Patch.esp'
       - 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+      - 'Lux Orbis CS.esp'
+      - 'PROTEUS.esp'
+      - 'Skyrim Unbound.esp'
+      - 'Water for ENB - Patch - Beyond Skyrim.esp'
       - 'A Clear Map of Skyrim.esp'
       - 'ACMOS - Bruma.esp'
 

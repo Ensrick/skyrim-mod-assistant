@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick General Compatibility Patch",
+  "version": "0.1.0",
+  "generatedDate": "2026-08-29",
+  "decision": {
+    "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/47",
+    "choice": "A",
+    "input": "records/synthesis/compatibility-sweep-2026-08-29/decisions.json"
+  },
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warningsAsErrors": true
+  },
+  "inputs": {
+    "profile": "Compatibility Audit LOOT Rules 2026-08-29",
+    "activeSourceProfile": "Default",
+    "effectiveLoadOrderEntries": 174,
+    "effectiveLoadOrderSha256": "5556BC4D50B08747B72712AA348FF41E650A56C34779C217FD0A02001EDA9A73",
+    "frozenDefault": {
+      "modlistSha256": "58DF125EC754D31DA69D4D90C9A0750F393B0B7B15ED8167D71555CC7EB789DA",
+      "pluginsSha256": "798D089AE4C49ADC9225B9D629D8515DC8C5583D373C2B6ACE2BE9B701492C69",
+      "loadorderSha256": "0F2B6939535B6679719533A52E6F637DA40744C0E61B99761ECCF830504DA5B4"
+    }
+  },
+  "output": {
+    "plugin": "Ensrick General Compatibility Patch.esp",
+    "sha256": "ADAED3D2704F98E491773284F3BEE0C480FA72088F5D519D4566EC784B906334",
+    "bytes": 7630,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 14,
+    "recordTypes": {
+      "WRLD": 12,
+      "CELL": 2
+    },
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Dragonborn.esm",
+      "BSAssets.esm",
+      "BSHeartland.esm",
+      "Lux Orbis CS.esp",
+      "Water for ENB (Shades of Skyrim).esp",
+      "Water for ENB - Patch - Beyond Skyrim.esp"
+    ]
+  },
+  "expectedValues": {
+    "path": "expected-values.json",
+    "sha256": "73B8C750AA78E044F0242235E9E7901F6036298CE07A2E2327E29309AF794E08",
+    "activeProfilePlugins": 99,
+    "targets": 14,
+    "intentionalItms": 3
+  },
+  "spriggit": {
+    "package": "Spriggit.Yaml.Skyrim",
+    "version": "0.41.0",
+    "path": "spriggit",
+    "treeSha256": "D71650F7DA239C89C797F068A50AF7B6BAFB502823C3DAC6BB44EDE0CF183DA0",
+    "checkedRoundTrip": true
+  },
+  "archive": {
+    "localPath": "work/Ensrick-General-Compatibility-Patch-0.1.0.zip",
+    "sha256": "3A633723CFE528BB7A8647334920CEA965C2BA232E661342A6684B1817246163",
+    "bytes": 2854,
+    "entries": 1,
+    "deterministicTimestamp": "2000-01-01T00:00:00Z",
+    "committed": false
+  },
+  "validation": {
+    "selfTest": "pass",
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "knownVulnerablePackages": 0,
+    "recordsChecked": 14,
+    "selectedFieldsChecked": 374,
+    "waterFieldsComparedToFinalWinner": 48,
+    "linksChecked": 62,
+    "unresolvedLinks": 0,
+    "missingOrLateMasters": 0,
+    "hardMasters": 7,
+    "expectedValuesVerified": true,
+    "intentionalItmsPreserved": 3,
+    "packageAudit": "pass",
+    "gameplayAcceptance": "pending"
+  },
+  "deployment": {
+    "installed": false,
+    "activeProfileChanged": false,
+    "gameLaunched": false,
+    "vendorFilesModified": false
+  },
+  "relationship": {
+    "existingPatch": "Ensrick Lux Water CS Patch.esp",
+    "existingPatchRecords": 559,
+    "existingPatchRemainsSeparate": true,
+    "loadAfterExistingPatch": true
+  }
+}

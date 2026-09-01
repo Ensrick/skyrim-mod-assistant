@@ -1,0 +1,28 @@
+FormKey: 016D71:Skyrim.esm
+EditorID: MarkarthWorld
+Name:
+  TargetLanguage: English
+  Value: Markarth
+Location: 018A59:Skyrim.esm
+Parent:
+  Worldspace: 00003C:Skyrim.esm
+  Flags:
+  - UseMapData
+  - UseSkyCell
+Climate: 000812:Skyrim.esm
+Water: 000018:Skyrim.esm
+LodWater: 000018:Skyrim.esm
+LodWaterHeight: 0
+LandDefaults:
+  DefaultLandHeight: -27000
+  DefaultWaterHeight: -14000
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 0.25
+Flags:
+- SmallWorld
+- NoGrass
+ObjectBoundsMin: -48, -3
+ObjectBoundsMax: -30, 6
+Music: 02C3CA:Skyrim.esm
+HdLodDiffuseTexture: Data\Textures\Landscape\Mountains\MountainSlab02.dds
+HdLodNormalTexture: Data\Textures\Landscape\Mountains\MountainSlab02_N.dds

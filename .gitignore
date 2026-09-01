@@ -131,6 +131,26 @@
 
 !/records/solitude-trellis-stalls-installation-2026-08-30.md
 
+!/mods/general-compatibility-patch/
+!/mods/general-compatibility-patch/*.md
+!/mods/general-compatibility-patch/*.json
+!/mods/general-compatibility-patch/*.ps1
+!/mods/general-compatibility-patch/*.py
+!/mods/general-compatibility-patch/generator/
+!/mods/general-compatibility-patch/generator/*.cs
+!/mods/general-compatibility-patch/generator/*.csproj
+!/mods/general-compatibility-patch/generator/*.props
+!/mods/general-compatibility-patch/generator/packages.lock.json
+!/mods/general-compatibility-patch/spriggit/
+!/mods/general-compatibility-patch/spriggit/**/
+!/mods/general-compatibility-patch/spriggit/**/*.json
+!/mods/general-compatibility-patch/spriggit/**/*.yaml
+
+/mods/general-compatibility-patch/generator/bin/
+/mods/general-compatibility-patch/generator/obj/
+/mods/general-compatibility-patch/package/
+/mods/general-compatibility-patch/work/
+
 !/ports/
 !/ports/lost-longswords/
 !/ports/lost-longswords/*.md

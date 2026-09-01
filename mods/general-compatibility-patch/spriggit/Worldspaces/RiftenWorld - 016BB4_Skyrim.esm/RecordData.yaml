@@ -1,0 +1,23 @@
+FormKey: 016BB4:Skyrim.esm
+EditorID: RiftenWorld
+Name:
+  TargetLanguage: English
+  Value: Riften
+Location: 018A58:Skyrim.esm
+Parent:
+  Worldspace: 00003C:Skyrim.esm
+  Flags:
+  - UseLandData
+  - UseLodData
+  - UseMapData
+  - UseClimateData
+  - UseSkyCell
+Water: 0F2407:Skyrim.esm
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+- NoGrass
+ObjectBoundsMin: -1, -27
+ObjectBoundsMax: 45, 1
+Music: 02C3CA:Skyrim.esm

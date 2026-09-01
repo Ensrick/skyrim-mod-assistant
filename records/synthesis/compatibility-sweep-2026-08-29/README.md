@@ -5,5 +5,9 @@ compatibility patch. It contains only record identities and field ownership;
 it contains no vendor assets, downloaded archives, plugin binaries, private
 paths, or credentials.
 
-The plugin must not be generated or promoted until the user approves the
-conflict choices documented in `docs/COMPATIBILITY-SWEEP-2026-08-29.md`.
+Decision A was approved on 2026-08-29. Its generator, Spriggit source, and
+headless audit are tracked under `mods/general-compatibility-patch`. The binary
+plugin remains uninstalled and the active profile remains unmodified pending
+foreground acceptance. `expected-values.json` in the implementation pins the
+current 99-plugin profile hashes, participating input hashes, target values,
+seven-master order, and three intentional ITMs.
