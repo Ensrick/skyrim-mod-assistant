@@ -36,6 +36,13 @@ Nexus release approval.
       four-file release directories, including byte-identical DLL and simulator
       payloads; a signed-tag build also matches the canonical successful
       protected-main artifact for that commit.
+- [ ] Binary and corresponding-source ZIP entries are in strict ordinal path
+      order, and each internal manifest lists its exact non-manifest path set in
+      the same strict ordinal order.
+- [ ] The independent comparison gate recomputes every internal hash, enforces
+      canonical UTF-8-without-BOM/LF manifests and normalized ZIP metadata, and
+      requires canonical one-line sibling hashes while rejecting Windows-unsafe
+      or ambiguous extraction paths.
 - [ ] `MANIFEST.sha256` verifies every payload file.
 - [ ] SPDX SBOM parses and identifies the release commit.
 - [ ] Binary archive contains the verbatim CommonLibSSE-NG `COPYING` and

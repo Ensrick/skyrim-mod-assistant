@@ -66,9 +66,12 @@ jobs:
             "SOURCE_DATE_EPOCH=$epoch`n",
             [System.Text.UTF8Encoding]::new($false))
 
-      - name: Test deterministic provenance normalization
+      - name: Test deterministic package primitives
         shell: pwsh
-        run: .\tools\test-package-normalization.ps1
+        run: |
+          .\tools\test-file-ordering.ps1
+          .\tools\test-package-comparison.ps1
+          .\tools\test-package-normalization.ps1
 
       - name: Initialize isolated vcpkg downloads
         shell: pwsh

@@ -299,7 +299,13 @@ diagnostics and are not claimed reproducible; the released SPDX projection does
 not invent checksums for them. Release CI runs two isolated, cache-disabled
 builds and requires byte-identical DLL, simulator, binary archive,
 corresponding-source archive, and both sibling hash files. A tag build must also
-match the canonical successful protected-main artifact for the same commit.
+match the canonical successful protected-main artifact for the same commit. The
+comparison gate independently requires both ZIP entry sequences and both
+internal-manifest path sequences to be in strict ordinal order and to describe
+the exact same non-manifest path sets. It also recomputes every internal hash,
+requires canonical UTF-8-without-BOM/LF manifests and normalized ZIP metadata,
+requires canonical one-line UTF-8-without-BOM/LF sibling hashes, and rejects
+paths that are ambiguous or unsafe when extracted on Windows.
 
 The signed `bounded-encounters/v0.1.0-alpha.1` tag was a build-validation tag
 and was never released. Its cross-run package comparison exposed the volatile

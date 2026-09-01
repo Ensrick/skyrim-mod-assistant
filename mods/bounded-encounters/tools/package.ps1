@@ -14,6 +14,7 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 
 Import-Module (Join-Path $PSScriptRoot "VcpkgSpdxNormalization.psm1") -Force
+Import-Module (Join-Path $PSScriptRoot "DeterministicFileOrder.psm1") -Force
 
 $RepoRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
 if ([string]::IsNullOrWhiteSpace($StageRoot)) {
@@ -63,36 +64,6 @@ function Get-RelativeSlashPath {
     )
 
     return [System.IO.Path]::GetRelativePath($Base, $Path).Replace('\', '/')
-}
-
-function Get-FilesSortedOrdinal {
-    param([Parameter(Mandatory = $true)][string]$Root)
-
-    [object[]]$files = @(Get-ChildItem -LiteralPath $Root -File -Recurse)
-    [string[]]$keys = @($files | ForEach-Object {
-            Get-RelativeSlashPath -Base $Root -Path $_.FullName
-        })
-    $caseInsensitivePaths = [System.Collections.Generic.HashSet[string]]::new(
-        [System.StringComparer]::OrdinalIgnoreCase)
-    foreach ($key in $keys) {
-        if (-not $caseInsensitivePaths.Add($key)) {
-            throw "File tree contains a case-insensitive duplicate path: $Root :: $key"
-        }
-    }
-    [System.Array]::Sort($keys, $files, [System.StringComparer]::Ordinal)
-    return $files
-}
-
-function Sort-ObjectsByOrdinalKey {
-    param(
-        [AllowEmptyCollection()][object[]]$Values,
-        [Parameter(Mandatory = $true)][scriptblock]$KeySelector
-    )
-
-    [object[]]$copy = @($Values)
-    [string[]]$keys = @($copy | ForEach-Object { [string](& $KeySelector $_) })
-    [System.Array]::Sort($keys, $copy, [System.StringComparer]::Ordinal)
-    return $copy
 }
 
 function Get-FileSha256 {
@@ -1379,7 +1350,7 @@ try {
             -Path (Join-Path $dependencySourceRoot "installed/status.txt") `
             -Content (ConvertTo-VcpkgStatusParagraph -Entry $installedEntry)
         $dependencyFeatures = @()
-        $dependencyFeatureEntries = @(Sort-ObjectsByOrdinalKey -Values @(
+        $dependencyFeatureEntries = @(Get-ObjectsSortedByOrdinalKey -Values @(
                 $featureStatusEntries | Where-Object {
                     $_["Package"] -eq $dependencyName -and $_["Architecture"] -eq $triplet
                 }) -KeySelector { param($entry) [string]$entry["Feature"] })

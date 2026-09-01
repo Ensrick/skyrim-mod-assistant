@@ -108,8 +108,12 @@ Archive the smoke output as a CI artifact.
   completed the build and CTest, without claiming an offline reconstruction;
 - two isolated, cache-disabled builds made from the same commit and
   `SOURCE_DATE_EPOCH` produce byte-identical binary/source ZIPs and sibling hash
-  files, with identical DLL and simulator payloads; a signed-tag candidate must
-  also reproduce the canonical successful protected-main artifact for that exact
+  files, with identical DLL and simulator payloads; both ZIP entry sequences and
+  internal-manifest path sequences are strict ordinal orderings of their exact
+  path sets; all internal hashes, canonical manifest encoding, normalized ZIP
+  metadata, canonical sibling-hash encoding, and Windows-safe extraction paths
+  pass the independent comparison gate; a signed-tag candidate must also
+  reproduce the canonical successful protected-main artifact for that exact
   commit; and
 - package SHA-256 recorded in the GitHub prerelease.
 
