@@ -151,6 +151,49 @@ absent from the crash module list).
    *Test*: only if the DLL-park launch still fails - disable the 08-30/31
    content plugins as a block.
 
+## Follow-up evidence round (same night, from the #141 watchdog work)
+
+Three claims arrived after the first draft; each was checked against artifacts.
+
+**1. "The 22:13 hang is a pure WAIT, not slow work" - CONFIRMED, with a
+caveat.** `audit/threaddump.py` walked all 17 captured stacks: none executing.
+Main thread in a win32u message wait (overlay frames are hook wrappers on the
+pump), CS pool parked, engine pools parked. Folded in: the hang is a wait that
+never completes, not slow loading. Caveat unchanged: 110 of 127 threads -
+including the loader thread - were never captured, so blocked-on-lock vs
+waiting-for-an-event cannot be distinguished. Note also the runs differ: the
+22:09 dump run showed nothing computing, while the 22:40 crash run burned ~3
+cores at the same phase. Both end states are compatible with the corruption
+hypothesis (what got stomped differs per run).
+
+**2. "A session at 22:44 reached the menu and exited normally" - NOT SUPPORTED
+by any artifact; treat as misreport.** The full usvfs listing has exactly six
+logs (22:02:52 through 22:47:19), nothing between 22:42:17 (crash-run log
+close) and 22:47:19. Every game launch tonight went through MO2
+(`moshortcut://:SKSE` per mo_interface.log), so a session without a usvfs log
+would be a non-MO2 launch - and there is no trace of one: the game rewrites
+SkyrimPrefs on clean exit, yet profile `skyrimprefs.ini` mtime stayed 22:08:30
+all night; all SKSE plugin logs start 22:47:22 (run 6). Until someone produces
+the 22:44 artifact, the failure is 4-for-4 post-INI-restore, not intermittent.
+(Bonus timeline fix: MO2 saved its lists and exited at 22:49:18, so run 6
+lived ~2 minutes - same shape as the other hangs.)
+
+**3. "Stale 92-plugin `%LOCALAPPDATA%\Skyrim Special Edition\Plugins.txt`" -
+REFUTED for the failing runs by the crash log itself.** The file is real: 92
+active entries, mtime 2026-08-28 14:05:33, untouched since. But the crash
+log's in-engine enumeration shows 311 plugins loaded = 80 official (5 base +
+CC + _ResourcePack) + exactly 231 modded - the profile list to the plugin,
+including 08-30/31 content (3DNPC, ACMOS, Freak's Floral, Landscape and Water
+Fixes) that a list seeded 08-28 could not contain. MO2 2.5.2/usvfs 0.5.7.2 DID
+virtualize plugins.txt for these launches, reads and writes both (profile
+plugins.txt rewritten 22:49:18 at MO2 exit; the LOCALAPPDATA copy is a stale
+husk). `launch_skyrim.ps1` seeding remains belt-and-suspenders for non-MO2
+launch paths, but the engine was not running a 92-plugin list tonight.
+
+**OAR/CRD addendum**: their removal did not move the stall line - identical
+before and after the parks - so they are innocent of the hang (still real init
+failures in their own right per #140).
+
 ## Ruled out by evidence
 
 - **OAR / CRD / Light Placer**: parked before run 1; absent from crash module
@@ -162,6 +205,10 @@ absent from the crash module list).
 - **OOM**: 3.9GB WS, 25GB physical free.
 - **A plugin DLL as the *faulting* code**: the AV is inside SkyrimSE.exe.
   (Does not rule plugins out as the *corrupter*.)
+- **Stale LOCALAPPDATA Plugins.txt (92 entries)**: refuted by the crash log's
+  own 311-plugin enumeration - see follow-up evidence item 3.
+- **Intermittency**: no artifact supports the reported 22:44 clean session -
+  see follow-up evidence item 2. 4-for-4 failures post-INI-restore.
 
 ## Recommendation - the single next test
 
