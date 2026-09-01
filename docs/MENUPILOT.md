@@ -44,37 +44,80 @@ Every result line carries `id=` matching its `COMMAND` echo. `RESULT ok=0`
 carries `reason=`. `menu.open`/`close` results mean *queued*, not done - the
 UI thread applies them next frame.
 
-## What the Creations store turned out to expose (2026-09-01 session)
+## The Creations store: what two piloted sessions established (2026-09-01)
 
-Full trace: `records/menupilot-cc-discovery-2026-09-01.log`.
+Records: `records/menupilot-cc-discovery-2026-09-01.log` (first session),
+`records/menupilot-farming-attempt-2026-09-01.md` (launches 1+2 below, with
+the pilot/probe logs under `records/tool-runs/*20260901-launch[12]*`).
 
-- clib-ng declares `RE::CreationClubMenu` ("Creation Club Menu",
-  `creationclub.swf`, an IMenu + **GFxFunctionHandler** whose download flow is
-  native `Call` dispatch, not Papyrus) - but **this 1.7.104 runtime does not
-  register that name at all**. `menu.list` shows 39 menus; the store-adjacent
-  names are `Mod Manager Menu` (untested; the likely Creations UI) and
-  `Marketplace Menu`.
-- **`Marketplace Menu` is a red herring**: kShow loads
-  `Interface/CreditsMenu.swf`; `_root.CodeObj` = closeMenu / getScrollSpeed /
-  requestCredits only.
-- **Never cold-kShow store surfaces from in-game context.** Doing so ran the
-  movie without its native backing and an engine worker AV'd ~3s later
-  (SkyrimSE.exe+059F446, crash-2026-09-01-17-29-31.log; not in
-  MenuPilot.dll). Store surfaces must be driven from the MAIN MENU, ideally by
-  input-navigating the engine's own CREATIONS entry so the engine performs its
-  prefetch, then `gfx.dump`-ing what appears.
-- Verified this session: command bridge round-trip, `menu.list/open/close/
-  query`, `gfx.dump` (all in-game); `input.tap` implemented but not yet
-  exercised - a person took over the desktop mid-session and pilot driving
-  stopped.
-- The Farming (`ccvsvsse004`) re-download was therefore NOT executed yet.
-  Next session, at the main menu: `menu.query`/`gfx.dump` on
-  `Mod Manager Menu`, else `input.tap` down the Main Menu list to CREATIONS +
-  Accept, then dump the screen that opens for its item list and download
-  method. Least-bad manual fallback: main menu -> CREATIONS -> owned list ->
-  Farming -> download.
+**Verified, main-menu context (`Interface/StartMenu.swf`):**
 
-**Operational notes**: menupilot.log truncates per launch - archive it before
-relaunching. One in-flight commands.jsonl at a time; a file left unclaimed
-when the game dies executes on the NEXT launch - `menupilot.py status` warns,
-delete it if stale.
+- `_root.MenuHolder.Menu_mc.MainList.EntriesA[i].text` holds the entries:
+  `$CONTINUE $NEW $LOAD $CREATIONS $CREDITS $QUIT` (6 entries; CREATIONS is
+  list position 3, engine index 5). Read the selection back with
+  `MainList.iSelectedIndex` / `MainList.selectedEntry.text` (use `EntriesA.3.text`
+  dotted-index syntax for `gfx.get`; `[3]` fails in GetVariable).
+- `input.tap` works end to end: `Down`=208, `Up`=200, `Accept`=28 (Enter),
+  `Cancel`=15 (Tab) move/act exactly like the keyboard. ALWAYS read
+  `selectedEntry.text` back before `Accept`: the selection does NOT reliably
+  reset to 0 after a sub-screen closes (it did once, not the second time; a
+  blind Down x3 landed on QUIT).
+- Accept on CREATIONS = engine flow: `Login Menu` opens (silent Bethesda.net
+  login via the linked Steam account, ~0.3s, no modal), then `Marketplace
+  Menu` opens and Login closes. `Cancel` (Tab) closes the store cleanly.
+- Quit: select `$QUIT`, Accept -> `strCurrentState="MainConfirm"`,
+  `ConfirmPanel_mc.textField.text="Quit to desktop? ..."`, Accept again ->
+  clean process exit (no crash log). This is the exit to use after any
+  download; never kill the process while the store may be writing.
+
+**The store itself is a NATIVE UI, unreadable and undrivable by this pilot:**
+
+- `Marketplace Menu` is the Creations store when the ENGINE opens it, but its
+  movie is a placeholder: `menu.query` says `Interface/CreditsMenu.swf` and the
+  dump is credits-only (`CodeObj.closeMenu/getScrollSpeed/requestCredits`).
+  The visible store is drawn natively (`MarketplaceMenu::InputHandler`,
+  `BSMarketplaceImage`, `MarketplaceTextures.bsa`,
+  `MarketplaceCategoryConfiguration.json` in the exe; no CEF/webview module
+  loaded). No Scaleform member reflects its tiles, tabs, options list or
+  confirm prompts. The documented "press O -> Download all owned Creation Club
+  Creations" path exists (Steam guide 3107226125) but pressing O produced no
+  Scaleform menu and no `MessageBoxMenu`; the same options list holds Delete
+  All / Disable All with native sure-prompts (`CreationsSurePromptDeleteAll`
+  etc.), so blind Accepts there are forbidden.
+- `bUpsellOwned=0` (SkyrimPrefs, the first-run state that re-acquired owned
+  content on 08-31) does NOT trigger a download by itself: 10 minutes at the
+  main menu plus two store visits, `DLCPanel.warningText="Loading Add-Ons"`
+  and `LoadingContentMessage._visible=true` the whole time, no file written.
+  The 08-31 re-download therefore needed something the reset INI carried
+  beyond that key (probably `uiMarketplaceUpdatedHash=0`; untested) or a
+  human click. Restore the key to 1 afterwards (preflight FAILs on 0).
+- `DownloadAll`, `CreationClub`, `OpenMarketplace`, `LoadDLC`,
+  `DoLoadDLCPlugins`, `Sky10DLCPressed` are the main menu's FxDelegate
+  callbacks (exe string table, next to `OpenCreditsMenu`). They are NOT
+  members of `_root.CodeObj` / `Menu_mc.codeObj` (those 13 members are the
+  login handlers only) so they cannot be hit with `gfx.invoke` on a script
+  object. **`gfx.invoke` of `_global.flash.external.ExternalInterface.call`
+  ["OpenCreditsMenu"] CRASHES the game**: AV at `SkyrimSE.exe+117AB19`
+  (null string compare) under `MenuPilot.dll` main.cpp:570 `view->Invoke`
+  (`crash-2026-09-01-18-43-46.log`, archived in `records/tool-runs/`). The
+  delegate dispatch expects the GameDelegate marshalling, not a bare Invoke.
+  A future pilot op would have to call the registered `FxDelegateHandler`
+  natively (`RE::FxDelegate` lookup by name) rather than go through the movie.
+- Never cold-kShow `Marketplace Menu` from in-game context (first session:
+  engine worker AV ~3s later, `crash-2026-09-01-17-29-31.log`).
+
+**Bottom line for the Farming (`ccvsvsse004`) BSA:** not re-downloadable
+headlessly with the current pilot. Manual path (~30s): main menu -> CREATIONS
+-> press O -> "Download all owned Creation Club Creations" -> confirm; expect
+`Data\ccvsvsse004-beafarmer.bsa` = 18,261,078 bytes (ContentCatalog.txt
+FilesSize 18,746,124 minus the 485,046-byte esl). Then quit via the menu.
+
+**Operational notes**: `menupilot.log` truncates per launch - archive it
+before relaunching. One in-flight `commands.jsonl` at a time; a file left
+unclaimed when the game dies executes on the NEXT launch - `menupilot.py
+status` warns, delete it if stale. Command ids continue across batches within
+one launch. Agent shells reset their cwd between calls: invoke the driver by
+absolute path (`py -3 C:\Users\danjo\source\repos\skyrim-mod-assistant\audit\menupilot.py`),
+a relative path silently sends nothing. Reach the main menu with
+`launch_verify.py --no-autoload --leave-running` (verdict `MENU-ONLY`, never a
+PASS; the record says so).

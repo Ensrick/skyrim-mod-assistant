@@ -34,6 +34,30 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-01 18:47 - Farming CC re-download via MenuPilot: BLOCKED by the native store; 2 launches, no build change (#142)
+
+- **What:** No file changed in the build. Attempted `ccvsvsse004-beafarmer.bsa`
+  re-acquisition headlessly: (1) main menu -> CREATIONS through `input.tap`
+  (first real exercise; Down/Up/Accept/Cancel verified with text readback);
+  the engine opened `Login Menu` then `Marketplace Menu`, whose movie is the
+  `CreditsMenu.swf` placeholder - the store is native, nothing readable, so no
+  blind input was sent into it. (2) `bUpsellOwned=0` first-run state for 10
+  min plus two store visits: no download. (3) `gfx.invoke` of
+  `ExternalInterface.call("OpenCreditsMenu")` to reach the main menu's
+  `DownloadAll` FxDelegate callback: AV `SkyrimSE.exe+117AB19`
+  (`crash-2026-09-01-18-43-46.log`). Cleanup: both INIs restored to pre-edit
+  SHA256, preflight clean, Steam restarted from a clean env (#141), claim
+  released. Tooling: `launch_verify.py --no-autoload` (verdict `MENU-ONLY`,
+  never PASS), `docs/MENUPILOT.md` store section rewritten,
+  `records/menupilot-farming-attempt-2026-09-01.md`, logs in `records/tool-runs/`.
+  Remaining #142 item stays open with the ~30s manual path (CREATIONS -> O ->
+  "Download all owned Creation Club Creations"); expected bsa 18,261,078 B.
+- **Source:** team-lead task (finish #142), user launch mandate; Steam guide
+  3107226125 for the options-key path; `ContentCatalog.txt` for the size.
+- **Verification:** MENU-ONLY x2 (`records/launch-verify-20260901-181756.md`,
+  t+48.8s; launch 2 t+31.6s) - deliberately no save load; build state
+  identical to the 17:28 PASS baseline.
+
 ## 2026-09-01 18:45 - Hardening package 1/3: instance work claim, canonical-checkout guard, preflight gates (#103, #105, #102, #143, #140, #144)
 
 - **What:** (1) `audit/claim.py` - the instance work claim

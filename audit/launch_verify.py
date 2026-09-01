@@ -10,6 +10,8 @@ or it's a failure."* This is that test, as a pass/fail command.
   py -3 audit/launch_verify.py --save Save7_17674846_0_...  # a specific save
   py -3 audit/launch_verify.py --leave-running   # never kill, inspect it yourself
   py -3 audit/launch_verify.py --attach-pid N    # self-test: watch a process, no launch
+  py -3 audit/launch_verify.py --no-autoload --leave-running  # stop at the MAIN MENU (menu
+                                                 # pilot work); verdict MENU-ONLY, never PASS
 
 PASS requires BOTH:
   1. the real main menu open within --menu-budget seconds of process start, and
@@ -146,6 +148,9 @@ def decide(st, cfg):
     if st['menu_at'] is None and st['elapsed'] > cfg['menu_budget']:
         return True, 'FAIL', (f'no main menu within {cfg["menu_budget"]:.0f}s '
                               f'(last probe event: {st["detail"] or "none"})')
+    if cfg.get('no_autoload') and st['menu_at'] is not None:
+        return True, 'MENU-ONLY', (f'main menu at {st["menu_at"]:.1f}s; no save load was '
+                                   f'requested (--no-autoload), so this is NOT a PASS')
     if st['save_at'] is not None:
         return True, 'PASS', (f'main menu at {st["menu_at"]:.1f}s, save loaded at '
                               f'{st["save_at"]:.1f}s')
@@ -225,10 +230,12 @@ def verify(cfg):
                         f'would mean anything. Install {PROBE_STAGED} (the team lead '
                         'schedules this), or re-run with --allow-unverified-signal '
                         'for a timing observation that can never PASS.')
-    if not save:
+    if not save and not cfg['no_autoload']:
         blockers.append(f'no .ess save found in {save_dir}')
 
-    env = {'SKYRIM_LAUNCH_PROBE_AUTOLOAD': save or '',
+    # An empty SKYRIM_LAUNCH_PROBE_AUTOLOAD disables the probe's autoload
+    # (LaunchProbe main.cpp: AutoLoadEnabled() == !autoLoadSave.empty()).
+    env = {'SKYRIM_LAUNCH_PROBE_AUTOLOAD': '' if cfg['no_autoload'] else (save or ''),
            'SKYRIM_LAUNCH_PROBE_DELAY_MS': str(int(cfg['settle_ms'])),
            'SKSE_AUTOMATION_SILENT_UI': '1'}
     plan = [f'would run: pwsh -NoProfile -NonInteractive -File {LAUNCHER} '
@@ -341,8 +348,8 @@ def verify(cfg):
                             (r.probe[-1]['event'] if r.probe else None))}, cfg)
             if done:
                 r.reason = reason
-                if verdict == 'PASS':
-                    r.verdict = 'PASS'
+                if verdict in ('PASS', 'MENU-ONLY'):
+                    r.verdict = verdict
                 elif state in W.HANG:
                     r.evidence += ev
                     r.threads = W.busiest_threads(pid)
@@ -387,7 +394,9 @@ def write_record(r, cfg):
          f'- verdict: **{r.verdict}**',
          f'- reason: {r.reason}',
          f'- criterion: main menu within {cfg["menu_budget"]:.0f}s of process start '
-         f'AND a save loaded',
+         f'AND a save loaded'
+         + (' (--no-autoload: save load deliberately skipped, MENU-ONLY is not a PASS)'
+            if cfg.get('no_autoload') else ''),
          f'- pid: {r.pid}', '']
     if r.phases:
         L += ['## Timing (seconds after SkyrimSE.exe started)', '',
@@ -507,6 +516,7 @@ def main():
         'save': opt('--save', str, None),
         'dry_run': '--dry-run' in a,
         'leave_running': '--leave-running' in a,
+        'no_autoload': '--no-autoload' in a,      # stop at the main menu (MenuPilot)
         'allow_unverified': '--allow-unverified-signal' in a,
         'attach_pid': opt('--attach-pid', int, None),   # self-test seam, see verify()
     }
@@ -547,7 +557,7 @@ def main():
             print('\nthread dump taken during this run:')
             TD.report(dump)
         print(f'\nrecord: {write_record(r, cfg)}')
-    return 0 if r.verdict in ('PASS', 'DRY-RUN') else 1
+    return 0 if r.verdict in ('PASS', 'DRY-RUN', 'MENU-ONLY') else 1
 
 
 if __name__ == '__main__':
