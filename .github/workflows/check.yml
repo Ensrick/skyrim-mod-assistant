@@ -48,3 +48,7 @@ jobs:
             $failures | Write-Error
             exit 1
           }
+
+      - name: Test Python audit safeguards
+        shell: pwsh
+        run: py -3 -m unittest discover -s audit -p 'test_*.py' -v
