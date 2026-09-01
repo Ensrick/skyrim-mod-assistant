@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 permissions:
   contents: read
@@ -65,5 +64,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet build $project -c Release --no-restore
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          dotnet run --project $project -c Release --no-build -- --self-test
+          dotnet run --project $project -c Release --no-build -- --self-test `
+            records/synthesis/compatibility-sweep-2026-08-29/decisions.json `
+            mods/general-compatibility-patch/expected-values.json `
+            mods/general-compatibility-patch/manifest.json `
+            records/source-builds/ensrick-general-compatibility-patch.json `
+            mods/general-compatibility-patch/spriggit
           exit $LASTEXITCODE

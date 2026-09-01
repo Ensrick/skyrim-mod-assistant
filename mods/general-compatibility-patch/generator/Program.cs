@@ -80,6 +80,12 @@ public static class Program
             return SelfTest.Run();
         }
 
+        if (args is ["--self-test", var decisions, var expectedValues, var manifest,
+                     var sourceBuild, var spriggitTree])
+        {
+            return SelfTest.Run(decisions, expectedValues, manifest, sourceBuild, spriggitTree);
+        }
+
         if (args is ["--audit-links", var dataFolder, var loadOrderFile, var pluginPath])
         {
             return LinkAudit.Run(dataFolder, loadOrderFile, pluginPath);

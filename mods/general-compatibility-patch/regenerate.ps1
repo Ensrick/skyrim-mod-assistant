@@ -169,13 +169,14 @@ function Invoke-Mo2Child {
 function Get-TreeDigest {
     param([Parameter(Mandatory)][string] $Path)
 
-    $lines = Get-ChildItem -LiteralPath $Path -Recurse -File |
-        Sort-Object FullName |
-        ForEach-Object {
-            $relative = [System.IO.Path]::GetRelativePath($Path, $_.FullName).Replace('\', '/')
-            $hash = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash
-            "$relative`t$hash"
-        }
+    [string[]] $files = Get-ChildItem -LiteralPath $Path -Recurse -File |
+        Select-Object -ExpandProperty FullName
+    [System.Array]::Sort($files, [System.StringComparer]::OrdinalIgnoreCase)
+    $lines = $files | ForEach-Object {
+        $relative = [System.IO.Path]::GetRelativePath($Path, $_).Replace('\', '/')
+        $hash = (Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash
+        "$relative`t$hash"
+    }
     $bytes = [System.Text.Encoding]::UTF8.GetBytes(($lines -join "`n") + "`n")
     return [Convert]::ToHexString([System.Security.Cryptography.SHA256]::HashData($bytes))
 }
@@ -298,7 +299,14 @@ Invoke-HiddenProcess -FileName $dotnet -Arguments @(
 ) -WorkingDirectory $generatorFolder -LogStem (Join-Path $work 'build') -Environment $processEnvironment | Out-Null
 $selfTest = @{
     FileName = $executable
-    Arguments = @('--self-test')
+    Arguments = @(
+        '--self-test',
+        (Join-Path $PSScriptRoot '..\..\records\synthesis\compatibility-sweep-2026-08-29\decisions.json'),
+        $expectedValues,
+        (Join-Path $PSScriptRoot 'manifest.json'),
+        (Join-Path $PSScriptRoot '..\..\records\source-builds\ensrick-general-compatibility-patch.json'),
+        $spriggitText
+    )
     WorkingDirectory = $generatorFolder
     LogStem = Join-Path $work 'self-test'
 }

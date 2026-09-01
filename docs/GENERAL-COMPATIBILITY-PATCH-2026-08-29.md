@@ -50,12 +50,16 @@ Two independent generation runs against the 174-entry effective sorted load
 order produced the same ESP hash. Spriggit 0.41.0 passed strict checked
 serialize/deserialize/serialize validation with identical text-tree digests.
 The binary ESP and archive remain ignored local artifacts.
+These hashes are provenance for the frozen 99-plugin 2026-08-29 baseline, not
+promotion evidence for any later live profile.
 
 ## Headless validation
 
 - .NET 10.0.302 locked Release build: zero warnings, zero errors
 - direct and transitive NuGet vulnerability audit: zero known vulnerabilities
 - patcher target/field allowlist self-test: pass
+- compiled policy/decision/expected-value/provenance/Spriggit fixture
+  consistency test: pass
 - independent record structure: 12 WRLD, 2 CELL, no other types
 - independent field comparison: 374 selected fields match either the approved
   source or final active winner

@@ -24,7 +24,7 @@ order. The generator then changes only the fields approved in Decision A:
 The complete target allowlist lives in
 `records/synthesis/compatibility-sweep-2026-08-29/decisions.json`. The patcher
 fails if any target or EditorID is missing, if the output is not exactly twelve
-WRLD plus two CELL overrides, if the current 99-plugin profile differs from the
+WRLD plus two CELL overrides, if the frozen 99-plugin baseline differs from the
 pinned `expected-values.json`, if the exact seven-master set differs, or if a
 new FormKey is allocated. `Lux Orbis CS.esp` is deliberately retained as a
 hard master even though its contributed scalar and vanilla-linked fields do not
@@ -45,7 +45,9 @@ remove them merely because Lux Orbis CS currently wins those chains.
 selected disposable MO2 profile:
 
 1. verifies the pinned MO2, Spriggit, and record-inspector hashes;
-2. builds the locked .NET generator with warnings treated as errors;
+2. builds the locked .NET generator with warnings treated as errors and checks
+   that its compiled target policy still matches the decision, expected-value,
+   provenance, manifest, and committed Spriggit fixtures;
 3. generates the plugin twice and requires byte-identical output;
 4. performs a full-load-order link audit;
 5. serializes, checks, deserializes, and reserializes with Spriggit 0.41.0;
@@ -78,6 +80,8 @@ acceptance for water, Lux Orbis CS behavior, and Bruma remains pending.
 
 Vendor mods are never edited. Updating Lux Orbis CS, Water for ENB, Bruma, or
 any later target winner requires deterministic regeneration and the full audit.
+The committed hashes prove the frozen 2026-08-29 baseline only; they are not
+evidence that a later live profile is safe to promote without regeneration.
 This standalone 14-record plugin supplements rather than replaces the existing
 559-record `Ensrick Lux Water CS Patch.esp`; that patch remains separate and the
 tracked LOOT rule places this plugin after it.
