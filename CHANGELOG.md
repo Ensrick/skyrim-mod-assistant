@@ -18,14 +18,35 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
-> **STATE WARNING (2026-08-31).** Everything between the 2026-08-29 17:23
-> checkpoint launch and the 2026-08-31 22:00 launch wave - roughly 40 change
-> batches covering 111 ledger rows plus INI, tool, and overlay changes - is
-> **UNVERIFIED**, and the three 2026-08-31 launch failures sit directly on top
-> of that unverified pile. That is exactly why this changelog now exists.
-> Nothing else lands until the failures are bisected.
+> **STATE (2026-09-01 17:28): VERIFIED BASELINE RESTORED.** The 08-31 failure
+> wave was root-caused to the truncated `ccvsvsse004-beafarmer.bsa` (#142, no
+> mod at fault) plus a LaunchProbe kPostLoadGame handler bug that AV'd only on
+> successful loads. Both fixed; `records/launch-verify-20260901-172851.md` is
+> the first full PASS (main menu 31.2s, save loaded 35.7s, success=1) over the
+> restored 231-plugin modlist. The ~40 change batches of 08-30/31 are now
+> covered by that PASS at the launch/load level; per-mod in-game behaviour
+> remains individually unverified. Still open on #142: Creations re-download
+> of Farming + re-enabling its 2 patch plugins.
+>
+> (Superseded warning of 2026-08-31 kept for history: everything between the
+> 08-29 17:23 checkpoint and the 08-31 22:00 wave was UNVERIFIED and launches
+> were failing on top of it.)
 
 ---
+
+## 2026-09-01 17:40 - LaunchProbe handler-wide bounds hardening (deploy queued)
+
+- **What:** per team-lead audit request, PayloadName (kPreLoadGame/kSaveGame/
+  kDeleteGame) now refuses to dereference implausible pointers (<0x10000) and
+  caps its scan at min(dataLen, 512) - closes the whole message-data class,
+  not just the kPostLoadGame case below. LaunchProbe commit on top of 12ce92e;
+  gate PASS. DLL swap is QUEUED: the user is playing (game holds the file
+  lock); a watcher swaps mod + staged copies and scrub-cycles Steam when the
+  session ends. Until then mods/LaunchProbe runs the 17:27 build (fixed, but
+  pre-hardening; its .pdb is momentarily newer than the .dll).
+- **Source:** team-lead directive 2026-09-01; crash class from the entry below.
+- **Verification:** UNVERIFIED (build+gate only; runtime code path identical
+  to the verified 17:28 PASS except the added guards).
 
 ## 2026-09-01 17:26 - LaunchProbe kPostLoadGame AV fixed (the 17:12/17:25 crashes)
 
