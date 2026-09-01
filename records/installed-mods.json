@@ -1732,8 +1732,10 @@
       "note": "24 CC patch plugins; full AE CC present (74 cc plugins) | Myrwatch+Wraithguard patches deliberately unstarred: masters myrwatchhomefixer.esp/wraithguardvaultfixer.esp not installed (starring would be missing-master launch block)",
       "disabledPlugins": [
         "Lux - Myrwatch patch.esp",
-        "Lux - Wraithguard patch.esp"
-      ]
+        "Lux - Wraithguard patch.esp",
+        "Lux - Farmer patch.esp"
+      ],
+      "notes": "2026-09-01: plugin Lux - Farmer patch.esp disabled - master ccvsvsse004-beafarmer.esl parked (truncated by interrupted CC re-download 08-31, #142); re-enable after in-game Creations re-download of Farming"
     },
     {
       "modId": 153919,
@@ -2762,8 +2764,10 @@
       "transaction": "20260901T002911624Z-3963fd58bc3a",
       "fomodPlan": "records/fomod-plans/26138-slawf.json",
       "disabledPlugins": [
-        "Landscape and Water Fixes - Patch - LFfGM - Water for ENB.esp"
-      ]
+        "Landscape and Water Fixes - Patch - LFfGM - Water for ENB.esp",
+        "Landscape and Water Fixes - Patch - Farming.esp"
+      ],
+      "notes": "2026-09-01: plugin Landscape and Water Fixes - Patch - Farming.esp disabled - master ccvsvsse004-beafarmer.esl parked (truncated by interrupted CC re-download 08-31, #142); re-enable after in-game Creations re-download of Farming"
     },
     {
       "modId": 27962,
