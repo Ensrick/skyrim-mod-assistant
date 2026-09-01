@@ -396,3 +396,9 @@ try {
         Remove-Item -LiteralPath $resolvedTempRoot -Recurse -Force
     }
 }
+
+# Negative fixtures intentionally leave the last launched Windows PowerShell
+# process with a nonzero exit code. GitHub's pwsh wrapper propagates the ambient
+# LASTEXITCODE after a sourced script, so clear it only after every assertion and
+# cleanup step has completed successfully.
+$global:LASTEXITCODE = 0
