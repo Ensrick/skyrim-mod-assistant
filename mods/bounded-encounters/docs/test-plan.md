@@ -106,8 +106,11 @@ Archive the smoke output as a CI artifact.
   configure without repeated CMake regeneration;
   record explicitly whether the acceptance run stopped after configure or also
   completed the build and CTest, without claiming an offline reconstruction;
-- two packages built from the same inputs and `SOURCE_DATE_EPOCH` are byte
-  identical; and
+- two isolated, cache-disabled builds made from the same commit and
+  `SOURCE_DATE_EPOCH` produce byte-identical binary/source ZIPs and sibling hash
+  files, with identical DLL and simulator payloads; a signed-tag candidate must
+  also reproduce the canonical successful protected-main artifact for that exact
+  commit; and
 - package SHA-256 recorded in the GitHub prerelease.
 
 ## Headless runtime smoke test

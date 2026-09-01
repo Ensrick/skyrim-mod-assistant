@@ -8,8 +8,10 @@ Nexus release approval.
 
 - [ ] Release commit is reviewed and reachable from `main`.
 - [ ] Required branch checks pass.
-- [ ] Version agrees in CMake, plugin metadata, documentation, archive name, and
-      scoped monorepo tag `bounded-encounters/v<version>`.
+- [ ] The semantic release version agrees in `Version.h`, `vcpkg.json`,
+      documentation, archive names, and scoped tag
+      `bounded-encounters/v<version>`; its numeric base agrees with CMake and
+      SKSE plugin metadata.
 - [ ] Annotated tag is signed or created by the protected release workflow.
 - [ ] GitHub release is marked prerelease for alpha/beta artifacts.
 - [ ] MIT license and third-party notices are current; CommonLibSSE-NG is
@@ -30,7 +32,10 @@ Nexus release approval.
       the release notes.
 - [ ] Release tests and simulator smoke test pass.
 - [ ] Archive is produced only by `tools/package.ps1`.
-- [ ] A second package run with identical inputs is byte-identical.
+- [ ] Two isolated, cache-disabled builds of the exact commit produce identical
+      four-file release directories, including byte-identical DLL and simulator
+      payloads; a signed-tag build also matches the canonical successful
+      protected-main artifact for that commit.
 - [ ] `MANIFEST.sha256` verifies every payload file.
 - [ ] SPDX SBOM parses and identifies the release commit.
 - [ ] Binary archive contains the verbatim CommonLibSSE-NG `COPYING` and
@@ -47,8 +52,9 @@ Nexus release approval.
       `c3fcafdc10146beb5919319d0683e44e3c30d537` before CommonLib, and the source
       archive retains the exact monorepo release workflow under `build/ci/`.
 - [ ] Each bundled direct vcpkg dependency has its exact resolved version, port
-      version, ABI, baseline port tree, port recipe, installed SPDX document,
-      upstream-resource provenance, license, status stanza, and file inventory.
+      version, ABI, baseline port tree, port recipe, deterministic installed-SPDX
+      projection, upstream-resource provenance, license, status stanza, and file
+      inventory.
 - [ ] Installed status contains exactly the reviewed ten base packages and only
       the `spdlog:fmt` and `spdlog:tz-offset` feature stanzas.
 - [ ] Corresponding source includes both exact source-free vcpkg CMake helper

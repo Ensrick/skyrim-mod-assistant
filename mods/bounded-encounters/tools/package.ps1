@@ -4,7 +4,7 @@
 param(
     [string]$StageRoot = "",
     [string]$OutputDirectory = "",
-    [string]$Version = "0.1.0-alpha.1",
+    [string]$Version = "0.1.0-alpha.2",
     [string]$Runtime = "1.7.104.0",
     [switch]$AllowDirty
 )
@@ -12,6 +12,8 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
+
+Import-Module (Join-Path $PSScriptRoot "VcpkgSpdxNormalization.psm1") -Force
 
 $RepoRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot ".."))
 if ([string]::IsNullOrWhiteSpace($StageRoot)) {
@@ -61,6 +63,36 @@ function Get-RelativeSlashPath {
     )
 
     return [System.IO.Path]::GetRelativePath($Base, $Path).Replace('\', '/')
+}
+
+function Get-FilesSortedOrdinal {
+    param([Parameter(Mandatory = $true)][string]$Root)
+
+    [object[]]$files = @(Get-ChildItem -LiteralPath $Root -File -Recurse)
+    [string[]]$keys = @($files | ForEach-Object {
+            Get-RelativeSlashPath -Base $Root -Path $_.FullName
+        })
+    $caseInsensitivePaths = [System.Collections.Generic.HashSet[string]]::new(
+        [System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($key in $keys) {
+        if (-not $caseInsensitivePaths.Add($key)) {
+            throw "File tree contains a case-insensitive duplicate path: $Root :: $key"
+        }
+    }
+    [System.Array]::Sort($keys, $files, [System.StringComparer]::Ordinal)
+    return $files
+}
+
+function Sort-ObjectsByOrdinalKey {
+    param(
+        [AllowEmptyCollection()][object[]]$Values,
+        [Parameter(Mandatory = $true)][scriptblock]$KeySelector
+    )
+
+    [object[]]$copy = @($Values)
+    [string[]]$keys = @($copy | ForEach-Object { [string](& $KeySelector $_) })
+    [System.Array]::Sort($keys, $copy, [System.StringComparer]::Ordinal)
+    return $copy
 }
 
 function Get-FileSha256 {
@@ -470,8 +502,7 @@ function New-DeterministicZip {
             [System.IO.Compression.ZipArchiveMode]::Create,
             $false)
         try {
-            $files = Get-ChildItem -LiteralPath $PayloadRoot -File -Recurse |
-                Sort-Object { Get-RelativeSlashPath -Base $PayloadRoot -Path $_.FullName }
+            $files = Get-FilesSortedOrdinal -Root $PayloadRoot
             foreach ($file in $files) {
                 $relativePath = Get-RelativeSlashPath -Base $PayloadRoot -Path $file.FullName
                 $entry = $archive.CreateEntry(
@@ -925,7 +956,9 @@ try {
     $buildLogPath = Join-Path $RepoRoot "tools/build.log"
     $buildLogAudit = [ordered]@{
         path = "tools/build.log"
-        sha256 = $null
+        rawLogDistributed = $false
+        canonicalEvidenceSchemaVersion = 1
+        canonicalEvidenceSha256 = $null
         complete = $false
         restoredPackageCount = $null
         sourceBuiltPackages = @()
@@ -936,7 +969,6 @@ try {
     if (Test-Path -LiteralPath $buildLogPath -PathType Leaf) {
         $buildLogPath = Assert-SafeContainedFile -Root $RepoRoot -RelativePath "tools/build.log"
         $buildLog = (Get-Content -LiteralPath $buildLogPath -Raw).Replace("`r`n", "`n").Replace("`r", "`n")
-        $buildLogAudit.sha256 = Get-FileSha256 -Path $buildLogPath
         $buildLogAudit.complete = $buildLog -match '(?m)^=== ALL_DONE ===\s*$' -and
             $buildLog -notmatch '(?m)^\*\*\*BUILD_FAILED\*\*\*'
         $restoredCounts = @([regex]::Matches(
@@ -978,6 +1010,8 @@ try {
         [string[]]$actualInstallSpecs = @($buildLogAudit.installOperations)
         [System.Array]::Sort[string]($actualSourceBuildSpecs, [System.StringComparer]::Ordinal)
         [System.Array]::Sort[string]($actualInstallSpecs, [System.StringComparer]::Ordinal)
+        $buildLogAudit.sourceBuiltPackages = @($actualSourceBuildSpecs)
+        $buildLogAudit.installOperations = @($actualInstallSpecs)
         $sourceBuildSetMatches = $actualSourceBuildSpecs.Count -eq $expectedSourceBuildSpecs.Count
         $installSetMatches = $actualInstallSpecs.Count -eq $expectedSourceBuildSpecs.Count
         if ($sourceBuildSetMatches -and $installSetMatches) {
@@ -996,6 +1030,21 @@ try {
             $toolchainEvidence.complete -and
             $sourceBuildSetMatches -and
             $installSetMatches
+        $canonicalBuildLogEvidence = [ordered]@{
+            schemaVersion = $buildLogAudit.canonicalEvidenceSchemaVersion
+            complete = $buildLogAudit.complete
+            restoredPackageCount = $buildLogAudit.restoredPackageCount
+            sourceBuiltPackages = $buildLogAudit.sourceBuiltPackages
+            installOperations = $buildLogAudit.installOperations
+            toolchain = $buildLogAudit.toolchain
+            verifiedCacheDisabledSourceBuild = $buildLogAudit.verifiedCacheDisabledSourceBuild
+        }
+        $canonicalBuildLogContent = ($canonicalBuildLogEvidence | ConvertTo-Json -Depth 8).
+            Replace("`r`n", "`n").Replace("`r", "`n")
+        if (-not $canonicalBuildLogContent.EndsWith("`n", [System.StringComparison]::Ordinal)) {
+            $canonicalBuildLogContent += "`n"
+        }
+        $buildLogAudit.canonicalEvidenceSha256 = Get-StringSha256 -Value $canonicalBuildLogContent
     }
     if (-not $buildLogAudit.verifiedCacheDisabledSourceBuild) {
         $releaseEligible = $false
@@ -1258,11 +1307,7 @@ try {
         }
 
         $shareRoot = Join-Path $vcpkgShareRoot $dependencyName
-        $installedMetadataFiles = @(
-            "copyright",
-            "vcpkg.spdx.json",
-            "vcpkg_abi_info.txt"
-        )
+        $installedMetadataFiles = @("copyright", "vcpkg_abi_info.txt")
         foreach ($metadataFile in $installedMetadataFiles) {
             $source = Assert-SafeContainedFile -Root $shareRoot -RelativePath $metadataFile
             $destination = Join-Path $dependencySourceRoot "installed/$metadataFile"
@@ -1306,9 +1351,18 @@ try {
         }
         $resourceProvenance = [ordered]@{
             schemaVersion = 1
-            extractedFrom = "installed/vcpkg.spdx.json"
+            extractedFrom = "raw installed vcpkg.spdx.json before deterministic projection"
             packages = $resourcePackages
         }
+        $normalizedSpdxPath = Join-Path $dependencySourceRoot "installed/vcpkg.spdx.json"
+        $normalizedSpdx = Write-NormalizedVcpkgSpdx `
+            -InputPath (Join-Path $shareRoot "vcpkg.spdx.json") `
+            -OutputPath $normalizedSpdxPath `
+            -PackageName $dependencyName `
+            -Triplet $triplet `
+            -Abi $installedAbi `
+            -VcpkgBaseline $vcpkgBaseline `
+            -SourceTimestamp $sourceTimestamp
         Write-Utf8NoBomLf `
             -Path (Join-Path $dependencySourceRoot "installed/upstream-resource-provenance.json") `
             -Content ($resourceProvenance | ConvertTo-Json -Depth 10)
@@ -1325,9 +1379,10 @@ try {
             -Path (Join-Path $dependencySourceRoot "installed/status.txt") `
             -Content (ConvertTo-VcpkgStatusParagraph -Entry $installedEntry)
         $dependencyFeatures = @()
-        $dependencyFeatureEntries = @($featureStatusEntries | Where-Object {
-                $_["Package"] -eq $dependencyName -and $_["Architecture"] -eq $triplet
-            } | Sort-Object { [string]$_["Feature"] })
+        $dependencyFeatureEntries = @(Sort-ObjectsByOrdinalKey -Values @(
+                $featureStatusEntries | Where-Object {
+                    $_["Package"] -eq $dependencyName -and $_["Architecture"] -eq $triplet
+                }) -KeySelector { param($entry) [string]$entry["Feature"] })
         if ($dependencyFeatureEntries.Count -ne 0) {
             New-Item -ItemType Directory -Path (
                 Join-Path $dependencySourceRoot "installed/features") -Force | Out-Null
@@ -1368,6 +1423,14 @@ try {
             postPatchSourceDirectory = [string]$selectedSource.directory
             postPatchSourceFileCount = [int]$selectedSource.fileCount
             postPatchSourceTreeSha256 = [string]$selectedSource.sha256
+            installedSpdxProjection = [ordered]@{
+                schemaVersion = [int]$normalizedSpdx.schemaVersion
+                documentNamespace = [string]$normalizedSpdx.documentNamespace
+                sourceDateEpoch = [long]$normalizedSpdx.sourceDateEpoch
+                omittedBinaryFileCount = [int]$normalizedSpdx.omittedBinaryFileCount
+                retainedFileCount = [int]$normalizedSpdx.retainedFileCount
+                sha256 = [string]$normalizedSpdx.sha256
+            }
             features = $dependencyFeatures
         }
         Write-Utf8NoBomLf `
@@ -1546,6 +1609,18 @@ try {
             throw "Installed SPDX provenance does not match the reviewed $helperName build helper."
         }
 
+        $normalizedHelperSpdxPath = Join-Path `
+            $helperClosureRoot `
+            "installed/$helperTriplet/share/$helperName/vcpkg.spdx.json"
+        $normalizedHelperSpdx = Write-NormalizedVcpkgSpdx `
+            -InputPath (Join-Path $shareRoot "vcpkg.spdx.json") `
+            -OutputPath $normalizedHelperSpdxPath `
+            -PackageName $helperName `
+            -Triplet $helperTriplet `
+            -Abi $installedAbi `
+            -VcpkgBaseline $vcpkgBaseline `
+            -SourceTimestamp $sourceTimestamp
+
         $abiLines = @(Get-Content -LiteralPath $installedAbiInfo)
         $cmakeEvidence = @($abiLines | Where-Object { $_ -match '^cmake\s+(.+)$' })
         $powerShellEvidence = @($abiLines | Where-Object { $_ -match '^powershell\s+(.+)$' })
@@ -1579,6 +1654,14 @@ try {
             portTreeSha256 = $portFingerprint.sha256
             installedShareFileCount = $installedShareFingerprint.fileCount
             installedShareTreeSha256 = $installedShareFingerprint.sha256
+            installedSpdxProjection = [ordered]@{
+                schemaVersion = [int]$normalizedHelperSpdx.schemaVersion
+                documentNamespace = [string]$normalizedHelperSpdx.documentNamespace
+                sourceDateEpoch = [long]$normalizedHelperSpdx.sourceDateEpoch
+                omittedBinaryFileCount = [int]$normalizedHelperSpdx.omittedBinaryFileCount
+                retainedFileCount = [int]$normalizedHelperSpdx.retainedFileCount
+                sha256 = [string]$normalizedHelperSpdx.sha256
+            }
             controlScripts = $controlScriptHashes
             copyrightSha256 = $copyrightHash
             postPatchSourcePresent = $false
@@ -1668,7 +1751,7 @@ try {
         Join-Path $vcpkgBuildMetadataRoot "triplets/$helperTriplet.cmake")
 
     $sourceProvenance = [ordered]@{
-        schemaVersion = 3
+        schemaVersion = 4
         bundle = [ordered]@{
             project = "Bounded Encounters"
             version = $Version
@@ -1750,22 +1833,24 @@ workflow, the exact pinned CommonLibSSE-NG source (excluding only the uncompiled
 OpenVR gitlink), the exact tracked MinHook v1.3.4 source used for hde64, and the
 exact post-patch source trees for all eight direct vcpkg manifest dependencies.
 It also contains the two source-free vcpkg CMake helper ports and their complete
-installed control-script trees.
+installed control-script trees with deterministically projected SPDX metadata.
 
 Each direct vcpkg dependency directory also retains its exact port recipe,
-installed SPDX document, upstream-resource provenance, copyright/license text,
+deterministic SPDX projection, upstream-resource provenance, copyright/license text,
 ABI metadata, installed file inventory, base/feature status stanzas, and a
 machine-readable provenance record. The source-free helper directories retain
-their full installed share trees and equivalent host metadata. build/vcpkg
+their installed control-script share trees, projected SPDX, and equivalent host
+metadata. build/vcpkg
 records the pinned baseline, target and host triplets, and all tracked vcpkg
 scripts except two reviewed downloader PEs.
 
 SOURCE-PROVENANCE.json identifies every reviewed version, commit, ABI, port
 tree, and source-tree fingerprint. SOURCE-MANIFEST.sha256 verifies every other
-file in this archive. Provenance also records the SHA-256 and parsed cache audit
-of tools/build.log: all ten reviewed packages must have source-build and install
-operations and none may be restored. The path-bearing log itself is not
-distributed. No network access is performed by the packager.
+file in this archive. Provenance records a canonical digest of the parsed
+tools/build.log evidence: all ten reviewed packages must have source-build and
+install operations and none may be restored. The volatile path-bearing log and
+per-run checksums of undistributed static libraries remain CI diagnostics and
+are not distributed. No network access is performed by the packager.
 
 CommonLibSSE-NG remains GPL-3.0-or-later with its unchanged Modding Exception.
 MinHook/hde64 is BSD-2-Clause. The direct vcpkg dependencies retain their own
@@ -1964,9 +2049,8 @@ makes no network calls.
         throw "Corresponding-source closure contains a forbidden PE file: $sourcePePaths"
     }
 
-    $sourceManifestFiles = Get-ChildItem -LiteralPath $correspondingSourcePayloadRoot -File -Recurse |
-        Where-Object { $_.Name -ne "SOURCE-MANIFEST.sha256" } |
-        Sort-Object { Get-RelativeSlashPath -Base $correspondingSourcePayloadRoot -Path $_.FullName }
+    $sourceManifestFiles = @(Get-FilesSortedOrdinal -Root $correspondingSourcePayloadRoot |
+        Where-Object { $_.Name -ne "SOURCE-MANIFEST.sha256" })
     $sourceManifestLines = foreach ($file in $sourceManifestFiles) {
         $relativePath = Get-RelativeSlashPath -Base $correspondingSourcePayloadRoot -Path $file.FullName
         "$(Get-FileSha256 -Path $file.FullName)  $relativePath"
@@ -1987,7 +2071,7 @@ makes no network calls.
     }
 
     $metadata = [ordered]@{
-        schemaVersion = 3
+        schemaVersion = 4
         name = "Bounded Encounters"
         version = $Version
         runtime = [ordered]@{
@@ -2042,8 +2126,7 @@ makes no network calls.
     Write-Utf8NoBomLf -Path (Join-Path $payloadRoot "BUILD-INFO.json") -Content (
         $metadata | ConvertTo-Json -Depth 8)
 
-    $analyzedFiles = Get-ChildItem -LiteralPath $payloadRoot -File -Recurse |
-        Sort-Object { Get-RelativeSlashPath -Base $payloadRoot -Path $_.FullName }
+    $analyzedFiles = Get-FilesSortedOrdinal -Root $payloadRoot
     $spdxFiles = @()
     $relationships = @(
         [ordered]@{
@@ -2084,7 +2167,9 @@ makes no network calls.
         }
     }
 
-    $verificationInput = (($sha1Values | Sort-Object) -join "")
+    [string[]]$sortedSha1Values = @($sha1Values)
+    [System.Array]::Sort[string]($sortedSha1Values, [System.StringComparer]::Ordinal)
+    $verificationInput = ($sortedSha1Values -join "")
     $sha1Algorithm = [System.Security.Cryptography.SHA1]::Create()
     try {
         $verificationCode = [System.Convert]::ToHexString(
@@ -2237,9 +2322,8 @@ makes no network calls.
     Write-Utf8NoBomLf -Path (Join-Path $payloadRoot "SBOM.spdx.json") -Content (
         $sbom | ConvertTo-Json -Depth 12)
 
-    $manifestFiles = Get-ChildItem -LiteralPath $payloadRoot -File -Recurse |
-        Where-Object { $_.Name -ne "MANIFEST.sha256" } |
-        Sort-Object { Get-RelativeSlashPath -Base $payloadRoot -Path $_.FullName }
+    $manifestFiles = @(Get-FilesSortedOrdinal -Root $payloadRoot |
+        Where-Object { $_.Name -ne "MANIFEST.sha256" })
     $manifestLines = foreach ($file in $manifestFiles) {
         $relativePath = Get-RelativeSlashPath -Base $payloadRoot -Path $file.FullName
         "$(Get-FileSha256 -Path $file.FullName)  $relativePath"
