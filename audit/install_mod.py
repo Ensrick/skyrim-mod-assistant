@@ -186,7 +186,45 @@ def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None)
     })
     save(led)
     print(f'ledger now holds {len(led["mods"])} mods -> {LEDGER}')
+    queue_keep(mid, mod_name)
     return 0
+
+
+def queue_keep(mid, mod_name):
+    """Installing a mod includes adding its Keep - docs/CURATION_POLICY.md.
+
+    Written 2026-09-02 on the user's instruction that "our processes and
+    procedures doctrine makes adding to keeps necessary for installed mods".
+    The Keep itself is applied by the Firefox extension on its next Nexus page
+    load, so the guaranteed part is the QUEUE: this appends to the relay spool
+    (merging with any batch not yet picked up, deduplicated by id) so the step
+    can never be forgotten. audit/keep_coverage.py is the matching gate.
+    """
+    spool = os.path.join(os.environ.get('TEMP', '.'), 'nlc-relay')
+    pending = os.path.join(spool, 'decisions-pending.json')
+    try:
+        os.makedirs(spool, exist_ok=True)
+        batch = []
+        if os.path.exists(pending):
+            batch = json.load(open(pending, encoding='utf-8'))
+        if any(str(e.get('mod', {}).get('modId')) == str(mid) for e in batch):
+            print(f'keep {mid} already queued')
+            return
+        batch.append({'status': 'keep', 'mod': {
+            'game': 'skyrimspecialedition', 'modId': str(mid),
+            'title': mod_name,
+            'sourceUrl': f'https://www.nexusmods.com/skyrimspecialedition/mods/{mid}'}})
+        tmp = pending + '.tmp'
+        with open(tmp, 'w', encoding='utf-8') as fh:
+            json.dump(batch, fh, ensure_ascii=False, indent=1)
+        os.replace(tmp, pending)
+        print(f'keep {mid} queued for the curator ({len(batch)} in batch) -> {pending}')
+        print('   it applies on the next Nexus page load; '
+              'py -3 audit/keep_coverage.py is the gate')
+    except Exception as exc:
+        # never fail an otherwise-good install on this, but never hide it either
+        print(f'   KEEP QUEUE FAILED for {mid}: {type(exc).__name__}: {exc}')
+        print('   queue it by hand before the batch is called done')
 
 
 def verify():

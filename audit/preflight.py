@@ -14,6 +14,7 @@ import io, json, os, re, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import preflight_extra   # 2026-09-01 hardening: DLL depth, ledger gap, watched configs,
                          # saves mirror, the REAL profile settings.ini, work claim
+import keep_coverage     # 2026-09-02: installed implies Keep (docs/CURATION_POLICY.md)
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -371,6 +372,7 @@ def main():
     check_steam_not_wedged()
     check_steam_overlay()
     preflight_extra.run_all(fails, warns)
+    keep_coverage.run(fails, warns)
 
     for w in warns:
         print(f'  WARN  {w}')

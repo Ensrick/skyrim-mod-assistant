@@ -1,10 +1,11 @@
 # Nexus curation state policy
 
-Effective 2026-08-30, the three practical states are:
+Effective 2026-08-30, revised 2026-09-02, the three practical states are:
 
-- **Keep**: at least one file from that Nexus mod page is installed and enabled
-  in the current `Default` MO2 profile. Keep is the active load-order list, not
-  a wishlist or candidate shortlist.
+- **Keep**: at least one file from that Nexus mod page is **installed** in the
+  current `Default` MO2 profile. Enabled or disabled does not matter. Keep is
+  the inventory of what this build carries, not a wishlist or a candidate
+  shortlist.
 - **Skip**: the user has explicitly rejected the mod for the current modpack.
 - **Unreviewed**: the mod is not installed and has not been rejected. It may be
   weighted, deferred, under investigation, awaiting dependencies, awaiting a
@@ -13,19 +14,60 @@ Effective 2026-08-30, the three practical states are:
 Research and a favorable recommendation do not create a Keep entry. The normal
 adoption sequence is explicit user approval, archive/licence audit, headless
 installation and enablement, verification, and only then Keep plus removal of
-the selected mod's author from Excluded. If an installed mod is disabled or
-removed, clear Keep back to Unreviewed unless the user separately chooses Skip.
+the selected mod's author from Excluded. If an installed mod is **removed from
+disk**, clear Keep back to Unreviewed unless the user separately chooses Skip.
+
+## Installed implies Keep (user, 2026-09-02)
+
+*"Make sure that our processes and procedures doctrine makes adding to keeps
+necessary for installed mods."*
+
+**Adding the Keep is a required step of installing a mod, not a follow-up.**
+An install that has not produced its Keep is an incomplete install, in the same
+way that an unverified launch is an incomplete change.
+
+The rule and its two corollaries:
+
+1. **Every installed mod directory that resolves to a Nexus id carries a Keep**
+   for that id, whether or not the mod is enabled in the profile. Disabling a
+   mod - parking it for a rebuild, superseding it with a source build or an
+   Ensrick overlay, holding it behind an overlap check - does **not** clear its
+   Keep. The mod is still in the build; only its activation changed.
+2. **A Skip must not be installed.** If a mod is rejected, its directory leaves
+   the MO2 mods tree: move it to `mo2-instances\_archived-rejects\<name>` and
+   drop its line from `modlist.txt`. Never delete it, and never resolve the
+   conflict by flipping the user's Skip to Keep.
+3. **Our own artifacts have no Nexus id and therefore no Keep.** `Ensrick - *`
+   overlays and patches, `* Native Overlay - Ensrick` rebuilds, source builds,
+   and harness mods (`LaunchProbe`, `MenuPilot`, `Pandora Output - Ensrick`)
+   are exempt. Where a rebuild sits above a vendor row, the vendor row is the
+   one that carries the Keep.
+
+Why the revision: the previous "installed **and enabled**" definition silently
+dropped 14 mods out of the Keep list the moment they were parked, superseded,
+or held for an overlap check - so the curator stopped describing what the build
+actually contains, and re-browsing a parked mod on Nexus showed no decision at
+all. Audit that found it: `records/keep-install-audit-2026-09-02.md`.
+
+**The gate:** `py -3 audit/keep_coverage.py` is the enforcement. It fails when
+an installed Nexus id has no Keep, when a Keep has nothing installed, or when a
+Skip is installed. It runs inside `audit/preflight.py`, so a batch cannot reach
+a verification launch with the Keep list out of step. `audit/install_mod.py`
+prints the Keep obligation for every id it installs.
 
 For a mod that adds weapons, shields, armor, clothing, undergarments, or
 jewelry, adoption also opens a mandatory item-by-item integration record under
 `docs/EQUIPMENT_INTAKE_POLICY.md`. Keep still means the approved vendor mod is
-installed and enabled; it does not imply that unresolved balance, lore role,
-or distribution choices were silently decided.
+installed; it does not imply that unresolved balance, lore role, or
+distribution choices were silently decided.
 
-The live curator is reconciled against enabled MO2 state with
-`nexus-local-curator/scripts/reconcile-installed-keeps.py`. Its queued mutation
-uses compare-before-write guards and maps inactive Keeps to Unreviewed, never
-to Skip.
+The live curator is reconciled against MO2 state with
+`nexus-local-curator/scripts/reconcile-installed-keeps.py`. That controller
+still reads the **enabled** set, so its "clear inactive Keeps" half is now
+wrong under this policy - use it for the "set missing Keeps" half only, or use
+`audit/keep_coverage.py --plan`, until the controller is updated. Queued
+mutations use compare-before-write guards and map cleared Keeps to Unreviewed,
+never to Skip.
 
 ## Changelog discipline
 

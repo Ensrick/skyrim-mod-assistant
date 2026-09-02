@@ -34,6 +34,37 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 12:55 - Doctrine: installed implies Keep, enforced by a preflight gate
+
+- **What:** the Keep definition changed from "installed **and enabled**" to
+  **"installed"**, and adding the Keep became a required step of installing
+  rather than a follow-up. Three artifacts: (1) `docs/CURATION_POLICY.md`
+  rewritten - new "Installed implies Keep" section with the two corollaries,
+  a Skip must not be installed (move it to `mo2-instances\_archived-rejects`,
+  never delete) and our own id-less artifacts are exempt; (2) new gate
+  `audit/keep_coverage.py`, wired into `audit/preflight.py`, blocking on
+  installed-with-no-Keep, Keep-with-nothing-installed, and Skip-is-installed -
+  a Keep already sitting in the relay spool downgrades to a WARN because the
+  extension applies it on the next Nexus page load and we cannot force that;
+  (3) `audit/install_mod.py` now queues the Keep into the relay spool itself at
+  the end of every successful install, so the step cannot be forgotten.
+  Keeps were also queued for the 14 installed-but-disabled mods the old
+  definition had excluded (7 CS feature pages, 5 parked rebuild candidates,
+  98175, 126683); the relay served both batches, live Keeps 148 -> 167.
+  The gate now reports exactly 3 violations, all owned by the adoption batch in
+  flight: 2357 and 78772 kept but not installed, 138991 Azurite III HDR skipped
+  but installed.
+- **Source:** user, 2026-09-02 - *"make sure everything in keeps is installed
+  (not necissarily active) and everything installed is in keeps"* and *"Make
+  sure that our processes and proceedures doctrine makes adding to keeps
+  necessary for installed mods."* Audit that found the gap:
+  `records/keep-install-audit-2026-09-02.md`. Memory:
+  `feedback_skyrim_installed_implies_keep`.
+- **Verification:** N/A for build state - no mod installed, disabled, removed
+  or reordered, no profile or INI change. Tooling verified by running the gate
+  (`3 keep-coverage violation(s)`, exit 1) and `audit/preflight.py`, which now
+  reports the same three as blocking.
+
 ## 2026-09-02 12:25 - Keep list vs installed audit: 2 un-actioned adoptions, 5 Keep gaps queued
 
 - **What:** read-only reconciliation of the live Nexus curator state against
