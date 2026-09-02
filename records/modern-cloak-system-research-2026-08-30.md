@@ -34,11 +34,12 @@ needs ParallaxGen, which is not installed.
 [ICE - Immersive Conditional Effects](https://www.nexusmods.com/skyrimspecialedition/mods/185408)
 was proposed as a newer non-native alternative. Exact archive `776380` was
 downloaded and audited, but not installed or curated. It has a promising,
-lighter condition-driven architecture and includes source, yet the release
-contains 54 unrelated non-ITM Solstheim worldspace/cell overrides, omits FormList
-Manipulator from its declared requirements despite depending on `ICE_FLM.ini`
-for most face-cover weathers, lacks Survival warmth keywords, permanently adds
-gear to NPC inventories, and misspells its SPID mannequin exclusion.
+lighter condition-driven architecture and includes source, yet the release's
+broad Solstheim weather-region edit surface includes one cell that loses all
+eight unrelated region assignments. It also omits FormList Manipulator from its
+declared requirements despite depending on `ICE_FLM.ini` for most face-cover
+weathers, lacks Survival warmth keywords, permanently adds gear to NPC
+inventories, and misspells its SPID mannequin exclusion.
 Its eight cloaks are also rigid, non-SMP assets. **Hold version 1.0.** Full
 evidence and reconsideration gates are recorded in
 `records/ice-immersive-conditional-effects-185408-audit-2026-09-02.md`.

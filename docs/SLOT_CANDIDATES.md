@@ -524,7 +524,7 @@ each slot. **547 candidate entries across 133 slots.**
 - [122164](https://www.nexusmods.com/skyrimspecialedition/mods/122164) - Children of... per-race named-NPC series: Green/Bosmer 122164, Ash/Dunmer 122165, First/Altmer 122167
 
 ## NPC weather gear (1)
-- [185408](https://www.nexusmods.com/skyrimspecialedition/mods/185408) - ICE - Immersive Conditional Effects - **HOLD current 1.0**: promising condition-driven alternative, but exact audit found 54 unrelated Solstheim worldspace/cell overrides, an undeclared FLM dependency, no Survival warmth, persistent inventory injection, and a broken mannequin exclusion. Not installed or curated; see `records/ice-immersive-conditional-effects-185408-audit-2026-09-02.md`.
+- [185408](https://www.nexusmods.com/skyrimspecialedition/mods/185408) - ICE - Immersive Conditional Effects - **HOLD current 1.0**: promising condition-driven alternative, but exact audit found a broad Solstheim weather-region edit surface including one cell that loses all eight unrelated region assignments, an undeclared FLM dependency, no Survival warmth, persistent inventory injection, and a broken mannequin exclusion. Not installed or curated; see `records/ice-immersive-conditional-effects-185408-audit-2026-09-02.md`.
 
 ## occlusion/perf (5)
 - [14084](https://www.nexusmods.com/skyrimspecialedition/mods/14084) - Skyrim Project Optimization - needs lighting-slot patch alignment
