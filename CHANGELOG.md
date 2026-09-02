@@ -34,6 +34,47 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 14:06 - Dialogue controls: Better Dialogue Controls + Smart Talk adopted
+
+- **What:** two mods on different layers, so they stack rather than compete.
+  `Better Dialogue Controls` (Nexus 1429, file 11022, v1.2) is the SWF layer -
+  the archive holds exactly one file, `Interface\dialoguemenu.swf` (24,551 B),
+  no native code and no plugin, so it carries no runtime-version risk. Nothing
+  else in the profile touches `dialoguemenu.swf` (`file_conflicts` reports no
+  collision), because this build runs SkyUI + UIExtensions + RaceMenu with no
+  Edge UI, Nordic UI or Dialogue Interface ReShaped. `Smart Talk` (Nexus
+  161500, file 700903, v1.0.5) is the behaviour layer - `SmartTalk.dll` plus
+  inis, no SWF at all - adding quest-line highlighting, reorderable options,
+  pauses, skip/interrupt and controller support; its `SmartTalk_CustomUI.ini`
+  is explicit support for coexisting with a replaced dialogue UI. Its optional
+  MCM menu (file 682794, `Smart Talk - MCM.esp`, enabled) went in too because
+  MCM Helper is enabled in this profile. Transactions
+  `20260902T190555315Z-290d9a9ec2ee`, `...190559016Z-545178fdba58`,
+  `...190606299Z-4848e7a531ab`. Gates after install: `install_mod --verify`
+  `0 problem(s)`, `verify_order` CLEAN over 240 active plugins.
+- **Source:** user, 2026-09-02 - *"Better dialogue controls looks really nice.
+  Is that still the latest? 1429?"* then *"Ok, then add both."* 1429 is current:
+  v1.2 is its only file and the page has not moved since 2016-11-26, which does
+  not matter for a pure SWF. Convenient Dialogue UI (57943) was rejected as the
+  alternative: same `dialoguemenu.swf` slot, so either/or, and older (v1.2,
+  2021-11-07). Its "AE squeeze fix" (113031) is NOT a mark against it - that is
+  a third-party file by GGenX8 whose own page title reads "(Redundant Read
+  Desc)".
+- **Verification:** **UNVERIFIED** - no launch yet, deliberately: the user asked
+  to hold the verification launch while Sol lands their ore mods, so one launch
+  will cover this, Run For Your Lives 4.0.7, and Sol's batch together.
+  `audit/skse_version_data.py` on `SmartTalk.dll` (PE stamp 2025-12-22)
+  reads `VERDICT: PASS (version independent)`, which is **necessary and never
+  sufficient** - Open Animation Replacer passed the same gate and hung the load
+  (#140), so Smart Talk is not proven until a PASS exists.
+- **Open:** the curator Keep for 161500 was queued by `install_mod.py` and the
+  relay confirms it served and applied both batches
+  (`decisions-applied-20260902-140603.json`, `...-140608.json`), but
+  `curator_state` still reads 172 live Keeps without it, so `keep_coverage`
+  reports `installed with no Keep: 161500`. 1429's Keep landed normally in the
+  same run. Likely a Firefox storage-flush lag rather than a lost decision -
+  recheck before the verification launch, and do NOT re-queue blindly.
+
 ## 2026-09-02 13:52 - Run For Your Lives 4.0.7 installed and ENABLED (Sol, Nexus 2272)
 
 - **What:** `Run For Your Lives` 4.0.7 (Nexus 2272, file 737640,
