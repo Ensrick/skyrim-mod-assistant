@@ -34,6 +34,28 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 13:39 - Immersive Weapons 2 installed INACTIVE as a vendor source (Sol, #181)
+
+- **What:** `Immersive Weapons` 2 (Nexus 16788, file 52498, `16788-52498.7z`,
+  430 MB, sha256 `38ca9781...00e63`) installed at priority 244 and left
+  **disabled**; `Immersive Weapons.esp` is inactive and undiscovered. The
+  companion intake to Immersive Armors 3479 - both stay parked until the
+  item-by-item equipment intake in #181 is done, per
+  `docs/EQUIPMENT_INTAKE_POLICY.md`. MO2 transaction
+  `20260902T183719292Z-a353c37bcfac`. Ledger row added here with the
+  `enabled: false` marker; `install_mod --verify` reads `0 problem(s)`.
+  With this row `audit/keep_coverage.py` reads **clean** for the first time
+  since the doctrine landed: 245 installed directories, 170 Nexus ids, 40 own
+  artifacts, 170 live Keeps, zero violations.
+- **Source:** user authorised the adoption 2026-09-02 13:03; installed by Sol
+  (Codex) under the `sol/immersive-weapons` claim; ledger and changelog handed
+  to this session per the coordination board. Evidence: issue #181 comment
+  5514530451 (archive and plugin hashes).
+- **Verification:** UNVERIFIED, and inert - the mod is disabled and its plugin
+  undiscovered, so it cannot affect a launch. It has had no PASS of its own and
+  none of its items has been through equipment intake. Note this landed AFTER
+  `records/launch-verify-20260902-133303.md`, so that PASS does not cover it.
+
 ## 2026-09-02 13:05 - Azurite III HDR archived out of the mods tree (explicit Skip)
 
 - **What:** `Azurite III HDR` (Nexus 138991) removed from the MO2 instance.
