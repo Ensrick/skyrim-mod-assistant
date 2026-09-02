@@ -84,7 +84,13 @@ These are research results, not an install queue:
 - Draw/sheathe: [Weapon Styles - Draw-Sheathe Animations for IED](https://www.nexusmods.com/skyrimspecialedition/mods/85085), only after IED/OAR are working.
 - Imperial armor: [RMB SPIDified - New Legion](https://www.nexusmods.com/skyrimspecialedition/mods/84974), subject to distribution and balance audit.
 - UI: [Norden UI](https://www.nexusmods.com/skyrimspecialedition/mods/166086), subject to dependency and 4K scaling review.
-- Injuries: [Simple Combat Injuries](https://www.nexusmods.com/skyrimspecialedition/mods/104843) is the narrower modern starting point; Wounds remains the deeper alternative.
+- Injuries: [Simple Combat Injuries](https://www.nexusmods.com/skyrimspecialedition/mods/104843)
+  2.1 is a modern, lightweight technical base, but the stock mod is held rather
+  than adopted: hard-coded high probabilities, stackable NPC bleeding and
+  concussion blur conflict with this pack. See
+  `records/simple-combat-injuries-2.1-audit-2026-09-02.md`. Wounds remains the
+  deeper alternative; an Ensrick-owned engine is also viable if permission for
+  an SCI compatibility/balance patch is unavailable.
 - Selective populations: [Dynamic Enemy Spawns SKSE](https://www.nexusmods.com/skyrimspecialedition/mods/178556) is held: its 3.1 source was audited and lacks the required allowlist and a complete reproducible 1.7.104 build. See `ENCOUNTER-POPULATION-2026-08-28.md`.
 - Music: [Personalized Music SSE - Modernized](https://www.nexusmods.com/skyrimspecialedition/mods/174068).
 

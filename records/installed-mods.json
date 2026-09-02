@@ -2581,6 +2581,24 @@
       "note": "Cl3mus/CaptainCockerel Fix and Addon v6.4, MAIN file 791230. FOMOD selections, all recorded in records/fomod-plans/142493-erm-fix-addon.json: ERM No Vertex Colors = Normal Version (NOT 'Blended ERM', which belongs to the Blended Roads path that is not installed); Mines and Caves = Rocks; Icy Caves = Vanilla (ICR and Skyrim Remastered are not installed); Ore Veins = Vanilla (the 'Pg' options target PGPatcher, not adopted - #115); Skyforge Fix = With Dirt; StoneRessource01 Fix = yes; Patch = ERM - Water for ENB Patch, which the FOMOD marks Recommended and which applies because Water for ENB is installed. NOT taken: both PBR Fix steps, because the PBR path is inactive with Community Shaders core parked and PGPatcher unadopted; and the Whiterun 3D Stone Walls Skyforge patch, because that mod is not installed (the installed 'Whiterun Simple 3D Wooden Trellis' is a different mod). Skyforge With Dirt versus Without Dirt is an aesthetic pick the FOMOD does not recommend either way - a one-line reinstall swaps it. 212 NIFs: 128 dungeons, 60 landscape, 19 dlc02, 3 architecture. All three ERM mods are MESH-ONLY: zero DDS, zero ESP, so no plugin slot and nothing for the texture policy. All 448 NIFs across the trio are SE format (stream 100) - verified, no Oldrim. They sit at modlist positions 0-2, MO2's install default, and therefore win every shared mesh path; the Lux overlap is flagged in #127."
     },
     {
+      "modId": 34006,
+      "modName": "EVG Conditional Idles",
+      "nexusName": "EVG Conditional Idles",
+      "version": "1.51",
+      "fileId": 506946,
+      "fileName": "EVG Conditional Idles-34006-1-51-1717175145.zip",
+      "sizeMb": 6.1,
+      "sha256": "657c6edcf3a2ab5e249278ab86b2a6fc15c5e0433211f6d7149306c0fa47fb61",
+      "plugins": [
+        "EVGConditionalIdles.esp"
+      ],
+      "enabled": false,
+      "installedUtc": "2026-09-02T22:33:48Z",
+      "transaction": "20260902T223346892Z-1ca6b00a6776",
+      "fomodPlan": "records/fomod-plans/34006-evg-conditional-idles.json",
+      "note": "User selected EVG Conditional Idles as the current wounded-animation choice on 2026-09-02. Exact v1.51 MAIN file 506946; deterministic FOMOD plan installs the sole Core Modules payload. Static audit: 35 new records (8 GLOB float, 23 GLOB short, 2 QUST, 2 SNDR), only Skyrim.esm master, no vanilla record overrides; all 23 OAR/MCM JSON files parse; Papyrus sources included. Installed but PARKED because its hard dependency Open Animation Replacer 3.2.0 remains parked under #140 after hanging inside SKSE plugin load on runtime 1.7.104. Do not enable EVGConditionalIdles.esp or claim functionality until OAR receives a launch-verified fix. Nexus permissions prohibit redistributing the original archive; patches are explicitly allowed and modified releases require credit. Keep queued by install_mod.py. Plugin activation was explicitly cleared after parking in MO2 transaction 20260902T223846040Z-5b38f180e7ad; install_mod --verify then returned 0 problems."
+    },
+    {
       "modId": 63725,
       "modName": "EVLaS",
       "nexusName": "EVLaS",

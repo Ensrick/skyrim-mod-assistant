@@ -34,6 +34,34 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 17:37 - EVG installed parked; Simple Combat Injuries 2.1 held (#33, #140)
+
+- **What:** `EVG Conditional Idles` 1.51 (Nexus 34006, file 506946, SHA-256
+  `657c6edcf3a2ab5e249278ab86b2a6fc15c5e0433211f6d7149306c0fa47fb61`)
+  installed from a deterministic Core Modules FOMOD plan, then immediately
+  parked. Its static audit found only 35 new records, no vanilla overrides,
+  valid OAR/MCM JSON and supplied Papyrus source. It cannot function until
+  Open Animation Replacer 3.2.0's load hang is resolved under #140, so both
+  mod and plugin remain disabled. The stale plugin checkmark created during
+  installation was cleared in MO2 transaction
+  `20260902T223846040Z-5b38f180e7ad`; `install_mod --verify` then returned zero
+  problems. Keep was queued through the curator relay and Keep coverage passed.
+- **What:** `Simple Combat Injuries` 2.1 (Nexus 104843, file 749266, SHA-256
+  `98ea4e1f3bdf98ce49a3af4281a329c63d3a75f67225e95c3924d89a61842e46`)
+  received a full archive/plugin audit but was **not installed**. It is a clean,
+  ESL-flagged, mostly record-driven implementation with no native DLL or
+  vanilla overrides, but its hard-coded high injury rates, stackable NPC bleed,
+  incomplete animation coverage and concussion blur/double-vision violate this
+  build's design constraints. Full evidence is in
+  `records/simple-combat-injuries-2.1-audit-2026-09-02.md`.
+- **Source:** user, 2026-09-02 - *"EVG conditional idles it is for now. Look at
+  simple combat injuries and see if it's a quality creation."* Issues #33 and
+  #140.
+- **Verification:** **UNVERIFIED/PARKED** for EVG; no launch can prove its
+  behaviour while OAR is disabled. **N/A** for Simple Combat Injuries because
+  it was inspected outside the profile and not installed. Spriggit round-trip
+  passed.
+
 ## 2026-09-02 14:17 - Cloak layer audited; nothing installed (Claude, #95)
 
 - **What:** `records/cloak-layer-audit-2026-09-02.md` added (research only, no
