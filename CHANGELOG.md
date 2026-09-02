@@ -34,6 +34,34 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 12:25 - Keep list vs installed audit: 2 un-actioned adoptions, 5 Keep gaps queued
+
+- **What:** read-only reconciliation of the live Nexus curator state against
+  every directory in `mo2-instances/skyrim-se/mods/` (installed, not merely
+  enabled). 238 installed directories / 166 Nexus ids / 148 live Keeps.
+  Result: **2 Keeps with nothing installed** - Enhanced Blood Textures (2357,
+  kept 09-01 01:14Z) and Daedric Shrines AIO (78772, kept 08-31 21:44Z), both
+  the user's own mid-browse adoptions that never went through
+  audit -> install, so neither was cleared. **20 installed ids with no Keep** -
+  5 of them installed AND enabled (26138 Skyrim Landscape and Water Fixes,
+  49616 USMP SE, 65070 Misc Effects ENB Light, 92948 Media Keys Fix SKSE,
+  175362 Dyn FNIS AA functions), queued as a guarded keep batch; the other 15
+  are deliberately disabled (7 CS feature pages superseded by the AIO source
+  build, 5 parked for a 1.7.104 rebuild or a silent author, 98175 replaced by
+  `Ensrick - Scoped Werewolf Totem Skull 98175`, 126683 parked on a waterfall
+  overlap check) plus 138991 Azurite III HDR which is an explicit Skip. No
+  installed directory is missing from `modlist.txt`; the 39 id-less directories
+  are all Ensrick overlays, native rebuilds, or harness mods.
+- **Source:** user, 2026-09-02 - *"make sure everything in keeps is installed
+  (not necissarily active) and everything installed is in keeps"*. Record:
+  `records/keep-install-audit-2026-09-02.md`. Controller:
+  `nexus-local-curator/scripts/reconcile-installed-keeps.py` (plan only) plus an
+  installed-based variant; batch written to the relay spool `decisions-pending.json`
+  behind the compare-before-write guard, relay started on 127.0.0.1:38492.
+- **Verification:** N/A - curation-only, no mod installed, disabled, removed or
+  reordered, no profile or INI touched, no plugin change. The 5 queued Keeps
+  apply on the extension's next Nexus page load.
+
 ## 2026-09-02 10:06 - #165/#166 restore: decided skins on top + vanilla `_sk` soft-light overlay (both reversible)
 
 - **What:** Under claim `skin-face-diagnosis-2` (no game or MO2 process; the
@@ -47,8 +75,9 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   footwear from its forced RequiredHighPolyFeet option) that lost to
   HIMBO/TNG/HIMBO Refits/Lords of the Reach before the move and would have
   flipped 18 HIMBO-shaped footwear meshes to vanilla shape after it, so
-  `mods\SkySight Skins\meshes` is renamed `meshes.mohidden` (rename back to
-  undo) - no mesh changes hands, texture-only effect. (3) New mod `Ensrick -
+  `mods\SkySight Skins\meshes` is renamed `meshes.mohidden` - a deliberate
+  hide, approved by team-lead 2026-09-02; rollback = rename back. No mesh
+  changes hands, texture-only effect. (3) New mod `Ensrick -
   Vanilla Skin Soft-Light Maps` (MO2Headless `mod-stage`, transaction
   `20260902T150554695Z-a8bcf3daafe6`, priority 237 = top row, enabled): the
   six vanilla `_sk` maps (`femalehead/femalebody_1/femalehands_1`,
