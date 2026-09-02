@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Custom Follower/HLIORemi.esp",
+      "destination": "HLIORemi.esp"
+    },
+    {
+      "source": "Custom Follower/HLIORemi.bsa",
+      "destination": "HLIORemi.bsa"
+    },
+    {
+      "source": "Custom Follower/HLIORemi - Textures.bsa",
+      "destination": "HLIORemi - Textures.bsa"
+    },
+    {
+      "source": "Beyond Reach Commentary ESPFE/HLIZRemiArnima.esp",
+      "destination": "HLIZRemiArnima.esp"
+    },
+    {
+      "source": "Beyond Reach Commentary ESPFE/HLIZRemiArnima.bsa",
+      "destination": "HLIZRemiArnima.bsa"
+    }
+  ]
+}

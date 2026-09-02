@@ -1,0 +1,153 @@
+# Active file-conflict inventory
+
+Captured: `2026-09-02T18:13:57Z`
+
+- Enabled managed mods: 220
+- Files scanned: 40119
+- Conflicting paths: 2398
+- Order-sensitive code/config paths: 25
+
+The first provider is the effective MO2 winner. Collisions are review candidates, not automatic defects.
+
+## Collision categories
+
+- audio: 1345
+- mesh: 581
+- texture: 340
+- other: 107
+- plugin: 8
+- config: 5
+- native: 5
+- interface: 4
+- papyrus: 3
+
+## Order-sensitive collisions
+
+- `config` `Azurite Weathers III.ini`: Azurite III CS -> Azurite Weathers III (**winner:** Azurite III CS)
+- `config` `SKSE/Plugins/MediaKeysFix.ini`: Ensrick - Media Keys Fix Configuration -> Media Keys Fix SKSE (**winner:** Ensrick - Media Keys Fix Configuration)
+- `config` `SKSE/Plugins/MLO.ini`: Ensrick - MLO2 Foundation Config -> Modern Lighting Overhaul 2 (MLO2) (**winner:** Ensrick - MLO2 Foundation Config)
+- `config` `SKSE/Plugins/SurvivalModeImproved.ini`: Starfrost -> Survival Mode Improved (**winner:** Starfrost)
+- `config` `skse/plugins/Underwear.ini`: Underwear.dll -> Period Underlayers - SPID (**winner:** Underwear.dll)
+- `interface` `Interface/exported/uilib/UILIB_1_notificationarea.swf`: Nether's Follower Framework -> Proteus -> Skyrim Unbound Reborn (**winner:** Nether's Follower Framework) (byte-identical)
+- `interface` `Interface/uilib/buttonArt.swf`: Nether's Follower Framework -> Proteus -> Skyrim Unbound Reborn (**winner:** Nether's Follower Framework) (byte-identical)
+- `interface` `Interface/uilib/UILIB_1_ListMenu.swf`: Nether's Follower Framework -> Proteus -> Skyrim Unbound Reborn (**winner:** Nether's Follower Framework) (byte-identical)
+- `interface` `Interface/uilib/UILIB_1_TextInputMenu.swf`: Nether's Follower Framework -> Proteus -> Skyrim Unbound Reborn (**winner:** Nether's Follower Framework) (byte-identical)
+- `native` `SKSE/Plugins/ConsoleUtilSSE.dll`: ConsoleUtilSSE 1.7.104 Native Overlay - Ensrick -> ConsoleUtilSSE NG (**winner:** ConsoleUtilSSE 1.7.104 Native Overlay - Ensrick)
+- `native` `SKSE/Plugins/JContainers64.dll`: JContainers 1.7.104 Native Overlay - Ensrick -> JContainers SE (**winner:** JContainers 1.7.104 Native Overlay - Ensrick)
+- `native` `SKSE/Plugins/PapyrusUtil.dll`: PapyrusUtil 1.7.104 Native Overlay - Ensrick -> PapyrusUtil SE (**winner:** PapyrusUtil 1.7.104 Native Overlay - Ensrick)
+- `native` `SKSE/Plugins/Proteus.dll`: Proteus 1.7.104 Native Overlay - Ensrick -> Proteus (**winner:** Proteus 1.7.104 Native Overlay - Ensrick)
+- `native` `SKSE/Plugins/skee64.dll`: RaceMenu 1.7.104 Native Overlay - Ensrick -> RaceMenu (**winner:** RaceMenu 1.7.104 Native Overlay - Ensrick)
+- `papyrus` `scripts/MoonpathEnabler.pex`: Moonpath Bruma Synergy Patch -> Moonpath Unofficial Patch (**winner:** Moonpath Bruma Synergy Patch)
+- `papyrus` `Scripts/UILIB_1.pex`: Nether's Follower Framework -> Proteus -> Skyrim Unbound Reborn (**winner:** Nether's Follower Framework) (byte-identical)
+- `papyrus` `scripts/wbptlightswitchscript.pex`: Snazzy Location Resources -> Lux (**winner:** Snazzy Location Resources) (byte-identical)
+- `plugin` `3DNPC.esp`: Interesting NPCs - Update 4.54 -> Interesting NPCs (**winner:** Interesting NPCs - Update 4.54)
+- `plugin` `JRMoonpathBrumaPatch.esp`: Moonpath Music Weather Fixes -> Moonpath Bruma Synergy Patch (**winner:** Moonpath Music Weather Fixes)
+- `plugin` `Lux - Resources.esp`: Lux Resources Plugin Update -> Lux Resources (**winner:** Lux Resources Plugin Update)
+- `plugin` `Lux Via.esp`: Lux Via Plugin Update -> Lux Via (**winner:** Lux Via Plugin Update)
+- `plugin` `moonpath.esp`: Moonpath Music Weather Fixes -> Moonpath to Elsweyr (**winner:** Moonpath Music Weather Fixes)
+- `plugin` `NW_Companions_Replacer_Light.esp`: Legacy of Ysgramor - Xtudo Fixes - RMB -> RMB SPIDified - Legacy of Ysgramor -> Legacy of Ysgramor (**winner:** Legacy of Ysgramor - Xtudo Fixes - RMB)
+- `plugin` `RMB SPID - Legacy of Ysgramor.esp`: Legacy of Ysgramor - Xtudo Fixes - RMB -> RMB SPIDified - Legacy of Ysgramor (**winner:** Legacy of Ysgramor - Xtudo Fixes - RMB)
+- `plugin` `Vigilant.esm`: VIGILANT EN Voiced -> VIGILANT (**winner:** VIGILANT EN Voiced)
+
+## Highest-volume provider pairs
+
+- `audio` VIGILANT EN Voiced over VIGILANT: 1345 files
+- `other` Vanilla Hair Remake SMP over Vanilla Hair Remake SMP - NPCs: 93 files
+- `texture` Steel Plate Armors - HD Textures over Steel Plate Armors: 93 files
+- `texture` Skyland AIO 1K over SMIM: 68 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over Assorted Mesh Fixes: 56 files
+- `mesh` ERM - Fix and Addon over ERM - Enhanced Rocks and Mountains: 50 files
+- `mesh` Skyking Signs over SMIM: 44 files
+- `mesh` Freak's Floral Fields 3.2.3 - Realistic Regional Mix over DrJacopo's - 3D Grass Library - Meshes: 40 files
+- `texture` Reverie - Skin over CBBE: 38 files
+- `mesh` SMIM over SMIM Quality Addon: 35 files
+- `texture` SkySight Skins over The New Gentleman: 29 files
+- `mesh` Assorted Mesh Fixes over Lux Orbis: 28 files
+- `mesh` ERM - Fix and Addon over Lux: 28 files
+- `texture` Freak's Floral Solstheim 1.0.1 over Freak's Floral Fields 3.2.3 - Realistic Regional Mix: 26 files
+- `mesh` Unofficial Material Fix over SMIM: 25 files
+- `mesh` Assorted Mesh Fixes over SMIM: 24 files
+- `mesh` Legacy of Ysgramor - HIMBO Conversion over Legacy of Ysgramor: 22 files
+- `mesh` Assorted Mesh Fixes over Unofficial Material Fix: 21 files
+- `mesh` ERM - Fix and Addon over SMIM: 20 files
+- `texture` Freak's Floral Veil 1.0 over Freak's Floral Fields 3.2.3 - Realistic Regional Mix: 19 files
+- `mesh` The New Gentleman over HIMBO Refits: 16 files
+- `mesh` Freak's Floral Veil 1.0 over Freak's Floral Fields 3.2.3 - Realistic Regional Mix: 15 files
+- `mesh` Skyland AIO 1K over SMIM: 15 files
+- `mesh` Freak's Floral Solstheim 1.0.1 over Freak's Floral Fields 3.2.3 - Realistic Regional Mix: 14 files
+- `texture` Assorted Mesh Fixes over SMIM: 14 files
+- `mesh` Skyrim Landscape and Water Fixes over SMIM: 13 files
+- `mesh` Skyrim Landscape and Water Fixes over Assorted Mesh Fixes: 12 files
+- `mesh` Lords of the Reach - Forsworn Gear Replacer over HIMBO Refits: 12 files
+- `mesh` Sons of Skyrim - Xtudo Fixes over Sons of Skyrim: 12 files
+- `mesh` Skyrim Landscape and Water Fixes over Lux Orbis: 11 files
+- `mesh` Skyrim Landscape and Water Fixes over ERM - Fix and Addon: 10 files
+- `mesh` Skyrim Landscape and Water Fixes over ERM - Enhanced Rocks and Mountains: 10 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over Skyland AIO 1K: 10 files
+- `mesh` Assorted Mesh Fixes over Traverse the Ulvenwald 3.3.2 Assets: 10 files
+- `texture` Freak's Floral Veil 1.0 over Freak's Floral Solstheim 1.0.1: 9 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over SMIM: 9 files
+- `mesh` Lux over SMIM: 9 files
+- `other` The New Gentleman over HIMBO Refits: 9 files
+- `texture` Assorted Mesh Fixes over Skyland AIO 1K: 8 files
+- `mesh` Lords of the Reach - Forsworn Gear Replacer over CBBE: 8 files
+- `mesh` Unofficial Material Fix over SMIM Quality Addon: 6 files
+- `mesh` ERM - Enhanced Rocks and Mountains over SMIM: 6 files
+- `mesh` Misc Effects ENB Light - Believable Weapons over Misc Effects ENB Light: 6 files
+- `mesh` Misc Effects ENB Light - Believable Weapons over ENB Light: 6 files
+- `texture` Moonpath Music Weather Fixes over Skyland AIO 1K: 6 files
+- `texture` Moonpath Music Weather Fixes over SMIM: 6 files
+- `mesh` Freak's Floral Veil 1.0 over Freak's Floral Solstheim 1.0.1: 5 files
+- `mesh` Unofficial Material Fix over Lux Orbis: 5 files
+- `texture` Freak's Floral Fields 3.2.3 - Realistic Regional Mix over DrJacopo's - 3D Grass Library - Meshes: 5 files
+- `texture` SMIM over SMIM Quality Addon: 5 files
+- `mesh` Freak's Floral Veil 1.0 over DrJacopo's - 3D Grass Library - Meshes: 4 files
+- `mesh` Assorted Mesh Fixes over HIMBO Refits: 4 files
+- `mesh` Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit over Better Fur - Fine Clothes: 4 files
+- `mesh` Rally's Market Stalls Animated - 2K over SMIM: 4 files
+- `mesh` Whiterun Simple 3D Wooden Trellis - AIO over SMIM: 4 files
+- `interface` Nether's Follower Framework over Proteus: 4 files
+- `interface` Nether's Follower Framework over Skyrim Unbound Reborn: 4 files
+- `texture` Water for ENB over Particle Patch: 4 files
+- `mesh` Misc Effects ENB Light over ENB Light: 4 files
+- `mesh` HIMBO over The New Gentleman: 4 files
+- `mesh` SMIM over HIMBO Refits: 4 files
+- `texture` Ensrick - Vanilla Skin Soft-Light Maps over Reverie - Skin: 3 files
+- `texture` Ensrick - Vanilla Skin Soft-Light Maps over CBBE: 3 files
+- `texture` Ensrick - Vanilla Skin Soft-Light Maps over The New Gentleman: 3 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over Traverse the Ulvenwald 3.3.2 Assets: 3 files
+- `texture` Snazzy Solitude - Separated Houses over Snazzy Location Resources: 3 files
+- `texture` Ensrick - Scale Nord Armor Texture Cap over Scale Nord Armor: 3 files
+- `mesh` Water for ENB over SMIM: 3 files
+- `mesh` Lux Orbis over SMIM: 3 files
+- `mesh` Lux Orbis over Lux: 3 files
+- `texture` Lux over Skyland AIO 1K: 3 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over Unofficial Material Fix: 2 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over HIMBO Refits: 2 files
+- `mesh` Assorted Mesh Fixes over SMIM Quality Addon: 2 files
+- `mesh` Assorted Mesh Fixes over CBBE: 2 files
+- `mesh` Unofficial Material Fix over ENB Light: 2 files
+- `mesh` Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit over CBBE: 2 files
+- `mesh` Ensrick - Better Fur Fine Clothes CBBE-HIMBO Refit over HIMBO Refits: 2 files
+- `mesh` Snazzy Furniture and Clutter Overhaul 3 - BOS over SMIM: 2 files
+- `texture` Snazzy Furniture and Clutter Overhaul 3 - BOS over Snazzy Location Resources: 2 files
+- `texture` Snazzy Furniture and Clutter Overhaul 3 - BOS over Solitude Docks Updated: 2 files
+- `mesh` Rally's Market Stalls Animated - Hotfix over Rally's Market Stalls Animated - 2K: 2 files
+- `texture` Scale Nord Armor over Legacy of Ysgramor: 2 files
+- `texture` Scale Nord Armor over Sons of Skyrim: 2 files
+- `texture` Simple Hunting Overhaul over SMIM: 2 files
+- `texture` Ensrick - Bloodskal Blade 4 Texture Cap over Bloodskal Blade 4: 2 files
+- `mesh` Lords of the Reach - Forsworn Gear Replacer over The New Gentleman: 2 files
+- `plugin` Legacy of Ysgramor - Xtudo Fixes - RMB over RMB SPIDified - Legacy of Ysgramor: 2 files
+- `mesh` Misc Effects ENB Light - Believable Weapons over Believable Weapons: 2 files
+- `mesh` Believable Weapons over ENB Light: 2 files
+- `texture` HIMBO over SkySight Skins: 2 files
+- `config` Ensrick - Media Keys Fix Configuration over Media Keys Fix SKSE: 1 files
+- `mesh` Skyrim Landscape and Water Fixes over Ensrick - Assorted Mesh Fixes SE Mesh Port: 1 files
+- `mesh` Skyrim Landscape and Water Fixes over Whiterun Simple 3D Wooden Trellis - AIO: 1 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over ERM - Fix and Addon: 1 files
+- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over ERM - Enhanced Rocks and Mountains: 1 files
+- `mesh` Assorted Mesh Fixes over Skyland AIO 1K: 1 files
+- `mesh` Assorted Mesh Fixes over Sagittarius - Real Bows: 1 files
+- `mesh` Unofficial Material Fix over ERM - Fix and Addon: 1 files
+- `mesh` Unofficial Material Fix over Misc Effects ENB Light: 1 files

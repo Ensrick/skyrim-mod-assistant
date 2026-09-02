@@ -34,6 +34,158 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 13:05 - Azurite III HDR archived out of the mods tree (explicit Skip)
+
+- **What:** `Azurite III HDR` (Nexus 138991) removed from the MO2 instance.
+  It was installed, disabled, and carrying an explicit user **Skip**; under the
+  doctrine that everything installed must be a Keep, a rejected mod may not sit
+  in `mods/`. Removed through MO2 so the `modlist.txt` edit is MO2's own and
+  not a text edit: `MO2Headless mod-trash "Azurite III HDR" --yes`
+  (transaction `20260902T180539373Z-051a9dd8d89e`) moved the folder to
+  `.mo2-headless-trash\20260902T180539373Z-051a9dd8d89e-Azurite III HDR` and
+  dropped the modlist line; that directory was then moved to
+  `C:\Users\danjo\source\repos\mo2-instances\_archived-rejects\Azurite III HDR`
+  (three files: `Azurite III - HDR.esp`, `Azurite III - HDR.ini`, `meta.ini`).
+  **No active plugin changed** - the mod was disabled, so
+  `Azurite III - HDR.esp` was never in `plugins.txt`. The ledger row for 138991
+  is kept for provenance with `archivedUtc` / `archivedTo` and a note; it was
+  already `enabled: false` with no plugins, so `install_mod --verify` still
+  reads 0 problems. Rollback: move the folder back to
+  `mo2-instances\skyrim-se\mods\Azurite III HDR`, then
+  `MO2Headless.exe --root <instance> --profile Default mod-disable "Azurite III HDR"`
+  to re-register it in its previous disabled state, then clear the two ledger
+  fields.
+- **Source:** team-lead, 2026-09-02, in the same task as the three adoptions
+  below; the Skip and the supersession by Azurite III CS (162153, which bundles
+  HDR) are recorded in `records/keep-install-audit-2026-09-02.md` section 2c.
+  Full detail and the exact rollback in
+  `records/adoption-2357-78772-51874-2026-09-02.md` section 5.
+- **Verification:** VERIFIED 2026-09-02 13:33 by
+  `records/launch-verify-20260902-133303.md` (main menu 35.0 s, save loaded
+  50.3 s, 238 plugins, claim `adopt-2357-78772-51874`). No plugin, INI or
+  profile setting changed by this entry, so the launch only had to prove the
+  removal broke nothing.
+
+## 2026-09-02 13:05 - Remiel 1.7.6 adopted (Nexus 51874) + hotfix + missing voice lines
+
+- **What:** three mods installed and enabled from Nexus 51874 (Maplespice):
+  `Remiel - Dwemer Specialist` (file 748194, v1.7.6, 498.9 MB, sha256
+  `34c8591d...65f554`, plugins `HLIORemi.esp` + `HLIZRemiArnima.esp`,
+  transaction `20260902T180449161Z-0364dded4535`),
+  `Remiel - 1.7.6 Hotfix` (749437, `HLIONameFix.esp`,
+  `20260902T180518703Z-5da5e666fcbd`) and `Remiel - Missing Voice Lines`
+  (749439, 12 loose `.fuz`, `20260902T180519812Z-3beb4fd35f26`), the last two
+  staged above the main mod so they win. FOMOD driven deterministically by
+  `records/fomod-plans/51874-remiel.json`: main "Custom Voiced" plus the
+  **Beyond Reach Commentary ESPFE** (the FOMOD marks it `Recommended` because
+  `arnima.esm` is active). Every other option was excluded by the installer's
+  own `fileDependency` rules - LOTD, Thogra, Timelost Dwemer, Lost Races of
+  Nirn, Aethernautics, Automaton Glow and Dwemer Spectres all evaluate
+  `NotUsable` here; Vanilla Looks, Relax Anywhere and the birthday hat are
+  taste options and were not taken. **No DLL, no SKSE plugin, no framework
+  requirement** ("None except the DLCs") - the archive is only ESP/BSA/NIF/DDS,
+  so 1.7.104 has nothing to reject. **No body or skin refit needed:** she ships
+  no body meshes and no skin textures, so she inherits CBBE Curvy + Reverie.
+  LOOT placed `HLIORemi.esp` at 65, ahead of the whole Lux stack, which is what
+  the audit required: `semantic_record_conflicts Cell HLIORemi.esp` reports 178
+  field divergences and the anchor **wins none** - Lux keeps its lighting in
+  every interior she touches, including the Silver-Blood Inn and all six
+  Nchuand-Zel cells. Her 10 CELL wins are semantically identical to the mods
+  they beat. Voice coverage 5,160 of 6,173 INFO (83%) against the same author's
+  Varinia at 91%; the single missing facegen is `HLIOYazPlaceHolder`, an
+  unreachable placeholder in the mod's own `HLIORemisMarkerRoom` holding cell
+  for the Yazakh follower (68568, not installed). One tracked regression: she
+  reverts 3DNPC's reposition of `T03MauriceREF` (#182). **Operational rule for
+  the user: never import Remiel into NFF** - the author allows NFF to be
+  installed (it is required for her Rumarin/Zora/Anum-La banter) but not to
+  manage her, and NFF ships no file-level blacklist, so this is an in-game MCM
+  discipline (added to #74 alongside Inigo and Varinia).
+- **Source:** the user, 2026-09-02 - *"I'd also like to add 51874, the Remiel
+  follower. Another excellent mod by Maplespice."* Audit:
+  `records/adoption-2357-78772-51874-2026-09-02.md` section 3.
+- **Verification:** VERIFIED 2026-09-02 13:33 by
+  `records/launch-verify-20260902-133303.md` - main menu **35.0 s**, save loaded
+  **50.3 s**, 238 plugins, 0 plugins refused by the SKSE loader, no crash log.
+  `launch_triage` shows nothing attributable to Remiel. Post-launch gates
+  re-read clean: `install_mod --verify` 0 problems, `verify_order` CLEAN, and
+  `preflight` clean with the deliberate INI keys intact. Launch/load level
+  only - her quest, her banter and the NFF discipline above are the user's to
+  exercise in play.
+
+## 2026-09-02 13:05 - Daedric Shrines - All in One 1.02 adopted, 2K variant (Nexus 78772)
+
+- **What:** `Daedric Shrines - All in One` installed and enabled (file 536019,
+  the **2K** package, v1.02, 142.73 MB, sha256 `8c2a3089...cdc042a`, plugin
+  `man_DaedricShrines.esp`, transaction `20260902T180442879Z-8056fb24aa73`).
+  The 4K package (536018) was rejected on `docs/TEXTURE_POLICY.md`: measured
+  vanilla sources are 1024 for Boethiah/Meridia/Azura/Hircine/Malacath/Namira/
+  Vaermina/Dagon and 2048 for Clavicus Vile and `mehrunesstatue01`, so 4K would
+  put 15 sets two steps above source, while 2K is one step for most of them.
+  The **main ESP was kept over the "No map markers" variant** (536023): the two
+  carry an identical record set and differ only in 7 `MapMarker` refs, all of
+  which have `Flags = "0"` - neither `Visible` nor `CanTravelTo`, i.e. ordinary
+  undiscovered-location behaviour you have to explore to find. Its eight
+  vanilla/CC mesh replacements are uncontested (a BSA sweep of every enabled mod
+  plus the game archives shows the only other provider of each is the game
+  itself) and it has 0 loose-file collisions. LOOT placed it at 63: after
+  `Nature of the Wild Lands` (44) so its 17 reference edits win - four trees
+  plus the Hircine/Namira/Peryite bone and pillar dressing, moved or disabled to
+  clear the new statues' footprints - and before the whole Lux stack, so all 59
+  semantic divergences after the anchor go to Lux / Lux Orbis CS / Ensrick Lux
+  Water CS Patch and none to the shrine mod. Its 12 CELL "wins" over USSEP,
+  Landscape and Water Fixes, LFfGM, Lux Orbis and 3DNPC are semantically null -
+  the only variance is XCLR region-list ordering, same region set. Wintersun and
+  Pilgrim patches not needed (neither mod is installed). Two follow-ups: the
+  2K package still ships three 4096 sets (#184) and its statues measure soft at
+  mid/far distance (#185); Xtudo's two live patch pages are unevaluated (#186).
+- **Source:** the user, 2026-09-02 - *"Adopt those 2"* (with 2357). Audit:
+  `records/adoption-2357-78772-51874-2026-09-02.md` section 2. No prior record
+  existed; this is the first audit of the page.
+- **Verification:** VERIFIED 2026-09-02 13:33 by
+  `records/launch-verify-20260902-133303.md` (main menu 35.0 s, save loaded
+  50.3 s, 238 plugins, no crash log, nothing in `launch_triage` attributable to
+  it). Launch/load level only - how the statues actually sit at the four shrine
+  sites where they win reference edits over Nature of the Wild Lands has not
+  been seen. Records: `records/active-record-conflicts.json`,
+  `records/cell-after-man-daedricshrines-esp.md`,
+  `records/active-worldspace-conflicts.json`, `records/active-file-conflicts.json`.
+
+## 2026-09-02 13:05 - Enhanced Blood Textures LITE 1.1 adopted (Nexus 2357)
+
+- **What:** `Enhanced Blood Textures - Lite` installed and enabled (file
+  **68999**, v1.1, 11.86 MB, sha256 `50f92930...0b89c87`, plugin
+  `dD - Enhanced Blood Main LITE.esp`, transaction
+  `20260902T180416816Z-30169f7890b9`), staged through
+  `records/fomod-plans/2357-ebt-lite.json` so only the plugin and
+  `data/textures` land as game data. The file id is pinned because the page has
+  two `MAIN` files and `pick_file` would otherwise take the newer one, which is
+  the full 4.0 build the blood audit told us not to choose. The archive audit
+  did not contradict `records/blood-visuals-audit-2026-08-30.md` ranked decision
+  #2, so Lite went in as directed. **Screen-effect policy held and measured:**
+  EBT Lite sets 9 of the 15 `fBloodSplatter*` GMSTs non-zero and loses every one
+  of them to `Disable Screen Blood.esp`, which LOOT placed at 122 against EBT's
+  33; the one GMST that plugin does not cover, `iBloodSplatterMaxCount`, EBT
+  *lowers* from vanilla 25 to 10, so it cannot re-enable anything. The optional
+  `dD-No Screen Blood.esp` (64692) was therefore **not** installed - it is a
+  strict superset of a plugin already in the order. **Optimised Scripts for EBT
+  (76767) does not apply and was not installed:** it replaces five `zblood*.pex`
+  files and EBT Lite ships no scripts at all (15 DDS + 1 ESP). Spider Blood Fix
+  (114039) likewise does not apply - EBT Lite's 15 `BodyPartData` overrides
+  contain no spider record. Total conflict surface across 238 plugins is 10
+  FormKeys: the 8 screen-blood GMSTs above plus two Impact records, one an ITM
+  and one a real trade - arrow hits use EBT's blade decal instead of its arrow
+  decal so that Audio Overhaul and Immersive Sounds keep their sound edits
+  (#183). Sanguine Symphony is not installed, so the "never mix" constraint
+  holds. Texture measurement is poor and recorded as such (#185).
+- **Source:** the user, 2026-09-02 - *"Adopt those 2"*. Prior research:
+  `records/blood-visuals-audit-2026-08-30.md`. Audit:
+  `records/adoption-2357-78772-51874-2026-09-02.md` section 1. Outcome recorded
+  on #90.
+- **Verification:** VERIFIED 2026-09-02 13:33 by
+  `records/launch-verify-20260902-133303.md` (main menu 35.0 s, save loaded
+  50.3 s, 238 plugins, no crash log). Launch/load level only - blood on screen
+  during combat has not been seen.
+
 ## 2026-09-02 13:00 - Immersive Armors 8.1 installed INACTIVE as a vendor source (Sol, #181)
 
 - **What:** `Immersive Armors` 8.1 (Nexus 3479, file 5924, `3479-5924.7z`,
