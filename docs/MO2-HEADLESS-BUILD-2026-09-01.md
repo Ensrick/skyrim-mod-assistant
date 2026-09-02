@@ -93,3 +93,33 @@ SkyrimSE / MO2Headless / ModOrganizer / skse64_loader process alive:
 
 No game process was launched for these checks; the launch smoke is recorded
 separately in `CHANGELOG.md` (hardening package 3/3).
+
+## 0.2.1 deployment (2026-09-02 09:14, morning-ops)
+
+Under the instance work claim (`morning-ops`, purpose `controller 0.2.1
+deploy`, 09:14:47), with no SkyrimSE / MO2Headless / ModOrganizer /
+skse64_loader process alive (checked immediately before the swap). The
+team-lead's 09:13 verification launch (`records/launch-verify-20260902-091326.md`,
+PASS on 0.2.0) had released the claim.
+
+| Step | Result |
+|---|---|
+| artifact `MO2Headless.exe` | `MO2Headless 0.2.1 (build fa8cb528fbb2, sequence 1788321827)`, SHA-256 `C9753382FA3BCD021937AADAFAC59409DD2DD80BDD55011C1B08270CAC851B04` (matches the 23:58 download); artifact `Qt6Core.dll` 6.11.1.0 = instance 6.11.1.0 |
+| instance copy | `mo2-instances\skyrim-se\MO2Headless.exe` replaced; the 0.2.0 binary (`E484A21C...`) kept beside it as `MO2Headless.exe.bak.v6ed40ae7` (the 3769ece backup is still there too) |
+| first stamp | `plugin-disable Ensrick-Deploy-Stamp-NoSuchPlugin.esp` (`changed: false`): `headless/controller.version` = `fa8cb528fbb2` / `1788321827` / `0.2.1` at 14:14:47Z |
+| `toolchain.json` | `tools.mo2` re-pinned: root/path/sha256/guiPath/guiSha256 -> `mo2-builds/headless-core-33589364228-fa8cb528`, `controllerVersion` 0.2.1, `commit` `fa8cb528fbb220fc6e79e1dfb5b5705f5c2ba728`, `githubActionsRun` 33589364228, `githubArtifactDigest` `BA551DC9...`; `TOOLCHAIN.md` row updated; `records/source-builds/mo2-headless-0.2.1-fa8cb528.json` written |
+| `mo2-builds` | `headless-core-33571039440-6ed40ae7` left in place (pin moved off it) |
+
+Live checks after deploy: `status` ok, `controllerBuild.hash` =
+`instanceStamp.hash` = `fa8cb528fbb2`; `audit` 0 errors, 0 warnings;
+`plugin-list` 236 plugins, 232 active; `mod-list` 314 mods (the counts moved
+since the 0.2.0 deploy because of the overnight staging, not the controller);
+`install_mod.py --verify` `0 problem(s)`; `preflight.py` exit 0 (2 warnings:
+Steam overlay unverifiable, claim held by morning-ops).
+
+Launch smoke on 0.2.1: `launch_verify --claim-owner morning-ops` PASS at 09:16:22
+(`records/launch-verify-20260902-091622.md`: main menu 30.4 s, save loaded
+41.3 s, 32 SKSE plugins checked, 0 refused) through the direct chain
+(`MO2Headless --timeout 0 run skse64_loader.exe`); the stamp now reads
+`command: run` / `fa8cb528fbb2` at 14:15:36Z and 232 plugins stayed active.
+The 0.2.0 binary stays beside it as the rollback (`MO2Headless.exe.bak.v6ed40ae7`).

@@ -52,6 +52,13 @@ Protocol:
   "Every fix is a shippable patch or a reproducible recipe";
   docs/CURATION_POLICY.md "Textures are judged at distance".
 
+- [09-02 09:36] morning-ops (Claude): controller 0.2.1 deployed 09:14 (0.2.0 kept as
+  `MO2Headless.exe.bak.v6ed40ae7`), PASS `records/launch-verify-20260902-091622.md`;
+  soak launch 09:19 PASS but the user took the controls at 09:21 and quit at
+  09:27 (clean exit), so no idle figure yet: `records/soak-2026-09-02.md`. Log
+  triage `records/log-triage-2026-09-02.md`, issues #174-#178. Claim released
+  09:28; the profile is free.
+
 ### Sol -> Claude
 - [09-02 00:12, per user] Sol tracks its running work as comments on issue #43; Claude watches that thread. Sol may also append here.
 - (append here)

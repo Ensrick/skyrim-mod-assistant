@@ -25,12 +25,34 @@ A match is a violation: the file is withheld, listed in the manifest under
 standard library and are reported as not scanned (their MO2-extracted mod
 folders are scanned instead).
 
+Exception (#160 ruling, 2026-09-02): a ledger row may carry
+`vendorBytesAllowed: {"basis": "...", "files": [...]}`. A vendor-hash match on
+a file listed there passes, and is reported under "allowedVendorFiles"
+instead of "withheld", ONLY when the basis names a permissive licence (MIT,
+BSD, Apache, CC-BY, CC-BY-SA) or quotes a Nexus permission that grants upload
+of modified files. Any other basis is ignored and the match stays a violation.
+MIT explicitly permits redistributing the verbatim files with the notice, so
+the byte check alone is over-strict for permissively licensed sources.
+
+Recipe kinds understood in a ledger row's `recipe` field: texconv,
+nif-port-cli <verb>, archive-extract, script (a build.py in this repo) and
+tool (any pinned external tool: name + version/commit + sha256, with either
+1:1 `steps` or aggregate `inputs`/`outputs` lists). Rows without a `recipe`
+field fall back to their records/source-builds json.
+
 Read-only on the MO2 instance. Standard library only.
 
     py -3 tools/package_ensrick.py --dry-run   # plan + verification, no writes
     py -3 tools/package_ensrick.py             # writes dist/
 
-Exit codes: 0 clean, 2 vendor-byte violations, 1 error.
+Eligibility (ruling 2026-09-02): only Ensrick-made rows may carry a
+`distribution` field: rows with an Ensrick source-build record, or whose name
+starts with `Ensrick` / ends with `- Ensrick <ver>`. Any other classified row
+(an unmodified third-party release, whatever its licence) is a vendor row and
+a required download from its source; it is reported under
+"classificationErrors" and not packaged.
+
+Exit codes: 0 clean, 2 vendor-byte violations or classification errors, 1 error.
 """
 
 from __future__ import annotations
@@ -60,6 +82,10 @@ NEXUS_RE = re.compile(r"Nexus\s+(\d+)\s+file\s+(\d+)", re.IGNORECASE)
 NEXUS_URL_RE = re.compile(r"nexusmods\.com/skyrimspecialedition/mods/(\d+)")
 PLUGIN_EXT = {".esp", ".esl", ".esm"}
 CHUNK = 1 << 20
+# vendorBytesAllowed basis must name a permissive licence ...
+LICENCE_BASIS_RE = re.compile(r"\b(MIT|BSD|Apache|CC[- ]BY(?:[- ]SA)?)\b", re.IGNORECASE)
+# ... or quote a Nexus permission line that grants uploading (modified) files.
+QUOTED_UPLOAD_RE = re.compile(r"[\"'“‘][^\"'”’]*upload[^\"'”’]*[\"'”’]", re.IGNORECASE)
 
 
 # --------------------------------------------------------------------------
@@ -116,6 +142,27 @@ def is_invocation(command) -> bool:
     return isinstance(command, str) and " " in command.strip()
 
 
+def vendor_allow(row):
+    """Normalise a ledger row's vendorBytesAllowed field (#160 ruling).
+
+    Returns None when the row has no such field; otherwise a dict with the
+    lower-cased forward-slash file list, the basis text and whether the basis
+    is acceptable (permissive licence name or a quoted upload permission).
+    """
+    allow = row.get("vendorBytesAllowed")
+    if not isinstance(allow, dict):
+        return None
+    basis = str(allow.get("basis") or "").strip()
+    files = sorted({str(f).replace("\\", "/").strip("/").lower()
+                    for f in allow.get("files") or [] if isinstance(f, str) and f.strip()})
+    accepted = bool(basis) and bool(files) and bool(LICENCE_BASIS_RE.search(basis) or QUOTED_UPLOAD_RE.search(basis))
+    reason = None
+    if not accepted:
+        reason = ("vendorBytesAllowed ignored: basis must name a permissive licence (MIT/BSD/Apache/CC-BY/CC-BY-SA) "
+                  "or quote a Nexus permission granting upload of modified files, and files must be listed")
+    return {"basis": basis, "files": files, "accepted": accepted, "reason": reason}
+
+
 # --------------------------------------------------------------------------
 # .packagingignore + ledger packagingExcludes
 # --------------------------------------------------------------------------
@@ -167,6 +214,10 @@ def record_mod_names(record) -> set:
     installation = record.get("installation")
     if isinstance(installation, dict) and isinstance(installation.get("mo2Mod"), str):
         names.add(installation["mo2Mod"])
+    component = record.get("component")
+    if isinstance(component, str):
+        # e.g. "LaunchProbe (SKSE launch-verification instrumentation)" names the mod before the parenthesis
+        names.add(component.split(" (", 1)[0].strip())
     return names
 
 
@@ -248,6 +299,19 @@ def vendor_rows_by_mod_id(rows):
     return by_id
 
 
+def vendor_refs_in_text(texts, by_id):
+    """Every distinct 'Nexus <mod> file <file>' reference found in the given strings."""
+    seen, refs = set(), []
+    for text in texts:
+        for match in NEXUS_RE.finditer(text or ""):
+            key = (int(match.group(1)), int(match.group(2)))
+            if key in seen:
+                continue
+            seen.add(key)
+            refs.extend(vendor_refs(key[0], key[1], by_id))
+    return refs
+
+
 def vendor_refs(mod_id, file_id, by_id):
     hits = by_id.get(mod_id, [])
     if file_id:
@@ -293,11 +357,28 @@ def _step(inp, inp_sha, inp_bytes, command, output, out_sha, out_bytes):
     }
 
 
+def _multi_step(inputs, command, outputs):
+    """One aggregate step: many inputs -> one command -> many outputs."""
+    return {
+        "inputs": [{"input": i.get("source") or i.get("input"), "inputSha256": norm_hash(i.get("sha256") or i.get("inputSha256")),
+                    "inputBytes": i.get("bytes") if i.get("bytes") is not None else i.get("inputBytes"),
+                    **{k: v for k, v in i.items() if k in ("files", "aggregate", "provider", "note", "role")}}
+                   for i in inputs],
+        "command": command,
+        "outputs": [{"output": o.get("path") or o.get("output"), "outputSha256": norm_hash(o.get("sha256") or o.get("outputSha256")),
+                     "outputBytes": o.get("bytes") if o.get("bytes") is not None else o.get("outputBytes")}
+                    for o in outputs],
+    }
+
+
 def _check_steps(steps, missing):
     if not steps:
         missing.append("no steps (no input/output pairs recorded)")
         return
     for step in steps:
+        if "inputs" in step or "outputs" in step:
+            _check_multi(step, missing)
+            continue
         label = step.get("output") or step.get("input") or "?"
         if not step.get("inputSha256"):
             missing.append(f"input hash for {label}")
@@ -305,6 +386,28 @@ def _check_steps(steps, missing):
             missing.append(f"executable command for {label} (recorded: {step.get('command')!r})")
         if not step.get("outputSha256"):
             missing.append(f"expected output hash for {label}")
+
+
+def _check_multi(step, missing):
+    inputs, outputs = step.get("inputs") or [], step.get("outputs") or []
+    if not inputs:
+        missing.append("input archive/file hashes")
+    for item in inputs:
+        if not item.get("inputSha256"):
+            missing.append(f"input hash for {item.get('input') or '?'}")
+    if not is_invocation(step.get("command")):
+        missing.append(f"executable command (recorded: {step.get('command')!r})")
+    if not outputs:
+        missing.append("expected output hashes")
+    for item in outputs:
+        if not item.get("outputSha256"):
+            missing.append(f"expected output hash for {item.get('output') or '?'}")
+
+
+def _pin_ok(tool) -> bool:
+    """A tool is pinned when it has a commit or version AND a binary/script hash."""
+    return bool((tool.get("commit") or tool.get("version"))
+                and norm_hash(tool.get("sha256") or tool.get("binarySha256") or tool.get("scriptSha256")))
 
 
 def normalize_recipe(row, records, by_id):
@@ -426,26 +529,70 @@ def normalize_recipe(row, records, by_id):
         }
         if not out["tool"]["scriptSha256"]:
             missing.append(f"script {script!r} not found in the repository")
+        dependencies = []
+        for dep in recipe_field.get("dependencies") or []:
+            dep_path = REPO / dep.get("path", "") if isinstance(dep, dict) and dep.get("path") else None
+            dependencies.append({"path": dep.get("path") if isinstance(dep, dict) else str(dep),
+                                 "sha256": sha256_path(dep_path) if dep_path and dep_path.exists() else None,
+                                 "role": dep.get("role") if isinstance(dep, dict) else None})
+            if not dependencies[-1]["sha256"]:
+                missing.append(f"script dependency {dependencies[-1]['path']!r} not found in the repository")
+        if dependencies:
+            out["tool"]["dependencies"] = dependencies
         command = recipe_field.get("command")
         inputs = recipe_field.get("inputs") or []
         outputs = recipe_field.get("outputs") or []
-        if len(inputs) == len(outputs) and inputs:
+        if len(inputs) == len(outputs) and inputs and not recipe_field.get("aggregate"):
             for inp, outp in zip(inputs, outputs):
                 out["steps"].append(_step(inp.get("source"), inp.get("sha256"), inp.get("bytes"), command,
                                           outp.get("path"), outp.get("sha256"), outp.get("bytes")))
+                if inp.get("action") or outp.get("action"):
+                    out["steps"][-1]["action"] = inp.get("action") or outp.get("action")
         else:
-            out["steps"].append(_step(", ".join(i.get("source", "?") for i in inputs) or None,
-                                      inputs[0].get("sha256") if inputs else None,
-                                      inputs[0].get("bytes") if inputs else None, command,
-                                      ", ".join(o.get("path", "?") for o in outputs) or None,
-                                      outputs[0].get("sha256") if outputs else None,
-                                      outputs[0].get("bytes") if outputs else None))
+            out["steps"].append(_multi_step(inputs, command, outputs))
         out["method"] = recipe_field.get("method")
-        for inp in inputs:
-            match = NEXUS_RE.search(inp.get("source") or "")
-            if match:
-                out["vendorDownloads"] = vendor_refs(int(match.group(1)), int(match.group(2)), by_id)
-                break
+        out["vendorDownloads"] = vendor_refs_in_text([i.get("source") for i in inputs], by_id)
+        _check_steps(out["steps"], missing)
+
+    elif kind == "tool":
+        tool = recipe_field.get("tool") or {}
+        out["tool"] = {key: tool.get(key) for key in ("name", "version", "repository", "commit", "branch", "sha256",
+                                                        "binarySha256", "path", "license", "note")}
+        out["tool"]["sha256"] = norm_hash(tool.get("sha256") or tool.get("binarySha256"))
+        out["tool"].pop("binarySha256", None)
+        if not _pin_ok(tool):
+            missing.append(f"tool pin ({tool.get('name') or 'tool'}: version or commit + sha256)")
+        aux = []
+        for extra in recipe_field.get("auxiliaryTools") or []:
+            aux.append(extra)
+            if isinstance(extra, dict) and extra.get("required") and not _pin_ok(extra):
+                missing.append(f"tool pin ({extra.get('name') or 'auxiliary tool'}: version or commit + sha256)")
+        if aux:
+            out["tool"]["auxiliaryTools"] = aux
+        default_command = recipe_field.get("command")
+        steps = recipe_field.get("steps") or []
+        inputs = recipe_field.get("inputs") or []
+        outputs = recipe_field.get("outputs") or []
+        texts = []
+        if steps:
+            for step in steps:
+                normalized = _step(step.get("source"), step.get("sourceSha256"), step.get("sourceBytes"),
+                                   step.get("command") or default_command, step.get("output"),
+                                   step.get("outputSha256"), step.get("outputBytes"))
+                for key in ("edits", "note", "action"):
+                    if step.get(key) is not None:
+                        normalized[key] = step[key]
+                out["steps"].append(normalized)
+                texts.append(step.get("source"))
+        else:
+            out["steps"].append(_multi_step(inputs, default_command, outputs))
+            texts.extend(i.get("source") for i in inputs)
+        out["method"] = recipe_field.get("method")
+        out["vendorDownloads"] = vendor_refs_in_text(texts + [recipe_field.get("sourceForm")], by_id)
+        out["sourceForm"] = recipe_field.get("sourceForm")
+        if recipe_field.get("notes"):
+            out["notes"].extend(recipe_field["notes"] if isinstance(recipe_field["notes"], list)
+                                else [recipe_field["notes"]])
         _check_steps(out["steps"], missing)
 
     elif kind:
@@ -459,28 +606,44 @@ def normalize_recipe(row, records, by_id):
         source = record.get("source") or {}
         commit = (tool.get("commit") or transformation.get("toolCommit") or source.get("commit"))
         repository = (tool.get("repository") or transformation.get("toolRepository") or source.get("repository"))
+        syntax = (transformation.get("commandSyntax") or "").split(" <")[0].strip()
         out["tool"] = {
-            "name": tool.get("toolchainKey") or transformation.get("command") or record.get("component"),
+            "name": (tool.get("name") or tool.get("toolchainKey") or syntax or record.get("component")),
             "repository": repository,
             "commit": commit,
             "binarySha256": norm_hash(tool.get("binarySha256") or transformation.get("toolBinarySha256")),
             "generator": record.get("generator"),
+            "commandSyntax": transformation.get("commandSyntax"),
         }
         if not commit:
             missing.append("tool pin (no commit recorded)")
         build = record.get("build") if isinstance(record.get("build"), dict) else {}
         command = (transformation.get("command") or record.get("regenerate") or record.get("usage")
                    or build.get("command"))
-        input_hashes, output_hashes = [], []
+        input_hashes, output_hashes, per_file = [], [], []
         for mesh in record.get("meshes") or []:
             for key in ("sourceSha256", "vendorSourceSha256", "bodySourceSha256"):
                 if norm_hash(mesh.get(key)):
-                    input_hashes.append((f"{mesh.get('path')} <- {key}", mesh[key], mesh.get("sourceBytes")))
+                    label = mesh.get({"sourceSha256": "source", "vendorSourceSha256": "donorSource",
+                                      "bodySourceSha256": "baseSource"}[key]) or f"{mesh.get('path')} <- {key}"
+                    input_hashes.append((label, mesh[key], mesh.get("sourceBytes")))
             if norm_hash(mesh.get("outputSha256")):
                 output_hashes.append((mesh.get("path"), mesh["outputSha256"], mesh.get("outputBytes")))
+            if is_invocation(mesh.get("command")):
+                per_file.append({"output": mesh.get("path"), "command": mesh["command"]})
         for key in ("archiveSha256", "meshSha256"):
             if norm_hash(source.get(key)):
-                input_hashes.append((f"source.{key}", source[key], source.get("archiveBytes")))
+                input_hashes.append((source.get("meshPath") if key == "meshSha256" and source.get("meshPath")
+                                     else f"source.{key}", source[key], source.get("archiveBytes")))
+        for item in record.get("inputs") or []:
+            if isinstance(item, dict) and norm_hash(item.get("sha256")):
+                label = item.get("source") or item.get("plugin") or item.get("path") or "input"
+                if item.get("provider"):
+                    label = f"{label} (from {item['provider']})"
+                input_hashes.append((label, item["sha256"], item.get("bytes")))
+        for copy in transformation.get("verbatimCopies") or []:
+            if is_invocation(copy.get("command")):
+                per_file.append({"output": copy.get("destination"), "command": copy["command"]})
         output = record.get("output") if isinstance(record.get("output"), dict) else {}
         for key in ("sha256", "meshSha256"):
             if norm_hash(output.get(key)):
@@ -497,14 +660,23 @@ def normalize_recipe(row, records, by_id):
             missing.append("expected output hashes")
         if not is_invocation(command):
             missing.append(f"executable command (recorded: {command!r})")
-        out["steps"].append({
+        step = {
             "inputs": [{"input": i, "inputSha256": norm_hash(s), "inputBytes": b} for i, s, b in input_hashes],
             "command": command,
             "outputs": [{"output": o, "outputSha256": norm_hash(s), "outputBytes": b} for o, s, b in output_hashes],
-        })
+        }
+        if per_file:
+            step["perFileCommands"] = per_file
+        out["steps"].append(step)
         match = NEXUS_URL_RE.search(source.get("nexusUrl") or "")
         if match:
             out["vendorDownloads"] = vendor_refs(int(match.group(1)), source.get("fileId"), by_id)
+        extra_refs = vendor_refs_in_text([i.get("source") for i in record.get("inputs") or [] if isinstance(i, dict)], by_id)
+        for ref in extra_refs:
+            if all((ref["nexusModId"], ref["fileId"]) != (r["nexusModId"], r["fileId"]) for r in out["vendorDownloads"]):
+                out["vendorDownloads"].append(ref)
+        if transformation.get("reproduction"):
+            out["verification"] = transformation["reproduction"]
         out["notes"].append("derived from the source-builds record; the ledger row has no `recipe` field")
 
     else:
@@ -631,11 +803,31 @@ def build_vendor_index(instance: Path, packaged_names, sizes, scan_archives, row
 # plan
 # --------------------------------------------------------------------------
 
+ENSRICK_NAME_RE = re.compile(r"^Ensrick\b|- Ensrick(\s+\S+)?$")
+
+
+def is_ensrick_row(row, records) -> bool:
+    """Eligibility for a `distribution` field (#160 ruling 2026-09-02): the
+    collection carries only our own work. A row qualifies when it has an
+    Ensrick source-build record or its name starts with `Ensrick` / ends with
+    `- Ensrick <ver>`. Everything else is a vendor row: a required download
+    from its source, never collection payload, whatever its licence."""
+    return bool(ENSRICK_NAME_RE.search(row["modName"])) or find_record(row, records) is not None
+
+
 def build_plan(rows, instance: Path, patterns, records, by_id):
-    plan = {"packaged": [], "skipped": [], "recipes": [], "gaps": [], "errors": []}
+    plan = {"packaged": [], "skipped": [], "recipes": [], "gaps": [], "errors": [], "classificationErrors": []}
     for row in sorted((r for r in rows if r.get("distribution")), key=lambda r: r["modName"].lower()):
         name = row["modName"]
         distribution = row["distribution"]
+        if not is_ensrick_row(row, records):
+            plan["classificationErrors"].append({
+                "modName": name, "distribution": distribution, "basis": row.get("distributionBasis"),
+                "reason": ("not an Ensrick row: no Ensrick source-build record and the name neither starts with 'Ensrick' "
+                           "nor ends with '- Ensrick <ver>'. An unmodified third-party release is a vendor row and a required "
+                           "download from its source; drop the `distribution` fields from it"),
+            })
+            continue
         shared = str(row.get("sharedList") or "")
         if shared.lower().startswith("excluded"):
             plan["skipped"].append({"modName": name, "distribution": distribution,
@@ -679,13 +871,17 @@ def build_plan(rows, instance: Path, patterns, records, by_id):
             "sourceScript": find_script(row),
             "sourceOverlay": find_tracked_overlay(row),
             "recipe": None,
+            "vendorBytesAllowed": vendor_allow(row),
             "files": [],
             "excluded": [],
             "withheld": [],
+            "allowedVendorFiles": [],
             "warnings": [],
             "fileCount": 0,
             "bytes": 0,
         }
+        if entry["vendorBytesAllowed"] and not entry["vendorBytesAllowed"]["accepted"]:
+            entry["warnings"].append(entry["vendorBytesAllowed"]["reason"])
         if row.get("recipe"):
             recipe, missing = normalize_recipe(row, records, by_id)
             entry["recipe"] = {"kind": recipe.get("kind"), "tool": recipe.get("tool"),
@@ -732,15 +928,26 @@ def apply_vendor_check(plan, index):
     violations = []
     for entry in plan["packaged"]:
         kept = []
+        allow = entry.get("vendorBytesAllowed")
+        allowed_paths = set(allow["files"]) if allow and allow["accepted"] else set()
+        used = set()
         for file in entry["files"]:
             matches = index.get(file["sha256"])
-            if matches:
+            if matches and file["path"].lower() in allowed_paths:
+                used.add(file["path"].lower())
+                entry["allowedVendorFiles"].append({"path": file["path"], "sha256": file["sha256"], "bytes": file["bytes"],
+                                                    "matches": sorted(set(matches)), "basis": allow["basis"]})
+                kept.append(file)
+            elif matches:
                 violation = {"modName": entry["modName"], "path": file["path"], "sha256": file["sha256"],
                              "bytes": file["bytes"], "matches": sorted(set(matches))}
                 entry["withheld"].append(violation)
                 violations.append(violation)
             else:
                 kept.append(file)
+        for path in sorted(allowed_paths - used):
+            entry["warnings"].append(f"vendorBytesAllowed lists {path} but no vendor-byte match was found for it "
+                                     "(stale allow entry, or the file is not shipped)")
         entry["files"] = kept
         entry["fileCount"] = len(kept)
         entry["bytes"] = sum(f["bytes"] for f in kept)
@@ -770,6 +977,20 @@ def render_readme(manifest, recipes, plan, stats, violations):
                  "our own bytes ship; modified vendor assets never ship and are regenerated on the installing "
                  "machine from the user's own downloads.")
     lines.append("")
+    lines.append("**Eligibility (ruling 2026-09-02, #160):** the collection carries only our own work. A ledger row may "
+                 "carry a `distribution` field only if it is an Ensrick-made overlay, patch or rebuild: it has an Ensrick "
+                 "source-build record, or its name starts with `Ensrick` or ends with `- Ensrick <ver>`. An unmodified "
+                 "third-party release (GPL or not) is a vendor row and a required download from its own source, exactly "
+                 "like any Nexus mod; the packager reports any other classified row as a classification error and does not "
+                 "package it. The `vendorBytesAllowed` exception is only for permissive licences (MIT/BSD/Apache/CC-BY) or a "
+                 "quoted upload permission and is never extended to GPL.")
+    lines.append("")
+    if plan.get("classificationErrors"):
+        lines.append("### Classification errors (rows NOT packaged)")
+        lines.append("")
+        for item in plan["classificationErrors"]:
+            lines.append(f"- **{item['modName']}** (`distribution: {item['distribution']}`): {item['reason']}")
+        lines.append("")
     lines.append("## Set 1: `ensrick-patches/` (shipped bytes)")
     lines.append("")
     lines.append("Each folder is one Mod Organizer 2 mod; install it under the same name and place it where the "
@@ -792,6 +1013,18 @@ def render_readme(manifest, recipes, plan, stats, violations):
     for mod in manifest["mods"]:
         lines.append(f"- **{mod['modName']}**: {mod.get('basis') or '(no basis text recorded)'}")
     lines.append("")
+    if any(m["allowedVendorFiles"] for m in manifest["mods"]):
+        lines.append("### Vendor bytes shipped under licence (`vendorBytesAllowed`)")
+        lines.append("")
+        lines.append("These files are byte-identical to a vendor file and ship anyway because the ledger row lists them "
+                     "under an explicit allow whose basis is a permissive licence or a quoted upload permission. "
+                     "The licence notice travels in the same folder.")
+        lines.append("")
+        for mod in manifest["mods"]:
+            for item in mod["allowedVendorFiles"]:
+                lines.append(f"- {mod['modName']} / `{item['path']}` (matches " + "; ".join(f"`{m}`" for m in item["matches"])
+                             + f"): {item['basis']}")
+        lines.append("")
     if any(m["withheld"] for m in manifest["mods"]):
         lines.append("### Withheld files (vendor-byte violations)")
         lines.append("")
@@ -863,11 +1096,13 @@ def render_readme(manifest, recipes, plan, stats, violations):
     lines.append("")
     lines.append("## Vendor-byte verification")
     lines.append("")
+    allowed_total = sum(len(m["allowedVendorFiles"]) for m in manifest["mods"])
     lines.append(f"Every shipped file was hashed and compared against {stats['modFoldersScanned']} other MO2 mod "
                  f"folders ({stats['looseFilesHashed']:,} size-matched files hashed of {stats['looseFilesSeen']:,} seen), "
                  f"{stats['downloadFoldersScanned']} extracted download folders, {stats['zipArchivesScanned']} zip "
                  f"archives ({stats['zipEntriesHashed']:,} size-matched entries hashed of {stats['zipEntriesSeen']:,}) "
-                 f"and {stats['recordedInputHashes']:,} recorded vendor input hashes. Violations: {len(violations)}.")
+                 f"and {stats['recordedInputHashes']:,} recorded vendor input hashes. Violations: {len(violations)}; "
+                 f"vendor-identical files shipped under an explicit licence allow: {allowed_total}.")
     if stats["unscannedArchives"]:
         lines.append("")
         lines.append(f"{len(stats['unscannedArchives'])} 7z/rar download archives could not be read with the "
@@ -923,6 +1158,8 @@ def print_summary(plan, manifest, recipes, stats, violations, dry_run, dist_root
             flags.append(f"{len(mod['excluded'])} excluded")
         if mod["withheld"]:
             flags.append(f"{len(mod['withheld'])} WITHHELD")
+        if mod["allowedVendorFiles"]:
+            flags.append(f"{len(mod['allowedVendorFiles'])} vendor-identical allowed")
         if mod["warnings"]:
             flags.append(f"{len(mod['warnings'])} warning(s)")
         print(f"  - {mod['modName']}: {mod['fileCount']} files, {mod['bytes']:,} B" + (f" [{'; '.join(flags)}]" if flags else ""))
@@ -930,6 +1167,8 @@ def print_summary(plan, manifest, recipes, stats, violations, dry_run, dist_root
             print(f"      excluded {item['path']} ({item['reason']})")
         for item in mod["withheld"]:
             print(f"      WITHHELD {item['path']} matches " + "; ".join(item["matches"]))
+        for item in mod["allowedVendorFiles"]:
+            print(f"      allowed  {item['path']} (vendorBytesAllowed) matches " + "; ".join(item["matches"]))
         for warning in mod["warnings"]:
             print(f"      warning: {warning}")
     print(f"skipped rows       : {len(plan['skipped'])}")
@@ -948,6 +1187,9 @@ def print_summary(plan, manifest, recipes, stats, violations, dry_run, dist_root
           f"{len(stats['unscannedArchives'])} 7z/rar archives not scannable")
     for violation in violations:
         print(f"  ! {violation['modName']} / {violation['path']} == " + "; ".join(violation["matches"]))
+    print(f"classification errs: {len(plan['classificationErrors'])}")
+    for item in plan["classificationErrors"]:
+        print(f"  ! {item['modName']} (distribution: {item['distribution']}): {item['reason']}")
     if plan["errors"]:
         print(f"errors             : {len(plan['errors'])}")
         for error in plan["errors"]:
@@ -1030,11 +1272,16 @@ def main(argv=None) -> int:
             "packagedBytes": sum(e["bytes"] for e in plan["packaged"]),
             "excludedFiles": sum(len(e["excluded"]) for e in plan["packaged"]),
             "withheldFiles": len(violations),
+            "allowedVendorFiles": sum(len(e["allowedVendorFiles"]) for e in plan["packaged"]),
             "skippedRows": len(plan["skipped"]),
+            "classificationErrors": len(plan["classificationErrors"]),
         },
+        "eligibility": ("ruling 2026-09-02 (#160): only Ensrick-made rows (Ensrick source-build record, or name starting with "
+                        "'Ensrick' / ending with '- Ensrick <ver>') may carry a distribution field; vendor releases are downloads"),
         "vendorByteCheck": {"stats": stats, "violations": violations},
         "mods": [strip_private(entry) for entry in plan["packaged"]],
         "skipped": plan["skipped"],
+        "classificationErrors": plan["classificationErrors"],
     }
     recipes = {
         "schemaVersion": 1,
@@ -1064,7 +1311,7 @@ def main(argv=None) -> int:
         print(f"\nwrote {args.dist / 'ensrick-patches' / 'manifest.json'}")
         print(f"wrote {args.dist / 'ensrick-recipes' / 'recipes.json'}")
         print(f"wrote {args.dist / 'README.md'}")
-    return 2 if violations else 0
+    return 2 if (violations or plan["classificationErrors"]) else 0
 
 
 if __name__ == "__main__":

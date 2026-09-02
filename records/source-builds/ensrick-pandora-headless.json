@@ -47,5 +47,10 @@
     "upstreamable": "Yes - small additive diff on upstream style; user decides whether to PR."
   },
   "usage": "tools\run-pandora.cmd, or: MO2Headless.exe --root <instance> --timeout 3600 run <exe> --arguments '--headless -o \"<output mod>\"'",
-  "rebuild": "git clone -b ensrick/headless https://github.com/Ensrick/pandora-behaviour-engine (local: C:/Users/danjo/source/repos/pandora-behaviour-engine); git submodule update --init --recursive; dotnet publish as above with a .NET 10 SDK."
+  "rebuild": "git clone -b ensrick/headless https://github.com/Ensrick/pandora-behaviour-engine (local: C:/Users/danjo/source/repos/pandora-behaviour-engine); git submodule update --init --recursive; dotnet publish as above with a .NET 10 SDK.",
+  "recipe": {
+    "recordedAt": "2026-09-02",
+    "where": "ledger row 'Pandora Output - Ensrick', recipe field (kind: tool): input aggregates (Pandora_Engine templates, the sppffp/sppftp Nemesis patch folders as the VFS sees them, the XPMSSE FNIS list + animations) with the vendor archive hashes, the run command, and the SHA-256 of every payload output file.",
+    "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/160"
+  }
 }

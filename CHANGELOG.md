@@ -34,6 +34,203 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 10:06 - #165/#166 restore: decided skins on top + vanilla `_sk` soft-light overlay (both reversible)
+
+- **What:** Under claim `skin-face-diagnosis-2` (no game or MO2 process; the
+  user's 09:34-10:05 session had ended), MO2Headless `mod-priority`: (1)
+  `SkySight Skins` 10 -> directly above `The New Gentleman` (now 13 vs 12,
+  transaction `20260902T150554430Z-ad9da584547b`); (2) `Reverie - Skin` 9 ->
+  directly above `CBBE` (now 90 vs 89, `20260902T150554563Z-2186a81b488a`).
+  Enabled flags of all 315 rows unchanged; `modlist.txt` backed up to
+  `modlist.txt.bak.v20260902-100554-preskinreorder`. One deviation from
+  "priority only": SkySight ships 22 meshes (malefeet_0/1 + 18 open-toed
+  footwear from its forced RequiredHighPolyFeet option) that lost to
+  HIMBO/TNG/HIMBO Refits/Lords of the Reach before the move and would have
+  flipped 18 HIMBO-shaped footwear meshes to vanilla shape after it, so
+  `mods\SkySight Skins\meshes` is renamed `meshes.mohidden` (rename back to
+  undo) - no mesh changes hands, texture-only effect. (3) New mod `Ensrick -
+  Vanilla Skin Soft-Light Maps` (MO2Headless `mod-stage`, transaction
+  `20260902T150554695Z-a8bcf3daafe6`, priority 237 = top row, enabled): the
+  six vanilla `_sk` maps (`femalehead/femalebody_1/femalehands_1`,
+  `malehead/malebody_1/malehands_1`) byte-copied from `Skyrim - Textures0.bsa`
+  by `overlays/ensrick-vanilla-skin-soft-light-maps/build.py` (pinned entry
+  hashes, refuses on mismatch; zip SHA-256 E7C01E72...C9E, 214,061 B),
+  because Reverie and TNG replace all six with 4x4 black stubs and CBBE's
+  are near-black, which zeroes the vanilla soft-light wrap (CS
+  `Common/LightingEval.hlsli:119`). Installed files re-hashed 6/6. Ledger:
+  overlay row `distribution: recipe` (vanilla bytes, never bundled) + notes
+  on the CBBE / Reverie / TNG / SkySight rows. Resulting winners
+  (`resolve_winners` after): every female head/body/hands map = Reverie,
+  every male map = SkySight, every `_sk` = the overlay; `install_mod --verify`
+  0 problems, `verify_order` CLEAN, preflight clean (3 warnings: Steam
+  overlay unverifiable, saves mirrored, and the overlay's ledger row, which
+  now exists). A/B for the user: disable `Ensrick - Vanilla Skin Soft-Light
+  Maps` alone to see the stubs' look; rollback of the moves = the two
+  transactions or the modlist backup.
+- **Source:** team-lead ruling 2026-09-02 on #165/#166 (mechanical restore
+  of BASELINE.md:184-186 skin decisions + vanilla `_sk` overlay); records
+  `records/face-eye-makeup-audit-2026-09-02.md`,
+  `records/skin-distance-detail-audit-2026-09-02.md`.
+- **Verification:** VERIFIED 2026-09-02 10:07 by
+  `records/launch-verify-20260902-100735.md` (main menu 31.4 s, save loaded
+  41.7 s, 232 plugins, claim skin-face-diagnosis-2). Launch/load level only;
+  the in-game look (soft-light wrap back, Reverie/SkySight skins) is the
+  user's A/B, not yet seen.
+
+## 2026-09-02 09:50 - #165/#166 diagnosis: face makeup source + distance-detail metric (tooling only, no build change)
+
+- **What:** (1) `audit/mip_retention.py` (new, sibling of `inspect_mod.py`):
+  decodes a DDS mip chain as shipped, reports RMS-Laplacian high-frequency
+  energy and tonal std per mip, compares against the vanilla texture at the
+  same pixel size, and `--resharpen` regenerates a Lanczos + unsharp chain
+  through texconv (the recipe form). Bytes-input path fixed (texconv refused
+  an input inside its own `-o`). (2) `inspect_mod.py` runs that check on up
+  to 12 sampled diffuse/normal/specular maps >= 1024 px and flags
+  `soft-at-distance` under `DISTANCE_HF_FLOOR = 0.70`; `--mip=N` / `--mip=0`
+  control it. (3) `audit/README.md` documents both. (4) Records:
+  `records/face-eye-makeup-audit-2026-09-02.md` (#165: ring = Bethesda's
+  baked facetint, rendered harsh because CBBE/TNG `_sk` maps zero the
+  soft-light wrap) and `records/skin-distance-detail-audit-2026-09-02.md`
+  (#166: winner-vs-vanilla mid/far ratios, resharpen test, candidate
+  shortlist with permissions). No mod, INI, priority or overlay changed.
+- **Source:** user 2026-09-02 (#165 "dark makeup around the eyes", #166
+  "matte and single-tone from a distance"); team-lead dispatch; CS 1.8
+  shader source `_rebuild_CommunityShaders/package/Shaders/Lighting.hlsl`.
+- **Verification:** n/a - build state untouched, so no launch. Tooling
+  smoke: `mip_retention` bytes path decoded CBBE `femalehead.dds` vs vanilla
+  (hf x0.48 at 512-128 px) through the exact `inspect_mod` call sequence.
+
+## 2026-09-02 09:36 - #160 packaging: vendorBytesAllowed ruling applied, six recipe gaps closed, collection built clean
+
+- **What:** (1) Lead ruling implemented in `tools/package_ensrick.py`: a
+  ledger row may carry `vendorBytesAllowed: {basis, files}`; a vendor-hash
+  match on a listed file passes (manifest `allowedVendorFiles`, README
+  section "Vendor bytes shipped under licence") only when the basis names a
+  permissive licence (MIT/BSD/Apache/CC-BY/CC-BY-SA) or quotes a Nexus
+  permission granting upload of modified files; anything else stays a
+  violation. Set on `Light Placer - Ensrick 1.7.104` for
+  `po3_LightPlacer.ini`, `Scripts/LightPlacer.pex`,
+  `Source/Scripts/LightPlacer.psc` (MIT, `LightPlacer-LICENSE.txt` ships;
+  the parked vendor Light Placer is NOT a required download).
+  `Ensrick - Media Keys Fix Configuration` got its `distributionBasis` (own
+  INI overlay, no vendor bytes). (2) Six recipe gaps closed from existing
+  records, no re-runs on the instance: Better Fur refit and Werewolf Totem
+  98175 records now carry the full per-mesh `nif-port-cli clone-shape` /
+  `remap-textures` invocations (pins c63f74e / e12079c) plus the 8 verbatim
+  texture copies, and both were reproduced byte-identically into the
+  scratchpad with the pinned binary (4/4 and 1/1); CRF Semantic Patch record
+  gained the generator pin (this repo, commit 19875a9), the nine
+  master-plugin input hashes and the reconstructed `run-patcher` command
+  (exact 2026-08-30 argument line was never captured, same as Collectibles
+  Helper); Varinia got a `recipe` field (new `tool` kind: Caprica 0.3.0
+  commit + exe hash, per-fragment vendor PSC hash from the BSA, restored
+  declarations, command, PEX hash); VHR SMP NPC Compatibility got a `script`
+  recipe (build.py + modasset.py pins, both BSA hashes, all 32 input/output
+  hashes recomputed from the BSAs and matching the installed overlay);
+  Pandora Output got a `tool` recipe (headless exe 6adf04b + hash, input
+  aggregates for Pandora_Engine templates, the sppffp/sppftp VFS view and
+  the XPMSSE animations folder, vendor archive hashes, SHA-256 of all 205
+  payload outputs = 171 hkx + 2 singlefile txt + 32 json; not re-run, hashes
+  hold for that input set only). Packager also learned the generic `tool`
+  recipe kind, aggregate inputs/outputs for `script` rows, per-mesh commands
+  and `inputs` lists in source-builds records. (3) `dist/` rebuilt (dry then
+  real): 17 mods / 109 files / 62,019,454 B, 3 vendor-identical files shipped
+  under the MIT allow, 13 complete recipes, 0 gaps, 0 violations, exit 0.
+  Ledger written by one atomic replace after an immediate re-read. A 09:38
+  re-run, after the concurrent `Dyn FNIS AA functions` row (fnis-aa-fix,
+  #148, `distribution: distributable` under GPL-3.0-only) entered the ledger,
+  withheld all 8 of that vendor row's files as byte-identical to its GitHub
+  release zip and exited 2; every `Ensrick - *` row stayed clean. The #160
+  packaging box was ticked on the 09:30 result and re-opened on the 09:38
+  one: an unmodified vendor release is a required download, not collection
+  payload, and GPL is outside the MIT/BSD/Apache/CC-BY allow ruling.
+  RESOLVED 09:52 by the lead's ruling (vendor releases are downloads, never
+  collection payload; `distribution` belongs only to Ensrick-made rows; no
+  GPL allow): the `Dyn FNIS AA functions` row lost its distribution fields
+  and gained `sourceUrl`, `sourceTag` and a verified zip `sha256Note`; the
+  packager now admits a classified row only if it has an Ensrick
+  source-build record or its name starts with `Ensrick` / ends with
+  `- Ensrick <ver>`, reporting anything else as a classification error
+  (exit 2, not packaged); the rule is written into `docs/PATCH_INTENTS.md`
+  and the generated `dist/README.md`. Final re-run (dry then real) exit 0:
+  17 mods / 109 files / 62,019,454 B, 13 recipes, 0 gaps, 0 violations, 0
+  classification errors; #160 packaging box ticked.
+- **Source:** team-lead ruling on #160 (MIT explicitly permits verbatim
+  redistribution with the notice; the byte check alone is over-strict for
+  permissively licensed sources) and the 2026-09-02 packaging dry-run
+  comment on #160 listing the six gaps. Agent `packaging`.
+- **Verification:** none required (ledger metadata, records, packager and
+  gitignored `dist/` only; the MO2 instance was read, never written; no
+  launch). Nothing committed.
+
+## 2026-09-02 09:30 - Dyn FNIS AA functions 3.0.1 staged: the FNIS_aa provider Pandora's FNIS stub assumed (#148)
+
+- **What:** New mod `Dyn FNIS AA functions` (MO2Headless `mod-stage`,
+  transaction `20260902T143023275Z-ea7f2934758d`, priority 13 directly above XPMSSE at 12; enabled)
+  from the SARDONYX-sard/fnis_aa GitHub release v3.0.1 (tag `8e4ea36`,
+  published 2026-09-02 14:15Z, GPL-3.0-only; Nexus 175362 still lists 3.0.0
+  MAIN and 3.0.1-beta): `SKSE/Plugins/fnis_aa.dll` (sha256 `EE5F4C29...30EBB`,
+  version 3.0.1.0) + `.pdb`; `scripts/FNIS_aa.pex`, `FNIS_aa2.pex`, `fnis.pex`,
+  `FNISVersion.pex`, `FNISVersionGenerated.pex`; `Source/Scripts/*.psc` and
+  `fnis_aa-LICENSE.txt` added from the tag. Package kept at
+  `headless/packages/Dyn-FNIS-AA-functions-3.0.1-github-8e4ea36`, zip in
+  `downloads/`. Why: Pandora 4.4.0-beta's FNIS support is a dummy `FNIS.esp`
+  plus an OAR conversion of XPMSE's alternate-animation sets and a
+  `SKSE/Plugins/fnis_aa/config.json` written for exactly this plugin
+  (`AltAnimToOarBuilder.cs`); nothing provided the `FNIS_aa` / `FNIS` Papyrus
+  natives, so XPMSSE 5.06 - the only caller (`XPMSELib`, `XPMSEWeaponQuest`,
+  `XPMSEWeaponStyleScaleEffect`, `XPMSEMCM`) - aborted every call. Receipt:
+  the 21:28-22:03 play session logged 2033 `not found on object fnis_aa` /
+  `fnis` errors (GetInstallationCRC 1123, SetAnimGroupEX 727, peak 524/min at
+  21:54) out of 2233 error lines -
+  `records/log-snapshots/20260901-2354-play-session/Script/Papyrus.3.log`
+  (copied from the overnight-soak 23:54 snapshot). Gate
+  `audit/skse_version_data.py` PASS (versionIndependence=1, PE stamp
+  2026-09-02, above the cutoff); CommonLibSSE-NG 7.1.0 (`2dde70e8`, contains
+  the 1.7.99+ layout fix `68ae73e1` the ConsoleUtil/Proteus rebuilds needed);
+  import table has no hard `SKSEMenuFramework.dll` dependency (menu is
+  runtime-optional) and imports `MessageBoxW` only through CommonLib's fatal
+  path. Scope: restores the API and the `FNISaa_*` graph-variable plumbing so
+  XPMSE's weapon-style MCM path is live; the visible draw/sheathe animation
+  swap still needs Open Animation Replacer, parked for the #140 load hang.
+  Ledger row added; preflight exit 0 after staging.
+- **Source:** issue #148 (team-lead dispatch 2026-09-02 09:12, "fnis_aa
+  Papyrus flood"); Pandora source
+  `Models/Patch.Skyrim64/Format.FNIS/AltAnimToOarBuilder.cs`; Nexus 175362
+  description ("Users who use Pandora ... and want to run FNIS AA mods (such
+  as XPMSE ...)"); agent fnis-aa-fix.
+- **Verification:** `VERIFIED 2026-09-02 09:32` - `records/launch-verify-20260902-093221.md` PASS (main menu 29.8s, save loaded 63.9s; 33 SKSE plugins, 0 refused; `skse64.log`: "plugin fnis_aa.dll (00000001 fnis_aa 03000010) loaded correctly (handle 6)"; `fnis_aa.log`: v3-0-1-0, FNIS_aa2 / FNIS_aa / FNIS natives registered, 0 errors). Soak: `records/launch-verify-20260902-093606.md` PASS (main menu at 29.3s, save loaded at 112.7s), left running with `--leave-running`; after-count at the 09:43 mark from `Papyrus.0.log`: **0** `not found on object fnis*` errors over 4.7 min of flushed post-load log (VM thawed 09:36:02, last flush 09:40:44, 363 post-load lines) against the 09:19 soak baseline of **497** over 6.5 min (`records/log-snapshots/20260902-0920-soak/Script/Papyrus.0.log`) and 2033 in the play session; "XPMSE MainQuest Initialization successful" at 09:36:06 (the 16 `GetGroupBaseValue` init calls that errored on every previous load). Two residual one-off lines, both new signatures: `FNIS.GetFlags` not bound at load (DLL registers it, shipped `fnis.pex` does not declare it, nothing calls it) and one `cannot fetch variable FNISaa_maceqp` on `WindhelmGuardSonsExteriorPatrolBREF` during effect cleanup at unload (Pandora pushed all 33 `FNISaa*` vars; an unload race, not a missing variable). At 09:36:35 the user took the controls of the soak game (TweenMenu; HUMAN_AT_CONTROLS, `records/human-at-controls.jsonl`), so the game was left running for them; `records/launch-verify-20260902-093910.md` is the refused attach-kill of that same pid 26276 - its "FAIL - no main menu" text is an attach-mode artifact, not a launch failure. Still owed: the in-game weapon-style check (XPMSE MCM styles), which also needs OAR (#140).
+
+## 2026-09-02 09:14 - MO2Headless controller 0.2.1 deployed (stale-row fix, #105 follow-up)
+
+- **What:** `mo2-instances\skyrim-se\MO2Headless.exe` replaced with the 0.2.1
+  build (`fa8cb528fbb2`, sequence 1788321827, SHA-256 `C9753382...851B04`,
+  from `mo2-builds/headless-core-33589364228-fa8cb528/`, GitHub Actions run
+  33589364228, disposable-instance regression 40/40 at 23:58). The 0.2.0
+  binary is kept beside it as `MO2Headless.exe.bak.v6ed40ae7` (rollback =
+  rename back). First stamp via `plugin-disable Ensrick-Deploy-Stamp-NoSuchPlugin.esp`
+  (`changed: false`): `headless/controller.version` = 0.2.1 / `fa8cb528fbb2`.
+  `toolchain.json` `tools.mo2` re-pinned (root/path/sha256/guiPath/guiSha256/
+  commit/run/artifact digest, `controllerVersion` 0.2.1), `TOOLCHAIN.md` row
+  updated, `records/source-builds/mo2-headless-0.2.1-fa8cb528.json` written,
+  deployment table appended to `docs/MO2-HEADLESS-BUILD-2026-09-01.md`. Only
+  the controller binary changed; the instance GUI stays the 3769ece build.
+  Live checks: `status` build = stamp, `audit` 0/0, `plugin-list` 236/232,
+  `mod-list` 314, `install_mod.py --verify` 0 problems, `preflight.py` exit 0.
+- **Source:** morning checklist item "Deploy controller 0.2.1"
+  (`docs/MORNING-CHECKLIST-2026-09-02.md`), team-lead dispatch 09:13 to
+  morning-ops; deploy steps per `docs/MO2-HEADLESS-BUILD-2026-09-01.md`.
+  Done under claim `morning-ops` with no game/MO2 process alive.
+- **Verification:** VERIFIED 2026-09-02 09:16 - `records/launch-verify-20260902-091622.md`
+  (main menu 30.4 s, save loaded 41.3 s, 32 SKSE plugins checked, 0 refused;
+  first live `run` on 0.2.1, stamp `command: run`, 232 plugins active before
+  and after). Second PASS on 0.2.1 at 09:20:09
+  (`records/launch-verify-20260902-092009.md`, main menu 36.7 s, save loaded
+  48.6 s; the soak launch, which the user then played in and quit at 09:27,
+  `records/soak-2026-09-02.md`). Log triage of every run since 09-01 17:28:
+  `records/log-triage-2026-09-02.md` (#174-#178 opened, receipts on #146,
+  #148, #157).
+
 ## 2026-09-02 00:06 - Two texture-path overlays staged for the env-mask sweep typos; six sweep issues opened (#167-#172)
 
 - **What:** Two new local overlays, each a byte copy of an existing vendor
@@ -66,7 +263,8 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 - **Source:** team-lead follow-up on the #159 sweep (2026-09-02 00:03:
   issues per finding, overlay the typo cases, check FOMOD plans for the
   missing sets); evidence in `records/envmask-missing-scan-2026-09-02.md`.
-- **Verification:** PASS in `records/launch-verify-20260902-091326.md` (main menu 32.2s, save 58.1s; 32 plugins, 0 refused) - first launch after the 00:06 staging.
+- **Verification:** PASS in `records/launch-verify-20260902-091326.md` (main menu 32.2s, save 58.1s; 32 plugins, 0 refused) - first launch after the 00:06 staging; also covered by `records/launch-verify-20260902-091622.md` (controller 0.2.1; 30.4s / 41.3s). In-game look of the blade and the manhole cover still unverified.
+
 ## 2026-09-02 00:05 - Ensrick patch collection packager `tools/package_ensrick.py`: 17 mods packaged, 5 recipes, 6 gaps, 3 vendor-byte withholds (#160)
 
 - **What:** new `tools/package_ensrick.py` (stdlib only, read-only on the

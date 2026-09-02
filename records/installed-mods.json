@@ -522,7 +522,8 @@
       "enabled": true,
       "installedUtc": "2026-08-26T22:23:46Z",
       "transaction": "20260826T222309394Z-7cb9451ee1cd",
-      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\198-cbbe.json"
+      "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\198-cbbe.json",
+      "note": "2026-09-02 #165/#166 restore: Reverie - Skin now sits directly above (CBBE 89); CBBE's 41 skin textures no longer win, as decided in BASELINE.md:184. VERIFIED by records/launch-verify-20260902-100735.md."
     },
     {
       "modId": 60111,
@@ -809,6 +810,24 @@
       "note": "Required mesh-only library for the adopted Freak's Floral Fields 3.2.3 stack. It remains a pristine external Nexus dependency; FFF intentionally wins its selected 44 mesh and 5 texture overlaps. No plugin and no full plugin slot."
     },
     {
+      "modId": 175362,
+      "modName": "Dyn FNIS AA functions",
+      "nexusName": "Dyn FNIS AA functions",
+      "version": "3.0.1",
+      "fileId": 0,
+      "fileName": "headless/packages/Dyn-FNIS-AA-functions-3.0.1-github-8e4ea36 (GitHub release asset fnis_aa-windows.zip of SARDONYX-sard/fnis_aa tag v3.0.1 = 8e4ea36b7c15f910d077f51dab8d944fbace95b4, published 2026-09-02T14:15Z; zip kept as downloads/'Dyn FNIS AA functions 175362 3.0.1 2026-09-02T14-15Z github-fnis_aa-windows.zip'; Nexus 175362 lists only 3.0.0 MAIN (file 737788) and 3.0.1-beta UPDATE (file 793195, 2026-08-22) - re-point at the Nexus file when 3.0.1 lands there)",
+      "sizeMb": 21.1,
+      "sha256": "626f5cbef3945cf44b56f058517043fb5681fef01cda27617461eaa6415b29b7",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T14:30:23Z",
+      "transaction": "20260902T143023275Z-ea7f2934758d",
+      "note": "#148: the FNIS_aa / FNIS Papyrus provider that Pandora's FNIS support assumes. Pandora 4.4.0-beta ships a dummy FNIS.esp, converts XPMSE's alternate-animation sets to OAR folders in Pandora Output and writes SKSE/Plugins/fnis_aa/config.json for exactly this SKSE plugin (Pandora AltAnimToOarBuilder.cs, SARDONYX-sard commit 5b7af37b); without it XPMSSE 5.06 (the only caller: XPMSELib, XPMSEWeaponQuest, XPMSEWeaponStyleScaleEffect, XPMSEMCM) aborted every call - 2033 'not found on object fnis_aa/fnis' errors in the 21:28-22:03 play session (records/log-snapshots/20260901-2354-play-session/Script/Papyrus.3.log). Payload: SKSE/Plugins/fnis_aa.dll (sha256 ee5f4c29e38314c0ec23071ca297737e54cadfd0832aa4e964c0707718e30ebb, version 3.0.1.0) + .pdb; scripts/FNIS_aa.pex, FNIS_aa2.pex, fnis.pex, FNISVersion.pex, FNISVersionGenerated.pex (natives registered by the DLL; SetAnimGroupEX, GetAAmodID, GetGroupBaseValue, GetInstallationCRC, the _<group>() ids and FNIS.VersionCompare cover every XPMSE call); Source/Scripts/*.psc and fnis_aa-LICENSE.txt (GPL-3.0-only) added from the tag. Gate audit/skse_version_data.py PASS: versionIndependence=1 (AddressLibraryPostAE), versionIndependenceEx=1 (NoStructUse, V5 bit NOT set), PE stamp 1788358508 (2026-09-02) above the 1748217600 cutoff. Built on CommonLibSSE-NG 7.1.0 (alandtse/CommonLibVR ng 2dde70e8, 15 commits past the audited 6.7.1 pin 70c1acd, contains the 1.7.99+ SkyrimVM/PlayerCharacter layout fix 68ae73e1). Import table: KERNEL32/USER32(MessageBoxW only, CommonLib fatal path)/SHELL32/ole32/VERSION/CRT; SKSEMenuFramework.dll is NOT a hard import (menu registers only if SKSEMenuFramework::IsInstalled()). Runtime deps present: Address Library (priority 2), Pandora Output config.json (crc 2518717618, prefix xpe, 16 groups). What it does NOT do: the visible draw/sheathe animation swap needs Open Animation Replacer, parked for the #140 load hang. Package aggregate sha256 over 13 files (sorted 'path<TAB>SHA256', lower-cased paths) 58a8c29f2509c877056f88644494afe894d85bebb38d65c62aaef4d13413b0a0. Staged by fnis-aa-fix under its own claim, no game or MO2 process alive; VERIFIED 2026-09-02 09:32 (records/launch-verify-20260902-093221.md PASS, skse64.log \"fnis_aa.dll ... loaded correctly (handle 6)\", fnis_aa.log natives registered) and soaked (records/launch-verify-20260902-093606.md PASS, main menu at 29.3s, save loaded at 112.7s): Papyrus.0.log shows 0 fnis* static-function errors over the loaded save and \"XPMSE MainQuest Initialization successful\" (16 GetGroupBaseValue calls that errored on every earlier load). In-game weapon-style styles not yet eyeballed; the animation swap itself waits on OAR (#140). | Vendor row (unmodified third-party release): required download from the GitHub tag, never Ensrick collection payload; the distribution fields set at staging were removed 2026-09-02 under the #160 ruling that `distribution` belongs only to Ensrick-made rows. Vendor download (SARDONYX release), not an Ensrick deliverable: no distribution class by team-lead ruling 2026-09-02; the modlist installer fetches it from the GitHub release (or Nexus 175362 once 3.0.1 lands there); package carries LICENSE (GPL-3.0-only) and the Papyrus sources.",
+      "sourceUrl": "https://github.com/SARDONYX-sard/fnis_aa/releases/download/v3.0.1/fnis_aa-windows.zip",
+      "sourceTag": "v3.0.1 = 8e4ea36b7c15f910d077f51dab8d944fbace95b4 (https://github.com/SARDONYX-sard/fnis_aa/tree/v3.0.1)",
+      "sha256Note": "row sha256 = the GitHub release asset fnis_aa-windows.zip (verified 2026-09-02 against the retained download)"
+    },
+    {
       "modId": 96273,
       "modName": "Dynamic Activation Key",
       "nexusName": "Dynamic Activation Key",
@@ -892,7 +911,7 @@
       "transaction": "20260830T193242200Z-95b407d38b1a",
       "note": "Private, deterministic compatibility overlay for Better fur - Fine clothes (69240/289832). Each output starts with the installed CBBE or HIMBO Refits outfit mesh and clones only jg1's separately named weighted fur shape from the corresponding vendor _0/_1 NIF. Two clean generations were byte-identical. The four vendor meshes and both body-refit sources remain byte-identical and separately recoverable. jg1 permits modifications and asset use with credit; the derived meshes remain local and are not committed. Do not disable this overlay alone while Better Fur remains enabled, because the vendor's vanilla-body meshes would become the next winners; roll back or disable the overlay and vendor together to restore direct CBBE/HIMBO winners. Static NIF reload, shape/bone/texture assertions, and a Blender bind-pose front/side inspection passed; foreground animation and extreme-preset clipping remain gameplay acceptance work.",
       "distribution": "recipe",
-      "distributionBasis": "Payload: 4 NIFs = installed CBBE / HIMBO Refits outfit meshes with jg1's fur shape cloned in; vendor-derived from three sources. Basis: Better fur 69240 (jg1) grants Upload/Modification/Asset use 'as long as you credit me', but the outputs embed CBBE 198 and HIMBO 46311 geometry and both pages are adult-gated (login required), so their terms could not be read; unverified terms cannot ship. Recipe recorded in records/source-builds/ensrick-better-fur-fine-clothes-refit.json (nif-port-cli clone-shape, input hashes). Tool commit c63f74e pushed 2026-09-02 to Ensrick/nif-port-cli branch agent/shape-overlay-and-texture-remap (PR #2; main is protected by a required build check). [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]"
+      "distributionBasis": "Payload: 4 NIFs = installed CBBE / HIMBO Refits outfit meshes with jg1's fur shape cloned in; vendor-derived from three sources. Basis: Better fur 69240 (jg1) grants Upload/Modification/Asset use 'as long as you credit me', but the outputs embed CBBE 198 and HIMBO 46311 geometry and both pages are adult-gated (login required), so their terms could not be read; unverified terms cannot ship. Recipe recorded in records/source-builds/ensrick-better-fur-fine-clothes-refit.json (nif-port-cli clone-shape, input hashes). Tool commit c63f74e pushed 2026-09-02 to Ensrick/nif-port-cli branch agent/shape-overlay-and-texture-remap (PR #2; main is protected by a required build check). [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160] Per-mesh clone-shape commands and a 2026-09-02 byte-identical reproduction (4/4) recorded in the source-builds record."
     },
     {
       "modId": 0,
@@ -999,7 +1018,7 @@
       "files": [
         "textures/creationclub/bgssse025/weapons/madness/madness_longsword_01em.dds"
       ],
-      "note": "#159 sweep follow-up. The Madness longsword meshes (Creation Club ccbgssse025-advdsgs.bsa 1stpersonmadnesssword.nif / 3rdpersonmadnesssword.nif, and Believable Weapons 37737's loose replacements of both) ask slot 5 for textures/creationclub/bgssse025/weapons/madness/madness_longsword_01em.dds; the CC archive ships madness_longsword01_em.dds (underscore on the other side of 01). The typo is Bethesda's, parsed from the CC BSA; Believable Weapons inherited it. Nothing in 207 mods / 151 BSAs ships the asked-for name. This overlay is a byte copy of the CC texture (2048x2048 BC1, 11 mips, 2,796,336 B) at the asked-for path; the original inside the BSA is untouched. Staged with MO2Headless mod-stage at the top of the priority list (row 2); audit errors []. Rollback: disable this one mod. UNVERIFIED in-game; launch coverage owed by the next launch_verify PASS after 05:06Z.",
+      "note": "#159 sweep follow-up. The Madness longsword meshes (Creation Club ccbgssse025-advdsgs.bsa 1stpersonmadnesssword.nif / 3rdpersonmadnesssword.nif, and Believable Weapons 37737's loose replacements of both) ask slot 5 for textures/creationclub/bgssse025/weapons/madness/madness_longsword_01em.dds; the CC archive ships madness_longsword01_em.dds (underscore on the other side of 01). The typo is Bethesda's, parsed from the CC BSA; Believable Weapons inherited it. Nothing in 207 mods / 151 BSAs ships the asked-for name. This overlay is a byte copy of the CC texture (2048x2048 BC1, 11 mips, 2,796,336 B) at the asked-for path; the original inside the BSA is untouched. Staged with MO2Headless mod-stage at the top of the priority list (row 2); audit errors []. Rollback: disable this one mod. Launch PASS records/launch-verify-20260902-091326.md (first launch after the 05:06Z staging; main menu 32.2s, save loaded 58.1s) and again records/launch-verify-20260902-091622.md (controller 0.2.1; 30.4s / 41.3s), both with this mod enabled; the in-game look of the surface itself is still unverified.",
       "distribution": "recipe",
       "distributionBasis": "Payload: 1 Creation Club texture (Bethesda, ccbgssse025-advdsgs.bsa) copied unchanged to a second path; vendor bytes, not redistributable. Basis: Creation Club content is Bethesda-owned; no permission to bundle. Recipe = the copy in build.py with pinned input/output hashes. [classified 2026-09-02, #159 sweep]",
       "recipe": {
@@ -1067,7 +1086,7 @@
       "transaction": "20260830T164449478Z-b0e04f73b959",
       "note": "Generated ESL-flagged patch for #71 preserving five evidenced Cutting Room Floor 3.1.26 semantics while keeping the Water for ENB, NFF, Lux and Skyrim Unbound winners: 6 override records (1 CELL, 3 LCTN, 1 INFO plus its DIAL group anchor), 0 new forms, plugin SHA-256 D3EA7952099EF73AC30B1C9BF4094A3886065FC781568FAA1F05AA3D0F8A257C (9,927 B). Source committed at mods/crf-semantic-patch (Mutagen 0.54.4 / Synthesis 0.36.6, net9.0, SDK 10.0.302, deterministic, two byte-identical runs, Spriggit 0.41.0 round trip, 1,601 links checked / 0 unresolved). Installed by MO2Headless (plugin enable transaction 20260830T164449919Z-97bfa0c64a42); plugins.txt line 229. Row sha256 = the install archive. Full record: records/source-builds/ensrick-crf-semantic-patch.json. Row added 2026-09-02 (#160) - the mod was live since 2026-08-30 without a ledger row (docs/PROCESS-AUDIT-2026-08-30.md).",
       "distribution": "recipe",
-      "distributionBasis": "Payload: 1 ESL-flagged ESP, 6 override records, 0 new forms, no assets; masters include cutting room floor.esp, nwsFollowerFramework.esp, Skyrim Unbound.esp, Lux.esp, Water for ENB (Shades of Skyrim).esp. Basis: Cutting Room Floor 276 (Arthmoor) grid is Upload no / Modification no / Asset use requires permission, and CRF's documentation requires the author's permission before a compatibility patch is published (records/cutting-room-floor-3.1.26-compatibility-audit-2026-08-30.md); no permission is recorded, so the plugin is not bundled and the installer regenerates it from the committed generator (records/source-builds/ensrick-crf-semantic-patch.json). Becomes distributable if CRF permission is obtained. [ledger row added and classified 2026-09-02, #160]"
+      "distributionBasis": "Payload: 1 ESL-flagged ESP, 6 override records, 0 new forms, no assets; masters include cutting room floor.esp, nwsFollowerFramework.esp, Skyrim Unbound.esp, Lux.esp, Water for ENB (Shades of Skyrim).esp. Basis: Cutting Room Floor 276 (Arthmoor) grid is Upload no / Modification no / Asset use requires permission, and CRF's documentation requires the author's permission before a compatibility patch is published (records/cutting-room-floor-3.1.26-compatibility-audit-2026-08-30.md); no permission is recorded, so the plugin is not bundled and the installer regenerates it from the committed generator (records/source-builds/ensrick-crf-semantic-patch.json). Becomes distributable if CRF permission is obtained. [ledger row added and classified 2026-09-02, #160] Generator pin (this repo, commit 19875a9), the nine master-plugin input hashes and the reconstructed run-patcher command recorded in the source-builds record 2026-09-02. [recipe gaps closed 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -1179,7 +1198,8 @@
       "distribution": "distributable",
       "installedUtc": "2026-09-02T04:02:22Z",
       "transaction": "20260902T040212826Z-8ced47343a62",
-      "note": "Tracked config-only overlay for Media Keys Fix SKSE 1.0.2 (#149): DisableWindowsKey=false so the Windows key works in-game (the game itself sets DISCL_EXCLUSIVE|DISCL_FOREGROUND|DISCL_NOWINKEY; the vendor default keeps NOWINKEY). Must stay above the vendor mod. Vendor DLL and ini byte-identical."
+      "note": "Tracked config-only overlay for Media Keys Fix SKSE 1.0.2 (#149): DisableWindowsKey=false so the Windows key works in-game (the game itself sets DISCL_EXCLUSIVE|DISCL_FOREGROUND|DISCL_NOWINKEY; the vendor default keeps NOWINKEY). Must stay above the vendor mod. Vendor DLL and ini byte-identical.",
+      "distributionBasis": "Payload: SKSE/Plugins/MediaKeysFix.ini, Ensrick configuration only (DisableWindowsKey=false), tracked at overlays/ensrick-media-keys-fix-config and byte-identical to the installed copy: own INI overlay, no vendor bytes. Basis: our own bytes; the vendor Media Keys Fix SKSE 92948 (epinter, LGPL-3.0) DLL and default ini are untouched and stay a separate Nexus download. No recipe needed. [classified 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -1445,7 +1465,7 @@
       "transaction": "20260830T004705248Z-1c7c5fc60cb5",
       "note": "Uses JJerem's complete werewolf-totem design (Nexus 98175 v1.3 file 416610) without globally retexturing the vanilla hag-feather ingredient: the vendor NIF's eight texture references are remapped to textures/ensrick/werewolf_totem_98175/ (nif-port-cli remap-textures, fail-closed, geometry byte-preserved: 5 shapes, 21,090 tris) and the eight 1K vendor textures are copied verbatim to those new paths; the two SMIM rope references are left intact (SMIM 2.08 supplies them). Vendor mod 'High Poly 3D Wolf Skull - Werewolf Totem Replacer' stays installed but DISABLED (modlist line 107) so its global hagfeather paths never win. Output mesh SHA-256 2ED97202B2932C74DFE04555D757E4AB24649495C39FFFA5EE85E33ECEA3538A; per-texture hashes in the source-builds record. Row sha256 = aggregate over the 9 payload files (sha256 of the sorted 'path<TAB>SHA256' lines, lower-cased paths). Parked/unparked in the #142 bisect round 3. Row added 2026-09-02 (#160).",
       "distribution": "recipe",
-      "distributionBasis": "Payload: 1 remapped vendor NIF + 8 verbatim vendor DDS at new paths; vendor-derived. Basis (Nexus 98175, JJerem, read 2026-09-02): Upload 'not allowed', Modification and Asset use allowed 'as long as you credit me', and the file credits third-party source assets, so the upload ban governs. Installer regenerates from the user's own download per records/source-builds/ensrick-scoped-werewolf-totem-98175.json (tool commit e12079c pushed 2026-09-02 to Ensrick/nif-port-cli branch agent/shape-overlay-and-texture-remap, PR #2). Could become distributable with credit after a permissions review. [ledger row added and classified 2026-09-02, #160]"
+      "distributionBasis": "Payload: 1 remapped vendor NIF + 8 verbatim vendor DDS at new paths; vendor-derived. Basis (Nexus 98175, JJerem, read 2026-09-02): Upload 'not allowed', Modification and Asset use allowed 'as long as you credit me', and the file credits third-party source assets, so the upload ban governs. Installer regenerates from the user's own download per records/source-builds/ensrick-scoped-werewolf-totem-98175.json (tool commit e12079c pushed 2026-09-02 to Ensrick/nif-port-cli branch agent/shape-overlay-and-texture-remap, PR #2). Could become distributable with credit after a permissions review. [ledger row added and classified 2026-09-02, #160] Full remap-textures invocation (8 pairs), the 8 verbatim texture copies and a 2026-09-02 byte-identical reproduction recorded in the source-builds record. [recipe gaps closed 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -1565,7 +1585,7 @@
         "textures/arechitecture/solitude/smanhole_e.dds",
         "textures/arechitecture/solitude/smanhole_m.dds"
       ],
-      "note": "#159 sweep follow-up. Skyland AIO 1K 34179 v4.32's meshes/architecture/solitude/smanhole.nif (block 10, EnvironmentMap, EnvMapScale 1.5) asks for textures/arechitecture/solitude/smanhole_e.dds (cubemap) and smanhole_m.dds (env mask); Skyland ships both under the correctly spelled textures/architecture/solitude/. Vanilla smanhole.nif is a Default shader (diffuse + normal only), so the reflection is Skyland's authoring and a black mask would be wrong. This overlay is a byte copy of Skyland's two textures (smanhole_m 1024x1024 BC1 699,192 B; smanhole_e 128x128 BC1 65,744 B) at the misspelled folder; the vendor mod is untouched. Staged with MO2Headless mod-stage at the top of the priority list (row 1); audit errors []. Rollback: disable this one mod. UNVERIFIED in-game; launch coverage owed by the next launch_verify PASS after 05:06Z.",
+      "note": "#159 sweep follow-up. Skyland AIO 1K 34179 v4.32's meshes/architecture/solitude/smanhole.nif (block 10, EnvironmentMap, EnvMapScale 1.5) asks for textures/arechitecture/solitude/smanhole_e.dds (cubemap) and smanhole_m.dds (env mask); Skyland ships both under the correctly spelled textures/architecture/solitude/. Vanilla smanhole.nif is a Default shader (diffuse + normal only), so the reflection is Skyland's authoring and a black mask would be wrong. This overlay is a byte copy of Skyland's two textures (smanhole_m 1024x1024 BC1 699,192 B; smanhole_e 128x128 BC1 65,744 B) at the misspelled folder; the vendor mod is untouched. Staged with MO2Headless mod-stage at the top of the priority list (row 1); audit errors []. Rollback: disable this one mod. Launch PASS records/launch-verify-20260902-091326.md (first launch after the 05:06Z staging; main menu 32.2s, save loaded 58.1s) and again records/launch-verify-20260902-091622.md (controller 0.2.1; 30.4s / 41.3s), both with this mod enabled; the in-game look of the surface itself is still unverified.",
       "distribution": "recipe",
       "distributionBasis": "Payload: 2 Skyland AIO 1K (34179) textures copied unchanged to a misspelled second path; vendor bytes. Basis: Skyland terms are restrictive (no redistribution, per the #159 sweep record); local only. Recipe = the copy in build.py with pinned input/output hashes. [classified 2026-09-02, #159 sweep]",
       "recipe": {
@@ -1642,7 +1662,494 @@
       "transaction": "20260830T220546414Z-660cdd66dc7b",
       "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa).",
       "distribution": "recipe",
-      "distributionBasis": "Payload: 32 loose FaceGen NIFs, all vendor-derived: 29 byte-exact copies from the installed USSEP 4.3.9 BSA plus 3 VHR NPC 1.0.1 NIFs with one string-table edit each; no Ensrick records. Basis: USSEP 266 'Assets such as mesh files (.nif) ... may be freely used as the basis for your own work' but 'may not be included in any mod packs under any circumstances', and the 29 copies are version-coupled to the installed USSEP; VHR 63979 (jg1) Modification 'allowed ... so long as you credit me', Upload 'not allowed'. Regenerating from the user's own USSEP and VHR archives is cleaner and always in sync. Recipe recorded: overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py (committed; inputs VHR NPC BSA + USSEP BSA; overlap count asserted; aggregate SHA-256 recorded) plus records/vanilla-hair-remake-smp-2026-08-30.md. [classified 2026-09-02, #160]"
+      "distributionBasis": "Payload: 32 loose FaceGen NIFs, all vendor-derived: 29 byte-exact copies from the installed USSEP 4.3.9 BSA plus 3 VHR NPC 1.0.1 NIFs with one string-table edit each; no Ensrick records. Basis: USSEP 266 'Assets such as mesh files (.nif) ... may be freely used as the basis for your own work' but 'may not be included in any mod packs under any circumstances', and the 29 copies are version-coupled to the installed USSEP; VHR 63979 (jg1) Modification 'allowed ... so long as you credit me', Upload 'not allowed'. Regenerating from the user's own USSEP and VHR archives is cleaner and always in sync. Recipe recorded: overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py (committed; inputs VHR NPC BSA + USSEP BSA; overlap count asserted; aggregate SHA-256 recorded) plus records/vanilla-hair-remake-smp-2026-08-30.md. [classified 2026-09-02, #160] Machine-readable recipe field added 2026-09-02 (script kind: build.py + modasset.py pins, the two BSA hashes, all 32 input and output hashes). [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "script",
+        "recordedAt": "2026-09-02",
+        "script": "overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py",
+        "dependencies": [
+          {
+            "path": "audit/modasset.py",
+            "role": "BSA reader and NIF validator imported by build.py"
+          }
+        ],
+        "command": "py -3 overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py \"<mods>/Vanilla Hair Remake SMP - NPCs/Vanilla hair remake SMP NPCs.bsa\" \"<mods>/USSEP/unofficial skyrim special edition patch.bsa\" \"<output mod folder>\"",
+        "method": "The 29 FaceGen NIF paths present in both BSAs are copied byte-exact from the USSEP BSA (preserve-ussep-facegen); the 3 VHR Dawnguard Snow Elf NIFs get exactly one string-table entry replaced, 'meshes\\actors\\character\\character assets\\hair\\smp\\darkelf01.xml' -> 'darkelf01m.xml' (repair-vhr-xml-reference, +1 byte each). build.py asserts exactly 29 overlaps, that every overlap is a facegeom NIF, and that every output reloads as a valid SSE NIF. The two BSAs are the only inputs.",
+        "vendorArchives": {
+          "ussepBsa": {
+            "path": "mods/USSEP/unofficial skyrim special edition patch.bsa",
+            "sha256": "716EC370A439782BA5D27742F64F1D65694A4DC54CBDF6D5075EC1AD814951F0",
+            "bytes": 239464835,
+            "from": "USSEP 4.3.9 archive (Nexus 266 file 792961, ledger sha256 63F68B23...)"
+          },
+          "vhrNpcBsa": {
+            "path": "mods/Vanilla Hair Remake SMP - NPCs/Vanilla hair remake SMP NPCs.bsa",
+            "sha256": "545EDFC70BB24AB7B28A397C677077BC9A3B1AA46FFE42411943807257B0E181",
+            "bytes": 1228241833,
+            "from": "Vanilla Hair Remake SMP - NPCs 1.0.1 archive (Nexus 63979 file 500742, ledger sha256 F708E411...)"
+          }
+        },
+        "inputs": [
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\dragonborn.esm\\0001e858.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "5512EA2713C614D0BBB483E0F031A07B6E72AFEEC7EB34661F7ADC96CE7B66E3",
+            "bytes": 198861,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\dragonborn.esm\\0001eeb1.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "19AF8B0D970030E92F7B6D49F3EDE529E67E9A948C54930D7C6DE881C6409816",
+            "bytes": 196368,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\dragonborn.esm\\0001ff20.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "E9158650616BD585585B1E87F56F3C50352A96EA51B56BB12C9418356AB800A9",
+            "bytes": 196368,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0001328d.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "D10AF79A7B4BF478A53384DD63EDCB2FBB0F8A43CCB4D9087388A751F0114494",
+            "bytes": 227097,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000132aa.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "EB227FA6F33417FDAF163877FF83E4D4923B1AEA113393A8B8AEBCE07CD4E514",
+            "bytes": 232459,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0001334a.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "9D088E2CE06EBA3E1C540E6C184C8BF63425316A9C99F18E83A92AEF43E4360C",
+            "bytes": 218437,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00013373.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "736445DF676CB49705BDA0FF1A613BCE1DA27C7769DBEE000F16E2CAD9F25D7A",
+            "bytes": 253410,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0001364d.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "31DF149E80498125CCD1AD06CFDCE8D530DF4829D7C4C05D18A663CC8E6FDE21",
+            "bytes": 201008,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000136bc.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "569373361E01B885943B44C98A4A401D5DE369DB02A66884E8960D64C53167BD",
+            "bytes": 244197,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0001412e.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "DA16F9AE3ACB082F787FF0889D9372CDBB09645325D6175C96415BC850C94456",
+            "bytes": 228561,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0001b072.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "330498B1B3CD7ED508EEB5D588E225C3C1DC01231DF3783152F9362DECC3A57C",
+            "bytes": 235305,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00020040.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "D693C0E9E9B6D0C7D581FA10CAEF3BCF15110A8BA46945CA643B5105BE00D0B2",
+            "bytes": 227823,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0002a388.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "467D966B89FC2479D276D05AF0154CD35E772A1C0C1A1549962A7D387F0F32CD",
+            "bytes": 185882,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000341fe.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "6C726A44D1DB2BE0EAFAD50B948D5AB0AAE0BB734338F8FCCEB5E0AD4A067A74",
+            "bytes": 201663,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00034d97.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "6520FA4C4B9E5087A33D9E8A3876AC15DAF5E71BAC558F24F1EC3FBFEBC256E8",
+            "bytes": 184037,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00039840.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "28746A350C3A7276582AC2554E0888507A90F1D315FF6B6A4D469CC8DCCB24FA",
+            "bytes": 250426,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0003a187.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "FA40D2DF6B5D9D85AFBE8D66E54E5F16DDB10705581CBF29340D6AE0932D283D",
+            "bytes": 232172,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0004c735.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "C441B373855B108AF516AAA25A5C2A01CDEFDCD76606C460D539AEBFAD11B661",
+            "bytes": 227089,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0004d6d0.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "882A4CE90E46E589C919E4E7A604E9C95D8C7E0524E0827FF205588E94D41E3F",
+            "bytes": 222222,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000551bb.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "1231347EDFCAFAD5C6ED88166DA2374DACFD35CC381D10781906C9D1635E4B4C",
+            "bytes": 195954,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00064ac3.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "2CB4F2473BEBD3D6FF7C41472CEF380FE99A68B2508DC12815C2FF09DB5B2E83",
+            "bytes": 255617,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00064ac4.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "F96C08425379BD9AEF695FD1DAA1A261DD55943DB0A634D28EA5FBE5FE32BE09",
+            "bytes": 190269,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0006cd5b.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "123290120EAF7714CEF002448144543DD1AF02A0B2D844AC2E8B18245A10EC85",
+            "bytes": 227844,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000728ad.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "09E01BAF439FB58B1FD4BA97074478B4F69569001DA7C7CE6ABA523B1229CF61",
+            "bytes": 205178,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\0008454f.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "3B52C230D9033B8A5631074E22998F6E08EAC06D287C5B44D8602727D7ABE57E",
+            "bytes": 210982,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000c1a9f.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "C3EC7EFAAA865C3021CEEF78DE4AE8C0BC17B6AD4D8EDD711A37627AD916A08C",
+            "bytes": 227831,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000f737c.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "EF151460C9D751E02ABF316C2D551C21151991339B5EFC7C86E7927B02CF3B2A",
+            "bytes": 234364,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\000f7385.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "899463EFE08ABAD5F06F7174B2E7CB4ED190A8E73EDAD1E7E62B7D20C1AA25B9",
+            "bytes": 245684,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: USSEP/unofficial skyrim special edition patch.bsa::meshes\\actors\\character\\facegendata\\facegeom\\skyrim.esm\\00106118.nif (Nexus 266 file 792961, USSEP 4.3.9)",
+            "sha256": "70563073A521D9B704E709675DE4E33FFBDC869E49FF42B8C1EF40C36A433305",
+            "bytes": 235303,
+            "action": "preserve-ussep-facegen"
+          },
+          {
+            "source": "bsa: Vanilla Hair Remake SMP - NPCs/Vanilla hair remake SMP NPCs.bsa::meshes\\actors\\character\\facegendata\\facegeom\\dawnguard.esm\\00002b44.nif (Nexus 63979 file 500742, Vanilla Hair Remake SMP - NPCs 1.0.1)",
+            "sha256": "AADD873B689E0EBE6C0147CCD9C2E8820D2ACFBD98E621353DD7E82801503385",
+            "bytes": 484608,
+            "action": "repair-vhr-xml-reference"
+          },
+          {
+            "source": "bsa: Vanilla Hair Remake SMP - NPCs/Vanilla hair remake SMP NPCs.bsa::meshes\\actors\\character\\facegendata\\facegeom\\dawnguard.esm\\00003788.nif (Nexus 63979 file 500742, Vanilla Hair Remake SMP - NPCs 1.0.1)",
+            "sha256": "2206C3AD1C59B092D9CAD643E668CD812A3A4DB49391854E8B2933830D694090",
+            "bytes": 484618,
+            "action": "repair-vhr-xml-reference"
+          },
+          {
+            "source": "bsa: Vanilla Hair Remake SMP - NPCs/Vanilla hair remake SMP NPCs.bsa::meshes\\actors\\character\\facegendata\\facegeom\\dawnguard.esm\\0000a8b0.nif (Nexus 63979 file 500742, Vanilla Hair Remake SMP - NPCs 1.0.1)",
+            "sha256": "AC84F636E6545117FAF7FD6B063C83816F7E15E0902AC263177D3217A9AFD6FD",
+            "bytes": 484608,
+            "action": "repair-vhr-xml-reference"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/dragonborn.esm/0001e858.nif",
+            "sha256": "5512EA2713C614D0BBB483E0F031A07B6E72AFEEC7EB34661F7ADC96CE7B66E3",
+            "bytes": 198861
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/dragonborn.esm/0001eeb1.nif",
+            "sha256": "19AF8B0D970030E92F7B6D49F3EDE529E67E9A948C54930D7C6DE881C6409816",
+            "bytes": 196368
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/dragonborn.esm/0001ff20.nif",
+            "sha256": "E9158650616BD585585B1E87F56F3C50352A96EA51B56BB12C9418356AB800A9",
+            "bytes": 196368
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0001328d.nif",
+            "sha256": "D10AF79A7B4BF478A53384DD63EDCB2FBB0F8A43CCB4D9087388A751F0114494",
+            "bytes": 227097
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000132aa.nif",
+            "sha256": "EB227FA6F33417FDAF163877FF83E4D4923B1AEA113393A8B8AEBCE07CD4E514",
+            "bytes": 232459
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0001334a.nif",
+            "sha256": "9D088E2CE06EBA3E1C540E6C184C8BF63425316A9C99F18E83A92AEF43E4360C",
+            "bytes": 218437
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00013373.nif",
+            "sha256": "736445DF676CB49705BDA0FF1A613BCE1DA27C7769DBEE000F16E2CAD9F25D7A",
+            "bytes": 253410
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0001364d.nif",
+            "sha256": "31DF149E80498125CCD1AD06CFDCE8D530DF4829D7C4C05D18A663CC8E6FDE21",
+            "bytes": 201008
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000136bc.nif",
+            "sha256": "569373361E01B885943B44C98A4A401D5DE369DB02A66884E8960D64C53167BD",
+            "bytes": 244197
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0001412e.nif",
+            "sha256": "DA16F9AE3ACB082F787FF0889D9372CDBB09645325D6175C96415BC850C94456",
+            "bytes": 228561
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0001b072.nif",
+            "sha256": "330498B1B3CD7ED508EEB5D588E225C3C1DC01231DF3783152F9362DECC3A57C",
+            "bytes": 235305
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00020040.nif",
+            "sha256": "D693C0E9E9B6D0C7D581FA10CAEF3BCF15110A8BA46945CA643B5105BE00D0B2",
+            "bytes": 227823
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0002a388.nif",
+            "sha256": "467D966B89FC2479D276D05AF0154CD35E772A1C0C1A1549962A7D387F0F32CD",
+            "bytes": 185882
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000341fe.nif",
+            "sha256": "6C726A44D1DB2BE0EAFAD50B948D5AB0AAE0BB734338F8FCCEB5E0AD4A067A74",
+            "bytes": 201663
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00034d97.nif",
+            "sha256": "6520FA4C4B9E5087A33D9E8A3876AC15DAF5E71BAC558F24F1EC3FBFEBC256E8",
+            "bytes": 184037
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00039840.nif",
+            "sha256": "28746A350C3A7276582AC2554E0888507A90F1D315FF6B6A4D469CC8DCCB24FA",
+            "bytes": 250426
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0003a187.nif",
+            "sha256": "FA40D2DF6B5D9D85AFBE8D66E54E5F16DDB10705581CBF29340D6AE0932D283D",
+            "bytes": 232172
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0004c735.nif",
+            "sha256": "C441B373855B108AF516AAA25A5C2A01CDEFDCD76606C460D539AEBFAD11B661",
+            "bytes": 227089
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0004d6d0.nif",
+            "sha256": "882A4CE90E46E589C919E4E7A604E9C95D8C7E0524E0827FF205588E94D41E3F",
+            "bytes": 222222
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000551bb.nif",
+            "sha256": "1231347EDFCAFAD5C6ED88166DA2374DACFD35CC381D10781906C9D1635E4B4C",
+            "bytes": 195954
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00064ac3.nif",
+            "sha256": "2CB4F2473BEBD3D6FF7C41472CEF380FE99A68B2508DC12815C2FF09DB5B2E83",
+            "bytes": 255617
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00064ac4.nif",
+            "sha256": "F96C08425379BD9AEF695FD1DAA1A261DD55943DB0A634D28EA5FBE5FE32BE09",
+            "bytes": 190269
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0006cd5b.nif",
+            "sha256": "123290120EAF7714CEF002448144543DD1AF02A0B2D844AC2E8B18245A10EC85",
+            "bytes": 227844
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000728ad.nif",
+            "sha256": "09E01BAF439FB58B1FD4BA97074478B4F69569001DA7C7CE6ABA523B1229CF61",
+            "bytes": 205178
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/0008454f.nif",
+            "sha256": "3B52C230D9033B8A5631074E22998F6E08EAC06D287C5B44D8602727D7ABE57E",
+            "bytes": 210982
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000c1a9f.nif",
+            "sha256": "C3EC7EFAAA865C3021CEEF78DE4AE8C0BC17B6AD4D8EDD711A37627AD916A08C",
+            "bytes": 227831
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000f737c.nif",
+            "sha256": "EF151460C9D751E02ABF316C2D551C21151991339B5EFC7C86E7927B02CF3B2A",
+            "bytes": 234364
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/000f7385.nif",
+            "sha256": "899463EFE08ABAD5F06F7174B2E7CB4ED190A8E73EDAD1E7E62B7D20C1AA25B9",
+            "bytes": 245684
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/skyrim.esm/00106118.nif",
+            "sha256": "70563073A521D9B704E709675DE4E33FFBDC869E49FF42B8C1EF40C36A433305",
+            "bytes": 235303
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/dawnguard.esm/00002b44.nif",
+            "sha256": "1C4C34028BD79CB6177594D17858A4A69A84A2C7987A8761869233FC98F1A384",
+            "bytes": 484609
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/dawnguard.esm/00003788.nif",
+            "sha256": "F9400D5757300FE69198D410A96A6171190E5AA40EF936FC63143A701F5DA110",
+            "bytes": 484619
+          },
+          {
+            "path": "meshes/actors/character/facegendata/facegeom/dawnguard.esm/0000a8b0.nif",
+            "sha256": "BEB06FB4CF895541AA8393EC42B0C6B542E7687E8FED944B986A7F30A02A9C8F",
+            "bytes": 484609
+          }
+        ],
+        "verification": "2026-09-02: all 32 outputs recomputed from the two installed BSAs with the script's own method (29 verbatim reads + 3 string-table replacements) and matched the installed overlay byte-for-byte; build.py itself was not re-run against the instance (read-only packaging task). 2026-08-30: two clean builds and the installed tree agreed (records/vanilla-hair-remake-smp-2026-08-30.md)."
+      }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Vanilla Skin Soft-Light Maps",
+      "nexusName": "Ensrick-owned vanilla subsurface (_sk) map overlay",
+      "fileName": "ensrick-vanilla-skin-soft-light-maps.zip (generated by overlays/ensrick-vanilla-skin-soft-light-maps/build.py)",
+      "version": "2026-09-02",
+      "fileId": 0,
+      "sizeMb": 0.334,
+      "sha256": "e7c01e72993daaef07bcb178ec2c02d2b44d6943f75b5073f418992c105f6c9e",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T15:07:47Z",
+      "transaction": "20260902T150554695Z-a8bcf3daafe6",
+      "files": [
+        "textures/actors/character/female/femalehead_sk.dds",
+        "textures/actors/character/female/femalebody_1_sk.dds",
+        "textures/actors/character/female/femalehands_1_sk.dds",
+        "textures/actors/character/male/malehead_sk.dds",
+        "textures/actors/character/male/malebody_1_sk.dds",
+        "textures/actors/character/male/malehands_1_sk.dds"
+      ],
+      "note": "#165/#166. Both decided skin sets black out the subsurface (_sk) map that the vanilla skin shader's soft-light wrap multiplies by (CS Common/LightingEval.hlsli:119, rimSoftLightColor = _sk texel): Reverie 1.11.2 ships 4x4 black FemaleHead_SK/FemaleBody_1_SK/FemaleHands_1_SK, The New Gentleman 4.2.5 ships 4x4 black malehead_sk/malebody_1_sk/malehands_1_sk (CBBE's are near-black, mean 0.03-0.06 vs vanilla 0.37). Zeroing the term leaves shadowed skin lit by direct diffuse only: matte bodies and hard eye sockets. This overlay is a byte copy of Bethesda's six _sk maps from Skyrim - Textures0.bsa (256-512 px BC1, full mip chains) staged above every skin mod so they win over the loose stubs. Vanilla bytes: never committed or redistributed; recipe = build.py with pinned BSA-entry hashes. A/B: disable this one mod. Priority row: 237. VERIFIED by records/launch-verify-20260902-100735.md. Records: records/face-eye-makeup-audit-2026-09-02.md, records/skin-distance-detail-audit-2026-09-02.md.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 6 vanilla Skyrim SE textures copied unchanged from the user's own Skyrim - Textures0.bsa; Bethesda bytes, never bundled. Recipe = overlays/ensrick-vanilla-skin-soft-light-maps/build.py (BSA extract via audit/modasset.py, refuses on any hash or size mismatch). [classified 2026-09-02, #165/#166]",
+      "recipe": {
+        "kind": "script",
+        "script": "overlays/ensrick-vanilla-skin-soft-light-maps/build.py",
+        "command": "py -3 overlays/ensrick-vanilla-skin-soft-light-maps/build.py",
+        "sourceForm": "entries in the game's own Skyrim - Textures0.bsa (Skyrim Special Edition, Steam install)",
+        "inputs": [
+          {
+            "source": "bsa: Skyrim - Textures0.bsa::textures/actors/character/female/femalehead_sk.dds",
+            "sha256": "56886605023D4E2A7BF336A1A313A8AB78238498928341164C247490064BD1F6",
+            "bytes": 43824
+          },
+          {
+            "source": "bsa: Skyrim - Textures0.bsa::textures/actors/character/female/femalebody_1_sk.dds",
+            "sha256": "5E8011B972B8C32457041570E84F33CACEB5A204D198921BE781CCDDD7DB231C",
+            "bytes": 43824
+          },
+          {
+            "source": "bsa: Skyrim - Textures0.bsa::textures/actors/character/female/femalehands_1_sk.dds",
+            "sha256": "A25C247D4663E7CFD06B609172BDCB258F61474731FE9B4626C5D1D6CCE06071",
+            "bytes": 21976
+          },
+          {
+            "source": "bsa: Skyrim - Textures0.bsa::textures/actors/character/male/malehead_sk.dds",
+            "sha256": "E1F64ECC18D564FB1CA2F076A3647C40F70FBC1BB4A7061AB6487BC0E8E9F731",
+            "bytes": 174896
+          },
+          {
+            "source": "bsa: Skyrim - Textures0.bsa::textures/actors/character/male/malebody_1_sk.dds",
+            "sha256": "DCE2DDD647BD7B573D0AD2BF638D48125A601923CC9E145EE606149900175892",
+            "bytes": 43824
+          },
+          {
+            "source": "bsa: Skyrim - Textures0.bsa::textures/actors/character/male/malehands_1_sk.dds",
+            "sha256": "0EBB020F1C281AD2FC06A3366F8EA074C5199D02DCE320EEAF68E8FF1713A438",
+            "bytes": 21976
+          }
+        ],
+        "outputs": [
+          {
+            "path": "textures/actors/character/female/femalehead_sk.dds",
+            "sha256": "56886605023D4E2A7BF336A1A313A8AB78238498928341164C247490064BD1F6",
+            "bytes": 43824
+          },
+          {
+            "path": "textures/actors/character/female/femalebody_1_sk.dds",
+            "sha256": "5E8011B972B8C32457041570E84F33CACEB5A204D198921BE781CCDDD7DB231C",
+            "bytes": 43824
+          },
+          {
+            "path": "textures/actors/character/female/femalehands_1_sk.dds",
+            "sha256": "A25C247D4663E7CFD06B609172BDCB258F61474731FE9B4626C5D1D6CCE06071",
+            "bytes": 21976
+          },
+          {
+            "path": "textures/actors/character/male/malehead_sk.dds",
+            "sha256": "E1F64ECC18D564FB1CA2F076A3647C40F70FBC1BB4A7061AB6487BC0E8E9F731",
+            "bytes": 174896
+          },
+          {
+            "path": "textures/actors/character/male/malebody_1_sk.dds",
+            "sha256": "DCE2DDD647BD7B573D0AD2BF638D48125A601923CC9E145EE606149900175892",
+            "bytes": 43824
+          },
+          {
+            "path": "textures/actors/character/male/malehands_1_sk.dds",
+            "sha256": "0EBB020F1C281AD2FC06A3366F8EA074C5199D02DCE320EEAF68E8FF1713A438",
+            "bytes": 21976
+          }
+        ],
+        "archive": {
+          "path": "overlays/ensrick-vanilla-skin-soft-light-maps/ensrick-vanilla-skin-soft-light-maps.zip",
+          "sha256": "E7C01E72993DAAEF07BCB178EC2C02D2B44D6943F75B5073F418992C105F6C9E",
+          "bytes": 214061
+        },
+        "method": "read the six entries from Skyrim - Textures0.bsa with audit/modasset.py (BSA v105, LZ4 frames), assert each SHA-256 and size against the pins, write the identical bytes under payload/textures/actors/character/{female,male}/; the script refuses on any mismatch",
+        "recordedAt": "2026-09-02",
+        "verification": "2026-09-02 build: 6/6 output hashes equal their BSA inputs; installed files re-hashed after mod-stage: 6/6 match"
+      }
     },
     {
       "modId": 0,
@@ -1659,7 +2166,140 @@
       "transaction": "20260830T032405369Z-9df63c188f32",
       "note": "PRIVATE, NON-DISTRIBUTABLE six-PEX overlay correcting Varinia 1.1.0's referenced but omitted dialogue fragments. Vendor ESP/BSAs remain byte-identical. Reproducibility, bytecode validation, file hashes, and permissions boundary are recorded in records/varinia-private-fragment-fix-2026-08-30.md.",
       "distribution": "recipe",
-      "distributionBasis": "Payload: 6 PEX compiled from Maplespice's PSC sources with restored property declarations; vendor-derived. Basis (Nexus 148853, Maplespice, read 2026-09-02): Upload 'not allowed ... under any circumstances'; Modification 'You must get permission from me before you are allowed to modify my files'; Asset use 'You must get permission'. Recipe fully recorded in records/varinia-private-fragment-fix-2026-08-30.md (declaration table, Caprica 0.3.0 and Champollion 1.3.2 pinned by commit and hash, exact command). Heavy installer step; the preferred end state is the upstream fix (draft report records/varinia-upstream-bug-report-draft-2026-08-30.md). [classified 2026-09-02, #160]"
+      "distributionBasis": "Payload: 6 PEX compiled from Maplespice's PSC sources with restored property declarations; vendor-derived. Basis (Nexus 148853, Maplespice, read 2026-09-02): Upload 'not allowed ... under any circumstances'; Modification 'You must get permission from me before you are allowed to modify my files'; Asset use 'You must get permission'. Recipe fully recorded in records/varinia-private-fragment-fix-2026-08-30.md (declaration table, Caprica 0.3.0 and Champollion 1.3.2 pinned by commit and hash, exact command). Heavy installer step; the preferred end state is the upstream fix (draft report records/varinia-upstream-bug-report-draft-2026-08-30.md). [classified 2026-09-02, #160] Machine-readable recipe field added 2026-09-02 (tool kind: Caprica 0.3.0 pin, per-fragment vendor PSC hash, restored declarations, command, PEX hash). [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "tool",
+        "recordedAt": "2026-09-02",
+        "sourceForm": "PSC entries inside VLIOVarinia.bsa in the installed vendor mod (Nexus 148853 file 697835, Varinia 1.1.0, archive sha256 4FDB7EBE...); extract source\\scripts\\vlio_tif__<id>.psc first",
+        "tool": {
+          "name": "Caprica (Papyrus compiler)",
+          "version": "0.3.0",
+          "repository": "https://github.com/Orvid/Caprica",
+          "commit": "2042C902EC269E33C1061CCD8AAC0760C981253B",
+          "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
+          "note": "source-built executable; commit and hash from records/varinia-private-fragment-fix-2026-08-30.md"
+        },
+        "auxiliaryTools": [
+          {
+            "name": "Champollion (PEX decompiler, validation only)",
+            "version": "1.3.2",
+            "commit": "108BB84FB960884639560C04CD67143BA0A9608F",
+            "sha256": "4DA9CB6E31EA16834D76791635A7F08ED025A39EC9835635772D9FF8992EA754",
+            "required": false,
+            "role": "decompile/disassemble each output and compare property table, locals and Fragment_0 bytecode against the intact official sibling"
+          },
+          {
+            "name": "vanilla Papyrus headers (SKSE64 source tree, scripts/vanilla)",
+            "commit": "872C2D6FE4BC17B9E7F74D66B38C229750CE18E0",
+            "required": false,
+            "role": "--import path; no single file hash (directory of vanilla PSC headers)"
+          },
+          {
+            "name": "Grimy-Skyrim-Papyrus-Source TopicInfo.psc + TESV_Papyrus_Flags.flg",
+            "repository": "https://github.com/Rukan/Grimy-Skyrim-Papyrus-Source",
+            "commit": "4BA71332B4851985240F582A76017216A3BD452F",
+            "required": false,
+            "files": {
+              "TopicInfo.psc": "970D87591BDF9EA055344AACA47E01E7302E6351B39B5C109F24093D587796A3",
+              "TESV_Papyrus_Flags.flg": "DB28D5AE6C57AA9C4797F3E571F3E22B2443348D20CE730D0AF358F2746B1666"
+            },
+            "role": "missing TopicInfo header and the flags file, placed in <local-headers>"
+          }
+        ],
+        "command": "Caprica.exe --ignorecwd --quiet --game skyrim --import \"<corrected-src>;<local-headers>;<skse64>/scripts/vanilla\" --flags \"<local-headers>/TESV_Papyrus_Flags.flg\" --strict=1 --all-warnings-as-errors --enable-ck-optimizations=1 --enable-debug-info=1 --output \"<output>/Scripts\" \"<corrected-src>/vlio_tif__<id>.psc\"",
+        "method": "Per fragment: extract the vendor PSC from the BSA, append the listed 'Auto' property declarations (names, types and bound forms are exactly what the plugin's VMAD already declares; nothing else changes), save as <corrected-src>/vlio_tif__<id>.psc, compile with the command above. Place the declarations after the ';END FRAGMENT CODE' line the way the intact official siblings (for example vlio_tif__050f8a89.psc) lay them out; the exact whitespace of the 2026-08-30 corrected sources was not re-derived on 2026-09-02, so the recorded corrected PSC hashes (correctedSourceSha256) and the PEX hashes are the check.",
+        "steps": [
+          {
+            "source": "bsa: Varinia - Custom Voiced Retired Spy and Companion/VLIOVarinia.bsa::source\\scripts\\vlio_tif__050f8a8a.psc (Nexus 148853 file 697835, Varinia 1.1.0)",
+            "sourceSha256": "788CA2C25BAFBB89AD8D6BCBD0A61560555D1CE7ABB9A5E0326CB3113903FA81",
+            "sourceBytes": 492,
+            "edits": [
+              "ReferenceAlias Property VLIOMoeAlias  Auto  ",
+              "Actor Property VLIOMoe  Auto  ",
+              "ObjectReference Property VoidReturn  Auto  ",
+              "GlobalVariable Property VLIOCrowIsHere  Auto  "
+            ],
+            "correctedSourceSha256": "35A95563A69D60F535A9ED0810075D342C438F7432BE46BDA1F298035FCB0BB2",
+            "output": "Scripts/vlio_tif__050f8a8a.pex",
+            "outputSha256": "8097D6F4A30AC8389A561D2086306D01FD1F9ACAF71FCDB80106E3FE352525CC",
+            "outputBytes": 969
+          },
+          {
+            "source": "bsa: Varinia - Custom Voiced Retired Spy and Companion/VLIOVarinia.bsa::source\\scripts\\vlio_tif__050f8a8c.psc (Nexus 148853 file 697835, Varinia 1.1.0)",
+            "sourceSha256": "72C0A3971F42CE427A5262FADF94B287CD4DD6BEA6FC398C4EF6C8600E2FB25D",
+            "sourceBytes": 494,
+            "edits": [
+              "ObjectReference Property VoidReturn  Auto  ",
+              "Actor Property VLIOHedy  Auto  ",
+              "ReferenceAlias Property VLIOHedyAlias  Auto  ",
+              "GlobalVariable Property VLIOCrowIsHere  Auto  "
+            ],
+            "correctedSourceSha256": "2BE17B20AF30F471B1192B6C1763DCB2BAB1591E4AD6D260D0B8B592A7A079CB",
+            "output": "Scripts/vlio_tif__050f8a8c.pex",
+            "outputSha256": "DACA59A34F5A49696ADB22796EF12E30D3AB226380180733F026E3E16B1E9218",
+            "outputBytes": 973
+          },
+          {
+            "source": "bsa: Varinia - Custom Voiced Retired Spy and Companion/VLIOVarinia.bsa::source\\scripts\\vlio_tif__050f8a8e.psc (Nexus 148853 file 697835, Varinia 1.1.0)",
+            "sourceSha256": "FA87DF1B0A4FB767ECFBCEFADC52F394A98BB1E280C05190E4B8EFB460FEBCE7",
+            "sourceBytes": 494,
+            "edits": [
+              "Actor Property VLIOMata  Auto  ",
+              "GlobalVariable Property VLIOCrowIsHere  Auto  ",
+              "ReferenceAlias Property VLIOMataAlias  Auto  ",
+              "ObjectReference Property VoidReturn  Auto  "
+            ],
+            "correctedSourceSha256": "B02448877CB194AFFE146D5AA3A22BB6E0DF54591282D3618348118A200861C7",
+            "output": "Scripts/vlio_tif__050f8a8e.pex",
+            "outputSha256": "65601C971707EFA7404BCBF0E656BB1474DEF6BFD1899BCF13E0A44D3D7E1C59",
+            "outputBytes": 973
+          },
+          {
+            "source": "bsa: Varinia - Custom Voiced Retired Spy and Companion/VLIOVarinia.bsa::source\\scripts\\vlio_tif__050fdb94.psc (Nexus 148853 file 697835, Varinia 1.1.0)",
+            "sourceSha256": "5C17001772AE13C254ABF60A17F19A3D5FDA23005DAECA8AD77F28B95AC576E3",
+            "sourceBytes": 459,
+            "edits": [
+              "Actor Property VLIOVarinia  Auto  ",
+              "Spell Property VLIOConcentrationMag  Auto  "
+            ],
+            "correctedSourceSha256": "D77F37FCFA12656BC2CFD38516926EBC0D930495E9E8B497756062851F27D802",
+            "output": "Scripts/vlio_tif__050fdb94.pex",
+            "outputSha256": "99158E36A58C3C45135B1BBD791F0E5E45E82C55DCEA3C274A402FE5F8FCC0AA",
+            "outputBytes": 803
+          },
+          {
+            "source": "bsa: Varinia - Custom Voiced Retired Spy and Companion/VLIOVarinia.bsa::source\\scripts\\vlio_tif__050fdb98.psc (Nexus 148853 file 697835, Varinia 1.1.0)",
+            "sourceSha256": "5680555DF9B43B375C4E414CECD63665D2D9E3930FE1FF943615090C50A84039",
+            "sourceBytes": 451,
+            "edits": [
+              "Spell Property VLIOAimedMag  Auto  ",
+              "Actor Property VLIOVarinia  Auto  "
+            ],
+            "correctedSourceSha256": "0789A71BE2AFC74C55A36320E79BF4CAE7F48FA3948C30325868CCE12E9CD0DF",
+            "output": "Scripts/vlio_tif__050fdb98.pex",
+            "outputSha256": "279BB665C54E8730AD0F08A605EE764EA37240CFA007D69A9F25D727A8306730",
+            "outputBytes": 787
+          },
+          {
+            "source": "bsa: Varinia - Custom Voiced Retired Spy and Companion/VLIOVarinia.bsa::source\\scripts\\vlio_tif__050fdb9c.psc (Nexus 148853 file 697835, Varinia 1.1.0)",
+            "sourceSha256": "1F76141787E19344B8DCDC09D37B39D905AB4895BCB679EA91DC9FC5E49B20A4",
+            "sourceBytes": 450,
+            "edits": [
+              "Spell Property FastHealing  Auto  ",
+              "Actor Property VLIOVarinia  Auto  "
+            ],
+            "correctedSourceSha256": "13C87A362FA35CE805CCFEC0B816ADB2019625115526AF4B9597A201F19D29BF",
+            "output": "Scripts/vlio_tif__050fdb9c.pex",
+            "outputSha256": "1B36CFEBCE10E84123798705785D109A2F5F9D43C2E05E9ACF1D594802F48AE2",
+            "outputBytes": 785
+          }
+        ],
+        "verification": "2026-09-02: vendor PSC hashes read from the installed BSA and installed PEX hashes re-verified against the 2026-08-30 record; not recompiled today. 2026-08-30: all six compiles exited 0 with no warnings, Champollion round-trip clean, normalized bytecode equal to the intact official siblings (records/varinia-private-fragment-fix-2026-08-30.md).",
+        "notes": [
+          "Derived PSC/PEX stay private; the recipe exists so an installer can regenerate them from the user's own Varinia download.",
+          "Preferred end state is the upstream fix (records/varinia-upstream-bug-report-draft-2026-08-30.md)."
+        ]
+      }
     },
     {
       "modId": 0,
@@ -2417,7 +3057,16 @@
       "transaction": "20260902T045032956Z-13ae860d76e1",
       "distribution": "distributable",
       "distributionBasis": "Payload: complete Light Placer package built from Ensrick/LightPlacer branch ensrick/1.7.104 (commit ae48c768a, upstream master 1f15e5c = v4.2.1 + 2 fixes): po3_LightPlacer.dll (sha256 2bd0adfdd6cc...), .pdb, po3_LightPlacer.ini, Scripts/LightPlacer.pex, Source/Scripts/LightPlacer.psc, LightPlacer-LICENSE.txt. Basis: MIT License (LICENSE, Copyright (c) 2024-2026 powerofthree: rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies, provided the copyright and permission notice is included - it ships in the package). Links powerof3/CommonLibSSE + libxse/commonlib-shared (GPL-3.0-or-later with the SKSE-plugin EXCEPTIONS); corresponding source is the public fork. Build record: records/source-builds/ensrick-light-placer.json.",
-      "note": "Rebuild-forward of the parked vendor 4.2.1 (#79, #140): vendor DLL's embedded CommonLib reads Address Library formats 1-2 only and dies on the 1.7.104 v5 file. This build follows upstream's own August 2026 migration to powerof3/CommonLibSSE dev cbb5c29a1 + commonlib-shared (Address Library v5 reader), with REX::FAIL patched to log-only (no MessageBox). SKSE gate: PASS (version independent) (versionIndependence=5, viEx=2, V5 bit=YES, PE stamp 1788323919 = 2026-09-02 04:38:39Z). Feature defaults: identical to vendor ini (#144). Priority directly above the parked vendor row; vendor row stays disabled. Launch: VERIFIED 2026-09-01 23:52 records/launch-verify-20260901-235200.md PASS (main menu 31.4s, save loaded 42.1s); skse64.log 'plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 16)'; po3_LightPlacer.log clean init on 1.7.104.0, 9 Lux CS config files read, hooks installed, console commands installed."
+      "note": "Rebuild-forward of the parked vendor 4.2.1 (#79, #140): vendor DLL's embedded CommonLib reads Address Library formats 1-2 only and dies on the 1.7.104 v5 file. This build follows upstream's own August 2026 migration to powerof3/CommonLibSSE dev cbb5c29a1 + commonlib-shared (Address Library v5 reader), with REX::FAIL patched to log-only (no MessageBox). SKSE gate: PASS (version independent) (versionIndependence=5, viEx=2, V5 bit=YES, PE stamp 1788323919 = 2026-09-02 04:38:39Z). Feature defaults: identical to vendor ini (#144). Priority directly above the parked vendor row; vendor row stays disabled. Launch: VERIFIED 2026-09-01 23:52 records/launch-verify-20260901-235200.md PASS (main menu 31.4s, save loaded 42.1s); skse64.log 'plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 16)'; po3_LightPlacer.log clean init on 1.7.104.0, 9 Lux CS config files read, hooks installed, console commands installed.",
+      "vendorBytesAllowed": {
+        "basis": "MIT License (Light Placer LICENSE, Copyright (c) 2024-2026 powerofthree): 'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software', subject to including the copyright and permission notice, which ships as LightPlacer-LICENSE.txt in this folder. These three files are byte-identical to the parked vendor 4.2.1 package (records/source-builds/ensrick-light-placer.json vendorParity); redistributing them verbatim under MIT is explicitly permitted, so the vendor-byte check is over-strict for them (#160 ruling 2026-09-02). The parked vendor Light Placer row is NOT a required download.",
+        "files": [
+          "SKSE/Plugins/po3_LightPlacer.ini",
+          "Scripts/LightPlacer.pex",
+          "Source/Scripts/LightPlacer.psc"
+        ],
+        "recordedAt": "2026-09-02"
+      }
     },
     {
       "modId": 188291,
@@ -3082,7 +3731,1110 @@
       "transaction": null,
       "note": "Generated behaviour output: 208 files = 202 under meshes/actors/character (patched behaviour HKX plus the OpenAnimationReplacer XPMSE weapon-style animation sets), animationdatasinglefile.txt, animationsetdatasinglefile.txt, SKSE/Plugins/fnis_aa, Pandora_Engine/ActiveMods.json + PreviousOutput.txt, and the generator's Engine.log. Regenerated 2026-08-30 19:15 local (= installedUtc, from Engine.log's mtime) via the headless fork (MO2Headless run through USVFS, tools/run-pandora.cmd). The engine writes the folder itself, so there is no MO2Headless transaction; the modlist entry is at line 17. Only XPMSSE weapon styles depend on it today; rerun after every animation or skeleton mod change (docs/STANDARDS-DIGEST-2026-08-30.md). Engine.log is excluded from packaging by .packagingignore. Row sha256 = aggregate over the 208 files (sha256 of the sorted 'path<TAB>SHA256' lines, lower-cased paths). Parked/unparked in the #142 bisect round 3. Row added 2026-09-02 (#160).",
       "distribution": "recipe",
-      "distributionBasis": "Payload: generated output derived from the installed animation and skeleton mods (XPMSSE et al.) and Pandora's own templates; vendor-derived generated data, never bundled. Basis: the installer regenerates it by running the headless Pandora fork (records/source-builds/ensrick-pandora-headless.json, Ensrick/pandora-behaviour-engine 6adf04b, GPL-3.0-or-later, pushed) against the user's own installed mods with -o into this mod folder; output depends on the exact mod set, so a bundled copy would drift. [ledger row added and classified 2026-09-02, #160]"
+      "distributionBasis": "Payload: generated output derived from the installed animation and skeleton mods (XPMSSE et al.) and Pandora's own templates; vendor-derived generated data, never bundled. Basis: the installer regenerates it by running the headless Pandora fork (records/source-builds/ensrick-pandora-headless.json, Ensrick/pandora-behaviour-engine 6adf04b, GPL-3.0-or-later, pushed) against the user's own installed mods with -o into this mod folder; output depends on the exact mod set, so a bundled copy would drift. [ledger row added and classified 2026-09-02, #160] Machine-readable recipe field added 2026-09-02 (tool kind: headless exe pin, input aggregates + vendor archive hashes, run command, SHA-256 of every payload output). [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "tool",
+        "recordedAt": "2026-09-02",
+        "tool": {
+          "name": "Pandora Behaviour Engine+ (Ensrick headless fork)",
+          "version": "4.4.0-beta+ensrick-headless",
+          "repository": "https://github.com/Ensrick/pandora-behaviour-engine",
+          "branch": "ensrick/headless",
+          "commit": "6adf04b218cf4361f775e6e74e2b0e87a29efa44",
+          "sha256": "B545D97D045D8DD23A1476A6376D90358C170EBC992A79B7338299F0C299CDCB",
+          "path": "tools/pandora-headless/Pandora Behaviour Engine+.exe",
+          "license": "GPL-3.0-or-later",
+          "note": "records/source-builds/ensrick-pandora-headless.json (build + rebuild); companions Pandora_Engine/ and Nemesis_Engine/ beside the exe"
+        },
+        "command": "MO2Headless.exe --root <instance> --timeout 3600 run \"<repo>/tools/pandora-headless/Pandora Behaviour Engine+.exe\" --arguments \"--headless -o \\\"<mods>/Pandora Output - Ensrick\\\"\"  (tools/run-pandora.cmd)",
+        "method": "Runs Pandora once through MO2's USVFS so it sees every enabled mod's Nemesis_Engine patches and FNIS animation lists, and writes the patched behaviour graphs, animation data singlefiles, the FNIS-AA to OpenAnimationReplacer sets and fnis_aa config into the output mod. Engine.log of the recorded run lists exactly: Pandora Mod 1 SkyParkour 1st Person, Mod 2 SkyParkour 3rd Person, Mod 3 Pandora Base, FNIS Mod 1 FNIS_XPMSE_List.",
+        "inputs": [
+          {
+            "source": "Pandora_Engine templates + vanilla behaviour projects (tools/pandora-headless/Pandora_Engine beside the exe; byte-identical to mods/Pandora Behaviour Engine/Pandora_Engine)",
+            "sha256": "D2E154B6DF7B7DD3203C92712ED252521086E70A337FE1803F3A9533814CB80F",
+            "bytes": 22156013,
+            "files": 285,
+            "aggregate": "sha256 over the sorted 'path<TAB>SHA256' lines (lower-cased forward-slash paths relative to the folder, upper-case hex), joined by LF",
+            "role": "Pandora Base"
+          },
+          {
+            "source": "Pandora Behaviour Engine v4.4.0-beta archive (Nexus 133232 file 788583)",
+            "sha256": "BF7C5AE96482908C5B78C2B0558D37DBF956229E77AA8F91AE557E541B966C13",
+            "role": "vendor archive providing Pandora_Engine"
+          },
+          {
+            "source": "Nemesis_Engine/mod/sppffp as the VFS sees it (per-file winners: SkyParkour v3 - Pandora Animation Cache, SkyParkour v3 - SPPF)",
+            "sha256": "A8974DE02BC0E17F419A2F2E90C4DE163E11FD891230AB5DC6C1FF0E80518189",
+            "bytes": 463267,
+            "files": 68,
+            "aggregate": "sha256 over the sorted 'path<TAB>SHA256' lines (lower-cased forward-slash paths relative to the folder, upper-case hex), joined by LF",
+            "role": "Pandora Mod 1: SkyParkour 1st Person"
+          },
+          {
+            "source": "Nemesis_Engine/mod/sppftp as the VFS sees it (per-file winners: SkyParkour v3 - Pandora Animation Cache, SkyParkour v3 - SPPF)",
+            "sha256": "EE47C72F0CD7920410467BF8931CC34DD61F8899CB4E5835F316FD738DEF93EB",
+            "bytes": 873414,
+            "files": 141,
+            "aggregate": "sha256 over the sorted 'path<TAB>SHA256' lines (lower-cased forward-slash paths relative to the folder, upper-case hex), joined by LF",
+            "role": "Pandora Mod 2: SkyParkour 3rd Person"
+          },
+          {
+            "source": "SkyParkour V3 - Parkour Framework 3.6.3 archive (Nexus 132292 file 793971)",
+            "sha256": "9FB509E175C4A68332C423A0ECFF2E41BCD590E058A712EA15F375E387DEB852",
+            "role": "vendor archive (sppffp/sppftp patch sources)"
+          },
+          {
+            "source": "SkyParkour v3 - Pandora Animation Cache 3.5.0 archive (Nexus 132292 file 747633)",
+            "sha256": "99A782CB7B12C2B28828CAFBDC1D2A64C961026B0ED36B0A3BF5B47A0DEB4F31",
+            "role": "vendor archive (CRC32 cache files winning inside sppffp/sppftp)"
+          },
+          {
+            "source": "meshes/actors/character/animations/XPMSE from XPMSSE 5.06 (FNIS_XPMSE_List.txt + 169 hkx; sole provider)",
+            "sha256": "AC69FC85CA699C31EF872A208C10631F5AA28CD3C50A910438A547E80A6CB69D",
+            "bytes": 2896466,
+            "files": 170,
+            "aggregate": "sha256 over the sorted 'path<TAB>SHA256' lines (lower-cased forward-slash paths relative to the folder, upper-case hex), joined by LF",
+            "role": "FNIS Mod 1: FNIS_XPMSE_List (FNISAA to OAR builder)"
+          },
+          {
+            "source": "XP32 Maximum Skeleton Special Extended 5.06 archive (Nexus 1988 file 469854)",
+            "sha256": "62335BAD563800402A4F47E410BF96B5A6B3B920A6B5EA606CD723D03973ED41",
+            "role": "vendor archive (XPMSE animations)"
+          }
+        ],
+        "outputs": [
+          {
+            "path": "meshes/actors/character/_1stperson/Behaviors/0_Master.hkx",
+            "sha256": "A28F383137AFAC168B7F9B445BD6B07F294D0A2880CAABDA9343A29A1A9CBFC3",
+            "bytes": 472688
+          },
+          {
+            "path": "meshes/actors/character/_1stperson/Characters/FirstPerson.hkx",
+            "sha256": "195633046243206A2FA51F23D82200FDC85C6F27236ABEC15264C16C8F136706",
+            "bytes": 67008
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/config.json",
+            "sha256": "EE89C9E3EFDDE5CE8A511FB9CFA54AC06AA812553459FABAA27E7D8ACF791D6C",
+            "bytes": 62
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_1/1hm_equip.hkx",
+            "sha256": "2E4E8E51B52CC892A595B4FE082868F131470024B5B495D58C852BCA0980F38E",
+            "bytes": 25472
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_1/1hm_unequip.hkx",
+            "sha256": "FACECEC1E759BBB70E96FA683CE5D72E2C95808E622AB9B4128932ED6FCB5C82",
+            "bytes": 32448
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_1/config.json",
+            "sha256": "CBE815990E6516389EEEF5E7ADC9EDD5D58F8F8196E1E98C65A9092124E5789D",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_2/1hm_equip.hkx",
+            "sha256": "87A14E0C624B87E5A2AD32C413A8B950D2E29B497AEDE0A6447C39175728DB36",
+            "bytes": 30944
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_2/1hm_unequip.hkx",
+            "sha256": "2E4199E825E4931BB7F50B885A8F8D66FBFDDAD6B56C809261E6501227BF24C0",
+            "bytes": 34944
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_2/config.json",
+            "sha256": "120051086056EA823D87387E434A762C43BDACAB1BE000C4DA646404B08CCEBC",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_3/1hm_equip.hkx",
+            "sha256": "6CBC8BF1E38C73EA020E123F59BC8D5318FD638F34BBE8E2FF2EF2084BB6B7D0",
+            "bytes": 31056
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_3/1hm_unequip.hkx",
+            "sha256": "531038153EF83EF5F6AE75D96E506843BA92046B6D437CBEA5314AAE47D26D9F",
+            "bytes": 35296
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_3/config.json",
+            "sha256": "F71F9EA9662574CF986591CC21A643285074C06804CFDC4A6EF4AF2A36C30D3D",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_4/1hm_equip.hkx",
+            "sha256": "72D016D16485BF2900A373C6D4AB6136E03D6F690F6393BD8A33337F7ACF24BC",
+            "bytes": 30752
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_4/1hm_unequip.hkx",
+            "sha256": "FABABFA1CD561E4847E58F04975DE39182B324BE42DB1576E7B8D30B9AAE3191",
+            "bytes": 38992
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_4/config.json",
+            "sha256": "CE26209F2E715B68B86E8E049B1DC18687200A1B47E7B482440CCEE112DED283",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_5/1hm_equip.hkx",
+            "sha256": "C07AAA0D024EAD5284147D8AA08B2A82BF39DA9AF216893DDDD9D4925580E834",
+            "bytes": 31024
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_5/1hm_unequip.hkx",
+            "sha256": "A567F0AD7E900D5E3C2D73B0C83A0BAEC1F96434123B911F3CBE7C771AF64685",
+            "bytes": 34688
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_5/config.json",
+            "sha256": "EDAF954E8C2E952E0A5E0E2EE319A4F80BB1CB7F7DB0CE2FACEAB4BF4721DE6F",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_2hmeqp_1/2hc_equip.hkx",
+            "sha256": "EF8BCE2B1F90587899DB483E59782F1161C63217DCCDC1B8736CB7A66B753CF7",
+            "bytes": 22016
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_2hmeqp_1/2hc_unequip.hkx",
+            "sha256": "FA491B79C6BB5064664468311475D125E49FD522EF4EC47FE1DB4EC0C3BB3D0C",
+            "bytes": 20048
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_2hmeqp_1/config.json",
+            "sha256": "5E26D99840461E8F6CF09B11C58DA607D09AA8886ABB99B0A7EB5AE03F8B9430",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_2hweqp_1/2hw_equip.hkx",
+            "sha256": "EF8BCE2B1F90587899DB483E59782F1161C63217DCCDC1B8736CB7A66B753CF7",
+            "bytes": 22016
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_2hweqp_1/2hw_unequip.hkx",
+            "sha256": "FA491B79C6BB5064664468311475D125E49FD522EF4EC47FE1DB4EC0C3BB3D0C",
+            "bytes": 20048
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_2hweqp_1/config.json",
+            "sha256": "A6774A2B094B8E7B0BF445D500BC1C36B94CD4FB0FB1C7D1A99E9191628444AA",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_1/axe_equip.hkx",
+            "sha256": "BE20AC74B42740F37D63CDBDBAA2F5DC6B63F627561ECF8CC2A22C879B404068",
+            "bytes": 26896
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_1/axe_unequip.hkx",
+            "sha256": "DB6D89986F2702D368DB772220DB43D5E91131E9B0FD7536446640FDFA1208F2",
+            "bytes": 29744
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_1/config.json",
+            "sha256": "59687B5B815CF1AC961762BAAA74B4B64B2697FA5EC81763E2FB2CCF6E02CF1D",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_2/axe_equip.hkx",
+            "sha256": "87A14E0C624B87E5A2AD32C413A8B950D2E29B497AEDE0A6447C39175728DB36",
+            "bytes": 30944
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_2/axe_unequip.hkx",
+            "sha256": "2E4199E825E4931BB7F50B885A8F8D66FBFDDAD6B56C809261E6501227BF24C0",
+            "bytes": 34944
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_2/config.json",
+            "sha256": "7BFF8A085B7F24EA3BEDCE4376E9A79ED326A1A21D7018CC353CE8F963D8DF9B",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_3/axe_equip.hkx",
+            "sha256": "6CBC8BF1E38C73EA020E123F59BC8D5318FD638F34BBE8E2FF2EF2084BB6B7D0",
+            "bytes": 31056
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_3/axe_unequip.hkx",
+            "sha256": "531038153EF83EF5F6AE75D96E506843BA92046B6D437CBEA5314AAE47D26D9F",
+            "bytes": 35296
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_3/config.json",
+            "sha256": "AC8289F8A12BB1C21468D2BA4B9F8EC6A2987A74E5AEFCFB6CFC0AE765E0528B",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_4/axe_equip.hkx",
+            "sha256": "72D016D16485BF2900A373C6D4AB6136E03D6F690F6393BD8A33337F7ACF24BC",
+            "bytes": 30752
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_4/axe_unequip.hkx",
+            "sha256": "FABABFA1CD561E4847E58F04975DE39182B324BE42DB1576E7B8D30B9AAE3191",
+            "bytes": 38992
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_4/config.json",
+            "sha256": "67C5A6EF8737113365004DBAC1D0DEA7E6F7141BFCFD369F3F20FB79944CFE8C",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_5/axe_equip.hkx",
+            "sha256": "C07AAA0D024EAD5284147D8AA08B2A82BF39DA9AF216893DDDD9D4925580E834",
+            "bytes": 31024
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_5/axe_unequip.hkx",
+            "sha256": "A567F0AD7E900D5E3C2D73B0C83A0BAEC1F96434123B911F3CBE7C771AF64685",
+            "bytes": 34688
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_axeeqp_5/config.json",
+            "sha256": "7C85F78AC51C4452ADD8BD23E6157FC58E60FD816DE9526FFD16E508205284F1",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowatk_1/bow_drawlight.hkx",
+            "sha256": "362C3EACD31F4133AC768D9C99496E37B8A0FFC690BFA3D1D0C0081547852540",
+            "bytes": 32032
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowatk_1/bow_release.hkx",
+            "sha256": "C5ACC195577DFFD34111A07DC52D1CEDABA6A7018E9FC4D8ED971C110E1130FD",
+            "bytes": 14272
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowatk_1/config.json",
+            "sha256": "05A0B094CC637B7ACB6FEFD7E661855C8F653A9EC482FA4F96CAF752E8D50F4E",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowatk_1/sneakbow_drawlight.hkx",
+            "sha256": "F43F7740802FC132B0262394AC16DAD3E41789F6ED9020C0DAE850816AB17F9E",
+            "bytes": 29232
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowatk_1/sneakbow_release.hkx",
+            "sha256": "42EC77AB6B87400068FEAE580D9BA61FD2E60A0BA94CA7E0FA6667DB2867612F",
+            "bytes": 16816
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_boweqp_1/bow_equip.hkx",
+            "sha256": "500145275DA78D918FBED8CD28E1D344A735050A6EEE2479D4E7B08AF2D42BC7",
+            "bytes": 16960
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_boweqp_1/bow_unequip.hkx",
+            "sha256": "FA20613E0015B0C691214FD04958BF435822C22807A249EFC69E4A545C1C80CC",
+            "bytes": 15712
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_boweqp_1/config.json",
+            "sha256": "716A7E22F67B39271E026524EE67A2053EEDB278916C94494774120177FA39BB",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowidle_1/bow_idledrawn.hkx",
+            "sha256": "6D9463FB09EDD14A26089FF0712814766D0D024A6666D0FF413C7A6EDE9CEBDB",
+            "bytes": 11136
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowidle_1/bow_idleheld.hkx",
+            "sha256": "32B6BF21BCB2B516E8033051FB61F680C2EEB598DA4BE374B023401F2DF6D73F",
+            "bytes": 22608
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowidle_1/config.json",
+            "sha256": "37BF67F64C349703C4A26796B301F325F562136939296CC3F278C81E1CF56080",
+            "bytes": 401
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_bowidle_1/sneakbow_idledrawn.hkx",
+            "sha256": "25C6B32356534DB0115509E3D7CFB0B55FCD92BF76039CEFF68DADE04D938775",
+            "bytes": 20816
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_1/config.json",
+            "sha256": "9327C37579C2D77E80A3CBF365B4049DBF7A8B5EBD9313AC4CF40D2F2AD9A677",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_1/dag_equip.hkx",
+            "sha256": "2E4E8E51B52CC892A595B4FE082868F131470024B5B495D58C852BCA0980F38E",
+            "bytes": 25472
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_1/dag_unequip.hkx",
+            "sha256": "FACECEC1E759BBB70E96FA683CE5D72E2C95808E622AB9B4128932ED6FCB5C82",
+            "bytes": 32448
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_2/config.json",
+            "sha256": "E9913601076312C54BB70FEBE113D31B6963A124C269949CE441CC71D8041BC8",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_2/dag_equip.hkx",
+            "sha256": "2EF800B81782D0F02075D8EF2821CAC4CF041922A1EFA091FD9803E472F6F29F",
+            "bytes": 25888
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_2/dag_unequip.hkx",
+            "sha256": "2735CAABAAC57D64B01C340EE228839B929B6A118C72F920A31B3E35E7BEE210",
+            "bytes": 27744
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_3/config.json",
+            "sha256": "7780C62E3D2ED8DC81085BEC3E65D1F72F9A837B88CB414430655CE39EC86902",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_3/dag_equip.hkx",
+            "sha256": "86875E18C3301D8AC8E8A2BE6C9BBBC67D1DE36FD3DD952BFBA8D6414E89B8AF",
+            "bytes": 25952
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_3/dag_unequip.hkx",
+            "sha256": "1B7E82A74DCA032EDE04968158F114B44CA92AAB1CA091D4D37660D389D9A5D5",
+            "bytes": 28176
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_4/config.json",
+            "sha256": "E774D267C7C03F188B727A0C0096997295D852F7C8E33B976D9158D04FEA507A",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_4/dag_equip.hkx",
+            "sha256": "4D5ED271C03EECC5B729EC04D9F36FE4A464FC6F06D2A544327ABAAB09824ACD",
+            "bytes": 12384
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_4/dag_unequip.hkx",
+            "sha256": "424A60BCC7C77043B832DABC498B885B955A47AD14FB44C07D1A6245FCCB8FB5",
+            "bytes": 13072
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_5/config.json",
+            "sha256": "B54B3D1125CFDD96CCEAFFDFF82330238F93CF2AF04D2F7156B842D8C8147D36",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_5/dag_equip.hkx",
+            "sha256": "4D5ED271C03EECC5B729EC04D9F36FE4A464FC6F06D2A544327ABAAB09824ACD",
+            "bytes": 12384
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_5/dag_unequip.hkx",
+            "sha256": "424A60BCC7C77043B832DABC498B885B955A47AD14FB44C07D1A6245FCCB8FB5",
+            "bytes": 13072
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_6/config.json",
+            "sha256": "A8D2365BA874E3E066B115F96F73B1FA64D74D316AE25D8D80229FFACB9921B3",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_6/dag_equip.hkx",
+            "sha256": "B71C75B5140F431EE1D59E8DEA765A70D6978CF52A77823A0F6EAC03F6EB5153",
+            "bytes": 31056
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_6/dag_unequip.hkx",
+            "sha256": "56CC2EDB41B95C65BEBAE08822E4D7FA3044CF7A0214232B49142F84E446D2FC",
+            "bytes": 34656
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_maceqp_1/config.json",
+            "sha256": "CA5E78C1CA40FAE76D68B167F1E95CD51CCC7438A4AC3A0943B4191D839FBE90",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_maceqp_1/mac_equip.hkx",
+            "sha256": "E0C1AA10F080CDC5078F8D1441A76213FD88A70CFDA2E473A5FC46BEE204DD94",
+            "bytes": 26560
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_maceqp_1/mac_unequip.hkx",
+            "sha256": "F3E5B636FA5550BFB8CBC8159D5785AE73BD333B17359725CDD12B0984F1A3D3",
+            "bytes": 29936
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_maceqp_2/config.json",
+            "sha256": "91E33D344790613A41770C4B74C3F8DC52135DD623A3F8EECB9A7570F441C1AC",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_maceqp_2/mac_equip.hkx",
+            "sha256": "72D016D16485BF2900A373C6D4AB6136E03D6F690F6393BD8A33337F7ACF24BC",
+            "bytes": 30752
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_maceqp_2/mac_unequip.hkx",
+            "sha256": "FABABFA1CD561E4847E58F04975DE39182B324BE42DB1576E7B8D30B9AAE3191",
+            "bytes": 38992
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/config.json",
+            "sha256": "FA2B702957E2255D779D44EAD1C40B13F4B8247E95A7FF84F1E279AD0452A979",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_1hm_attackforward.hkx",
+            "sha256": "FA8FE27EBACDD0F37DA0E679847B82374AB8E61DED5268066EA7D2793B921DA0",
+            "bytes": 15600
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_1hm_attackforwardintro.hkx",
+            "sha256": "24E48BDDB00517A82AA28402C31D58DA21ED9F795929DAFF4C86E7B7584A4651",
+            "bytes": 10752
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_aimedconcentration.hkx",
+            "sha256": "445E07D42BB256EC508BE8BF2AB3BC0330155D533A0A3DA7EA7939B2C1880541",
+            "bytes": 10720
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_chargeloop.hkx",
+            "sha256": "636D0798AEC77E4C88BDA69C25F7B52FADCC4F4BD39F132426FC014D92FBC0E3",
+            "bytes": 11808
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_preaimedcon.hkx",
+            "sha256": "2FE305866F10E5D77DA515D2CFD264F8B62CDF64A27D1327DF9D488825193A17",
+            "bytes": 11344
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_precharge.hkx",
+            "sha256": "7E3E159183387F161E3A7D56CBAE25B12FE3FEA4D2A699C0FDBB334B6A308760",
+            "bytes": 12848
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_preready.hkx",
+            "sha256": "DDEA922CDE9E412A22440043D9B69471621CE8ED5DE9ACCD3EDB9065E5EAABD3",
+            "bytes": 10272
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_preselfcon.hkx",
+            "sha256": "433D35BE579F976ED199C9FFD13261C1BFFDBD7B414B3DCFADECFD353680E465",
+            "bytes": 11424
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_pretelekinesis.hkx",
+            "sha256": "58CF52529BCBF93F66B6B1377168B36CD117DCA0DAFF58CD6F210C101A001580",
+            "bytes": 10432
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_prewardcharge.hkx",
+            "sha256": "6E2C1D68BB92A157ED92DCAC6F72352264F8BC9DFE853CD3536512B8972FFEC3",
+            "bytes": 9296
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_prewardloop.hkx",
+            "sha256": "F6C93570602F12DA71183D0D918DF88287913EEA0F9B2E75CA42D383AFB6A2D4",
+            "bytes": 9456
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_readyloop.hkx",
+            "sha256": "2C9924A55F2569CA8DAD5DDF0D3B4B3DC08D225A6538DFB20F6650E4A51C8840",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_release.hkx",
+            "sha256": "82B7C36800E5738D8AC816EC141C0F8A58BB9EFA5B089ABC772AAC2335C7F11E",
+            "bytes": 15440
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_selfchargeloop.hkx",
+            "sha256": "19B1C74CCF765DA5620E55EA818BBCF3DB7D2C330BF10EA97CF71F5603AE17D2",
+            "bytes": 14208
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_selfconcentration.hkx",
+            "sha256": "83E786150D77AA5DBFE389B2849FEDF26C3F97BF13C345C496A407E7BADF738A",
+            "bytes": 13104
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_selfreadyloop.hkx",
+            "sha256": "7FBA671A2CDE570C4BDBF75FC1EA86168E34EDEB17322B3B963CB2DF98C8E678",
+            "bytes": 11232
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_selfrelease.hkx",
+            "sha256": "65B0CD5169521E4C8BF5FAA809753FEA87ED2043C3BA682E5E4F022B60960081",
+            "bytes": 13584
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_telekinesisloop.hkx",
+            "sha256": "105CCCE8C12AC02C6FBBF04CEBC48F73DDB1876533E67497062648D10BD0BEA4",
+            "bytes": 10656
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_wardcharge.hkx",
+            "sha256": "04A70ABEE6F69D7DD34117657D92F0CF62B714A73DAA079621FC10666A7CC691",
+            "bytes": 12688
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlh_wardloop.hkx",
+            "sha256": "D3E635A6569AF4024371F81313D548B9C3265AD332AD4AB1E5C4E7D72D097298",
+            "bytes": 12000
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mlhmrh_aimedconcentrationloop.hkx",
+            "sha256": "AD6FFFBD12E9E912DC0F0901149541820CF0D41D1E31072B6351AD4BEA27340D",
+            "bytes": 13872
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_aimedconcentration.hkx",
+            "sha256": "A0FC2CDFD6B0EA50E050C0CBE56333A1ADCD52B06A81407C9CB7B6F630438591",
+            "bytes": 12928
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_chargeloop.hkx",
+            "sha256": "4952F09C8178ECFDB306E8664AF1830197526F961CC2658CE8F3CE69DDAEBEA7",
+            "bytes": 17984
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_preaimedcon.hkx",
+            "sha256": "54DCC66E88DBB1031387B88425D463EA6436AE66A47ED7189A97CA5B04AEA5A8",
+            "bytes": 11856
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_precharge.hkx",
+            "sha256": "26777BA4AAF3588468B400E7EE9D0F67FF28563F36D624F0D5F1AD70FAE02717",
+            "bytes": 18768
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_preselfcon.hkx",
+            "sha256": "682B9929FC1BAC78A90799257F6B6E5E71E3FC2ADDE35E1F6DA5B9B08B4F1A1C",
+            "bytes": 11152
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_pretelekinesis.hkx",
+            "sha256": "E7F9FF9FA944F1DB459B92717BF1785665240AD542E422998FED3AF3A26BD734",
+            "bytes": 12928
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_prewardcharge.hkx",
+            "sha256": "F12966C718683398C9286E9B91D04746608DB4EB69A789F2CE853158BD8DAF74",
+            "bytes": 10096
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_prewardloop.hkx",
+            "sha256": "32B553EDD4D2F703C35604DCE25E2820B01479E25C9D5D7DA21C78F522ACFF9E",
+            "bytes": 9792
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_readyloop.hkx",
+            "sha256": "DC826A863BFBD5D0CCA56889A997E66F06924AF9AEE4BE4C0899C243D4639818",
+            "bytes": 19232
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_release.hkx",
+            "sha256": "06CFFA29597B2F43E38CD108E5263ECA4A26CA36BBC63D8D40468E94667687F2",
+            "bytes": 16752
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_selfchargeloop.hkx",
+            "sha256": "26D411C1AFD9171BA5D4754E0B5D8DB925BFF5252982DAE33C1207D12AA3CA87",
+            "bytes": 14736
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_selfconcentration.hkx",
+            "sha256": "23B6E665224DE3E5D7D5C95E95117EE8B7ED9BBC096D5F1CA1CB505DAA0FAB00",
+            "bytes": 14112
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_selfprecharge.hkx",
+            "sha256": "0427297DB01E4614BBF9B32CEC51C3CAAFC87BCF6123AF21FBF9F681F47F75C4",
+            "bytes": 11584
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_selfreadyloop.hkx",
+            "sha256": "8D36385C2B3EEAB255810B532906A8C1B182DC08EAD44F6498E0C78EDDF2ABBF",
+            "bytes": 12048
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_selfrelease.hkx",
+            "sha256": "DBBB7473669D89DFE449176BDFDA31BC8466FFC8966F23A8D80A703EE4C4FF55",
+            "bytes": 14128
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_telekinesisloop.hkx",
+            "sha256": "9B9EBEECD5BD48BF40D0022645AFFF6DA4EF4C9847AE7BF1B00B5878A04FC593",
+            "bytes": 13104
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_wardcharge.hkx",
+            "sha256": "B01429A91BAA2A40D5E588A75104C69BDEEA7E8B04838870B4D5B6D3F17618AB",
+            "bytes": 13120
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magatk_1/mrh_wardloop.hkx",
+            "sha256": "F6F8C6E4C95FADBA8B0103F1130A53EF72AF8CCE86A4614B01E08B535DBA965C",
+            "bytes": 12384
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/config.json",
+            "sha256": "17F25EDECB76C0CC620411FDE792CB68195E96A59A67B497C32538CD5CC6211B",
+            "bytes": 405
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runbackward.hkx",
+            "sha256": "06399EA0933D23A54F2CF6411BA6BA773DB8C9346DC94869DC73D909D411DC95",
+            "bytes": 13296
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runbackwrdleft.hkx",
+            "sha256": "0E421D6BC79F8FFB952BB3DFA31FDAA6D49559275456E3DC1B132F92660DD4C1",
+            "bytes": 13632
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runbckwrdright.hkx",
+            "sha256": "2C226744123B4CA84EBAD9011D7BF7D51AA926B09F667BF4DBC67D8DFBA79183",
+            "bytes": 13584
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runforward.hkx",
+            "sha256": "FC92AC079607CA6A6819DB6D22EB06CACF5025509435D923C2EF258EC03670F0",
+            "bytes": 13296
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runforwardleft.hkx",
+            "sha256": "6844BAE39EC00786E92C3EBCB8087A9AA5B8AE21473C5E8401A70A1A8251EB26",
+            "bytes": 12800
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runfrwrdright.hkx",
+            "sha256": "A771575C3AC0806A3D02304437925F676FA8D33C69AF40B9807B2DCA87E661D9",
+            "bytes": 13040
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runleft.hkx",
+            "sha256": "745EF2027D85F09F3F58040E7F2DC01DF836E18C82173BE73941CD4AF8CDE2F6",
+            "bytes": 12848
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_runright.hkx",
+            "sha256": "561E78507BE77C231EF4333F17005F0D134D0DE8F3874DAA0E3793C44C204AC8",
+            "bytes": 13008
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_turnleft180.hkx",
+            "sha256": "7A01E60536C1AE4076AE7655092F41F35BD7F99B9AC8675317DC083AF841C9CD",
+            "bytes": 12400
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_turnleft60.hkx",
+            "sha256": "1F1C8430D1C9CC421F1D95AED87473DFC84EE64C29679236E0404EFFCE3D0109",
+            "bytes": 11776
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_turnright180.hkx",
+            "sha256": "80BE9D45BDAF1EB5A913EC090FECAC464595CF21A72D999D552492C5BAF1816C",
+            "bytes": 11488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_turnright60.hkx",
+            "sha256": "AAB5F09B3DC2B2963A2C06406CEEA2A801B6201B3EF1A47091E0B4146F9A791C",
+            "bytes": 11776
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkbackward.hkx",
+            "sha256": "80F7146A4712CB8A696CDBE25936DF7C452C162EF093DE421D37B0A289B29B56",
+            "bytes": 14032
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkbckwrdleft.hkx",
+            "sha256": "810BFE4BAEB64C854EE07E35EA7A5A0ECC34957985C2D54A2BDF87BDD9C7364B",
+            "bytes": 13232
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkbckwrdrht.hkx",
+            "sha256": "E847131B219DF1431601D043F51CDD67F82F428A0E64C513F54FB19EE0149525",
+            "bytes": 15456
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkforward.hkx",
+            "sha256": "1F2F2A9F4E5E7B8353D01ACC1E3E8030799993DFEC1E7564FC3E0E26B7B6280B",
+            "bytes": 15104
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkforwrdleft.hkx",
+            "sha256": "D895BA18C78258AAFE2F3A609F323E7878947812157FFB7216BAEE6C3D7666C1",
+            "bytes": 13792
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkfrwrdright.hkx",
+            "sha256": "137EE7BAA6BD6ACA21BC66E470E8E38F8E4C1689B37C9AB3E17822E44BE73B46",
+            "bytes": 14992
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkleft.hkx",
+            "sha256": "8266C7F39713CEDDFBE5111FAD9CF440A21CD0A1B004FE2CCF937D8AD5DD6792",
+            "bytes": 14560
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcastmt_1/magcast_walkright.hkx",
+            "sha256": "1BF989A08E184977505E0C5A71D034275761195E01143A9F91BC0878CFEBBA95",
+            "bytes": 12736
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/config.json",
+            "sha256": "30BF078B7AE6D702AB42BFA720209D3E0BF4E2BFA27FCFF5CA6E131685372BDC",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagaimconcharge.hkx",
+            "sha256": "AA12F609F0D691DBFAAB3853002CC376FB651F443A766C58EB8C117FCB3CB442",
+            "bytes": 13168
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagaimconloop.hkx",
+            "sha256": "7CBD31CF567F0A6311F56FE25A0E94213A85E12B00F181CC384FDF37B4C00226",
+            "bytes": 11728
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagaimrelease.hkx",
+            "sha256": "2ED39A08B13E83A3A5FD3C6B83BEA31FE1BEA65027008B1F8A2F4331EF9AB7C2",
+            "bytes": 15792
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagpreaimcon.hkx",
+            "sha256": "B77C538A746E72B5146857AB4ACC00958D97663D0B07E88675217B030EC1F44F",
+            "bytes": 10752
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagpreaimconcharge.hkx",
+            "sha256": "8F8E8BAECC44BFD9B92534CC0B56E26F9D4AA42DA676F919F6578B64736A12D8",
+            "bytes": 12416
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagpreselfcon.hkx",
+            "sha256": "5077B8568578D016DA37A4F2177C22B7BA88FA0FA68BDA1F054046381ED3135F",
+            "bytes": 11744
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagpreselfconcharge.hkx",
+            "sha256": "4FE14B12239B5920933B72969EC3AE39A44EC4077A479AA84AB1D649595A768D",
+            "bytes": 13472
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagselfconcharge.hkx",
+            "sha256": "5DF4B1C7F845114F6DDF0022CC9A816620BF6E815EA25E32E34D183190B08991",
+            "bytes": 11712
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagselfconloop.hkx",
+            "sha256": "10FE0F7B6B7E0C147B05C959020F2061C51C67346CAF78836D0707A7BC70909C",
+            "bytes": 12976
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magcon_1/dmagselfrelease.hkx",
+            "sha256": "B5361F6023554DE3C4F6B50AA0C6D014D1C49AA2454999B8EDE4C7A272852A5D",
+            "bytes": 14768
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magidle_1/config.json",
+            "sha256": "F655CAC935689347E82C78164C1357BA5DA1F46CBFF85D3C6DB635F15E0230C7",
+            "bytes": 401
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magidle_1/mlh_idle.hkx",
+            "sha256": "C67E3AE8361D5C946E6C73DC2016DDFB2BE85C019A5E41AB8A816CA789831542",
+            "bytes": 19312
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magidle_1/mrh_idle.hkx",
+            "sha256": "25FCA2434E4B1519F4930D9DD64C4299F5350151C7A668819D0B6F4BE2837617",
+            "bytes": 17488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/config.json",
+            "sha256": "D9393EB3D9B4067CEB6FF7ABFD64D10EC21679E92AD95DF64660FFF30E066D95",
+            "bytes": 397
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runbackward.hkx",
+            "sha256": "C7D7CF1E5A367D0A1541909C79E265724098885FA244B01FB98127F5B0176446",
+            "bytes": 13248
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runbackwardleft.hkx",
+            "sha256": "D14C47451665B38497F302963A4F82CCF0F09AE550259E690F40E4881C22ACCD",
+            "bytes": 13696
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runbackwardright.hkx",
+            "sha256": "865EFE3FE691BB4B8AD0B61A2C775362CFD214A0951BB7B7270B462F2E3FAD51",
+            "bytes": 13600
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runforward.hkx",
+            "sha256": "43FB1E235F311DB02B5E874A3992C787AA8736D9C07ED721DA9ED6EF215CC090",
+            "bytes": 13184
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runforwardleft.hkx",
+            "sha256": "7A1D9FA1C3A127B8857AF5C489092E07D87C93B4A5526FA8873B74C146861CB6",
+            "bytes": 12800
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runforwardright.hkx",
+            "sha256": "274D56D2F9D0A41FA1CA30D8D2D2AE0FFED20BC16067DEFA64B765448663EBD2",
+            "bytes": 12832
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runleft.hkx",
+            "sha256": "41167F4664EB1620FBB940A7C3A663CFCA58394D81BB3F8BD447B93E59FF45C9",
+            "bytes": 13344
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_runright.hkx",
+            "sha256": "E3ECF380B929CA5F613EE54811EDE9FDC8D6320F34A6C043FBC190442BB7C89D",
+            "bytes": 12560
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_turnleft180.hkx",
+            "sha256": "3E198A8CE484739EFD53D79C4DE81704A0943B4DA2D1F85202ABA698A3256A41",
+            "bytes": 12224
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_turnleft60.hkx",
+            "sha256": "E3E1B90752D6B32B24B9B5096C611452CF5EC986F2E78335B3E653F7726CD3C6",
+            "bytes": 11584
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_turnright180.hkx",
+            "sha256": "0CD3ABED0E324D134385DBA6D6AE144A24BF98B7BA94BA6D3D1F3066719445EC",
+            "bytes": 11872
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_turnright60.hkx",
+            "sha256": "3FD214EFA74ED7666E7DAD341B089C85D150C23F2EB6DF8D77323CF360563510",
+            "bytes": 11856
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkbackward.hkx",
+            "sha256": "17B75071AF281E6694161531280645CA1A945715E0A6901647C12B6649059885",
+            "bytes": 14016
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkbackwardleft.hkx",
+            "sha256": "47691C48F4AE7260CCF1016399683AF5C69FC62CF6467055A243A6F9CEFAC658",
+            "bytes": 13728
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkbackwardright.hkx",
+            "sha256": "06E7CEAE96078EEAE28F10CA7DE9F9A3118DB159382B4A2DAE5E94BD95AA7C1D",
+            "bytes": 15600
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkforward.hkx",
+            "sha256": "B6EB00C0057B102D55BFE1A189D75AFE2D700A523151BDC7466AA6781B730AE9",
+            "bytes": 15136
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkforwardleft.hkx",
+            "sha256": "D3E3ECADB8906482306304C87152A44E0F01B723133895AFCDD8D7456197D086",
+            "bytes": 13712
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkforwardright.hkx",
+            "sha256": "B80A5337B6C1C0A9988E028535332998A7BFB91DCA5706F3472E0F13D8EB4A33",
+            "bytes": 14992
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkleft.hkx",
+            "sha256": "529CC213FF01B7DC65D5D30E9A72D097F9FFF15098035DEC32D32D4EAD69F2BD",
+            "bytes": 13552
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_magmt_1/mag_walkright.hkx",
+            "sha256": "D618D2E6E66E6A9ED3FA320AE6A4375D9003F34B627C1CA636866E0863AF8C55",
+            "bytes": 12656
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/1hm_shout_exhale.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/1hm_shout_exhale_long.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/1hm_shout_exhale_medium.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/1hm_shout_inhale.hkx",
+            "sha256": "43C260C9230C5D889997E48A566D92D95C7C339DEB5CF9E80E71B6CFCD6E2C4D",
+            "bytes": 10624
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/config.json",
+            "sha256": "9B6BDF7FE6694C1CCBBB31C1A3B2AAC206EE575DB510ADF5B6F151DE0F8146AF",
+            "bytes": 397
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/mt_shout_exhale.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/mt_shout_exhale_long.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/mt_shout_exhale_medium.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/mt_shout_inhale.hkx",
+            "sha256": "43C260C9230C5D889997E48A566D92D95C7C339DEB5CF9E80E71B6CFCD6E2C4D",
+            "bytes": 10624
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/sneak1hm_shout_exhale.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/sneak1hm_shout_exhale_long.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/sneak1hm_shout_exhale_medium.hkx",
+            "sha256": "84F2B333D2872B568F841D9390E64828A28B36261FF7A64BA47189C3292ED45D",
+            "bytes": 13488
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_shout_1/sneak1hm_shout_inhale.hkx",
+            "sha256": "43C260C9230C5D889997E48A566D92D95C7C339DEB5CF9E80E71B6CFCD6E2C4D",
+            "bytes": 10624
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/2hm_sprintforwardsword.hkx",
+            "sha256": "7FF63B1D25F2113629DEDA73F323D81E7197DDD6C609DB4AE8AE151E3F33988F",
+            "bytes": 13248
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/2hw_sprintforwardsword.hkx",
+            "sha256": "34995CE52175FD74D0A019FA703AFCAF328C52A6C89B467C9751411C03C0A522",
+            "bytes": 13216
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/bow_sprint.hkx",
+            "sha256": "E3EF9724044BB631B77E5FC191967E39B052C756AC7FE029506527D68C9A926F",
+            "bytes": 15888
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/config.json",
+            "sha256": "D371426C3BDC6C6B3AF7B85D4E04E5AF884A0A58DCFFD8135161FE25D4F1C492",
+            "bytes": 399
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/dodgeback.hkx",
+            "sha256": "844248C25E807AB1456ED960B1AE7520C22CC3255BE6D23E7EC91CEDA40E853C",
+            "bytes": 13152
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/dodgeleft.hkx",
+            "sha256": "00C95E5D40C3C4857FF0D0A36BFD4F707B849C3DBC2DD8137C11527E3310550D",
+            "bytes": 14176
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/dodgeright.hkx",
+            "sha256": "6612B38863DF7F457CA3BCCE6C6E49A970FC350CA74C5F74728437C4808805D4",
+            "bytes": 12720
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/dw_sprintforwardsword.hkx",
+            "sha256": "9A9C6FFFF2EE3928F8E6C90335AD6C16BC7CE55F233F328BC954FAE2F0383C1B",
+            "bytes": 13232
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/magic_sprintforward.hkx",
+            "sha256": "75655E907F60A59190E599908FE9DC677A26761B8D9E80985370554991495200",
+            "bytes": 16048
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/mt_sprintforwardsword.hkx",
+            "sha256": "6E0A2854046E6A17DD57BF17EE29DCCD07CDDDE67E0A4AB67C0EF221C75862B8",
+            "bytes": 14896
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/shd_blockbashsprint.hkx",
+            "sha256": "20A13F5C908D92B742FAF30334F27170178C00671F9D4C66FEE62B6F8BDDE637",
+            "bytes": 12624
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/sneakrun_forwardroll.hkx",
+            "sha256": "5C498E7E21B05AB695AFFB3BAB26BB2F14545708F6E8B59C06AFB97B90B5A834",
+            "bytes": 13632
+          },
+          {
+            "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_sprint_1/staffrightleft_sprint.hkx",
+            "sha256": "EC9602F6DFDADFC64D126E5E44F1C672316787EBE06739E03B4832A9BB6B0159",
+            "bytes": 14944
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/0_Master.hkx",
+            "sha256": "DEB389BE9021994DCC2C6932DAC51B32DBB2E773F3620A624D431E0665172AF9",
+            "bytes": 585136
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/magicbehavior.hkx",
+            "sha256": "D7DFC8F8E6D7BDD438D335DE0731859C1640707A24D5670E18F5C9BB79593F81",
+            "bytes": 276960
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/magicmountedbehavior.hkx",
+            "sha256": "11C63919B1BF955156E3A69BE8BF6E3791E889762E3027137AF4135D97CAB06B",
+            "bytes": 121488
+          },
+          {
+            "path": "meshes/actors/character/Characters Female/DefaultFemale.hkx",
+            "sha256": "7B129EA5792DE57A8260DAF489A99D32317F0771067323AE8A7EB893BE915833",
+            "bytes": 109888
+          },
+          {
+            "path": "meshes/actors/character/Characters/DefaultMale.hkx",
+            "sha256": "F8436FF6A1FC2DC4CC765DAD1C91C67559E86267C3604C97A37027124F993D0F",
+            "bytes": 109664
+          },
+          {
+            "path": "meshes/animationdatasinglefile.txt",
+            "sha256": "81CA6207838BBBB44853BFC93D78E3526CAAE2045BF2A908E453793A319D0FC5",
+            "bytes": 1932969
+          },
+          {
+            "path": "meshes/animationsetdatasinglefile.txt",
+            "sha256": "FC43E9AAEA607D39E7A5FF4B238B60AB860A03747ECA5A83AB8AC3E295C7BE78",
+            "bytes": 1023514
+          },
+          {
+            "path": "SKSE/Plugins/fnis_aa/config.json",
+            "sha256": "7C1F94C7ADB039E161C0336BB397A87426FB49774ED0ECCD57F58A78BDAFA6E5",
+            "bytes": 1415
+          }
+        ],
+        "verification": "2026-09-02: input aggregates and all 205 payload output hashes (171 hkx, 2 singlefile txt, 32 OAR/fnis_aa json) captured from the installed tree; the generation itself dates from 2026-08-30 19:15 local (Engine.log) and was not re-run (read-only packaging task). Expected output hashes hold only for this exact input set.",
+        "notes": [
+          "Engine.log (dropped by .packagingignore), Pandora_Engine/ActiveMods.json and Pandora_Engine/PreviousOutput.txt (absolute paths) are engine bookkeeping, not payload, and are not listed as outputs.",
+          "Rerun after every animation or skeleton mod change; a bundled copy would drift (docs/STANDARDS-DIGEST-2026-08-30.md)."
+        ]
+      }
     },
     {
       "modId": 0,
@@ -3341,7 +5093,8 @@
       "enabled": true,
       "installedUtc": "2026-08-23T05:25:13Z",
       "transaction": "20260823T052436895Z-5f3e1313c0fd",
-      "fomodPlan": "records/fomod-plans/64314-reverie.json"
+      "fomodPlan": "records/fomod-plans/64314-reverie.json",
+      "note": "2026-09-02 #165/#166 restore: moved directly above CBBE (priority 90 vs CBBE 89; mod-priority transactions ['20260902T150554563Z-2186a81b488a']) so the decided female skin (BASELINE.md:184) wins its 41 texture collisions; ships 4x4 black _sk maps, restored by Ensrick - Vanilla Skin Soft-Light Maps. VERIFIED by records/launch-verify-20260902-100735.md."
     },
     {
       "modId": 166460,
@@ -3758,7 +5511,8 @@
       "enabled": true,
       "installedUtc": "2026-08-23T05:25:38Z",
       "transaction": "20260823T052516402Z-3e322c2814cf",
-      "fomodPlan": "records/fomod-plans/6580-skysight.json"
+      "fomodPlan": "records/fomod-plans/6580-skysight.json",
+      "note": "2026-09-02 #165/#166 restore: moved directly above The New Gentleman (priority 13 vs TNG 12; mod-priority transactions ['20260902T150554430Z-ad9da584547b']) so the decided male skin (BASELINE.md:186) wins its 29 texture collisions. Its 22 meshes (malefeet_0/1 + 18 open-toed footwear, the FOMOD's forced RequiredHighPolyFeet) lost to HIMBO/TNG/HIMBO Refits/Lords of the Reach before the move and would have flipped 18 HIMBO-shaped footwear meshes to vanilla shape after it, so the folder is hidden: C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\SkySight Skins\\meshes.mohidden (rename back to restore). Texture-only effect. VERIFIED by records/launch-verify-20260902-100735.md."
     },
     {
       "modId": 12604,
@@ -4155,7 +5909,7 @@
       "installedUtc": "2026-08-23T05:26:48Z",
       "transaction": "20260823T052637107Z-be3115a14f9b",
       "fomodPlan": "records/fomod-plans/104215-tng.json",
-      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 1.7.99 dll (sha256 d1c7d54b4dc8acd8..., NG 6.7.0, gate-verified vi=0x5 viEx=0x2 compat 0x1070630, popups converted to log-only per doctrine) from _rebuild_TheNewGentleman; official 4.2.5 dll preserved as .bak.v4.2.5-official. MCM DAK hotfix 793745 applied over scripts/. Plugin re-starred (ESL, end of order). In-game verification pending | rev-2 2026-08-26: uncut defaults baked in (cVanillaDefaults C->R for default/bosmer/saxhleel rows), sha256 269d9cdae4a26a76..."
+      "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | UNPARKED 2026-08-26: SELF-BUILT 1.7.99 dll (sha256 d1c7d54b4dc8acd8..., NG 6.7.0, gate-verified vi=0x5 viEx=0x2 compat 0x1070630, popups converted to log-only per doctrine) from _rebuild_TheNewGentleman; official 4.2.5 dll preserved as .bak.v4.2.5-official. MCM DAK hotfix 793745 applied over scripts/. Plugin re-starred (ESL, end of order). In-game verification pending | rev-2 2026-08-26: uncut defaults baked in (cVanillaDefaults C->R for default/bosmer/saxhleel rows), sha256 269d9cdae4a26a76... | 2026-09-02 #165/#166 restore: SkySight Skins now sits directly above (TNG 12); TNG's bundled skin textures no longer win (BASELINE.md:185 keeps TNG as framework, :186 SkySight as the male skin). Its 4x4 black _sk stubs are overridden by Ensrick - Vanilla Skin Soft-Light Maps. VERIFIED by records/launch-verify-20260902-100735.md."
     },
     {
       "modId": 57874,

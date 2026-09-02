@@ -79,3 +79,30 @@ is never killed and never launched beside.
 Bounded Encounters alpha.2 capacity-model hardening: commit 5f5dfde, PR #173
 CLEAN, 15,620 unit + 7,185 simulator checks, release gate `releaseEligible:
 true`. Live profile untouched. Foreground observe-only runtime test remains open.
+
+## Update 10:10 - what landed this morning (all launch-verified)
+
+| change | issue | record |
+|---|---|---|
+| Controller 0.2.1 deployed (0.2.0 kept as `.bak.v6ed40ae7`) | - | launch-verify-20260902-091622 |
+| Dyn FNIS AA functions 3.0.1 (Pandora's companion for XPMSSE's FNIS API); 2033 -> 2 FNIS script errors per session | #148 | launch-verify-20260902-093221 / -093606 |
+| Decided skins restored: Reverie above CBBE, SkySight above TNG (SkySight meshes hidden, texture-only) | #165 #166 | launch-verify-20260902-100735 |
+| `Ensrick - Vanilla Skin Soft-Light Maps` overlay (vanilla `_sk` maps above all skins) - rollback = disable it | #165 | same |
+| Two texture-path overlays (CC Madness longsword, Skyland manhole) | #167 #168 | launch-verify-20260902-091326 |
+| Ensrick patch collection packager clean: 17 mods, 109 files, 13 recipes, 0 gaps/violations | #160 | dist/ |
+
+Skin detail after the reorder (high-frequency / tone vs vanilla): female body
+0.62/0.70 -> 0.66/0.89, male body 0.29/0.42 -> 0.46/0.67, male head 0.33/0.69
+-> 0.66/1.48. The dark eye ring on females is Bethesda's baked face tint; the
+soft-light overlay is the narrowest fix. Male lids will not lighten from the
+reorder (SkySight measures darker than TNG there).
+
+**A/B for you (#165):** Gerdur or Delphine in Riverwood with the soft-light
+overlay on, then with it disabled. **Soak:** your 09:21 play run replaced the
+idle soak (no crash, no kill); an idle figure is still owed.
+
+New issues from log triage: #174 SFCO3 swap forms unresolved, #175 CS Effects 11
+without a preset (= the #145 HDR chain decision), #176 duplicate CS feature
+INIs, #177 RaceMenu beast-race morph binds, #178 USSEP mannequin script fault.
+From the env-mask sweep: #169 / #170 missing texture sets, #171 metal masks
+(your call). Still running: OAR rebuild (#140), PR #173 review.

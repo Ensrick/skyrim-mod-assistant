@@ -50,7 +50,9 @@ instruction - the day session commits.
   - [ ] 119 fps cap / cursor behaviour per #149; Windows key should now reach
         the desktop: Media Keys Fix SKSE 1.0.2 IS installed and enabled, and its
         log in the 23:11 PASS shows `SetCooperativeLevel ... setting to 0x06`
-- [ ] Deploy controller **0.2.1** (downloaded to
+- [x] Deploy controller **0.2.1** - DONE 2026-09-02 09:14 by morning-ops, launch PASS
+      `records/launch-verify-20260902-091622.md` (main menu 30.4 s, save 41.3 s);
+      0.2.0 kept as `MO2Headless.exe.bak.v6ed40ae7`. Original item: (downloaded to
       `mo2-builds/headless-core-33589364228-fa8cb528/`, regression 40/40 at
       23:58, NOT deployed because the smoke ran on 0.2.0): copy
       `MO2Headless.exe` (sha256 `C9753382...851B04`) into the instance root

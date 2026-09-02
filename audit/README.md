@@ -22,6 +22,7 @@ community addons that fill the gaps it leaves.
 | `esp.py` | plugin parser: ARMO/ARMA equip slots, item classes, masters, ESL flag |
 | `vanilla_index.py` | index the game's own BSAs; run once, produces `vanilla_index.json` |
 | `inspect_mod.py` | the findings sheet |
+| `mip_retention.py` | distance detail: high-frequency energy per stored mip, vs vanilla at matched pixel size; `--resharpen` regenerates a sharpened chain (recipe form) |
 | `calibrate_detail.py` | rebuilds the detail-index controls used below |
 
 `vanilla_index.py` must run before upscale detection works. It reads the game
@@ -33,6 +34,21 @@ install read-only and takes about 6 minutes for ~180k asset paths.
 normal maps, normals stored as BC1, flat or diffuse-embossed normals, solid
 gloss alpha, absent mipmaps, uncompressed textures, JPEG blocking, resolution
 below the vanilla asset being replaced, diffuse/normal resolution mismatch.
+
+**Distance detail** (CURATION_POLICY "Textures are judged at distance") - up
+to 12 sampled diffuse/normal/specular maps >= 1024 px have their stored mip
+chain decoded (`mip_retention.py`, texconv) and the RMS Laplacian energy of
+mips 512-128 px compared with the vanilla texture at the same pixel size.
+A replacer under 70% of vanilla there is flagged `soft-at-distance`; the
+note line carries the median ratio. `--mip=0` skips the check (it is the
+slow part), `--mip=N` changes the sample. Needs `vanilla_index.json` for the
+vs-vanilla half; without it only self-retention (mip 3 / mip 0) is recorded
+in the JSON. Stand-alone use:
+
+```
+py -3 audit/mip_retention.py <mod.dds> [vanilla.dds] [--json]
+py -3 audit/mip_retention.py <mod.dds> --resharpen out.dds --unsharp 1.0 --radius 1.0
+```
 
 **Meshes** - unconverted Oldrim meshes (NIF user version other than 100, using
 `NiTriShape` instead of `BSTriShape`), parallax shader flags with no `_p`

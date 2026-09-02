@@ -71,8 +71,14 @@ def decode_mips(src, tmpname='mr.dds'):
         raise RuntimeError('texconv not found at ' + TEXCONV)
     work = os.path.join(tempfile.gettempdir(), 'mipret')
     os.makedirs(work, exist_ok=True)
+    tmp_in = None
     if isinstance(src, (bytes, bytearray)):
-        path = os.path.join(work, tmpname)
+        # Input goes to a sub-folder: texconv names its output after the input
+        # basename inside -o, and an input sitting in -o itself would be its
+        # own output (texconv then refuses, or the guard below trips).
+        indir = os.path.join(work, 'in')
+        os.makedirs(indir, exist_ok=True)
+        path = tmp_in = os.path.join(indir, tmpname)
         open(path, 'wb').write(src)
     else:
         path = src
@@ -82,10 +88,12 @@ def decode_mips(src, tmpname='mr.dds'):
     if not os.path.exists(out) or os.path.abspath(out) == os.path.abspath(path):
         raise RuntimeError('texconv failed: ' + (r.stdout or '') + (r.stderr or ''))
     blob = open(out, 'rb').read()
-    try:
-        os.remove(out)
-    except OSError:
-        pass
+    for p in (out, tmp_in):
+        try:
+            if p:
+                os.remove(p)
+        except OSError:
+            pass
     return _parse_rgba_dds(blob)
 
 

@@ -12,7 +12,8 @@
     "fileId": 416610,
     "archiveSha256": "B2C81477EFCDB240B305D781303D7E3EF39D07AB9BFB43B7E003A0E70C954639",
     "archiveBytes": 4201358,
-    "meshSha256": "99A02EF78C3260D99AF01B40320F1DF3C9DB9F80AE39321560BBADD4E7234030"
+    "meshSha256": "99A02EF78C3260D99AF01B40320F1DF3C9DB9F80AE39321560BBADD4E7234030",
+    "meshPath": "Meshes/clutter/werewolftotems/werewolfskull.nif"
   },
   "sourceAudit": {
     "plugins": 0,
@@ -41,13 +42,108 @@
     "toolCommit": "e12079cdcc6b058bb032e0d275598715ebe28534",
     "toolCommitPushed": true,
     "toolBinarySha256": "5070ACD5A44E38A65D9AA39EE61B89BE324703CB2AD0A1FB83270732B7DC3646",
-    "command": "remap-textures",
+    "command": "nif-port-cli.exe remap-textures \"<vendor>/Meshes/clutter/werewolftotems/werewolfskull.nif\" \"<output>/meshes/clutter/werewolftotems/werewolfskull.nif\" 'Textures\\3D Wolf Skull\\czaszka_wilka_down.001_Diffuse.dds' 'textures\\ensrick\\werewolf_totem_98175\\skull_down_d.dds' 'Textures\\3D Wolf Skull\\down_Normal.dds' 'textures\\ensrick\\werewolf_totem_98175\\skull_down_n.dds' 'Textures\\3D Wolf Skull\\czaszka_wilka_up.001_Diffuse.dds' 'textures\\ensrick\\werewolf_totem_98175\\skull_up_d.dds' 'Textures\\3D Wolf Skull\\up_Normal.dds' 'textures\\ensrick\\werewolf_totem_98175\\skull_up_n.dds' 'Textures\\Bird feathers\\feathers_Diffuse.dds' 'textures\\ensrick\\werewolf_totem_98175\\bird_feathers_d.dds' 'Textures\\Bird feathers\\feathers_Normal.dds' 'textures\\ensrick\\werewolf_totem_98175\\bird_feathers_n.dds' 'Textures\\ingredients\\hagfeather\\Feathers.dds' 'textures\\ensrick\\werewolf_totem_98175\\hag_feathers_d.dds' 'textures\\ingredients\\hagfeather\\feathers_n.dds' 'textures\\ensrick\\werewolf_totem_98175\\hag_feathers_n.dds'",
     "policy": "Write a new NIF; never modify or overwrite the vendor NIF. Remap all eight supplied texture references under textures/ensrick/werewolf_totem_98175 and leave the two SMIM rope references intact.",
     "vendorFilesModified": false,
     "toolCommitBranch": "agent/shape-overlay-and-texture-remap",
     "toolCommitPullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
     "toolCommitUrl": "https://github.com/Ensrick/nif-port-cli/commit/e12079cdcc6b058bb032e0d275598715ebe28534",
-    "toolCommitPushNote": "Pushed 2026-09-02 to the branch above (main is protected by a required 'build' check; PR #2 merges it into main)."
+    "toolCommitPushNote": "Pushed 2026-09-02 to the branch above (main is protected by a required 'build' check; PR #2 merges it into main).",
+    "commandSyntax": "nif-port-cli remap-textures <input-file> <output-file> <old-path> <new-path> [<old-path> <new-path> ...]",
+    "remapPairs": [
+      {
+        "from": "Textures\\3D Wolf Skull\\czaszka_wilka_down.001_Diffuse.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\skull_down_d.dds"
+      },
+      {
+        "from": "Textures\\3D Wolf Skull\\down_Normal.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\skull_down_n.dds"
+      },
+      {
+        "from": "Textures\\3D Wolf Skull\\czaszka_wilka_up.001_Diffuse.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\skull_up_d.dds"
+      },
+      {
+        "from": "Textures\\3D Wolf Skull\\up_Normal.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\skull_up_n.dds"
+      },
+      {
+        "from": "Textures\\Bird feathers\\feathers_Diffuse.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\bird_feathers_d.dds"
+      },
+      {
+        "from": "Textures\\Bird feathers\\feathers_Normal.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\bird_feathers_n.dds"
+      },
+      {
+        "from": "Textures\\ingredients\\hagfeather\\Feathers.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\hag_feathers_d.dds"
+      },
+      {
+        "from": "textures\\ingredients\\hagfeather\\feathers_n.dds",
+        "to": "textures\\ensrick\\werewolf_totem_98175\\hag_feathers_n.dds"
+      }
+    ],
+    "verbatimCopies": [
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/3D wolf skull/czaszka_wilka_down.001_Diffuse.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/skull_down_d.dds",
+        "sourceSha256": "E2E237F574E76869EA620219FB6383845B3D6AA265D488A198F1D96C5842070A",
+        "bytes": 699192,
+        "command": "copy \"<vendor>/Textures/3D wolf skull/czaszka_wilka_down.001_Diffuse.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/skull_down_d.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/3D wolf skull/down_Normal.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/skull_down_n.dds",
+        "sourceSha256": "77C4F00BC056375476296F3AC0092A9CFBCCDD2FE78D29F57465448EE3A56061",
+        "bytes": 1398276,
+        "command": "copy \"<vendor>/Textures/3D wolf skull/down_Normal.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/skull_down_n.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/3D wolf skull/czaszka_wilka_up.001_Diffuse.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/skull_up_d.dds",
+        "sourceSha256": "53ABE79A548CC2F3A621ACC3C5F70C3893AEAF1359805F44C00B8CC50BF46866",
+        "bytes": 699192,
+        "command": "copy \"<vendor>/Textures/3D wolf skull/czaszka_wilka_up.001_Diffuse.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/skull_up_d.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/3D wolf skull/up_Normal.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/skull_up_n.dds",
+        "sourceSha256": "C167218F1CF6D93853C9EBCC6392D9DA10F6ABD3334864E973F8E40BB0787E86",
+        "bytes": 1398276,
+        "command": "copy \"<vendor>/Textures/3D wolf skull/up_Normal.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/skull_up_n.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/Bird feathers/feathers_Diffuse.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/bird_feathers_d.dds",
+        "sourceSha256": "1BBD30D17DBCB68B7D1BBC75A5147ED235C613D7EE877F65CBE6D02031AE37F3",
+        "bytes": 699192,
+        "command": "copy \"<vendor>/Textures/Bird feathers/feathers_Diffuse.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/bird_feathers_d.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/Bird feathers/feathers_Normal.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/bird_feathers_n.dds",
+        "sourceSha256": "FD6DFCDD096F4C524340855D1F1E97A00B988C9937CABAF3861B7BA57267479F",
+        "bytes": 1398276,
+        "command": "copy \"<vendor>/Textures/Bird feathers/feathers_Normal.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/bird_feathers_n.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/ingredients/hagfeather/Feathers.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/hag_feathers_d.dds",
+        "sourceSha256": "6062C2CE3A3C299D4942127AB2D68C427606F1AAD4DEE835365547AEA4F0E454",
+        "bytes": 1398276,
+        "command": "copy \"<vendor>/Textures/ingredients/hagfeather/Feathers.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/hag_feathers_d.dds\"  (verbatim, hash unchanged)"
+      },
+      {
+        "source": "mods/High Poly 3D Wolf Skull - Werewolf Totem Replacer/Textures/ingredients/hagfeather/Feathers_N.dds",
+        "destination": "textures/ensrick/werewolf_totem_98175/hag_feathers_n.dds",
+        "sourceSha256": "56EA78239101E0EFE2723492CAEF3899F1F3ACF7345CD3283D4CE40795B496BB",
+        "bytes": 1398276,
+        "command": "copy \"<vendor>/Textures/ingredients/hagfeather/Feathers_N.dds\" \"<output>/textures/ensrick/werewolf_totem_98175/hag_feathers_n.dds\"  (verbatim, hash unchanged)"
+      }
+    ],
+    "reproduction": "2026-09-02: remap-textures rerun into a scratch folder (not the instance) with the pinned nif-port-cli binary D076B22FB7AC627E6277CC8B01D503763C60EF79CA86CBB9CB6D32239BDBA05C (toolchain.json nifPortCli, commit c63f74e; remap-textures unchanged since e12079c) reproduced the mesh 2ED97202... byte-identically; the eight texture copies are verbatim (hashes equal the vendor files).",
+    "reproductionBinarySha256": "D076B22FB7AC627E6277CC8B01D503763C60EF79CA86CBB9CB6D32239BDBA05C"
   },
   "output": {
     "meshSha256": "2ED97202B2932C74DFE04555D757E4AB24649495C39FFFA5EE85E33ECEA3538A",

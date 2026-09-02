@@ -40,6 +40,8 @@
 !/records/varinia-private-fragment-fix-2026-08-30.md
 !/records/hang-rootcause-2026-09-01.md
 !/records/believable-weapons-retexture-compatibility-2026-08-29.md
+!/records/face-eye-makeup-audit-2026-09-02.md
+!/records/skin-distance-detail-audit-2026-09-02.md
 !/records/yoto-hatamonba-187162-2026-08-29.md
 !/records/interesting-npcs-party-banter-health-2026-08-29.md
 !/records/scrambled-updates-189511-health-2026-08-29.md
@@ -97,6 +99,8 @@
 !/overlays/ensrick-skyland-smanhole-texture-path-fix/build.py
 !/overlays/ensrick-bloodskal-blade-4-static-glow/
 !/overlays/ensrick-bloodskal-blade-4-static-glow/build.py
+!/overlays/ensrick-vanilla-skin-soft-light-maps/
+!/overlays/ensrick-vanilla-skin-soft-light-maps/build.py
 
 !/mods/
 !/mods/period-underlayers/

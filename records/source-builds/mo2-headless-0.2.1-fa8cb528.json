@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "component": "MO2Headless (transactional GUI-free Mod Organizer 2 instance controller)",
+  "version": "0.2.1",
+  "deployPath": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/MO2Headless.exe",
+  "buildDir": "C:/Users/danjo/source/repos/mo2-builds/headless-core-33589364228-fa8cb528",
+  "purpose": "Fix the one 0.2.0 regression failure: `run` re-enabled a previously active plugin whose mod had been disabled BEFORE the run when the child left its row in plugins.txt; 0.2.1 restores markers only for plugins still in the effective tree and reports the rest as `missing` (#105 follow-up, hardening package 1 of 2026-09-01).",
+  "staged": true,
+  "installed": true,
+  "source": {
+    "repository": "https://github.com/Ensrick/modorganizer",
+    "branch": "ensrick/headless-controller",
+    "commit": "fa8cb528fbb220fc6e79e1dfb5b5705f5c2ba728",
+    "parent": "6ed40ae742727dffe0deadf4eae01847eac31b11",
+    "pushed": true,
+    "license": "GPL-3.0 (Mod Organizer 2)",
+    "files": [
+      "headless/main.cpp"
+    ]
+  },
+  "build": {
+    "method": "GitHub Actions build.yml (ModOrganizer2/build-with-mob-action) - this workstation has no Qt SDK",
+    "run": 33589364228,
+    "artifactDigest": "sha256:ba551dc9594fe894aa83d1c2944e1d3e115e034d34badc5393618d5cdaed0d86",
+    "qt": "6.11.1 (mob.ini); artifact Qt6Core.dll 6.11.1.0 = instance Qt6Core.dll 6.11.1.0",
+    "sequence": 1788321827,
+    "sequenceMeaning": "committer epoch of the built commit (2026-09-02T04:03:47Z), injected by CMake as MO2_HEADLESS_BUILD_SEQUENCE; the instance stamp compares it"
+  },
+  "artifact": {
+    "exe": "MO2Headless.exe",
+    "sha256": "C9753382FA3BCD021937AADAFAC59409DD2DD80BDD55011C1B08270CAC851B04",
+    "versionString": "MO2Headless 0.2.1 (build fa8cb528fbb2, sequence 1788321827)",
+    "guiSha256": "9C2382CB77B613E83B07C97670160B532FDE66E4F3F7D66C722376331698D89E",
+    "guiNote": "ModOrganizer.exe from this artifact is pinned in toolchain.json but NOT copied into the instance; the instance GUI is still the 3769ece build, as for 0.2.0",
+    "previous": {
+      "sha256": "E484A21C5CB58410B38679C35275BA805E42B4D22B3D5A91E4EEBB65C95E2DB4",
+      "keptAs": "MO2Headless.exe.bak.v6ed40ae7"
+    }
+  },
+  "behavior": {
+    "runPreservesPlugins": "as 0.2.0, plus: after the child exits, only plugins whose mod is still enabled in the effective tree get their activation marker restored; a previously active plugin whose mod was disabled before the run is reported in stateDelta.missing instead of being re-enabled",
+    "versionStamp": "unchanged from 0.2.0",
+    "replace": "unchanged from 0.2.0"
+  },
+  "featureDefaultsDiff": {
+    "note": "not applicable - controller, no runtime feature configuration",
+    "changed": {},
+    "onlyInBuilt": {},
+    "onlyInUpstream": {}
+  },
+  "validation": {
+    "disposable": "controller_test.ps1 (scratch) with FakeMO.exe: 40/40 checks at 2026-09-01 23:58 (the 0.2.0 failing case now passes)",
+    "live": "deployed 2026-09-02 09:14 under claim morning-ops with no SkyrimSE/MO2Headless/ModOrganizer/skse64_loader process alive; first stamp via `plugin-disable Ensrick-Deploy-Stamp-NoSuchPlugin.esp` (changed:false) wrote headless/controller.version fa8cb528fbb2/1788321827 at 14:14:47Z; status controllerBuild = instanceStamp; audit 0 errors 0 warnings; plugin-list 236/232 active; mod-list 314; install_mod --verify 0 problems; preflight exit 0 (2 warnings); launch_verify: see `launchRecord`",
+    "launchRecord": "records/launch-verify-20260902-091622.md (PASS 2026-09-02 09:16:22: main menu 30.4 s, save loaded 41.3 s, 0 refused SKSE plugins; stamp command:run on fa8cb528fbb2)"
+  },
+  "record": "docs/MO2-HEADLESS-BUILD-2026-09-01.md"
+}

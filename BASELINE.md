@@ -181,9 +181,9 @@ design, not a compromise.
 | Renderer | Community Shaders 1.8.3 + Skylighting/SSGI/Wetness/TerrainVariation/TerrainBlending/Upscaling + Particle Patch + ENB Light | CS CORE is LIVE via the enabled `Community Shaders AIO - 1.7.99 Source Build` (v1.8.0.0, viEx=3, confirmed running in CommunityShaders.log 2026-08-29); the parked Nexus row is a superseded duplicate, not a missing renderer; Hair Specular undecided-not-installed |
 | Worldspaces | Bruma, Wyrmstooth, Beyond Reach, Moonpath, Gray Cowl 10th (141327), Vigilant (11849+11894 EN) | Falskaar and its 4 support mods skipped, evidence on file |
 | Female body | CBBE Curvy, nude, vanilla outfit replacers, face pack, RaceMenu morphs | **installed** v2.0.3 |
-| Female skin | Reverie: Athletic body normal, Sleek face, CBBE compat | **installed** v1.11.2 |
+| Female skin | Reverie: Athletic body normal, Sleek face, CBBE compat | **installed** v1.11.2; sat BELOW CBBE (lost all 41 skin textures) until 2026-09-02 10:06, now directly above it (#165/#166); its 4x4 black `_sk` maps are overridden by `Ensrick - Vanilla Skin Soft-Light Maps` |
 | Male body | HIMBO core 01b nude + BG-DG-DB refits + The New Gentleman 4.2.5 (framework, incl. Vigilant ini) | HIMBO **installed**; TNG **installed** and ACTIVE (verified 2026-08-30 #79: vi=5, viEx=2, PE stamp 2026-08-26 - passes the gate) |
-| Male skin | SkySight 2025 Ultra: HIMBO-Uncut, Clean+Hairy, vanilla head/age, default SSS | **installed** (6580) |
+| Male skin | SkySight 2025 Ultra: HIMBO-Uncut, Clean+Hairy, vanilla head/age, default SSS | **installed** (6580); sat BELOW The New Gentleman's bundled skin (lost 29 textures) until 2026-09-02 10:06, now directly above it with its 22 feet/footwear meshes hidden (`meshes.mohidden`) so only textures take effect (#165/#166). FOMOD plan on disk installed the BETTERMALES_UNCUT body option, not a HIMBO one - recheck if seams show |
 | Animation | Pandora | installed |
 | Alternate start | Skyrim Unbound Reborn | installed; supports non-Dragonborn characters |
 | Follower framework | NFF | active; deterministic FOMOD now includes its native Interesting NPCs support scripts. Varinia remains outside NFF and uses her own framework. |

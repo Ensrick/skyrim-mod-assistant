@@ -176,4 +176,17 @@ patches. Three classes, recorded per ledger row as `distribution:`:
 - **local-only** - cannot be reproduced by an installer; must be replaced by a
   distributable or recipe form before release, or dropped.
 
-Tracking issue: the classification sweep of all existing overlays.
+**Eligibility (lead ruling 2026-09-02, #160).** The collection carries only
+our own work. A ledger row may carry `distribution:` only if it is an
+Ensrick-made overlay, patch or rebuild: it has an Ensrick source-build record
+under `records/source-builds/`, or its name starts with `Ensrick` or ends with
+`- Ensrick <ver>`. An unmodified third-party release, GPL or not (Dyn FNIS AA
+3.0.1 was the case that set this), is a vendor row and a required download
+from its own source, exactly like any Nexus mod; record its source URL, tag
+and archive SHA-256 on the row and leave the distribution fields off.
+`tools/package_ensrick.py` reports any other classified row as a
+classification error and does not package it. The `vendorBytesAllowed`
+exception covers permissive licences (MIT/BSD/Apache/CC-BY/CC-BY-SA) or a
+quoted upload permission only; it is not extended to GPL.
+
+Tracking issue: the classification sweep of all existing overlays (#160).
