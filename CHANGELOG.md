@@ -34,6 +34,39 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 14:17 - Cloak layer audited; nothing installed (Claude, #95)
+
+- **What:** `records/cloak-layer-audit-2026-09-02.md` added (research only, no
+  build-state change). Audited Cloaks of Skyrim 6369, RMB SPCH 116030 1.5.3,
+  Artesian Cloaks **17416** - the id 115097 that had been circulating for it is
+  Immersive Equipping Animations (PTBR), a different mod - Cloaks of Skyrim HD
+  SSE PBR 178993, More
+  Scarves 149259, Bocksten 138180, Pelts 'o' Plenty 120726 and Winter Is Coming
+  4933. Nine archives fetched to the MO2 download/audit cache and extracted to
+  sibling `x*` directories; nothing entered the `mods` tree, no profile file was
+  touched, no curator state changed, and the game was never launched. Headline
+  measurements: distance detail (`audit/mip_retention.py`, n=10 diffuse maps per
+  mod, matched pixel size against three vanilla clothing torso diffuses) ranks
+  Winter Is Coming x0.94 > Pelts x0.75 > **base Cloaks of Skyrim x0.72** > More
+  Scarves x0.46 > Bocksten x0.40 > **CoS HD SSE PBR x0.31**, i.e. the 2026 "HD
+  PBR" pack reads 2.3x softer at play distance than the 2017 textures it
+  replaces; `Cloaks.esp` writes 136 vanilla overrides (68 CELL, 47 OTFT, 10
+  NPC_, 4 WRLD) where `Cloaks - RMB SPCH.esp` writes **zero**; all 366 CoS
+  cloaks are rigged to `SkirtBBone01-03` with no SMP config anywhere, which is
+  the actual ageing; Artesian's 391 NIFs are direct path replacers, so its ESP
+  can be dropped and it coexists with RMB SPCH; FSMP is already bounded at 5
+  skeletons / 3 ms / 500 units, so cloak crowd cost is a config question rather
+  than a distribution one; Sons of Skyrim already ships 11 slot-46 hold cloaks.
+  Six fix-up jobs opened as #187-#192, each classed per `docs/PATCH_INTENTS.md`.
+- **Source:** team-lead task to work out a modernised cloak layer, from the
+  user's words on Cloaks of Skyrim - *"I'm not the biggest fan of how some of
+  them look. The mod has aged. Of course, I also need HDT-SMP physics and all
+  that... maybe we can find updates and/or fix things up ourselves."* Tracker
+  #95; verdict comment posted there.
+- **Verification:** **n/a** - nothing was installed, enabled, parked or
+  configured, so no verification launch is owed. Every runtime claim in the
+  record is marked `[unverified]` and carries an issue.
+
 ## 2026-09-02 14:06 - Dialogue controls: Better Dialogue Controls + Smart Talk adopted
 
 - **What:** two mods on different layers, so they stack rather than compete.

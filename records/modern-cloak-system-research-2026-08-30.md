@@ -10,6 +10,39 @@ Tracker: [issue #95](https://github.com/Ensrick/skyrim-mod-assistant/issues/95)
 Disposition: research only; no candidate was installed and no Nexus page was
 changed to Keep or Skip
 
+## 2026-09-02: the asset half of this record is superseded
+
+`records/cloak-layer-audit-2026-09-02.md` re-audited every asset candidate by
+measurement rather than page copy and reverses three conclusions here:
+
+1. **Artesian Cloaks is Nexus `17416`** (this record named it without an id;
+   the 115097 in circulation for it is Immersive Equipping Animations (PTBR)).
+   It is a mesh-path replacer, so its ESP can be dropped and it coexists with
+   RMB SPCH.
+2. **Base Cloaks of Skyrim is not "dated" on texture detail.** At matched pixel
+   size in the 512-128 px band it measures hf x0.72 against vanilla clothing
+   diffuses - better than More Scarves (x0.46) and Bocksten (x0.40). What is
+   dated is the rig: all 366 cloaks use `SkirtBBone01-03` with no SMP config.
+3. **Prefer Pelts 'o' Plenty over Winter Is Coming for permissions, not for
+   assets.** WIC measures better at distance (x0.94 vs x0.75).
+
+The Cloaks of Skyrim HD SSE PBR package is rejected outright: x0.31, and it
+needs ParallaxGen, which is not installed.
+
+## 2026-09-02 addendum: ICE 1.0 fails the adoption gate
+
+[ICE - Immersive Conditional Effects](https://www.nexusmods.com/skyrimspecialedition/mods/185408)
+was proposed as a newer non-native alternative. Exact archive `776380` was
+downloaded and audited, but not installed or curated. It has a promising,
+lighter condition-driven architecture and includes source, yet the release
+contains 54 unrelated non-ITM Solstheim worldspace/cell overrides, omits FormList
+Manipulator from its declared requirements despite depending on `ICE_FLM.ini`
+for most face-cover weathers, lacks Survival warmth keywords, permanently adds
+gear to NPC inventories, and misspells its SPID mannequin exclusion.
+Its eight cloaks are also rigid, non-SMP assets. **Hold version 1.0.** Full
+evidence and reconsideration gates are recorded in
+`records/ice-immersive-conditional-effects-185408-audit-2026-09-02.md`.
+
 ## Executive recommendation
 
 The best near-term design is a layered system, not a single cloak overhaul:
