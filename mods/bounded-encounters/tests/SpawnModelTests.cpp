@@ -1,3 +1,4 @@
+#include "CapacityModel.h"
 #include "Config.h"
 #include "Diagnostics.h"
 #include "SpawnModel.h"
@@ -1283,6 +1284,46 @@ namespace
 			overLimitDiagnostic.truncated && overLimitDiagnostic.View().ends_with(DiagnosticTruncationSuffix),
 			"over-limit diagnostic carries an explicit truncation marker");
 	}
+
+	void TestPopulationCapacity(TestSuite& a_tests)
+	{
+		using BoundedEncounters::ComputePopulationCapacity;
+		using BoundedEncounters::MaxSpawnsPerEvaluation;
+
+		const auto ordinary = ComputePopulationCapacity(12, 24, 9, 40, 7);
+		a_tests.Check(ordinary.remainingHostileCapacity == 15, "capacity subtracts existing cell hostiles");
+		a_tests.Check(ordinary.remainingActiveOwnedCapacity == 33, "capacity subtracts existing active-owned actors");
+		a_tests.Check(ordinary.perEvaluationCap == MaxSpawnsPerEvaluation, "capacity exposes the default evaluation cap");
+		a_tests.Check(ordinary.effectiveAdditionalCap == MaxSpawnsPerEvaluation, "evaluation cap bounds an ordinary calculation");
+
+		a_tests.Check(
+			ComputePopulationCapacity(3, 24, 0, 40, 0).effectiveAdditionalCap == 3,
+			"additional-cell cap can be the limiting bound");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 22, 40, 0).effectiveAdditionalCap == 2,
+			"remaining hostile capacity can be the limiting bound");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 0, 40, 39).effectiveAdditionalCap == 1,
+			"remaining active-owned capacity can be the limiting bound");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 0, 40, 0, 5).effectiveAdditionalCap == 5,
+			"custom evaluation cap can be the limiting bound");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 24, 40, 0).effectiveAdditionalCap == 0,
+			"hostile capacity saturates at its cap");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 25, 40, 0).effectiveAdditionalCap == 0,
+			"hostile capacity saturates above its cap without underflow");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 0, 40, 40).effectiveAdditionalCap == 0,
+			"active-owned capacity saturates at its cap");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 0, 40, 41).effectiveAdditionalCap == 0,
+			"active-owned capacity saturates above its cap without underflow");
+		a_tests.Check(
+			ComputePopulationCapacity(12, 24, 0, 40, 0, 0).effectiveAdditionalCap == 0,
+			"zero evaluation capacity is a hard zero");
+	}
 }
 
 int main()
@@ -1307,5 +1348,6 @@ int main()
 	Run("configuration file failures", TestConfigFileFailures);
 	Run("invalid configurations", TestInvalidConfigurations);
 	Run("bounded diagnostics", TestBoundedDiagnostics);
+	Run("population capacity", TestPopulationCapacity);
 	return tests.Result();
 }
