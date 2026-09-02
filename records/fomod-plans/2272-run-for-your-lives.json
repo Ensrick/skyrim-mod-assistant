@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Run For Your Lives.txt",
+      "destination": "Run For Your Lives.txt"
+    },
+    {
+      "source": "run for your lives - textures.bsa",
+      "destination": "run for your lives - textures.bsa"
+    },
+    {
+      "source": "run for your lives.bsa",
+      "destination": "run for your lives.bsa"
+    },
+    {
+      "source": "run for your lives.esp",
+      "destination": "run for your lives.esp"
+    }
+  ]
+}

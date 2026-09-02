@@ -5285,6 +5285,23 @@
    "note": "FOMOD: core + Named Companions (Inner Circle only) + Wuuthrad replacer esp + Skyforge Steel SkyPatcher model swap; NO broad faction distribution, no ESP Skyforge override, no standalone Runic Steel"
   },
   {
+   "modId": 2272,
+   "modName": "Run For Your Lives",
+   "nexusName": "Run For Your Lives",
+   "version": "4.0.7",
+   "fileId": 737640,
+   "fileName": "2272-737640.7z",
+   "sizeMb": 0.1,
+   "sha256": "127a66369049342f1e0d50fdce599c548c5c293a2a858f4328abf3814d65e88e",
+   "plugins": [
+    "run for your lives.esp"
+   ],
+   "enabled": true,
+   "installedUtc": "2026-09-02T18:49:41Z",
+   "fomodPlan": "records/fomod-plans/2272-run-for-your-lives.json",
+   "note": "installed by Sol (Codex) 2026-09-02 at mod priority 245, plugin active at LOOT position 185. Arthmoor mod; author is not on the curator Excluded list. Audit recorded 23 new records and ZERO overrides, so it adds behaviour without contesting any existing record."
+  },
+  {
    "modId": 109490,
    "modName": "Sagittarius - Real Bows",
    "nexusName": "Sagittarius-Real Bows 1.2",

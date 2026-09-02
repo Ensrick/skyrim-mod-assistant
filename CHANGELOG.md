@@ -34,6 +34,28 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 13:52 - Run For Your Lives 4.0.7 installed and ENABLED (Sol, Nexus 2272)
+
+- **What:** `Run For Your Lives` 4.0.7 (Nexus 2272, file 737640,
+  `2272-737640.7z`, 100 KB, sha256 `127a6636...5e88e`) installed at mod
+  priority 245 and **enabled**; `run for your lives.esp` is active at LOOT
+  position 185. Arthmoor mod, and the author is not on the curator Excluded
+  list. Sol's record audit reports **23 new records and zero overrides**, so it
+  adds behaviour (townsfolk take cover during dragon and vampire attacks)
+  without contesting any existing record - which is why LOOT could place it
+  without a conflict decision. FOMOD plan
+  `records/fomod-plans/2272-run-for-your-lives.json`. Keep 2272 verified;
+  `keep_coverage` still reads clean (246 installed dirs, 171 Nexus ids, 171
+  live Keeps, 0 violations) and `install_mod --verify` reads `0 problem(s)`.
+- **Source:** installed by Sol (Codex) under their claim, 2026-09-02 13:52;
+  ledger and changelog handed to this session per the coordination board.
+- **Verification:** **UNVERIFIED** - and unlike Sol's two equipment intakes
+  this one is ACTIVE, so it does affect the next launch. It landed after
+  `records/launch-verify-20260902-133303.md`, so that PASS does not cover it.
+  It needs its own verification launch before the batch is called done, and its
+  in-game behaviour (townsfolk actually fleeing a dragon attack) is a separate
+  foreground test that no gate here can perform.
+
 ## 2026-09-02 13:39 - Immersive Weapons 2 installed INACTIVE as a vendor source (Sol, #181)
 
 - **What:** `Immersive Weapons` 2 (Nexus 16788, file 52498, `16788-52498.7z`,
