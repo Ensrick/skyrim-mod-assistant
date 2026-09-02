@@ -67,6 +67,23 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   configured, so no verification launch is owed. Every runtime claim in the
   record is marked `[unverified]` and carries an issue.
 
+## 2026-09-02 17:05 - Fur cloak slot settled: Pelts 'o' Plenty, Winter Is Coming out (#95)
+
+- **What:** decision only, nothing installed. The fur slot in the cloak plan
+  goes to **Pelts 'o' Plenty 4.3.1** (Nexus 120726). **Winter Is Coming**
+  (4933) and its plugin patch **RMB SPCH - Winter is Coming 1.4.6** (116029)
+  are out of the plan. The measured gap favoured WIC (hf x0.94 vs x0.75, tone
+  x1.01 vs x1.07) and did not decide it - this was shortlist item 2 in
+  `records/cloak-layer-audit-2026-09-02.md`, i.e. one of the five calls the
+  audit deliberately left to the user's eye. Consequence: Pelts ships **54 of
+  its 96 textures with no mip chain at all**, so #188 (mip regeneration) grows
+  to cover Pelts alongside the 19 Cloaks of Skyrim textures shipped `mips=1`
+  and the 46 uncompressed (~204 MB VRAM). Commented on #188.
+- **Source:** user, 2026-09-02 - *"I don't like the fake fur from winter is
+  coming. Pelts o Plenty is vastly superior."*
+- **Verification:** N/A - a plan decision, no mod installed, no profile or INI
+  change, no plugin change.
+
 ## 2026-09-02 14:06 - Dialogue controls: Better Dialogue Controls + Smart Talk adopted
 
 - **What:** two mods on different layers, so they stack rather than compete.

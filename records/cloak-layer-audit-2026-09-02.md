@@ -39,7 +39,16 @@ and one is a trade-off he owns.
    46 (measured below). So the hold group is a *civilian* and *variety*
    argument, not a "guards have no cloaks" one. The 23 unique cloaks and the 57
    generic variants have no substitute anywhere.
-2. **Bake-off, fur slot: Winter Is Coming vs Pelts 'o' Plenty.** Measured at
+2. **SETTLED 2026-09-02 by the user: Pelts 'o' Plenty `120726`.** His words:
+   *"I don't like the fake fur from winter is coming. Pelts o Plenty is vastly
+   superior."* Winter Is Coming `4933` and its RMB SPCH patch `116029` are OUT
+   of the plan; the measured hf x0.94 vs x0.75 gap did not decide it, taste did,
+   which is what this shortlist item existed for. Consequence for the fix-up
+   queue: Pelts ships 54 of 96 textures with **no mip chain at all**, so #188
+   (mip regeneration) now has to cover Pelts as well as the 19 CoS textures.
+   Original bake-off text follows.
+
+   ~~**Bake-off, fur slot: Winter Is Coming vs Pelts 'o' Plenty.**~~ Measured at
    distance these are the two best assets in the whole audit and they are close
    (hf x0.94 vs x0.75, tone x1.01 vs x1.07 - both beat base Cloaks of Skyrim).
    WIC is 2016 hand-painted fur at 2K with a clean BC1 chain; Pelts is 2026, 4K,
