@@ -34,6 +34,46 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 13:00 - Immersive Armors 8.1 installed INACTIVE as a vendor source (Sol, #181)
+
+- **What:** `Immersive Armors` 8.1 (Nexus 3479, file 5924, `3479-5924.7z`,
+  1,042 MB, sha256 `1a46ae23...b91f1`) installed at priority 239 and left
+  **disabled**; both plugins (`Hothtrooper44_ArmorCompilation.esp`,
+  `Hothtrooper44_Armor_Ecksstra.esp`) are inactive and undiscovered. Core FOMOD
+  selection only, recorded at `records/fomod-plans/3479-immersive-armors-core.json`;
+  the optional UNP body option was omitted because the decided stack is CBBE
+  Curvy / HIMBO. It stays parked until the item-by-item equipment intake in #181
+  is done, per `docs/EQUIPMENT_INTAKE_POLICY.md`. Nexus Keep queued and applied -
+  under the new "Installed implies Keep" doctrine a disabled vendor source still
+  carries its Keep. Ledger row added here with the `enabled: false` marker, so
+  `install_mod --verify` reads the two inactive plugins as `mod parked` and
+  still reports `0 problem(s)`.
+- **Source:** user authorised the adoption 2026-09-02 12:56; built and installed
+  by Sol (Codex) under the `sol/immersive-armors` claim; ledger and changelog
+  handed to this session per the coordination board. Evidence: issue #181 and
+  its comment 5514044962 (archive and file hashes).
+- **Verification:** UNVERIFIED. The mod is inert (disabled, plugins
+  undiscovered), so it cannot affect a launch, but it has had no PASS of its own
+  and none of its items has been through equipment intake.
+
+## 2026-09-02 12:45 - Weapon Speed Balance 0.1.0 installed and enabled (Sol, #180)
+
+- **What:** `Ensrick - Weapon Speed Balance` 0.1.0, an Ensrick source-built
+  normalizer, installed and **enabled**; `WeaponBalancePatch.esp` is active
+  (plugins.txt line 238), sha256 `74532e43...5fa09`. 3,007 audited WEAP
+  overrides set to exact class speeds across 35 resolved masters, deterministic
+  generation verified by repeated plugin and package SHA-256 equality. No Nexus
+  id, so keep coverage exempts it as an own artifact. Ledger row added here.
+- **Source:** built and installed by Sol (Codex) under the
+  `sol/weapon-balance` claim, 2026-09-02 12:45. Commits `449101d`, `1ad6299`;
+  PR #179; tracker #180.
+- **Verification:** UNVERIFIED at time of writing - it is active and therefore
+  DOES affect the next launch. It will be covered by the adoption batch's
+  verification launch (Enhanced Blood Textures / Daedric Shrines AIO / Remiel /
+  Azurite archive), which means a FAILED launch has a five-change bisect space
+  across two owners. Named on the coordination board so the PASS records what it
+  covers.
+
 ## 2026-09-02 12:55 - Doctrine: installed implies Keep, enforced by a preflight gate
 
 - **What:** the Keep definition changed from "installed **and enabled**" to
