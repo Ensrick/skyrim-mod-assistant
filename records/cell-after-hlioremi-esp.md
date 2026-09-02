@@ -1,0 +1,186 @@
+# Cell fields after HLIORemi.esp
+
+Captured: `2026-09-02T18:19:01Z`
+
+- Candidate chains: 40
+- Final semantic field differences: 178
+- Read/join failures: 0
+
+- `CidhnaMine01` `Flags`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine01` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine01` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine01` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine01` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine02` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `CidhnaMine02` `Lighting`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `CidhnaMine02` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `CidhnaMine02` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `CidhnaMine03` `EncounterZone`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine03` `Flags`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine03` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine03` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `CidhnaMine03` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `DLC2RRTheRetchingNetch` `Flags`: Ensrick - Collectibles Helper USSEP Forward.esp differs from HLIORemi.esp
+- `DLC2RRTheRetchingNetch` `ImageSpace`: Ensrick - Collectibles Helper USSEP Forward.esp differs from HLIORemi.esp
+- `DLC2RRTheRetchingNetch` `Lighting`: Ensrick - Collectibles Helper USSEP Forward.esp differs from HLIORemi.esp
+- `DLC2RRTheRetchingNetch` `LightingTemplate`: Ensrick - Collectibles Helper USSEP Forward.esp differs from HLIORemi.esp
+- `DLC2RRTheRetchingNetch` `SkyAndWeatherFromRegion`: Ensrick - Collectibles Helper USSEP Forward.esp differs from HLIORemi.esp
+- `DLC2RRTheRetchingNetch` `WaterHeight`: Ensrick - Collectibles Helper USSEP Forward.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `Flags`: Lux.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `WaterEnvironmentMap`: Lux.esp differs from HLIORemi.esp
+- `DeadMensRespite01` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `AcousticSpace`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `Flags`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `Gloomreach02` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `HagRockRedoubt01` `Flags`: Lux.esp differs from HLIORemi.esp
+- `HagRockRedoubt01` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `HagRockRedoubt01` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `HagRockRedoubt01` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `HagRockRedoubt01` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `HagRockRedoubt01` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `HaltedStreamCamp01` `Flags`: Lux.esp differs from HLIORemi.esp
+- `HaltedStreamCamp01` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `HaltedStreamCamp01` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `HaltedStreamCamp01` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `HaltedStreamCamp01` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `HighGateRuins03` `Flags`: Lux.esp differs from HLIORemi.esp
+- `HighGateRuins03` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `HighGateRuins03` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `HighGateRuins03` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `HighGateRuins03` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `Flags`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `Lighting`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `HillgrundsTomb01` `WaterHeight`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `IlinaltasDeep02` `Flags`: Lux.esp differs from HLIORemi.esp
+- `IlinaltasDeep02` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `IlinaltasDeep02` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `IlinaltasDeep02` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `IlinaltasDeep02` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `KilkreathRuins03` `Flags`: Lux.esp differs from HLIORemi.esp
+- `KilkreathRuins03` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `KilkreathRuins03` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `KilkreathRuins03` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `KilkreathRuins03` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `KilkreathRuins03` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `MarkarthHalloftheDead` `Flags`: Lux - USSEP patch.esp differs from HLIORemi.esp
+- `MarkarthHalloftheDead` `ImageSpace`: Lux - USSEP patch.esp differs from HLIORemi.esp
+- `MarkarthHalloftheDead` `Lighting`: Lux - USSEP patch.esp differs from HLIORemi.esp
+- `MarkarthHalloftheDead` `LightingTemplate`: Lux - USSEP patch.esp differs from HLIORemi.esp
+- `MarkarthHalloftheDead` `SkyAndWeatherFromRegion`: Lux - USSEP patch.esp differs from HLIORemi.esp
+- `MarkarthShrineofTalos` `Flags`: Lux.esp differs from HLIORemi.esp
+- `MarkarthShrineofTalos` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `MarkarthShrineofTalos` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `MarkarthShrineofTalos` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `MarkarthShrineofTalos` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `MarkarthSilverBloodInn` `Flags`: Lux.esp differs from HLIORemi.esp
+- `MarkarthSilverBloodInn` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `MarkarthSilverBloodInn` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `MarkarthSilverBloodInn` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `MarkarthSilverBloodInn` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `MarkarthSilverBloodInn` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleInnerSanctum` `Flags`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleInnerSanctum` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleInnerSanctum` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleInnerSanctum` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleInnerSanctum` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleInnerSanctum` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `MarkarthTempleofDibella` `Flags`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `MarkarthTempleofDibella` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `MarkarthTempleofDibella` `Lighting`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `MarkarthTempleofDibella` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `MarkarthTempleofDibella` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `MarkarthTempleofDibella` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel01` `Flags`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel01` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel01` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel01` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel01` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel02` `Flags`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel02` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel02` `Lighting`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel02` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel02` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel02` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel03` `Flags`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel03` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel03` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel03` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel03` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `NchuandZel05` `Flags`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel05` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel05` `Lighting`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel05` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel05` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel05` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel06` `Flags`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel06` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel06` `Lighting`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel06` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel06` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `NchuandZel06` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from HLIORemi.esp
+- `RiftenBeeandBarb` `Flags`: Lux.esp differs from HLIORemi.esp
+- `RiftenBeeandBarb` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `RiftenBeeandBarb` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `RiftenBeeandBarb` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `RiftenBeeandBarb` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `RiftenBeeandBarb` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `RiftenMistveilBarracks` `Flags`: Lux.esp differs from HLIORemi.esp
+- `RiftenMistveilBarracks` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `RiftenMistveilBarracks` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `RiftenMistveilBarracks` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `RiftenMistveilBarracks` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `SolitudeBardsCollege` `Flags`: Lux.esp differs from HLIORemi.esp
+- `SolitudeBardsCollege` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `SolitudeBardsCollege` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `SolitudeBardsCollege` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `SolitudeBardsCollege` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `SolitudeBardsCollege` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `SolitudeWinkingSkeever` `Flags`: Lux.esp differs from HLIORemi.esp
+- `SolitudeWinkingSkeever` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `SolitudeWinkingSkeever` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `SolitudeWinkingSkeever` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `SolitudeWinkingSkeever` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `WhiterunTempleofKynareth` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `WhiterunTempleofKynareth` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `WhiterunTempleofKynareth` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `WindhelmCandlehearthHall` `Flags`: Lux.esp differs from HLIORemi.esp
+- `WindhelmCandlehearthHall` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `WindhelmCandlehearthHall` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `WindhelmCandlehearthHall` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `WindhelmCandlehearthHall` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `WindhelmCandlehearthHall` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `WindhelmViolaGiordanosHouse` `Flags`: Lux.esp differs from HLIORemi.esp
+- `WindhelmViolaGiordanosHouse` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `WindhelmViolaGiordanosHouse` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `WindhelmViolaGiordanosHouse` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `WindhelmViolaGiordanosHouse` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `WindhelmViolaGiordanosHouse` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeArcanaeum` `Flags`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeArcanaeum` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeArcanaeum` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeArcanaeum` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeArcanaeum` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeArcanaeum` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeHallofAttainment` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeHallofAttainment` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeHallofAttainment` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeHallofAttainment` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `WinterholdCollegeHallofAttainment` `WaterHeight`: Lux.esp differs from HLIORemi.esp
+- `WinterholdTheFrozenHearthCellar` `Flags`: Lux.esp differs from HLIORemi.esp
+- `WinterholdTheFrozenHearthCellar` `ImageSpace`: Lux.esp differs from HLIORemi.esp
+- `WinterholdTheFrozenHearthCellar` `Lighting`: Lux.esp differs from HLIORemi.esp
+- `WinterholdTheFrozenHearthCellar` `LightingTemplate`: Lux.esp differs from HLIORemi.esp
+- `WinterholdTheFrozenHearthCellar` `SkyAndWeatherFromRegion`: Lux.esp differs from HLIORemi.esp
+- `WinterholdTheFrozenHearthCellar` `WaterHeight`: Lux.esp differs from HLIORemi.esp
