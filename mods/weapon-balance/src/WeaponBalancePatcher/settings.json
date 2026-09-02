@@ -1,0 +1,14 @@
+{
+  "DaggerSpeed": 1.25,
+  "SwordSpeed": 1.0,
+  "WarAxeSpeed": 0.9375,
+  "MaceSpeed": 0.88235295,
+  "GreatswordSpeed": 0.8,
+  "BattleaxeSpeed": 0.7692308,
+  "WarhammerSpeed": 0.71428573,
+  "IncludeNonPlayableWeapons": true,
+  "ExcludeEditorIdContains": ["Dummy", "GiantClub"],
+  "UseAnimationFallback": true,
+  "Exclude": [],
+  "ForceClass": []
+}

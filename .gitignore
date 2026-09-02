@@ -34,6 +34,7 @@
 !/.github/workflows/
 !/.github/workflows/bounded-encounters.yml
 !/.github/workflows/check.yml
+!/.github/workflows/weapon-balance.yml
 
 !/docs/
 !/docs/*.md
@@ -52,6 +53,8 @@
 !/mods/
 !/mods/bounded-encounters/
 !/mods/bounded-encounters/**
+!/mods/weapon-balance/
+!/mods/weapon-balance/**
 !/mods/period-underlayers/
 !/mods/period-underlayers/*.ini
 !/mods/period-underlayers/skse/
