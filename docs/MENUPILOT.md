@@ -112,6 +112,36 @@ headlessly with the current pilot. Manual path (~30s): main menu -> CREATIONS
 `Data\ccvsvsse004-beafarmer.bsa` = 18,261,078 bytes (ContentCatalog.txt
 FilesSize 18,746,124 minus the 485,046-byte esl). Then quit via the menu.
 
+## The console: readable and writable, not executable (2026-09-01, #51 guard receipt attempt)
+
+Record: `records/tool-runs/menupilot-20260901-guard-console-probe.log`, in-game
+after a `launch_verify --leave-running` PASS.
+
+- `Console` is always on the stack (`menus_on_stack=2` at rest); `menu.open`
+  queues a no-op. The movie is `Interface/Console.swf`; the instance is
+  `_global.Console.ConsoleInstance` (== `_root.instance1.instance2`, unnamed
+  children) with text fields `CommandEntry`, `CommandHistory` (the scrollback,
+  `.text`/`.length`, 16384-char buffer) and `CurrentSelection` (`'' RefID:
+  (000888ae) | BaseID: (000226ba)` style). `gfx.get`/`gfx.set` on
+  `CommandEntry.text` and reading `CommandHistory.text` work.
+- Nothing executes it. `ExecuteCommand` in the swf is the **GameDelegate
+  callback name** inside `onKeyDown`, not an ActionScript function:
+  `gfx.invoke` of `_global.Console.ConsoleInstance.ExecuteCommand` returns
+  ok=0/undefined (no crash). The class statics on `_global.Console` are
+  `Show`, `Hide`, `AddHistory`, `SetCurrentSelection`, `ClearHistory`,
+  `NextCommand`, `PreviousCommand`, `Minimize`, `SetTextSize`, ... - no
+  execute. `input.tap Accept` (28) does not reach the console's Key listener
+  (`Shown` stays false even after `gfx.invoke _global.Console.Show`, which
+  returns ok=1 but does not flip it). A console receipt therefore needs a new
+  pilot op that calls the engine's `ExecuteCommand` delegate natively
+  (`RE::Console`/`ConsoleUtil`-style script-command dispatch), same conclusion
+  as the Creations `FxDelegate` note above.
+- Caveat: the user had taken the controls in that same session (TweenMenu /
+  InventoryMenu at 23:43, possibly the console at 23:45), and the agent's
+  `launch_verify.kill` at 23:45 ended it before the heads-up arrived. The
+  `gfx.invoke` results are unaffected, but re-check the `Show` / `input.tap`
+  observations in a session nobody else is driving.
+
 **Operational notes**: `menupilot.log` truncates per launch - archive it
 before relaunching. One in-flight `commands.jsonl` at a time; a file left
 unclaimed when the game dies executes on the NEXT launch - `menupilot.py

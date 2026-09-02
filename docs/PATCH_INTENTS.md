@@ -160,3 +160,20 @@ not put it to the user as a decision.
 Questions are reserved for what only he can answer: taste and art direction,
 sexual content, which rival wins a contested slot, and whether to accept a real
 trade-off or spend money.
+
+## Every fix is a shippable patch or a reproducible recipe (user, 2026-09-02)
+
+"We're making a modlist to share, so I take it this has to be packaged as a
+patch." Yes - and it applies to every `Ensrick - *` overlay, not just record
+patches. Three classes, recorded per ledger row as `distribution:`:
+
+- **distributable** - our own bytes (generated masks, forward patches, config
+  overlays, our tool DLLs with their licences). Packaged in the Ensrick patch
+  collection shipped with the modlist.
+- **recipe** - a modified vendor asset (texture downscales, NIF ports, edited
+  vendor meshes). Never bundled; the installer regenerates it locally from the
+  recorded recipe, exactly like the Lost LongSwords model in REDISTRIBUTION.md.
+- **local-only** - cannot be reproduced by an installer; must be replaced by a
+  distributable or recipe form before release, or dropped.
+
+Tracking issue: the classification sweep of all existing overlays.

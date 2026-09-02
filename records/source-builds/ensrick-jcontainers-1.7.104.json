@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "component": "JContainers SE 4.3.1 (Ensrick rebuild for Skyrim SE 1.7.104)",
+  "mo2Mod": "JContainers 1.7.104 Native Overlay - Ensrick",
+  "purpose": "DLL-only overlay above JContainers SE 4.3.1 (Nexus 16495; base row installed from the author GitHub artifact). The author 4.3.1 DLL declares compatibleVersions 1.6.318 (upstream bug found 2026-08-26) and targets 1.7.99; this build declares 1.7.104 and updates the BSFixedString member offsets for the 1.7.104 executable.",
+  "license": "MIT (ryobg/JContainers LICENSE); the copyright notice must accompany any distributed copy.",
+  "source": {
+    "repository": "local clone only; origin = https://github.com/ryobg/JContainers.git (upstream). No Ensrick remote; not pushed.",
+    "upstream": "https://github.com/ryobg/JContainers",
+    "branch": "ensrick/1.7.104",
+    "commit": "70b7362251ddb2e73a99cb2f29a9712ccc94248d",
+    "commitDate": "2026-09-01T23:53:37-05:00",
+    "commitSubject": "Rebuild JContainers 4.3.1 for Skyrim SE 1.7.104 (local ensrick/1.7.104)",
+    "commitNote": "The 9 working-tree changes that produced the installed DLL were committed on 2026-09-02 (team-lead: a recipe that depends on uncommitted files is not a recipe). The DLL itself was built on 2026-08-28 from the identical tree state; the commit records that state, it is not a rebuild.",
+    "parentCommit": "90db5e29183a0a36b992e9cb010860640e47a14c",
+    "parentCommitSubject": "Update to SSE 1.7.99 / SKSE 2.3.0 (#137)",
+    "parentCommitDate": "2026-08-25T17:37:32+03:00",
+    "pushed": false,
+    "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/JContainers-1.7.104",
+    "workingTreeAfterCommit": "untracked stage-1.7.104/SKSE/Plugins/JContainers64.dll (build output, hash below) and untracked x64/ build output inside the dep/jansson/jansson submodule; the submodule pointer is unchanged at 6dddf687d84306ea5d4ff9b13a28dc22282c77e6",
+    "committedChanges": {
+      "src/JContainers/src/jcontainers_constants.h": "JC_PATCH_VERSION 0 -> 104 (file version 4.3.1.104)",
+      "src/JContainers/src/skse/string.h": "BSFixedString ctor/Set/Release member offsets 0xEB0D30/0xEB0EC0/0xEB2100 -> 0xEB0F90/0xEB1120/0xEB2360 (1.7.104 executable)",
+      "src/JContainers/src/intrusive_ptr.hpp": "Boost 1.92 compatibility: std::nullptr_t + explicit operator bool instead of sp_nullptr_t / operator_bool.hpp",
+      "src/JContainers/src/object/autorelease_queue.h": "Boost 1.92 asio: io_context + executor_work_guard instead of io_service::work",
+      "src/JContainers/src/api_3/tes_jcontainers.h": "is_regular -> is_regular_file",
+      "src/JContainers/src/jcontainers_pch.h": "include boost/filesystem directory.hpp + operations.hpp",
+      "src/JContainers/JContainers.vcxproj": "JContainersBoostRoot property (defaults to $(VCPKG_ROOT)\\installed\\x64-windows-static); links common64.lib, skse64_common.lib, skse64_plugin_support.lib, boost_filesystem/boost_serialization vc143-mt-x64-1_92",
+      "dep/skse64/skse/skse64/skse64.vcxproj": "project reference / toolset adjustments for this local build (+124/-85)",
+      "dep/skse64/skse/skse64_common/skse64_common.vcxproj": "project reference / toolset adjustments for this local build (+25/-35)"
+    },
+    "submodules": {
+      "dep/jansson/jansson": {
+        "commit": "6dddf687d84306ea5d4ff9b13a28dc22282c77e6",
+        "note": "pointer unchanged; only untracked x64/ build output inside"
+      }
+    }
+  },
+  "build": {
+    "system": "MSBuild, src/JContainers/JContainers.vcxproj Release|x64 (PlatformToolset v143); skse64 static libs from dep/skse64 built in the same tree",
+    "toolchain": {
+      "visualStudio": "Visual Studio 2022 Community 17.14.37012.4 (vswhere -latest, 2026-09-02)",
+      "msvc": "14.44.35207 (the only MSVC toolset installed under VC/Tools/MSVC)",
+      "windowsSdkInstalled": [
+        "10.0.22621.0",
+        "10.0.26100.0"
+      ],
+      "windowsSdkUsed": "not recorded"
+    },
+    "boost": "Boost 1.92 from vcpkg x64-windows-static (C:/Users/danjo/source/repos/vcpkg, HEAD ddd0023b0eee on 2026-09-02): boost_filesystem / boost_serialization / boost_random vc143-mt-x64-1_92",
+    "reconstructedCommand": "set VCPKG_ROOT=C:\\Users\\danjo\\source\\repos\\vcpkg && msbuild src\\JContainers\\JContainers.vcxproj /p:Configuration=Release /p:Platform=x64",
+    "exactCommandLineRecorded": false,
+    "builtLocal": "2026-08-28T13:43:51-05:00 (DLL mtime)",
+    "builtUtc": "2026-08-28T18:43:51Z",
+    "buildDir": "x64/Release/JContainers64.dll; staged copy stage-1.7.104/SKSE/Plugins/JContainers64.dll (both SHA-256 F58CF377...)"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/JContainers64.dll",
+    "sha256": "F58CF37728A54552B08A2E3C4C6C2CF2F63955F3FA59B03640C60F129DF701B5",
+    "bytes": 3072512,
+    "versionResource": {
+      "fileVersion": "4.3.1.104",
+      "productVersion": "4.3.1.104",
+      "productName": "JContainers64",
+      "description": "JSON-based data structures for Skyrim SE"
+    },
+    "matchesBuildDir": true,
+    "matchesInstalled": true
+  },
+  "installation": {
+    "installedUtc": "2026-08-28T19:05:13Z",
+    "installedBy": "MO2Headless",
+    "installationFile": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/headless/packages/native-1.7.104-overlay-repair/JContainers 1.7.104 Native Overlay - Ensrick",
+    "transaction": "20260828T190513098Z-1d554b4917bb",
+    "transactionNote": "the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth (docs/RUNTIME-ISSUES-2026-08-28.md)",
+    "profile": "Default",
+    "enabled": true,
+    "priorityAtInstall": 107,
+    "priorityOn2026-09-02": 111,
+    "modlistLine": 122,
+    "overlayContents": [
+      "SKSE/Plugins/JContainers64.dll"
+    ],
+    "baseModBelow": "JContainers SE 4.3.1 (16495) keeps scripts, headers and config"
+  },
+  "validation": {
+    "loaderGate": "bounded 120 s SKSE run on 2026-08-28: 21 native plug-ins checked, zero refused, all four replacement DLLs logged as loaded (docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md)",
+    "profileAudit": "MO2 profile audit passed after the four overlays were installed and again after the ConsoleUtil overlay",
+    "launch": "covered by the 2026-09-01 launch_verify PASSes (records/launch-verify-20260901-172851.md onward) at the launch/load level only",
+    "gameplayAcceptance": "the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md (Proteus MCM, character create/switch, save/reload, inventory, appearance, followers, quest state) is not recorded as run",
+    "registration": "JContainers initialized for Skyrim 1.7.104.0 and registered its functions in the bounded run (docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md)"
+  },
+  "distribution": {
+    "class": "distributable",
+    "basis": "MIT; retain the ryobg copyright notice",
+    "vendorFilesModified": false,
+    "privateRuntimeDependencies": "shareableAfterReleaseReview: \"Local build works at the loader gate; source cleanup, reproducible build, notices, and gameplay acceptance remain.\""
+  },
+  "gaps": [
+    "commit 70b7362 is local only (not pushed, no Ensrick remote)",
+    "exact msbuild invocation and Windows SDK not captured",
+    "dep/skse64 vcxproj edits are toolset plumbing that a reviewer should reduce before any upstream PR",
+    "notices file for distribution not assembled"
+  ],
+  "references": [
+    "docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md",
+    "docs/RUNTIME-ISSUES-2026-08-28.md"
+  ],
+  "recordedUtc": "2026-09-02T05:00:00Z",
+  "recordedFor": "#102 follow-up (team-lead 2026-09-02); provenance gap F8 in docs/PROCESS-AUDIT-2026-08-30.md"
+}

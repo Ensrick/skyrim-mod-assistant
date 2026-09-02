@@ -25,6 +25,39 @@ outside MO2 may own them.**
   Global copies in Documents are a fallback that should never be authoritative.
 - `LocalSaves` stays **false** deliberately - saves are shared across profiles.
 
+### The file that actually holds the flag: `settings.ini`, not `settings.txt`
+
+**Trap found 2026-09-01 (#143 root cause).** MO2 2.5.2 reads the profile's
+`settings.ini` for `LocalSettings` and `LocalSaves`
+(`modorganizer/src/profile.cpp:94`, `Profile::localSettingsEnabled()` at
+`:882`). The `LocalSettings=true` written on 2026-08-31 went into a
+`settings.txt` beside it - a file nothing loads - and for a full day
+`profiles/Default/settings.ini` kept saying `LocalSettings=false`. Every gate
+that "verified" the flag read the stray. The profile was unmanaged the whole
+time, which is why the 2026-09-01 session ran at 1920x1080 with launcher
+defaults while the profile INIs were correct.
+
+What the real flag does: with `LocalSettings=true` in `settings.ini`, MO2's
+game plugin maps `Documents\My Games\Skyrim Special Edition\Skyrim.ini`,
+`SkyrimPrefs.ini` and `SkyrimCustom.ini` onto the profile copies through
+usvfs for every launch MO2 performs - the GUI and `headless-run` alike. The
+game then reads and writes the profile files; the Documents copies are only
+what a launch that bypasses MO2 (the vanilla launcher, a Steam validation)
+sees. `launch_skyrim.ps1` still copies the profile INIs over the Documents
+pair before every launch and prints which mechanism applies (`settings.ini
+LocalSettings=...` line, then `identical` / `DIFFERED` per file), so drift is
+attributable to one of the two.
+
+Rules that follow:
+
+- `preflight.py::check_profile_owns_inis` reads `settings.ini`. A
+  `settings.txt` in the profile is reported as a stray until it is removed.
+- The profile must carry all three INIs (`skyrim.ini`, `skyrimprefs.ini`,
+  `skyrimcustom.ini`); a missing one makes the MO2 GUI show a modal "missing
+  profile-specific INI" dialog on launch.
+- Never "verify" a flag by grepping a file whose name you assumed. Find the
+  reader in the source first.
+
 ## What was lost and how it was recovered
 
 `SkyrimPrefs.ini.base` in the Documents folder held the pre-reset configuration
@@ -46,10 +79,14 @@ LOD fade multipliers. `Skyrim.ini` was untouched.
 | SkyrimPrefs | `bUpsellOwned` | 1 | suppresses the AE upsell prompt. 0 makes the game act like a first run |
 | Skyrim | `fDefaultWorldFOV` | 120 | user directive |
 | Skyrim | `fDefault1stPersonFOV` | 120 | user directive; third-person 90 and hands 80 live in FirstPersonFOV.ini |
-| Skyrim | `[HAVOK] fMaxTime` | 0.0083 | 120 Hz desktop; the 60 fps cap was a refresh-rate problem, not a mod |
+| Skyrim | `[HAVOK] fMaxTime` | 0.0083 | 120 Hz desktop fallback only: SSE Display Tweaks Official overrides it per frame (SSEDisplayTweaks.log `[HAVOK] (DYNAMIC) fMaxTime=0.00416667-0.0166667`), so Havok is already decoupled from the render rate |
+| Skyrim | `[HAVOK] fMoveLimitMass` | 0 | STAGED 2026-09-01 clutter triage, needs in-game test: engine default 95 is the mass ceiling the player's character controller shoves, so every plate and cup gets knocked around; 0 turns the player push off (NPCs unaffected). Original at `skyrim.ini.bak.v20260901-pre-movelimitmass` |
 | Skyrim | `bEnableLogging` / `bEnableTrace` | 1 | Papyrus logging, needed for triage |
+| Skyrim | `fPoissonRadiusScale` | 8.0 | #151: user reports shadow edges too sharp. CS 1.8 Utility shadow-mask kernel radius; engine default 4.0, BethINI range 0-8. Skyrim.ini key, NOT SkyrimPrefs. Backup `skyrim.ini.bak.v20260901-preshadowfilter` |
 | SSEDisplayTweaks_Custom (Ensrick overlay) | `Fullscreen` / `Borderless` | false / true | mirrors the above at the DLL level |
-| SSEDisplayTweaks_Custom | `LockCursor` | **false** | user directive 2026-09-01: "don't lock cursor while in menus and while loading" - it swallowed the Windows key and trapped the pointer. DT has no menus-only mode, so confinement is off entirely. Supersedes Sol's second-monitor rationale; if the invisible-cursor scroll returns, solve it another way. |
+| SSEDisplayTweaks_Custom | `[Render] FramerateLimit` / `[HAVOK] MaximumFramerate` | 119 / 0 | STAGED 2026-09-01 (#150), needs the morning launch: STEP's DT rule for a 120 Hz panel (limit 1 fps under the refresh; 117 if the LG runs VRR) and 0 so DT derives the Havok ceiling from the limit (borderless ignores the VSync refresh). Receipt: SSEDisplayTweaks.log `(DYNAMIC) fMaxTime=0.00840336-0.0166667 ... (Max FPS = 119)`. Original at `SSEDisplayTweaks_Custom.ini.bak.v20260901-pre-120hz` |
+| SSEDisplayTweaks_Custom | `LockCursor` | **true** | flipped twice 2026-09-01, settled by #149: DT confines with `ClipCursor` whenever the window has focus and releases on focus loss; all-or-nothing, no gameplay-only mode, and no external utility does better (same Win32 call). The Windows key is NOT eaten by this setting: the game's own DirectInput flags (`DISCL_EXCLUSIVE\|DISCL_FOREGROUND\|DISCL_NOWINKEY`) do that, and only Media Keys Fix SKSE frees it - INSTALLED 2026-09-01 (Nexus 92948 file 792882 v1.0.2, gate PASS, PE 2026-08-21) with the overlay mod `Ensrick - Media Keys Fix Configuration` (`DisableWindowsKey=false`) above it; UNVERIFIED until the morning launch. Keep true; do not flip again. |
+| MediaKeysFix.ini (Ensrick overlay) | `DisableWindowsKey` | false | #149: frees the Windows key; the vendor default true re-applies NOWINKEY. Overlay mod must stay above `Media Keys Fix` in the mod order. Side effects accepted: Alt+F4 closes the game, media keys work |
 
 ## Checks that must happen
 

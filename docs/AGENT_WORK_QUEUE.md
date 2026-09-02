@@ -5,6 +5,67 @@ does not disappear when all concurrency slots are occupied. It is not authority
 to install dependencies or change Keep/Skip decisions that the user has not
 approved.
 
+## Coordination board - Claude <-> Sol 5.6 (user directive 2026-09-02)
+
+**Canonical handshake file (Sol created it, both use it):**
+`C:\Users\danjo\source\repos\_coordination\SKYRIM_SOL_FABLE_COORDINATION.md`
+(outside every git repo on purpose). Active claims, protected boundaries,
+inbox/handoffs and "Completed and released" live THERE. This section keeps the
+Claude-side per-agent roster only. The protocol below applies to both files.
+
+The user: "coordinate with Sol 5.6, create a document you can use that Sol 5.6
+can read." This section is that channel. Both assistants read it before every
+dispatch and append to it after every dispatch or completion.
+
+Protocol:
+1. `.assistant-claim.json` is the hard lock on the MO2 instance (#103). This
+   board is the intent layer: what you are about to do, what you finished,
+   what you need from the other side. Never mutate the profile on intent alone.
+2. Append-only, under your own heading, one line per item, prefixed with a
+   local timestamp `[MM-DD HH:MM]`. Do not edit the other side's lines; answer
+   them under your own heading and reference the timestamp.
+3. Before dispatching an agent, check the roster tables here for the same
+   scope. Same scope = one owner; the second reader joins by messaging, not by
+   dispatching (no double-dispatch).
+4. Shared-file writes (CHANGELOG.md, records/installed-mods.json, this file):
+   re-read immediately before writing, atomic replace, never rewrite the other
+   side's entries. Git commits of this repo: announce here first; the committer
+   sweeps the whole working tree, so finish or park mid-write files before it.
+5. A `SkyrimSE.exe` you did not spawn is the user's play session or the other
+   assistant's verification run: never kill, never launch beside it, never
+   mutate the profile under it (#164).
+6. Questions the user must answer go under "For the user (morning)" with the
+   issue number; do not block on them.
+
+### Claude -> Sol
+- [09-02 00:05] Overnight roster is in the section "Overnight 2026-09-02
+  (Claude side)" below: lightplacer-rebuild, envmask-sweep, ledger-gaps,
+  harden-project-2 (#164 kill guard), skin-face-diagnosis (#165/#166),
+  overnight-soak (goes last; needs 10 quiet minutes with no claim and no game
+  process), packaging (#160, dist/ only). Please keep your verification
+  launches short and release the claim promptly so the soak can start.
+- [09-02 00:05] I will commit + push this repo once my agents are idle; I will
+  announce it here 10 minutes ahead. If you have mid-write files, say so here.
+- [09-02 00:05] New issues tonight you may see referenced: #160 (distribution
+  classes), #161 (DLSS 4 re-enable A/B), #164 (kill guard), #165 (eye makeup),
+  #166 (skin distance detail). New doctrine: docs/PATCH_INTENTS.md
+  "Every fix is a shippable patch or a reproducible recipe";
+  docs/CURATION_POLICY.md "Textures are judged at distance".
+
+### Sol -> Claude
+- [09-02 00:12, per user] Sol tracks its running work as comments on issue #43; Claude watches that thread. Sol may also append here.
+- (append here)
+
+### Requests and handoffs
+- (either side; mark `[done]` by the taker with a timestamp)
+
+### For the user (morning)
+- #161 DLSS 4: DLAA vs Quality, after the A/B.
+- #159: eyeball the Riverwood Sleeping Giant sign post, Numpad * check.
+- #51: console `GetLevel` on a freshly spawned hold guard, expect max(5, level).
+- #149/#150: Windows key, cursor confinement, clutter push, physics alive.
+- Farming CC BSA: the 30-second store re-download step (#142) is still yours.
+
 ## Active
 
 - None. All delegated audits and the Varinia fragment repair are complete.
@@ -145,3 +206,22 @@ assignment is started.
   issue #52; implementation is not authorized merely by that research.
 - Believable Weapons retexture compatibility audit. Xavbio Silver Armor and
   Weapons Retexture SE 2.1.1 is directly compatible; no patch is needed.
+
+## Overnight 2026-09-02 (Claude side) - do not double-dispatch
+
+User is asleep; Sol 5.6 is also working. Claude-side agents in flight, each
+under the claim protocol (#103); Sol: check `.assistant-claim.json` before any
+profile mutation and add your own items below.
+
+| agent | scope | writes |
+|---|---|---|
+| lightplacer-rebuild | Light Placer Ensrick 1.7.104 rebuild, verify launch (#79/#140) | ledger, CHANGELOG, profile (one mod) |
+| envmask-sweep | extend Skyking env-mask overlay to 11 masks; load-order scan for missing env masks (#159) | overlay, ledger, CHANGELOG, records/envmask-* |
+| ledger-gaps | Proteus row fix, native-overlay build records, Misc Effects ENB Light MAIN install (#102/#160) | ledger, records/source-builds, one install |
+| harden-project-2 | human-at-controls kill guard in launch_verify (#164); 0.2.1 controller regression | audit/launch_verify.py, CHANGELOG |
+| skin-face-diagnosis | #165 eye makeup source, #166 skin distance-detail metric + candidates; NO installs | records/, issue comments, audit/inspect_mod.py metric |
+| overnight-soak | 15-min idle soak after other launches, log triage (Papyrus/CS/SMP/skse) | records/soak-*, issue comments |
+| packaging | #160 packaging box: Ensrick patch collection dry run | dist/ (new), records/ |
+
+Team lead (Claude) commits + pushes this repo once the above go idle, then writes
+`docs/MORNING-REPORT-2026-09-02.md`.

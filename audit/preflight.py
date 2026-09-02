@@ -52,11 +52,19 @@ def ini_get(path, key):
 
 
 def check_profile_owns_inis():
-    s = os.path.join(PROFILE, 'settings.txt')
+    """MO2 reads the profile's settings.ini (modorganizer/src/profile.cpp:94).
+
+    Until 2026-09-01 this gate read `settings.txt`, a stray file nothing loads,
+    and passed for a day while the real flag said false and the game kept
+    reading and rewriting the Documents INIs (#98, #143). The stray is kept
+    only as a marker; preflight_extra warns whenever it still exists."""
+    s = os.path.join(PROFILE, 'settings.ini')
     t = io.open(s, encoding='utf-8', errors='replace').read() if os.path.exists(s) else ''
-    if not re.search(r'^LocalSettings\s*=\s*true', t, re.M | re.I):
-        fails.append('profile settings.txt: LocalSettings is not true - the GAME '
-                     'owns the INIs and will reset them (#98)')
+    if not re.search(r'^LocalSettings\s*=\s*true\s*$', t, re.M | re.I):
+        (fails if preflight_extra.SETTINGS_INI_GATE == 'fail' else warns).append(
+            'profile settings.ini: LocalSettings is not true - this is the file MO2 '
+            'actually reads (profile.cpp:94); the GAME owns the INIs and will reset '
+            'them (#98, #143)')
     for name in ('skyrim.ini', 'skyrimprefs.ini'):
         p = os.path.join(PROFILE, name)
         if not os.path.exists(p) or os.path.getsize(p) < 200:
@@ -106,6 +114,34 @@ def check_plugin_state():
         fails.append('verify_order is not clean: ' + (r.stdout or '')[-200:])
 
 
+def _enabled_dlls_named(plugin_name):
+    """DLLs in the effective tree whose SKSE version data names `plugin_name`.
+
+    Enabled mods (modlist '+'), overwrite, and the game's own Data/SKSE/Plugins;
+    the name comes from SKSEPluginVersionData via skse_version_data.parse, the
+    same field skse64.log prints in `loading plugin "<name>"`."""
+    import skse_version_data as V
+    roots = [os.path.join(INSTANCE, 'mods', n) for n in preflight_extra.enabled_mods()]
+    roots.append(os.path.join(INSTANCE, 'overwrite'))
+    roots.append(os.path.join(GAME, 'Data'))
+    hits = []
+    for root in roots:
+        d = os.path.join(root, 'SKSE', 'Plugins')
+        if not os.path.isdir(d):
+            continue
+        for f in os.listdir(d):
+            if not f.lower().endswith('.dll'):
+                continue
+            try:
+                v = V.parse(os.path.join(d, f))
+                name = ((v or {}).get('vd') or {}).get('name') or ''
+            except Exception:
+                name = ''
+            if name.lower() == plugin_name.lower():
+                hits.append(os.path.relpath(os.path.join(d, f), INSTANCE))
+    return hits
+
+
 def check_last_launch_completed():
     """Did the previous launch finish loading plugins, or die partway?
 
@@ -129,9 +165,19 @@ def check_last_launch_completed():
     # dispatch messages / read translations
     finished = 'dispatch message' in t or 'Reading translations' in t
     if not finished:
-        fails.append(f'last launch DIED while loading "{loads[-1]}" - '
-                     f'{len(checked) - len(loads)} plugin(s) behind it never loaded. '
-                     f'Park it before launching again (#140)')
+        culprit = loads[-1]
+        msg = (f'last launch DIED while loading "{culprit}" - '
+               f'{len(checked) - len(loads)} plugin(s) behind it never loaded.')
+        # Fail-closed only while the culprit is still in the effective tree: once
+        # its mod is parked the same log line must not block the validation
+        # launch that proves the park (2026-09-01, Light Placer re-park).
+        still = _enabled_dlls_named(culprit)
+        if still:
+            fails.append(msg + f' It is still enabled ({still[0]}). Park it before '
+                               f'launching again (#140)')
+        else:
+            warns.append(msg + f' No enabled mod ships a DLL named "{culprit}" now, '
+                               f'so it is parked; this launch is its confirmation (#140)')
     elif len(loads) < len(checked) - 1:      # msdia140 is a PDB helper, not a plugin
         warns.append(f'{len(checked)} plugins checked but only {len(loads)} loaded '
                      f'- verify nothing was skipped silently')

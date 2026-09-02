@@ -12,19 +12,46 @@ a city-wood ``_m`` texture that NOTHING in the stack ships:
     textures\architecture\riften\riftencanalwood01_m.dds  (9 Riften signs)
     textures\architecture\windhelm\whwoodbase01_m.dds     (5 Windhelm signs)
 
+and, added 2026-09-02 after the load-order sweep (audit/envmask_scan.py,
+records/envmask-missing-scan-2026-09-02.md), the seven remaining masks the
+same option references on the same terms (EnvironmentMap, EnvMapScale 1.0,
+black 1x1 cubemap), read from the installed Skyking NIFs:
+
+    textures\architecture\markarth\mrkdeco01_m.dds        (mrkalchemysign; carved stone;
+                                                           also Skyking Unique Signs' signthehagscure)
+    textures\architecture\markarth\mrkinnwindows01_m.dds  (mrksigngeneralgoods01, silverbloodinn;
+                                                           stone window frame; also Unique Signs' signarnleifandsons)
+    textures\architecture\riften\riftenlogdetails01_m.dds (signrtorphanage01; wood)
+    textures\landscape\fieldgrass01_m.dds                 (loadscreenblackbriar01 ground)
+    textures\landscape\mountains\mountainslab02_m.dds     (loadscreenblackbriar01 rock; also
+                                                           ERM - Fix and Addon's minecboulderl02)
+    textures\landscape\rocks01_m.dds                      (loadscreenblackbriar01 rock)
+    textures\landscape\tundra01_m.dds                     (loadscreenblackbriar01 ground)
+
+Vanilla ships no ``_m`` for any of these eleven diffuse textures and renders
+the same surfaces with the Default shader (the vanilla loadscreenblackbriar01
+was parsed from Skyrim - Meshes1.bsa: all four landscape shapes Default, no
+slot 4/5), so a black mask reproduces the vanilla look. Every mask is a
+matte material class (wood, carved stone, ground, rock); nothing here is an
+intended metal / glass / water reflection.
+
 Verified absent on 2026-09-01 across the 306-row Default modlist (loose), the
-92 vanilla BSAs and the 58 enabled-mod BSAs. Community Shaders' Dynamic
+92 vanilla BSAs and the 58 enabled-mod BSAs; re-verified 2026-09-02 by the
+sweep (207 enabled mods, 59 mod BSAs, 92 vanilla BSAs, 353,526 archive
+entries). Community Shaders' Dynamic
 Cubemaps treats the 1x1 black cubemap as "reflect the live environment" with
 F0 = 1.0 and roughness 1/8 (package/Shaders/Lighting.hlsl ~1905-1950), scaled
 by the env mask - and with the mask file missing the engine substitutes a
 default texture, which is what paints the posts as slick, wet-looking wood.
 
 This overlay supplies a 4x4 solid-black, alpha-1 uncompressed env mask at each
-of the four paths. Black mask -> envMask == 0 -> the whole reflection block is
+of the eleven paths. Black mask -> envMask == 0 -> the whole reflection block is
 skipped; alpha == 1 and grayscale RGB -> Extended Materials does NOT treat it
 as a complex material. The post shape then shades like the standard "01"
 meshes (plain specular wood). Only meshes that reference those exact paths are
-affected, and today no mesh finds them at all.
+affected, and today no mesh finds them at all. If a future texture pack ships
+real complex-material masks at any of these paths, disable this overlay (it
+sits at the top of the priority list and would shadow them).
 
 Nothing vendor-derived is touched or copied. The payload is generated from
 this script alone and is safe to redistribute, but stays local by convention.
@@ -45,10 +72,19 @@ import zipfile
 from pathlib import Path
 
 MASK_PATHS = (
+    # 2026-09-01: the four sign-post masks (#159)
     "textures/architecture/whiterun/wrwoodbeam01_m.dds",
     "textures/architecture/farmhouse/woodpost02_m.dds",
     "textures/architecture/riften/riftencanalwood01_m.dds",
     "textures/architecture/windhelm/whwoodbase01_m.dds",
+    # 2026-09-02: the seven remaining masks the same option references
+    "textures/architecture/markarth/mrkdeco01_m.dds",
+    "textures/architecture/markarth/mrkinnwindows01_m.dds",
+    "textures/architecture/riften/riftenlogdetails01_m.dds",
+    "textures/landscape/fieldgrass01_m.dds",
+    "textures/landscape/mountains/mountainslab02_m.dds",
+    "textures/landscape/rocks01_m.dds",
+    "textures/landscape/tundra01_m.dds",
 )
 
 DDSD_CAPS, DDSD_HEIGHT, DDSD_WIDTH, DDSD_PITCH, DDSD_PIXELFORMAT, DDSD_MIPMAPCOUNT = 0x1, 0x2, 0x4, 0x8, 0x1000, 0x20000

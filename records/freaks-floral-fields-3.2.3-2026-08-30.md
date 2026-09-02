@@ -133,3 +133,21 @@ representative Solstheim ash/coast cells, and the Soul Cairn while recording
 frame time, density, pop-in, floating grass, landscape seams, and obvious biome
 mismatches. Grass cache and final DynDOLOD generation remain deferred until the
 exterior stack is frozen.
+
+## Texture-cap source (recorded 2026-09-02, #160)
+
+The one-file overlay `Ensrick - Freak's Floral Fields Texture Cap` is the
+vendor archive's own 1K-tier atlas placed at the 2K-tier path, unmodified:
+
+- archive `Freaks Floral Fields-125349-3-2-3-1786549491.zip` (file 788926),
+  SHA-256 `D82616F1F6D25A392E86B2BA1B18F21E464A401F3909910E866E25D493EBBB9C`,
+  2,160,876,699 bytes;
+- entry `Freak's Floral Fields/textures 1k/textures/Landscape/grass/Twigs_Freak.dds`,
+  SHA-256 `E4CC21AE1BFC1E1FEF15448362BA44244DAC72BF7439CF38BE4D74BC6BDFB3AF`,
+  11,184,996 bytes, copied verbatim to `textures/Landscape/grass/Twigs_Freak.dds`;
+- the `textures 2k` and `textures 4k` entries for the same file are one
+  identical 4096x8192 atlas (`68F811AD853162F5019E228491661574166DBB24D8367F28C9EE749308791103`,
+  44,739,428 bytes), so the 1K tier is the only lower-resolution source.
+
+The extracted entry's hash equals the installed file. The machine-readable
+form is the `recipe` field on the overlay's row in `records/installed-mods.json`.

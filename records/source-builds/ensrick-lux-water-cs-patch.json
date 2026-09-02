@@ -129,8 +129,10 @@
   },
   "distribution": {
     "patcherSource": "public under GPL-3.0-only",
-    "generatedPlugin": "local-only pending a separate redistribution-rights review of generated overrides",
-    "publicPackStrategy": "regenerate on the user's machine from authorized inputs, or publish the plugin only after rights review",
-    "vendorFilesModified": false
+    "generatedPlugin": "distributable: override-only patch (551 CELL + 8 WRLD, 0 new forms, no assets) reviewed 2026-09-02 for #160",
+    "publicPackStrategy": "Ship the plugin in the Ensrick patch collection with credit to GGUNIT (Lux) and mindflux (Water for ENB, GPL-3.0-only patcher source); regenerate locally from this record as the fallback",
+    "vendorFilesModified": false,
+    "reviewedAt": "2026-09-02",
+    "reviewRecord": "records/ensrick-overlay-distribution-2026-09-02.md row 7; records/private-runtime-dependencies.json entry resolved"
   }
 }

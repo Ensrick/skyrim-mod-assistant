@@ -74,3 +74,18 @@ Every entry in `changed` / `onlyInBuilt` is a decision: either it is set back
 to upstream's value in the shipped config, or the changelog entry names why the
 build differs. A source build with no `featureDefaultsDiff` in its record is
 not installed.
+
+## Textures are judged at distance, not zoomed in (user, 2026-09-02)
+
+"A lot of modded textures look really nice when zoomed in completely, but then
+completely lose all texture when you zoom out. The vanilla textures, despite
+being lower res, often have better design and overall detail when you zoom
+out." Acceptance for any texture mod (skin, armor, architecture, landscape):
+
+- Evaluate at mid and far camera distance, i.e. at mip 2-4, not at mip 0.
+- The asset inspector's mip-retention metric (high-frequency energy at mip 2-4
+  relative to mip 0, compared against the vanilla texture it replaces) is the
+  receipt; a screenshot is not.
+- Matte, single-tone at distance is a defect even when the close-up is good.
+- A texture that fails can be salvaged by an Ensrick mip-regeneration recipe
+  (sharpened mip chain) before it is rejected.

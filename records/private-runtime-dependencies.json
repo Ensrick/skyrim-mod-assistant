@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "auditedAt": "2026-08-29",
+  "auditedAt": "2026-09-02",
   "scope": "Active private artifacts whose exact local form is required by the current profile and cannot presently be included in a public release.",
   "publicationBlockers": [
     {
@@ -37,9 +37,11 @@
         "Preserving Lux and other late CELL/WRLD edits while forwarding Water for ENB water fields"
       ],
       "reasonPrivate": "The generator source is GPL-3.0-only, but redistribution rights for the generated plugin's third-party override data have not yet been reviewed.",
-      "releaseGate": "Regenerate locally from authorized user downloads, or complete and document a generated-output redistribution review before bundling the ESP.",
-      "active": true,
-      "reproducibleSource": "https://github.com/Ensrick/WaterForENBPatcherCS/tree/f7d459bdade1e6c04aeb8426f02e2191907c9d35"
+      "releaseGate": "Cleared 2026-09-02 (see resolution). Kept in this list for history; no longer a publication blocker.",
+      "active": false,
+      "reproducibleSource": "https://github.com/Ensrick/WaterForENBPatcherCS/tree/f7d459bdade1e6c04aeb8426f02e2191907c9d35",
+      "resolvedAt": "2026-09-02",
+      "resolution": "Review completed for #160. The installed ESP (SHA-256 5D65CFB1..., 809,886 bytes) was parsed on 2026-09-02: ESL-flagged, 559 records, all overrides (551 CELL, 8 WRLD), 0 new forms, 10 masters; the mod folder holds only the ESP and meta.ini, so no vendor asset is carried. Basis: distribution-only override patch (project standing rule); Lux 43158 explicitly permits compatibility patches carrying none of its assets; Water for ENB 37061's restrictive grid governs its files and assets, none of which the ESP modifies or contains; the generator is mindflux's own GPL-3.0-only patcher (Ensrick fork f7d459b, records/source-builds/ensrick-lux-water-cs-patch.json). Classified `distributable`; the recorded recipe remains the fallback."
     }
   ],
   "externalDownloadPolicy": {

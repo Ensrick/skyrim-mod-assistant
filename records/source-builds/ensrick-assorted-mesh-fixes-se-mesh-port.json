@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Assorted Mesh Fixes SE Mesh Port",
+  "mo2VendorMod": "Assorted Mesh Fixes",
+  "mo2OverlayMod": "Ensrick - Assorted Mesh Fixes SE Mesh Port",
+  "purpose": "Re-serialize the 57 Oldrim-format (NIF stream 83) meshes that Assorted Mesh Fixes ships to SSE stream 100, preserving the directory tree.",
+  "source": {
+    "nexusUrl": "https://www.nexusmods.com/skyrimspecialedition/mods/32117",
+    "author": "wSkeever",
+    "version": "0.139.3",
+    "fileId": 768960,
+    "archive": "32117-768960.7z",
+    "inputForm": "loose files in the installed vendor mod at the same relative paths"
+  },
+  "transformation": {
+    "tool": {
+      "toolchainKey": "nifPortCli",
+      "repository": "https://github.com/Ensrick/nif-port-cli",
+      "commit": "c63f74e1c45ea331494f88511840ed7222f32ef5",
+      "branch": "agent/shape-overlay-and-texture-remap",
+      "pullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
+      "commitNote": "convert-sse code path is unchanged from 1cc5484 (origin/main) through e12079c and c63f74e; the port was made before c63f74e was committed and the exact binary is not hash-matched to a commit, so the pinned commit is the pushed head that contains the identical verb.",
+      "binaryPath": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-builds\\nif-port-cli\\Release\\nif-port-cli.exe",
+      "binarySha256": "D076B22FB7AC627E6277CC8B01D503763C60EF79CA86CBB9CB6D32239BDBA05C",
+      "upstreamCommit": "dbba8b359531fa4a4b89d906b93cdcb579abc8d0",
+      "niflyCommit": "846518b3fdfc6c81cddc49188aff77ad7006456a"
+    },
+    "command": "for each path P listed below: nif-port-cli.exe convert-sse \"<vendor mod>/P\" \"<output root>/<directory of P>\"  (one file per call so the tree survives)",
+    "vendorFilesModified": false
+  },
+  "meshes": [
+    {
+      "path": "meshes/animobjects/animobjecttg05journal.nif",
+      "sourceSha256": "7A6CE201B3564493627E4702CCEAE02F6A5BB9C93E812BC595E033714F5FE7CB",
+      "sourceBytes": 54122,
+      "outputSha256": "BD2D80886F89FC675DEDC19C670843028745109D5BF56FB280CC00191D60D1DD",
+      "outputBytes": 26745
+    },
+    {
+      "path": "meshes/architecture/farmhouse/farmhouseanimdoor01.nif",
+      "sourceSha256": "F79B26CC6F7537CEA11DA531808F81845161ACA1D72D629A9A37E421964227CA",
+      "sourceBytes": 22923,
+      "outputSha256": "4DDBA1E811DD5119041A32DF0FB1903E66F7155E33A76D3273C77C444C69EE88",
+      "outputBytes": 12283
+    },
+    {
+      "path": "meshes/architecture/farmhouse/farmhouseanimdoor02.nif",
+      "sourceSha256": "5F3B1143328D1275DBA54FCBD4C1C353DD22AA07718B1E603609E2DD4C6B0D9B",
+      "sourceBytes": 22891,
+      "outputSha256": "47A4A58D8BEAFF73F5D9656981986D558F57C7751FF24C25D64A6DE63091960F",
+      "outputBytes": 12251
+    },
+    {
+      "path": "meshes/architecture/farmhouse/farmhousedoor01.nif",
+      "sourceSha256": "F8AAADD159256201CD2DB859E5B774180BDA035397532508EEC9EDCC21CD301F",
+      "sourceBytes": 13287,
+      "outputSha256": "E5C0598AD7BC03C2B74D45E1B436AECC3CAA729EE325B53BB8B1E7F62290ED0E",
+      "outputBytes": 7223
+    },
+    {
+      "path": "meshes/architecture/farmhouse/farmhouseldoor01.nif",
+      "sourceSha256": "2CEE5ED8613D51D0C4BD20FFC05970E9582DA49371E8CBCB7CD8D0AFB52BC7C6",
+      "sourceBytes": 16106,
+      "outputSha256": "7F6A23A9A0F0BE4B752CA55812DA5845C8E853E035E8D40F4D13BC9D0413B009",
+      "outputBytes": 9211
+    },
+    {
+      "path": "meshes/architecture/farmhouse/farmwell01.nif",
+      "sourceSha256": "D9DEBD3C89B784023A3A464BC674F3220452F4DC2B005AB4E6EF7A2D88F45DCC",
+      "sourceBytes": 350828,
+      "outputSha256": "B6B88FAFCAEB1A7A4060E43B512C5D6C62B56B0AE8CF25B9042DB5F703A72D01",
+      "outputBytes": 180173
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/basement/farmbdivider03.nif",
+      "sourceSha256": "5F7CA30542720FDCCF0D46D2A406053B86DBFFABB0876F4DB2B40D432D192914",
+      "sourceBytes": 34411,
+      "outputSha256": "094096BB41BEA4E2F7E1109015BC6891A79AF84938294DF28CF84BB1A1899093",
+      "outputBytes": 21659
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/basement/farmbdivider04.nif",
+      "sourceSha256": "56CCA14CBE6F5C8FDC4001EAF8CFA12B63B67E2233607CB5A8580A2F435E733F",
+      "sourceBytes": 43640,
+      "outputSha256": "0DEAF00D7721E98E7B0D8C46A2D012E2EE807C8574F2E459F85E65C9E810D8E0",
+      "outputBytes": 25960
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/basement/farmbtrapdoor01.nif",
+      "sourceSha256": "972EC2897CA630AF154393A8B42C732F0EACC0822DCD3E67D3BEBF37C45853E8",
+      "sourceBytes": 75442,
+      "outputSha256": "B1D25EFBFD6A76CF4D15E43F40631976BF5CABD865BFB7FA223C3F69ECF95C55",
+      "outputBytes": 40315
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/basement/farmbtrapdoor02.nif",
+      "sourceSha256": "B8F73E4100250181AAA843AD0453C19E8F6CDD24561AAC948036A5A0381DE499",
+      "sourceBytes": 16265,
+      "outputSha256": "460707ABB8ED0FA77413105E2F8BC2B55F05E0B44ED5315984DBC393261D4B0E",
+      "outputBytes": 10498
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/basement/farmbwell01.nif",
+      "sourceSha256": "C5D3787B58A098EAE204D79CC801D3364EB204089810CC361D5E8524038C36AD",
+      "sourceBytes": 600198,
+      "outputSha256": "66EA1017211D6B710742C2FB6280B6D3C04BF48B3CB6A15444D24767D3E21359",
+      "outputBytes": 309243
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/basement/farmhousejaildoor01.nif",
+      "sourceSha256": "2606CAE6FD543DD88A3A2B0C6D3A87B55F27A42DBC2255DB74EF3B068FE3139F",
+      "sourceBytes": 76965,
+      "outputSha256": "4C6221CF6022FBF6EE8C4CEB215BE349B4BF21C1F429D59DD4C710EC201D7A81",
+      "outputBytes": 43398
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/farmintlhfirepit02.nif",
+      "sourceSha256": "65AEA5AD0C46A5B8177DDD5FB2644501424D9B81FE26B33A54FFD20CE4A05D73",
+      "sourceBytes": 83204,
+      "outputSha256": "1E0D3568348DD33045FC78F232770ED5C061A2CF7ED12D3A9A601582604560F7",
+      "outputBytes": 44302
+    },
+    {
+      "path": "meshes/architecture/farmhouse/interior/farmintlhfirepit03.nif",
+      "sourceSha256": "77F9CE3895FC1970177829C14B47C269AF3F9F643969AE3EED7C67FDC2224632",
+      "sourceBytes": 174390,
+      "outputSha256": "F1CBB7C56DCDC9F473C54D91D71F2860F88BDDDB086447704C0F980900F59D8A",
+      "outputBytes": 92938
+    },
+    {
+      "path": "meshes/architecture/farmhouse/lumbermill01.nif",
+      "sourceSha256": "50901EE3124F664F482AA1AC054DA580DC422DCB651FA458FE79C4C9F5433922",
+      "sourceBytes": 3770631,
+      "outputSha256": "10D11BD057A02B5934A560835127868AE809EE587C571307D3ED50A64EB4E512",
+      "outputBytes": 1936765
+    },
+    {
+      "path": "meshes/architecture/solitude/interiors/slgftracon03.nif",
+      "sourceSha256": "77C0EEAE652142017E77DCB9890AA4EA2DFC4F14518FE7FC9717080856A6312C",
+      "sourceBytes": 52521,
+      "outputSha256": "882B8D45BBD2DBB0B4FECC015CC3852779F907A1513C96EE8CC0EDF64415AC7A",
+      "outputBytes": 29108
+    },
+    {
+      "path": "meshes/architecture/solitude/interiors/slgftracon04.nif",
+      "sourceSha256": "F86EEA47DFB859FB7A962D0079AC5B0D722FD18D83B6420209633C8D3C9C7529",
+      "sourceBytes": 68161,
+      "outputSha256": "16BEEB9BB147D7E3670D47CC017C9C06699F638055CE5D7DEFA484F56DF7F95B",
+      "outputBytes": 34930
+    },
+    {
+      "path": "meshes/architecture/solitude/interiors/slgftracon05.nif",
+      "sourceSha256": "391D5D2E9B70C3D7B718303ECF579E90398929E713A48000931028395C792DFB",
+      "sourceBytes": 70299,
+      "outputSha256": "45A45483AEBBB180AA47A7A995C2FE1C9877592ACFC44F0ED09BFA22128A02FD",
+      "outputBytes": 37046
+    },
+    {
+      "path": "meshes/architecture/solitude/interiors/slgftracon06.nif",
+      "sourceSha256": "39F5178F78D5855E8E2EF0062B1A6CF34F185540A5F0A2C1A264D5720EEB169C",
+      "sourceBytes": 32942,
+      "outputSha256": "AC168C3A8CD79124B3107333C7D545878257362DC72E8A886D1D83DCCCB77ECB",
+      "outputBytes": 17631
+    },
+    {
+      "path": "meshes/architecture/solitude/swell.nif",
+      "sourceSha256": "83EEE8B4BC9DBB328509DB279AF4DC93BEABA02070D2D869E63531879F8F5038",
+      "sourceBytes": 291696,
+      "outputSha256": "27B165EACECA50A554DA40599E28843F4BDE439225BCBABF19D0D8F4818414A7",
+      "outputBytes": 148436
+    },
+    {
+      "path": "meshes/architecture/solitude/swelldestroyed.nif",
+      "sourceSha256": "B361C32417A08FDA9694D57F5292BB2CE6861BE570F521E3303C1AD3BC050254",
+      "sourceBytes": 299350,
+      "outputSha256": "574650F579F3EA62F6940A2DFCBC5884C5BA5A36E7AB79929EE109A0B6713CCB",
+      "outputBytes": 150741
+    },
+    {
+      "path": "meshes/architecture/whiterun/wrbuildings/wrhousemeaderywarehouse01.nif",
+      "sourceSha256": "5B5658784B2A101F427678AD94F2487A71AA2134D9C593E8458CE2E3973A8948",
+      "sourceBytes": 551771,
+      "outputSha256": "87C417E1FB0F19DC681CAE9D40819A5CC60E4E8FD94E238612236FEA33136ACF",
+      "outputBytes": 272031
+    },
+    {
+      "path": "meshes/architecture/whiterun/wrinteriors/wrintfloorstmid01largealtar01.nif",
+      "sourceSha256": "DDC18CAA6334F323358BF00C3164ED2F68730B1548FA216D3636E4CD5AEB936D",
+      "sourceBytes": 63587,
+      "outputSha256": "04954578F876B8C7E70A5FFECE16B6BD377DAE4DAB7974E90717FE44E3260483",
+      "outputBytes": 36098
+    },
+    {
+      "path": "meshes/architecture/windhelm/whmaingatesteps.nif",
+      "sourceSha256": "EFD45A4DF24810F9619322D87A44971404DF330FC4A5D30454E094910993BDE7",
+      "sourceBytes": 33293,
+      "outputSha256": "166970D784E0E3F3A71EB09FA89F3B8E3636E559BC12C52865A6F24B917FD930",
+      "outputBytes": 21093
+    },
+    {
+      "path": "meshes/architecture/windhelm/whtempletalos3.nif",
+      "sourceSha256": "D4894B124BA39837DE29025259FC0E6CE696EFBF5653978B6159880933AF05FB",
+      "sourceBytes": 623057,
+      "outputSha256": "60956464A6370368CAEE0BAD3A0D9D994B7C7F325354D2CB21FD51288FFE9637",
+      "outputBytes": 309314
+    },
+    {
+      "path": "meshes/armor/steel/1stpersongauntlets_0.nif",
+      "sourceSha256": "BE83EEB603335609CEA49A077224E429D64B0727FEBCA71801D47945308CF6FA",
+      "sourceBytes": 201399,
+      "outputSha256": "4369B37EE4294C6DDB19915C5DC70714C073DA2056E45340F9B65DE0A5827106",
+      "outputBytes": 183679
+    },
+    {
+      "path": "meshes/armor/steel/1stpersongauntlets_1.nif",
+      "sourceSha256": "A3FB2C88F560FBA758850FDBCC661114A46C11B318EB58A566BD7C9CCB5F9C5B",
+      "sourceBytes": 201399,
+      "outputSha256": "5BAE847CADC7F952BD622C524204107ED0D7C08407E37FD9A0EB73175A7537F7",
+      "outputBytes": 183679
+    },
+    {
+      "path": "meshes/clutter/ingredients/mothwing01.nif",
+      "sourceSha256": "65F27EB90440A03FE669B19F0E306F4BBB08A32D5132D78B24BBFA4611327054",
+      "sourceBytes": 5022,
+      "outputSha256": "2231EBAD756C4E8D58DB2A920DD692EFA0A474376D375DB4DD6C3B2E8CDC9DFF",
+      "outputBytes": 3293
+    },
+    {
+      "path": "meshes/clutter/ingredients/mothwing03blue.nif",
+      "sourceSha256": "C714FCDB8CEAFC138168DCF77F17524623A81218CD9F9605A0FE2EBB41107197",
+      "sourceBytes": 5026,
+      "outputSha256": "147C3E84C604BB72507BE4F550D637FD820BBC9A3EB569481D4226878DC30DB0",
+      "outputBytes": 3297
+    },
+    {
+      "path": "meshes/dlc01/landscape/lakesnow01.nif",
+      "sourceSha256": "3224F7592C52E6D3C86D15864EF8A9394ADBD5587896D897DC09D2884A6BA530",
+      "sourceBytes": 40935,
+      "outputSha256": "E49447120089AF4444919DFC34CD6999A8BDAFA20EB72E99DB4D175A42967066",
+      "outputBytes": 22999
+    },
+    {
+      "path": "meshes/dlc01/landscape/lakesnowsmall01.nif",
+      "sourceSha256": "559F69130A6807CBF49933789BB1C21AABDD0B652577CC17432525AFB15B57EC",
+      "sourceBytes": 15197,
+      "outputSha256": "5DE923D87E3B0BA83256E36ABB3169929A79D511512EBF6A80D7C6E4E37E504B",
+      "outputBytes": 8877
+    },
+    {
+      "path": "meshes/dlc01/landscape/lakesnowsmall02.nif",
+      "sourceSha256": "DE1D5CA760584A0ED05458028F8E3B5D3CFA0488B0CF41F69ABE9D661A0D777E",
+      "sourceBytes": 16132,
+      "outputSha256": "23B1C19D5B3652FDD408882C351BD6E7188F8953C0E2E8EC29C716B29BD65BC1",
+      "outputBytes": 9332
+    },
+    {
+      "path": "meshes/dlc02/architecture/riekling/dlc2rieklingtent02.nif",
+      "sourceSha256": "F92068354E1ECE176DD2C95D9C0C36B739F0863983207C8A98C6E071559C641F",
+      "sourceBytes": 100499,
+      "outputSha256": "D1D72EEE41EFC604862BAB4C7C38F078C354101C2F42D6F540FF74546458FA0E",
+      "outputBytes": 52490
+    },
+    {
+      "path": "meshes/dungeons/dwemer/roads/dweroadcurve90r01.nif",
+      "sourceSha256": "8CDCA63F508909601835A2B7809E37AA1AD6F523F9B1072C6CE3F6CC57DA125C",
+      "sourceBytes": 51947,
+      "outputSha256": "06ADD06C6CE77FE9E8122654E6377C6432E2C6758E210A579D5B0AE558A56EE0",
+      "outputBytes": 31679
+    },
+    {
+      "path": "meshes/dungeons/dwemer/roads/dweroadstraightlongramp01.nif",
+      "sourceSha256": "42D3E0AEE87022C1262988EBF9A6BF63B94518E8D349DFBAF5C35C3EC1045ABC",
+      "sourceBytes": 94032,
+      "outputSha256": "DF22DF75C0ECFBFC1B703F94DA3964AA8F52B8BA049C215AE1899F1CFCD21563",
+      "outputBytes": 51536
+    },
+    {
+      "path": "meshes/dungeons/dwemer/roads/dweroadstraightlongramp02.nif",
+      "sourceSha256": "1D09C8EA532D39AD3EB559CDB8F2A7D3FB22059B78233F6C3397C335674F37F6",
+      "sourceBytes": 90863,
+      "outputSha256": "062866E4D5ABE87C6C0EB7FF0B91B10EC3456670DC8E8857AA61D52E1C6C26A2",
+      "outputBytes": 49863
+    },
+    {
+      "path": "meshes/dungeons/dwemer/roads/dweroadstrtocurverampl01.nif",
+      "sourceSha256": "BC966AF8F5B086EBE1B2EC076FBF4E255193BA185EA8A75D76BDFFA800CA439B",
+      "sourceBytes": 80712,
+      "outputSha256": "4409A14DF2657D4B601357577A57E6083640FE8056DD596B11D9D9E6885F76E1",
+      "outputBytes": 44992
+    },
+    {
+      "path": "meshes/dungeons/dwemer/roads/dweroadstrtocurverampr01.nif",
+      "sourceSha256": "93E8D0FBA2ABDBC8F7F9618DAB095595B6A86EDB0AB91B901C625A9512BD4198",
+      "sourceBytes": 80720,
+      "outputSha256": "42CDD8A6E1DD3F55952B1CF34993AAC9D2724A56F741399C7F191691331CFFD9",
+      "outputBytes": 45000
+    },
+    {
+      "path": "meshes/dungeons/nordic/exterior/norlabyrinthianmaze01.nif",
+      "sourceSha256": "08C4F9C00672253A0C582E5886082574C2D72D31E0B320165B79F9D99F65482B",
+      "sourceBytes": 599874,
+      "outputSha256": "D1DE7EA672A134E5BB1C79861A02A7C41282A788C595DCBAD7A747AC11505C7C",
+      "outputBytes": 324323
+    },
+    {
+      "path": "meshes/dungeons/nordic/exterior/norlabyrinthianmaze02.nif",
+      "sourceSha256": "5669D27695C3AB39731CC55D646FF4D131B5B507BBAA0D77078D1ED35900B135",
+      "sourceBytes": 604844,
+      "outputSha256": "05FE73FB150ECF3E27D36A12B869210A321C35E62EFA7960A3F47A3C4B174F24",
+      "outputBytes": 326629
+    },
+    {
+      "path": "meshes/dungeons/nordic/exterior/norlabyrinthianmaze03.nif",
+      "sourceSha256": "B983E9AB9BDA12EEA4EC09FD98F86B476086A70B3E991FE1D2BEFC3E3CE4A876",
+      "sourceBytes": 573919,
+      "outputSha256": "C222A8C022340280432D1335EF4077DCF54012CD21EE033BC28149501B63E98B",
+      "outputBytes": 312544
+    },
+    {
+      "path": "meshes/dungeons/nordic/exterior/norlabyrinthianmaze04.nif",
+      "sourceSha256": "55396D4EFB0B6B67930F644071CCA95020034D8CDF58F05B78112DC8CD3563D9",
+      "sourceBytes": 473427,
+      "outputSha256": "DBC84096938055B295D570022392AD49528697EBED921FE221AE57C120103A86",
+      "outputBytes": 257632
+    },
+    {
+      "path": "meshes/landscape/roads/roadcurve90r01.nif",
+      "sourceSha256": "2BEAB21446D9B4CC2A4CEEBF6DD5423C459FDDF2518C9F76E270DCF1019F3198",
+      "sourceBytes": 52739,
+      "outputSha256": "0115E45B7A4A42E45A0B138F9F81CC552082C72ECB9DD2B2677C9D6D6D1AEF70",
+      "outputBytes": 32471
+    },
+    {
+      "path": "meshes/landscape/roads/roadstraightlongramp01.nif",
+      "sourceSha256": "B30188AC9BFFF2DF93CA988C78582D9D78C7C4DF26E607502D8D46BC00598EC7",
+      "sourceBytes": 93921,
+      "outputSha256": "448E95AD59E9B2C837A5F7724893AE07BA4287754B3A4DB6A2E85D997E66565D",
+      "outputBytes": 49109
+    },
+    {
+      "path": "meshes/landscape/roads/roadstraightlongramp02.nif",
+      "sourceSha256": "7A748D451A15F7E25E2DA87A90A0BE8AE40E1EE3D7A4284BF5AE3E82F907300C",
+      "sourceBytes": 90674,
+      "outputSha256": "843EFFA9EDFE092CA98621AC38D132A2868CD09F13BB7FC01D4DF8A8B6427810",
+      "outputBytes": 47490
+    },
+    {
+      "path": "meshes/landscape/roads/roadstrtocurverampl01.nif",
+      "sourceSha256": "EB2D8E9219EBF833457F8350F165945D457155D3C6E8E884B600FD8472C49ABF",
+      "sourceBytes": 80391,
+      "outputSha256": "A091D69AA48F71C8BDB01EF881AEDAEECB0BBE3E79AC9E71B86F90E31E27C1DE",
+      "outputBytes": 42835
+    },
+    {
+      "path": "meshes/landscape/roads/roadstrtocurverampr01.nif",
+      "sourceSha256": "337E98C774C92DCA748CD21B3C705C4AF76EF374FAB45AB2E37A124972043BA5",
+      "sourceBytes": 89573,
+      "outputSha256": "AB707AAB62EB0CA2CBAE762D1AE9729BAFB7D9CF5EFBEDFC483C0872F902749D",
+      "outputBytes": 45177
+    },
+    {
+      "path": "meshes/landscape/rocks/rockshelf02.nif",
+      "sourceSha256": "E39824B90AC0264595FE8377112073B15BCFFF3EEB54553D85059FCE1A5BDBCD",
+      "sourceBytes": 296991,
+      "outputSha256": "E40D03DBEDC81B1B97F2D502111E28F2A92868082823225AF48968EEF697EECF",
+      "outputBytes": 168369
+    },
+    {
+      "path": "meshes/landscape/trees/reachclifftree01.nif",
+      "sourceSha256": "850782CC8870EDEABBBD92D7258B56A600A7D12AACFCA89C963615E3C62EE5B4",
+      "sourceBytes": 133399,
+      "outputSha256": "FDB9FBB6DF66D2753A77FC72D3FA50F745895CC112268D8D139B2A38E88E240D",
+      "outputBytes": 68368
+    },
+    {
+      "path": "meshes/landscape/trees/reachclifftree02.nif",
+      "sourceSha256": "2864AFA7E7B0F1F8319FE0529F35C1A36AB11319E03938F3999A6C046371F32B",
+      "sourceBytes": 211428,
+      "outputSha256": "499CEE2B5EC216A1D34DFF65C57D9B9DAD938D652840E92E76BD168078EED386",
+      "outputBytes": 107477
+    },
+    {
+      "path": "meshes/landscape/trees/tundradriftwood02.nif",
+      "sourceSha256": "1938BF2E6A545728D52E528AF08AD6B9B876AFFC94A5E1DA65DD57A23107096B",
+      "sourceBytes": 95428,
+      "outputSha256": "F53B3BCA4E5B66941065D242C083D0B4BDAB3414BB7EEA2307589A8EE92DBAD4",
+      "outputBytes": 49004
+    },
+    {
+      "path": "meshes/weapons/staff02/1stpersonstaff02.nif",
+      "sourceSha256": "678E7AC93985C533A2CFB0E5DC2746A8C3A1F98257501C897A062B3FBEF8AF52",
+      "sourceBytes": 88790,
+      "outputSha256": "255BD77595F2AC462169D754E7CB5B6325F2CF0D7EB213717FA4EB90DC9A3E4F",
+      "outputBytes": 50296
+    },
+    {
+      "path": "meshes/weapons/staff02/staff02.nif",
+      "sourceSha256": "3B75F8D9915EFA44ADCC81D19BFD6AE33F88FC028F08ADD5E3AF599296055036",
+      "sourceBytes": 55512,
+      "outputSha256": "5B10A8F62650CE7307DA7116B8733FD9C2B37000566A09AED95A4313A203582A",
+      "outputBytes": 31350
+    },
+    {
+      "path": "meshes/weapons/staff03/1stpersonstaff03.nif",
+      "sourceSha256": "7509A379BCAB6C8C89FFC8204D50B9322584BA11D2A848347EE857C0ECC22A8B",
+      "sourceBytes": 71400,
+      "outputSha256": "9BCC02F16789C30DAB747E889340103B521B8F97712A399E3259E1A9E00E6E37",
+      "outputBytes": 40854
+    },
+    {
+      "path": "meshes/weapons/staff03/staff03.nif",
+      "sourceSha256": "D1061929A8B077791C5B2ECE0662BA4A7D42FAB1F3F649F6EF50C6B4D7551434",
+      "sourceBytes": 46634,
+      "outputSha256": "89E83928E501B287C717AE76432FEAD6262DFA21F045C9D31F9F6BF7E791016C",
+      "outputBytes": 26560
+    },
+    {
+      "path": "meshes/weapons/staff04/1stpersonstaff04.nif",
+      "sourceSha256": "FD52ACFC1882B5F4E480416800DB9108020CD1209CC9A8DF0EA0FBF8D65FB67A",
+      "sourceBytes": 66698,
+      "outputSha256": "777C45A91EB8228B92A93355829EF7B89A687D08F4A9AC015D48F48395A9BDDA",
+      "outputBytes": 38056
+    },
+    {
+      "path": "meshes/weapons/staff04/staff04.nif",
+      "sourceSha256": "5CE1D6893389E8EAA0BBBA70C0C6BF176F1D70A401A4A02B62478D5C9E158B7D",
+      "sourceBytes": 41814,
+      "outputSha256": "A2F161CB3C42C66F971D3CEAEEB66C52BD46B4D50894ECF4A1261BBA76108B8E",
+      "outputBytes": 23836
+    }
+  ],
+  "validation": {
+    "rerun": "2026-09-02: all 57 outputs byte-identical to the installed overlay with binary D076B22F... and again with the e12079c build 5070ACD5A44E38A65D9AA39EE61B89BE324703CB2AD0A1FB83270732B7DC3646",
+    "original": "57 converted, 0 failed; nif-port-cli inspect reports invalid=0 unknownBlocks=0 isLE=0 (ledger note)"
+  },
+  "distribution": {
+    "class": "distributable",
+    "basis": "wSkeever grants upload and modification with credit; new mesh changes CC BY-SA 4.0; recipe kept as the installer alternative",
+    "derivedAssetsCommitted": false
+  }
+}

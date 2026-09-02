@@ -1,0 +1,50 @@
+# RECONSTRUCTED from records/launch-verify-20260901-231117.md (the live log was truncated by the next launch);
+# wall clock = DLL_ATTACH 23:10:31.646 + ms. Session killed by the harness ~2 s after kPostLoadGame; nobody at the controls.
+[2026-09-01 23:10:31.647] +1ms POPUP_PATCHED api="MessageBoxW" scope="LaunchProbe.dll import table"
+[2026-09-01 23:10:31.647] +1ms POPUP_PATCHED api="MessageBoxA" scope="LaunchProbe.dll import table"
+[2026-09-01 23:10:31.647] +1ms PROBE_OPEN plugin="LaunchProbe" plugin_version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\LaunchProbe.log"
+[2026-09-01 23:10:31.647] +1ms DLL_ATTACH wall="2026-09-01 23:10:31.646" detail="static initializer; SKSE skips SKSEPlugin_Query for PluginVersionData plug-ins"
+[2026-09-01 23:10:31.647] +1ms PLUGIN_LOAD runtime_skse="1.7.104.0" runtime_module="1.7.104.0" skse_version=33751056 is_editor=0 pid=43768
+[2026-09-01 23:10:31.647] +1ms CONFIG autoload_enabled=1 autoload_save="Autosave1_389B9F8E_0_416476656E747572657233_Tamriel_000016_20260902024535_1_1" delay_ms=1500 heartbeat_ms=0
+[2026-09-01 23:10:31.647] +1ms LISTENER_REGISTERED sender="SKSE"
+[2026-09-01 23:10:31.647] +1ms PROBE_READY
+[2026-09-01 23:10:31.792] +146ms kPostLoad name="kPostLoad" sender="SKSE" type=0 data_len=0
+[2026-09-01 23:10:31.792] +146ms SINK_REGISTERED stage="kPostLoad" event="RE::MenuOpenCloseEvent"
+[2026-09-01 23:10:31.943] +297ms kPostPostLoad name="kPostPostLoad" sender="SKSE" type=1 data_len=0
+[2026-09-01 23:10:50.715] +19069ms kInputLoaded name="kInputLoaded" sender="SKSE" type=6 data_len=0
+[2026-09-01 23:10:51.992] +20346ms MENU_OPEN name="SkyParkour"
+[2026-09-01 23:10:51.996] +20350ms MENU_OPEN name="Loading Menu"
+[2026-09-01 23:10:52.009] +20363ms MENU_OPEN name="Mist Menu"
+[2026-09-01 23:10:52.011] +20365ms MENU_OPEN name="Fader Menu"
+[2026-09-01 23:10:52.023] +20377ms MENU_OPEN name="LoadWaitSpinner"
+[2026-09-01 23:11:01.286] +29640ms kDataLoaded name="kDataLoaded" sender="SKSE" type=8 data_len=0
+[2026-09-01 23:11:01.846] +30200ms MENU_OPEN name="Main Menu"
+[2026-09-01 23:11:01.846] +30200ms MAIN_MENU_OPEN constant="Main Menu" ui_is_menu_open=1 has_movie_view=1
+[2026-09-01 23:11:01.846] +30200ms AUTOLOAD_ARMED save="Autosave1_389B9F8E_0_416476656E747572657233_Tamriel_000016_20260902024535_1_1" delay_ms=1500
+[2026-09-01 23:11:01.850] +30204ms MENU_OPEN name="Cursor Menu"
+[2026-09-01 23:11:01.853] +30207ms MENU_OPEN name="Console"
+[2026-09-01 23:11:01.853] +30207ms MENU_CLOSE name="Console"
+[2026-09-01 23:11:01.853] +30207ms MENU_CLOSE name="Cursor Menu"
+[2026-09-01 23:11:01.854] +30208ms MENU_CLOSE name="LoadWaitSpinner"
+[2026-09-01 23:11:01.854] +30208ms MENU_CLOSE name="Loading Menu"
+[2026-09-01 23:11:01.860] +30214ms MENU_OPEN name="Cursor Menu"
+[2026-09-01 23:11:03.349] +31703ms AUTOLOAD_SETTLED detail="queueing main-thread task"
+[2026-09-01 23:11:04.795] +33149ms AUTOLOAD_TASK_RUNNING detail="on main thread"
+[2026-09-01 23:11:04.795] +33149ms AUTOLOAD_CALL api="RE::BGSSaveLoadManager::Load(const char*, bool)" save="Autosave1_389B9F8E_0_416476656E747572657233_Tamriel_000016_20260902024535_1_1" check_for_mods=0
+[2026-09-01 23:11:04.802] +33156ms AUTOLOAD_RETURNED save="Autosave1_389B9F8E_0_416476656E747572657233_Tamriel_000016_20260902024535_1_1" detail="call returned; watch for kPreLoadGame/kPostLoadGame"
+[2026-09-01 23:11:04.803] +33157ms MENU_OPEN name="LoadWaitSpinner"
+[2026-09-01 23:11:04.803] +33157ms MENU_CLOSE name="LoadWaitSpinner"
+[2026-09-01 23:11:04.803] +33157ms MENU_CLOSE name="Cursor Menu"
+[2026-09-01 23:11:04.805] +33159ms MENU_OPEN name="Cursor Menu"
+[2026-09-01 23:11:04.955] +33309ms kPreLoadGame name="kPreLoadGame" sender="SKSE" save="Autosave1_389B9F8E_0_416476656E747572657233_Tamriel_000016_20260902024535_1_1.ess"
+[2026-09-01 23:11:04.957] +33311ms MENU_CLOSE name="Main Menu"
+[2026-09-01 23:11:04.957] +33311ms MENU_CLOSE name="Cursor Menu"
+[2026-09-01 23:11:04.957] +33311ms MENU_CLOSE name="Fader Menu"
+[2026-09-01 23:11:05.032] +33386ms MENU_OPEN name="Loading Menu"
+[2026-09-01 23:11:05.032] +33386ms MENU_OPEN name="Fader Menu"
+[2026-09-01 23:11:05.093] +33447ms MENU_OPEN name="HUD Menu"
+[2026-09-01 23:11:06.148] +34502ms MENU_OPEN name="LoadWaitSpinner"
+[2026-09-01 23:11:06.148] +34502ms MENU_CLOSE name="LoadWaitSpinner"
+[2026-09-01 23:11:14.038] +42392ms kPostLoadGame name="kPostLoadGame" sender="SKSE" success=1
+[2026-09-01 23:11:14.175] +42529ms MENU_CLOSE name="Loading Menu"
+[2026-09-01 23:11:14.198] +42552ms MENU_CLOSE name="Mist Menu"

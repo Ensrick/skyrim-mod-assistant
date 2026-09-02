@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick Guard Scaling Patch",
+  "version": "0.1.0",
+  "generatedDate": "2026-09-02",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/51",
+  "rule": {
+    "levelMult": 1.0,
+    "calcMinLevel": 5,
+    "calcMaxLevel": "winner's own cap (50)",
+    "policy": "policy.json",
+    "policySha256": "786D00F0B78266530AB4A79DCA336E4ACF75F84B2F5862FA26FBBF30769E0FF9"
+  },
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warningsAsErrors": true
+  },
+  "inputs": {
+    "profile": "Default",
+    "effectiveLoadOrderEntries": 311,
+    "effectiveLoadOrderSha256": "DE16F9103CEB2A39D68DE526DE45A5CFE3B4284A00053BDDE8D29A48485A23D7",
+    "pluginsTxtSha256": "EB2B8FAF7D284716820FC6E8A04C5074C9181B48CFAA224091A8F188EAFFF0A1"
+  },
+  "output": {
+    "plugin": "Ensrick Guard Scaling Patch.esp",
+    "sha256": "686A3A857AFF1884E6DDC3ACAE687B1AE99DA2339DCB55F4BAA43B94DBDAA01C",
+    "bytes": 3488,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 3,
+    "recordTypes": { "NPC_": 3 },
+    "newForms": 0,
+    "masters": [ "Skyrim.esm", "Dragonborn.esm" ],
+    "targets": [
+      "0F6F37:Skyrim.esm EncGuardImperialTemplate",
+      "0F6F38:Skyrim.esm EncGuardSonsTemplate",
+      "0195AF:Dragonborn.esm DLC2RRGuardTemplate"
+    ]
+  },
+  "spriggit": {
+    "package": "Spriggit.Yaml.Skyrim",
+    "version": "0.41.0",
+    "path": "spriggit",
+    "treeSha256": "A01DDEBBEFC30C972A835401BEAE3137F50C56FDE21DA80666F0DA12FA98D80D",
+    "checkedRoundTrip": true
+  },
+  "archive": {
+    "localPath": "package/Ensrick-Guard-Scaling-Patch-0.1.0.zip",
+    "sha256": "29AC6B7E42DA9204949C6157E1EB4829A478B245E7B895F9D6D09CD02B5B5D14",
+    "bytes": 1557,
+    "entries": 1,
+    "deterministicTimestamp": "2000-01-01T00:00:00Z",
+    "committed": false
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "linksChecked": 73,
+    "unresolvedLinks": 0,
+    "rawAcbsReceipt": "records/guard-scaling-audit-2026-09-02.md section 8",
+    "gameplayAcceptance": "pending"
+  },
+  "audit": {
+    "record": "records/guard-scaling-audit-2026-09-02.md",
+    "json": "work/guard-audit.json",
+    "candidates": 1930,
+    "statsProviders": 1011,
+    "leveledTemplates": 256
+  },
+  "distribution": "distributable"
+}

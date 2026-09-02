@@ -36,6 +36,17 @@
         }
       ],
       "headlessLauncher": true
+    },
+    "texconv": {
+      "status": "winget-installed",
+      "version": "<banner version from texconv.exe -h>",
+      "wingetPackage": "Microsoft.DirectXTex.Texconv",
+      "path": "C:\\Path\\To\\texconv.exe",
+      "sha256": "REPLACE_WITH_SHA256",
+      "usedBy": [
+        "every 'Texture Cap' overlay recipe in records/installed-mods.json"
+      ],
+      "headlessLauncher": false
     }
   }
 }

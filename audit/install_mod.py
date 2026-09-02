@@ -54,6 +54,7 @@ SP = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(SP)
 sys.path.insert(0, SP)
 import claim
+import human_presence as HP
 
 CANONICAL = r'C:\Users\danjo\source\repos\skyrim-mod-assistant'
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -112,7 +113,27 @@ def plugins_of(mod_name):
                   if f.lower().endswith(('.esp', '.esm', '.esl'))) if os.path.isdir(d) else []
 
 
+def refuse_if_human_playing(what):
+    """#164: no profile mutation under a session a person is playing in.
+
+    A live SkyrimSE.exe alone is a warning (the launch chain holds the
+    instance lock anyway); a live game whose probe log shows a human driving
+    gameplay menus is a refusal with exit 88."""
+    r = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq SkyrimSE.exe'],
+                       capture_output=True, text=True)
+    if 'skyrimse.exe' not in (r.stdout or '').lower():
+        return
+    v = HP.judge()
+    if v['human']:
+        print(f'REFUSING {what}: SkyrimSE.exe is running and {HP.describe(v)}')
+        HP.log_refusal(v, f'install_mod {what}')
+        sys.exit(HP.HUMAN_AT_CONTROLS)
+    print(f'WARNING: SkyrimSE.exe is running ({HP.describe(v)}); {what} continues '
+          f'but the instance lock may be held by the launch chain')
+
+
 def install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
+    refuse_if_human_playing(f'install {mid} "{mod_name}"')
     with claim.guard(None, f'install_mod {mid} "{mod_name}"', ttl=45):
         return _install(mid, mod_name, prefer, plan, replace, file_id)
 
@@ -218,6 +239,7 @@ def verify():
 
 
 def sort_order():
+    refuse_if_human_playing('--sort')
     with claim.guard(None, 'install_mod --sort (LOOT)', ttl=45):
         return _sort_order()
 

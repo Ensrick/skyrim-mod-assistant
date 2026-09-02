@@ -10,6 +10,9 @@ or it's a failure."* This is that test, as a pass/fail command.
   py -3 audit/launch_verify.py --save Save7_17674846_0_...  # a specific save
   py -3 audit/launch_verify.py --leave-running   # never kill, inspect it yourself
   py -3 audit/launch_verify.py --attach-pid N    # self-test: watch a process, no launch
+  py -3 audit/launch_verify.py --claim-owner NAME  # owner for the work claim ($SKYRIM_CLAIM_OWNER)
+  py -3 audit/launch_verify.py --steam-chain     # legacy Steam launch; can never autoload
+  py -3 audit/launch_verify.py --force-kill "reason"  # kill even if a human is detected (#164)
   py -3 audit/launch_verify.py --no-autoload --leave-running  # stop at the MAIN MENU (menu
                                                  # pilot work); verdict MENU-ONLY, never PASS
 
@@ -34,6 +37,32 @@ anything without LaunchProbe - a micro SKSE plugin that logs the game's own
 Staged at records/source-builds/launch-probe/. `--allow-unverified-signal`
 downgrades the run to a timing observation that can only ever FAIL or be
 INCONCLUSIVE; it can never PASS.
+
+## The hardened chain (2026-09-01, #103 #141 #143)
+
+- The run holds the instance work claim (audit/claim.py) from before the
+  launch until the verdict; a claim held by another owner REFUSES the run. It
+  also refuses while a SkyrimSE.exe or MO2Headless.exe already exists.
+- launch_skyrim.ps1 scrubs every SKYRIM_LAUNCH_PROBE_* / SKYRIM_MENU_PILOT_*
+  variable before it restarts Steam, so nothing this harness sets can leak
+  into the user's later launches. The game is therefore spawned DIRECTLY
+  (`-Direct`: MO2Headless run -> ModOrganizer.exe headless-run ->
+  skse64_loader.exe) with the probe variables on that child only.
+  `--steam-chain` uses steam://rungameid instead; on that chain the probe can
+  never autoload, so the verdict can only be MENU-ONLY or FAIL.
+- The profile's INIs are synced over the Documents pair first (see the ps1).
+
+## Human at the controls (#164)
+
+Before the kill at the end of a run (the only kill in this file; there is no
+idle timeout under --leave-running), `human_presence.judge` reads the probe
+logs: a gameplay menu opened after AUTOLOAD_SETTLED that no MenuPilot command
+explains within 2 s means a person is playing in the harness's session. Then
+the kill is REFUSED, `HUMAN_AT_CONTROLS` is logged
+(records/human-at-controls.jsonl and the run record), the game stays up, and
+the exit code is 88 regardless of the verdict. `--force-kill "<reason>"`
+overrides; the reason is logged. Same check in install_mod.py before an
+install or sort while SkyrimSE.exe is alive.
 """
 import datetime, io, json, os, subprocess, sys, time
 
@@ -45,6 +74,8 @@ except (AttributeError, ValueError):
 
 import launch_watch as W
 import threaddump as TD
+import claim
+import human_presence as HP
 
 AUDIT = os.path.dirname(os.path.abspath(__file__))
 REPO = W.REPO
@@ -175,9 +206,10 @@ class Result:
         self.threads = None
         self.evidence = []
         self.probe = []
+        self.human_at_controls = False   # kill refused; exit 88 (#164)
 
 
-def launch(env_extra, timeout=420):
+def launch(env_extra, timeout=420, steam_chain=False):
     """Start the sanctioned launch sequence and return the child.
 
     launch_skyrim.ps1 owns the parts that are easy to get wrong: closing a
@@ -193,12 +225,20 @@ def launch(env_extra, timeout=420):
     env = dict(os.environ, **env_extra)
     cmd = ['pwsh', '-NoProfile', '-NonInteractive', '-File', LAUNCHER,
            '-AllowInteractiveDesktop', '-WaitSeconds', '30']
+    if not steam_chain:
+        cmd.append('-Direct')
     # A pipe nobody drains fills at 64KB and blocks the child mid-Steam-cycle,
     # which would look exactly like a launch failure. Spool to a file instead.
     import tempfile
     fd, path = tempfile.mkstemp(prefix='launch-skyrim-', suffix='.log')
     fh = os.fdopen(fd, 'w', encoding='utf-8', errors='replace')
     return subprocess.Popen(cmd, env=env, stdout=fh, stderr=subprocess.STDOUT), path
+
+
+def _running(name):
+    out = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {name}'],
+                         capture_output=True, text=True).stdout or ''
+    return name.lower() in out.lower()
 
 
 def _tail(path, n):
@@ -208,9 +248,34 @@ def _tail(path, n):
         return '(unavailable)'
 
 
-def kill(pid, why):
+def kill(pid, why, cfg=None, r=None, since=None):
+    """End the game process - unless a human is at the controls (#164).
+
+    2026-09-01 23:45: this kill ended a session the user had started playing
+    in; nothing saved. Now the game's own menu events are consulted first, and
+    a refusal is loud in three places: stdout, the run record, and
+    records/human-at-controls.jsonl. Returns True when the process was killed."""
+    cfg = cfg or {}
+    verdict = HP.judge(since=since)
+    if verdict['human'] and not cfg.get('force_kill'):
+        line = (f'HUMAN_AT_CONTROLS - NOT killing pid {pid}: {HP.describe(verdict)}. '
+                f'The game stays up; exit code {HP.HUMAN_AT_CONTROLS}. '
+                f'--force-kill "<reason>" overrides.')
+        print('   ' + line)
+        HP.log_refusal(verdict, f'launch_verify pid {os.getpid()} ({why})')
+        if r is not None:
+            r.human_at_controls = True
+            r.evidence.append(line)
+        return False
+    if verdict['human']:
+        line = f'FORCE_KILL over a detected human: reason="{cfg["force_kill"]}" ({HP.describe(verdict)})'
+        print('   ' + line)
+        HP.log_refusal(verdict, f'launch_verify pid {os.getpid()} FORCE_KILL reason={cfg["force_kill"]!r}')
+        if r is not None:
+            r.evidence.append(line)
     print(f'   killing pid {pid}: {why}')
     subprocess.run(['taskkill', '/PID', str(pid), '/F'], capture_output=True, text=True)
+    return True
 
 
 def verify(cfg):
@@ -232,15 +297,37 @@ def verify(cfg):
                         'for a timing observation that can never PASS.')
     if not save and not cfg['no_autoload']:
         blockers.append(f'no .ess save found in {save_dir}')
+    owner = cfg['claim_owner'] or claim.default_owner()
+    other = claim.held_by_other(owner)
+    if other:
+        blockers.append(f'instance work claim is {claim.describe(other)} - not launching '
+                        f'under someone else\'s work (#103)')
+    if not cfg['attach_pid']:
+        live = W.find_process()
+        if live:
+            blockers.append(f'SkyrimSE.exe is already running (pid {live}); a verification '
+                            f'launch needs a clean start')
+        for exe in ('MO2Headless.exe', 'ModOrganizer.exe'):
+            if _running(exe):
+                blockers.append(f'{exe} is running - a mutation or another launch chain '
+                                f'is in progress (#103)')
+    if cfg['steam_chain'] and not cfg['no_autoload']:
+        blockers.append('--steam-chain cannot autoload: the launcher scrubs the probe '
+                        'variables before Steam restarts (#141). Use the direct chain, '
+                        'or --no-autoload for a menu-only observation.')
 
     # An empty SKYRIM_LAUNCH_PROBE_AUTOLOAD disables the probe's autoload
     # (LaunchProbe main.cpp: AutoLoadEnabled() == !autoLoadSave.empty()).
     env = {'SKYRIM_LAUNCH_PROBE_AUTOLOAD': '' if cfg['no_autoload'] else (save or ''),
            'SKYRIM_LAUNCH_PROBE_DELAY_MS': str(int(cfg['settle_ms'])),
-           'SKSE_AUTOMATION_SILENT_UI': '1'}
+           'SKSE_AUTOMATION_SILENT_UI': '1',
+           'SKYRIM_CLAIM_OWNER': owner}
     plan = [f'would run: pwsh -NoProfile -NonInteractive -File {LAUNCHER} '
-            f'-AllowInteractiveDesktop -WaitSeconds 30',
-            f'with env {json.dumps(env)}',
+            f'-AllowInteractiveDesktop -WaitSeconds 30'
+            + ('' if cfg['steam_chain'] else ' -Direct'),
+            f'with env {json.dumps(env)} (scrubbed from Steam by the launcher; '
+            f'applied to the direct child only)',
+            f'claim: {claim.describe(claim.read())} -> would acquire as {owner}',
             f'probe: {probe_paths[0] if probe_paths else "NOT INSTALLED"}',
             f'save: {save} (from {save_dir})']
     # A dry run still reports the blockers - it is the rehearsal, so it has to
@@ -256,6 +343,16 @@ def verify(cfg):
         r.evidence = blockers[1:]
         return r
 
+    if not cfg['attach_pid']:
+        try:
+            claim.acquire(owner, f'launch_verify ({"menu-only" if cfg["no_autoload"] else "full"})',
+                          ttl=45, pid_bound=False)
+        except claim.ClaimHeld as e:
+            r.verdict, r.reason = 'REFUSED', f'instance work claim is {e}'
+            return r
+        r.evidence.append(f'claim held as {owner}; chain: '
+                          f'{"steam://rungameid" if cfg["steam_chain"] else "direct (MO2Headless run)"}')
+
     child = launcher_log = None
     if cfg['attach_pid']:
         # Harness self-test seam: exercise the sampling loop, the phase timing,
@@ -267,7 +364,7 @@ def verify(cfg):
         print(f'\nATTACH MODE: not launching; watching existing pid {pid}')
     else:
         print('\nlaunching (launch_skyrim.ps1 cycles Steam first; this takes a minute)')
-        child, launcher_log = launch(env)
+        child, launcher_log = launch(env, steam_chain=cfg['steam_chain'])
 
         # ---- wait for the process, then start the clock at ITS creation time
         pid = None
@@ -364,13 +461,16 @@ def verify(cfg):
         p.close()
         if not cfg['leave_running'] and (W.find_process() == pid or cfg['attach_pid']):
             kill(pid, 'verification run finished'
-                 if r.verdict == 'PASS' else f'FAIL: {r.reason}')
+                 if r.verdict == 'PASS' else f'FAIL: {r.reason}',
+                 cfg=cfg, r=r, since=None if cfg['attach_pid'] else launch_started)
         if child is not None:
             try:
                 child.wait(timeout=60)
             except Exception:
                 pass
             r.evidence.append('launcher output: ' + _tail(launcher_log, 800))
+        if not cfg['attach_pid'] and not cfg['keep_claim']:
+            claim.release(owner)
     if cfg['allow_unverified'] and not probe_paths and r.verdict == 'PASS':
         r.verdict, r.reason = 'INCONCLUSIVE', (
             'ran without LaunchProbe, so no signal here can certify a real main '
@@ -391,7 +491,9 @@ def write_record(r, cfg):
     path = os.path.join(REPO, 'records', f'launch-verify-{stamp}.md')
     L = [f'# Launch verification - {r.verdict}', '',
          f'- when: {datetime.datetime.now():%Y-%m-%d %H:%M:%S}',
-         f'- verdict: **{r.verdict}**',
+         f'- verdict: **{r.verdict}**'
+         + ('  (HUMAN_AT_CONTROLS - kill refused, game left running, exit 88)'
+            if r.human_at_controls else ''),
          f'- reason: {r.reason}',
          f'- criterion: main menu within {cfg["menu_budget"]:.0f}s of process start '
          f'AND a save loaded'
@@ -504,7 +606,10 @@ def main():
         return selftest()
 
     def opt(name, cast, default):
-        return cast(a[a.index(name) + 1]) if name in a else default
+        if name not in a:
+            return default
+        i = a.index(name) + 1
+        return cast(a[i]) if i < len(a) and not a[i].startswith('--') else default
 
     cfg = {
         'menu_budget': opt('--menu-budget', float, 60.0),      # the user's criterion
@@ -517,9 +622,15 @@ def main():
         'dry_run': '--dry-run' in a,
         'leave_running': '--leave-running' in a,
         'no_autoload': '--no-autoload' in a,      # stop at the main menu (MenuPilot)
+        'steam_chain': '--steam-chain' in a,      # legacy chain: no autoload possible
+        'claim_owner': opt('--claim-owner', str, None),
+        'keep_claim': '--keep-claim' in a,        # leave the claim held after the run
         'allow_unverified': '--allow-unverified-signal' in a,
         'attach_pid': opt('--attach-pid', int, None),   # self-test seam, see verify()
+        'force_kill': opt('--force-kill', str, None),   # reason; overrides the human guard (#164)
     }
+    if '--force-kill' in a and not (cfg['force_kill'] or '').strip():
+        print('--force-kill needs the reason as its argument'); return 64
 
     print('=' * 72)
     print('[1] preflight')
@@ -557,6 +668,10 @@ def main():
             print('\nthread dump taken during this run:')
             TD.report(dump)
         print(f'\nrecord: {write_record(r, cfg)}')
+    if r.human_at_controls:
+        print(f'\nHUMAN_AT_CONTROLS: the game was left running (exit {HP.HUMAN_AT_CONTROLS}); '
+              f'report this, do not retry with --force-kill unless the user says so')
+        return HP.HUMAN_AT_CONTROLS
     return 0 if r.verdict in ('PASS', 'DRY-RUN', 'MENU-ONLY') else 1
 
 

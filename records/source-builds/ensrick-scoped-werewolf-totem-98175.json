@@ -39,11 +39,15 @@
   "transformation": {
     "toolRepository": "https://github.com/Ensrick/nif-port-cli",
     "toolCommit": "e12079cdcc6b058bb032e0d275598715ebe28534",
-    "toolCommitPushed": false,
+    "toolCommitPushed": true,
     "toolBinarySha256": "5070ACD5A44E38A65D9AA39EE61B89BE324703CB2AD0A1FB83270732B7DC3646",
     "command": "remap-textures",
     "policy": "Write a new NIF; never modify or overwrite the vendor NIF. Remap all eight supplied texture references under textures/ensrick/werewolf_totem_98175 and leave the two SMIM rope references intact.",
-    "vendorFilesModified": false
+    "vendorFilesModified": false,
+    "toolCommitBranch": "agent/shape-overlay-and-texture-remap",
+    "toolCommitPullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
+    "toolCommitUrl": "https://github.com/Ensrick/nif-port-cli/commit/e12079cdcc6b058bb032e0d275598715ebe28534",
+    "toolCommitPushNote": "Pushed 2026-09-02 to the branch above (main is protected by a required 'build' check; PR #2 merges it into main)."
   },
   "output": {
     "meshSha256": "2ED97202B2932C74DFE04555D757E4AB24649495C39FFFA5EE85E33ECEA3538A",

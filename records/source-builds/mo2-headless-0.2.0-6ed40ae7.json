@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "component": "MO2Headless (transactional GUI-free Mod Organizer 2 instance controller)",
+  "version": "0.2.0",
+  "deployPath": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/MO2Headless.exe",
+  "buildDir": "C:/Users/danjo/source/repos/mo2-builds/headless-core-33571039440-6ed40ae7",
+  "purpose": "Hardening package 1 of the 2026-09-01 brief: put plugin enable-state preservation inside `run` so no script copy can drop markers again (#105, audit F0/F2); stamp every mutated instance with the build and refuse older builds (#105 F0); keep priority and enabled state on --replace (#91 F13).",
+  "staged": true,
+  "installed": true,
+  "source": {
+    "repository": "https://github.com/Ensrick/modorganizer",
+    "branch": "ensrick/headless-controller",
+    "commit": "6ed40ae742727dffe0deadf4eae01847eac31b11",
+    "parent": "3769ece0fd4da0f99232be27b68fd51385c95e35",
+    "pushed": true,
+    "license": "GPL-3.0 (Mod Organizer 2)",
+    "files": ["headless/main.cpp", "src/CMakeLists.txt", "src/headless/README.md"]
+  },
+  "build": {
+    "method": "GitHub Actions build.yml (ModOrganizer2/build-with-mob-action) - this workstation has no Qt SDK",
+    "run": 33571039440,
+    "qt": "6.11.1 (mob.ini); instance Qt6Core.dll 6.11.1.0",
+    "sequence": 1788305193,
+    "sequenceMeaning": "committer epoch of the built commit, injected by CMake as MO2_HEADLESS_BUILD_SEQUENCE; the instance stamp compares it",
+    "lint": "clang-format per fork .clang-format, checked locally with LLVM 19.1.5 and by the Lint workflow"
+  },
+  "artifact": {
+    "exe": "MO2Headless.exe",
+    "sha256": "E484A21C5CB58410B38679C35275BA805E42B4D22B3D5A91E4EEBB65C95E2DB4",
+    "versionString": "MO2Headless 0.2.0 (build 6ed40ae74272, sequence 1788305193)",
+    "previous": {"sha256": "FEBD3C0A505689A41FF3CECF14569017DD9A36071D681AAEE6AC854CE0257A89", "keptAs": "MO2Headless.exe.bak.v3769ece"}
+  },
+  "behavior": {
+    "runPreservesPlugins": "snapshot active set under the lock; after the child exits re-enable every previously active plugin still in the effective tree (child keeps order); append dropped-but-existing ones; report missing; journal as run-preserve-plugins; emit stateDelta; --no-preserve-plugins opts out; timeout returns exit 75 JSON",
+    "versionStamp": "headless/controller.version {version, hash, sequence, stampedAt, command} on every mutating verb; exit 78 when the stamp is newer; --allow-older-controller overrides; status reports controllerBuild + instanceStamp",
+    "replace": "--replace keeps the replaced row's priority and enabled state unless --priority/--enable/--disable are given; result has replaced/previousPriority/previousEnabled"
+  },
+  "featureDefaultsDiff": {
+    "note": "not applicable - controller, no runtime feature configuration; defaults are the verbs' documented behaviour above",
+    "changed": {}, "onlyInBuilt": {}, "onlyInUpstream": {}
+  },
+  "validation": {
+    "disposable": "controller_test.ps1 (scratch) with FakeMO.exe: 39/40 checks; the failing case (stale row of a mod disabled before the run re-enabled instead of reported missing) is fixed in fa8cb528 / 0.2.1, build run 33589364228, not yet deployed",
+    "live": "status/audit/plugin-list (235/231)/mod-list (308) ok; install_mod --verify 0 problems; preflight clean; mod-enable + mod-disable Light Placer journaled and stamped; smoke launch_verify PASS 2026-09-01 23:11 (records/launch-verify-20260901-231117.md) through `run`"
+  },
+  "record": "docs/MO2-HEADLESS-BUILD-2026-09-01.md"
+}

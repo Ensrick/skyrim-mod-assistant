@@ -34,6 +34,434 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 00:06 - Two texture-path overlays staged for the env-mask sweep typos; six sweep issues opened (#167-#172)
+
+- **What:** Two new local overlays, each a byte copy of an existing vendor
+  texture placed under the misspelled path its mesh asks for, staged with
+  MO2Headless `mod-stage` under the `envmask-sweep` claim (no game or MO2
+  process alive; audit `errors: []`, 0 warnings). (1) `Ensrick - CC Madness
+  Longsword Env Mask Path Fix` (transaction
+  `20260902T050602046Z-725b51195af0`, priority 234, modlist row 2):
+  `ccbgssse025-advdsgs.bsa`'s `madness_longsword01_em.dds` copied to
+  `textures\creationclub\bgssse025\weapons\madness\madness_longsword_01em.dds`,
+  the name both the vanilla CC meshes and Believable Weapons' copies ask
+  for (#167; the typo is Bethesda's). (2) `Ensrick - Skyland Solitude
+  Manhole Texture Path Fix` (transaction `20260902T050602116Z-cbe4e3d83cbb`,
+  priority 235, row 1): Skyland AIO 1K's `smanhole_m.dds` + `smanhole_e.dds`
+  copied into `textures\arechitecture\solitude\` (#168). Recipes
+  `overlays/ensrick-cc-madness-longsword-envmask-path-fix/build.py` and
+  `overlays/ensrick-skyland-smanhole-texture-path-fix/build.py` (pinned
+  input/output hashes, refuse on mismatch); ledger rows `distribution:
+  recipe`; nothing vendor-derived committed. Issues opened from the sweep
+  record: #169 SFCO3 Whiterun castle drapery (archive `113045-783076.7z`
+  ships no `gm misc textures` folder and no `GM_DraperyBlue03b.dds` in any
+  option), #170 Water for ENB Nordic wall waterfall textures (no
+  `tmdwaterfalls` folder or `waterfall_e.dds` in any option of
+  `x37061-784038`), #171 HIMBO orcish + SFCO Dwemer metal masks
+  (`status:needs-decision`, for the user), #172 Sons of Skyrim
+  `SplintedBoots*` meshes (closed on opening: the ESP only uses the
+  `BootsSplinted*` meshes, whose `bg_iron_splinted` textures ship). No
+  installer option or extra download supplies #169 or #170; nothing else
+  installed.
+- **Source:** team-lead follow-up on the #159 sweep (2026-09-02 00:03:
+  issues per finding, overlay the typo cases, check FOMOD plans for the
+  missing sets); evidence in `records/envmask-missing-scan-2026-09-02.md`.
+- **Verification:** PASS in `records/launch-verify-20260902-091326.md` (main menu 32.2s, save 58.1s; 32 plugins, 0 refused) - first launch after the 00:06 staging.
+## 2026-09-02 00:05 - Ensrick patch collection packager `tools/package_ensrick.py`: 17 mods packaged, 5 recipes, 6 gaps, 3 vendor-byte withholds (#160)
+
+- **What:** new `tools/package_ensrick.py` (stdlib only, read-only on the
+  MO2 instance, `--dry-run` plans without writing). From the ledger's
+  `distribution` field it assembles every `distributable` row's MO2 folder
+  into `dist/ensrick-patches/<mod>/` honouring `.packagingignore` and each
+  row's `packagingExcludes`, skipping `sharedList: excluded` rows; writes
+  `dist/ensrick-patches/manifest.json` (per mod: version, every file's
+  SHA-256, `distributionBasis` text, source-build record / build script /
+  tracked overlay); writes `dist/ensrick-recipes/recipes.json` for every
+  `recipe` row whose recorded recipe carries tool + pin, input hashes,
+  executable command and expected output hashes (rows missing any of those
+  are listed under `gaps`, not included); writes `dist/README.md`. Before
+  writing it hashes every shipped file against vendor bytes: all 217 other
+  mod folders (size-prefiltered: 1,162 of 50,520 files hashed), 76 extracted
+  download folders, 97 zips (25 of 15,332 entries), 308 recorded input
+  hashes; 258 7z/rar archives are not readable with the stdlib and are
+  reported as unscanned. Matches are withheld from `dist/` and exit 2.
+  Run 2026-09-02 05:04Z: 20 distributable rows, 17 packaged (LaunchProbe,
+  MenuPilot, Proteus 1.7.99 excluded by `sharedList`), 106 files /
+  62,018,212 B, 18 files dropped by `.packagingignore`; 11 recipe rows,
+  5 complete (FFF, NotWL, Quicksilver, Vikings mesh, Vikings textures),
+  6 gaps (Better Fur and Werewolf Totem: command recorded as a bare verb;
+  CRF Semantic Patch: no tool pin / inputs / command; VHR: no machine-
+  readable recipe; Varinia: markdown-only recipe; Pandora Output: no
+  input/output hashes); 3 violations: `Light Placer - Ensrick 1.7.104`
+  ships `po3_LightPlacer.ini`, `Scripts/LightPlacer.pex` and
+  `Source/Scripts/LightPlacer.psc` byte-identical to the parked vendor
+  `Light Placer` 4.2.1 (MIT; parity documented in the record). Withheld,
+  #160 packaging box left unticked pending a ruling. `dist/` gitignored;
+  `tools/package_ensrick.py` whitelisted. Nothing committed.
+- **Source:** team-lead assignment 2026-09-02 (issue #160 last box, dry run);
+  `records/ensrick-overlay-distribution-2026-09-02.md`; `.packagingignore`.
+- **Verification:** none required (tooling, no build-state change, no
+  launch); packager self-verifies every copy by re-hashing the destination.
+
+## 2026-09-02 00:01 - #102 follow-up: Proteus rows reconciled, five native-overlay build records, JContainers + Proteus source committed (records only)
+
+- **What:** (1) Ledger row `Proteus` enabled false -> true to match
+  modlist.txt (+Proteus since 2026-08-28; the park reason no longer applies
+  because the DLL-only overlay `Proteus 1.7.104 Native Overlay - Ensrick`
+  shadows the package's own Proteus.dll); new row `Proteus 1.7.99 Native
+  Overlay - Ensrick` with enabled=false, superseded by the 1.7.104 overlay,
+  folder kept on disk (priority 93, DLL SHA-256 316DF6BB..., version
+  resource 1.1.0.0, built from `_rebuild_ProteusUtils` at ed5cf51). (2) Five
+  new `records/source-builds` records: ensrick-consoleutilsse-1.7.104
+  (Ensrick/ConsoleUtilSSE ad5e6e5, CI run 33208154245 success
+  20:25-20:41Z, CommonLibSSE-NG 70c1acd), ensrick-jcontainers-1.7.104,
+  ensrick-proteus-1.7.104, ensrick-racemenu-skee64-1.7.104,
+  ensrick-papyrusutil-1.7.104; each carries base commit, the change list,
+  DLL version resource, SHA-256 (all five installed DLLs match the build
+  outputs still in `skyrim-tools-source/*-1.7.104`), transaction id, MSVC
+  14.44.35207 / VS 17.14.37012.4, vcpkg boost 1.92. (3) The uncommitted
+  working trees that produced the installed JContainers64.dll and
+  Proteus.dll were committed on their local `ensrick/1.7.104` branches:
+  JContainers 70b7362251dd (9 files: version 4.3.1.104, BSFixedString
+  offsets for 1.7.104, Boost 1.92 fixes, vcxproj plumbing) and Proteus
+  901a5cd79a63 (5 files: version 1.1.0.104, CommonLibSSE 3d81614 ->
+  70c1acd, 1.7.104 runtime allowlist, verifier update). Commit only: not
+  pushed, no remotes added. RaceMenu (3 files) and PapyrusUtil (3 files)
+  stay uncommitted by scope (no redistribution licence); their records pin
+  the working tree by per-file SHA-256 and patch hash. No MO2 profile,
+  plugin or game-state change in this item.
+- **Source:** team-lead follow-up 2026-09-02 on #102 (flags from the ledger
+  fill: Proteus enabled mismatch, unledgered 1.7.99 folder; provenance gap
+  F8 in `docs/PROCESS-AUDIT-2026-08-30.md`); #160 build-record boxes.
+- **Verification:** none required (records and local source commits only;
+  no launch). `install_mod.py --verify` 0 problem(s); preflight clean (1
+  pre-existing Steam-overlay warning).
+
+## 2026-09-02 00:01 - Misc Effects ENB Light main 1.6 + update 1.6.1 installed below Believable Weapons (#102 follow-up)
+
+- **What:** Two new mods via `audit/install_mod.py` under the work claim
+  (SkyrimSE.exe and ModOrganizer.exe confirmed absent first): `Misc Effects
+  ENB Light` (65070 MAIN 1.6, file 418811, archive SHA-256 F2870D9D...,
+  transaction 20260902T045458708Z-faa5633eab6a) and `Misc Effects ENB Light -
+  Update 1.6.1` (file 423903, one new mesh
+  `dlc1falmervalleybrazierlight.nif`, SHA-256 706DB892...,
+  transaction 20260902T045459760Z-f1fd059060d4). Reason: the already-installed
+  optional `Misc Effects ENB Light - Believable Weapons` is documented on its
+  page as an overwrite of the main file, and the main was never installed.
+  Placed with `mod-priority` at 90 (main) and 91 (update), BELOW Believable
+  Weapons (now 92) and the optional (now 94): the main overlaps Believable
+  Weapons on 2 bound-weapon ench-effect meshes and the optional on 4, so the
+  base-layer rule in `docs/PATCH_INTENTS.md` holds and the optional wins its
+  4 files. Meshes only, no plugins, no INI/config change. Ledger rows written
+  by the installer, notes added (ledger 228 -> 232 with the Proteus rows
+  below). `install_mod.py --verify` 0 problem(s); preflight clean.
+- **Source:** team-lead follow-up 2026-09-02 on #102 (the missing main file was
+  flagged in the optional's ledger row); Nexus file 270746 description
+  "Install the main file and then overwrite with this"; update file 423903
+  "Merge with main file" (latest version is law).
+- **Verification:** VERIFIED 2026-09-01 23:58 by records/launch-verify-20260901-235806.md (envmask-sweep launch; SkyrimSE.exe started 23:57:16 local, after the 23:54:58 install and 23:55:00 priority moves; main menu 30.7 s, save loaded 43.5 s, 232 plugins). Launch/load level only; the ENB-light meshes were not render-checked. No launch by this agent; envmask-sweep was messaged
+  before its run so the record covers these meshes.
+
+## 2026-09-01 23:55 - Human-at-the-controls guard on every harness kill and on installs under a live game (#164)
+
+- **What:** new `audit/human_presence.py`: after the harness's
+  `AUTOLOAD_SETTLED` (or, in a menu-only run, `MAIN_MENU_OPEN`), any
+  `MENU_OPEN` of a gameplay menu in `LaunchProbe.log` (TweenMenu,
+  InventoryMenu, MagicMenu, MapMenu, Journal Menu, Sleep/Wait Menu, Dialogue
+  Menu, Console, plus container/barter/favorites/stats/crafting/lockpicking/
+  book/training/gift) that no MenuPilot `COMMAND` explains within 2 s means a
+  person is playing. `launch_verify.kill` (the only kill in the file; there is
+  no idle timeout under `--leave-running`) now judges first: on a human it
+  REFUSES, prints and records `HUMAN_AT_CONTROLS`
+  (`records/human-at-controls.jsonl` + the run record), leaves the game up
+  and exits **88** whatever the verdict; `--force-kill "<reason>"` overrides
+  and logs the reason. `install_mod.py` install and `--sort` run the same
+  check when `SkyrimSE.exe` is alive and refuse with 88 on a human. Fixtures
+  in `audit/fixtures/`: the 23:41 session's real `LaunchProbe.log` +
+  `menupilot.log` (the one the 23:45 kill ended) and the 23:11 smoke's log
+  reconstructed from its record. `py -3 audit/human_presence.py --selftest`:
+  8/8 - 23:41 detected (first unmatched Journal Menu 23:42:01.909, the piloted
+  Console open at 23:42:07 correctly excluded), 23:11 not detected, a missing
+  pilot log makes every gameplay open count, a stale log never claims a
+  human. In-process wiring test: `launch_verify.kill` refused on the human
+  fixture (flag set, taskkill not run), killed with `--force-kill`, killed on
+  the clean fixture. Not launched; no game process was touched.
+- **Source:** team-lead directive 2026-09-01 23:50; issue #164 (23:45 kill of
+  guard-patch's `--leave-running` session while the user played, unsaved).
+- **Verification:** UNVERIFIED as a launch (tooling; selftest + wiring test
+  only, no launch required per directive). First live exercise is whichever
+  `launch_verify` run next ends a session.
+
+## 2026-09-01 23:53 - Ensrick - Skyking Signs Env Mask Fix extended 4 -> 11 masks; load-order env-mask sweep, 10 mods flagged (#159)
+
+- **What:** `Ensrick - Skyking Signs Env Mask Fix` re-staged (MO2Headless
+  `mod-stage --replace`, transaction `20260902T045315225Z-7d160abddf8d`,
+  priority kept at 228 = modlist row 4, enabled, audit `errors: []`). The
+  same 212-byte 4x4 black alpha-1 env mask now also sits at the seven
+  remaining paths Skyking Signs' `03 Parallax` meshes reference and nothing
+  ships: `markarth\mrkdeco01_m`, `markarth\mrkinnwindows01_m`,
+  `riften\riftenlogdetails01_m`, and `landscape\{fieldgrass01,
+  mountains\mountainslab02, rocks01, tundra01}_m` (load-screen mesh). The two
+  Markarth masks are also what `Skyking Unique Signs` asks for
+  (signthehagscure, signarnleifandsons), and `mountainslab02_m` is what
+  `ERM - Fix and Addon`'s `minecboulderl02.nif` asks for, so those are covered
+  by the same files. Vanilla ships no `_m` for any of the eleven and shades the
+  same surfaces with the Default shader, so a black mask reproduces the
+  vanilla look. `build.py` carries the eleven paths; all 11 DDS read cleanly by
+  texconv 2026.4.1.1. Ledger row updated (files, recipe, hashes). New tool
+  `audit/envmask_scan.py` swept every enabled mod's loose NIFs (207 mods,
+  11,351 NIFs, 4,999 env-mapped shapes, 10 s) against loose files + 59 mod
+  BSAs + 92 vanilla BSAs: 103 shapes in 10 mods have an env mask or cubemap
+  that resolves nowhere. Only the Skyking / Unique Signs / ERM cases were
+  masked (matte wood, stone, ground, rock). NOT masked, listed for the user in
+  `records/envmask-missing-scan-2026-09-02.md`: HIMBO Refits orcish armor
+  (metal, obsidian cubemap), SFCO 3 Dwemer furniture (metal) and Whiterun
+  castle drapery (mask exists under another SFCO path, diffuse missing too),
+  Sons of Skyrim splinted set (whole texture set absent), Believable Weapons
+  madness sword (`_01em` vs the CC BSA's `01_em`), Skyland AIO `smanhole.nif`
+  (`arechitecture` typo, real mask + cubemap ship beside it), Water for ENB
+  `norextwallbg1way01water.nif` (its own `tmdwaterfalls` textures not
+  installed), Lux Orbis `sbridge01.nif` (shadowed by Assorted Mesh Fixes, never
+  renders). Vanilla BSA-packed NIFs and mod BSA-packed NIFs were not opened.
+- **Source:** user question 2026-09-01 ("now we should have no more of these
+  strangely reflective textures?"), team-lead dispatch on #159 (extend the
+  overlay to all eleven + sweep the load order); evidence in the record.
+- **Verification:** PASS in `records/launch-verify-20260901-235806.md`
+  (main menu 30.7s, save loaded 43.5s, claim `envmask-sweep`, direct chain).
+  In-game A/B on #159 still owed (Numpad * discriminator; now also a Markarth
+  sign and the Riften orphanage sign).
+
+## 2026-09-01 23:52 - Light Placer rebuilt from source for 1.7.104 / Address Library v5, installed as `Light Placer - Ensrick 1.7.104`, vendor row stays parked (#79, #140)
+
+- **What:** New mod `Light Placer - Ensrick 1.7.104` (MO2Headless `mod-stage`,
+  transaction `20260902T045032956Z-13ae860d76e1`, priority 43 directly above the parked vendor
+  `Light Placer` at 42; enabled). Complete package built from the public
+  fork `Ensrick/LightPlacer` branch `ensrick/1.7.104` (commit `ae48c76`,
+  pushed; upstream master `1f15e5c` = v4.2.1 + 2 fixes): `po3_LightPlacer.dll`
+  (sha256 `2BD0ADFD...EA92`, file version 4.2.1.1.0) + `.pdb`,
+  `po3_LightPlacer.ini` and `Scripts/LightPlacer.pex` byte-identical to the
+  vendor 4.2.1 files, `Source/Scripts/LightPlacer.psc`, `LightPlacer-LICENSE.txt`.
+  Why a rebuild: the vendor DLL's embedded CommonLib reads Address Library
+  formats 1-2 only, so on 1.7.104 `po3_LightPlacer.log` ended with
+  "Unsupported address library format: 5" and the game died at t+4.3s
+  (`records/launch-verify-20260901-230735.md`). The fork follows upstream's
+  own August migration: submodule -> `powerof3/CommonLibSSE` dev `cbb5c29a1`
+  + `libxse/commonlib-shared` `b8f30fb8` (its `IDDB.cpp` has `load_v5`),
+  plus `no-modal-fail.patch` so `REX::FAIL` logs and terminates without a
+  MessageBox (the built DLL imports neither MessageBoxA nor MessageBoxW; the
+  vendor DLL imported MessageBoxW). Not CommonLibSSE-NG: po3's code uses
+  fork-specific APIs and upstream's own migration (BaseObjectSwapper /
+  PapyrusExtender, 2026-08-25) was the smaller, more faithful diff to follow.
+  Gate: `audit/skse_version_data.py` PASS - versionIndependence=5,
+  versionIndependenceEx=2 (AddressLibraryV5 bit YES), compatibleVersions
+  `1.7.104.0`, PE stamp 1788323919 (2026-09-02 04:38:39Z). Feature defaults
+  identical to vendor (`feature_defaults_diff.py` exit 0, #144). Build 0
+  warnings under upstream's `/W4 /WX`. Licence: MIT (notice ships in the
+  package), so the row is `distribution: distributable`. Vendor `Light
+  Placer` 4.2.1 row stays disabled with a SUPERSEDED note. Record:
+  `records/source-builds/ensrick-light-placer.json`; ledger row added.
+- **Source:** team-lead assignment (rebuild-forward, never park; no popups;
+  latest is law), issues #79 and #140, `records/launch-verify-20260901-230735.md`.
+- **Verification:** `VERIFIED 2026-09-01 23:52` - `records/launch-verify-20260901-235200.md` PASS, main menu 31.4s, save loaded 42.1s (232 plugins seeded). `skse64.log`: "plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 16)". `po3_LightPlacer.log`: "po3_LightPlacer v4.2.1.1 / Game version : 1.7.104.0", 9 Lux CS Patch JSON configs read, 30 hooks installed, RESULTS "Models : 267 (295 lights)", console commands installed - the vendor build never got past the address-library header. Preflight exit 0 before the launch. Not yet eyeballed: a lit Lux CS interior.
+
+## 2026-09-01 23:48 - #102 ledger gaps closed: 7 enabled mods without a row recorded (records only)
+
+- **What:** `records/installed-mods.json` 221 -> 228 rows. Five Ensrick native
+  rebuild overlays for Skyrim 1.7.104 (DLL-only, priority 106-110 above their
+  base mods; provenance, transaction ids and installed-DLL SHA-256 taken from
+  `docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md`,
+  `docs/CONSOLEUTIL-1.7.104-REBUILD-2026-08-28.md` and
+  `docs/RUNTIME-ISSUES-2026-08-28.md`): ConsoleUtilSSE 1.6.1.104
+  (Ensrick/ConsoleUtilSSE ad5e6e5, CI run 33208154245, distributable),
+  JContainers 4.3.1.104 (ryobg base 90db5e2, MIT, distributable),
+  Proteus 1.1.0.104 (Nightfallstorm base 324e07c, GPL-3.0, distributable),
+  RaceMenu skee64 0.4.19.17 (expired6978 base 748ca80, local-only) and
+  PapyrusUtil 4.7 (eeveelo base 01ac25d, local-only); the two local-only
+  classes mirror the active blockers in
+  `records/private-runtime-dependencies.json`, the three distributable rows
+  carry the "notices and reproducible build still owed" gap from the #160
+  sweep. Two vendor rows resolved through the Nexus API from each folder's
+  `meta.ini` installationFile and hashed from the downloads folder: Believable
+  Weapons 37737 / file 260562 v1.5 (archive SHA-256 C9F93A3F..., FOMOD plan
+  `records/fomod-plans/37737-believable-weapons.json`, 136 mappings; noted as
+  the user-designated base layer for generic iron/steel per
+  `docs/PATCH_INTENTS.md`) and Misc Effects ENB Light - Believable Weapons
+  65070 / file 270746 v1.2.1BoundOptionals (archive SHA-256 6409B9D8..., 6
+  bound-weapon NIFs). Both were installed 2026-08-26 straight through
+  MO2Headless, which is why no row existed (PROCESS-AUDIT F4). Flagged in the
+  rows, not acted on: the base `Proteus` row still says enabled=false while
+  modlist.txt has +Proteus; the ENB Light main file is not installed although
+  the optional file's page says to overwrite it. No MO2 profile, plugin or
+  game-state change.
+- **Source:** `audit/preflight.py` WARN "7 enabled mod(s) have no ledger row
+  (#102)"; issue #102; team-lead task 2026-09-01.
+- **Verification:** none required (records only; no launch).
+  `py -3 audit/install_mod.py --verify` = 0 problem(s);
+  `py -3 audit/preflight.py` clean, the ledger-gap WARN is gone (1
+  pre-existing Steam-overlay warning remains).
+
+## 2026-09-01 23:35 - #160 recipe gaps closed: every Ensrick recipe row now reproducible from recorded inputs (records only)
+
+- **What:** Closed 10 of the 12 checklist boxes on #160. texconv pinned in
+  `toolchain.json` (`tools.texconv`, DirectXTex 2026.4.1.1, SHA-256
+  563D9ECA...) and the stale nifPortCli hash refreshed; nif-port-cli commits
+  e12079c + c63f74e pushed to `agent/shape-overlay-and-texture-remap` (PR
+  Ensrick/nif-port-cli#2; `main` is protected). New executable recipe
+  `overlays/ensrick-bloodskal-blade-4-static-glow/build.py` (reproduces the
+  installed mesh byte-for-byte from the vendor NIF). New
+  `records/source-builds` records: collectibles-helper-ussep-forward,
+  quickloot-ie-1799, general-compatibility-patch,
+  assorted-mesh-fixes-se-mesh-port (57 input/output hash pairs, rerun 57/57
+  identical with two binaries), vikings-weaponry-se-mesh-port (6/6 identical
+  from BSA-extracted inputs). Ledger: `recipe` field on the 5 texture caps
+  (per-file texconv command + vendor input hash + output hash), FFF cap
+  (archive entry `textures 1k/.../Twigs_Freak.dds`, SHA-256 E4CC21AE...),
+  AMF/Vikings ports, Bloodskal glow; LaunchProbe/MenuPilot
+  `sharedList: excluded (diagnostic tooling)`; SDT row sha256 filled +
+  `packagingExcludes`; QuickLoot/Lux Water rows' null hashes filled; 4 rows
+  added (CRF Semantic Patch=recipe, General Compatibility Patch=distributable,
+  Scoped Werewolf Totem Skull=recipe, Pandora Output=recipe; ledger 216 ->
+  220). Lux Water CS Patch blocker cleared in
+  `records/private-runtime-dependencies.json` after re-parsing the ESP (559
+  overrides, 0 new forms, no assets). `.packagingignore` added (stray
+  `SSEDisplayTweaks_Custom.ini.bak.v20260901-pre-120hz`, `*.bak*`,
+  `meta.ini`, Pandora `Engine.log`, LaunchProbe/MenuPilot). Collectibles
+  Helper generator source staged in-tree at
+  `mods/collectibles-helper-ussep-forward` (no repo exists; commit + push
+  still open). Still open: that box and the packaging step. Flagged: the
+  installed General Compatibility Patch came from an uncommitted worktree
+  state (pushed manifest hash differs). No MO2 profile, plugin or game-state
+  change.
+- **Source:** #160 sweep (`records/ensrick-overlay-distribution-2026-09-02.md`,
+  "Closure pass" section); team-lead task 2026-09-01.
+- **Verification:** none required (records, recipes and tool pins only; no
+  launch). Recipe reproduction checks: Bloodskal 42-byte patch hash match,
+  AMF 57/57, Vikings 6/6, FFF entry hash match. `audit/preflight.py` clean
+  (3 pre-existing warnings).
+
+## 2026-09-01 23:37 - Ensrick - Guard Scaling Patch installed: ordinary guards PC x1.0 from level 5 instead of 20 (#51)
+
+- **What:** New generated plugin `Ensrick Guard Scaling Patch.esp` (ESL-flagged,
+  override-only, 3 NPC_ records, masters Skyrim.esm + Dragonborn.esm) in local
+  mod `Ensrick - Guard Scaling Patch` (MO2Headless `mod-stage`, tx
+  `20260902T043727658Z-14d275ba88ef`, priority 230; `plugin-enable` tx
+  `20260902T043728222Z-17887e2ec06b`; LOOT rule added to
+  `config/loot/userlist.yaml` and the live userlist, group `Ensrick Generated
+  Patches` after the CRF Semantic Patch; `install_mod.py --sort` run
+  `records/tool-runs/20260902T043805857Z-mo2-loot-5278d2f0`, plugin lands
+  last at plugins.txt line 237, 232 active; `--verify` 0 problems). Record
+  audit `records/guard-scaling-audit-2026-09-02.md`: the level-20 guard is
+  **vanilla** - every hold/city guard inherits stats from
+  `EncGuardImperialTemplate` (0F6F37) / `EncGuardSonsTemplate` (0F6F38),
+  Skyrim.esm PC x1.0 calc-min 20 max 50, USSEP forwards identical values; no
+  installed mod inflates guard levels (Sons of Skyrim / Xtudo / USSEP touch
+  placed guard records for outfits and class only). The patch sets those two
+  plus `DLC2RRGuardTemplate` (Raven Rock, same 20-50) to PC x1.0 min 5 max 50.
+  Untouched and listed with reasons in `mods/guard-scaling-patch/policy.json`:
+  named captains/commanders, CW soldiers (PC x0.25 from 1), siege/Penitus/
+  Thalmor tiers, `GuardWinterholdCollege` (CRF winner, kept out of masters),
+  and mod-added guard families (Bruma, Wyrmstooth, Beyond Reach, 3DNPC,
+  Vigilant, Grand Solitude). Generator + Spriggit tree + policy committed
+  under `mods/guard-scaling-patch/` (`regenerate.ps1`, 2 byte-identical runs,
+  73 links / 0 unresolved, raw ACBS byte parse as independent receipt); build
+  record `records/source-builds/ensrick-guard-scaling-patch.json`; ledger row
+  `distribution: distributable`. Rollback: disable the one mod.
+- **Source:** user rule on #51 (2026-08-29) and the 2026-09-01 report "I tried
+  attacking a single guard and it was like fighting a level 20 at level 1";
+  team-lead brief 2026-09-01 (guard-patch agent).
+- **Verification:** VERIFIED 2026-09-01 23:42 - `launch_verify` PASS, main
+  menu **34.9 s**, save loaded **46.3 s** (`kPostLoadGame success=1`), direct
+  chain, claim `guard-patch`, post-launch preflight clean (4 warnings, all
+  pre-existing). Record: `records/launch-verify-20260901-234200.md`. The
+  guard *level* itself is not yet witnessed in-game: MenuPilot can fill the
+  console entry but cannot execute it (see `docs/MENUPILOT.md`, console
+  section), so the manual check stands: open the console on any hold guard
+  and run `GetLevel` - expect `max(5, player level)` instead of 20 (fresh
+  spawns only; guards already loaded in the save keep their level until they
+  respawn or the cell resets). Note: the user took the controls inside this
+  verification session at 23:43 and the agent's `launch_verify.kill` of pid
+  49836 at 23:45 ended it (team-lead heads-up arrived afterwards); nothing
+  was saved by the agent.
+
+## 2026-09-01 23:12 - Hardening package 3/3: controller 0.2.0 deployed, real LocalSettings flag flipped, Light Placer validated and re-parked, smoke PASS (#105, #91, #143, #98, #140)
+
+- **What:** (1) MO2Headless **0.2.0** (`Ensrick/modorganizer@6ed40ae7`, GHA run
+  33571039440, sha256 `E484A21C...2DB4`) deployed to
+  `mo2-instances\skyrim-se\MO2Headless.exe` (3769ece kept as
+  `MO2Headless.exe.bak.v3769ece`), instance stamped
+  `headless/controller.version` = 6ed40ae74272 / 1788305193, `toolchain.json`
+  re-pinned. `run` now restores plugin enable markers itself and reports
+  `stateDelta`; an older controller refuses a newer-stamped instance (exit
+  78); `--replace` keeps priority and enabled state. Disposable-instance
+  regression 39/40 (the one gap is fixed in 0.2.1 `fa8cb528`, run
+  33589364228: downloaded 23:58, same regression 40/40, NOT deployed so the
+  smoked build stays the verified state - morning item). Record:
+  `docs/MO2-HEADLESS-BUILD-2026-09-01.md`,
+  `records/source-builds/mo2-headless-0.2.0-6ed40ae7.json`. (2) The REAL
+  profile flag: `profiles/Default/settings.ini` `LocalSettings` false -> true
+  (original kept as `settings.ini.bak.v20260901-localsettings-false`); the
+  stray `settings.txt` that every gate had been reading renamed
+  `settings.txt.bak.v20260901-stray`; empty `skyrimcustom.ini` copied into the
+  profile so the MO2 GUI cannot raise its "missing profile-specific INI"
+  dialog. `preflight.check_profile_owns_inis` now reads `settings.ini`
+  (FAIL), `preflight_extra` warns on any stray; `docs/INI_AND_PROFILE_STATE.md`
+  gained "The file that actually holds the flag". (3) **Light Placer** 4.2.1
+  restored (`mod-enable`, tx 20260902T040611304Z) under the
+  unpark-requires-PASS rule and validated by launch: the game died at t+4.3s
+  on `loading plugin "LightPlacer"`, `po3_LightPlacer.log`: "Unsupported
+  address library format: 5" - a genuine #140 failure, so it was re-parked
+  (`mod-disable`, tx 20260902T040821246Z; ledger `enabled:false` with the
+  reason; evidence on #140). `preflight.check_last_launch_completed` now
+  checks whether the dying plugin's DLL is still in an enabled mod (via SKSE
+  version data) and only FAILs while it is - otherwise the next launch is the
+  park's confirmation. (4) One consolidated `launch_verify` smoke through the
+  hardened chain covering packages 1-3 plus everything other agents staged
+  since the 17:28 PASS (Skyking Signs env-mask overlay #159, shadow filter
+  #151, fMoveLimitMass #150, DT 119 fps cap / LockCursor #149, CS Advanced
+  Skin + Hair Specular off #144 - config-load only, visuals not judged).
+  Steam cleanly restarted afterwards from a scrubbed environment; post-launch
+  preflight clean, deliberate INI keys intact, 231 active plugins before and
+  after, claim released.
+- **Source:** team-lead hardening brief items 1, 2c, 3, 4 and the resume
+  order of 2026-09-01 23:00; #140 "unpark requires a PASS"; #143 root cause
+  (`modorganizer/src/profile.cpp:94`).
+- **Verification:** VERIFIED 2026-09-01 23:11 - `launch_verify` PASS, main
+  menu **31.3 s**, kDataLoaded 30.8 s, save load started 34.4 s, save loaded
+  **43.5 s** (`kPostLoadGame success=1`), 31 plugins checked / 0 refused,
+  direct chain `MO2Headless run -> headless-run -> skse64_loader` with the
+  probe variables on that child only, `settings.ini LocalSettings=true`
+  mapping in effect, Documents INIs identical to the profile. Record:
+  `records/launch-verify-20260901-231117.md`. The preceding run
+  `records/launch-verify-20260901-230735.md` is the Light Placer FAIL.
+
+## 2026-09-01 19:15 - Hardening package 2/3: launch chain - env scrub, profile-INI sync, direct spawn, claim (#141, #143, #103)
+
+- **What:** `audit/launch_skyrim.ps1` rewritten in place: [0] refuses to run
+  under another owner's instance claim (exit 75; `-IgnoreClaim` logs a
+  warning instead); [0] harvests every `SKYRIM_LAUNCH_PROBE_*`,
+  `SKYRIM_MENU_PILOT_*` and `SKYRIM_CLAIM_OWNER` variable and REMOVES it from
+  the process before the Steam cycle, so the restarted Steam can never carry a
+  harness autoload into the user's own launches again (the 15:39 / 15:58
+  crashes of 2026-09-01); `SKSE_AUTOMATION_SILENT_UI=1` deliberately stays
+  (popup suppression is wanted everywhere); [2] copies profile
+  `skyrim.ini` / `skyrimprefs.ini` / `skyrimcustom.ini` over the Documents
+  pair whenever the hashes differ, keeping the Documents copy as
+  `.bak.v<stamp>-presync`, and prints which file MO2 will actually map
+  (`settings.ini` LocalSettings); [5] `-Direct` spawns the game through
+  `MO2Headless --timeout 0 run skse64_loader.exe` (headless-run under usvfs)
+  with the harvested variables set on that child ONLY; without `-Direct` the
+  Steam chain is used and no harness variable can reach the game.
+  `audit/launch_verify.py`: acquires the instance claim for the run (REFUSED
+  when someone else holds it; `--claim-owner`, `--keep-claim`), refuses while
+  SkyrimSE.exe / MO2Headless.exe / ModOrganizer.exe already exist, launches
+  `-Direct` by default (`--steam-chain` is menu-only by construction), and
+  records claim + chain in the evidence. `preflight.py`: MO2Headless alongside
+  a running game is the launcher holding the lock, a WARN, not a competing
+  writer.
+- **Source:** #141 comment 2026-09-01 (environment leak through the Steam
+  cycle), #143, #103; team-lead hardening brief item 2b/2c/2d.
+- **Verification:** VERIFIED 2026-09-01 23:11 by the package 3/3 smoke (`records/launch-verify-20260901-231117.md`: direct chain, env scrubbed, INIs identical after sync, main menu 31.3 s, save loaded 43.5 s).
+
 ## 2026-09-01 22:46 - Ensrick - Skyking Signs Env Mask Fix overlay installed, enabled at priority 227 (#159)
 
 - **What:** New local overlay mod `Ensrick - Skyking Signs Env Mask Fix`
@@ -124,6 +552,66 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 - **Verification:** UNVERIFIED as a launch (tooling only; `preflight.py` runs
   clean apart from the live farming-store claim and its deliberate
   `bUpsellOwned=0`); the package-3 smoke launch covers the chain.
+
+## 2026-09-01 18:30 - Shadow filter radius doubled: fPoissonRadiusScale 4 -> 8 (staged, #151)
+
+- **What:** profile `skyrim.ini` [Display] gains `fPoissonRadiusScale=8.0` (key was absent = engine default 4.0; BethINI Pie "Shadow Filtering" slider 0-8, Skyrim.ini key, not Prefs). Original kept as `skyrim.ini.bak.v20260901-preshadowfilter`. This is the radius of the fixed kernel CS 1.8's Utility shadow-mask shader uses for every sun, spot and point shadow (`Utility.hlsl:281,312-335`; CS binds it from the vanilla constants). Doubling it softens all shadow edges uniformly; Screen Space Shadows keeps contact edges crisp. No PCSS exists in CS 1.8 or the ecosystem (doodlum Soft Shadows 74632 hidden 2026-08-24). Registered in `audit/preflight.py` DELIBERATE and the INI-state table. Not launched: another agent holds launch authority.
+- **Source:** user report 2026-09-01 ("window shadows... too sharp around the edges"), team-lead task; diagnosis in #151.
+- **Verification:** UNVERIFIED (config staged only; needs relaunch + the #151 Dragonsreach / Whiterun market check).
+
+## 2026-09-01 23:02 - Media Keys Fix SKSE 1.0.2 installed (Windows key)
+
+- **What:** `Media Keys Fix SKSE` (Nexus 92948, file 792882 v1.0.2 2026-08-21, archive
+  sha256 49918f7a...17ec6, DLL gate PASS: PE stamp 1787337700 = 2026-08-21,
+  versionIndependence=1, viEx=1, outside the SKSE reject window) installed
+  through install_mod.py under the work claim, plus the config overlay mod
+  `Ensrick - Media Keys Fix Configuration` (mod-stage from
+  overlays/ensrick-media-keys-fix-config, `DisableWindowsKey=false`) staged
+  ABOVE it in priority (modlist line 1 vs 2). Effect at next launch: the
+  game's DirectInput flags become FOREGROUND|NONEXCLUSIVE, so the Windows key,
+  media keys and Alt+F4 work while the game is focused; DT LockCursor still
+  confines the pointer while focused and releases it when Start opens.
+  Ledger rows added; INI doc rows updated.
+- **Source:** user reports 2026-09-01 (Win key), #149 evidence (game sets
+  DISCL_EXCLUSIVE|DISCL_FOREGROUND|DISCL_NOWINKEY, epinter/MediaKeysFix
+  src/Main.h); team-lead authorisation 2026-09-01 evening ("install Media Keys
+  Fix SKSE through the standard pipeline"), citing the user's standing "try to
+  fix all these".
+- **Verification:** PASS in `records/launch-verify-20260901-231117.md` (main menu 31.3s, save 43.5s) - config loaded: `MediaKeysFix.log` 23:10:31 `DisableWindowsKey='false'` then `SetCooperativeLevel ... setting to 0x06`. In-game Windows-key check still owed (#149).
+## 2026-09-01 18:50 - Window/input and clutter-physics triage (staged, no install)
+
+- **What:** (1) profile `skyrim.ini` `[HAVOK] fMoveLimitMass=0` added (engine
+  default 95 = mass ceiling the player shoves; 0 stops the player knocking
+  clutter around), original at `skyrim.ini.bak.v20260901-pre-movelimitmass`;
+  stale DT comment on `fMaxTime` corrected; key added to `preflight.py`
+  DELIBERATE and to docs/INI_AND_PROFILE_STATE.md. (2) `LockCursor` row in the
+  INI doc corrected to the deployed `true` (17:41 flip); repo overlay copy
+  synced to the deployed file. (3) NEW config overlay
+  `overlays/ensrick-media-keys-fix-config/SKSE/Plugins/MediaKeysFix.ini`
+  (`DisableWindowsKey=false`) staged for Media Keys Fix SKSE 1.0.2 (Nexus
+  92948 file 792882, 2026-08-21, "Supports ... 1.7.104"), which is NOT
+  installed - it is the only thing that frees the Windows key, because the
+  game's own DirectInput flags (EXCLUSIVE|FOREGROUND|NOWINKEY) eat it, not DT.
+  fMaxTime lead closed: SSEDisplayTweaks.log 18:04 shows `[HAVOK] (DYNAMIC)
+  fMaxTime=0.00416667-0.0166667`, so Havok is already decoupled from fps.
+  (4) 19:05 user scope expansion ("is 120 Hz too high"): DT overlay now sets
+  `[Render] FramerateLimit=119` and `[HAVOK] MaximumFramerate=0` per STEP's
+  SSE Display Tweaks rule for a 120 Hz panel (original at
+  `SSEDisplayTweaks_Custom.ini.bak.v20260901-pre-120hz`; expected log receipt
+  `(Max FPS = 119)`); repo overlay copy synced. Morning test checklists sit at
+  the top of #149 and #150.
+- **Source:** user reports 2026-09-01 (Win key / invisible cursor / clutter
+  scatter), team-lead triage dispatch; GitHub issues #149 (window/input) and
+  #150 (clutter physics); STEP Guide:Skyrim INI/HAVOK, UESP
+  Skyrim:Respawning, epinter/MediaKeysFix src/Main.h, DT window.cpp.
+- **Verification:** VERIFIED 2026-09-01 23:11 at config-load level by
+  `records/launch-verify-20260901-231117.md` (main menu 31.3s, save 43.5s):
+  preflight passed `fMoveLimitMass=0`; `SSEDisplayTweaks.log` 23:10:50
+  `[Render] Framerate limit (game): 119` and `[HAVOK] (DYNAMIC)
+  fMaxTime=0.00840336-0.0166667 ... (Max FPS = 119)`; `MediaKeysFix.log`
+  23:10:31 `SetCooperativeLevel dwFlags found ... setting to 0x06`. In-game
+  Windows-key / cursor / clutter checks are still owed (#149, #150, morning
+  checklist).
 
 ## 2026-09-01 17:40 - LaunchProbe handler-wide bounds hardening (deploy queued)
 
@@ -320,6 +808,11 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   exonerated in one shot.
 
 ## 2026-08-31
+
+### 2026-09-02 - Distribution doctrine for Ensrick overlays (docs + tracking, no build change)
+- **What:** every `Ensrick - *` overlay now carries a distribution class (distributable / recipe / local-only) - section added to `docs/PATCH_INTENTS.md`; classification sweep of all 18 overlays running, results land on ledger rows + `records/ensrick-overlay-distribution-2026-09-02.md`.
+- **Source:** user, "we're making a modlist to share, so I take it this has to be packaged as a patch" (re #159 signpost env-mask fix). Issue #160.
+- **Verification:** none required - no profile, plugin, INI or asset changed.
 
 ### Verification launch wave, 22:00-22:47 - FAILED, three distinct signatures
 

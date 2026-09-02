@@ -18,12 +18,16 @@
   "transformation": {
     "toolRepository": "https://github.com/Ensrick/nif-port-cli",
     "toolCommit": "c63f74e1c45ea331494f88511840ed7222f32ef5",
-    "toolCommitPushed": false,
+    "toolCommitPushed": true,
     "toolBinarySha256": "CC4FFBE32AEAC905F9E24608C6495FA8CFEBE0EED52C37DCD594D78843902C5D",
     "command": "clone-shape",
     "policy": "Start from each exact installed body-refit NIF and clone only the matching separately named weighted fur shape from the exact Better Fur _0 or _1 donor. Write a new output; never overwrite a source or installed vendor file.",
     "vendorFilesModified": false,
-    "bodyRefitFilesModified": false
+    "bodyRefitFilesModified": false,
+    "toolCommitBranch": "agent/shape-overlay-and-texture-remap",
+    "toolCommitPullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
+    "toolCommitUrl": "https://github.com/Ensrick/nif-port-cli/commit/c63f74e1c45ea331494f88511840ed7222f32ef5",
+    "toolCommitPushNote": "Pushed 2026-09-02 to the branch above (main is protected by a required 'build' check; PR #2 merges it into main)."
   },
   "meshes": [
     {

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "component": "ConsoleUtilSSE NG (Ensrick rebuild for Skyrim SE 1.7.104)",
+  "mo2Mod": "ConsoleUtilSSE 1.7.104 Native Overlay - Ensrick",
+  "purpose": "DLL-only overlay above ConsoleUtilSSE NG 1.6.1 (Nexus 76649, file 793316). The official DLL fails to resolve VM class type 61 for GetSelectedReference / SetSelectedReference (its source predates CommonLibSSE-NG 68ae73e1cb99cdf81cd406918531d0570fe1e332, the 1.7.99+ SkyrimVM / PlayerCharacter layout fix); Proteus calls SetSelectedReference before console-driven actor operations.",
+  "license": "GPL-3.0-or-later with the upstream modding/linking exceptions; the fork keeps LICENSE, the exceptions and the bundled third-party notices, and the CI artifact ships DLL + symbols + Papyrus sources + license + exceptions + dependency notices (docs/CONSOLEUTIL-1.7.104-REBUILD-2026-08-28.md).",
+  "source": {
+    "repository": "https://github.com/Ensrick/ConsoleUtilSSE",
+    "upstream": "https://github.com/VersuchDrei/ConsoleUtilSSE",
+    "upstreamBase": "fd89858",
+    "branch": "ensrick/1.7.104",
+    "commit": "ad5e6e529341c8b730a0255ec9cb68fb4fe5eb59",
+    "commitDate": "2026-08-28T15:25:17-05:00",
+    "commitSubject": "Verify DLL exports as a single dumpbin report",
+    "pushed": true,
+    "remoteBranch": "fork/ensrick/1.7.104 (remote \"fork\" = Ensrick/ConsoleUtilSSE; \"origin\" = upstream)",
+    "commitUrl": "https://github.com/Ensrick/ConsoleUtilSSE/commit/ad5e6e529341c8b730a0255ec9cb68fb4fe5eb59",
+    "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/ConsoleUtilSSE-NG-1.7.104",
+    "workingTreeAtBuild": "clean at ad5e6e5 (git status --porcelain empty on 2026-09-02)",
+    "dependencies": {
+      "CommonLibSSE-NG": {
+        "commit": "70c1acd5261210982bd52f6d4468a082fe04d798",
+        "version": "6.7.1",
+        "note": "Required by default; a deliberately named CMake override is needed to build against any other revision (negative test with a wrong revision fails as designed). Same pin as the Proteus, QuickLoot IE, LaunchProbe and MenuPilot builds."
+      }
+    },
+    "localChanges": [
+      "CMake: require the exact audited CommonLibSSE-NG revision by default",
+      "Rebuild for the 1.7.104 runtime while preserving the official Papyrus API",
+      "Logging init: modal report_and_fail path replaced by a caught, logged plug-in load failure (no desktop error box)",
+      "GitHub Actions clean build on current official action releases; verifies file version and the three SKSE exports before publishing",
+      "Artifact bundles DLL, symbols, Papyrus sources, license, exceptions and dependency notices"
+    ]
+  },
+  "build": {
+    "system": "GitHub Actions workflow \"Build ConsoleUtilSSE\" (CMake), hosted runner; the installed DLL is the CI artifact, not a local build",
+    "ciRun": 33208154245,
+    "ciRunUrl": "https://github.com/Ensrick/ConsoleUtilSSE/actions/runs/33208154245",
+    "ciConclusion": "success",
+    "ciCreatedUtc": "2026-08-28T20:25:19Z",
+    "ciCompletedUtc": "2026-08-28T20:41:39Z",
+    "ciHeadSha": "ad5e6e529341c8b730a0255ec9cb68fb4fe5eb59",
+    "artifactDigest": "sha256:102e36ebe3055940d9e53b4c79aed6d1e49039f02738ab81d5927c47f1c5da4a",
+    "localReleaseBuild": {
+      "dllSha256": "E4D31AC54DBD54474A0E482017339DCAB6620846EFB91C94F811CD56A2B20A97",
+      "note": "Built locally against the same CommonLib pin as a pre-check; a different binary from the CI artifact and NOT installed."
+    },
+    "declaredFileVersion": "1.6.1.104"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/ConsoleUtilSSE.dll",
+    "sha256": "7775AA6E70C7608317ADF28D27B09673EA9C8DE98902CE16E08CF5986958722D",
+    "bytes": 3053568,
+    "versionResource": {
+      "fileVersion": "1.6.1.104",
+      "productVersion": "1.6.1",
+      "productName": "ConsoleUtilSSE"
+    },
+    "exports": [
+      "SKSEPlugin_Load",
+      "SKSEPlugin_Query",
+      "SKSEPlugin_Version"
+    ],
+    "imports": "standard Windows/DirectX libraries only (rebuild record)",
+    "matchesCiArtifact": true,
+    "matchesInstalled": true
+  },
+  "installation": {
+    "installedUtc": "2026-08-28T20:43:03Z",
+    "installedBy": "MO2Headless",
+    "installationFile": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/headless/packages/ConsoleUtilSSE-1.6.1.104-ci-33208154245",
+    "transaction": "20260828T204303046Z-84343993f71e",
+    "dryRunFirst": true,
+    "profile": "Default",
+    "enabled": true,
+    "priorityAtInstall": 110,
+    "priorityOn2026-09-02": 114,
+    "modlistLine": 119,
+    "overlayContents": [
+      "SKSE/Plugins/ConsoleUtilSSE.dll"
+    ],
+    "baseModBelow": "ConsoleUtilSSE NG 1.6.1 (76649 / 793316) keeps every other file"
+  },
+  "validation": {
+    "ci": "build, file-version, export, non-modal logging and source-compliant packaging gates passed (run 33208154245)",
+    "profileAudit": "MO2 profile audit passed after the four overlays were installed and again after the ConsoleUtil overlay",
+    "launch": "covered by the 2026-09-01 launch_verify PASSes (records/launch-verify-20260901-172851.md onward) at the launch/load level only",
+    "runtimeAcceptance": "NOT recorded as run: ConsoleUtilSSE.log free of \"Failed to get vm type id\", a harmless selected-reference read/write, and Proteus SetSelectedReference paths (docs/CONSOLEUTIL-1.7.104-REBUILD-2026-08-28.md)"
+  },
+  "distribution": {
+    "class": "distributable",
+    "basis": "GPL-3.0-or-later with exceptions; any distributed binary must be accompanied by corresponding source and the notices (the CI artifact already bundles them)",
+    "vendorFilesModified": false,
+    "privateRuntimeDependencies": "shareableAfterReleaseReview: \"Clean CI artifact exists; runtime acceptance and release packaging remain.\""
+  },
+  "gaps": [
+    "runtime acceptance gate not recorded as run",
+    "release packaging step not done (#160 packaging box)"
+  ],
+  "references": [
+    "docs/CONSOLEUTIL-1.7.104-REBUILD-2026-08-28.md",
+    "docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md",
+    "docs/RUNTIME-ISSUES-2026-08-28.md"
+  ],
+  "recordedUtc": "2026-09-02T05:00:00Z",
+  "recordedFor": "#102 follow-up (team-lead 2026-09-02); provenance gap F8 in docs/PROCESS-AUDIT-2026-08-30.md"
+}

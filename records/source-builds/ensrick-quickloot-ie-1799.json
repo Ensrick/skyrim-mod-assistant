@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "component": "QuickLoot IE (Ensrick rebuild for Skyrim SE 1.7.104)",
+  "mo2Mod": "QuickLoot IE - Ensrick 1.7.99",
+  "mo2ModNameNote": "The folder name says 1.7.99 while the runtime is 1.7.104. The DLL is version-independent (Address Library), so the name is cosmetic.",
+  "purpose": "Native QuickLoot IE build that loads on the 1.7.104 runtime, from the Ensrick fork with the theft/owner-policy fixes.",
+  "license": "MIT. QLIE-LICENSE.md ships inside the package; FORK_NOTES.md: 'The project remains available under the MIT License. The original copyright and permission notice are preserved in LICENSE and must accompany redistributed copies'. (#160 originally said GPL; corrected.)",
+  "source": {
+    "repository": "https://github.com/Ensrick/QuickLootIE",
+    "upstream": "https://github.com/MissCorruption/QuickLootIE",
+    "branch": "agent/fix-theft-owner-policy",
+    "commit": "f87f9a3f355dfa6569ab797ae496776b7650ae85",
+    "commitDate": "2026-08-26T19:08:03-05:00",
+    "commitSubject": "Use versioned SkyrimVM runtime accessor",
+    "pushed": true,
+    "commitUrl": "https://github.com/Ensrick/QuickLootIE/commit/f87f9a3f355dfa6569ab797ae496776b7650ae85",
+    "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/QuickLootIE-tests",
+    "workingTreeAtBuild": "xmake-requires.lock modified and uncommitted: the xmake package repository is re-pointed from github.com/xmake-io/xmake-repo (4de5838 / 1c4a522) to the gitlab.com/tboox/xmake-repo mirror at 297a306f and the cmake package bumped 3.30.4 -> 4.3.4; package versions otherwise unchanged (fmt, magic_enum, nlohmann_json, xbyak v7.06, directxtk 24.2.0, directxmath 2024.02).",
+    "submodules": {
+      "extern/CommonLibSSE-NG": {
+        "commit": "70c1acd5261210982bd52f6d4468a082fe04d798",
+        "version": "6.7.1",
+        "remote": "https://github.com/alandtse/CommonLibVR",
+        "note": "Same CommonLibSSE-NG pin as LaunchProbe and MenuPilot."
+      }
+    }
+  },
+  "build": {
+    "system": "xmake (xmake.lua: set_xmakever 2.9.5; the xmake binary is not on PATH today and the exact xmake version used was not recorded)",
+    "config": ".xmake/windows/x64/xmake.conf: plat=windows arch=x64 mode=release kind=static vs=2022 ccache=true skse_xbyak=true skyrim_se=true skyrim_ae=true skyrim_vr=true; dotnet 9.0.311 detected but unused",
+    "compiler": "MSVC 14.44.35207 cl.exe HostX64/x64 (Visual Studio 2022 Build Tools), Windows SDK 10.0.26100.0 (from the cached xmake toolchain detection)",
+    "languageAndWarnings": "cxx23; warnings allextra treated as errors; optimize fastest; symbols debug",
+    "packages": [
+      "fmt",
+      "magic_enum",
+      "nlohmann_json",
+      "xbyak v7.06"
+    ],
+    "reconstructedCommand": "xmake f -p windows -a x64 -m release && xmake",
+    "exactCommandLineRecorded": false,
+    "builtUtc": "2026-08-27T00:08:33Z",
+    "buildDir": "build/windows/x64/release: QuickLootIE.dll, QuickLootIE.pdb, QuickLootIE.lib, QuickLootIE.exp, QuickLootIEPolicyTests.exe, commonlibsse-ng.lib"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/QuickLootIE.dll",
+    "sha256": "7D8EAE2CA1AEB280A2176ACEFD540A493CC7D8B0754F2E11DB1ABEE1D445B4E4",
+    "bytes": 1256960,
+    "matchesBuildDir": true,
+    "matchesInstalled": true
+  },
+  "package": {
+    "stagingPath": "C:/Users/danjo/source/repos/.codex-tmp/quicklootie-1799-f87f9a3",
+    "fileCount": 20,
+    "files": {
+      "Interface/LootMenuIE.swf": "E2A5FDEA66B0A167CA5C9349F37A7D7AB58E904D68700344AEFAF6F80EC3B0E7",
+      "Interface/QuickLootIE_splash.swf": "2AA98E4065FBEAE73D108509A0BF407716AD78BE67777DBF4783D995B031F67A",
+      "Interface/translations/QuickLootIE_czech.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_english.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_french.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_german.txt": "72111A7A33006F894B0A1A8D7CFC36E3B11E09C645CC50AAE7C27FCC0BE2C971",
+      "Interface/translations/QuickLootIE_italian.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_japanese.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_polish.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_russian.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "Interface/translations/QuickLootIE_spanish.txt": "32D38126A05292AFCA849AD55EDE40507F4161D7F740706F1C76EC82DD8168EB",
+      "QLIE-LICENSE.md": "B44A022632125039C5A1129927F17C4335842A5D0B4BDCDD0C7463F3CBBB8036",
+      "QuickLootIE.esp": "2675D895DBE0A76B0DA9C4C2748FB83972410EEC50C73A75C1DC1FAEAA8A89E4",
+      "Scripts/QuickLootIELoad.pex": "0EEDAC71052E178D8695B6D4DF3EE2C4CFD677BCE7EDA61742FCAEA5DD286CEB",
+      "Scripts/QuickLootIEMaintenance.pex": "D9E23E96DEA3B3A6AD17654BB47332B2583DDA318C6BE655FA714BB44D3D2A21",
+      "Scripts/QuickLootIEMCM.pex": "158F38F9D5AC92C67221E0AA1D759AB9187EA636D6898620F194E3052E2795A2",
+      "Scripts/QuickLootIENative.pex": "EF986C6AB9B37BD2816C44040D5C87B904EE8C330A5B24A3806FFFAEF4009D06",
+      "SKSE/Plugins/QuickLootIE.dll": "7D8EAE2CA1AEB280A2176ACEFD540A493CC7D8B0754F2E11DB1ABEE1D445B4E4",
+      "SKSE/Plugins/QuickLootIE.json": "823F5F57FF590CDA81BC32EAA5F9C4802E266BDC84DEA77A02A27F31CDEEF1A1"
+    },
+    "provenance": {
+      "Interface/*.swf": "byte-identical to res/swf/Interface in the checkout",
+      "Interface/translations/*.txt": "byte-identical to res/txt/Interface/translations; czech, english, french, italian, japanese, polish, russian and spanish are one identical English file, german differs",
+      "SKSE/Plugins/QuickLootIE.json": "res/QuickLootIE.json (SHA-256 B02D026EAC69E07170B99C4BE8E7B5C518DF1D83F2EDAEB6D437CB655CBA3D1A) with LF converted to CRLF; text otherwise identical",
+      "QuickLootIE.esp": "527 bytes; res/esp holds the Spriggit YAML source (Keywords/QuickLootIE_Exclude, Quests/MCMQuickLootIE); the Spriggit deserialize run was not recorded",
+      "Scripts/*.pex": "compiled from res/pex/Source/Scripts/*.psc; the Papyrus compiler invocation was not recorded",
+      "QLIE-LICENSE.md": "MIT notice"
+    }
+  },
+  "installation": {
+    "installedUtc": "2026-08-27T00:10:20Z",
+    "installedBy": "MO2Headless",
+    "installationFile": "C:/Users/danjo/source/repos/.codex-tmp/quicklootie-1799-f87f9a3",
+    "allFilesByteIdenticalToStaging": true,
+    "profile": "Default",
+    "enabled": true,
+    "modlistLine": 139,
+    "plugin": "QuickLootIE.esp",
+    "pluginsTxtLine": 236,
+    "history": "PARKED 2026-09-01 for the #142 bisect wave, RESTORED 2026-09-01 after the wave was exonerated (ledger note)"
+  },
+  "ciArtifact": {
+    "run": 30936417704,
+    "path": "C:/Users/danjo/source/repos/skyrim-tools-source/QuickLootIE-artifacts/run-30936417704",
+    "zip": "QuickLootIE-Ensrick-2026.08.04.zip",
+    "zipSha256": "8644ADBDFEA2A4CC852CA1F390483A13FD8E45E69EB7817FD7DDEC5F4E372564",
+    "dllSha256": "9BE1B7BC2A76F13B349878AFE83F267C7DFADCE680AD45C46C15096B28BBD9C2",
+    "dllBytes": 1268224,
+    "matchesInstalled": false,
+    "note": "Earlier CI build from a different commit and toolchain; not the installed binary."
+  },
+  "validation": {
+    "loaderGate": "DLL loaded at the SKSE loader gate (docs/RUNTIME-ISSUES-2026-08-28.md); QuickLootIE.esp had to be enabled transactionally on 2026-08-28",
+    "launch": "covered by the 2026-09-01 launch PASSes at the launch/load level only",
+    "gameplayAcceptance": "menu behaviour pending user confirmation (TOOLCHAIN.md post-launch item 1)"
+  },
+  "distribution": {
+    "class": "distributable",
+    "basis": "MIT; QLIE-LICENSE.md must accompany redistributed copies",
+    "vendorFilesModified": false
+  },
+  "gaps": [
+    "exact xmake / cl invocation not captured",
+    "Spriggit and Papyrus compiler invocations for the ESP and PEX files not captured",
+    "xmake-requires.lock modification is uncommitted in the checkout"
+  ]
+}

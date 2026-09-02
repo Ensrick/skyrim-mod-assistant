@@ -230,6 +230,22 @@
       "note": "official 1.7.99 wave build | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 37737,
+      "modName": "Believable Weapons",
+      "nexusName": "Believable weapons",
+      "version": "1.5",
+      "fileId": 260562,
+      "fileName": "Believable weapons-37737-1-5-1643576065.7z",
+      "sizeMb": 15.02,
+      "sha256": "c9f93a3f0690a8a601b1ce5bed83236021520132bfb32bb9d397838dc2ffb470",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T23:24:51Z",
+      "transaction": null,
+      "fomodPlan": "records/fomod-plans/37737-believable-weapons.json",
+      "note": "jg1's weapon mesh overhaul v1.5 (Nexus MAIN file 260562, uploaded 2022-01-30), archive downloads/37737-260562.7z (705 files, 1561 folders; sha256 matches the provenance table in records/believable-weapons-retexture-compatibility-2026-08-29.md). Installed 2026-08-26 through MO2Headless mod-install with the FOMOD plan records/fomod-plans/37737-believable-weapons.json: 136 mappings = 115 \"base\" weapon-mesh options across battleaxes 18, greatswords 39, swords 23, warhammers 20, maces 17, waraxes 17 and 2 shields (iron, steel), 19 greatsword \"scb\" (scabbard) options, swords/chillrend/chillrendenchFX and greatswords/swordofjyggalag/normal fix; 274 files land in the mod folder (meshes/ only, incl. Creation Club bgssse001 draugr and bgssse025 amber/darkseducer/goldensaint/madness sets). No plugin. USER-DESIGNATED BASE LAYER (docs/PATCH_INTENTS.md \"Believable Weapons is the base layer, not the ceiling\", 2026-08-29): it owns the generic iron and steel weapon meshes and must not be bypassed there (the Realistic Armor patch in #57 protects this); named/unique weapon models layering above it are improvements, not conflicts; texture replacers still layer normally because it moves mesh paths, not textures. Retexture / patch compatibility matrix: records/believable-weapons-retexture-compatibility-2026-08-29.md. No transaction id: the install bypassed install_mod.py (meta.ini installationFile = downloads/37737-260562.7z, installedBy MO2Headless), which is why the row was missing (docs/PROCESS-AUDIT-2026-08-30.md F4). [row added 2026-09-02, #102 ledger gap]"
+    },
+    {
       "modId": 69240,
       "modName": "Better Fur - Fine Clothes",
       "nexusName": "Better fur - Fine clothes",
@@ -592,6 +608,23 @@
       "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
+      "modId": 0,
+      "modName": "ConsoleUtilSSE 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick-owned native rebuild overlay (ConsoleUtilSSE NG 76649 source rebuild for Skyrim 1.7.104)",
+      "version": "1.6.1.104",
+      "fileId": 0,
+      "fileName": "headless/packages/ConsoleUtilSSE-1.6.1.104-ci-33208154245 (GitHub Actions run 33208154245 artifact of Ensrick/ConsoleUtilSSE ad5e6e5, branch ensrick/1.7.104)",
+      "sizeMb": 2.91,
+      "sha256": "7775aa6e70c7608317adf28d27b09673ea9c8de98902ce16e08cf5986958722d",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T20:43:03Z",
+      "transaction": "20260828T204303046Z-84343993f71e",
+      "note": "DLL-only overlay: SKSE/Plugins/ConsoleUtilSSE.dll at MO2 priority 110 above ConsoleUtilSSE NG 1.6.1 (76649, file 793316), which stays installed and provides every other file. Why: the official 1.6.1 DLL logs two failures resolving VM class type 61 (GetSelectedReference / SetSelectedReference, the Papyrus natives Proteus calls before console-driven actor operations); its source predates CommonLibSSE-NG 68ae73e1cb99cdf81cd406918531d0570fe1e332, which fixed the 1.7.99+ SkyrimVM / PlayerCharacter layout shift. Rebuild: fork Ensrick/ConsoleUtilSSE, branch ensrick/1.7.104, upstream VersuchDrei/ConsoleUtilSSE base fd89858, rebuild commit ad5e6e529341c8b730a0255ec9cb68fb4fe5eb59, CommonLibSSE-NG pinned to 70c1acd5261210982bd52f6d4468a082fe04d798 (a named CMake override is required to build against any other revision); local tree skyrim-tools-source/ConsoleUtilSSE-NG-1.7.104 is clean at that commit. Local change of note: the modal report_and_fail logging path replaced by a caught, logged load failure (no desktop error box). Installed DLL = the CI-built artifact (run 33208154245, artifact digest sha256:102e36ebe3055940d9e53b4c79aed6d1e49039f02738ab81d5927c47f1c5da4a); file version 1.6.1.104, SKSEPlugin_Load/Query/Version exported, imports only standard Windows/DirectX libraries. The locally built release DLL E4D31AC5... is a different binary and is not installed. Admitted transactionally after a dry run; post-install MO2 audit passed. Records: docs/CONSOLEUTIL-1.7.104-REBUILD-2026-08-28.md, docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md, docs/RUNTIME-ISSUES-2026-08-28.md. Runtime acceptance gate in the rebuild record (ConsoleUtilSSE.log free of \"Failed to get vm type id\", selected-reference read/write) is not recorded as run. [row added 2026-09-02, #102 ledger gap]",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: ConsoleUtilSSE.dll only (CI artifact of Ensrick/ConsoleUtilSSE ad5e6e5). Basis: upstream GPL-3.0-or-later with explicit modding/linking exceptions; the fork retains the license, the exceptions and the bundled third-party notices, and the CI artifact ships the DLL with symbols, Papyrus sources, license, exceptions and dependency notices (docs/CONSOLEUTIL-1.7.104-REBUILD-2026-08-28.md). records/private-runtime-dependencies.json shareableAfterReleaseReview: \"Clean CI artifact exists; runtime acceptance and release packaging remain.\" Sweep class \"distributable after review\" (records/ensrick-overlay-distribution-2026-09-02.md): notices and reproducible build still owed. Any distributed binary must be accompanied by corresponding source and the notices. [classified 2026-09-02, #102]"
+    },
+    {
       "modId": 76649,
       "modName": "ConsoleUtilSSE NG",
       "nexusName": "ConsoleUtilSSE NG",
@@ -821,7 +854,28 @@
       "enabled": true,
       "installedUtc": "2026-08-31T03:06:04Z",
       "transaction": "20260831T030604717Z-6385d1db1eef",
-      "note": "Ports the 57 Oldrim-format meshes that Assorted Mesh Fixes (32117) ships at NIF stream 83 to SSE stream 100, preserving the full directory tree. Built with nif-port-cli (SSE-NIF-Optimizer dbba8b3 + nifly 846518b), converting file by file rather than by directory so the paths survive. VERIFIED: 57 converted, 0 failed; every output re-reads as stream 100; nif-port-cli inspect over the overlay reports 57 files with invalid=0, unknownBlocks=0, isLE=0. Cross-checked against the whole enabled profile: zero AMF mesh paths still resolve to an Oldrim file. The vendor mod folder is untouched and stays byte-identical to the Nexus archive; disable this overlay to fall straight back to the author's meshes. Local-only, nothing committed. Overlay archive SHA-256 C090FFEBCCC62A5154FC723192578755B88D3E0BB88C5D2E23E8F9A53D234E7D."
+      "note": "Ports the 57 Oldrim-format meshes that Assorted Mesh Fixes (32117) ships at NIF stream 83 to SSE stream 100, preserving the full directory tree. Built with nif-port-cli (SSE-NIF-Optimizer dbba8b3 + nifly 846518b), converting file by file rather than by directory so the paths survive. VERIFIED: 57 converted, 0 failed; every output re-reads as stream 100; nif-port-cli inspect over the overlay reports 57 files with invalid=0, unknownBlocks=0, isLE=0. Cross-checked against the whole enabled profile: zero AMF mesh paths still resolve to an Oldrim file. The vendor mod folder is untouched and stays byte-identical to the Nexus archive; disable this overlay to fall straight back to the author's meshes. Local-only, nothing committed. Overlay archive SHA-256 C090FFEBCCC62A5154FC723192578755B88D3E0BB88C5D2E23E8F9A53D234E7D.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 57 vendor NIFs (Assorted Mesh Fixes 32117 v0.139.3) re-serialized to SSE stream 100; vendor-derived. Basis (Nexus 32117, wSkeever, read 2026-09-02): Upload 'You can upload this file to other sites but you must credit me as the creator of the file'; Modification 'You are allowed to modify my files and release bug fixes or improve on the features so long as you credit me as the original creator'; Asset use 'allowed ... as long as you credit me'; author note 'New mesh changes in this mod are released under CC BY-SA 4.0'. Conditions: credit wSkeever, carry the CC BY-SA 4.0 share-alike notice, no paid use. Recipe alternative recorded in note (nif-port-cli convert-sse per file); Recipe: nif-port-cli convert-sse per file, pinned to Ensrick/nif-port-cli c63f74e (PR #2), per-file input/output hashes in records/source-builds/ensrick-assorted-mesh-fixes-se-mesh-port.json; 2026-09-02 rerun reproduced all 57 files byte-identically. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "nif-port-cli convert-sse",
+        "tool": {
+          "toolchainKey": "nifPortCli",
+          "repository": "https://github.com/Ensrick/nif-port-cli",
+          "commit": "c63f74e1c45ea331494f88511840ed7222f32ef5",
+          "branch": "agent/shape-overlay-and-texture-remap",
+          "pullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
+          "commitNote": "convert-sse code path is unchanged from 1cc5484 (origin/main) through e12079c and c63f74e; the port was made before c63f74e was committed and the exact binary is not hash-matched to a commit, so the pinned commit is the pushed head that contains the identical verb.",
+          "binaryPath": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-builds\\nif-port-cli\\Release\\nif-port-cli.exe",
+          "binarySha256": "D076B22FB7AC627E6277CC8B01D503763C60EF79CA86CBB9CB6D32239BDBA05C",
+          "upstreamCommit": "dbba8b359531fa4a4b89d906b93cdcb579abc8d0",
+          "niflyCommit": "846518b3fdfc6c81cddc49188aff77ad7006456a"
+        },
+        "record": "records/source-builds/ensrick-assorted-mesh-fixes-se-mesh-port.json",
+        "inputs": "57 loose vendor NIFs at the same relative paths (per-file hashes in the record)",
+        "recordedAt": "2026-09-02",
+        "verification": "2026-09-02 rerun 57/57 byte-identical with two different binaries"
+      }
     },
     {
       "modId": 0,
@@ -836,7 +890,9 @@
       "enabled": true,
       "installedUtc": "2026-08-30T19:32:42Z",
       "transaction": "20260830T193242200Z-95b407d38b1a",
-      "note": "Private, deterministic compatibility overlay for Better fur - Fine clothes (69240/289832). Each output starts with the installed CBBE or HIMBO Refits outfit mesh and clones only jg1's separately named weighted fur shape from the corresponding vendor _0/_1 NIF. Two clean generations were byte-identical. The four vendor meshes and both body-refit sources remain byte-identical and separately recoverable. jg1 permits modifications and asset use with credit; the derived meshes remain local and are not committed. Do not disable this overlay alone while Better Fur remains enabled, because the vendor's vanilla-body meshes would become the next winners; roll back or disable the overlay and vendor together to restore direct CBBE/HIMBO winners. Static NIF reload, shape/bone/texture assertions, and a Blender bind-pose front/side inspection passed; foreground animation and extreme-preset clipping remain gameplay acceptance work."
+      "note": "Private, deterministic compatibility overlay for Better fur - Fine clothes (69240/289832). Each output starts with the installed CBBE or HIMBO Refits outfit mesh and clones only jg1's separately named weighted fur shape from the corresponding vendor _0/_1 NIF. Two clean generations were byte-identical. The four vendor meshes and both body-refit sources remain byte-identical and separately recoverable. jg1 permits modifications and asset use with credit; the derived meshes remain local and are not committed. Do not disable this overlay alone while Better Fur remains enabled, because the vendor's vanilla-body meshes would become the next winners; roll back or disable the overlay and vendor together to restore direct CBBE/HIMBO winners. Static NIF reload, shape/bone/texture assertions, and a Blender bind-pose front/side inspection passed; foreground animation and extreme-preset clipping remain gameplay acceptance work.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 4 NIFs = installed CBBE / HIMBO Refits outfit meshes with jg1's fur shape cloned in; vendor-derived from three sources. Basis: Better fur 69240 (jg1) grants Upload/Modification/Asset use 'as long as you credit me', but the outputs embed CBBE 198 and HIMBO 46311 geometry and both pages are adult-gated (login required), so their terms could not be read; unverified terms cannot ship. Recipe recorded in records/source-builds/ensrick-better-fur-fine-clothes-refit.json (nif-port-cli clone-shape, input hashes). Tool commit c63f74e pushed 2026-09-02 to Ensrick/nif-port-cli branch agent/shape-overlay-and-texture-remap (PR #2; main is protected by a required build check). [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -851,7 +907,31 @@
       "sizeMb": 0.41,
       "sha256": "5d2b133d79559395b723f51a3cade14fcc1f612a8ddbf0587a7b6147bb6a824e",
       "transaction": "20260830T160844471Z-c0be781fa651",
-      "note": "Static-glow variant of Bloodskal Blade 4 (120399), built here because the mod page ships no such option - only MAIN (pulsing + embers), No Glow, No Guard Engravings and a Sheath. User ruling 2026-08-30: 'The pulse looks bad on Bloodskal Blade, so no to that. Just the simple glow version.' MAIN's animation is three controllers on 40 blocks: [20] BSLightingShaderPropertyColorController drives Emissive Color on the fxglow shader via [24]/[25] NiPosData, cycling (0.694,0.392,0.369) -> (0.808,0.812,0.388) -> back over 4 s; [21] BSLightingShaderPropertyFloatController at freq 8 drives the brightness via [22]/[23] NiFloatData, 0.3 -> 0.8 -> 0; [31] BSEffectShaderPropertyFloatController scrolls the embers' V Offset via [32]/[33] NiFloatData, 0 -> 1. METHOD: rather than delete blocks and renumber every reference, all three key curves were FROZEN IN PLACE to constants with zero tangents - colour pinned to the authored t=0 value, brightness pinned to the authored resting 0.3, ember V-offset pinned to 0. 42 bytes changed, file length identical at 429,837 B, block table/type table/string table byte-identical, so no dangling reference is possible. Verified: header re-read matches on all counts and nif-port-cli inspect reports valid=true, unknownBlocks=false, 5 shapes, all 11 texture paths intact. Result is a constant red emissive glow with no heartbeat and no ember motion. TUNING: brightness lives at file offset 0x510DA (3 keys x 16 B), colour at 0x51122 (3 keys x 40 B). To remove the ember element entirely rather than freeze it, zero the BSEffectShaderProperty emissiveMultiple at 0x5E4F3 (currently 1.0; its emissiveColor is at 0x5E4E3). 'Bloodskal Blade 4 - No Glow' was DISABLED, not removed. Permissions: 'Feel free to use, just give due credits.' Local-only, nothing committed; the vendor mod folder is untouched. NOTE the vendor mesh is Oldrim format (NIF stream 83, NiTriShape) - same class as #77, not addressed here. Believable Weapons also ships this mesh path but loses on priority, which was already true before this overlay; a unique named weapon taking a distinct model is wanted per docs/PATCH_INTENTS.md."
+      "note": "Static-glow variant of Bloodskal Blade 4 (120399), built here because the mod page ships no such option - only MAIN (pulsing + embers), No Glow, No Guard Engravings and a Sheath. User ruling 2026-08-30: 'The pulse looks bad on Bloodskal Blade, so no to that. Just the simple glow version.' MAIN's animation is three controllers on 40 blocks: [20] BSLightingShaderPropertyColorController drives Emissive Color on the fxglow shader via [24]/[25] NiPosData, cycling (0.694,0.392,0.369) -> (0.808,0.812,0.388) -> back over 4 s; [21] BSLightingShaderPropertyFloatController at freq 8 drives the brightness via [22]/[23] NiFloatData, 0.3 -> 0.8 -> 0; [31] BSEffectShaderPropertyFloatController scrolls the embers' V Offset via [32]/[33] NiFloatData, 0 -> 1. METHOD: rather than delete blocks and renumber every reference, all three key curves were FROZEN IN PLACE to constants with zero tangents - colour pinned to the authored t=0 value, brightness pinned to the authored resting 0.3, ember V-offset pinned to 0. 42 bytes changed, file length identical at 429,837 B, block table/type table/string table byte-identical, so no dangling reference is possible. Verified: header re-read matches on all counts and nif-port-cli inspect reports valid=true, unknownBlocks=false, 5 shapes, all 11 texture paths intact. Result is a constant red emissive glow with no heartbeat and no ember motion. TUNING: brightness lives at file offset 0x510DA (3 keys x 16 B), colour at 0x51122 (3 keys x 40 B). To remove the ember element entirely rather than freeze it, zero the BSEffectShaderProperty emissiveMultiple at 0x5E4F3 (currently 1.0; its emissiveColor is at 0x5E4E3). 'Bloodskal Blade 4 - No Glow' was DISABLED, not removed. Permissions: 'Feel free to use, just give due credits.' Local-only, nothing committed; the vendor mod folder is untouched. NOTE the vendor mesh is Oldrim format (NIF stream 83, NiTriShape) - same class as #77, not addressed here. Believable Weapons also ships this mesh path but loses on priority, which was already true before this overlay; a unique named weapon taking a distinct model is wanted per docs/PATCH_INTENTS.md.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 1 vendor NIF (Bloodskal Blade 4 120399 file 505407) with 42 bytes changed to freeze three animation curves; vendor-derived. Basis (Nexus 120399, Billyro, read 2026-09-02): Upload 'You can upload this file to other sites but you must credit me'; Modification 'You are allowed to modify my files and release bug fixes or improve on the features so long as you credit me as the original creator'; Asset use 'allowed ... as long as you credit me'. Conditions: credit Billyro, no paid use. Executable recipe added 2026-09-02: overlays/ensrick-bloodskal-blade-4-static-glow/build.py regenerates the installed bytes from the vendor MAIN mesh (SHA-256 verified both ways; details in this row's recipe field). [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "script",
+        "script": "overlays/ensrick-bloodskal-blade-4-static-glow/build.py",
+        "command": "py -3 overlays/ensrick-bloodskal-blade-4-static-glow/build.py \"<MO2 mods>/Bloodskal Blade 4/meshes/dlc02/weapons/bloodsword/bloodsword.nif\"",
+        "inputs": [
+          {
+            "source": "Bloodskal Blade 4 (Nexus 120399 file 505407 MAIN) meshes/dlc02/weapons/bloodsword/bloodsword.nif",
+            "sha256": "A8CC952DC0A759DDE710DF0385AE5D16E7810B4DC7EFF1BE1578DB58E2890605",
+            "bytes": 429837
+          }
+        ],
+        "outputs": [
+          {
+            "path": "meshes/dlc02/weapons/bloodsword/bloodsword.nif",
+            "sha256": "C743F18D3630685950894C8CCB564CF3FF4FA0181549D00D1F4673B81E975051",
+            "bytes": 429837
+          }
+        ],
+        "method": "pin every key of the three animation curves (brightness NiFloatData at 0x510DA, colour NiPosData at 0x51122, ember V-offset NiFloatData at 0x5E552) to its first key rounded to six decimals and zero all tangents; header fields asserted before writing",
+        "recordedAt": "2026-09-02",
+        "verification": "run 2026-09-02: input hash accepted, 42 bytes changed, output SHA-256 matched the installed mesh; the script refuses any other input or output hash"
+      }
     },
     {
       "modId": 0,
@@ -866,7 +946,90 @@
       "enabled": true,
       "installedUtc": "2026-08-30T03:22:36Z",
       "transaction": "20260830T032236622Z-40e9530b97af",
-      "note": "Enforces docs/TEXTURE_POLICY.md 4096-pixel axis cap on mod 120399, whose permissions read \"Feel free to use, just give due credits.\" Recipe, run on the installed file-505407 payload: texconv -w 4096 -h 1024 -f DXT1 -m 0 -dx9 bloodskal_d.dds (was 8192x2048 DXT1); texconv -w 4096 -h 512 -f DXT5 -m 0 -dx9 fxglow.dds (was 8192x1024 DXT5). No DDS is committed to this repo."
+      "note": "Enforces docs/TEXTURE_POLICY.md 4096-pixel axis cap on mod 120399, whose permissions read \"Feel free to use, just give due credits.\" Recipe, run on the installed file-505407 payload: texconv -w 4096 -h 1024 -f DXT1 -m 0 -dx9 bloodskal_d.dds (was 8192x2048 DXT1); texconv -w 4096 -h 512 -f DXT5 -m 0 -dx9 fxglow.dds (was 8192x1024 DXT5). No DDS is committed to this repo.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 2 downscaled DDS (8K to 4K) from Bloodskal Blade 4 120399; vendor-derived. Basis (Nexus 120399, Billyro, read 2026-09-02): Modification 'You are allowed to modify my files and release bug fixes or improve on the features so long as you credit me as the original creator'; Upload 'can upload ... must credit me'. Conditions: credit Billyro, no paid use. Recipe alternative recorded in note (texconv); texconv pinned 2026-09-02 in toolchain.json (tools.texconv: DirectXTex 2026.4.1.1, winget Microsoft.DirectXTex.Texconv 2026.3.31, SHA-256 563D9ECA...); per-file command, input hash and output hash in this row's recipe field. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "texconv",
+        "tool": {
+          "toolchainKey": "texconv",
+          "version": "2026.4.1.1",
+          "wingetPackage": "Microsoft.DirectXTex.Texconv",
+          "wingetVersion": "2026.3.31",
+          "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
+        },
+        "sourceForm": "loose files in the installed vendor mod (Nexus 120399 file 505407)",
+        "steps": [
+          {
+            "output": "textures/billyro/bloodskal/bloodskal_d.dds",
+            "source": "loose: Bloodskal Blade 4/textures/billyro/bloodskal/bloodskal_d.dds",
+            "sourceSha256": "90559BB58FF621B2FCEF064B396D94CD6044C3B5A40A4670311A6E2BD9987C8C",
+            "sourceBytes": 11184968,
+            "command": "texconv -w 4096 -h 1024 -f DXT1 -m 0 -dx9 -o <output dir> \"<source>\"",
+            "outputSha256": "13035252839C00E1DD794B3B0C6E0FC91FBFFA2944F73216057989E50D2CF1C8",
+            "outputBytes": 2796360
+          },
+          {
+            "output": "textures/billyro/bloodskal/fxglow.dds",
+            "source": "loose: Bloodskal Blade 4/textures/billyro/bloodskal/fxglow.dds",
+            "sourceSha256": "9196222F6BD00E736AE37BFF5C9573D9F7F7404F6E180BC34CDF8F22E0D0752D",
+            "sourceBytes": 11185040,
+            "command": "texconv -w 4096 -h 512 -f DXT5 -m 0 -dx9 -o <output dir> \"<source>\"",
+            "outputSha256": "AB05FBC636C58A5FE69E80972C88000007C50A063E6E21C0214D4291CD9C20A0",
+            "outputBytes": 2796432
+          }
+        ],
+        "recordedAt": "2026-09-02",
+        "verification": "input and output hashes taken from the installed vendor mod and overlay on 2026-09-02; commands are the ones recorded in the note at generation time"
+      }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - CC Madness Longsword Env Mask Path Fix",
+      "nexusName": "Ensrick-owned texture-path overlay for Creation Club bgssse025 (Saints & Seducers)",
+      "fileName": "ensrick-cc-madness-longsword-envmask-path-fix.zip (generated by overlays/ensrick-cc-madness-longsword-envmask-path-fix/build.py)",
+      "version": "2026-09-02",
+      "fileId": 0,
+      "sizeMb": 1.007,
+      "sha256": "8a485f5e7496d71e5844301f9b7c3d026c47ac1de0aa5a19361a8f4b367f34e4",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T05:06:02Z",
+      "transaction": "20260902T050602046Z-725b51195af0",
+      "files": [
+        "textures/creationclub/bgssse025/weapons/madness/madness_longsword_01em.dds"
+      ],
+      "note": "#159 sweep follow-up. The Madness longsword meshes (Creation Club ccbgssse025-advdsgs.bsa 1stpersonmadnesssword.nif / 3rdpersonmadnesssword.nif, and Believable Weapons 37737's loose replacements of both) ask slot 5 for textures/creationclub/bgssse025/weapons/madness/madness_longsword_01em.dds; the CC archive ships madness_longsword01_em.dds (underscore on the other side of 01). The typo is Bethesda's, parsed from the CC BSA; Believable Weapons inherited it. Nothing in 207 mods / 151 BSAs ships the asked-for name. This overlay is a byte copy of the CC texture (2048x2048 BC1, 11 mips, 2,796,336 B) at the asked-for path; the original inside the BSA is untouched. Staged with MO2Headless mod-stage at the top of the priority list (row 2); audit errors []. Rollback: disable this one mod. UNVERIFIED in-game; launch coverage owed by the next launch_verify PASS after 05:06Z.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 1 Creation Club texture (Bethesda, ccbgssse025-advdsgs.bsa) copied unchanged to a second path; vendor bytes, not redistributable. Basis: Creation Club content is Bethesda-owned; no permission to bundle. Recipe = the copy in build.py with pinned input/output hashes. [classified 2026-09-02, #159 sweep]",
+      "recipe": {
+        "kind": "script",
+        "script": "overlays/ensrick-cc-madness-longsword-envmask-path-fix/build.py",
+        "command": "py -3 overlays/ensrick-cc-madness-longsword-envmask-path-fix/build.py",
+        "sourceForm": "entry inside the game-owned BSA C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/Data/ccbgssse025-advdsgs.bsa (archive sha256 7CBC4CB0E167236628A236059C4886CE0E089B661B3A612F012728A75FD468A3)",
+        "inputs": [
+          {
+            "source": "ccbgssse025-advdsgs.bsa::textures/creationclub/bgssse025/weapons/madness/madness_longsword01_em.dds",
+            "sha256": "813B130D72E8A23FFFA60CF53FC7EA27CCDF60319192580132FC2F0A319C66FF",
+            "bytes": 2796336
+          }
+        ],
+        "outputs": [
+          {
+            "path": "textures/creationclub/bgssse025/weapons/madness/madness_longsword_01em.dds",
+            "sha256": "813B130D72E8A23FFFA60CF53FC7EA27CCDF60319192580132FC2F0A319C66FF",
+            "bytes": 2796336
+          }
+        ],
+        "archive": {
+          "path": "overlays/ensrick-cc-madness-longsword-envmask-path-fix/ensrick-cc-madness-longsword-envmask-path-fix.zip",
+          "sha256": "8A485F5E7496D71E5844301F9B7C3D026C47AC1DE0AA5A19361A8F4B367F34E4",
+          "bytes": 1055488
+        },
+        "method": "read the BSA entry with audit/modasset.py (BSA reader), assert its SHA-256 and size, write the identical bytes at the path the meshes ask for; the script refuses on any hash mismatch",
+        "recordedAt": "2026-09-02",
+        "verification": "2026-09-02 build: output sha256 equals input; texconv 2026.4.1.1 read the output without error; installed file re-hashed after mod-stage: match"
+      }
     },
     {
       "modId": 0,
@@ -883,7 +1046,28 @@
       "enabled": true,
       "installedUtc": "2026-08-30T19:47:03Z",
       "transaction": "20260830T194702775Z-d62a0214b2f6",
-      "note": "Generated ESL-flagged forward patch for #92, built from source at skyrim-tools-source/CollectiblesHelperUssepForward (Mutagen 0.54.3 + Synthesis 0.36.5, net10.0, TreatWarningsAsErrors, Deterministic; 0 warnings 0 errors). Generated THROUGH MO2's USVFS via MO2Headless run, so the patcher saw the real virtual Data folder rather than a staged copy; load order file was Skyrim.ccc entries followed by the profile plugins.txt, 267 entries / 265 active. POLICY: start from the WINNING record and forward only the fields USSEP owns - PlacedObject.Lock and Cell.WaterHeight/Music/SkyAndWeatherFromRegion - and forward a field ONLY where USSEP states a value, so a field USSEP leaves unset is never cleared. That rule is load-bearing: Lux adds SkyAndWeatherFromRegion 0374BC:Dragonborn.esm to four Raven Rock interiors where USSEP has none, and a naive forward-every-difference rule would have stripped it on 017EC0, 017EC2, 017EC4 and 01844F. EMITTED 6 records, not the 12 in the original issue, because Lux.esp loads after Collectibles Helper and already carries USSEP's music and most of its water heights: XLOC level 75 / key none / flags 0 onto REFR 03A4E6, 03A4E9 and 03AC5A, and WaterHeight -2147483648.0 onto CELL 017EC0 DLC2RRTheRetchingNetch, 018276 DLC2RRBulwark and 01BBFB DLC2BristlebackCave01. The plugin holds 8 records because a REFR override must carry its parent CELL - 01844F and 024D9D are those structural parents, copied from the winner unchanged, not ITMs of intent. VALIDATION: two generations byte-identical, plugin SHA-256 C121A2A52B4C21CA03190BC59089D49BB27CD67E433E417994F4EA1BAB0A0DEA; 0 new records, 0 deleted; ESL flag set. Masters are Skyrim.esm + Dragonborn.esm + Lux.esp - Collectibles Helper is NOT a master, but Lux is and Lux loads after CH, so the required ordering is transitively enforced and the #82 failure mode does not apply. Spriggit 0.41.0 serialize/deserialize round-trip completed and preserves every substantive field; it is semantic rather than byte-exact - the HEDR next-object-ID counter and cell group ordering/timestamps differ, neither of which carries meaning for a patch with no new records (this build of Spriggit has no 'check' verb). LOOT places it at plugins.txt 181, after CH at 52 and Lux at 139. Post-sort winner re-check: all six forwarded records now win and carry USSEP's values; the only remaining differences are the four deliberately-skipped XCCM cases where USSEP states no value. Emit set stable, no regeneration needed. Regenerate after any load-order change that moves Lux relative to Collectibles Helper."
+      "note": "Generated ESL-flagged forward patch for #92, built from source at skyrim-tools-source/CollectiblesHelperUssepForward (Mutagen 0.54.3 + Synthesis 0.36.5, net10.0, TreatWarningsAsErrors, Deterministic; 0 warnings 0 errors). Generated THROUGH MO2's USVFS via MO2Headless run, so the patcher saw the real virtual Data folder rather than a staged copy; load order file was Skyrim.ccc entries followed by the profile plugins.txt, 267 entries / 265 active. POLICY: start from the WINNING record and forward only the fields USSEP owns - PlacedObject.Lock and Cell.WaterHeight/Music/SkyAndWeatherFromRegion - and forward a field ONLY where USSEP states a value, so a field USSEP leaves unset is never cleared. That rule is load-bearing: Lux adds SkyAndWeatherFromRegion 0374BC:Dragonborn.esm to four Raven Rock interiors where USSEP has none, and a naive forward-every-difference rule would have stripped it on 017EC0, 017EC2, 017EC4 and 01844F. EMITTED 6 records, not the 12 in the original issue, because Lux.esp loads after Collectibles Helper and already carries USSEP's music and most of its water heights: XLOC level 75 / key none / flags 0 onto REFR 03A4E6, 03A4E9 and 03AC5A, and WaterHeight -2147483648.0 onto CELL 017EC0 DLC2RRTheRetchingNetch, 018276 DLC2RRBulwark and 01BBFB DLC2BristlebackCave01. The plugin holds 8 records because a REFR override must carry its parent CELL - 01844F and 024D9D are those structural parents, copied from the winner unchanged, not ITMs of intent. VALIDATION: two generations byte-identical, plugin SHA-256 C121A2A52B4C21CA03190BC59089D49BB27CD67E433E417994F4EA1BAB0A0DEA; 0 new records, 0 deleted; ESL flag set. Masters are Skyrim.esm + Dragonborn.esm + Lux.esp - Collectibles Helper is NOT a master, but Lux is and Lux loads after CH, so the required ordering is transitively enforced and the #82 failure mode does not apply. Spriggit 0.41.0 serialize/deserialize round-trip completed and preserves every substantive field; it is semantic rather than byte-exact - the HEDR next-object-ID counter and cell group ordering/timestamps differ, neither of which carries meaning for a patch with no new records (this build of Spriggit has no 'check' verb). LOOT places it at plugins.txt 181, after CH at 52 and Lux at 139. Post-sort winner re-check: all six forwarded records now win and carry USSEP's values; the only remaining differences are the four deliberately-skipped XCCM cases where USSEP states no value. Emit set stable, no regeneration needed. Regenerate after any load-order change that moves Lux relative to Collectibles Helper.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 1 ESL-flagged ESP, 8 override records (6 forwarded + 2 structural CELL parents), no new forms, no assets; masters Skyrim.esm, Dragonborn.esm, Lux.esp; our generated records. Basis: USSEP 266 author's instructions 'You may also copy any needed fixes into your own work to use without the USSEP as a master so long as you agree to be responsible for any support issues'; Lux 43158 note 'Anyone can make and upload compatibility patches as long as none of my assets are being uploaded again'; Collectibles Helper 130354 (Jonx0r) grants every permission with credit. Build record: records/source-builds/ensrick-collectibles-helper-ussep-forward.json (written 2026-09-02). Generator source staged in-tree at mods/collectibles-helper-ussep-forward/generator (byte-identical to the untracked working copy); it has no repository of its own, so REMAINING GAP: commit and push that in-tree copy before the recipe is reproducible from a public commit. Housekeeping: TES4 CNAM author field is empty. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]"
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - CRF Semantic Patch",
+      "nexusName": "Ensrick-owned generated compatibility patch (Cutting Room Floor 3.1.26)",
+      "version": "0.1.0",
+      "fileId": 0,
+      "fileName": "mods/crf-semantic-patch/work/Ensrick-CRF-Semantic-Patch-0.1.0.zip",
+      "sizeMb": 0.0095,
+      "sha256": "9214d7dc4aa2643e78af58ed8207aeff708a5a13e34a52d7338fe858d54910bc",
+      "plugins": [
+        "Ensrick CRF Semantic Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:44:49Z",
+      "transaction": "20260830T164449478Z-b0e04f73b959",
+      "note": "Generated ESL-flagged patch for #71 preserving five evidenced Cutting Room Floor 3.1.26 semantics while keeping the Water for ENB, NFF, Lux and Skyrim Unbound winners: 6 override records (1 CELL, 3 LCTN, 1 INFO plus its DIAL group anchor), 0 new forms, plugin SHA-256 D3EA7952099EF73AC30B1C9BF4094A3886065FC781568FAA1F05AA3D0F8A257C (9,927 B). Source committed at mods/crf-semantic-patch (Mutagen 0.54.4 / Synthesis 0.36.6, net9.0, SDK 10.0.302, deterministic, two byte-identical runs, Spriggit 0.41.0 round trip, 1,601 links checked / 0 unresolved). Installed by MO2Headless (plugin enable transaction 20260830T164449919Z-97bfa0c64a42); plugins.txt line 229. Row sha256 = the install archive. Full record: records/source-builds/ensrick-crf-semantic-patch.json. Row added 2026-09-02 (#160) - the mod was live since 2026-08-30 without a ledger row (docs/PROCESS-AUDIT-2026-08-30.md).",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 1 ESL-flagged ESP, 6 override records, 0 new forms, no assets; masters include cutting room floor.esp, nwsFollowerFramework.esp, Skyrim Unbound.esp, Lux.esp, Water for ENB (Shades of Skyrim).esp. Basis: Cutting Room Floor 276 (Arthmoor) grid is Upload no / Modification no / Asset use requires permission, and CRF's documentation requires the author's permission before a compatibility patch is published (records/cutting-room-floor-3.1.26-compatibility-audit-2026-08-30.md); no permission is recorded, so the plugin is not bundled and the installer regenerates it from the committed generator (records/source-builds/ensrick-crf-semantic-patch.json). Becomes distributable if CRF permission is obtained. [ledger row added and classified 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -898,7 +1082,69 @@
       "enabled": true,
       "installedUtc": "2026-08-31T03:25:50Z",
       "transaction": "20260831T032550872Z-ca076a6653fb",
-      "note": "Private one-file texture-policy overlay. The selected 2K FOMOD tier ships textures/Landscape/grass/Twigs_Freak.dds at 4096x8192; this overlay uses the vendor archive's corresponding 1K-tier BC7 atlas at 2048x4096 with 13 mip levels. Effective FFF audit: 129 DDS, zero axis above 4096, maximum axis 4096, and this overlay is the winning provider. The vendor mod remains untouched. Do not distribute the DDS; a public installer must fetch Nexus mod 125349 file 788926 and reproduce the recorded extraction locally."
+      "note": "Private one-file texture-policy overlay. The selected 2K FOMOD tier ships textures/Landscape/grass/Twigs_Freak.dds at 4096x8192; this overlay uses the vendor archive's corresponding 1K-tier BC7 atlas at 2048x4096 with 13 mip levels. Effective FFF audit: 129 DDS, zero axis above 4096, maximum axis 4096, and this overlay is the winning provider. The vendor mod remains untouched. Do not distribute the DDS; a public installer must fetch Nexus mod 125349 file 788926 and reproduce the recorded extraction locally.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 1 DDS = the vendor archive's own 1K-tier Twigs_Freak.dds placed at the 2K-tier path; verbatim vendor bytes. Basis (Nexus 125349, BloodyFreak, read 2026-09-02): Upload 'You are not allowed to upload this file to other sites under any circumstances'; Modification 'You must get permission from me before you are allowed to modify my files'; Asset use 'allowed ... without permission or crediting me' but 'Some assets in this file belong to other authors', so the atlas's ownership is unestablished and the upload ban governs. Recipe recorded at tier level (fetch file 788926, extract the 1K-tier atlas). Recipe recorded 2026-09-02 in this row's recipe field: archive file 788926 (SHA-256 D82616F1...) entry 'Freak's Floral Fields/textures 1k/textures/Landscape/grass/Twigs_Freak.dds' (SHA-256 E4CC21AE..., 11,184,996 B) copied verbatim to textures/Landscape/grass/Twigs_Freak.dds; the fomod plan intentionally has no 1K entry because this is an overlay, not a FOMOD choice. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "archive-extract",
+        "recordedAt": "2026-09-02",
+        "archive": {
+          "nexusModId": 125349,
+          "fileId": 788926,
+          "fileName": "Freaks Floral Fields-125349-3-2-3-1786549491.zip",
+          "sha256": "D82616F1F6D25A392E86B2BA1B18F21E464A401F3909910E866E25D493EBBB9C",
+          "bytes": 2160876699
+        },
+        "steps": [
+          {
+            "archiveInternalPath": "Freak's Floral Fields/textures 1k/textures/Landscape/grass/Twigs_Freak.dds",
+            "sourceSha256": "E4CC21AE1BFC1E1FEF15448362BA44244DAC72BF7439CF38BE4D74BC6BDFB3AF",
+            "sourceBytes": 11184996,
+            "destination": "textures/Landscape/grass/Twigs_Freak.dds",
+            "transform": "none (verbatim copy)"
+          }
+        ],
+        "verification": "2026-09-02: the archive entry's SHA-256 equals the installed file; the 2K and 4K tiers ship the identical 4096x8192 atlas (68F811AD853162F5019E228491661574166DBB24D8367F28C9EE749308791103, 44,739,428 B) and only the 1K tier carries the 2048x4096 atlas"
+      }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - General Compatibility Patch",
+      "nexusName": "Ensrick-owned generated compatibility patch (Decision A, 2026-08-29 sweep)",
+      "version": "0.1.0",
+      "fileId": 0,
+      "fileName": "_agent_worktrees/skyrim-issue-47/mods/general-compatibility-patch/work/Ensrick-General-Compatibility-Patch-0.1.0.zip",
+      "sizeMb": 0.0073,
+      "sha256": "cd19ab3e37a5d09bb24112c7e0ca2492e8d129e951ff1eb21f4504201103767d",
+      "plugins": [
+        "Ensrick General Compatibility Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-08-30T16:44:49Z",
+      "transaction": "20260830T164449040Z-ec5e6b03c204",
+      "note": "Generated ESL-flagged patch for #47 (Decision A): 14 override records (12 WRLD, 2 CELL), 0 new forms, plugin SHA-256 F9E93B4983D8326BA898622DA93AAAB7A8A486C2164FF4223C18097E72A5B6ED (7,683 B); 7 masters incl. Lux Orbis CS.esp, Water for ENB (Shades of Skyrim).esp, Water for ENB - Patch - Beyond Skyrim.esp, BSAssets.esm, BSHeartland.esm. Three intentional ITMs are future-order guards (Sovngarde MaxHeight, WhiterunPlainsDistrict04 and SolitudeOrigin Location); cleaning tools must not remove them. Loads after Ensrick Lux Water CS Patch.esp (plugins.txt 228 after 227). Generated 2026-08-30 in worktree _agent_worktrees/skyrim-issue-47 (branch agent/issue-47-compat-patch at 0e4dd92 plus uncommitted changes); the pushed branch agent/issue-47-general-compat records a different output hash - see records/source-builds/ensrick-general-compatibility-patch.json. Plugin enable transaction 20260830T164449400Z-8c6611f1a4bc. Parked/unparked in the #142 bisect round 3. Row sha256 = the install archive. Row added 2026-09-02 (#160).",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 1 ESL-flagged ESP, 14 override records (12 WRLD, 2 CELL), 0 new forms, no assets. Basis: distribution-only override patch, same basis as the Lux Water CS Patch (Lux / Lux Orbis compatibility patches permitted when none of GGUNIT's assets are uploaded; Water for ENB and Beyond Skyrim files and assets untouched). Source: branch agent/issue-47-general-compat (pushed, not merged). GAP: the installed build came from the worktree's uncommitted state and the pushed manifest records the earlier output ADAED3D2... (records/source-builds/ensrick-general-compatibility-patch.json); commit that state or regenerate from the branch and reinstall before calling it reproducible. [ledger row added and classified 2026-09-02, #160]"
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Guard Scaling Patch",
+      "nexusName": "Ensrick-owned guard scaling patch (issue #51)",
+      "version": "0.1.0",
+      "fileId": 0,
+      "fileName": "Ensrick-Guard-Scaling-Patch-0.1.0.zip (generated by mods/guard-scaling-patch/regenerate.ps1)",
+      "sizeMb": 0.003,
+      "sha256": "29ac6b7e42da9204949c6157e1eb4829a478b245e7b895f9d6d09cd02b5b5d14",
+      "sha256Note": "deterministic zip; plugin sha256 686A3A857AFF1884E6DDC3ACAE687B1AE99DA2339DCB55F4BAA43B94DBDAA01C",
+      "plugins": [
+        "Ensrick Guard Scaling Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-02T04:37:27Z",
+      "transaction": "20260902T043727658Z-14d275ba88ef",
+      "note": "#51 ordinary guard scaling. ESL-flagged override-only ESP, 3 NPC_ records: EncGuardImperialTemplate (0F6F37) and EncGuardSonsTemplate (0F6F38, both Skyrim.esm, USSEP winner forwarded) and DLC2RRGuardTemplate (0195AF Dragonborn.esm) from vanilla PC x1.0 min 20 max 50 to PC x1.0 min 5 max 50. Audit records/guard-scaling-audit-2026-09-02.md: the level-20 guard is vanilla calc-min 20, no mod inflates it; Sons of Skyrim / Xtudo / USSEP override placed guard records for outfits and class only. Named guards, captains, soldiers, Penitus, Thalmor and mod-added guard families (Bruma, Wyrmstooth, Beyond Reach, 3DNPC, Vigilant, Grand Solitude) untouched and listed in mods/guard-scaling-patch/policy.json. Staged with MO2Headless mod-stage at priority 230; plugin-enable tx 20260902T043728222Z-17887e2ec06b; LOOT rule in config/loot/userlist.yaml (group Ensrick Generated Patches, after CRF Semantic Patch). Regenerate with mods/guard-scaling-patch/regenerate.ps1 after any USSEP/Dragonborn/load-order change. Rollback: disable the one mod. UNVERIFIED in-game until launch_verify PASS + a guard GetLevel receipt.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 1 ESL-flagged ESP, 3 NPC_ override records, 0 new forms, no assets; masters Skyrim.esm and Dragonborn.esm only (the USSEP-won records carry no USSEP-origin links). Basis: distribution-only patch of override records of Bethesda forms (project standing rule, docs/PATCH_INTENTS.md); generator source (mods/guard-scaling-patch, MIT) and Spriggit text tree committed; build record records/source-builds/ensrick-guard-scaling-patch.json. [classified 2026-09-02, #51]"
     },
     {
       "modId": 0,
@@ -906,16 +1152,34 @@
       "nexusName": null,
       "version": null,
       "fileId": null,
-      "fileName": null,
-      "sizeMb": null,
-      "sha256": null,
+      "fileName": "generated by Ensrick/WaterForENBPatcherCS f7d459b through MO2 USVFS (records/source-builds/ensrick-lux-water-cs-patch.json)",
+      "sizeMb": 0.77,
+      "sha256": "5d65cfb115aacedb516d3c0eb3503c94347a638faf61c11de81f9bad0a5fdaa8",
       "plugins": [
         "Ensrick Lux Water CS Patch.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; generated 559-record patch, issue #46. Was silently disabled by every ledger-driven sort until now."
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; generated 559-record patch, issue #46. Was silently disabled by every ledger-driven sort until now.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 1 ESL-flagged ESP, 559 override records (551 CELL, 8 WRLD), 0 new forms, no assets; masters include Lux.esp, Water for ENB (Shades of Skyrim).esp and its Beyond Skyrim patch. Basis: distribution-only patch of override records (project standing rule). Lux 43158 note 'Anyone can make and upload compatibility patches as long as none of my assets are being uploaded again'. Water for ENB 37061 (mindflux) grid is fully restrictive (Upload no, Modification no, Asset use requires permission) with no patch note; the ESP modifies none of mindflux's files and carries no assets, and the generator is mindflux's own GPL-3.0-only patcher (Ensrick fork f7d459b). Blocker cleared 2026-09-02 in records/private-runtime-dependencies.json after re-parsing the installed ESP (ESL, 559 override records = 551 CELL + 8 WRLD, 0 new forms, mod folder holds only the ESP); fallback is recipe (regenerate per records/source-builds/ensrick-lux-water-cs-patch.json, fully recorded). [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]"
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Media Keys Fix Configuration",
+      "nexusName": "Ensrick-owned configuration overlay",
+      "version": "2026-09-01",
+      "fileId": 0,
+      "fileName": "overlays/ensrick-media-keys-fix-config",
+      "sizeMb": 0.0,
+      "sha256": "f0f2afea9aebdc062a50d6a678e85e76ce74a3b33ccb711a5557900ef8ed0a90",
+      "plugins": [],
+      "enabled": true,
+      "distribution": "distributable",
+      "installedUtc": "2026-09-02T04:02:22Z",
+      "transaction": "20260902T040212826Z-8ced47343a62",
+      "note": "Tracked config-only overlay for Media Keys Fix SKSE 1.0.2 (#149): DisableWindowsKey=false so the Windows key works in-game (the game itself sets DISCL_EXCLUSIVE|DISCL_FOREGROUND|DISCL_NOWINKEY; the vendor default keeps NOWINKEY). Must stay above the vendor mod. Vendor DLL and ini byte-identical."
     },
     {
       "modId": 0,
@@ -930,7 +1194,9 @@
       "enabled": true,
       "installedUtc": "2026-08-30T21:36:08Z",
       "transaction": "20260830T213608570Z-70e715a645a3",
-      "note": "Tracked configuration-only overlay above pristine MLO2 5.4.1. It explicitly preserves the source default disableLights=false, so MLO2 adds particle-light templates without deleting Lux or city/interior placed lights; future opt-in deletion remains guarded by Lux, Grand Solitude, Solitude Docks, and Snazzy whitelist fragments. Vendor files remain byte-identical."
+      "note": "Tracked configuration-only overlay above pristine MLO2 5.4.1. It explicitly preserves the source default disableLights=false, so MLO2 adds particle-light templates without deleting Lux or city/interior placed lights; future opt-in deletion remains guarded by Lux, Grand Solitude, Solitude Docks, and Snazzy whitelist fragments. Vendor files remain byte-identical.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: SKSE/Plugins/MLO.ini, Ensrick configuration only, tracked at overlays/ensrick-mlo2-foundation-config and byte-identical to the installed copy. Basis: our own bytes; MLO2 160748 additionally grants Modification 'release bug fixes or improve on the features so long as you credit me'. No recipe needed. [classified 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -945,7 +1211,34 @@
       "enabled": true,
       "installedUtc": "2026-08-30T21:26:04Z",
       "transaction": "20260830T212604894Z-45c3cdc85532",
-      "note": "Enforces docs/TEXTURE_POLICY.md's absolute 4096-pixel axis cap on the full Nature of the Wild Lands 3.14 vendor main. The only violation is textures/true forest/log/log01.dds: 8192x8192, 14 mips, BC7_UNORM, 89,478,660 bytes. Recipe on the installed vendor payload: texconv -w 4096 -h 4096 -f BC7_UNORM -m 0 -y -nologo. Output is 4096x4096, 13 mips, BC7_UNORM, 22,369,796 bytes; two clean generations were byte-identical at SHA-256 C86C89277B4DFADB7FF62451CB0B953007D956208B8BDEE2295154D44D118D2E. Local-only, no DDS committed or redistributed; the vendor folder remains byte-identical."
+      "note": "Enforces docs/TEXTURE_POLICY.md's absolute 4096-pixel axis cap on the full Nature of the Wild Lands 3.14 vendor main. The only violation is textures/true forest/log/log01.dds: 8192x8192, 14 mips, BC7_UNORM, 89,478,660 bytes. Recipe on the installed vendor payload: texconv -w 4096 -h 4096 -f BC7_UNORM -m 0 -y -nologo. Output is 4096x4096, 13 mips, BC7_UNORM, 22,369,796 bytes; two clean generations were byte-identical at SHA-256 C86C89277B4DFADB7FF62451CB0B953007D956208B8BDEE2295154D44D118D2E. Local-only, no DDS committed or redistributed; the vendor folder remains byte-identical.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 1 downscaled DDS (log01.dds 8K to 4K BC7) from Nature of the Wild Lands 63604; vendor-derived. Basis (Nexus 63604, fxxkthisworld, read 2026-09-02): Upload 'not allowed ... under any circumstances'; Modification 'You must get permission from me before you are allowed to modify my files'; Asset use 'You must get permission'; note 'You can create patches for my mod and publish them without asking my permission' covers patches, not a modified texture. Recipe recorded in note (texconv -w 4096 -h 4096 -f BC7_UNORM -m 0, output SHA-256 recorded). texconv pinned 2026-09-02 in toolchain.json (tools.texconv: DirectXTex 2026.4.1.1, winget Microsoft.DirectXTex.Texconv 2026.3.31, SHA-256 563D9ECA...); per-file command, input hash and output hash in this row's recipe field. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "texconv",
+        "tool": {
+          "toolchainKey": "texconv",
+          "version": "2026.4.1.1",
+          "wingetPackage": "Microsoft.DirectXTex.Texconv",
+          "wingetVersion": "2026.3.31",
+          "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
+        },
+        "sourceForm": "loose file in the installed vendor main (Nexus 63604 file 661793)",
+        "steps": [
+          {
+            "output": "textures/true forest/log/log01.dds",
+            "source": "loose: Nature of the Wild Lands/textures/true forest/log/log01.dds",
+            "sourceSha256": "7016EB0CF878F09F9A514C26501D4BE8728CDC947346DAAA2D0F1E210EA67AF0",
+            "sourceBytes": 89478660,
+            "command": "texconv -w 4096 -h 4096 -f BC7_UNORM -m 0 -y -nologo -o <output dir> \"<source>\"",
+            "outputSha256": "C86C89277B4DFADB7FF62451CB0B953007D956208B8BDEE2295154D44D118D2E",
+            "outputBytes": 22369796
+          }
+        ],
+        "recordedAt": "2026-09-02",
+        "verification": "input and output hashes taken from the installed vendor mod and overlay on 2026-09-02; commands are the ones recorded in the note at generation time",
+        "determinism": "two clean generations byte-identical (ledger note)"
+      }
     },
     {
       "modId": 0,
@@ -960,7 +1253,123 @@
       "enabled": true,
       "installedUtc": "2026-08-30T04:36:50Z",
       "transaction": "20260830T043650770Z-8e6499ae4227",
-      "note": "Enforces docs/TEXTURE_POLICY.md source-plus-one-step on mod 77594, whose BSA ships all 12 maps at 4096x4096. Vanilla weapon analogues measured from Skyrim - Textures*.bsa: diffuse 2048, normal 1024, env-mask 256. Nine of the twelve maps also fall under the audit/inspect_mod.py soft/upscaled threshold (detail index <1.60 at >=2048): claymore 0.61/0.83/0.65, h&h 0.69/1.03/0.70, scabbard 1.11/0.14/1.13; qsicscab_m.dds holds 2 unique values across a 4096 grid. Recipe, run on the BSA payload with texconv -nologo -y -m 0: -f BC1_UNORM -w 2048 -h 2048 for h&h-sword_d, qsirishclaymore_d, qsicscab_d; -f BC3_UNORM -w 2048 -h 2048 for all four *_n; -f BC1_UNORM -w 512 -h 512 for all four *_m. executioner-sword_d.dds is NOT overridden: detail index 3.14 at 4096 is authored, and 4096 is one permitted step over the 2048 vanilla greatsword diffuse. Loose overlay wins over the BSA; MO2 priority 149 sits above the source mod. 172.2 MB of DDS becomes 30.0 MB overlay + the kept 10.7 MB 4K diffuse. Author permissions could not be read programmatically (Nexus returns HTTP 403 to scripted page fetches and the v1 API exposes no permission fields); this overlay is local-only and no DDS is committed or redistributed."
+      "note": "Enforces docs/TEXTURE_POLICY.md source-plus-one-step on mod 77594, whose BSA ships all 12 maps at 4096x4096. Vanilla weapon analogues measured from Skyrim - Textures*.bsa: diffuse 2048, normal 1024, env-mask 256. Nine of the twelve maps also fall under the audit/inspect_mod.py soft/upscaled threshold (detail index <1.60 at >=2048): claymore 0.61/0.83/0.65, h&h 0.69/1.03/0.70, scabbard 1.11/0.14/1.13; qsicscab_m.dds holds 2 unique values across a 4096 grid. Recipe, run on the BSA payload with texconv -nologo -y -m 0: -f BC1_UNORM -w 2048 -h 2048 for h&h-sword_d, qsirishclaymore_d, qsicscab_d; -f BC3_UNORM -w 2048 -h 2048 for all four *_n; -f BC1_UNORM -w 512 -h 512 for all four *_m. executioner-sword_d.dds is NOT overridden: detail index 3.14 at 4096 is authored, and 4096 is one permitted step over the 2048 vanilla greatsword diffuse. Loose overlay wins over the BSA; MO2 priority 149 sits above the source mod. 172.2 MB of DDS becomes 30.0 MB overlay + the kept 10.7 MB 4K diffuse. Author permissions could not be read programmatically (Nexus returns HTTP 403 to scripted page fetches and the v1 API exposes no permission fields); this overlay is local-only and no DDS is committed or redistributed.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 11 downscaled DDS from Quicksilver's Sword Pack 77594; vendor-derived. Basis (Nexus 77594, Quicksilver500, read 2026-09-02 by page fetch, superseding the earlier 'could not be read' note): Upload 'not allowed ... under any circumstances'; Modification 'You must get permission from me before you are allowed to modify my files'; Asset use 'You are not allowed to use assets from this file under any circumstances'; note 'I'm a bit more precious about this mod'. Strictest terms in the set: installer must generate locally from the user's own download. Recipe recorded in note (texconv per file). texconv pinned 2026-09-02 in toolchain.json (tools.texconv: DirectXTex 2026.4.1.1, winget Microsoft.DirectXTex.Texconv 2026.3.31, SHA-256 563D9ECA...); per-file command, input hash and output hash in this row's recipe field. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "texconv",
+        "tool": {
+          "toolchainKey": "texconv",
+          "version": "2026.4.1.1",
+          "wingetPackage": "Microsoft.DirectXTex.Texconv",
+          "wingetVersion": "2026.3.31",
+          "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
+        },
+        "sourceForm": "entries inside QSSwordPack.bsa in the installed vendor mod (Nexus 77594 file 326302); extract first",
+        "steps": [
+          {
+            "output": "textures/weapons/qsirishclaymore/h&h-sword_d.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\h&h-sword_d.dds",
+            "sourceSha256": "AD93231856E91AA8CE5987DCE2BB38D7390A8E8E65B858870D70B0EF2888A697",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "62D2C5AA093D982CA92466E01C7D98BE8078EF50E8A9BAF3B026990F5DF85493",
+            "outputBytes": 2796344
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/qsirishclaymore_d.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\qsirishclaymore_d.dds",
+            "sourceSha256": "7528F506739C0D9A7EE87605D6D7873B178F6B6CFFD5A40EE7ABA85B06E90B28",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "8FA9BE009EFDF926A2466D0822B37F275DC5FC5802BB3552A797356A37B76447",
+            "outputBytes": 2796344
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/qsicscab_d.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\qsicscab_d.dds",
+            "sourceSha256": "16C5CEB9E5DEA3CBCFCADF6EFAFC6010590E898197E21165F86D7B8518791037",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "0E2FF7B1FB3FD54BDA541045CAB830F22163D3C5DC05F6B35D6D7BADBB83225D",
+            "outputBytes": 2796344
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/executioner-sword_n.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\executioner-sword_n.dds",
+            "sourceSha256": "07467F51F1541192730C5B23D32F57CDCDE20287E256F41AB19F89F9F959F5C0",
+            "sourceBytes": 22369776,
+            "command": "texconv -nologo -y -m 0 -f BC3_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "2B5790AB634D8473EBDA8F8D06B17F2E28A93AA626C93EF8553F59BC3AA6780B",
+            "outputBytes": 5592560
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/h&h-sword_n.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\h&h-sword_n.dds",
+            "sourceSha256": "4F2DFB8370FB41F304AB05451296EB7C25C8785906E225586B4140BD54B8E265",
+            "sourceBytes": 22369776,
+            "command": "texconv -nologo -y -m 0 -f BC3_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "C1E82B6106366A140E1FE325EBFAA2F64C57D3BCF8FF80F23B858B6E4049E940",
+            "outputBytes": 5592560
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/qsirishclaymore_n.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\qsirishclaymore_n.dds",
+            "sourceSha256": "FF05D4D142D8C520DD0970D41CCD5908A9FD09A21AF03BC6A2646D7A8CB8943B",
+            "sourceBytes": 22369776,
+            "command": "texconv -nologo -y -m 0 -f BC3_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "5CA95B001FC343D4588F2C63E6881E32CAE60AE69A4BD0B7798E1C2B5CD99C9D",
+            "outputBytes": 5592560
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/qsicscab_n.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\qsicscab_n.dds",
+            "sourceSha256": "27C0272311CBABEEDDB32F20B807A95C53FCE5EAA275B8E13F16F86004E01B82",
+            "sourceBytes": 22369776,
+            "command": "texconv -nologo -y -m 0 -f BC3_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "C10ED54CE69B39A2D0DFBFDC0A8C8DD131E0A0C09327C59AC6F75ADD9EEDE287",
+            "outputBytes": 5592560
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/executioner-sword_m.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\executioner-sword_m.dds",
+            "sourceSha256": "916CF172DE32BA1D3581F23B6BB8FBC95F2F85274713176558156510969A7825",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 512 -h 512 -o <output dir> \"<source>\"",
+            "outputSha256": "230CE18589A2B87BBBFD13DB3FC62FB56A783753111E4EE909B6A29E7ADB014A",
+            "outputBytes": 174904
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/h&h-sword_m.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\h&h-sword_m.dds",
+            "sourceSha256": "1A1464A26C6A08A6CC084579E3A199B1D129C21D2D3368F97AB29A91F976F95F",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 512 -h 512 -o <output dir> \"<source>\"",
+            "outputSha256": "CF91F3D4455A2963E32D785C987380DE26DFBACE9B08973F2E96B335CA61D6CD",
+            "outputBytes": 174904
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/qsirishclaymore_m.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\qsirishclaymore_m.dds",
+            "sourceSha256": "4ADABB9D3BFD7D8A209533B1E98355A26F0EA5787C986484BA03DD8B3A924817",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 512 -h 512 -o <output dir> \"<source>\"",
+            "outputSha256": "1418F4A95B82E51D115C9B5BB80BB2DFD5D9A9598C11DDC3DAA519BF5BFAF53C",
+            "outputBytes": 174904
+          },
+          {
+            "output": "textures/weapons/qsirishclaymore/qsicscab_m.dds",
+            "source": "bsa: Quicksilver's Sword Pack/QSSwordPack.bsa::textures\\weapons\\qsirishclaymore\\qsicscab_m.dds",
+            "sourceSha256": "499FD6D3EC99151D47F8F197643B051C3D4936922BCDE216022CA28E37E7E742",
+            "sourceBytes": 11184952,
+            "command": "texconv -nologo -y -m 0 -f BC1_UNORM -w 512 -h 512 -o <output dir> \"<source>\"",
+            "outputSha256": "C3ED60E8142152D4FDC1C125F370627E3AD36856C7FE2569151C936378006ED1",
+            "outputBytes": 174904
+          }
+        ],
+        "recordedAt": "2026-09-02",
+        "verification": "input and output hashes taken from the installed vendor mod and overlay on 2026-09-02; commands are the ones recorded in the note at generation time"
+      }
     },
     {
       "modId": 0,
@@ -975,22 +1384,228 @@
       "sizeMb": 2.0,
       "sha256": "f526bbbcae2fb83c31cfac2d19ba949e7b4c4c70a9771efe960b5d2d48777e29",
       "transaction": "20260830T161103813Z-057e60c1ac8b",
-      "note": "Enforces docs/TEXTURE_POLICY.md on mod 41118. The vendor env-masks are two to three steps above their vanilla analogue: every vanilla steel *_m measures 512, while ScaleArmor_m ships at 4096 and ScaleBG_m / ScaleHelmet_m at 2048. Capped at 1024, the single permitted step, since their detail justifies one step but not three. 16.00 MB -> 2.00 MB, 14.00 MB reclaimed; detail rises in every case (3.97->6.03, 2.40->3.11, 8.31->11.39). Recipe on the installed vendor payload: texconv -f BC1_UNORM -m 0 -w 1024 -h 1024 -y -nologo for ScaleArmor_m.dds, ScaleBG_m.dds and ScaleHelmet_m.dds. Not touched: all diffuse and normal maps (source match or a justified single step), FurCloack.dds 2048 (soft at detail 1.20 but there is no vanilla cloak analogue to step down from), and both cubemaps. MO2 priority 2, above the vendor mod at 3 - verified that ScaleArmor_m resolves from this overlay at 1024 while ScaleArmor still resolves from the vendor at 4096. Local-only, no DDS committed, vendor folder byte-identical."
+      "note": "Enforces docs/TEXTURE_POLICY.md on mod 41118. The vendor env-masks are two to three steps above their vanilla analogue: every vanilla steel *_m measures 512, while ScaleArmor_m ships at 4096 and ScaleBG_m / ScaleHelmet_m at 2048. Capped at 1024, the single permitted step, since their detail justifies one step but not three. 16.00 MB -> 2.00 MB, 14.00 MB reclaimed; detail rises in every case (3.97->6.03, 2.40->3.11, 8.31->11.39). Recipe on the installed vendor payload: texconv -f BC1_UNORM -m 0 -w 1024 -h 1024 -y -nologo for ScaleArmor_m.dds, ScaleBG_m.dds and ScaleHelmet_m.dds. Not touched: all diffuse and normal maps (source match or a justified single step), FurCloack.dds 2048 (soft at detail 1.20 but there is no vanilla cloak analogue to step down from), and both cubemaps. MO2 priority 2, above the vendor mod at 3 - verified that ScaleArmor_m resolves from this overlay at 1024 while ScaleArmor still resolves from the vendor at 4096. Local-only, no DDS committed, vendor folder byte-identical.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 3 downscaled env masks from Scale Nord Armor 41118; vendor-derived. Basis (Nexus 41118, NordwarUA, read 2026-09-02): Upload 'You can upload this file to other sites but you must credit me'; Modification 'You are allowed to modify my files and release bug fixes or improve on the features so long as you credit me as the original creator'; Asset use 'allowed ... as long as you credit me'; Donation Points require permission. Conditions: credit NordwarUA, no paid use, no DP. Recipe alternative recorded in note (texconv); texconv pinned 2026-09-02 in toolchain.json (tools.texconv: DirectXTex 2026.4.1.1, winget Microsoft.DirectXTex.Texconv 2026.3.31, SHA-256 563D9ECA...); per-file command, input hash and output hash in this row's recipe field. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "texconv",
+        "tool": {
+          "toolchainKey": "texconv",
+          "version": "2026.4.1.1",
+          "wingetPackage": "Microsoft.DirectXTex.Texconv",
+          "wingetVersion": "2026.3.31",
+          "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
+        },
+        "sourceForm": "loose files in the installed vendor mod (Nexus 41118 file 163922)",
+        "steps": [
+          {
+            "output": "Textures/Armor_Replacer/1_NordWar/ScaleArmor_m.dds",
+            "source": "loose: Scale Nord Armor/Textures/Armor_Replacer/1_NordWar/ScaleArmor_m.dds",
+            "sourceSha256": "22D8A87FFF17EA6FFEEEF52CF43C65DA22399C3463BCB68A4745A8646B351B42",
+            "sourceBytes": 11184952,
+            "command": "texconv -f BC1_UNORM -m 0 -w 1024 -h 1024 -y -nologo -o <output dir> \"<source>\"",
+            "outputSha256": "12A1D0C29859211534428351792058BA5F044AC98EC860F742BB4677D0BD6B0A",
+            "outputBytes": 699192
+          },
+          {
+            "output": "Textures/Armor_Replacer/1_NordWar/ScaleBG_m.dds",
+            "source": "loose: Scale Nord Armor/Textures/Armor_Replacer/1_NordWar/ScaleBG_m.dds",
+            "sourceSha256": "E74C375AFAA21AD420759330FA921B238A8F29444F04D4E21353E3BE62FDF301",
+            "sourceBytes": 2796344,
+            "command": "texconv -f BC1_UNORM -m 0 -w 1024 -h 1024 -y -nologo -o <output dir> \"<source>\"",
+            "outputSha256": "7D0BCDF126AF298559EA90AF22B267A089E49C6B8AFB2A3BD18C3400BAC91923",
+            "outputBytes": 699192
+          },
+          {
+            "output": "Textures/Armor_Replacer/1_NordWar/ScaleHelmet_m.dds",
+            "source": "loose: Scale Nord Armor/Textures/Armor_Replacer/1_NordWar/ScaleHelmet_m.dds",
+            "sourceSha256": "991DC776F7B62F35744B095B53DE0097667A959FCCFBCF418BB3FDA5943FB5B4",
+            "sourceBytes": 2796344,
+            "command": "texconv -f BC1_UNORM -m 0 -w 1024 -h 1024 -y -nologo -o <output dir> \"<source>\"",
+            "outputSha256": "A9AFD6FC4FDE57553333E7620BA3EBC29EE1E7E5B6B48A1C5ADBE40F43DB73E7",
+            "outputBytes": 699192
+          }
+        ],
+        "recordedAt": "2026-09-02",
+        "verification": "input and output hashes taken from the installed vendor mod and overlay on 2026-09-02; commands are the ones recorded in the note at generation time"
+      }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Scoped Werewolf Totem Skull 98175",
+      "nexusName": "Ensrick-owned scoped overlay derived from High Poly 3D Wolf Skull 98175",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "staged from _audit_tmp/wolf-totem-98175-overlay (nif-port-cli remap-textures; records/source-builds/ensrick-scoped-werewolf-totem-98175.json)",
+      "sizeMb": 9.31,
+      "sha256": "b47423b3535ac0c670775f811b5174a711a334c3dcc6c6c56623e5e0ec5792cc",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-30T00:47:05Z",
+      "transaction": "20260830T004705248Z-1c7c5fc60cb5",
+      "note": "Uses JJerem's complete werewolf-totem design (Nexus 98175 v1.3 file 416610) without globally retexturing the vanilla hag-feather ingredient: the vendor NIF's eight texture references are remapped to textures/ensrick/werewolf_totem_98175/ (nif-port-cli remap-textures, fail-closed, geometry byte-preserved: 5 shapes, 21,090 tris) and the eight 1K vendor textures are copied verbatim to those new paths; the two SMIM rope references are left intact (SMIM 2.08 supplies them). Vendor mod 'High Poly 3D Wolf Skull - Werewolf Totem Replacer' stays installed but DISABLED (modlist line 107) so its global hagfeather paths never win. Output mesh SHA-256 2ED97202B2932C74DFE04555D757E4AB24649495C39FFFA5EE85E33ECEA3538A; per-texture hashes in the source-builds record. Row sha256 = aggregate over the 9 payload files (sha256 of the sorted 'path<TAB>SHA256' lines, lower-cased paths). Parked/unparked in the #142 bisect round 3. Row added 2026-09-02 (#160).",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 1 remapped vendor NIF + 8 verbatim vendor DDS at new paths; vendor-derived. Basis (Nexus 98175, JJerem, read 2026-09-02): Upload 'not allowed', Modification and Asset use allowed 'as long as you credit me', and the file credits third-party source assets, so the upload ban governs. Installer regenerates from the user's own download per records/source-builds/ensrick-scoped-werewolf-totem-98175.json (tool commit e12079c pushed 2026-09-02 to Ensrick/nif-port-cli branch agent/shape-overlay-and-texture-remap, PR #2). Could become distributable with credit after a permissions review. [ledger row added and classified 2026-09-02, #160]"
     },
     {
       "modId": 0,
       "modName": "Ensrick - Skyking Signs Env Mask Fix",
       "nexusName": "Ensrick-owned env-mask overlay for Skyking Signs 112902",
       "fileName": "ensrick-skyking-signs-envmask-fix.zip (generated by overlays/ensrick-skyking-signs-envmask-fix/build.py)",
-      "version": "2026-09-01",
+      "version": "2026-09-02",
       "fileId": 0,
-      "sizeMb": 0.001,
-      "sha256": "c52ceace769b84957fb91c5b12f2b70c429d01627c759358e033eead61a27165",
+      "sizeMb": 0.002,
+      "sha256": "3b9b6f826b01dd2c6934dd6ddabb8a1c41dd751cf1203c241e7883585a8e1c0d",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-02T03:46:20Z",
-      "transaction": "20260902T034620898Z-5cd4ea984e2b",
-      "note": "Fallback fix for #159 (oily shine on Skyking sign posts). Skyking Signs' chosen 03 Parallax meshes give every sign's wooden post an EnvironmentMap shader (EnvMapScale 1.0) with the 1x1 black dynamic1pxcubemap_black.dds and an env-mask slot pointing at textures/architecture/{whiterun/wrwoodbeam01_m, farmhouse/woodpost02_m, riften/riftencanalwood01_m, windhelm/whwoodbase01_m}.dds - masks that no loose mod, none of the 92 vanilla BSAs and none of the 58 enabled-mod BSAs ship. CS Dynamic Cubemaps then reflects the live environment at F0 1.0 / roughness 1/8 scaled by whatever default texture the engine substitutes for the missing mask. This overlay supplies a 4x4 solid-black alpha-1 uncompressed A8R8G8B8 env mask (3 mips, 212 B) at each of the four paths: envMask 0 skips the reflection block, and alpha 1 + grayscale RGB is not read as a complex material, so the post shades like the author's standard 01 meshes while the sign boards keep their chosen parallax. Only meshes referencing those exact paths are affected and none found them before. Generated from build.py alone, nothing vendor-derived; staged with MO2Headless mod-stage at priority 227 (top; Skyking Signs is 122). Rollback: disable this one mod. Preferred alternative if the shine survives: reinstall Skyking Signs standard-only (drop the two 03 Parallax mappings in records/fomod-plans/112902-skyking-signs.json). UNVERIFIED in-game; the instant discriminator is Numpad * (CS shaders off)."
+      "installedUtc": "2026-09-02T04:53:15Z",
+      "transaction": "20260902T045315225Z-7d160abddf8d",
+      "note": "Fallback fix for #159 (oily shine on Skyking sign posts). Skyking Signs' chosen 03 Parallax meshes give every sign's wooden post an EnvironmentMap shader (EnvMapScale 1.0) with the 1x1 black dynamic1pxcubemap_black.dds and an env-mask slot pointing at textures/architecture/{whiterun/wrwoodbeam01_m, farmhouse/woodpost02_m, riften/riftencanalwood01_m, windhelm/whwoodbase01_m}.dds - masks that no loose mod, none of the 92 vanilla BSAs and none of the enabled-mod BSAs ship. CS Dynamic Cubemaps then reflects the live environment at F0 1.0 / roughness 1/8 scaled by whatever default texture the engine substitutes for the missing mask. This overlay supplies a 4x4 solid-black alpha-1 uncompressed A8R8G8B8 env mask (3 mips, 212 B) at each referenced path: envMask 0 skips the reflection block, and alpha 1 + grayscale RGB is not read as a complex material, so the post shades like the author's standard 01 meshes while the sign boards keep their chosen parallax. Only meshes referencing those exact paths are affected and none found them before. Generated from build.py alone, nothing vendor-derived; staged with MO2Headless mod-stage at the top of the priority list (Skyking Signs is row 109). Rollback: disable this one mod. Preferred alternative if the shine survives: reinstall Skyking Signs standard-only (drop the two 03 Parallax mappings in records/fomod-plans/112902-skyking-signs.json). UNVERIFIED in-game; the instant discriminator is Numpad * (CS shaders off). | EXTENDED 2026-09-02 (transaction 20260902T045315225Z-7d160abddf8d, mod-stage --replace, priority kept at 228, audit errors []): 4 -> 11 masks. The load-order sweep audit/envmask_scan.py (records/envmask-missing-scan-2026-09-02.md: 207 enabled mods, 11,351 loose NIFs, 4,999 env-mapped shapes, 59 mod + 92 vanilla BSAs) found the seven remaining masks the same Skyking option references under the same terms: markarth/mrkdeco01_m (mrkalchemysign; also Skyking Unique Signs' signthehagscure), markarth/mrkinnwindows01_m (mrksigngeneralgoods01 + silverbloodinn; also Unique Signs' signarnleifandsons), riften/riftenlogdetails01_m (signrtorphanage01), and landscape/fieldgrass01_m, landscape/mountains/mountainslab02_m, landscape/rocks01_m, landscape/tundra01_m on loadscreenblackbriar01 (mountainslab02_m is also what ERM - Fix and Addon's minecboulderl02 asks for). Vanilla ships no _m for any of the eleven and shades the same surfaces with the Default shader (vanilla loadscreenblackbriar01 parsed from Skyrim - Meshes1.bsa: all four landscape shapes Default, no slot 4/5), so a black mask reproduces the vanilla look; every one is a matte class (wood, carved stone, ground, rock). All 11 DDS DirectXTex-validated (texconv 2026.4.1.1 round-trip). The sweep's other hits (HIMBO orcish armor, SFCO Dwemer + drapery, Sons of Skyrim splinted, Believable Weapons madness sword, Skyland smanhole typo, Water for ENB waterfall, Lux Orbis shadowed sbridge01) are intentional metal/water reflections, path typos or missing texture sets and were NOT masked; listed for the user in the record.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: 11 generated 4x4 A8R8G8B8 env masks (212 B each, byte-identical) produced by overlays/ensrick-skyking-signs-envmask-fix/build.py; nothing vendor-derived (Skyking Signs 112902 terms are restrictive but untouched). Basis: our own bytes. build.py is committed; the zip and payload are regenerated by the recipe. Fix itself still unverified in-game (#159). [classified 2026-09-02, #160] [extended to 11 masks 2026-09-02, #159]",
+      "files": [
+        "textures/architecture/whiterun/wrwoodbeam01_m.dds",
+        "textures/architecture/farmhouse/woodpost02_m.dds",
+        "textures/architecture/riften/riftencanalwood01_m.dds",
+        "textures/architecture/windhelm/whwoodbase01_m.dds",
+        "textures/architecture/markarth/mrkdeco01_m.dds",
+        "textures/architecture/markarth/mrkinnwindows01_m.dds",
+        "textures/architecture/riften/riftenlogdetails01_m.dds",
+        "textures/landscape/fieldgrass01_m.dds",
+        "textures/landscape/mountains/mountainslab02_m.dds",
+        "textures/landscape/rocks01_m.dds",
+        "textures/landscape/tundra01_m.dds"
+      ],
+      "recipe": {
+        "kind": "script",
+        "script": "overlays/ensrick-skyking-signs-envmask-fix/build.py",
+        "command": "py -3 overlays/ensrick-skyking-signs-envmask-fix/build.py",
+        "inputs": [],
+        "outputs": [
+          {
+            "path": "textures/architecture/whiterun/wrwoodbeam01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/architecture/farmhouse/woodpost02_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/architecture/riften/riftencanalwood01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/architecture/windhelm/whwoodbase01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/architecture/markarth/mrkdeco01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/architecture/markarth/mrkinnwindows01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/architecture/riften/riftenlogdetails01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/landscape/fieldgrass01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/landscape/mountains/mountainslab02_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/landscape/rocks01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          },
+          {
+            "path": "textures/landscape/tundra01_m.dds",
+            "sha256": "9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29",
+            "bytes": 212
+          }
+        ],
+        "archive": {
+          "path": "overlays/ensrick-skyking-signs-envmask-fix/ensrick-skyking-signs-envmask-fix.zip",
+          "sha256": "3B9B6F826B01DD2C6934DD6DDABB8A1C41DD751CF1203C241E7883585A8E1C0D",
+          "bytes": 2353
+        },
+        "method": "struct-packed 4x4 A8R8G8B8 DDS with a 3-level mip chain, every texel (0,0,0,255); one identical file written at each of the 11 referenced env-mask paths (paths read from the installed Skyking NIFs by audit/envmask_scan.py, never typed by hand); staged with MO2Headless mod-stage --replace from a copy of payload/",
+        "recordedAt": "2026-09-02",
+        "verification": "2026-09-02 rebuild: 11/11 files sha256 9D4C494AAA6CCACDBF6DA1C5096EDEE17782CB81E74F6CF454A3AAC8F78DBA29 (212 B); each read by texconv 2026.4.1.1 without error; installed mod folder re-hashed after mod-stage: 11/11 match"
+      }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Skyland Solitude Manhole Texture Path Fix",
+      "nexusName": "Ensrick-owned texture-path overlay for Skyland AIO 1K 34179",
+      "fileName": "ensrick-skyland-smanhole-texture-path-fix.zip (generated by overlays/ensrick-skyland-smanhole-texture-path-fix/build.py)",
+      "version": "2026-09-02",
+      "fileId": 0,
+      "sizeMb": 0.502,
+      "sha256": "7d1204775eb1e6d55d393a49c4f79c22ff62f5136ce609ca4a1f299c0cd34c6a",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T05:06:02Z",
+      "transaction": "20260902T050602116Z-cbe4e3d83cbb",
+      "files": [
+        "textures/arechitecture/solitude/smanhole_e.dds",
+        "textures/arechitecture/solitude/smanhole_m.dds"
+      ],
+      "note": "#159 sweep follow-up. Skyland AIO 1K 34179 v4.32's meshes/architecture/solitude/smanhole.nif (block 10, EnvironmentMap, EnvMapScale 1.5) asks for textures/arechitecture/solitude/smanhole_e.dds (cubemap) and smanhole_m.dds (env mask); Skyland ships both under the correctly spelled textures/architecture/solitude/. Vanilla smanhole.nif is a Default shader (diffuse + normal only), so the reflection is Skyland's authoring and a black mask would be wrong. This overlay is a byte copy of Skyland's two textures (smanhole_m 1024x1024 BC1 699,192 B; smanhole_e 128x128 BC1 65,744 B) at the misspelled folder; the vendor mod is untouched. Staged with MO2Headless mod-stage at the top of the priority list (row 1); audit errors []. Rollback: disable this one mod. UNVERIFIED in-game; launch coverage owed by the next launch_verify PASS after 05:06Z.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 2 Skyland AIO 1K (34179) textures copied unchanged to a misspelled second path; vendor bytes. Basis: Skyland terms are restrictive (no redistribution, per the #159 sweep record); local only. Recipe = the copy in build.py with pinned input/output hashes. [classified 2026-09-02, #159 sweep]",
+      "recipe": {
+        "kind": "script",
+        "script": "overlays/ensrick-skyland-smanhole-texture-path-fix/build.py",
+        "command": "py -3 overlays/ensrick-skyland-smanhole-texture-path-fix/build.py",
+        "sourceForm": "loose files in the installed vendor mod (Nexus 34179 file 443516, Skyland AIO 1K 4.32)",
+        "inputs": [
+          {
+            "source": "loose: Skyland AIO 1K/textures/architecture/solitude/smanhole_m.dds",
+            "sha256": "D8F956EF9DF817509D721025BDF4376F9D8A3E362C5DEF78E4B9859E5ECC739F",
+            "bytes": 699192
+          },
+          {
+            "source": "loose: Skyland AIO 1K/textures/architecture/solitude/smanhole_e.dds",
+            "sha256": "4522140D77612BFC33B1CECA88F5DC3E8AD4B4D36435B43246E69CD1E8F2995A",
+            "bytes": 65744
+          }
+        ],
+        "outputs": [
+          {
+            "path": "textures/arechitecture/solitude/smanhole_m.dds",
+            "sha256": "D8F956EF9DF817509D721025BDF4376F9D8A3E362C5DEF78E4B9859E5ECC739F",
+            "bytes": 699192
+          },
+          {
+            "path": "textures/arechitecture/solitude/smanhole_e.dds",
+            "sha256": "4522140D77612BFC33B1CECA88F5DC3E8AD4B4D36435B43246E69CD1E8F2995A",
+            "bytes": 65744
+          }
+        ],
+        "archive": {
+          "path": "overlays/ensrick-skyland-smanhole-texture-path-fix/ensrick-skyland-smanhole-texture-path-fix.zip",
+          "sha256": "7D1204775EB1E6D55D393A49C4F79C22FF62F5136CE609CA4A1F299C0CD34C6A",
+          "bytes": 526488
+        },
+        "method": "read each vendor file, assert its SHA-256 and size, write the identical bytes under textures/arechitecture/solitude/ (the folder name the mesh misspells); the script refuses on any hash mismatch",
+        "recordedAt": "2026-09-02",
+        "verification": "2026-09-02 build: both output hashes equal their inputs; texconv 2026.4.1.1 read both outputs without error; installed files re-hashed after mod-stage: 2/2 match"
+      }
     },
     {
       "modId": 0,
@@ -1000,12 +1615,17 @@
       "fileId": 0,
       "fileName": "overlays/ensrick-sse-display-tweaks-config",
       "sizeMb": 0.0,
-      "sha256": "",
+      "sha256": "683e87dfbdb096873bf3beb59be556edf8eaf98290382bde98eb2e58cfa969b8",
       "plugins": [],
       "enabled": true,
       "installedUtc": "2026-08-30T02:32:01Z",
       "transaction": "20260830T023201341Z-c0048f1a4ea9",
-      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
+      "note": "Tracked config-only overlay. Explicitly preserves borderless window mode and focused-window cursor confinement while the official vendor DLL and default INI remain byte-identical. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa).",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: SKSE/Plugins/SSEDisplayTweaks_Custom.ini, Ensrick configuration only, tracked at overlays/ensrick-sse-display-tweaks-config and byte-identical to the installed copy. Basis: our own bytes; upstream SSE Display Tweaks 34705 author's instructions read 'MIT License'. The stray SSEDisplayTweaks_Custom.ini.bak.v20260901-pre-120hz in the MO2 folder is excluded from packaging by .packagingignore and this row's packagingExcludes (2026-09-02); row sha256 now = the live INI (byte-identical to the tracked overlay copy). [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "packagingExcludes": [
+        "SKSE/Plugins/SSEDisplayTweaks_Custom.ini.bak.v20260901-pre-120hz"
+      ]
     },
     {
       "modId": 0,
@@ -1020,7 +1640,9 @@
       "enabled": true,
       "installedUtc": "2026-08-30T22:05:46Z",
       "transaction": "20260830T220546414Z-660cdd66dc7b",
-      "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
+      "note": "Private deterministic loose FaceGen overlay above pristine Vanilla Hair Remake SMP 1.0.3 main and 1.0.1 NPC packages. It copies the 29 exact USSEP FaceGen NIFs that collide with VHR so USSEP race, sex, head-part, and morph corrections remain authoritative; those 29 NPCs intentionally forgo SMP hair, following jg1's rule that head-changing mods win rather than combine. It also corrects three VHR Dawnguard Snow Elf NIF string-table references from the removed darkelf01.xml to the installed darkelf01m.xml. All 32 outputs are valid SSE stream-100 NIFs; two clean builds and the installed tree share aggregate SHA-256 0504FF16F3239BD116867D37E5511B8B453B8E1EF96F11D6FE506FA00FCDA2DE. Vendor folders remain byte-identical; generated NIFs remain local and uncommitted. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa).",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 32 loose FaceGen NIFs, all vendor-derived: 29 byte-exact copies from the installed USSEP 4.3.9 BSA plus 3 VHR NPC 1.0.1 NIFs with one string-table edit each; no Ensrick records. Basis: USSEP 266 'Assets such as mesh files (.nif) ... may be freely used as the basis for your own work' but 'may not be included in any mod packs under any circumstances', and the 29 copies are version-coupled to the installed USSEP; VHR 63979 (jg1) Modification 'allowed ... so long as you credit me', Upload 'not allowed'. Regenerating from the user's own USSEP and VHR archives is cleaner and always in sync. Recipe recorded: overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py (committed; inputs VHR NPC BSA + USSEP BSA; overlap count asserted; aggregate SHA-256 recorded) plus records/vanilla-hair-remake-smp-2026-08-30.md. [classified 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -1035,7 +1657,9 @@
       "enabled": true,
       "installedUtc": "2026-08-30T03:24:05Z",
       "transaction": "20260830T032405369Z-9df63c188f32",
-      "note": "PRIVATE, NON-DISTRIBUTABLE six-PEX overlay correcting Varinia 1.1.0's referenced but omitted dialogue fragments. Vendor ESP/BSAs remain byte-identical. Reproducibility, bytecode validation, file hashes, and permissions boundary are recorded in records/varinia-private-fragment-fix-2026-08-30.md."
+      "note": "PRIVATE, NON-DISTRIBUTABLE six-PEX overlay correcting Varinia 1.1.0's referenced but omitted dialogue fragments. Vendor ESP/BSAs remain byte-identical. Reproducibility, bytecode validation, file hashes, and permissions boundary are recorded in records/varinia-private-fragment-fix-2026-08-30.md.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 6 PEX compiled from Maplespice's PSC sources with restored property declarations; vendor-derived. Basis (Nexus 148853, Maplespice, read 2026-09-02): Upload 'not allowed ... under any circumstances'; Modification 'You must get permission from me before you are allowed to modify my files'; Asset use 'You must get permission'. Recipe fully recorded in records/varinia-private-fragment-fix-2026-08-30.md (declaration table, Caprica 0.3.0 and Champollion 1.3.2 pinned by commit and hash, exact command). Heavy installer step; the preferred end state is the upstream fix (draft report records/varinia-upstream-bug-report-draft-2026-08-30.md). [classified 2026-09-02, #160]"
     },
     {
       "modId": 0,
@@ -1050,7 +1674,28 @@
       "sizeMb": 0.59,
       "sha256": "0eb2c9b0d57f30710b9443a406ae8bed8b3152d0bdca9decfa0914e887ca9b24",
       "transaction": "20260830T151041570Z-8c467b2d7fdc",
-      "note": "Ports all six Vikings Weaponry (14409) meshes from Oldrim to SE. The mod's own BSA ships them at NIF stream 83 / NiTriShape / isLE=true despite the SE listing; nif-port-cli convert-sse (SSE-NIF-Optimizer dbba8b3 + nifly 846518b) rewrites them to stream 100 / BSTriShape / isSSE=true, which also rescales the LE Havok collision. Post-convert audit: bhkCollisionObject + bhkRigidBody + bhkConvexVerticesShape retained on all six, Prn sheath nodes intact (WeaponAxe / WeaponSword / SHIELD), plus Scb / INV / EdgeBlood, texture paths unchanged. Tris: lothbrokaxe 6960, lagerthasword 4740, lothbrokshield and lagerthashield 3600 each, flokiaxe 1348, flokiadz 1148 (vanilla steel war axe 1446, sword 1522, shield 1124). Loose files beat the mod's BSA; the vendor mod folder stays byte-identical to the Nexus archive. Disable this overlay to fall straight back to the author's meshes. Needs an in-game check - #70."
+      "note": "Ports all six Vikings Weaponry (14409) meshes from Oldrim to SE. The mod's own BSA ships them at NIF stream 83 / NiTriShape / isLE=true despite the SE listing; nif-port-cli convert-sse (SSE-NIF-Optimizer dbba8b3 + nifly 846518b) rewrites them to stream 100 / BSTriShape / isSSE=true, which also rescales the LE Havok collision. Post-convert audit: bhkCollisionObject + bhkRigidBody + bhkConvexVerticesShape retained on all six, Prn sheath nodes intact (WeaponAxe / WeaponSword / SHIELD), plus Scb / INV / EdgeBlood, texture paths unchanged. Tris: lothbrokaxe 6960, lagerthasword 4740, lothbrokshield and lagerthashield 3600 each, flokiaxe 1348, flokiadz 1148 (vanilla steel war axe 1446, sword 1522, shield 1124). Loose files beat the mod's BSA; the vendor mod folder stays byte-identical to the Nexus archive. Disable this overlay to fall straight back to the author's meshes. Needs an in-game check - #70.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 6 vendor NIFs converted LE to SSE; vendor-derived. Basis (Nexus 14409, johnskyrim, read 2026-09-02): no permissions grid and empty author's instructions; description states 'PS. DO NOT UPLOAD THIS FILE ANYWHERE ELSE! THIS INCLUDES BETHESDAS WEBSITE!' and grants no modification right. Recipe recorded in note (nif-port-cli convert-sse; SSE-NIF-Optimizer dbba8b3 + nifly 846518b). Recipe: nif-port-cli convert-sse on the BSA-extracted meshes, pinned to Ensrick/nif-port-cli c63f74e (PR #2), per-file hashes in records/source-builds/ensrick-vikings-weaponry-se-mesh-port.json; 2026-09-02 rerun reproduced all 6 files byte-identically. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "nif-port-cli convert-sse",
+        "tool": {
+          "toolchainKey": "nifPortCli",
+          "repository": "https://github.com/Ensrick/nif-port-cli",
+          "commit": "c63f74e1c45ea331494f88511840ed7222f32ef5",
+          "branch": "agent/shape-overlay-and-texture-remap",
+          "pullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
+          "commitNote": "convert-sse code path is unchanged from 1cc5484 (origin/main) through e12079c and c63f74e; the port was made before c63f74e was committed and the exact binary is not hash-matched to a commit, so the pinned commit is the pushed head that contains the identical verb.",
+          "binaryPath": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-builds\\nif-port-cli\\Release\\nif-port-cli.exe",
+          "binarySha256": "D076B22FB7AC627E6277CC8B01D503763C60EF79CA86CBB9CB6D32239BDBA05C",
+          "upstreamCommit": "dbba8b359531fa4a4b89d906b93cdcb579abc8d0",
+          "niflyCommit": "846518b3fdfc6c81cddc49188aff77ad7006456a"
+        },
+        "record": "records/source-builds/ensrick-vikings-weaponry-se-mesh-port.json",
+        "inputs": "6 entries inside 'Vikings Weaponry - Johnskyrim.bsa' (per-file hashes in the record)",
+        "recordedAt": "2026-09-02",
+        "verification": "2026-09-02 rerun 6/6 byte-identical from BSA-extracted inputs"
+      }
     },
     {
       "modId": 0,
@@ -1065,7 +1710,105 @@
       "sizeMb": 31.0,
       "sha256": "03acb56924c8487d4c482ff1bd8491651ef22db33e82c267fe5e5de0ba408b30",
       "transaction": "20260830T151041788Z-1dceff1c0c5d",
-      "note": "Enforces docs/TEXTURE_POLICY.md on mod 14409's 2K FOMOD option. Two violations fixed. (1) Envmasks were two steps over source: vanilla steel/dwarven weapon and shield *_m measure 512x512, the mod ships all four at 2048. lothbrok_m, floki_m and lagerthasword_m went to 1024 (one permitted step, detail 2.65/2.40/1.64 justifies it); lothbrokshield_m went to the source 512 (detail 0.38 does not). (2) All five *_n were stored uncompressed A8R8G8B8 at 21.33 MB each; recompressed to BC7 at the unchanged source resolution of 2048, 5.33 MB each. BC7 not BC5 because the alpha carries the specular mask (mean 104-139, std 60-82); verified preserved to within 0.4 mean and 0.16 std. 128.0 MB of payload becomes 31.0 MB, 97.0 MB reclaimed. Recipe on the mod's own Textures.bsa (2K), texconv -m 0 -y -nologo: -f BC3_UNORM -w 1024 -h 1024 for lothbrok_m/floki_m/lagerthasword_m; -f BC3_UNORM -w 512 -h 512 for lothbrokshield_m; -f BC7_UNORM -w 2048 -h 2048 for all five *_n. Not touched: five diffuse at 2048 BC3 (source match; four measure 0.53-0.73, a quality note rather than a violation since no step was taken) and the two cubemaps (32x32, 96x96, 0.24 MB combined; lagertha_c is non-power-of-two but a real 6-face cubemap). Page says \"DO NOT UPLOAD THIS FILE ANYWHERE ELSE\" - a redistribution ban, not a modification ban; this overlay is local-only and no DDS is committed. Vendor folder byte-identical (SHA-256 verified on both BSAs and the ESP). See #64."
+      "note": "Enforces docs/TEXTURE_POLICY.md on mod 14409's 2K FOMOD option. Two violations fixed. (1) Envmasks were two steps over source: vanilla steel/dwarven weapon and shield *_m measure 512x512, the mod ships all four at 2048. lothbrok_m, floki_m and lagerthasword_m went to 1024 (one permitted step, detail 2.65/2.40/1.64 justifies it); lothbrokshield_m went to the source 512 (detail 0.38 does not). (2) All five *_n were stored uncompressed A8R8G8B8 at 21.33 MB each; recompressed to BC7 at the unchanged source resolution of 2048, 5.33 MB each. BC7 not BC5 because the alpha carries the specular mask (mean 104-139, std 60-82); verified preserved to within 0.4 mean and 0.16 std. 128.0 MB of payload becomes 31.0 MB, 97.0 MB reclaimed. Recipe on the mod's own Textures.bsa (2K), texconv -m 0 -y -nologo: -f BC3_UNORM -w 1024 -h 1024 for lothbrok_m/floki_m/lagerthasword_m; -f BC3_UNORM -w 512 -h 512 for lothbrokshield_m; -f BC7_UNORM -w 2048 -h 2048 for all five *_n. Not touched: five diffuse at 2048 BC3 (source match; four measure 0.53-0.73, a quality note rather than a violation since no step was taken) and the two cubemaps (32x32, 96x96, 0.24 MB combined; lagertha_c is non-power-of-two but a real 6-face cubemap). Page says \"DO NOT UPLOAD THIS FILE ANYWHERE ELSE\" - a redistribution ban, not a modification ban; this overlay is local-only and no DDS is committed. Vendor folder byte-identical (SHA-256 verified on both BSAs and the ESP). See #64.",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: 9 DDS (4 env masks downscaled, 5 normals recompressed to BC7) from Vikings Weaponry 14409; vendor-derived. Basis (Nexus 14409, johnskyrim, read 2026-09-02): no permissions grid; description 'PS. DO NOT UPLOAD THIS FILE ANYWHERE ELSE! THIS INCLUDES BETHESDAS WEBSITE!'; no modification grant. Recipe recorded in note (texconv per file on the 2K Textures.bsa payload). texconv pinned 2026-09-02 in toolchain.json (tools.texconv: DirectXTex 2026.4.1.1, winget Microsoft.DirectXTex.Texconv 2026.3.31, SHA-256 563D9ECA...); per-file command, input hash and output hash in this row's recipe field. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "recipe": {
+        "kind": "texconv",
+        "tool": {
+          "toolchainKey": "texconv",
+          "version": "2026.4.1.1",
+          "wingetPackage": "Microsoft.DirectXTex.Texconv",
+          "wingetVersion": "2026.3.31",
+          "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
+        },
+        "sourceForm": "entries inside 'Vikings Weaponry - Johnskyrim - Textures.bsa' (2K option) in the installed vendor mod (Nexus 14409 file 42845); extract first",
+        "steps": [
+          {
+            "output": "textures/johnskyrim/lothbrok/lothbrok_m.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lothbrok_m.dds",
+            "sourceSha256": "B01A97471F70D466F15E8759342B4131FC00DB4DD452AF6C1D3A4314F8BD3A39",
+            "sourceBytes": 5592560,
+            "command": "texconv -m 0 -y -nologo -f BC3_UNORM -w 1024 -h 1024 -o <output dir> \"<source>\"",
+            "outputSha256": "CD71241B80B3BA8120A93666565AF685014FC68B0831734E51E0E70A91231E38",
+            "outputBytes": 1398256
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/floki_m.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\floki_m.dds",
+            "sourceSha256": "52D06CD63EC0178F149B4D622CBA35A70F082EA19015DFCF744008F266F34554",
+            "sourceBytes": 5592560,
+            "command": "texconv -m 0 -y -nologo -f BC3_UNORM -w 1024 -h 1024 -o <output dir> \"<source>\"",
+            "outputSha256": "967D21D5226FB7CA4A705FDEF57ACCD6FE9B9FC526FC746814E61C78D63DD48B",
+            "outputBytes": 1398256
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/lagerthasword_m.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lagerthasword_m.dds",
+            "sourceSha256": "A9346F80DAEAEF5B23E3C5BE3B74D2213E4ED11E19F9B1640853FE8C074B3823",
+            "sourceBytes": 5592560,
+            "command": "texconv -m 0 -y -nologo -f BC3_UNORM -w 1024 -h 1024 -o <output dir> \"<source>\"",
+            "outputSha256": "6704595920C8D294E1BF4C940AA0FBE814583ABB674642B28E87D183BD080B33",
+            "outputBytes": 1398256
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/lothbrokshield_m.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lothbrokshield_m.dds",
+            "sourceSha256": "646B350DA08F7D8FCB6855A7E189646F970213B7804E183144D6F05D8C3FC4E0",
+            "sourceBytes": 5592560,
+            "command": "texconv -m 0 -y -nologo -f BC3_UNORM -w 512 -h 512 -o <output dir> \"<source>\"",
+            "outputSha256": "DB1EED46D03353A99A11340DB39DA9A50546A377D51095CD96FD84648A50047F",
+            "outputBytes": 349680
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/lothbrok_n.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lothbrok_n.dds",
+            "sourceSha256": "053873B6DA1D64D4294E93990CB13334AB2268397149076715566CD9AE47195F",
+            "sourceBytes": 22369748,
+            "command": "texconv -m 0 -y -nologo -f BC7_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "58702764EF0A61216BC206E89A29A20BA3B57EF3A885A749E9B556270D86CDBF",
+            "outputBytes": 5592580
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/floki_n.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\floki_n.dds",
+            "sourceSha256": "1FE565DC4AAFABEFD35DA64B9648842D5A7188D53867E2E5F41CE7DDCFFEA1E2",
+            "sourceBytes": 22369748,
+            "command": "texconv -m 0 -y -nologo -f BC7_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "81EDB40C02214A5191A077384648F121E9CC40463B0AC0DB87204D4BDA5C106A",
+            "outputBytes": 5592580
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/lagerthasword_n.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lagerthasword_n.dds",
+            "sourceSha256": "88FBC898405F01E5D251F605CA73E9D1BA3862A5345A68FE7B7F9C6785BCD01F",
+            "sourceBytes": 22369748,
+            "command": "texconv -m 0 -y -nologo -f BC7_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "24EF454886ED39AA18DB8F0BD9A423F76CBA7D2526DEAD12BE1FDC127CD779DC",
+            "outputBytes": 5592580
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/lagerthashield_n.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lagerthashield_n.dds",
+            "sourceSha256": "9F270B8A9F6CF3FFAE66882701724FF52B6A5BEB3069600D0CA2CA2BF6860F0A",
+            "sourceBytes": 22369748,
+            "command": "texconv -m 0 -y -nologo -f BC7_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "BF062B72ED7AFE230D5F8B4E25A245AC505B0B52CE78BD636C040F407950B8E9",
+            "outputBytes": 5592580
+          },
+          {
+            "output": "textures/johnskyrim/lothbrok/lothbrokshield_n.dds",
+            "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim - Textures.bsa::textures\\johnskyrim\\lothbrok\\lothbrokshield_n.dds",
+            "sourceSha256": "51383424944FEFD4A2FE1A57D304CBB167EB0571E9F3AECE9A2FE7C4AE384B8D",
+            "sourceBytes": 22369748,
+            "command": "texconv -m 0 -y -nologo -f BC7_UNORM -w 2048 -h 2048 -o <output dir> \"<source>\"",
+            "outputSha256": "BC7B45EDE9080E109966BB7C11D8C393959E5BCD85C6234C81299FB9811C8DD8",
+            "outputBytes": 5592580
+          }
+        ],
+        "recordedAt": "2026-09-02",
+        "verification": "input and output hashes taken from the installed vendor mod and overlay on 2026-09-02; commands are the ones recorded in the note at generation time"
+      }
     },
     {
       "modId": 88754,
@@ -1512,6 +2255,23 @@
       "fomodPlan": "records/fomod-plans/29194-interesting-npcs-update-4.54.json"
     },
     {
+      "modId": 0,
+      "modName": "JContainers 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick-owned native rebuild overlay (JContainers SE 16495 source rebuild for Skyrim 1.7.104)",
+      "version": "4.3.1.104",
+      "fileId": 0,
+      "fileName": "headless/packages/native-1.7.104-overlay-repair/JContainers 1.7.104 Native Overlay - Ensrick (local build from skyrim-tools-source/JContainers-1.7.104, branch ensrick/1.7.104, base ryobg/JContainers@90db5e29183a + 13 uncommitted working-tree changes)",
+      "sizeMb": 2.93,
+      "sha256": "f58cf37728a54552b08a2e3c4c6c2cf2f63955f3fa59b03640c60f129df701b5",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T19:05:13Z",
+      "transaction": "20260828T190513098Z-1d554b4917bb",
+      "note": "DLL-only overlay: SKSE/Plugins/JContainers64.dll loaded above the base mod JContainers SE 16495 (ledger row \"JContainers SE\" 4.3.1, author GitHub artifact), which stays installed and keeps its scripts, interface files, config and plugins. Rebuilt for SkyrimSE.exe 1.7.104 from skyrim-tools-source/JContainers-1.7.104 (branch ensrick/1.7.104, upstream ryobg/JContainers, starting revision 90db5e29183a0a36b992e9cb010860640e47a14c); the working tree still holds 13 uncommitted local compatibility changes, so per docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md the commit identifies the starting point, not a reproducible build. Installed via MO2Headless transaction 20260828T190513098Z-1d554b4917bb (meta.ini installationFile under headless/packages/native-1.7.104-overlay-repair; the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth, docs/RUNTIME-ISSUES-2026-08-28.md). Row sha256 = installed DLL, matches the docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md overlay table. Verified 2026-08-28: JContainers initialized for Skyrim 1.7.104.0 and registered its functions in the bounded 120 s run; MO2 profile audit passed. Priority 107. DLL version resource 4.3.1.104. No records/source-builds record exists (docs/PROCESS-AUDIT-2026-08-30.md F8); gameplay acceptance per the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md is not recorded as run. Base-row context: the 4.3.1 author artifact declares compatibleVersions 1.6.318 (upstream bug found 2026-08-26, see the JContainers SE row). [row added 2026-09-02, #102 ledger gap]",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: JContainers64.dll (DLL version resource 4.3.1.104). Basis: ryobg/JContainers is MIT licensed; the copyright notice must be retained with any distributed copy. records/private-runtime-dependencies.json shareableAfterReleaseReview: \"Local build works at the loader gate; source cleanup, reproducible build, notices, and gameplay acceptance remain.\" Sweep class \"distributable after review\" (records/ensrick-overlay-distribution-2026-09-02.md). GAP: the 13 local changes are uncommitted and unpushed, so no reproducible build exists yet. [classified 2026-09-02, #102]"
+    },
+    {
       "modId": 16495,
       "modName": "JContainers SE",
       "nexusName": "JContainers64 v4.3.1 (GitHub prerelease)",
@@ -1572,7 +2332,10 @@
       "enabled": true,
       "installedUtc": "2026-09-01T12:14:54Z",
       "transaction": "20260901T121454337Z-a0ba87af72df",
-      "note": "#142 bisect campaign instrumentation. SKSE micro-plugin logging MenuOpenClose + every SKSE message with timestamps to SKSE/LaunchProbe.log; the authoritative pass/fail signal for audit/launch_verify.py. Source C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe, SKSE-gate PASS. Remove after #142 closes if unwanted. Rebuilt 2026-09-01: _wfopen_s (deny-all sharing) -> _wfsopen _SH_DENYWR so the harness can tail the log mid-run. | FIXED 2026-09-01 (commit 12ce92e): kPostLoadGame success bool arrives BY VALUE in the data pointer on this SKSE build; dereferencing it AV'd on the first successful save load after the #142 fix (crashes 17:12:51 + 17:25:41 at LaunchProbe.dll+0002C51). New DLL sha256 47cfbe47c462b3ff6e6930b07c9b2fed9e0337bd507283157c7783a54bdbe210."
+      "note": "#142 bisect campaign instrumentation. SKSE micro-plugin logging MenuOpenClose + every SKSE message with timestamps to SKSE/LaunchProbe.log; the authoritative pass/fail signal for audit/launch_verify.py. Source C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe, SKSE-gate PASS. Remove after #142 closes if unwanted. Rebuilt 2026-09-01: _wfopen_s (deny-all sharing) -> _wfsopen _SH_DENYWR so the harness can tail the log mid-run. | FIXED 2026-09-01 (commit 12ce92e): kPostLoadGame success bool arrives BY VALUE in the data pointer on this SKSE build; dereferencing it AV'd on the first successful save load after the #142 fix (crashes 17:12:51 + 17:25:41 at LaunchProbe.dll+0002C51). New DLL sha256 47cfbe47c462b3ff6e6930b07c9b2fed9e0337bd507283157c7783a54bdbe210.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: LaunchProbe.dll (+pdb), Ensrick-authored SKSE plug-in, GPL-3.0-or-later because it links CommonLibSSE-NG. Basis: own code; GPL requires corresponding source and notices to accompany any distributed binary. GAP: source repository is local-only and not pushed (records/source-builds/ensrick-launch-probe.json). DECIDED 2026-09-02: excluded from the shared list (diagnostic tooling); sharedList field set, .packagingignore drops the whole mod folder, GPL source stays local and is not pushed. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "sharedList": "excluded (diagnostic tooling)"
     },
     {
       "modId": 109963,
@@ -1634,10 +2397,27 @@
       "sizeMb": 8.09,
       "sha256": "efd052703b8376477c09df4c2e5abd35bbc36e20f58dfdf08cc872053877a0b5",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-24T02:53:46Z",
       "transaction": "20260824T025345875Z-78180da2aec4",
-      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | UNPARKED 2026-08-30: park reason was wrong - installed 4.2.1 declares versionIndependence=5 (AddressLibraryPostAE|StructsPost629), PE stamp 1778212284 (2026-05-08) is ABOVE the 1748217600 SKSE reject cutoff, so the master-plugin gate passes; no skse64.log refusal was ever recorded (issue #79) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+      "note": "AE dll variant for 1.7.99 runtime; framework for Lux CS ISL configs | UNPARKED 2026-08-30: park reason was wrong - installed 4.2.1 declares versionIndependence=5 (AddressLibraryPostAE|StructsPost629), PE stamp 1778212284 (2026-05-08) is ABOVE the 1748217600 SKSE reject cutoff, so the master-plugin gate passes; no skse64.log refusal was ever recorded (issue #79) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | RESTORED 2026-09-01 23:07 (harden-project-2): parked preemptively 2026-08-31 22:01 during the OAR hang but never observed failing (#79, #140); mod-enable under the work claim; validation launch = hardening package 3/3 smoke | RE-PARKED 2026-09-01 23:12: validation launch records/launch-verify-20260901-230735.md died at t+4.3s on \"loading plugin LightPlacer\" - po3_LightPlacer.log: \"Unsupported address library format: 5\" (built against a CommonLib that cannot read the 1.7.104 Address Library v5). Genuine #140 failure; needs a rebuild-forward (po3 source is public) before any unpark. | SUPERSEDED 2026-09-02 by 'Light Placer - Ensrick 1.7.104' (source rebuild against a CommonLib that reads Address Library v5, records/source-builds/ensrick-light-placer.json); vendor row stays disabled as the licence/provenance anchor and rollback."
+    },
+    {
+      "modId": 0,
+      "modName": "Light Placer - Ensrick 1.7.104",
+      "nexusName": "Ensrick source build of powerof3 Light Placer 4.2.1 (Nexus 127557)",
+      "version": "4.2.1+master-1f15e5c-ensrick",
+      "fileId": 0,
+      "fileName": "records/source-builds/ensrick-light-placer",
+      "sizeMb": 36.18,
+      "sha256": "2bd0adfdd6ccfadc8f7a24479261a42848b2cbe418a800289d04513a88efea92",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T04:50:32Z",
+      "transaction": "20260902T045032956Z-13ae860d76e1",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: complete Light Placer package built from Ensrick/LightPlacer branch ensrick/1.7.104 (commit ae48c768a, upstream master 1f15e5c = v4.2.1 + 2 fixes): po3_LightPlacer.dll (sha256 2bd0adfdd6cc...), .pdb, po3_LightPlacer.ini, Scripts/LightPlacer.pex, Source/Scripts/LightPlacer.psc, LightPlacer-LICENSE.txt. Basis: MIT License (LICENSE, Copyright (c) 2024-2026 powerofthree: rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies, provided the copyright and permission notice is included - it ships in the package). Links powerof3/CommonLibSSE + libxse/commonlib-shared (GPL-3.0-or-later with the SKSE-plugin EXCEPTIONS); corresponding source is the public fork. Build record: records/source-builds/ensrick-light-placer.json.",
+      "note": "Rebuild-forward of the parked vendor 4.2.1 (#79, #140): vendor DLL's embedded CommonLib reads Address Library formats 1-2 only and dies on the 1.7.104 v5 file. This build follows upstream's own August 2026 migration to powerof3/CommonLibSSE dev cbb5c29a1 + commonlib-shared (Address Library v5 reader), with REX::FAIL patched to log-only (no MessageBox). SKSE gate: PASS (version independent) (versionIndependence=5, viEx=2, V5 bit=YES, PE stamp 1788323919 = 2026-09-02 04:38:39Z). Feature defaults: identical to vendor ini (#144). Priority directly above the parked vendor row; vendor row stays disabled. Launch: VERIFIED 2026-09-01 23:52 records/launch-verify-20260901-235200.md PASS (main menu 31.4s, save loaded 42.1s); skse64.log 'plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 16)'; po3_LightPlacer.log clean init on 1.7.104.0, 9 Lux CS config files read, hooks installed, console commands installed."
     },
     {
       "modId": 188291,
@@ -1970,6 +2750,20 @@
       "note": "Official Exit-9B/Parapets 1.6.3 runtime for Skyrim SE 1.7.99+; live stack is Skyrim 1.7.104, SKSE 2.3.1, Address Library v12, and SkyUI 6.11. Deterministic SE + ESL + BSA selection; static profile, ledger, master/order, conflict, and physical-Data audits clean. Foreground MCM/settings-write smoke pending. Exact rollback and MIT distribution provenance: records/mcm-helper-1.6.3-2026-08-30.md | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
+      "modId": 92948,
+      "modName": "Media Keys Fix SKSE",
+      "nexusName": "Media Keys Fix",
+      "version": "1.0.2",
+      "fileId": 792882,
+      "fileName": "Media Keys Fix 92948 1.0.2 2026-08-21T18-58Z Yj6wQRo26.zip",
+      "sizeMb": 5.78,
+      "sha256": "49918f7a8cfafa7aee2c93f9475744dbcb605985c7bb93eb99aafd62ee717ec6",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T04:02:03Z",
+      "transaction": "20260902T040203656Z-d7d1408ab37e"
+    },
+    {
       "modId": 0,
       "modName": "MenuPilot",
       "nexusName": "Ensrick-owned instrumentation (source build)",
@@ -1982,7 +2776,55 @@
       "enabled": true,
       "installedUtc": "2026-09-01T22:28:06Z",
       "transaction": "20260901T222806553Z-ce6f355f7914",
-      "note": "Headless in-game menu pilot (user order 2026-09-01): consumes SKSE/MenuPilot/commands.jsonl exactly once, drives menus (UIMessageQueue kShow/kHide), Scaleform (Invoke/GetVariable/VisitMembers dump), and engine-layer input (ButtonEvent via BSInputDeviceManager SendEvent) on the game main thread; results append to menupilot.log. Inert without a command file; panic op; no popups (own-IAT MessageBox stubs). Driver audit/menupilot.py, docs docs/MENUPILOT.md, build record records/source-builds/ensrick-menu-pilot.json. Source skyrim-tools-source/MenuPilot commit 93e5afa; SKSE gate PASS."
+      "note": "Headless in-game menu pilot (user order 2026-09-01): consumes SKSE/MenuPilot/commands.jsonl exactly once, drives menus (UIMessageQueue kShow/kHide), Scaleform (Invoke/GetVariable/VisitMembers dump), and engine-layer input (ButtonEvent via BSInputDeviceManager SendEvent) on the game main thread; results append to menupilot.log. Inert without a command file; panic op; no popups (own-IAT MessageBox stubs). Driver audit/menupilot.py, docs docs/MENUPILOT.md, build record records/source-builds/ensrick-menu-pilot.json. Source skyrim-tools-source/MenuPilot commit 93e5afa; SKSE gate PASS.",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: MenuPilot.dll (+pdb), Ensrick-authored SKSE plug-in, GPL-3.0-or-later because it links CommonLibSSE-NG. Basis: own code; GPL requires corresponding source and notices to accompany any distributed binary. GAP: source repository is local-only and not pushed (records/source-builds/ensrick-menu-pilot.json, commit 93e5afa). DECIDED 2026-09-02: excluded from the shared list (diagnostic tooling); sharedList field set, .packagingignore drops the whole mod folder, GPL source stays local and is not pushed. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]",
+      "sharedList": "excluded (diagnostic tooling)"
+    },
+    {
+      "modId": 65070,
+      "modName": "Misc Effects ENB Light",
+      "nexusName": "Misc Effects ENB Light",
+      "version": "1.6",
+      "fileId": 418811,
+      "fileName": "Misc Effects ENB Light-65070-1-6-1692496330.7z",
+      "sizeMb": 0.39,
+      "sha256": "f2870d9d4d223c737767899cfdc11f50fb08683bab58b4d7b47b371763ccb2a3",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T04:54:58Z",
+      "transaction": "20260902T045458708Z-faa5633eab6a",
+      "note": "Mura (Mur4s4me)'s Misc Effects ENB Light MAIN 1.6 (file 418811, 2023-08-20): 24 ENB-light effect meshes (fire embers, magic fire pillar hotfix, Sovngarde / Umbra embers, magic inventory art, bound-weapon ench effects). Installed 2026-09-02 through install_mod.py because the already-installed optional \"Misc Effects ENB Light - Believable Weapons\" (1.2.1BoundOptionals, file 270746) is documented on the page as an overwrite of the main file. Placed at MO2 priority 90 (mod-priority transaction 20260902T045500038Z-5aef7b9be223), BELOW Believable Weapons (92) and the optional (94): the main overlaps Believable Weapons on 2 files (meshes/weapons/boundweapons/boundaxeencheffects.nif, boundswordencheffects.nif) and the optional on 4 (those two plus boundarrowflight.nif and boundbowencheffects.nif), so Believable Weapons keeps the generic-tier rule (docs/PATCH_INTENTS.md) and the optional's BW-shaped bound effects win. Update 1.6.1 (file 423903) installed as its own mod directly above at priority 91. No plugin. VERIFIED 2026-09-01 23:58 by records/launch-verify-20260901-235806.md (envmask-sweep launch; SkyrimSE.exe started 23:57:16 local, after the 23:54:58 install and 23:55:00 priority moves; main menu 30.7 s, save loaded 43.5 s, 232 plugins). Launch/load level only; the ENB-light meshes were not render-checked. [#102 follow-up, team-lead 2026-09-02]"
+    },
+    {
+      "modId": 65070,
+      "modName": "Misc Effects ENB Light - Believable Weapons",
+      "nexusName": "Misc Effects ENB Light - Believable Weapons",
+      "version": "1.2.1BoundOptionals",
+      "fileId": 270746,
+      "fileName": "Misc Effects ENB Light - Believable Weapons-65070-1-2-1BoundOptionals-1647541704.7z",
+      "sizeMb": 0.14,
+      "sha256": "6409b9d843d9eed53c7e1fd3c2ab6addf9741bb1875d164125adb6cc372f0592",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-26T23:33:12Z",
+      "transaction": null,
+      "note": "Mura (Mur4s4me)'s Misc Effects ENB Light 65070, OPTIONAL file 270746 \"Believable Weapons\" variant 1.2.1BoundOptionals (uploaded 2022-03-17; the page offers this or a Better-Shaped Weapons version, use one). Archive downloads/65070-270746.7z (6 NIFs, 322,307 bytes uncompressed; sha256 above is the archive). Installed 2026-08-26 through MO2Headless from downloads/_staging/65070-270746-rooted (meta.ini installationFile): the archive already stores meshes/ at its root, so the staging copy is a plain extraction plus a 91-byte README.txt root marker (\"Local root marker. The upstream asset files remain governed by their author's permissions.\"), which is also in the mod folder. Payload: meshes/dlc02/weapons/BoundDaggerEnchEffects.nif, meshes/weapons/boundweapons/BoundArrow.nif, boundarrowflight.nif, boundaxeencheffects.nif, boundbowencheffects.nif, boundswordencheffects.nif, i.e. ENB-light particle meshes for the bound weapons built on the Believable Weapons shapes; must sit above Believable Weapons (modlist: it does). No plugin. RESOLVED 2026-09-02: the main file 1.6 (file 418811) and update 1.6.1 (file 423903) are now installed below it at priorities 90 / 91, so this optional overwrites 4 of the main's bound-weapon meshes as the page intends (this row is at priority 94, Believable Weapons at 92). No transaction id: the install bypassed install_mod.py (docs/PROCESS-AUDIT-2026-08-30.md F4). [row added 2026-09-02, #102 ledger gap]"
+    },
+    {
+      "modId": 65070,
+      "modName": "Misc Effects ENB Light - Update 1.6.1",
+      "nexusName": "Misc Effects ENB Light - UPDATE",
+      "version": "1.6.1",
+      "fileId": 423903,
+      "fileName": "Misc Effects ENB Light - UPDATE-65070-1-6-1-1694055128.7z",
+      "sizeMb": 0.02,
+      "sha256": "706db892bfb7c86658794d58bbe7f72e681d6190fa61625945d2822787912b7a",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T04:54:59Z",
+      "transaction": "20260902T045459760Z-f1fd059060d4",
+      "note": "Mura's UPDATE 1.6.1 (file 423903, 2023-09-07): one new mesh, meshes/dlc01/effects/dlc1falmervalleybrazierlight.nif (\"Merge with main file\"). Kept as its own mod at MO2 priority 91 (mod-priority transaction 20260902T045500089Z-d4f9bc0b4ac9) directly above \"Misc Effects ENB Light\" 1.6 (90) and below Believable Weapons (92); no file overlap with the main. Installed 2026-09-02 together with the main because the latest version is law (feedback_never_downgrade_rebuild_forward). No plugin. VERIFIED 2026-09-01 23:58 by records/launch-verify-20260901-235806.md (envmask-sweep launch; SkyrimSE.exe started 23:57:16 local, after the 23:54:58 install and 23:55:00 priority moves; main menu 30.7 s, save loaded 43.5 s, 232 plugins). Launch/load level only; the ENB-light meshes were not render-checked. [#102 follow-up, team-lead 2026-09-02]"
     },
     {
       "modId": 160748,
@@ -2226,6 +3068,40 @@
       "transaction": "20260823T052401143Z-1e64c98a03c3"
     },
     {
+      "modId": 0,
+      "modName": "Pandora Output - Ensrick",
+      "nexusName": "Ensrick-owned generated behaviour output (Pandora Behaviour Engine+ 4.4.0-beta, headless fork)",
+      "version": "2026-08-30",
+      "fileId": 0,
+      "fileName": "written directly by 'Pandora Behaviour Engine+.exe --headless -o' (records/source-builds/ensrick-pandora-headless.json); no meta.ini",
+      "sizeMb": 7.21,
+      "sha256": "0714bd816819e9a7cac3ce261ab4d8dd972b5b8d5e3943a51221757a82f391a6",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-31T00:15:33Z",
+      "transaction": null,
+      "note": "Generated behaviour output: 208 files = 202 under meshes/actors/character (patched behaviour HKX plus the OpenAnimationReplacer XPMSE weapon-style animation sets), animationdatasinglefile.txt, animationsetdatasinglefile.txt, SKSE/Plugins/fnis_aa, Pandora_Engine/ActiveMods.json + PreviousOutput.txt, and the generator's Engine.log. Regenerated 2026-08-30 19:15 local (= installedUtc, from Engine.log's mtime) via the headless fork (MO2Headless run through USVFS, tools/run-pandora.cmd). The engine writes the folder itself, so there is no MO2Headless transaction; the modlist entry is at line 17. Only XPMSSE weapon styles depend on it today; rerun after every animation or skeleton mod change (docs/STANDARDS-DIGEST-2026-08-30.md). Engine.log is excluded from packaging by .packagingignore. Row sha256 = aggregate over the 208 files (sha256 of the sorted 'path<TAB>SHA256' lines, lower-cased paths). Parked/unparked in the #142 bisect round 3. Row added 2026-09-02 (#160).",
+      "distribution": "recipe",
+      "distributionBasis": "Payload: generated output derived from the installed animation and skeleton mods (XPMSSE et al.) and Pandora's own templates; vendor-derived generated data, never bundled. Basis: the installer regenerates it by running the headless Pandora fork (records/source-builds/ensrick-pandora-headless.json, Ensrick/pandora-behaviour-engine 6adf04b, GPL-3.0-or-later, pushed) against the user's own installed mods with -o into this mod folder; output depends on the exact mod set, so a bundled copy would drift. [ledger row added and classified 2026-09-02, #160]"
+    },
+    {
+      "modId": 0,
+      "modName": "PapyrusUtil 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick-owned native rebuild overlay (PapyrusUtil SE 13048 source rebuild for Skyrim 1.7.104)",
+      "version": "4.7+01ac25d-local-1.7.104",
+      "fileId": 0,
+      "fileName": "headless/packages/native-1.7.104-overlay-repair/PapyrusUtil 1.7.104 Native Overlay - Ensrick (local build from skyrim-tools-source/PapyrusUtil-1.7.104, branch ensrick/1.7.104, base eeveelo/PapyrusUtil@01ac25db3969 + 4 uncommitted working-tree changes)",
+      "sizeMb": 1.37,
+      "sha256": "0d5648e2415e1f48248d14774f19dc0dbfdf2a733d5149bb0f1e9cef04ca2953",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T19:05:13Z",
+      "transaction": "20260828T190513175Z-b435e7e05918",
+      "note": "DLL-only overlay: SKSE/Plugins/PapyrusUtil.dll loaded above the base mod PapyrusUtil SE 13048 (ledger row \"PapyrusUtil SE\" 4.7, file 795182), which stays installed and keeps its scripts, interface files, config and plugins. Rebuilt for SkyrimSE.exe 1.7.104 from skyrim-tools-source/PapyrusUtil-1.7.104 (branch ensrick/1.7.104, upstream eeveelo/PapyrusUtil, starting revision 01ac25db3969a09822c2d5d9de830bc567417f9e); the working tree still holds 4 uncommitted local compatibility changes, so per docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md the commit identifies the starting point, not a reproducible build. Installed via MO2Headless transaction 20260828T190513175Z-b435e7e05918 (meta.ini installationFile under headless/packages/native-1.7.104-overlay-repair; the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth, docs/RUNTIME-ISSUES-2026-08-28.md). Row sha256 = installed DLL, matches the docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md overlay table. Verified 2026-08-28: PapyrusUtil initialized for Skyrim 1.7.104.0 and registered its functions in the bounded 120 s run; MO2 profile audit passed. Priority 108. The DLL carries no version resource; the version string above is the base 4.7 plus the starting revision. No records/source-builds record exists (docs/PROCESS-AUDIT-2026-08-30.md F8); gameplay acceptance per the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md is not recorded as run. [row added 2026-09-02, #102 ledger gap]",
+      "distribution": "local-only",
+      "distributionBasis": "Payload: PapyrusUtil.dll. Basis: no clear top-level redistribution licence was found in the audited eeveelo/PapyrusUtil source tree; listed as an ACTIVE publicationBlocker in records/private-runtime-dependencies.json (requiredFor: Proteus native functionality on 1.7.104; releaseGate: explicit permission or an independently licensed replacement, then a reproducible build from reviewed source). Sweep class local-only (records/ensrick-overlay-distribution-2026-09-02.md). Not shippable. [classified 2026-09-02, #102]"
+    },
+    {
       "modId": 13048,
       "modName": "PapyrusUtil SE",
       "nexusName": "PapyrusUtil AE SE - Scripting Utility Functions",
@@ -2311,11 +3187,46 @@
       "sizeMb": 14.15,
       "sha256": "847a241f965436b13475a2a057ab061408be2d9a3df62c34aa4925bb1324c63b",
       "plugins": [],
-      "enabled": false,
+      "enabled": true,
       "installedUtc": "2026-08-23T04:14:11Z",
       "transaction": "20260823T041411165Z-7d0dbdbb0105",
       "fomodPlan": "records/fomod-plans/62934-proteus.json",
-      "note": " | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
+      "note": "Proteus 3.4.0 package (scripts, MCM, assets) from Nexus file 497484, FOMOD plan records/fomod-plans/62934-proteus.json. History: PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep). UNPARKED / ledger reconciled 2026-09-02: modlist.txt has carried +Proteus (enabled) since the 2026-08-28 native-runtime rebuild, but this row was left at enabled=false, which verify() cannot catch because the mod lists no plugin. the package's own SKSE/Plugins/Proteus.dll is shadowed by the DLL-only overlay \"Proteus 1.7.104 Native Overlay - Ensrick\" (MO2 priority 110, Ensrick local build 1.1.0.104, records/source-builds/ensrick-proteus-1.7.104.json), so the pre-format-5 popup that justified the park no longer applies; the superseded \"Proteus 1.7.99 Native Overlay - Ensrick\" folder stays disabled at priority 93. [#102 follow-up, team-lead 2026-09-02]"
+    },
+    {
+      "modId": 0,
+      "modName": "Proteus 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick-owned native rebuild overlay (Proteus 62934 source rebuild for Skyrim 1.7.104)",
+      "version": "1.1.0.104",
+      "fileId": 0,
+      "fileName": "headless/packages/native-1.7.104-overlay-repair/Proteus 1.7.104 Native Overlay - Ensrick (local build from skyrim-tools-source/ProjectProteusUtils-1.7.104, branch ensrick/1.7.104, base Nightfallstorm/ProjectProteusUtils@324e07cd7519 + 5 uncommitted working-tree changes)",
+      "sizeMb": 0.73,
+      "sha256": "d2fa06b2d269e682f07d432356fd02d64ed84f70be34652010f36e9eb3fac50b",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T19:05:13Z",
+      "transaction": "20260828T190513023Z-6e1b13b95633",
+      "note": "DLL-only overlay: SKSE/Plugins/Proteus.dll loaded above the base mod Proteus 62934 (ledger row \"Proteus\" 3.4.0, file 497484), which stays installed and keeps its scripts, interface files, config and plugins. Rebuilt for SkyrimSE.exe 1.7.104 from skyrim-tools-source/ProjectProteusUtils-1.7.104 (branch ensrick/1.7.104, upstream Nightfallstorm/ProjectProteusUtils, starting revision 324e07cd75196f444f6bafdfa09527d561a3c034); the working tree still holds 5 uncommitted local compatibility changes, so per docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md the commit identifies the starting point, not a reproducible build. Installed via MO2Headless transaction 20260828T190513023Z-6e1b13b95633 (meta.ini installationFile under headless/packages/native-1.7.104-overlay-repair; the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth, docs/RUNTIME-ISSUES-2026-08-28.md). Row sha256 = installed DLL, matches the docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md overlay table. Verified 2026-08-28: Proteus identified itself as local build 1.1.0.104 and registered the Perk, Spell, Item, Actor, Utility and Form native groups in the bounded 120 s run; the Proteus verification suite passed 37 tests plus the release verifier; MO2 profile audit passed. Priority 106. DLL version resource 1.1.0.104.0. No records/source-builds record exists (docs/PROCESS-AUDIT-2026-08-30.md F8); gameplay acceptance per the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md is not recorded as run. The superseded folder \"Proteus 1.7.99 Native Overlay - Ensrick\" is still present but disabled in modlist.txt (no ledger row; disabled folders are outside the #102 gap check). FLAG: the base ledger row \"Proteus\" still reads enabled=false / PARKED 2026-08-25 while modlist.txt has +Proteus enabled; not reconciled here. [row added 2026-09-02, #102 ledger gap]",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: Proteus.dll (DLL version resource 1.1.0.104.0). Basis: Nightfallstorm/ProjectProteusUtils carries a GPL-3.0 license; any distributed derivative must include corresponding source, and the license grants nothing over the separately packaged Proteus mod assets (62934). records/private-runtime-dependencies.json shareableAfterReleaseReview: \"Local build works at the loader gate; source cleanup, reproducible build, notices, and gameplay acceptance remain.\" Sweep class \"distributable after review\" (records/ensrick-overlay-distribution-2026-09-02.md). GAP: the 5 local changes are uncommitted and unpushed, so no reproducible build exists yet. [classified 2026-09-02, #102]"
+    },
+    {
+      "modId": 0,
+      "modName": "Proteus 1.7.99 Native Overlay - Ensrick",
+      "nexusName": "Ensrick-owned native rebuild overlay (Proteus 62934 source rebuild for Skyrim 1.7.99, SUPERSEDED)",
+      "version": "1.1.0.0+ed5cf51-1.7.99",
+      "fileId": 0,
+      "fileName": "_rebuild_ProteusUtils/build-qual-ed5cf51/overlay (meta.ini installationFile; qualification build at _rebuild_ProteusUtils commit ed5cf51 \"Document controlled release qualification\")",
+      "sizeMb": 0.73,
+      "sha256": "316df6bb9045b34f422087cfc127d314622ab8640ec7ad5cdee13255d408b41a",
+      "plugins": [],
+      "enabled": false,
+      "installedUtc": "2026-08-26T23:28:06Z",
+      "transaction": null,
+      "note": "DISABLED, SUPERSEDED. The 1.7.99-qualified Proteus.dll overlay (DLL version resource 1.1.0.0, built from the _rebuild_ProteusUtils checkout at ed5cf51 for the 1.7.99 runtime, installed 2026-08-26 by MO2Headless without a ledger row). Replaced on 2026-08-28 by \"Proteus 1.7.104 Native Overlay - Ensrick\" (1.1.0.104, records/source-builds/ensrick-proteus-1.7.104.json) when the runtime moved to 1.7.104; the folder stays on disk, disabled in modlist.txt (line 142) at MO2 priority 93. enabled=false is intentional, so verify() treats it as off on purpose. Folder deliberately NOT deleted (team-lead 2026-09-02). Row sha256 = the disabled DLL. [#102 follow-up, team-lead 2026-09-02]",
+      "distribution": "distributable",
+      "distributionBasis": "Same GPL-3.0 basis as the 1.7.104 overlay, but superseded and disabled: excluded from any package. [classified 2026-09-02, #102]",
+      "sharedList": "excluded (superseded by the 1.7.104 overlay)"
     },
     {
       "modId": 0,
@@ -2323,16 +3234,18 @@
       "nexusName": null,
       "version": null,
       "fileId": null,
-      "fileName": null,
-      "sizeMb": null,
-      "sha256": null,
+      "fileName": "local rebuild staged at .codex-tmp/quicklootie-1799-f87f9a3 (Ensrick/QuickLootIE f87f9a3; records/source-builds/ensrick-quickloot-ie-1799.json)",
+      "sizeMb": 1.5,
+      "sha256": "7d8eae2ca1aeb280a2176acefd540a493cc7d8b0754f2e11db1abee1d445b4e4",
       "plugins": [
         "QuickLootIE.esp"
       ],
       "enabled": true,
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa).",
+      "distribution": "distributable",
+      "distributionBasis": "Payload: complete QuickLoot IE package (DLL, 2 SWF, ESP, 4 PEX, 9 translations, QuickLootIE.json, QLIE-LICENSE.md) built from Ensrick/QuickLootIE commit f87f9a3 (branch agent/fix-theft-owner-policy, pushed); installed DLL SHA-256 7D8EAE2CA1AEB280A2176ACEFD540A493CC7D8B0754F2E11DB1ABEE1D445B4E4 matches .codex-tmp/quicklootie-1799-f87f9a3. Basis: MIT License (QLIE-LICENSE.md ships in the package; FORK_NOTES.md: 'The project remains available under the MIT License ... notice ... must accompany redistributed copies'). Correction to #160: MIT, not GPL. Build record: records/source-builds/ensrick-quickloot-ie-1799.json (written 2026-09-02: commit, submodule pin, xmake/MSVC toolchain, all 20 package hashes, provenance of every file); the CI artifact run-30936417704 DLL (9BE1B7BC...) is a different, earlier build. Row sha256 = installed DLL. Name says 1.7.99 while the runtime is 1.7.104; the DLL is version-independent so this is cosmetic. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]"
     },
     {
       "modId": 77594,
@@ -2366,6 +3279,23 @@
       "enabled": true,
       "installedUtc": "2026-08-24T17:17:57Z",
       "note": "skee64.dll self-built from expired6978/SKSE64Plugins@9ebcb73 (author 1.7.99 port) + ILogger fmt-compat patch; runs on self-built SKSE master (ianpatt/skse64@14db212 incl. Expired PC-offset fixes). Official release supersedes on arrival (plugin_watch). | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download) | no transaction: skee64.dll self-built outside the transactional path; deployed skee64.dll sha256 5c7997fc... (overlay-guard rebuild 2026-08-25 00:58)"
+    },
+    {
+      "modId": 0,
+      "modName": "RaceMenu 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick-owned native rebuild overlay (RaceMenu 19080 source rebuild for Skyrim 1.7.104)",
+      "version": "0.4.19.17+skee-748ca80-local-1.7.104",
+      "fileId": 0,
+      "fileName": "headless/packages/native-1.7.104-overlay-repair/RaceMenu 1.7.104 Native Overlay - Ensrick (local build from skyrim-tools-source/RaceMenu-1.7.104, branch ensrick/1.7.104, base expired6978/SKSE64Plugins@748ca80c30ad + 9 uncommitted working-tree changes)",
+      "sizeMb": 2.6,
+      "sha256": "7290eafd4116e742aa7477d34bf137abbefed936cd44e67fdc829f2e36925ed1",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-08-28T19:05:13Z",
+      "transaction": "20260828T190513252Z-d0e12c1d0e27",
+      "note": "DLL-only overlay: SKSE/Plugins/skee64.dll loaded above the base mod RaceMenu 19080 (ledger row \"RaceMenu\", file 743640, which carries RaceMenu.esp + RaceMenuPlugin.esp), which stays installed and keeps its scripts, interface files, config and plugins. Rebuilt for SkyrimSE.exe 1.7.104 from skyrim-tools-source/RaceMenu-1.7.104 (branch ensrick/1.7.104, upstream expired6978/SKSE64Plugins, starting revision 748ca80c30ada6dba54528aa1a5a11db96870afd); the working tree still holds 9 uncommitted local compatibility changes, so per docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md the commit identifies the starting point, not a reproducible build. Installed via MO2Headless transaction 20260828T190513252Z-d0e12c1d0e27 (meta.ini installationFile under headless/packages/native-1.7.104-overlay-repair; the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth, docs/RUNTIME-ISSUES-2026-08-28.md). Row sha256 = installed DLL, matches the docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md overlay table. Verified 2026-08-28: SKSE logged the DLL as loaded in the bounded 120 s run (21 native plug-ins checked, zero refused); MO2 profile audit passed. Priority 109. DLL version resource 0.4.19.17. No records/source-builds record exists (docs/PROCESS-AUDIT-2026-08-30.md F8); gameplay acceptance per the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md is not recorded as run. Predecessor: the 1.7.99 self-build (SKSE64Plugins@9ebcb73 + InstallOverlay choke-point guard, records/selfbuild-2026-08-24-skse-skee64.md) recorded on the base RaceMenu row. [row added 2026-09-02, #102 ledger gap]",
+      "distribution": "local-only",
+      "distributionBasis": "Payload: skee64.dll (DLL version resource 0.4.19.17, \"Skyrim 64 Engine Extender\"). Basis: no clear top-level redistribution licence was found in the expired6978/SKSE64Plugins source tree; listed as an ACTIVE publicationBlocker in records/private-runtime-dependencies.json (releaseGate: establish redistribution permission or replace with an officially supported / independently licensed implementation, then reproduce from reviewed source). Sweep class local-only (records/ensrick-overlay-distribution-2026-09-02.md). Not shippable. [classified 2026-09-02, #102]"
     },
     {
       "modId": 81282,

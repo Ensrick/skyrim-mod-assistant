@@ -44,7 +44,7 @@ KEEP_BACKUPS = 5
 # 'warn' until the live profile's settings.ini is flipped under the claim, then
 # 'fail' in the same commit - a gate that fails on state nobody has changed yet
 # would only block the launches other agents are running right now.
-SETTINGS_INI_GATE = 'warn'
+SETTINGS_INI_GATE = 'fail'
 
 
 def _stamp():
@@ -239,14 +239,9 @@ def check_profile_settings_ini(fails, warns):
     #143). When it is true, MO2's game plugin maps the Documents INI paths onto
     the profile copies through usvfs for every launch it performs, GUI or
     headless-run."""
-    ini = os.path.join(PROFILE, 'settings.ini')
+    # the LocalSettings value itself is gated in preflight.check_profile_owns_inis
+    # (same file, same key); this covers the stray and the companion INIs
     txt = os.path.join(PROFILE, 'settings.txt')
-    t = io.open(ini, encoding='utf-8', errors='replace').read() if os.path.exists(ini) else ''
-    if not re.search(r'^LocalSettings\s*=\s*true\s*$', t, re.M | re.I):
-        (fails if SETTINGS_INI_GATE == 'fail' else warns).append(
-            'profile settings.ini: LocalSettings is not true - this is the '
-            'file MO2 actually reads (profile.cpp:94); the game reads and resets '
-            'the Documents INIs instead of the profile ones (#143)')
     if os.path.exists(txt):
         warns.append('profile settings.txt exists but MO2 never reads it; the live '
                      'flag is in settings.ini (kept only so older tooling does not fail)')

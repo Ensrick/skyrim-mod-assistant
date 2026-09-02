@@ -47,3 +47,15 @@ plugins:
       - 'nwsFollowerFramework.esp'
       - 'Skyrim Unbound.esp'
       - 'Lux.esp'
+
+  # Guard scaling (#51): overrides the two vanilla guard stats templates that
+  # USSEP forwards and Dragonborn's Redoran guard template; must stay behind
+  # every other Ensrick generated patch and anything else touching NPC_ records.
+  - name: 'Ensrick Guard Scaling Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick CRF Semantic Patch.esp'
+      - 'unofficial skyrim special edition patch.esp'
+      - 'NW_Sons_of_Skyrim.esp'
+      - 'NW_Sons_of_Skyrim - My fixes by Xtudo.esp'
+      - 'cutting room floor.esp'

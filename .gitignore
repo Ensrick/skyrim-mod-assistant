@@ -17,6 +17,7 @@
 !/TOOLCHAIN.md
 !/NEXUS_API.md
 !/toolchain.example.json
+!/.packagingignore
 !/run-headless-tool.ps1
 !/run-through-mo2.ps1
 
@@ -60,6 +61,7 @@
 !/records/modern-cloak-system-research-2026-08-30.md
 !/records/mlo2-5.4.1-2026-08-30.md
 !/records/freaks-floral-fields-3.2.3-2026-08-30.md
+!/records/envmask-missing-scan-2026-09-02.md
 !/records/fomod-plans/
 !/records/fomod-plans/*.json
 !/records/source-builds/
@@ -89,6 +91,12 @@
 !/overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py
 !/overlays/ensrick-skyking-signs-envmask-fix/
 !/overlays/ensrick-skyking-signs-envmask-fix/build.py
+!/overlays/ensrick-cc-madness-longsword-envmask-path-fix/
+!/overlays/ensrick-cc-madness-longsword-envmask-path-fix/build.py
+!/overlays/ensrick-skyland-smanhole-texture-path-fix/
+!/overlays/ensrick-skyland-smanhole-texture-path-fix/build.py
+!/overlays/ensrick-bloodskal-blade-4-static-glow/
+!/overlays/ensrick-bloodskal-blade-4-static-glow/build.py
 
 !/mods/
 !/mods/period-underlayers/
@@ -131,6 +139,21 @@
 !/mods/crf-semantic-patch/spriggit/
 !/mods/crf-semantic-patch/spriggit/**
 
+!/mods/guard-scaling-patch/
+!/mods/guard-scaling-patch/README.md
+!/mods/guard-scaling-patch/manifest.json
+!/mods/guard-scaling-patch/policy.json
+!/mods/guard-scaling-patch/regenerate.ps1
+!/mods/guard-scaling-patch/report.py
+!/mods/guard-scaling-patch/generator/
+!/mods/guard-scaling-patch/generator/*.cs
+!/mods/guard-scaling-patch/generator/*.csproj
+!/mods/guard-scaling-patch/generator/Directory.Build.props
+!/mods/guard-scaling-patch/generator/packages.lock.json
+!/mods/guard-scaling-patch/spriggit/
+!/mods/guard-scaling-patch/spriggit/**
+!/records/guard-scaling-audit-2026-09-02.md
+
 !/records/solitude-trellis-stalls-installation-2026-08-30.md
 
 !/ports/
@@ -142,3 +165,12 @@
 !/audit/*.py
 !/audit/*.md
 !/audit/watched_configs.json
+!/audit/fixtures/
+!/audit/fixtures/*.log
+
+# Packaging (#160): the tool is tracked, its output under dist/ never is.
+# dist/ is already caught by the deny-by-default rule above; listed so the
+# intent survives if that rule ever changes.
+dist/
+!/tools/
+!/tools/package_ensrick.py

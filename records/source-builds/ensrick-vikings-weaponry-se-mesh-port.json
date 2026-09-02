@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Vikings Weaponry SE Mesh Port",
+  "mo2VendorMod": "Vikings Weaponry SE - Johnskyrim",
+  "mo2OverlayMod": "Ensrick - Vikings Weaponry SE Mesh Port",
+  "purpose": "Convert the six Vikings Weaponry meshes, shipped inside the mod's BSA at NIF stream 83 despite the SE listing, to SSE stream 100 / BSTriShape with rescaled Havok collision.",
+  "source": {
+    "nexusUrl": "https://www.nexusmods.com/skyrimspecialedition/mods/14409",
+    "author": "johnskyrim",
+    "fileId": 42845,
+    "archive": "14409-42845.rar",
+    "inputForm": "entries inside 'Vikings Weaponry - Johnskyrim.bsa' in the installed vendor mod (extract with audit/modasset.py BSA or any BSA tool)"
+  },
+  "transformation": {
+    "tool": {
+      "toolchainKey": "nifPortCli",
+      "repository": "https://github.com/Ensrick/nif-port-cli",
+      "commit": "c63f74e1c45ea331494f88511840ed7222f32ef5",
+      "branch": "agent/shape-overlay-and-texture-remap",
+      "pullRequest": "https://github.com/Ensrick/nif-port-cli/pull/2",
+      "commitNote": "convert-sse code path is unchanged from 1cc5484 (origin/main) through e12079c and c63f74e; the port was made before c63f74e was committed and the exact binary is not hash-matched to a commit, so the pinned commit is the pushed head that contains the identical verb.",
+      "binaryPath": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-builds\\nif-port-cli\\Release\\nif-port-cli.exe",
+      "binarySha256": "D076B22FB7AC627E6277CC8B01D503763C60EF79CA86CBB9CB6D32239BDBA05C",
+      "upstreamCommit": "dbba8b359531fa4a4b89d906b93cdcb579abc8d0",
+      "niflyCommit": "846518b3fdfc6c81cddc49188aff77ad7006456a"
+    },
+    "command": "extract each BSA entry to a temp file, then nif-port-cli.exe convert-sse \"<temp>/<name>.nif\" \"<output root>/meshes/johnskyrim/lothbrok\"",
+    "vendorFilesModified": false
+  },
+  "meshes": [
+    {
+      "path": "meshes/johnskyrim/lothbrok/flokiadz.nif",
+      "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim.bsa::meshes\\johnskyrim\\lothbrok\\flokiadz.nif",
+      "sourceSha256": "5941736FC4BFF10AB9D74E29E764C2C579B788AEB48E4DA1EFB60DD626E824F5",
+      "sourceBytes": 64453,
+      "outputSha256": "524117CA285C7813430417B6AE2CD417B2444688613EFD7FBEC1173A370F980F",
+      "outputBytes": 34394,
+      "convertSseRerun": "MATCH"
+    },
+    {
+      "path": "meshes/johnskyrim/lothbrok/flokiaxe.nif",
+      "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim.bsa::meshes\\johnskyrim\\lothbrok\\flokiaxe.nif",
+      "sourceSha256": "B6FD9C171B8F02EB1CC5778DD3C17434EC93030DD6404038B9D908EA777EBE8F",
+      "sourceBytes": 85177,
+      "outputSha256": "AAC81AB0EE85B7CB2953501C9291A4FA846021A654F1B0E9A85BC99D4EBE3D27",
+      "outputBytes": 44270,
+      "convertSseRerun": "MATCH"
+    },
+    {
+      "path": "meshes/johnskyrim/lothbrok/lagerthashield.nif",
+      "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim.bsa::meshes\\johnskyrim\\lothbrok\\lagerthashield.nif",
+      "sourceSha256": "7F3F6114DEC805A5E5BD89A133A1E34C9D9139475BBD9004A95BFABF29779225",
+      "sourceBytes": 201639,
+      "outputSha256": "D4C44206BCF3A73D47A0A376470935CC551DE91E2080932A37F179B2B21317C5",
+      "outputBytes": 115143,
+      "convertSseRerun": "MATCH"
+    },
+    {
+      "path": "meshes/johnskyrim/lothbrok/lagerthasword.nif",
+      "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim.bsa::meshes\\johnskyrim\\lothbrok\\lagerthasword.nif",
+      "sourceSha256": "7E0D6567558F23FCD865C7DF6202C45D42C757652AAE7FEBF949B039DF858009",
+      "sourceBytes": 249183,
+      "outputSha256": "BEFAE7AAAEF37227600B55E5B724B87932312536324A3049C0985855E22B1AA2",
+      "outputBytes": 127437,
+      "convertSseRerun": "MATCH"
+    },
+    {
+      "path": "meshes/johnskyrim/lothbrok/lothbrokaxe.nif",
+      "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim.bsa::meshes\\johnskyrim\\lothbrok\\lothbrokaxe.nif",
+      "sourceSha256": "77A700C8E86C18AED428D838AAA5F56869C67EF5D8F248164277C1C648589480",
+      "sourceBytes": 325735,
+      "outputSha256": "D6E00571A10990857A5A1EBED59E59EC885FF0363BC927A617A1792783222E4B",
+      "outputBytes": 182050,
+      "convertSseRerun": "MATCH"
+    },
+    {
+      "path": "meshes/johnskyrim/lothbrok/lothbrokshield.nif",
+      "source": "bsa: Vikings Weaponry SE - Johnskyrim/Vikings Weaponry - Johnskyrim.bsa::meshes\\johnskyrim\\lothbrok\\lothbrokshield.nif",
+      "sourceSha256": "2365AD00B8EC4FB892725142D564E89B12AC40C4DC161E4ADDD29E7E522382F4",
+      "sourceBytes": 201639,
+      "outputSha256": "912726560E49252DAF404D661F57686E6E54DCCD8453669F2326E14FB8AEC632",
+      "outputBytes": 115143,
+      "convertSseRerun": "MATCH"
+    }
+  ],
+  "validation": {
+    "rerun": "2026-09-02: all 6 outputs byte-identical to the installed overlay from BSA-extracted inputs with binary D076B22F...",
+    "original": "collision, Prn/Scb/INV/EdgeBlood nodes and texture paths retained (ledger note); in-game check #70"
+  },
+  "distribution": {
+    "class": "recipe",
+    "basis": "no permissions grid; 'DO NOT UPLOAD THIS FILE ANYWHERE ELSE'; installer regenerates from the user's own download",
+    "derivedAssetsCommitted": false
+  }
+}

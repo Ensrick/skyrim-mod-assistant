@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "component": "PapyrusUtil SE 4.7 (Ensrick rebuild for Skyrim SE 1.7.104)",
+  "mo2Mod": "PapyrusUtil 1.7.104 Native Overlay - Ensrick",
+  "purpose": "DLL-only overlay above PapyrusUtil SE 4.7 (Nexus 13048, file 795182). Rebuilt from the eeveelo tree (1.7.99 Address Library format-5 support merged) with the SKSE version block set to 1.7.104 and the internal version bumped 46 -> 47. Required for Proteus native functionality on 1.7.104.",
+  "license": "NONE FOUND: no clear top-level redistribution licence in the audited eeveelo/PapyrusUtil source tree. Active publicationBlocker in records/private-runtime-dependencies.json.",
+  "source": {
+    "repository": "local clone only; origin = https://github.com/eeveelo/PapyrusUtil.git (upstream). No Ensrick remote; not pushed.",
+    "upstream": "https://github.com/eeveelo/PapyrusUtil",
+    "branch": "ensrick/1.7.104",
+    "commit": "01ac25db3969a09822c2d5d9de830bc567417f9e",
+    "commitDate": "2026-08-25T15:46:48-07:00",
+    "commitSubject": "Merge pull request #3 from danielaghidini/codex/skyrim-1.7.99-address-library-format-5",
+    "commitIs": "STARTING REVISION ONLY. The three source changes that produced the installed DLL are still uncommitted (kept uncommitted on 2026-09-02: the team-lead commit instruction covered JContainers and Proteus, and this tree has no redistribution licence). The working-tree state is pinned below by file hashes instead.",
+    "pushed": false,
+    "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/PapyrusUtil-1.7.104",
+    "uncommittedChanges": {
+      "PapyrusUtil.vcxproj": {
+        "summary": "WindowsTargetPlatformVersion 8.1 -> 10.0; PlatformToolset v142 -> v143; OutDir -> $(SolutionDir)build\\$(Configuration)\\; includes from ..\\common, ..\\skse64 and vcpkg x64-windows-static; links common64.lib, skse64_common.lib, skse64_plugin_support.lib (JContainers-1.7.104 build outputs) and boost_filesystem / boost_random vc143-mt-x64-1_92; the common / skse64 ProjectReferences and the PapyrusUtil.rc ResourceCompile item removed (this is why the installed DLL carries NO version resource)",
+        "workingTreeSha256": "98ef4cb1da19f4f587e7f904ef8b31e616b7aab1d857357810a639a8ec1ccece",
+        "headBlob": "2c2e670b049786d090c401b408249adc19708b7c"
+      },
+      "Plugin.h": {
+        "summary": "PAPYRUSUTIL_VERSION 46 -> 47",
+        "workingTreeSha256": "a8f3515c0f97dac37358bbeaa777bbb61d3d08db1f3cdd3597fdeb3bea35753c",
+        "headBlob": "2ad82f373f6922d289a1354e8b04cc9200ad7748"
+      },
+      "main.cpp": {
+        "summary": "SKSEPluginVersionData compatible runtime MAKE_EXE_VERSION(1, 7, 99) -> (1, 7, 104); kVersionIndependent_StructsPost629 retained",
+        "workingTreeSha256": "3138d094db735237ad502053b15d7dc7dc96c0093d166c2fcd30cad2d88c470e",
+        "headBlob": "5184b1ccbc423a7e2332636a454b853bfdcb79c7"
+      }
+    },
+    "uncommittedPatchSha256": "e04a603b2468df45b79a6f4343512e59454ce5862b93c7d08e99799619cd9bef (sha256 of `git diff` output on 2026-09-02; 10 insertions, 20 deletions across the 3 files)",
+    "untrackedInTree": "PapyrusUtil/x64/Release intermediate files (.recipe, .iobj, .ipdb, FileListAbsolute); build/Release and stage-1.7.104 outputs are ignored",
+    "dependencies": {
+      "skse64 static libs": "common64.lib, skse64_common.lib, skse64_plugin_support.lib built in C:/Users/danjo/source/repos/skyrim-tools-source/JContainers-1.7.104",
+      "boost": "Boost 1.92 from vcpkg x64-windows-static (C:/Users/danjo/source/repos/vcpkg, HEAD ddd0023b0eee on 2026-09-02)"
+    }
+  },
+  "build": {
+    "system": "MSBuild, PapyrusUtil.vcxproj Release|x64 (PlatformToolset v143, Windows SDK 10.0)",
+    "toolchain": {
+      "visualStudio": "Visual Studio 2022 Community 17.14.37012.4 (vswhere -latest, 2026-09-02)",
+      "msvc": "14.44.35207 (the only MSVC toolset installed under VC/Tools/MSVC)",
+      "windowsSdkInstalled": [
+        "10.0.22621.0",
+        "10.0.26100.0"
+      ],
+      "windowsSdkUsed": "not recorded"
+    },
+    "reconstructedCommand": "msbuild PapyrusUtil.vcxproj /p:Configuration=Release /p:Platform=x64",
+    "exactCommandLineRecorded": false,
+    "builtLocal": "2026-08-28T13:47:48-05:00 (DLL mtime)",
+    "builtUtc": "2026-08-28T18:47:48Z",
+    "buildDir": "build/Release/PapyrusUtil.dll; staged copy stage-1.7.104/SKSE/Plugins/PapyrusUtil.dll (both SHA-256 0D5648E2...)"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/PapyrusUtil.dll",
+    "sha256": "0D5648E2415E1F48248D14774F19DC0DBFDF2A733D5149BB0F1E9CEF04CA2953",
+    "bytes": 1436160,
+    "versionResource": null,
+    "versionResourceNote": "none: PapyrusUtil.rc was dropped from the vcxproj; the ledger version string \"4.7+01ac25d-local-1.7.104\" is the base 4.7 plus the starting revision",
+    "matchesBuildDir": true,
+    "matchesInstalled": true
+  },
+  "installation": {
+    "installedUtc": "2026-08-28T19:05:13Z",
+    "installedBy": "MO2Headless",
+    "installationFile": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/headless/packages/native-1.7.104-overlay-repair/PapyrusUtil 1.7.104 Native Overlay - Ensrick",
+    "transaction": "20260828T190513175Z-b435e7e05918",
+    "transactionNote": "the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth (docs/RUNTIME-ISSUES-2026-08-28.md)",
+    "profile": "Default",
+    "enabled": true,
+    "priorityAtInstall": 108,
+    "priorityOn2026-09-02": 112,
+    "modlistLine": 121,
+    "overlayContents": [
+      "SKSE/Plugins/PapyrusUtil.dll"
+    ],
+    "baseModBelow": "PapyrusUtil SE 4.7 (13048) keeps scripts"
+  },
+  "validation": {
+    "loaderGate": "bounded 120 s SKSE run on 2026-08-28: 21 native plug-ins checked, zero refused, all four replacement DLLs logged as loaded (docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md)",
+    "profileAudit": "MO2 profile audit passed after the four overlays were installed and again after the ConsoleUtil overlay",
+    "launch": "covered by the 2026-09-01 launch_verify PASSes (records/launch-verify-20260901-172851.md onward) at the launch/load level only",
+    "gameplayAcceptance": "the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md (Proteus MCM, character create/switch, save/reload, inventory, appearance, followers, quest state) is not recorded as run",
+    "registration": "PapyrusUtil initialized for Skyrim 1.7.104.0 and registered its functions in the bounded run (docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md)"
+  },
+  "distribution": {
+    "class": "local-only",
+    "basis": "no redistribution licence found; records/private-runtime-dependencies.json releaseGate: explicit permission or an independently licensed replacement, then a reproducible build from reviewed source",
+    "vendorFilesModified": true
+  },
+  "gaps": [
+    "three source changes uncommitted (pinned by hash only)",
+    "version resource dropped with PapyrusUtil.rc (restore the .rc in any future rebuild)",
+    "exact msbuild invocation not captured",
+    "depends on JContainers-1.7.104 build outputs for the skse64 static libs"
+  ],
+  "references": [
+    "docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md",
+    "docs/RUNTIME-ISSUES-2026-08-28.md"
+  ],
+  "recordedUtc": "2026-09-02T05:00:00Z",
+  "recordedFor": "#102 follow-up (team-lead 2026-09-02); provenance gap F8 in docs/PROCESS-AUDIT-2026-08-30.md"
+}

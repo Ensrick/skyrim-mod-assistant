@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick General Compatibility Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/47",
+  "mo2Mod": "Ensrick - General Compatibility Patch",
+  "outputPlugin": "Ensrick General Compatibility Patch.esp",
+  "purpose": "Decision A of the 2026-08-29 compatibility sweep: fourteen override-only records (twelve WRLD, two CELL) resolving the proven stale override families while keeping the final Water for ENB water fields. Three intentional ITMs act as future-order guards.",
+  "source": {
+    "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
+    "pushedBranch": "agent/issue-47-general-compat",
+    "pushedBranchTip": "8d22cba 2026-09-01T18:31:47-05:00 Harden compatibility patch fixture validation",
+    "pushedBranchMerged": false,
+    "pathInBranch": "mods/general-compatibility-patch",
+    "generatingWorktree": "C:/Users/danjo/source/repos/_agent_worktrees/skyrim-issue-47 on branch agent/issue-47-compat-patch at 0e4dd92 'Require Lux master and pin compatibility evidence', with uncommitted changes to regenerate.ps1, audit.py, expected-values.json and six spriggit RecordData.yaml files",
+    "reproducibleFromCommittedState": false,
+    "gap": "The installed plugin (F9E93B49..., 7,683 bytes) was generated 2026-08-30 at about 16:28Z from the worktree's uncommitted state. The pushed branch's manifest.json still records the earlier output ADAED3D2704F98E491773284F3BEE0C480FA72088F5D519D4566EC784B906334 (7,630 bytes) and its spriggit tree differs from the worktree's by eight files. Commit the worktree state (or regenerate from the pushed branch and reinstall) before this row can be called reproducible from a public commit."
+  },
+  "build": {
+    "targetFramework": "net9.0",
+    "sdk": "10.0.302",
+    "packages": {
+      "Mutagen.Bethesda.Skyrim": "0.54.4",
+      "Mutagen.Bethesda.Synthesis": "0.36.6"
+    },
+    "lockedDependencies": true,
+    "warningsAsErrors": true,
+    "warnings": 0,
+    "errors": 0,
+    "log": "work/build.stdout.log in the worktree: 'Build succeeded. 0 Warning(s) 0 Error(s)'",
+    "workflow": "regenerate.ps1 (verifies the pinned MO2, Spriggit and record-inspector hashes; builds the locked generator; generates twice and requires byte-identical output; full-load-order link audit; Spriggit round trip)"
+  },
+  "output": {
+    "sha256": "F9E93B4983D8326BA898622DA93AAAB7A8A486C2164FF4223C18097E72A5B6ED",
+    "bytes": 7683,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 14,
+    "recordTypes": {
+      "WRLD": 12,
+      "CELL": 2
+    },
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Dragonborn.esm",
+      "BSAssets.esm",
+      "BSHeartland.esm",
+      "Lux Orbis CS.esp",
+      "Water for ENB (Shades of Skyrim).esp",
+      "Water for ENB - Patch - Beyond Skyrim.esp"
+    ],
+    "parsedAgain": "2026-09-02 with audit/esp.py on the installed file: values above"
+  },
+  "archive": {
+    "path": "C:/Users/danjo/source/repos/_agent_worktrees/skyrim-issue-47/mods/general-compatibility-patch/work/Ensrick-General-Compatibility-Patch-0.1.0.zip",
+    "sha256": "CD19AB3E37A5D09BB24112C7E0CA2492E8D129E951FF1EB21F4504201103767D",
+    "bytes": 3054,
+    "entries": 1,
+    "entrySha256": "F9E93B4983D8326BA898622DA93AAAB7A8A486C2164FF4223C18097E72A5B6ED",
+    "committed": false
+  },
+  "installation": {
+    "installedUtc": "2026-08-30T16:44:49Z",
+    "installedBy": "MO2Headless",
+    "transaction": "20260830T164449040Z-ec5e6b03c204",
+    "pluginEnableTransaction": "20260830T164449400Z-8c6611f1a4bc",
+    "profile": "Default",
+    "enabled": true,
+    "modlistLine": 38,
+    "pluginsTxtLine": 228,
+    "loadsAfter": "Ensrick Lux Water CS Patch.esp (plugins.txt line 227)",
+    "history": "parked and unparked in the #142 bisect round 3 (CHANGELOG 2026-09-01)"
+  },
+  "validation": {
+    "fromCommittedManifest": "selfTest pass; deterministicRuns 2 byte-identical; recordsChecked 14; selectedFieldsChecked 374; waterFieldsComparedToFinalWinner 48; linksChecked 62, unresolved 0; hardMasters 7; intentionalItmsPreserved 3; packageAudit pass",
+    "appliesTo": "the committed-state build (ADAED3D2...); not re-run against the installed plugin in this pass",
+    "gameplayAcceptance": "pending"
+  },
+  "relationship": {
+    "existingPatch": "Ensrick Lux Water CS Patch.esp",
+    "existingPatchRecords": 559,
+    "existingPatchRemainsSeparate": true,
+    "loadAfterExistingPatch": true
+  },
+  "distribution": {
+    "class": "distributable",
+    "basis": "Override-only records patch with no assets, same basis as the Lux Water CS Patch: Lux / Lux Orbis compatibility patches are permitted when none of GGUNIT's assets are uploaded; Water for ENB and Beyond Skyrim files and assets are untouched.",
+    "vendorFilesModified": false,
+    "generatedPluginCommitted": false
+  }
+}
