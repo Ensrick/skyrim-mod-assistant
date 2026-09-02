@@ -159,8 +159,15 @@ def run(fails, warns):
                      'finished until the Keep exists or is queued'
                      % (row['modId'], ', '.join(row['mods'])))
     for row in r['keepNotInstalled']:
-        fails.append('Keep with nothing installed: %d %s - adopt it or clear it '
-                     'to unreviewed' % (row['modId'], row['title'] or ''))
+        # WARN, not FAIL, in the LAUNCH gate: a Keep whose mod is not installed
+        # puts no files in the tree and cannot affect a launch, and there is a
+        # legitimate window for it during an adoption in flight (2026-09-02: a
+        # Keep applied ahead of its install deadlocked two agents against each
+        # other). The standalone gate still exits 1 on it - it is a curation
+        # violation, just not a launch blocker.
+        warns.append('Keep with nothing installed: %d %s - adopt it or clear it '
+                     'to unreviewed (not a launch blocker)'
+                     % (row['modId'], row['title'] or ''))
     for row in r['skipInstalled']:
         fails.append('Skip is installed: %d (%s) - move it to '
                      'mo2-instances\\_archived-rejects'

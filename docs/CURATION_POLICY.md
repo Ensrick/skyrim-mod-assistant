@@ -49,10 +49,21 @@ or held for an overlap check - so the curator stopped describing what the build
 actually contains, and re-browsing a parked mod on Nexus showed no decision at
 all. Audit that found it: `records/keep-install-audit-2026-09-02.md`.
 
+**The Keep goes at the END of a successful install, never before it.**
+`install_mod.py` queues it as its last step for a reason: a Keep applied ahead
+of its install makes the curator claim something the build does not have, and on
+2026-09-02 it deadlocked two agents - one could not launch because the gate saw
+a Keep with nothing installed, and the other could not install because the first
+held the profile claim. Download, install, verify, then Keep.
+
 **The gate:** `py -3 audit/keep_coverage.py` is the enforcement. It fails when
 an installed Nexus id has no Keep, when a Keep has nothing installed, or when a
 Skip is installed. It runs inside `audit/preflight.py`, so a batch cannot reach
-a verification launch with the Keep list out of step. `audit/install_mod.py`
+a verification launch with the Keep list out of step - with one deliberate
+asymmetry: inside the LAUNCH gate a Keep with nothing installed is a WARNING,
+because it puts no files in the tree and cannot affect a launch, while a Skip
+that IS installed and an install that produced no Keep stay blocking. The
+standalone gate remains strict on all three. `audit/install_mod.py`
 prints the Keep obligation for every id it installs.
 
 For a mod that adds weapons, shields, armor, clothing, undergarments, or
