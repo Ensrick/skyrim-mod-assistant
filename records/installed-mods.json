@@ -576,6 +576,37 @@
       "fomodPlan": "records/fomod-plans/162526-chitin-bow-se.json"
     },
     {
+      "modId": 6369,
+      "modName": "Cloaks of Skyrim",
+      "nexusName": "Cloaks of Skyrim SSE - v1.2.1",
+      "version": "1.2.1",
+      "fileId": 18422,
+      "fileName": "Cloaks of Skyrim SSE - v1.2.1-6369-1-2-1.rar",
+      "sizeMb": 75.63,
+      "sha256": "03ef0b317a28bab42eb226c774e3fda1b3a522f14b0d6c38a53bc2a32d5cbab9",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:39:25Z",
+      "transaction": "20260902T233922427Z-ad3dd7aa5a6c",
+      "fomodPlan": "records/fomod-plans/6369-cloaks-of-skyrim-assets-only.json",
+      "note": "Asset source only - meshes and textures, no plugin. All eight of its ESPs are omitted by fomodPlan records/fomod-plans/6369-cloaks-of-skyrim-assets-only.json, so none exists in the tree to enable: Cloaks.esp writes 136 vanilla overrides (68 CELL, 47 OTFT, 10 NPC_, 4 WRLD) and 24 of its 62 Outfit/Npc/LeveledItem overrides are already written live, 16 by NW_Sons_of_Skyrim.esp. The records come from Cloaks - RMB SPCH.esp (116030) instead. Its textures are superseded at runtime by ElSopa 42558 for the 101 of 137 files that mod replaces; the 36 dragon-priest meshes and 15 dragon-priest textures are still served from here, because nothing else covers them. records/cloak-layer-audit-2026-09-02.md 1-2, 7."
+    },
+    {
+      "modId": 85932,
+      "modName": "Cloaks of Skyrim Retextured - Female Mesh Patch",
+      "nexusName": "Cloaks Of Skyrim Retextured SE Female Mesh Patch",
+      "version": "1.0.0",
+      "fileId": 363920,
+      "fileName": "Cloaks Of Skyrim Retextured SE Female Mesh Patch-85932-1-0-0-1677519708.7z",
+      "sizeMb": 0.05,
+      "sha256": "2e2a264fe4134a2d0feb9fbd82a790cb610b3ad06b54df7d2ccec4718b12a898",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:39:57Z",
+      "transaction": "20260902T233957487Z-77c5e90e6553",
+      "note": "48 female hold-cloak meshes using ElSopa's texture names (worncloakdawnstar.dds, worncloakleather_n.dds), user version 100, no SMP string. Belongs to the ElSopa branch: all 48 paths exist in base CoS and in Artesian, 46 in ElSopa's mesh update, so it must load above both ElSopa mods. records/cloak-layer-audit-2026-09-02.md 7."
+    },
+    {
       "modId": 130354,
       "modName": "Collectibles Helper",
       "nexusName": "Collectibles Helper",
@@ -874,6 +905,37 @@
       "enabled": true,
       "installedUtc": "2026-08-30T15:28:49Z",
       "transaction": "20260830T152849272Z-0858430c6b1c"
+    },
+    {
+      "modId": 42558,
+      "modName": "ElSopa - Cloaks of Skyrim Retextured 2K",
+      "nexusName": "Cloaks Of Skyrim Retextured 2k",
+      "version": "1.0",
+      "fileId": 170809,
+      "fileName": "Cloaks Of Skyrim Retextured 2k-42558-1-0-1605820625.7z",
+      "sizeMb": 191.12,
+      "sha256": "5200f9ea5e4a9d64b05df3e72fc90c53d1e9e78ed650e48e4ee57629fc9d6cab",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:39:47Z",
+      "transaction": "20260902T233936333Z-fa06bbdb5efe",
+      "fomodPlan": "records/fomod-plans/42558-elsopa-cos-retextured-2k.json",
+      "note": "Textures only. The archive's own 394 meshes are Oldrim format (NIF user version 83, NiTriShape) and are omitted by fomodPlan records/fomod-plans/42558-elsopa-cos-retextured-2k.json; the SSE conversion of the same 394 paths comes from Mesh Update 1.2 (file 263634) as a separate mod, so no LE mesh exists in the tree even if that update is later disabled. 2k tier chosen by measurement, not by default: the tiers read x0.99-x1.01 against each other at every shared pixel size, base CoS UVs are 1024 so source-plus-one-step caps at 2048, and the 4k tier is the only one shipping files with no mip chain. records/cloak-layer-audit-2026-09-02.md 7."
+    },
+    {
+      "modId": 42558,
+      "modName": "ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2",
+      "nexusName": "Cloaks Of Skyrim Retextured Mesh Update 1.2",
+      "version": "1.2",
+      "fileId": 263634,
+      "fileName": "Cloaks Of Skyrim Retextured Mesh Update 1.2-42558-1-2-1644689837.7z",
+      "sizeMb": 0.32,
+      "sha256": "df8822b5fcba8120e0cb52629b8183287d21c50928f93f6fb017dc56a1c251f6",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:39:52Z",
+      "transaction": "20260902T233952259Z-780376765150",
+      "note": "Mandatory companion to the 2k texture install, not an optional refinement: it is the Special Edition conversion (user version 100, BSTriShape) of the 394 Oldrim meshes in the MAIN archives. It is also what binds ElSopa's renamed textures - all 394 meshes reference 141 texture paths base CoS never used, and 169 of 169 references resolve inside ElSopa's own archive. Must load ABOVE Cloaks of Skyrim. Collides with Artesian Cloaks 17416 on 381 of its 391 SMP meshes, which is why 17416 is held pending #193. records/cloak-layer-audit-2026-09-02.md 7."
     },
     {
       "modId": 22574,
@@ -3699,6 +3761,24 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\15882-moonpath-unofficial-patch.json"
     },
     {
+      "modId": 149259,
+      "modName": "More Scarves",
+      "nexusName": "More Scarves",
+      "version": "1.4.0",
+      "fileId": 723968,
+      "fileName": "More Scarves-149259-1-4-0-1771673233.7z",
+      "sizeMb": 95.6,
+      "sha256": "9b909da46bae6f083c4e28a9f81c02609ea8e3b0adf78b56452467bb98cc2c35",
+      "plugins": [
+        "moe-scarves.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:40:16Z",
+      "transaction": "20260902T234010569Z-8b537ded63dd",
+      "fomodPlan": "records/fomod-plans/149259-more-scarves.json",
+      "note": "FOMOD selection recorded in fomodPlan: __main + _HIMBO + _VanillaF + __loweredHood. _3BA and _BHUNP omitted - this build runs CBBE + HIMBO with no 3BA, BHUNP or OBody. The female route is NOT finished: _VanillaF is the starting shape and a BodySlide build against the installed CBBE Curvy preset is still owed, using the shipped slider sets in CalienteTools. __loweredHood supplies the Dynamic Armor Variants configs and the HT_ArmorHood KID rule that wire the three hooded capes to Helmet Toggle 2, which is not installed yet, so those configs are inert for now. records/cloak-layer-audit-2026-09-02.md 5."
+    },
+    {
       "modId": 63604,
       "modName": "Nature of the Wild Lands",
       "nexusName": "Nature of the Wild Lands",
@@ -5021,6 +5101,23 @@
       "note": "BSA format, light shafts, fake glow as particle lights, custom textures | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 120726,
+      "modName": "Pelts o Plenty - Fur Pelt Gear",
+      "nexusName": "Pelts 'o' Plenty - Fur Pelt Gear",
+      "version": "4.3.1",
+      "fileId": 704702,
+      "fileName": "Pelts 'o' Plenty - Fur Pelt Gear-120726-4-3-1-1767380929.zip",
+      "sizeMb": 705.81,
+      "sha256": "cd48e207533666c39bb99e5cdebc2a7c2db9252484006de9dbfa5e225495e1a1",
+      "plugins": [
+        "Pelt Cloaks.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:40:27Z",
+      "transaction": "20260902T234023119Z-01251598cc1d",
+      "note": "Fur slot winner, settled by the user 2026-09-02 (\"I don't like the fake fur from winter is coming\"). Slot 57, ESL-flagged, ships its own HDT-SMP configs. Its ARMO records already carry Survival_ArmorWarm + ClothingBody, so its warmth is the WARM tier out of the box - better than what RMB gives the Cloaks of Skyrim records. The companion Survival Fix 164077 was deliberately NOT installed: its only record change is adding FrostfallIsCloakFur and FrostfallEnableKeywordProtection, and it moves every cloak from biped slot 57 to slot 46, which would collide with Cloaks of Skyrim. Frostfall is not in this build. records/cloak-layer-audit-2026-09-02.md 6."
+    },
+    {
       "modId": 0,
       "modName": "Period Underlayers - SPID",
       "nexusName": "local config mod (ours)",
@@ -5297,6 +5394,42 @@
       "transaction": "20260830T002148018Z-37972895b08c",
       "fomodPlan": "records/fomod-plans/166460-ring-of-khajiit-replacer.json",
       "note": "2K main archive; CBBE female and HIMBO male meshes; silver band with yellow eyes; UBE and Legacy of the Dragonborn patch omitted because neither matching runtime is active; vendor payload installed without modification"
+    },
+    {
+      "modId": 116030,
+      "modName": "RMB SPCH - Cloaks of Skyrim",
+      "nexusName": "RMB SPCH - Cloaks of Skyrim",
+      "version": "1.5.3",
+      "fileId": 749413,
+      "fileName": "RMB SPCH - Cloaks of Skyrim-116030-1-5-3-1778096771.zip",
+      "sizeMb": 0.03,
+      "sha256": "6b7e6d867f4a2438cb10d8045119671e8d1af0bba71b8f95436f10cf15037e88",
+      "plugins": [
+        "Cloaks - RMB SPCH.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:40:03Z",
+      "transaction": "20260902T234003286Z-42b8ec555365",
+      "fomodPlan": "records/fomod-plans/116030-rmb-spch-cloaks-of-skyrim.json",
+      "note": "Replaces Cloaks.esp rather than patching it: masters Skyrim + Update only, 294 records, all new, zero overrides. Needs Cloaks of Skyrim's asset tree (253 mesh paths embedded) and RMB SPID - Core Definitions.esp (63625) loaded before it. FOMOD selection recorded in fomodPlan: 00 Core + 00 Shared + 01 Tweaks - Generic taken; Disallow Enchanting and Weaker Enchants omitted pending the open enchantability decision; Names omitted as an unrequested cosmetic rename; Description Framework omitted, its required mod is not installed. KNOWN DEFECT carried by the vendor: its SkyPatcher npc config assigns the ten unique cloaks with objectsToAdd=Skyrim.esm|<id> form IDs that do not exist, and truncates Krosis to 767, so all ten are no-ops until #187 lands. records/cloak-layer-audit-2026-09-02.md 2."
+    },
+    {
+      "modId": 179354,
+      "modName": "RMB SPCH - Pelts o Plenty",
+      "nexusName": "RMB SPCH - Pelts O Plenty",
+      "version": "1.1.0",
+      "fileId": 749409,
+      "fileName": "RMB SPCH - Pelts O Plenty-179354-1-1-0-1778096288.zip",
+      "sizeMb": 0.01,
+      "sha256": "9c6a59d38304e2b6fa77f6a3368599fa4b3e7b2e5e81f1497c776c3d1da8ca71",
+      "plugins": [
+        "RMB SPCH - Pelt Cloaks.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-02T23:40:28Z",
+      "transaction": "20260902T234027735Z-456f9c725cbf",
+      "fomodPlan": "records/fomod-plans/179354-rmb-spch-pelts-o-plenty.json",
+      "note": "Patch on top of Pelt Cloaks.esp, not a replacement: masters it and adds 75 leveled-item records with no overrides. Its 00 - Shared configs target RMB SPID - Sons of Skyrim.esp and RMB SPID - NordwarUA GAR - Outfits.esp and are inert while neither is installed. records/cloak-layer-audit-2026-09-02.md 6."
     },
     {
       "modId": 63625,

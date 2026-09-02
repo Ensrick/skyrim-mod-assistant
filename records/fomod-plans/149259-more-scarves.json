@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "note": "More Scarves 149259 v1.4.0. __main (plugin, textures, SkyPatcher vendor config, BodySlide data) + _HIMBO for the male body + _VanillaF for the female route + __loweredHood for the Dynamic Armor Variants configs and the HT_ArmorHood KID rule that wire the three hooded capes to Helmet Toggle 2. _3BA and _BHUNP are omitted: this build runs CBBE + HIMBO with no 3BA, BHUNP or OBody. The _VanillaF meshes are the starting shape; the female route is finished by a BodySlide build against the installed CBBE Curvy preset, which the shipped slider sets (84 .osd, 5 .osp) support. Evidence: records/cloak-layer-audit-2026-09-02.md section 5.",
+  "mappings": [
+    { "source": "More Scarves/__main/moe-scarves.esl",       "destination": "moe-scarves.esl" },
+    { "source": "More Scarves/__main/meshes",                "destination": "meshes" },
+    { "source": "More Scarves/__main/textures",              "destination": "textures" },
+    { "source": "More Scarves/__main/SKSE",                  "destination": "SKSE" },
+    { "source": "More Scarves/__main/CalienteTools",         "destination": "CalienteTools" },
+    { "source": "More Scarves/_HIMBO/meshes",                "destination": "meshes" },
+    { "source": "More Scarves/_HIMBO/CalienteTools",         "destination": "CalienteTools" },
+    { "source": "More Scarves/_VanillaF/meshes",             "destination": "meshes" },
+    { "source": "More Scarves/_VanillaF/CalienteTools",      "destination": "CalienteTools" },
+    { "source": "More Scarves/__loweredHood/SKSE",           "destination": "SKSE" },
+    { "source": "More Scarves/__loweredHood/moe-scarves_KID.ini", "destination": "moe-scarves_KID.ini" }
+  ]
+}

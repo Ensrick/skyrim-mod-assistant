@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "note": "RMB SPCH - Cloaks of Skyrim 116030 v1.5.3. 00 Core and 00 Shared are required. 01 Tweaks - Generic is TAKEN: it clears the biped slot-40 (tail) flag base CoS sets on 339 of 366 items, removes the wrong ClothingNecklace keyword, and adds Survival_ArmorCold + ClothingBody - two record defects fixed and a warmth floor that issue #189 will raise. Omitted deliberately: 01 Tweaks - Disallow Enchanting and 01 Tweaks - Weaker Enchants, because generic-cloak enchantability is an open user decision (audit shortlist item 4) and weakening only the eight authored enchanted pairs while leaving every generic cloak enchantable would be incoherent; 01 Tweaks - Names, a cosmetic rename of vendor item names nobody asked for; 02 Description Framework, whose required mod is not installed. Evidence: records/cloak-layer-audit-2026-09-02.md section 2.",
+  "mappings": [
+    { "source": "00 Core/Cloaks - RMB SPCH.esp",  "destination": "Cloaks - RMB SPCH.esp" },
+    { "source": "00 Core/RMB SPID References",    "destination": "RMB SPID References" },
+    { "source": "00 Core/SKSE",                   "destination": "SKSE" },
+    { "source": "00 Shared/SKSE",                 "destination": "SKSE" },
+    { "source": "01 Tweaks - Generic/SKSE",       "destination": "SKSE" }
+  ]
+}

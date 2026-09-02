@@ -1,22 +1,22 @@
 # Active file-conflict inventory
 
-Captured: `2026-09-02T19:06:35Z`
+Captured: `2026-09-02T23:41:55Z`
 
-- Enabled managed mods: 224
-- Files scanned: 40130
-- Conflicting paths: 2398
-- Order-sensitive code/config paths: 25
+- Enabled managed mods: 233
+- Files scanned: 41771
+- Conflicting paths: 2827
+- Order-sensitive code/config paths: 27
 
 The first provider is the effective MO2 winner. Collisions are review candidates, not automatic defects.
 
 ## Collision categories
 
 - audio: 1345
-- mesh: 581
-- texture: 340
-- other: 107
+- mesh: 977
+- texture: 370
+- other: 108
 - plugin: 8
-- config: 5
+- config: 7
 - native: 5
 - interface: 4
 - papyrus: 3
@@ -26,6 +26,8 @@ The first provider is the effective MO2 winner. Collisions are review candidates
 - `config` `Azurite Weathers III.ini`: Azurite III CS -> Azurite Weathers III (**winner:** Azurite III CS)
 - `config` `SKSE/Plugins/MediaKeysFix.ini`: Ensrick - Media Keys Fix Configuration -> Media Keys Fix SKSE (**winner:** Ensrick - Media Keys Fix Configuration)
 - `config` `SKSE/Plugins/MLO.ini`: Ensrick - MLO2 Foundation Config -> Modern Lighting Overhaul 2 (MLO2) (**winner:** Ensrick - MLO2 Foundation Config)
+- `config` `SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - NordwarUA GAR - Outfits.esp.ini`: RMB SPCH - Pelts o Plenty -> RMB SPCH - Cloaks of Skyrim (**winner:** RMB SPCH - Pelts o Plenty) (byte-identical)
+- `config` `SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - Sons of Skyrim.esp.ini`: RMB SPCH - Pelts o Plenty -> RMB SPCH - Cloaks of Skyrim (**winner:** RMB SPCH - Pelts o Plenty) (byte-identical)
 - `config` `SKSE/Plugins/SurvivalModeImproved.ini`: Starfrost -> Survival Mode Improved (**winner:** Starfrost)
 - `config` `skse/plugins/Underwear.ini`: Underwear.dll -> Period Underlayers - SPID (**winner:** Underwear.dll)
 - `interface` `Interface/exported/uilib/UILIB_1_notificationarea.swf`: Nether's Follower Framework -> Proteus -> Skyrim Unbound Reborn (**winner:** Nether's Follower Framework) (byte-identical)
@@ -52,15 +54,19 @@ The first provider is the effective MO2 winner. Collisions are review candidates
 ## Highest-volume provider pairs
 
 - `audio` VIGILANT EN Voiced over VIGILANT: 1345 files
+- `mesh` ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2 over Cloaks of Skyrim: 348 files
 - `other` Vanilla Hair Remake SMP over Vanilla Hair Remake SMP - NPCs: 93 files
 - `texture` Steel Plate Armors - HD Textures over Steel Plate Armors: 93 files
 - `texture` Skyland AIO 1K over SMIM: 68 files
 - `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over Assorted Mesh Fixes: 56 files
 - `mesh` ERM - Fix and Addon over ERM - Enhanced Rocks and Mountains: 50 files
+- `mesh` Cloaks of Skyrim Retextured - Female Mesh Patch over Cloaks of Skyrim: 48 files
+- `mesh` Cloaks of Skyrim Retextured - Female Mesh Patch over ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2: 46 files
 - `mesh` Skyking Signs over SMIM: 44 files
 - `mesh` Freak's Floral Fields 3.2.3 - Realistic Regional Mix over DrJacopo's - 3D Grass Library - Meshes: 40 files
 - `texture` Reverie - Skin over CBBE: 38 files
 - `mesh` SMIM over SMIM Quality Addon: 35 files
+- `texture` ElSopa - Cloaks of Skyrim Retextured 2K over Cloaks of Skyrim: 30 files
 - `texture` SkySight Skins over The New Gentleman: 29 files
 - `mesh` Assorted Mesh Fixes over Lux Orbis: 28 files
 - `mesh` ERM - Fix and Addon over Lux: 28 files
@@ -122,6 +128,7 @@ The first provider is the effective MO2 winner. Collisions are review candidates
 - `mesh` Lux Orbis over SMIM: 3 files
 - `mesh` Lux Orbis over Lux: 3 files
 - `texture` Lux over Skyland AIO 1K: 3 files
+- `config` RMB SPCH - Pelts o Plenty over RMB SPCH - Cloaks of Skyrim: 2 files
 - `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over Unofficial Material Fix: 2 files
 - `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over HIMBO Refits: 2 files
 - `mesh` Assorted Mesh Fixes over SMIM Quality Addon: 2 files
@@ -142,12 +149,7 @@ The first provider is the effective MO2 winner. Collisions are review candidates
 - `mesh` Misc Effects ENB Light - Believable Weapons over Believable Weapons: 2 files
 - `mesh` Believable Weapons over ENB Light: 2 files
 - `texture` HIMBO over SkySight Skins: 2 files
+- `other` Ensrick - Conditional Arrow Embedding over FSMP - Faster HDT-SMP: 1 files
 - `config` Ensrick - Media Keys Fix Configuration over Media Keys Fix SKSE: 1 files
 - `mesh` Skyrim Landscape and Water Fixes over Ensrick - Assorted Mesh Fixes SE Mesh Port: 1 files
 - `mesh` Skyrim Landscape and Water Fixes over Whiterun Simple 3D Wooden Trellis - AIO: 1 files
-- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over ERM - Fix and Addon: 1 files
-- `mesh` Ensrick - Assorted Mesh Fixes SE Mesh Port over ERM - Enhanced Rocks and Mountains: 1 files
-- `mesh` Assorted Mesh Fixes over Skyland AIO 1K: 1 files
-- `mesh` Assorted Mesh Fixes over Sagittarius - Real Bows: 1 files
-- `mesh` Unofficial Material Fix over ERM - Fix and Addon: 1 files
-- `mesh` Unofficial Material Fix over Misc Effects ENB Light: 1 files

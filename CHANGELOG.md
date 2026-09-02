@@ -34,6 +34,151 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 18:40 - RMB SPCH - Pelts o Plenty 1.1.0 installed and ENABLED (Claude, #95)
+
+- **What:** `RMB SPCH - Pelts o Plenty` 1.1.0 (Nexus 179354, file 749409,
+  `179354-749409.zip`, 0.01 MB, sha256 `9c6a59d3...8ca71`) installed at mod
+  priority line 2 and enabled; `RMB SPCH - Pelt Cloaks.esp` active at position
+  243, after its master `Pelt Cloaks.esp` at 242. FOMOD plan
+  `records/fomod-plans/179354-rmb-spch-pelts-o-plenty.json`: core plus the
+  shared SkyPatcher configs. It is a **patch, not a replacement** - 75 new
+  leveled-item records, zero overrides. Its two `00 - Shared` configs are
+  byte-identical to the ones RMB SPCH - Cloaks of Skyrim ships and are inert
+  while RMB SPIDified - Sons of Skyrim (#195) is held.
+- **Source:** user, 2026-09-02, *"Yeah, go ahead, and install"*, on the stack in
+  `records/cloak-layer-audit-2026-09-02.md`. Install record
+  `records/cloak-install-2026-09-02.md`.
+- **Verification:** **UNVERIFIED** - the user asked to hold the launch. Keep
+  179354 queued to the relay by `install_mod`.
+
+## 2026-09-02 18:40 - Pelts 'o' Plenty 4.3.1 installed and ENABLED; Survival Fix 164077 rejected (Claude, #95)
+
+- **What:** `Pelts o Plenty - Fur Pelt Gear` 4.3.1 (Nexus 120726, file 704702,
+  `120726-704702.zip`, 705.81 MB, sha256 `cd48e207...95e1a1`) installed at mod
+  priority line 3 and enabled; `Pelt Cloaks.esp` (ESL-flagged) active at 242.
+  Fur-slot winner settled by the user the same day - *"I don't like the fake fur
+  from winter is coming"* - so Winter Is Coming 4933 and RMB SPCH 116029 are out
+  of the plan. 109 cloaks on biped slot 57, 10 hoods on slot 31, ships its own
+  HDT-SMP configs. **The companion Survival Fix 164077 was deliberately NOT
+  installed:** read against the base plugin (both 419 records) its only record
+  additions are the Frostfall keywords `FrostfallIsCloakFur` and
+  `FrostfallEnableKeywordProtection` - Frostfall is not in this build - and it
+  rewrites `FirstPersonFlags` from `134217728` to `65536`, moving every cloak
+  from slot 57 onto Cloaks of Skyrim's slot 46. Base Pelts already carries
+  `Survival_ArmorWarm` + `ClothingBody`, the warm tier, so there was nothing to
+  fix. Reported on #189.
+- **Source:** user authorisation as above; the 164077 check was requested in the
+  install brief. Evidence in `records/cloak-install-2026-09-02.md` §2.
+- **Verification:** **UNVERIFIED**. Keep 120726 queued.
+
+## 2026-09-02 18:40 - More Scarves 1.4.0 installed and ENABLED (Claude, #95)
+
+- **What:** `More Scarves` 1.4.0 (Nexus 149259, file 723968,
+  `149259-723968.7z`, 95.6 MB, sha256 `9b909da4...cc2c35`) installed at mod
+  priority line 4 and enabled; `moe-scarves.esl` active at 241. FOMOD plan
+  `records/fomod-plans/149259-more-scarves.json`: `__main` + `_HIMBO` +
+  `_VanillaF` + `__loweredHood`; `_3BA` and `_BHUNP` omitted because this build
+  has no 3BA, BHUNP or OBody. 12 items - 3 hooded capes on slots 31/41/42/43/45
+  and 9 scarves on 45. Two loose ends, both tracked: the female meshes are the
+  vanilla shape and owe a BodySlide build against the installed CBBE Curvy
+  preset (#196), and the `__loweredHood` Dynamic Armor Variants configs plus the
+  `HT_ArmorHood` KID rule are installed but inert because Helmet Toggle 2 is not
+  in this build.
+- **Source:** user authorisation as above. Install record
+  `records/cloak-install-2026-09-02.md`.
+- **Verification:** **UNVERIFIED**. Keep 149259 queued.
+
+## 2026-09-02 18:40 - RMB SPCH - Cloaks of Skyrim 1.5.3 installed and ENABLED (Claude, #95)
+
+- **What:** `RMB SPCH - Cloaks of Skyrim` 1.5.3 (Nexus 116030, file 749413,
+  `116030-749413.zip`, 0.03 MB, sha256 `6b7e6d86...037e88`) installed at mod
+  priority line 5 and enabled; `Cloaks - RMB SPCH.esp` (ESL-flagged) active at
+  240, after `RMB SPID - Core Definitions.esp` at 26. This is the **record layer
+  for Cloaks of Skyrim** and replaces its 2017 plugin: 294 records, all new,
+  zero overrides, against `Cloaks.esp`'s 136 vanilla overrides. FOMOD plan
+  `records/fomod-plans/116030-rmb-spch-cloaks-of-skyrim.json` - `00 Core` +
+  `00 Shared` + `01 Tweaks - Generic` taken, the last because it clears the
+  slot-40 tail flag base CoS sets on 339 of 366 items and removes the wrong
+  `ClothingNecklace` keyword; `Disallow Enchanting` and `Weaker Enchants`
+  omitted pending the open enchantability decision, `Names` omitted as an
+  unrequested cosmetic rename, `Description Framework` omitted with its required
+  mod absent. Known vendor defect carried in: its SkyPatcher npc config assigns
+  the ten unique cloaks with form IDs that do not exist, so they are no-ops
+  until #187.
+- **Source:** user authorisation as above. Install record
+  `records/cloak-install-2026-09-02.md` §3.
+- **Verification:** **UNVERIFIED**. Keep 116030 queued.
+
+## 2026-09-02 18:39 - Cloaks of Skyrim Retextured Female Mesh Patch installed (Claude, #95)
+
+- **What:** `Cloaks of Skyrim Retextured - Female Mesh Patch` 1.0.0 (Nexus
+  85932, file 363920, `85932-363920.7z`, 0.05 MB, sha256 `2e2a264f...12a898`)
+  installed at mod priority line 6, no plugin. 48 female hold-cloak meshes using
+  ElSopa's texture names, user version 100, no SMP string. Wins 48 files over
+  Cloaks of Skyrim and 46 over the ElSopa mesh update, which is the intended
+  order.
+- **Source:** user authorisation as above; listed as optional-but-take in
+  `records/cloak-layer-audit-2026-09-02.md` §7.
+- **Verification:** **UNVERIFIED**. Keep 85932 queued.
+
+## 2026-09-02 18:39 - ElSopa CoS Retextured Mesh Update 1.2 installed (Claude, #95)
+
+- **What:** `ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2` (Nexus 42558,
+  file 263634, `42558-263634.7z`, 0.32 MB, sha256 `df8822b5...c251f6`) installed
+  at mod priority line 7, no plugin. **Mandatory, not optional:** its 394 NIFs
+  are the Special Edition conversion (user version 100, `BSTriShape`) of the 394
+  Oldrim meshes (user version 83, `NiTriShape`) that ship inside ElSopa's MAIN
+  archives, and they are also what bind his 141 renamed texture paths. Wins 348
+  mesh files over Cloaks of Skyrim; the other 46 go to the female patch above.
+- **Source:** user authorisation as above. Evidence in
+  `records/cloak-layer-audit-2026-09-02.md` §7.
+- **Verification:** **UNVERIFIED**. Keep 42558 queued once for both ElSopa rows.
+
+## 2026-09-02 18:39 - ElSopa CoS Retextured 2K installed, textures only (Claude, #95)
+
+- **What:** `ElSopa - Cloaks of Skyrim Retextured 2K` (Nexus 42558, file 170809,
+  `42558-170809.7z`, 191.12 MB, sha256 `5200f9ea...9d6cab`) installed at mod
+  priority line 8, no plugin, **172 textures and zero meshes**: FOMOD plan
+  `records/fomod-plans/42558-elsopa-cos-retextured-2k.json` omits the archive's
+  394 Oldrim meshes so no LE mesh exists in the tree even if the mesh update is
+  later disabled. 2k tier chosen by measurement - the tiers read x0.99-x1.01
+  against each other at every shared pixel size, base CoS UVs are 1024 so
+  source-plus-one-step caps at 2048, and the 4k tier (2,130 MB) is the only one
+  shipping files with no mip chain. It overrides only 30 of Cloaks of Skyrim's
+  137 textures by path because ElSopa renamed the set; 101 base textures stay on
+  disk referenced by no surviving mesh.
+- **Source:** user, 2026-09-02, on this candidate: *"I think this looks really
+  good."* Measurement in `records/cloak-layer-audit-2026-09-02.md` §7.
+- **Verification:** **UNVERIFIED**. Keep 42558 queued.
+
+## 2026-09-02 18:39 - Cloaks of Skyrim 1.2.1 installed as an ASSET SOURCE, no plugin (Claude, #95)
+
+- **What:** `Cloaks of Skyrim` 1.2.1 (Nexus 6369, file 18422, `6369-18422.rar`,
+  75.63 MB, sha256 `03ef0b31...5cbab9`) installed at mod priority line 9 with
+  **469 meshes, 137 textures and none of its eight ESPs**. FOMOD plan
+  `records/fomod-plans/6369-cloaks-of-skyrim-assets-only.json` omits all three
+  plugin option folders, so no Cloaks ESP exists in the tree to be enabled by
+  accident - stronger than a `disabledPlugins` marker, and `plugins: []` in the
+  ledger keeps `--verify` honest. Reason: `Cloaks.esp` writes 136 vanilla
+  overrides (68 CELL, 47 OTFT, 10 NPC_, 4 WRLD) and 24 of its 62
+  Outfit/Npc/LeveledItem overrides are already written live, 16 of them by
+  `NW_Sons_of_Skyrim.esp`. The records come from `Cloaks - RMB SPCH.esp`
+  instead. Its textures are superseded by ElSopa for the 101 of 137 files that
+  mod replaces; the 36 dragon-priest meshes and 15 dragon-priest textures are
+  still served from here because nothing else covers them.
+- **Source:** user, 2026-09-02, *"Yeah, go ahead, and install"*. Evidence in
+  `records/cloak-layer-audit-2026-09-02.md` §1-2, install record
+  `records/cloak-install-2026-09-02.md`.
+- **Verification:** **UNVERIFIED** - no launch was run, at the user's request.
+  Gates that did run: `install_mod --verify` `0 problem(s)`, `verify_order`
+  CLEAN, `file_conflicts` 27 critical of which 2 touch this batch and both are
+  byte-identical duplicate configs. `keep_coverage` reports 7 violations, all of
+  them this batch's Keeps in flight through the relay spool.
+  **Artesian Cloaks 17416 is NOT installed** (#193), so no Cloaks of Skyrim
+  cloak simulates; and **RMB SPIDified - Sons of Skyrim 83340 is held** (#195)
+  because its `00 Core` replaces `NW_Sons_of_Skyrim.esp` with a 634-record strip
+  of the installed 971-record plugin.
+
 ## 2026-09-02 17:55 - ElSopa CoS Retextured 42558 measured; enters the plan at 2k (Claude, #95)
 
 - **What:** `records/cloak-layer-audit-2026-09-02.md` gains section 7. The user

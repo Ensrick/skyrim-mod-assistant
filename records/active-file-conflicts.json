@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "capturedUtc": "2026-09-02T19:06:35Z",
+  "capturedUtc": "2026-09-02T23:41:55Z",
   "profile": "Default",
-  "enabledManagedMods": 224,
-  "filesScanned": 40130,
-  "conflictingPaths": 2398,
+  "enabledManagedMods": 233,
+  "filesScanned": 41771,
+  "conflictingPaths": 2827,
   "categories": {
     "audio": 1345,
-    "mesh": 581,
-    "texture": 340,
-    "other": 107,
+    "mesh": 977,
+    "texture": 370,
+    "other": 108,
     "plugin": 8,
-    "config": 5,
+    "config": 7,
     "native": 5,
     "interface": 4,
     "papyrus": 3
@@ -25,14 +25,14 @@
         {
           "mod": "Azurite III CS",
           "relativePath": "Azurite Weathers III.ini",
-          "modOrder": 182,
+          "modOrder": 191,
           "bytes": 474,
           "sha256": "6D1C074ECD9BBF26D14D5058B7B48083B1DB209C5CB7FB7C34C044A5664019D0"
         },
         {
           "mod": "Azurite Weathers III",
           "relativePath": "Azurite Weathers III.ini",
-          "modOrder": 183,
+          "modOrder": 192,
           "bytes": 475,
           "sha256": "CD1C82C8C1231F32AE2962908A410BD442CE8D6781E17F76A589A5F89EBAFC85"
         }
@@ -47,14 +47,14 @@
         {
           "mod": "Ensrick - Media Keys Fix Configuration",
           "relativePath": "SKSE/Plugins/MediaKeysFix.ini",
-          "modOrder": 14,
+          "modOrder": 23,
           "bytes": 712,
           "sha256": "F0F2AFEA9AEBDC062A50D6A678E85E76CE74A3B33CCB711A5557900EF8ED0A90"
         },
         {
           "mod": "Media Keys Fix SKSE",
           "relativePath": "SKSE/Plugins/MediaKeysFix.ini",
-          "modOrder": 15,
+          "modOrder": 24,
           "bytes": 918,
           "sha256": "3A1C6D8AF83D49767EC937935332A607E7BB302C2994F0043FA0A23EF02ADD86"
         }
@@ -69,19 +69,63 @@
         {
           "mod": "Ensrick - MLO2 Foundation Config",
           "relativePath": "SKSE/Plugins/MLO.ini",
-          "modOrder": 194,
+          "modOrder": 203,
           "bytes": 1221,
           "sha256": "56571056A43EDF58EA281949B07977AFB244D7060A6724C0D8A14CBD2D99E227"
         },
         {
           "mod": "Modern Lighting Overhaul 2 (MLO2)",
           "relativePath": "SKSE/Plugins/MLO.ini",
-          "modOrder": 195,
+          "modOrder": 204,
           "bytes": 1954,
           "sha256": "A5CBBED4A162C46C1A8D83B673446084306B212F9B10366543FE39997A727D44"
         }
       ],
       "byteIdentical": false
+    },
+    {
+      "path": "SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - NordwarUA GAR - Outfits.esp.ini",
+      "category": "config",
+      "winner": "RMB SPCH - Pelts o Plenty",
+      "providers": [
+        {
+          "mod": "RMB SPCH - Pelts o Plenty",
+          "relativePath": "SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - NordwarUA GAR - Outfits.esp.ini",
+          "modOrder": 0,
+          "bytes": 2750,
+          "sha256": "D01916FAB91E35B48F81977EDF9F9A26F81338028351BCB2BFAFF2CB2856B60A"
+        },
+        {
+          "mod": "RMB SPCH - Cloaks of Skyrim",
+          "relativePath": "SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - NordwarUA GAR - Outfits.esp.ini",
+          "modOrder": 3,
+          "bytes": 2750,
+          "sha256": "D01916FAB91E35B48F81977EDF9F9A26F81338028351BCB2BFAFF2CB2856B60A"
+        }
+      ],
+      "byteIdentical": true
+    },
+    {
+      "path": "SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - Sons of Skyrim.esp.ini",
+      "category": "config",
+      "winner": "RMB SPCH - Pelts o Plenty",
+      "providers": [
+        {
+          "mod": "RMB SPCH - Pelts o Plenty",
+          "relativePath": "SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - Sons of Skyrim.esp.ini",
+          "modOrder": 0,
+          "bytes": 2634,
+          "sha256": "78F754364DAB31C46586DC6DD7616854A877307A566C0D9A79E7751979DF2C3B"
+        },
+        {
+          "mod": "RMB SPCH - Cloaks of Skyrim",
+          "relativePath": "SKSE/Plugins/SkyPatcher/leveledList/Cloaks - Common/RMB SPID - Sons of Skyrim.esp.ini",
+          "modOrder": 3,
+          "bytes": 2634,
+          "sha256": "78F754364DAB31C46586DC6DD7616854A877307A566C0D9A79E7751979DF2C3B"
+        }
+      ],
+      "byteIdentical": true
     },
     {
       "path": "SKSE/Plugins/SurvivalModeImproved.ini",
@@ -91,14 +135,14 @@
         {
           "mod": "Starfrost",
           "relativePath": "SKSE/Plugins/SurvivalModeImproved.ini",
-          "modOrder": 155,
+          "modOrder": 164,
           "bytes": 5758,
           "sha256": "901E3E1D28D4AA12D4ED7A0EDEBAA3E3D400EF2AE44C133EC40E53354FCD76BF"
         },
         {
           "mod": "Survival Mode Improved",
           "relativePath": "SKSE/Plugins/SurvivalModeImproved.ini",
-          "modOrder": 156,
+          "modOrder": 165,
           "bytes": 5822,
           "sha256": "94F087728CB152C19B7B6923D96B1EB4CAF8BEF262357EE2F4EDF1E2C6740A3C"
         }
@@ -113,14 +157,14 @@
         {
           "mod": "Underwear.dll",
           "relativePath": "skse/plugins/Underwear.ini",
-          "modOrder": 178,
+          "modOrder": 187,
           "bytes": 758,
           "sha256": "E39AB93A4D8D20F14119019DB4C5DA361BC0E565C8AFD724F01DC2DA7E75341A"
         },
         {
           "mod": "Period Underlayers - SPID",
           "relativePath": "skse/plugins/Underwear.ini",
-          "modOrder": 209,
+          "modOrder": 218,
           "bytes": 855,
           "sha256": "B84E2E4597013118B717F98A0B263F2AA915A1AFED987D12F6F7E68567001262"
         }
@@ -135,21 +179,21 @@
         {
           "mod": "Nether's Follower Framework",
           "relativePath": "Interface/exported/uilib/UILIB_1_notificationarea.swf",
-          "modOrder": 100,
+          "modOrder": 109,
           "bytes": 14728,
           "sha256": "14C79C18BEEB2215632A2787DE54E6F06FF8D323DBEFDAE797FB61BC0721FBCE"
         },
         {
           "mod": "Proteus",
           "relativePath": "Interface/exported/uilib/UILIB_1_notificationarea.swf",
-          "modOrder": 216,
+          "modOrder": 225,
           "bytes": 14728,
           "sha256": "14C79C18BEEB2215632A2787DE54E6F06FF8D323DBEFDAE797FB61BC0721FBCE"
         },
         {
           "mod": "Skyrim Unbound Reborn",
           "relativePath": "interface/exported/uilib/UILIB_1_notificationarea.swf",
-          "modOrder": 219,
+          "modOrder": 228,
           "bytes": 14728,
           "sha256": "14C79C18BEEB2215632A2787DE54E6F06FF8D323DBEFDAE797FB61BC0721FBCE"
         }
@@ -164,21 +208,21 @@
         {
           "mod": "Nether's Follower Framework",
           "relativePath": "Interface/uilib/buttonArt.swf",
-          "modOrder": 100,
+          "modOrder": 109,
           "bytes": 19042,
           "sha256": "DAB24E97D0D21F2CF24F2629005BDB9185697DEAC64F82CEADB38827A7F98B4F"
         },
         {
           "mod": "Proteus",
           "relativePath": "Interface/uilib/buttonArt.swf",
-          "modOrder": 216,
+          "modOrder": 225,
           "bytes": 19042,
           "sha256": "DAB24E97D0D21F2CF24F2629005BDB9185697DEAC64F82CEADB38827A7F98B4F"
         },
         {
           "mod": "Skyrim Unbound Reborn",
           "relativePath": "interface/uilib/buttonArt.swf",
-          "modOrder": 219,
+          "modOrder": 228,
           "bytes": 19042,
           "sha256": "DAB24E97D0D21F2CF24F2629005BDB9185697DEAC64F82CEADB38827A7F98B4F"
         }
@@ -193,21 +237,21 @@
         {
           "mod": "Nether's Follower Framework",
           "relativePath": "Interface/uilib/UILIB_1_ListMenu.swf",
-          "modOrder": 100,
+          "modOrder": 109,
           "bytes": 27845,
           "sha256": "3399C934EBC2362DC521F32E0E016C0A0CFC47E8F141FD761F0A0D46DFAC794C"
         },
         {
           "mod": "Proteus",
           "relativePath": "Interface/uilib/UILIB_1_ListMenu.swf",
-          "modOrder": 216,
+          "modOrder": 225,
           "bytes": 27845,
           "sha256": "3399C934EBC2362DC521F32E0E016C0A0CFC47E8F141FD761F0A0D46DFAC794C"
         },
         {
           "mod": "Skyrim Unbound Reborn",
           "relativePath": "interface/uilib/UILIB_1_ListMenu.swf",
-          "modOrder": 219,
+          "modOrder": 228,
           "bytes": 27845,
           "sha256": "3399C934EBC2362DC521F32E0E016C0A0CFC47E8F141FD761F0A0D46DFAC794C"
         }
@@ -222,21 +266,21 @@
         {
           "mod": "Nether's Follower Framework",
           "relativePath": "Interface/uilib/UILIB_1_TextInputMenu.swf",
-          "modOrder": 100,
+          "modOrder": 109,
           "bytes": 20286,
           "sha256": "801E70928B9E41B6FFFAB976450CA196F642F6FF45024CBB02AA267F170442AD"
         },
         {
           "mod": "Proteus",
           "relativePath": "Interface/uilib/UILIB_1_TextInputMenu.swf",
-          "modOrder": 216,
+          "modOrder": 225,
           "bytes": 20286,
           "sha256": "801E70928B9E41B6FFFAB976450CA196F642F6FF45024CBB02AA267F170442AD"
         },
         {
           "mod": "Skyrim Unbound Reborn",
           "relativePath": "interface/uilib/UILIB_1_TextInputMenu.swf",
-          "modOrder": 219,
+          "modOrder": 228,
           "bytes": 20286,
           "sha256": "801E70928B9E41B6FFFAB976450CA196F642F6FF45024CBB02AA267F170442AD"
         }
@@ -251,14 +295,14 @@
         {
           "mod": "ConsoleUtilSSE 1.7.104 Native Overlay - Ensrick",
           "relativePath": "SKSE/Plugins/ConsoleUtilSSE.dll",
-          "modOrder": 128,
+          "modOrder": 137,
           "bytes": 3053568,
           "sha256": "7775AA6E70C7608317ADF28D27B09673EA9C8DE98902CE16E08CF5986958722D"
         },
         {
           "mod": "ConsoleUtilSSE NG",
           "relativePath": "SKSE/Plugins/ConsoleUtilSSE.dll",
-          "modOrder": 220,
+          "modOrder": 229,
           "bytes": 2820608,
           "sha256": "B7051F9F2A7BE3F580D6C3CEF8DACC1530095168C11048C3503A52593D81D174"
         }
@@ -273,14 +317,14 @@
         {
           "mod": "JContainers 1.7.104 Native Overlay - Ensrick",
           "relativePath": "SKSE/Plugins/JContainers64.dll",
-          "modOrder": 131,
+          "modOrder": 140,
           "bytes": 3072512,
           "sha256": "F58CF37728A54552B08A2E3C4C6C2CF2F63955F3FA59B03640C60F129DF701B5"
         },
         {
           "mod": "JContainers SE",
           "relativePath": "SKSE/Plugins/JContainers64.dll",
-          "modOrder": 174,
+          "modOrder": 183,
           "bytes": 3017216,
           "sha256": "961156ED59A02D76E9B5BB8D793B0DC38F966C7B196B617BD313CA8B5D7C8877"
         }
@@ -295,14 +339,14 @@
         {
           "mod": "PapyrusUtil 1.7.104 Native Overlay - Ensrick",
           "relativePath": "SKSE/Plugins/PapyrusUtil.dll",
-          "modOrder": 130,
+          "modOrder": 139,
           "bytes": 1436160,
           "sha256": "0D5648E2415E1F48248D14774F19DC0DBFDF2A733D5149BB0F1E9CEF04CA2953"
         },
         {
           "mod": "PapyrusUtil SE",
           "relativePath": "SKSE/Plugins/PapyrusUtil.dll",
-          "modOrder": 175,
+          "modOrder": 184,
           "bytes": 1438208,
           "sha256": "5F48DEFF2DA88820439F1E5868E01F83061BFEAFD228EFD5AF5CA5E7CBC91022"
         }
@@ -317,14 +361,14 @@
         {
           "mod": "Proteus 1.7.104 Native Overlay - Ensrick",
           "relativePath": "SKSE/Plugins/Proteus.dll",
-          "modOrder": 132,
+          "modOrder": 141,
           "bytes": 766976,
           "sha256": "D2FA06B2D269E682F07D432356FD02D64ED84F70BE34652010F36E9EB3FAC50B"
         },
         {
           "mod": "Proteus",
           "relativePath": "SKSE/plugins/Proteus.dll",
-          "modOrder": 216,
+          "modOrder": 225,
           "bytes": 556032,
           "sha256": "D300D850CFBA8777447C609F2666F0D4AA57E54C1E60886391589E6BA59B2C36"
         }
@@ -339,14 +383,14 @@
         {
           "mod": "RaceMenu 1.7.104 Native Overlay - Ensrick",
           "relativePath": "SKSE/Plugins/skee64.dll",
-          "modOrder": 129,
+          "modOrder": 138,
           "bytes": 2721280,
           "sha256": "7290EAFD4116E742AA7477D34BF137ABBEFED936CD44E67FDC829F2E36925ED1"
         },
         {
           "mod": "RaceMenu",
           "relativePath": "SKSE/Plugins/skee64.dll",
-          "modOrder": 217,
+          "modOrder": 226,
           "bytes": 2753024,
           "sha256": "5C7997FC9BCB0EE885C44F69A43B67063A4CC652654FD667DC54F04C88522B62"
         }
@@ -361,14 +405,14 @@
         {
           "mod": "Moonpath Bruma Synergy Patch",
           "relativePath": "scripts/MoonpathEnabler.pex",
-          "modOrder": 165,
+          "modOrder": 174,
           "bytes": 1963,
           "sha256": "947614334204ED6B58F30A4FBEE898F3820C0CB92C40BBC37936180833561C7E"
         },
         {
           "mod": "Moonpath Unofficial Patch",
           "relativePath": "scripts/MoonpathEnabler.pex",
-          "modOrder": 166,
+          "modOrder": 175,
           "bytes": 1782,
           "sha256": "071F4FF9461317F58B1AF0CCEB2D13A99C3580FE8BE7972074B4654929ED4F3A"
         }
@@ -383,21 +427,21 @@
         {
           "mod": "Nether's Follower Framework",
           "relativePath": "Scripts/UILIB_1.pex",
-          "modOrder": 100,
+          "modOrder": 109,
           "bytes": 5354,
           "sha256": "22CFD5BB00945DDFA1841F813802DBEED43DAF78C7E35E777A4D22B5ADB04384"
         },
         {
           "mod": "Proteus",
           "relativePath": "Scripts/uilib_1.pex",
-          "modOrder": 216,
+          "modOrder": 225,
           "bytes": 5354,
           "sha256": "22CFD5BB00945DDFA1841F813802DBEED43DAF78C7E35E777A4D22B5ADB04384"
         },
         {
           "mod": "Skyrim Unbound Reborn",
           "relativePath": "scripts/UILIB_1.pex",
-          "modOrder": 219,
+          "modOrder": 228,
           "bytes": 5354,
           "sha256": "22CFD5BB00945DDFA1841F813802DBEED43DAF78C7E35E777A4D22B5ADB04384"
         }
@@ -412,14 +456,14 @@
         {
           "mod": "Snazzy Location Resources",
           "relativePath": "scripts/wbptlightswitchscript.pex",
-          "modOrder": 61,
+          "modOrder": 70,
           "bytes": 1115,
           "sha256": "38DF39D3B6484F52544F512821698A35218F504829FBAF5EA109CA13A14B60B6"
         },
         {
           "mod": "Lux",
           "relativePath": "scripts/wbptlightswitchscript.pex",
-          "modOrder": 189,
+          "modOrder": 198,
           "bytes": 1115,
           "sha256": "38DF39D3B6484F52544F512821698A35218F504829FBAF5EA109CA13A14B60B6"
         }
@@ -434,14 +478,14 @@
         {
           "mod": "Interesting NPCs - Update 4.54",
           "relativePath": "3DNPC.esp",
-          "modOrder": 105,
+          "modOrder": 114,
           "bytes": 22063174,
           "sha256": "AD065A64C4F746E13EBA78309EB2213B643B3544C53306FCB4D3206F8CB48B4F"
         },
         {
           "mod": "Interesting NPCs",
           "relativePath": "3DNPC.esp",
-          "modOrder": 106,
+          "modOrder": 115,
           "bytes": 22061777,
           "sha256": "7815868839BF53061AFE9C6F00841B8E873098ED3EC37981C1435067E561016D"
         }
@@ -456,14 +500,14 @@
         {
           "mod": "Moonpath Music Weather Fixes",
           "relativePath": "JRMoonpathBrumaPatch.esp",
-          "modOrder": 164,
+          "modOrder": 173,
           "bytes": 6164,
           "sha256": "B9DB2734012DE6331C269E03E09B9E36B29291535916F813B6879D708F0D1012"
         },
         {
           "mod": "Moonpath Bruma Synergy Patch",
           "relativePath": "JRMoonpathBrumaPatch.esp",
-          "modOrder": 165,
+          "modOrder": 174,
           "bytes": 6164,
           "sha256": "B02664C5989872E10E6DCB7372F4F48044B7B89E49AF5C8B8039194E674FD6B0"
         }
@@ -478,14 +522,14 @@
         {
           "mod": "Lux Resources Plugin Update",
           "relativePath": "Lux - Resources.esp",
-          "modOrder": 158,
+          "modOrder": 167,
           "bytes": 68014,
           "sha256": "00E2FCA6A639B7912B0F4DFE53BB888E2C700B92181B5E3C961DC7865A77B5AB"
         },
         {
           "mod": "Lux Resources",
           "relativePath": "Lux - Resources.esp",
-          "modOrder": 198,
+          "modOrder": 207,
           "bytes": 22375,
           "sha256": "56F161A3F92512AC2FCBFE1C65916B45EADA48729EA6F0C25876F678207722A2"
         }
@@ -500,14 +544,14 @@
         {
           "mod": "Lux Via Plugin Update",
           "relativePath": "Lux Via.esp",
-          "modOrder": 159,
+          "modOrder": 168,
           "bytes": 1638656,
           "sha256": "53838D485C9284B6F93748E4A5A79EEB81A89F8B02438F56F659F4D778771D47"
         },
         {
           "mod": "Lux Via",
           "relativePath": "Lux Via.esp",
-          "modOrder": 161,
+          "modOrder": 170,
           "bytes": 1638486,
           "sha256": "545F6BC15DA521772C347522FCF5444F694F7CEBF657257B259F48AFE0AD8B7D"
         }
@@ -522,14 +566,14 @@
         {
           "mod": "Moonpath Music Weather Fixes",
           "relativePath": "moonpath.esp",
-          "modOrder": 164,
+          "modOrder": 173,
           "bytes": 1152300,
           "sha256": "211836DD02FE5494D3FC3F1A95646CB49F7E8B6D1ADE3652EACEED134EB49E3F"
         },
         {
           "mod": "Moonpath to Elsweyr",
           "relativePath": "moonpath.esp",
-          "modOrder": 167,
+          "modOrder": 176,
           "bytes": 1152300,
           "sha256": "35DF244E04D049845CCC14DE57BF0A1A634BA2E4CFC06515659AC6F742674958"
         }
@@ -544,21 +588,21 @@
         {
           "mod": "Legacy of Ysgramor - Xtudo Fixes - RMB",
           "relativePath": "NW_Companions_Replacer_Light.esp",
-          "modOrder": 134,
+          "modOrder": 143,
           "bytes": 29254,
           "sha256": "3DB02DA3939903B1A095519859D8F938024F99FDD1F1C79F0E85D776F93F8407"
         },
         {
           "mod": "RMB SPIDified - Legacy of Ysgramor",
           "relativePath": "NW_Companions_Replacer_Light.esp",
-          "modOrder": 135,
+          "modOrder": 144,
           "bytes": 29191,
           "sha256": "71430E659026AF8F03FB4255D9D9DB76442588D0C34888F67106240EAEF1DB0A"
         },
         {
           "mod": "Legacy of Ysgramor",
           "relativePath": "NW_Companions_Replacer_Light.esp",
-          "modOrder": 137,
+          "modOrder": 146,
           "bytes": 44623,
           "sha256": "6495DA72AB83FB4101C2CCD8A4A5A4383CC504ABC509FD304E2310D544EA8938"
         }
@@ -573,14 +617,14 @@
         {
           "mod": "Legacy of Ysgramor - Xtudo Fixes - RMB",
           "relativePath": "RMB SPID - Legacy of Ysgramor.esp",
-          "modOrder": 134,
+          "modOrder": 143,
           "bytes": 12201,
           "sha256": "2989EE3EF49A09D7C49EE35523ACBF9DEAFD63A1336741B3CE28898D4B2C399C"
         },
         {
           "mod": "RMB SPIDified - Legacy of Ysgramor",
           "relativePath": "RMB SPID - Legacy of Ysgramor.esp",
-          "modOrder": 135,
+          "modOrder": 144,
           "bytes": 13190,
           "sha256": "A88AE2D273FB4370A2FD47C072A3BFF9ABB96910EAD178C7EBF4E78E33A04316"
         }
@@ -595,14 +639,14 @@
         {
           "mod": "VIGILANT EN Voiced",
           "relativePath": "Vigilant.esm",
-          "modOrder": 162,
+          "modOrder": 171,
           "bytes": 21936314,
           "sha256": "7D3CA2D72297FBC5AFDA8F1B8BB217FA1FD6D9D7414360ACDF1A922D848949BA"
         },
         {
           "mod": "VIGILANT",
           "relativePath": "Vigilant.esm",
-          "modOrder": 163,
+          "modOrder": 172,
           "bytes": 21913882,
           "sha256": "6E5235E4005B2C5D825F50B60AC74B32C5520E9AEF877F890D03C2D7BE51DC6D"
         }
@@ -616,6 +660,12 @@
       "winner": "VIGILANT EN Voiced",
       "overridden": "VIGILANT",
       "files": 1345
+    },
+    {
+      "category": "mesh",
+      "winner": "ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2",
+      "overridden": "Cloaks of Skyrim",
+      "files": 348
     },
     {
       "category": "other",
@@ -649,6 +699,18 @@
     },
     {
       "category": "mesh",
+      "winner": "Cloaks of Skyrim Retextured - Female Mesh Patch",
+      "overridden": "Cloaks of Skyrim",
+      "files": 48
+    },
+    {
+      "category": "mesh",
+      "winner": "Cloaks of Skyrim Retextured - Female Mesh Patch",
+      "overridden": "ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2",
+      "files": 46
+    },
+    {
+      "category": "mesh",
       "winner": "Skyking Signs",
       "overridden": "SMIM",
       "files": 44
@@ -670,6 +732,12 @@
       "winner": "SMIM",
       "overridden": "SMIM Quality Addon",
       "files": 35
+    },
+    {
+      "category": "texture",
+      "winner": "ElSopa - Cloaks of Skyrim Retextured 2K",
+      "overridden": "Cloaks of Skyrim",
+      "files": 30
     },
     {
       "category": "texture",
@@ -1038,6 +1106,12 @@
       "files": 3
     },
     {
+      "category": "config",
+      "winner": "RMB SPCH - Pelts o Plenty",
+      "overridden": "RMB SPCH - Cloaks of Skyrim",
+      "files": 2
+    },
+    {
       "category": "mesh",
       "winner": "Ensrick - Assorted Mesh Fixes SE Mesh Port",
       "overridden": "Unofficial Material Fix",
@@ -1156,6 +1230,12 @@
       "winner": "HIMBO",
       "overridden": "SkySight Skins",
       "files": 2
+    },
+    {
+      "category": "other",
+      "winner": "Ensrick - Conditional Arrow Embedding",
+      "overridden": "FSMP - Faster HDT-SMP",
+      "files": 1
     },
     {
       "category": "config",

@@ -1,10 +1,10 @@
 # Active record-conflict inventory
 
-Captured: `2026-09-02T18:07:46Z`
+Captured: `2026-09-02T23:44:05Z`
 
-- Active plugins: 238
-- Managed plugins inventoried: 238
-- Shared FormKey chains: 35423
+- Active plugins: 244
+- Managed plugins inventoried: 244
+- Shared FormKey chains: 35425
 - File-local records excluded: NavigationMeshInfoMap 31
 - Inventory failures: 0
 
