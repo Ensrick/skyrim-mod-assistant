@@ -21,12 +21,19 @@ touched, no curator state changed, and the game was never launched. Archives
 were fetched to the MO2 download/audit cache and extracted to `downloads\x*`
 outside `mods\`.
 
+**2026-09-02 addendum.** Section 7 adds ElSopa's Cloaks Of Skyrim Retextured
+`42558`, brought by the user after the first pass. It changes the asset
+recommendation and forces a mesh decision; the executive answer, the distance
+table, the recommended stack and the fix-up list below are updated for it. The
+user also settled the fur bake-off in the same message: **Pelts 'o' Plenty wins,
+Winter Is Coming is out** (*"I don't like the fake fur from winter is coming"*).
+
 ---
 
 ## Shortlist: only the user can settle these
 
-Everything else in this record is decided by evidence. These five are taste,
-and one is a trade-off he owns.
+Everything else in this record is decided by evidence. These are taste, or a
+trade-off he owns. Item 2 is already settled and kept for the record.
 
 1. **Which Cloaks of Skyrim families do you actually want?** The 120 cloaks
    split three ways (full editor-ID lists in "Item inventory" below):
@@ -69,6 +76,16 @@ and one is a trade-off he owns.
    capped at 5 simultaneous skeletons (receipt below) and those 5 are already
    contested by Vanilla Hair Remake SMP. Cloaks on NPCs will sometimes win that
    contest and freeze someone's hair instead. Cheap to try, cheap to revert.
+6. **ElSopa's textures, or Artesian's physics, until the port lands?** New with
+   section 7. ElSopa's mesh update and Artesian replace 381 of the same NIFs and
+   cannot both apply: whichever loads later wins outright. ElSopa is a x1.16
+   median improvement on the 2017 textures at play distance and a much larger
+   one up close (64 normal maps against base CoS's 8); Artesian is the only
+   thing that makes the cloaks move at all. The owned NIF port
+   ([#193](https://github.com/Ensrick/skyrim-mod-assistant/issues/193)) gives
+   both and is the recommendation; this only asks what to run in the meantime.
+   The 36 dragon-priest meshes are unaffected either way - neither mod touches
+   them.
 
 Not a user decision, tracked as work: everything in "Fix-up jobs" below.
 
@@ -76,26 +93,41 @@ Not a user decision, tracked as work: everything in "Fix-up jobs" below.
 
 ## Executive answer
 
-**Install:** Cloaks of Skyrim `6369` **assets only**, driven by
-**RMB SPCH - Cloaks of Skyrim `116030` 1.5.3** as the plugin, with
-**Artesian Cloaks `17416`** contributing **meshes only** (its ESP dropped), plus
+**Install:** Cloaks of Skyrim `6369` as the **mesh source**, its textures
+superseded by **ElSopa - Cloaks Of Skyrim Retextured `42558` at the 2k tier**
+(file `170809`) **plus its Mesh Update 1.2** (file `263634` - mandatory, not
+optional: the 2020 MAIN archives ship 394 Oldrim-format meshes and the update is
+their Special Edition conversion). Drive the records with
+**RMB SPCH - Cloaks of Skyrim `116030` 1.5.3**, backed by
 **RMB SPIDified - Core Framework `63625`** and
-**RMB SPIDified - Sons of Skyrim `83340`** as the distribution backbone - the
-second is not optional here, because Sons of Skyrim already owns eleven slot-46
-hold cloaks and RMB's shared configs are what merge the two populations into one
-roll instead of a slot fight. Add
-**More Scarves `149259` 1.4.0** for hooded capes because it is the only
-candidate that ships Dynamic Armor Variants configs wired to Helmet Toggle 2.
-Take **one** fur family - Winter Is Coming or Pelts 'o' Plenty - by eye.
+**RMB SPIDified - Sons of Skyrim `83340`** - the second is not optional here,
+because Sons of Skyrim already owns eleven slot-46 hold cloaks and RMB's shared
+configs are what merge the two populations into one roll instead of a slot
+fight. Add **More Scarves `149259` 1.4.0** for hooded capes, the only candidate
+shipping Dynamic Armor Variants configs wired to Helmet Toggle 2, and
+**Pelts 'o' Plenty `120726` 4.3.1** for fur (settled by the user 2026-09-02).
+
+**Physics needs one owned step.** **Artesian Cloaks `17416`** remains the only
+source of a real cloth rig for these cloaks - all 391 of its NIFs are direct
+path replacers carrying `HDT TailBone*` chains where base CoS has
+`SkirtBBone01-03`. But ElSopa's 394 meshes replace **381 of those same files**,
+carry no SMP string, and are what bind his renamed textures. The two are
+mutually exclusive as shipped. The fix is an owned NIF texture-path port
+([#193](https://github.com/Ensrick/skyrim-mod-assistant/issues/193)); until it
+exists the build picks **ElSopa textures without physics** or **Artesian physics
+with 2017 textures** - shortlist item 6.
 
 **Do not install:** Cloaks of Skyrim HD SSE PBR `178993` (measurably the worst
-asset in the audit, and unrenderable in this build regardless);
-`Cloaks.esp` itself in any of its eight variants; `Cloaks_SMP_Patch.esp`.
+asset in the audit, beaten by a 2020 mod at a fifth of the disk cost, and
+unrenderable in this build regardless); `Cloaks.esp` in any of its eight
+variants; `Cloaks_SMP_Patch.esp`; the ElSopa **4k** tier (2,130 MB for a measured
+x0.99, and the only tier with mip-less files); Winter Is Coming `4933` and
+RMB SPCH - Winter is Coming `116029` (settled by the user 2026-09-02).
 
-**We have to fix ourselves:** the 19 CoS textures shipped with no mip chain,
-the 46 shipped uncompressed, the missing warmth tier, RMB SPCH's ten broken
-unique-cloak assignments, and the whole distribution layer for Bocksten and
-More Scarves. Six jobs, classed in "Fix-up jobs" below.
+**We have to fix ourselves:** the Artesian/ElSopa NIF port, the 1 remaining
+no-mip and 8 uncompressed base CoS textures plus Pelts' 54, the missing warmth
+tier, RMB SPCH's ten broken unique-cloak assignments, and the whole distribution
+layer for Bocksten and More Scarves. Seven jobs, classed in "Fix-up jobs" below.
 
 ---
 
@@ -125,6 +157,7 @@ six** is the usable signal, because all six are the same kind of asset.
 | Mod | Released | median hf | median tone | n |
 |---|---|---:|---:|---:|
 | Winter Is Coming `4933` | 2016 | **x0.94** | x1.01 | 10 |
+| ElSopa CoS Retextured `42558` (see §7) | 2020 | x0.75-0.80 | x0.67-0.76 | 10 |
 | Pelts 'o' Plenty `120726` | 2026 | x0.75 | **x1.07** | 10 |
 | **Cloaks of Skyrim `6369`** | **2017** | **x0.72** | x0.76 | 10 |
 | More Scarves `149259` | 2026 | x0.46 | x0.58 | 10 |
@@ -159,6 +192,12 @@ directories. Not installed, not enabled, not staged into `mods\`.
 | Pelts 'o' Plenty 4.3.1 (Gear) | 120726 | `120726-704702.zip` | 740,094,589 | `cd48e207533666c39bb99e5cdebc2a7c2db9252484006de9dbfa5e225495e1a1` |
 | Winter Is Coming 2.4 | 4933 | `4933-10466.7z` | 65,526,547 | `e549cfff4b8f4877fb66c025354663972a28a338ed270d06f2dd82cd659e5d78` |
 | Cloaks of Skyrim HD SSE PBR 1 | 178993 | `178993-747777.zip` | 595,781,482 | `7b364084878f21d26a8249d6d4c4096c031620149b229abd970b65c6a15e29a1` |
+| ElSopa CoS Retextured 4k | 42558 | `42558-170807.7z` | 724,105,987 | `3dba5aa51cc91933a23ab751ac841055ef91df4d14aca42f754fdfe33cafbd95` |
+| **ElSopa CoS Retextured 2k** | 42558 | `42558-170809.7z` | 200,405,187 | `5200f9ea5e4a9d64b05df3e72fc90c53d1e9e78ed650e48e4ee57629fc9d6cab` |
+| ElSopa CoS Retextured 1k | 42558 | `42558-170810.7z` | 55,647,330 | `d9578236cdd4d380cd51672bed5d8a9667d40c4614a7af63d6339a8704624575` |
+| ElSopa CoS Retextured 512 | 42558 | `42558-170811.7z` | 15,619,648 | `b7cab5046c97c5936f3a077a8a4a36c585f19fdffe21d153347404627fecc489` |
+| **ElSopa Mesh Update 1.2** | 42558 | `42558-263634.7z` | 332,180 | `df8822b5fcba8120e0cb52629b8183287d21c50928f93f6fb017dc56a1c251f6` |
+| CoS Retextured Female Mesh Patch 1.0.0 | 85932 | `85932-363920.7z` | 52,165 | `2e2a264fe4134a2d0feb9fbd82a790cb610b3ad06b54df7d2ccec4718b12a898` |
 
 **Artesian Cloaks of Skyrim is Nexus `17416`**, not 115097 - that id resolves to
 `Immersive Equipping Animations (PTBR)` (Granhadd, v2.02, 2024-03-26), a
@@ -773,6 +812,261 @@ can repair and ship Pelts' work with credit, and we can ship nothing of Nivea's.
 
 ---
 
+## 7. ElSopa - Cloaks Of Skyrim Retextured SE 42558 v1.2 (added 2026-09-02)
+
+Brought by the user: *"I think this looks really good."* This is the direct test
+of section 1's finding that the pixels were fine and the rig was what aged.
+
+ElSopa, created 2020-11-19, **page last updated 2022-02-12**, 16,758
+endorsements, 3.35 M downloads. Page claim: *"Cloaks Of Skyrim Retextured From
+Scratch. From 4k To Vanilla Size. NO UPSCALING."* Requires Cloaks of Skyrim;
+file credits "Nikinoodles and Nazenn".
+
+### Verdict
+
+**It goes in the stack, at the 2k tier, and it forces one architectural change:
+the meshes.** It is not another mip-0 beauty - it beats base Cloaks of Skyrim at
+play distance and by a much larger margin up close. But it renames every texture
+and binds them through its own 394 meshes, which collide head-on with Artesian's
+391. Section 3's "install Artesian meshes, drop its ESP" survives only with an
+owned NIF texture-path port on top.
+
+### The measurement, against the textures it actually replaces
+
+This is a **true replacer comparison**, not the cross-asset one used for the
+other six candidates. ElSopa renamed the whole set, so filename matching fails;
+the binding is the mesh. For one NIF path, base CoS's `BSShaderTextureSet` names
+texture A and ElSopa's names texture B, so A and B are the same surface on the
+same UVs. That yields **104 distinct base-to-ElSopa diffuse pairs** across the
+394 shared meshes (`records-work/cloak-audit-2026-09-02/elsopa_pairs.py`,
+output `elsopa-vs-base-pairs.txt`).
+
+| tier | median hf vs the base texture it replaces | median tone | files below x1.00 | n |
+|---|---:|---:|---:|---:|
+| 1k `170810` | **x1.18** | x1.05 | 42 | 104 |
+| 2k `170809` | **x1.16** | x1.05 | 42 | 104 |
+| 4k `170807` | **x1.18** | x1.04 | 40 | 104 |
+
+So at play distance ElSopa is a **16-18% median improvement over base Cloaks of
+Skyrim** - real, but modest, and **40 of 104 files are actually softer than the
+2017 originals** at that range. Best and worst of the sampled pairs:
+
+| base file | ElSopa file | 2k hf |
+|---|---|---:|
+| `cloakburnt.dds` | `cloakburnt.dds` | **x2.34** |
+| `cloaknecro.dds` (uncompressed) | `cloaknecroalt.dds` | x2.25 |
+| `sagecloakblack2.dds` | `cloakblackburlap.dds` | x1.79 |
+| `cloakmhjarvo.dds` | `worncloakhjarvo.dds` | x1.79 |
+| `cloakmstormcloakblue.dds` (BC2) | `worncloakstormcloak.dds` | x1.58 |
+| `sagecloakwhite2.dds` | `cloakwhiteburlap.dds` | **x0.31** |
+| `cloaknyartuk.dds` | `cloakzelda.dds` | x0.40 |
+| `cloakwildhunt2.dds` | `cloakwild.dds` | x0.56 |
+
+Placed in the section-3 table, same method as the other six (10 sampled diffuse
+maps vs the same three vanilla clothing torso diffuses,
+`elsopa-vs-vanilla.txt`): ElSopa measures **hf x0.75 (2k) / x0.79 (1k) / x0.80
+(4k)**. The three medians are on different random file samples, so the spread is
+sampling noise, not a tier effect - the matched-pair table above is the
+controlled test. Rounded into the ranking:
+
+| Mod | median hf vs vanilla cloth |
+|---|---:|
+| Winter Is Coming `4933` | x0.94 |
+| **ElSopa CoS Retextured `42558`** | **x0.75-0.80** |
+| Pelts 'o' Plenty `120726` | x0.75 |
+| base Cloaks of Skyrim `6369` | x0.72 |
+| More Scarves `149259` | x0.46 |
+| Bocksten `138180` | x0.40 |
+| CoS HD SSE PBR `178993` | x0.31 |
+
+It is nothing like the PBR pack. Where `178993` collapsed to x0.31 with 11 of 29
+files flagged soft-for-their-size, ElSopa's 2k tier flags 4 of 31 and carries a
+**detail index of 3.55 against base CoS's 1.96** - nearly double the real texture
+information per pixel at twice the resolution. The "NO UPSCALING" claim holds for
+the set as a whole. Named exceptions, from `inspect_mod`:
+`cloakthalmorb.dds` (2048 px, detail 0.22), `cloaknyartuk.dds` (0.91, and the one
+file in the set showing JPEG blocking, grid ratio 1.36),
+`cloakdwemerpurplerough.dds` (1.23), and 2 normals embossed from the diffuse
+(`cloakburnt_n.dds`, X/Y correlation 0.93).
+
+Up close the gap is much wider than the distance number suggests, and that is
+where the user's "looks really good" comes from: base CoS ships **8** normal maps
+for 128 diffuse maps; ElSopa ships **64** for 103.
+
+### Tier: 2k
+
+`docs/CURATION_POLICY.md` judges at distance, and the tiers are indistinguishable
+there. Measured directly against each other at every shared pixel size
+(`elsopa-tier-compare.txt`, `tier_hi.py`):
+
+| comparison | median ratio | n |
+|---|---:|---:|
+| 4k / 2k at 512, 256, 128 px | x0.99, x0.99, x0.99 | 10-14 |
+| 2k / 1k at 512, 256, 128 px | x0.99, x0.99, x1.00 | 10-14 |
+| 1k / 512 at 512, 256, 128 px | x0.99, x0.98, x0.99 | 10-14 |
+| **4k at 2048 px / 2k's own 2048 px top mip** | **x0.99** | 10 |
+| **2k at 1024 px / 1k's own 1024 px top mip** | **x1.01** | 10 |
+
+Every tier is a clean resample of one authored source; none adds information at
+any size another tier also stores. (The measurement cannot see detail existing
+only above a smaller tier's top mip, so it does not prove the 4096 px level is
+empty - it proves nothing below it differs.)
+
+What the tiers do differ in is footprint, measured on disk:
+
+| tier | file | textures | on disk |
+|---|---|---:|---:|
+| 512 | `170811` | 172 | **34 MB** |
+| 1k | `170810` | 172 | **138 MB** |
+| 2k | `170809` | 172 | **538 MB** |
+| 4k | `170807` | 172 | **2,130 MB** |
+| *(base CoS for scale)* | `18422` | 137 | 271 MB |
+
+Applying the build's source-plus-one-step rule: the surface being textured is a
+2011 cloak on a **1024 px** UV (127 of base CoS's 137 textures are 1024), so one
+doubling puts the ceiling at **2048**. **Take the 2k tier, file `170809`.** The
+4k tier is 4x the VRAM for a measured x0.99, and it is also the only tier with
+defects - **3 of its 172 files ship with no mip chain at all**
+(`CloakWarmSands.dds`, `Cloak_Fall_g.dds`, `WornCloakHunter.dds`), which the 1k
+and 2k tiers do not have. If VRAM is ever tight the 1k tier is a free swap: it is
+identical in the play band and costs 138 MB.
+
+### Does it retire #188? Mostly, yes
+
+| | 1k tier | 2k tier | 4k tier |
+|---|---:|---:|---:|
+| textures with a full mip chain | **172/172** | **172/172** | 169/172 |
+| textures with no chain at all | 0 | 0 | 3 |
+| formats | BC1 107, BC3 64, uncompressed 1 | same | same |
+
+The single uncompressed file in every tier is `worncloakgreyfox_g.dds`, a glow
+mask (~5 MB).
+
+Coverage against issue #188, computed by walking which base CoS textures are
+still referenced by a mesh after ElSopa's mesh update lands
+(`coverage.py`):
+
+- ElSopa replaces **394 of base CoS's 469 meshes**, leaving **75**.
+- Of base CoS's **137** textures, **101 are retired** - no surviving mesh
+  references them - and **36 stay live**.
+- **18 of #188's 19 no-mip textures are retired.** The survivor is
+  `capes/capetalos.dds`.
+- **38 of #188's 46 uncompressed textures are retired.** The 8 survivors are
+  `capes/capetalos.dds`, `cloakmblue/mbrown/mgreen/mred/mwhite.dds`,
+  `sagecloak_n.dds`, `sagecloakvaermina.dds`.
+
+So #188 shrinks from 19 + 46 to **1 + 8** for the Cloaks of Skyrim half. Pelts 'o'
+Plenty's 54 mip-less textures are untouched by this and remain the bulk of that
+issue.
+
+### Coverage: what it leaves on base assets
+
+104 of base CoS's 128 cloak diffuse maps are replaced. The **27 it does not
+touch**, from `elsopa-vs-base-pairs.txt`:
+
+`dpblack, dpblack2, dpblue, dpbrown, dpgreen, dpgrey, dphevnoraak, dpkrosis,
+dpmorokei, dpnahkriin, dpotar, dprahgot, dpvokun, dpvolsung, dragonpriest,
+capeflover2, capetalos, cloakdwemerpurplerough, cloakforsworn2, cloaktornbrown,
+cloakwildhunt, collaredbrown, sagecloakmythic`, plus the two spinning-wheel
+clutter maps.
+
+**The 15 dragon-priest textures and all 36 dragon-priest meshes are covered by
+neither ElSopa nor Artesian.** They keep base CoS's 2017 assets and skirt-bone
+rig whatever else is installed. That is a benign outcome: section 1 measured
+those as base CoS's *best* files (`dpkrosis` x2.38, `dpvokun` x1.93,
+`dphevnoraak` x1.13 against vanilla cloth).
+
+Three-way mesh coverage of the 469 base meshes: both ElSopa and Artesian **381**;
+ElSopa only **13**; Artesian only **10**; **neither 65** (36 dragon-priest, 3
+spinning-wheel, 16 `*_go` inventory models, 10 others).
+
+### The mesh update is not optional, and it is the collision
+
+`Cloaks Of Skyrim Retextured Mesh Update 1.2` (file `263634`, 324 KB, 2022-02-12)
+is not a refinement. Read directly from the NIF headers (`nif_ver.py`):
+
+| set | nifs | NIF user version 2 | shape blocks |
+|---|---:|---|---|
+| base CoS `6369` | 469 | 468x **100**, 1x 34 | BSTriShape 499 |
+| **ElSopa 2k MAIN `170809`** | **394** | **394x 83** | **NiTriShape 394 + NiTriShapeData 394** |
+| **ElSopa mesh update `263634`** | **394** | **394x 100** | **BSTriShape 394** |
+| Artesian `17416` | 391 | 391x **100** | BSTriShape 1238 |
+
+The 2020 MAIN archives ship **394 Oldrim-format meshes**. The 2022 update is the
+Special Edition conversion of exactly those 394 files. **Installing a MAIN
+archive without the update leaves 394 LE meshes in an SSE build.**
+
+And the meshes are load-bearing, not cosmetic: **all 394 ElSopa meshes reference
+texture paths base CoS never used** - 141 distinct new paths such as
+`capes/cape_n.dds`, `capes/capelinen_black.dds`, `cloakburlap_n.dds`,
+`worncloakleather_n.dds`. Example, `capes/capefblack_0.nif`:
+
+```
+base CoS : capes/capef_n.dds        capes/capefblack.dds
+Artesian : capes/capef_n.dds        capes/capefblack.dds
+ElSopa   : capes/cape_n.dds         capes/capeblack.dds
+```
+
+His texture set is self-contained and fully mesh-bound: of the 169 texture paths
+his meshes reference, **169 resolve inside his own archive and 0 fall back to
+base CoS** (`dangling.py`); only 3 shipped textures go unreferenced. **Without
+ElSopa's meshes, none of his 172 textures is ever sampled.**
+
+Hence the collision, stated exactly:
+
+- ElSopa's mesh update replaces **381 of Artesian's 391** SMP meshes.
+- **None of ElSopa's 394 meshes carries any HDT-SMP string** - same as base CoS.
+- Artesian's 381 meshes point at base CoS texture names, so they cannot show
+  ElSopa's textures.
+
+They are mutually exclusive as shipped. Whichever loads later wins outright:
+ElSopa above Artesian = ElSopa's textures, **no physics on 381 cloaks**;
+Artesian above ElSopa = physics, **2017 textures** and ElSopa's 538 MB inert.
+
+The community female-mesh patch
+[85932](https://www.nexusmods.com/skyrimspecialedition/mods/85932) (Grausam,
+2023-02-27, 883 endorsements, 48 NIFs, sha256 `2e2a264f...12a898`) is a third
+layer on the same files - all 48 exist in base CoS and Artesian, 46 in ElSopa's
+update - and it uses ElSopa's texture names (`worncloakdawnstar.dds`,
+`worncloakleather_n.dds`), user version 100, no SMP string. It belongs to the
+ElSopa branch, not the Artesian one.
+
+### Permissions
+
+The strictest grid in the audit after Artesian and Winter Is Coming:
+
+> Other user's assets: "Some assets in this file belong to other authors."
+> Upload: "You are not allowed to upload this file to other sites under any
+> circumstances." Modification: "You must get permission from me before you are
+> allowed to modify my files to improve it." Conversion: not allowed.
+> Asset use: "You must get permission from me before you are allowed to use any
+> of the assets in this file." No sale, no donation points.
+
+File credits name Nikinoodles and Nazenn, because the mesh update redistributes
+394 Cloaks of Skyrim meshes.
+
+Consequences: **required download, never a bundled file.** No ElSopa byte can
+ship. A fix-up is `recipe` at best - regenerated locally from the user's own
+download - and the NIF port below embeds Artesian geometry as well, whose grid is
+"Asset use: not allowed under any circumstances", so that output is `recipe` and
+cannot become `distributable` without two separate permissions.
+
+### Consequences for the rest of this record
+
+1. **Section 1 stands, with a qualifier.** Base CoS's textures are not the
+   problem the mod's age suggests, and the rig is - but a from-scratch 2020
+   retexture does beat them, by x1.16 median at distance and much more up close.
+   "Fine" was right relative to modern *cloth* mods; it was not a ceiling.
+2. **Section 3's Artesian route needs the port.** "Install Artesian's meshes,
+   drop its ESP" is still correct, and now needs a texture-path rewrite on those
+   meshes to point at ElSopa's names.
+3. **Section 4 is unaffected.** CoS HD SSE PBR `178993` stays rejected and is now
+   also beaten by a 2020 mod at a fifth of the disk cost.
+4. **Issue #188 shrinks** to 1 no-mip and 8 uncompressed base CoS files, plus
+   Pelts 'o' Plenty's 54.
+
+---
+
 ## Slot contention against the live load order
 
 Every one of the 238 active plugins was swept for ARMO records flagged on biped
@@ -826,18 +1120,27 @@ load-order conflict.
 | Layer | Mod | Why |
 |---|---|---|
 | Physics runtime | FSMP 4.1.1 (installed) | Already bounded at 5 skeletons / 3 ms / 500 units |
-| Cloak assets | Cloaks of Skyrim `6369` **meshes + textures only**, no ESP | The only source of hold heraldry and named cloaks; measures better at distance than every modern cloth replacement |
-| Cloak physics | Artesian `17416` FOMOD, **meshes + `hdtSkinnedMeshConfigs` XMLs only**, `Cloaks_SMP_Patch.esp` discarded | 391 direct path replacers convert the skirt-bone rig to an SMP rig without needing `Cloaks.esp` |
+| Cloak base assets | Cloaks of Skyrim `6369` **meshes + textures only**, no ESP | The only source of hold heraldry and named cloaks; still the sole asset for the 36 dragon-priest meshes and 15 dragon-priest textures, which nothing else covers |
+| Cloak textures | **ElSopa `42558` 2k tier (file `170809`) + Mesh Update 1.2 (file `263634`)** | x1.16 median over the base textures it replaces at play distance, 64 normal maps against base CoS's 8, full mip chains on 172/172. The mesh update is mandatory: the MAIN archives ship Oldrim-format meshes |
+| Cloak physics | Artesian `17416` FOMOD, **meshes + `hdtSkinnedMeshConfigs` XMLs only**, `Cloaks_SMP_Patch.esp` discarded | 391 direct path replacers convert the skirt-bone rig to an SMP rig without needing `Cloaks.esp`. **Collides with the ElSopa mesh update on 381 files - needs #193, or a temporary either/or** |
 | Cloak records | RMB SPCH `116030` 1.5.3 | 294 new records, **zero** vanilla overrides; replaces the 136-override 2017 plugin outright |
 | Distribution backbone | RMB SPIDified - Core Framework `63625` 6.3.0 | Hard dependency of the above |
 | Guard integration | RMB SPIDified - Sons of Skyrim `83340` | Sons of Skyrim owns the guard outfits **and eleven slot-46 hold cloaks** in this build; RMB's `00 Shared` configs merge the two cloak pools into one roll and are inert without it |
 | Hooded capes | More Scarves `149259` 1.4.0 (`_HIMBO` + `_VanillaF` + `__loweredHood`, BodySlide-built) | Only candidate shipping DAV variants wired to Helmet Toggle 2 |
 | Ordinary cloth cloak | Bocksten `138180` 1.1 | Cleanest plugin in the audit; best drape - subject to the bake-off |
-| Fur | Pelts 'o' Plenty `120726` 4.3.1 (+ `179354` SkyPatcher patch, + `164077` survival fix) | ESL, SMP, hoods, permissive - subject to the bake-off |
-| **Rejected** | CoS HD SSE PBR `178993`, `Cloaks.esp` (all 8 variants), `Cloaks_SMP_Patch.esp`, `1nivWICCloaks.esp` unpatched | Measured or record-surface grounds above |
+| Fur | Pelts 'o' Plenty `120726` 4.3.1 (+ `179354` SkyPatcher patch, + `164077` survival fix) | **Settled by the user 2026-09-02.** ESL, SMP, hoods, permissive |
+| Optional | CoS Retextured Female Mesh Patch `85932` | 48 female hold-cloak meshes using ElSopa's texture names; belongs to the ElSopa branch, not the Artesian one |
+| **Rejected** | CoS HD SSE PBR `178993`, ElSopa **4k** tier `170807`, `Cloaks.esp` (all 8 variants), `Cloaks_SMP_Patch.esp`, Winter Is Coming `4933` + `116029` | Measured, record-surface or user grounds above |
 
-Load-order note: Artesian's meshes must win over Cloaks of Skyrim's; RMB SPCH's
-plugin needs `RMB SPID - Core Definitions.esp` before it.
+Load-order note, in order: Cloaks of Skyrim `6369` -> ElSopa 2k `170809` ->
+ElSopa Mesh Update `263634` -> (female mesh patch `85932`) -> **either** Artesian
+`17416` meshes **or** the #193 ported set, never both raw. RMB SPCH's plugin
+needs `RMB SPID - Core Definitions.esp` before it.
+
+Footprint of the texture decision, measured on disk: base CoS 271 MB (137 files,
+inflated by 46 uncompressed) plus ElSopa 2k 538 MB (172 files). The rejected 4k
+tier is 2,130 MB; the 1k tier is 138 MB and measures identically in the play
+band, so it is the free fallback if VRAM ever binds.
 
 ---
 
@@ -850,10 +1153,11 @@ reproducible recipe".
 |---|---|---|---|
 | 1 | [#187](https://github.com/Ensrick/skyrim-mod-assistant/issues/187) **Ensrick - Cloaks of Skyrim Unique Placement** - our own SkyPatcher `npc/` config replacing RMB SPCH's ten broken directives with correct `Cloaks - RMB SPCH.esp\|<id>` references, and Krosis' `100767`. | **distributable** | Our bytes. CoS grants "open permissions for any sort of compatibility patch"; RMB SPCH forbids modifying his files, so this is a new file that loads after his, never an edit. |
 | 2 | [#189](https://github.com/Ensrick/skyrim-mod-assistant/issues/189) **Ensrick - Cloaks of Skyrim Warmth Tiers** - SkyPatcher `armor/` config assigning the 25/35/50 tiers of #95 across the 122 records by family, replacing the single `Survival_ArmorCold` blanket. | **distributable** | Same basis as #1. Gated on measuring whether slot 46 + `ClothingBody` even registers under Starfrost 2.0.0 (job 6). |
-| 3 | [#188](https://github.com/Ensrick/skyrim-mod-assistant/issues/188) **Cloaks of Skyrim mip and format repair** - regenerate a proper mip chain for the 19 no-mip named/faction textures and BC-compress the 46 uncompressed ones (`texconv`, `mip_retention.py --resharpen` where a plain chain reads soft). ~204 MB VRAM saved and the shimmer gone. | **recipe** | CoS grants single-mesh reuse and patches, but "use of multiple cloak designs or using more files etc" needs a PM. 19+46 files is "more files". Regenerate locally from the user's own download; ship the texconv command list, not the DDS. Upgradeable to `distributable` if the user PMs Nazenn. |
+| 3 | [#188](https://github.com/Ensrick/skyrim-mod-assistant/issues/188) **Mip and format repair** - regenerate mip chains and BC-compress. Scope shrank when ElSopa entered: adopting `42558` retires 18 of the 19 no-mip and 38 of the 46 uncompressed CoS textures, leaving `capes/capetalos.dds` plus `cloakmblue/mbrown/mgreen/mred/mwhite`, `sagecloak_n`, `sagecloakvaermina`. **Pelts 'o' Plenty's 54 mip-less textures are now the bulk of this job.** | **recipe** | CoS grants single-mesh reuse and patches, but "use of multiple cloak designs or using more files etc" needs a PM to Nazenn; Pelts grants credited use ("Do what thou wilt, but throw some credit my way"), so the Pelts half could be distributable with credit. Regenerate locally; ship the texconv command list. |
 | 4 | [#190](https://github.com/Ensrick/skyrim-mod-assistant/issues/190) **Artesian `HTD-SMP` path repair** - rewrite the misspelled NiStringExtraData in the 82 affected NIFs, only if the in-game check (job 6) shows those cloaks inert. | **recipe** | Artesian: Upload no, Modification "must get permission", Asset use "not allowed under any circumstances". Nothing of Zeridian's may ship. Regenerate from the user's own copy; even then, ask before publishing the recipe. |
 | 5 | [#192](https://github.com/Ensrick/skyrim-mod-assistant/issues/192) **Ensrick - Cloak Distribution** (folds into the master distribution mod, #53/#96 pattern) - SkyPatcher/SPID rules giving Bocksten's 10 colours and More Scarves' 12 items an acquisition path; both ship crafting recipes and nothing else. | **distributable** | Our bytes. Bocksten: asset use allowed with credit; More Scarves: modification and upload allowed with credit. |
 | 6 | [#191](https://github.com/Ensrick/skyrim-mod-assistant/issues/191) **FSMP config tuning for a cloaked crowd** - `skipDeadActors: true`, a non-zero `minScreenSizePercent`, and a decision on whether cloaks or hair win the 5-skeleton budget. | **distributable** | Our own config file, same class as `Ensrick - MLO2 Foundation Config`. |
+| 7 | [#193](https://github.com/Ensrick/skyrim-mod-assistant/issues/193) **Ensrick - Artesian ElSopa Texture Port** - rewrite `BSShaderTextureSet` strings in Artesian's 381 shared NIFs to ElSopa's renamed paths, from the 104 base-to-ElSopa diffuse pairs already derived from the two mesh sets. Per-shape, not per-file: Artesian averages ~3 `BSTriShape` per NIF against ElSopa's 1. Delivers SMP physics and ElSopa's textures at once, which no shipped combination does. | **recipe** | Output embeds Artesian geometry. `17416` asset use is "not allowed under any circumstances"; `42558` is "must get permission". No bytes ship; the installer regenerates from the user's own downloads, like the Lost LongSwords model in `REDISTRIBUTION.md`. Cannot become distributable without two separate grants. |
 
 Nothing in this list is `local-only`.
 
@@ -862,15 +1166,24 @@ Nothing in this list is `local-only`.
 ## Receipts
 
 Every script and raw output quoted above is staged at
-`records-work/cloak-audit-2026-09-02/`: `inspect-*.txt` (`inspect_mod` sheets
-for all seven asset mods), `distance-detail.txt` (the mip measurement),
-`slot-contention.txt`, `outfit-contention.txt`, `cos-records.jsonl` /
-`cos-armor.jsonl` / `rmb-armor.jsonl` (record CLI dumps), and the scripts that
-produced them.
+`records-work/cloak-audit-2026-09-02/` (local-only, not tracked):
+
+| file | what it is |
+|---|---|
+| `inspect-*.txt` | `inspect_mod` findings sheets for all eight asset mods, including `inspect-42558-2k.txt` / `-4k.txt` |
+| `distance-detail.txt` | the cross-asset mip measurement behind the six-mod ranking |
+| `elsopa-vs-base-pairs.txt` | ElSopa against the base CoS texture it replaces, 104 matched pairs, all three tiers |
+| `elsopa-vs-vanilla.txt` | ElSopa placed in the same table as the other candidates |
+| `elsopa-tier-compare.txt` | tier-versus-tier at every shared pixel size |
+| `slot-contention.txt`, `outfit-contention.txt` | the live-load-order sweeps |
+| `cos-records.jsonl`, `cos-armor.jsonl`, `rmb-armor.jsonl` | record CLI dumps |
+| `elsopa_pairs.py`, `tier_compare.py`, `tier_hi.py`, `coverage.py`, `mesh_overlap.py`, `nif_ver.py`, `texpaths.py`, `dangling.py`, `femalepatch.py`, `dist_compare2.py`, `slot_scan.py`, `scan_outfits.py` | the scripts that produced them |
 
 ## What was NOT verified
 
 - **No launch.** Every runtime claim below is owed a foreground test:
+  whether ElSopa's mesh update and Artesian actually behave as the file analysis
+  says when one overwrites the other;
   whether slot-46 + `ClothingBody` produces warmth under Starfrost 2.0.0 +
   SMI 1.7.0; whether FSMP resolves the valid path in the 82 `HTD-SMP` NIFs;
   whether dropping `Cloaks_SMP_Patch.esp` loses anything; how the 5-skeleton
@@ -879,6 +1192,11 @@ produced them.
 - **More Scarves' crafting-recipe costs** were not expanded; the record CLI does
   not resolve container entries, so the prior record's "extreme cotton/flower
   counts" claim stays **[unverified]**.
+- **ElSopa tier ceiling.** The matched-size comparison cannot see detail that
+  exists only above a smaller tier's top mip, so "4k adds nothing" is proven for
+  every size the tiers share (2048 down to 128) and **not** proven for the 4096
+  px level itself. The tier call rests on the play-band tie plus the 4x VRAM
+  cost, not on a claim that the 4096 level is empty.
 - **Nexus permission text** was read from each mod's own public page. The
   quotes above are verbatim from the "Permissions and credits" block or, for
   `6369`, from the description section it points to.

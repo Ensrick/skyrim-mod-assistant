@@ -34,6 +34,48 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 17:55 - ElSopa CoS Retextured 42558 measured; enters the plan at 2k (Claude, #95)
+
+- **What:** `records/cloak-layer-audit-2026-09-02.md` gains section 7. The user
+  brought Cloaks Of Skyrim Retextured SE `42558` (ElSopa, v1.2) - *"I think this
+  looks really good"* - as the direct test of the earlier finding that base CoS's
+  pixels were fine and its rig was what aged. All four tiers plus the Mesh Update
+  1.2 and the community female mesh patch `85932` were fetched to the download
+  cache and extracted outside `mods`; nothing installed, no profile file touched,
+  no launch. Because ElSopa renamed every texture, filename matching fails, so
+  the pairing was taken from the meshes (one NIF's `BSShaderTextureSet` in each
+  set names the same surface), giving **104 true base-to-ElSopa pairs** and a
+  real replacer comparison rather than the cross-asset one used for the other
+  candidates. Results: **x1.18 / x1.16 / x1.18 median hf** for the 1k / 2k / 4k
+  tiers against the base texture each replaces in the 512-128 px band, with
+  40-42 of 104 files still below x1.00; detail index **3.55 against base CoS's
+  1.96**; 64 normal maps against base CoS's 8. **Tier decision: 2k, file
+  `170809`** - tier-versus-tier is x0.99-x1.01 at every shared pixel size
+  including 4k@2048 against the 2k tier's own top mip, base CoS UVs are 1024 so
+  source-plus-one-step caps at 2048, the footprints are 34 / 138 / 538 / **2,130**
+  MB, and the 4k tier is the only one shipping mip-less files (3 of 172).
+  **Two structural findings.** (1) The Mesh Update 1.2 (`263634`) is mandatory,
+  not optional: the 2020 MAIN archives ship **394 Oldrim-format meshes** (NIF
+  user version 83, `NiTriShape`) and the update is their Special Edition
+  conversion (user version 100, `BSTriShape`). (2) That update replaces **381 of
+  Artesian `17416`'s 391 NIFs**, carries no HDT-SMP string, and binds ElSopa's
+  141 renamed texture paths (169 of 169 resolve inside his own archive, 0 fall
+  back to base CoS), so **ElSopa and Artesian are mutually exclusive as
+  shipped** - whichever loads later wins outright. New job #193, an owned NIF
+  texture-path port, class `recipe`. Adopting `42558` also shrinks #188: it
+  retires 101 of base CoS's 137 textures, including **18 of the 19 no-mip and 38
+  of the 46 uncompressed**, leaving 1 + 8 plus Pelts 'o' Plenty's 54.
+  Cross-checked: neither ElSopa nor Artesian touches the 36 dragon-priest meshes
+  or 15 dragon-priest textures, which section 1 measured as base CoS's best
+  files.
+- **Source:** team-lead task of 2026-09-02 relaying the user's candidate and his
+  settled fur call (*"I don't like the fake fur from winter is coming"* - Pelts
+  'o' Plenty wins, Winter Is Coming `4933` and RMB SPCH `116029` out). Tracker
+  #95; verdict comment posted there and a scope-reduction comment on #188.
+- **Verification:** **n/a** - nothing installed, enabled or configured, so no
+  verification launch is owed. The ElSopa/Artesian overwrite behaviour and the
+  4096 px level of the 4k tier are both marked `[unverified]` in the record.
+
 ## 2026-09-02 17:37 - EVG installed parked; Simple Combat Injuries 2.1 held (#33, #140)
 
 - **What:** `EVG Conditional Idles` 1.51 (Nexus 34006, file 506946, SHA-256
