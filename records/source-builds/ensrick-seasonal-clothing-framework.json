@@ -56,7 +56,7 @@
     "warnings": 4,
     "warningDetail": "C4099 x1 and C5054 x3, all inside the vendored third-party includes/SKSEMenuFramework.h (struct/class tag mismatch on ImGuiMCP::ImGuiTextFilter, deprecated operator| between different enumerations). Zero warnings in the mod's own sources. Upstream does not build with /WX, so none is blocking.",
     "errors": 0,
-    "buildLog": "scratchpad/cloak/clean-scf-build.log (503/503 targets, exit 0)",
+    "buildLog": "skyrim-tools-source/WeatherBehavior-1.7.104/build-logs/build.log (503/503 targets, exit 0)",
     "tests": "none - upstream ships no test suite"
   },
   "artifact": {
@@ -123,7 +123,7 @@
   },
   "noPopups": "Satisfied. A string scan of the built DLL finds no MessageBoxA or MessageBoxW import name; the vendor 1.0.1 DLL imports both. The only caller was SKSE::stl::report_and_error, patched by patches/commonlibsse-ng-no-modal-fail.patch, which keeps the spdlog critical line and TerminateProcess. Address-library failures land in WeatherBehavior.log.",
   "verified": [
-    "Clean Release build of all 503 targets against alandtse/CommonLibVR 2dde70e8bd with the upstream /W4 /permissive- flags: 0 errors, 4 warnings, all four inside the vendored third-party SKSEMenuFramework.h (scratchpad/cloak/clean-scf-build.log, 2026-09-02 19:09Z).",
+    "Clean Release build of all 503 targets against alandtse/CommonLibVR 2dde70e8bd with the upstream /W4 /permissive- flags: 0 errors, 4 warnings, all four inside the vendored third-party SKSEMenuFramework.h (skyrim-tools-source/WeatherBehavior-1.7.104/build-logs/build.log, 2026-09-02 19:09Z).",
     "The DLL exports SKSEPlugin_Load, SKSEPlugin_Query and SKSEPlugin_Version, and audit/skse_version_data.py returns PASS (version independent) with name='WeatherBehavior', author='bottle'.",
     "The built DLL contains REL::IDDB::load_v5(..., header_v5_t, ...); the vendor 1.0.1 DLL contains no load_v5 symbol. That single difference is the entire blocker the 08-30 record identified.",
     "Neither MessageBoxA nor MessageBoxW appears in the built DLL; the vendor DLL imports both.",

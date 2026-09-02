@@ -317,7 +317,7 @@ cmake --build --preset ninja-release
 three times, all inside the vendored third-party `includes/SKSEMenuFramework.h`
 (the SKSE Menu Framework public header). Zero warnings in the mod's own 1,419
 lines. Log:
-`scratchpad/cloak/clean-scf-build.log`.
+`skyrim-tools-source/WeatherBehavior-1.7.104/build-logs/build.log`.
 
 **Artifact.**
 
@@ -672,11 +672,11 @@ route on the author's profile, or the mod's Posts tab.
 | V5 declaration flag 2026-08-24 | `alandtse/CommonLibVR` `d8b0acd80b` = 6.7.0 |
 | SCF submodule pinned 2026-02-15 | tree at `ade391ae90`, `extern/CommonLibSSE-NG -> 2527ccd474` |
 | vendor DLLs lack `load_v5`, rebuild has it | string scan of all three DLLs |
-| SCF build clean, 0 errors, 4 vendored-header warnings | `scratchpad/cloak/clean-scf-build.log` |
+| SCF build clean, 0 errors, 4 vendored-header warnings | `skyrim-tools-source/WeatherBehavior-1.7.104/build-logs/build.log` |
 | rebuilt DLL passes the SKSE gate | `audit/skse_version_data.py` on the built DLL |
 | rebuilt DLL has no MessageBox import | string scan; vendor DLL imports `MessageBoxA`/`MessageBoxW` |
 | SCF's dependencies load on 1.7.104 today | `Documents/My Games/Skyrim Special Edition/SKSE/skse64.log`, 2026-09-02 13:33 |
 | colorglass `commonlibsse-ng` tops out at 3.7.0 | `gitlab.com/colorglass/vcpkg-colorglass`, `versions/c-/commonlibsse-ng.json` |
-| WBNG 2.2.x builds clean against NG 7.1.0, gate PASS | `scratchpad/cloak/wbng-build.log` exit 0; `audit/skse_version_data.py` on `WeatherBehaviorNG.dll` sha256 `A735D6F1...` |
+| WBNG 2.2.x builds clean against NG 7.1.0, gate PASS | `skyrim-tools-source/WeatherBehaviorNG-1.7.104/build-logs/build.log` exit 0; `audit/skse_version_data.py` on `WeatherBehaviorNG.dll` sha256 `A735D6F1...` |
 | rebuilt WBNG lacks `WBNG_Wig`; vendor 2.5.1 has it | `WBNG_*` string extraction from both DLLs (13 vs 12 keywords) |
 | 17 shipped INI settings unreadable by 2.2.x | `Gearsystem.cpp`/`Config.cpp` parse 14 keys in `[General]/[Timing]/[Combat]/[Debug]`; the shipped `WeatherBehaviorNG.ini` also ships `[Regional]` (3) and `[Seasons]` (14) |
