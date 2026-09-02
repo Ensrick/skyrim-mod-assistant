@@ -3,6 +3,8 @@
 #include "Diagnostics.h"
 #include "EncounterManager.h"
 
+#include "CapacityModel.h"
+
 namespace BoundedEncounters
 {
 	namespace
@@ -440,7 +442,6 @@ namespace BoundedEncounters
 			_config.limits.maxAdditionalInterior : _config.limits.maxAdditionalExterior;
 		const auto hostileCap = interior ?
 			_config.limits.maxHostilesInterior : _config.limits.maxHostilesExterior;
-		const auto remainingHostileCapacity = liveHostiles >= hostileCap ? 0U : hostileCap - liveHostiles;
 		// Exterior streaming may fully load several adjacent cells together.
 		// Bound the whole attached area as well as each cell, and cap one event
 		// evaluation's creation burst to keep main-thread work predictable.
@@ -448,14 +449,13 @@ namespace BoundedEncounters
 		const auto activeAreaCap = std::max(
 			_config.limits.maxHostilesInterior,
 			_config.limits.maxHostilesExterior);
-		const auto remainingActiveCapacity = activeGenerated >= activeAreaCap ?
-			0U : activeAreaCap - activeGenerated;
-		constexpr std::uint32_t maxSpawnsPerEvaluation = 8;
-		const auto effectiveCap = std::min({
+		const auto capacity = ComputePopulationCapacity(
 			additionalCap,
-			remainingHostileCapacity,
-			remainingActiveCapacity,
-			maxSpawnsPerEvaluation });
+			hostileCap,
+			liveHostiles,
+			activeAreaCap,
+			activeGenerated);
+		const auto effectiveCap = capacity.effectiveAdditionalCap;
 
 		std::vector<SourceDescriptor> descriptors;
 		descriptors.reserve(candidates.size());

@@ -38,6 +38,8 @@ target_compile_definitions(CommonLibSSE PUBLIC COMMONLIBSSE_NO_MODAL_ERRORS=1)
 find_package(nlohmann_json CONFIG REQUIRED)
 
 add_library(BoundedEncountersCore STATIC
+    src/CapacityModel.cpp
+    src/CapacityModel.h
     src/Config.cpp
     src/Config.h
     src/Diagnostics.h

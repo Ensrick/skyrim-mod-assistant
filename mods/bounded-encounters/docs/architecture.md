@@ -68,8 +68,10 @@ assumed part of initialization. User-visible modal dialogs are prohibited.
 
 ### Configuration and pure spawn model
 
-Configuration parsing and spawn mathematics are engine-independent. The same
-code is linked into the plugin, command-line simulator, and unit-test binary.
+Configuration parsing, spawn mathematics, and the saturating population-cap
+calculation are engine-independent. The same code is linked into the plugin,
+command-line simulator, and unit-test binary. This prevents the simulator's
+reported capacity from drifting away from the live runtime decision.
 This keeps balance calculations auditable without launching Skyrim. The
 shipping configuration sets `observeOnly: true`, which allows engine-side
 classification and planning evidence without actor creation.

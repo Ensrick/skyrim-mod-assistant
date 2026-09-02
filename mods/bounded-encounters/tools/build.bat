@@ -56,6 +56,9 @@ if errorlevel 1 goto :fail
 echo === SIMULATOR SMOKE START ===
 build\release\BoundedEncounters.Simulate.exe config\BoundedEncounters.json 4 12345 > build\release\simulation-smoke.json
 if errorlevel 1 goto :fail
+echo === SIMULATOR AUDIT START ===
+powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File tools\audit-simulator.ps1 > build\release\simulator-audit.json
+if errorlevel 1 goto :fail
 echo === BINARY AUDIT START ===
 powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File tools\audit-binary.ps1 > build\release\binary-audit.json
 if errorlevel 1 goto :fail

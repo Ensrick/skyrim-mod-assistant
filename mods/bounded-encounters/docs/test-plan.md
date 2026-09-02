@@ -40,6 +40,8 @@ The pure model test binary must cover:
 - explicit fractional-capacity projection semantics, including two half-unit
   demands projecting to one capped unit rather than being mislabeled as their
   `0.75` capped statistical expectation;
+- shared population-cap arithmetic, including every limiting bound, exact and
+  over-cap saturation, and an explicit zero per-evaluation cap;
 - stable per-source results when source order changes before cap saturation;
 - actor-base respawn policy that admits a respawning base and rejects a
   non-respawning base without treating ACHR header bit 30 as affirmative;
@@ -67,7 +69,9 @@ For every shipping configuration:
    at least some fractional outcomes change; category allocation in a saturated
    global fractional-capacity projection may change with admission rank.
 
-Archive the smoke output as a CI artifact.
+`tools/audit-simulator.ps1` executes this matrix as a mandatory build gate and
+writes the machine-readable `build/release/simulator-audit.json` receipt.
+Archive that receipt with the other build evidence.
 
 ## Static artifact checks
 

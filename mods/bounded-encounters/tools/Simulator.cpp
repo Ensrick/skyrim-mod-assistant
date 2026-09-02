@@ -1,3 +1,4 @@
+#include "CapacityModel.h"
 #include "Config.h"
 #include "Diagnostics.h"
 #include "SpawnModel.h"
@@ -22,6 +23,7 @@
 namespace
 {
 	using BoundedEncounters::Category;
+	using BoundedEncounters::PopulationCapacity;
 	using BoundedEncounters::Curve;
 	using BoundedEncounters::CapacityProjection;
 	using BoundedEncounters::ProjectFractionalCapacity;
@@ -29,7 +31,6 @@ namespace
 
 	constexpr std::uint32_t kDefaultSourceCount = 4;
 	constexpr std::uint32_t kMaximumSourceCount = 100'000;
-	constexpr std::uint32_t kMaximumSpawnsPerEvaluation = 8;
 	constexpr std::uint64_t kAuditSeedDomain = 0x42454155444954ULL;
 	constexpr std::array<Category, 3> kCategories{
 		Category::General,
@@ -54,18 +55,6 @@ namespace
 	{
 	public:
 		using std::runtime_error::runtime_error;
-	};
-
-	struct Capacity
-	{
-		std::uint32_t additionalCellCap{ 0 };
-		std::uint32_t hostileCellCap{ 0 };
-		std::uint32_t existingCellHostiles{ 0 };
-		std::uint32_t globalActiveOwnedCap{ 0 };
-		std::uint32_t existingActiveOwned{ 0 };
-		std::uint32_t remainingHostileCapacity{ 0 };
-		std::uint32_t remainingActiveOwnedCapacity{ 0 };
-		std::uint32_t effectiveAdditionalCap{ 0 };
 	};
 
 	void PrintUsage()
@@ -161,36 +150,29 @@ namespace
 		return counts;
 	}
 
-	[[nodiscard]] Capacity BuildCapacity(
+	[[nodiscard]] PopulationCapacity BuildCapacity(
 		const BoundedEncounters::Config& a_config,
 		const bool a_interior,
 		const std::uint32_t a_existingHostiles,
 		const std::uint32_t a_existingActiveOwned)
 	{
-		Capacity capacity;
-		capacity.additionalCellCap = a_interior ?
+		const auto additionalCellCap = a_interior ?
 			a_config.limits.maxAdditionalInterior : a_config.limits.maxAdditionalExterior;
-		capacity.hostileCellCap = a_interior ?
+		const auto hostileCellCap = a_interior ?
 			a_config.limits.maxHostilesInterior : a_config.limits.maxHostilesExterior;
-		capacity.existingCellHostiles = a_existingHostiles;
-		capacity.globalActiveOwnedCap = std::max(
+		const auto globalActiveOwnedCap = std::max(
 			a_config.limits.maxHostilesInterior,
 			a_config.limits.maxHostilesExterior);
-		capacity.existingActiveOwned = a_existingActiveOwned;
-		capacity.remainingHostileCapacity = a_existingHostiles >= capacity.hostileCellCap ?
-			0U : capacity.hostileCellCap - a_existingHostiles;
-		capacity.remainingActiveOwnedCapacity = a_existingActiveOwned >= capacity.globalActiveOwnedCap ?
-			0U : capacity.globalActiveOwnedCap - a_existingActiveOwned;
-		capacity.effectiveAdditionalCap = std::min({
-			capacity.additionalCellCap,
-			capacity.remainingHostileCapacity,
-			capacity.remainingActiveOwnedCapacity,
-			kMaximumSpawnsPerEvaluation });
-		return capacity;
+		return BoundedEncounters::ComputePopulationCapacity(
+			additionalCellCap,
+			hostileCellCap,
+			a_existingHostiles,
+			globalActiveOwnedCap,
+			a_existingActiveOwned);
 	}
 
 	[[nodiscard]] nlohmann::json CapacityJson(
-		const Capacity& a_capacity,
+		const PopulationCapacity& a_capacity,
 		const std::uint32_t a_eligibleSources)
 	{
 		return {
@@ -205,7 +187,7 @@ namespace
 			{ "globalActiveOwnedCap", a_capacity.globalActiveOwnedCap },
 			{ "existingActiveOwned", a_capacity.existingActiveOwned },
 			{ "remainingGlobalActiveOwnedCapacity", a_capacity.remainingActiveOwnedCapacity },
-			{ "perEvaluationCap", kMaximumSpawnsPerEvaluation },
+			{ "perEvaluationCap", a_capacity.perEvaluationCap },
 			{ "effectiveAdditionalCap", a_capacity.effectiveAdditionalCap }
 		};
 	}
@@ -237,7 +219,7 @@ namespace
 		const std::vector<SourceDescriptor>& a_sources,
 		const std::unordered_map<Category, std::uint32_t>& a_sourceCounts,
 		const BoundedEncounters::Config& a_config,
-		const Capacity& a_capacity,
+		const PopulationCapacity& a_capacity,
 		const std::uint64_t a_auditSeed)
 	{
 		nlohmann::json rows = nlohmann::json::array();
