@@ -1,11 +1,12 @@
 # DDS Workshop NPC Replacer: AE private-port audit
 
-**Decision:** research only; held outside the mod list. The user's question was
-exploratory, not a request for a full conversion. Nothing was installed or
-enabled. If revisited, prepare the latest complete build as a private, disabled
-MO2 mod and do not enable it until its Legendary Edition plugin, FaceGen meshes,
-dependency textures, and conflicts pass the gates in
-[#194](https://github.com/Ensrick/skyrim-mod-assistant/issues/194).
+**Decision:** rejected on 2026-09-02 after confirming that no official SE/AE
+release exists. The author's latest build is still an Oldrim/Legendary Edition,
+UNP-only preview covering 78 female NPCs and would require a substantial private
+conversion. Nothing was installed or enabled. Research is retained only to
+prevent this candidate from being reconsidered under the mistaken impression
+that it has an official AE release. The closed conversion proposal is tracked
+in [#194](https://github.com/Ensrick/skyrim-mod-assistant/issues/194).
 
 ## Correct source version
 
@@ -89,5 +90,5 @@ must not be installed or mistaken for the approved trial build.
 - Eyes Mod 2 Main 2K and current KS Hairdos SSE archives were integrity-tested
   for dependency feasibility. They were not installed.
 
-The conversion is deliberately parked. Nothing from this replacer or its
-dependencies was installed or enabled in the active profile.
+The conversion was abandoned. Nothing from this replacer or its dependencies
+was installed or enabled in the active profile.
