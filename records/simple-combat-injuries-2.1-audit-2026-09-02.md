@@ -50,10 +50,15 @@ rules.
 3. **Cuts are intentionally stackable on NPCs.** A July 2026 Nexus report says
    the stacking bleed can trivialize combat. That follows from the inspected
    design rather than being only a speculative conflict.
-4. **Animation coverage is much narrower than the injury system.** All 91 OAR
-   files share the single `SCI_KWDBruised` condition. Concussions, cuts,
-   piercing wounds and broken bones have no distinct animation state, and the
-   bruised set is broad but not complete for every weapon/movement family.
+4. **Animation coverage is much narrower than the injury system.** The archive
+   contains 91 replacement HKX clips, all under the single `SCI/00Bruises`
+   OAR package. Both `_conditions.json` files resolve that package through
+   `SCI_KWDBruised`; the keyword is attached to effects in
+   `SCI_SPL_Bruised`, not to the concussion, cut, piercing-wound, or
+   broken-bone spells. The count is high because it covers male/female,
+   locomotion/stance, and equipped-weapon variants—not because the mod ships
+   91 distinct bruised performances. The other injury states have no separate
+   animation package in the archive.
 5. **Creature injuries and mage armor are absent.** The author's own future
    plans list both. The current weapon-keyword conditions do not make animals
    inflict injuries, while armor handling is based on worn armor/clothing
