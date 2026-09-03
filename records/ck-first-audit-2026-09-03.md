@@ -31,8 +31,22 @@ mechanism was checked before building ours:
 | Better Fur Fine Clothes Refit | ensrick-overlay-distribution | **0** |
 | Scoped Werewolf Totem Skull 98175 | *no record found* | - |
 
-**Zero of ten.** Every one went from symptom straight to our own fix, with no
-recorded search for an existing solution. Several have probable prior art -
+**CORRECTED 2026-09-03 by the full prior-art pass: it is two of ten, not zero.**
+The grep above searched the wrong place - narrative records - and missed prior
+art recorded in structured fields. `Bloodskal Blade 4 Static Glow`'s ledger
+`note` opens with a correct check of the author's four released files, and
+`Scoped Werewolf Totem Skull 98175` - logged here as "no record found" - carries
+an `alternatives` array in its source-build JSON naming three candidates with
+versions, dates and an archive hash. **That is the best rule-0 record in the
+project and is the shape to standardise on.**
+
+The real pattern is sharper than "nobody researched anything": **asset fixes
+were researched against the vendor page; record patches and runtime plugins
+were not researched at all.** Full findings:
+`records/prior-art-audit-2026-09-03.md`.
+
+Every other artifact in the sample did go from symptom straight to our own fix,
+with no recorded search for an existing solution. Several have probable prior art -
 Assorted Mesh Fixes very likely has a released SE conversion, env-mask defects
 are the kind of thing authors and community patches ship, and vanilla `_sk`
 soft-light maps may exist as a mod rather than something to extract by hand.

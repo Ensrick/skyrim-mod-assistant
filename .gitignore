@@ -270,3 +270,8 @@ dist/
 !/mods/wolf-territorial-patch/thinning/policy.json
 !/mods/wolf-territorial-patch/thinning/spriggit/
 !/mods/wolf-territorial-patch/thinning/spriggit/**
+
+# CK-first doctrine audits (2026-09-03): prior-art and code-weight verdicts.
+!/records/ck-first-audit-2026-09-03.md
+!/records/prior-art-audit-2026-09-03.md
+!/records/matching-set-perk-mechanism-2026-09-03.md
