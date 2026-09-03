@@ -224,13 +224,52 @@ Party Sheet, iWant Widgets NG.
 7. **[AllGUD](https://www.nexusmods.com/skyrimspecialedition/mods/28833)** (#201)
    - the only path left to visible carried gear.
 
-## 6. One thing only you can do
+## 6. Two things only you can do
 
-**#198, the block animation.** No headless instrument here can see whether a
-shield is raised. Next time it fails, note: what you were doing (walking,
-strafing, sprinting, turning), what was equipped (shield, one-hand, two-hand,
-spell), and whether it recovers on releasing and re-pressing block. Three data
-points separate a movement-state condition from a weapon-state one, which
-decides where to look next.
+### A. #198, the block animation - there is now a real test, not just "take notes"
 
-**And glance at a guard's cloak** - see the warning in section 1.
+Static analysis settled what it could and named a prime suspect: **SkyParkour
+is the only third-party mod sharing the master behaviour graph with the block
+state machine.** Pandora's `ActiveMods.json` lists `sppffp`/`sppftp` and
+nothing else, and SkyParkour injects 8 graph variables and 2 states into
+`0_Master.hkx`. It is also the only mod hooking Input/AnimEvent/NotifyGraph at
+runtime, with `iAutoParkour = 1` and all three `bSmart*` on. Unproven, but
+named on two independent grounds.
+
+The block wiring itself is intact - 65 block/bash strings present, and the
+block sub-graph (`BlockBehavior.hkx`, `mt_behavior.hkx`, `1hm_behavior.hkx`,
+`shield.hkx`) is vanilla, loaded from the BSA. Nothing is missing.
+
+**The A/B:** in `mo2-instances\skyrim-se\overwrite\SKSE\Plugins\SkyParkourNG.ini`
+set `bEnableMod = false` - or, to keep parkour on the key and kill only the
+automatic path, `iAutoParkour = 0` plus `bSmartSteps`, `bSmartVault` and
+`bSmartClimb` all `false`. Then try blocking while walking, running, strafing,
+running backward and sprinting, and once immediately after a vault or slide.
+
+How to read it:
+
+- **behaves with SkyParkour off** - it is SkyParkour, and the fix is a config
+  line. No mod needed.
+- **only sprinting fails** - that is the sprint-bash state, and it is #148, not
+  SkyParkour.
+- **one-hand and two-hand fail too, not just shield** - then it is the movement
+  graph, not anything block-shaped.
+- **nothing reproduces** - likely an artefact of the profile before OAR was
+  unparked, and #198 can be closed.
+
+The one I would expect to fail if SkyParkour is the cause is blocking
+immediately after a vault, step-up or slide.
+
+**Restore the ini afterwards.** It lives in `overwrite`, so a wrong value there
+is untracked and invisible to every audit gate we have.
+
+*(Related, and good news: #148's `fnis_aa` errors are gone from tonight's
+Papyrus log - 0 occurrences against 312/16/18 when that issue was filed. One
+unresolved `GetFlags` on `FNIS` remains. Observed in one session only, and the
+logs #148 quotes have rotated out, so absence was observable but not
+diffable.)*
+
+### B. Glance at a guard's cloak
+
+See the warning in section 1 - if a guard still carries two cloaks, three of
+the four cloak dials are no-ops and I will rewrite the approach.
