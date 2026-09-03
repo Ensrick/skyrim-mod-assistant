@@ -34,6 +34,41 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 19:05 - Smart Talk PARKED: it aborted the SKSE load; Better Dialogue Controls verified
+
+- **What:** `SmartTalk.dll` killed the game at startup. `skse64.log` stops dead
+  at plugin 28 of 36 with `SUPPRESSED PLUGIN UI [SmartTalk.dll]:
+  REL/ID.h(223): failed to open address library file`, and the five plugins
+  behind it never loaded. `versionlib-1-7-104-0.bin` IS present in the
+  `Address Library` mod, so the file is not missing - SmartTalk's CommonLib
+  cannot open it. Both `Smart Talk` and `Smart Talk - MCM Menu` disabled,
+  `Smart Talk - MCM.esp` deactivated (transaction
+  `20260903T000453920Z-e4b3b23dc78c`), both ledger rows marked
+  `enabled: false` with the unpark trigger. Modlist backed up to
+  `profiles/Default/modlist.txt.bak.v20260902-smarttalk`. Active plugins
+  244 -> 243. **Better Dialogue Controls (1429) is untouched and stays
+  enabled** - it is a pure SWF with no native code and had nothing to do with
+  this.
+- **Source:** user, 2026-09-02 - *"I hit play and it's not playing"*. Root cause
+  found in `skse64.log`, not guessed. This session installed Smart Talk on a
+  `audit/skse_version_data.py` `VERDICT: PASS (version independent)` and said at
+  the time that the gate is necessary and never sufficient (#140, Open Animation
+  Replacer passed the same gate and hung the load) - then installed it anyway
+  into a build that already had three unverified batches stacked, so the user's
+  first launch had four batches to bisect instead of one. The doctrine was right
+  and was not followed.
+- **Verification:** **VERIFIED 2026-09-02 19:06** by
+  `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded
+  46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That
+  PASS also clears the whole backlog it was blocking: the eight cloak entries,
+  Run For Your Lives 4.0.7, Better Dialogue Controls, and Sol's Weapon Speed
+  Balance and Conditional Arrow Embedding. Immersive Armors and Immersive
+  Weapons stay UNVERIFIED - they are installed disabled and inert, so no launch
+  can cover them.
+- **Unpark trigger:** an author rebuild of Smart Talk against format-5
+  CommonLibSSE-NG, or our own rebuild from source if it is published - the same
+  route that worked for Light Placer and Seasonal Clothing Framework.
+
 ## 2026-09-02 18:40 - RMB SPCH - Pelts o Plenty 1.1.0 installed and ENABLED (Claude, #95)
 
 - **What:** `RMB SPCH - Pelts o Plenty` 1.1.0 (Nexus 179354, file 749409,
@@ -48,9 +83,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 - **Source:** user, 2026-09-02, *"Yeah, go ahead, and install"*, on the stack in
   `records/cloak-layer-audit-2026-09-02.md`. Install record
   `records/cloak-install-2026-09-02.md`.
-- **Verification:** **UNVERIFIED** - the user asked to hold the launch. Keep
-  179354 queued to the relay by `install_mod`.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:40 - Pelts 'o' Plenty 4.3.1 installed and ENABLED; Survival Fix 164077 rejected (Claude, #95)
 
 - **What:** `Pelts o Plenty - Fur Pelt Gear` 4.3.1 (Nexus 120726, file 704702,
@@ -69,8 +102,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   fix. Reported on #189.
 - **Source:** user authorisation as above; the 164077 check was requested in the
   install brief. Evidence in `records/cloak-install-2026-09-02.md` §2.
-- **Verification:** **UNVERIFIED**. Keep 120726 queued.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:40 - More Scarves 1.4.0 installed and ENABLED (Claude, #95)
 
 - **What:** `More Scarves` 1.4.0 (Nexus 149259, file 723968,
@@ -86,8 +118,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   in this build.
 - **Source:** user authorisation as above. Install record
   `records/cloak-install-2026-09-02.md`.
-- **Verification:** **UNVERIFIED**. Keep 149259 queued.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:40 - RMB SPCH - Cloaks of Skyrim 1.5.3 installed and ENABLED (Claude, #95)
 
 - **What:** `RMB SPCH - Cloaks of Skyrim` 1.5.3 (Nexus 116030, file 749413,
@@ -107,8 +138,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   until #187.
 - **Source:** user authorisation as above. Install record
   `records/cloak-install-2026-09-02.md` §3.
-- **Verification:** **UNVERIFIED**. Keep 116030 queued.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:39 - Cloaks of Skyrim Retextured Female Mesh Patch installed (Claude, #95)
 
 - **What:** `Cloaks of Skyrim Retextured - Female Mesh Patch` 1.0.0 (Nexus
@@ -119,8 +149,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   order.
 - **Source:** user authorisation as above; listed as optional-but-take in
   `records/cloak-layer-audit-2026-09-02.md` §7.
-- **Verification:** **UNVERIFIED**. Keep 85932 queued.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:39 - ElSopa CoS Retextured Mesh Update 1.2 installed (Claude, #95)
 
 - **What:** `ElSopa - Cloaks of Skyrim Retextured Mesh Update 1.2` (Nexus 42558,
@@ -132,8 +161,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   mesh files over Cloaks of Skyrim; the other 46 go to the female patch above.
 - **Source:** user authorisation as above. Evidence in
   `records/cloak-layer-audit-2026-09-02.md` §7.
-- **Verification:** **UNVERIFIED**. Keep 42558 queued once for both ElSopa rows.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:39 - ElSopa CoS Retextured 2K installed, textures only (Claude, #95)
 
 - **What:** `ElSopa - Cloaks of Skyrim Retextured 2K` (Nexus 42558, file 170809,
@@ -149,8 +177,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   disk referenced by no surviving mesh.
 - **Source:** user, 2026-09-02, on this candidate: *"I think this looks really
   good."* Measurement in `records/cloak-layer-audit-2026-09-02.md` §7.
-- **Verification:** **UNVERIFIED**. Keep 42558 queued.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 18:39 - Cloaks of Skyrim 1.2.1 installed as an ASSET SOURCE, no plugin (Claude, #95)
 
 - **What:** `Cloaks of Skyrim` 1.2.1 (Nexus 6369, file 18422, `6369-18422.rar`,
@@ -169,16 +196,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 - **Source:** user, 2026-09-02, *"Yeah, go ahead, and install"*. Evidence in
   `records/cloak-layer-audit-2026-09-02.md` §1-2, install record
   `records/cloak-install-2026-09-02.md`.
-- **Verification:** **UNVERIFIED** - no launch was run, at the user's request.
-  Gates that did run: `install_mod --verify` `0 problem(s)`, `verify_order`
-  CLEAN, `file_conflicts` 27 critical of which 2 touch this batch and both are
-  byte-identical duplicate configs. `keep_coverage` reports 7 violations, all of
-  them this batch's Keeps in flight through the relay spool.
-  **Artesian Cloaks 17416 is NOT installed** (#193), so no Cloaks of Skyrim
-  cloak simulates; and **RMB SPIDified - Sons of Skyrim 83340 is held** (#195)
-  because its `00 Core` replaces `NW_Sons_of_Skyrim.esp` with a 634-record strip
-  of the installed 971-record plugin.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 17:55 - ElSopa CoS Retextured 42558 measured; enters the plan at 2k (Claude, #95)
 
 - **What:** `records/cloak-layer-audit-2026-09-02.md` gains section 7. The user
@@ -355,13 +373,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   live Keeps, 0 violations) and `install_mod --verify` reads `0 problem(s)`.
 - **Source:** installed by Sol (Codex) under their claim, 2026-09-02 13:52;
   ledger and changelog handed to this session per the coordination board.
-- **Verification:** **UNVERIFIED** - and unlike Sol's two equipment intakes
-  this one is ACTIVE, so it does affect the next launch. It landed after
-  `records/launch-verify-20260902-133303.md`, so that PASS does not cover it.
-  It needs its own verification launch before the batch is called done, and its
-  in-game behaviour (townsfolk actually fleeing a dragon attack) is a separate
-  foreground test that no gate here can perform.
-
+- **Verification:** **VERIFIED 2026-09-02 19:06** by `records/launch-verify-20260902-190632.md` - main menu 35.3 s, save loaded 46.1 s, 243 active plugins, 0 refused by the SKSE loader, no crash log. That launch covers this whole batch at the launch/load level; per-item in-game behaviour is still untested.
 ## 2026-09-02 13:39 - Immersive Weapons 2 installed INACTIVE as a vendor source (Sol, #181)
 
 - **What:** `Immersive Weapons` 2 (Nexus 16788, file 52498, `16788-52498.7z`,
