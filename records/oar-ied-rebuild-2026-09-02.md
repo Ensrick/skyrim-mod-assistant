@@ -27,12 +27,75 @@ holds; nothing was installed for it.**
 
 | Mod | Author update we missed? | Rebuild needed? | Distribution class | Verdict |
 |---|---|---|---|---|
-| Open Animation Replacer 3.2.0 -> **3.2.1** (Nexus 92109, Ersh) | **Yes - 3.2.1, uploaded 2026-08-31, changelog "Updated to support runtime 1.7.99+"** | **No.** The author already did it: 3.2.1 repins CommonLibSSE-NG past the format-5 commit | **none - vendor row.** Unmodified third-party release, so no `distribution:` field per the `docs/PATCH_INTENTS.md` eligibility ruling | **Installed, enabled, launch PASS** |
-| Immersive Equipment Displays 1.7.4 (Nexus 62001, SlavicPotato) | **No.** Newest file is still 1.7.4, 2023-12-10. 16 unreleased commits sit on `master` (to 2026-03-05) but cannot be built | **Yes, and it is still impossible** - 51 reverse-engineered `ext/` headers have no public copy anywhere, Software Heritage included | n/a - nothing was produced | **BLOCKED, unchanged. Stays parked** |
+| [Open Animation Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/92109) 3.2.0 -> **3.2.1** (Nexus 92109, Ersh) | **Yes - 3.2.1, uploaded 2026-08-31, changelog "Updated to support runtime 1.7.99+"** | **No.** The author already did it: 3.2.1 repins CommonLibSSE-NG past the format-5 commit | **none - vendor row.** Unmodified third-party release, so no `distribution:` field per the `docs/PATCH_INTENTS.md` eligibility ruling | **Installed, enabled, launch PASS** |
+| [Immersive Equipment Displays](https://www.nexusmods.com/skyrimspecialedition/mods/62001) 1.7.4 (Nexus 62001, SlavicPotato) | **No.** Newest file is still 1.7.4, 2023-12-10. 16 unreleased commits sit on `master` (to 2026-03-05) but cannot be built | **Yes, and it is still impossible** - 51 reverse-engineered `ext/` headers have no public copy anywhere, Software Heritage included | n/a - nothing was produced | **BLOCKED, unchanged. Stays parked** |
 
 Single recommendation: **OAR is available now. IED needs an author release; do
 not spend more engineering on it** - the missing input is 51 headers of the
 author's private reverse-engineering work, not a build problem we can solve.
+
+---
+
+## What is finished, and what needs the user's decision
+
+**Finished, nothing to decide.**
+
+- [Open Animation Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/92109)
+  3.2.1 installed, enabled at modlist line 240, launch-verified. It is a mod
+  already in the build being fixed, which is the exception the user named
+  ("Get any requisite mods you need to fix the issues with the mods we currently
+  have"), so the 2026-09-02 no-new-vendor-mods constraint does not bite here.
+- [Immersive Equipment Displays](https://www.nexusmods.com/skyrimspecialedition/mods/62001)
+  investigated to a dead end. **Nothing was installed and no new vendor
+  dependency was needed**, so nothing was staged for approval either.
+- #140 and #94 commented with the evidence. Neither was closed.
+
+**Needs the user's decision - three items, none urgent, none blocking play.**
+
+1. **Does he want gear display at all?** IED cannot be fixed by us (section 2).
+   The only DLL-free route is
+   [AllGUD](https://www.nexusmods.com/skyrimspecialedition/mods/28833) - a **new
+   vendor mod**, therefore *suggested, not installed*, per the 2026-09-02
+   constraint. It is a real install project (an xEdit mesh-generation pass over
+   the whole installed gear set) and was last updated 2020-03-22, so it wants
+   its own scoped issue rather than a quiet adoption. Meanwhile
+   [Simple Dual Sheath](https://www.nexusmods.com/skyrimspecialedition/mods/50049)
+   1.5.9 is already enabled and verified and covers the visible part.
+2. **Should we ask SlavicPotato to publish `ext/`?** That is the one cheap move
+   left on #94 and it is an outward contact, so it is the user's to send, not
+   mine. IED itself is already MIT; only the private build framework is in
+   question.
+3. **Close or keep #140?** It is fixed and launch-verified, but I was told to
+   close nothing. It is his call.
+
+**Explicitly NOT claimed:** that any animation replacer works in game. OAR's own
+log reports `1 OAR directories` - the plugin's own, because no replacer mod is
+installed. The framework loads; per-animation behaviour is untested, and #198
+(block animation) is a separate retest owned by `own-patch-fixes`.
+
+---
+
+## Every DLL touched this pass: PE stamp and `load_v5`
+
+The gate's PE-stamp reject window was corrected today to end **2026-08-21**
+(commit `c3da884`, "Fix the SKSE gate reject window: 2025-05-26 -> 2026-08-21
+(#197)", 22:35:31) after Smart Talk passed the old window and aborted the SKSE
+load. Every row below was produced **after** that fix, by the corrected gate.
+
+`load_v5` is read from the DLL's own string table (the C++ symbol names for
+`REL::IDDB::load_v5` / `header_v5_t`), which is the receipt the flags cannot
+give: a plugin can declare the V5 bit without having the reader, which is
+exactly what the withdrawn IED overlay did.
+
+| DLL | version | PE stamp | UTC | viEx / V5 bit | compatibleVersions | **`load_v5` in binary** | gate verdict |
+|---|---|---|---|---|---|---|---|
+| `OpenAnimationReplacer.dll` (parked 3.2.0) | 3.2.0.0 | 1785103405 | 2026-07-26 22:03:25 | 1 / **NO** | 1.6.1170.0 | **absent** | FAIL |
+| **`OpenAnimationReplacer.dll` (installed 3.2.1)** | **3.2.1.0** | **1788193253** | **2026-08-31 16:20:53** | **3 / YES** | **1.7.99.0** | **present** | **PASS** |
+| `ImmersiveEquipmentDisplays.dll` (parked 1.7.4, untouched) | 0.1.112.4 | 1702213004 | 2023-12-10 12:56:44 | 0 / **NO** | 1.6.318.0, 1.6.323.0 | **absent** | FAIL |
+
+Only one DLL entered the build: OAR 3.2.1. The other two rows are diagnostic
+reads of binaries that were already on disk; neither was modified, and the IED
+row is the reason it stays parked.
 
 ---
 
@@ -55,14 +118,14 @@ DLL in this record was checked that way, not inferred from the PE stamp.
 
 ---
 
-## 1. Open Animation Replacer (Nexus 92109)
+## 1. [Open Animation Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/92109) (Nexus 92109, Ersh)
 
 ### 1.1 Diagnosis of the #140 failure - it was never OAR's own code
 
 #140 recorded the symptom (SKSE logs `loading plugin "OpenAnimationReplacer"`,
 never returns, a popup appears, and the 14 plugins behind it never load) but
 attributed it to "fails inside its own load". The mechanism is narrower, and it
-is the Light Placer failure exactly.
+is the [Light Placer](https://www.nexusmods.com/skyrimspecialedition/mods/127557) failure exactly.
 
 `OpenAnimationReplacer.dll` 3.2.0, PE stamp `1785103405` = 2026-07-26
 22:03:25Z, pins `extern/CommonLibSSE` to
@@ -98,7 +161,8 @@ binary:
 
 #140 recorded a PASS for this same file. The binary did not change - the gate
 did: the 2026-09-02 fix for #197 (`CHANGELOG.md`, "Fix the SKSE gate that let
-Smart Talk through") raised the PE-stamp reject window's upper bound from
+Smart Talk through", commit `c3da884`, 22:35:31, four minutes before the gate
+runs below) raised the PE-stamp reject window's upper bound from
 2025-05-26 to **2026-08-21**, the format-5 date. OAR 3.2.0's 2026-07-26 stamp
 sits inside the corrected window and outside the old one, so it was always going
 to fail and the old gate could not see it.
@@ -233,7 +297,7 @@ and #148 is not addressed by this change.**
 
 ---
 
-## 2. Immersive Equipment Displays (Nexus 62001)
+## 2. [Immersive Equipment Displays](https://www.nexusmods.com/skyrimspecialedition/mods/62001) (Nexus 62001, SlavicPotato)
 
 ### 2.1 Update sweep: no author release in two years and nine months
 
@@ -358,23 +422,23 @@ user's report that it is not working is correct.**
 `LICENSE` is **MIT, Copyright (c) 2022 SlavicPotato** - so an Ensrick rebuild
 would have been squarely permitted, and under `docs/PATCH_INTENTS.md` it would
 have been **distributable** (our own bytes, MIT notice shipped, corresponding
-source in a public fork), exactly like the Light Placer rebuild. The licence is
+source in a public fork), exactly like the [Light Placer](https://www.nexusmods.com/skyrimspecialedition/mods/127557) rebuild. The licence is
 not the obstacle. The missing headers are.
 
 ### 2.5 The alternative, scoped - not installed
 
 Nothing here half-works, so nothing was installed.
 
-**Already in the build and verified.** `Simple Dual Sheath` 1.5.9 (Nexus 50049,
-enabled) covers the part of IED's job most players notice: unequipped left-hand
+**Already in the build and verified.** [Simple Dual Sheath](https://www.nexusmods.com/skyrimspecialedition/mods/50049) 1.5.9
+(Nexus 50049, enabled) covers the part of IED's job most players notice: unequipped left-hand
 weapon, shield and staff visibility on the back and hip. It is by the same
 author, and unlike IED it got a 2026-08-29 "Support for 1.7.x" release. What it
 does **not** do is IED's actual distinguishing feature: arbitrary user-placed
 displays of *any* item on *any* skeleton node, per-actor, with the in-game
 editor - bags, tools, torches, potions, custom gear, NPC displays.
 
-**The only DLL-free route to that.** `All Geared Up Derivative SE - AllGUD`
-(Nexus 28833, Kriffin, 1.5.6). It is Papyrus + skeleton + xEdit-generated
+**The only DLL-free route to that.**
+[All Geared Up Derivative SE - AllGUD](https://www.nexusmods.com/skyrimspecialedition/mods/28833) (Nexus 28833, Kriffin, 1.5.6). It is Papyrus + skeleton + xEdit-generated
 display meshes with **no SKSE plugin of its own**, so no address-library
 question arises and the 1.7.104 runtime is irrelevant to it. Two honest marks
 against it: last updated **2020-03-22**, which is a red flag under

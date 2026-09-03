@@ -64,7 +64,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ## 2026-09-02 22:39 - Open Animation Replacer UNPARKED on author release 3.2.1 (Nexus 92109, #140)
 
-- **What:** `Open Animation Replacer` upgraded 3.2.0 -> **3.2.1** (Nexus file
+- **What:** [`Open Animation Replacer`](https://www.nexusmods.com/skyrimspecialedition/mods/92109) upgraded 3.2.0 -> **3.2.1** (Nexus file
   798222, uploaded 2026-08-31, `92109-798222.7z`, 8.09 MB, sha256
   `970cb6c3...907de8`) and **ENABLED** at modlist line 240 - the first time it
   has been active in this build. Installed with `--replace` over the parked
@@ -109,7 +109,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ## 2026-09-02 22:39 - IED stays PARKED: the #94 blocker re-tested and still holds
 
-- **What:** No change to `Immersive Equipment Displays` - it remains disabled at
+- **What:** No change to [`Immersive Equipment Displays`](https://www.nexusmods.com/skyrimspecialedition/mods/62001) - it remains disabled at
   modlist line 165 and has never been active in this build, so the user's report
   that IED is not working is correct. **Nothing was installed and no overlay was
   attempted.** Update sweep: the newest Nexus file is still 1.7.4 from
@@ -147,11 +147,11 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   (`records/upstream-issues/sse-build-resources-trampoline-setbase-free.md`,
   field crash `crash-2026-08-25-20-36-52.log`). That trades a clean refusal for
   taking SKSE down mid-session; it stays withdrawn.
-- **Alternative, scoped not installed:** `Simple Dual Sheath` 1.5.9 (50049,
+- **Alternative, scoped not installed:** [`Simple Dual Sheath`](https://www.nexusmods.com/skyrimspecialedition/mods/50049) 1.5.9 (50049,
   already enabled and verified) covers unequipped left-hand weapon, shield and
   staff visibility. The only DLL-free route to IED's distinguishing feature
   (arbitrary items on arbitrary skeleton nodes, per actor) is
-  `All Geared Up Derivative SE - AllGUD` (Nexus 28833, Kriffin 1.5.6) - Papyrus +
+  [`All Geared Up Derivative SE - AllGUD`](https://www.nexusmods.com/skyrimspecialedition/mods/28833) (Nexus 28833, Kriffin 1.5.6) - Papyrus +
   skeleton + xEdit-generated meshes, no SKSE plugin, so the runtime is
   irrelevant to it; but it was last updated 2020-03-22 and needs a mesh
   generation pass over the whole installed gear set. Recommend it be scoped as
