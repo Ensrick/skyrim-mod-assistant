@@ -182,6 +182,27 @@
 !/mods/wolf-territorial-patch/thinning/policy.json
 !/mods/wolf-territorial-patch/thinning/spriggit/
 !/mods/wolf-territorial-patch/thinning/spriggit/**
+
+# Source and distributable configuration payload for the owned regional
+# currency compatibility layer. It contains no vendor meshes/textures/plugins.
+!/mods/currency-integration/
+!/mods/currency-integration/README.md
+!/mods/currency-integration/manifest.json
+!/mods/currency-integration/validate.py
+!/mods/currency-integration/build.py
+!/mods/currency-integration/build-inputs.json
+!/mods/currency-integration/normalize_pex.py
+!/mods/currency-integration/policy.json
+!/mods/currency-integration/regenerate.ps1
+!/mods/currency-integration/generator/
+!/mods/currency-integration/generator/*.cs
+!/mods/currency-integration/generator/*.csproj
+!/mods/currency-integration/generator/Directory.Build.props
+!/mods/currency-integration/generator/packages.lock.json
+!/mods/currency-integration/papyrus/
+!/mods/currency-integration/papyrus/*.psc
+!/mods/currency-integration/package/
+!/mods/currency-integration/package/**
 !/records/guard-scaling-audit-2026-09-02.md
 
 !/records/solitude-trellis-stalls-installation-2026-08-30.md
