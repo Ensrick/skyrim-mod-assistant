@@ -213,3 +213,4 @@ dist/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/*.ini
+!/records/block-animation-198-2026-09-02.md
