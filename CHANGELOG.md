@@ -34,6 +34,37 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 23:45 - Wolf visuals/behaviour/spawns and the UI-plus-survival-readout audit (#42, #31, #35, #111)
+
+- **What:** two research passes, no build state changed. (1) `docs/WILDLIFE-WOLVES-2026-08-28.md`
+  gains a dated appendix answering the four requirements the user added to #42:
+  **Canidae 2.25 (182994) core option** recommended for visuals (six of seven
+  textures clear the 0.70 distance floor; `blackwolf_body.dds` fails at x0.54 and
+  the `mip_retention.py --resharpen` recipe lifts it to x0.89); the wolf/bear
+  behaviour gap measured as **one AI Data field** - `Warn` 0 vs 2500, with
+  `EncHorker` attacking only inside 320 units - and the faction layer shown to
+  need no edit; and the spawn arithmetic resolved to **666 placed predator refs
+  in 406 clusters (205 singletons)**, with a singleton retirement cutting 31% of
+  wilderness spawn sites while raising mean pack size to 2.29.
+  (2) New `records/ui-slot-and-survival-readout-2026-09-02.md`: the effective
+  `Survival_*NeedValue`/`MaxValue` globals dumped from CC + SMI + Starfrost prove
+  a proportional readout is possible today; **TrueHUD 1.1.10 PASSes** the gate
+  (PE 2026-08-29 18:35:01Z, V5 bit set) and its floating bars are one ini flag
+  (`bEnableActorInfoBars`); **moreHUD 5.4.2.0 PASSes** (PE 2026-08-30 22:28:11Z);
+  **Prisma UI 1.4.1, Skyrim Party Sheet 3.1 and iWant Widgets NG 1.2.8 FAIL**;
+  NORDIC UI declined (v2.4.1, 2021-08-14, requires SkyHUD, ships enemy bars).
+- **Source:** user messages 2026-09-02 (the #42 design comment; "having a bar for
+  it would be nice"; "I don't like ... floating healthbars"), dispatched by the
+  team lead as an audit-only research task.
+- **Tracked:** #202 (Ensrick Survival Meters on iWant Widgets), #203 (Prisma UI
+  gate + licence decision), #204 (Canidae adoption + two recipe fixes), #205
+  (TrueHUD with actor info bars off); findings commented onto #42, #43, #31,
+  #35, #111.
+- **Verification:** research only - no mod installed, no profile or INI file
+  written, no launch. Archives went to the MO2 download cache and were extracted
+  to a scratch directory outside `mods\`; every DLL verdict carries its PE stamp
+  and every texture verdict its measured ratio.
+
 ## 2026-09-02 23:05 - Fix the SKSE gate that let Smart Talk through (#197)
 
 - **What:** `audit/skse_version_data.py` carried a PE-stamp reject window of

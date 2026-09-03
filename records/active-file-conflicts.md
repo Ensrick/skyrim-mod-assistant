@@ -1,9 +1,9 @@
 # Active file-conflict inventory
 
-Captured: `2026-09-02T23:41:55Z`
+Captured: `2026-09-03T04:17:21Z`
 
-- Enabled managed mods: 233
-- Files scanned: 41771
+- Enabled managed mods: 236
+- Files scanned: 41772
 - Conflicting paths: 2827
 - Order-sensitive code/config paths: 27
 
