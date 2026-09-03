@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "00 base/NoCounter/SL99Exchanger.esp",
+      "destination": "SL99Exchanger.esp"
+    },
+    {
+      "source": "00 Main/interface",
+      "destination": "interface"
+    },
+    {
+      "source": "00 Main/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "00 Main/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "00 Main/exchangeCurrency_enhanced.esp",
+      "destination": "exchangeCurrency_enhanced.esp"
+    },
+    {
+      "source": "00 Main/scripts",
+      "destination": "scripts"
+    },
+    {
+      "source": "00 Main/seq",
+      "destination": "seq"
+    },
+    {
+      "source": "00 Main/SKSE/Plugins/NotificationFilter.ini",
+      "destination": "SKSE/Plugins/NotificationFilter.ini"
+    },
+    {
+      "source": "00 Main/SKSE/Plugins/ContainerDistributionFramework/EC_septims_containers.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_septims_containers.json"
+    },
+    {
+      "source": "00 Main/SKSE/Plugins/InventoryInjector",
+      "destination": "SKSE/Plugins/InventoryInjector"
+    },
+    {
+      "source": "01 COIN content/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "01 COIN content/scripts",
+      "destination": "scripts"
+    },
+    {
+      "source": "01 COIN content/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "01 COIN content/exchangeCurrency_patch_COIN.esp",
+      "destination": "exchangeCurrency_patch_COIN.esp"
+    },
+    {
+      "source": "01 COIN content/SKSE/DynamicDialogueReplacer",
+      "destination": "SKSE/DynamicDialogueReplacer"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/InventoryInjector",
+      "destination": "SKSE/Plugins/InventoryInjector"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/ContainerDistributionFramework/EC_coins_dungeons.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_coins_dungeons.json"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/ContainerDistributionFramework/EC_drams_drakrs.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_drams_drakrs.json"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/ContainerDistributionFramework/EC_ohzers.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_ohzers.json"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/ContainerDistributionFramework/EC_oshkas.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_oshkas.json"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/ContainerDistributionFramework/EC_ulfrics.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_ulfrics.json"
+    },
+    {
+      "source": "01 COIN content/SKSE/Plugins/ContainerDistributionFramework/EC_varkens.json",
+      "destination": "SKSE/Plugins/ContainerDistributionFramework/EC_varkens.json"
+    },
+    {
+      "source": "02 settings skypatcher/SKSE/Plugins/SkyPatcher/constructibleObject/ECE_ExchangerTransactionList.ini",
+      "destination": "SKSE/Plugins/SkyPatcher/constructibleObject/ECE_ExchangerTransactionList.ini"
+    },
+    {
+      "source": "02 settings skypatcher/SKSE/Plugins/SkyPatcher/misc/ECE_regionalCurrencies.ini",
+      "destination": "SKSE/Plugins/SkyPatcher/misc/ECE_regionalCurrencies.ini"
+    },
+    {
+      "source": "02 settings skypatcher/SKSE/Plugins/SkyPatcher/misc/ECE_septims_100.ini",
+      "destination": "SKSE/Plugins/SkyPatcher/misc/ECE_septims_100.ini"
+    },
+    {
+      "source": "05 septims/wizkid/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "05 septims/wizkid/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "20 patches/MINT/septims + regCurrencies/exchangeCurrency_patch_MINT_ulfric.esp",
+      "destination": "exchangeCurrency_patch_MINT_ulfric.esp"
+    },
+    {
+      "source": "20 patches/MINT/septims + regCurrencies/exchangeCurrency_patch_MINT_dram.esp",
+      "destination": "exchangeCurrency_patch_MINT_dram.esp"
+    },
+    {
+      "source": "20 patches/Elven Supremacy/SKSE",
+      "destination": "SKSE"
+    },
+    {
+      "source": "30 Ulfrics/exchangeCurrency_dial_ulfrics.esp",
+      "destination": "exchangeCurrency_dial_ulfrics.esp"
+    },
+    {
+      "source": "30 Ulfrics/exchangeCurrency_enhanced_ulfrics_KID.ini",
+      "destination": "exchangeCurrency_enhanced_ulfrics_KID.ini"
+    },
+    {
+      "source": "40 Drams Solstheim/exchangeCurrency_enhanced_drams_KID.ini",
+      "destination": "exchangeCurrency_enhanced_drams_KID.ini"
+    },
+    {
+      "source": "50 Medes Cyrodiil/exchangeCurrency_dial_medes.esp",
+      "destination": "exchangeCurrency_dial_medes.esp"
+    },
+    {
+      "source": "50 Medes Cyrodiil/exchangeCurrency_enhanced_medes_KID.ini",
+      "destination": "exchangeCurrency_enhanced_medes_KID.ini"
+    },
+    {
+      "source": "60 Orcish Currency - Oshkas/exchangeCurrency_enhanced_oshkas_KID.ini",
+      "destination": "exchangeCurrency_enhanced_oshkas_KID.ini"
+    }
+  ]
+}

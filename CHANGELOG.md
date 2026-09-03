@@ -34,6 +34,110 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-03 16:54 - Regional currency stack v0.2.4 installed and save-load verified (#207)
+
+- **What:** Installed the complete current C.O.I.N. 3.5.3 / M.I.N.T. 1.0.6 /
+  ECE 4.1.1 regional-currency stack, WiZkiD Classic Gold Septim visuals, and
+  required 1.7.104 native overlays. The owned 26-file v0.2.4 package remains at
+  MO2 priority 274 and its 45-record ESPFE is plugin priority 265 (last).
+  Final replacement transaction `20260903T215105935Z-e5b6eed589b6`; archive
+  21,604 bytes, SHA-256
+  `DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B`.
+  It implements the approved 75/20/5 loose Septim mix at 1/25/100 values,
+  currency weights, cultural/ancient precedence, regional purses, ten one-way
+  bank exchanges, and disables 17 smelting-arbitrage recipes. The last audit
+  fixed Gyldenhul's contradictory Drakr keyword so all of its treasure remains
+  Septim-routed and added a loader-only Ma'dran compatibility shim; vendor mod
+  folders and WiZkiD assets remain separate and untouched.
+- **Source:** User decision accepting +975% loose-coin inflation in exchange
+  for weighted money, strict future inventory limits, and constrained loot;
+  implementation and open gameplay matrix tracked by #207-#211.
+- **Verification:** **VERIFIED 2026-09-03**. Deterministic double generation of
+  the ESP and all three PEX files, exact 9-master/397-link audit (plus 13 engine
+  PlayerRef links), zero unresolved links/deletions, checked Spriggit roundtrip,
+  deterministic archive, MO2 audit with zero errors, and byte-identical live
+  payload all pass. `records/launch-verify-20260903-165425.md`: main menu 46.6s,
+  existing save loaded 57.1s; 41 DLLs were examined, 40 SKSE plugins loaded
+  correctly, `msdia140.dll` was correctly ignored as a non-plugin dependency,
+  and there were zero plugin refusals. Currency Swapper,
+  CDF, BOS, KID, SkyPatcher and DDR loaded their currency paths, and the old
+  `DES_MadranSwapper` Papyrus warning is absent. Targeted in-world exchanges,
+  purse sampling, Proteus switching and new-land coverage remain explicit
+  acceptance work, not launch blockers.
+
+## 2026-09-03 16:51 - Container Distribution Framework 3.1.0 native overlay packaging completed (#207)
+
+- **What:** The source-built `CDF 1.7.104 Native Overlay - Ensrick` was
+  installed at 12:33 local by transaction
+  `20260903T173349678Z-11a8d9fa5141`, at MO2 priority 275 over the untouched
+  vendor mod at 271. Its DLL is 1,115,136 bytes, SHA-256
+  `725295A4D0AFE3F58DE9E04D603ADB54A0943398A8324B497CEAFC69CD8F8542`.
+  At 15:47, the live overlay gained its Apache-2.0 license and source notice;
+  at 16:51, all four files were captured by final controller replacement
+  `20260903T215113092Z-dcb18589028d`, with the full upstream base hash in that
+  notice. Neither step altered the DLL, PDB, or vendor configuration. GitHub Actions run
+  33783954157 built the exact overlay from Ensrick commit
+  `5f2ddbb4abd27c00d2c4d8aff56bd95dcc61ffd0`.
+- **Source:** Current-runtime/no-modal port required by the approved currency
+  stack, tracked by #207. Full provenance and file hashes are in
+  `records/source-builds/ensrick-cdf-1.7.104.json`.
+- **Verification:** **VERIFIED 2026-09-03**. The framework launch/load gate in
+  `records/launch-verify-20260903-135633.md` passed, and the later complete
+  live payload is covered by `records/launch-verify-20260903-165425.md` (main
+  menu 46.6 seconds, existing save loaded 57.1 seconds). CDF loaded the owned
+  currency rules without a currency-specific configuration error. A real
+  merchant/nonmerchant `onlyVendors` exercise remains a gameplay acceptance
+  test.
+
+## 2026-09-03 13:52 - Currency Swapper 2.2.0 native overlay installed for Skyrim 1.7.104 (#207)
+
+- **What:** Added and enabled the separate `Currency Swapper 1.7.104 Native
+  Overlay - Ensrick` at MO2 priority 277 above the untouched Nexus 127686 file
+  749947 install. It contains only the CI-built DLL/PDB plus licensing, hashes,
+  and port notes; the vendor package remains authoritative for its INI, scripts,
+  source script, and Custom Console data. MO2Headless transaction
+  `20260903T185226265Z-3a1e007e2cf7`. The installed DLL is 998,912 bytes,
+  SHA-256 `8A7D4E67FB2E12B4CD6FBCDEDEE4F070D7695CE46C056D8374B9FD9337873017`.
+  Ensrick PR 1 was squash-merged to the protected `release/2.2.0` branch as
+  `7c60745046bdd90a0cd72b4d213becc1d0e4f4d3`; its green artifact-producing
+  Actions run is 33789590452. The effective winner, exact 1.7.104 SKSE
+  declaration, format-5 marker, 18 hook sites, three callable targets, and
+  absence of MessageBox strings all passed. Build/default provenance is in
+  `records/source-builds/ensrick-currency-swapper-1.7.104.json`.
+- **Source:** User-approved full regional-currency setup and the current-runtime,
+  no-background-popup requirements tracked by #207; source port/install under
+  the existing `sol/currency-stack` profile claim.
+- **Verification:** **VERIFIED 2026-09-03** at the launch/load gate:
+  `records/launch-verify-20260903-135633.md` reached the main menu in 40.2
+  seconds and loaded the save in 49.6 seconds. SKSE reports the plugin loaded
+  correctly; `CurrencySwapper.log` confirms its INI read, all 18 hooks
+  installed, and serialization registered without an error. Real barter,
+  training, bounty, and exchange behavior remains a gameplay acceptance gate.
+
+## 2026-09-03 13:04 - Dynamic Dialogue Replacer 1.4.1 native overlay installed for Skyrim 1.7.104 (#207)
+
+- **What:** Added and enabled the separate `DDR 1.7.104 Native Overlay -
+  Ensrick` at MO2 priority 276 above the untouched Nexus 135618 file 748293
+  install. It contains only the CI-built DLL/PDB plus licensing and port notes;
+  the vendor package remains authoritative for scripts and dialogue data.
+  MO2Headless transaction `20260903T180450805Z-4ba902c6aa7f`. The installed
+  DLL is 1,810,944 bytes, SHA-256
+  `8167CE16D26CC6245D234E4B4CDF19F03F5CA120123AD06E051730F7271EE48C`.
+  Ensrick PR 1 was merged as `d4951ac5c7f2373155ba89f0697918b6d536d854`;
+  its green Actions run is 33786541714. The effective winner, exact 1.7.104
+  SKSE metadata, format-5 marker, four hook sites, callable/vtable targets, and
+  absence of MessageBox strings all passed. Build/default provenance is in
+  `records/source-builds/ensrick-ddr-1.7.104.json`.
+- **Source:** User-approved full regional-currency setup and the current-runtime,
+  no-background-popup requirements tracked by #207; implementation authorized
+  by the `sol/currency-stack` owner after the reproducible CI artifact passed.
+- **Verification:** **VERIFIED 2026-09-03** at the launch/load gate:
+  `records/launch-verify-20260903-135633.md` reached the main menu in 40.2
+  seconds and loaded the save in 49.6 seconds. SKSE reports the plugin loaded
+  correctly; `DynamicDialogueReplacer.log` confirms hooks installed, plugin
+  load, and initialization of the Exchange Currency replacement file with one
+  script. A real replaced-dialogue exercise remains a gameplay acceptance gate.
+
 ## 2026-09-03 00:05 - Ensrick Wolf Territorial Patch installed: wolves warn at 2500 and attack at 640 instead of 1500 (#42)
 
 - **What:** New generated plugin `Ensrick Wolf Territorial Patch.esp` (ESL-flagged,

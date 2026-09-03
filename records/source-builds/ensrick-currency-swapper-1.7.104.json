@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "name": "Currency Swapper 2.2.0 - Skyrim 1.7.104 native overlay",
+  "repository": "https://github.com/Ensrick/CurrencySwapper",
+  "upstream": "https://github.com/SeaSparrowOG/CurrencySwapper",
+  "baseCommit": "83ef23d6ba78690e8144b80b4e7ebe499a467def",
+  "sourceCommit": "2222f85494f0e214a916aaa50e3406d9b63e2e36",
+  "mergeCommit": "7c60745046bdd90a0cd72b4d213becc1d0e4f4d3",
+  "branch": "port/1.7.104-no-modal",
+  "pullRequest": "https://github.com/Ensrick/CurrencySwapper/pull/1",
+  "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/CurrencySwapper-1.7.104",
+  "license": "Apache-2.0; the linked CommonLibSSE-NG source retains GPL-3.0-or-later with its modding exception",
+  "runtime": "Skyrim 1.7.104 / SKSE 2.3.1 / Address Library format 5",
+  "dependencies": {
+    "commonLibRepository": "https://github.com/Ensrick/CommonLibSSE-NG",
+    "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+    "openVrCommit": "60eb187801956ad277f1cae6680e3a410ee0873b",
+    "bethesdaCMakeModulesCommit": "72fb6a3d67ef8974850aea7805030caaac4a807f",
+    "skseCMakeModulesCommit": "e559058ed5908224fb12ea9b64d3206e636228ec",
+    "vcpkgBaseline": "ee12231b20c95013c6638d845d04c91559a1d1ff"
+  },
+  "ci": {
+    "runId": 33789590452,
+    "url": "https://github.com/Ensrick/CurrencySwapper/actions/runs/33789590452",
+    "result": "success",
+    "artifactId": 9907335856,
+    "artifactName": "CurrencySwapper-2.2.0-Skyrim-1.7.104-overlay",
+    "artifactDigest": "sha256:272e80f24a8f2b76c9f9d9b447344c22b2731b8dc3f1508ab7f9aa64ad474198",
+    "downloadedPath": "C:/Users/danjo/source/repos/skyrim-tools-builds/ci/CurrencySwapper-2.2.0-Skyrim-1.7.104-run-33789590452"
+  },
+  "files": [
+    {
+      "path": "SKSE/Plugins/CurrencySwapper.dll",
+      "bytes": 998912,
+      "sha256": "8A7D4E67FB2E12B4CD6FBCDEDEE4F070D7695CE46C056D8374B9FD9337873017"
+    },
+    {
+      "path": "SKSE/Plugins/CurrencySwapper.pdb",
+      "bytes": 26267648,
+      "sha256": "D659DF992263FF6894C11A99158E8F51D965AC810718AE6D6DDE4505342CD99C"
+    },
+    {
+      "path": "ENSRICK-PORT.md",
+      "bytes": 2978,
+      "sha256": "DFE84A883BBBA774A697252D8FFB1D0DEF2C9B62A695D4D6B97860CAA2EDE344"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11558,
+      "sha256": "1EB85FC97224598DAD1852B5D6483BBCF0AA8608790DCC657A5A2A761AE9C8C6"
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "bytes": 100,
+      "sha256": "A86907827A85ED3255DA0D1740D752CF973DD17DF70AE2C3847E60D63CE7DFC8"
+    }
+  ],
+  "featureDefaultsDiff": {
+    "changed": {},
+    "onlyInBuilt": {},
+    "onlyInUpstream": {},
+    "note": "DLL/PDB-only overlay; it ships no configuration defaults. The untouched Nexus 2.2.0 install remains authoritative for CurrencySwapper.ini, scripts, source scripts, and Custom Console data."
+  },
+  "changes": [
+    "Ported the released 2.2.0 source to the pinned format-5 CommonLibSSE-NG maintenance branch.",
+    "Restricted both SKSE metadata and Query/Load runtime gates to Skyrim 1.7.104 while preserving the format-5 declaration.",
+    "Migrated removed CommonLib menu, setting, and merchant-inventory APIs and null-checked the merchant inventory list.",
+    "Added an offline verifier for all 18 trampoline call sites and three callable relocation targets against the exact executable and address library.",
+    "Changed fatal CommonLib failures to log, flush, and terminate without a native message box; pre-hook initialization failures return false.",
+    "Made CI inspect exported SKSE metadata without executing the plugin in the PowerShell host process."
+  ],
+  "verification": {
+    "build": "GitHub Actions Windows 2022 release build and strict artifact inspection passed in run 33789590452.",
+    "skseMetadata": "PASS: plugin 2.2.0.0; versionIndependence=0; versionIndependenceEx=2; sole compatible runtime 1.7.104.0.",
+    "hookSites": "PASS against the installed SkyrimSE.exe 1.7.104 and versionlib-1-7-104-0.bin: format 5, all 18 E8 call sites, and all three callable targets.",
+    "noModal": "PASS: CI artifact contains no MessageBoxA, MessageBoxW, or report_and_fail symbol/string payload; COMMONLIBSSE_NO_MODAL_ERRORS is compiled through the plugin and pinned CommonLib static library.",
+    "gameplay": "PASS at the framework gate: records/launch-verify-20260903-135633.md reached the main menu in 40.2 seconds and loaded the save in 49.6 seconds. CurrencySwapper.log confirms all 18 hooks installed, three INI settings read, and serialization registered. Real barter, training, bounty, and exchange behavior remains an acceptance test."
+  },
+  "package": {
+    "type": "DLL/PDB overlay plus license, port record, and checksums",
+    "baseMod": "Currency Swapper 2.2.0, Nexus mod 127686 file 749947",
+    "instruction": "Install the official package unchanged, then enable this overlay above it."
+  },
+  "installation": {
+    "profile": "Default",
+    "mo2Mod": "Currency Swapper 1.7.104 Native Overlay - Ensrick",
+    "state": "enabled-launch-verified",
+    "priorityAtInstall": 277,
+    "installedUtc": "2026-09-03T18:52:26Z",
+    "transaction": "20260903T185226265Z-3a1e007e2cf7",
+    "installedDllSha256": "8A7D4E67FB2E12B4CD6FBCDEDEE4F070D7695CE46C056D8374B9FD9337873017",
+    "launchVerification": "records/launch-verify-20260903-135633.md",
+    "winner": "The overlay is priority 277 and the vendor Currency Swapper is priority 272; the overlay is the effective SKSE/Plugins/CurrencySwapper.dll provider while the vendor remains authoritative for CurrencySwapper.ini and scripts."
+  }
+}

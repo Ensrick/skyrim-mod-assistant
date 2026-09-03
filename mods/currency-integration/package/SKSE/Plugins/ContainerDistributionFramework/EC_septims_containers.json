@@ -1,0 +1,37 @@
+{
+  "rules": [
+    {
+      "friendlyName": "Gold001 to weighted copper, preserving quest and storage backends",
+      "conditions": {
+        "!locationKeywords": [
+          "IsUlfMoney",
+          "IsDramMoney",
+          "IsDrakrMoney",
+          "IsMedeMoney"
+        ],
+        "!locations": ["0x016E2A|Dragonborn.esm"],
+        "!references": [
+          "0x04FDAF|Skyrim.esm",
+          "0x19AFF|Dragonborn.esm",
+          "0x3CF1B|Dragonborn.esm",
+          "0x1A3EA|Dragonborn.esm",
+          "0x1A3E9|Dragonborn.esm",
+          "0x1A3BB|Dragonborn.esm",
+          "0x1A3E8|Dragonborn.esm",
+          "0x1A3BA|Dragonborn.esm",
+          "0x3EF10|Skyrim.esm",
+          "0x108D38|Skyrim.esm",
+          "0x64924|Skyrim.esm",
+          "0x39CF1|Skyrim.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0x00000F|Skyrim.esm",
+          "add": ["0x000B6D|exchangeCurrency_enhanced.esp"]
+        }
+      ]
+    }
+  ]
+}

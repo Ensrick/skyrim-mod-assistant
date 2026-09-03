@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "NoCounter/SL99Exchanger.esp",
+      "destination": "SL99Exchanger.esp"
+    },
+    {
+      "source": "LooseResource",
+      "destination": "."
+    }
+  ]
+}

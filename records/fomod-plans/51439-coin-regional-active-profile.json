@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "00 Core",
+      "destination": "."
+    },
+    {
+      "source": "02 Patches/BeyondSkyrim",
+      "destination": "."
+    },
+    {
+      "source": "02 Patches/Cause",
+      "destination": "."
+    }
+  ]
+}

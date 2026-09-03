@@ -1,0 +1,97 @@
+Ensrick Regional Currency Integration
+
+The Ensrick-authored generator/build/validation source, runtime-default
+Papyrus helper, independently authored Ma'dran loader shim, original
+configuration source, and the original portions of the fourteen newly created
+plugin records are released under the MIT License, subject to the derived-file
+exceptions below. The generated ESP is a mixed-terms compatibility patch: its
+thirty-one override records necessarily retain record data from Bethesda and
+the required vendor plugins. Those vendor-origin portions are not relicensed
+under MIT and remain governed by their respective owners' terms. The ESP as a
+whole therefore must not be represented or redistributed as an all-MIT work;
+redistribution must satisfy every applicable upstream term, including ECE's
+credit, no-sale, and no-Donation-Points conditions.
+
+This archive does not bundle any vendor mesh, texture, audio, plugin file, or
+unmodified script binary/source file. Required mods must be acquired separately
+from their authors:
+
+- C.O.I.N. - Coins of Interesting Natures
+  https://www.nexusmods.com/skyrimspecialedition/mods/51439
+- M.I.N.T. - More Interesting New Tender
+  https://www.nexusmods.com/skyrimspecialedition/mods/178940
+- Exchange Currency Enhanced
+  https://www.nexusmods.com/skyrimspecialedition/mods/141884
+- WiZkiD Ancient Imperial Septims
+  https://www.nexusmods.com/skyrimspecialedition/mods/37545
+
+The two narrowly corrected M.I.N.T. configuration files,
+MorrowindUsesDrams_SWAP.ini and MorrowindUsesDrams.json, remain subject to the
+M.I.N.T. author's applicable Nexus modification and upload terms. They are
+included with attribution and are not relicensed by this notice. The BOS file
+repairs four invalid bare chance fields. The CDF file fixes the inverted Fort
+Frostmoth condition, preserves explicit ancient-site precedence, adds plugin
+guards, and confines the vendor rule to vendors.
+
+The same-path ECE English translation, Inventory Injector
+`exchangeCurrency_enhanced.json`, `exchangeCurrency_enhanced_drams_KID.ini`,
+`EC_septims_containers.json`, and `EC_medes.json` are narrow interoperability
+corrections. The
+translation preserves `$Gold` as "Septims" and supplies the missing `$Currency`
+label. The JSON preserves ECE's rules and targets while replacing its
+hard-coded French `Métal dwemer` display text with I4's existing
+language-neutral `$DwarvenScrap` token. The CDF override retains ECE's rule,
+adds reviewed quest/storage exclusions, and excludes the Solstheim root so
+M.I.N.T.'s late Dram pass occurs exactly once after specific routes. The Mede
+rule corrects a released wrong-master reference from
+`exchangeCurrency_patch_COIN.esp` to the currency's actual `Update.esm`
+owner and adds dependency guards. These files remain subject to the ECE
+author's applicable Nexus modification/upload terms, are included with
+attribution, and are not relicensed by this notice. No ECE mesh, texture,
+audio, plugin, or unmodified script binary/source is bundled.
+
+The KID override preserves every released assignment except the single
+Gyldenhul Barrow `IsDrakrMoney` line. That assignment contradicted C.O.I.N.'s
+explicit Gyldenhul exclusion and M.I.N.T.'s Deathbrand-treasure exclusions,
+and caused the barrow's placed piles and purses to diverge from its Septim
+loose-coin exception.
+
+The same-path C.O.I.N. `C.O.I.N.json` is a narrow interoperability correction
+to version 3.5.3. It preserves every released rule and changes only the malformed
+`01DE5012|Update.esm` removal in `Randomize Leveled Drakr` to the valid
+`0xDE5012|Update.esm` form reference. The JSON remains subject to the C.O.I.N.
+author's applicable Nexus modification/upload terms, is included with
+attribution, and is not relicensed by this notice. No C.O.I.N. mesh, texture,
+audio, plugin, or script binary/source is bundled.
+
+`Ensrick_OhzerCurrencyScript.pex` and its repository source are an
+interoperability derivative of ECE's `EC_oshkasScript` transaction flow. They
+extend ECE's `EC_altCurrencyFunctions` class and supply the transaction handler
+missing for ECE's Ohzer record. These two files are expressly excluded from the
+MIT grant and remain governed by ECE's applicable Nexus modification/upload
+terms: credit is required, sale and Donation Points are not permitted, and ECE
+remains a required separate download. No ECE PEX or PSC is copied into the
+archive.
+
+The plugin migrates M.I.N.T.'s Ma'dran alias from the obsolete
+`DES_MadranSwapper` class name to M.I.N.T. 1.0.6's shipped
+`DES_CurrencyFramework_BarterExclusion` class and current property names. It
+does not bundle either M.I.N.T. PEX or PSC; M.I.N.T. remains required and is
+credited above.
+
+The ESP contains fourteen newly authored records (ten bank recipes, two Drakr
+adapter leveled lists, and two runtime quests) and thirty-one compatibility
+overrides (fourteen semantic repairs plus seventeen disabled vendor recipes).
+MIT covers Ensrick's original implementation and original record content only;
+it does not sublicense the underlying data copied into those override records
+from Skyrim, C.O.I.N., M.I.N.T., ECE, or their patches. All named dependencies
+remain mandatory separate downloads.
+
+`DES_MadranSwapper.pex` is a small, independently authored class-loader
+compatibility shim. It retains ECE's stale class/property identifiers, extends
+M.I.N.T.'s current `DES_CurrencyFramework_BarterExclusion`, and defensively
+maps the three legacy bindings onto the current inherited properties. It
+contains no copied vendor implementation and exists because the engine tries
+to resolve the obsolete class while reading ECE's released plugin even though
+the winning owned record uses the current class. M.I.N.T. remains required and
+credited above.

@@ -1,0 +1,8 @@
+# Distributable mod payloads are byte-pinned by manifest and source hashes.
+# Do not let core.autocrlf rewrite vendor-derived JSON/INI or package notices.
+/mods/currency-integration/package/** -text whitespace=cr-at-eol
+
+# These two source-hash-pinned, one-change vendor derivatives intentionally
+# preserve upstream trailing whitespace as well as line endings.
+/mods/currency-integration/package/SKSE/Plugins/ContainerDistributionFramework/C.O.I.N.json whitespace=-blank-at-eol,cr-at-eol
+/mods/currency-integration/package/SKSE/Plugins/InventoryInjector/exchangeCurrency_enhanced.json whitespace=-blank-at-eol,cr-at-eol

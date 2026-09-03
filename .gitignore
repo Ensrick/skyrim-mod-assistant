@@ -4,6 +4,7 @@
 *
 
 !/.gitignore
+!/.gitattributes
 !/LICENSE
 !/README.md
 !/CONTRIBUTING.md
@@ -34,6 +35,8 @@
 !/records/private-runtime-dependencies.json
 !/records/installed-mods.json
 !/records/overnight-audit-2026-08-23.jsonl
+!/records/launch-verify-20260903-135633.md
+!/records/launch-verify-20260903-165425.md
 !/records/sons-of-skyrim-2026-08-26.md
 !/records/skyking-signs-2026-08-29.md
 !/records/varinia-148853-2026-08-29.md

@@ -1,0 +1,720 @@
+{
+  "rules" : [
+    {
+      "friendlyName" : "Swap Septims to Drakr in Ancient Nord Ruins",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetNordicRuin"
+        ],
+        "!references" : [
+          //Volunruud Dead Drop
+          "0x4FDAF|Skyrim.esm",
+          //Gyldenhul Barrow
+          "0x1A3EA|Dragonborn.esm",
+          "0x1A3E9|Dragonborn.esm",
+          "0x1A3BB|Dragonborn.esm",
+          "0x1A3E8|Dragonborn.esm",
+          "0x1A3BA|Dragonborn.esm"
+        ],
+        "!containers" : [
+          "0x0EBAD8|Skyrim.esm", //Desecrated Imperial
+          "0x0EBE06|Skyrim.esm", //Desecrated Stormcloak
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5016|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Drakr in the Forsaken Cave",
+      "conditions" : {
+        "locations" : [
+          "0x1917B|Skyrim.esm"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5016|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Drakr in Halldir's Cairn",
+      "conditions" : {
+        "locations" : [
+          "0x19192|Skyrim.esm"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5016|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Randomize Leveled Drakr",
+      "conditions" : {
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xDE5012|Update.esm",
+          "add" : [
+            "0xDE5016|Update.esm"       
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Nchuarks in Dwarven Ruins",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetDwarvenRuin"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5022|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Nchuarks in Blackreach",
+      "conditions" : {
+        "locations" : [
+          "0x18EE8|Skyrim.esm"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5022|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Mallari in Ancient Falmer Ruins",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetFalmerRuin"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5020|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Mallari in the Forgotten Vale",
+      "conditions" : {
+        "locations" : [
+          "0xA87C|Dawnguard.esm", //Forgotten Vale
+          "0x1379F|Dawnguard.esm", //Inner Sanctum
+          "0x162AC|Dawnguard.esm", //Darkfall Passage
+          "0x162B0|Dawnguard.esm", //Darkfall Grotto
+          "0x162B2|Dawnguard.esm", //Sharpslope Cave
+          "0x162B4|Dawnguard.esm" // Forgotten Vale Cave
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5020|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Malas in Ayleid Ruins",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetAyleidRuin"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5019|Update.esm"
+          ]
+        }
+      ]
+    },
+        {
+      "friendlyName" : "Sanatize Malas from Drakr",
+      "conditions" : {
+        "containers" : [
+          //Prevents drakr from spawning in AE Ayleid containers
+          "0x3159|Update.esm",
+          "0x315A|Update.esm",
+          "0x315B|Update.esm",
+          "0x315C|Update.esm",
+          "0x1CC50B|ccbgssse067-daedinv.esm",
+          "0x1CC50C|ccbgssse067-daedinv.esm",
+          "0x227FBC|ccbgssse067-daedinv.esm",
+          "0x227FC0|ccbgssse067-daedinv.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xDE5012|Update.esm",
+          "add" : [
+            "0xDE5019|Update.esm"
+          ]
+        },
+        {
+          "remove" : "0xDE5013|Update.esm",
+          "add" : [
+            "0xDE5019|Update.esm"
+          ]
+        },
+        {
+          "remove" : "0xDE5014|Update.esm",
+          "add" : [
+            "0xDE5019|Update.esm"
+          ]
+        },
+        {
+          "remove" : "0xDE5015|Update.esm",
+          "add" : [
+            "0xDE5019|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Gibbers in Root Caves",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetRootCave"
+        ],
+        "!containers" : [
+          //Normal Chests and Satchels
+          "0x00000E|Skyrim.esm",
+          "0x020654|Skyrim.esm",
+          "0x02065F|Skyrim.esm",
+          "0x020662|Skyrim.esm",
+          "0x020665|Skyrim.esm",
+          "0x020668|Skyrim.esm",
+          "0x021363|Skyrim.esm",
+          "0x03AC21|Skyrim.esm",
+          "0x042745|Skyrim.esm",
+          "0x042746|Skyrim.esm",
+          "0x042747|Skyrim.esm",
+          "0x042748|Skyrim.esm",
+          "0x042749|Skyrim.esm",
+          "0x05418E|Skyrim.esm",
+          "0x0774C6|Skyrim.esm",
+          "0x0774C8|Skyrim.esm",
+          "0x08A3B4|Skyrim.esm",
+          "0x08A3B6|Skyrim.esm",
+          "0x08B1E8|Skyrim.esm",
+          "0x08B1E9|Skyrim.esm",
+          "0x08EA5E|Skyrim.esm",
+          "0x0ACD6F|Skyrim.esm",
+          "0x0B7879|Skyrim.esm",
+          "0x0D1259|Skyrim.esm",
+          "0x0D89C6|Skyrim.esm",
+          "0x0EF052|Skyrim.esm",
+          "0x0F1F66|Skyrim.esm",
+          "0x0F4A01|Skyrim.esm",
+          "0x0FCB25|Skyrim.esm",
+          "0x10AAD2|Skyrim.esm",
+          "0x10E05E|Skyrim.esm",
+          "0x10EE0B|Skyrim.esm",
+          "0x10EE0C|Skyrim.esm",
+          "0x00D056|Dawnguard.esm",
+          "0x00DCE7|Dawnguard.esm",
+          "0x0162CB|Dawnguard.esm",
+          "0x01A3B9|Dawnguard.esm",
+          "0x025E48|Dragonborn.esm",
+          "0x02AABE|Dragonborn.esm",
+          "0x02AAC0|Dragonborn.esm",
+          "0x02C455|Dragonborn.esm",
+          "0x02C458|Dragonborn.esm",
+          "0x02C45E|Dragonborn.esm",
+          "0x02C461|Dragonborn.esm",
+          "0x02C462|Dragonborn.esm",
+          "0x02C463|Dragonborn.esm",
+          "0x02C464|Dragonborn.esm",
+          "0x034B39|Dragonborn.esm",
+          "0x035E25|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true,
+        "randomAdd": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5017|Update.esm",
+            "0xDE5018|Update.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Swap Septims to Gibbers in Hollowed Stumps",
+      "conditions" : {
+        "containers" : [
+          "0x3079|Update.esm" //Hollowed Stump
+        ],
+        "bypassUnsafeContainers": true,
+        "randomAdd": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0xDE5017|Update.esm",
+            "0xDE5018|Update.esm"
+          ]
+        }
+      ]
+    }
+  ]
+}

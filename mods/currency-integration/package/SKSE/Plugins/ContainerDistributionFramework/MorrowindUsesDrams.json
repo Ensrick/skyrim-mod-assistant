@@ -1,0 +1,59 @@
+{
+  "rules": [
+    {
+      "friendlyName": "Swap Septims to Drams/Septims on Solstheim",
+      "conditions": {
+        "plugins": ["MorrowindUsesDrams.esp"],
+        "locations": ["0x016E2A|Dragonborn.esm"],
+        "!locationKeywords": ["LocSetNordicRuin", "LocSetDwarvenRuin"],
+        "!locations": ["0x014293|Dragonborn.esm"],
+        "!references": [
+          "0x019AFF|Dragonborn.esm",
+          "0x03CF1B|Dragonborn.esm",
+          "0x01A3EA|Dragonborn.esm",
+          "0x01A3E9|Dragonborn.esm",
+          "0x01A3BB|Dragonborn.esm",
+          "0x01A3E8|Dragonborn.esm",
+          "0x01A3BA|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0x00000F|Skyrim.esm",
+          "add": ["0x00006B|MorrowindUsesDrams.esp"]
+        }
+      ]
+    },
+    {
+      "friendlyName": "Sanitize Drams from Fort Frostmoth",
+      "conditions": {
+        "plugins": ["MorrowindUsesDrams.esp"],
+        "locations": ["0x014293|Dragonborn.esm"],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0x00006B|MorrowindUsesDrams.esp",
+          "add": ["0x00000F|Skyrim.esm"]
+        }
+      ]
+    },
+    {
+      "friendlyName": "Add Drams to Solstheim Vendors",
+      "conditions": {
+        "plugins": ["MorrowindUsesDrams.esp"],
+        "locations": ["0x016E2A|Dragonborn.esm"],
+        "bypassUnsafeContainers": true,
+        "allowVendors": true,
+        "onlyVendors": true
+      },
+      "changes": [
+        {
+          "remove": "0x00000F|Skyrim.esm",
+          "add": ["0x00006C|MorrowindUsesDrams.esp"]
+        }
+      ]
+    }
+  ]
+}

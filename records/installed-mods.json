@@ -58,16 +58,16 @@
     {
       "modId": 32444,
       "modName": "Address Library",
-      "nexusName": "Address Library All in One (1.7.99.0) v12",
-      "version": "12",
-      "fileId": 792404,
-      "fileName": "Address Library All in One (1.7.99.0) v12 32444 12 2026-08-20T16-14Z 4t2yDcMnG.zip",
-      "sizeMb": 5.69,
-      "sha256": "628434e6ecbf18ffeffd1d58106b3d8ea25e6991e4f18130824025c93dc64076",
+      "nexusName": "Address Library All in One (1.7.104.0) v13",
+      "version": "13",
+      "fileId": 795954,
+      "fileName": "Address Library All in One (1.7.104.0) v13 32444 13 2026-08-27T15-29Z Ae46W7Fw2.zip",
+      "sizeMb": 6.33,
+      "sha256": "be0c7c07fb63fd1c1403690d4797c7a8fdf8799118acceb605f285d7b0ee055f",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-08-23T03:54:30Z",
-      "transaction": "20260823T035430739Z-1f3efe18d5fe"
+      "installedUtc": "2026-09-03T16:54:10Z",
+      "transaction": "20260903T165410242Z-05fa5a735d7f"
     },
     {
       "modId": 121553,
@@ -520,6 +520,25 @@
       "note": "PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep)"
     },
     {
+      "modId": 51439,
+      "modName": "C.O.I.N. - Coins of Interesting Natures",
+      "nexusName": "C.O.I.N.",
+      "version": "3.5.3",
+      "fileId": 765231,
+      "fileName": "C.O.I.N. 51439 3.5.3 2026-06-18T16-30Z 587RqTum8.zip",
+      "sizeMb": 61.48,
+      "sha256": "604936bdb64d5e921bc5b056442b6d23f8f209ea6d4a5a37f0d29a9687647313",
+      "plugins": [
+        "C.O.I.N. - Beyond Skyrim Patch.esp",
+        "C.O.I.N. - The Cause Patch.esp",
+        "C.O.I.N.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:21:05Z",
+      "transaction": "20260903T172104515Z-36c67bccddb7",
+      "fomodPlan": "records\\fomod-plans\\51439-coin-regional-active-profile.json"
+    },
+    {
       "modId": 667,
       "modName": "Campfire",
       "nexusName": "Campfire 1.12.1SEVR Release",
@@ -571,6 +590,30 @@
       "installedUtc": "2026-08-30T16:14:47Z",
       "transaction": "20260830T161446997Z-049461a1c1ed",
       "note": "Seally25's fix for the Creation Club Bow of Shadows leaving a lingering invisibility state, which makes Inigo and other AI-driven followers behave as though the player is invisible when they are not. Linked from Inigo's own page. Installed because the user owns all 74 CC items so ccbgssse038-bowofshadows.esl is active and the defect is live. One MGEF override, zero new, zero deleted, already ESL-flagged, plus one replacement script ccbgssse038_invisibilityscript.pex. The optional 'Distribute Bow of Shadows Perk to Everyone' file was NOT taken."
+    },
+    {
+      "modId": 0,
+      "modName": "CDF 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for Container Distribution Framework 3.1.0",
+      "version": "3.1.0.0+5f2ddbb",
+      "fileId": 0,
+      "fileName": "GitHub Actions run 33783954157 artifact CDF",
+      "sizeMb": 25.78,
+      "sha256": "725295a4d0afe3f58de9e04d603adb54a0943398a8324b497ceafc69cd8f8542",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T21:51:13Z",
+      "transaction": "20260903T215113092Z-dcb18589028d",
+      "note": "Binary/debug overlay plus Apache-2.0 license and exact source notice above the untouched Nexus 120152 file 754532. Ported CDF 3.1.0 to Address Library format 5 for Skyrim 1.7.104, made native failures non-modal, fixed the released onlyVendors no-op, migrated current CommonLib APIs, and added warning-as-error CI plus regression coverage. Original binary install transaction 20260903T173349678Z-11a8d9fa5141; non-runtime license/source packaging completed 2026-09-03T20:47:14Z; final four-file controller replacement 20260903T215113092Z-dcb18589028d. CI is green; plugin metadata and no-popup static gates pass. Runtime vendor-only behavior remains an acceptance gate. See records/source-builds/ensrick-cdf-1.7.104.json and #207.",
+      "distribution": "distributable",
+      "distributionBasis": "Apache-2.0 source derivative. Ship the license/NOTICE obligations and corresponding public source; vendor configs remain in the separately downloaded Nexus mod.",
+      "recipe": {
+        "kind": "github-actions",
+        "record": "records/source-builds/ensrick-cdf-1.7.104.json",
+        "repository": "https://github.com/Ensrick/DynamicContainerInventoryFramework",
+        "commit": "5f2ddbb4abd27c00d2c4d8aff56bd95dcc61ffd0",
+        "runId": 33783954157
+      }
     },
     {
       "modId": 162526,
@@ -702,6 +745,20 @@
       "note": "Official 1.6.1 remains installed. Public source rebuild 1.6.1.104 (Ensrick/ConsoleUtilSSE commit ad5e6e5, CI run 33208154245) is enabled above it as DLL-only MO2 priority-110 overlay; CI DLL SHA-256 7775AA6E70C7608317ADF28D27B09673EA9C8DE98902CE16E08CF5986958722D; overlay transaction 20260828T204303046Z-84343993f71e. Post-install audit passed; runtime VM type-ID and Proteus selected-reference verification pending."
     },
     {
+      "modId": 120152,
+      "modName": "Container Distribution Framework",
+      "nexusName": "Container Distribution Framework",
+      "version": "3.1.0",
+      "fileId": 754532,
+      "fileName": "Container Distribution Framework-120152-3-1-0-1779298156.7z",
+      "sizeMb": 4.1,
+      "sha256": "599e6d94096c16ed83c0483becbb5854ac6b494dfd57597546b40c245647238f",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:21:33Z",
+      "transaction": "20260903T172133522Z-4a247c1b5d28"
+    },
+    {
       "modId": 52276,
       "modName": "Crafting Recipe Distributor",
       "nexusName": "Crafting Recipe Distributor",
@@ -823,6 +880,44 @@
       "note": "kept CS feature module; verified ships files core 1.8.3 lacks | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 127686,
+      "modName": "Currency Swapper",
+      "nexusName": "Currency Swapper",
+      "version": "2.2.0",
+      "fileId": 749947,
+      "fileName": "Currency Swapper-127686-2-2-0-1778256858.7z",
+      "sizeMb": 3.59,
+      "sha256": "4b7fc7c220db45e0e1df2e7dc70953331b6cad48a85b789f2da57cc2d8d0d102",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:21:41Z",
+      "transaction": "20260903T172141630Z-c2bc4830814c"
+    },
+    {
+      "modId": 0,
+      "modName": "Currency Swapper 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for Currency Swapper 2.2.0",
+      "version": "2.2.0.0+2222f85",
+      "fileId": 0,
+      "fileName": "GitHub Actions run 33789590452 artifact CurrencySwapper-2.2.0-Skyrim-1.7.104-overlay",
+      "sizeMb": 26.02,
+      "sha256": "8a7d4e67fb2e12b4cd6fbcdedee4f070d7695ce46c056d8374b9fd9337873017",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T18:52:26Z",
+      "transaction": "20260903T185226265Z-3a1e007e2cf7",
+      "note": "DLL/PDB-only overlay above the untouched Nexus 127686 file 749947. Ports Currency Swapper 2.2.0 to Address Library format 5 and exact Skyrim 1.7.104 admission, migrates current CommonLib APIs, null-checks the merchant inventory list, preflights all 18 trampoline call sites plus three callable targets, and makes fatal failures non-modal. GitHub CI, exact SKSE metadata, static no-MessageBox inspection, the offline 1.7.104 hook-site verifier, and the 2026-09-03 main-menu/save-load gate pass. The vendor INI/scripts remain authoritative and unchanged. Real barter/training/bounty exchange behavior remains a gameplay acceptance gate. See records/source-builds/ensrick-currency-swapper-1.7.104.json, records/launch-verify-20260903-135633.md, and #207.",
+      "distribution": "distributable",
+      "distributionBasis": "Apache-2.0 derivative. Ship corresponding source, LICENSE, applicable third-party notices, and CommonLib's license/exception materials; vendor INI/scripts/content remain in the separately downloaded Nexus mod.",
+      "recipe": {
+        "kind": "github-actions",
+        "record": "records/source-builds/ensrick-currency-swapper-1.7.104.json",
+        "repository": "https://github.com/Ensrick/CurrencySwapper",
+        "commit": "2222f85494f0e214a916aaa50e3406d9b63e2e36",
+        "runId": 33789590452
+      }
+    },
+    {
       "modId": 276,
       "modName": "Cutting Room Floor",
       "nexusName": "Cutting Room Floor",
@@ -854,6 +949,30 @@
       "enabled": true,
       "installedUtc": "2026-09-02T18:04:43Z",
       "transaction": "20260902T180442879Z-8056fb24aa73"
+    },
+    {
+      "modId": 0,
+      "modName": "DDR 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for Dynamic Dialogue Replacer 1.4.1",
+      "version": "1.4.1.0+0b78325",
+      "fileId": 0,
+      "fileName": "GitHub Actions run 33786541714 artifact DynamicDialogueReplacer-1.4.1-Skyrim-1.7.104-overlay",
+      "sizeMb": 27.32,
+      "sha256": "8167ce16d26cc6245d234e4b4cdf19f03f5ca120123ad06e051730f7271ee48c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T18:04:50Z",
+      "transaction": "20260903T180450805Z-4ba902c6aa7f",
+      "note": "DLL/PDB-only overlay above the untouched Nexus 135618 file 748293. Ports DDR 1.4.1 to Address Library format 5 and exact Skyrim 1.7.104 admission, preflights all four call sites plus callable/vtable targets, checks every Detours transaction, and makes fatal failures non-modal. GitHub CI, exact SKSE metadata, static no-MessageBox inspection, the offline 1.7.104 hook-site verifier, and the 2026-09-03 main-menu/save-load gate pass. Actual replaced-dialogue behavior remains a gameplay acceptance gate. See records/source-builds/ensrick-ddr-1.7.104.json, records/launch-verify-20260903-135633.md, and #207.",
+      "distribution": "distributable",
+      "distributionBasis": "GPL-3.0 derivative with upstream EXCEPTIONS.md linking/modding exception. Ship corresponding source, COPYING, EXCEPTIONS.md, and applicable third-party notices; vendor scripts/content remain in the separately downloaded Nexus mod.",
+      "recipe": {
+        "kind": "github-actions",
+        "record": "records/source-builds/ensrick-ddr-1.7.104.json",
+        "repository": "https://github.com/Ensrick/Dynamic-Dialogue-Replacer",
+        "commit": "0b78325e0bb271af156d51c95fb159cc2f494ad3",
+        "runId": 33786541714
+      }
     },
     {
       "modId": 59581,
@@ -919,6 +1038,20 @@
       "enabled": true,
       "installedUtc": "2026-08-30T15:28:49Z",
       "transaction": "20260830T152849272Z-0858430c6b1c"
+    },
+    {
+      "modId": 135618,
+      "modName": "Dynamic Dialogue Replacer",
+      "nexusName": "Dynamic Dialogue Replacer",
+      "version": "1.4.1",
+      "fileId": 748293,
+      "fileName": "Dynamic Dialogue Replacer-135618-1-4-1-1777817846.zip",
+      "sizeMb": 7.71,
+      "sha256": "4ac81e7b31006ffa2e21d1cd443a6e22bf51d8f73a3b2fe2cbf832df0017b600",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:21:52Z",
+      "transaction": "20260903T172151867Z-edc778444dbd"
     },
     {
       "modId": 42558,
@@ -1583,6 +1716,33 @@
         ],
         "recordedAt": "2026-09-02",
         "verification": "input and output hashes taken from the installed vendor mod and overlay on 2026-09-02; commands are the ones recorded in the note at generation time"
+      }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Regional Currency Integration",
+      "nexusName": "Ensrick-owned regional currency compatibility layer",
+      "version": "0.2.4",
+      "fileId": 0,
+      "fileName": "Ensrick-Regional-Currency-Integration-0.2.4.zip",
+      "sizeMb": 0.02,
+      "sha256": "df6991c75f05ceefff9f613735aa1ddf43e4ee03cb1fd2faaf1688125d0a176b",
+      "plugins": [
+        "Ensrick Currency Integration Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-03T21:51:05Z",
+      "transaction": "20260903T215105935Z-e5b6eed589b6",
+      "note": "Pack-owned compatibility layer for #207. Implements the user-approved stable 75/20/5 loose Septim split (values 1/25/100; expected value 10.75, +975% accepted), weighted physical modern and ancient tender, exact quest-exception/ancient/regional/default precedence, Bruma Mede/Mala, Dominion Sancar, Solstheim Dram/Drakr, and Apocrypha Ohzer routing, value-preserving copper conversion in ordinary containers, and twelve quest/storage backend exclusions. Gyldenhul consistently retains its authored Septim treasure: the one contradictory ECE IsDrakrMoney assignment is removed in a pinned same-path KID correction and regional Drakr BOS also excludes the location. The 45-record ESPFE repairs five inherited ECE altCoins bindings, direct Drakr type use, the M.I.N.T. Ma'dran alias, stale ECE VMAD properties, three regional purses, and the Drakr pile; it adds two runtime quests and ten one-way bank cash-out recipes while disabling all 17 coin-to-ingot arbitrage recipes. A deterministic independently-authored DES_MadranSwapper compatibility shim satisfies ECE's stale loader attachment without adding a second live handler. The exact ECE-bundled compact SL99Exchanger.esp winner (159056 bytes, SHA-256 C9342F1B...) is build/audit pinned because the separate full ESP is FormID-incompatible. Ohzer is active for the evidenced Apocrypha tree; Varken stays dormant pending an evidenced Dremora-region policy. Vendor folders remain separate and untouched. Deterministic source build and binary/record/link/SEQ/Spriggit audits pass; main menu and an existing save loaded with no currency-specific native/Papyrus/config errors. The targeted in-world transaction and new-land matrix remains open.",
+      "distribution": "distributable",
+      "distributionBasis": "Mixed-term 26-file package documented in package/NOTICE.txt. Ensrick source, helpers, original configs, and original portions of 14 new ESP records are MIT. Narrow same-path M.I.N.T., ECE and C.O.I.N. config corrections, the ECE-derived Ohzer helper, and vendor-origin data serialized into 31 ESP override records remain under applicable upstream terms and attribution; they are explicitly excluded from MIT. The mixed-terms ESP is not an all-MIT binary. Contains no WiZkiD meshes/textures and no complete vendor plugin, DLL, audio, or unmodified script payload.",
+      "recipe": {
+        "kind": "script",
+        "script": "mods/currency-integration/build.py",
+        "validation": "mods/currency-integration/validate.py",
+        "source": "mods/currency-integration/package",
+        "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
+        "verification": "2026-09-03 deterministic archive: 26 files, 21604 bytes, SHA-256 DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B. ESPFE SHA-256 C8010DEB9FAA2E9F01FE90AC023C7414C6F5EA65E8C01492B6238044DA2E6F06, 45 records, 9 exact masters, 397 links checked plus 13 PlayerRef engine intrinsics, 0 unresolved, 0 deletions, SEQ 09000800/09000803; two byte-identical generator and three-script Papyrus runs; Spriggit tree 3AF12510A792E4A3E387516BC545FC9600B1C9B681AC79F101DDB745AEA96E09. Installed package/live payloads are identical apart from MO2 meta.ini; records/launch-verify-20260903-165425.md passed post-restage at main menu 46.6s and existing-save load 57.1s. The loader examined 41 DLLs; 40 SKSE plugins loaded correctly, msdia140.dll was correctly ignored as a non-plugin dependency, and there were zero plugin refusals or currency-specific native, Papyrus, or configuration errors."
       }
     },
     {
@@ -2761,6 +2921,46 @@
       "note": "author-recommended; moon-aligned night shadows; CS SkySync auto-yields | PARKED 2026-08-25: pre-format-5 build pops at load; unpark when page ships 1.7.99 build (update_sweep) | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
     },
     {
+      "modId": 141884,
+      "modName": "Exchange Currency Enhanced",
+      "nexusName": "Exchange Currency Enhanced",
+      "version": "4.1.1",
+      "fileId": 758183,
+      "fileName": "Exchange Currency Enhanced-141884-4-1-1-1780222578.7z",
+      "sizeMb": 97.12,
+      "sha256": "01e1c2b543ae0364fb493735f440021f93b3514b388af4e4cf34653235cd76b6",
+      "plugins": [
+        "SL99Exchanger.esp",
+        "exchangeCurrency_dial_medes.esp",
+        "exchangeCurrency_dial_ulfrics.esp",
+        "exchangeCurrency_enhanced.esp",
+        "exchangeCurrency_patch_COIN.esp",
+        "exchangeCurrency_patch_MINT_dram.esp",
+        "exchangeCurrency_patch_MINT_ulfric.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:26:37Z",
+      "transaction": "20260903T172629746Z-857e52ea203d",
+      "fomodPlan": "records\\fomod-plans\\141884-ece-coin-mint-wizkid.json"
+    },
+    {
+      "modId": 491,
+      "modName": "Exchange Currency SE",
+      "nexusName": "Exchange Currency SE",
+      "version": "3.00",
+      "fileId": 15057,
+      "fileName": "Exchange Currency SE-491-3-01.7z",
+      "sizeMb": 5.27,
+      "sha256": "c1a3af35694f004a7a540344f1ca357078e21019efe9c2ec9daf3af184411ced",
+      "plugins": [
+        "SL99Exchanger.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:04:04Z",
+      "transaction": "20260903T170403784Z-a03d562c64cb",
+      "fomodPlan": "records\\fomod-plans\\491-exchange-currency-no-counter.json"
+    },
+    {
       "modId": 172417,
       "modName": "First Person FOV SKSE",
       "nexusName": "First Person FOV SKSE",
@@ -3176,6 +3376,22 @@
       "installedUtc": "2026-08-30T02:59:22Z",
       "transaction": "20260830T025922193Z-bff48d27fbae",
       "fomodPlan": "records/fomod-plans/29194-interesting-npcs-update-4.54.json"
+    },
+    {
+      "modId": 85702,
+      "modName": "Inventory Interface Information Injector",
+      "nexusName": "Inventory Interface Information Injector (SE)",
+      "version": "1.1.1",
+      "fileId": 796498,
+      "fileName": "Inventory Interface Information Injector (SE) 85702 1.1.1 2026-08-28T16-24Z JrECN23ds.7z",
+      "sizeMb": 3.48,
+      "sha256": "c10b8e40f9b4cdaf84b87bb906d707a4fb1cbf92d55ee0b1c851b277f0ed389f",
+      "plugins": [
+        "I4IconAddon.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:04:02Z",
+      "transaction": "20260903T170402402Z-da5dd27a71a7"
     },
     {
       "modId": 0,
@@ -3664,6 +3880,28 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\plans\\63588-lux-via-plugin-update.json"
     },
     {
+      "modId": 178940,
+      "modName": "M.I.N.T. - More Interesting New Tender",
+      "nexusName": "M.I.N.T.",
+      "version": "1.0.6",
+      "fileId": 756598,
+      "fileName": "M.I.N.T.-178940-1-0-6-1779843603.zip",
+      "sizeMb": 57.57,
+      "sha256": "2f1bf6b64d3e3660d3ded1c87e2ade88a4a4fa333651e44d7411d12f7b85491d",
+      "plugins": [
+        "DominionUsesSancar.esp",
+        "M.I.N.T.esp",
+        "MorrowindUsesDrams - No Office.esp",
+        "MorrowindUsesDrams.esp",
+        "WindhelmUsesUlfrics - No Stall.esp",
+        "WindhelmUsesUlfrics.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:21:13Z",
+      "transaction": "20260903T172111727Z-c57045cbd542",
+      "fomodPlan": "records\\fomod-plans\\178940-mint-active-profile.json"
+    },
+    {
       "modId": 53000,
       "modName": "MCM Helper",
       "nexusName": "MCM Helper",
@@ -3969,6 +4207,21 @@
       "enabled": true,
       "installedUtc": "2026-08-30T02:56:28Z",
       "transaction": "20260830T025628511Z-06240b44d2f6"
+    },
+    {
+      "modId": 67925,
+      "modName": "Notification Filter",
+      "nexusName": "Notification Filter for AE 1.7.104",
+      "version": "1.3.0",
+      "fileId": 797725,
+      "fileName": "Notification Filter for AE 1.7.104 67925 1.3.0 2026-08-30T19-05Z 587RqT9W2.zip",
+      "sizeMb": 0.33,
+      "sha256": "9b2bc8463e3f14fbcbaac67a8a400ebc9e20205babee1f0f4133ac982051c6b2",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:04:01Z",
+      "transaction": "20260903T170401536Z-774b8e744e13",
+      "fomodPlan": "records\\fomod-plans\\67925-notification-filter-1.7.104.json"
     },
     {
       "modId": 62271,
@@ -6666,6 +6919,20 @@
       "enabled": true,
       "installedUtc": "2026-08-30T16:13:07Z",
       "transaction": "20260830T161307671Z-ead1abf659a3"
+    },
+    {
+      "modId": 37545,
+      "modName": "WiZkiD Ancient Imperial Septims",
+      "nexusName": "Ancient Imperial Septims -Classic Gold-",
+      "version": "1.3",
+      "fileId": 447129,
+      "fileName": "Ancient Imperial Septims -Classic Gold--37545-1-3-1701267058.7z",
+      "sizeMb": 10.25,
+      "sha256": "6cb6335a2f9d3e42719e3a6874d2b94fdc81f543c9607d9156b60720935da5dc",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T17:04:05Z",
+      "transaction": "20260903T170405205Z-f2be94cd26b0"
     },
     {
       "modId": 45565,

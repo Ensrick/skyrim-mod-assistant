@@ -1,0 +1,18 @@
+{
+  "rules": [
+    {
+      "friendlyName": "Septims to Medes in Cyrodiil",
+      "conditions": {
+        "plugins": ["exchangeCurrency_enhanced.esp", "exchangeCurrency_patch_COIN.esp"],
+        "locationKeywords": ["IsMedeMoney"],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0x00000F|Skyrim.esm",
+          "add": ["0xDE5021|Update.esm"]
+        }
+      ]
+    }
+  ]
+}

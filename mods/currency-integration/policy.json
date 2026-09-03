@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "outputPlugin": "Ensrick Currency Integration Patch.esp",
+  "exchangeWorkbenchProvider": {
+    "plugin": "SL99Exchanger.esp",
+    "formKey": "000801:SL99Exchanger.esp",
+    "editorId": "SL99CraftingExchangeBank",
+    "sha256": "C9342F1B669A3AE1F4A51E0CA8FBD9CDA3AEC915D36DC4CC9A0798B09E5B2446",
+    "bytes": 159056,
+    "records": 470,
+    "requiresSmallFlag": true
+  },
+  "quest": {
+    "formId": "000800",
+    "editorId": "Ensrick_CurrencyRuntimeDefaultsQuest",
+    "aliasId": 0,
+    "aliasName": "PlayerRef",
+    "script": "Ensrick_CurrencyRuntimeDefaultsAlias"
+  },
+  "overrides": {
+    "dragonbornGoldPiles": [
+      { "formKey": "018486:Dragonborn.esm", "editorId": "DLC2GoldPile01" },
+      { "formKey": "018488:Dragonborn.esm", "editorId": "DLC2GoldPile02" }
+    ],
+    "coinPurses": [
+      {
+        "formKey": "0D790B:Skyrim.esm",
+        "editorId": "CoinPurseGoldSmall",
+        "counts": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 22, 28]
+      },
+      {
+        "formKey": "0D8E7D:Skyrim.esm",
+        "editorId": "CoinPurseGoldMedium",
+        "counts": [5, 8, 10, 12, 14, 16, 18, 19, 20, 21, 22, 24, 27, 30, 36, 42]
+      },
+      {
+        "formKey": "0D8E7E:Skyrim.esm",
+        "editorId": "CoinPurseGoldLarge",
+        "counts": [10, 14, 18, 22, 26, 29, 31, 33, 35, 36, 38, 41, 45, 50, 58, 70]
+      }
+    ],
+    "gold001": { "formKey": "00000F:Skyrim.esm", "editorId": "Gold001", "requiredKeyword": "0A0E55:Skyrim.esm" },
+    "mintAutoConvert": { "formKey": "DE5037:Update.esm", "editorId": "DES_ConvertCoins", "value": 0 },
+    "eceAltCurrencyQuest": {
+      "formKey": "000827:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_altCurrencyScript",
+      "script": "EC_drakrsScript",
+      "property": "Drakr",
+      "sourceFormKey": "DE5016:Update.esm",
+      "targetFormKey": "DE5015:Update.esm"
+    },
+    "eceInheritedAltCoinBindings": [
+      { "script": "EC_ulfricsScript", "currencyProperty": "Ulfric", "currencyFormKey": "DE5024:Update.esm" },
+      { "script": "EC_dramsScript", "currencyProperty": "Dram", "currencyFormKey": "DE5029:Update.esm" },
+      { "script": "EC_medesScript", "currencyProperty": "Mede", "currencyFormKey": "DE5021:Update.esm" },
+      { "script": "EC_drakrsScript", "currencyProperty": "Drakr", "currencyFormKey": "DE5015:Update.esm" },
+      { "script": "EC_oshkasScript", "currencyProperty": "Oshka", "currencyFormKey": "000871:exchangeCurrency_patch_COIN.esp" }
+    ],
+    "ohzerQuest": {
+      "formId": "000803",
+      "editorId": "Ensrick_OhzerCurrencyQuest",
+      "aliasId": 0,
+      "aliasName": "PlayerRef",
+      "templateQuestFormKey": "000827:exchangeCurrency_patch_COIN.esp",
+      "templateScript": "EC_oshkasScript",
+      "script": "Ensrick_OhzerCurrencyScript",
+      "currencyProperty": "Ohzer",
+      "currencyFormKey": "00086F:exchangeCurrency_patch_COIN.esp",
+      "keywordProperty": "OhzerMoneyKeyword",
+      "keywordFormKey": "000BB5:exchangeCurrency_enhanced.esp"
+    },
+    "mintMadranQuest": {
+      "formKey": "000002:WindhelmUsesUlfrics.esp",
+      "editorId": "DES_UlfricWindhelmServicesQuest",
+      "aliasId": 5,
+      "sourceScript": "DES_MadranSwapper",
+      "targetScript": "DES_CurrencyFramework_BarterExclusion",
+      "staleQuestProperties": [
+        "Alias_Brunwulf",
+        "Alias_Nilsine",
+        "Alias_Oengul",
+        "Alias_Tova",
+        "Alias_Torsten",
+        "Alias_CaptainLonelyGale",
+        "Alias_Torbjorn",
+        "Alias_Jora"
+      ]
+    },
+    "eceSeptimQuest": {
+      "formKey": "000B63:exchangeCurrency_enhanced.esp",
+      "editorId": "EC_septimsScript",
+      "staleProperties": [
+        "EC_septimsFunctions.busy",
+        "EC_septimsScript.busy",
+        "EC_septimsScript.DES_ConvertCoins"
+      ]
+    },
+    "drakrPurseAdapters": {
+      "canonicalCoin": "DE5015:Update.esm",
+      "changeLists": [
+        {
+          "sourceFormKey": "000D66:C.O.I.N.esp",
+          "sourceEditorId": "DES_Drakr_GoldChange",
+          "formId": "000801",
+          "editorId": "Ensrick_DrakrCurrencyChange"
+        },
+        {
+          "sourceFormKey": "000D67:C.O.I.N.esp",
+          "sourceEditorId": "DES_Drakr_GoldChange25",
+          "formId": "000802",
+          "editorId": "Ensrick_DrakrCurrencyChange25"
+        }
+      ],
+      "purses": [
+        {
+          "formKey": "000800:C.O.I.N.esp",
+          "editorId": "DES_Drakr_CoinPurseGoldSmall",
+          "entries": [
+            { "sourceFormKey": "DE5012:Update.esm", "targetFormKey": "$canonical", "count": 5 },
+            { "sourceFormKey": "000D66:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 },
+            { "sourceFormKey": "000D67:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 }
+          ]
+        },
+        {
+          "formKey": "000801:C.O.I.N.esp",
+          "editorId": "DES_Drakr_CoinPurseGoldMedium",
+          "entries": [
+            { "sourceFormKey": "DE5012:Update.esm", "targetFormKey": "$canonical", "count": 10 },
+            { "sourceFormKey": "000D66:C.O.I.N.esp", "targetFormKey": "$owned", "count": 2 },
+            { "sourceFormKey": "000D67:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 }
+          ]
+        },
+        {
+          "formKey": "000802:C.O.I.N.esp",
+          "editorId": "DES_Drakr_CoinPurseGoldLarge",
+          "entries": [
+            { "sourceFormKey": "DE5012:Update.esm", "targetFormKey": "$canonical", "count": 20 },
+            { "sourceFormKey": "000D66:C.O.I.N.esp", "targetFormKey": "$owned", "count": 3 },
+            { "sourceFormKey": "000D67:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 }
+          ]
+        }
+      ]
+    },
+    "drakrPile": {
+      "formKey": "0009C6:C.O.I.N.esp",
+      "editorId": "DES_PileofDrakr",
+      "script": "DLC2GoldPileScript",
+      "property": "Gold001",
+      "sourceFormKey": "DE5012:Update.esm",
+      "targetFormKey": "DE5015:Update.esm"
+    },
+    "ancientExchangeWorkbench": "000801:SL99Exchanger.esp",
+    "ancientExchangeRecipes": [
+      {
+        "formId": "000804",
+        "editorId": "Ensrick_ExchangeDrakrDragonToSeptims",
+        "inputFormKey": "DE5012:Update.esm",
+        "inputCount": 20,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 3,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "000805",
+        "editorId": "Ensrick_ExchangeDrakrMothToSeptims",
+        "inputFormKey": "DE5013:Update.esm",
+        "inputCount": 20,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 3,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "000806",
+        "editorId": "Ensrick_ExchangeDrakrOwlToSeptims",
+        "inputFormKey": "DE5014:Update.esm",
+        "inputCount": 20,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 3,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "000807",
+        "editorId": "Ensrick_ExchangeDrakrWhaleToSeptims",
+        "inputFormKey": "DE5015:Update.esm",
+        "inputCount": 20,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 3,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "000808",
+        "editorId": "Ensrick_ExchangeMalaToSeptims",
+        "inputFormKey": "DE5019:Update.esm",
+        "inputCount": 5,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 2,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "000809",
+        "editorId": "Ensrick_ExchangeMallariToSeptims",
+        "inputFormKey": "DE5020:Update.esm",
+        "inputCount": 5,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 3,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "00080A",
+        "editorId": "Ensrick_ExchangeNchuarkToSeptims",
+        "inputFormKey": "DE5022:Update.esm",
+        "inputCount": 4,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 1,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "00080B",
+        "editorId": "Ensrick_ExchangeGibberManiaToSeptims",
+        "inputFormKey": "DE5018:Update.esm",
+        "inputCount": 5,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 8,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "00080C",
+        "editorId": "Ensrick_ExchangeGibberDementiaToSeptims",
+        "inputFormKey": "DE5017:Update.esm",
+        "inputCount": 1,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 1,
+        "purpose": "coin-default-rate"
+      },
+      {
+        "formId": "00080D",
+        "editorId": "Ensrick_ExchangeUnifiedGibberToSeptims",
+        "inputFormKey": "DE5027:Update.esm",
+        "inputCount": 1,
+        "outputFormKey": "00000F:Skyrim.esm",
+        "outputCount": 1,
+        "purpose": "effective-mint-core-rate"
+      }
+    ]
+  },
+  "disabledCurrencyToIngotRecipes": [
+    { "formKey": "000800:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeSancarToIngotGold" },
+    { "formKey": "000803:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrDragonToIngotSilver" },
+    { "formKey": "000806:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrMothToIngotSilver" },
+    { "formKey": "000809:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrNordToIngotSilver" },
+    { "formKey": "00080C:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrOwlToIngotSilver" },
+    { "formKey": "00080F:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrWhaleToIngotSilver" },
+    { "formKey": "000812:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeMalaToIngotMalachite" },
+    { "formKey": "000815:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeMallariToIngotSilver" },
+    { "formKey": "000818:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeMedeToIngotSilver" },
+    { "formKey": "00081B:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeNchuarkToIngotDwemer" },
+    { "formKey": "00081E:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeUlfricToIngotQuickSilver" },
+    { "formKey": "000821:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeGibberToIngotEbony" },
+    { "formKey": "000824:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeGibberFrontToIngotEbony" },
+    { "formKey": "000836:exchangeCurrency_patch_COIN.esp", "editorId": "EC_RecipeDramToIngotCopper" },
+    { "formKey": "000877:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeOshkaToIngotOrichalcum" },
+    { "formKey": "000878:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeOhzerToIngotEbony" },
+    { "formKey": "000879:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeVarkenToIngotEbony" }
+  ]
+}

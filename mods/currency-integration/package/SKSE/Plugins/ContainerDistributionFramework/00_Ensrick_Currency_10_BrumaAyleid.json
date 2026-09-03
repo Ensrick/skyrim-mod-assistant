@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "friendlyName": "Bruma Ayleid sites use Mala before modern Mede rules",
+      "conditions": {
+        "plugins": ["BSAssets.esm", "BSHeartland.esm", "C.O.I.N.esp"],
+        "locationKeywords": ["CYRLocSetAyleid"],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0x00000F|Skyrim.esm",
+          "add": ["0xDE5019|Update.esm"]
+        },
+        {
+          "remove": "0x6028DC|BSAssets.esm",
+          "add": ["0xDE5019|Update.esm"]
+        }
+      ]
+    }
+  ]
+}

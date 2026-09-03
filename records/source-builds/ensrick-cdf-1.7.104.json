@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "name": "Container Distribution Framework 3.1.0 - Skyrim 1.7.104 native overlay",
+  "repository": "https://github.com/Ensrick/DynamicContainerInventoryFramework",
+  "upstream": "https://github.com/SeaSparrowOG/DynamicContainerInventoryFramework",
+  "baseCommit": "38ca39282e24ed8f7f8423f106d0a660689673c6",
+  "sourceCommit": "5f2ddbb4abd27c00d2c4d8aff56bd95dcc61ffd0",
+  "mergeCommit": "90924c21a19b4d17a7325c53ac8eff461773ba5f",
+  "branch": "ensrick/fix-only-vendors",
+  "pullRequest": "https://github.com/Ensrick/DynamicContainerInventoryFramework/pull/1",
+  "license": "Apache-2.0",
+  "runtime": "Skyrim 1.7.104 / SKSE 2.3.1 / Address Library format 5",
+  "commonLibCommit": "d27f40968783bfd7b371e4fe17ec239c60661974",
+  "ci": {
+    "runId": 33783954157,
+    "url": "https://github.com/Ensrick/DynamicContainerInventoryFramework/actions/runs/33783954157",
+    "result": "success",
+    "artifactId": 9904812489,
+    "artifactName": "CDF",
+    "artifactDigest": "sha256:fd19a31a650e6c7a2e60ad45771e3f2063034b9be108210ca271a36ded7fa380",
+    "downloadedPath": "C:/Users/danjo/source/repos/skyrim-tools-builds/CDF-3.1.0-Skyrim-1.7.104-ci-33783954157"
+  },
+  "files": [
+    {
+      "path": "SKSE/Plugins/ContainerDistributionFramework.dll",
+      "bytes": 1115136,
+      "sha256": "725295A4D0AFE3F58DE9E04D603ADB54A0943398A8324B497CEAFC69CD8F8542"
+    },
+    {
+      "path": "SKSE/Plugins/ContainerDistributionFramework.pdb",
+      "bytes": 25907200,
+      "sha256": "71CE16404C68620CE0D73A3E9CE88DA29756EFB75D28B1EFF2FE599F71C85D56"
+    },
+    {
+      "path": "LICENSE-Apache-2.0.txt",
+      "bytes": 11357,
+      "sha256": "C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4"
+    },
+    {
+      "path": "SOURCE-NOTICE.txt",
+      "bytes": 1099,
+      "sha256": "5150F2F4E4953193C70B78184B64F39FCDB78E1830BF2F9377B21640C797BF1C"
+    }
+  ],
+  "featureDefaultsDiff": {
+    "changed": {},
+    "onlyInBuilt": {},
+    "onlyInUpstream": {},
+    "note": "Binary/debug overlay plus license and source notice; it ships no runtime configuration or feature-default file. The untouched Nexus 3.1.0 install remains authoritative for every INI and JSON rule."
+  },
+  "repositoryProtection": {
+    "rulesetId": 22214660,
+    "scope": "default branch",
+    "requirements": [
+      "pull request",
+      "build status check",
+      "linear history",
+      "no deletion",
+      "no force push"
+    ]
+  },
+  "changes": [
+    "Ported the plugin and CommonLib dependency to Address Library format 5.",
+    "Removed modal fatal-error behavior so failures log and return cleanly.",
+    "Fixed the released no-op onlyVendors parser statement.",
+    "Migrated current CommonLib initialization, trampoline, export, and logging APIs.",
+    "Enabled warning-as-error CI and added a vendor-only parser regression test.",
+    "Clamped leveled-list counts at the signed engine API boundary."
+  ],
+  "verification": [
+    "GitHub Actions Windows build passed.",
+    "SKSE version data reports version-independent format-5 support.",
+    "No MessageBoxA, MessageBoxW, or report_and_fail symbol/string is present.",
+    "Runtime merchant/nonmerchant onlyVendors behavior remains pending.",
+    "The live binary overlay now includes the full Apache-2.0 license and a source/modified-file notice naming the exact fork commit and build PR."
+  ],
+  "package": {
+    "type": "binary/debug overlay plus license and source notice",
+    "baseMod": "Container Distribution Framework 3.1.0, Nexus mod 120152 file 754532",
+    "instruction": "Install the official package unchanged, then enable this overlay above it. The vendor package remains authoritative for every runtime INI and JSON rule."
+  },
+  "installation": {
+    "profile": "Default",
+    "mo2Mod": "CDF 1.7.104 Native Overlay - Ensrick",
+    "state": "enabled-launch-verified",
+    "priorityAtInstall": 275,
+    "vendorPriorityAtInstall": 271,
+    "installedUtc": "2026-09-03T21:51:13Z",
+    "transaction": "20260903T215113092Z-dcb18589028d",
+    "originalBinaryInstallTransaction": "20260903T173349678Z-11a8d9fa5141",
+    "packagingAugmentationUtc": "2026-09-03T20:47:14Z",
+    "packagingAugmentation": "The Apache-2.0 license and exact source/modified-file notice were added without changing the runtime DLL, PDB, or vendor configuration; a final controller replacement then captured all four payload files in transaction 20260903T215113092Z-dcb18589028d.",
+    "installedDllSha256": "725295A4D0AFE3F58DE9E04D603ADB54A0943398A8324B497CEAFC69CD8F8542",
+    "launchVerification": "records/launch-verify-20260903-135633.md",
+    "finalStackVerification": "records/launch-verify-20260903-165425.md",
+    "winner": "The overlay is priority 275 and the vendor Container Distribution Framework is priority 271; the overlay is the effective SKSE/Plugins/ContainerDistributionFramework.dll provider while the vendor remains authoritative for configuration."
+  }
+}

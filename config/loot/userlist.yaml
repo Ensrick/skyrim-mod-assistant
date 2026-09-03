@@ -74,3 +74,15 @@ plugins:
       - 'BSHeartland.esm'
       - 'arnima.esm'
       - 'Gray Fox Cowl.esm'
+
+  # Regional-currency integration (#207): this owned ESPFE forwards the active
+  # ECE/COIN/MINT winners, disables exchange-to-ingot arbitrage, and replaces
+  # vanilla purse lists. Keep it behind every record source it was built from.
+  - name: 'Ensrick Currency Integration Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick Wolf Territorial Patch.esp'
+      - 'exchangeCurrency_enhanced.esp'
+      - 'exchangeCurrency_patch_COIN.esp'
+      - 'C.O.I.N.esp'
+      - 'M.I.N.T.esp'

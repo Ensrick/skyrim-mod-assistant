@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "00 Core",
+      "destination": "."
+    },
+    {
+      "source": "01 MorrowindMint",
+      "destination": "."
+    },
+    {
+      "source": "02 SkyrimSilver",
+      "destination": "."
+    },
+    {
+      "source": "03 ElvenSupremacy",
+      "destination": "."
+    },
+    {
+      "source": "99 Optionals/01 MorrowindMint/Optionals/NoOffice/MorrowindUsesDrams - No Office.esp",
+      "destination": "MorrowindUsesDrams - No Office.esp"
+    },
+    {
+      "source": "99 Optionals/02 SkyrimSilver/Optionals/NoStall/WindhelmUsesUlfrics - No Stall.esp",
+      "destination": "WindhelmUsesUlfrics - No Stall.esp"
+    }
+  ]
+}

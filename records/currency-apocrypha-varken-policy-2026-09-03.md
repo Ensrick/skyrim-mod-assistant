@@ -4,8 +4,10 @@
 
 **Runtime:** Skyrim `1.7.104.0`
 
-**Status:** Ohzer mapping is ready for an owned KID configuration; Varken is
-deferred pending implementation and runtime tests.
+**Status:** Ohzer mapping and transaction handling are installed in Ensrick
+Regional Currency Integration v0.2.4 and passed the configuration/save-load
+smoke gate; Varken is deferred under #210 pending implementation and runtime
+tests.
 
 **Tracking:** master [#207](https://github.com/Ensrick/skyrim-mod-assistant/issues/207);
 deferred Varken child [#210](https://github.com/Ensrick/skyrim-mod-assistant/issues/210).
@@ -16,8 +18,10 @@ deferred Varken child [#210](https://github.com/Ensrick/skyrim-mod-assistant/iss
   the complete ten-record `Dragonborn.esm` Apocrypha location tree.
 - **Varken is Dremora currency, not a second Apocrypha currency.** Do not
   assign `isVarkenMoney` to any `Dragonborn.esm` location at this stage.
-- Implement Ohzer with a pack-owned Keyword Item Distributor configuration.
-  It requires no new plugin and does not override Bethesda location records.
+- Ohzer location classification is implemented with a pack-owned Keyword Item
+  Distributor configuration. The v0.2.4 ESPFE also provides the owned runtime
+  quest/handler required for ECE transactions; no Bethesda location record is
+  overridden.
 - Treat Varken as two later workstreams: constrained Dremora/conjurer loot and
   an actor-aware Black Market merchant adapter. The latter requires an owned
   plugin and original source; it should ship as an ESP-FE after FormID
@@ -61,12 +65,13 @@ Varken “Dremora's currency.” Its CDF files (`EC_ohzers.json` and
 `EC_varkens.json`) consume `isOhzerMoney` and `isVarkenMoney`, respectively.
 Its Papyrus location-change script also tests those keywords directly.
 
-No installed ECE, C.O.I.N., or M.I.N.T. KID file assigns either keyword to a
-location. ECE packages location KID data for Ulfric, Dram, Drakr, Mede, and
-Oshka only. A full configuration-text scan found no other producer, and plugin
-inspection found no location override carrying either keyword. Consequently,
-both hooks are currently inert: the keywords and consumers exist, but no
-location ever receives the keywords.
+In the unmodified vendor stack, no ECE, C.O.I.N., or M.I.N.T. KID file assigns
+either keyword to a location. ECE packages location KID data for Ulfric, Dram,
+Drakr, Mede, and Oshka only, and plugin inspection found no location override
+carrying Ohzer or Varken. Ensrick Regional Currency Integration v0.2.4 now
+supplies the missing form-qualified Ohzer KID mapping; its final launch log
+reports `isOhzerMoney` added to exactly 10 of 1,639 locations. Varken alone
+remains inert and receives no location assignment.
 
 The friendly name in ECE's `EC_varkens.json` says “Septims to Varkens in
 Apocrypha.” That conflicts with ECE's own SkyPatcher comment, the parallel
@@ -100,37 +105,13 @@ has a native keyword in the inspected master.
 
 ### Owned KID configuration
 
-Recommended pack-owned filename:
+Installed pack-owned filename:
 `zz_Ensrick_Currency_Apocrypha_KID.ini`
 
-The uncommitted working-tree file observed at audit close already has the
-correct ten target locations, but names the keyword by bare Editor ID:
-
-```ini
-; Ohzer is Apocrypha's regional tender. Include the root and every currently
-; shipped child location: CDF can walk parent locations, while BOS/ECE inspect
-; the current location directly. Varken remains deliberately unassigned.
-Keyword = isOhzerMoney|Location|0x016E2B~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x0142AC~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x0142AE~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x0142AF~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x0142B0~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x01EE06~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x01EE07~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x01EE08~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x0382F5~Dragonborn.esm
-Keyword = isOhzerMoney|Location|0x03A1E7~Dragonborn.esm
-```
-
-That file was not edited during this audit. KID accepts an Editor ID here, but
-it can also create or resolve a keyword by name when the supplying plugin is
-missing. Before packaging, harden the left-hand side to ECE's verified local
-FormID as shown below. A form-qualified lookup fails closed with the dependency
-and removes the possibility of silently manufacturing an unrelated dynamic
-keyword with the same name.
-
-Use form-qualified lookups rather than a bare Editor ID. This fails closed if
-ECE or Dragonborn is absent and avoids case/spelling ambiguity.
+The installed file uses form-qualified lookups rather than a bare Editor ID.
+This fails closed if ECE or Dragonborn is absent and avoids silently creating
+an unrelated dynamic keyword with the same spelling. KID's final launch log
+confirmed ten Ohzer assignments; Varken received none.
 
 ```ini
 ; ECE Ohzer currency in all Dragonborn Apocrypha locations.
@@ -170,10 +151,11 @@ and so other hierarchy-aware consumers see the realm itself as Apocrypha. The
 root is not falsely claimed to have a direct cell today; it is the defensive
 tenth entry that keeps the location-tree invariant complete.
 
-KID adds the keyword at runtime. It does not create an override for any of
-these `LCTN` records, so this implementation adds no plugin slot and cannot
-create a conventional location-record conflict. Both relevant ECE plugins are
-already ESL-flagged, but their flag state is independent of this KID-only fix.
+KID adds the keyword at runtime and creates no override for any of these `LCTN`
+records, so the classification itself consumes no plugin record and cannot
+create a conventional location-record conflict. The unified v0.2.4 ESPFE is
+present for transaction handling and other currency repairs; it does not
+override these locations.
 
 ## Varken evidence and boundaries
 

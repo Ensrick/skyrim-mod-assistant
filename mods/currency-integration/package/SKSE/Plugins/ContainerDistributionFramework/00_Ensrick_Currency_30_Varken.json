@@ -1,0 +1,18 @@
+{
+  "rules": [
+    {
+      "friendlyName": "Varken regional distribution before ordinary Septims",
+      "conditions": {
+        "plugins": ["exchangeCurrency_enhanced.esp", "exchangeCurrency_patch_COIN.esp"],
+        "locationKeywords": ["IsVarkenMoney"],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0x00000F|Skyrim.esm",
+          "add": ["0x000870|exchangeCurrency_patch_COIN.esp"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick Regional Currency Integration",
+  "version": "0.2.4",
+  "source": "mods/currency-integration",
+  "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
+  "runtime": "Skyrim 1.7.104 / SKSE 2.3.1 / Address Library v13 format 5",
+  "toolchain": {
+    "generator": ".NET 9 / Mutagen.Bethesda.Skyrim 0.54.4 / Mutagen.Bethesda.Synthesis 0.36.6",
+    "papyrusCompiler": {
+      "name": "Caprica",
+      "version": "0.3.0",
+      "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630"
+    },
+    "spriggit": {
+      "version": "0.41.0",
+      "treeSha256": "3AF12510A792E4A3E387516BC545FC9600B1C9B681AC79F101DDB745AEA96E09"
+    },
+    "entrypoint": "mods/currency-integration/regenerate.ps1"
+  },
+  "release": {
+    "archive": "mods/currency-integration/work/Ensrick-Regional-Currency-Integration-0.2.4.zip",
+    "files": 26,
+    "bytes": 21604,
+    "sha256": "DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B",
+    "deterministicArchiveRuns": 2,
+    "installedMod": "Ensrick - Regional Currency Integration",
+    "mo2Priority": 274,
+    "transaction": "20260903T215105935Z-e5b6eed589b6"
+  },
+  "plugin": {
+    "path": "Ensrick Currency Integration Patch.esp",
+    "bytes": 16108,
+    "sha256": "C8010DEB9FAA2E9F01FE90AC023C7414C6F5EA65E8C01492B6238044DA2E6F06",
+    "eslFlagged": true,
+    "records": 45,
+    "masters": 9,
+    "deletedRecords": 0,
+    "linksChecked": 397,
+    "engineIntrinsicPlayerRefLinks": 13,
+    "unresolvedLinks": 0,
+    "deterministicGeneratorRuns": 2,
+    "seqRelativeFormIds": ["09000800", "09000803"],
+    "licenseScope": "Mixed terms: Ensrick source and original portions of 14 newly authored records are MIT; vendor-origin data serialized into 31 compatibility overrides remains under the applicable Bethesda/C.O.I.N./M.I.N.T./ECE terms. The ESP as a whole is not an all-MIT binary."
+  },
+  "scripts": [
+    {
+      "path": "Scripts/Ensrick_CurrencyRuntimeDefaultsAlias.pex",
+      "bytes": 2335,
+      "sha256": "7D12056AA0E836269EF327C70AE198228A0D6FF742A107B5B40F41AE34ABC834",
+      "licenseScope": "MIT original"
+    },
+    {
+      "path": "Scripts/Ensrick_OhzerCurrencyScript.pex",
+      "bytes": 3057,
+      "sha256": "BC5A420621EE845D473710CFD2613D647A0B61ED8FA3A131488EE4BDD3897D95",
+      "licenseScope": "ECE-derived interoperability; excluded from MIT and governed by ECE's applicable Nexus terms"
+    },
+    {
+      "path": "Scripts/DES_MadranSwapper.pex",
+      "bytes": 1147,
+      "sha256": "81E0D3AC40BE6B40390AAC84D4C96D13FB38EDB9668489099E5D84C89278C9F5",
+      "licenseScope": "MIT independently authored class-loader interoperability shim"
+    }
+  ],
+  "pinnedExternalProvider": {
+    "plugin": "SL99Exchanger.esp",
+    "formKey": "000801:SL99Exchanger.esp",
+    "editorId": "SL99CraftingExchangeBank",
+    "source": "Exchange Currency Enhanced 4.1.1 compact bundled copy",
+    "bytes": 159056,
+    "sha256": "C9342F1B669A3AE1F4A51E0CA8FBD9CDA3AEC915D36DC4CC9A0798B09E5B2446",
+    "records": 470,
+    "eslFlagged": true
+  },
+  "verifiedPolicy": {
+    "looseSeptims": "75% copper / 20% silver / 5% gold at values 1/25/100; expected value 10.75 and +975% user-approved",
+    "weights": "copper 0.01, silver 0.02, gold 0.03; alternate Drakr 0.01; Gibbers 0.02",
+    "precedence": "quest exception > ancient site > modern region > ordinary Septim denominations > hidden Gold001",
+    "gyldenhul": "Septim exception preserved by removing only ECE's 0142A8 IsDrakrMoney assignment and defensively excluding the location from regional Drakr BOS",
+    "ohzer": "active only in the evidenced Apocrypha root and nine child locations",
+    "varken": "dormant pending an approved Dremora-context policy",
+    "smelting": "all 17 currency-to-ingot recipes disabled; ten one-way bank cash-out recipes supplied"
+  },
+  "verification": [
+    "Static package validator passed with 26 exact files.",
+    "Two generator runs, two compilations of each of three PEX files, and two archive runs were byte-identical.",
+    "Exact-record, master-minimality, FormLink, SEQ, and checked Spriggit semantic-roundtrip audits passed.",
+    "MO2 audit reported zero errors; package and live payload matched byte-for-byte, excluding MO2 meta.ini.",
+    "records/launch-verify-20260903-165425.md: post-restage main menu 46.6 seconds and existing save 57.1 seconds; 41 DLLs examined, 40 SKSE plugins loaded correctly, msdia140.dll correctly ignored as a non-plugin dependency, and zero plugin refusals.",
+    "Currency Swapper installed all hooks; CDF/BOS/KID/SkyPatcher/DDR loaded the owned currency configuration; KID assigned IsDrakrMoney to 22 locations after the Gyldenhul correction and isOhzerMoney to exactly 10 of 1,639 locations.",
+    "Papyrus emitted no DES_MadranSwapper or other currency-specific loader/binding error after the compatibility shim was installed."
+  ],
+  "remainingAcceptance": [
+    "Targeted in-world loose-coin and purse sampling, merchant/service/exchange paths, rapid menu reopen, reset, and duplication checks.",
+    "Proteus multi-character switching across currency regions.",
+    "Semantic coverage and any owned extensions for Beyond Reach, Wyrmstooth, Moonpath, Gray Cowl, and VIGILANT.",
+    "Varken distribution and Dremora merchant policy tracked separately in issue 210."
+  ],
+  "distribution": "mixed terms; exact boundary, including the 14-new/31-override ESP split, and required external downloads are documented in mods/currency-integration/package/NOTICE.txt"
+}

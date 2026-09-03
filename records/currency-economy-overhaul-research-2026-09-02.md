@@ -1,9 +1,55 @@
 # Currency and economy overhaul research
 
-**Status:** research complete; implementation deliberately deferred. No mod was
-installed, enabled, edited, or copied into the live profile during this audit.
+**Status:** owned integration v0.2.4, its deterministic/static audits, and the
+bounded main-menu/save-load smoke gate are complete under
+[#207](https://github.com/Ensrick/skyrim-mod-assistant/issues/207). Targeted
+in-world currency transactions, purse sampling, reset/duplication checks,
+Proteus switching, and new-land coverage remain open. The original 2026-09-02
+risk analysis is retained below; the 2026-09-03 decisions and implementation
+addendum supersede its former deferral recommendations.
 
-**Current through:** 2026-09-02.
+**Current through:** 2026-09-03.
+
+## 2026-09-03 implementation addendum
+
+The user explicitly approved compatibility-first accounting, values 1/25/100,
+weights 0.01/0.02/0.03, and the exact 75/20/5 one-for-one distribution for
+loose modern Septims. Its 10.75 expected value (+975%) is intentional: loose
+coins are a small income source and will be counterbalanced by weighted money,
+strict carry limits, and much tighter loot extraction. Ordinary container
+stacks remain value-preserving copper; the inflation applies to physically
+placed loose coins.
+
+The selected regional-mode stack is C.O.I.N. 3.5.3, M.I.N.T. 1.0.6, Currency
+Swapper 2.2.0, Exchange Currency Enhanced 4.1.1, Exchange Currency SE, WiZkiD
+Ancient Imperial Septims, and their functional frameworks. The owned source is
+`mods/currency-integration`; vendor assets and plugins remain separate Nexus
+dependencies. Description Framework and Dynamic String Distributor are omitted
+because their released native binaries cannot read the runtime's Address
+Library format 5 and their descriptions are cosmetic.
+
+Static review corrected M.I.N.T. BOS/CDF rules, ECE's Mede master, protected
+twelve quest/storage backend references, and made regional Drakr swaps target
+physical MISC records. ECE's broad crafting config, malformed ancient-smelting
+config, and broad Bruma ESP are masked/omitted. Ohzer is now active only in the
+evidenced Apocrypha root and nine child locations; Varken remains dormant
+pending an approved Dremora-context policy. Gyldenhul Barrow retains its
+authored Septim treasure: a pinned ECE KID override removes only the
+contradictory `IsDrakrMoney` assignment and the regional BOS rule excludes the
+location defensively.
+
+Owned integration v0.2.4 is installed and deterministic. Its 26-file archive
+is 21,604 bytes, SHA-256
+`DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B`.
+The final bounded runtime check reached the main menu in 46.6 seconds and
+loaded the existing test save in 57.1 seconds. The loader examined 41 DLLs;
+40 SKSE plugins loaded correctly, `msdia140.dll` was correctly ignored as a
+non-plugin dependency, and there were zero plugin refusals. Currency Swapper,
+CDF, BOS, KID, SkyPatcher, and DDR all loaded their
+currency paths; the `DES_MadranSwapper` loader warning is eliminated by the
+owned compatibility shim. The targeted in-world transaction/purse matrix and
+new-land classification remain tracked on #207 rather than being represented
+as complete gameplay acceptance.
 
 ## Decision
 
@@ -32,14 +78,15 @@ the date of this audit after rapid fixes for new-game initialization, currency
 selection, rate modifiers, dialogue, property purchases, and stable behavior.
 It deserves a separate source/plugin audit and soak test later.
 
-The first disposable-profile test should proceed in two gates:
+The original risk plan proposed two gates:
 
 - **Gate A:** ECE's `new Septims only` option, leaving M.I.N.T. authoritative for
   regional currency while denomination and transaction mechanics are isolated.
 - **Gate B:** ECE's `new Septims + regional currencies` option if Gate A is
   stable. This lets ECE supply its broader Mede/Oshka integration while retaining
   M.I.N.T. exchangers and Sancar support. Gate B is the stronger eventual pack
-  candidate, not a foregone conclusion.
+  candidate, not a foregone conclusion. The user subsequently selected Gate B;
+  it is now installed for controlled runtime validation.
 
 C.O.I.N.'s automatic conversion on pickup should be disabled during both gates;
 otherwise the physical ancient coins immediately collapse back into vanilla
@@ -85,8 +132,9 @@ Under the recommended compatibility-first pilot and candidate values of
 `expected value = 0.75(1) + 0.20(25) + 0.05(100) = 10.75`
 
 That is **10.75 times the vanilla loose-coin value**. Even 1/10/100 produces an
-expected value of 7.75. This is why a direct 75/20/5 swap on every countertop
-coin should not ship.
+expected value of 7.75. The original audit therefore recommended against it;
+on 2026-09-03 the user explicitly accepted that inflation and supplied the
+counterbalance policy recorded in the implementation addendum.
 
 | Loose-reference policy | Copper | Silver | Gold | Expected value at 1/25/100 | Effect |
 |---|---:|---:|---:|---:|---:|
@@ -94,7 +142,7 @@ coin should not ship.
 | Conservative windfalls | 99.45% | 0.50% | 0.05% | 1.1695 | +16.95% |
 | Strict value preservation | 100% | 0% | 0% | 1.0000 | none |
 
-The recommended rule is therefore:
+The original conservative recommendation was:
 
 - Treat **75/20/5 as a composition target for purses and value-budgeted piles**,
   not as the one-for-one value distribution of isolated loose references.
@@ -118,15 +166,18 @@ If a small amount of loose-world inflation is desired, the general formula at
 
 `inflation = 24(silver probability) + 99(gold probability)`
 
-Exact percentages should be chosen only after the user selects an acceptable
-inflation ceiling. Visual diversity can also come from multiple copper meshes,
-coin orientations, and value-neutral clutter without falsifying denominations.
+The original risk gate required the user to select an acceptable inflation
+ceiling before choosing exact percentages. The user subsequently approved the
+75/20/5 split and its +975% expected-value increase, as recorded in the
+implementation addendum. Visual diversity can also come from multiple copper
+meshes, coin orientations, and value-neutral clutter without falsifying
+denominations.
 
-## Vanilla purses and broader payouts
+## Vanilla purses and the rejected broader-payout prototype
 
 The three vanilla purse objects are `FLOR` harvestables, and their harvest
-targets are leveled lists. Their current payout behavior is compact and does not
-need an activation script:
+targets are leveled lists. Their unmodified vanilla payout behavior is compact
+and does not need an activation script:
 
 | Purse | Vanilla formula | Range | Mean |
 |---|---|---:|---:|
@@ -135,29 +186,33 @@ need an activation script:
 | Large | `20 + 3×LootGoldChange + LootGoldChange25` | 20–56 | 34.75 |
 
 `LootGoldChange` is 10% empty and otherwise uniform from 1–9;
-`LootGoldChange25` is 75% empty and otherwise uniform from 1–9. Wider purse
-ranges can therefore use three owned replacement/nested leveled lists. Do not
-modify the shared vanilla lists because unrelated records also use them.
+`LootGoldChange25` is 75% empty and otherwise uniform from 1–9. The original
+risk pass considered three owned replacement/nested leveled lists for wider
+ranges. Shared vanilla helper lists must not be modified because unrelated
+records also use them.
 
-A good first-pass “wider but not richer” policy is to roll the vanilla baseline
-`B`, then select approximately half of `B` 25% of the time, unchanged `B` 62.5%
-of the time, and double `B` 12.5% of the time. The expected multiplier is:
+The rejected first-pass “wider but not richer” prototype rolled the vanilla
+baseline `B`, then selected approximately half of `B` 25% of the time,
+unchanged `B` 62.5% of the time, and double `B` 12.5% of the time. The expected
+multiplier is:
 
 `0.25(0.5) + 0.625(1) + 0.125(2) = 1.0`
 
-With unbiased integer rounding for odd half-values, this widens the approximate
-ranges to 2–46 (small), 5–74 (medium), and 10–112 (large) while retaining the
-vanilla means of 10.75, 20.25, and 34.75. The owned-list generator should
-enumerate the exact integer distribution rather than use runtime floating-point
-rounding. The selected budget is then decomposed into denominations without
-changing its value. This is the recommended prototype, subject to the user's
-approval of the larger tails.
+With unbiased integer rounding for odd half-values, that prototype widens the
+approximate ranges to 2–46 (small), 5–74 (medium), and 10–112 (large) while
+retaining the vanilla means of 10.75, 20.25, and 34.75. It was not adopted.
+Instead, v0.2.4
+directly overrides each vanilla purse LVLI with sixteen equal-weight `Gold001`
+budgets: Small 2–28, Medium 5–42, and Large 10–70, preserving those same exact
+means. It creates no private outcome lists and no duplicate purse `FLOR`
+records. ECE then decomposes the selected backend budget into denominations;
+that physicalization still requires the runtime sampling gate in #211.
 
-CDF should own contextual contents of ordinary resettable containers, not purse
-activation. If purse currency must change by region, BOS can swap the purse
-`FLOR` to a regional duplicate whose harvest target is the corresponding owned
-regional leveled list. Every new list must be tested for minimum, maximum, mean,
-and conservation after denomination decomposition.
+CDF owns contextual contents of ordinary resettable containers, not purse
+activation. v0.2.4 leaves the three purse `FLOR` records unchanged and repairs
+their existing harvest targets directly; there are no regional `FLOR`
+duplicates. The winning lists are statically exact, while conservation after
+ECE denomination decomposition remains an in-world acceptance test.
 
 CDF 3.1.0 works at inventory initialization, stores no serialized distribution
 state, and reapplies when an eligible inventory resets. A 20-entry owned list
@@ -175,13 +230,15 @@ C.O.I.N. is the current ancient-currency foundation. It distributes Drakr,
 Nchuark, Mallari, Mala, and Gibber through Base Object Swapper, Container
 Distribution Framework, and location keywords rather than broad cell edits. It
 has bundled Bruma/Ayleid support and exposes/injects useful location sets for
-third-party content. Some leveled-list integration still needs an xEdit audit.
+third-party content. The selected owned routes passed the final record/link
+audit; broader third-party and new-land leveled integration remains open.
 
 Its physical coins can be left intact, exchanged, or automatically converted on
-pickup. For this design, leave automatic conversion off and provide intentional
-exchange or crafting sinks. The released plugin must be inspected before use:
-the Nexus documentation gives Drakr an exchange value of 0.25 while the current
-source default appears to be 0.15.
+pickup. The owned runtime-default quest enforces automatic conversion off for
+this design, while intentional exchange sinks remain available. Inspection of
+the released plugin resolved the documentation/source discrepancy: the installed
+effective Drakr rate is 0.15, not the Nexus page's 0.25, and v0.2.4 preserves it
+as a one-way cash-out of 20 Drakr to 3 Septims.
 
 ### M.I.N.T. and Currency Swapper
 
@@ -229,8 +286,10 @@ Swapper, the original Exchange Currency, KID, Notification Filter,
 powerofthree's Tweaks, SkyPatcher 6.5+, SkyUI, and—under regional mode—Dynamic
 Dialogue Replacer, C.O.I.N., and M.I.N.T. ECE also documents a TrueHUD recent
 loot conflict. The current profile already has BOS 3.5.0 and SkyPatcher 7.0.3,
-but does not presently contain CDF, Currency Swapper, C.O.I.N., M.I.N.T., or
-ECE, so none of this research is evidence that the stack is already installed.
+and now contains the selected stack. Released CDF, Currency Swapper and Dynamic
+Dialogue Replacer binaries were found incompatible with Address Library format
+5; source-built, non-modal 1.7.104 overlays are required above untouched vendor
+installs.
 
 ## World and culture mapping
 
@@ -260,21 +319,26 @@ inspection before a distributable patch is generated.
 
 ## Pack-owned implementation boundary
 
-The future custom package should be one source-controlled mod with small,
+The current custom package is one source-controlled mod with small,
 separable modules:
 
-- `Ensrick Currency Integration.esp`, ESL-flagged, for owned keywords,
-  location corrections, leveled-list forwarding, and explicit conflict
-  resolution;
-- one namespaced BOS `_SWAP.ini` for value-safe visual/reference swaps;
-- CDF rules for contextual contents of ordinary containers;
-- private leveled lists for small, medium, and large purse rewards, plus
-  regional purse `FLOR` duplicates only where needed;
-- KID rules for regional and ancient-site classification;
-- SkyPatcher rules only where runtime patching is safer than plugin overrides;
-- owned Papyrus source only if value-budgeted placed piles cannot be generated
-  offline; and
-- a silent Notification Filter preset and generic `Money` UI label if required.
+- `Ensrick Currency Integration Patch.esp`, a 45-record ESPFE, for three direct
+  vanilla purse-LVLI rebuilds, currency/script repairs, purse and pile
+  forwarding, ten bank recipes, seventeen disabled smelting recipes, and two
+  owned runtime quests;
+- four ordered owned BOS `_SWAP.ini` files for default, regional, ancient, and
+  exception routes, plus the narrowly corrected same-path M.I.N.T. BOS file;
+- seven CDF JSON files for specific regional/container precedence and pinned
+  vendor-rule corrections;
+- two KID files: the form-qualified Apocrypha Ohzer assignment and a same-path
+  ECE correction that removes only Gyldenhul's contradictory Drakr keyword;
+- three SkyPatcher files: two same-path empty masks for rejected recipe configs
+  and one owned ancient-currency weight completion;
+- the language-neutral I4 JSON and two-key ECE English translation override;
+  and
+- three source-built PEX files: runtime defaults, Ohzer transaction handling,
+  and the Ma'dran stale-class loader shim. The purse design does not create
+  private outcome LVLIs or duplicate purse FLOR records.
 
 Precedence must be explicit:
 
@@ -284,8 +348,8 @@ Precedence must be explicit:
 4. ordinary copper/silver/gold Septims;
 5. invisible `Gold001` only as the compatibility backend.
 
-BOS 3.5.0 stable per-reference probability can express exact non-overlapping
-75/20/5 selection if ever approved. The following is pseudocode for the rule
+BOS 3.5.0 stable per-reference probability expresses the approved exact,
+non-overlapping 75/20/5 selection. The following is pseudocode for the rule
 ordering; production form references use BOS syntax `0xFormID~Plugin.esp`, while
 pipes delimit BOS fields:
 
@@ -339,19 +403,19 @@ This is a fallback because it is a real SKSE engineering project. If built from
 Currency Swapper, the exact base must be pinned: released tag 2.2.0 is
 Apache-2.0, while current `main` is AGPL-3.0.
 
-## Source-audit flags to resolve in the pilot
+## Source-audit findings from the pilot
 
 - M.I.N.T.'s published exchange helper currently uses `Math.Ceiling` on both
   multiplication and division paths. Small bidirectional exchanges may round
   upward and must be tested for profitable loops. A pack-owned exchanger should
   use floor plus a carried remainder or an explicit fee.
-- The published M.I.N.T. Dram BOS config contains bare `|60` fields, while BOS
-  3.5.0 only parses probability fields containing `chance`. Against that source,
-  the published rules are unconditional rather than 60%. Verify whether the
-  downloaded Nexus archive differs, then ship a corrected owned override and
-  runtime-test the intended distribution before adoption.
-- C.O.I.N.'s website/source Drakr-rate discrepancy must be resolved from the
-  released ESP property.
+- **Resolved statically:** the selected M.I.N.T. 1.0.6 Nexus archive contains
+  the same four bare `|60` fields, which BOS 3.5.0 treats as unconditional. The
+  installed owned same-path override replaces them with `chanceS(60)`; runtime
+  distribution sampling remains open.
+- **Resolved statically:** C.O.I.N.'s released ESP uses the 0.15 Drakr rate from
+  source rather than the Nexus page's 0.25. The owned one-way bank recipe
+  therefore preserves 20 Drakr → 3 Septims.
 - C.O.I.N.'s published source has an apparent loop-bound defect in a
   module-array compaction path. Compare source with the released PEX and exercise
   module removal/re-registration before relying on automatic conversion or
@@ -440,22 +504,23 @@ in a disposable profile and then a new long-form test save.
 - Proteus character switching cannot duplicate, erase, or leak currency state.
 - Config and MCM choices are reproducible for a packaged profile.
 
-## Decisions to make before implementation
+## Decision ledger
 
-1. Compatibility-first accounting or a true 1/10/100 subunit economy. The
-   compatibility-first ECE pilot is the safe recommendation.
-2. Final denomination values and weights: 1/25/100, 1/10/100, or another curve.
-3. Maximum acceptable inflation from rare loose silver/gold windfalls; zero is
-   the safe default, with 75/20/5 reserved for value-budgeted contents.
-4. Whether to approve the mean-neutral wider purse prototype: approximate
-   ranges 2–46, 5–74, and 10–112 at unchanged vanilla means.
-5. Whether ECE regional mode survives Gate B, or M.I.N.T. remains the sole
-   regional authority.
+1. **Resolved:** compatibility-first ECE accounting.
+2. **Resolved:** denomination values 1/25/100 and weights 0.01/0.02/0.03.
+3. **Resolved:** 75/20/5 on loose coins; +975% expected-value inflation accepted.
+4. **Resolved for testing:** exact 16-outcome mean-neutral purse lists under
+   #211: small 2–28 (mean 10.75), medium 5–42 (mean 20.25), and large 10–70
+   (mean 34.75). Runtime harvest/distribution sampling remains open.
+5. **Resolved for testing:** ECE regional mode with M.I.N.T. and C.O.I.N.;
+   gameplay acceptance remains open.
 6. Whether Beyond Reach, Moonpath, Gray Cowl, and VIGILANT truly need new
    spendable tender, rather than culturally appropriate ancient loot or neutral
    Septims.
-7. Ancient/regional exchange rates, fees, vendor change policy, and whether
-   Grand Solitude's Bank of Haafingar is the single dedicated exchange venue.
+7. **Resolved for the current ancient-coin cash-out gate:** ten one-way bank
+   recipes preserve the installed C.O.I.N./M.I.N.T. effective rates and all 17
+   metal-smelting arbitrage recipes are disabled. Final vendor change policy
+   and any Grand Solitude Bank of Haafingar presentation remain open.
 8. Whether Proteus characters keep independent physical wallets (recommended)
    or share funds through an explicit bank.
 9. Whether the later price layer begins with Trade & Barter or waits for an

@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Exit-9B/InventoryInjector/main/docs/InventoryInjector.schema.json",
+  "rules": [    
+{
+        "match": {
+        "formType": "MiscItem",
+        "formId": "skyrim.esm|F"
+      },
+      "assign": {   
+	"subType": "Gold",
+	"subTypeDisplay": "$Currency",     
+	"iconColor": "#997303"
+      }
+    },
+    {
+      "match": {
+        "formType": "MiscItem",
+        "formId": "exchangeCurrency_enhanced.esp|823"
+      },
+      "assign": {
+        "subType": "Gold",
+	"subTypeDisplay": "$Currency",
+	"iconColor": "#8C7FA5"
+      }
+    },
+{
+      "match": {
+        "formType": "MiscItem",
+        "formId": "exchangeCurrency_enhanced.esp|824"
+      },
+      "assign": {
+        "subType": "Gold",
+	"subTypeDisplay": "$Currency"
+      }
+    },
+    {
+      "match": {
+        "formType": "MiscItem",
+        "formId": "exchangeCurrency_enhanced.esp|b6d"
+      },
+      "assign": {   
+	"subType": "Gold",
+	"subTypeDisplay": "$Currency",     
+	"iconColor": "#997303"
+      }
+    },
+{
+      "match": {
+        "formType": "MiscItem",
+        "formId": {
+          "anyOf": [
+            "skyrim.esm|e1fc3",
+            "skyrim.esm|25c13",
+            "skyrim.esm|25c68",
+            "skyrim.esm|f4983",
+            "skyrim.esm|aebf1",
+            "skyrim.esm|aebf3",
+            "skyrim.esm|c8861",
+            "skyrim.esm|c8868",
+            "skyrim.esm|27f03",
+            "skyrim.esm|27f06",
+            "skyrim.esm|27f07",
+            "skyrim.esm|27f08",
+            "skyrim.esm|27f09",
+            "skyrim.esm|27f15",
+	    "skyrim.esm|27f12",
+	    "skyrim.esm|aebf7",
+	    "skyrim.esm|c8872",
+	    "skyrim.esm|c8874",
+	    "skyrim.esm|c8878",
+	    "skyrim.esm|c8864",
+	    "skyrim.esm|c8866",
+	    "skyrim.esm|25cfe",
+	    "skyrim.esm|c886c",
+	    "skyrim.esm|c886e",
+	    "skyrim.esm|c8870",
+	    "skyrim.esm|c886a",
+	    "skyrim.esm|aebf4",
+	    "skyrim.esm|25d7c"
+          ]
+        }
+      },
+      "assign": {
+        "subTypeDisplay": "$DwarvenScrap",
+        "iconSource": "I4IconAddon/icons.swf",
+        "iconLabel": "misc_dwarvenscrap",
+        "iconColor": "#705F32"	
+      }   
+    },
+{
+      "match": {
+        "formType": "MiscItem",
+        "formId": {
+          "anyOf": [
+		"exchangeCurrency_enhanced.esp|9dc",
+		"exchangeCurrency_enhanced.esp|a08"
+	   ]
+	}
+      },
+      "assign": {
+        "subTypeDisplay": "$Ore",
+	"iconSource": "skyui/icons_item_psychosteve.swf",
+        "iconLabel": "misc_ore",
+        "iconColor": "#828282"
+      }
+    },
+{
+      "match": {
+        "formType": "MiscItem",
+        "formId": "exchangeCurrency_enhanced.esp|9db"
+      },
+      "assign": {
+        "subTypeDisplay": "$Ingot",
+	"subType": "Ingot"
+      }
+    }
+  ]
+}

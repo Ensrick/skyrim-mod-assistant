@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "name": "Dynamic Dialogue Replacer 1.4.1 - Skyrim 1.7.104 native overlay",
+  "repository": "https://github.com/Ensrick/Dynamic-Dialogue-Replacer",
+  "upstream": "https://github.com/KrisV-777/Dynamic-Dialogue-Replacer",
+  "baseCommit": "a4f7e727b90c58b208bf9e479a4aff9ab2f5d5df",
+  "sourceCommit": "0b78325e0bb271af156d51c95fb159cc2f494ad3",
+  "mergeCommit": "d4951ac5c7f2373155ba89f0697918b6d536d854",
+  "branch": "port/1.7.104-no-modal",
+  "pullRequest": "https://github.com/Ensrick/Dynamic-Dialogue-Replacer/pull/1",
+  "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/Dynamic-Dialogue-Replacer-1.7.104",
+  "license": "GPL-3.0 with the upstream EXCEPTIONS.md linking/modding exception",
+  "runtime": "Skyrim 1.7.104 / SKSE 2.3.1 / Address Library format 5",
+  "dependencies": {
+    "commonLibRepository": "https://github.com/Ensrick/CommonLibSSE-NG",
+    "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+    "detoursCommit": "b2bf32a657be1114b173ad28d2d65463ca4c466f",
+    "xmake": "3.1.1"
+  },
+  "ci": {
+    "runId": 33786541714,
+    "url": "https://github.com/Ensrick/Dynamic-Dialogue-Replacer/actions/runs/33786541714",
+    "result": "success",
+    "artifactId": 9906208476,
+    "artifactName": "DynamicDialogueReplacer-1.4.1-Skyrim-1.7.104-overlay",
+    "artifactDigest": "sha256:3e57e3570db6374d88e87838777a9c5c3c93834370eda1618155fc1758e62ae0",
+    "downloadedPath": "C:/Users/danjo/source/repos/skyrim-tools-builds/ci/DynamicDialogueReplacer-1.4.1-Skyrim-1.7.104-run-33786541714"
+  },
+  "files": [
+    {
+      "path": "SKSE/Plugins/DynamicDialogueReplacer.dll",
+      "bytes": 1810944,
+      "sha256": "8167CE16D26CC6245D234E4B4CDF19F03F5CA120123AD06E051730F7271EE48C"
+    },
+    {
+      "path": "SKSE/Plugins/DynamicDialogueReplacer.pdb",
+      "bytes": 26800128,
+      "sha256": "0749A581F7C0F258BAFABF81D7E704C299388CB42517B4D80B55D918BAC414CF"
+    },
+    {
+      "path": "COPYING",
+      "bytes": 35560,
+      "sha256": "4D3E484B968368A852C26842B8F57F3C757C96DE01194119603EC9B591D2C8D7"
+    },
+    {
+      "path": "ENSRICK-PORT.md",
+      "bytes": 3186,
+      "sha256": "33DB1DD26C7ACCE1720DA2C498E46CDAE082AA143A44F426B40EAB20EC33DCAA"
+    },
+    {
+      "path": "EXCEPTIONS.md",
+      "bytes": 2096,
+      "sha256": "22FCB547441914A84D16D47715A064E9D2AA09ADDD01C3601F0727C0A14FA1DA"
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "bytes": 108,
+      "sha256": "92479915361BCB50A5BF024DE3E571FB0DC4B5C71080DBEF33369C41F06997AE"
+    }
+  ],
+  "featureDefaultsDiff": {
+    "changed": {},
+    "onlyInBuilt": {},
+    "onlyInUpstream": {},
+    "note": "DLL/PDB-only overlay; it ships no runtime configuration or feature-default file. The untouched Nexus 1.4.1 install remains authoritative for all scripts, interface/configuration, and dialogue-replacement content."
+  },
+  "repositoryProtection": {
+    "rulesetId": 22214662,
+    "scope": "default branch",
+    "requirements": [
+      "pull request",
+      "Build and inspect DLL status check",
+      "linear history",
+      "no deletion",
+      "no force push"
+    ]
+  },
+  "changes": [
+    "Ported the released 1.4.1 source to the pinned format-5 CommonLibSSE-NG maintenance branch.",
+    "Restricted SKSE metadata and the load-time gate to Skyrim 1.7.104.",
+    "Preflighted the four call sites, callable targets, and DialogueMenu vtable target before mutation.",
+    "Checked and aborted failed Detours transactions and deferred listener/Papyrus registration until hook success.",
+    "Changed fatal CommonLib failures to log, flush, and terminate without a native message box.",
+    "Corrected the upstream post-build output-directory creation defect."
+  ],
+  "verification": {
+    "build": "GitHub Actions Windows 2022 release build passed with no source warnings accepted by the configured build.",
+    "skseMetadata": "PASS: plugin 1.4.1.0; versionIndependence=0; versionIndependenceEx=2; sole compatible runtime 1.7.104.0.",
+    "hookSites": "PASS against the installed SkyrimSE.exe 1.7.104 and versionlib-1-7-104-0.bin: format 5, four E8 sites, two callable prologues, and DialogueMenu vtable target.",
+    "noModal": "COMMONLIBSSE_NO_MODAL_ERRORS is compiled into the plugin and pinned CommonLib static library; fatal failures log/flush and terminate rather than calling MessageBox.",
+    "gameplay": "PASS at the framework gate: records/launch-verify-20260903-135633.md reached the main menu in 40.2 seconds and loaded the save in 49.6 seconds. DynamicDialogueReplacer.log confirms hooks installed, plugin loaded, and the Exchange Currency replacement file initialized with one script. Real replaced-dialogue behavior remains an acceptance test."
+  },
+  "package": {
+    "type": "DLL/PDB overlay plus GPL/exception notices, port record, and checksums",
+    "baseMod": "Dynamic Dialogue Replacer 1.4.1, Nexus mod 135618 file 748293",
+    "instruction": "Install the official package unchanged, then enable this overlay above it."
+  },
+  "installation": {
+    "profile": "Default",
+    "mo2Mod": "DDR 1.7.104 Native Overlay - Ensrick",
+    "state": "enabled-launch-verified",
+    "priorityAtInstall": 276,
+    "installedUtc": "2026-09-03T18:04:50Z",
+    "transaction": "20260903T180450805Z-4ba902c6aa7f",
+    "installedDllSha256": "8167CE16D26CC6245D234E4B4CDF19F03F5CA120123AD06E051730F7271EE48C",
+    "launchVerification": "records/launch-verify-20260903-135633.md",
+    "winner": "The overlay is priority 276 and the vendor Dynamic Dialogue Replacer is priority 273; the overlay is the effective SKSE/Plugins/DynamicDialogueReplacer.dll provider."
+  }
+}

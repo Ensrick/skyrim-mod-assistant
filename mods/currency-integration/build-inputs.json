@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "papyrusCompiler": {
+    "name": "Caprica",
+    "version": "0.3.0",
+    "relativePathFromRepos": "skyrim-tools-builds/Caprica-0.3.0/Caprica/Release/Caprica.exe",
+    "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
+    "debugInfo": false,
+    "ckOptimizations": false,
+    "normalizedCompileUnixTime": 946684800
+  },
+  "flags": {
+    "relativePathFromGame": "Data/Source/Scripts/TESV_Papyrus_Flags.flg",
+    "sha256": "AB61D098EF7A1402D8EE4D7BC77F26851D5380CD142EE4F3BF57CE41D0E7AFA7"
+  },
+  "translationOverride": {
+    "path": "interface/translations/exchangecurrency_enhanced_english.txt",
+    "encoding": "UTF-16LE-BOM",
+    "lines": [
+      "$Gold\tSeptims",
+      "$Currency\tCurrency"
+    ]
+  },
+  "inventoryInjectorOverride": {
+    "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/SKSE/Plugins/InventoryInjector/exchangeCurrency_enhanced.json",
+    "sourceSha256": "2A06D13402627DD80BAA2B575BA4B2F5F426E838E66B8EBEF873447AA1D3CAB5",
+    "outputPath": "SKSE/Plugins/InventoryInjector/exchangeCurrency_enhanced.json",
+    "outputSha256": "BD736CC14D0FA2F9484541C60395310C463899AF1EA02D2BEC753DE6CF31F859",
+    "sourceText": "\"subTypeDisplay\": \"Métal dwemer\"",
+    "replacementText": "\"subTypeDisplay\": \"$DwarvenScrap\"",
+    "expectedReplacements": 1
+  },
+  "containerDistributionOverride": {
+    "sourceRelativePathFromInstance": "mods/C.O.I.N. - Coins of Interesting Natures/SKSE/Plugins/ContainerDistributionFramework/C.O.I.N.json",
+    "sourceSha256": "81F5069F3844816973D52102DBCEA64BBB3355072F62F2BEF88A682C756DD13E",
+    "outputPath": "SKSE/Plugins/ContainerDistributionFramework/C.O.I.N.json",
+    "outputSha256": "DB02D43614F257DAB246E7045912D7B59612111C21767417E76F28C79C227D98",
+    "sourceText": "\"remove\" : \"01DE5012|Update.esm\"",
+    "replacementText": "\"remove\" : \"0xDE5012|Update.esm\"",
+    "expectedReplacements": 1
+  },
+  "keywordDistributorOverride": {
+    "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/exchangeCurrency_enhanced_drams_KID.ini",
+    "sourceSha256": "832FDA1B63FE98F6506F5EE215EC04ABFF9F97B2F440296EAE20D221083F8F8F",
+    "outputPath": "exchangeCurrency_enhanced_drams_KID.ini",
+    "outputSha256": "CFA7125AE6D03CC904D8D132F797C4AC64A8079ED6D42B4C7345E1CFA02B11EE",
+    "sourceText": "Keyword = IsDrakrMoney|Location|0x0142A8~Dragonborn.esm\r\n",
+    "replacementText": "",
+    "expectedReplacements": 1
+  },
+  "papyrusImports": [
+    {
+      "name": "SKSE64 Scripts",
+      "relativePathFromInstance": "mods/SKSE64 Scripts/Scripts/Source",
+      "pscFiles": 62,
+      "treeSha256": "CAC89620B7C46A71BF82217B69A8EDD2FEA0769DD860F42478BA89ED9289E491"
+    },
+    {
+      "name": "Creation Kit Skyrim sources",
+      "relativePathFromGame": "Data/Source/Scripts",
+      "pscFiles": 14301,
+      "treeSha256": "C0BF0126F18490E198E8D223F58F4B5B544113B8841D1629EC8DDB43FACB4A02"
+    },
+    {
+      "name": "C.O.I.N. 3.5.3 source",
+      "relativePathFromInstance": "mods/C.O.I.N. - Coins of Interesting Natures/Source/Scripts",
+      "pscFiles": 7,
+      "treeSha256": "DA9B2DD0CA7EE92A4A2A6FE24C92890707A1F53A47B6E102F37C1683B12C6E57"
+    },
+    {
+      "name": "Exchange Currency Enhanced 4.1.1 source",
+      "relativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source",
+      "pscFiles": 8,
+      "treeSha256": "FC82A34415F04BED11603D5C1105DF163CC4690D836B9F8F065C801AC865DEEE"
+    },
+    {
+      "name": "Currency Swapper 2.2.0 source",
+      "relativePathFromInstance": "mods/Currency Swapper/Source/Scripts",
+      "pscFiles": 1,
+      "treeSha256": "775A7564ACF4D6A265424A867C3295F5F3864C7EC20A05CBAB0DE4C08E515440"
+    },
+    {
+      "name": "M.I.N.T. 1.0.6 source",
+      "relativePathFromInstance": "mods/M.I.N.T. - More Interesting New Tender/Source/Scripts",
+      "pscFiles": 28,
+      "treeSha256": "AA104997DFA43F8F373C9B0F0B16F48045D4C6DD1859D892B06269CCB342F099"
+    }
+  ]
+}

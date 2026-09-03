@@ -4,6 +4,12 @@
 
 **Runtime:** Skyrim `1.7.104.0`
 
+**Status:** the exact three-record purse repair is installed in Ensrick
+Regional Currency Integration v0.2.4. Static record, arithmetic, link,
+deterministic-build, and save-load smoke gates pass. A post-v0.2.4 full-profile
+conflict snapshot plus runtime harvest, frequency, reset, transfer, and
+duplication checks remain open under #211.
+
 **Scope:** the three ordinary vanilla coin-purse leveled lists overridden by
 Exchange Currency Enhanced (ECE) 4.1.1. Thieves Guild purses and loose placed
 coins are deliberately out of scope.
@@ -29,11 +35,12 @@ curve:
   typo, but Small would still average 22.50 versus vanilla's 10.75. That is not
   the pack's desired mean-neutral widening.
 
-Adopt a pack-owned, ESL-flagged override after ECE. Each purse should make one
-uniform selection among 16 direct `Gold001` value budgets. The proposed lists
-below preserve each vanilla mean exactly, widen both tails in a controlled
-way, preserve Small < Medium < Large progression, and let ECE's existing
-inventory synchronization physicalize the result as weighted denominations.
+The pack-owned v0.2.4 integration ESPFE now overrides the three purse lists
+after ECE. Each purse makes one uniform selection among 16 direct `Gold001`
+value budgets. The implemented lists below preserve each vanilla mean exactly,
+widen both tails in a controlled way, preserve Small < Medium < Large
+progression, and let ECE's existing inventory synchronization physicalize the
+result as weighted denominations.
 
 ## Audited artifacts
 
@@ -46,8 +53,9 @@ inventory synchronization physicalize the result as weighted denominations.
 The 4.1.1 archive contains one common copy of
 `00 Main/exchangeCurrency_enhanced.esp`; the defect is not produced by a FOMOD
 branch. ECE was serialized with Spriggit 0.41.0 and the relevant vanilla LVLI
-subrecords were decoded independently from the local master. No live-profile
-file was changed.
+subrecords were decoded independently from the local master. The original
+probability audit changed no live-profile file; the later v0.2.4 implementation
+was installed through the normal transactional path.
 
 ## Exact records and entries
 
@@ -151,12 +159,12 @@ ECE Large      = z^10 A(z)^3 B(z) G(z) S(z)
 This is preferable to rounding a long decimal probability table and makes the
 duplicate Small jackpot explicit.
 
-## Proposed owned override
+## Implemented owned override
 
-Create `Ensrick ECE Purse Balance.esp` as an ESP-FE loaded after
-`exchangeCurrency_enhanced.esp`. It should override exactly three existing
-records, create no new records, contain no script or vendor asset, and leave
-all shared helper lists unchanged.
+`Ensrick Currency Integration Patch.esp` v0.2.4 incorporates the purse work in
+the unified 45-record ESPFE loaded after `exchangeCurrency_enhanced.esp`. The
+purse portion overrides exactly three existing records, creates no purse forms,
+contains no vendor asset, and leaves all shared helper lists unchanged.
 
 For each override:
 
@@ -179,11 +187,10 @@ jackpot helpers. The resulting standard deviations are approximately 6.8511,
 9.6792, and 15.3806. All means remain exactly vanilla while the ranges widen
 from 5–23/10–37/20–56 to 2–28/5–42/10–70.
 
-Because the plugin contains only overrides of Skyrim forms, its records do not
-need FormID compaction before adding the ESL flag. `Skyrim.esm` is the only
-record-reference master strictly required by the proposed data. Enforce ECE
-ordering with explicit mod/plugin metadata; retaining ECE as an otherwise
-unused header master is optional and should not replace that ordering rule.
+The three purse records are overrides of Skyrim forms and require no FormID
+compaction. They are part of the larger integration plugin, whose nine exact
+masters are derived from all 45 serialized records and links. Explicit LOOT
+metadata keeps that ESPFE after ECE and every other record source.
 
 Do not override the three purse flora records:
 
@@ -220,6 +227,13 @@ ECE's accounting script; it is not the preferred implementation.
 | Persistence | Save/load, cell reset, rapid activation, inventory transfer, and currency exchange | No duplicate conversion, lost value, stale backend balance, or repeated harvest |
 | Regression | Test loose placed coins, ordinary containers, merchants, and Thieves Guild purses | Existing regional loose-coin rules and ECE physicalization remain intact; TG purses remain unchanged |
 | Plugin quality | Check for errors and inspect header/masters/flags | ESP-FE flag present; no new records to compact; only required masters; no deleted/navmesh/ITM contamination |
+
+The v0.2.4 generator/auditor satisfies the static identity, data, arithmetic,
+and plugin-quality rows. The retained whole-profile conflict snapshot predates
+v0.2.4, so the conflict row remains open until that snapshot is regenerated.
+The five runtime rows also remain acceptance work; the save-load smoke proves
+only that the installed records and scripts load without a currency-specific
+error.
 
 ## Vendor-report draft
 
