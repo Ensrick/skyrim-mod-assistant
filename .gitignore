@@ -188,3 +188,28 @@
 dist/
 !/tools/
 !/tools/package_ensrick.py
+
+# Cloak distribution, unique-cloak placement and death-hound loot (#200, #187,
+# #199). SkyPatcher configuration overlays: our own text, no vendor bytes.
+!/records/cloak-distribution-2026-09-02.md
+!/overlays/ensrick-cloak-distribution-balance/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/*.ini
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/npc/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/npc/zz Ensrick Unique Cloaks/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/npc/zz Ensrick Unique Cloaks/*.ini
+!/overlays/ensrick-death-hound-loot-fix/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/*.ini

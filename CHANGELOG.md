@@ -65,6 +65,146 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   to a scratch directory outside `mods\`; every DLL verdict carries its PE stamp
   and every texture verdict its measured ratio.
 
+## 2026-09-02 23:18 - Cloak distribution rebalanced; guards stop wearing two cloaks (#200)
+
+- **What:** New mod `Ensrick - Cloak Distribution Balance` (MO2Headless
+  `mod-stage`, transaction `20260903T041656059Z-01212abd1ef0`, priority 260,
+  modlist row 3), one SkyPatcher config at
+  `SKSE\Plugins\SkyPatcher\leveledList\zz Ensrick Cloak Balance\`. No plugin, no
+  vendor bytes; `zz` makes SkyPatcher process it after every RMB config, which
+  `SkyPatcher.log` confirms. Full measurement:
+  `records/cloak-distribution-2026-09-02.md`.
+- **Two root causes, both read off the installed configs, not inferred.**
+  (1) **chanceNone, not entry count, is the bigger lever.** Every
+  [Pelts o Plenty](https://www.nexusmods.com/skyrimspecialedition/mods/120726)
+  leveled list rolls `chanceNone 0`; the twenty
+  [Cloaks of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/6369)
+  lists roll **25 to 90** (`LitemCloaksCommon` 70, `LitemCloaksThalmor` 90) -
+  2017 numbers from when that mod injected straight into vanilla lists and had
+  to gate its own rarity, which inside RMB double-dips on one side only. Exact
+  leveled-list probability over the patched graph: a generic NPC's cloak was
+  **1.0% Cloaks of Skyrim, 54.8% fur**, which is the report *"I don't ever
+  recall seeing the cloaks of skyrim"* measured. #200's 7:1 entry-count figure
+  for `B6C` is correct and is the smaller half. (2) **Cloaks of Skyrim reaches
+  two of RMB's eight generic buckets**; Pelts reaches all eight.
+- **The doubles are Sons of Skyrim, and it is not a leveled-list roll.** All
+  fourteen outfits RMB injects a guard cloak list into are
+  [Sons of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/68656)
+  overrides that already contain a Sons of Skyrim hold cloak, so RMB adds a
+  second cloak beside one that is already there. Pelts is on biped slot **57**
+  (all 109 cloaks, mantles and pauldrons; 10 hoods on 31), Sons of Skyrim on
+  **46** - including `0_Fur_Collar_Brown` - so a guard wears both at once; when
+  the roll comes up a Cloaks of Skyrim cloak instead, that is slot 46 too and
+  one of the two ends up carried. The other 44 patched outfits hold no
+  cloak-slot item, so bandits and faction NPCs were only ever getting one. This
+  is exactly the merge `RMB SPIDified - Sons of Skyrim` 83340 performs and which
+  this build does not have (#195).
+- **Four dials, each one number, each its own labelled block in the ini.**
+  `[1] GUARDS` `chanceNone=100` on `B6C..B74` (guards wear only the Sons of
+  Skyrim cloak; 0 restores RMB's second one). `[2] RATIO` `chanceNone=0` on the
+  twenty Cloaks of Skyrim lists (raise to make cloth rarer; 70 is roughly the
+  vendor default). `[3] FREQUENCY` `chanceNone=55` on the outfit-facing lists
+  (RMB ships 35). `[5] WARM PARITY` four `addToLLs` putting cloth into the warm
+  buckets, commentable - kept on because leaving six of eight buckets fur-only
+  is what made cloth invisible; #189 is where the warmth keyword gets settled
+  properly.
+- **Five vendor defects fixed on the way, block `[4]`, not dials.** The dead
+  `Cloaks - Dawnguard.esp|800` repointed at `Cloaks - RMB SPCH.esp|984`
+  (`DLC1LItemCloaksDawnguard`), which is why the Dawnguard bucket was 100% fur
+  and why `SkyPatcher.log` prints `Form not found` every launch; the two "Dark"
+  Cloaks of Skyrim lists added to the dark buckets RMB left entirely to fur;
+  nine `removeFromLLs` dropping `RMB_PoP_*Trimmed_UNUSED` 802/806/807, whose
+  entry lists are identical member-for-member to 803/801/800, from the buckets
+  that carry the original; and `B96`/`B9B`/`B97`/`B99` opened to 0 because RMB
+  puts 35 on **both** `B5F` and its children, so the frequency gate compounded
+  and generic NPCs were 58% cloakless rather than 35%.
+- **Result** (exact, `records-work/cloak-dist-2026-09-02/simulate.py`): 55.0% of
+  every covered non-guard NPC has no cloak; Cloaks of Skyrim is **23.8%** of a
+  generic NPC's cloaks (was 1.0%), 20-60% of a faction NPC's; guards wear
+  exactly one cloak, the Sons of Skyrim one.
+- **One assumption, stated because it is the thing that could be wrong:**
+  SkyPatcher applying a later `chanceNone` over an earlier one. File order is
+  proven from the log; last-write-wins is not provable from disk. If it is
+  first-write-wins, dials 1-3 are no-ops and the `addToLLs`/`removeFromLLs`
+  lines still apply. The first play session settles it - guards still carrying
+  two cloaks is the tell.
+- **Source:** user, 2026-09-02, in play - *"a lot of NPCs have the fur cloaks. I
+  don't ever recall seeing the cloaks of skyrim"*, some NPCs carrying two fur
+  cloaks, and cloaks on more NPCs than intended. #200; refs #95, #189, #195.
+- **Verification:** **VERIFIED 2026-09-02 23:18** by
+  `records/launch-verify-20260902-231840.md` - main menu 32.0 s, save loaded
+  40.4 s, 243 active plugins (unchanged - no plugin added), 36 SKSE plugins
+  checked, 0 refused, no crash log. `SkyPatcher.log` shows the config loaded and
+  processed after `Headgear\` and every RMB config, with no errors of its own.
+  `install_mod.py --verify` 0 problem(s), `verify_order.py` CLEAN,
+  `file_conflicts.py` no collision on the new file. **In-game distribution is
+  UNVERIFIED** - proving it needs NPCs walked past, not a save load.
+
+## 2026-09-02 23:18 - The ten unique Cloaks of Skyrim cloaks can now place (#187)
+
+- **What:** New mod `Ensrick - Cloaks of Skyrim Unique Placement` (MO2Headless
+  `mod-stage`, transaction `20260903T041656164Z-60d394e33f30`, priority 261,
+  modlist row 2), one SkyPatcher config at
+  `SKSE\Plugins\SkyPatcher\npc\zz Ensrick Unique Cloaks\`. Ten
+  `filterByNpcs` directives replacing the ten in
+  [RMB SPCH - Cloaks of Skyrim 116030](https://www.nexusmods.com/skyrimspecialedition/mods/116030)
+  1.5.3, which name `Skyrim.esm` for FormIDs that live in
+  `Cloaks - RMB SPCH.esp`. His ten stay on disk and stay inert; ours do the work.
+  New file, never an edit: 116030 forbids editing its files, and
+  [Cloaks of Skyrim 6369](https://www.nexusmods.com/skyrimspecialedition/mods/6369)
+  grants open permission for compatibility patches.
+- **Both defects verified by record, not by reading:** all ten items resolve as
+  ARMO on biped slot 46 in `Cloaks - RMB SPCH.esp` (`CloakCrimson` D6B,
+  `CloakDragonPriest` 8EF, `CloakDPVokun` 8FF, `CloakDPRahgot` 901,
+  `CloakDPOtar` 8FE, `CloakDPVolsung` 900, `CloakDPHevnoraak` 8F1,
+  `CloakDPMorokei` 8FD, `CloakDPNahkriin` 8F3, `CloakDPKrosis` 8FC) and none
+  exists in `Skyrim.esm`; all ten target NPCs resolve in `Skyrim.esm`. Krosis'
+  truncated filter `Skyrim.esm|767` corrected to `100767`
+  (`dunShearpointKrosisDragonPriest`); `000767` returns `Record not found`.
+  The failure was silent - SkyPatcher logs no miss on an npc `objectsToAdd`,
+  which is why nine dragon priests and Idolaf Battle-Born got nothing without
+  a line of evidence anywhere.
+- **Source:** #187, from `records/cloak-layer-audit-2026-09-02.md` section 2.
+  These are the cloaks that audit measured as base Cloaks of Skyrim's best
+  textures.
+- **Verification:** **VERIFIED 2026-09-02 23:18** by the same
+  `records/launch-verify-20260902-231840.md` PASS; `SkyPatcher.log` shows
+  `npc\zz Ensrick Unique Cloaks\Ensrick - Unique Cloak Placement.ini` processed
+  with no errors. **Placement itself is UNVERIFIED** - it needs a dragon priest
+  visited or Idolaf inspected in Whiterun.
+
+## 2026-09-02 23:18 - Death hounds stop dropping dog meat (#199)
+
+- **What:** New mod `Ensrick - Death Hound Loot Fix` (MO2Headless `mod-stage`,
+  transaction `20260903T041656278Z-bcda5604bcb0`, priority 262, modlist row 1),
+  one SkyPatcher line removing `FoodDogMeat` (`0EDB2E:Skyrim.esm`) from
+  `DLC1DeathItemDeathHound` (`00D6F7:Dawnguard.esm`).
+- **The drop is vanilla Dawnguard, not a mod.** That list is
+  `LootSmallTreasure10` + `FoodDogMeat` + `DLC1DeathHoundCollar` with `UseAll`
+  set, and **nothing in the 327-plugin order overrides it** - it was checked
+  against every plugin, not assumed.
+  [Simple Hunting Overhaul 95943](https://www.nexusmods.com/skyrimspecialedition/mods/95943)
+  1.16 overrides 24 death-item lists and the death hound is not one of them, a
+  gap `records/simple-hunting-overhaul-95943-2026-08-30.md` recorded at adoption.
+- **Why removal rather than an SHO harvest entry, the choice #199 asked for.**
+  SHO's meat branch gates nothing: its player alias adds `_MeatTracker` and
+  returns, and time plus hunting experience are charged only when a **pelt**
+  reaches `GlobalCheck()`. Adding the death hound to SHO's meat formlist would
+  leave the meat exactly as lootable as it is now and would only mean anything
+  once the owned harvest-time extension in #72 exists. A death hound is an
+  undead vampire creature with no pelt: edible meat is the odd entry on it, not
+  the missing one. One line beats a formlist patch that would not change
+  behaviour.
+- **Deliberately left alone:** `LootSmallTreasure10` on the same list (SHO
+  strips it from the animals it covers, but that is not what was reported), and
+  `1AF87E:Vigilant.esm zzzCHDeathItemHound`, which has the same shape but is a
+  different creature in a different mod.
+- **Source:** user, 2026-09-02, in-game observation. #199.
+- **Verification:** **VERIFIED 2026-09-02 23:18** by the same
+  `records/launch-verify-20260902-231840.md` PASS; `SkyPatcher.log` shows the
+  config processed last in the leveled-list pass with no errors. **The loot
+  itself is UNVERIFIED** - it needs a death hound killed and looted.
+
 ## 2026-09-02 23:05 - Fix the SKSE gate that let Smart Talk through (#197)
 
 - **What:** `audit/skse_version_data.py` carried a PE-stamp reject window of

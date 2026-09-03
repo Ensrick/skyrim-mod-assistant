@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Cloaks of Skyrim Unique Placement",
+  "version": "2026-09-02",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/187",
+  "sourcePath": "overlays/ensrick-cloaks-of-skyrim-unique-placement",
+  "kind": "SkyPatcher configuration overlay (no plugin, no generator, no vendor bytes)",
+  "auditRecord": "records/cloak-layer-audit-2026-09-02.md section 2",
+  "output": {
+    "files": [
+      {
+        "path": "SKSE/Plugins/SkyPatcher/npc/zz Ensrick Unique Cloaks/Ensrick - Unique Cloak Placement.ini",
+        "sha256": "E7D46FD3D64517FC00C870ABEB331186A0120A7B1A91BA23B45EB7F6F1038D51",
+        "bytes": 3304
+      }
+    ],
+    "plugins": [],
+    "directives": {
+      "filterByNpcs": 10
+    }
+  },
+  "defectFixed": {
+    "wrongPlugin": "RMB SPCH - Cloaks of Skyrim 1.5.3 writes objectsToAdd=Skyrim.esm|<id> for ten items whose FormIDs live in Cloaks - RMB SPCH.esp",
+    "truncatedFilter": "filterByNpcs=Skyrim.esm|767 for Krosis; correct is 100767 (dunShearpointKrosisDragonPriest)",
+    "silent": "SkyPatcher logs no miss on an npc objectsToAdd, so all ten failed without evidence"
+  },
+  "targets": [
+    {
+      "npc": "013BB2 IdolafBattleBorn",
+      "item": "D6B CloakCrimson"
+    },
+    {
+      "npc": "023A93 EncDragonPriest",
+      "item": "8EF CloakDragonPriest"
+    },
+    {
+      "npc": "0327C2 Ianusu (Vokun)",
+      "item": "8FF CloakDPVokun"
+    },
+    {
+      "npc": "035351 DunForelhostDragonPriestRahgot",
+      "item": "901 CloakDPRahgot"
+    },
+    {
+      "npc": "03763A dunRagnOtar",
+      "item": "8FE CloakDPOtar"
+    },
+    {
+      "npc": "041930 dunVolskyggeDragonPriest01 (Volsung)",
+      "item": "900 CloakDPVolsung"
+    },
+    {
+      "npc": "04D6E7 dunValthumeHevnoraak",
+      "item": "8F1 CloakDPHevnoraak"
+    },
+    {
+      "npc": "0F496C MG07LabyrinthianDragonPriest (Morokei)",
+      "item": "8FD CloakDPMorokei"
+    },
+    {
+      "npc": "0F849B dunSkuldafnNahkriin",
+      "item": "8F3 CloakDPNahkriin"
+    },
+    {
+      "npc": "100767 dunShearpointKrosisDragonPriest",
+      "item": "8FC CloakDPKrosis"
+    }
+  ],
+  "verification": {
+    "npcsExist": "all ten resolved by skyrim-record-cli against Skyrim.esm; 000767 returns Record not found",
+    "itemsExist": "all ten present as ARMO in Cloaks - RMB SPCH.esp, biped slot 46; none present in Skyrim.esm"
+  },
+  "installation": {
+    "mo2Mod": "Ensrick - Cloaks of Skyrim Unique Placement",
+    "profile": "Default",
+    "enabled": true,
+    "modPriorityAtInstall": 261,
+    "stageTransaction": "20260903T041656164Z-60d394e33f30",
+    "activePluginsAfter": 243,
+    "verify": "install_mod.py --verify: 0 problem(s)"
+  },
+  "validation": {
+    "launchVerify": "records/launch-verify-20260902-231840.md - PASS",
+    "skyPatcherLog": "npc/zz Ensrick Unique Cloaks processed with no errors",
+    "gameplayAcceptance": "pending - needs a dragon priest visited, or Idolaf inspected in Whiterun"
+  },
+  "distribution": {
+    "status": "distributable",
+    "vendorFilesModified": false,
+    "basis": "our own INI, a new file that loads alongside his; 116030 forbids editing its files, 6369 grants open permission for any sort of compatibility patch"
+  }
+}

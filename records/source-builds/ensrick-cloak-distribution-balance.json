@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Cloak Distribution Balance",
+  "version": "2026-09-02",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/200",
+  "sourcePath": "overlays/ensrick-cloak-distribution-balance",
+  "kind": "SkyPatcher configuration overlay (no plugin, no generator, no vendor bytes)",
+  "auditRecord": "records/cloak-distribution-2026-09-02.md",
+  "analysisTooling": "records-work/cloak-dist-2026-09-02/ (lvli.py, resolve.py, ratio.py, outfit_probe.py, simulate.py)",
+  "output": {
+    "files": [
+      {
+        "path": "SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/Ensrick - Cloak Balance.ini",
+        "sha256": "66DC11069C7C966ED187C351FB7FB6CFA7758401731A126D3B57F09931431D99",
+        "bytes": 11107
+      }
+    ],
+    "plugins": [],
+    "directives": {
+      "chanceNone": 40,
+      "addToLLs": 7,
+      "removeFromLLs": 9
+    }
+  },
+  "tunables": [
+    {
+      "id": "GUARDS",
+      "block": 1,
+      "expression": "chanceNone on RMB SPID - Core Definitions.esp|B6C..B74",
+      "value": 100,
+      "meaning": "100 = guards wear only the Sons of Skyrim cloak their outfit already carries; 0 = restore RMB second cloak",
+      "deleteIf": "RMB SPIDified - Sons of Skyrim 83340 is adopted (#195) - that package performs the merge properly"
+    },
+    {
+      "id": "RATIO",
+      "block": 2,
+      "expression": "chanceNone on the 20 Cloaks of Skyrim leveled lists in Cloaks - RMB SPCH.esp",
+      "value": 0,
+      "vendorValue": "25-90 (LitemCloaksCommon 70, LitemCloaksThalmor 90)",
+      "meaning": "0 = cloth on the same footing as fur, which ships 0 on every list; higher = cloth rarer"
+    },
+    {
+      "id": "FREQUENCY",
+      "block": 3,
+      "expression": "chanceNone on the outfit-facing RMB lists",
+      "value": 55,
+      "vendorValue": 35,
+      "meaning": "share of covered NPCs with no cloak at all"
+    },
+    {
+      "id": "WARM PARITY",
+      "block": 5,
+      "expression": "4 addToLLs putting Cloaks of Skyrim into B99/B9A/B9E/B9F",
+      "value": "on",
+      "meaning": "comment out to leave the four warm buckets all-fur; see #189"
+    }
+  ],
+  "structuralFixes": [
+    "B62 Dawnguard repointed from the absent Cloaks - Dawnguard.esp|800 to Cloaks - RMB SPCH.esp|984",
+    "B98/B9D dark buckets given LitemCloaksDarkCommon / LitemCloaksDarkEnch",
+    "9 removeFromLLs dropping RMB_PoP_*Trimmed_UNUSED 802/806/807, entry-identical duplicates of 803/801/800",
+    "B96/B9B/B97/B99 chanceNone 0 - RMB gated B5F and its children with the same 35, so the roll compounded"
+  ],
+  "measured": {
+    "method": "exact leveled-list probability over the patched graph, records-work/cloak-dist-2026-09-02/simulate.py",
+    "beforeCosShareOfCloaks": {
+      "generic": "1.0%",
+      "guards": "8.7-20.0%",
+      "factions": "0.0-25.4%"
+    },
+    "afterCosShareOfCloaks": {
+      "generic": "23.8%",
+      "guards": "n/a - one Sons of Skyrim cloak",
+      "factions": "20.0-60.0%"
+    },
+    "afterNoCloak": "55.0% of every covered non-guard NPC"
+  },
+  "assumption": "SkyPatcher applies configs in file order and a later chanceNone replaces an earlier one. Processing order is proven from SkyPatcher.log; last-write-wins is NOT provable from disk and is settled by the first play session.",
+  "installation": {
+    "mo2Mod": "Ensrick - Cloak Distribution Balance",
+    "profile": "Default",
+    "enabled": true,
+    "modPriorityAtInstall": 260,
+    "stageTransaction": "20260903T041656059Z-01212abd1ef0",
+    "activePluginsAfter": 243,
+    "verify": "install_mod.py --verify: 0 problem(s); verify_order.py CLEAN"
+  },
+  "validation": {
+    "launchVerify": "records/launch-verify-20260902-231840.md - PASS, main menu 32.0s, save loaded 40.4s",
+    "skyPatcherLog": "loaded and processed with no errors, after every RMB config",
+    "gameplayAcceptance": "pending - a distribution change needs NPCs walked past"
+  },
+  "distribution": {
+    "status": "distributable",
+    "vendorFilesModified": false,
+    "basis": "our own INI; RMB SPCH 116030/179354 and RMB SPIDified 148689 files untouched (116030 forbids editing them, which is why this loads after his rather than editing); Cloaks of Skyrim 6369 grants open permission for compatibility patches"
+  }
+}
