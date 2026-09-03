@@ -62,6 +62,106 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   disabled or reordered, no profile or INI change. Validated against four DLLs
   with known real-world outcomes plus the full enabled-mod scan.
 
+## 2026-09-02 22:39 - Open Animation Replacer UNPARKED on author release 3.2.1 (Nexus 92109, #140)
+
+- **What:** `Open Animation Replacer` upgraded 3.2.0 -> **3.2.1** (Nexus file
+  798222, uploaded 2026-08-31, `92109-798222.7z`, 8.09 MB, sha256
+  `970cb6c3...907de8`) and **ENABLED** at modlist line 240 - the first time it
+  has been active in this build. Installed with `--replace` over the parked
+  3.2.0, transaction `20260903T033733283Z-de1db0b97e86`; modlist backed up to
+  `profiles/Default/modlist.txt.bak.v20260902-pre-oar321`. DLL + PDB only, no
+  ESP, so active plugins stay at 243. **No rebuild was needed and none was
+  done:** the author shipped the fix. OAR 3.2.1's changelog line 1 is
+  *"Updated to support runtime 1.7.99+"*, and commit `4d8c0f1b0` repoints
+  `extern/CommonLibSSE` from `alandtse/CommonLibVR@539d4ce50` (2025-04-12) to
+  `alandtse/CommonLibSSE-NG@fd60ebdfe` (2026-08-29) - past
+  `7b47c5a8f` (2026-08-21), the commit that added Address Library format 5.
+  Because it is an unmodified vendor release it carries **no `distribution:`
+  class** per the `docs/PATCH_INTENTS.md` eligibility ruling; it is a vendor row
+  with a source URL and archive hash.
+- **Source:** user, 2026-09-02 - *"That right now is a major priority."* #140.
+  Full audit: `records/oar-ied-rebuild-2026-09-02.md`.
+- **Root cause of #140, now settled:** not OAR's own code. 3.2.0's CommonLib had
+  no format-5 reader, so it hit `Unsupported address library format: 5` and
+  raised the modal its `MessageBoxW` import provides; the SKSE plugin loop then
+  blocked behind that message box forever, which is why the 14 plugins after it
+  never loaded and no crash log was written. Proven from the binaries, not
+  inferred: **`REL::IDDB::load_v5` and `header_v5_t` are present in the 3.2.1
+  DLL's string table and absent from 3.2.0's.** The gate itself now agrees -
+  re-run today, the parked 3.2.0 reads `VERDICT: FAIL [addrlib-v5 flag missing
+  AND stamp inside reject window]`, where #140 had recorded a PASS for the same
+  bytes. 3.2.1: PE stamp 1788193253 (2026-08-31 16:20:53Z),
+  `versionIndependenceEx` 1 -> 3 (V5 bit YES), `compatibleVersions`
+  1.6.1170.0 -> 1.7.99.0, `VERDICT: PASS`.
+- **Verification:** **VERIFIED 2026-09-02 22:39** by
+  `records/launch-verify-20260902-223914.md` - main menu 37.4 s, save loaded
+  46.1 s, 243 active plugins, 36 SKSE plugins checked, **0 refused**, no crash
+  log. Its own launch, not shared, per the Smart Talk (#197) lesson.
+  `skse64.log`: `plugin OpenAnimationReplacer.dll (00000001
+  OpenAnimationReplacer 03020010) loaded correctly (handle 16)`.
+  `OpenAnimationReplacer.log` (which #140 never got far enough to write):
+  `v3-2-1-0`, ini created, condition and function factories initialised,
+  `Directory cache complete: 1 OAR directories, 164 animation hashes (3880ms)`,
+  replacer-mod parse finished; **no** `Unsupported address library format` line.
+  Untested: any actual replacer animation - none is installed yet (`1 OAR
+  directories` is the plugin's own), so this proves the framework loads, not
+  that a given animation mod behaves.
+
+## 2026-09-02 22:39 - IED stays PARKED: the #94 blocker re-tested and still holds
+
+- **What:** No change to `Immersive Equipment Displays` - it remains disabled at
+  modlist line 165 and has never been active in this build, so the user's report
+  that IED is not working is correct. **Nothing was installed and no overlay was
+  attempted.** Update sweep: the newest Nexus file is still 1.7.4 from
+  2023-12-10 (both `MAIN` files, 450464/450465, that date; no beta, optional,
+  update or hotfix in any category). `SlavicPotato/ied-dev` `master` is alive at
+  `d8e9d33` (2026-03-05) with **16 commits** post-dating the 1.7.4 upload
+  (NPC mount tracking, conditional variable fixes, an inventory mode for
+  variables), but it has no releases, no CI workflows and no submodules, so
+  nothing there is buildable by anyone but the author.
+- **Source:** user, 2026-09-02 - *"I also don't seem to have IED working."* #94.
+  Full audit: `records/oar-ied-rebuild-2026-09-02.md`.
+- **Why the rebuild is still impossible, counted fresh:** the vcxproj expects a
+  sibling `sse-build-resources\` on every include path.
+  `SlavicPotato/sse-build-resources` is 404. The tree `#include`s **74** distinct
+  `ext/*.h`; our own already-extended fork `Ensrick/sse-build-resources`
+  (`ensrick/1.7.99-format5`, a fork of the clayne 2022-02-12 mirror) has 58, so
+  **51 are missing** - independently reproducing #94's number. 37 of them are
+  reverse-engineered game-structure headers (`TES.h`, `Sky.h`,
+  `ShadowSceneNode.h`, `BSAnimationGraphManager.h`, `hkaSkeleton.h`,
+  `ImageSpaceManager.h`, ...) and 14 are the author's `stl_*` container layer.
+  **New this pass:** Software Heritage was searched and does not have the
+  repository either - the original origin was never archived (`NotFoundExc`),
+  and all four archived forks resolve to snapshots at or before 2022-02-12
+  (`pcbeard`'s is *older*, revision `3f24c03ce`, 2021-02-21). There is no copy
+  left to find. Licence is **MIT (c) 2022 SlavicPotato**, so a rebuild would
+  have been permitted and **distributable**; the licence is not the obstacle.
+- **Why the withdrawn overlay is not a fallback:** setting
+  `kVersionIndependentEx_AddressLibraryV5` is a declaration to SKSE's loader, not
+  an implementation. It gets `SKSEPlugin_Load` running, which calls
+  `CreateTrampolines` *before* IED's bundled `versiondb.h Load(2, ...)` fails on
+  the format-5 file. SKSE then `FreeLibrary`s the plugin, the static
+  `BranchTrampoline` destructor `VirtualFree`s a pool slice it does not own,
+  Windows page-rounds the address and releases SKSE's whole shared 64 KB pool,
+  and SKSE takes an AV writing its own core hooks about a second later
+  (`records/upstream-issues/sse-build-resources-trampoline-setbase-free.md`,
+  field crash `crash-2026-08-25-20-36-52.log`). That trades a clean refusal for
+  taking SKSE down mid-session; it stays withdrawn.
+- **Alternative, scoped not installed:** `Simple Dual Sheath` 1.5.9 (50049,
+  already enabled and verified) covers unequipped left-hand weapon, shield and
+  staff visibility. The only DLL-free route to IED's distinguishing feature
+  (arbitrary items on arbitrary skeleton nodes, per actor) is
+  `All Geared Up Derivative SE - AllGUD` (Nexus 28833, Kriffin 1.5.6) - Papyrus +
+  skeleton + xEdit-generated meshes, no SKSE plugin, so the runtime is
+  irrelevant to it; but it was last updated 2020-03-22 and needs a mesh
+  generation pass over the whole installed gear set. Recommend it be scoped as
+  its own piece of work, not bolted on.
+- **Verification:** **n/a - no change to verify.** IED is inert while disabled;
+  the 22:39 launch above covers the profile it sits in.
+- **Unpark trigger:** an author release against a format-5 CommonLib, or
+  `sse-build-resources` reappearing publicly at a 2023-or-later revision, or the
+  author publishing `ext/` in any form.
+
 ## 2026-09-02 22:21 - Better Jumping SE 1.9.4 installed and ENABLED (Nexus 18967)
 
 - **What:** `Better Jumping SE` 1.9.4 (Nexus 18967, file 796897 "Better Jumping

@@ -3919,16 +3919,15 @@
       "modId": 92109,
       "modName": "Open Animation Replacer",
       "nexusName": "Open Animation Replacer",
-      "version": "3.2.0",
-      "fileId": 781784,
-      "fileName": "Open Animation Replacer 92109 3.2.0 2026-07-26T22-20Z Yj6wQRvYX.7z",
-      "sizeMb": 7.88,
-      "sha256": "1f31058b7cc9a28bca25b6c379ca2142c369eeb3d194831fefc11f234d3f28c0",
+      "version": "3.2.1",
+      "fileId": 798222,
+      "fileName": "Open Animation Replacer 92109 3.2.1 2026-08-31T16-32Z MWx0rveD6.7z",
+      "sizeMb": 7.9,
+      "sha256": "970cb6c34045ee6a5ba7a5f0c598a8e398d0973cc81a9a6ee5dd303329907de8",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-08-23T06:15:13Z",
-      "transaction": "20260823T061513133Z-56615f9a8bfe",
-      "note": "UNPARKED 2026-08-30 (#84): park reason was wrong - 3.2.0 declares versionIndependence=1 (AddressLibraryPostAE), versionIndependenceEx=1 (NoStructUse), PE stamp 1785103405 (2026-07-26) ABOVE the 1748217600 SKSE cutoff, so PluginManager.cpp:663 never fires. No skse64.log refusal was ever recorded."
+      "installedUtc": "2026-09-03T03:37:33Z",
+      "transaction": "20260903T033733283Z-de1db0b97e86"
     },
     {
       "modId": 133232,
