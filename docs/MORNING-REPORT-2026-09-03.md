@@ -319,3 +319,17 @@ diffable.)*
 
 See the warning in section 1 - if a guard still carries two cloaks, three of
 the four cloak dials are no-ops and I will rewrite the approach.
+
+---
+
+## 7. One trivial thing: open any Nexus page
+
+Two Keeps are queued and waiting - `18967` (Better Jumping) and `92109` (Open
+Animation Replacer). The curator extension only applies queued decisions when
+it sees a Nexus page, so they land the moment you open one; nothing else is
+needed. `audit/keep_coverage.py` reads one violation until then.
+
+The relay that delivers them is a background process inside my session, and it
+has now been killed three times by ordinary session churn. Each time it drained
+first by luck. It belongs as a standalone service rather than a task living in
+a conversation - worth doing before it silently loses a decision.
