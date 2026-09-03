@@ -97,7 +97,14 @@ to x0.89 by our resharpen recipe. Two defects, one recipe fix each. Rivals are
 worse: Wolves of Skyrim's normal map measures x0.46; Savage Wolves replaces the
 skeleton.
 
-### The behaviour fix is a single field
+### The behaviour fix is a single field - and it is already in your game
+
+**Built, installed and VERIFIED overnight:** `Ensrick Wolf Territorial Patch`
+0.1.0, a generated ESP (3,959 bytes, regenerable from a pinned toolchain),
+enabled at plugins.txt line 249. PASS at
+`records/launch-verify-20260902-233602.md` - main menu 31.9 s, save loaded
+40.6 s. This is the one part of the wolf request that needed no new mod, so
+under your instruction it got implemented rather than suggested.
 
 `EncWolf` and `EncBear` are **both** Unaggressive, with identical WarnOrAttack
 2000 and Attack 1500. The only difference is **`Warn`: bear 2500, wolf 0.**
@@ -120,6 +127,12 @@ never the packs; it was the lone wolves.
 
 The 205 freed positions are already navmeshed and have been handed to **#43**
 (Sol's) for the hostile-monster replacement you asked for.
+
+**Not yet done.** The spawn thinning edits placed references across four
+worldspaces, which is a much larger change than the behaviour patch, and Bruma
+needs its own overrides (its own `CYREncWolf` family, 47 refs) while Beyond
+Reach has 27 vanilla refs plus seven quest wolves to preserve. That waits on
+your go-ahead.
 
 ---
 
