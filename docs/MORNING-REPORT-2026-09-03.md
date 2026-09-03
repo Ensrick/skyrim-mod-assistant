@@ -277,7 +277,7 @@ it.
    automatic path, `iAutoParkour = 0` plus `bSmartSteps`, `bSmartVault` and
    `bSmartClimb` all `false`. This leaves the injected graph states in place.
 2. **Injected graph states.** Re-run Pandora with SkyParkour deselected
-   (`toolsun-pandora.cmd`), giving a master that keeps the FNIS-AA variables
+   (`tools/run-pandora.cmd`), giving a master that keeps the FNIS-AA variables
    but has no `SkyParkour_*` states.
 
 Then try blocking while walking, running, strafing, running backward and
