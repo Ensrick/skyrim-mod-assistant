@@ -3,6 +3,44 @@
 Audit date: 2026-09-03. Rules: `docs/CK_FIRST_DOCTRINE.md`.
 Ordered worst first. No artifact was changed by this audit; it is a verdict list.
 
+## SCOPE CORRECTION, added after the user asked whether this audited everything
+
+**It did not.** This audit was written before rule 0 existed, and it covers only
+the code-versus-hand-authoring axis - rules 3, 4 and 6. Two gaps:
+
+1. **Nothing was audited against rule 0** ("was prior art searched before this
+   was designed?").
+2. The 13 artifacts marked CORRECT below were classified **by category** -
+   textures, ini overlays, mesh work - not examined individually. Being the
+   light *tool* does not mean the artifact should exist at all.
+
+**First measurement of the rule 0 gap.** Ten Ensrick artifacts sampled against
+their own records, searching for any evidence that an existing mod or a vanilla
+mechanism was checked before building ours:
+
+| artifact | record | prior-art mentions |
+|---|---|---:|
+| Skyking Signs Env Mask Fix | ensrick-overlay-distribution | **0** |
+| Bloodskal Blade 4 Static Glow | active-file-conflicts | **0** |
+| Vanilla Hair Remake SMP NPC Compat | ensrick-overlay-distribution | **0** |
+| Vanilla Skin Soft-Light Maps | face-eye-makeup-audit | **0** |
+| Assorted Mesh Fixes SE Mesh Port | ensrick-overlay-distribution | **0** |
+| Vikings Weaponry SE Mesh Port | ensrick-overlay-distribution | **0** |
+| Skyland Solitude Manhole Path Fix | envmask-missing-scan | **0** |
+| CC Madness Longsword Env Mask Fix | envmask-missing-scan | **0** |
+| Better Fur Fine Clothes Refit | ensrick-overlay-distribution | **0** |
+| Scoped Werewolf Totem Skull 98175 | *no record found* | - |
+
+**Zero of ten.** Every one went from symptom straight to our own fix, with no
+recorded search for an existing solution. Several have probable prior art -
+Assorted Mesh Fixes very likely has a released SE conversion, env-mask defects
+are the kind of thing authors and community patches ship, and vanilla `_sk`
+soft-light maps may exist as a mod rather than something to extract by hand.
+
+A proper rule 0 pass over every artifact is queued as remediation item 0 below.
+Until it runs, **treat the CORRECT column as "right tool", not as "should
+exist"**.
+
 ## Summary
 
 | verdict | count |
@@ -129,6 +167,10 @@ doctrine entirely.
 
 ## Remediation, in priority order
 
+0. **Run the rule 0 pass on every artifact** - for each, search Nexus and the
+   vanilla records for an existing solution, and record the finding either way.
+   Any artifact with released prior art becomes a candidate for deletion in
+   favour of the existing mod. This is the audit this document did not do.
 1. **Convert wolf territorial and guard scaling to spriggit YAML.** No gameplay
    change; both become xEdit-openable and reviewable. Keep the wolf generator's
    template-inheritance check as a standalone audit script.
