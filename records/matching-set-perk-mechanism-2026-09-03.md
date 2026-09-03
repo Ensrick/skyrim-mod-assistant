@@ -77,6 +77,40 @@ tool, and it costs:
 
 None of which the vanilla mechanism needs.
 
+## Credit, stated correctly
+
+This record verifies an answer other people gave; it did not originate it.
+
+- **TheScatCat, 2026-09-01,** posted a Creation Kit screenshot of a Perk Entry
+  whose condition list shows `WornApparelHasKeywordCount ... == 4.00` five
+  times, OR-chained under `HasPerk 'MatchingSet'`, driving
+  `Modify Armor Rating -> Multiply Value 1.20`. The keywords are the Dragonborn
+  light set: `DLC2ArmorMaterialBonemoldLight`, `...ChitinLight`,
+  `...NordicLight`, `...StalhrimLight`, `DLC2ArmorMaterialMoragTong`. The
+  function name was therefore already on screen, before anyone named it in text.
+- **km816, later,** named the function explicitly and linked the UESP page.
+- This record's contribution is narrow: confirming vanilla's base-game record
+  (`051B17`) uses the same pattern with the nine base keywords, and the exact
+  comparison value.
+
+## The ability route, from TheScatCat's second screenshot
+
+`DLC2dunKolbjornSetAbility` is Type `Ability`, Casting `Constant Effect`, and
+the condition sits on the **Effect Item**, not on the spell record:
+
+```
+WornApparelHasKeywordCount( DLC2dunKolbjornAhzidalItem ) == 4.00
+```
+
+Two things follow that the raw record dump could not show, because the CLI
+renders `Effects` as an opaque overlay:
+
+1. For the ability route the condition goes on the **magic effect inside the
+   spell**, not the spell itself.
+2. The keyword does not have to be an armour-material keyword. Ahzidal's set
+   uses a bespoke `DLC2dunKolbjornAhzidalItem` - which is the pattern to copy
+   for a **modded** set that is not glass, steel, or any vanilla material.
+
 ## The recipe to hand someone
 
 1. Make the ability or perk that carries the effect.
