@@ -82,7 +82,16 @@ def gate(o):
     if v['versionIndependence'] & KVI_ADDRLIB_POSTAE:
         if not (v['versionIndependenceEx'] & KVIEX_ADDRLIBV5):
             bt=o['timestamp']
-            if 520128000 <= bt < 1748217600:
+            # Upper bound is 2026-08-21, the day CommonLibSSE-NG gained Address
+            # Library format 5 support (alandtse/CommonLibVR 7b47c5a8f1, release
+            # 6.4.0). A DLL linked before that date CANNOT parse a v5 address
+            # library no matter what it advertises. The old bound was 2025-05-26,
+            # 15 months early, which is why Smart Talk (stamp 2025-12-22) passed
+            # this gate on 2026-09-02 and then aborted the SKSE load at plugin 28
+            # of 36 with 'failed to open address library file' (#197). Plugins
+            # built after the date pass without needing the V5 bit - Better
+            # Jumping (2026-08-29) does not set it and loads correctly.
+            if 520128000 <= bt < 1787270400:
                 msgs.append('addrlib-v5 flag missing AND stamp inside reject window')
                 vind=False
     if vind and not (v['versionIndependence'] & KVI_STRUCTS629):

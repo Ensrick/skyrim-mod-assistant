@@ -34,6 +34,34 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 23:05 - Fix the SKSE gate that let Smart Talk through (#197)
+
+- **What:** `audit/skse_version_data.py` carried a PE-stamp reject window of
+  `520128000 <= stamp < 1748217600` - an upper bound of **2025-05-26**. Address
+  Library format 5 support only landed in CommonLibSSE-NG on **2026-08-21**
+  (alandtse/CommonLibVR `7b47c5a8f1`, release 6.4.0), so every DLL linked in the
+  15 months between those dates without the V5 flag passed a gate that exists
+  to catch exactly that. Bound raised to `1787270400` (2026-08-21). Revalidated
+  against three known outcomes: **Smart Talk** (stamp 2025-12-22) now FAILs -
+  it passed before and then aborted the SKSE load at plugin 28 of 36;
+  **L3sNoLoot** (2026-03-01) now FAILs; **Better Jumping** (2026-08-29) still
+  PASSes, which matters because it does not set the V5 bit either - being built
+  after the support date is what makes it safe.
+- **Blast radius: zero new failures.** Scanned all 40 SKSE DLLs across the 232
+  enabled mods. Four fail, all pre-existing and none caused by this change:
+  `JContainers SE`, `PapyrusUtil SE` and `RaceMenu` fail for a different reason
+  (no version-independence flag and no explicit 1.7.104 entry), and `Proteus`
+  (2022-10-14) was inside the old window too. All four are vendor rows shadowed
+  by the `* 1.7.104 Native Overlay - Ensrick` mods at higher priority
+  (modlist 145-149 vs 195/196/254/255), which is why the build loads 35 SKSE
+  plugins with 0 refused.
+- **Source:** #197. The user's launch died today on a DLL this gate had cleared;
+  the doctrine "the gate is necessary and never sufficient" was correct, but the
+  gate was also simply wrong and could be made right.
+- **Verification:** tooling only, no build state changed - no mod installed,
+  disabled or reordered, no profile or INI change. Validated against four DLLs
+  with known real-world outcomes plus the full enabled-mod scan.
+
 ## 2026-09-02 22:21 - Better Jumping SE 1.9.4 installed and ENABLED (Nexus 18967)
 
 - **What:** `Better Jumping SE` 1.9.4 (Nexus 18967, file 796897 "Better Jumping
