@@ -22,6 +22,46 @@ concrete failures triggered it:
 
 ## The rules
 
+### 0. Look at how vanilla and existing mods already solved it. First.
+
+**User, 2026-09-03:** *"'Vanilla already has a bunch of examples of this' -
+this is one of the most damning things. You should be looking at mods and
+vanilla implementations first! CK wiki, mod wikis. Research before assuming you
+know something."*
+
+This is rule zero because it precedes the wiki. Bethesda already shipped a
+working implementation of most things anyone wants to build, and the data is
+**on disk and searchable** - `Skyrim.esm`, the DLC masters, and every installed
+mod. Search them for prior art *before* designing anything.
+
+How, concretely, with tools this project already pins:
+
+```
+skyrim-record-cli record-fields <plugin> <EditorID-or-FormKey>
+skyrim-record-cli record-selected-fields-by-type <plugin> <TYPE> <fields>
+skyrim-record-cli records <plugin>
+```
+
+plus a raw CTDA decode when the CLI renders a field as an opaque overlay - see
+`records/matching-set-perk-mechanism-2026-09-03.md` for a worked example.
+
+**The failure that named this rule:** asked how to grant a bonus for a full
+armour set, the assistant designed a Papyrus script. `MatchingSet`
+(`051B17:Skyrim.esm`) had the answer, and the search that finds it is one
+command. The game data was used to *verify someone else's correction* rather
+than to *find the answer* - which is the wrong way round, and is the whole
+point of this rule.
+
+**This rule already existed and was not followed.** Memory
+`feedback-research-before-niche-builds`, from the user on 2026-08-23: *"Language
+models tend to confidently blunder into coding when it comes to niche things.
+You need to make sure each decision rests on definitive documentation and
+knowledge first."* Restating it here because it was given, acknowledged, and
+then ignored in exactly the way it warned about.
+
+Search order: **vanilla records -> installed mods that solve the same problem ->
+CK wiki -> mod wikis and STEP -> only then design.**
+
 ### 1. Consult the Creation Kit wiki before writing anything
 
 `https://ck.uesp.net/wiki/` is the reference. Before proposing a script, a
@@ -101,5 +141,12 @@ Ensrick patch should be able to open it in xEdit like any other plugin. If the
 answer is "install .NET 9 and read C#", the patch is effectively opaque, and
 opacity is the opposite of what a shared list needs.
 
+## Scope
+
+This binds every session and every agent working on this build, **including
+Sol**. The user, 2026-09-03: *"This also applies to Sol's work."* Posted to the
+coordination board on the same date.
+
 Related: `docs/PATCH_INTENTS.md` (distribution classes),
-`docs/CURATION_POLICY.md`, memory `feedback-ck-first-before-scripting`.
+`docs/CURATION_POLICY.md`, memory `feedback-ck-first-before-scripting` and
+`feedback-research-before-niche-builds`.
