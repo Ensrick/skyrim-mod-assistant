@@ -34,6 +34,33 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-02 22:21 - Better Jumping SE 1.9.4 installed and ENABLED (Nexus 18967)
+
+- **What:** `Better Jumping SE` 1.9.4 (Nexus 18967, file 796897 "Better Jumping
+  NG"), DLL only - `SKSE/Plugins/BetterJumpingSE.dll` + its ini, no ESP, so
+  active plugins stay at 243. Adds jump-while-sprinting plus a jump height
+  multiplier and configurable multi-jump. Transaction
+  `20260903T032143009Z-e6580748a488`. Nothing supersedes it: the alternatives
+  are animation layers (Jump Behavior Overhaul 36889, Subtle Jump 38497, Dova
+  Jump 125550, Run Sprint and Jump 15881) or a different mechanic (Movement
+  Behavior Overhaul 38950, sprint stopping). 14 of 19 lists in
+  `docs/ECOSYSTEM-SURVEY-2026-08-30.md` ship it, and it is on that survey's
+  "SKSE fix set every list carries and this build lacks" list.
+- **Source:** user, 2026-09-02 - *"I was wondering about the mod Better
+  Jumping... unless there's a more comprehensive mod that covers movement"*,
+  then *"Add Better Jumping"*.
+- **Gate detail worth keeping:** `audit/skse_version_data.py` reads `VERDICT:
+  PASS (version independent)`, but the load-bearing receipt is the **PE stamp,
+  2026-08-29** - eight days AFTER CommonLibSSE-NG gained Address Library
+  format 5 support on 2026-08-21. Smart Talk (#197) passed the identical gate
+  with a PE stamp of 2025-12-22, eight months before format 5, and aborted the
+  SKSE load. The build date discriminates where the version-independence flag
+  does not; check it on every DLL adoption from here.
+- **Verification:** **VERIFIED 2026-09-02 22:23** by
+  `records/launch-verify-20260902-222306.md` - main menu 33.9 s, save loaded
+  43.2 s, 243 active plugins, 35 SKSE plugins checked, 0 refused. Given #197
+  this DLL got its own launch rather than riding on a shared one.
+
 ## 2026-09-02 19:05 - Smart Talk PARKED: it aborted the SKSE load; Better Dialogue Controls verified
 
 - **What:** `SmartTalk.dll` killed the game at startup. `skse64.log` stops dead
