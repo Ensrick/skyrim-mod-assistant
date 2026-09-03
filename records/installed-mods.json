@@ -304,6 +304,20 @@
       "transaction": "20260903T032143009Z-e6580748a488"
     },
     {
+      "modId": 1428,
+      "modName": "Better MessageBox Controls",
+      "nexusName": "Better MessageBox Controls v1_2",
+      "version": "1.2",
+      "fileId": 11023,
+      "fileName": "Better MessageBox Controls v1_2-1428-1-2.zip",
+      "sizeMb": 0.02,
+      "sha256": "2e4313f35540cb9018b1d987b3d9337e11808981426e033c3332ad6ca383c922",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-03T22:35:30Z",
+      "transaction": "20260903T223529943Z-22355591313e"
+    },
+    {
       "modId": 3008,
       "modName": "Beyond Reach",
       "nexusName": "Beyond Reach 4.8",

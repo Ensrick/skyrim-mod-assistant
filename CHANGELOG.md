@@ -257,6 +257,29 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   to a scratch directory outside `mods\`; every DLL verdict carries its PE stamp
   and every texture verdict its measured ratio.
 
+## 2026-09-03 17:35 - Better MessageBox Controls 1.2 installed (Nexus 1428)
+
+- **What:** one file, `Interface\messagebox.swf`. No plugin, no DLL, so the
+  2016-11-26 date carries no runtime risk on 1.7.104 - the same reasoning that
+  applied to its sibling Better Dialogue Controls (1429). **Sole owner of that
+  path in the load order** (`find -iname messagebox.swf` returns only this mod),
+  and it is a different file from `dialoguemenu.swf`, so it complements 1429
+  rather than competing with it. Transaction
+  `20260903T223529943Z-22355591313e`. Gates after install:
+  `install_mod --verify` `0 problem(s)`, `verify_order` CLEAN over 262 active
+  plugins.
+- **Source:** user, 2026-09-03 - *"What about Better MessageBox Controls?"* then
+  *"Put it in"*. Rule 0 check recorded honestly: it scores **0 mentions across
+  the 19 curated lists** in `docs/ECOSYSTEM-SURVEY-2026-08-30.md`, and is absent
+  from `SLOT_CANDIDATES.md`. The nearest surveyed mod is **Yes I'm Sure NG**
+  (8/19, STEP and Lexy), which is a different mechanic - it skips confirmation
+  prompts rather than fixing how they are navigated. So the case for this is
+  "the same fix the user already liked, applied to message boxes", not
+  community consensus. Told to him that way before he chose.
+- **Verification:** **UNVERIFIED** - no launch yet. Deliberately not burning one
+  on a lone SWF; it rides the next launch. Its Keep is queued (12 in the relay
+  batch) and applies on the next Nexus page load.
+
 ## 2026-09-02 23:18 - Cloak distribution rebalanced; guards stop wearing two cloaks (#200)
 
 - **What:** New mod `Ensrick - Cloak Distribution Balance` (MO2Headless
