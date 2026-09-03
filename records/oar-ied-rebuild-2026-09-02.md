@@ -308,20 +308,43 @@ files rather than accepting it, and two of its three legs hold:
 - **Holds.** No `mt_behavior.hkx`, `1hm_behavior.hkx` or `shield.hkx` was
   generated; the only regenerated per-subgraph behaviours are `magicbehavior.hkx`
   and `magicmountedbehavior.hkx`.
-- **Does NOT hold.** The claim that Pandora shipped no `0_master.hkx` is wrong.
+- **Did NOT hold.** The claim that Pandora shipped no `0_master.hkx` was wrong.
   **`0_Master.hkx` is present and regenerated in both skeletons** -
   `meshes/actors/character/Behaviors/0_Master.hkx` (585,136 bytes) and
   `meshes/actors/character/_1stperson/Behaviors/0_Master.hkx` (472,688 bytes).
-  A case-sensitive search for `0_master.hkx` misses it.
+  A case-sensitive search for `0_master.hkx` misses it. `own-patch-fixes` had
+  independently caught the case-sensitivity miss and corrected it in commit
+  `2642391` before my flag arrived; what my flag added was the consequence, that
+  a regenerated master left the hypothesis alive.
 
-That third point matters, because `0_Master.hkx` is the root graph that
-dispatches block states. So the conclusion "#198's hypothesis has no generated
-behaviour to live in" is **overstated**: there is no *block-specific* generated
-behaviour, but the master graph was regenerated and is a live candidate. The
-narrower and defensible statement is that **no OAR animation and no
-block-specific behaviour file can be the cause**; `0_Master.hkx` has not been
-excluded. Flagged to `own-patch-fixes` so its 11-row repro matrix does not drop
-that row.
+**Resolved the same night, by measurement.** `own-patch-fixes` extracted vanilla
+`0_master.hkx` from `Skyrim - Animations.bsa` (read-only, into a scratch dir
+outside `mods\`) and diffed the string tables against Pandora's:
+
+| | vanilla | Pandora | delta |
+|---|---:|---:|---:|
+| bytes | 580,896 | 585,136 | +4,240 |
+| distinct strings | 2,891 | 2,949 | +58 |
+| **block/bash strings** | **83** | **83** | **0** |
+
+Zero block or bash strings added or removed. The 61 additions are entirely
+SkyParkour states and variables, XPMSE/FNIS-AA variables plus
+`FNIS_XPMSE_Behavior.hkx`, and Pandora's own markers.
+
+The honest limit, which that agent stated itself: a string diff proves the
+regeneration adds and drops no block state, event, variable or animation
+reference, but **cannot see re-pointed state IDs, transition priorities or blend
+times**, which are node data rather than names. So the master is **narrowed, not
+formally excluded**.
+
+The useful consequence is that my two candidates collapse into one: everything
+Pandora put in that master belongs to SkyParkour or XPMSE, so if the master is
+implicated at all it is implicated *through SkyParkour*. The row survives as a
+two-step ladder rather than a single toggle - disable SkyParkour's runtime hooks
+first, and only if that fails, re-run Pandora with SkyParkour deselected to get
+a master without the injected states. Simply disabling `Pandora Output - Ensrick`
+is **not** the test: it also strips the 22 `FNISaa_*` variables XPMSE needs.
+Detail in `records/block-animation-198-2026-09-02.md` section 5a.
 
 [#148](https://github.com/Ensrick/skyrim-mod-assistant/issues/148)
 (XPMSE weapon-style Papyrus calls aborting against Pandora's `fnis_aa` stub) now
