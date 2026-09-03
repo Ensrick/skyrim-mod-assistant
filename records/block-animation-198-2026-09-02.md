@@ -202,6 +202,53 @@ calls aborted, the sub-mod could never apply and vanilla sprint-bash always
 played. With the API resolving and OAR live, **sprint-bash is a state that has
 newly become replaceable in this build**, and it is the only block-adjacent one.
 
+## 5a. The regenerated master graph, diffed against vanilla
+
+Added 2026-09-02 late, after `oar-ied-rebuild` correctly pushed back that
+section 3 leaves the regenerated master unexcluded and that a SkyParkour-only
+A/B would not clear it. That objection was right, so the master was measured
+rather than argued about.
+
+Vanilla `meshes\actors\character\behaviors\0_master.hkx` extracted from
+`Skyrim - Animations.bsa` with `tools\xEdit\BSArch64.exe` (read-only, into a
+scratch directory outside `mods\`; nothing in the build was touched) and its
+string table diffed against Pandora's.
+
+| | vanilla | Pandora | delta |
+|---|---:|---:|---:|
+| bytes | 580,896 | 585,136 | +4,240 |
+| distinct strings | 2,891 | 2,949 | +58 |
+| **block/bash strings** | **83** | **83** | **0** |
+
+**Block/bash strings added: none. Removed: none.** The 61 strings Pandora adds
+are, in full: 22 `FNISaa_*` / `FNISaa_*_crc` graph variables plus
+`FNIS_XPMSE_Behavior` and `Behaviors\FNIS_XPMSE_Behavior.hkx` (the XPMSE
+alternate-animation plumbing), 17 `SkyParkour*` variables, states and
+`behaviors\skyparkour_behavior.hkx`, `SPPF`, `PN_StateInfo`, the two Pandora
+markers `bIsPandoraGenerated` / `bIsPandoraLocked`, and 4 binary byte-runs that
+are not text. The 3 "removed" entries (`D{?o`, `UUU?`, `www?`) are float and
+padding patterns, not strings.
+
+**What this does and does not prove.** It proves the regeneration adds no block
+state, event, variable or animation reference, and drops none - the block
+vocabulary of the master graph is unchanged. It does **not** prove the block
+state machine's *wiring* is unchanged: a string diff cannot see re-pointed state
+IDs, altered transition priorities or changed blend times, because those are
+node data, not names.
+
+**The practical consequence is that the two candidates collapse into one.**
+Everything Pandora put into the master is SkyParkour or XPMSE FNIS-AA naming.
+There is no third party in there and no "Pandora regeneration per se" content to
+blame. So if the master graph is implicated at all, it is implicated *through
+SkyParkour* - note in particular `SkyParkour_Interrupt`, `SkyParkour_Recovery`,
+`SkyParkour_Start`/`_Stop` and `SkyParkour_TransitionStart`/`_End`, which are
+wired into the same state machine the block states live in and are exactly the
+shape of thing that could interrupt a block mid-movement.
+
+That is why section 7 now has a two-step ladder instead of one toggle: step 1
+tests SkyParkour's runtime hooks, step 2 tests SkyParkour's injected graph
+states. Together they do clear the master.
+
 ## 6. Verdict
 
 **Not root-caused, and not reproducible without the user at the controls.** I
@@ -212,10 +259,15 @@ settled is narrower and worth having:
 - **OAR is ruled out** as an explanation for the symptom as reported (section 2),
   with the single sprint-bash exception in section 5.
 - **The Pandora hypothesis in #198's body is not supported as written.** The
-  block sub-graph is vanilla; the master is regenerated, which is normal.
-- **SkyParkour is the named hypothesis**, on two independent grounds: it is the
-  only third-party content in the generated master graph (section 3), and the
-  only runtime hook on input and the graph manager (section 4). **Unproven.**
+  block sub-graph is vanilla; the master is regenerated, which is normal; and
+  the regeneration measurably changes nothing block-shaped (section 5a).
+- **SkyParkour is the named hypothesis**, now on three grounds: it is the only
+  runtime hook on input and the graph manager (section 4); it is the only
+  third-party content in the generated master graph (section 3); and everything
+  that regeneration added is its own or XPMSE's, so there is no separate
+  "Pandora broke the master" candidate left to hold (section 5a). **Still
+  unproven** - a string diff cannot see state wiring, and nothing here has been
+  exercised in play.
 
 ## 7. What the user should do, and what to watch
 
@@ -237,7 +289,11 @@ whole movement each time. Record two things per row: does the shield come up
 | 10 | during a jump / on landing | sword + shield | |
 | 11 | **immediately after a vault, step-up or slide** | sword + shield | the row I expect to fail if SkyParkour is the cause |
 
-Then the one A/B that settles it. In
+Then the A/B ladder. Two steps, because step 1 alone does not clear the
+regenerated master graph - SkyParkour's states stay in `0_Master.hkx` whatever
+its ini says.
+
+**Step 1 - the runtime hooks.** In
 `mo2-instances\skyrim-se\overwrite\SKSE\Plugins\SkyParkourNG.ini` set:
 
 ```
@@ -246,10 +302,28 @@ bEnableMod = false
 
 (or, to keep parkour on the key and only disable the automatic path,
 `iAutoParkour = 0` plus `bSmartSteps`, `bSmartVault`, `bSmartClimb` all `false`).
-Rerun rows 2-6 and 11.
+Rerun rows 2-6 and 11. This kills `|Input| |AnimEvent| |NotifyGraph| |Camera|
+|GraphManager|` while leaving the injected graph states in place.
 
-- **Shield behaves with SkyParkour off** -> it is SkyParkour, and the fix is a
-  config line, not a mod. Nothing needs installing.
+**Step 2 - the injected graph states, only if step 1 does not fix it.** Re-run
+Pandora with SkyParkour deselected (`tools\run-pandora.cmd`), which produces a
+master with the FNIS-AA variables but no `SkyParkour_Interrupt`,
+`SkyParkour_Recovery` or `SkyParkour_Transition*`. Rerun the same rows.
+
+Do **not** simply disable the `Pandora Output - Ensrick` mod as the test. That
+strips the 22 `FNISaa_*` variables XPMSE needs as well, leaves the SkyParkour
+DLL hooking a graph whose states no longer exist, and perturbs far more than the
+question asks. Step 2 is the controlled version of the same test.
+
+Reading the ladder:
+
+- **Shield behaves after step 1** -> SkyParkour's runtime hooks, and the fix is
+  a config line, not a mod. Nothing needs installing.
+- **Still broken after step 1, fixed after step 2** -> SkyParkour's injected
+  graph states, and the fix is a Pandora re-run without it, or dropping the mod.
+- **Broken after step 2 as well** -> neither SkyParkour nor the regenerated
+  master. That exhausts everything static analysis named, and the next step is a
+  crash-free bisect of the rest of the load order rather than more reading.
 - **Row 6 is the only failing row** -> that is the sprint-bash state from
   section 5, and it belongs to #148, not to SkyParkour.
 - **Rows 7 and 8 fail too** -> the fault is not shield-specific, which points at

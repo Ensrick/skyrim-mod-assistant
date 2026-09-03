@@ -253,20 +253,53 @@ The block wiring itself is intact - 65 block/bash strings present, and the
 block sub-graph (`BlockBehavior.hkx`, `mt_behavior.hkx`, `1hm_behavior.hkx`,
 `shield.hkx`) is vanilla, loaded from the BSA. Nothing is missing.
 
-**The A/B:** in `mo2-instances\skyrim-se\overwrite\SKSE\Plugins\SkyParkourNG.ini`
-set `bEnableMod = false` - or, to keep parkour on the key and kill only the
-automatic path, `iAutoParkour = 0` plus `bSmartSteps`, `bSmartVault` and
-`bSmartClimb` all `false`. Then try blocking while walking, running, strafing,
-running backward and sprinting, and once immediately after a vault or slide.
+**Since writing the above, the master graph was diffed against vanilla** -
+vanilla `0_master.hkx` extracted read-only from `Skyrim - Animations.bsa` into a
+scratch directory. Result: 580,896 vs 585,136 bytes, +58 distinct strings, and
+**83 block/bash strings on both sides - zero added, zero removed**. All 61
+additions are XPMSE FNIS-AA plumbing and SkyParkour. So the regeneration adds
+no block state, event, variable or animation reference and drops none.
+
+That narrows it without formally excluding it - a string diff cannot see
+re-pointed state IDs, transition priorities or blend times, which are node data
+rather than names. But it collapses two candidates into one: **everything in
+that master is SkyParkour's or XPMSE's**, so if the master is implicated it is
+implicated *through* SkyParkour, specifically `SkyParkour_Interrupt`,
+`_Recovery`, `_Start`/`_Stop` and `_TransitionStart`/`_End`, wired into the same
+state machine as the block states.
+
+**The A/B, two rungs.** Do step 1 first; only do step 2 if step 1 does not fix
+it.
+
+1. **Runtime hooks.** In
+   `mo2-instances\skyrim-se\overwrite\SKSE\Plugins\SkyParkourNG.ini` set
+   `bEnableMod = false` - or, to keep parkour on the key and kill only the
+   automatic path, `iAutoParkour = 0` plus `bSmartSteps`, `bSmartVault` and
+   `bSmartClimb` all `false`. This leaves the injected graph states in place.
+2. **Injected graph states.** Re-run Pandora with SkyParkour deselected
+   (`toolsun-pandora.cmd`), giving a master that keeps the FNIS-AA variables
+   but has no `SkyParkour_*` states.
+
+Then try blocking while walking, running, strafing, running backward and
+sprinting, and once immediately after a vault or slide.
+
+> **Do not test this by disabling `Pandora Output - Ensrick`.** It strips the 22
+> `FNISaa_*` variables XPMSE needs and leaves the SkyParkour DLL hooking states
+> that no longer exist - a far bigger perturbation than the question needs, on
+> your live save. Step 2 is the controlled version.
 
 How to read it:
 
-- **behaves with SkyParkour off** - it is SkyParkour, and the fix is a config
-  line. No mod needed.
+- **behaves after step 1** - it is SkyParkour's runtime hooks, and the fix is a
+  config line. No mod needed.
+- **behaves only after step 2** - it is the injected graph states, and the fix
+  is a Pandora regeneration choice.
 - **only sprinting fails** - that is the sprint-bash state, and it is #148, not
   SkyParkour.
 - **one-hand and two-hand fail too, not just shield** - then it is the movement
   graph, not anything block-shaped.
+- **still broken after step 2** - neither SkyParkour nor the regenerated master.
+  The next move is a load-order bisect, not more static analysis.
 - **nothing reproduces** - likely an artefact of the profile before OAR was
   unparked, and #198 can be closed.
 
