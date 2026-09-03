@@ -100,11 +100,21 @@ skeleton.
 ### The behaviour fix is a single field - and it is already in your game
 
 **Built, installed and VERIFIED overnight:** `Ensrick Wolf Territorial Patch`
-0.1.0, a generated ESP (3,959 bytes, regenerable from a pinned toolchain),
+0.1.0, ESL-flagged, 9 NPC_ records, regenerable from a pinned toolchain,
 enabled at plugins.txt line 249. PASS at
 `records/launch-verify-20260902-233602.md` - main menu 31.9 s, save loaded
 40.6 s. This is the one part of the wolf request that needed no new mod, so
 under your instruction it got implemented rather than suggested.
+
+**What it actually does:** the 8 ambient wolf bases across all four worldspaces
+go to **2500 / 1200 / 640** - so a wolf growls at you from about 36 m and
+attacks at about 9 m, instead of attacking at 21 m with no warning at all.
+Aggression stays Unaggressive, `csWolf`'s flanking data is untouched so packs
+still flank, and no faction record was edited. Eleven more records follow
+through their template, and the generator *measures* that set and fails if the
+policy disagrees. The conjured Flaming Familiar is de-inherited and pinned to
+the old numbers so summons are unaffected. 52 wolf records excluded, each with
+a recorded reason.
 
 `EncWolf` and `EncBear` are **both** Unaggressive, with identical WarnOrAttack
 2000 and Attack 1500. The only difference is **`Warn`: bear 2500, wolf 0.**
@@ -116,17 +126,27 @@ change is needed** - nothing in any faction makes a wolf hostile to you.
 ### Fewer encounters, bigger packs - both, at once
 
 `LCharWolf` is placed **zero** times, so the leveled list was never the
-population. It is **666 placed references** on regional predator actors, each
-rolling independently - expect ~535 wolves at level 1. Clustered at 2000 units:
-**406 clusters, of which 205 are singletons.**
+population. Re-measured against the **live load order** rather than
+`Skyrim.esm` alone: **622 exterior references** on the seven wolf-bearing
+predator actors, clustering at 2000 units into **387 clusters - 203 singletons,
+137 pairs, 43 triples, 4 quads.**
 
-Retiring only the singletons (Initially Disabled, never deleted) gives **461
-refs in 201 clusters, mean pack 2.29, and no lone predator anywhere** - a 31%
-cut that *raises* pack size to exactly the 2-3 you asked for. The noise was
-never the packs; it was the lone wolves.
+Retiring only the singleton clusters (Initially Disabled, never deleted)
+removes **191 refs, 30.7%**, and leaves **431 refs in 196 clusters with every
+site holding at least 2**. The noise was never the packs; it was the lone
+wolves.
 
-The 205 freed positions are already navmeshed and have been handed to **#43**
-(Sol's) for the hostile-monster replacement you asked for.
+**`Ensrick Wolf Encounter Thinning.esp` is generated and staged but NOT
+installed** - the size of the cut is your call, not mine.
+
+One error worth naming, because the guard rail caught it rather than you:
+excluding ineligible references (persistent, enable-parented) from the
+*clustering* turned real pairs into fake singletons and produced a **71.6%**
+cut on the first run. They now count towards cluster size but are never
+retired, and any cluster containing one is left whole.
+
+The **191** freed positions are navmeshed and encounter-zoned, and have been
+handed to **#43** (Sol's) for the hostile-monster replacement you asked for.
 
 **Not yet done.** The spawn thinning edits placed references across four
 worldspaces, which is a much larger change than the behaviour patch, and Bruma
@@ -144,8 +164,14 @@ alpha export. The actual skins are Dear Diary Dark Mode and Untarnished at 7/19
 each, Edge UI at 3/19.
 
 **Your floating-healthbar objection does not disqualify TrueHUD.** It is the
-mod that adds them and it is 17/19, but the bars are configurable - turn them
-off, keep the rest.
+mod that adds them and it is 17/19, but they are **one flag** -
+`bEnableActorInfoBars` in its shipped `settings.ini`, independent of the boss
+bar, the player widget, recent loot and the API. Turn that off, keep the rest.
+NORDIC UI is declined on more than the 0/19 count: v2.4.1 last updated
+**2021-08-14**, it requires SkyHUD, and it ships enemy bars itself. Skin
+suggestion instead:
+[Untarnished UI](https://www.nexusmods.com/skyrimspecialedition/mods/75188),
+picked on your stated vanilla-shape taste rather than on list counts.
 [TrueHUD](https://www.nexusmods.com/skyrimspecialedition/mods/62775) 1.1.10 and
 [moreHUD](https://www.nexusmods.com/skyrimspecialedition/mods/12688) 5.4.2.0
 both **PASS** the corrected version gate.
@@ -162,8 +188,14 @@ route at all** - it is a config framework with no meter.
 Real bars, no numbers, and distributable as our own work. That needs your yes
 on adopting iWant Widgets as the framework.
 
-Three candidates **FAIL** the gate and are rebuild-or-skip: Prisma UI, Skyrim
-Party Sheet, iWant Widgets NG.
+Three candidates **FAIL** the gate and are rebuild-or-skip: Prisma UI
+(2026-03-27), Skyrim Party Sheet (2026-07-28), iWant Widgets NG (2024-06-07).
+
+**There is no no-download answer here, and it was looked for.** SkyUI's HUD
+extension exposes no Papyrus meter API, SKSE Menu Framework is a config menu
+rather than a HUD, and neither Starfrost nor Survival Mode Improved renders a
+bar of its own. A readout needs one adopted framework; the recommendation above
+is the smallest one that works.
 
 ---
 

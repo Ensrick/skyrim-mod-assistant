@@ -1,0 +1,37 @@
+FormKey: 0243E4:Skyrim.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+SkyrimMajorRecordFlags:
+- Compressed
+Flags:
+- HasWater
+Grid:
+  Point: 0, 4
+  Flags: 1493632000
+WaterHeight: 3.4028235E+38
+Regions:
+- 106632:Skyrim.esm
+AcousticSpace: 01989F:Skyrim.esm
+Music: 094BDD:Skyrim.esm
+ImageSpace: 0975CF:Lux.esp
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 096E7E:Skyrim.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 01E7A0:Skyrim.esm
+  LevelModifier: Medium
+  LinkedReferences:
+  - Reference: 0D28DD:Skyrim.esm
+  - KeywordOrReference: 0B9506:Skyrim.esm
+    Reference: 10F7C8:Skyrim.esm
+  PersistentLocation: 019176:Skyrim.esm
+  LocationReference: 019176:Skyrim.esm
+  Placement:
+    Position: 1211.3329, 17141.785, 526.44006
+    Rotation: 0, 0, 0.8400008
+  MajorFlags:
+  - InitiallyDisabled
+MajorFlags:
+- 0x40000

@@ -1,0 +1,27 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Ensrick Wolf Encounter Thinning.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: 'Retires whole spatial clusters of wilderness predator spawn points (size <= 1 within 2000 units) by flagging them Initially Disabled. Issue #42. Override-only, generated.'
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Update.esm
+    FileSize: 0
+  - Master: Dragonborn.esm
+    FileSize: 0
+  - Master: BSAssets.esm
+    FileSize: 0
+  - Master: BSHeartland.esm
+    FileSize: 0
+  - Master: Wyrmstooth.esp
+    FileSize: 0
+  - Master: Lux.esp
+    FileSize: 0
+  - Master: Water for ENB (Shades of Skyrim).esp
+    FileSize: 0

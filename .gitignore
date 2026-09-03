@@ -166,6 +166,22 @@
 !/mods/guard-scaling-patch/generator/packages.lock.json
 !/mods/guard-scaling-patch/spriggit/
 !/mods/guard-scaling-patch/spriggit/**
+!/mods/wolf-territorial-patch/
+!/mods/wolf-territorial-patch/README.md
+!/mods/wolf-territorial-patch/policy.json
+!/mods/wolf-territorial-patch/regenerate.ps1
+!/mods/wolf-territorial-patch/regenerate-thinning.ps1
+!/mods/wolf-territorial-patch/generator/
+!/mods/wolf-territorial-patch/generator/*.cs
+!/mods/wolf-territorial-patch/generator/*.csproj
+!/mods/wolf-territorial-patch/generator/Directory.Build.props
+!/mods/wolf-territorial-patch/generator/packages.lock.json
+!/mods/wolf-territorial-patch/spriggit/
+!/mods/wolf-territorial-patch/spriggit/**
+!/mods/wolf-territorial-patch/thinning/
+!/mods/wolf-territorial-patch/thinning/policy.json
+!/mods/wolf-territorial-patch/thinning/spriggit/
+!/mods/wolf-territorial-patch/thinning/spriggit/**
 !/records/guard-scaling-audit-2026-09-02.md
 
 !/records/solitude-trellis-stalls-installation-2026-08-30.md
@@ -214,3 +230,22 @@ dist/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/*.ini
 !/records/block-animation-198-2026-09-02.md
+
+# Wolf territorial patch (#42): source only, matching guard-scaling-patch.
+# The generator work dirs hold a 304 MB NuGet cache and built plugins; both are
+# regenerable from regenerate.ps1 and must never be committed.
+!/mods/wolf-territorial-patch/
+!/mods/wolf-territorial-patch/README.md
+!/mods/wolf-territorial-patch/policy.json
+!/mods/wolf-territorial-patch/regenerate.ps1
+!/mods/wolf-territorial-patch/regenerate-thinning.ps1
+!/mods/wolf-territorial-patch/generator/
+!/mods/wolf-territorial-patch/generator/**
+/mods/wolf-territorial-patch/generator/bin/
+/mods/wolf-territorial-patch/generator/obj/
+!/mods/wolf-territorial-patch/spriggit/
+!/mods/wolf-territorial-patch/spriggit/**
+!/mods/wolf-territorial-patch/thinning/
+!/mods/wolf-territorial-patch/thinning/policy.json
+!/mods/wolf-territorial-patch/thinning/spriggit/
+!/mods/wolf-territorial-patch/thinning/spriggit/**

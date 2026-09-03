@@ -34,6 +34,94 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-03 00:05 - Ensrick Wolf Territorial Patch installed: wolves warn at 2500 and attack at 640 instead of 1500 (#42)
+
+- **What:** New generated plugin `Ensrick Wolf Territorial Patch.esp` (ESL-flagged,
+  override-only, **9 NPC_ records**, 3,959 bytes, sha256 `63745001...A899`, masters
+  Skyrim.esm + BSHeartland.esm + arnima.esm + Gray Fox Cowl.esm) in local mod
+  `Ensrick - Wolf Territorial Patch` (MO2Headless `mod-stage` tx
+  `20260903T043304979Z-df62ddac4fa0`, priority 263; `plugin-enable` tx
+  `20260903T043309857Z-d7b48a5d5a09`; 244 active plugins). **The wolf/bear difference
+  is one AI Data field and it is not the aggression enum**: `EncWolf` (023ABE) and
+  `EncBear` (023A8A) are both Unaggressive with AggroRadiusBehavior on, both
+  WarnOrAttack 2000, both Attack 1500 - the difference is `Warn`, bear **2500** vs wolf
+  **0**, so bears have a warning band and wolves cross straight into attack at 1500
+  units (~21 m). `EncHorker`, the other actor the user named, is Aggressive but attacks
+  only inside **320**. The patch sets the 8 ambient wolf bases to **2500 / 1200 / 640**:
+  `EncWolf` (107 placed refs), `manny_GF_Animal_DesertWolf` (Gray Cowl, 41),
+  `CYREncWolf` (Bruma, 15), `CYREncWolfTimber` (4), `EncWolfarnima2` (Beyond Reach, 3),
+  `EncWolfarnima` (1), `CYREncWolfHighland` and `CYREncWolfDire` (leveled-list only).
+  Aggression stays Unaggressive, `csWolf`'s flanking data (DATA 0x2, FlankDistance 0.5,
+  StalkTime 0.4) is untouched so packs still flank, and **no faction record was edited**:
+  `PredatorFaction -> PreyFaction = Enemy` is what makes wolves hunt deer and bears and
+  sabre cats share it. Eleven records follow through their AI-data template and the
+  generator *measures* that set from the load order rather than trusting the policy;
+  one heir, `SummonFireStorm` (0877EB, the conjured Flaming Familiar), is deliberately
+  de-inherited and pinned to the old 0/2000/1500. 52 wolf records excluded with a
+  reason each in `mods/wolf-territorial-patch/policy.json` - `EncWolfIce`
+  (VeryAggressive on purpose, open user decision), bandit/pit wolves, Companions spirit
+  wolves, Howl summons, CC bone wolves, Beyond Reach quest wolves, 3DNPC named wolves,
+  Proteus and BSAssets template zoos. Machine-readable audit
+  `mods/wolf-territorial-patch/work/wolf-audit.json` (60 wolf records + 29 reference
+  controls over 323 plugins, 24,207 placed actor refs). Generator, `policy.json` and
+  Spriggit tree committed under `mods/wolf-territorial-patch/` (`regenerate.ps1`, 2
+  byte-identical runs, 117 links / 0 unresolved, checked Spriggit round-trip); build
+  record `records/source-builds/ensrick-wolf-territorial-patch.json`; ledger row
+  `distribution: distributable`. LOOT rule added to `config/loot/userlist.yaml` and the
+  live userlist (group `Ensrick Generated Patches`, after the Guard Scaling Patch); **no
+  LOOT sort was run** - the plugin already lands last and `audit/verify_order.py` is
+  CLEAN, so the rule takes effect at the next sort. Rollback: disable the one mod.
+- **Also generated but NOT installed:** `Ensrick Wolf Encounter Thinning.esp` (191
+  placed-actor Initially Disabled overrides, 381 records, sha256 `739AAFE6...0ED3`) in
+  `mods/wolf-territorial-patch/thinning/package/`. 622 exterior refs on the seven
+  wolf-bearing regional predator actors form 387 clusters at a 2000-unit link radius
+  (203 singletons, 137 pairs, 43 triples, 4 quads); retiring the singleton clusters
+  removes 191 refs (30.7%) and leaves 431 refs in 196 clusters, every surviving site >=
+  2. Not installed because the cut size is a taste decision. Hands #43 exactly 191
+  navmeshed, encounter-zoned exterior positions.
+- **Source:** user design on #42 (2026-09-02, after playing): territorial like horkers
+  and bears, "making everything attack them, and making them attack everything" is the
+  objection; team-lead brief 2026-09-03 - suggest visual mods with links, but implement
+  anything that needs no new download. The visual half (Canidae 182994) stays a
+  suggestion and nothing was downloaded for it beyond the audit cache.
+- **Verification:** VERIFIED 2026-09-03 00:00 - `launch_verify` PASS, main menu
+  **31.9 s**, save loaded **40.6 s** (`kPostLoadGame success=1`), direct chain, claim
+  `claude/wolves-ui`, preflight clean (4 pre-existing warnings), `install_mod.py
+  --verify` 0 problems. Record: `records/launch-verify-20260902-233602.md`. The
+  *behaviour* is not yet witnessed in-game: 2500/1200/640 is a play-feel choice and
+  needs an approach/retreat test on a live wolf pack. Existing wolves in the save keep
+  their loaded AI data until the cell resets.
+
+## 2026-09-03 00:10 - UI slot and survival readout researched; nothing installed (#31, #35, #111)
+
+- **What:** `records/ui-slot-and-survival-readout-2026-09-02.md` (revised under the
+  2026-09-03 no-new-mods constraint; every mod named is a Nexus link and nothing was
+  installed). The readout is possible: a `GLOB` dump across CC survival + SMI +
+  Starfrost shows the live pairs are `Survival_HungerNeedValue`/`MaxValue` **0/120**
+  (Starfrost) and `Survival_ColdNeedValue`/`MaxValue` **55/900** (SMI), so anything
+  reading the value/max pair renders a true proportional bar. The obvious candidate is
+  wrong: `iWant Widgets for Starfrost` 2.0 reads Starfrost's *magic effects* and is
+  invisible below stage 3. `Survival Control Panel` is a configuration framework and
+  renders no meter - that question is now closed and belongs only to #95. SKSE gate
+  with PE stamps: **TrueHUD 1.1.10 PASS** (2026-08-29 18:35:01Z, V5 bit set),
+  **moreHUD 5.4.2.0 PASS** (2026-08-30 22:28:11Z, stamped after the support date),
+  **Prisma UI 1.4.1 FAIL** (2026-03-27), **Skyrim Party Sheet 3.1 FAIL** (2026-07-28),
+  **iWant Widgets NG 1.2.8 FAIL** (2024-06-07). TrueHUD's floating bars are one flag -
+  `bEnableActorInfoBars` in the shipped `MCM/Config/TrueHUD/settings.ini`, independent
+  of `bEnableBossBars`, `bEnablePlayerWidget`, `bEnableRecentLoot` - so the user's
+  "floating healthbars look terrible" does not cost us the mod. NORDIC UI declined:
+  0/19 in the survey, v2.4.1 last updated 2021-08-14, requires SkyHUD, and ships enemy
+  health bars. Suggested skin: Untarnished UI, on his own recorded vanilla-shape taste
+  rather than counts. **Nothing installable without a download was found**: the one
+  no-new-mod lever is SMI's own `fAmbientWarmthWidgetColdLevelThreshold=200.0`, and it
+  was deliberately left alone because the comment's direction is ambiguous and only an
+  in-game check settles it.
+- **Source:** user 2026-09-02 - "having a bar for it would be nice", "I don't like ...
+  floating healthbars"; team-lead constraint 2026-09-03.
+- **Verification:** research only - no mod installed, no profile or INI file written,
+  no launch of its own. Every DLL verdict carries its PE stamp; archive sha256s are in
+  the record.
+
 ## 2026-09-02 23:45 - Wolf visuals/behaviour/spawns and the UI-plus-survival-readout audit (#42, #31, #35, #111)
 
 - **What:** two research passes, no build state changed. (1) `docs/WILDLIFE-WOLVES-2026-08-28.md`

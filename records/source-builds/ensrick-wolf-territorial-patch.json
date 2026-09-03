@@ -30,7 +30,11 @@
     "warn": 2500,
     "warnOrAttack": 1200,
     "attack": 640,
-    "expectedBefore": { "warn": 0, "warnOrAttack": 2000, "attack": 1500 },
+    "expectedBefore": {
+      "warn": 0,
+      "warnOrAttack": 2000,
+      "attack": 1500
+    },
     "references": {
       "EncBear": "2500 / 2000 / 1500",
       "EncHorker": "850 / 640 / 320",
@@ -49,9 +53,16 @@
     "eslFlaggedEsp": true,
     "overrideOnly": true,
     "records": 9,
-    "recordTypes": { "NPC_": 9 },
+    "recordTypes": {
+      "NPC_": 9
+    },
     "newForms": 0,
-    "masters": ["Skyrim.esm", "BSHeartland.esm", "arnima.esm", "Gray Fox Cowl.esm"],
+    "masters": [
+      "Skyrim.esm",
+      "BSHeartland.esm",
+      "arnima.esm",
+      "Gray Fox Cowl.esm"
+    ],
     "ruleTargets": [
       "023ABE:Skyrim.esm EncWolf",
       "003C86:BSHeartland.esm CYREncWolf",
@@ -62,7 +73,9 @@
       "0F544B:arnima.esm EncWolfarnima2",
       "023C34:Gray Fox Cowl.esm manny_GF_Animal_DesertWolf"
     ],
-    "deInherited": ["0877EB:Skyrim.esm SummonFireStorm"],
+    "deInherited": [
+      "0877EB:Skyrim.esm SummonFireStorm"
+    ],
     "excludedRecords": 52
   },
   "inheritance": {
@@ -76,8 +89,14 @@
       "dunShadowgreen_AmbushWolf",
       "dunWhiteRiverWatchWolf"
     ],
-    "CYREncWolf": ["CYREncWolfSprigganCompanion", "CYREncWolf_Indoor"],
-    "CYREncWolfTimber": ["CYREncWolfTimberSprigganCompanion", "CYREncWolfTimber_Indoor"]
+    "CYREncWolf": [
+      "CYREncWolfSprigganCompanion",
+      "CYREncWolf_Indoor"
+    ],
+    "CYREncWolfTimber": [
+      "CYREncWolfTimberSprigganCompanion",
+      "CYREncWolfTimber_Indoor"
+    ]
   },
   "validation": {
     "deterministicRuns": 2,
@@ -93,5 +112,58 @@
     "gameplayAcceptance": "pending - the 2500/1200/640 numbers need an in-game approach/retreat test"
   },
   "distribution": "distributable",
-  "generatedUtc": "2026-09-03T04:31:46Z"
+  "generatedUtc": "2026-09-03T04:31:46Z",
+  "thinningHalf": {
+    "plugin": "Ensrick Wolf Encounter Thinning.esp",
+    "state": "generated and staged only - not installed; the cut size is a user decision",
+    "policyPath": "mods/wolf-territorial-patch/thinning/policy.json",
+    "policySha256": "A10F55A3EA8BBCD9FC068A31E494DCE3EA2D5CE5ADD4ECFE4958DF40EB4C3B65",
+    "regenerate": "pwsh mods/wolf-territorial-patch/regenerate-thinning.ps1 -ToolchainManifest toolchain.json -InstanceRoot <instance> -DataFolder <game Data>",
+    "outputSha256": "739AAFE6545B7B463E57BA512F35950A69550D92D582B5697105F423CB620ED3",
+    "outputBytes": 171679,
+    "archiveSha256": "33EBA64A626BFB8CD4286DB89A2C3A716DE8C1639877D7A297671B90ABD21404",
+    "archiveBytes": 117771,
+    "spriggitTreeSha256": "DA40962F70C815CE7433654A2A192866B0A85F63BCCF58F0C06255369C00CFCF",
+    "records": 381,
+    "retiredReferences": 191,
+    "measurement": {
+      "exteriorRefsOnPolicyBases": 622,
+      "clusterLinkRadiusUnits": 2000,
+      "clusters": 387,
+      "clusterSizeHistogram": {
+        "1": 203,
+        "2": 137,
+        "3": 43,
+        "4": 4
+      },
+      "retiredFraction": 0.307,
+      "heldClustersWithAnIneligibleMember": 12,
+      "ineligible": {
+        "persistent": 171,
+        "enableParent": 13,
+        "alreadyInitiallyDisabled": 1,
+        "interiorCell": 28
+      },
+      "retiredByBase": {
+        "LvlAnimalForestPredator": 45,
+        "LvlAnimalMountainSnowPredator": 41,
+        "LvlAnimalCanyonPredator": 34,
+        "LvlAnimalPlainsPredator": 29,
+        "LvlAnimalCoastSnowPredator": 26,
+        "LvlAnimalHillsPredator": 15,
+        "LvlAnimalSnowFields": 1
+      },
+      "remaining": "431 references in 196 clusters, every surviving site >= 2"
+    },
+    "validation": {
+      "deterministicRuns": 2,
+      "byteIdenticalRuns": true,
+      "linksChecked": 3684,
+      "unresolvedLinks": 0,
+      "spriggitCheckedRoundTrip": true,
+      "guardRail": "maxRetiredFraction 0.40; the first run correctly refused at 71.6% when ineligible refs were wrongly excluded from clustering"
+    },
+    "handoffToIssue43": "191 discrete, already navmeshed, already encounter-zoned exterior positions",
+    "generatedUtc": "2026-09-03T04:44:57Z"
+  }
 }

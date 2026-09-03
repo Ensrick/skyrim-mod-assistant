@@ -1,0 +1,29 @@
+FormKey: 0A764B:BSHeartland.esm
+EditorID: BSHeartland
+Name:
+  TargetLanguage: English
+  Value: Tamriel
+Location: 6036AD:BSAssets.esm
+Climate: 00015F:Skyrim.esm
+Water: 000018:Skyrim.esm
+LodWater: 000018:Skyrim.esm
+LodWaterHeight: -14000
+LandDefaults:
+  DefaultLandHeight: -27000
+  DefaultWaterHeight: -14000
+CloudModel:
+  File: bscyrodiil\sky\bsheartlandsworldmapcloudbank.nif
+  Data: 0x020000000000000000000000
+MapData:
+  UsableDimensions: 150, 150
+  NorthwestCellCoords: -4, 64
+  SoutheastCellCoords: 63, 30
+  CameraMinHeight: 15000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+ObjectBoundsMin: -4, 30
+ObjectBoundsMax: 64, 73
+HdLodDiffuseTexture: data\textures\landscape\mountains\mountainslab02.dds
+HdLodNormalTexture: data\textures\landscape\mountains\mountainslab02_n.dds

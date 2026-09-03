@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "encounterThinning",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/42",
+  "ruleText": "Fewer wilderness encounters while keeping pack size. Every placed reference rolls its regional predator leveled list independently, so thinning wolves out of the lists lowers frequency AND turns a three-point site into a wolf, a bear and a spider. Retiring whole spatial CLUSTERS instead lowers frequency and leaves pack size exactly as Bethesda placed it - and retiring the singletons first raises it, because the lone predator between packs is what makes the wilderness feel crowded. Measured on Skyrim.esm alone: 666 placed refs on these actors form 406 clusters at a 2000-unit link radius (205 singletons, 146 pairs, 51 triples, 4 quads); retiring the singletons leaves 461 refs in 201 clusters, mean pack 2.29, with no lone predator anywhere. Nothing is deleted - a deleted ACHR is a UDR - the references are flagged Initially Disabled, so rollback is disabling one plugin. Only wolf-bearing regional lists are in scope: LCharAnimalForestSnowPredator has 0 wolf entries and its 30 placed refs are therefore left alone. User design 2026-09-02 on #42; measurements in the 2026-09-02 appendix of docs/WILDLIFE-WOLVES-2026-08-28.md.",
+  "rule": {
+    "clusterLinkRadius": 2000,
+    "retireClustersUpToSize": 1,
+    "maxRetiredFraction": 0.4
+  },
+  "baseActors": [
+    {
+      "formKey": "01E7A0:Skyrim.esm",
+      "editorId": "LvlAnimalForestPredator",
+      "role": "forest regional predator spawn point; its list LCharAnimalForestPredator (042297) is 26 entries of which 4 are level-1 EncWolf"
+    },
+    {
+      "formKey": "01E7A1:Skyrim.esm",
+      "editorId": "LvlAnimalPlainsPredator",
+      "role": "plains regional predator spawn point; LCharAnimalPlainsPredator (042293), 11 entries, 4 wolf"
+    },
+    {
+      "formKey": "01E7A3:Skyrim.esm",
+      "editorId": "LvlAnimalMountainSnowPredator",
+      "role": "mountain-snow regional predator spawn point; LCharAnimalMountainSnowPredator (04229D), 2 EncWolf + 4 EncWolfIce"
+    },
+    {
+      "formKey": "0422B3:Skyrim.esm",
+      "editorId": "LvlAnimalCanyonPredator",
+      "role": "canyon regional predator spawn point; LCharAnimalCanyonPredator (04229B), 4 wolf entries"
+    },
+    {
+      "formKey": "0422B5:Skyrim.esm",
+      "editorId": "LvlAnimalCoastSnowPredator",
+      "role": "coast-snow regional predator spawn point; LCharAnimalCoastSnowPredator (0422A3), 2 EncWolf + 4 EncWolfIce"
+    },
+    {
+      "formKey": "0DC5A3:Skyrim.esm",
+      "editorId": "LvlAnimalHillsPredator",
+      "role": "hills regional predator spawn point; LCharAnimalHills (01E78F), 16 entries of which 3 are EncWolf"
+    },
+    {
+      "formKey": "065A3B:Skyrim.esm",
+      "editorId": "LvlAnimalSnowFields",
+      "role": "snowfields regional spawn point; LCharAnimalSnowFields (01E78E), 6 entries of which 2 are wolf"
+    }
+  ]
+}

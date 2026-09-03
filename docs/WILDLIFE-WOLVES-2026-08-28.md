@@ -92,16 +92,16 @@ Every id below was confirmed against
 
 | id | mod | version | last updated | endorsements | what it is |
 |---|---|---|---|---|---|
-| 182994 | Canidae - A Wolf Replacer | 2.25 | 2026-08-29 | 819 | new wolf **mesh + textures**, wolf-only |
-| 56361 | Fluffworks (Fluffy Animals) | 1.0 (file 1.1f) | 2022-03-02 | 11,396 | fur **shells** over the vanilla animal meshes |
-| 88138 | Fluffworks - Tweaks and Expansion | 4.6 | 2026-06-09 | 1,613 | Fluffworks addon |
-| 64445 | Fluffworks - Auto Patches | 2.3 | 2026-06-29 | 4,735 | Fluffworks patch hub |
-| 184334 | Canidae - Fluff AF Patch | 1 | 2026-08-04 | 171 | Canidae meshes with Fluffworks shells |
-| 68069 | Wolves of Skyrim | 2.1 | 2026-01-11 | 4,784 | mesh + texture replacer |
-| 63378 | Real Fur for Wolves | 1.1 | 2022-02-17 | 1,068 | remesh/retexture |
-| 21075 | Savage Wolves | 1.7 | 2020-05-30 | 4,215 | **replaces the wolf skeleton** |
-| 73400 | Pelage | 1.0 | 2023-03-23 | 598 | Fluffworks-style shells for non-vanilla creatures |
-| 6824 / 13241 | Better Skyrim Wolves / SSE Wolves Replacer | 1.1 | 2017 | - | LE-era, superseded |
+| 182994 | [Canidae - A Wolf Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/182994) | 2.25 | 2026-08-29 | 819 | new wolf **mesh + textures**, wolf-only |
+| 56361 | [Fluffworks (Fluffy Animals)](https://www.nexusmods.com/skyrimspecialedition/mods/56361) | 1.0 (file 1.1f) | 2022-03-02 | 11,396 | fur **shells** over the vanilla animal meshes |
+| 88138 | [Fluffworks - Tweaks and Expansion](https://www.nexusmods.com/skyrimspecialedition/mods/88138) | 4.6 | 2026-06-09 | 1,613 | Fluffworks addon |
+| 64445 | [Fluffworks - Auto Patches](https://www.nexusmods.com/skyrimspecialedition/mods/64445) | 2.3 | 2026-06-29 | 4,735 | Fluffworks patch hub |
+| 184334 | [Canidae - Fluff AF Patch](https://www.nexusmods.com/skyrimspecialedition/mods/184334) | 1 | 2026-08-04 | 171 | Canidae meshes with Fluffworks shells |
+| 68069 | [Wolves of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/68069) | 2.1 | 2026-01-11 | 4,784 | mesh + texture replacer |
+| 63378 | [Real Fur for Wolves](https://www.nexusmods.com/skyrimspecialedition/mods/63378) | 1.1 | 2022-02-17 | 1,068 | remesh/retexture |
+| 21075 | [Savage Wolves](https://www.nexusmods.com/skyrimspecialedition/mods/21075) | 1.7 | 2020-05-30 | 4,215 | **replaces the wolf skeleton** |
+| 73400 | [Pelage](https://www.nexusmods.com/skyrimspecialedition/mods/73400) | 1.0 | 2023-03-23 | 598 | Fluffworks-style shells for non-vanilla creatures |
+| 6824 / 13241 | [Better Skyrim Wolves](https://www.nexusmods.com/skyrimspecialedition/mods/6824) / [SSE Wolves Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/13241) | 1.1 | 2017 | - | LE-era, superseded |
 
 None of these carries a curator decision today
 (`nexus-local-curator/scripts/curator_state.py`: all eleven report "no
@@ -198,23 +198,23 @@ installer regenerates it locally, no vendor bytes shipped.
 
 ### The rivals fail the project's own distance test outright
 
-- **Wolves of Skyrim 2.1 (68069)**: `wolf_n.dds` is **x0.46** of vanilla at
+- **[Wolves of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/68069) 2.1 (68069)**: `wolf_n.dds` is **x0.46** of vanilla at
   mid/far - it goes matte at play distance. It also ships `wolf_n.dds` at 1024
   px against vanilla's 2048, `wolf_sk.dds` at **40 px** against vanilla's 512,
   two uncompressed textures costing roughly 11 MB of VRAM, five
   non-power-of-two textures, and 9 of 30 sampled textures carrying far less
   detail than their stored size (`wolfblack.dds` 4096 px, detail index 0.31).
   Mean detail index 1.59 against Canidae's 6.12.
-- **Real Fur for Wolves 1.1 (63378)**: median x0.76 at mid/far but 5 of 10
+- **[Real Fur for Wolves](https://www.nexusmods.com/skyrimspecialedition/mods/63378) 1.1 (63378)**: median x0.76 at mid/far but 5 of 10
   textures soft or upscaled, and 10 of 10 diffuses ship with no normal - one of
   them falls back to the vanilla normal, which will not match the new art.
-- **Savage Wolves 1.7 (21075)**: replaces the wolf **skeleton** by design. That
+- **[Savage Wolves](https://www.nexusmods.com/skyrimspecialedition/mods/21075) 1.7 (21075)**: replaces the wolf **skeleton** by design. That
   is the one change class this build cannot absorb quietly, and it has not been
   touched since 2020-05-30.
 
 ### Visual recommendation
 
-**Canidae - A Wolf Replacer 2.25 (182994), core "Wolf Replacer" option only**,
+**[Canidae - A Wolf Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/182994) 2.25 (182994), core "Wolf Replacer" option only**,
 declining every FOMOD plugin, plus two Ensrick recipe fixes:
 
 1. re-generate `blackwolf_body.dds`'s mip chain with the `--resharpen` recipe
@@ -227,12 +227,11 @@ this audit); its core option ships **no plugin at all**, so it cannot collide
 with the behaviour patch below; and six of its seven measured textures clear the
 distance floor.
 
-Decline `Canidae - Red Wolf Leveled List Addon` specifically: it *adds* the
+Decline `Canidae - Red Wolf Leveled List Addon` (a FOMOD option of 182994) specifically: it *adds* the
 unused red wolf to leveled lists, pushing wolf frequency the wrong way while #42
 is trying to lower it.
 
-Fluffworks is a legitimate second lane, not a rival: `Canidae - Fluff AF Patch`
-(184334, 2026-08-04) exists precisely to put Fluffworks shells on Canidae's
+Fluffworks is a legitimate second lane, not a rival: [`Canidae - Fluff AF Patch`](https://www.nexusmods.com/skyrimspecialedition/mods/184334) (184334, 2026-08-04) exists precisely to put Fluffworks shells on Canidae's
 meshes. It should be a separate decision after Canidae has been seen in motion,
 because it costs frames (the author quotes 2-7 fps per animal for the Quality
 build) and its benefit is fur volume, not shape.
@@ -480,3 +479,114 @@ work - they need a different base actor.
    still hunts on sight?
 5. Is a 31% cut in wilderness predator sites the right size, or should the
    second tranche (pairs) be planned now?
+
+---
+
+# Built - 2026-09-03: the behaviour patch is in, the thinning patch is staged
+
+Constraint change from the user before bed, 2026-09-02: *"don't pickup new mods
+without permissions, just suggest no mods"* and *"If there's solutions that don't
+require downloading mods, implement them as best you can."* So section 1 above is a
+**suggestion with links**, nothing installed; sections 2 and 3 were ours to build, and
+they were built with the frameworks already in the profile. Details, policy and
+reproduction: `mods/wolf-territorial-patch/README.md`.
+
+## `Ensrick Wolf Territorial Patch.esp` - installed, enabled, launch-verified
+
+ESL-flagged, override-only, **9 `NPC_` records**, 3,959 bytes, sha256
+`63745001DEF4FFCE2634E399B17A0B5CD82968EA8C7063558EE092EA1069A899`. Masters
+`Skyrim.esm`, `BSHeartland.esm`, `arnima.esm`, `Gray Fox Cowl.esm`.
+
+The rule, applied to the eight ambient wolf bases in section 2's table plus Bruma's,
+Beyond Reach's and the Gray Cowl's own wolves:
+
+| field | vanilla wolf | patched | vanilla bear | vanilla horker |
+|---|---:|---:|---:|---:|
+| `Warn` | 0 | **2500** | 2500 | 850 |
+| `WarnOrAttack` | 2000 | **1200** | 2000 | 640 |
+| `Attack` | 1500 | **640** | 1500 | 320 |
+
+A wolf now growls from about 36 m and attacks at about 9 m instead of 21 m.
+`Aggression` stays `Unaggressive`, `csWolf`'s flanking data is untouched so packs still
+flank, and **no faction record was edited** - the section-2 finding that
+`PredatorFaction -> PreyFaction = Enemy` is shared with bears and sabre cats held, so
+touching it would have neutered them too.
+
+Targets, all verified to carry the identical vanilla signature before anything was
+written: `EncWolf` (107 placed refs), `manny_GF_Animal_DesertWolf` (41), `CYREncWolf`
+(15), `CYREncWolfTimber` (4), `EncWolfarnima2` (3), `EncWolfarnima` (1),
+`CYREncWolfHighland` and `CYREncWolfDire` (leveled-list only). Eleven more records
+follow through their templates and the generator **measures** that set rather than
+trusting the policy. One heir was deliberately removed from it: `SummonFireStorm`, the
+conjured Flaming Familiar, is de-inherited and pinned to the old numbers, because a
+summon answers to its summoner and not to a territory.
+
+52 wolf records are excluded with a reason each, including `EncWolfIce` - still
+`VeryAggressive` with the aggro radius off, i.e. hostile on sight at any range. That
+one is deliberately left as an open question below.
+
+Receipts: two byte-identical generations, 117 links checked / 0 unresolved, Spriggit
+0.41.0 checked round-trip, `audit/verify_order.py` CLEAN over 244 active plugins,
+`install_mod.py --verify` 0 problems, `audit/preflight.py` clean (4 pre-existing
+warnings). **Launch verification PASS** - main menu **31.9 s**, save loaded **40.6 s** -
+`records/launch-verify-20260902-233602.md`.
+
+Rollback is disabling one mod row.
+
+## `Ensrick Wolf Encounter Thinning.esp` - generated, staged, NOT installed
+
+191 placed-actor `Initially Disabled` overrides (381 records including parent cells),
+171,679 bytes, sha256
+`739AAFE6545B7B463E57BA512F35950A69550D92D582B5697105F423CB620ED3`, in
+`mods/wolf-territorial-patch/thinning/package/`.
+
+Section 3's proposal, measured against the live load order rather than `Skyrim.esm`
+alone: **622 exterior references** on the seven wolf-bearing regional predator actors
+form **387 clusters** at a 2000-unit link radius - 203 singletons, 137 pairs, 43
+triples, 4 quads. Retiring the singleton clusters removes **191 references (30.7%)**
+and leaves **431 references in 196 clusters, every surviving site at least 2**.
+Twelve singleton clusters were held back because their one reference is persistent or
+enable-parented.
+
+Three things the generator does that the prose proposal did not spell out:
+
+1. Ineligible references (171 persistent, 13 enable-parented, 1 already disabled) still
+   **count towards cluster size** even though they are never retired. Excluding them
+   from the clustering instead turns a pair into a fake singleton - that mistake
+   produced a 71.6% cut on the first run and the 40% guard rail caught it.
+2. A cluster holding an untouchable reference is left **whole**, so no encounter is
+   half-retired.
+3. `LCharAnimalForestSnowPredator` has **0 wolf entries**, so its 30 placed references
+   are out of scope entirely.
+
+It is not installed because how much wilderness to empty is a taste decision, and
+because the behaviour patch alone may change how crowded the wilderness feels. One
+command installs it once the user says a number.
+
+**Hand-off to [#43](https://github.com/Ensrick/skyrim-mod-assistant/issues/43) is now
+exact: 191 discrete, already navmeshed, already encounter-zoned exterior positions**,
+by region: forest 45, mountain-snow 41, canyon 34, plains 29, coast-snow 26, hills 15,
+snowfields 1.
+
+## What changed in the analysis above
+
+Two numbers in section 3 were measured on `Skyrim.esm` alone and are superseded by the
+load-order-wide generator run: 666 refs / 406 clusters / 205 singletons becomes **622
+eligible-and-clustered refs / 387 clusters / 203 singletons**, and the retirement is
+**191 (30.7%)** rather than 205 (31%). The shape of the finding is unchanged; the
+difference is interior cells, the seven-base scope, and counting persistent references
+as cluster members rather than as targets.
+
+## Open questions, unchanged
+
+1. Does Canidae's wolf read as a real wolf in motion, at play distance?
+2. [Fluffworks](https://www.nexusmods.com/skyrimspecialedition/mods/56361) shells on top
+   via the [Fluff AF patch](https://www.nexusmods.com/skyrimspecialedition/mods/184334) -
+   worth 2-7 fps per animal?
+3. **The attack radius.** 2500 / 1200 / 640 is shipped and needs a field test. 1500 is
+   "charges you across a field", 320 is "you basically stepped on it".
+4. Should `EncWolfIce` stay `VeryAggressive`?
+5. Install the thinning patch at 30.7%, or a different cut?
+6. New lever found while building: every wolf in the game is `Confidence = Foolhardy`,
+   which is why they never break off a losing fight. Lowering it is a second,
+   independent way to make them read as animals. Not touched.

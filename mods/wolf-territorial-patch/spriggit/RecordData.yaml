@@ -1,0 +1,21 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Ensrick Wolf Territorial Patch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: 'Ordinary wolves warn at 2500 units and attack at 640 instead of 1500. Issue #42. Override-only, generated.'
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: arnima.esm
+    FileSize: 0
+  - Master: BSAssets.esm
+    FileSize: 0
+  - Master: BSHeartland.esm
+    FileSize: 0
+  - Master: Gray Fox Cowl.esm
+    FileSize: 0
