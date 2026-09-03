@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "component": "Pandora Behaviour Engine+ (headless fork)",
+  "deployPath": "tools/pandora-headless/Pandora Behaviour Engine+.exe",
+  "purpose": "True console mode (--headless) so behavior generation runs through MO2's VFS with no window and no user involvement; stock 4.4.0-beta always creates a MainWindow (issue #128).",
+  "source": {
+    "upstreamRepository": "https://github.com/Monitor221hz/Pandora-Behaviour-Engine-Plus",
+    "upstreamCommit": "90e412bf (main, = v4.4.0-beta + 2 workflow-only commits)",
+    "baseRelease": "v4.4.0-beta (2026-08-11, matches installed mod)",
+    "repository": "https://github.com/Ensrick/pandora-behaviour-engine",
+    "branch": "ensrick/headless",
+    "commit": "6adf04b218cf4361f775e6e74e2b0e87a29efa44",
+    "pushed": true,
+    "license": "GPL-3.0-or-later",
+    "upstreamHeadlessWork": "None. Issue #114 (execution without GUI) closed by adding --auto_run, which still creates the window; preview branch (64 commits ahead, new patch format) renames projects but keeps the same Avalonia WinExe entry; no CLI/headless PR or branch exists.",
+    "publicRepos": [
+      "https://github.com/Ensrick/pandora-behaviour-engine",
+      "https://gitlab.com/ensrick7/pandora-behaviour-engine"
+    ]
+  },
+  "build": {
+    "targetFramework": "net10.0",
+    "sdk": "10.0.400 (local install, scratchpad; machine has 9.x only)",
+    "publish": "dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true (mirrors upstream release.yaml)",
+    "warnings": "pre-existing upstream nullability warnings only, 0 errors",
+    "tests": "Pandora Tests --filter ArgumentsParsing: 26/26 passed"
+  },
+  "artifact": {
+    "sha256": "B545D97D045D8DD23A1476A6376D90358C170EBC992A79B7338299F0C299CDCB",
+    "sizeBytes": 118079426,
+    "companions": [
+      "FNIS.esp",
+      "Nemesis_Engine/",
+      "Pandora_Engine/"
+    ]
+  },
+  "diff": {
+    "files": [
+      "Pandora Behaviour Engine/CLI/HeadlessApp.cs (new)",
+      "Pandora Behaviour Engine/CLI/HeadlessWindowStateService.cs (new)",
+      "Pandora Behaviour Engine/CLI/NativeConsole.cs (new)",
+      "Pandora Behaviour Engine/CLI/LaunchOptions.cs (+Headless flag)",
+      "Pandora Behaviour Engine/CLI/CommandLineParser.cs (+--headless/-hl option)",
+      "Pandora Behaviour Engine/Program.cs (route --headless before Avalonia)"
+    ],
+    "behavior": "--headless runs the engine once with no Avalonia lifetime, no window; UI log lines stream to stdout; Engine.log written to the -o output folder; exit 0 success, 1 engine failure, 2 fatal. -o is wired to IPathSettings.SetOutputFolder in the headless path (dead in stock 4.4.0 despite being parsed). GUI path unchanged.",
+    "upstreamable": "Yes - small additive diff on upstream style; user decides whether to PR."
+  },
+  "usage": "tools\run-pandora.cmd, or: MO2Headless.exe --root <instance> --timeout 3600 run <exe> --arguments '--headless -o \"<output mod>\"'",
+  "rebuild": "git clone -b ensrick/headless https://github.com/Ensrick/pandora-behaviour-engine (local: C:/Users/danjo/source/repos/pandora-behaviour-engine); git submodule update --init --recursive; dotnet publish as above with a .NET 10 SDK.",
+  "recipe": {
+    "recordedAt": "2026-09-02",
+    "where": "ledger row 'Pandora Output - Ensrick', recipe field (kind: tool): input aggregates (Pandora_Engine templates, the sppffp/sppftp Nemesis patch folders as the VFS sees them, the XPMSSE FNIS list + animations) with the vendor archive hashes, the run command, and the SHA-256 of every payload output file.",
+    "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/160"
+  }
+}

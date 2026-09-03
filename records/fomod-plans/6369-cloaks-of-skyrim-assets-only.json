@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "note": "Cloaks of Skyrim 6369 v1.2.1 installed as an ASSET SOURCE ONLY. All three plugin option folders (01 Cloaks Main Plugin, 01 Cloaks No Imperial Plugin, 01 Cloaks Player Only Plugin - eight ESPs in total) are deliberately omitted so they can never be enabled: Cloaks.esp writes 136 vanilla overrides (68 CELL, 47 OTFT, 10 NPC_, 4 WRLD) and 24 of its 62 Outfit/Npc/LeveledItem overrides are already written by live plugins, 16 of them by NW_Sons_of_Skyrim.esp. The records come from Cloaks - RMB SPCH.esp (Nexus 116030) instead, which writes 294 records and zero overrides. Evidence: records/cloak-layer-audit-2026-09-02.md sections 1 and 2.",
+  "mappings": [
+    { "source": "00 Main Resources/Meshes",   "destination": "meshes" },
+    { "source": "00 Main Resources/Textures", "destination": "textures" }
+  ]
+}

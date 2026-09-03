@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "3DNPC Script Fixes/catandmousetrigger/scripts",
+      "destination": "scripts"
+    }
+  ]
+}

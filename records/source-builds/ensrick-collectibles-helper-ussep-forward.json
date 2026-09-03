@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Collectibles Helper USSEP Forward",
+  "mo2Mod": "Ensrick - Collectibles Helper USSEP Forward",
+  "outputPlugin": "Ensrick - Collectibles Helper USSEP Forward.esp",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/92",
+  "purpose": "Forward the USSEP-owned fields (PlacedObject.Lock; Cell.WaterHeight, Cell.Music, Cell.SkyAndWeatherFromRegion) over Collectibles Helper 130354, which overrides 47 Dragonborn.esm records without USSEP as a master and writes vanilla values back over twelve USSEP fixes. Start from the winning record and forward only where USSEP states a value, so a field USSEP leaves unset is never cleared.",
+  "source": {
+    "repository": null,
+    "pushed": false,
+    "originalPath": "C:/Users/danjo/source/repos/skyrim-tools-source/CollectiblesHelperUssepForward",
+    "originalPathIsGitCheckout": false,
+    "inTreeCopy": "mods/collectibles-helper-ussep-forward/generator",
+    "inTreeCopyStagedUtc": "2026-09-02",
+    "inTreeCopyCommitted": false,
+    "files": {
+      "CollectiblesHelperUssepForward.csproj": "E07D124EE442E2BB58064DA679112AD3D034C89670C5C16AFE5B288911A04642",
+      "Program.cs": "1161D4BB5CE06D39F45CE1A0D9065F1C6A16B8F8D7CA7FEFDB1D0EB1670761B3",
+      "packages.lock.json": "304F89692949E5086C0EC2167509B2178920EA602490512271F0FD8B009BAB65"
+    },
+    "gap": "No repository exists for this generator, so nothing is pushed. The source is now staged inside this repository (see inTreeCopy) and becomes reproducible from a public commit once that copy is committed and pushed; #160 keeps this box open until then."
+  },
+  "build": {
+    "targetFramework": "net10.0",
+    "runtimeConfig": "Microsoft.NETCore.App 10.0.0",
+    "sdk": "10.0.302 (private SDK at C:/Users/danjo/source/repos/.codex-tmp/dotnet10-sdk, the only .NET 10 SDK on the machine; toolchain.json privateDotnetRoot)",
+    "packages": {
+      "Mutagen.Bethesda.Skyrim": "0.54.3",
+      "Mutagen.Bethesda.Synthesis": "0.36.5"
+    },
+    "lockedDependencies": true,
+    "warningsAsErrors": true,
+    "deterministic": true,
+    "warnings": 0,
+    "errors": 0,
+    "command": "dotnet build -c Release CollectiblesHelperUssepForward.csproj",
+    "exactCommandLineRecorded": false,
+    "artifact": {
+      "dll": "bin/Release/net10.0/CollectiblesHelperUssepForward.dll",
+      "sha256": "7EA60B1F8D514CEDFC78AEDA497005D853D42B3EF3F86078FDC0B89E4958D396",
+      "bytes": 15360,
+      "builtUtc": "2026-08-30T16:25:01Z"
+    }
+  },
+  "run": {
+    "through": "MO2Headless run (USVFS), so the patcher saw the real virtual Data folder rather than a staged copy",
+    "loadOrder": "Skyrim.ccc entries followed by the Default profile plugins.txt: 267 entries, 265 active",
+    "pipeline": "SynthesisPipeline.SetTypicalOpen(GameRelease.SkyrimSE, \"Ensrick - Collectibles Helper USSEP Forward.esp\")",
+    "reconstructedArguments": "run-patcher --DataFolderPath <VFS Data> --LoadOrderFilePath <profile plugins.txt> --OutputPath <staging>/Ensrick - Collectibles Helper USSEP Forward.esp --GameRelease SkyrimSE",
+    "exactCommandLineRecorded": false,
+    "generatedUtc": "2026-08-30 (between the 16:25Z build and the 19:47Z install)"
+  },
+  "output": {
+    "sha256": "C121A2A52B4C21CA03190BC59089D49BB27CD67E433E417994F4EA1BAB0A0DEA",
+    "bytes": 1860,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 8,
+    "recordTypes": {
+      "CELL": 5,
+      "REFR": 3
+    },
+    "forwardedRecords": 6,
+    "structuralCellParents": 2,
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Dragonborn.esm",
+      "Lux.esp"
+    ],
+    "emitted": "XLOC level 75 / key none / flags 0 onto REFR 03A4E6, 03A4E9, 03AC5A; WaterHeight -2147483648.0 onto CELL 017EC0, 018276, 01BBFB; CELL 01844F and 024D9D copied unchanged as REFR parents",
+    "tes4Author": "(empty) - housekeeping item from the #160 sweep"
+  },
+  "installation": {
+    "profile": "Default",
+    "enabled": true,
+    "installedUtc": "2026-08-30T19:47:03Z",
+    "transaction": "20260830T194702775Z-d62a0214b2f6",
+    "modlistLine": 33,
+    "pluginsTxtLine": 216,
+    "loadOrderNote": "LOOT places it after Collectibles Helper and after Lux (Lux is a master, so the ordering is transitively enforced). Regenerate after any load-order change that moves Lux relative to Collectibles Helper."
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "spriggitRoundTrip": "0.41.0 serialize/deserialize completed; semantic rather than byte-exact (HEDR next-object-ID and cell group ordering/timestamps differ; no meaning for a patch with no new records)",
+    "postSortWinnerCheck": "all six forwarded records win and carry USSEP's values; the four deliberately skipped XCCM cases are where USSEP states no value",
+    "parsedAgain": "2026-09-02 with audit/esp.py: ESL, 8 records, 0 new, 8 overrides (CELL 5, REFR 3), masters as above",
+    "gameplayAcceptance": "pending"
+  },
+  "distribution": {
+    "class": "distributable",
+    "basis": "Records-only forward patch. USSEP 266: 'You may also copy any needed fixes into your own work to use without the USSEP as a master so long as you agree to be responsible for any support issues'. Lux 43158: 'Anyone can make and upload compatibility patches as long as none of my assets are being uploaded again'. Collectibles Helper 130354 (Jonx0r): every permission granted with credit.",
+    "vendorFilesModified": false,
+    "generatedPluginCommitted": false
+  }
+}

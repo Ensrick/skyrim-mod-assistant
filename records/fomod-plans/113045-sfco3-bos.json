@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "SFCO3 - BOS/SFCO3-BOS - Resources.esp",
+      "destination": "SFCO3-BOS - Resources.esp"
+    },
+    {
+      "source": "SFCO3 - BOS/zaSFCO3-BOS_SWAP.ini",
+      "destination": "zaSFCO3-BOS_SWAP.ini"
+    },
+    {
+      "source": "SFCO3 - BOS/Meshes_Mix/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "SFCO3 - BOS/Textures_desat/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "SFCO3 - BOS/SFCO3-BOS - Addons.esp",
+      "destination": "SFCO3-BOS - Addons.esp"
+    },
+    {
+      "source": "SFCO3 - BOS/Meshes_Addons/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "SFCO3 - BOS/Textures_Addons/textures",
+      "destination": "textures"
+    }
+  ]
+}

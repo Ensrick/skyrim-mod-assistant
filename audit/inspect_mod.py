@@ -13,8 +13,15 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import modasset as M
 import esp
 import tagger
+import mip_retention as MR
 
 SP = os.path.dirname(os.path.abspath(__file__))
+# Below this share of vanilla's mid/far high-frequency energy a replacer reads
+# matte at play distance. Calibrated 2026-09-02 on the skin audit
+# (records/skin-distance-detail-audit-2026-09-02.md): the installed body
+# diffuses the user called "matte, single-tone" sit under it, vanilla-styled
+# sets sit above it.
+DISTANCE_HF_FLOOR = 0.70
 TEXCONV = os.path.join(os.environ['LOCALAPPDATA'],
                        r'Microsoft\WinGet\Packages\Microsoft.DirectXTex.Texconv_Microsoft.Winget.Source_8wekyb3d8bbwe\texconv.exe')
 
@@ -184,7 +191,7 @@ FEATURE_PATHS = [
 JUNK = re.compile(r'(^|/)(thumbs\.db|desktop\.ini|__macosx|\.ds_store)|\.(psd|xcf|blend|max|zip|rar|7z|bak|tmp)$', re.I)
 
 
-def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
+def inspect(mid, prefer=None, label=None, sample=48, vanilla=None, mip_check=12):
     import numpy as np
     d = M.index_mod(mid, prefer=prefer, label=label, deep=True)
     ents = d['entries']
@@ -292,10 +299,10 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
                                 Counter(esp.classify(r) for r in cloth).most_common(3))
             has_smp = 'HDT-SMP' in feat
             if custom and not has_smp:
-                sample = nifs_all[custom[0]].get('custom_bones', [])[:4]
+                bone_names = nifs_all[custom[0]].get('custom_bones', [])[:4]
                 out['findings'].append(
                     f'{len(custom)} meshes are weighted to bones outside the vanilla skeleton '
-                    f'({", ".join(sample)}) but no HDT-SMP config ships, so that rig does nothing '
+                    f'({", ".join(bone_names)}) but no HDT-SMP config ships, so that rig does nothing '
                     f'without a separate physics patch')
             elif skirt and not has_smp:
                 out['findings'].append(
@@ -491,6 +498,49 @@ def inspect(mid, prefer=None, label=None, sample=48, vanilla=None):
                 ', '.join(f'{os.path.basename(k)} {w}px detail={e:.2f}' for k, e, w in low[:3]))
         out['notes'].append(f'detail index (higher = more real texture information): ' +
                             f'{sum(e for _k, e, _w in eff)/len(eff):.2f} mean over {len(eff)} sampled')
+
+    # ---------------- distance detail (CURATION_POLICY "Textures are judged at distance")
+    # The stored mip chain is what the GPU samples at mid/far range, so measure it
+    # as shipped: high-frequency energy at 512-128 px against the vanilla texture
+    # at the SAME pixel size, plus each texture's own mip-3 retention. Only the
+    # maps that carry surface detail are checked; masks are meant to be flat.
+    mip_rows = []
+    if mip_check:
+        cand = [k for k in picked if map_kind(k) in ('diffuse', 'normal', 'model-normal', 'specular')
+                and (dds[k].get('w') or 0) >= 1024]
+        for k in cand[:mip_check]:
+            try:
+                raw = get_bytes(k)
+                if not raw:
+                    continue
+                masked = MR.masked_by_default(k)
+                lv = MR.decode_mips(raw, tmpname=f'mr{mid}.dds')
+                st = MR.level_stats(lv, 6, masked)
+                row = {'key': k, 'w': st[0]['w'], 'self_mip3': next((r['retention'] for r in st if r['mip'] == 3), None)}
+                if vanilla is not None and k in vanilla:
+                    vb = vanilla_bytes(vanilla, k)
+                    if vb:
+                        vv = MR.distance_verdict(MR.compare(lv, MR.decode_mips(vb, tmpname=f'mrv{mid}.dds'), masked))
+                        if vv:
+                            row['hf_vs_vanilla'], row['tone_vs_vanilla'] = vv
+                mip_rows.append(row)
+            except Exception:
+                continue
+    if mip_rows:
+        out['mip_retention'] = mip_rows
+        cmp_ = [r for r in mip_rows if r.get('hf_vs_vanilla') is not None]
+        soft = [r for r in cmp_ if r['hf_vs_vanilla'] < DISTANCE_HF_FLOOR]
+        if cmp_:
+            med = sorted(r['hf_vs_vanilla'] for r in cmp_)[len(cmp_) // 2]
+            out['notes'].append(f'distance detail vs vanilla at matched pixel size (512-128 px), min over '
+                                f'those mips: median x{med:.2f} across {len(cmp_)} replaced textures')
+        if soft:
+            out.setdefault('_flags', []).append('flag:soft-at-distance')
+            out['findings'].append(
+                f'{len(soft)}/{len(cmp_)} sampled replacers show less than {DISTANCE_HF_FLOOR:.0%} of the '
+                f'vanilla texture\'s high-frequency detail at mid/far mips, i.e. they go matte at play '
+                f'distance even if the close-up is fine: ' +
+                ', '.join(f"{os.path.basename(r['key'])} x{r['hf_vs_vanilla']:.2f} ({r['w']}px)" for r in soft[:3]))
     return _finish(out, ents, parsed, items)
 
 
@@ -610,14 +660,18 @@ if __name__ == '__main__':
     vp = os.path.join(SP, 'vanilla_index.json')
     if os.path.exists(vp):
         van = json.load(open(vp))
+    mip = 12
     for a in sys.argv[1:]:
+        if a.startswith('--mip='):          # --mip=0 skips the (slow) mip-chain check
+            mip = int(a[6:])
+            continue
         # modId[:label[:file-name regex, for mods that ship 1K/2K/4K variants]]
         parts = a.split(':')
         mid = int(parts[0])
         lab = parts[1] if len(parts) > 1 else None
         pref = parts[2] if len(parts) > 2 else None
         try:
-            r = inspect(mid, label=lab, prefer=pref, vanilla=van)
+            r = inspect(mid, label=lab, prefer=pref, vanilla=van, mip_check=mip)
             report(r, patches_for(mid))
         except Exception as e:
             import traceback; traceback.print_exc()

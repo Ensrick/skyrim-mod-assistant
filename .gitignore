@@ -18,6 +18,7 @@
 !/TOOLCHAIN.md
 !/NEXUS_API.md
 !/toolchain.example.json
+!/.packagingignore
 !/run-headless-tool.ps1
 !/run-through-mo2.ps1
 
@@ -40,14 +41,86 @@
 
 !/records/
 !/records/restricted-mods.json
+!/records/private-runtime-dependencies.json
 !/records/installed-mods.json
 !/records/overnight-audit-2026-08-23.jsonl
+!/records/sons-of-skyrim-2026-08-26.md
+!/records/skyking-signs-2026-08-29.md
+!/records/varinia-148853-2026-08-29.md
+!/records/varinia-private-fragment-fix-2026-08-30.md
+!/records/hang-rootcause-2026-09-01.md
+!/records/believable-weapons-retexture-compatibility-2026-08-29.md
+!/records/face-eye-makeup-audit-2026-09-02.md
+!/records/skin-distance-detail-audit-2026-09-02.md
+!/records/yoto-hatamonba-187162-2026-08-29.md
+!/records/interesting-npcs-party-banter-health-2026-08-29.md
+!/records/scrambled-updates-189511-health-2026-08-29.md
+!/records/blood-visuals-audit-2026-08-30.md
+!/records/cutting-room-floor-3.1.26-compatibility-audit-2026-08-30.md
+!/records/city-interior-layering-direction-2026-08-30.md
+!/records/solitude-city-interior-cell-matrix-2026-08-30.md
+!/records/orc-strongholds-aio-150246-exact-audit-2026-08-29.md
+!/records/baltimore-weapons-29612-2026-08-30.md
+!/records/texture-overhaul-base-stack-2026-08-30.md
+!/records/tree-overhaul-and-morthal-cypress-audit-2026-08-29.md
+!/records/skyland-notwl-foundation-install-2026-08-30.md
+!/records/notwl-ulvenwald-tree-diversity-2026-08-30.md
+!/records/vanilla-hair-remake-smp-2026-08-30.md
+!/records/curator-profile-reconciliation-2026-08-30.md
+!/records/unique-artifact-progression-2026-08-30.md
+!/records/mcm-helper-1.6.3-2026-08-30.md
+!/records/simple-hunting-overhaul-95943-2026-08-30.md
+!/records/simple-combat-injuries-2.1-audit-2026-09-02.md
+!/records/injury-system-comparison-2026-09-02.md
+!/records/ui-slot-and-survival-readout-2026-09-02.md
+!/records/currency-economy-overhaul-research-2026-09-02.md
+!/records/currency-economy-overhaul-sources-2026-09-02.md
+!/records/dds-workshop-npc-replacer-audit-2026-09-02.md
+!/records/modern-cloak-system-research-2026-08-30.md
+!/records/cloak-framework-rebuild-2026-09-02.md
+!/records/cloak-layer-audit-2026-09-02.md
+!/records/cloak-install-2026-09-02.md
+!/records/oar-ied-rebuild-2026-09-02.md
+!/records/mlo2-5.4.1-2026-08-30.md
+!/records/freaks-floral-fields-3.2.3-2026-08-30.md
+!/records/envmask-missing-scan-2026-09-02.md
 !/records/fomod-plans/
 !/records/fomod-plans/*.json
+!/records/source-builds/
+!/records/source-builds/*.json
+!/records/synthesis/
+!/records/synthesis/water-seams-fix/
+!/records/synthesis/water-seams-fix/*.json
+!/records/synthesis/water-seams-fix/*.md
+!/records/synthesis/compatibility-sweep-2026-08-29/
+!/records/synthesis/compatibility-sweep-2026-08-29/*.json
+!/records/synthesis/compatibility-sweep-2026-08-29/*.md
 
 !/collections/
 !/collections/*.md
 !/collections/*.json
+
+!/config/
+!/config/loot/
+!/config/loot/*.yaml
+
+!/overlays/
+!/overlays/ensrick-mlo2-foundation-config/
+!/overlays/ensrick-mlo2-foundation-config/SKSE/
+!/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/
+!/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/MLO.ini
+!/overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/
+!/overlays/ensrick-vanilla-hair-remake-smp-npc-compatibility/build.py
+!/overlays/ensrick-skyking-signs-envmask-fix/
+!/overlays/ensrick-skyking-signs-envmask-fix/build.py
+!/overlays/ensrick-cc-madness-longsword-envmask-path-fix/
+!/overlays/ensrick-cc-madness-longsword-envmask-path-fix/build.py
+!/overlays/ensrick-skyland-smanhole-texture-path-fix/
+!/overlays/ensrick-skyland-smanhole-texture-path-fix/build.py
+!/overlays/ensrick-bloodskal-blade-4-static-glow/
+!/overlays/ensrick-bloodskal-blade-4-static-glow/build.py
+!/overlays/ensrick-vanilla-skin-soft-light-maps/
+!/overlays/ensrick-vanilla-skin-soft-light-maps/build.py
 
 !/mods/
 !/mods/bounded-encounters/
@@ -81,6 +154,71 @@
 
 !/mods/katana-two-handed/*.ps1
 
+!/mods/crf-semantic-patch/
+!/mods/crf-semantic-patch/README.md
+!/mods/crf-semantic-patch/manifest.json
+!/mods/crf-semantic-patch/generator/
+!/mods/crf-semantic-patch/generator/*.cs
+!/mods/crf-semantic-patch/generator/*.csproj
+!/mods/crf-semantic-patch/generator/Directory.Build.props
+!/mods/crf-semantic-patch/generator/packages.lock.json
+!/mods/crf-semantic-patch/spriggit/
+!/mods/crf-semantic-patch/spriggit/**
+
+!/mods/guard-scaling-patch/
+!/mods/guard-scaling-patch/README.md
+!/mods/guard-scaling-patch/manifest.json
+!/mods/guard-scaling-patch/policy.json
+!/mods/guard-scaling-patch/regenerate.ps1
+!/mods/guard-scaling-patch/report.py
+!/mods/guard-scaling-patch/generator/
+!/mods/guard-scaling-patch/generator/*.cs
+!/mods/guard-scaling-patch/generator/*.csproj
+!/mods/guard-scaling-patch/generator/Directory.Build.props
+!/mods/guard-scaling-patch/generator/packages.lock.json
+!/mods/guard-scaling-patch/spriggit/
+!/mods/guard-scaling-patch/spriggit/**
+!/mods/wolf-territorial-patch/
+!/mods/wolf-territorial-patch/README.md
+!/mods/wolf-territorial-patch/policy.json
+!/mods/wolf-territorial-patch/regenerate.ps1
+!/mods/wolf-territorial-patch/regenerate-thinning.ps1
+!/mods/wolf-territorial-patch/generator/
+!/mods/wolf-territorial-patch/generator/*.cs
+!/mods/wolf-territorial-patch/generator/*.csproj
+!/mods/wolf-territorial-patch/generator/Directory.Build.props
+!/mods/wolf-territorial-patch/generator/packages.lock.json
+!/mods/wolf-territorial-patch/spriggit/
+!/mods/wolf-territorial-patch/spriggit/**
+!/mods/wolf-territorial-patch/thinning/
+!/mods/wolf-territorial-patch/thinning/policy.json
+!/mods/wolf-territorial-patch/thinning/spriggit/
+!/mods/wolf-territorial-patch/thinning/spriggit/**
+
+# Source and distributable configuration payload for the owned regional
+# currency compatibility layer. It contains no vendor meshes/textures/plugins.
+!/mods/currency-integration/
+!/mods/currency-integration/README.md
+!/mods/currency-integration/manifest.json
+!/mods/currency-integration/validate.py
+!/mods/currency-integration/build.py
+!/mods/currency-integration/build-inputs.json
+!/mods/currency-integration/normalize_pex.py
+!/mods/currency-integration/policy.json
+!/mods/currency-integration/regenerate.ps1
+!/mods/currency-integration/generator/
+!/mods/currency-integration/generator/*.cs
+!/mods/currency-integration/generator/*.csproj
+!/mods/currency-integration/generator/Directory.Build.props
+!/mods/currency-integration/generator/packages.lock.json
+!/mods/currency-integration/papyrus/
+!/mods/currency-integration/papyrus/*.psc
+!/mods/currency-integration/package/
+!/mods/currency-integration/package/**
+!/records/guard-scaling-audit-2026-09-02.md
+
+!/records/solitude-trellis-stalls-installation-2026-08-30.md
+
 !/ports/
 !/ports/lost-longswords/
 !/ports/lost-longswords/*.md
@@ -89,3 +227,63 @@
 !/audit/
 !/audit/*.py
 !/audit/*.md
+!/audit/watched_configs.json
+!/audit/fixtures/
+!/audit/fixtures/*.log
+
+# Packaging (#160): the tool is tracked, its output under dist/ never is.
+# dist/ is already caught by the deny-by-default rule above; listed so the
+# intent survives if that rule ever changes.
+dist/
+!/tools/
+!/tools/package_ensrick.py
+
+# Cloak distribution, unique-cloak placement and death-hound loot (#200, #187,
+# #199). SkyPatcher configuration overlays: our own text, no vendor bytes.
+!/records/cloak-distribution-2026-09-02.md
+!/overlays/ensrick-cloak-distribution-balance/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/*.ini
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/npc/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/npc/zz Ensrick Unique Cloaks/
+!/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/SkyPatcher/npc/zz Ensrick Unique Cloaks/*.ini
+!/overlays/ensrick-death-hound-loot-fix/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/
+!/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/*.ini
+!/records/block-animation-198-2026-09-02.md
+
+# Wolf territorial patch (#42): source only, matching guard-scaling-patch.
+# The generator work dirs hold a 304 MB NuGet cache and built plugins; both are
+# regenerable from regenerate.ps1 and must never be committed.
+!/mods/wolf-territorial-patch/
+!/mods/wolf-territorial-patch/README.md
+!/mods/wolf-territorial-patch/policy.json
+!/mods/wolf-territorial-patch/regenerate.ps1
+!/mods/wolf-territorial-patch/regenerate-thinning.ps1
+!/mods/wolf-territorial-patch/generator/
+!/mods/wolf-territorial-patch/generator/**
+/mods/wolf-territorial-patch/generator/bin/
+/mods/wolf-territorial-patch/generator/obj/
+!/mods/wolf-territorial-patch/spriggit/
+!/mods/wolf-territorial-patch/spriggit/**
+!/mods/wolf-territorial-patch/thinning/
+!/mods/wolf-territorial-patch/thinning/policy.json
+!/mods/wolf-territorial-patch/thinning/spriggit/
+!/mods/wolf-territorial-patch/thinning/spriggit/**
+
+# CK-first doctrine audits (2026-09-03): prior-art and code-weight verdicts.
+!/records/ck-first-audit-2026-09-03.md
+!/records/prior-art-audit-2026-09-03.md
+!/records/matching-set-perk-mechanism-2026-09-03.md

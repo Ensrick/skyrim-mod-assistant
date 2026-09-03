@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "component": "LaunchProbe (SKSE launch-verification instrumentation)",
+  "version": "1.0.0.0",
+  "deployPath": "records/source-builds/launch-probe/SKSE/Plugins/LaunchProbe.dll",
+  "purpose": "Timestamped, flushed evidence that the game reached a real interactive main menu and that a save actually loaded, for audit/launch_verify.py. Existing plug-in log lines lie: on both hung launches of 2026-08-31, CommunityShaders' InitializeMenuIcons and SkyParkour's log fired at about T+56s on a game that never became playable, so the harness needs the game's own UI and SKSE messaging events instead.",
+  "staged": true,
+  "installed": false,
+  "source": {
+    "repository": "local only, not pushed",
+    "path": "C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe",
+    "branch": "master",
+    "commit": "fce5797cb6a17a3937c91fd836b0f55f1e485cef",
+    "pushed": false,
+    "license": "GPL-3.0-or-later (links CommonLibSSE-NG)",
+    "files": [
+      "CMakeLists.txt",
+      "CMakePresets.json",
+      "vcpkg.json",
+      "cmake/version.rc.in",
+      "src/PCH.h",
+      "src/main.cpp"
+    ]
+  },
+  "build": {
+    "targetRuntime": "SkyrimSE.exe 1.7.104.0",
+    "targetSKSE": "2.3.1",
+    "commonLibSSE": {
+      "path": "C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1",
+      "version": "6.7.1",
+      "pin": "70c1acd5261210982bd52f6d4468a082fe04d798",
+      "pinEnforced": "CMake fails unless COMMONLIB_SSE_FOLDER is a git checkout at that exact revision; override requires -DLAUNCHPROBE_ALLOW_UNPINNED_COMMONLIB=ON"
+    },
+    "toolchain": {
+      "generator": "Ninja",
+      "compiler": "MSVC 19.44.35223.0 (VS 2022 Community, MSVC 14.44.35207, Hostx64/x64)",
+      "rc": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe",
+      "vcpkgRoot": "C:/Users/danjo/source/repos/vcpkg",
+      "vcpkgTool": "2026-07-27-98d7cb0cf1f4686a3e43aa5672b6230c1d56bce8",
+      "triplet": "x64-windows-static",
+      "builtinBaseline": "e3ed41868d5034bc608eaaa58383cd6ecdbb5ffb",
+      "buildType": "RelWithDebInfo",
+      "crt": "MultiThreaded (/MT)",
+      "ipo": true,
+      "cxxStandard": 23,
+      "commonLibOptions": "ENABLE_SKYRIM_SE=ON ENABLE_SKYRIM_AE=ON ENABLE_SKYRIM_VR=ON BUILD_TESTS=OFF",
+      "notes": "Mirrors the proven ConsoleUtilSSE-NG-1.7.104 setup read out of its build/release/CMakeCache.txt. Built at BelowNormal process priority."
+    },
+    "command": "cmake --preset release && cmake --build build/release --config RelWithDebInfo",
+    "warnings": 0,
+    "errors": 0,
+    "tests": "none - no test suite; this is a single-translation-unit plug-in"
+  },
+  "artifact": {
+    "dll": "LaunchProbe.dll",
+    "sha256": "167051C7EB2CAFE50EBEB90EED55BF9F5F3961E5D72241784031D8B46E908693",
+    "sizeBytes": 2248192,
+    "fileVersion": "1.0.0.0",
+    "pdb": "LaunchProbe.pdb",
+    "pdbSha256": "B1A0BD6D750AFE3D317A14495046C91D65F0170370F31E95D2DFB8F46C972A37",
+    "pdbSizeBytes": 39841792
+  },
+  "behavior": {
+    "logPath": "C:/Users/danjo/Documents/My Games/Skyrim Special Edition/SKSE/LaunchProbe.log",
+    "logPathResolution": "SHGetKnownFolderPath(FOLDERID_Documents) + 'My Games/Skyrim Special Edition/SKSE'. Deliberately not SKSE::log::log_directory(), which picks between the Steam and GOG folder names by probing for steam_api64.dll in the working directory.",
+    "lineFormat": "[YYYY-MM-DD HH:MM:SS.mmm] +<ms since DLL attach> EVENT key=value key=\"quoted value\"",
+    "truncatesOnLaunch": true,
+    "flush": "fflush after every single line; the harness tails the file live",
+    "events": [
+      "PROBE_OPEN, DLL_ATTACH, PLUGIN_LOAD, CONFIG, LISTENER_REGISTERED, PROBE_READY",
+      "SKSE_MESSAGE name=\"<kPostLoad|kPostPostLoad|kInputLoaded|kDataLoaded|kNewGame|kPreLoadGame|kPostLoadGame|kSaveGame|kDeleteGame>\" (kPostLoadGame carries success=1|0|-1; kPreLoadGame/kSaveGame/kDeleteGame carry save=\"<name>\")",
+      "MENU_OPEN / MENU_CLOSE name=\"<menu>\" for every RE::MenuOpenCloseEvent",
+      "MAIN_MENU_OPEN with ui_is_menu_open and has_movie_view corroboration; MAIN_MENU_ALREADY_OPEN if the menu beat the sink",
+      "AUTOLOAD_ARMED / AUTOLOAD_SETTLED / AUTOLOAD_TASK_RUNNING / AUTOLOAD_CALL / AUTOLOAD_RETURNED / AUTOLOAD_ERROR",
+      "POPUP_PATCHED / POPUP_SUPPRESSED / POPUP_PATCH_SKIPPED",
+      "HEARTBEAT_START / HEARTBEAT (opt-in)"
+    ],
+    "environment": {
+      "SKYRIM_LAUNCH_PROBE_AUTOLOAD": "save base name without .ess; unset or empty means the plug-in only logs and never touches the game",
+      "SKYRIM_LAUNCH_PROBE_DELAY_MS": "settle delay after the main menu opens before the load is queued (default 1500)",
+      "SKYRIM_LAUNCH_PROBE_HEARTBEAT_MS": "periodic liveness line interval; default 0 = off"
+    },
+    "noPopups": "The plug-in makes no MessageBox call. CommonLibSSE's inline stl::report_and_error (SKSE/Impl/PCH.h:539) does, and REL/IDDB.cpp reaches it on an Address Library failure, so SKSEPlugin_Load rewrites only LaunchProbe.dll's own user32 IAT entries for MessageBoxA/W to logging stubs. The game's import table and every other plug-in are untouched. That path still calls TerminateProcess afterwards; the difference is a log line instead of a modal that would hang an unattended run.",
+    "mainThreadDispatch": "The settle timer runs on a detached std::thread; the load itself is queued through SKSE::GetTaskInterface()->AddTask so BGSSaveLoadManager::Load runs on the main thread."
+  },
+  "apisVerified": {
+    "mainMenuConstant": {
+      "value": "Main Menu",
+      "symbol": "RE::MainMenu::MENU_NAME",
+      "verifiedAt": "CommonLibSSE-NG-6.7.1/include/RE/M/MainMenu.h:29 - constexpr static std::string_view MENU_NAME = \"Main Menu\";"
+    },
+    "menuEvent": {
+      "symbol": "RE::MenuOpenCloseEvent { BSFixedString menuName; bool opening; }",
+      "verifiedAt": "include/RE/M/MenuOpenCloseEvent.h",
+      "registration": "RE::UI::GetSingleton()->AddEventSink<RE::MenuOpenCloseEvent>(sink) - include/RE/U/UI.h:83,166. BSTEventSource::AddEventSink de-duplicates (include/RE/B/BSTEvent.h:34-56), so the plug-in retries registration at kPostLoad, kPostPostLoad, kInputLoaded and kDataLoaded until RE::UI exists."
+    },
+    "saveLoad": {
+      "symbol": "RE::BGSSaveLoadManager::Load(const char* a_fileName, bool a_checkForMods)",
+      "verifiedAt": "declared include/RE/B/BGSSaveLoadManager.h; defined src/RE/B/BGSSaveLoadManager.cpp:35-38, which forwards to Load_Impl(a_fileName, -1, 0, a_checkForMods) at RELOCATION_ID(34819, 35728)",
+      "checkForMods": "false, on purpose - the checking overload can raise the game's own missing-content modal, which would hang an unattended harness run"
+    },
+    "messagingEnum": {
+      "verifiedAt": "include/SKSE/Interfaces.h:276-288 - kPostLoad, kPostPostLoad, kPreLoadGame, kPostLoadGame, kSaveGame, kDeleteGame, kInputLoaded, kNewGame, kDataLoaded"
+    }
+  },
+  "skseGate": {
+    "tool": "py -3 audit/skse_version_data.py records/source-builds/launch-probe/SKSE/Plugins/LaunchProbe.dll",
+    "peTimestamp": 1788236030,
+    "peTimestampUtc": "2026-09-01 04:13:50Z",
+    "name": "LaunchProbe",
+    "author": "Ensrick",
+    "pluginVersionPacked": 16777216,
+    "pluginVersion": "1.0.0.0",
+    "versionIndependence": 1,
+    "versionIndependenceMeaning": "kVersionIndependent_AddressLibraryPostAE",
+    "versionIndependenceEx": 1,
+    "versionIndependenceExMeaning": "kVersionIndependentEx_NoStructUse (CommonLibSSE-NG maps StructCompatibility::Independent onto this bit); the AddressLibraryV5 bit is NOT set",
+    "compatibleVersions": "16 x 1.0.0.0 - the RuntimeCompatibility default array, unused because the address-library flag is set",
+    "verdict": "PASS (version independent)",
+    "why": "The missing AddressLibraryV5 bit is only fatal when the PE TimeDateStamp lands in [520128000, 1748217600); 1788236030 is well past that window, so the plug-in passes on the stamp alone. Byte-for-byte the same gate shape as the already-installed ConsoleUtilSSE 1.7.104 overlay (versionIndependence=1, versionIndependenceEx=1, V5 bit NO, PASS), which is the closest available proxy for SKSE actually accepting it.",
+    "exports": ["SKSEPlugin_Load", "SKSEPlugin_Query", "SKSEPlugin_Version"],
+    "imports": ["ADVAPI32", "bcrypt", "d3d11", "D3DCOMPILER_47", "dbghelp", "dxgi", "KERNEL32", "ole32", "SHELL32", "USER32", "VERSION"]
+  },
+  "verified": [
+    "Release (RelWithDebInfo) build completes against the exact CommonLibSSE-NG pin 70c1acd, 0 warnings and 0 errors.",
+    "The DLL reports file version 1.0.0.0 and exports SKSEPlugin_Load, SKSEPlugin_Query and SKSEPlugin_Version.",
+    "It imports only standard Windows/DirectX libraries; MessageBoxA/W come in through USER32 solely as CommonLibSSE's fatal-report path, and the plug-in rewrites those two slots in its own import table at load.",
+    "audit/skse_version_data.py returns PASS (version independent) for SKSE on 1.7.104.",
+    "Every API used (RE::MainMenu::MENU_NAME, RE::MenuOpenCloseEvent, RE::UI::AddEventSink, RE::BGSSaveLoadManager::Load, the SKSE messaging enum) was read out of the pinned CommonLibSSE-NG headers and sources, not assumed."
+  ],
+  "notVerified": [
+    "Nothing has been run in-game. The game was not launched: a real launch is scheduled by the team lead, not by this build.",
+    "That SKSE 2.3.1 actually loads the DLL at runtime. The static gate passes and matches an accepted plug-in's shape, but only skse64.log proves loading.",
+    "That LaunchProbe.log is created at the expected path, and that the timestamps and line format survive contact with the running game.",
+    "That RE::MenuOpenCloseEvent fires for the main menu before or after kDataLoaded on this runtime, and therefore which of the four registration stages actually takes. The already-open poll covers both orderings but has not been observed.",
+    "That BGSSaveLoadManager::Load succeeds from the main menu and produces kPreLoadGame/kPostLoadGame. The signature and relocation IDs are verified in source; the runtime behaviour is not.",
+    "That the IAT rewrite finds and replaces the MessageBox slots at runtime (the import entries exist in the PE, and the log records POPUP_PATCHED or POPUP_PATCH_SKIPPED either way).",
+    "Whether the auto-load path is reachable at all if the Address Library for 1.7.104 is missing, since the CommonLibSSE fatal path terminates the process after logging."
+  ],
+  "installation": {
+    "mo2Mod": null,
+    "profile": null,
+    "enabled": false,
+    "note": "Staged only, by instruction. Nothing was installed, enabled, or deployed into the MO2 instance; the profile, modlist, plugins.txt and load order were not touched."
+  },
+  "rebuild": "set COMMONLIB_SSE_FOLDER=C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1 and VCPKG_ROOT=C:/Users/danjo/source/repos/vcpkg inside a VS 2022 x64 developer environment, then cmake --preset release && cmake --build build/release --config RelWithDebInfo in C:/Users/danjo/source/repos/skyrim-tools-source/LaunchProbe.",
+  "distribution": {
+    "vendorFilesModified": false,
+    "status": "private instrumentation; not for redistribution. Links CommonLibSSE-NG (GPL-3.0-or-later), so any distributed binary must ship corresponding source and notices."
+  }
+}

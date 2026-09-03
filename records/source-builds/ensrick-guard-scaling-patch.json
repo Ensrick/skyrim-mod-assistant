@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Guard Scaling Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/51",
+  "sourcePath": "mods/guard-scaling-patch",
+  "generatorPath": "mods/guard-scaling-patch/generator",
+  "policyPath": "mods/guard-scaling-patch/policy.json",
+  "policySha256": "786D00F0B78266530AB4A79DCA336E4ACF75F84B2F5862FA26FBBF30769E0FF9",
+  "manifestPath": "mods/guard-scaling-patch/manifest.json",
+  "spriggitPath": "mods/guard-scaling-patch/spriggit",
+  "regenerate": "pwsh mods/guard-scaling-patch/regenerate.ps1 -ToolchainManifest toolchain.json -InstanceRoot <instance> -DataFolder <game Data>",
+  "auditRecord": "records/guard-scaling-audit-2026-09-02.md",
+  "outputPlugin": "Ensrick Guard Scaling Patch.esp",
+  "outputSha256": "686A3A857AFF1884E6DDC3ACAE687B1AE99DA2339DCB55F4BAA43B94DBDAA01C",
+  "outputBytes": 3488,
+  "archiveSha256": "29AC6B7E42DA9204949C6157E1EB4829A478B245E7B895F9D6D09CD02B5B5D14",
+  "sourceLicense": "MIT",
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warningsAsErrors": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "rule": {
+    "levelMult": 1.0,
+    "calcMinLevel": 5,
+    "calcMaxLevel": "winner's cap kept (50)",
+    "source": "user rule #51 (2026-08-29) and the 2026-09-01 report 'like fighting a level 20 at level 1'"
+  },
+  "output": {
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 3,
+    "recordTypes": { "NPC_": 3 },
+    "newForms": 0,
+    "masters": [ "Skyrim.esm", "Dragonborn.esm" ],
+    "targets": [
+      { "formKey": "0F6F37:Skyrim.esm", "editorId": "EncGuardImperialTemplate", "winner": "unofficial skyrim special edition patch.esp", "before": "PC x1.0 min 20 max 50", "after": "PC x1.0 min 5 max 50" },
+      { "formKey": "0F6F38:Skyrim.esm", "editorId": "EncGuardSonsTemplate", "winner": "unofficial skyrim special edition patch.esp", "before": "PC x1.0 min 20 max 50", "after": "PC x1.0 min 5 max 50" },
+      { "formKey": "0195AF:Dragonborn.esm", "editorId": "DLC2RRGuardTemplate", "winner": "Dragonborn.esm", "before": "PC x1.0 min 20 max 50", "after": "PC x1.0 min 5 max 50" }
+    ]
+  },
+  "inputs": {
+    "profile": "Default",
+    "effectiveLoadOrderEntries": 311,
+    "effectiveLoadOrderSha256": "DE16F9103CEB2A39D68DE526DE45A5CFE3B4284A00053BDDE8D29A48485A23D7",
+    "pluginsTxtSha256AtGeneration": "EB2B8FAF7D284716820FC6E8A04C5074C9181B48CFAA224091A8F188EAFFF0A1"
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "spriggitVersion": "0.41.0",
+    "spriggitTreeSha256": "A01DDEBBEFC30C972A835401BEAE3137F50C56FDE21DA80666F0DA12FA98D80D",
+    "spriggitCheckedRoundTrip": true,
+    "linksChecked": 73,
+    "unresolvedLinks": 0,
+    "rawAcbsReceipt": "records/guard-scaling-audit-2026-09-02.md section 8 (independent byte parse of vanilla, USSEP, CRF and the output)",
+    "featureDefaultsDiff": "not applicable (record patch, no runtime defaults)",
+    "gameplayAcceptance": "pending"
+  },
+  "installation": {
+    "mo2Mod": "Ensrick - Guard Scaling Patch",
+    "profile": "Default",
+    "enabled": true,
+    "modPriorityAtInstall": 230,
+    "stageTransaction": "20260902T043727658Z-14d275ba88ef",
+    "pluginEnableTransaction": "20260902T043728222Z-17887e2ec06b",
+    "lootRun": "records/tool-runs/20260902T043805857Z-mo2-loot-5278d2f0",
+    "pluginLoadOrderLineAfterFinalSort": 237,
+    "activePluginsAfter": 232,
+    "verify": "install_mod.py --verify: 0 problem(s)"
+  },
+  "distribution": {
+    "status": "distributable",
+    "vendorFilesModified": false,
+    "basis": "distribution-only patch of override records of Bethesda forms; no vendor assets; generator source MIT"
+  }
+}

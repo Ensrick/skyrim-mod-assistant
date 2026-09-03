@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "_core", "destination": "." },
+    { "source": "SLaWF Light Sources", "destination": "." },
+    { "source": "Walkway Wall Fix/SMIM", "destination": "." },
+    { "source": "Patches/Navigator ESL", "destination": "." },
+    { "source": "Patches/USMP", "destination": "." },
+    { "source": "Patches/Landscape Fixes for Grass Mods", "destination": "." },
+    { "source": "Patches/Water for ENB - LFfGM", "destination": "." },
+    { "source": "Patches/Landscape Fixes for Grass Mods + GotT", "destination": "." },
+    { "source": "Patches/Landscape Fixes for Grass Mods + Myrwatch", "destination": "." },
+    { "source": "Patches/_CC/Alternative Armors - Elven Hunter", "destination": "." },
+    { "source": "Patches/_CC/Farming", "destination": "." },
+    { "source": "Patches/_CC/Fishing", "destination": "." },
+    { "source": "Patches/_CC/Hendraheim", "destination": "." },
+    { "source": "Patches/_CC/Myrwatch", "destination": "." },
+    { "source": "Patches/_CC/Tundra Homestead", "destination": "." },
+    { "source": "Patches/_CC/Vigil Enforcer Armor Set", "destination": "." }
+  ]
+}

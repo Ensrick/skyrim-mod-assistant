@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/42",
+  "rule": {
+    "warn": 2500,
+    "warnOrAttack": 1200,
+    "attack": 640,
+    "requireAggroRadiusBehavior": true
+  },
+  "ruleText": "Ordinary wolves become territorial instead of hunting: a warning band at 2500 units - bear parity, since vanilla EncBear is 2500/2000/1500 and vanilla EncWolf has no warning band at all - warn-or-attack at 1200, and attack at 640 instead of 1500. 640 is the vanilla horker warn-or-attack distance; the horker, the other actor the user named, attacks at 320. 1 unit = 1.428 cm, so a wolf now attacks at about 9 m instead of 21 m and growls from about 36 m. Aggression stays Unaggressive and the flanking combat style (csWolf, DATA flag 0x2, FlankDistance 0.5, StalkTime 0.4) is untouched, so a pack still behaves like a pack. User design 2026-09-02 on #42; measurements in the 2026-09-02 appendix of docs/WILDLIFE-WOLVES-2026-08-28.md.",
+  "expectedBefore": {
+    "aggression": "Unaggressive",
+    "aggroRadiusBehavior": true,
+    "warn": 0,
+    "warnOrAttack": 2000,
+    "attack": 1500
+  },
+  "targets": [
+    {
+      "formKey": "003C86:BSHeartland.esm",
+      "editorId": "CYREncWolf",
+      "role": "Beyond Skyrim: Bruma ordinary wolf, 15 placed references; Bruma ships its own wolf family and a vanilla-record patch does not reach it",
+      "inheritedBy": [
+        "CYREncWolfSprigganCompanion",
+        "CYREncWolf_Indoor"
+      ]
+    },
+    {
+      "formKey": "0718E4:BSHeartland.esm",
+      "editorId": "CYREncWolfTimber",
+      "role": "Bruma timber wolf, 4 placed references",
+      "inheritedBy": [
+        "CYREncWolfTimberSprigganCompanion",
+        "CYREncWolfTimber_Indoor"
+      ]
+    },
+    {
+      "formKey": "0B559B:BSHeartland.esm",
+      "editorId": "CYREncWolfHighland",
+      "role": "Bruma highland wolf; no placed references, reached through Bruma leveled lists",
+      "inheritedBy": []
+    },
+    {
+      "formKey": "0B559D:BSHeartland.esm",
+      "editorId": "CYREncWolfDire",
+      "role": "Bruma dire wolf; no placed references, reached through Bruma leveled lists",
+      "inheritedBy": []
+    },
+    {
+      "formKey": "023C34:Gray Fox Cowl.esm",
+      "editorId": "manny_GF_Animal_DesertWolf",
+      "role": "The Gray Cowl of Nocturnal desert wolf, 41 placed references in the Alikr worldspace",
+      "inheritedBy": []
+    },
+    {
+      "formKey": "023ABE:Skyrim.esm",
+      "editorId": "EncWolf",
+      "role": "the ordinary Skyrim wolf: 107 placed references, and every wilderness regional predator list resolves to it",
+      "inheritedBy": [
+        "EncWolfRed",
+        "EncWolfSprigganCompanion",
+        "EncWolf_Indoor",
+        "SummonFireStorm",
+        "dunFellglow_WarlockWolf",
+        "dunPOITrappedWolf",
+        "dunShadowgreen_AmbushWolf",
+        "dunWhiteRiverWatchWolf"
+      ]
+    },
+    {
+      "formKey": "024C7A:arnima.esm",
+      "editorId": "EncWolfarnima",
+      "role": "Beyond Reach ambient wolf",
+      "inheritedBy": []
+    },
+    {
+      "formKey": "0F544B:arnima.esm",
+      "editorId": "EncWolfarnima2",
+      "role": "Beyond Reach ambient wolf, second variant",
+      "inheritedBy": []
+    }
+  ],
+  "deInherit": [
+    {
+      "formKey": "0877EB:Skyrim.esm",
+      "editorId": "SummonFireStorm",
+      "reason": "conjured Flaming Familiar: it takes its AI data from EncWolf but answers to its summoner, not to a territory. Pinned to the pre-patch numbers and stops inheriting."
+    }
+  ],
+  "excluded": [
+    {
+      "formKey": "0C229C:3DNPC.esp",
+      "editorId": "BrakhWolf3DNPC",
+      "reason": "Interesting NPCs named companion wolf"
+    },
+    {
+      "formKey": "0C589A:3DNPC.esp",
+      "editorId": "Brakh2Wolf3DNPC",
+      "reason": "Interesting NPCs named companion wolf"
+    },
+    {
+      "formKey": "1DBB16:3DNPC.esp",
+      "editorId": "3DNPCPitWolf",
+      "reason": "Interesting NPCs pit-fight wolf, 6 placed references; deliberately hostile"
+    },
+    {
+      "formKey": "214892:3DNPC.esp",
+      "editorId": "Mr_Wolf3DNPC",
+      "reason": "Interesting NPCs named actor"
+    },
+    {
+      "formKey": "6018A6:BSAssets.esm",
+      "editorId": "BSKEncWolfTimber",
+      "reason": "Beyond Skyrim asset-master template with no placed reference and no leveled-list use in this build; adding BSAssets.esm as a master for it would buy nothing"
+    },
+    {
+      "formKey": "6018B0:BSAssets.esm",
+      "editorId": "BSKLvlWolfTimber",
+      "reason": "Beyond Skyrim asset-master leveled wrapper, same reason"
+    },
+    {
+      "formKey": "003C89:BSHeartland.esm",
+      "editorId": "CYREncWolf_Indoor",
+      "reason": "inherits AI data from CYREncWolf"
+    },
+    {
+      "formKey": "003C8A:BSHeartland.esm",
+      "editorId": "CYREncWolfSprigganCompanion",
+      "reason": "inherits AI data from CYREncWolf"
+    },
+    {
+      "formKey": "003D0D:BSHeartland.esm",
+      "editorId": "CYRLvlWolf",
+      "reason": "Bruma leveled wrapper, same reason; 22 placed references, all resolving through CYRLCharWolf"
+    },
+    {
+      "formKey": "071A0C:BSHeartland.esm",
+      "editorId": "CYREncWolfTimber_Indoor",
+      "reason": "inherits AI data from CYREncWolfTimber"
+    },
+    {
+      "formKey": "071A0D:BSHeartland.esm",
+      "editorId": "CYREncWolfTimberSprigganCompanion",
+      "reason": "inherits AI data from CYREncWolfTimber"
+    },
+    {
+      "formKey": "0CF99E:BSHeartland.esm",
+      "editorId": "CYRWolfy",
+      "reason": "Bruma named pet, templated off a vanilla dog"
+    },
+    {
+      "formKey": "008A6C:Dawnguard.esm",
+      "editorId": "DLC1HowlSummonIceWolf",
+      "reason": "Dawnguard Howl summon; player-owned"
+    },
+    {
+      "formKey": "000C3A:HearthFires.esm",
+      "editorId": "BYOHWolf",
+      "reason": "Hearthfire homestead attack actor; the attack is the point"
+    },
+    {
+      "formKey": "182E28:PROTEUS.esp",
+      "editorId": "ZZEncWolf",
+      "reason": "Proteus internal template zoo; not placed and not spawned by the world"
+    },
+    {
+      "formKey": "1E8541:PROTEUS.esp",
+      "editorId": "ZZWolfIce",
+      "reason": "Proteus internal template zoo"
+    },
+    {
+      "formKey": "023ABF:Skyrim.esm",
+      "editorId": "EncWolfIce",
+      "reason": "VeryAggressive with the aggro radius OFF, i.e. hostile on sight at any range, by design. Whether the snow keeps a wolf that still hunts the player is a user decision (#42), so it is untouched."
+    },
+    {
+      "formKey": "058303:Skyrim.esm",
+      "editorId": "EncC06WolfSpirit",
+      "reason": "Companions questline spirit wolf"
+    },
+    {
+      "formKey": "07398A:Skyrim.esm",
+      "editorId": "dunFellglow_WarlockWolf",
+      "reason": "inherits AI data from EncWolf"
+    },
+    {
+      "formKey": "0753CE:Skyrim.esm",
+      "editorId": "EncWolfDead",
+      "reason": "corpse actor"
+    },
+    {
+      "formKey": "085409:Skyrim.esm",
+      "editorId": "dunShadowgreen_AmbushWolf",
+      "reason": "inherits AI data from EncWolf"
+    },
+    {
+      "formKey": "09931A:Skyrim.esm",
+      "editorId": "e3DemoAlphaWolf",
+      "reason": "Bethesda E3 demo actor, unreachable in play"
+    },
+    {
+      "formKey": "0A85C7:Skyrim.esm",
+      "editorId": "AudioTemplateWolf",
+      "reason": "audio template, not a spawnable actor"
+    },
+    {
+      "formKey": "0B83C1:Skyrim.esm",
+      "editorId": "LvlWolf",
+      "reason": "leveled wrapper around LCharWolf; its own AI data is unused because the spawned actor is the list result"
+    },
+    {
+      "formKey": "0C96BE:Skyrim.esm",
+      "editorId": "EncWolfSprigganCompanion",
+      "reason": "inherits AI data from EncWolf"
+    },
+    {
+      "formKey": "0C96C1:Skyrim.esm",
+      "editorId": "EncWolfIceSprigganCompanion",
+      "reason": "inherits AI data from EncWolfIce, which is excluded"
+    },
+    {
+      "formKey": "0CF79E:Skyrim.esm",
+      "editorId": "HowlSummonWolf",
+      "reason": "Howl of the Pack summon; player-owned, and already on a 500-unit attack radius"
+    },
+    {
+      "formKey": "0D1684:Skyrim.esm",
+      "editorId": "dunPOITrappedWolf",
+      "reason": "inherits AI data from EncWolf"
+    },
+    {
+      "formKey": "0DDCD0:Skyrim.esm",
+      "editorId": "EncBanditWolf",
+      "reason": "VeryAggressive bandit-camp guard wolf; deliberately hostile, not wildlife"
+    },
+    {
+      "formKey": "0E160D:Skyrim.esm",
+      "editorId": "dunCragslaneLvlPitWolf",
+      "reason": "Cragslane Cavern pit-fight wolf, VeryAggressive by design"
+    },
+    {
+      "formKey": "0E1672:Skyrim.esm",
+      "editorId": "dunWhiteRiverWatchWolf",
+      "reason": "inherits AI data from EncWolf"
+    },
+    {
+      "formKey": "0E662D:Skyrim.esm",
+      "editorId": "dunHunterWolfGuardian",
+      "reason": "unique guardian wolf"
+    },
+    {
+      "formKey": "0F6087:Skyrim.esm",
+      "editorId": "CR13FarkasWolfSpirit",
+      "reason": "Companions questline spirit wolf"
+    },
+    {
+      "formKey": "0F6089:Skyrim.esm",
+      "editorId": "CR13VilkasWolfSpirit",
+      "reason": "Companions questline spirit wolf"
+    },
+    {
+      "formKey": "0F608C:Skyrim.esm",
+      "editorId": "PlayerWolfSpirit",
+      "reason": "Companions questline spirit wolf"
+    },
+    {
+      "formKey": "0FDC5A:Skyrim.esm",
+      "editorId": "dunBloatedMans_EncWolfAmbush",
+      "reason": "Bloated Mans Grotto quest ambush wolf; owns its own AI data and is deliberately staged"
+    },
+    {
+      "formKey": "10D29C:Skyrim.esm",
+      "editorId": "dunBloodletThrone_LvlWolf",
+      "reason": "Bloodlet Throne pit wolf, VeryAggressive by design"
+    },
+    {
+      "formKey": "10F2A2:Skyrim.esm",
+      "editorId": "EncWolf_Indoor",
+      "reason": "inherits AI data from EncWolf"
+    },
+    {
+      "formKey": "10F2A3:Skyrim.esm",
+      "editorId": "EncWolfIce_Indoor",
+      "reason": "inherits AI data from EncWolfIce, which is excluded"
+    },
+    {
+      "formKey": "10F2A4:Skyrim.esm",
+      "editorId": "EncBanditWolf_Indoor",
+      "reason": "inherits from EncBanditWolf, which is excluded"
+    },
+    {
+      "formKey": "10FE05:Skyrim.esm",
+      "editorId": "EncWolfRed",
+      "reason": "inherits AI data from EncWolf and therefore follows the rule already; listed so the inheritance is on the record"
+    },
+    {
+      "formKey": "003025:Update.esm",
+      "editorId": "ccBGSSSE003_LvlBoneWolfZombie",
+      "reason": "Creation Club undead wolf, 26 placed references; not wildlife"
+    },
+    {
+      "formKey": "011DAD:arnima.esm",
+      "editorId": "EncWolfarnimashaman",
+      "reason": "Beyond Reach unique/quest actor"
+    },
+    {
+      "formKey": "01CA1E:arnima.esm",
+      "editorId": "wolfshamanArnima",
+      "reason": "Beyond Reach unique/quest actor"
+    },
+    {
+      "formKey": "01CA21:arnima.esm",
+      "editorId": "arnimaboywolf",
+      "reason": "Beyond Reach unique/quest actor; Cowardly, aggro radius already off"
+    },
+    {
+      "formKey": "02981E:arnima.esm",
+      "editorId": "EncWolfArnimaQuest",
+      "reason": "Beyond Reach quest actor, VeryAggressive, 8 placed references"
+    },
+    {
+      "formKey": "052199:arnima.esm",
+      "editorId": "EncWolfarnimamother",
+      "reason": "Beyond Reach named wolf, 3 placed references; reads as a quest actor and is left to a later pass"
+    },
+    {
+      "formKey": "000865:ccbgssse036-petbwolf.esl",
+      "editorId": "ccBGSSSE036_LvlBonewolf",
+      "reason": "Creation Club bone wolf leveled wrapper"
+    },
+    {
+      "formKey": "000D63:ccbgssse036-petbwolf.esl",
+      "editorId": "ccBGSSSE036_EncBoneWolf",
+      "reason": "Creation Club bone wolf pet; undead, not wildlife"
+    },
+    {
+      "formKey": "000824:ccbgssse064-ba_elven.esl",
+      "editorId": "ccBGSSSE064_Wolf",
+      "reason": "Creation Club quest actor"
+    },
+    {
+      "formKey": "000829:ccffbsse001-imperialdragon.esl",
+      "editorId": "ccFFBSSE001_WolfSpirit",
+      "reason": "Creation Club spirit wolf"
+    },
+    {
+      "formKey": "05EB93:unofficial skyrim special edition patch.esp",
+      "editorId": "USKPCragslaneLvlPitWolf",
+      "reason": "USSEP copy of the Cragslane pit wolf; same reason"
+    }
+  ]
+}

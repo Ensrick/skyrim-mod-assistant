@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "WENB Shades USSEP Patch/Data",
+      "destination": "."
+    }
+  ]
+}

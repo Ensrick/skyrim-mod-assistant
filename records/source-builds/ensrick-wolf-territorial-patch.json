@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Wolf Territorial Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/42",
+  "sourcePath": "mods/wolf-territorial-patch",
+  "generatorPath": "mods/wolf-territorial-patch/generator",
+  "policyPath": "mods/wolf-territorial-patch/policy.json",
+  "policySha256": "EF8F114100A611441F91CF6DD048AD9468E1F2BEF838B0006CB5D6B1FC9A1D5A",
+  "spriggitPath": "mods/wolf-territorial-patch/spriggit",
+  "regenerate": "pwsh mods/wolf-territorial-patch/regenerate.ps1 -ToolchainManifest toolchain.json -InstanceRoot <instance> -DataFolder <game Data>",
+  "auditRecord": "docs/WILDLIFE-WOLVES-2026-08-28.md (appendix 2026-09-02); machine-readable audit mods/wolf-territorial-patch/work/wolf-audit.json",
+  "outputPlugin": "Ensrick Wolf Territorial Patch.esp",
+  "outputSha256": "63745001DEF4FFCE2634E399B17A0B5CD82968EA8C7063558EE092EA1069A899",
+  "outputBytes": 3959,
+  "archiveSha256": "D276355735B8390A744A60F521FF79C9769F949B29BB0E63DC1250B66570F9D0",
+  "archiveBytes": 1119,
+  "sourceLicense": "MIT",
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warningsAsErrors": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "rule": {
+    "warn": 2500,
+    "warnOrAttack": 1200,
+    "attack": 640,
+    "expectedBefore": {
+      "warn": 0,
+      "warnOrAttack": 2000,
+      "attack": 1500
+    },
+    "references": {
+      "EncBear": "2500 / 2000 / 1500",
+      "EncHorker": "850 / 640 / 320",
+      "EncWolf (vanilla)": "0 / 2000 / 1500"
+    },
+    "unchanged": [
+      "Aggression stays Unaggressive",
+      "AggroRadiusBehavior stays true",
+      "Confidence, Assistance, Mood, Responsibility, EnergyLevel untouched",
+      "combat style csWolf (057BE8) untouched: DATA flag 0x2 flanking, FlankDistance 0.5, StalkTime 0.4",
+      "no faction record touched: PredatorFaction -> PreyFaction = Enemy is shared with bears and sabre cats"
+    ],
+    "source": "user design on #42 (2026-09-02): territorial like horkers and bears, not universal hostility"
+  },
+  "output": {
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 9,
+    "recordTypes": {
+      "NPC_": 9
+    },
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "BSHeartland.esm",
+      "arnima.esm",
+      "Gray Fox Cowl.esm"
+    ],
+    "ruleTargets": [
+      "023ABE:Skyrim.esm EncWolf",
+      "003C86:BSHeartland.esm CYREncWolf",
+      "0718E4:BSHeartland.esm CYREncWolfTimber",
+      "0B559B:BSHeartland.esm CYREncWolfHighland",
+      "0B559D:BSHeartland.esm CYREncWolfDire",
+      "024C7A:arnima.esm EncWolfarnima",
+      "0F544B:arnima.esm EncWolfarnima2",
+      "023C34:Gray Fox Cowl.esm manny_GF_Animal_DesertWolf"
+    ],
+    "deInherited": [
+      "0877EB:Skyrim.esm SummonFireStorm"
+    ],
+    "excludedRecords": 52
+  },
+  "inheritance": {
+    "note": "Records that take AI data from a target through their template follow the rule for free. The generator measures this set from the load order and fails if policy.json disagrees.",
+    "EncWolf": [
+      "EncWolfRed",
+      "EncWolfSprigganCompanion",
+      "EncWolf_Indoor",
+      "dunFellglow_WarlockWolf",
+      "dunPOITrappedWolf",
+      "dunShadowgreen_AmbushWolf",
+      "dunWhiteRiverWatchWolf"
+    ],
+    "CYREncWolf": [
+      "CYREncWolfSprigganCompanion",
+      "CYREncWolf_Indoor"
+    ],
+    "CYREncWolfTimber": [
+      "CYREncWolfTimberSprigganCompanion",
+      "CYREncWolfTimber_Indoor"
+    ]
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "linksChecked": 117,
+    "unresolvedLinks": 0,
+    "spriggitCheckedRoundTrip": true,
+    "spriggitTreeSha256": "59DC4E1B3416202EC92E40CAF078378013EC9BB5072B43E7EF6D12251C35F933",
+    "effectiveLoadOrderEntries": 323,
+    "effectiveLoadOrderSha256": "49F1919C63FB4C2BE678F9CCE4DCA1A86D77584BF65CCAC75CAB165A89C8FC72",
+    "pluginsTxtSha256": "5DF071D3B6522FC7218A6473DD0A6AFCDA91386BBB0F8FE349B1A37D67CD1268",
+    "verifyOrder": "CLEAN (244 active plugins, 328 discoverable)",
+    "gameplayAcceptance": "pending - the 2500/1200/640 numbers need an in-game approach/retreat test"
+  },
+  "distribution": "distributable",
+  "generatedUtc": "2026-09-03T04:31:46Z",
+  "thinningHalf": {
+    "plugin": "Ensrick Wolf Encounter Thinning.esp",
+    "state": "generated and staged only - not installed; the cut size is a user decision",
+    "policyPath": "mods/wolf-territorial-patch/thinning/policy.json",
+    "policySha256": "A10F55A3EA8BBCD9FC068A31E494DCE3EA2D5CE5ADD4ECFE4958DF40EB4C3B65",
+    "regenerate": "pwsh mods/wolf-territorial-patch/regenerate-thinning.ps1 -ToolchainManifest toolchain.json -InstanceRoot <instance> -DataFolder <game Data>",
+    "outputSha256": "739AAFE6545B7B463E57BA512F35950A69550D92D582B5697105F423CB620ED3",
+    "outputBytes": 171679,
+    "archiveSha256": "33EBA64A626BFB8CD4286DB89A2C3A716DE8C1639877D7A297671B90ABD21404",
+    "archiveBytes": 117771,
+    "spriggitTreeSha256": "DA40962F70C815CE7433654A2A192866B0A85F63BCCF58F0C06255369C00CFCF",
+    "records": 381,
+    "retiredReferences": 191,
+    "measurement": {
+      "exteriorRefsOnPolicyBases": 622,
+      "clusterLinkRadiusUnits": 2000,
+      "clusters": 387,
+      "clusterSizeHistogram": {
+        "1": 203,
+        "2": 137,
+        "3": 43,
+        "4": 4
+      },
+      "retiredFraction": 0.307,
+      "heldClustersWithAnIneligibleMember": 12,
+      "ineligible": {
+        "persistent": 171,
+        "enableParent": 13,
+        "alreadyInitiallyDisabled": 1,
+        "interiorCell": 28
+      },
+      "retiredByBase": {
+        "LvlAnimalForestPredator": 45,
+        "LvlAnimalMountainSnowPredator": 41,
+        "LvlAnimalCanyonPredator": 34,
+        "LvlAnimalPlainsPredator": 29,
+        "LvlAnimalCoastSnowPredator": 26,
+        "LvlAnimalHillsPredator": 15,
+        "LvlAnimalSnowFields": 1
+      },
+      "remaining": "431 references in 196 clusters, every surviving site >= 2"
+    },
+    "validation": {
+      "deterministicRuns": 2,
+      "byteIdenticalRuns": true,
+      "linksChecked": 3684,
+      "unresolvedLinks": 0,
+      "spriggitCheckedRoundTrip": true,
+      "guardRail": "maxRetiredFraction 0.40; the first run correctly refused at 71.6% when ineligible refs were wrongly excluded from clustering"
+    },
+    "handoffToIssue43": "191 discrete, already navmeshed, already encounter-zoned exterior positions",
+    "generatedUtc": "2026-09-03T04:44:57Z"
+  }
+}

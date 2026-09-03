@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Lux Orbis (patch hub)/00 Data/Lux Orbis - Cutting Room Floor patch.esp",
+      "destination": "Lux Orbis - Cutting Room Floor patch.esp"
+    },
+    {
+      "source": "Lux Orbis (patch hub)/00 Data/Lux Orbis - Wyrmstooth.esp",
+      "destination": "Lux Orbis - Wyrmstooth.esp"
+    },
+    {
+      "source": "Lux Orbis (patch hub)/00 Data/Lux Orbis - 3DNPC patch.esp",
+      "destination": "Lux Orbis - 3DNPC patch.esp"
+    }
+  ]
+}

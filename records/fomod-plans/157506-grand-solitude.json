@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "00 Main Files",
+      "destination": "."
+    },
+    {
+      "source": "02 SMIM Rotor",
+      "destination": "."
+    }
+  ]
+}

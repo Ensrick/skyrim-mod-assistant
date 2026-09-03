@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "note": "RMB SPCH - Pelts o Plenty 179354 v1.1.0. Core plus the shared SkyPatcher configs. RMB SPCH - Pelt Cloaks.esp masters Pelt Cloaks.esp and adds 75 leveled-item records with no overrides, so it is a patch on top of Pelts, not a replacement. The 00 - Shared configs targeting RMB SPID - Sons of Skyrim.esp and RMB SPID - NordwarUA GAR - Outfits.esp are inert while neither of those mods is installed; they are kept so they light up if 83340 is later adopted. Evidence: records/cloak-layer-audit-2026-09-02.md section 6.",
+  "mappings": [
+    { "source": "00 - Core/RMB SPCH - Pelt Cloaks.esp", "destination": "RMB SPCH - Pelt Cloaks.esp" },
+    { "source": "00 - Core/RMB SPID References",        "destination": "RMB SPID References" },
+    { "source": "00 - Shared/SKSE",                     "destination": "SKSE" }
+  ]
+}

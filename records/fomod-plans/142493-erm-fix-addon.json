@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Addon/ERM - No Vertex Colors/Normal Version", "destination": "." },
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Addon/Mines And Caves", "destination": "." },
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Addon/Icy Caves/Icy Caves - Vanilla", "destination": "." },
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Addon/Ore Mines/Vanilla", "destination": "." },
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Fix/Skyforge/WithDirt", "destination": "." },
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Fix/Stoneressource", "destination": "." },
+    { "source": "Enhanced Rocks and Mountains - Fix And Addon/Patch/ERM - Water for ENB Patch", "destination": "." }
+  ]
+}

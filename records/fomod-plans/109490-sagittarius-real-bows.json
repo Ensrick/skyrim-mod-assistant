@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Sagittarius - Real Bows AE/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Sagittarius - Real Bows AE/textures",
+      "destination": "textures"
+    }
+  ]
+}

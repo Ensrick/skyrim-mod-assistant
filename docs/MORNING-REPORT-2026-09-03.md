@@ -1,0 +1,380 @@
+# Morning report - 2026-09-03
+
+Everything you raised in your last two messages, plus what ran overnight.
+Nothing new was installed except fixes to mods you already have, per your
+instruction. Every mod named is a link.
+
+**Game state: working and verified.** Last PASS
+`records/launch-verify-20260902-231840.md` - main menu 32.0 s, save loaded
+40.4 s, 0 SKSE plugins refused. You can play without touching anything.
+
+---
+
+## 1. What I fixed while you slept - no new mods, our own bytes
+
+Three Ensrick patches, built, installed and covered by that PASS. Commit
+`9b62742`.
+
+### Cloaks: fur everywhere, Cloaks of Skyrim nowhere, and guards wearing two
+
+Your report was exactly right and the cause was worse than the first
+diagnosis. Entry counts (21 CoS : 115 fur) were the smaller half. The dominant
+lever is `chanceNone`: **every Pelts list rolls 0, while the twenty Cloaks of
+Skyrim lists roll 25-90** - 2017 numbers from when CoS injected into vanilla
+lists directly rather than through RMB's shared graph.
+
+Measured over the real patched graph, a generic NPC's cloak was **1.0% Cloaks
+of Skyrim, 54.8% fur**. That is your "I don't ever recall seeing the cloaks of
+skyrim", as a number.
+
+**The doubles were a slot collision.** All fourteen outfits RMB injects a guard
+cloak list into are Sons of Skyrim overrides that *already* carry a hold cloak.
+[Pelts 'o' Plenty](https://www.nexusmods.com/skyrimspecialedition/mods/120726)
+sits on biped slot **57**; Sons of Skyrim uses **46**. A guard wears both.
+Bandits and faction NPCs never doubled, because their outfits hold no
+cloak-slot item - which matches what you saw.
+
+**Now:** 55.0% of covered non-guard NPCs wear no cloak at all, Cloaks of
+Skyrim is 23.8% of the rest (20-60% on faction NPCs), and guards wear exactly
+one.
+
+Five vendor defects were fixed on the way: a dead `Cloaks - Dawnguard` list
+pointer, two "Dark" CoS lists left in fur-only buckets, nine entry-identical
+`UNUSED` trimmed lists, and RMB gating both `B5F` *and* its children at 35,
+which compounds to 58% cloakless instead of 35%.
+
+**Four dials, each one number in a labelled block** of
+`overlays/ensrick-cloak-distribution-balance/.../Ensrick - Cloak Balance.ini`:
+guard second-cloak (100), CoS:fur ratio (0 = parity), overall frequency (55),
+warm-bucket parity (on).
+
+> **One thing to check in five seconds of play:** the agent could not prove
+> from disk that SkyPatcher's *later* `chanceNone` replaces an earlier one -
+> file order is proven from the log, the merge rule is not. If it is
+> first-write-wins, three of the four dials are no-ops. **The tell is a guard
+> still carrying two cloaks.** If you see one, tell me and I will rewrite the
+> approach.
+
+### The dragon-priest cloaks now actually place (#187)
+
+RMB's ten unique-cloak directives pointed at `Skyrim.esm` form IDs that do not
+exist, so all nine dragon-priest cloaks and Idolaf's never appeared - and those
+are the textures the audit measured as base CoS's **best**. Krosis' filter was
+also truncated (`767` instead of `100767`). Ours is a new file loading after
+his, because
+[RMB SPCH](https://www.nexusmods.com/skyrimspecialedition/mods/116030) forbids
+editing his. It failed silently because SkyPatcher logs no miss on an npc
+`objectsToAdd`.
+
+### Death hound dog meat (#199)
+
+The drop is **vanilla Dawnguard** - `DLC1DeathItemDeathHound` (`00D6F7`),
+unoverridden across all 327 plugins. Removed rather than adding a
+[Simple Hunting Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/95943)
+harvest entry, because SHO's meat branch gates nothing: it adds a tracker and
+returns, and time and XP are charged only on a **pelt**, which a death hound
+does not have.
+
+---
+
+## 2. Wolves (#42) - analysed, and one finding overturns the plan
+
+### The visual mod you named does not solve it
+
+[FluffWorks](https://www.nexusmods.com/skyrimspecialedition/mods/56361)
+measurably does not fix the monster look: it adds 16 fur-shell shapes to the
+**vanilla** `wolf.nif` (2 to 18) and ships **no wolf diffuse at all**. The
+vanilla head and silhouette survive untouched. The thing you object to is the
+shape, and FluffWorks does not change it.
+
+**Suggestion, not installed:**
+[Canidae - A Wolf Replacer](https://www.nexusmods.com/skyrimspecialedition/mods/182994)
+2.25, core option only. It is the only candidate that changes the shape - 8
+`BSTriShape` shapes with proper dismember instances. Distance test against the
+vanilla texture each displaces: `wolf_head` x0.90, `icewolf_head` x1.40,
+`icewolf_body` x0.97 - with **`blackwolf_body` failing at x0.54**, salvageable
+to x0.89 by our resharpen recipe. Two defects, one recipe fix each. Rivals are
+worse: Wolves of Skyrim's normal map measures x0.46; Savage Wolves replaces the
+skeleton.
+
+### The behaviour fix is a single field - and it is already in your game
+
+**Built, installed and VERIFIED overnight:** `Ensrick Wolf Territorial Patch`
+0.1.0, ESL-flagged, 9 NPC_ records, regenerable from a pinned toolchain,
+enabled at plugins.txt line 249. PASS at
+`records/launch-verify-20260902-233602.md` - main menu 31.9 s, save loaded
+40.6 s. This is the one part of the wolf request that needed no new mod, so
+under your instruction it got implemented rather than suggested.
+
+**What it actually does:** the 8 ambient wolf bases across all four worldspaces
+go to **2500 / 1200 / 640** - so a wolf growls at you from about 36 m and
+attacks at about 9 m, instead of attacking at 21 m with no warning at all.
+Aggression stays Unaggressive, `csWolf`'s flanking data is untouched so packs
+still flank, and no faction record was edited. Eleven more records follow
+through their template, and the generator *measures* that set and fails if the
+policy disagrees. The conjured Flaming Familiar is de-inherited and pinned to
+the old numbers so summons are unaffected. 52 wolf records excluded, each with
+a recorded reason.
+
+`EncWolf` and `EncBear` are **both** Unaggressive, with identical WarnOrAttack
+2000 and Attack 1500. The only difference is **`Warn`: bear 2500, wolf 0.**
+Bears warn; wolves go straight to attacking at 1500 units (~21 m). `EncHorker`,
+your other example, is Aggressive but only inside 320 units. `EncWolfRed`
+inherits from `EncWolf` by template, so one edit covers both, and **no faction
+change is needed** - nothing in any faction makes a wolf hostile to you.
+
+### Fewer encounters, bigger packs - both, at once
+
+`LCharWolf` is placed **zero** times, so the leveled list was never the
+population. Re-measured against the **live load order** rather than
+`Skyrim.esm` alone: **622 exterior references** on the seven wolf-bearing
+predator actors, clustering at 2000 units into **387 clusters - 203 singletons,
+137 pairs, 43 triples, 4 quads.**
+
+Retiring only the singleton clusters (Initially Disabled, never deleted)
+removes **191 refs, 30.7%**, and leaves **431 refs in 196 clusters with every
+site holding at least 2**. The noise was never the packs; it was the lone
+wolves.
+
+**`Ensrick Wolf Encounter Thinning.esp` is generated and staged but NOT
+installed** - the size of the cut is your call, not mine.
+
+One error worth naming, because the guard rail caught it rather than you:
+excluding ineligible references (persistent, enable-parented) from the
+*clustering* turned real pairs into fake singletons and produced a **71.6%**
+cut on the first run. They now count towards cluster size but are never
+retired, and any cluster containing one is left whole.
+
+The **191** freed positions are navmeshed and encounter-zoned, and have been
+handed to **#43** (Sol's) for the hostile-monster replacement you asked for.
+
+**Not yet done.** The spawn thinning edits placed references across four
+worldspaces, which is a much larger change than the behaviour patch, and Bruma
+needs its own overrides (its own `CYREncWolf` family, 47 refs) while Beyond
+Reach has 27 vanilla refs plus seven quest wolves to preserve. That waits on
+your go-ahead.
+
+---
+
+## 3. UI and the survival readout
+
+**Nordic UI is not the meta - it is the opposite.** Across the 19 curated lists
+in our ecosystem survey, NORDIC UI scores **0/19**; it survives only in one
+alpha export. The actual skins are Dear Diary Dark Mode and Untarnished at 7/19
+each, Edge UI at 3/19.
+
+**Your floating-healthbar objection does not disqualify TrueHUD.** It is the
+mod that adds them and it is 17/19, but they are **one flag** -
+`bEnableActorInfoBars` in its shipped `settings.ini`, independent of the boss
+bar, the player widget, recent loot and the API. Turn that off, keep the rest.
+NORDIC UI is declined on more than the 0/19 count: v2.4.1 last updated
+**2021-08-14**, it requires SkyHUD, and it ships enemy bars itself. Skin
+suggestion instead:
+[Untarnished UI](https://www.nexusmods.com/skyrimspecialedition/mods/75188),
+picked on your stated vanilla-shape taste rather than on list counts.
+[TrueHUD](https://www.nexusmods.com/skyrimspecialedition/mods/62775) 1.1.10 and
+[moreHUD](https://www.nexusmods.com/skyrimspecialedition/mods/12688) 5.4.2.0
+both **PASS** the corrected version gate.
+
+**Hunger and warmth as bars, no numbers.** The globals are live and
+proportional here - hunger 0/120 from Starfrost, cold 55/900 from Survival Mode
+Improved. The obvious pick is wrong: iWant Widgets *for Starfrost* reads magic
+effects and is invisible below stage 3, and **Survival Control Panel is not the
+route at all** - it is a config framework with no meter.
+
+**Recommendation: we author `Ensrick - Survival Meters`** on
+[iWant Widgets](https://www.nexusmods.com/skyrimspecialedition/mods/36457)
+1.33 - MIT, **no DLL**, needs only SkyUI - using its native `setMeterPercent`.
+Real bars, no numbers, and distributable as our own work. That needs your yes
+on adopting iWant Widgets as the framework.
+
+Three candidates **FAIL** the gate and are rebuild-or-skip: Prisma UI
+(2026-03-27), Skyrim Party Sheet (2026-07-28), iWant Widgets NG (2024-06-07).
+
+**There is no no-download answer here, and it was looked for.** SkyUI's HUD
+extension exposes no Papyrus meter API, SKSE Menu Framework is a config menu
+rather than a HUD, and neither Starfrost nor Survival Mode Improved renders a
+bar of its own. A readout needs one adopted framework; the recommendation above
+is the smallest one that works.
+
+---
+
+## 4. Everything else from yesterday
+
+- **Open Animation Replacer is live** (#140 closed in effect). No rebuild was
+  needed - Ersh shipped 3.2.1 on 2026-08-31. The root cause is proven: 3.2.0
+  lacked `load_v5`, hit "Unsupported address library format: 5", and **raised a
+  modal**; the SKSE plugin loop blocked on a dialog nobody could see. It never
+  hung. Own PASS launch.
+- **IED is permanently dead** (#94). Source is gone - no release since
+  2023-12-10, 51 of 74 headers missing, and Software Heritage holds no copy
+  past 2022-02-12. MIT licence, so permission was never the obstacle. **#201**
+  proposes [AllGUD](https://www.nexusmods.com/skyrimspecialedition/mods/28833)
+  as the only DLL-free route to visible carried gear - which your #36 inventory
+  rule cannot ship without. Suggestion only.
+- **Block animation (#198): OAR is ruled out, but not everything is.** The
+  build's entire OAR payload is Pandora's XPMSE conversion - 164 animations
+  across 30 sub-mods, with **no block group**; the only block-named file in the
+  whole output is `shd_blockbashsprint.hkx`, which is shield *bash* while
+  sprinting. No `mt_behavior.hkx`, `1hm_behavior.hkx` or `shield.hkx` was
+  generated either.
+  **Correction, caught overnight by a second agent re-deriving it from disk:**
+  an earlier version of this line said the hypothesis had "no generated
+  behaviour to live in". That was overstated, and it came from a case-sensitive
+  search miss. `0_Master.hkx` **is** generated, in both skeletons - 585,136
+  bytes third-person and 472,688 first-person - and it is the root graph that
+  dispatches block states. So the honest statement is narrower: no OAR
+  animation and no block-*specific* generated behaviour can be the cause, but
+  **the regenerated master graph is not excluded**. It is a live candidate
+  alongside
+  [SkyParkour v3](https://www.nexusmods.com/skyrimspecialedition/mods/136980),
+  which means an A/B that only toggles SkyParkour will not clear it.
+  **This one needs you**, see below.
+- **No looting in combat.**
+  [No Loot During Combat](https://www.nexusmods.com/skyrimspecialedition/mods/173769)
+  is exactly your ask - blocks corpses and chests in combat, ground pickup
+  unaffected - but its DLL is stamped 2026-03-01 and **FAILS** the gate.
+  [No Loot When Armed](https://www.nexusmods.com/skyrimspecialedition/mods/143253)
+  also fails (2025-04-22) and keys off weapon-drawn rather than combat anyway.
+  Both are rebuild candidates, not installs.
+- **Better Jumping is in and verified** - its own launch, not a shared one.
+  Nothing supersedes it; the alternatives are animation layers or a different
+  mechanic entirely.
+- **Our SKSE gate had a 15-month hole.** Its PE-stamp reject window ended
+  2025-05-26, but format 5 support landed 2026-08-21. That is exactly how Smart
+  Talk got in and killed your launch. Fixed (`c3da884`); zero new failures
+  across all 40 SKSE DLLs in your 232 enabled mods.
+- **Inventory design (#36)** captured in both directions: the second inventory
+  is back in for crafting and alchemy accumulation, with armour and weaponry
+  capped in it; on-person weapons still need a body slot and still display, two
+  daggers packed excepted; quest items still not exempt.
+
+---
+
+## 5. Decisions waiting on you
+
+1. **Adopt [Canidae](https://www.nexusmods.com/skyrimspecialedition/mods/182994)
+   for wolves?** It is the only mod that fixes the shape. Needs two recipe-class
+   repairs from us.
+2. **Adopt [iWant Widgets](https://www.nexusmods.com/skyrimspecialedition/mods/36457)
+   so we can build your hunger/warmth bars?** MIT, no DLL.
+3. **[TrueHUD](https://www.nexusmods.com/skyrimspecialedition/mods/62775) with
+   floating bars off?** Or skip it entirely.
+4. **Cloak enchantability** - still open from the cloak audit. Both RMB config
+   options are omitted until you say; each is one file.
+5. **The armour/weapon cap in secondary storage** (#36) - item count, weight
+   budget, or slot count. It is load-bearing: without it the second inventory
+   becomes the loophole that defeats the design.
+6. **Cloak dials** - the four numbers above, if the defaults are not to taste.
+7. **[AllGUD](https://www.nexusmods.com/skyrimspecialedition/mods/28833)** (#201)
+   - the only path left to visible carried gear.
+
+## 6. Two things only you can do
+
+### A. #198, the block animation - there is now a real test, not just "take notes"
+
+Static analysis settled what it could and named a prime suspect: **SkyParkour
+is the only third-party mod sharing the master behaviour graph with the block
+state machine.** Pandora's `ActiveMods.json` lists `sppffp`/`sppftp` and
+nothing else, and SkyParkour injects 8 graph variables and 2 states into
+`0_Master.hkx`. It is also the only mod hooking Input/AnimEvent/NotifyGraph at
+runtime, with `iAutoParkour = 1` and all three `bSmart*` on. Unproven, but
+named on two independent grounds.
+
+The block wiring itself is intact - 65 block/bash strings present, and the
+block sub-graph (`BlockBehavior.hkx`, `mt_behavior.hkx`, `1hm_behavior.hkx`,
+`shield.hkx`) is vanilla, loaded from the BSA. Nothing is missing.
+
+**Since writing the above, the master graph was diffed against vanilla** -
+vanilla `0_master.hkx` extracted read-only from `Skyrim - Animations.bsa` into a
+scratch directory. Result: 580,896 vs 585,136 bytes, +58 distinct strings, and
+**83 block/bash strings on both sides - zero added, zero removed**. All 61
+additions are XPMSE FNIS-AA plumbing and SkyParkour. So the regeneration adds
+no block state, event, variable or animation reference and drops none.
+
+That narrows it without formally excluding it - a string diff cannot see
+re-pointed state IDs, transition priorities or blend times, which are node data
+rather than names. But it collapses two candidates into one: **everything in
+that master is SkyParkour's or XPMSE's**, so if the master is implicated it is
+implicated *through* SkyParkour, specifically `SkyParkour_Interrupt`,
+`_Recovery`, `_Start`/`_Stop` and `_TransitionStart`/`_End`, wired into the same
+state machine as the block states.
+
+**The A/B, two rungs.** Do step 1 first; only do step 2 if step 1 does not fix
+it.
+
+1. **Runtime hooks.** In
+   `mo2-instances\skyrim-se\overwrite\SKSE\Plugins\SkyParkourNG.ini` set
+   `bEnableMod = false` - or, to keep parkour on the key and kill only the
+   automatic path, `iAutoParkour = 0` plus `bSmartSteps`, `bSmartVault` and
+   `bSmartClimb` all `false`. This leaves the injected graph states in place.
+2. **Injected graph states.** Re-run Pandora with SkyParkour deselected
+   (`tools/run-pandora.cmd`), giving a master that keeps the FNIS-AA variables
+   but has no `SkyParkour_*` states.
+
+Then try blocking while walking, running, strafing, running backward and
+sprinting, and once immediately after a vault or slide.
+
+> **Do not test this by disabling `Pandora Output - Ensrick`.** It strips the 22
+> `FNISaa_*` variables XPMSE needs and leaves the SkyParkour DLL hooking states
+> that no longer exist - a far bigger perturbation than the question needs, on
+> your live save. Step 2 is the controlled version.
+
+How to read it:
+
+- **behaves after step 1** - it is SkyParkour's runtime hooks, and the fix is a
+  config line. No mod needed.
+- **behaves only after step 2** - it is the injected graph states, and the fix
+  is a Pandora regeneration choice.
+- **only sprinting fails** - that is the sprint-bash state, and it is #148, not
+  SkyParkour.
+- **one-hand and two-hand fail too, not just shield** - then it is the movement
+  graph, not anything block-shaped.
+- **still broken after step 2** - neither SkyParkour nor the regenerated master.
+  The next move is a load-order bisect, not more static analysis.
+- **nothing reproduces** - likely an artefact of the profile before OAR was
+  unparked, and #198 can be closed.
+
+The one I would expect to fail if SkyParkour is the cause is blocking
+immediately after a vault, step-up or slide.
+
+**Restore the ini afterwards.** It lives in `overwrite`, so a wrong value there
+is untracked and invisible to every audit gate we have.
+
+*(Related, and good news: #148's `fnis_aa` errors are gone from tonight's
+Papyrus log - 0 occurrences against 312/16/18 when that issue was filed. One
+unresolved `GetFlags` on `FNIS` remains. Observed in one session only, and the
+logs #148 quotes have rotated out, so absence was observable but not
+diffable.)*
+
+### B. Glance at a guard's cloak
+
+See the warning in section 1 - if a guard still carries two cloaks, three of
+the four cloak dials are no-ops and I will rewrite the approach.
+
+---
+
+## 7. One trivial thing: open any Nexus page
+
+`18967` (Better Jumping) and `92109` (Open Animation Replacer) have since
+landed - **keep coverage now reads clean: 182 installed Nexus ids, 182 live
+Keeps, zero violations.**
+
+**If a Keep ever seems stuck, the relay is not running.** Start it yourself:
+
+```
+py -3 C:\Users\danjo\source\repos\nexus-local-curator\scripts\curation-relay.py
+```
+
+Then open any Nexus page. `py -3 audit/keep_coverage.py` is the check.
+
+**Note, not mine to decide:** Sol is mid-install of a currency and economy
+stack - five FOMOD plans, a `mods/currency-integration/` tree, and an Address
+Library update, under its own claim. Your "no new mods without permission"
+instruction was given to me, so I have not applied it to Sol or interfered.
+Flagging it in case that instruction was meant to cover both of us.
+
+The relay that delivers them is a background process inside my session, and it
+has now been killed three times by ordinary session churn. Each time it drained
+first by luck. It belongs as a standalone service rather than a task living in
+a conversation - worth doing before it silently loses a decision.

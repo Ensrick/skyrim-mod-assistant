@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "battleaxes/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/orcish/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/dwarven/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/elven/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/glass/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/ebony/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/daedric/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/draugr/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/dragonbone/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/nordic/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/stalhrim/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/axeofysgramor/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/ruefulaxe/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/amber/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/darkseducer/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/goldensaint/base",
+      "destination": "."
+    },
+    {
+      "source": "battleaxes/madness/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/orcish/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/dwarven/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/elven/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/glass/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/ebony/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/daedric/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/draugr/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/silver/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/dragonbone/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/nordic/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/stalhrim/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/bloodsword/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/amber/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/darkseducer/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/goldensaint/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/madness/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/swordofjyggalag/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/orcish/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/dwarven/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/elven/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/glass/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/ebony/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/daedric/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/dragonbone/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/nordic/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/stalhrim/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/maceofmolagbal/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/amber/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/draugr/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/darkseducer/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/goldensaint/base",
+      "destination": "."
+    },
+    {
+      "source": "maces/madness/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/orcish/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/dwarven/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/elven/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/glass/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/ebony/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/daedric/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/draugr/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/silver/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/dragonbone/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/nordic/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/stalhrim/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/imperial/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/scimitar/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/chillrend/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/chillrend/chillrendenchFX",
+      "destination": "."
+    },
+    {
+      "source": "swords/nightingale/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/dawnbreaker/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/amber/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/darkseducer/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/goldensaint/base",
+      "destination": "."
+    },
+    {
+      "source": "swords/madness/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/orcish/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/dwarven/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/elven/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/glass/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/ebony/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/daedric/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/draugr/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/dragonbone/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/dawnguard/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/nordic/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/stalhrim/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/amber/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/darkseducer/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/goldensaint/base",
+      "destination": "."
+    },
+    {
+      "source": "waraxes/madness/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/orcish/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/dwarven/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/elven/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/glass/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/ebony/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/daedric/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/dawnguard/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/dragonbone/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/nordic/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/stalhrim/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/championscudgel/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/volendrung/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/amber/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/draugr/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/darkseducer/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/goldensaint/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/madness/base",
+      "destination": "."
+    },
+    {
+      "source": "warhammers/nerveshatter/base",
+      "destination": "."
+    },
+    {
+      "source": "shields/iron/base",
+      "destination": "."
+    },
+    {
+      "source": "shields/steel/base",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/iron/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/steel/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/orcish/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/dwarven/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/elven/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/glass/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/ebony/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/daedric/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/draugr/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/silver/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/dragonbone/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/nordic/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/stalhrim/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/bloodsword/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/amber/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/darkseducer/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/goldensaint/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/madness/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/swordofjyggalag/scb",
+      "destination": "."
+    },
+    {
+      "source": "greatswords/swordofjyggalag/normal fix",
+      "destination": "."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "note": "ElSopa Cloaks Of Skyrim Retextured 42558, 2k tier (file 170809). TEXTURES ONLY: the archive's own Meshes folder holds 394 Oldrim-format NIFs (NIF user version 83, NiTriShape) and is deliberately omitted, because Mesh Update 1.2 (file 263634) ships the Special Edition conversion of those same 394 paths (user version 100, BSTriShape). Omitting them here means no LE mesh ever exists in the tree, even if the update is later disabled. Tier chosen by measurement: 4k/2k, 2k/1k and 1k/512 all read x0.99-x1.01 at every shared pixel size, base CoS UVs are 1024 so source-plus-one-step caps at 2048, and the 4k tier is the only one shipping mip-less files. Evidence: records/cloak-layer-audit-2026-09-02.md section 7.",
+  "mappings": [
+    { "source": "Textures", "destination": "textures" }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Skyking Signs/01 Skyking Signs/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Skyking Signs/01 Skyking Signs/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Skyking Signs/03 Parallax/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Skyking Signs/03 Parallax/textures",
+      "destination": "textures"
+    }
+  ]
+}

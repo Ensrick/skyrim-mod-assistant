@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Tree_Diversity_Project.esp",
+      "destination": "Tree_Diversity_Project.esp"
+    },
+    {
+      "source": "NOTWL+Ulvenwald/Tree_Diversity_Project_NOTWL_Ulvenwald_SWAP.ini",
+      "destination": "Tree_Diversity_Project_NOTWL_Ulvenwald_SWAP.ini"
+    }
+  ]
+}

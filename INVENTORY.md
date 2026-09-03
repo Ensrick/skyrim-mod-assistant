@@ -3,7 +3,24 @@
 > **SUPERSEDED (2026-08-26):** historical 2026-06-09 snapshot of the old
 > Vortex-managed collection. Live state is BASELINE.md + the MO2 portable
 > instance (`repos\mo2-instances\skyrim-se`) + `records/installed-mods.json`.
-> Runtime is now 1.7.99; nothing below reflects current reality.
+> Runtime is now 1.7.104; the historical table below does not reflect current
+> reality. Current hair delta: FSMP 4.1.1 AVX, Vanilla Hair Remake SMP 1.0.3
+> main (`63979/510409`) and the official 1.0.1 NPC package (`63979/500742`)
+> are installed and enabled in MO2. The old Skyrim-1.6-only SMP-NPC Crash Fix
+> is deliberately absent because FSMP 3.0+ integrated the correction. Exact
+> hashes, conflict winners, and the remaining foreground checks are in
+> `records/vanilla-hair-remake-smp-2026-08-30.md`.
+> Current tree delta: full Nature of the Wild Lands 3.14 is the placement
+> authority, with Ulvenwald 3.3.2 assets consumed through Tree Diversity
+> Project 1.0.1; `Ulvenwald.esp` is deliberately disabled. Exact evidence is in
+> `records/notwl-ulvenwald-tree-diversity-2026-08-30.md`.
+> Current grass delta: Freak's Floral Fields 3.2.3 and DrJacopo's 3D Grass
+> Library 16.53 are enabled using the recorded realistic regional mix, with
+> Freak's Floral Solstheim 1.0.1 and Freak's Floral Veil 1.0 extending it to
+> Solstheim and the Soul Cairn. All nine plugins are light, every effective
+> texture stays within the 4096-axis cap, and a private one-file overlay
+> enforces that cap for the base FFF package. Exact evidence is in
+> `records/freaks-floral-fields-3.2.3-2026-08-30.md`.
 
 Snapshot of the existing Vortex-managed collection, captured **2026-06-09** before resetting to a vanilla baseline.
 Source of truth: Vortex staging `%APPDATA%\Vortex\skyrimse\mods` (27 mods, 15.3 GB) + downloads (30 archives) + the two preserved deployment manifests in `records\`.
@@ -36,13 +53,13 @@ Decision is **yours** during the review; "My read" is just a suggestion. Version
 | Animation Queue Fix | 82395 | 1.0.1 | Bug fix | ✓ | — | keep |
 | Animated Static Reload Fix NG | 69331 | 1.0.1 | Bug fix | ✓ | — | keep |
 | SrtCrashFix AE | 31146 | 0.4.1 | Crash fix | ✓ | — | keep |
-| SMP-NPC crash fix | 91616 | 1.1 | Crash fix (SMP) | ⛔ | — | keep IF using HDT-SMP |
+| SMP-NPC crash fix | 91616 | 1.1 | Historical Vortex download; obsolete with current FSMP and incompatible with runtime 1.7.104 | ⛔ | — | do not activate |
 
 ## Physics (HDT-SMP)
 | Mod | Nexus ID | Installed | Role | Deployed | Decision | My read |
 |---|---|---|---|---|---|---|
-| Faster HDT-SMP | 57339 | 2.5.1 | Cloth/hair physics engine | ✓ | — | keep IF you want physics |
-| Vanilla hair remake SMP | 63979 | 1.0.3 | Physics-enabled hair (568 files) | ✓ | — | review (taste; needs SMP) |
+| Faster HDT-SMP | 57339 | 4.1.1 current MO2 | Cloth/hair physics engine (AVX) | ✓ | Keep | active |
+| Vanilla hair remake SMP | 63979 | 1.0.3 main + 1.0.1 NPCs | Physics-enabled vanilla replacer; 568-file player layer + 2,436 NPC FaceGen meshes | ✓ | Keep queued | active; foreground smoke remains #27 |
 
 ## Gameplay / QoL
 | Mod | Nexus ID | Installed | Role | Deployed | Decision | My read |
@@ -62,7 +79,9 @@ Decision is **yours** during the review; "My read" is just a suggestion. Version
 | AE - Bone Wolf Patch | — | v2.6 | Creation Club Bone Wolf fix | ✓ | — | keep IF using that CC |
 
 ## Notes
-- **3 staged-but-not-deployed** (⛔): SMP-NPC crash fix, Crafting Categories for SkyUI, Sharpen Other Swords II. Either disabled or never activated in Vortex.
+- Historical Vortex-only staged files still include SMP-NPC Crash Fix, Crafting
+  Categories for SkyUI, and Sharpen Other Swords II. None is active in MO2;
+  SMP-NPC Crash Fix must remain inactive with FSMP 4.1.1.
 - **Texture-BSA orphan**: 9 `Skyrim - Textures*.bsa.vortex_backup` files exist in `Data\` — evidence a texture overhaul was installed and removed at some point. Vortex Purge restores the vanilla BSAs.
 - **Downloads (30) > staged (27)**: extras are the AnimObject Swapper helper + a duplicate FX Glow Remover archive.
 - **Read on the set**: a frameworks-heavy foundation with light content. The dependencies + fixes are near-automatic keeps; the real review is ~7 taste items (visual/gear + alt-start + physics-hair) plus a latest-version check on everything.

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "profile": "Default",
+  "capturedUtc": "2026-08-29T07:49:00Z",
+  "status": "awaiting-user-approval",
+  "baseline": {
+    "modlistSha256": "58DF125EC754D31DA69D4D90C9A0750F393B0B7B15ED8167D71555CC7EB789DA",
+    "pluginsSha256": "798D089AE4C49ADC9225B9D629D8515DC8C5583D373C2B6ACE2BE9B701492C69",
+    "loadorderSha256": "0F2B6939535B6679719533A52E6F637DA40744C0E61B99761ECCF830504DA5B4"
+  },
+  "recommendedPlugin": {
+    "name": "Ensrick General Compatibility Patch.esp",
+    "eslFlagged": true,
+    "overrideOnly": true,
+    "preserveFinalWaterFields": true,
+    "worldspaceFieldsFromLuxOrbisCs": [
+      { "formKey": "000800:Dragonborn.esm", "editorId": "DLC2SolstheimWorld", "fields": ["MaxHeight"] },
+      { "formKey": "016D71:Skyrim.esm", "editorId": "MarkarthWorld", "fields": ["Flags", "MaxHeight"] },
+      { "formKey": "016BB4:Skyrim.esm", "editorId": "RiftenWorld", "fields": ["Flags", "MaxHeight", "Parent"] },
+      { "formKey": "037EDF:Skyrim.esm", "editorId": "SolitudeWorld", "fields": ["Flags", "MaxHeight", "Parent"] },
+      { "formKey": "02EE41:Skyrim.esm", "editorId": "Sovngarde", "fields": ["MaxHeight"] },
+      { "formKey": "00003C:Skyrim.esm", "editorId": "Tamriel", "fields": ["MaxHeight"] },
+      { "formKey": "01A26F:Skyrim.esm", "editorId": "WhiterunWorld", "fields": ["MaxHeight", "Parent"] },
+      { "formKey": "01691D:Skyrim.esm", "editorId": "WindhelmWorld", "fields": ["Flags", "MaxHeight", "Parent"] }
+    ],
+    "cellFieldsFromLuxOrbisCs": [
+      { "formKey": "037EE9:Skyrim.esm", "editorId": "SolitudeOrigin", "fields": ["Location"] },
+      { "formKey": "01A276:Skyrim.esm", "editorId": "WhiterunPlainsDistrict04", "fields": ["Location"] }
+    ],
+    "worldspaceFieldsFromBruma": [
+      { "formKey": "0A764B:BSHeartland.esm", "editorId": "BSHeartland", "fields": ["Climate", "Location", "ObjectBoundsMax"] },
+      { "formKey": "060B7D:BSHeartland.esm", "editorId": "CYRBiomeTesting", "fields": ["Climate"] },
+      { "formKey": "0B95A6:BSHeartland.esm", "editorId": "CYRGreenLeafGlade", "fields": ["Climate"] },
+      { "formKey": "0717AE:BSHeartland.esm", "editorId": "CYRTestWorld", "fields": ["Climate"] }
+    ]
+  },
+  "configurationDecision": {
+    "path": "SKSE/Plugins/Underwear.ini",
+    "recommendation": "owned union overlay",
+    "includeAdditionalForms": ["6C1DA", "8F19A"],
+    "preserveFutureBlacklists": ["Vilja", "Sofia"]
+  }
+}

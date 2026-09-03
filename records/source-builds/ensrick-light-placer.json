@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "component": "Light Placer (powerof3 po3_LightPlacer SKSE plugin) rebuilt for Skyrim SE 1.7.104 / Address Library v5",
+  "modName": "Light Placer - Ensrick 1.7.104",
+  "version": "4.2.1+master-1f15e5c-ensrick",
+  "upstream": {
+    "repository": "https://github.com/powerof3/LightPlacer",
+    "nexus": "https://www.nexusmods.com/skyrimspecialedition/mods/127557",
+    "vendorRelease": "4.2.1 (Nexus file 749822, DLL 4.2.1.1, PE stamp 1778212284 = 2026-05-08). Its embedded powerof3/CommonLibSSE reads Address Library formats 1 and 2 only, so on 1.7.104 po3_LightPlacer.log ends with 'Unsupported address library format: 5' (records/launch-verify-20260901-230735.md).",
+    "baseCommit": "1f15e5cd8 (master, 2026-08-07; two fixes past the v4.2.1 tag a27ef069: 'Fix color conversion', 'Fix GetIsObjectType condition')",
+    "license": "MIT (LICENSE, Copyright (c) 2024-2026 powerofthree): 'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software ... subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.' Notice shipped as LightPlacer-LICENSE.txt in the package."
+  },
+  "source": {
+    "repository": "https://github.com/Ensrick/LightPlacer",
+    "branch": "ensrick/1.7.104",
+    "commit": "ae48c768a2cb4d769ce215f5f4e5098c084f9d71",
+    "path": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-source\\LightPlacer-1.7.104",
+    "pushed": true,
+    "changes": [
+      "extern/CommonLibSSE submodule: 431ded26 (2026-08-07, pre-commonlib-shared, Address Library formats 1-2 only) -> powerof3/CommonLibSSE dev cbb5c29a17c9bec3efb058b441cd3afa8ec76bf7 (2026-09-01: commonlib-shared era, RUNTIME_SSE_LATEST = 1.7.104, PluginVersionData defaults versionIndependenceEx to the AddressLibraryV5 bit)",
+      "vcpkg.json: add commonlib-shared[xbyak,random] (the REL/REX layer now lives in libxse/commonlib-shared, consumed as a vcpkg overlay port)",
+      "cmake/ports/commonlib-shared: overlay port copied from the CommonLibSSE checkout (libxse/commonlib-shared b8f30fb8, port date 2026-08-21) plus no-modal-fail.patch: REX::FAIL logs and terminates without MessageBoxA/W (project no-popup rule)",
+      "cmake/ports/xoshiro-cpp: overlay port copied from the CommonLibSSE checkout (commonlib-shared[random] dependency)",
+      "cmake/ports/clib-util: 1.4.9 (6f430ac) -> 1.5.1 (aca8014), the pin powerof3's already-migrated BaseObjectSwapper builds with",
+      "CMakeLists.txt: overlay-port list (repo ports first, then extern/CommonLibSSE/cmake/ports), find_path on include/RE/Skyrim.h (REL headers moved out of the submodule), SKYRIM_SUPPORT_AE cache option for the subdirectory",
+      "CMakePresets.json: ninja-ae single-config Release preset (COPY_BUILD=OFF)",
+      "src/PCH.h: logger:: namespace routed at spdlog (SKSE::log::info/warn/... no longer exist), stl::adjust_pointer -> REX::ADJUST_POINTER, SKSE::GetTrampoline -> REL::GetTrampoline",
+      "src/main.cpp: SKSE::Init(a_skse, {.log=false,.trampoline=true,.trampolineSize=512}) replaces the deprecated Init(bool)+AllocTrampoline pair; stl::report_and_fail -> REX::FAIL; PluginVersion carries 4.2.1 instead of bare MAJOR",
+      "srell 2026.04 archive: akenotsuki.com answers vcpkg's curl with 403; fetched once with a browser User-Agent, SHA512 verified against the port (7c834cdc...), seeded into vcpkg/downloads (build-environment step, no source change)"
+    ],
+    "diffStat": "CMakeLists.txt                                   | 23 ++++++++-\n CMakePresets.json                                | 60 +++++++++++++++++++++---\n cmake/ports/clib-util/portfile.cmake             |  4 +-\n cmake/ports/clib-util/vcpkg.json                 |  2 +-\n cmake/ports/commonlib-shared/no-modal-fail.patch | 26 ++++++++++\n cmake/ports/commonlib-shared/portfile.cmake      | 41 ++++++++++++++++\n cmake/ports/commonlib-shared/vcpkg.json          | 44 +++++++++++++++++\n cmake/ports/xoshiro-cpp/portfile.cmake           | 18 +++++++\n cmake/ports/xoshiro-cpp/vcpkg.json               |  7 +++\n cmake/ports/xoshiro-cpp/xoshiro-cpp-config.cmake |  5 ++\n extern/CommonLibSSE                              |  2 +-\n src/LightData.cpp                                |  2 +-\n src/LightData.h                                  |  2 +-\n src/Manager.h                                    |  2 +-\n src/PCH.h                                        | 25 ++++++++--\n src/PlacedLights.cpp                             |  2 +-\n src/main.cpp                                     | 11 ++---\n vcpkg.json                                       |  7 +++\n 18 files changed, 256 insertions(+), 27 deletions(-)"
+  },
+  "build": {
+    "targetRuntime": "SkyrimSE.exe 1.7.104.0",
+    "targetSKSE": "2.3.1",
+    "commonLib": {
+      "family": "powerof3/CommonLibSSE (dev) + libxse/commonlib-shared, the lineage upstream builds with. NOT CommonLibSSE-NG 6.7.1: po3's code uses fork-specific APIs, and upstream's own August migration (BaseObjectSwapper/PapyrusExtender 2026-08-25) was a smaller, more faithful diff to follow than a port to NG.",
+      "commonLibSSE": "cbb5c29a17c9bec3efb058b441cd3afa8ec76bf7",
+      "commonLibShared": "libxse/commonlib-shared b8f30fb8ad69ca05fe7c7e5965cb4ca327befea0 (port version-date 2026-08-21) + no-modal-fail.patch",
+      "addressLibraryV5": "commonlib-shared src/REL/IDDB.cpp accepts formats 1, 2 and 5 (load_v5)"
+    },
+    "toolchain": {
+      "generator": "Ninja (VS 2022 bundled)",
+      "compiler": "MSVC 14.44.35207 (VS 2022 Community, Hostx64/x64)",
+      "vcpkgRoot": "C:/Users/danjo/source/repos/vcpkg",
+      "vcpkgTool": "2026-07-27-98d7cb0cf1f4686a3e43aa5672b6230c1d56bce8",
+      "builtinBaseline": "32305df7d0b9a308e6ac454dd98ebfe550342c09 (upstream's own)",
+      "triplet": "x64-windows-static",
+      "buildType": "Release",
+      "crt": "MultiThreaded (/MT)",
+      "flags": "upstream presets: /EHsc /MP /W4 /WX /external:W0, /O2 /DNDEBUG, IPO",
+      "notes": "Built at BelowNormal priority. Preset ninja-ae = base + ae (BUILD_SKYRIMAE=ON -> SKYRIM_AE, SKYRIM_SUPPORT_AE)."
+    },
+    "command": "cmake --preset ninja-ae && cmake --build --preset ninja-ae",
+    "warnings": 0,
+    "errors": 0,
+    "tests": "none - upstream ships no test suite"
+  },
+  "artifact": {
+    "dll": "po3_LightPlacer.dll",
+    "sha256": "2BD0ADFDD6CCFADC8F7A24479261A42848B2CBE418A800289D04513A88EFEA92",
+    "sizeBytes": 1848832,
+    "fileVersion": "4.2.1.1.0",
+    "pdb": "po3_LightPlacer.pdb",
+    "pdbSha256": "795D7E91F9D9BB98E6A29085596139E1041A6DE08F6E55693F28A9CA3E2F56F3",
+    "pdbSizeBytes": 36089856
+  },
+  "package": {
+    "layout": "MO2 mod root = records/source-builds/ensrick-light-placer/ (SKSE/Plugins/po3_LightPlacer.dll + .pdb + po3_LightPlacer.ini, Scripts/LightPlacer.pex, Source/Scripts/LightPlacer.psc, LightPlacer-LICENSE.txt)",
+    "files": {
+      "LightPlacer-LICENSE.txt": {
+        "sha256": "18B6C3C6805CD6449B3123B8155ED6352C302BA6EF1805F5283A9B35C9029781",
+        "sizeBytes": 1095
+      },
+      "Scripts/LightPlacer.pex": {
+        "sha256": "EC08A9E4CE5EB8662F8B5EB97F8D372D5A6FF2730AE8750024BE09F2B709B905",
+        "sizeBytes": 735
+      },
+      "SKSE/Plugins/po3_LightPlacer.dll": {
+        "sha256": "2BD0ADFDD6CCFADC8F7A24479261A42848B2CBE418A800289D04513A88EFEA92",
+        "sizeBytes": 1848832
+      },
+      "SKSE/Plugins/po3_LightPlacer.ini": {
+        "sha256": "24CD3B30E9CA545F1C280A1AB680F7ECBB8C32CC1698665EA0E48ACE2C10FCF7",
+        "sizeBytes": 325
+      },
+      "SKSE/Plugins/po3_LightPlacer.pdb": {
+        "sha256": "795D7E91F9D9BB98E6A29085596139E1041A6DE08F6E55693F28A9CA3E2F56F3",
+        "sizeBytes": 36089856
+      },
+      "Source/Scripts/LightPlacer.psc": {
+        "sha256": "EF38EE2571BDB85F70F26BA5D779F69DCE99E13B4341504441A381FDC565FB28",
+        "sizeBytes": 182
+      }
+    },
+    "vendorParity": "po3_LightPlacer.ini and Scripts/LightPlacer.pex are byte-identical to the parked vendor 4.2.1 install (pex sha256 ec08a9e4ce5eb8662f8b5eb97f8d372d5a6ff2730ae8750024be09f2b709b905); the vendor's AE FOMOD branch shipped exactly these plus the DLL/PDB"
+  },
+  "featureDefaultsDiff": {
+    "changed": {},
+    "onlyInBuilt": {},
+    "onlyInUpstream": {},
+    "upstreamFile": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Light Placer\\SKSE\\Plugins\\po3_LightPlacer.ini",
+    "builtFile": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records\\source-builds\\ensrick-light-placer\\SKSE\\Plugins\\po3_LightPlacer.ini"
+  },
+  "skseGate": {
+    "tool": "py -3 audit/skse_version_data.py records/source-builds/ensrick-light-placer/SKSE/Plugins/po3_LightPlacer.dll",
+    "peTimestamp": 1788323919,
+    "peTimestampUtc": "2026-09-02 04:38:39Z",
+    "name": "LightPlacer",
+    "author": "powerofthree",
+    "pluginVersionPacked": 67239952,
+    "pluginVersion": "4.2.1.0",
+    "versionIndependence": 5,
+    "versionIndependenceEx": 2,
+    "addressLibraryV5Bit": true,
+    "compatibleVersions": [
+      "1.7.104.0"
+    ],
+    "exports": [
+      "SKSEPlugin_Load",
+      "SKSEPlugin_Version"
+    ],
+    "verdict": "PASS (version independent)"
+  },
+  "noPopups": "REX::FAIL (commonlib-shared src/REX/LOG.cpp) is the only MessageBox path in the plug-in and its libraries; the overlay-port patch removes both MessageBoxA/W calls and keeps the critical log line + TerminateProcess. Address Library failures therefore land in po3_LightPlacer.log instead of a modal.",
+  "verified": [
+    "Release build completes against powerof3/CommonLibSSE dev cbb5c29a1 + libxse/commonlib-shared b8f30fb8 with the upstream /W4 /WX flags, 0 warnings, 0 errors (build-lp.log 2026-09-01 23:38:40).",
+    "The DLL reports file version 4.2.1.1.0 and exports SKSEPlugin_Load and SKSEPlugin_Version (AE build: no SKSEPlugin_Query, same shape as the vendor 4.2.1.1 DLL).",
+    "audit/skse_version_data.py: PASS (version independent) - versionIndependence=5 (AddressLibraryPostAE|StructsPost629), versionIndependenceEx=2 (AddressLibraryV5 bit YES), compatibleVersions ['1.7.104.0'], PE stamp 1788323919 (2026-09-02 04:38:39Z). The vendor DLL had viEx=0 and compatibleVersions ['1.6.1170.0'].",
+    "Neither MessageBoxA nor MessageBoxW appears in the DLL (import name strings absent); the vendor DLL imports MessageBoxW. The only caller was REX::FAIL, removed by no-modal-fail.patch.",
+    "Feature defaults: po3_LightPlacer.ini byte-identical to the vendor 4.2.1 ini (audit/feature_defaults_diff.py exit 0, #144); Scripts/LightPlacer.pex byte-identical to the vendor pex.",
+    "commonlib-shared src/REL/IDDB.cpp at the pinned revision accepts Address Library format 5 (load_v5), which is the exact failure the vendor build logged.",
+    "Launch: records/launch-verify-20260901-235200.md PASS (main menu 31.4s, save loaded 42.1s, kPostLoadGame success=1). skse64.log: 'plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 16)'. po3_LightPlacer.log: 'po3_LightPlacer v4.2.1.1 / Game version : 1.7.104.0', 9 Lux CS Patch JSON configs read in 7ms, po3_LightPlacer.ini + Lux CS.ini settings read, 30 hooks installed, RESULTS 'Models : 267 (295 lights)', LogLP/ToggleLP/ReloadLP console commands installed; no 'Unsupported address library format' line. No gameplay menu opened after AUTOLOAD_SETTLED (only Loading/Fader/HUD/LoadWaitSpinner/Cursor), so no human had the controls; launch_verify ended the run and no game process remained."
+  ],
+  "notVerified": [
+    "In-game light rendering itself (a lit Lux CS interior with the ISL configs active) has not been eyeballed; the launch proves load, config parsing, hook installation, data-load processing (Models 267 / 295 lights) and a successful save load only.",
+    "The REX::FAIL log-only path has not been exercised on this DLL (it would need a deliberately missing Address Library)."
+  ],
+  "installation": {
+    "mo2Mod": "Light Placer - Ensrick 1.7.104",
+    "profile": "Default",
+    "priority": 43,
+    "above": "Light Placer (vendor 4.2.1, priority 42, disabled)",
+    "enabled": true,
+    "transaction": "20260902T045032956Z-13ae860d76e1",
+    "installedUtc": "2026-09-02T04:50:32Z",
+    "method": "MO2Headless mod-stage records/source-builds/ensrick-light-placer --enable --priority 43 under claim lightplacer-rebuild",
+    "installedDllSha256": "2BD0ADFDD6CCFADC8F7A24479261A42848B2CBE418A800289D04513A88EFEA92",
+    "preflight": "exit 0 before and after the ledger row (#102 gap warning cleared by the row)"
+  },
+  "launch": {
+    "record": "records/launch-verify-20260901-235200.md",
+    "verdict": "PASS",
+    "mainMenuSeconds": 31.4,
+    "saveLoadedSeconds": 42.1,
+    "skse64Log": "plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 16)",
+    "pluginLog": "po3_LightPlacer v4.2.1.1 / Game version : 1.7.104.0 / 9 config files / 30 hooks / Models 267 (295 lights) / console commands installed"
+  },
+  "rebuild": "set VCPKG_ROOT=C:/Users/danjo/source/repos/vcpkg inside a VS 2022 x64 developer environment (cmake+ninja from the VS CMake bundle), then cmake --preset ninja-ae && cmake --build --preset ninja-ae in the Ensrick/LightPlacer checkout at branch ensrick/1.7.104 with extern/CommonLibSSE initialised; copy build-ninja-ae/po3_LightPlacer.dll/.pdb plus Skyrim/Data/** and LICENSE into the mod root. If akenotsuki.com still 403s vcpkg, fetch srell2026_04.zip with a browser User-Agent, verify SHA512 7c834cdc..., and drop it in vcpkg/downloads.",
+  "distribution": {
+    "status": "distributable",
+    "basis": "MIT upstream (notice shipped). CommonLibSSE (GPL-3.0-or-later + EXCEPTIONS.md) and commonlib-shared (GPL-3.0-or-later + EXCEPTIONS) grant the SKSE-plugin linking exception; corresponding source is the public Ensrick/LightPlacer fork. vcpkg dependencies are header/static libraries under their own permissive terms (vcpkg copyright files).",
+    "vendorFilesModified": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Main Files/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Main Files/Seasons",
+      "destination": "Seasons"
+    },
+    {
+      "source": "Main Files/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Main Files/Ulvenwald.esp",
+      "destination": "Ulvenwald.esp"
+    },
+    {
+      "source": "Aspen Options/autumn/meshes/landscape/trees",
+      "destination": "meshes/landscape/trees"
+    }
+  ]
+}

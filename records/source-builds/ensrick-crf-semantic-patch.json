@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick CRF Semantic Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/71",
+  "sourcePath": "mods/crf-semantic-patch",
+  "outputPlugin": "Ensrick CRF Semantic Patch.esp",
+  "outputSha256": "D3EA7952099EF73AC30B1C9BF4094A3886065FC781568FAA1F05AA3D0F8A257C",
+  "archiveSha256": "9214D7DC4AA2643E78AF58ED8207AEFF708A5A13E34A52D7338FE858D54910BC",
+  "generator": {
+    "framework": "net9.0",
+    "sdk": "10.0.302",
+    "mutagen": "0.54.4",
+    "synthesis": "0.36.6",
+    "lockedDependencies": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "output": {
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 6,
+    "semanticOverrides": 5,
+    "requiredDialogTopicAnchor": 1,
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Update.esm",
+      "Dawnguard.esm",
+      "HearthFires.esm",
+      "cutting room floor.esp",
+      "nwsFollowerFramework.esp",
+      "Skyrim Unbound.esp",
+      "Lux.esp",
+      "Water for ENB (Shades of Skyrim).esp"
+    ]
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "spriggitVersion": "0.41.0",
+    "spriggitTreeSha256": "6F0032F9CE581B1641A70182644144CBD62508731AD72145CE74057711C149D3",
+    "linksChecked": 1601,
+    "unresolvedLinks": 0,
+    "wholeProfileParserFailures": 0,
+    "gameplayAcceptance": "pending",
+    "installedHashReverified": "2026-09-02: installed 'Ensrick CRF Semantic Patch.esp' sha256 = D3EA7952... (unchanged); generator not re-run (read-only packaging task)"
+  },
+  "installation": {
+    "mo2Mod": "Ensrick - CRF Semantic Patch",
+    "profile": "Default",
+    "enabled": true,
+    "modPriorityAtInstall": 188,
+    "pluginLoadOrderLineAfterFinalSort": 192,
+    "transaction": "20260830T164449478Z-b0e04f73b959",
+    "pluginEnableTransaction": "20260830T164449919Z-97bfa0c64a42"
+  },
+  "distribution": {
+    "vendorFilesModified": false,
+    "status": "private pending CRF compatibility-patch permission"
+  },
+  "source": {
+    "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
+    "commit": "19875a9f58d3e22c220f278ab74bfaf23b6f9bbd",
+    "commitSubject": "CRF semantic patch: generator source, spriggit tree, manifest",
+    "committed": "2026-08-30 14:52:27 -0500",
+    "pushed": true,
+    "path": "mods/crf-semantic-patch/generator",
+    "generatorFiles": {
+      "Program.cs": "C3486BE500A9BF26C5C568266FBF895CE1A9A443D403E053B263B515EE667844",
+      "LinkAudit.cs": "8CF74F2FE370C22222D6092076C9CA6C8BA3A14925D4AFEF634A02FAD90B2F97",
+      "CrfSemanticPatcher.csproj": "336B72E7D2B4DB80D7862EADBDD310D4AAB4E8334E80C8E4C193C6234B7AB9A5",
+      "Directory.Build.props": "6716FDD1902191DBA36E07864D1B8362AD5B7BACF265666CB65DBC3FC1428A73",
+      "packages.lock.json": "037094B9C5A7164AEF02A9A4ED464B53681497C5A3F1EEEF162D84CB1B563291"
+    },
+    "note": "The generator lives in this repository (no separate repo); the commit above is the only commit touching it."
+  },
+  "transformation": {
+    "tool": {
+      "name": "CrfSemanticPatcher (Mutagen.Bethesda.Synthesis 0.36.6 / Mutagen.Bethesda.Skyrim 0.54.4, net9.0)",
+      "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
+      "commit": "19875a9f58d3e22c220f278ab74bfaf23b6f9bbd",
+      "path": "mods/crf-semantic-patch/generator",
+      "builtDll": {
+        "path": "mods/crf-semantic-patch/generator/bin/Release/net9.0/CrfSemanticPatcher.dll (gitignored build output)",
+        "sha256": "83D95D20A16B4377AAECDC41FFF9BB8134DE7F92E14C56DEB5AE5037D75C283F",
+        "bytes": 36352,
+        "builtLocal": "2026-08-30 11:52:45 -0500"
+      }
+    },
+    "build": "dotnet build -c Release mods/crf-semantic-patch/generator/CrfSemanticPatcher.csproj  (SDK 10.0.302 = toolchain.json privateDotnetRoot; Deterministic + ContinuousIntegrationBuild + locked packages via Directory.Build.props)",
+    "command": "MO2Headless.exe --root <instance> run dotnet --arguments \"<repo>/mods/crf-semantic-patch/generator/bin/Release/net9.0/CrfSemanticPatcher.dll run-patcher --GameRelease SkyrimSE --DataFolderPath <VFS Data> --LoadOrderFilePath <instance>/profiles/Default/plugins.txt --OutputPath \\\"<staging>/Ensrick CRF Semantic Patch.esp\\\"\"",
+    "commandNote": "Reconstructed from SynthesisPipeline.SetTypicalOpen(GameRelease.SkyrimSE, OutputPlugin) in Program.cs; the 2026-08-30 run's exact argument line was not captured (same gap as the Collectibles Helper record). The generator must run through MO2's USVFS against the sorted Default profile so the nine masters below are the winning copies; Program.Main then calls EnforceHardMasters(--OutputPath).",
+    "exactCommandLineRecorded": false,
+    "auditStep": "dotnet CrfSemanticPatcher.dll --audit-links <VFS Data> <plugins.txt> <output esp>  (LinkAudit: 1,601 links checked, 0 unresolved)"
+  },
+  "inputs": [
+    {
+      "plugin": "Skyrim.esm",
+      "provider": "game Data folder",
+      "source": "Skyrim.esm (Skyrim Special Edition 1.7.104 Steam depot, game Data folder)",
+      "sha256": "E198C3B85E5E48E0C92A6580D8F66E644256B68D812EE32B61735CF9B753DF73",
+      "bytes": 249752131,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "Update.esm",
+      "provider": "game Data folder",
+      "source": "Update.esm (Skyrim Special Edition 1.7.104 Steam depot, game Data folder)",
+      "sha256": "B298B0F65FA0127FD13C1F5EF6BB30EAF9D21FD19F5E6F8F91F829C9007D3280",
+      "bytes": 19121864,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "Dawnguard.esm",
+      "provider": "game Data folder",
+      "source": "Dawnguard.esm (Skyrim Special Edition 1.7.104 Steam depot, game Data folder)",
+      "sha256": "FC8F92CB7ED55217046EE96B84CAA54C058C12F7C408AC2A71DA880A7BD3EAB7",
+      "bytes": 25884488,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "HearthFires.esm",
+      "provider": "game Data folder",
+      "source": "HearthFires.esm (Skyrim Special Edition 1.7.104 Steam depot, game Data folder)",
+      "sha256": "0F681496771E6D1983C6C1C9DD6602964068837F015BFA21E69A149C3B050047",
+      "bytes": 3979105,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "cutting room floor.esp",
+      "provider": "Cutting Room Floor",
+      "source": "cutting room floor.esp from MO2 mod 'Cutting Room Floor' = Cutting Room Floor 3.1.26 (Nexus 276 file 796288)",
+      "sha256": "AD30BABF608A69860921EE19EE0C0876BC9EA249067352D11FC87E02327B9F32",
+      "bytes": 1294488,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "nwsFollowerFramework.esp",
+      "provider": "Nether's Follower Framework",
+      "source": "nwsFollowerFramework.esp from MO2 mod 'Nether's Follower Framework' = Nether's Follower Framework 2.8.6b (Nexus 55653 file 489439)",
+      "sha256": "51601807AAFE152C9504244492F39FAF7411BC83BDE3D2DA0B8ECDF72EC7F299",
+      "bytes": 692019,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "Skyrim Unbound.esp",
+      "provider": "Skyrim Unbound Reborn",
+      "source": "Skyrim Unbound.esp from MO2 mod 'Skyrim Unbound Reborn' = Skyrim Unbound Reborn 3.0.17 (Nexus 27962 file 773521)",
+      "sha256": "AED19403857A5EFDDEFDE0B05B1F9CBF90FD0EF3F7A00EBD758258CCBC7E6A77",
+      "bytes": 546655,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "Lux.esp",
+      "provider": "Lux",
+      "source": "Lux.esp from MO2 mod 'Lux' = Lux 7.0 (Nexus 43158 file 649989)",
+      "sha256": "7C7CE8522D6F355539FBCDA0E23F3B44BBEEE3F4A9E7F1ECC86417F717E3D931",
+      "bytes": 5624053,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    },
+    {
+      "plugin": "Water for ENB (Shades of Skyrim).esp",
+      "provider": "Water for ENB",
+      "source": "Water for ENB (Shades of Skyrim).esp from MO2 mod 'Water for ENB' = Water for ENB 2.21 (Nexus 37061 file 784038)",
+      "sha256": "C25192C94E140BC69F38EE088B12D375335440D9E9CCAFBA5F590C39E6227D93",
+      "bytes": 372481,
+      "role": "master read through the VFS; winning copy on 2026-09-02"
+    }
+  ],
+  "inputsNote": "Hashes taken 2026-09-02 from the winning copies in the Default profile (masters as declared by the output plugin). The patch only overrides records from these masters; regenerate after any of them changes version."
+}

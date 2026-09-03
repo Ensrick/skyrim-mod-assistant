@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "component": "Seasonal Clothing Framework (InTheBottle WeatherBehavior SKSE plugin) rebuilt for Skyrim SE 1.7.104 / Address Library v5",
+  "modName": "Seasonal Clothing Framework - Ensrick 1.7.104",
+  "version": "1.0.1+master-ade391ae-ensrick",
+  "status": "STAGED, NOT INSTALLED - blocked on an upstream licence answer, see records/cloak-framework-rebuild-2026-09-02.md",
+  "upstream": {
+    "repository": "https://github.com/InTheBottle/WeatherBehavior",
+    "nexus": "https://www.nexusmods.com/skyrimspecialedition/mods/186269",
+    "vendorRelease": "1.0.1 (Nexus file 780931, uploaded 2026-07-25T03:43:40Z, archive 186269-780931.zip sha256 B61C329C9AB57E14E4C804F1C8F4916D11420F782E8521516E9E1737CD2E02D1; WeatherBehavior.dll sha256 A59C48FC6C93AA8C05634CE9E452E2891775454E3777E36BE755F6C3A34E73F6, PE stamp 1784947638 = 2026-07-25 02:47:18Z). Its extern/CommonLibSSE-NG submodule is pinned at 2527ccd47479e5bef01b82c0c7b287d435485f6a (2026-02-15), which reads Address Library formats 1 and 2 only. A string scan of the vendor DLL finds no load_v5 symbol and does find CommonLibSSE-NG's fatal string 'Unsupported address library format: {}'.",
+    "baseCommit": "ade391ae90 (master head, 2026-07-29T15:18:36Z, 'Merge pull request #1 from NickStefan/master'). Six commits past the release tree: CI support (3e065d1683), the seasonCalendar feature (01d61007ce, 44fc25d902), workflow tidy-ups (fbac643300, c2849a3bde) and the merge. The release tree is c67e8296 ('saving', 2026-07-25T02:49:12Z) or its immediate parent - the DLL's link stamp sits 2 minutes before that commit, so which of the two is [unverified].",
+    "license": "NONE. GET repos/InTheBottle/WeatherBehavior returns license: null and GET .../license returns 404; the tree at ade391ae90 contains no LICENSE, COPYING or NOTICE. vcpkg.json at the repository root declares \"license\": \"MIT\", but no copyright notice or permission text exists anywhere in the repository, so the MIT terms cannot be satisfied. The Nexus page carries no structured permission grant at all - its entire Permissions block is the free-text Author's instructions 'please ask i probably wont say no'.",
+    "unreleasedFeature": "PR #1 (NickStefan, merged 2026-07-29, 9 files, +125/-24) adds a seasonCalendar setting to WeatherBehavior.json with values 'vanilla' (default) and 'monthly', for Four Seasons - Faster Seasons of Skyrim. The PR body self-declares AI assistance ('I did use Cursor to make these changes'); it has NOT been code-reviewed by this project. It has never been in a Nexus release and the repository's workflow_dispatch CI has never run, so no author-built binary contains it."
+  },
+  "source": {
+    "repository": "https://github.com/InTheBottle/WeatherBehavior (upstream; NOT forked and NOT pushed - forking or republishing unlicensed source is exactly what the licence hold forbids)",
+    "branch": "local working tree on ade391ae90",
+    "commit": "ade391ae906e520c8fef94c82763511d7645de66",
+    "path": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-source\\WeatherBehavior-1.7.104",
+    "pushed": false,
+    "changes": [
+      "extern/CommonLibSSE-NG submodule: 2527ccd47479e5bef01b82c0c7b287d435485f6a (2026-02-15, Address Library formats 1-2 only) -> 2dde70e8bdf9890bbd5e648966c7d2c24e83092f (alandtse/CommonLibVR branch ng, 2026-09-02, release 7.1.0). The submodule already declares branch = ng in .gitmodules, so this is a `git submodule update --remote` and nothing more. Format-5 support entered that line at 7b47c5a8f1 (2026-08-21, 'feat(rel): support AE 1.7.99 address library format 5 (#299)', released 6.4.0); the AddressLibraryV5 declaration flag followed at d8b0acd80b (2026-08-24, released 6.7.0). src/REL/IDDB.cpp:209 now dispatches to load_v5.",
+      "src/Manager.cpp: two lines. BGSBipedObjectForm::GetSlotMask() returns REX::EnumSet<BipedObjectSlot, std::uint32_t> in the current CommonLib (include/RE/B/BGSBipedObjectForm.h:79), so static_cast<std::uint32_t> no longer compiles (error C2440). Replaced with .underlying(), which returns the same std::uint32_t the cast produced (include/REX/REX/EnumSet.h:57). Semantics unchanged. This was the ONLY compile break in the project.",
+      "patches/commonlibsse-ng-no-modal-fail.patch: applied to the submodule's include/SKSE/Impl/PCH.h:594. stl::report_and_error's REX::W32::MessageBoxW call removed; the spdlog critical log line above it and the TerminateProcess below it are kept. Same intent as the Light Placer overlay-port patch - this project's no-popup rule. An address-library failure now writes WeatherBehavior.log instead of a modal.",
+      "CMakeUserPresets.json (build-environment only, not a source change): adds a ninja-release preset inheriting the upstream base+vcpkg presets. The upstream 'release' preset asks for generator 'Visual Studio 18 2026', which this machine does not have; VS 2022 Community is the only installed toolset."
+    ],
+    "diffStat": " extern/CommonLibSSE-NG | 2 +-\n src/Manager.cpp        | 4 ++--\n 2 files changed, 3 insertions(+), 3 deletions(-)\n (submodule) include/SKSE/Impl/PCH.h | 5 ++++-\n 1 file changed, 4 insertions(+), 1 deletion(-)",
+    "ownCodeSize": "1419 lines of the mod's own C++ (Config.cpp 345, Manager.cpp 358, Menu.cpp 443, Main.cpp 65, headers 208), plus a vendored third-party includes/SKSEMenuFramework.h of 11388 lines that the author did not write."
+  },
+  "build": {
+    "targetRuntime": "SkyrimSE.exe 1.7.104.0",
+    "targetSKSE": "2.3.1",
+    "commonLib": {
+      "family": "CommonLibSSE-NG (alandtse/CommonLibVR, branch ng) - the lineage this project already used; no port to another fork was needed, unlike the Light Placer rebuild.",
+      "commonLibSSE": "2dde70e8bdf9890bbd5e648966c7d2c24e83092f (release 7.1.0, 2026-09-02)",
+      "commonLibShared": "n/a - the NG line keeps REL/REX in-tree",
+      "addressLibraryV5": "src/REL/IDDB.cpp accepts formats 1, 2 and 5 (load_v5 at :209/:258)",
+      "license": "GPL-3.0-or-later (COPYING) with the modding linking exception (EXCEPTIONS.md), which grants the right to link and distribute the combination; corresponding source for the covered work is the public alandtse/CommonLibVR repository at the pinned commit plus patches/commonlibsse-ng-no-modal-fail.patch."
+    },
+    "toolchain": {
+      "generator": "Ninja (VS 2022 bundled, Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja)",
+      "compiler": "MSVC 19.44.35223.0 (VC/Tools/MSVC/14.44.35207, Hostx64/x64, VS 2022 Community)",
+      "vcpkgRoot": "C:/Users/danjo/source/repos/vcpkg",
+      "vcpkgCommit": "ddd0023b0eee70986e42ed49d9d4afb8098f212e (2026-08-25)",
+      "builtinBaseline": "ee12231b20c95013c6638d845d04c91559a1d1ff (upstream's own, from vcpkg.json)",
+      "triplet": "x64-windows-static",
+      "buildType": "Release",
+      "crt": "MultiThreaded (/MT)",
+      "flags": "upstream presets: /EHsc /MP /W4 /permissive-, Release /O2 /Ob2 /DNDEBUG, /Zi with /DEBUG /OPT:REF /OPT:ICF",
+      "commonLibOptions": "Enable Skyrim SE: ON, Enable Skyrim AE: ON, Enable Skyrim VR: ON, Enable Xbyak: OFF, Enable Patch Safety Checks: ON, Build Tests: OFF",
+      "vcpkgDependencies": "nlohmann_json 3.12.0 (direct), plus CommonLibSSE-NG's own set: directxmath, directxtk, fmt, rapidcsv, simpleini, spdlog, toml11, xbyak",
+      "notes": "Built at BelowNormal priority per the machine-usability rule."
+    },
+    "command": "Enter-VsDevShell -VsInstallPath 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community' -DevCmdArguments '-arch=x64 -host_arch=x64'; $env:VCPKG_ROOT='C:/Users/danjo/source/repos/vcpkg'; cmake --preset ninja-release && cmake --build --preset ninja-release",
+    "cleanBuild": true,
+    "warnings": 4,
+    "warningDetail": "C4099 x1 and C5054 x3, all inside the vendored third-party includes/SKSEMenuFramework.h (struct/class tag mismatch on ImGuiMCP::ImGuiTextFilter, deprecated operator| between different enumerations). Zero warnings in the mod's own sources. Upstream does not build with /WX, so none is blocking.",
+    "errors": 0,
+    "buildLog": "skyrim-tools-source/WeatherBehavior-1.7.104/build-logs/build.log (503/503 targets, exit 0)",
+    "tests": "none - upstream ships no test suite"
+  },
+  "artifact": {
+    "dll": "WeatherBehavior.dll",
+    "sha256": "4037C313E7157E22BD6F552845F3F02CF40B3459CA00923FBBB85C1239B58B67",
+    "sizeBytes": 1056256,
+    "peTimestamp": 1788376171,
+    "peTimestampUtc": "2026-09-02 19:09:31Z",
+    "pdb": "WeatherBehavior.pdb",
+    "pdbSha256": "59901A785605043AAE2C27E7FB6232E698FCAF55F3318F1C1E10B485B808154F",
+    "pdbSizeBytes": 27316224
+  },
+  "package": {
+    "layout": "MO2 mod root staged at records/source-builds/ensrick-seasonal-clothing-framework/ (SKSE/Plugins/WeatherBehavior.dll + .pdb, CommonLibSSE-NG-COPYING.txt, CommonLibSSE-NG-EXCEPTIONS.md, README-STAGED-NOT-INSTALLED.txt). Matches the vendor archive's own shape, which is only skse/plugins/WeatherBehavior.dll + .pdb.",
+    "gitTracked": false,
+    "gitTrackedNote": "The repository is deny-by-default (.gitignore line 4 is '*' with an explicit allowlist); only records/source-builds/*.json is allowlisted, so the staged binaries are ignored exactly like the Light Placer staging directory. git check-ignore confirms.",
+    "missingLicenceNotice": "No upstream licence notice is shipped because none exists. If Bottle answers with a licence, his notice must be added here before this can be packaged."
+  },
+  "featureDefaultsDiff": {
+    "changed": {},
+    "onlyInBuilt": {
+      "seasonCalendar": "\"vanilla\""
+    },
+    "onlyInUpstream": {},
+    "note": "One new key from the unreleased PR #1. Its default is 'vanilla', which is the 1.0.1 month-to-season mapping, so out-of-the-box behaviour is unchanged; 'monthly' is opt-in. Verified at src/Config.h:49 (std::string seasonCalendar{ kSeasonCalendarVanilla }) and src/Config.cpp:215 (root.value(\"seasonCalendar\", kSeasonCalendarVanilla)). Every other setting is identical: enabled=true, onlyOutdoors=true, pollSeconds=5 (src/Config.h:43-45, src/Config.cpp:212-214). The mod writes no INI; its settings live in Data/SKSE/Plugins/WeatherBehavior.json, created on first run, so there is no upstream defaults file to diff byte-for-byte."
+  },
+  "skseGate": {
+    "tool": "py -3 audit/skse_version_data.py records/source-builds/ensrick-seasonal-clothing-framework/SKSE/Plugins/WeatherBehavior.dll",
+    "peTimestamp": 1788376171,
+    "peTimestampUtc": "2026-09-02 19:09:31Z",
+    "name": "WeatherBehavior",
+    "author": "bottle",
+    "pluginVersionPacked": 16777216,
+    "pluginVersion": "1.0.0.0",
+    "versionIndependence": 1,
+    "versionIndependenceEx": 1,
+    "addressLibraryV5Bit": false,
+    "compatibleVersions": [
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0",
+      "1.0.0.0"
+    ],
+    "exports": [
+      "SKSEPlugin_Load",
+      "SKSEPlugin_Query",
+      "SKSEPlugin_Version"
+    ],
+    "verdict": "PASS (version independent)",
+    "v5BitExplanation": "The absent AddressLibraryV5 bit is not a defect. This project declares itself through CommonLibSSE-NG's newer SKSEPluginInfo/PluginDeclaration API, whose StructCompatibility field occupies offset 0x304 - the same offset PluginVersionData calls versionIndependenceEx - and whose Independent value is 1. SKSE only treats a missing V5 bit as fatal when the PE TimeDateStamp falls in [520128000, 1748217600); this build stamps 2026-09-02 and passes on the stamp. The vendor 1.0.1 DLL declares the identical viEx=1 and SKSE admits it too, which is precisely why the static gate was never the discriminator here.",
+    "compatibleVersionsNote": "Not a real compatible-version list and not read by SKSE here. CommonLibSSE-NG's PluginDeclaration stores RuntimeCompatibility as std::array<VersionNumber,16> _compatibleVersions{} (include/SKSE/Interfaces.h), and VersionNumber default-constructs to major=1 (a_major = 1 in its default arguments), so value-initialising the array yields sixteen 0x01000000 entries. audit/skse_version_data.py reads that region at the PluginVersionData offset and prints them. SKSE ignores the array entirely when kVersionIndependent_AddressLibraryPostAE is set, which it is. The vendor 1.0.1 DLL shows the identical sixteen entries."
+  },
+  "noPopups": "Satisfied. A string scan of the built DLL finds no MessageBoxA or MessageBoxW import name; the vendor 1.0.1 DLL imports both. The only caller was SKSE::stl::report_and_error, patched by patches/commonlibsse-ng-no-modal-fail.patch, which keeps the spdlog critical line and TerminateProcess. Address-library failures land in WeatherBehavior.log.",
+  "verified": [
+    "Clean Release build of all 503 targets against alandtse/CommonLibVR 2dde70e8bd with the upstream /W4 /permissive- flags: 0 errors, 4 warnings, all four inside the vendored third-party SKSEMenuFramework.h (skyrim-tools-source/WeatherBehavior-1.7.104/build-logs/build.log, 2026-09-02 19:09Z).",
+    "The DLL exports SKSEPlugin_Load, SKSEPlugin_Query and SKSEPlugin_Version, and audit/skse_version_data.py returns PASS (version independent) with name='WeatherBehavior', author='bottle'.",
+    "The built DLL contains REL::IDDB::load_v5(..., header_v5_t, ...); the vendor 1.0.1 DLL contains no load_v5 symbol. That single difference is the entire blocker the 08-30 record identified.",
+    "Neither MessageBoxA nor MessageBoxW appears in the built DLL; the vendor DLL imports both.",
+    "Feature defaults: one added key (seasonCalendar='vanilla', behaviour-neutral); enabled/onlyOutdoors/pollSeconds unchanged from 1.0.1.",
+    "The mod's two hard requirements already load on this profile's 1.7.104 runtime - skse64.log of the 2026-09-02 13:33 session: 'plugin po3_Tweaks.dll (00000001 powerofthree's Tweaks 01110010) loaded correctly (handle 20)' and 'plugin SKSEMenuFramework.dll (00000001 SKSEMenuFramework 030D0000) loaded correctly (handle 25)'. KID 4.1.0 and SPID also load. Adopting this adds no new dependency.",
+    "Vendor archive integrity re-confirmed before analysis: 186269-780931.zip sha256 b61c329c9ab57e14e4c804f1c8f4916d11420f782e8521516e9e1737cd2e02d1, matching records/modern-cloak-system-research-2026-08-30.md."
+  ],
+  "notVerified": [
+    "NO LAUNCH. The plugin has never been loaded by the game. Per docs/CURATION_POLICY.md 'Launch verification is the definition of done', this build is not done: it needs an install under the instance work claim followed by an audit/launch_verify.py PASS before any adoption claim is made. The SKSE static gate is necessary and never sufficient - Open Animation Replacer passed it and hung the load.",
+    "No rule has been created, no NPC has been given an item, and no cleanup path (save/reload, cell unload, weather clear, actor death, master-switch off) has been exercised.",
+    "PR #1's seasonCalendar code (self-declared AI-assisted, +125/-24) has not been code-reviewed by this project. It is inert at the default 'vanilla' setting, but that is an argument for leaving the default alone, not for trusting the 'monthly' path.",
+    "The patched report_and_fail log-only path has not been exercised on this DLL - it would need a deliberately missing or corrupt Address Library."
+  ],
+  "installation": null,
+  "launch": null,
+  "rebuild": "git clone --recurse-submodules https://github.com/InTheBottle/WeatherBehavior.git, checkout ade391ae90, then in extern/CommonLibSSE-NG checkout 2dde70e8bdf9890bbd5e648966c7d2c24e83092f and git submodule update --init --recursive; apply patches/commonlibsse-ng-no-modal-fail.patch inside the submodule; change the two static_cast<std::uint32_t>(...GetSlotMask()) expressions in src/Manager.cpp to ...GetSlotMask().underlying(); add a ninja-release CMakeUserPresets.json inheriting base+vcpkg with generator Ninja (the upstream release preset needs 'Visual Studio 18 2026'); then set VCPKG_ROOT=C:/Users/danjo/source/repos/vcpkg inside a VS 2022 x64 developer environment and run cmake --preset ninja-release && cmake --build --preset ninja-release. Copy build/ninja-release/WeatherBehavior.dll and .pdb into SKSE/Plugins of the mod root.",
+  "distribution": {
+    "status": "local-only",
+    "basis": "BLOCKED ON UPSTREAM LICENCE. The upstream repository carries no licence file and the Nexus page carries no structured permission grant - only the author's instruction 'please ask i probably wont say no'. Under docs/PATCH_INTENTS.md and the #160 eligibility ruling, vendorBytesAllowed covers permissive licences or a quoted upload permission, and this has neither, so the artifact may run on this machine and may not be packaged, uploaded, or forked. The upstream vcpkg.json declares \"license\": \"MIT\", which is evidence of intent but not a grant: MIT requires a copyright and permission notice to be reproduced, and none exists to reproduce. CommonLibSSE-NG's own GPL-3.0-or-later + modding linking exception is satisfied and is not the constraint.",
+    "promotionCondition": "If Bottle confirms a permissive licence (or adds a LICENSE file), this becomes 'distributable' on the Light Placer pattern: ship the artifact with his notice as WeatherBehavior-LICENSE.txt alongside CommonLibSSE-NG-COPYING.txt and CommonLibSSE-NG-EXCEPTIONS.md, with the public upstream commit as corresponding source. A drafted message is staged in records/cloak-framework-rebuild-2026-09-02.md - NOT SENT; contacting the author is the user's call.",
+    "recipeFallback": "If he permits compilation but not redistribution, the fallback class is 'recipe': the installer regenerates from InTheBottle/WeatherBehavior@ade391ae + alandtse/CommonLibVR@2dde70e8 + the two patches recorded here. It ships no vendor bytes, but it asks every user to run a 503-target C++ build with vcpkg and VS 2022, which is not a realistic modlist installer step.",
+    "vendorFilesModified": false
+  }
+}

@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory, Position = 0)]
-    [ValidateSet('loot', 'synthesis', 'spriggit')]
+    [ValidateSet('loot', 'synthesis', 'spriggit', 'zmerge')]
     [string] $Tool,
 
     [Parameter(Mandatory)]
@@ -85,6 +85,19 @@ foreach ($candidate in @(
             (Get-FileHash -LiteralPath $liblootPath -Algorithm SHA256).Hash
         if ($actualLiblootHash -ne [string] $candidate.Entry.liblootSha256) {
             throw "Checksum mismatch for '$($candidate.Name)' libloot."
+        }
+    }
+
+    foreach ($companion in @($candidate.Entry.companionFiles)) {
+        if (-not $companion) { continue }
+        $companionPath = [string] $companion.path
+        if (-not (Test-Path -LiteralPath $companionPath -PathType Leaf)) {
+            throw "Pinned companion for '$($candidate.Name)' is missing: $companionPath"
+        }
+        $actualCompanionHash =
+            (Get-FileHash -LiteralPath $companionPath -Algorithm SHA256).Hash
+        if ($actualCompanionHash -ne [string] $companion.sha256) {
+            throw "Checksum mismatch for '$($candidate.Name)' companion: $companionPath"
         }
     }
 }

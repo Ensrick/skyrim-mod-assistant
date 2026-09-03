@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Sons of Skyrim - Patches/Sons of Skyrim - Lux Orbis Patch.esp",
+      "destination": "Sons of Skyrim - Lux Orbis Patch.esp"
+    }
+  ]
+}

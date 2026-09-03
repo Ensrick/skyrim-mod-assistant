@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "CORE",
+      "destination": "."
+    },
+    {
+      "source": "2K",
+      "destination": "."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "Full/Navigator-NavFixes.esl", "destination": "Navigator-NavFixes.esl" },
+    { "source": "Add-ons/3DNPCNavFix.esp", "destination": "3DNPCNavFix.esp" },
+    { "source": "Add-ons/VigilantNavFix.esp", "destination": "VigilantNavFix.esp" },
+    { "source": "SunderWraithguardAIO/SightlessNavFix.esp", "destination": "SightlessNavFix.esp" }
+  ]
+}

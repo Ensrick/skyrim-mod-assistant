@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "00 Core Files", "destination": "." }
+  ]
+}

@@ -1,0 +1,67 @@
+# Cell fields after man_DaedricShrines.esp
+
+Captured: `2026-09-02T18:18:39Z`
+
+- Candidate chains: 17
+- Final semantic field differences: 59
+- Read/join failures: 0
+
+- `DA14Interior` `ImageSpace`: Lux.esp differs from man_DaedricShrines.esp
+- `DA14Interior` `Lighting`: Lux.esp differs from man_DaedricShrines.esp
+- `DA14Interior` `LightingTemplate`: Lux.esp differs from man_DaedricShrines.esp
+- `DA14Interior` `WaterHeight`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleBossRoom` `Flags`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleBossRoom` `ImageSpace`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleBossRoom` `Lighting`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleBossRoom` `LightingTemplate`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleBossRoom` `SkyAndWeatherFromRegion`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleBossRoom` `WaterHeight`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleGuildhall` `Flags`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleGuildhall` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleGuildhall` `Lighting`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleGuildhall` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC1VampireCastleGuildhall` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2KolbjornBarrow01` `Flags`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2KolbjornBarrow01` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2KolbjornBarrow01` `Lighting`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2KolbjornBarrow01` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2KolbjornBarrow01` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2KolbjornBarrow01` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `DLC2TempleofMiraak02` `ImageSpace`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC2TempleofMiraak02` `Lighting`: Lux.esp differs from man_DaedricShrines.esp
+- `DLC2TempleofMiraak02` `LightingTemplate`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLair01` `Flags`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLair01` `ImageSpace`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLair01` `Lighting`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLair01` `LightingTemplate`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLair01` `SkyAndWeatherFromRegion`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLair01` `WaterHeight`: Lux.esp differs from man_DaedricShrines.esp
+- `MovarthsLairExterior03` `Location`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `MovarthsLairExterior03` `Water`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `NightcallerTemple01` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `NightcallerTemple01` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `NightcallerTemple01` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `Flags`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `Lighting`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `RiftenThievesGuildHeadquarters` `WaterHeight`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `Flags`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `ImageSpace`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `Lighting`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `LightingTemplate`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `SkyAndWeatherFromRegion`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `WaterEnvironmentMap`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `TwilightSepulcher01` `WaterHeight`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp
+- `WhiterunDragonsreach` `ImageSpace`: Lux.esp differs from man_DaedricShrines.esp
+- `WhiterunDragonsreach` `Lighting`: Lux.esp differs from man_DaedricShrines.esp
+- `WhiterunDragonsreach` `LightingTemplate`: Lux.esp differs from man_DaedricShrines.esp
+- `WhiterunDragonsreach` `WaterHeight`: Lux.esp differs from man_DaedricShrines.esp
+- `WindhelmSadrisUsedWares` `Flags`: Lux.esp differs from man_DaedricShrines.esp
+- `WindhelmSadrisUsedWares` `ImageSpace`: Lux.esp differs from man_DaedricShrines.esp
+- `WindhelmSadrisUsedWares` `Lighting`: Lux.esp differs from man_DaedricShrines.esp
+- `WindhelmSadrisUsedWares` `LightingTemplate`: Lux.esp differs from man_DaedricShrines.esp
+- `WindhelmSadrisUsedWares` `SkyAndWeatherFromRegion`: Lux.esp differs from man_DaedricShrines.esp
+- `aaaMephalaShrine` `Water`: Ensrick Lux Water CS Patch.esp differs from man_DaedricShrines.esp

@@ -1,0 +1,15 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Ensrick Guard Scaling Patch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: 'Ordinary guards scale 1:1 with the player (level mult 1, minimum level 5). Issue #51. Override-only, generated.'
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Dragonborn.esm
+    FileSize: 0

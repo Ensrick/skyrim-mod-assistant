@@ -1,0 +1,33 @@
+FormKey: 02129C:Skyrim.esm
+Flags:
+  ResetHours: 0.49988556
+PreviousDialog: 02129B:Skyrim.esm
+FavorLevel: None
+Responses:
+- Emotion: Happy
+  EmotionValue: 100
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mind you don't cross Tassius. He's in charge around here.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 019A26:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: Reference
+    Reference: 931000:Update.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 9A8B1D:Skyrim Unbound.esp

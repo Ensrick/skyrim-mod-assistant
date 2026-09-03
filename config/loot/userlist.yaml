@@ -1,0 +1,76 @@
+groups:
+  - name: 'Ensrick Compatibility Patches'
+    after: [ 'Late Loaders' ]
+  - name: 'Ensrick Generated Patches'
+    after: [ 'Ensrick Compatibility Patches' ]
+
+plugins:
+  # Lux CS' own FOMOD says its Orbis plugin must load after Orbis and all
+  # Orbis patches. The upstream masterlist does not currently enforce this.
+  - name: 'Lux Orbis CS.esp'
+    after:
+      - 'Lux Orbis.esp'
+      - 'Lux Orbis - Riften Sconce Patch.esp'
+      - 'Lux Orbis - USSEP patch.esp'
+      - 'Sons of Skyrim - Lux Orbis Patch.esp'
+
+  # The upstream masterlist currently matches an older, shorter filename and
+  # otherwise sorts this official patch after the generated conflict patch.
+  - name: 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+    group: 'Ensrick Compatibility Patches'
+    after:
+      - 'WENB Shades USSEP.esp'
+
+  # Generated from the complete active load order and therefore must remain
+  # after every input winner, including the official compatibility patch.
+  - name: 'Ensrick Lux Water CS Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+      - 'WENB Shades USSEP.esp'
+
+  # Small owned semantic patches are generated from current-profile winners;
+  # keep them behind late map, water, and profile-specific compatibility layers.
+  - name: 'Ensrick General Compatibility Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick Lux Water CS Patch.esp'
+      - 'Lux - Water for ENB (Shades of skyrim) patch.esp'
+      - 'A Clear Map of Skyrim.esp'
+      - 'ACMOS - Bruma.esp'
+
+  - name: 'Ensrick CRF Semantic Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick General Compatibility Patch.esp'
+      - 'Water for ENB (Shades of Skyrim).esp'
+      - 'nwsFollowerFramework.esp'
+      - 'Skyrim Unbound.esp'
+      - 'Lux.esp'
+
+  # Guard scaling (#51): overrides the two vanilla guard stats templates that
+  # USSEP forwards and Dragonborn's Redoran guard template; must stay behind
+  # every other Ensrick generated patch and anything else touching NPC_ records.
+  - name: 'Ensrick Guard Scaling Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick CRF Semantic Patch.esp'
+      - 'unofficial skyrim special edition patch.esp'
+      - 'NW_Sons_of_Skyrim.esp'
+      - 'NW_Sons_of_Skyrim - My fixes by Xtudo.esp'
+      - 'cutting room floor.esp'
+
+  # Wolf territorial behaviour (#42): overrides the AI aggro-radius bands on the
+  # ambient wolf bases of Skyrim, Bruma, Beyond Reach and the Gray Cowl, and
+  # de-inherits the Flaming Familiar. Must stay behind every other Ensrick
+  # generated patch and anything else touching those NPC_ records.
+  - name: 'Ensrick Wolf Territorial Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick Guard Scaling Patch.esp'
+      - 'Ensrick CRF Semantic Patch.esp'
+      - 'unofficial skyrim special edition patch.esp'
+      - 'Unofficial Skyrim Modders Patch.esp'
+      - 'BSHeartland.esm'
+      - 'arnima.esm'
+      - 'Gray Fox Cowl.esm'

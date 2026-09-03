@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Cuting Room Floor.esp",
+      "destination": "Lux - Cuting Room Floor.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Skyrim Unbound patch.esp",
+      "destination": "Lux - Skyrim Unbound patch.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - BS Bruma patch.esp",
+      "destination": "Lux - BS Bruma patch.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Wyrmstooth.esp",
+      "destination": "Lux - Wyrmstooth.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Wyrmtooth meshes/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp",
+      "destination": "Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Gray Cowl of Nocturnal meshes/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Vigilant patch.esp",
+      "destination": "Lux - Vigilant patch.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Vigilant meshes/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Vigilant meshes/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Water for ENB (Shades of skyrim) patch.esp",
+      "destination": "Lux - Water for ENB (Shades of skyrim) patch.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - 3DNPC patch.esp",
+      "destination": "Lux - 3DNPC patch.esp"
+    },
+    {
+      "source": "Lux (patch hub)/00 Data/Lux - Grand Solitude patch.esp",
+      "destination": "Lux - Grand Solitude patch.esp"
+    }
+  ]
+}

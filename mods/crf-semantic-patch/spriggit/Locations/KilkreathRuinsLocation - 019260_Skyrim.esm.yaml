@@ -1,0 +1,130 @@
+FormKey: 019260:Skyrim.esm
+EditorID: KilkreathRuinsLocation
+Version2: 13
+PersistentActorReferencesAdded:
+- Actor: 00183A:cutting room floor.esp
+  Location: 00003C:Skyrim.esm
+  Grid: -22, 24
+PersistentActorReferencesRemoved:
+- 093A3A:Skyrim.esm
+- 093A34:Skyrim.esm
+- 093A35:Skyrim.esm
+UniqueActorReferencesAdded:
+- Actor: 04E4DF:Skyrim.esm
+  Ref: 04E4E0:Skyrim.esm
+  Location: 019260:Skyrim.esm
+LocationRefTypeReferencesAdded:
+- LocationRefType: 10F63C:Skyrim.esm
+  Ref: 01626D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: -23, 24
+- LocationRefType: 0E7520:Skyrim.esm
+  Ref: 106B9B:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: -23, 24
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE50:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 31, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE50:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 31, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE50:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 31, -1
+- LocationRefType: 10F63C:Skyrim.esm
+  Ref: 01637C:Skyrim.esm
+  Location: 035699:Skyrim.esm
+  Grid: 31, -1
+- LocationRefType: 10F63C:Skyrim.esm
+  Ref: 01637C:Skyrim.esm
+  Location: 035699:Skyrim.esm
+  Grid: 31, -1
+- LocationRefType: 10F63C:Skyrim.esm
+  Ref: 01637C:Skyrim.esm
+  Location: 035699:Skyrim.esm
+  Grid: 31, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE4D:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 32, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE4D:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 32, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE4D:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 32, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE4E:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 32, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE4E:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 32, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE4E:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 32, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE48:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 33, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE48:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 33, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F6EE48:Lux.esp
+  Location: 035699:Skyrim.esm
+  Grid: 33, -1
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F414DB:Lux.esp
+  Location: 027D1C:Skyrim.esm
+  Grid: 32767, 32767
+- LocationRefType: 043566:Skyrim.esm
+  Ref: F507E6:Lux.esp
+  Location: 015255:Skyrim.esm
+  Grid: 32767, 32767
+WorldspaceCellsAdded:
+- Location: 035699:Skyrim.esm
+  Coordinates:
+  - 0, 0
+  - 0, 0
+  - 30, -1
+  - 31, -1
+  - 31, -2
+  - 34, -1
+  - 33, -1
+  - 32, -1
+  - 32, -2
+InitiallyDisabledReferencesAdded:
+- 04E4E0:Skyrim.esm
+- F414DB:Lux.esp
+- F507E6:Lux.esp
+- F6EE50:Lux.esp
+- F6EE48:Lux.esp
+- F6EE4D:Lux.esp
+- F6EE4E:Lux.esp
+- F6EE50:Lux.esp
+- F6EE48:Lux.esp
+- F6EE4E:Lux.esp
+- F6EE4D:Lux.esp
+- F6EE50:Lux.esp
+- F6EE48:Lux.esp
+- F6EE4E:Lux.esp
+- F6EE4D:Lux.esp
+Name:
+  TargetLanguage: English
+  Value: Kilkreath Ruins
+Keywords:
+- 0130F2:Skyrim.esm
+- 0130DB:Skyrim.esm
+- 0130E1:Skyrim.esm
+ParentLocation: 016770:Skyrim.esm
+WorldLocationMarkerRef: 01626D:Skyrim.esm
+WorldLocationRadius: 0

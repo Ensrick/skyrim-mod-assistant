@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Skyking Unique Signs/01 Skyking Unique Signs/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Skyking Unique Signs/01 Skyking Unique Signs/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "Skyking Unique Signs/01 Skyking Unique Signs/Skykings Unique Signs.esp",
+      "destination": "Skykings Unique Signs.esp"
+    },
+    {
+      "source": "Skyking Unique Signs/01 Skyking Unique Signs/Skykings Unique Signs_SWAP.ini",
+      "destination": "Skykings Unique Signs_SWAP.ini"
+    },
+    {
+      "source": "Skyking Unique Signs/02 Parallax/meshes",
+      "destination": "meshes"
+    }
+  ]
+}

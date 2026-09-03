@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Hothtrooper44_Armor_Ecksstra.esp",
+      "destination": "Hothtrooper44_Armor_Ecksstra.esp"
+    },
+    {
+      "source": "Hothtrooper44_Armor_Ecksstra.bsa",
+      "destination": "Hothtrooper44_Armor_Ecksstra.bsa"
+    },
+    {
+      "source": "Hothtrooper44_ArmorCompilation.esp",
+      "destination": "Hothtrooper44_ArmorCompilation.esp"
+    },
+    {
+      "source": "Hothtrooper44_ArmorCompilation.bsa",
+      "destination": "Hothtrooper44_ArmorCompilation.bsa"
+    }
+  ]
+}

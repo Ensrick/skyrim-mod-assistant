@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "data/dD - Enhanced Blood Main LITE.esp",
+      "destination": "dD - Enhanced Blood Main LITE.esp"
+    },
+    {
+      "source": "data/textures",
+      "destination": "textures"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Death Hound Loot Fix",
+  "version": "2026-09-02",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/199",
+  "sourcePath": "overlays/ensrick-death-hound-loot-fix",
+  "kind": "SkyPatcher configuration overlay (no plugin, no generator, no vendor bytes)",
+  "output": {
+    "files": [
+      {
+        "path": "SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/Ensrick - Death Hound Loot.ini",
+        "sha256": "15CB9B6C1F3515A7AD0738A90A5545BC139E18C5EE26284D2F5EDDC981DD3B53",
+        "bytes": 2168
+      }
+    ],
+    "plugins": [],
+    "directives": {
+      "removeFromLLs": 1
+    }
+  },
+  "diagnosis": {
+    "list": "00D6F7:Dawnguard.esm DLC1DeathItemDeathHound, flags UseAll, chanceNone 0",
+    "entries": [
+      "0F961F:Skyrim.esm LootSmallTreasure10",
+      "0EDB2E:Skyrim.esm FoodDogMeat",
+      "00F709:Dawnguard.esm DLC1DeathHoundCollar"
+    ],
+    "winner": "Dawnguard.esm - nothing in the 327-plugin order overrides it",
+    "shoCoverage": "Simple Hunting Overhaul 1.16 overrides 24 death-item lists; the death hound is not one, as recorded at adoption in records/simple-hunting-overhaul-95943-2026-08-30.md",
+    "otherHits": "1AF87E:Vigilant.esm zzzCHDeathItemHound has the same shape and is deliberately NOT touched - different creature, not what was observed"
+  },
+  "decision": {
+    "chosen": "SkyPatcher removeFromLLs - one line",
+    "rejected": "an SHO-side harvest entry: the SHO meat branch only adds _MeatTracker and returns, so time and hunting XP are charged solely on a PELT take. Adding the death hound to the SHO meat formlist would leave the meat exactly as lootable. A death hound is undead and has no pelt to harvest.",
+    "leftAlone": "LootSmallTreasure10 stays. SHO strips it from the animals it covers, but that was not what was reported and it is not ours to change silently."
+  },
+  "installation": {
+    "mo2Mod": "Ensrick - Death Hound Loot Fix",
+    "profile": "Default",
+    "enabled": true,
+    "modPriorityAtInstall": 262,
+    "stageTransaction": "20260903T041656278Z-bcda5604bcb0",
+    "activePluginsAfter": 243,
+    "verify": "install_mod.py --verify: 0 problem(s)"
+  },
+  "validation": {
+    "launchVerify": "records/launch-verify-20260902-231840.md - PASS",
+    "skyPatcherLog": "processed with no errors, last in the leveledList pass",
+    "gameplayAcceptance": "pending - needs a death hound killed and looted"
+  },
+  "distribution": {
+    "status": "distributable",
+    "vendorFilesModified": false,
+    "basis": "our own INI; a runtime edit of a Bethesda leveled list, distribution-only, touching no Simple Hunting Overhaul 95943 file"
+  }
+}

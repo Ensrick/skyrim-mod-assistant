@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "000 Core Files", "destination": "." },
+    { "source": "100 Default INI/A Clear Map of Skyrim.ini", "destination": "A Clear Map of Skyrim.ini" },
+    { "source": "201 Bruma", "destination": "." },
+    { "source": "204 Wyrmstooth", "destination": "." },
+    { "source": "205 Beyond Reach", "destination": "." },
+    { "source": "300 No Clouds", "destination": "." }
+  ]
+}

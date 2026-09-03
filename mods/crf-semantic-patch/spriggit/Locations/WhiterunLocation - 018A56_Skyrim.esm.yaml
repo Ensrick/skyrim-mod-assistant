@@ -1,0 +1,1830 @@
+FormKey: 018A56:Skyrim.esm
+EditorID: WhiterunLocation
+Version2: 6
+PersistentActorReferencesAdded:
+- Actor: 003F5E:HearthFires.esm
+  Location: 01605E:Skyrim.esm
+  Grid: 32767, 32767
+- Actor: 01A6A4:Skyrim.esm
+  Location: 01A42B:cutting room floor.esp
+  Grid: 32767, 32767
+- Actor: 01A6A5:Skyrim.esm
+  Location: 01A42B:cutting room floor.esp
+  Grid: 32767, 32767
+- Actor: 10E2B6:Skyrim.esm
+  Location: 021C2B:cutting room floor.esp
+  Grid: 32767, 32767
+UniqueActorReferencesAdded:
+- Actor: 003F5F:HearthFires.esm
+  Ref: 003F5E:HearthFires.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 013669:Skyrim.esm
+  Ref: 013698:Skyrim.esm
+  Location: 018A56:Skyrim.esm
+- Actor: 013BAA:Skyrim.esm
+  Ref: 01A66A:Skyrim.esm
+  Location: 01F86B:Skyrim.esm
+- Actor: 013BA9:Skyrim.esm
+  Ref: 01A66B:Skyrim.esm
+  Location: 01F86B:Skyrim.esm
+- Actor: 013B98:Skyrim.esm
+  Ref: 01A66C:Skyrim.esm
+  Location: 01F86B:Skyrim.esm
+- Actor: 013BA4:Skyrim.esm
+  Ref: 01A66D:Skyrim.esm
+  Location: 01F86C:Skyrim.esm
+- Actor: 013BA3:Skyrim.esm
+  Ref: 01A66E:Skyrim.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 01A670:Skyrim.esm
+  Ref: 01A671:Skyrim.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 013BA1:Skyrim.esm
+  Ref: 01A672:Skyrim.esm
+  Location: 01F86E:Skyrim.esm
+- Actor: 013BBD:Skyrim.esm
+  Ref: 01A677:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 013BBC:Skyrim.esm
+  Ref: 01A678:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 01434C:Skyrim.esm
+  Ref: 01A679:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 01434B:Skyrim.esm
+  Ref: 01A67A:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 01434D:Skyrim.esm
+  Ref: 01A67B:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 013BBA:Skyrim.esm
+  Ref: 01A67D:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 013BBB:Skyrim.esm
+  Ref: 01A67E:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 013BB8:Skyrim.esm
+  Ref: 01A67F:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 013B9E:Skyrim.esm
+  Ref: 01A681:Skyrim.esm
+  Location: 01F872:Skyrim.esm
+- Actor: 013BAC:Skyrim.esm
+  Ref: 01A682:Skyrim.esm
+  Location: 01F873:Skyrim.esm
+- Actor: 013B9D:Skyrim.esm
+  Ref: 01A683:Skyrim.esm
+  Location: 01F874:Skyrim.esm
+- Actor: 013B9C:Skyrim.esm
+  Ref: 01A684:Skyrim.esm
+  Location: 01F874:Skyrim.esm
+- Actor: 013B9B:Skyrim.esm
+  Ref: 01A685:Skyrim.esm
+  Location: 01F874:Skyrim.esm
+- Actor: 013B9A:Skyrim.esm
+  Ref: 01A686:Skyrim.esm
+  Location: 01F874:Skyrim.esm
+- Actor: 013BA8:Skyrim.esm
+  Ref: 01A68D:Skyrim.esm
+  Location: 01F876:Skyrim.esm
+- Actor: 01A68E:Skyrim.esm
+  Ref: 01A68F:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A690:Skyrim.esm
+  Ref: 01A691:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A692:Skyrim.esm
+  Ref: 01A693:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A694:Skyrim.esm
+  Ref: 01A695:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A696:Skyrim.esm
+  Ref: 01A697:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 013BAE:Skyrim.esm
+  Ref: 01A699:Skyrim.esm
+  Location: 01F879:Skyrim.esm
+- Actor: 013BAB:Skyrim.esm
+  Ref: 01A69A:Skyrim.esm
+  Location: 01F881:Skyrim.esm
+- Actor: 013BB7:Skyrim.esm
+  Ref: 01A69C:Skyrim.esm
+  Location: 01F87C:Skyrim.esm
+- Actor: 01A69D:Skyrim.esm
+  Ref: 01A69E:Skyrim.esm
+  Location: 01F87C:Skyrim.esm
+- Actor: 013BB5:Skyrim.esm
+  Ref: 01A6A1:Skyrim.esm
+  Location: 01F877:Skyrim.esm
+- Actor: 01A6A2:Skyrim.esm
+  Ref: 01A6A3:Skyrim.esm
+  Location: 01F877:Skyrim.esm
+- Actor: 013BBF:Skyrim.esm
+  Ref: 01A6A4:Skyrim.esm
+  Location: 01F872:Skyrim.esm
+- Actor: 013BBE:Skyrim.esm
+  Ref: 01A6A5:Skyrim.esm
+  Location: 01F872:Skyrim.esm
+- Actor: 01A6D5:Skyrim.esm
+  Ref: 01A6D6:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A6D7:Skyrim.esm
+  Ref: 01A6D8:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A6D9:Skyrim.esm
+  Ref: 01A6DA:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 01A6DB:Skyrim.esm
+  Ref: 01A6DC:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 0215F5:Skyrim.esm
+  Ref: 0215F6:Skyrim.esm
+  Location: 0C0BA0:Skyrim.esm
+- Actor: 013BA7:Skyrim.esm
+  Ref: 02C90F:Skyrim.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 038257:Skyrim.esm
+  Ref: 038258:Skyrim.esm
+  Location: 08B5EC:Skyrim.esm
+- Actor: 013BB6:Skyrim.esm
+  Ref: 03BDE9:Skyrim.esm
+  Location: 023E5D:Skyrim.esm
+- Actor: 04E64F:Skyrim.esm
+  Ref: 04FA2F:Skyrim.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 0813B5:Skyrim.esm
+  Ref: 0813BA:Skyrim.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 087B95:Skyrim.esm
+  Ref: 09725D:Skyrim.esm
+  Location: 01F871:Skyrim.esm
+- Actor: 0A2C8E:Skyrim.esm
+  Ref: 0A2C94:Skyrim.esm
+  Location: 01F86F:Skyrim.esm
+- Actor: 0CDD72:Skyrim.esm
+  Ref: 0CDD73:Skyrim.esm
+  Location: 01F86E:Skyrim.esm
+- Actor: 013BA2:Skyrim.esm
+  Ref: 0D7505:Skyrim.esm
+  Location: 01F86D:Skyrim.esm
+- Actor: 0B9982:Skyrim.esm
+  Ref: 0E1BA9:Skyrim.esm
+  Location: 01F872:Skyrim.esm
+- Actor: 013BC0:Skyrim.esm
+  Ref: 10E2B6:Skyrim.esm
+  Location: 01F87C:Skyrim.esm
+LocationRefTypeReferencesAdded:
+- LocationRefType: 09553B:Skyrim.esm
+  Ref: 04281A:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -4
+- LocationRefType: 09553C:Skyrim.esm
+  Ref: 01C3B1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 070F35:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 0954F3:Skyrim.esm
+  Ref: 076EAC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 0954F2:Skyrim.esm
+  Ref: 076EAD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EBE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EC4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EC5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EC9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076ED5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076ED6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076ED7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076ED8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076EDC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 0954E3:Skyrim.esm
+  Ref: 078092:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786CC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786CD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786CE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786CF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786D0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 097245:Skyrim.esm
+  Ref: 08F320:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 095547:Skyrim.esm
+  Ref: 095555:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 10F64C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -3
+- LocationRefType: 043567:Skyrim.esm
+  Ref: 04221F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09553F:Skyrim.esm
+  Ref: 042801:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09553F:Skyrim.esm
+  Ref: 042802:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095540:Skyrim.esm
+  Ref: 042805:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095540:Skyrim.esm
+  Ref: 042807:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 054129:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA41:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA42:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA43:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA4A:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 0954F0:Skyrim.esm
+  Ref: 073FD7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 0954F0:Skyrim.esm
+  Ref: 073FDF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB2:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB3:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095538:Skyrim.esm
+  Ref: 076EB9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EE4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 0954F8:Skyrim.esm
+  Ref: 078097:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786D5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786D6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786D7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786D8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786D9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786DD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095539:Skyrim.esm
+  Ref: 0786DE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 0954F1:Skyrim.esm
+  Ref: 07C4D4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 0954F1:Skyrim.esm
+  Ref: 07C4D5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 097246:Skyrim.esm
+  Ref: 08F321:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09724B:Skyrim.esm
+  Ref: 08F326:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09724C:Skyrim.esm
+  Ref: 08F327:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09553D:Skyrim.esm
+  Ref: 095551:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09553D:Skyrim.esm
+  Ref: 095552:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 095549:Skyrim.esm
+  Ref: 095556:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 0FB8C1:Skyrim.esm
+  Ref: 0FB8C0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 097249:Skyrim.esm
+  Ref: 106D1F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 09724A:Skyrim.esm
+  Ref: 106D20:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 3, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 02FFA9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 09553A:Skyrim.esm
+  Ref: 042813:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 09553A:Skyrim.esm
+  Ref: 042814:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 09553A:Skyrim.esm
+  Ref: 042817:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 09553B:Skyrim.esm
+  Ref: 042820:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0954EF:Skyrim.esm
+  Ref: 045855:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA53:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EFB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EFF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076F02:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076F07:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C7:Skyrim.esm
+  Ref: 0812C5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812C9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812CA:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812CB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812CC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812CD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812CE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812CF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812D0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0812D1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 08F31E:Skyrim.esm
+  Ref: 08F31F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 094A1D:Skyrim.esm
+  Ref: 094A1C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 095544:Skyrim.esm
+  Ref: 09554E:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -4
+- LocationRefType: 09553C:Skyrim.esm
+  Ref: 01C20D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 09553C:Skyrim.esm
+  Ref: 01C5C7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 04222D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 09553B:Skyrim.esm
+  Ref: 04281C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 09553B:Skyrim.esm
+  Ref: 04281E:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 054128:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA48:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 094A20:Skyrim.esm
+  Ref: 072879:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EC6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EC7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EC8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076ECA:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076ED9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076EDA:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076EDB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095533:Skyrim.esm
+  Ref: 076EDD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786D1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786D2:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786D3:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095532:Skyrim.esm
+  Ref: 0786D4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 07D91F:Skyrim.esm
+  Ref: 07D91E:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0216B4:Skyrim.esm
+  Ref: 08CF87:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095545:Skyrim.esm
+  Ref: 09554F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 095546:Skyrim.esm
+  Ref: 095550:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 09B95C:Skyrim.esm
+  Ref: 09B95E:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C7:Skyrim.esm
+  Ref: 0D30FA:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D30FB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D30FC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D30FD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D30FE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D30FF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D3100:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D3101:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D3102:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0D3103:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -3
+- LocationRefType: 0954E2:Skyrim.esm
+  Ref: 01B1F1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553C:Skyrim.esm
+  Ref: 01BD3C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095541:Skyrim.esm
+  Ref: 01C5FE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095541:Skyrim.esm
+  Ref: 01C66C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095541:Skyrim.esm
+  Ref: 01C66E:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 024049:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 02FFAD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 04222E:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 04222F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553F:Skyrim.esm
+  Ref: 042803:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553F:Skyrim.esm
+  Ref: 042804:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095540:Skyrim.esm
+  Ref: 042806:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095540:Skyrim.esm
+  Ref: 042808:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 04E4B4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 05411D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 05411F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 054120:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 05412A:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05EA55:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954E5:Skyrim.esm
+  Ref: 06BBFD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954E4:Skyrim.esm
+  Ref: 06BBFF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F0:Skyrim.esm
+  Ref: 073FDE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F0:Skyrim.esm
+  Ref: 073FE1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F0:Skyrim.esm
+  Ref: 073FE2:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 073FFE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0C62AD:Skyrim.esm
+  Ref: 074DED:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095534:Skyrim.esm
+  Ref: 076EB8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 076EF6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786DA:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786DB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095535:Skyrim.esm
+  Ref: 0786DC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F9:Skyrim.esm
+  Ref: 0786DF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954FB:Skyrim.esm
+  Ref: 0786E0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095543:Skyrim.esm
+  Ref: 078E3F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095543:Skyrim.esm
+  Ref: 078E41:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095543:Skyrim.esm
+  Ref: 078E45:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095543:Skyrim.esm
+  Ref: 078E47:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09554D:Skyrim.esm
+  Ref: 078E49:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553E:Skyrim.esm
+  Ref: 078E4D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553E:Skyrim.esm
+  Ref: 078E50:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553E:Skyrim.esm
+  Ref: 078E52:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553E:Skyrim.esm
+  Ref: 078E53:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095548:Skyrim.esm
+  Ref: 078E54:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 078E55:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 078E57:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954FD:Skyrim.esm
+  Ref: 07B920:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F1:Skyrim.esm
+  Ref: 07C4D6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F1:Skyrim.esm
+  Ref: 07C4D8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954F1:Skyrim.esm
+  Ref: 07C4D9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C7:Skyrim.esm
+  Ref: 0867AF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B2:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B3:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B5:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B7:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867B8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C7:Skyrim.esm
+  Ref: 0867B9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867BA:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867BB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867BC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867BD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867BE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867BF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867C0:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867C1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0812C8:Skyrim.esm
+  Ref: 0867C2:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 08895E:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 08895F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 088962:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 088963:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 088964:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 097247:Skyrim.esm
+  Ref: 08F322:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 097248:Skyrim.esm
+  Ref: 08F323:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09724D:Skyrim.esm
+  Ref: 08F328:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553D:Skyrim.esm
+  Ref: 095553:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09553D:Skyrim.esm
+  Ref: 095554:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09554A:Skyrim.esm
+  Ref: 095557:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09554B:Skyrim.esm
+  Ref: 095558:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 09554C:Skyrim.esm
+  Ref: 095559:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095542:Skyrim.esm
+  Ref: 09555A:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095542:Skyrim.esm
+  Ref: 09555B:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095542:Skyrim.esm
+  Ref: 09555C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD1A2:Skyrim.esm
+  Ref: 0CD1A1:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 104754:Skyrim.esm
+  Ref: 0CD25A:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0FB8BB:Skyrim.esm
+  Ref: 0FB8BD:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0FB8BF:Skyrim.esm
+  Ref: 0FB8BE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 104753:Skyrim.esm
+  Ref: 104752:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 104755:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 104756:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 104757:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 104758:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 104759:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 10475A:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 10475B:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 10475C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 10475D:Skyrim.esm
+  Ref: 1052F4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 1052F7:Skyrim.esm
+  Ref: 1052F6:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0CD2C5:Skyrim.esm
+  Ref: 105947:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 0954FF:Skyrim.esm
+  Ref: 10DEC4:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -2
+- LocationRefType: 095541:Skyrim.esm
+  Ref: 01C66D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -1
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 0559D8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -1
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 0559D9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -1
+- LocationRefType: 095542:Skyrim.esm
+  Ref: 09555D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 4, -1
+- LocationRefType: 095537:Skyrim.esm
+  Ref: 070EEF:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 073FF9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 095536:Skyrim.esm
+  Ref: 0786CB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 095502:Skyrim.esm
+  Ref: 080059:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 095502:Skyrim.esm
+  Ref: 08679C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 0E0E43:Skyrim.esm
+  Ref: 0E0E45:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 0E0E44:Skyrim.esm
+  Ref: 0E0E47:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 0FB8BA:Skyrim.esm
+  Ref: 0FB8BC:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -5
+- LocationRefType: 09553A:Skyrim.esm
+  Ref: 042818:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -4
+- LocationRefType: 04356A:Skyrim.esm
+  Ref: 054117:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -4
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 073FFB:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -3
+- LocationRefType: 095503:Skyrim.esm
+  Ref: 0867A3:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -3
+- LocationRefType: 095503:Skyrim.esm
+  Ref: 0867A8:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -3
+- LocationRefType: 095503:Skyrim.esm
+  Ref: 0F1472:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -3
+- LocationRefType: 095503:Skyrim.esm
+  Ref: 0F1477:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 5, -3
+- LocationRefType: 00E684:Dawnguard.esm
+  Ref: 00E688:Dawnguard.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 01881B:HearthFires.esm
+  Ref: 018B8A:HearthFires.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567DE:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E5:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 074F3C:Skyrim.esm
+  Ref: 074F31:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 08F154:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CA443:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 5, -2
+- LocationRefType: 0ED380:Skyrim.esm
+  Ref: 0ED38F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -6
+- LocationRefType: 04A5F5:Skyrim.esm
+  Ref: 1047E9:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -6
+- LocationRefType: 095502:Skyrim.esm
+  Ref: 0867A2:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 095500:Skyrim.esm
+  Ref: 0867EE:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 095501:Skyrim.esm
+  Ref: 08680C:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 0EC191:Skyrim.esm
+  Ref: 094A1F:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 09B95B:Skyrim.esm
+  Ref: 09B95D:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 0EC190:Skyrim.esm
+  Ref: 0EC192:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 0ED381:Skyrim.esm
+  Ref: 0ED390:Skyrim.esm
+  Location: 00003C:Skyrim.esm
+  Grid: 6, -5
+- LocationRefType: 04B865:Skyrim.esm
+  Ref: 04D0C5:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -3
+- LocationRefType: 04B865:Skyrim.esm
+  Ref: 04D0C6:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -3
+- LocationRefType: 04B865:Skyrim.esm
+  Ref: 04D0C7:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -3
+- LocationRefType: 00425B:HearthFires.esm
+  Ref: 0042AD:HearthFires.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 00425B:HearthFires.esm
+  Ref: 0042AD:HearthFires.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 04B865:Skyrim.esm
+  Ref: 04D0C3:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E4:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E6:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E7:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05BDB0:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 05BDB0:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 0847A9:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 0847F9:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 043565:Skyrim.esm
+  Ref: 0847F9:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 08F152:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 08F156:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 08F158:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -2
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03705F:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037071:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037072:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037087:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 055EA2:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E1:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E2:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 0567DC:Skyrim.esm
+  Ref: 0567E3:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 08AD6C:Skyrim.esm
+  Ref: 08AD65:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 08AD75:Skyrim.esm
+  Ref: 08AD6D:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CC856:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CC85D:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FFB:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FFC:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FFD:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FFE:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FFF:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D1000:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000F2:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000F6:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000F8:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 10D431:Skyrim.esm
+  Ref: 10D433:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 10E2C3:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 10E2C4:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, -1
+- LocationRefType: 02E4E7:Skyrim.esm
+  Ref: 037048:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01C4F6:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01C4F7:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03704B:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03704E:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037053:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037054:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037055:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037056:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037057:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037058:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037060:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037061:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037066:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03706A:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03706E:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037070:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037079:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03707B:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03707C:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037080:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 037081:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 03708A:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 07877C:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 07877D:Skyrim.esm
+  Ref: 07877F:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 078780:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 078781:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 078782:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 078783:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 08AD63:Skyrim.esm
+  Ref: 08AD64:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 0954FC:Skyrim.esm
+  Ref: 08CDC2:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 0205CC:Skyrim.esm
+  Ref: 0BF561:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 094A20:Skyrim.esm
+  Ref: 0C44AD:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 045696:Skyrim.esm
+  Ref: 0CC85E:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FF4:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FF5:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FF6:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FF7:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FF8:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0D0FF9:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0DC9E4:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0DC9E5:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0E0D78:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 0E0D79:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000ED:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000EE:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000F4:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000F5:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 1000F7:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 10E2C1:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+- LocationRefType: 01DA51:Skyrim.esm
+  Ref: 10E2C2:Skyrim.esm
+  Location: 01A26F:Skyrim.esm
+  Grid: 6, 0
+WorldspaceCellsAdded:
+- Location: 00003C:Skyrim.esm
+  Coordinates:
+  - 7, -2
+  - 8, -4
+  - 8, -3
+  - 6, -4
+  - 5, -6
+InitiallyDisabledReferencesAdded:
+- 0A2C94:Skyrim.esm
+- 0215F6:Skyrim.esm
+- 09725D:Skyrim.esm
+- 04FA2F:Skyrim.esm
+- 0786D5:Skyrim.esm
+- 0786DD:Skyrim.esm
+- 076EB3:Skyrim.esm
+- 0786D9:Skyrim.esm
+- 073FDF:Skyrim.esm
+- 076EB0:Skyrim.esm
+- 076EB9:Skyrim.esm
+- 073FD7:Skyrim.esm
+- 078097:Skyrim.esm
+- 0786D8:Skyrim.esm
+- 0786D7:Skyrim.esm
+- 076EB1:Skyrim.esm
+- 0786D6:Skyrim.esm
+- 076EB5:Skyrim.esm
+- 076EB2:Skyrim.esm
+- 0786DE:Skyrim.esm
+- 07C4D5:Skyrim.esm
+- 07C4D4:Skyrim.esm
+- 076EB4:Skyrim.esm
+- 04221F:Skyrim.esm
+- 0F1477:Skyrim.esm
+- 0F1472:Skyrim.esm
+- 0867A8:Skyrim.esm
+- 0867A3:Skyrim.esm
+- 073FFB:Skyrim.esm
+- 0786D2:Skyrim.esm
+- 076EDD:Skyrim.esm
+- 0786D4:Skyrim.esm
+- 0D30FA:Skyrim.esm
+- 09B95E:Skyrim.esm
+- 0786D3:Skyrim.esm
+- 076EDB:Skyrim.esm
+- 076ED9:Skyrim.esm
+- 076EDA:Skyrim.esm
+- 0786D1:Skyrim.esm
+- 070EEF:Skyrim.esm
+- 073FF9:Skyrim.esm
+- 08679C:Skyrim.esm
+- 0E0E45:Skyrim.esm
+- 0786CB:Skyrim.esm
+- 080059:Skyrim.esm
+- 0E0E47:Skyrim.esm
+- 0867EE:Skyrim.esm
+- 09B95D:Skyrim.esm
+- 0867A2:Skyrim.esm
+- 08680C:Skyrim.esm
+- 0EC192:Skyrim.esm
+- 094A1F:Skyrim.esm
+- 045855:Skyrim.esm
+- 0812C5:Skyrim.esm
+- 094A1C:Skyrim.esm
+- 0786CF:Skyrim.esm
+- 10F64C:Skyrim.esm
+- 076EDC:Skyrim.esm
+- 076ED7:Skyrim.esm
+- 0786D0:Skyrim.esm
+- 076ED5:Skyrim.esm
+- 076EAD:Skyrim.esm
+- 076ED6:Skyrim.esm
+- 076ED8:Skyrim.esm
+- 0786CD:Skyrim.esm
+- 0786CE:Skyrim.esm
+- 0786CC:Skyrim.esm
+- 076EAC:Skyrim.esm
+- 07C4D8:Skyrim.esm
+- 073FE1:Skyrim.esm
+- 0786DC:Skyrim.esm
+- 073FE2:Skyrim.esm
+- 073FDE:Skyrim.esm
+- 073FFE:Skyrim.esm
+- 07B920:Skyrim.esm
+- 0867AF:Skyrim.esm
+- 08895F:Skyrim.esm
+- 0786DF:Skyrim.esm
+- 074DED:Skyrim.esm
+- 08895E:Skyrim.esm
+- 076EB8:Skyrim.esm
+- 0786DA:Skyrim.esm
+- 0786E0:Skyrim.esm
+- 076EB7:Skyrim.esm
+- 07C4D9:Skyrim.esm
+- 076EB6:Skyrim.esm
+- 0786DB:Skyrim.esm
+- 04E4B4:Skyrim.esm
+- 10DEC4:Skyrim.esm
+- 07C4D6:Skyrim.esm
+- 0867B9:Skyrim.esm
+- 08CDC2:Skyrim.esm
+- 03704A:Skyrim.esm
+- 07877F:Skyrim.esm
+- 07D91E:Skyrim.esm
+- 10D433:Skyrim.esm
+EnableParentReferencesAdded:
+- Actor: 03704B:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 03704E:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037056:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037057:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037058:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 03706A:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 03706E:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037070:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 03707B:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 03707C:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037080:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037081:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 0D0FF4:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 0D0FF5:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 0D0FF6:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 0D0FF7:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 0D0FF8:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 0D0FF9:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 1000ED:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 1000EE:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 1000F7:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 10E2C1:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 10E2C2:Skyrim.esm
+  Ref: 037049:Skyrim.esm
+- Actor: 037053:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037054:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037055:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 03705F:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037060:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037061:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037066:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037071:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037072:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037079:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 037087:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 03708A:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 0D0FFB:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 0D0FFC:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 0D0FFD:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 0D0FFE:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 0D0FFF:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 0D1000:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 1000F2:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 1000F8:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 10E2C3:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 10E2C4:Skyrim.esm
+  Ref: 03704A:Skyrim.esm
+- Actor: 078780:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+- Actor: 078781:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+- Actor: 078782:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+- Actor: 078783:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+- Actor: 0DC9E4:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+- Actor: 0DC9E5:Skyrim.esm
+  Ref: 07877E:Skyrim.esm
+- Actor: 0E0D78:Skyrim.esm
+  Ref: 07877F:Skyrim.esm
+- Actor: 0E0D79:Skyrim.esm
+  Ref: 07877F:Skyrim.esm
+- Actor: 1000F4:Skyrim.esm
+  Ref: 07877F:Skyrim.esm
+- Actor: 1000F5:Skyrim.esm
+  Ref: 07877F:Skyrim.esm
+- Actor: 1000F6:Skyrim.esm
+  Ref: 07877F:Skyrim.esm
+- Actor: 01A69C:Skyrim.esm
+  Ref: 045855:Skyrim.esm
+  Grid: 0, 1
+- Actor: 01A69E:Skyrim.esm
+  Ref: 045855:Skyrim.esm
+  Grid: 0, 1
+Name:
+  TargetLanguage: English
+  Value: Whiterun
+Keywords:
+- 039793:Skyrim.esm
+- 013168:Skyrim.esm
+- 01C4A2:Skyrim.esm
+- 02A456:Skyrim.esm
+- 02A455:Skyrim.esm
+- 0A6E84:Skyrim.esm
+- 0C4EC8:Skyrim.esm
+- 0CAF5B:Skyrim.esm
+- 042890:Skyrim.esm
+- 079AEC:Skyrim.esm
+- 0CE267:Skyrim.esm
+- 0FDC31:Skyrim.esm
+ParentLocation: 016772:Skyrim.esm
+WorldLocationMarkerRef: 029AAF:Skyrim.esm
+WorldLocationRadius: 0
+HorseMarkerRef: 02C915:Skyrim.esm
+Color: '#0000FFFF'

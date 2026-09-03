@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "INIGO/Data",
+      "destination": "."
+    }
+  ]
+}

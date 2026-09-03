@@ -1,0 +1,51 @@
+# MenuPilot first pilot session + Creations-store discovery - 2026-09-01
+
+Curated from menupilot.log captures (the plugin truncates its log per launch;
+launch B overwrote launch A's lines on disk - the batches below were captured
+live by audit/menupilot.py before that). Archived batch files sit beside the
+log as commands-<n>-*-done.jsonl.
+
+## Launch A (17:28, launch-verify PASS, in-game after autoload)
+
+ping                -> ok runtime=1.7.104.0 ui=1 paused=0 menus_on_stack=2
+menu.list           -> 39 registered menus. NO "Creation Club Menu" on this
+                       runtime despite clib-ng declaring it; the interesting
+                       names: "Mod Manager Menu", "Marketplace Menu".
+menu.open Journal Menu  -> MENU_OPEN; query: open=1 has_view=1 swf="Interface/Quest_Journal.swf"
+menu.close Journal Menu -> query: open=0 has_view=0            (primitives PROVEN)
+
+menu.open "Marketplace Menu" -> opens... Interface/CreditsMenu.swf. The
+  registered "Marketplace Menu" entry is the CREDITS movie: _root.CodeObj
+  exposes only closeMenu / getScrollSpeed / requestCredits, Menu_mc holds
+  CreditsText_tf. 77 members dumped, nothing store-shaped. Red herring name.
+
+17:29:31 - game crashed ~3s after that dump, while the credits movie was open
+  over the in-game state: EXCEPTION_ACCESS_VIOLATION SkyrimSE.exe+059F446
+  (ID 442063+0x316) on a background worker thread (null+0x08 read), NOT in
+  MenuPilot.dll (crash-2026-09-01-17-29-31.log). Reading: kShow-ing the
+  store/credits surface from IN-GAME context runs it without the native
+  backing state the engine sets up when IT opens the screen from the main
+  menu. Rule adopted: drive store surfaces from the MAIN MENU context, or via
+  input-navigation of the engine's own flow, never a cold in-game kShow.
+
+## Launch B (17:31, no autoload, main menu)
+
+ping                -> ok paused=1 menus_on_stack=5
+menu.list           -> stack: SkyParkour / Fader / Mist / Main Menu / Cursor;
+                       Main Menu open=1 has_view=1
+gfx.dump Main Menu  -> "no movie view (menu closed?)" - because at 17:32:41
+                       the MAIN MENU WAS GONE:
+
+LaunchProbe.log shows a double LoadWaitSpinner (double-click on Continue) at
+17:32:41 with autoload_enabled=0, then TweenMenu + InventoryMenu at 17:33:29:
+a person at the desktop took over the session and started playing. Pilot
+driving stopped there; game left running for the user.
+
+## Score
+
+- Menu primitives (list/open/close/query), Scaleform introspection
+  (dump/get/invoke surface) and the command bridge round-trip: VERIFIED in-game.
+- input.tap: implemented, engine-layer, NOT yet exercised (user takeover).
+- Farming re-download: NOT executed. Next attempt: at the main menu, dump
+  "Mod Manager Menu" (untested - the likely Creations UI) or input-navigate
+  the Main Menu's own CREATIONS entry; see docs/MENUPILOT.md.

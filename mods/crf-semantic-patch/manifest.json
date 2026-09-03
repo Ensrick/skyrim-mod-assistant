@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick CRF Semantic Patch",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/71",
+  "outputPlugin": "Ensrick CRF Semantic Patch.esp",
+  "outputSha256": "D3EA7952099EF73AC30B1C9BF4094A3886065FC781568FAA1F05AA3D0F8A257C",
+  "archiveSha256": "9214D7DC4AA2643E78AF58ED8207AEFF708A5A13E34A52D7338FE858D54910BC",
+  "eslFlaggedEsp": true,
+  "overrideOnly": true,
+  "semanticOverrides": 5,
+  "requiredDialogTopicAnchor": 1,
+  "ambiguousHallOfDeadXlcnIncluded": false,
+  "deterministicRuns": 2,
+  "spriggitVersion": "0.41.0",
+  "spriggitTreeSha256": "6F0032F9CE581B1641A70182644144CBD62508731AD72145CE74057711C149D3",
+  "linksChecked": 1601,
+  "unresolvedLinks": 0,
+  "distribution": "private pending CRF patch permission"
+}

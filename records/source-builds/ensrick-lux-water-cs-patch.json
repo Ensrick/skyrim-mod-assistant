@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick Lux Water CS Patch",
+  "mo2Mod": "Ensrick - Lux Water CS Patch",
+  "outputPlugin": "Ensrick Lux Water CS Patch.esp",
+  "purpose": "Preserve the latest non-Water CELL and WRLD state while forwarding only Water for ENB-owned water fields.",
+  "source": {
+    "upstreamRepository": "https://github.com/mindflvx/WaterForENBPatcherCS",
+    "upstreamCommit": "0c26a28d653caf36a6816d65edf4bcde4b0c25e5",
+    "repository": "https://github.com/Ensrick/WaterForENBPatcherCS",
+    "mergeCommit": "f7d459bdade1e6c04aeb8426f02e2191907c9d35",
+    "pullRequest": "https://github.com/Ensrick/WaterForENBPatcherCS/pull/1",
+    "license": "GPL-3.0-only"
+  },
+  "build": {
+    "targetFramework": "net9.0",
+    "sdk": "10.0.302",
+    "packages": {
+      "Mutagen.Bethesda.Skyrim": "0.54.4",
+      "Mutagen.Bethesda.Synthesis": "0.36.6"
+    },
+    "warningsAsErrors": true,
+    "warnings": 0,
+    "errors": 0,
+    "vulnerablePackages": 0
+  },
+  "inputs": {
+    "waterMain": "Water for ENB (Shades of Skyrim).esp",
+    "configuredWaterFamily": [
+      "Water for ENB - Patch - Beyond Reach.esp",
+      "Water for ENB - Patch - Beyond Skyrim.esp",
+      "Water for ENB - Patch - Wyrmstooth.esp",
+      "WENB Shades USSEP.esp"
+    ],
+    "discoveredActiveWaterFamily": [
+      "Water for ENB - Patch - Beyond Skyrim.esp",
+      "Water for ENB - Patch - Beyond Reach.esp",
+      "Water for ENB (Shades of Skyrim).esp",
+      "Water for ENB - Patch - Wyrmstooth.esp",
+      "WENB Shades USSEP.esp",
+      "Lux - Water for ENB (Shades of skyrim) patch.esp"
+    ]
+  },
+  "mergePolicy": {
+    "baseRecord": "latest active non-Water-family context",
+    "cellFieldsFromWaterFamily": [
+      "Water",
+      "WaterEnvironmentMap",
+      "WaterHeight",
+      "HasWater flag bit"
+    ],
+    "worldspaceFieldsFromWaterFamily": [
+      "Water",
+      "LodWater",
+      "LodWaterHeight",
+      "WaterEnvironmentMap"
+    ],
+    "otherFields": "preserved from the latest active non-Water-family context",
+    "newRecords": 0
+  },
+  "output": {
+    "sha256": "5D65CFB115AACEDB516D3C0EB3503C94347A638FAF61C11DE81F9BAD0A5FDAA8",
+    "bytes": 809886,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 559,
+    "recordTypes": {
+      "CELL": 551,
+      "WRLD": 8
+    },
+    "masters": [
+      "Skyrim.esm",
+      "Update.esm",
+      "Dawnguard.esm",
+      "HearthFires.esm",
+      "Dragonborn.esm",
+      "BSAssets.esm",
+      "BSHeartland.esm",
+      "Water for ENB - Patch - Beyond Skyrim.esp",
+      "Lux.esp",
+      "Water for ENB (Shades of Skyrim).esp"
+    ]
+  },
+  "installation": {
+    "profile": "Default",
+    "enabled": true,
+    "mo2Priority": 117,
+    "pluginPriority": 101,
+    "transaction": "20260829T065317700Z-eeae37b8050b",
+    "pluginEnableTransaction": "20260829T065317860Z-e516c61cdc31",
+    "officialLuxWaterPatchImmediatelyBefore": true,
+    "supersededGeneratedMod": "Water for ENB - Generated Conflict Patch",
+    "supersededGeneratedModEnabled": false
+  },
+  "validation": {
+    "selfTest": "pass",
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "strictSpriggitRoundTrip": "pass",
+    "recordCliParse": "pass",
+    "mo2AuditErrors": 0,
+    "activeWinningChains": 559,
+    "activeLuxOverlapWinningChains": 175,
+    "gameplayAcceptance": "pending"
+  },
+  "nexusCuration": {
+    "rule": "Every tested Nexus mod is Keep; its author is removed from Excluded.",
+    "kept": [
+      {
+        "modId": 37061,
+        "name": "Water for ENB",
+        "author": "mindflux",
+        "authorUserId": 3211380
+      },
+      {
+        "modId": 43158,
+        "name": "Lux",
+        "author": "GGUNIT",
+        "authorUserId": 1898189
+      },
+      {
+        "modId": 113002,
+        "name": "Lux - Patch Hub",
+        "author": "GGUNIT",
+        "authorUserId": 1898189
+      }
+    ],
+    "receiptSha256": "C79393A6B792E85AF6F2AC8D63CCCB8017E898DCBAF91E2C18471DB925402AC8"
+  },
+  "distribution": {
+    "patcherSource": "public under GPL-3.0-only",
+    "generatedPlugin": "distributable: override-only patch (551 CELL + 8 WRLD, 0 new forms, no assets) reviewed 2026-09-02 for #160",
+    "publicPackStrategy": "Ship the plugin in the Ensrick patch collection with credit to GGUNIT (Lux) and mindflux (Water for ENB, GPL-3.0-only patcher source); regenerate locally from this record as the fallback",
+    "vendorFilesModified": false,
+    "reviewedAt": "2026-09-02",
+    "reviewRecord": "records/ensrick-overlay-distribution-2026-09-02.md row 7; records/private-runtime-dependencies.json entry resolved"
+  }
+}

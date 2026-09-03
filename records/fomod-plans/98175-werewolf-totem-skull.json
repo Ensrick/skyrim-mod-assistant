@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "Werewolf Totem Skull Replacer/Werewolf Totem 3D Replacer",
+      "destination": "."
+    }
+  ]
+}

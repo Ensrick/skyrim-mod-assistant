@@ -1,0 +1,27 @@
+# Files inside MO2 mod folders that must never enter the Ensrick patch
+# collection or any shared-modlist package (#160). One pattern per line,
+# matched with fnmatch (case-insensitive) against
+# "<MO2 mod folder name>/<path inside the mod>" using forward slashes.
+# Blank lines and lines starting with # are ignored. The packaging step reads
+# this file in addition to the ledger's `distribution` field; a file matched
+# here is dropped even from a `distributable` row.
+
+# MO2 bookkeeping
+*/meta.ini
+
+# Project rollback convention is rename-to-.bak.v<old>, never delete, so
+# backups accumulate beside live payloads. None of them is ever payload.
+*.bak
+*.bak.v*
+
+# Stray file found by the 2026-09-02 sweep: pre-120 Hz backup of the SSE
+# Display Tweaks configuration overlay. The live INI is the only payload.
+Ensrick - SSE Display Tweaks Configuration/SKSE/Plugins/SSEDisplayTweaks_Custom.ini.bak.v20260901-pre-120hz
+
+# Generator logs that land inside generated-output mods
+Pandora Output - Ensrick/Engine.log
+
+# Developer instrumentation: excluded from the shared list entirely
+# (ledger rows carry sharedList = "excluded (diagnostic tooling)").
+LaunchProbe/*
+MenuPilot/*

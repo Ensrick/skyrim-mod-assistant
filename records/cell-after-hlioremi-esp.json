@@ -1,0 +1,5219 @@
+{
+  "schemaVersion": 1,
+  "capturedUtc": "2026-09-02T18:19:01Z",
+  "profile": "Default",
+  "recordType": "Cell",
+  "anchor": "HLIORemi.esp",
+  "candidateChains": 40,
+  "semanticDivergences": 178,
+  "divergences": [
+    {
+      "formKey": "016203:Skyrim.esm",
+      "editorId": "CidhnaMine01",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016203:Skyrim.esm",
+      "editorId": "CidhnaMine01",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "09F363:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "016203:Skyrim.esm",
+      "editorId": "CidhnaMine01",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=33, G=34, B=44]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016203:Skyrim.esm",
+      "editorId": "CidhnaMine01",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "091937:Skyrim.esm",
+      "finalValue": "9F3929:Lux.esp"
+    },
+    {
+      "formKey": "016203:Skyrim.esm",
+      "editorId": "CidhnaMine01",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "0597D4:Skyrim.esm",
+      "editorId": "CidhnaMine02",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "243CDB:Lux.esp"
+    },
+    {
+      "formKey": "0597D4:Skyrim.esm",
+      "editorId": "CidhnaMine02",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 0.9,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, DirectionalRotation, DirectionalFade, FogPower, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 0.9,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "0597D4:Skyrim.esm",
+      "editorId": "CidhnaMine02",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "091937:Skyrim.esm",
+      "finalValue": "267593:Lux.esp"
+    },
+    {
+      "formKey": "0597D4:Skyrim.esm",
+      "editorId": "CidhnaMine02",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": null,
+      "finalValue": "data\\textures\\cubemaps\\mx_minecube_e.dds"
+    },
+    {
+      "formKey": "05A01A:Skyrim.esm",
+      "editorId": "CidhnaMine03",
+      "field": "EncounterZone",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "03EBFD:Skyrim.esm"
+    },
+    {
+      "formKey": "05A01A:Skyrim.esm",
+      "editorId": "CidhnaMine03",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "05A01A:Skyrim.esm",
+      "editorId": "CidhnaMine03",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "05A01A:Skyrim.esm",
+      "editorId": "CidhnaMine03",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0300E2:Skyrim.esm",
+      "finalValue": "9F3929:Lux.esp"
+    },
+    {
+      "formKey": "05A01A:Skyrim.esm",
+      "editorId": "CidhnaMine03",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "anchorValue": "059B60:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=35, G=38, B=38]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 4500,
+        "FogFarColor": "Color [A=0, R=23, G=33, B=22]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=23, G=33, B=22]",
+        "FogPower": 0.6,
+        "Inherits": "DirectionalColor, FogColor, FogNear, FogFar, ClipDistance, FogPower, FogMax",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=35, G=38, B=38]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=23, G=33, B=22]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=23, G=33, B=22]",
+        "FogPower": 0.6,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "anchorValue": "0A1196:Skyrim.esm",
+      "finalValue": "0975D1:Lux.esp"
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "anchorValue": "Null",
+      "finalValue": "0374BC:Dragonborn.esm"
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0B215C:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=53, G=55, B=60]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=82, G=97, B=101]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 5000,
+        "FogFar": 4500,
+        "FogFarColor": "Color [A=0, R=72, G=89, B=104]",
+        "FogMax": 1,
+        "FogNear": 400,
+        "FogNearColor": "Color [A=0, R=156, G=155, B=124]",
+        "FogPower": 0.9,
+        "Inherits": "FogNear, FogFar, ClipDistance, FogMax",
+        "LightFadeBegin": 12000,
+        "LightFadeEnd": 13000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=53, G=55, B=60]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=82, G=97, B=101]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=72, G=89, B=104]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=156, G=155, B=124]",
+        "FogPower": 0.9,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 12000,
+        "LightFadeEnd": 13000,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "08CDDA:Skyrim.esm",
+      "finalValue": "9F392A:Lux.esp"
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5855:Skyrim.esm"
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "data\\textures\\cubemaps\\shinydullds_e.dds",
+      "finalValue": "data\\textures\\cubemaps\\fort_warm_e.dds"
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": -2147483600.0,
+      "finalValue": 0
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "AcousticSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "01989F:Skyrim.esm"
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0B9E1E:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=50, G=50, B=50]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=50, G=50, B=50]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0C1300:Skyrim.esm",
+      "finalValue": "9F3929:Lux.esp"
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "02A72D:Skyrim.esm"
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "068B3E:Skyrim.esm",
+      "finalValue": "9F392A:Lux.esp"
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5856:Skyrim.esm"
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "043FAB:Skyrim.esm",
+      "editorId": "HaltedStreamCamp01",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "043FAB:Skyrim.esm",
+      "editorId": "HaltedStreamCamp01",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "043FAB:Skyrim.esm",
+      "editorId": "HaltedStreamCamp01",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=58, G=47, B=41]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=77, G=64, B=60]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 400,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=58, G=47, B=41]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=77, G=64, B=60]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "043FAB:Skyrim.esm",
+      "editorId": "HaltedStreamCamp01",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "091937:Skyrim.esm",
+      "finalValue": "9F3929:Lux.esp"
+    },
+    {
+      "formKey": "043FAB:Skyrim.esm",
+      "editorId": "HaltedStreamCamp01",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5858:Skyrim.esm"
+    },
+    {
+      "formKey": "02F83D:Skyrim.esm",
+      "editorId": "HighGateRuins03",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "02F83D:Skyrim.esm",
+      "editorId": "HighGateRuins03",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "02F83D:Skyrim.esm",
+      "editorId": "HighGateRuins03",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "02F83D:Skyrim.esm",
+      "editorId": "HighGateRuins03",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0EDA92:Skyrim.esm",
+      "finalValue": "9F392A:Lux.esp"
+    },
+    {
+      "formKey": "02F83D:Skyrim.esm",
+      "editorId": "HighGateRuins03",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "04D7FD:Skyrim.esm"
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=37, G=62, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 4000,
+        "FogFarColor": "Color [A=0, R=55, G=72, B=71]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=87, G=115, B=113]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=37, G=62, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=55, G=72, B=71]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=87, G=115, B=113]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "03128B:Skyrim.esm",
+      "finalValue": "9F392A:Lux.esp"
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5858:Skyrim.esm"
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": null,
+      "finalValue": "data\\textures\\cubemaps\\mx_dungeoncube_e.dds"
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "03FC8F:Skyrim.esm",
+      "editorId": "IlinaltasDeep02",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "03FC8F:Skyrim.esm",
+      "editorId": "IlinaltasDeep02",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A0328:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "03FC8F:Skyrim.esm",
+      "editorId": "IlinaltasDeep02",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "03FC8F:Skyrim.esm",
+      "editorId": "IlinaltasDeep02",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "08CDDA:Skyrim.esm",
+      "finalValue": "9F3928:Lux.esp"
+    },
+    {
+      "formKey": "03FC8F:Skyrim.esm",
+      "editorId": "IlinaltasDeep02",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "02A72D:Skyrim.esm"
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "01952F:Skyrim.esm",
+      "finalValue": "9F392A:Lux.esp"
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "04D7FD:Skyrim.esm"
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "023FD4:Skyrim.esm",
+      "editorId": "MarkarthHalloftheDead",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux - USSEP patch.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "023FD4:Skyrim.esm",
+      "editorId": "MarkarthHalloftheDead",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux - USSEP patch.esp",
+      "anchorValue": "09F282:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "023FD4:Skyrim.esm",
+      "editorId": "MarkarthHalloftheDead",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux - USSEP patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "023FD4:Skyrim.esm",
+      "editorId": "MarkarthHalloftheDead",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux - USSEP patch.esp",
+      "anchorValue": "09F281:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "023FD4:Skyrim.esm",
+      "editorId": "MarkarthHalloftheDead",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux - USSEP patch.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "016DF7:Skyrim.esm",
+      "editorId": "MarkarthShrineofTalos",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016DF7:Skyrim.esm",
+      "editorId": "MarkarthShrineofTalos",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0DDD27:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016DF7:Skyrim.esm",
+      "editorId": "MarkarthShrineofTalos",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 4000,
+        "FogFar": 4000,
+        "FogFarColor": "Color [A=0, R=78, G=74, B=63]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=97, G=80, B=73]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, DirectionalRotation, DirectionalFade, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=78, G=74, B=63]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016DF7:Skyrim.esm",
+      "editorId": "MarkarthShrineofTalos",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "09F281:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "016DF7:Skyrim.esm",
+      "editorId": "MarkarthShrineofTalos",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "09F282:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=35, G=35, B=35]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=92, G=87, B=75]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 4000,
+        "FogFar": 4000,
+        "FogFarColor": "Color [A=0, R=89, G=106, B=115]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=61, G=72, B=78]",
+        "FogPower": 1,
+        "Inherits": "DirectionalColor, DirectionalRotation, DirectionalFade, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=89, G=106, B=115]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "09F281:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0DDD27:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=39, G=39, B=47]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=182, G=203, B=222]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 270,
+        "FogClipDistance": 6000,
+        "FogFar": 6000,
+        "FogFarColor": "Color [A=0, R=77, G=94, B=115]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=87, G=104, B=92]",
+        "FogPower": 0.6,
+        "Inherits": "DirectionalFade, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 270,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=77, G=94, B=115]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "09F281:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": -2147483600.0,
+      "finalValue": 0
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "IsInteriorCell, HasWater, PublicArea",
+      "finalValue": "IsInteriorCell, HasWater, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "0DDD27:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=33, G=34, B=41]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=182, G=203, B=220]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 270,
+        "FogClipDistance": 4500,
+        "FogFar": 4500,
+        "FogFarColor": "Color [A=0, R=57, G=71, B=87]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=129, G=148, B=154]",
+        "FogPower": 1,
+        "Inherits": "FogNear",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=57, G=71, B=87]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "09F281:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042F:Skyrim.esm"
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": null,
+      "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+    },
+    {
+      "formKey": "015237:Skyrim.esm",
+      "editorId": "NchuandZel01",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "015237:Skyrim.esm",
+      "editorId": "NchuandZel01",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "01F507:Skyrim.esm",
+      "finalValue": "243CDB:Lux.esp"
+    },
+    {
+      "formKey": "015237:Skyrim.esm",
+      "editorId": "NchuandZel01",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 14000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 340,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+        "LightFadeBegin": 4000,
+        "LightFadeEnd": 5000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "015237:Skyrim.esm",
+      "editorId": "NchuandZel01",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "01EE51:Skyrim.esm",
+      "finalValue": "267593:Lux.esp"
+    },
+    {
+      "formKey": "015237:Skyrim.esm",
+      "editorId": "NchuandZel01",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5856:Skyrim.esm"
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "243CDB:Lux.esp"
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=68, G=106, B=115]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 12000,
+        "FogFarColor": "Color [A=0, R=255, G=66, B=66]",
+        "FogMax": 0.9,
+        "FogNear": 750,
+        "FogNearColor": "Color [A=0, R=174, G=0, B=0]",
+        "FogPower": 0.7,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+        "LightFadeBegin": 6000,
+        "LightFadeEnd": 7000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=68, G=106, B=115]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=255, G=66, B=66]",
+        "FogMax": 0.9,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=174, G=0, B=0]",
+        "FogPower": 0.7,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "01F932:Skyrim.esm",
+      "finalValue": "243CE6:Lux.esp"
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5856:Skyrim.esm"
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": null,
+      "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+    },
+    {
+      "formKey": "0571B4:Skyrim.esm",
+      "editorId": "NchuandZel03",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "0571B4:Skyrim.esm",
+      "editorId": "NchuandZel03",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "243CDB:Lux.esp"
+    },
+    {
+      "formKey": "0571B4:Skyrim.esm",
+      "editorId": "NchuandZel03",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+        "LightFadeBegin": 4000,
+        "LightFadeEnd": 5000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "0571B4:Skyrim.esm",
+      "editorId": "NchuandZel03",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "01FB68:Skyrim.esm",
+      "finalValue": "267593:Lux.esp"
+    },
+    {
+      "formKey": "0571B4:Skyrim.esm",
+      "editorId": "NchuandZel03",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5856:Skyrim.esm"
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "243CDB:Lux.esp"
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+        "LightFadeBegin": 5000,
+        "LightFadeEnd": 6000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "01FB68:Skyrim.esm",
+      "finalValue": "267593:Lux.esp"
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5856:Skyrim.esm"
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": null,
+      "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "IsInteriorCell, HasWater",
+      "finalValue": "IsInteriorCell, HasWater, ShowSky"
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "243CDB:Lux.esp"
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+        "LightFadeBegin": 5000,
+        "LightFadeEnd": 6000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 8000,
+        "FogFar": 8000,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "01FB68:Skyrim.esm",
+      "finalValue": "267593:Lux.esp"
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5856:Skyrim.esm"
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "field": "WaterEnvironmentMap",
+      "anchor": "HLIORemi.esp",
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "anchorValue": null,
+      "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0B215C:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=79, G=65, B=49]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 4000,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=159, G=153, B=138]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=169, G=167, B=150]",
+        "FogPower": 1,
+        "Inherits": "DirectionalColor, FogNear, FogFar",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=159, G=153, B=138]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0B2157:Skyrim.esm",
+      "finalValue": "365B5D:Lux.esp"
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042E:Skyrim.esm"
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "045A1D:Skyrim.esm",
+      "editorId": "RiftenMistveilBarracks",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "045A1D:Skyrim.esm",
+      "editorId": "RiftenMistveilBarracks",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0B215C:Skyrim.esm",
+      "finalValue": "0975CF:Lux.esp"
+    },
+    {
+      "formKey": "045A1D:Skyrim.esm",
+      "editorId": "RiftenMistveilBarracks",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=99, G=90, B=58]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=70, G=70, B=70]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 4500,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "FogColor, FogNear, ClipDistance",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "045A1D:Skyrim.esm",
+      "editorId": "RiftenMistveilBarracks",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0B2157:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "045A1D:Skyrim.esm",
+      "editorId": "RiftenMistveilBarracks",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042E:Skyrim.esm"
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0E461F:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=87, G=87, B=81]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=168, G=193, B=189]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 5200,
+        "FogFar": 5000,
+        "FogFarColor": "Color [A=0, R=50, G=95, B=101]",
+        "FogMax": 0.8,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=63, G=94, B=129]",
+        "FogPower": 0.9,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogFar",
+        "LightFadeBegin": 5000,
+        "LightFadeEnd": 6000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=100, G=100, B=100]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=50, G=95, B=101]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "06256A:Skyrim.esm",
+      "finalValue": "3D58D4:Lux.esp"
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "07042A:Skyrim.esm"
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "016A0E:Skyrim.esm",
+      "editorId": "SolitudeWinkingSkeever",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea, ShowSky",
+      "finalValue": "IsInteriorCell, HasWater, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016A0E:Skyrim.esm",
+      "editorId": "SolitudeWinkingSkeever",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0ABDB4:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016A0E:Skyrim.esm",
+      "editorId": "SolitudeWinkingSkeever",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=81, G=75, B=57]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=36, G=31, B=28]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 2200,
+        "FogFar": 5000,
+        "FogFarColor": "Color [A=0, R=89, G=96, B=102]",
+        "FogMax": 0.8,
+        "FogNear": 250,
+        "FogNearColor": "Color [A=0, R=89, G=95, B=102]",
+        "FogPower": 0.7,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 100,
+        "LightFadeEnd": 50000,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=90, G=90, B=90]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=89, G=96, B=102]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016A0E:Skyrim.esm",
+      "editorId": "SolitudeWinkingSkeever",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "06AB01:Skyrim.esm",
+      "finalValue": "365B5D:Lux.esp"
+    },
+    {
+      "formKey": "016A0E:Skyrim.esm",
+      "editorId": "SolitudeWinkingSkeever",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "0165A7:Skyrim.esm",
+      "editorId": "WhiterunTempleofKynareth",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0D485E:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "0165A7:Skyrim.esm",
+      "editorId": "WhiterunTempleofKynareth",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=85, G=75, B=62]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=83, G=92, B=102]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 2700,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "FogColor, ClipDistance",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=192, G=192, B=192]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=10, G=12, B=15]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "0165A7:Skyrim.esm",
+      "editorId": "WhiterunTempleofKynareth",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "06175D:Skyrim.esm",
+      "finalValue": "3CB6B2:Lux.esp"
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=124, G=124, B=124]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=74, G=74, B=74]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 5000,
+        "FogFarColor": "Color [A=0, R=62, G=74, B=89]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=250, G=236, B=192]",
+        "FogPower": 1,
+        "Inherits": "0",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=60, G=60, B=60]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=15, G=15, B=15]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=62, G=74, B=89]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=250, G=236, B=192]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0C0C76:Skyrim.esm",
+      "finalValue": "365B5C:Lux.esp"
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0703C2:Skyrim.esm"
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell",
+      "finalValue": "IsInteriorCell, ShowSky"
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A2687:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 4000,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, DirectionalRotation, DirectionalFade, ClipDistance, FogPower",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 1,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0C0C76:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0703C2:Skyrim.esm"
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "059B60:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 90,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A1196:Skyrim.esm",
+      "finalValue": "3B1F31:Lux.esp"
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "10FDC6:Skyrim.esm"
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "0CAB91:Skyrim.esm",
+      "editorId": "WinterholdCollegeHallofAttainment",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "059B60:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "0CAB91:Skyrim.esm",
+      "editorId": "WinterholdCollegeHallofAttainment",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "0CAB91:Skyrim.esm",
+      "editorId": "WinterholdCollegeHallofAttainment",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A1196:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "0CAB91:Skyrim.esm",
+      "editorId": "WinterholdCollegeHallofAttainment",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0C5852:Skyrim.esm",
+      "finalValue": "10FDC6:Skyrim.esm"
+    },
+    {
+      "formKey": "0CAB91:Skyrim.esm",
+      "editorId": "WinterholdCollegeHallofAttainment",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "field": "Flags",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "IsInteriorCell, PublicArea",
+      "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "field": "ImageSpace",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "059B60:Skyrim.esm",
+      "finalValue": "0924B3:Lux.esp"
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "field": "Lighting",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      },
+      "finalValue": {
+        "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+        "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+        "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+        "DirectionalFade": 0,
+        "DirectionalRotationXY": 0,
+        "DirectionalRotationZ": 0,
+        "FogClipDistance": 0,
+        "FogFar": 0,
+        "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogMax": 1,
+        "FogNear": 0,
+        "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+        "FogPower": 1,
+        "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+        "LightFadeBegin": 0,
+        "LightFadeEnd": 0,
+        "Versioning": "0"
+      }
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "field": "LightingTemplate",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "0A1196:Skyrim.esm",
+      "finalValue": "0975D6:Lux.esp"
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "field": "SkyAndWeatherFromRegion",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": "Null",
+      "finalValue": "0C5852:Skyrim.esm"
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "field": "WaterHeight",
+      "anchor": "HLIORemi.esp",
+      "winner": "Lux.esp",
+      "anchorValue": 0,
+      "finalValue": -2147483600.0
+    }
+  ],
+  "records": [
+    {
+      "formKey": "000D74:Skyrim.esm",
+      "editorId": null,
+      "chain": [
+        "HLIORemi.esp",
+        "Landscape and Water Fixes - Patch - Farming.esp",
+        "Landscape and Water Fixes - Patch - Tundra Homestead.esp",
+        "Lux Orbis - Cutting Room Floor patch.esp",
+        "Lux Orbis - 3DNPC patch.esp",
+        "PROTEUS.esp",
+        "VLIOVarinia.esp",
+        "Grand Solitude - Nature of the Wild Lands patch.esp",
+        "Lux Orbis CS.esp",
+        "Nature of the Wild Lands - Lux Via.esp",
+        "Moonpath Music, Weather and Other Fixes - JRMoonpathBrumaPatch.esp",
+        "Landscape and Water Fixes - Patch - Alternative Armors - Elven Hunter.esp",
+        "interesting npcs ILS fix.esp",
+        "Skyrim Unbound.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": []
+    },
+    {
+      "formKey": "01691F:Skyrim.esm",
+      "editorId": null,
+      "chain": [
+        "HLIORemi.esp",
+        "PROTEUS.esp",
+        "Skyrim Unbound.esp"
+      ],
+      "winner": "Skyrim Unbound.esp",
+      "differences": []
+    },
+    {
+      "formKey": "016BE0:Skyrim.esm",
+      "editorId": null,
+      "chain": [
+        "HLIORemi.esp",
+        "PROTEUS.esp",
+        "Skyrim Unbound.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": []
+    },
+    {
+      "formKey": "016E02:Skyrim.esm",
+      "editorId": null,
+      "chain": [
+        "HLIORemi.esp",
+        "PROTEUS.esp",
+        "Skyrim Unbound.esp"
+      ],
+      "winner": "Skyrim Unbound.esp",
+      "differences": []
+    },
+    {
+      "formKey": "020EEB:Skyrim.esm",
+      "editorId": null,
+      "chain": [
+        "HLIORemi.esp",
+        "Lux Orbis CS.esp"
+      ],
+      "winner": "Lux Orbis CS.esp",
+      "differences": []
+    },
+    {
+      "formKey": "038381:Skyrim.esm",
+      "editorId": null,
+      "chain": [
+        "HLIORemi.esp",
+        "Lux Orbis CS.esp"
+      ],
+      "winner": "Lux Orbis CS.esp",
+      "differences": []
+    },
+    {
+      "formKey": "016203:Skyrim.esm",
+      "editorId": "CidhnaMine01",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "09F363:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=33, G=34, B=44]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "091937:Skyrim.esm",
+          "finalValue": "9F3929:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "0597D4:Skyrim.esm",
+      "editorId": "CidhnaMine02",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": [
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "243CDB:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 0.9,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, DirectionalRotation, DirectionalFade, FogPower, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 0.9,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "091937:Skyrim.esm",
+          "finalValue": "267593:Lux.esp"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": null,
+          "finalValue": "data\\textures\\cubemaps\\mx_minecube_e.dds"
+        }
+      ]
+    },
+    {
+      "formKey": "05A01A:Skyrim.esm",
+      "editorId": "CidhnaMine03",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "EncounterZone",
+          "anchorValue": "Null",
+          "finalValue": "03EBFD:Skyrim.esm"
+        },
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0300E2:Skyrim.esm",
+          "finalValue": "9F3929:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "017EC0:Dragonborn.esm",
+      "editorId": "DLC2RRTheRetchingNetch",
+      "chain": [
+        "HLIORemi.esp",
+        "Collectibles Helper.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp",
+        "Ensrick - Collectibles Helper USSEP Forward.esp"
+      ],
+      "winner": "Ensrick - Collectibles Helper USSEP Forward.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "059B60:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=35, G=38, B=38]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 4500,
+            "FogFarColor": "Color [A=0, R=23, G=33, B=22]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=23, G=33, B=22]",
+            "FogPower": 0.6,
+            "Inherits": "DirectionalColor, FogColor, FogNear, FogFar, ClipDistance, FogPower, FogMax",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=35, G=38, B=38]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=23, G=33, B=22]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=23, G=33, B=22]",
+            "FogPower": 0.6,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0A1196:Skyrim.esm",
+          "finalValue": "0975D1:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0374BC:Dragonborn.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "01529D:Skyrim.esm",
+      "editorId": "DeadMensRespite01",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0B215C:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=53, G=55, B=60]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=82, G=97, B=101]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 5000,
+            "FogFar": 4500,
+            "FogFarColor": "Color [A=0, R=72, G=89, B=104]",
+            "FogMax": 1,
+            "FogNear": 400,
+            "FogNearColor": "Color [A=0, R=156, G=155, B=124]",
+            "FogPower": 0.9,
+            "Inherits": "FogNear, FogFar, ClipDistance, FogMax",
+            "LightFadeBegin": 12000,
+            "LightFadeEnd": 13000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=53, G=55, B=60]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=82, G=97, B=101]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=72, G=89, B=104]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=156, G=155, B=124]",
+            "FogPower": 0.9,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 12000,
+            "LightFadeEnd": 13000,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "08CDDA:Skyrim.esm",
+          "finalValue": "9F392A:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5855:Skyrim.esm"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": "data\\textures\\cubemaps\\shinydullds_e.dds",
+          "finalValue": "data\\textures\\cubemaps\\fort_warm_e.dds"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": -2147483600.0,
+          "finalValue": 0
+        }
+      ]
+    },
+    {
+      "formKey": "033779:Skyrim.esm",
+      "editorId": "Gloomreach02",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "AcousticSpace",
+          "anchorValue": "Null",
+          "finalValue": "01989F:Skyrim.esm"
+        },
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0B9E1E:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=50, G=50, B=50]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=50, G=50, B=50]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0C1300:Skyrim.esm",
+          "finalValue": "9F3929:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "02A72D:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "015267:Skyrim.esm",
+      "editorId": "HagRockRedoubt01",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "068B3E:Skyrim.esm",
+          "finalValue": "9F392A:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5856:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "043FAB:Skyrim.esm",
+      "editorId": "HaltedStreamCamp01",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=58, G=47, B=41]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=77, G=64, B=60]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 400,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=58, G=47, B=41]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=77, G=64, B=60]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "091937:Skyrim.esm",
+          "finalValue": "9F3929:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5858:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "02F83D:Skyrim.esm",
+      "editorId": "HighGateRuins03",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0EDA92:Skyrim.esm",
+          "finalValue": "9F392A:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "04D7FD:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "015261:Skyrim.esm",
+      "editorId": "HillgrundsTomb01",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=37, G=62, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 4000,
+            "FogFarColor": "Color [A=0, R=55, G=72, B=71]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=87, G=115, B=113]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=37, G=62, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=55, G=72, B=71]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=87, G=115, B=113]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "03128B:Skyrim.esm",
+          "finalValue": "9F392A:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5858:Skyrim.esm"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": null,
+          "finalValue": "data\\textures\\cubemaps\\mx_dungeoncube_e.dds"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "03FC8F:Skyrim.esm",
+      "editorId": "IlinaltasDeep02",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A0328:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "08CDDA:Skyrim.esm",
+          "finalValue": "9F3928:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "02A72D:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "027D1C:Skyrim.esm",
+      "editorId": "KilkreathRuins03",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "01952F:Skyrim.esm",
+          "finalValue": "9F392A:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "04D7FD:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "023FD4:Skyrim.esm",
+      "editorId": "MarkarthHalloftheDead",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp",
+        "Lux - USSEP patch.esp"
+      ],
+      "winner": "Lux - USSEP patch.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "09F282:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "09F281:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "016DF7:Skyrim.esm",
+      "editorId": "MarkarthShrineofTalos",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0DDD27:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 4000,
+            "FogFar": 4000,
+            "FogFarColor": "Color [A=0, R=78, G=74, B=63]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=97, G=80, B=73]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, DirectionalRotation, DirectionalFade, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=78, G=74, B=63]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "09F281:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "016DFE:Skyrim.esm",
+      "editorId": "MarkarthSilverBloodInn",
+      "chain": [
+        "HLIORemi.esp",
+        "VLIOVarinia.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "09F282:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=35, G=35, B=35]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=92, G=87, B=75]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 4000,
+            "FogFar": 4000,
+            "FogFarColor": "Color [A=0, R=89, G=106, B=115]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=61, G=72, B=78]",
+            "FogPower": 1,
+            "Inherits": "DirectionalColor, DirectionalRotation, DirectionalFade, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=89, G=106, B=115]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "09F281:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "03EA9D:Skyrim.esm",
+      "editorId": "MarkarthTempleInnerSanctum",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0DDD27:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=39, G=39, B=47]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=182, G=203, B=222]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 270,
+            "FogClipDistance": 6000,
+            "FogFar": 6000,
+            "FogFarColor": "Color [A=0, R=77, G=94, B=115]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=87, G=104, B=92]",
+            "FogPower": 0.6,
+            "Inherits": "DirectionalFade, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 270,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=77, G=94, B=115]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "09F281:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": -2147483600.0,
+          "finalValue": 0
+        }
+      ]
+    },
+    {
+      "formKey": "016DF3:Skyrim.esm",
+      "editorId": "MarkarthTempleofDibella",
+      "chain": [
+        "HLIORemi.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater, PublicArea",
+          "finalValue": "IsInteriorCell, HasWater, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0DDD27:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=33, G=34, B=41]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=182, G=203, B=220]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 270,
+            "FogClipDistance": 4500,
+            "FogFar": 4500,
+            "FogFarColor": "Color [A=0, R=57, G=71, B=87]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=129, G=148, B=154]",
+            "FogPower": 1,
+            "Inherits": "FogNear",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=30]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=57, G=71, B=87]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "09F281:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042F:Skyrim.esm"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": null,
+          "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+        }
+      ]
+    },
+    {
+      "formKey": "015237:Skyrim.esm",
+      "editorId": "NchuandZel01",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "01F507:Skyrim.esm",
+          "finalValue": "243CDB:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 14000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 340,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+            "LightFadeBegin": 4000,
+            "LightFadeEnd": 5000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=176, G=220, B=247]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "01EE51:Skyrim.esm",
+          "finalValue": "267593:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5856:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "055215:Skyrim.esm",
+      "editorId": "NchuandZel02",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "243CDB:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=68, G=106, B=115]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 12000,
+            "FogFarColor": "Color [A=0, R=255, G=66, B=66]",
+            "FogMax": 0.9,
+            "FogNear": 750,
+            "FogNearColor": "Color [A=0, R=174, G=0, B=0]",
+            "FogPower": 0.7,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+            "LightFadeBegin": 6000,
+            "LightFadeEnd": 7000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=68, G=106, B=115]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=255, G=66, B=66]",
+            "FogMax": 0.9,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=174, G=0, B=0]",
+            "FogPower": 0.7,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "01F932:Skyrim.esm",
+          "finalValue": "243CE6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5856:Skyrim.esm"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": null,
+          "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+        }
+      ]
+    },
+    {
+      "formKey": "0571B4:Skyrim.esm",
+      "editorId": "NchuandZel03",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "243CDB:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+            "LightFadeBegin": 4000,
+            "LightFadeEnd": 5000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "01FB68:Skyrim.esm",
+          "finalValue": "267593:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5856:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "058B4D:Skyrim.esm",
+      "editorId": "NchuandZel05",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "243CDB:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+            "LightFadeBegin": 5000,
+            "LightFadeEnd": 6000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "01FB68:Skyrim.esm",
+          "finalValue": "267593:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5856:Skyrim.esm"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": null,
+          "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+        }
+      ]
+    },
+    {
+      "formKey": "058B4C:Skyrim.esm",
+      "editorId": "NchuandZel06",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp",
+        "Water for ENB (Shades of Skyrim).esp",
+        "Ensrick Lux Water CS Patch.esp"
+      ],
+      "winner": "Ensrick Lux Water CS Patch.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, HasWater",
+          "finalValue": "IsInteriorCell, HasWater, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "243CDB:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax",
+            "LightFadeBegin": 5000,
+            "LightFadeEnd": 6000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 8000,
+            "FogFar": 8000,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "01FB68:Skyrim.esm",
+          "finalValue": "267593:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5856:Skyrim.esm"
+        },
+        {
+          "field": "WaterEnvironmentMap",
+          "anchorValue": null,
+          "finalValue": "data\\textures\\cubemaps\\mx_genericinteriorcube_e.dds"
+        }
+      ]
+    },
+    {
+      "formKey": "016BDF:Skyrim.esm",
+      "editorId": "RiftenBeeandBarb",
+      "chain": [
+        "HLIORemi.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0B215C:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=79, G=65, B=49]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 4000,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=159, G=153, B=138]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=169, G=167, B=150]",
+            "FogPower": 1,
+            "Inherits": "DirectionalColor, FogNear, FogFar",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=75, G=75, B=75]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=159, G=153, B=138]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0B2157:Skyrim.esm",
+          "finalValue": "365B5D:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042E:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "042249:Skyrim.esm",
+      "editorId": "RiftenCityNorth",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux Orbis CS.esp",
+        "Skyrim Unbound.esp"
+      ],
+      "winner": "Skyrim Unbound.esp",
+      "differences": []
+    },
+    {
+      "formKey": "045A1D:Skyrim.esm",
+      "editorId": "RiftenMistveilBarracks",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0B215C:Skyrim.esm",
+          "finalValue": "0975CF:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=99, G=90, B=58]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=70, G=70, B=70]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 4500,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "FogColor, FogNear, ClipDistance",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0B2157:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042E:Skyrim.esm"
+        }
+      ]
+    },
+    {
+      "formKey": "016A0C:Skyrim.esm",
+      "editorId": "SolitudeBardsCollege",
+      "chain": [
+        "HLIORemi.esp",
+        "SFCO3-Addons - Grand Solitude patch.esp",
+        "Grand Solitude - 3DNPC patch.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0E461F:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=87, G=87, B=81]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=168, G=193, B=189]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 5200,
+            "FogFar": 5000,
+            "FogFarColor": "Color [A=0, R=50, G=95, B=101]",
+            "FogMax": 0.8,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=63, G=94, B=129]",
+            "FogPower": 0.9,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogFar",
+            "LightFadeBegin": 5000,
+            "LightFadeEnd": 6000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=100, G=100, B=100]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=50, G=95, B=101]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "06256A:Skyrim.esm",
+          "finalValue": "3D58D4:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "07042A:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "016A0E:Skyrim.esm",
+      "editorId": "SolitudeWinkingSkeever",
+      "chain": [
+        "HLIORemi.esp",
+        "VLIOVarinia.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea, ShowSky",
+          "finalValue": "IsInteriorCell, HasWater, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0ABDB4:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=81, G=75, B=57]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=36, G=31, B=28]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 2200,
+            "FogFar": 5000,
+            "FogFarColor": "Color [A=0, R=89, G=96, B=102]",
+            "FogMax": 0.8,
+            "FogNear": 250,
+            "FogNearColor": "Color [A=0, R=89, G=95, B=102]",
+            "FogPower": 0.7,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 100,
+            "LightFadeEnd": 50000,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=90, G=90, B=90]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=10, B=10]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=89, G=96, B=102]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "06AB01:Skyrim.esm",
+          "finalValue": "365B5D:Lux.esp"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "1037E7:Skyrim.esm",
+      "editorId": "WIDeadBodyCleanupCell",
+      "chain": [
+        "HLIORemi.esp",
+        "Simple Hunting Overhaul.esp"
+      ],
+      "winner": "Simple Hunting Overhaul.esp",
+      "differences": []
+    },
+    {
+      "formKey": "0165A7:Skyrim.esm",
+      "editorId": "WhiterunTempleofKynareth",
+      "chain": [
+        "HLIORemi.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0D485E:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=85, G=75, B=62]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=83, G=92, B=102]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 2700,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "FogColor, ClipDistance",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=192, G=192, B=192]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=10, G=12, B=15]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "06175D:Skyrim.esm",
+          "finalValue": "3CB6B2:Lux.esp"
+        }
+      ]
+    },
+    {
+      "formKey": "016789:Skyrim.esm",
+      "editorId": "WindhelmCandlehearthHall",
+      "chain": [
+        "HLIORemi.esp",
+        "VLIOVarinia.esp",
+        "Skyrim Unbound.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=124, G=124, B=124]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=74, G=74, B=74]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 5000,
+            "FogFarColor": "Color [A=0, R=62, G=74, B=89]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=250, G=236, B=192]",
+            "FogPower": 1,
+            "Inherits": "0",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=60, G=60, B=60]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=15, G=15, B=15]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=62, G=74, B=89]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=250, G=236, B=192]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0C0C76:Skyrim.esm",
+          "finalValue": "365B5C:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0703C2:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "016779:Skyrim.esm",
+      "editorId": "WindhelmViolaGiordanosHouse",
+      "chain": [
+        "HLIORemi.esp",
+        "VLIOVarinia.esp",
+        "SFCO3-Addons - 3DNPC patch.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell",
+          "finalValue": "IsInteriorCell, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "0A2687:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 4000,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, DirectionalRotation, DirectionalFade, ClipDistance, FogPower",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 1,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0C0C76:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0703C2:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "013810:Skyrim.esm",
+      "editorId": "WinterholdCollegeArcanaeum",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "059B60:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 90,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0A1196:Skyrim.esm",
+          "finalValue": "3B1F31:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "10FDC6:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "0CAB91:Skyrim.esm",
+      "editorId": "WinterholdCollegeHallofAttainment",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "ImageSpace",
+          "anchorValue": "059B60:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=30, G=30, B=40]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0A1196:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "0C5852:Skyrim.esm",
+          "finalValue": "10FDC6:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    },
+    {
+      "formKey": "05D01D:Skyrim.esm",
+      "editorId": "WinterholdTheFrozenHearthCellar",
+      "chain": [
+        "HLIORemi.esp",
+        "Lux.esp"
+      ],
+      "winner": "Lux.esp",
+      "differences": [
+        {
+          "field": "Flags",
+          "anchorValue": "IsInteriorCell, PublicArea",
+          "finalValue": "IsInteriorCell, PublicArea, ShowSky"
+        },
+        {
+          "field": "ImageSpace",
+          "anchorValue": "059B60:Skyrim.esm",
+          "finalValue": "0924B3:Lux.esp"
+        },
+        {
+          "field": "Lighting",
+          "anchorValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          },
+          "finalValue": {
+            "AmbientColor": "Color [A=0, R=0, G=0, B=0]",
+            "AmbientColors": "Mutagen.Bethesda.Skyrim.AmbientColorsBinaryOverlay",
+            "DirectionalColor": "Color [A=0, R=0, G=0, B=0]",
+            "DirectionalFade": 0,
+            "DirectionalRotationXY": 0,
+            "DirectionalRotationZ": 0,
+            "FogClipDistance": 0,
+            "FogFar": 0,
+            "FogFarColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogMax": 1,
+            "FogNear": 0,
+            "FogNearColor": "Color [A=0, R=0, G=0, B=0]",
+            "FogPower": 1,
+            "Inherits": "AmbientColor, DirectionalColor, FogColor, FogNear, FogFar, DirectionalRotation, DirectionalFade, ClipDistance, FogPower, FogMax, LightFadeDistances",
+            "LightFadeBegin": 0,
+            "LightFadeEnd": 0,
+            "Versioning": "0"
+          }
+        },
+        {
+          "field": "LightingTemplate",
+          "anchorValue": "0A1196:Skyrim.esm",
+          "finalValue": "0975D6:Lux.esp"
+        },
+        {
+          "field": "SkyAndWeatherFromRegion",
+          "anchorValue": "Null",
+          "finalValue": "0C5852:Skyrim.esm"
+        },
+        {
+          "field": "WaterHeight",
+          "anchorValue": 0,
+          "finalValue": -2147483600.0
+        }
+      ]
+    }
+  ],
+  "failures": []
+}

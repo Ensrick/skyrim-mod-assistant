@@ -1,0 +1,130 @@
+FormKey: 0B559B:BSHeartland.esm
+EditorID: CYREncWolfHighland
+Version2: 1
+ObjectBounds:
+  First: -20, -74, 0
+  Second: 20, 74, 78
+Configuration:
+  Flags:
+  - Respawn
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 11
+  SpeedMultiplier: 100
+  DispositionBase: 35
+Factions:
+- Faction: 000013:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 02E893:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 03E093:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 03E691:Skyrim.esm
+  Fluff: 0x000000
+DeathItem: 300AD8:BSHeartland.esm
+Voice: 01F6A7:Skyrim.esm
+Race: 003C82:BSHeartland.esm
+WornArmor: 003C85:BSHeartland.esm
+AttackRace: 01320A:Skyrim.esm
+AIData:
+  Confidence: Brave
+  EnergyLevel: 50
+  Responsibility: NoCrime
+  Assistance: HelpsFriendsAndAllies
+  AggroRadiusBehavior: True
+  Warn: 2500
+  WarnOrAttack: 1200
+  Attack: 640
+Class: 0131E6:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Highland Wolf
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 31
+  - Key: TwoHanded
+    Value: 15
+  - Key: Archery
+    Value: 31
+  - Key: Block
+    Value: 39
+  - Key: Smithing
+    Value: 15
+  - Key: HeavyArmor
+    Value: 15
+  - Key: LightArmor
+    Value: 15
+  - Key: Pickpocket
+    Value: 15
+  - Key: Lockpicking
+    Value: 15
+  - Key: Sneak
+    Value: 54
+  - Key: Alchemy
+    Value: 15
+  - Key: Speech
+    Value: 15
+  - Key: Alteration
+    Value: 15
+  - Key: Conjuration
+    Value: 15
+  - Key: Destruction
+    Value: 15
+  - Key: Illusion
+    Value: 15
+  - Key: Restoration
+    Value: 15
+  - Key: Enchanting
+    Value: 15
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 112
+  Stamina: 250
+  GearedUpWeapons: 1
+CombatStyle: 003C87:BSHeartland.esm
+NAM5: 255
+Height: 1.5
+Weight: 50
+SoundLevel: Normal
+Sound:
+  MutagenObjectType: NpcInheritSound
+  InheritsSoundsFrom: 0A85C7:Skyrim.esm
+DefaultPackageList: 095F47:Skyrim.esm
+TextureLighting: '#00808080'

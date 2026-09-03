@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "Nature of the Wild Lands - CC Tundra Homestead.esp", "destination": "Nature of the Wild Lands - CC Tundra Homestead.esp" },
+    { "source": "Nature of the Wild Lands - CuttingRoomFloor.esp", "destination": "Nature of the Wild Lands - CuttingRoomFloor.esp" },
+    { "source": "Nature of the Wild Lands - Lux Via.esp", "destination": "Nature of the Wild Lands - Lux Via.esp" },
+    { "source": "bruma/Nature of the Wild Lands - Bruma.esp", "destination": "Nature of the Wild Lands - Bruma.esp" },
+    { "source": "bruma/textures", "destination": "textures" }
+  ]
+}

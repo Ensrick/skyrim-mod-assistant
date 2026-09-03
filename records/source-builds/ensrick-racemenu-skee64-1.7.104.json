@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "component": "RaceMenu skee64 (Ensrick rebuild for Skyrim SE 1.7.104)",
+  "mo2Mod": "RaceMenu 1.7.104 Native Overlay - Ensrick",
+  "purpose": "DLL-only overlay above RaceMenu 0.4.20 (Nexus 19080, file 743640; the base row carries RaceMenu.esp + RaceMenuPlugin.esp). Rebuilt from the author 1.7.99 stabilization revision with the Steam-runtime hook / function addresses moved to the 1.7.104 executable and the SKSE version block set to 1.7.104. Predecessor: the 1.7.99 self-build with the InstallOverlay choke-point guard (records/selfbuild-2026-08-24-skse-skee64.md).",
+  "license": "NONE FOUND: no clear top-level redistribution licence in the expired6978/SKSE64Plugins source tree. Active publicationBlocker in records/private-runtime-dependencies.json.",
+  "source": {
+    "repository": "local clone only; origin = https://github.com/expired6978/SKSE64Plugins.git (upstream). No Ensrick remote; not pushed.",
+    "upstream": "https://github.com/expired6978/SKSE64Plugins",
+    "branch": "ensrick/1.7.104",
+    "commit": "748ca80c30ada6dba54528aa1a5a11db96870afd",
+    "commitDate": "2026-08-25T19:33:41-05:00",
+    "commitSubject": "skee64 1.7.99 stabilization patches",
+    "commitIs": "STARTING REVISION ONLY. The three source changes that produced the installed DLL are still uncommitted (kept uncommitted on 2026-09-02: the team-lead commit instruction covered JContainers and Proteus, and this tree has no redistribution licence). The working-tree state is pinned below by file hashes instead.",
+    "pushed": false,
+    "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/RaceMenu-1.7.104",
+    "uncommittedChanges": {
+      "skee64/SKEEHooks.cpp": {
+        "summary": "STORE_VERSION == RUNTIME_TYPE_STEAM address block: 12 hook / function addresses moved to the 1.7.104 executable (InvokeCategoriesList, DoubleMorphCallback2, NiAllocate_Geom, NiAllocate_Geom2, NiFree_Geom2, RaceSexMenu vtable, CacheParts, SetNewInventoryItemModel hook, AddGFXArgument, AddRaceMenuSlider, DoubleMorphCallback, SetInventoryItemModel, SetNewInventoryItemModel); Address Library id comments unchanged; trailing newline added",
+        "workingTreeSha256": "e19349fb06108c2387d9ea77430a6ef7422cfacd1cc71f3acd305781dd85c1c0",
+        "headBlob": "a52adb8a328145f76d43aaf216b1fc5124ed4326"
+      },
+      "skee64/main.cpp": {
+        "summary": "SKSEPlugin_Version compatible runtime RUNTIME_VERSION_1_7_99 -> RUNTIME_VERSION_1_7_104 (Bethesda/Steam store build)",
+        "workingTreeSha256": "2b2c0d6950fe0dc2fbd9842763fa1dd10c0a728ace1ddb4fccec24164aa159e3",
+        "headBlob": "ff2aa12558b489fec85ef5ea1bea33c657efe2d3"
+      },
+      "skee64/skee64.vcxproj": {
+        "summary": "links jsoncpp.lib, common64.lib, skse64_common.lib, skse64_plugin_support.lib from $(SolutionDir)x64\\Release and the JContainers-1.7.104 skse64 build outputs instead of project references; the copy-to-game PostBuildEvent gated by RaceMenuSkipInstall",
+        "workingTreeSha256": "fe5e8a319f84cf3ce712473fe994110184b58d1fcce96f13345bdfbceeef9539",
+        "headBlob": "4276de74cb4330fa8d580ee63248521ab1a68ecd"
+      }
+    },
+    "uncommittedPatchSha256": "157a487dca31ae4f1b1af8d63ba692cec04adfb457fc31add7515e038a9b4e6d (sha256 of `git diff` output on 2026-09-02; 19 insertions, 33 deletions across the 3 files)",
+    "untrackedInTree": "DirectXTex headers + Bin/Desktop_2015/x64/Release/DirectXTex.lib (from the 2026-08-24 CMake self-build), jsoncpp and skee64 build output (x64/Release, \"x64/Release Steam\"), stage-1.7.104/",
+    "dependencies": {
+      "skse64 static libs": "common64.lib, skse64_common.lib, skse64_plugin_support.lib built in C:/Users/danjo/source/repos/skyrim-tools-source/JContainers-1.7.104 (x64/Release, dep/skse64/common/x64/Release, dep/skse64/skse/skse64_common/x64/Release)",
+      "DirectXTex": "microsoft/DirectXTex built via CMake on 2026-08-24 (records/selfbuild-2026-08-24-skse-skee64.md); commit not recorded",
+      "jsoncpp": "vendored jsoncpp project in the tree, built to x64/Release/jsoncpp.lib"
+    }
+  },
+  "build": {
+    "system": "MSBuild, skee64/skee64.vcxproj configuration \"Release Steam|x64\"",
+    "toolchain": {
+      "visualStudio": "Visual Studio 2022 Community 17.14.37012.4 (vswhere -latest, 2026-09-02)",
+      "msvc": "14.44.35207 (the only MSVC toolset installed under VC/Tools/MSVC)",
+      "windowsSdkInstalled": [
+        "10.0.22621.0",
+        "10.0.26100.0"
+      ],
+      "windowsSdkUsed": "not recorded"
+    },
+    "reconstructedCommand": "msbuild skee64\\skee64.vcxproj /p:Configuration=\"Release Steam\" /p:Platform=x64 /p:RaceMenuSkipInstall=true",
+    "exactCommandLineRecorded": false,
+    "builtLocal": "2026-08-28T13:50:11-05:00 (DLL mtime)",
+    "builtUtc": "2026-08-28T18:50:11Z",
+    "buildDir": "x64/Release Steam/skee64.dll; staged copy stage-1.7.104/SKSE/Plugins/skee64.dll (both SHA-256 7290EAFD...)"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/skee64.dll",
+    "sha256": "7290EAFD4116E742AA7477D34BF137ABBEFED936CD44E67FDC829F2E36925ED1",
+    "bytes": 2721280,
+    "versionResource": {
+      "fileVersion": "0.4.19.17",
+      "productVersion": "0.4.19.17",
+      "productName": "Skyrim 64 Engine Extender"
+    },
+    "matchesBuildDir": true,
+    "matchesInstalled": true
+  },
+  "installation": {
+    "installedUtc": "2026-08-28T19:05:13Z",
+    "installedBy": "MO2Headless",
+    "installationFile": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/headless/packages/native-1.7.104-overlay-repair/RaceMenu 1.7.104 Native Overlay - Ensrick",
+    "transaction": "20260828T190513252Z-d0e12c1d0e27",
+    "transactionNote": "the 2026-08-28 replacement pass that corrected the SKSE/Plugins staging depth (docs/RUNTIME-ISSUES-2026-08-28.md)",
+    "profile": "Default",
+    "enabled": true,
+    "priorityAtInstall": 109,
+    "priorityOn2026-09-02": 113,
+    "modlistLine": 120,
+    "overlayContents": [
+      "SKSE/Plugins/skee64.dll"
+    ],
+    "baseModBelow": "RaceMenu 0.4.20 (19080) keeps scripts, interface, ESPs"
+  },
+  "validation": {
+    "loaderGate": "bounded 120 s SKSE run on 2026-08-28: 21 native plug-ins checked, zero refused, all four replacement DLLs logged as loaded (docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md)",
+    "profileAudit": "MO2 profile audit passed after the four overlays were installed and again after the ConsoleUtil overlay",
+    "launch": "covered by the 2026-09-01 launch_verify PASSes (records/launch-verify-20260901-172851.md onward) at the launch/load level only",
+    "gameplayAcceptance": "the \"Remaining acceptance test\" list in docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md (Proteus MCM, character create/switch, save/reload, inventory, appearance, followers, quest state) is not recorded as run",
+    "registration": "skee64 logged as loaded by SKSE in the bounded run (docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md); showracemenu / overlay behaviour not recorded as tested on 1.7.104"
+  },
+  "distribution": {
+    "class": "local-only",
+    "basis": "no redistribution licence found; records/private-runtime-dependencies.json releaseGate: establish permission or replace with an officially supported / independently licensed implementation, then reproduce from reviewed source",
+    "vendorFilesModified": true
+  },
+  "gaps": [
+    "three source changes uncommitted (pinned by hash only)",
+    "DirectXTex commit and the exact msbuild invocation not captured",
+    "depends on JContainers-1.7.104 build outputs for the skse64 static libs",
+    "in-game RaceMenu acceptance on 1.7.104 not recorded"
+  ],
+  "references": [
+    "docs/NATIVE-RUNTIME-1.7.104-REBUILD-2026-08-28.md",
+    "docs/RUNTIME-ISSUES-2026-08-28.md",
+    "records/selfbuild-2026-08-24-skse-skee64.md"
+  ],
+  "recordedUtc": "2026-09-02T05:00:00Z",
+  "recordedFor": "#102 follow-up (team-lead 2026-09-02); provenance gap F8 in docs/PROCESS-AUDIT-2026-08-30.md"
+}

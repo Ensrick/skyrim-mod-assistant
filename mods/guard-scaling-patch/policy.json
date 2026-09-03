@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/51",
+  "rule": {
+    "levelMult": 1.0,
+    "calcMinLevel": 5,
+    "calcMaxLevel": null
+  },
+  "ruleText": "Ordinary hold, city, Imperial and Stormcloak guards scale 1:1 with the player, minimum level 5, no +20 offset. The winning record's own level cap (50) is kept. Named guards, captains, commanders, quest actors and mod-added guard equivalents are audited separately and are not touched (user rule, #51, 2026-08-29; audit records/guard-scaling-audit-2026-09-02.md).",
+  "targets": [
+    {
+      "formKey": "0F6F37:Skyrim.esm",
+      "editorId": "EncGuardImperialTemplate",
+      "role": "stats template for every Imperial-held hold and city guard (Whiterun, Solitude, Markarth, Falkreath, Morthal, Dragon Bridge, Kolskeggr, Karthwasten and the CW-flipped variants); vanilla PCx1.0 min 20 max 50, USSEP forwards the same values"
+    },
+    {
+      "formKey": "0F6F38:Skyrim.esm",
+      "editorId": "EncGuardSonsTemplate",
+      "role": "stats template for every Stormcloak-held hold and city guard (Windhelm, Riften, Dawnstar, Winterhold and the CW-flipped variants); vanilla PCx1.0 min 20 max 50, USSEP forwards the same values"
+    },
+    {
+      "formKey": "0195AF:Dragonborn.esm",
+      "editorId": "DLC2RRGuardTemplate",
+      "role": "stats template for the Raven Rock Redoran city guards (17 placed guard records); vanilla PCx1.0 min 20 max 50, no override in the profile"
+    }
+  ],
+  "excluded": [
+    { "formKey": "105CBB:Skyrim.esm", "editorId": "GuardWinterholdCollege", "reason": "winner is Cutting Room Floor (vanilla fixed L40 -> CRF PCx1 [20-50]); CRF requires advance permission for compatibility patches (#71), so this patch keeps CRF out of its masters. One respawning College Guard stays at CRF's rule; tracked separately." },
+    { "formKey": "01FC5D:Skyrim.esm", "editorId": "EncSoldierImperialTemplate", "reason": "Imperial camp/fort soldier family, not a guard; PCx0.25 [1-50] in vanilla and already below the rule" },
+    { "formKey": "027498:Skyrim.esm", "editorId": "EncSoldierSonsTemplate", "reason": "Stormcloak camp/fort soldier family, not a guard; PCx0.25 [1-50] in vanilla (Sons of Skyrim forwards it unchanged)" },
+    { "formKey": "045BE0:Skyrim.esm", "editorId": "EncSiegeImperialArcherTemplate", "reason": "civil-war siege actor, not a guard; PCx1 [3-0]" },
+    { "formKey": "045BE4:Skyrim.esm", "editorId": "EncSiegeSonsArcherTemplate", "reason": "civil-war siege actor, not a guard; PCx1 [3-20]" },
+    { "formKey": "038257:Skyrim.esm", "editorId": "CommanderCaius", "reason": "named guard commander, owns his stats (fixed L10)" },
+    { "formKey": "041FB8:Skyrim.esm", "editorId": "CaptainAldis", "reason": "named guard captain, owns his stats (PCx1 [5-15])" },
+    { "formKey": "01C9F7:Skyrim.esm", "editorId": "CaptainMetilius", "reason": "named captain, owns his stats (PCx0.8 [10-30], CRF winner)" },
+    { "formKey": "01D4B5:Skyrim.esm", "editorId": "CommanderMaro", "reason": "named Penitus Oculatus commander, quest actor" },
+    { "formKey": "0813B5:Skyrim.esm", "editorId": "Sinmir", "reason": "named actor, owns his stats" },
+    { "formKey": "0182AC:Dragonborn.esm", "editorId": "DLC2RRModynVeleth", "reason": "named Redoran captain, owns his stats (PCx1 [25-50])" },
+    { "formKey": "00081E:ccbgssse058-ba_steel.esl", "editorId": "ccBGSSSE058_AldepiusImperial", "reason": "Creation Club quest actor; not edited, but note he inherits stats from EncGuardImperialTemplate and therefore follows the new rule" },
+    { "formKey": "000824:ccbgssse058-ba_steel.esl", "editorId": "ccBGSSSE058_AldepiusSons", "reason": "Creation Club quest actor; inherits stats from EncGuardSonsTemplate and therefore follows the new rule" },
+    { "formKey": "08C29F:BSHeartland.esm", "editorId": "CYREncGuardImperialTemplate", "reason": "mod-added (Beyond Skyrim: Bruma) guard template, PCx1 [15-50]; audited separately" },
+    { "formKey": "001973:BSHeartland.esm", "editorId": "CYREncGuardTemplate", "reason": "mod-added (Bruma) guard template, PCx1 [0-0]; audited separately" },
+    { "formKey": "2616FF:3DNPC.esp", "editorId": "GuardWhiterunCityGeneric3dnpc", "reason": "Interesting NPCs corpse placeholder, fixed L1" },
+    { "formKey": "A69726:Grand Solitude - The Walls of High King Erling.esp", "editorId": "WSStormGateGuard", "reason": "mod-added 'Solitude Guard' with CK-default class and fixed L1; audited separately (flagged as an outlier)" }
+  ]
+}
