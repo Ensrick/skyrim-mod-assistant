@@ -356,10 +356,23 @@ the four cloak dials are no-ops and I will rewrite the approach.
 
 ## 7. One trivial thing: open any Nexus page
 
-Two Keeps are queued and waiting - `18967` (Better Jumping) and `92109` (Open
-Animation Replacer). The curator extension only applies queued decisions when
-it sees a Nexus page, so they land the moment you open one; nothing else is
-needed. `audit/keep_coverage.py` reads one violation until then.
+`18967` (Better Jumping) and `92109` (Open Animation Replacer) have since
+landed - **keep coverage now reads clean: 182 installed Nexus ids, 182 live
+Keeps, zero violations.**
+
+**If a Keep ever seems stuck, the relay is not running.** Start it yourself:
+
+```
+py -3 C:\Users\danjo\source\repos\nexus-local-curator\scripts\curation-relay.py
+```
+
+Then open any Nexus page. `py -3 audit/keep_coverage.py` is the check.
+
+**Note, not mine to decide:** Sol is mid-install of a currency and economy
+stack - five FOMOD plans, a `mods/currency-integration/` tree, and an Address
+Library update, under its own claim. Your "no new mods without permission"
+instruction was given to me, so I have not applied it to Sol or interfered.
+Flagging it in case that instruction was meant to cover both of us.
 
 The relay that delivers them is a background process inside my session, and it
 has now been killed three times by ordinary session churn. Each time it drained
