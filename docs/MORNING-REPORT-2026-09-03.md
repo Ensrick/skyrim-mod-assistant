@@ -167,12 +167,24 @@ Party Sheet, iWant Widgets NG.
   proposes [AllGUD](https://www.nexusmods.com/skyrimspecialedition/mods/28833)
   as the only DLL-free route to visible carried gear - which your #36 inventory
   rule cannot ship without. Suggestion only.
-- **Block animation (#198): OAR is ruled out.** The build's entire OAR payload
-  is Pandora's XPMSE conversion - 164 animations, **no block group** - and
-  Pandora ships no movement or block behaviour at all. The hypothesis had no
-  generated behaviour to live in. Remaining candidate is
+- **Block animation (#198): OAR is ruled out, but not everything is.** The
+  build's entire OAR payload is Pandora's XPMSE conversion - 164 animations
+  across 30 sub-mods, with **no block group**; the only block-named file in the
+  whole output is `shd_blockbashsprint.hkx`, which is shield *bash* while
+  sprinting. No `mt_behavior.hkx`, `1hm_behavior.hkx` or `shield.hkx` was
+  generated either.
+  **Correction, caught overnight by a second agent re-deriving it from disk:**
+  an earlier version of this line said the hypothesis had "no generated
+  behaviour to live in". That was overstated, and it came from a case-sensitive
+  search miss. `0_Master.hkx` **is** generated, in both skeletons - 585,136
+  bytes third-person and 472,688 first-person - and it is the root graph that
+  dispatches block states. So the honest statement is narrower: no OAR
+  animation and no block-*specific* generated behaviour can be the cause, but
+  **the regenerated master graph is not excluded**. It is a live candidate
+  alongside
   [SkyParkour v3](https://www.nexusmods.com/skyrimspecialedition/mods/136980),
-  unproven. **This one needs you**, see below.
+  which means an A/B that only toggles SkyParkour will not clear it.
+  **This one needs you**, see below.
 - **No looting in combat.**
   [No Loot During Combat](https://www.nexusmods.com/skyrimspecialedition/mods/173769)
   is exactly your ask - blocks corpses and chests in combat, ground pickup

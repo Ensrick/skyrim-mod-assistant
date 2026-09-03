@@ -282,18 +282,55 @@ Two honest caveats. The `automation silent UI` line means the harness redirected
 the `MessageBoxW` import for this DLL, as it does for every plugin; that changed
 nothing here, because the plugin never took the failure path. And the run
 covered load, ini creation, factory init, the 164-hash directory cache and a
-save load - **no replacer animation was played, because none is installed**
-(`1 OAR directories`, the plugin's own). OAR is available; whether a given
-animation mod behaves is untested.
+save load. **Correction, 2026-09-03:** an earlier version of this record read
+that line as "no replacer animation was played, because none is installed
+(`1 OAR directories`, the plugin's own)". That was wrong. The one OAR directory
+is real payload - `Pandora Output - Ensrick`'s XPMSE FNIS-AA conversion at
+`meshes/actors/character/animations/OpenAnimationReplacer/XPMSE`, **30 sub-mod
+directories and exactly 164 `.hkx`**, which is precisely the `164 animation
+hashes` the log reports. So OAR loaded, parsed and hashed a genuine replacer set.
+What remains untested is whether any of those animations *plays* in game; the
+launch never left the load path.
 
 ### 1.5 What this unblocks
 
 Directly: OAR itself, and any OAR-format animation replacer the user adds.
+
+**#198 (block animation): OAR being live rules OAR out rather than implicating
+it.** `own-patch-fixes` reached that conclusion first; I re-derived it from the
+files rather than accepting it, and two of its three legs hold:
+
+- **Holds.** The whole OAR payload is Pandora's XPMSE conversion: 30 sub-mods,
+  164 `.hkx`, and the group names are equip/unequip, bow, magic, shout, sprint.
+  **There is no block group.** The only block-named file in the entire Pandora
+  output is `xpe_sprint_1/shd_blockbashsprint.hkx` - shield *bash while
+  sprinting*, gated on `graphVariable FNISaa_sprint == 1`.
+- **Holds.** No `mt_behavior.hkx`, `1hm_behavior.hkx` or `shield.hkx` was
+  generated; the only regenerated per-subgraph behaviours are `magicbehavior.hkx`
+  and `magicmountedbehavior.hkx`.
+- **Does NOT hold.** The claim that Pandora shipped no `0_master.hkx` is wrong.
+  **`0_Master.hkx` is present and regenerated in both skeletons** -
+  `meshes/actors/character/Behaviors/0_Master.hkx` (585,136 bytes) and
+  `meshes/actors/character/_1stperson/Behaviors/0_Master.hkx` (472,688 bytes).
+  A case-sensitive search for `0_master.hkx` misses it.
+
+That third point matters, because `0_Master.hkx` is the root graph that
+dispatches block states. So the conclusion "#198's hypothesis has no generated
+behaviour to live in" is **overstated**: there is no *block-specific* generated
+behaviour, but the master graph was regenerated and is a live candidate. The
+narrower and defensible statement is that **no OAR animation and no
+block-specific behaviour file can be the cause**; `0_Master.hkx` has not been
+excluded. Flagged to `own-patch-fixes` so its 11-row repro matrix does not drop
+that row.
+
 [#148](https://github.com/Ensrick/skyrim-mod-assistant/issues/148)
 (XPMSE weapon-style Papyrus calls aborting against Pandora's `fnis_aa` stub) now
 has a live route - OAR conditional animations are the modern replacement for
 FNIS alternate-animation draw/sheathe styles - but **that is a route, not a fix,
-and #148 is not addressed by this change.**
+and #148 is not addressed by this change.** Note the coupling
+`own-patch-fixes` flagged: `xpe_sprint_1` is the one group whose OAR condition
+reads `FNISaa_sprint` through the `fnis_aa` API, so if sprint-block is the only
+failing row in that matrix it lands in #148's territory.
 
 ---
 
