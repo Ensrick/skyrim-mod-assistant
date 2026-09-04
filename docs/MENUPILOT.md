@@ -14,6 +14,11 @@ plugin consumes it exactly once and appends timestamped results to a log.
 
 Driver: `py -3 audit/menupilot.py send '<json>' ...` | `tail` | `status` | `panic`.
 
+The driver tags every batch and, on timeout or interruption before the DLL
+claims it, atomically quarantines its exact bytes. It never leaves its own
+`commands.jsonl` armed for a later launch. A pre-existing file is somebody
+else's command and is refused, not overwritten.
+
 ## Safety contract
 
 - Plugin is **inert until a commands.jsonl appears** (poll starts at kInputLoaded,
@@ -151,3 +156,43 @@ absolute path (`py -3 C:\Users\danjo\source\repos\skyrim-mod-assistant\audit\men
 a relative path silently sends nothing. Reach the main menu with
 `launch_verify.py --no-autoload --leave-running` (verdict `MENU-ONLY`, never a
 PASS; the record says so).
+
+## Disposable fresh-character gate (#227, V2)
+
+`py -3 audit/fresh_verify.py` is the automated New Game stage. It wraps the
+existing primitives; no new DLL command was needed:
+
+1. Preflight and the instance claim must be clean. With no game or MO2 process
+   alive, an old `commands.jsonl` is renamed to a stamped stale archive so it
+   cannot execute on this launch.
+2. `Default` is copied, never edited, to a unique `Codex Fresh FV-...` profile.
+   Its source saves are excluded, `LocalSettings=true`, `LocalSaves=true`, and
+   audio is muted. The profile is never reused.
+3. `launch_verify` starts that profile on a separate hidden Windows desktop,
+   with no INI sync, no Steam restart, no autoload, and a refuse-instead-of-kill
+   guard for any process that appeared during the preflight/launch gap.
+4. The pilot reads `MainList.selectedEntry.text`, sends one `Down` at a time,
+   and reads again. It accepts only when the immediately preceding value is
+   exactly `$NEW`; no fixed input count is used.
+5. If `strCurrentState` becomes `MainConfirm`, its text is read twice and only
+   the observed shipped prompt `Start a New Game?` is accepted. Any other
+   state, confirmation, or MessageBox fails closed.
+6. PASS requires LaunchProbe `kNewGame` followed by `MENU_OPEN name="RaceSex
+   Menu"`, the current Skyrim Unbound-to-RaceMenu readiness boundary. Cleanup
+   calls the existing human-presence-aware kill; detection leaves the process
+   and its disposable profile intact and exits 88.
+
+Safe checks, neither of which launches the game or changes a profile:
+
+```powershell
+py -3 audit/fresh_verify.py --selftest
+py -3 audit/fresh_verify.py --dry-run
+```
+
+This is deliberately **V2 only**. MenuPilot still has no audited primitive for
+finishing RaceMenu with a supplied character name or saving under a supplied
+name. Therefore this stage does not claim V3 feature probes or V4 named-save /
+reload. The unique identity names the isolated run/profile and its evidence;
+it is not yet typed into RaceMenu. Add an engine-level name/save primitive (or
+prove a fully readable menu route) before extending the harness; never use an
+old "clean" save as a substitute.

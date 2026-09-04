@@ -34,6 +34,25 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-04 - Disposable fresh-character V2 harness staged (#227)
+
+- **What:** Added `audit/fresh_verify.py`, a unique profile-local/no-save New
+  Game gate over the existing launch verifier, MenuPilot and LaunchProbe. The
+  launcher now accepts a selected profile and fail-closed/no-sync/no-Steam-cycle
+  options; the MenuPilot driver tags batches and quarantines its exact
+  unclaimed command bytes on timeout or interruption. V2 runs on a hidden
+  desktop, reads `$NEW` before Accept, recognizes only the observed
+  `Start a New Game?` confirmation, and requires `kNewGame` followed by
+  `RaceSex Menu`.
+- **Source:** Tracking issue #227 and the project's prior-art/CK-first rule.
+  No new SKSE or engine primitive was required for V2.
+- **Verification:** **SELFTESTED, RUNTIME UNVERIFIED 2026-09-04.** Thirteen
+  offline state-machine/isolation/cleanup cases pass, as do the existing
+  `launch_verify` and `human_presence` selftests and PowerShell parse. Per task
+  constraint, Skyrim was not launched and the live profile was not changed.
+  A supervised V2 run remains required; V3 feature probes and V4 unique named
+  save/reload remain open on #227 because no audited name/save primitive exists.
+
 ## 2026-09-03 16:54 - Regional currency stack v0.2.4 installed and save-load verified (#207)
 
 - **What:** Installed the complete current C.O.I.N. 3.5.3 / M.I.N.T. 1.0.6 /

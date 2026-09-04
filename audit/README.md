@@ -95,6 +95,7 @@ py -3 audit/launch_session.py
 | `preflight.py` | everything that must be true BEFORE the user is told to launch. Non-zero exit = do not tell them to launch |
 | `launch_watch.py` | samples the live process and names its state every few seconds |
 | `launch_verify.py` | the automated pass/fail run: launches, times the menu, loads a save |
+| `fresh_verify.py` | #227 V2: unique no-save profile, real `$NEW` menu flow, LaunchProbe `kNewGame` + Skyrim Unbound/RaceMenu readiness; `--selftest` and `--dry-run` never launch |
 | `launch_triage.py` | reads the SKSE logs afterwards and reports every plugin that failed |
 | `threaddump.py` | groups a CrashLogger thread dump and says what the process was doing |
 | `claim.py` | the instance work claim: one owner mutates the profile at a time (#103). `acquire` / `renew` / `release` / `check` / `status` |
@@ -136,9 +137,10 @@ save actually loaded. Exit 0 PASS, 1 otherwise; a record lands in
 `records/launch-verify-*.md` either way, with the timing breakdown
 (process start -> kDataLoaded -> main menu -> save loaded).
 
-It is the only file here that launches the game and the only one that kills it;
-the user authorized both for verification runs specifically. `--leave-running`
-turns the kill off. `launch_session.py --verify` is the same thing.
+It owns the launch/kill implementation; `fresh_verify.py` calls those functions
+rather than growing a second launcher. The user authorized both for
+verification runs specifically. `--leave-running` turns the kill off.
+`launch_session.py --verify` is the same thing.
 
 **It refuses to certify a PASS without LaunchProbe.** The cheap main-menu
 signals lie: on both hung launches of 2026-08-31, CommunityShaders'
@@ -163,6 +165,32 @@ handles that. Unset, the plugin only logs, so it is inert during normal play.
 
 ConsoleUtilSSE was considered for the save load and rejected: it executes
 console commands from Papyrus, and Papyrus is not running at the main menu.
+
+### Fresh character: `fresh_verify.py` (#227 V2)
+
+```
+py -3 audit/fresh_verify.py --selftest    # parser/state-machine fixtures only
+py -3 audit/fresh_verify.py --dry-run     # print a unique plan; no writes/launch
+py -3 audit/fresh_verify.py               # real isolated V2 gate
+```
+
+The real gate copies (never edits) `Default` to a uniquely stamped profile,
+excludes every source save, enables profile-local INIs/saves, and launches the
+copy on a hidden Windows desktop. Steam is required to be running but is not
+restarted. MenuPilot sends one engine-layer key at a time and reads the current
+selection after each; Accept is forbidden unless the immediately preceding
+read is exactly `$NEW`. Only `MainConfirm` / `Start a New Game?` may receive a
+confirmation Accept. PASS requires LaunchProbe `kNewGame`, then `RaceSex Menu`.
+
+The driver quarantines its exact unclaimed command bytes after a timeout. A
+pre-existing command is refused by the generic driver; the fresh gate may
+quarantine it only after owning the instance claim and proving Skyrim/MO2 are
+not running. Final cleanup calls the same `human_presence` guard as
+`launch_verify`; exit 88 leaves the process and disposable profile intact.
+
+Scope is V2 only. The current engine bridge cannot yet enter a unique character
+name or request a uniquely named save, so V3 feature probes and V4 save/reload
+remain open on #227. An older clean save is never accepted as a substitute.
 
 `launch_session.py` runs preflight, waits for the game (**it never launches it**
 - autonomous launches are not allowed), watches, triages, and analyses any

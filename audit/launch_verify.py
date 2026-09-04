@@ -15,6 +15,9 @@ or it's a failure."* This is that test, as a pass/fail command.
   py -3 audit/launch_verify.py --force-kill "reason"  # kill even if a human is detected (#164)
   py -3 audit/launch_verify.py --no-autoload --leave-running  # stop at the MAIN MENU (menu
                                                  # pilot work); verdict MENU-ONLY, never PASS
+  # #227 integration seam (normally use audit/fresh_verify.py, not this directly):
+  py -3 audit/launch_verify.py --profile-name "Codex Fresh ..." --no-ini-sync
+      --hidden-desktop --no-steam-cycle --refuse-existing-processes --no-autoload
 
 PASS requires BOTH:
   1. the real main menu open within --menu-budget seconds of process start, and
@@ -64,7 +67,7 @@ the exit code is 88 regardless of the verdict. `--force-kill "<reason>"`
 overrides; the reason is logged. Same check in install_mod.py before an
 install or sort while SkyrimSE.exe is alive.
 """
-import datetime, io, json, os, subprocess, sys, time
+import datetime, io, json, os, shutil, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -80,7 +83,8 @@ import human_presence as HP
 AUDIT = os.path.dirname(os.path.abspath(__file__))
 REPO = W.REPO
 INSTANCE = W.INSTANCE
-PROFILE = os.path.join(INSTANCE, 'profiles', 'Default')
+DEFAULT_PROFILE_NAME = 'Default'
+PROFILE = os.path.join(INSTANCE, 'profiles', DEFAULT_PROFILE_NAME)
 SAVES = os.path.join(W.DOCS, 'Saves')
 LAUNCHER = os.path.join(AUDIT, 'launch_skyrim.ps1')
 PROBE_DLL = 'LaunchProbe.dll'
@@ -89,14 +93,14 @@ EPOCH_DELTA = 11644473600            # FILETIME 1601 epoch -> unix 1970 epoch
 
 
 # --------------------------------------------------------------- environment
-def probe_installed():
+def probe_installed(profile=PROFILE):
     """Is LaunchProbe.dll reachable through the VFS this launch will build?
 
     Enabled mods only: a staged-but-disabled copy contributes nothing, and
     reporting it as present is how a PASS gets certified on a signal that was
     never loaded."""
     hits = []
-    ml = os.path.join(PROFILE, 'modlist.txt')
+    ml = os.path.join(profile, 'modlist.txt')
     if os.path.exists(ml):
         for line in io.open(ml, encoding='utf-8', errors='replace'):
             line = line.rstrip('\n')
@@ -113,14 +117,18 @@ def probe_installed():
     return hits
 
 
-def newest_save():
-    """The save the run will load. LocalSaves=false, so these live in Documents."""
+def newest_save(profile=PROFILE):
+    """The newest save visible to this profile, respecting MO2 LocalSaves."""
     local = False
-    st = os.path.join(PROFILE, 'settings.txt')
+    # MO2 2.5.2 owns these flags in settings.ini (#143).  Keep the legacy
+    # settings.txt fallback only for old fixture/profile copies.
+    st = os.path.join(profile, 'settings.ini')
+    if not os.path.exists(st):
+        st = os.path.join(profile, 'settings.txt')
     if os.path.exists(st):
         local = 'localsaves=true' in io.open(st, encoding='utf-8',
                                              errors='replace').read().lower()
-    d = os.path.join(PROFILE, 'saves') if local else SAVES
+    d = os.path.join(profile, 'saves') if local else SAVES
     if not os.path.isdir(d):
         return None, d
     ess = [f for f in os.listdir(d) if f.lower().endswith('.ess')]
@@ -209,7 +217,9 @@ class Result:
         self.human_at_controls = False   # kill refused; exit 88 (#164)
 
 
-def launch(env_extra, timeout=420, steam_chain=False):
+def launch(env_extra, timeout=420, steam_chain=False, profile_name=DEFAULT_PROFILE_NAME,
+           no_ini_sync=False, hidden_desktop=False, refuse_existing=False,
+           no_steam_cycle=False):
     """Start the sanctioned launch sequence and return the child.
 
     launch_skyrim.ps1 owns the parts that are easy to get wrong: closing a
@@ -224,15 +234,145 @@ def launch(env_extra, timeout=420, steam_chain=False):
     SkyrimSE and each link inherits from the last."""
     env = dict(os.environ, **env_extra)
     cmd = ['pwsh', '-NoProfile', '-NonInteractive', '-File', LAUNCHER,
-           '-AllowInteractiveDesktop', '-WaitSeconds', '30']
+           '-AllowInteractiveDesktop', '-WaitSeconds', '30',
+           '-ProfileName', profile_name]
     if not steam_chain:
         cmd.append('-Direct')
+    if no_ini_sync:
+        cmd.append('-NoIniSync')
+    if refuse_existing:
+        cmd.append('-RefuseExistingProcesses')
+    if no_steam_cycle:
+        cmd.append('-NoSteamCycle')
     # A pipe nobody drains fills at 64KB and blocks the child mid-Steam-cycle,
     # which would look exactly like a launch failure. Spool to a file instead.
     import tempfile
     fd, path = tempfile.mkstemp(prefix='launch-skyrim-', suffix='.log')
     fh = os.fdopen(fd, 'w', encoding='utf-8', errors='replace')
-    return subprocess.Popen(cmd, env=env, stdout=fh, stderr=subprocess.STDOUT), path
+    desktop = None
+    if hidden_desktop:
+        if os.name != 'nt':
+            fh.close()
+            raise OSError('a hidden Windows desktop is only available on Windows')
+        import ctypes
+        import ctypes.wintypes as wt
+        user32 = ctypes.WinDLL('user32', use_last_error=True)
+        k32 = ctypes.WinDLL('kernel32', use_last_error=True)
+        user32.CreateDesktopW.argtypes = [ctypes.c_wchar_p, ctypes.c_void_p,
+                                          ctypes.c_void_p, ctypes.c_ulong,
+                                          ctypes.c_ulong, ctypes.c_void_p]
+        user32.CreateDesktopW.restype = ctypes.c_void_p
+        user32.CloseDesktop.argtypes = [ctypes.c_void_p]
+        user32.CloseDesktop.restype = wt.BOOL
+        name = 'SkyrimVerify-' + os.urandom(6).hex()
+        desktop = user32.CreateDesktopW(name, None, None, 0, 0x000F01FF, None)
+        if not desktop:
+            fh.close()
+            raise ctypes.WinError(ctypes.get_last_error())
+
+        class STARTUPINFOW(ctypes.Structure):
+            _fields_ = [('cb', wt.DWORD), ('lpReserved', wt.LPWSTR),
+                        ('lpDesktop', wt.LPWSTR), ('lpTitle', wt.LPWSTR),
+                        ('dwX', wt.DWORD), ('dwY', wt.DWORD),
+                        ('dwXSize', wt.DWORD), ('dwYSize', wt.DWORD),
+                        ('dwXCountChars', wt.DWORD), ('dwYCountChars', wt.DWORD),
+                        ('dwFillAttribute', wt.DWORD), ('dwFlags', wt.DWORD),
+                        ('wShowWindow', wt.WORD), ('cbReserved2', wt.WORD),
+                        ('lpReserved2', ctypes.POINTER(ctypes.c_byte)),
+                        ('hStdInput', wt.HANDLE), ('hStdOutput', wt.HANDLE),
+                        ('hStdError', wt.HANDLE)]
+
+        class PROCESS_INFORMATION(ctypes.Structure):
+            _fields_ = [('hProcess', wt.HANDLE), ('hThread', wt.HANDLE),
+                        ('dwProcessId', wt.DWORD), ('dwThreadId', wt.DWORD)]
+
+        class HiddenProcess:
+            def __init__(self, info, desktop_handle, command):
+                self._handle = info.hProcess
+                self._thread = info.hThread
+                self._launch_verify_desktop = desktop_handle
+                self.pid = int(info.dwProcessId)
+                self.args = command
+                k32.CloseHandle(self._thread)
+                self._thread = None
+
+            def wait(self, timeout=None):
+                millis = 0xFFFFFFFF if timeout is None else max(0, int(timeout * 1000))
+                wait = k32.WaitForSingleObject(self._handle, millis)
+                if wait == 0x102:            # WAIT_TIMEOUT
+                    raise subprocess.TimeoutExpired(self.args, timeout)
+                if wait != 0:
+                    raise ctypes.WinError(ctypes.get_last_error())
+                code = wt.DWORD()
+                if not k32.GetExitCodeProcess(self._handle, ctypes.byref(code)):
+                    raise ctypes.WinError(ctypes.get_last_error())
+                return int(code.value)
+
+        k32.CreateProcessW.argtypes = [wt.LPCWSTR, wt.LPWSTR, ctypes.c_void_p,
+                                       ctypes.c_void_p, wt.BOOL, wt.DWORD,
+                                       ctypes.c_void_p, wt.LPCWSTR,
+                                       ctypes.POINTER(STARTUPINFOW),
+                                       ctypes.POINTER(PROCESS_INFORMATION)]
+        k32.CreateProcessW.restype = wt.BOOL
+        k32.WaitForSingleObject.argtypes = [wt.HANDLE, wt.DWORD]
+        k32.WaitForSingleObject.restype = wt.DWORD
+        k32.GetExitCodeProcess.argtypes = [wt.HANDLE, ctypes.POINTER(wt.DWORD)]
+        k32.GetExitCodeProcess.restype = wt.BOOL
+        k32.CloseHandle.argtypes = [wt.HANDLE]
+        k32.CloseHandle.restype = wt.BOOL
+
+        startup = STARTUPINFOW()
+        startup.cb = ctypes.sizeof(startup)
+        startup.lpDesktop = 'WinSta0\\' + name
+        startup.dwFlags = 0x00000001       # STARTF_USESHOWWINDOW
+        startup.wShowWindow = 0            # SW_HIDE
+        info = PROCESS_INFORMATION()
+        application = shutil.which(cmd[0])
+        if not application:
+            fh.close()
+            user32.CloseDesktop(desktop)
+            raise OSError(f'could not resolve launcher executable: {cmd[0]}')
+        hidden_cmd = [application, *cmd[1:]]
+        command = ctypes.create_unicode_buffer(subprocess.list2cmdline(hidden_cmd))
+        env_block = ctypes.create_unicode_buffer(
+            '\0'.join(f'{k}={v}' for k, v in sorted(env.items(), key=lambda x: x[0].upper()))
+            + '\0\0')
+        fh.close()                          # hidden child is intentionally log-only
+        flags = 0x08000000 | 0x00000400    # CREATE_NO_WINDOW | CREATE_UNICODE_ENVIRONMENT
+        if not k32.CreateProcessW(application, command, None, None, False, flags,
+                                  ctypes.cast(env_block, ctypes.c_void_p), AUDIT,
+                                  ctypes.byref(startup),
+                                  ctypes.byref(info)):
+            user32.CloseDesktop(desktop)
+            raise ctypes.WinError(ctypes.get_last_error())
+        child = HiddenProcess(info, desktop, hidden_cmd)
+    else:
+        try:
+            child = subprocess.Popen(cmd, env=env, stdout=fh,
+                                     stderr=subprocess.STDOUT)
+            fh.close()
+        except BaseException:
+            fh.close()
+            raise
+    return child, path
+
+
+def _close_hidden_desktop(child):
+    handle = getattr(child, '_launch_verify_desktop', None) if child else None
+    if handle:
+        import ctypes
+        user32 = ctypes.WinDLL('user32', use_last_error=True)
+        user32.CloseDesktop.argtypes = [ctypes.c_void_p]
+        user32.CloseDesktop.restype = ctypes.c_bool
+        user32.CloseDesktop(handle)
+        child._launch_verify_desktop = None
+        process = getattr(child, '_handle', None)
+        if process:
+            k32 = ctypes.WinDLL('kernel32', use_last_error=True)
+            k32.CloseHandle.argtypes = [ctypes.c_void_p]
+            k32.CloseHandle.restype = ctypes.c_bool
+            k32.CloseHandle(process)
+            child._handle = None
 
 
 def _running(name):
@@ -281,14 +421,19 @@ def kill(pid, why, cfg=None, r=None, since=None):
 def verify(cfg):
     r = Result()
     launch_started = time.time()
-    probe_paths = probe_installed()
-    save, save_dir = (cfg['save'], None) if cfg['save'] else newest_save()
+    profile_name = cfg.get('profile_name') or DEFAULT_PROFILE_NAME
+    profile = os.path.join(INSTANCE, 'profiles', profile_name)
+    probe_paths = probe_installed(profile)
+    save, save_dir = ((cfg['save'], None) if cfg['save'] else
+                      newest_save(profile))
 
     print(f'probe:  {"installed: " + probe_paths[0] if probe_paths else "NOT INSTALLED"}')
     print(f'save:   {save}')
     print(f'budget: menu {cfg["menu_budget"]:.0f}s, save {cfg["save_budget"]:.0f}s')
 
     blockers = []
+    if not os.path.isfile(os.path.join(profile, 'settings.ini')):
+        blockers.append(f'MO2 profile {profile_name!r} is missing settings.ini')
     if not probe_paths and not cfg['allow_unverified']:
         blockers.append('LaunchProbe is not installed in any enabled mod, so a real '
                         'main menu cannot be distinguished from a wedge and no PASS '
@@ -325,6 +470,8 @@ def verify(cfg):
     plan = [f'would run: pwsh -NoProfile -NonInteractive -File {LAUNCHER} '
             f'-AllowInteractiveDesktop -WaitSeconds 30'
             + ('' if cfg['steam_chain'] else ' -Direct'),
+            f'profile: {profile_name}; hidden desktop: {bool(cfg.get("hidden_desktop"))}; '
+            f'INI sync: {"disabled" if cfg.get("no_ini_sync") else "enabled"}',
             f'with env {json.dumps(env)} (scrubbed from Steam by the launcher; '
             f'applied to the direct child only)',
             f'claim: {claim.describe(claim.read())} -> would acquire as {owner}',
@@ -363,8 +510,15 @@ def verify(cfg):
         pid = cfg['attach_pid']
         print(f'\nATTACH MODE: not launching; watching existing pid {pid}')
     else:
-        print('\nlaunching (launch_skyrim.ps1 cycles Steam first; this takes a minute)')
-        child, launcher_log = launch(env, steam_chain=cfg['steam_chain'])
+        print('\nlaunching (' + ('existing Steam left untouched'
+                                if cfg.get('no_steam_cycle') else
+                                'launch_skyrim.ps1 cycles Steam first; this takes a minute') + ')')
+        child, launcher_log = launch(
+            env, steam_chain=cfg['steam_chain'], profile_name=profile_name,
+            no_ini_sync=cfg.get('no_ini_sync', False),
+            hidden_desktop=cfg.get('hidden_desktop', False),
+            refuse_existing=cfg.get('refuse_existing', False),
+            no_steam_cycle=cfg.get('no_steam_cycle', False))
 
         # ---- wait for the process, then start the clock at ITS creation time
         pid = None
@@ -469,6 +623,7 @@ def verify(cfg):
             except Exception:
                 pass
             r.evidence.append('launcher output: ' + _tail(launcher_log, 800))
+            _close_hidden_desktop(child)
         if not cfg['attach_pid'] and not cfg['keep_claim']:
             claim.release(owner)
     if cfg['allow_unverified'] and not probe_paths and r.verdict == 'PASS':
@@ -628,6 +783,11 @@ def main():
         'allow_unverified': '--allow-unverified-signal' in a,
         'attach_pid': opt('--attach-pid', int, None),   # self-test seam, see verify()
         'force_kill': opt('--force-kill', str, None),   # reason; overrides the human guard (#164)
+        'profile_name': opt('--profile-name', str, DEFAULT_PROFILE_NAME),
+        'no_ini_sync': '--no-ini-sync' in a,
+        'hidden_desktop': '--hidden-desktop' in a,
+        'refuse_existing': '--refuse-existing-processes' in a,
+        'no_steam_cycle': '--no-steam-cycle' in a,
     }
     if '--force-kill' in a and not (cfg['force_kill'] or '').strip():
         print('--force-kill needs the reason as its argument'); return 64

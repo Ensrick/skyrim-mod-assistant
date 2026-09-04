@@ -17,11 +17,19 @@
 #       headless-run -> skse64_loader.exe with the harness variables set on
 #       that child only. Without -Direct the Steam chain is used and no
 #       harness variable can reach the game (by design).
+#   #227's disposable lane supplies -ProfileName, -NoIniSync, -NoSteamCycle
+#       and -RefuseExistingProcesses. It runs the script itself on a hidden
+#       desktop, never edits Default/Documents, and fails instead of killing a
+#       process that appeared in the preflight/launch gap.
 param(
     [int]$WaitSeconds = 200,
+    [ValidatePattern('^[^\\/:*?"<>|]+$')]
+    [string]$ProfileName = 'Default',
     [switch]$AllowInteractiveDesktop,
     [switch]$Direct,
     [switch]$NoIniSync,
+    [switch]$NoSteamCycle,
+    [switch]$RefuseExistingProcesses,
     [switch]$IgnoreClaim
 )
 $ErrorActionPreference = 'SilentlyContinue'
@@ -33,7 +41,7 @@ if (-not $AllowInteractiveDesktop) {
 
 $G = "C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition"
 $INSTANCE = "C:\Users\danjo\source\repos\mo2-instances\skyrim-se"
-$PROF = "$INSTANCE\profiles\Default"
+$PROF = Join-Path $INSTANCE ("profiles\" + $ProfileName)
 $DOCSINI = Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'My Games\Skyrim Special Edition'
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 
@@ -67,15 +75,34 @@ $env:SKSE_AUTOMATION_SILENT_UI = '1'
 Write-Host ("    scrubbed {0} harness var(s) from the Steam environment: {1}" -f $harness.Count,
     $(if ($harness.Count) { ($harness.Keys | Sort-Object) -join ', ' } else { 'none present' }))
 
-Write-Host "[1] closing stale chain"
-Stop-Process -Name SkyrimSE, ModOrganizer, skse64_loader -Force
+Write-Host "[1] launch-chain ownership"
+$existing = @(Get-Process -Name SkyrimSE, ModOrganizer, skse64_loader, MO2Headless -ErrorAction SilentlyContinue)
+if ($RefuseExistingProcesses -and $existing.Count -gt 0) {
+    Write-Host ("[ABORT] existing launch-chain process(es): {0}; refusing to kill or launch" -f
+        (($existing | ForEach-Object { "{0}:{1}" -f $_.ProcessName, $_.Id }) -join ', '))
+    exit 75
+}
+if (-not $RefuseExistingProcesses) {
+    Stop-Process -Name SkyrimSE, ModOrganizer, skse64_loader -Force
+}
 $t = 15
 while ((Get-Process MO2Headless) -and $t -gt 0) { Start-Sleep -Seconds 1; $t -= 1 }   # a direct-chain wrapper exits by itself once the game is gone
-if (Get-Process MO2Headless) { Write-Host "    WARNING MO2Headless.exe still running (a mutation in progress?) - not killing it" }
+if (Get-Process MO2Headless -ErrorAction SilentlyContinue) {
+    if ($RefuseExistingProcesses) {
+        Write-Host "[ABORT] MO2Headless.exe remained running; refusing to overlap it"
+        exit 75
+    }
+    Write-Host "    WARNING MO2Headless.exe still running (a mutation in progress?) - not killing it"
+}
 Start-Sleep -Seconds 3
 
 Write-Host "[2] profile INIs -> Documents (profile is the source of truth, #143)"
-$ownerLine = Select-String -Path "$PROF\settings.ini" -Pattern '^LocalSettings\s*=\s*(\w+)' | ForEach-Object { $_.Matches[0].Groups[1].Value }
+$profileSettingsPath = Join-Path $PROF 'settings.ini'
+if (-not (Test-Path -LiteralPath $profileSettingsPath -PathType Leaf)) {
+    Write-Host "[ABORT] profile '$ProfileName' does not exist or has no settings.ini"
+    exit 66
+}
+$ownerLine = Select-String -Path $profileSettingsPath -Pattern '^LocalSettings\s*=\s*(\w+)' | ForEach-Object { $_.Matches[0].Groups[1].Value }
 Write-Host ("    settings.ini LocalSettings={0} ({1})" -f $ownerLine,
     $(if ("$ownerLine" -ieq 'true') { 'MO2 maps the Documents INI paths onto the profile copies for its launches' } else { 'the game reads the Documents copies; the sync below is what keeps them right' }))
 if ($NoIniSync) {
@@ -107,16 +134,24 @@ $hdr = "# This file is used by Skyrim to keep track of your downloaded content."
 [IO.File]::WriteAllLines("$env:LOCALAPPDATA\Skyrim Special Edition\Plugins.txt", @($hdr) + $stars)
 Write-Host ("    {0} plugins seeded" -f @($stars).Count)
 
-Write-Host "[4] cycling Steam (clears wedged launcher state; restarted with the scrubbed environment)"
-& "C:\Program Files (x86)\Steam\steam.exe" -shutdown
-$t = 45
-while ((Get-Process steam) -and $t -gt 0) { Start-Sleep -Seconds 3; $t -= 3 }
-if (Get-Process steam) { Stop-Process -Name steam, steamwebhelper -Force; Start-Sleep -Seconds 3 }
-Start-Process "C:\Program Files (x86)\Steam\steam.exe" -ArgumentList '-silent'
-$t = 90
-while (-not (Get-Process steamwebhelper) -and $t -gt 0) { Start-Sleep -Seconds 3; $t -= 3 }
-Start-Sleep -Seconds 12
-Write-Host "    steam ready"
+Write-Host "[4] Steam readiness"
+if ($NoSteamCycle) {
+    if (-not (Get-Process steam -ErrorAction SilentlyContinue)) {
+        Write-Host "[ABORT] Steam is not already running; -NoSteamCycle forbids starting it"
+        exit 75
+    }
+    Write-Host "    cycle skipped; existing Steam left untouched"
+} else {
+    & "C:\Program Files (x86)\Steam\steam.exe" -shutdown
+    $t = 45
+    while ((Get-Process steam) -and $t -gt 0) { Start-Sleep -Seconds 3; $t -= 3 }
+    if (Get-Process steam) { Stop-Process -Name steam, steamwebhelper -Force; Start-Sleep -Seconds 3 }
+    Start-Process "C:\Program Files (x86)\Steam\steam.exe" -ArgumentList '-silent'
+    $t = 90
+    while (-not (Get-Process steamwebhelper) -and $t -gt 0) { Start-Sleep -Seconds 3; $t -= 3 }
+    Start-Sleep -Seconds 12
+    Write-Host "    steam ready"
+}
 
 if ($Direct) {
     Write-Host "[5] launching DIRECT: MO2Headless run -> headless-run -> skse64_loader (harness env on this child only)"
@@ -130,7 +165,7 @@ if ($Direct) {
     $psi.WorkingDirectory = $INSTANCE
     $psi.UseShellExecute = $false
     $psi.CreateNoWindow = $true
-    foreach ($a in @('--root', $INSTANCE, '-p', 'Default', '--timeout', '0', 'run', $loader, '--cwd', $G)) {
+    foreach ($a in @('--root', $INSTANCE, '-p', $ProfileName, '--timeout', '0', 'run', $loader, '--cwd', $G)) {
         [void] $psi.ArgumentList.Add($a)
     }
     foreach ($k in $harness.Keys) { $psi.Environment[$k] = $harness[$k] }
