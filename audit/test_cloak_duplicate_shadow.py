@@ -49,7 +49,7 @@ class CloakDuplicateShadowTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             self.make_vendor(root, data)
-            result = subject.validate_vendor(root, self.pin_for(data))
+            result = subject.validate_vendor(root, self.pin_for(data)).details()
             self.assertTrue(result["byteIdentical"])
             self.assertEqual(58, result["filterByOutfitsDirectivesPerFile"])
 
@@ -96,6 +96,24 @@ class CloakDuplicateShadowTests(unittest.TestCase):
             with self.assertRaisesRegex(subject.ValidationError, "not comment-only"):
                 subject.validate_owned(root)
 
+    def test_rejects_comment_only_owned_hash_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.copy_owned(root)
+            shadow = root / Path(subject.SHADOW_PATH)
+            shadow.write_bytes(shadow.read_bytes() + b"; unreviewed comment drift\n")
+            with self.assertRaisesRegex(subject.ValidationError, "owned file mismatch"):
+                subject.validate_owned(root)
+
+    def test_rejects_unexpected_owned_file(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self.copy_owned(root)
+            extra = root / "unexpected.ini"
+            extra.write_bytes(b"; unreviewed extra file\n")
+            with self.assertRaisesRegex(subject.ValidationError, "owned overlay file set changed"):
+                subject.validate_owned(root)
+
     def test_archive_uses_validated_snapshot_not_later_filesystem_state(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
@@ -109,6 +127,13 @@ class CloakDuplicateShadowTests(unittest.TestCase):
             with zipfile.ZipFile(output) as archive:
                 self.assertEqual(expected_shadow, archive.read(subject.SHADOW_PATH))
                 self.assertNotEqual(shadow.read_bytes(), archive.read(subject.SHADOW_PATH))
+
+    def test_rejects_complete_vendor_payload_embedded_in_owned_file(self) -> None:
+        payload = self.fixture()
+        vendor = subject.VendorSnapshot(subject.VENDOR_PATHS, payload, 58)
+        owned = subject.OwnedSnapshot((("bad.ini", b"owned prefix\n" + payload),))
+        with self.assertRaisesRegex(subject.ValidationError, "embeds the complete vendor payload"):
+            subject.assert_no_vendor_payload(vendor, owned)
 
     def test_archive_is_reproducible_and_contains_owned_bytes_only(self) -> None:
         vendor = self.fixture()

@@ -36,8 +36,8 @@ are no longer byte-identical, the size/hash changes, or the directive count is
 not 58. This makes an upstream fix or restructuring a re-audit event rather
 than silently preserving an obsolete shadow.
 
-No vendor byte appears in the package. The shadow is 1,060 bytes of original
-comments and zero active directives.
+No complete vendor file payload appears in the package. The shadow is 1,060
+bytes of original comments and zero active directives.
 
 ## Owned payload
 
@@ -75,11 +75,12 @@ py -3 audit/cloak_duplicate_shadow.py `
   --output "dist/issue-200/Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip"
 ```
 
-Eight tests pass. They cover exact-input acceptance, non-identical-source and
+Eleven tests pass. They cover exact-input acceptance, non-identical-source and
 identical-pair hash drift, directive-count drift, an active-directive/exact
-owned-file-set gate, immutable-snapshot packaging under a reproduced concurrent
-mutation, and byte-identical archives with no complete vendor payload. CI runs
-the same suite.
+owned-file-set gate, comment-only owned-file hash drift, unexpected owned files,
+immutable-snapshot packaging under a reproduced concurrent mutation, explicit
+rejection of a complete vendor payload embedded in an owned file, and
+byte-identical archives. CI runs the same suite.
 
 ## Exact live acceptance test
 

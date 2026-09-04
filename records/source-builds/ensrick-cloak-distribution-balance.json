@@ -4,7 +4,7 @@
   "version": "2026-09-04.1",
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/200",
   "sourcePath": "overlays/ensrick-cloak-distribution-balance",
-  "kind": "Hand-authored SkyPatcher configuration overlay; no plugin and no vendor bytes",
+  "kind": "Hand-authored SkyPatcher configuration overlay; no plugin and no vendor file payload",
   "auditRecord": "records/cloak-duplicate-shadow-2026-09-04.md",
   "priorAuditRecord": "records/cloak-distribution-2026-09-02.md",
   "ckFirst": {
@@ -108,16 +108,16 @@
     "command": "py -3 audit/cloak_duplicate_shadow.py --vendor-root <RMB-Core-6.3.0-Data-root> --output dist/issue-200/Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
     "validator": {
       "path": "audit/cloak_duplicate_shadow.py",
-      "bytes": 9267,
-      "sha256": "87B114A6A419A8E14C9168C82E610B89E628292E3C17107865AD9EC0AAA6C4E5",
+      "bytes": 10089,
+      "sha256": "7B89B8E979CD525A2C8C38947E66DF7A9310CCA7A86A3D62F13E700C4D8B64B3",
       "interpreter": "CPython 3, standard library only"
     },
     "test": {
       "path": "audit/test_cloak_duplicate_shadow.py",
-      "bytes": 5914,
-      "sha256": "10E322BF2E22F62AFA0B924E146C1C2FA918D6DF43E1EE9D4396B4C4722DD999"
+      "bytes": 7232,
+      "sha256": "59DF55DEE67D07B4104A5199E899F13EA8671BE9A571068999BADCD21F9E7AAB"
     },
-    "reproduction": "The builder uses stored ZIP members, a fixed 2000-01-01 timestamp, sorted POSIX member paths, fixed Unix 0644 attributes, and byte-pinned LF source files. Two independent builds must have the recorded archive hash."
+    "reproduction": "The builder reads each owned file once into an immutable validated snapshot, then uses only that snapshot for ZIP write and verification. It uses stored members, a fixed 2000-01-01 timestamp, sorted POSIX member paths, fixed Unix 0644 attributes, and byte-pinned LF source files. Two independent builds must have the recorded archive hash."
   },
   "package": {
     "files": {
@@ -135,7 +135,7 @@
       "bytes": 12865,
       "sha256": "5B36DB0301DB6759E83C342A938279935BB30B68D8B1D8EB32F0C22C2B1D81BD"
     },
-    "containsVendorBytes": false,
+    "containsCompleteVendorPayload": false,
     "vendorByteClaim": "No complete vendor input payload is an archive member or embedded within one; exact owned file hashes and the immutable-snapshot writer enforce the two-file payload."
   },
   "outputPlugin": "Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
@@ -151,13 +151,14 @@
   },
   "validation": {
     "unitCommand": "py -3 -m unittest discover -s audit -p test_*.py -v",
-    "unitResult": "PASS: 8 tests",
+    "unitResult": "PASS: 11 tests",
     "coverage": [
       "accept exact duplicate pair",
       "reject non-identical source paths",
       "reject identical-pair source hash drift",
       "reject source directive-count drift",
       "reject an active directive or unexpected owned file",
+      "reject comment-only owned-file hash drift",
       "write from one immutable validated snapshot despite later filesystem mutation",
       "prove byte-identical archives and reject a complete vendor payload in any member"
     ],
@@ -186,6 +187,6 @@
   "distribution": {
     "status": "distributable",
     "vendorFilesModified": false,
-    "basis": "Both packaged INIs are Ensrick-authored text. The shadow reproduces no vendor directives or bytes; it only occupies the same virtual filename. RMB Core remains a separately acquired immutable prerequisite."
+    "basis": "Both packaged INIs are Ensrick-authored text. The shadow reproduces no vendor directives or complete vendor file payload; it only occupies the same virtual filename. RMB Core remains a separately acquired immutable prerequisite."
   }
 }

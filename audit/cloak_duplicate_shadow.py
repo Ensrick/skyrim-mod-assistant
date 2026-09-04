@@ -60,6 +60,25 @@ class VendorPin:
 
 
 @dataclass(frozen=True)
+class VendorSnapshot:
+    """The exact validated duplicate payload, retained for provenance checks."""
+
+    paths: tuple[str, str]
+    payload: bytes
+    outfit_directives: int
+
+    def details(self) -> dict:
+        file_detail = {"bytes": len(self.payload), "sha256": sha256(self.payload)}
+        return {
+            "provider": "RMB SPIDified - Core Framework",
+            "version": "6.3.0",
+            "files": [{"path": rel, **file_detail} for rel in self.paths],
+            "byteIdentical": True,
+            "filterByOutfitsDirectivesPerFile": self.outfit_directives,
+        }
+
+
+@dataclass(frozen=True)
 class OwnedSnapshot:
     """One immutable read of the validated files that will enter the ZIP."""
 
@@ -88,17 +107,15 @@ def active_lines(data: bytes) -> list[bytes]:
     ]
 
 
-def validate_vendor(vendor_root: Path, pin: VendorPin = VendorPin()) -> dict:
+def validate_vendor(vendor_root: Path, pin: VendorPin = VendorPin()) -> VendorSnapshot:
     """Validate that both exact vendor paths are the pinned accidental copy."""
     payloads: list[bytes] = []
-    details = []
     for rel in pin.paths:
         path = vendor_root / Path(rel)
         if not path.is_file():
             raise ValidationError(f"missing pinned vendor input: {path}")
         data = path.read_bytes()
         payloads.append(data)
-        details.append({"path": rel, "bytes": len(data), "sha256": sha256(data)})
 
     if payloads[0] != payloads[1]:
         raise ValidationError(
@@ -121,13 +138,7 @@ def validate_vendor(vendor_root: Path, pin: VendorPin = VendorPin()) -> dict:
             f"expected {pin.outfit_directives}"
         )
 
-    return {
-        "provider": "RMB SPIDified - Core Framework",
-        "version": "6.3.0",
-        "files": details,
-        "byteIdentical": True,
-        "filterByOutfitsDirectivesPerFile": count,
-    }
+    return VendorSnapshot(pin.paths, data, count)
 
 
 def validate_owned(overlay_root: Path = OVERLAY_ROOT) -> OwnedSnapshot:
@@ -190,10 +201,18 @@ def write_archive(output: Path, snapshot: OwnedSnapshot) -> dict:
     return {"path": output.name, "bytes": output.stat().st_size, "sha256": sha256(output.read_bytes())}
 
 
+def assert_no_vendor_payload(vendor: VendorSnapshot, owned: OwnedSnapshot) -> None:
+    """Reject embedding the complete validated vendor config in any owned file."""
+    for rel, data in owned.entries:
+        if vendor.payload in data:
+            raise ValidationError(f"owned file embeds the complete vendor payload: {rel}")
+
+
 def build(vendor_root: Path, output: Path, overlay_root: Path = OVERLAY_ROOT,
           pin: VendorPin = VendorPin()) -> dict:
     vendor = validate_vendor(vendor_root, pin)
     owned = validate_owned(overlay_root)
+    assert_no_vendor_payload(vendor, owned)
     artifact = write_archive(output, owned)
     manifest = {
         "schemaVersion": 1,
@@ -201,10 +220,10 @@ def build(vendor_root: Path, output: Path, overlay_root: Path = OVERLAY_ROOT,
         "version": VERSION,
         "issue": ISSUE,
         "purpose": "Shadow the erroneous second RMB Core cloak outfit injector at its exact Headgear virtual path.",
-        "vendorInput": vendor,
+        "vendorInput": vendor.details(),
         "ownedFiles": owned.details(),
         "artifact": artifact,
-        "containsVendorBytes": False,
+        "containsCompleteVendorPayload": False,
     }
     sidecar = output.with_name(output.name + ".manifest.json")
     sidecar.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
@@ -228,8 +247,9 @@ def main(argv: list[str] | None = None) -> int:
     try:
         vendor = validate_vendor(args.vendor_root)
         owned = validate_owned()
+        assert_no_vendor_payload(vendor, owned)
         if args.verify_only:
-            print(json.dumps({"vendorInput": vendor, "ownedFiles": owned.details()}, indent=2))
+            print(json.dumps({"vendorInput": vendor.details(), "ownedFiles": owned.details()}, indent=2))
             return 0
         manifest = build(args.vendor_root, args.output)
         print(json.dumps(manifest, indent=2))
