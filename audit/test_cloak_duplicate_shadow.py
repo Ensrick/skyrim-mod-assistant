@@ -7,6 +7,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest import mock
 
 import cloak_duplicate_shadow as subject
 
@@ -117,13 +118,29 @@ class CloakDuplicateShadowTests(unittest.TestCase):
     def test_archive_uses_validated_snapshot_not_later_filesystem_state(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            self.copy_owned(root)
-            snapshot = subject.validate_owned(root)
-            expected_shadow = dict(snapshot.entries)[subject.SHADOW_PATH]
-            shadow = root / Path(subject.SHADOW_PATH)
-            shadow.write_bytes(b"filterByOutfits=Bad.esm|1:formsToAdd=Bad.esm|2\n")
+            vendor_root = root / "vendor"
+            overlay_root = root / "owned"
+            vendor = self.fixture()
+            self.make_vendor(vendor_root, vendor)
+            self.copy_owned(overlay_root)
+            shadow = overlay_root / Path(subject.SHADOW_PATH)
+            expected_shadow = shadow.read_bytes()
+
+            original_validate = subject.validate_owned
+
+            def validate_then_mutate(path: Path) -> subject.OwnedSnapshot:
+                snapshot = original_validate(path)
+                shadow.write_bytes(b"filterByOutfits=Bad.esm|1:formsToAdd=Bad.esm|2\n")
+                return snapshot
+
             output = root / "snapshot.zip"
-            subject.write_archive(output, snapshot)
+            with mock.patch.object(subject, "validate_owned", side_effect=validate_then_mutate):
+                subject.build(
+                    vendor_root,
+                    output,
+                    overlay_root=overlay_root,
+                    pin=self.pin_for(vendor),
+                )
             with zipfile.ZipFile(output) as archive:
                 self.assertEqual(expected_shadow, archive.read(subject.SHADOW_PATH))
                 self.assertNotEqual(shadow.read_bytes(), archive.read(subject.SHADOW_PATH))

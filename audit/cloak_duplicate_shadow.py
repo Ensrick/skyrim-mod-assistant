@@ -245,10 +245,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        vendor = validate_vendor(args.vendor_root)
-        owned = validate_owned()
-        assert_no_vendor_payload(vendor, owned)
         if args.verify_only:
+            vendor = validate_vendor(args.vendor_root)
+            owned = validate_owned()
+            assert_no_vendor_payload(vendor, owned)
             print(json.dumps({"vendorInput": vendor.details(), "ownedFiles": owned.details()}, indent=2))
             return 0
         manifest = build(args.vendor_root, args.output)

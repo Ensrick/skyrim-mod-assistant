@@ -108,14 +108,14 @@
     "command": "py -3 audit/cloak_duplicate_shadow.py --vendor-root <RMB-Core-6.3.0-Data-root> --output dist/issue-200/Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
     "validator": {
       "path": "audit/cloak_duplicate_shadow.py",
-      "bytes": 10089,
-      "sha256": "7B89B8E979CD525A2C8C38947E66DF7A9310CCA7A86A3D62F13E700C4D8B64B3",
+      "bytes": 10101,
+      "sha256": "FCF6B6E108956B28DDC825DA1503636D1DE2D919DE3A43E8DE62E26F9F28E10A",
       "interpreter": "CPython 3, standard library only"
     },
     "test": {
       "path": "audit/test_cloak_duplicate_shadow.py",
-      "bytes": 7232,
-      "sha256": "59DF55DEE67D07B4104A5199E899F13EA8671BE9A571068999BADCD21F9E7AAB"
+      "bytes": 7836,
+      "sha256": "5BF978AF2FEFF02E71111C4094D4EA92591522AF56B03B9F5EBCCC3E4A4867FF"
     },
     "reproduction": "The builder reads each owned file once into an immutable validated snapshot, then uses only that snapshot for ZIP write and verification. It uses stored members, a fixed 2000-01-01 timestamp, sorted POSIX member paths, fixed Unix 0644 attributes, and byte-pinned LF source files. Two independent builds must have the recorded archive hash."
   },
