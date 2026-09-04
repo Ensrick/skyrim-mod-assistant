@@ -24,14 +24,58 @@ Reading the live curator state needs nexus-local-curator/scripts/curator_state.p
 (Firefox extension storage). If that is unavailable the gate WARNS rather than
 fails - it cannot prove a violation it cannot read.
 """
-import argparse, json, pathlib, re, sys
+import argparse, json, os, pathlib, re, sys, tempfile
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 INSTANCE = pathlib.Path(r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se')
 LEDGER = REPO / 'records' / 'installed-mods.json'
-CURATOR = REPO.parent / 'nexus-local-curator' / 'scripts'
 GAME = 'skyrimspecialedition'
 PROFILE = 'Default'
+
+
+def curator_scripts(candidates=None):
+    """Locate the curator checkout from canonical and isolated worktrees.
+
+    ``REPO.parent`` is the shared ``repos`` directory in the canonical checkout,
+    but it is ``repos/_codex_worktrees`` for a review worktree.  Deriving a
+    second candidate from the configured MO2 instance keeps the audit portable
+    across both layouts.  An explicit environment override is useful for CI
+    fixtures and other machines without encoding a second user-specific path.
+    """
+    if candidates is None:
+        candidates = []
+        override = os.environ.get('NEXUS_CURATOR_SCRIPTS')
+        if override:
+            candidates.append(pathlib.Path(override))
+        candidates.append(REPO.parent / 'nexus-local-curator' / 'scripts')
+        try:
+            candidates.append(INSTANCE.parents[1] / 'nexus-local-curator' / 'scripts')
+        except IndexError:
+            pass
+    candidates = [pathlib.Path(candidate) for candidate in candidates]
+    for candidate in candidates:
+        if (candidate / 'curator_state.py').is_file():
+            return candidate
+    checked = ', '.join(str(path) for path in candidates)
+    raise FileNotFoundError(f'curator_state.py not found; checked: {checked}')
+
+
+def selftest():
+    with tempfile.TemporaryDirectory(prefix='keep-coverage-') as raw:
+        root = pathlib.Path(raw)
+        missing = root / 'missing'
+        valid = root / 'curator' / 'scripts'
+        valid.mkdir(parents=True)
+        (valid / 'curator_state.py').write_text('# fixture\n', encoding='utf-8')
+        assert curator_scripts([missing, valid]) == valid
+        try:
+            curator_scripts([missing])
+        except FileNotFoundError as exc:
+            assert str(missing) in str(exc)
+        else:
+            raise AssertionError('missing curator fixture did not fail closed')
+    print('keep_coverage selftest PASS (2 assertions)')
+    return 0
 
 
 def installed_ids(instance=INSTANCE, ledger_path=LEDGER):
@@ -76,7 +120,7 @@ def enabled_names(instance=INSTANCE, profile=PROFILE):
 
 def curator_decisions():
     """{id: row}. Raises if the extension state cannot be read."""
-    sys.path.insert(0, str(CURATOR))
+    sys.path.insert(0, str(curator_scripts()))
     import curator_state
     out = {}
     for row in curator_state.decisions():
@@ -131,7 +175,6 @@ def queued_keeps():
     queued is the real violation. The lifecycle remains open until the curator
     applies the queue.
     """
-    import os
     pending = pathlib.Path(os.environ.get('TEMP', '.')) / 'nlc-relay' / 'decisions-pending.json'
     if not pending.exists():
         return set()
@@ -181,7 +224,11 @@ def main():
     ap.add_argument('--json', action='store_true')
     ap.add_argument('--plan', action='store_true',
                     help='print the keep additions a relay batch would make')
+    ap.add_argument('--selftest', action='store_true')
     args = ap.parse_args()
+
+    if args.selftest:
+        return selftest()
 
     r = audit()
     if args.json:
