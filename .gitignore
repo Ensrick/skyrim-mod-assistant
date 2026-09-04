@@ -55,6 +55,9 @@
 !/mods/bounded-encounters/**
 !/mods/weapon-balance/
 !/mods/weapon-balance/**
+!/records/
+!/records/source-builds/
+!/records/source-builds/ensrick-weapon-speed-balance.json
 !/mods/period-underlayers/
 !/mods/period-underlayers/*.ini
 !/mods/period-underlayers/skse/

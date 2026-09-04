@@ -51,6 +51,33 @@ dotnet run --project tests/WeaponBalancePatcher.Tests/WeaponBalancePatcher.Tests
 `generate.ps1` launches the source-built patcher through MO2's headless VFS,
 so it reads the actual active profile rather than only the physical game Data
 folder. The generated plugin and archive are intentionally ignored by Git.
+The local .NET SDK is pinned by `global.json`; NuGet dependencies and hashes
+are pinned by `packages.lock.json`.
+
+## Prior art and code-weight ruling
+
+The CK-native operation is an override of `WEAP.DATA.Speed`. A hand-authored
+plugin is not practical here because the rule selects the current winner of
+thousands of records across a changing load order; this is the rule-over-many
+case in `docs/CK_FIRST_DOCTRINE.md` rule 4. The current standalone project is
+still consolidation debt under rule 6 and should eventually become a policy in
+the shared record-patch generator.
+
+The 2026-09-04 prior-art pass found one exact architectural alternative that
+the earlier 27-result search missed: [Weapon Stat Synthesis Patcher](https://www.nexusmods.com/skyrimspecialedition/mods/149027)
+is also a configurable Synthesis patcher that normalizes melee weapon stats
+across an entire load order, and version 1.2 can disable all non-speed edits.
+It also preserves named-weapon offsets and has broader weapon-family support.
+Replacing this patcher with that released implementation is therefore a user
+choice, not an engineering fact; until decided, this source and its installed
+0.1.0 artifact remain fully receipted and reproducible from the recorded input.
+
+Adjacent alternatives are not exact replacements. [Customize Weapon Speed](https://www.nexusmods.com/skyrimspecialedition/mods/22100)
+mutates base forms at runtime using Papyrus/SKSE and name matching, while
+[Weapon Speed - IPM](https://www.nexusmods.com/skyrimspecialedition/mods/96828)
+adds IPM/MCM runtime dependencies. The three “weapon speed fix” releases found
+in the original search address the `WeaponSpeedMult` actor-value stacking bug,
+not `WEAP.DATA.Speed` normalization.
 
 ## Configuration
 
@@ -73,3 +100,5 @@ Warhammer.
 The generator source and scripts are covered by the repository's MIT license.
 The generated patch contains no third-party meshes, textures, scripts, audio,
 or other assets; users must install every master it references.
+Distribution class: **distributable** (original MIT generator and an
+override-only plugin containing no vendor assets).

@@ -86,9 +86,18 @@ $creationClubFile = Join-Path $gameRoot 'Skyrim.ccc'
 New-Item -ItemType Directory -Force -Path (
     Split-Path -Parent $OutputPath), $workFolder, $persistence | Out-Null
 
-dotnet build $project -c $Configuration --nologo
-if ($LASTEXITCODE -ne 0) {
-    throw "Patcher build failed with exit code $LASTEXITCODE"
+Push-Location $PSScriptRoot
+try {
+    dotnet restore $project --locked-mode --nologo
+    if ($LASTEXITCODE -ne 0) {
+        throw "Patcher restore failed with exit code $LASTEXITCODE"
+    }
+    dotnet build $project -c $Configuration --nologo --no-restore
+    if ($LASTEXITCODE -ne 0) {
+        throw "Patcher build failed with exit code $LASTEXITCODE"
+    }
+} finally {
+    Pop-Location
 }
 
 foreach ($required in @($patcher, $settingsFolder, $dataFolder)) {

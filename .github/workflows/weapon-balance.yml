@@ -5,11 +5,13 @@ on:
     paths:
       - ".github/workflows/weapon-balance.yml"
       - "mods/weapon-balance/**"
+      - "records/source-builds/ensrick-weapon-speed-balance.json"
   push:
     branches: [main]
     paths:
       - ".github/workflows/weapon-balance.yml"
       - "mods/weapon-balance/**"
+      - "records/source-builds/ensrick-weapon-speed-balance.json"
 
 permissions:
   contents: read
@@ -26,7 +28,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         with:
-          dotnet-version: 9.0.x
+          dotnet-version: 9.0.102
           cache: true
           cache-dependency-path: mods/weapon-balance/**/packages.lock.json
       - name: Restore locked dependencies
