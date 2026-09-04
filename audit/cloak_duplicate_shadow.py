@@ -59,6 +59,22 @@ class VendorPin:
     outfit_directives: int = VENDOR_OUTFIT_DIRECTIVES
 
 
+@dataclass(frozen=True)
+class OwnedSnapshot:
+    """One immutable read of the validated files that will enter the ZIP."""
+
+    entries: tuple[tuple[str, bytes], ...]
+
+    def names(self) -> list[str]:
+        return [rel for rel, _data in self.entries]
+
+    def details(self) -> list[dict]:
+        return [
+            {"path": rel, "bytes": len(data), "sha256": sha256(data)}
+            for rel, data in self.entries
+        ]
+
+
 def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
 
@@ -114,8 +130,8 @@ def validate_vendor(vendor_root: Path, pin: VendorPin = VendorPin()) -> dict:
     }
 
 
-def validate_owned(overlay_root: Path = OVERLAY_ROOT) -> list[dict]:
-    """Validate the exact owned payload and ensure the shadow is a true no-op."""
+def validate_owned(overlay_root: Path = OVERLAY_ROOT) -> OwnedSnapshot:
+    """Read once, validate, and return the exact immutable bytes to package."""
     actual = {
         path.relative_to(overlay_root).as_posix()
         for path in overlay_root.rglob("*")
@@ -127,9 +143,18 @@ def validate_owned(overlay_root: Path = OVERLAY_ROOT) -> list[dict]:
         extra = sorted(actual - expected)
         raise ValidationError(f"owned overlay file set changed; missing={missing}, extra={extra}")
 
-    details = []
+    entries = []
     for rel in sorted(OWNED_FILES):
         data = (overlay_root / Path(rel)).read_bytes()
+        if rel == SHADOW_PATH:
+            directives = active_lines(data)
+            if directives:
+                preview = directives[0][:120].decode("ascii", "replace")
+                raise ValidationError(
+                    f"owned Headgear shadow is not comment-only; first active line: {preview}"
+                )
+            if VENDOR_SHA256.encode("ascii") not in data:
+                raise ValidationError("owned Headgear shadow does not state the audited vendor SHA-256 pin")
         wanted = OWNED_FILES[rel]
         got_hash = sha256(data)
         if len(data) != wanted["bytes"] or got_hash != wanted["sha256"]:
@@ -137,24 +162,15 @@ def validate_owned(overlay_root: Path = OVERLAY_ROOT) -> list[dict]:
                 f"owned file mismatch for {rel}: {len(data)} bytes sha256 {got_hash}; "
                 f"expected {wanted['bytes']} bytes sha256 {wanted['sha256']}"
             )
-        details.append({"path": rel, "bytes": len(data), "sha256": got_hash})
-
-    shadow = (overlay_root / Path(SHADOW_PATH)).read_bytes()
-    directives = active_lines(shadow)
-    if directives:
-        preview = directives[0][:120].decode("ascii", "replace")
-        raise ValidationError(f"owned Headgear shadow is not comment-only; first active line: {preview}")
-    if VENDOR_SHA256.encode("ascii") not in shadow:
-        raise ValidationError("owned Headgear shadow does not state the audited vendor SHA-256 pin")
-    return details
+        entries.append((rel, data))
+    return OwnedSnapshot(tuple(entries))
 
 
-def write_archive(output: Path, overlay_root: Path = OVERLAY_ROOT) -> dict:
-    """Write a platform-independent, deterministic ZIP of the pinned payload."""
+def write_archive(output: Path, snapshot: OwnedSnapshot) -> dict:
+    """Write and verify a ZIP using only the already-validated byte snapshot."""
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_STORED) as archive:
-        for rel in sorted(OWNED_FILES):
-            data = (overlay_root / Path(rel)).read_bytes()
+        for rel, data in snapshot.entries:
             info = zipfile.ZipInfo(rel, FIXED_ZIP_TIME)
             info.compress_type = zipfile.ZIP_STORED
             info.create_system = 3
@@ -163,12 +179,12 @@ def write_archive(output: Path, overlay_root: Path = OVERLAY_ROOT) -> dict:
 
     with zipfile.ZipFile(output, "r") as archive:
         names = archive.namelist()
-        if names != sorted(OWNED_FILES):
+        if names != snapshot.names():
             raise ValidationError(f"archive member set/order mismatch: {names}")
         if archive.testzip() is not None:
             raise ValidationError("archive CRC verification failed")
-        for rel in names:
-            if archive.read(rel) != (overlay_root / Path(rel)).read_bytes():
+        for rel, data in snapshot.entries:
+            if archive.read(rel) != data:
                 raise ValidationError(f"archive payload mismatch: {rel}")
 
     return {"path": output.name, "bytes": output.stat().st_size, "sha256": sha256(output.read_bytes())}
@@ -178,7 +194,7 @@ def build(vendor_root: Path, output: Path, overlay_root: Path = OVERLAY_ROOT,
           pin: VendorPin = VendorPin()) -> dict:
     vendor = validate_vendor(vendor_root, pin)
     owned = validate_owned(overlay_root)
-    artifact = write_archive(output, overlay_root)
+    artifact = write_archive(output, owned)
     manifest = {
         "schemaVersion": 1,
         "component": "Ensrick - Cloak Distribution Balance",
@@ -186,7 +202,7 @@ def build(vendor_root: Path, output: Path, overlay_root: Path = OVERLAY_ROOT,
         "issue": ISSUE,
         "purpose": "Shadow the erroneous second RMB Core cloak outfit injector at its exact Headgear virtual path.",
         "vendorInput": vendor,
-        "ownedFiles": owned,
+        "ownedFiles": owned.details(),
         "artifact": artifact,
         "containsVendorBytes": False,
     }
@@ -213,7 +229,7 @@ def main(argv: list[str] | None = None) -> int:
         vendor = validate_vendor(args.vendor_root)
         owned = validate_owned()
         if args.verify_only:
-            print(json.dumps({"vendorInput": vendor, "ownedFiles": owned}, indent=2))
+            print(json.dumps({"vendorInput": vendor, "ownedFiles": owned.details()}, indent=2))
             return 0
         manifest = build(args.vendor_root, args.output)
         print(json.dumps(manifest, indent=2))

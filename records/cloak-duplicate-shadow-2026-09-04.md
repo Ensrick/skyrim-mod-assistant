@@ -75,10 +75,11 @@ py -3 audit/cloak_duplicate_shadow.py `
   --output "dist/issue-200/Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip"
 ```
 
-Five tests pass. They cover exact-input acceptance, non-identical-source
-rejection, source hash/directive-count drift, a directive-free/exact owned file
-set, and byte-identical archives containing owned bytes only. CI runs the same
-suite.
+Eight tests pass. They cover exact-input acceptance, non-identical-source and
+identical-pair hash drift, directive-count drift, an active-directive/exact
+owned-file-set gate, immutable-snapshot packaging under a reproduced concurrent
+mutation, and byte-identical archives with no complete vendor payload. CI runs
+the same suite.
 
 ## Exact live acceptance test
 
@@ -89,7 +90,8 @@ install and no game/user/other assistant owns the profile:
    `Ensrick - Cloak Distribution Balance` entry in place. Do not add a second
    mod and do not edit RMB Core. The owned entry must have higher MO2 file
    priority than RMB Core.
-2. Run `py -3 audit/file_conflicts.py <isolated-output-directory>`. In the
+2. Run `py -3 audit/file_conflicts.py <isolated-output-directory>`. This is the
+   **deterministic acceptance gate**. In the
    report, the exact Headgear path must have winner
    `Ensrick - Cloak Distribution Balance`, SHA-256 `A8AC4627...`; its losing
    RMB provider must be `B3AA37FA...`. The sibling `outfit/Cloaks` path must
@@ -98,7 +100,9 @@ install and no game/user/other assistant owns the profile:
    `SkyPatcher.log`, both the Cloaks and Headgear virtual paths must be read
    once, with no parse failure. The effective Headgear provider is already
    proven directive-free by step 2; the Cloaks provider contains 58 rules.
-4. Use a **new disposable save**, not the September 2 character. At the console
+4. Run this **probabilistic behavior smoke test** on a **new disposable save**,
+   not the September 2 character. It supplements rather than proves the
+   deterministic provider result in step 2. At the console
    enter `tcai`, then `player.placeatme 0001BCD8 20`. This base is
    `EncBandit01Melee1HNordM`; vanilla assigns target outfit `0C0197`, to which
    the legitimate injector adds B5F once. Select each new actor and run

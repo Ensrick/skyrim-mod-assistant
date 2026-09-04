@@ -6,6 +6,7 @@
   "sourcePath": "overlays/ensrick-cloak-distribution-balance",
   "kind": "Hand-authored SkyPatcher configuration overlay; no plugin and no vendor bytes",
   "auditRecord": "records/cloak-duplicate-shadow-2026-09-04.md",
+  "priorAuditRecord": "records/cloak-distribution-2026-09-02.md",
   "ckFirst": {
     "nativeAnswer": "Use MO2's exact virtual-path override to replace only the accidental second SkyPatcher config with a comment-only no-op. No Creation Kit record, ESPFE, Papyrus, or native code is required.",
     "codeJustification": "The INI is hand-authored. Python is used only to fail closed on vendor-source drift, run regression checks, and package the owned files reproducibly; it does not generate game data."
@@ -107,14 +108,14 @@
     "command": "py -3 audit/cloak_duplicate_shadow.py --vendor-root <RMB-Core-6.3.0-Data-root> --output dist/issue-200/Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
     "validator": {
       "path": "audit/cloak_duplicate_shadow.py",
-      "bytes": 8877,
-      "sha256": "31596CFA5A440AF8D39D14AF43E3A9DFFA1C57C40CCE2FDD20E44E709BC567CD",
+      "bytes": 9267,
+      "sha256": "87B114A6A419A8E14C9168C82E610B89E628292E3C17107865AD9EC0AAA6C4E5",
       "interpreter": "CPython 3, standard library only"
     },
     "test": {
       "path": "audit/test_cloak_duplicate_shadow.py",
-      "bytes": 3848,
-      "sha256": "4C173926E2A9BF139645F9B6D014A29D1E20FA326C71A3944574F793E527AB61"
+      "bytes": 5914,
+      "sha256": "10E322BF2E22F62AFA0B924E146C1C2FA918D6DF43E1EE9D4396B4C4722DD999"
     },
     "reproduction": "The builder uses stored ZIP members, a fixed 2000-01-01 timestamp, sorted POSIX member paths, fixed Unix 0644 attributes, and byte-pinned LF source files. Two independent builds must have the recorded archive hash."
   },
@@ -134,7 +135,8 @@
       "bytes": 12865,
       "sha256": "5B36DB0301DB6759E83C342A938279935BB30B68D8B1D8EB32F0C22C2B1D81BD"
     },
-    "containsVendorBytes": false
+    "containsVendorBytes": false,
+    "vendorByteClaim": "No complete vendor input payload is an archive member or embedded within one; exact owned file hashes and the immutable-snapshot writer enforce the two-file payload."
   },
   "outputPlugin": "Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
   "output": {
@@ -149,13 +151,15 @@
   },
   "validation": {
     "unitCommand": "py -3 -m unittest discover -s audit -p test_*.py -v",
-    "unitResult": "PASS: 5 tests",
+    "unitResult": "PASS: 8 tests",
     "coverage": [
       "accept exact duplicate pair",
       "reject non-identical source paths",
-      "reject source hash/directive-count drift",
-      "reject any active directive or unexpected owned file",
-      "prove byte-identical archives and owned-only members"
+      "reject identical-pair source hash drift",
+      "reject source directive-count drift",
+      "reject an active directive or unexpected owned file",
+      "write from one immutable validated snapshot despite later filesystem mutation",
+      "prove byte-identical archives and reject a complete vendor payload in any member"
     ],
     "vendorVerifyCommand": "py -3 audit/cloak_duplicate_shadow.py --vendor-root <RMB-Core-6.3.0-Data-root> --verify-only",
     "vendorVerifyResult": "PASS: both 9,623-byte files match B3AA37... and contain 58 filterByOutfits directives",
@@ -164,9 +168,19 @@
   },
   "installation": {
     "status": "candidate not installed",
-    "currentlyInstalledVersion": "2026-09-02",
-    "currentStageTransaction": "20260903T041656059Z-01212abd1ef0",
-    "profile": "Default",
+    "currentlyInstalled": {
+      "mo2Mod": "Ensrick - Cloak Distribution Balance",
+      "version": "2026-09-02",
+      "profile": "Default",
+      "enabled": true,
+      "modPriorityAtInstall": 260,
+      "installedUtc": "2026-09-03T04:16:56Z",
+      "stageTransaction": "20260903T041656059Z-01212abd1ef0",
+      "activePluginsAfter": 243,
+      "staticVerify": "install_mod.py --verify: 0 problems; verify_order.py CLEAN",
+      "launchVerify": "records/launch-verify-20260902-231840.md: PASS, main menu 32.0 s, save loaded 40.4 s",
+      "gameplayAcceptance": "September 3 observation reopened #200; saved-actor state and the duplicate injector were not separated by that playtest"
+    },
     "liveProfileChangedByThisBuild": false
   },
   "distribution": {
