@@ -5,6 +5,50 @@ groups:
     after: [ 'Ensrick Compatibility Patches' ]
 
 plugins:
+  # AOS 4.1.3 ships this EBT Lite patch in its own archive. It must follow ISC
+  # so its EBT decals survive, then the owned one-record repair restores ISC's
+  # explicitly assigned impact sound on 0F0EB1.
+  - name: 'AOS_EBT LITE Patch.esp'
+    group: 'Ensrick Compatibility Patches'
+    after:
+      - 'dD - Enhanced Blood Main LITE.esp'
+      - 'Audio Overhaul Skyrim.esp'
+      - 'Immersive Sounds - Compendium.esp'
+      - 'AOS_ISC_Integration.esp'
+
+  - name: 'Ensrick AOS EBT ISC Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'AOS_EBT LITE Patch.esp'
+      - 'Immersive Sounds - Compendium.esp'
+      - 'AOS_ISC_Integration.esp'
+
+  # The official CRF locations patch is a required input, but it is not a safe
+  # standalone winner over this profile's SLaWF/LFfGM layers. Install it only
+  # in the same transaction as the generated landscape merge below.
+  - name: 'Landscape Fixes For Grass mods - Cutting Room Floor Locations.esp'
+    group: 'Ensrick Compatibility Patches'
+    after:
+      - 'Landscape Fixes For Grass Mods.esp'
+      - 'Landscape and Water Fixes - Patch - LFfGM.esp'
+      - 'Landscape and Water Fixes - Patch - LFfGM - GotT.esp'
+      - 'cutting room floor.esp'
+
+  # Generated from the current winners for all eleven parent CELL records and
+  # the three shared Whiterun LAND records. 00A61C remains decision-gated.
+  - name: 'Ensrick LFfGM CRF Landscape Patch.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Landscape Fixes For Grass mods - Cutting Room Floor Locations.esp'
+      - 'Landscape and Water Fixes - Patch - LFfGM - GotT.esp'
+      - 'Lux Via - plugin.esp'
+      - 'Lux Orbis - Cutting Room Floor patch.esp'
+      - 'Lux Orbis - USSEP patch.esp'
+      - 'Lux Orbis CS.esp'
+      - 'Nature of the Wild Lands.esp'
+      - 'Nature of the Wild Lands - CuttingRoomFloor.esp'
+      - 'Ensrick Currency Integration Patch.esp'
+
   # Lux CS' own FOMOD says its Orbis plugin must load after Orbis and all
   # Orbis patches. The upstream masterlist does not currently enforce this.
   - name: 'Lux Orbis CS.esp'

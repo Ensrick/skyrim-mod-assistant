@@ -1,6 +1,10 @@
 {
   "schemaVersion": 1,
   "mappings": [
-    { "source": "00 Core Files", "destination": "." }
+    { "source": "00 Core Files", "destination": "." },
+    {
+      "source": "00 Patch Plugins/AOS_EBT LITE Patch.esp",
+      "destination": "AOS_EBT LITE Patch.esp"
+    }
   ]
 }
