@@ -7,9 +7,9 @@ function appends to the `fails` / `warns` lists it is handed and never raises.
                          NOT `SKSE/Plugins/` is a FAIL: SKSE never loads it and
                          the mod looks installed while being inert (the SKSE
                          strip class from the 2026-08-30 audit, F0/F7).
-  ledger gap             enabled mods with no ledger row are named as a WARN
-                         (#102) - the ledger is what --verify reasons from, so
-                         an unledgered mod is invisible to every later gate.
+  profile reconciliation physical mods, modlist, plugins and ledger must agree
+                         (#102). Any gap is a FAIL: an unledgered mod is
+                         invisible to every ledger-only check.
   watched configs        the runtime configs that decide how the game looks and
                          feels (CS SettingsUser.json, FSMP configs.json, SSE
                          Display Tweaks INIs, Underwear.ini, ...) get the same
@@ -91,15 +91,12 @@ def check_dll_depth(fails, warns):
 
 # ------------------------------------------------------------ (ii) ledger gap
 def check_ledger_gap(fails, warns):
-    if not os.path.exists(LEDGER):
-        warns.append('ledger records/installed-mods.json is missing')
-        return
-    led = json.load(io.open(LEDGER, encoding='utf-8'))
-    rows = {m.get('modName', '').lower() for m in led.get('mods', [])}
-    missing = [n for n in enabled_mods() if n.lower() not in rows]
-    if missing:
-        warns.append(f'{len(missing)} enabled mod(s) have no ledger row (#102), so '
-                     f'--verify cannot reason about them: ' + ', '.join(missing))
+    import profile_reconcile
+    result = profile_reconcile.reconcile()
+    for item in result['warnings']:
+        warns.append(f"profile reconcile [{item['code']}]: {item['message']}")
+    for item in result['errors']:
+        fails.append(f"profile reconcile [{item['code']}]: {item['message']}")
 
 
 # ------------------------------------------------------ (iii) watched configs

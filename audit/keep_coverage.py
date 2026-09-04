@@ -4,7 +4,8 @@ Doctrine: docs/CURATION_POLICY.md, "Installed implies Keep" (user, 2026-09-02).
 Adding the Keep is a required step of installing a mod, so this is a gate, not a
 report. It runs inside preflight.py.
 
-Three violations, all blocking:
+Three violations, all blocking once no matching durable Keep operation is
+pending:
 
   1. installed Nexus id with no Keep      - the install never finished
   2. Keep with nothing installed          - stale, or an un-actioned adoption
@@ -15,7 +16,7 @@ overlap-held mod is still in the build and keeps its Keep. Our own artifacts
 (Ensrick overlays, native rebuilds, source builds, harness mods) resolve to no
 Nexus id and are exempt.
 
-  py -3 audit/keep_coverage.py            # gate, exit 1 on any violation
+  py -3 audit/keep_coverage.py            # gate; queued Keeps print PENDING
   py -3 audit/keep_coverage.py --json     # machine-readable, always exit 0
   py -3 audit/keep_coverage.py --plan     # what a relay batch would change
 
@@ -124,10 +125,11 @@ def audit():
 def queued_keeps():
     """Ids sitting in the relay spool waiting for the extension to poll.
 
-    A Keep is applied by the Firefox extension on its next Nexus page load, which
-    the assistant cannot force. So a freshly installed mod whose Keep is already
-    QUEUED is a warning, not a launch blocker; one with no Keep and nothing
-    queued is the real violation - the install skipped the step.
+    A Keep is applied by the Firefox extension on its next Nexus page load. A
+    freshly installed mod whose Keep is already QUEUED is explicitly pending,
+    not falsely reported as an unqueued failure; one with no Keep and nothing
+    queued is the real violation. The lifecycle remains open until the curator
+    applies the queue.
     """
     import os
     pending = pathlib.Path(os.environ.get('TEMP', '.')) / 'nlc-relay' / 'decisions-pending.json'
@@ -194,7 +196,12 @@ def main():
           % (r['installedDirs'], r['installedNexusIds'],
              len(r['ownArtifacts']), r['liveKeeps']))
     bad = 0
+    queued = queued_keeps()
     for row in r['installedWithoutKeep']:
+        if row['modId'] in queued:
+            print('  PENDING Keep queued but not yet applied: %d (%s)'
+                  % (row['modId'], ', '.join(row['mods'])))
+            continue
         print('  FAIL  installed with no Keep: %d (%s)%s'
               % (row['modId'], ', '.join(row['mods']),
                  '' if row['enabled'] else ' [disabled - still needs the Keep]'))
