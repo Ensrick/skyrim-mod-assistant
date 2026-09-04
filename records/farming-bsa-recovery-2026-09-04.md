@@ -22,6 +22,12 @@ Farming in `%LOCALAPPDATA%\Skyrim Special Edition\ContentCatalog.txt`
 of the intact BSA. Both advertise BSA version 105, 10 folders and 182 files;
 the old file is an interrupted write, not a different valid release.
 
+After recovery, the live BSA was also parsed and every indexed entry was fully
+decoded through the project's v103/104/105 BSA reader. All 182 entries decoded
+successfully (18,252,308 uncompressed bytes); there were zero empty results,
+decompression failures, or declared-size mismatches. This tests the whole
+archive rather than trusting only its header and outer SHA-256.
+
 All 466 retained MO2 archives were searched. None contains the official BSA or
 ESL. `659-595607.7z` is the SMIM Farming Creation Club visual patch: three NIF
 meshes only. It presupposes the official payload and cannot restore it.
