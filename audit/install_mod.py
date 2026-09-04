@@ -55,6 +55,7 @@ REPO = os.path.dirname(SP)
 sys.path.insert(0, SP)
 import claim
 import human_presence as HP
+import profile_reconcile
 
 CANONICAL = r'C:\Users\danjo\source\repos\skyrim-mod-assistant'
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -135,6 +136,14 @@ def refuse_if_human_playing(what):
 def install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
     refuse_if_human_playing(f'install {mid} "{mod_name}"')
     with claim.guard(None, f'install_mod {mid} "{mod_name}"', ttl=45):
+        # Reconcile only after acquiring the writer claim. A clean result read
+        # before the claim would be stale if another controller changed the
+        # profile while we waited.
+        state = profile_reconcile.reconcile()
+        if not state['reconciled']:
+            print('REFUSING install: the existing profile is not reconciled (#102).')
+            print(profile_reconcile.render(state))
+            return 1
         return _install(mid, mod_name, prefer, plan, replace, file_id)
 
 
@@ -186,7 +195,16 @@ def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None)
     })
     save(led)
     print(f'ledger now holds {len(led["mods"])} mods -> {LEDGER}')
-    queue_keep(mid, mod_name)
+    if not queue_keep(mid, mod_name):
+        print('install transaction completed, but lifecycle completion FAILED: '
+              'the required Keep could not be queued')
+        return 1
+    state = profile_reconcile.reconcile()
+    if not state['reconciled']:
+        print('install transaction completed, but the post-install profile does '
+              'not reconcile; this change remains INCOMPLETE (#102)')
+        print(profile_reconcile.render(state))
+        return 1
     return 0
 
 
@@ -209,11 +227,14 @@ def queue_keep(mid, mod_name):
             batch = json.load(open(pending, encoding='utf-8'))
         if any(str(e.get('mod', {}).get('modId')) == str(mid) for e in batch):
             print(f'keep {mid} already queued')
-            return
+            return True
         batch.append({'status': 'keep', 'mod': {
             'game': 'skyrimspecialedition', 'modId': str(mid),
             'title': mod_name,
-            'sourceUrl': f'https://www.nexusmods.com/skyrimspecialedition/mods/{mid}'}})
+            'sourceUrl': f'https://www.nexusmods.com/skyrimspecialedition/mods/{mid}'},
+            'queuedAt': datetime.datetime.now(datetime.timezone.utc)
+                                .strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'source': 'audit/install_mod.py'})
         tmp = pending + '.tmp'
         with open(tmp, 'w', encoding='utf-8') as fh:
             json.dump(batch, fh, ensure_ascii=False, indent=1)
@@ -221,18 +242,21 @@ def queue_keep(mid, mod_name):
         print(f'keep {mid} queued for the curator ({len(batch)} in batch) -> {pending}')
         print('   it applies on the next Nexus page load; '
               'py -3 audit/keep_coverage.py is the gate')
+        return True
     except Exception as exc:
-        # never fail an otherwise-good install on this, but never hide it either
         print(f'   KEEP QUEUE FAILED for {mid}: {type(exc).__name__}: {exc}')
-        print('   queue it by hand before the batch is called done')
+        print('   the lifecycle transaction is incomplete until this is repaired')
+        return False
 
 
 def verify():
+    reconciled = profile_reconcile.reconcile()
+    print(profile_reconcile.render(reconciled) + '\n')
     led = load()
     state = mo2('plugin-list')
     live = {p['name']: p['enabled'] for p in state.get('plugins', [])}
     print(f"{len(led['mods'])} mods in ledger; {state.get('discoveredCount')} plugins discovered\n")
-    bad = 0
+    bad = reconciled['counts']['errors']
     off_on_purpose = []          # (mod, plugin, why) - expected off, never a fault
     faults = []                  # the rows that actually matter
     for m in led['mods']:
@@ -279,6 +303,11 @@ def verify():
 def sort_order():
     refuse_if_human_playing('--sort')
     with claim.guard(None, 'install_mod --sort (LOOT)', ttl=45):
+        state = profile_reconcile.reconcile()
+        if not state['reconciled']:
+            print('REFUSING sort: the existing profile is not reconciled (#102).')
+            print(profile_reconcile.render(state))
+            return 1
         return _sort_order()
 
 
@@ -374,6 +403,10 @@ if __name__ == '__main__':
         show()
     elif a[0] == '--verify':
         sys.exit(verify())
+    elif a[0] == '--reconcile':
+        state = profile_reconcile.reconcile()
+        print(profile_reconcile.render(state))
+        sys.exit(0 if state['reconciled'] else 1)
     elif a[0] == '--sort':
         guard_canonical(override)
         try:

@@ -13,9 +13,12 @@ Effective 2026-08-30, revised 2026-09-02, the three practical states are:
 
 Research and a favorable recommendation do not create a Keep entry. The normal
 adoption sequence is explicit user approval, archive/licence audit, headless
-installation and enablement, verification, and only then Keep plus removal of
-the selected mod's author from Excluded. If an installed mod is **removed from
-disk**, clear Keep back to Unreviewed unless the user separately chooses Skip.
+installation and enablement, a durable Keep operation, static/runtime
+verification, and removal of the selected mod's author from Excluded. These are
+one lifecycle transaction under `docs/MOD_LIFECYCLE.md`; failure of any
+postcondition leaves the adoption incomplete. If an installed mod is **removed
+from disk**, clear Keep back to Unreviewed unless the user separately chooses
+Skip.
 
 ## Installed implies Keep (user, 2026-09-02)
 
@@ -49,12 +52,16 @@ or held for an overlap check - so the curator stopped describing what the build
 actually contains, and re-browsing a parked mod on Nexus showed no decision at
 all. Audit that found it: `records/keep-install-audit-2026-09-02.md`.
 
-**The Keep goes at the END of a successful install, never before it.**
-`install_mod.py` queues it as its last step for a reason: a Keep applied ahead
+**The Keep goes after the physical/profile/ledger write, never before it.**
+`install_mod.py` queues it as the last atomic adoption postcondition for a
+reason: a Keep applied ahead
 of its install makes the curator claim something the build does not have, and on
 2026-09-02 it deadlocked two agents - one could not launch because the gate saw
 a Keep with nothing installed, and the other could not install because the first
-held the profile claim. Download, install, verify, then Keep.
+held the profile claim. Download, install, record, queue/apply Keep, then run
+the static and runtime verification contract. A queued Keep is explicitly
+`PENDING`, not a live Keep; the operation remains open until the curator
+applies it.
 
 **The gate:** `py -3 audit/keep_coverage.py` is the enforcement. It fails when
 an installed Nexus id has no Keep, when a Keep has nothing installed, or when a
@@ -62,9 +69,10 @@ Skip is installed. It runs inside `audit/preflight.py`, so a batch cannot reach
 a verification launch with the Keep list out of step - with one deliberate
 asymmetry: inside the LAUNCH gate a Keep with nothing installed is a WARNING,
 because it puts no files in the tree and cannot affect a launch, while a Skip
-that IS installed and an install that produced no Keep stay blocking. The
-standalone gate remains strict on all three. `audit/install_mod.py`
-prints the Keep obligation for every id it installs.
+that IS installed and an install that produced no Keep operation stay
+blocking. A queued-but-unapplied operation prints `PENDING` in the standalone
+gate; it is not a live Keep and the lifecycle remains open until applied.
+`audit/install_mod.py` prints the Keep obligation for every id it installs.
 
 For a mod that adds weapons, shields, armor, clothing, undergarments, or
 jewelry, adoption also opens a mandatory item-by-item integration record under
