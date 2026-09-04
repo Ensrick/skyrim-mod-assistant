@@ -61,9 +61,23 @@ def load_jsonc(text: str) -> object:
     return json.loads("".join(output))
 
 
+def pex_header_strings(data: bytes) -> tuple[str, str, str]:
+    offset = 16
+    values: list[str] = []
+    for label in ("source-name", "user-name", "machine-name"):
+        require(offset + 2 <= len(data), f"truncated PEX {label} field")
+        length = int.from_bytes(data[offset:offset + 2], "big")
+        offset += 2
+        require(offset + length <= len(data), f"invalid PEX {label} length")
+        values.append(data[offset:offset + length].decode("utf-8"))
+        offset += length
+    return values[0], values[1], values[2]
+
+
 def main() -> None:
     files = sorted(path for path in PACKAGE.rglob("*") if path.is_file())
-    require(len(files) == 26, f"expected 26 package files, found {len(files)}")
+    require(len(files) == 33, f"expected 33 package files, found {len(files)}")
+    build_inputs = json.loads((ROOT / "build-inputs.json").read_text(encoding="utf-8"))
 
     for path in CDF.glob("*.json"):
         data = load_jsonc(path.read_text(encoding="utf-8"))
@@ -235,20 +249,70 @@ def main() -> None:
         "filterbymiscs=update.esm|0xde5027:weight=0.02",
     ], "owned ancient-currency weight policy changed")
 
+    modern_weights = PACKAGE / "SKSE" / "Plugins" / "SkyPatcher" / "misc" / \
+        "zz_Ensrick_Currency_SeptimWeights.ini"
+    modern_weight_text = modern_weights.read_text(encoding="utf-8")
+    modern_weight_lines = [line.strip().lower() for line in
+                           modern_weight_text.splitlines()
+                           if line.strip() and not line.lstrip().startswith(";")]
+    septim_baseline = build_inputs["septimWeightBaseline"]
+    require(septim_baseline["physicalForms"] == [
+                "000B6D:exchangeCurrency_enhanced.esp",
+                "000823:exchangeCurrency_enhanced.esp",
+                "000824:exchangeCurrency_enhanced.esp",
+            ] and septim_baseline["releasedWeights"] == [0.01, 0.02, 0.03] and
+            septim_baseline["ownedWeights"] == [0.06, 0.07, 0.13],
+            "pinned ECE/owned modern-Septim policy metadata changed")
+    expected_modern_weight_lines = []
+    for form_key, weight in zip(septim_baseline["physicalForms"],
+                                septim_baseline["ownedWeights"], strict=True):
+        local_id, owner = form_key.split(":", maxsplit=1)
+        local_id = local_id.lstrip("0") or "0"
+        expected_modern_weight_lines.append(
+            f"filterbymiscs={owner.lower()}|0x{local_id.lower()}:weight={weight:g}")
+    require(modern_weight_lines == expected_modern_weight_lines,
+            "owned modern-Septim weight policy must target exactly copper/silver/gold")
+    modern_weight_lower = modern_weight_text.lower()
+    require(":value=" not in modern_weight_lower and ":fullname=" not in modern_weight_lower,
+            "modern-Septim weight patch must not change value or name fields")
+    require("skyrim.esm|0x00000f" not in modern_weight_lower and
+            "skyrim.esm|0xf" not in modern_weight_lower,
+            "hidden Gold001 accounting backend must remain weightless")
+    require(modern_weights.name.casefold() > "ECE_septims_100.ini".casefold(),
+            "owned modern-Septim weight file must sort after ECE's runtime defaults")
+
     plugin = PACKAGE / "Ensrick Currency Integration Patch.esp"
     pex = PACKAGE / "Scripts" / "Ensrick_CurrencyRuntimeDefaultsAlias.pex"
     ohzer_pex = PACKAGE / "Scripts" / "Ensrick_OhzerCurrencyScript.pex"
+    madran_pex = PACKAGE / "Scripts" / "DES_MadranSwapper.pex"
+    ece_guard_names = [
+        "EC_septimsScript",
+        "EC_drakrsScript",
+        "EC_dramsScript",
+        "EC_medesScript",
+        "EC_oshkasScript",
+        "EC_ulfricsScript",
+    ]
+    ece_guard_pex = [PACKAGE / "Scripts" / f"{name}.pex" for name in ece_guard_names]
     seq = PACKAGE / "SEQ" / "Ensrick Currency Integration Patch.seq"
     require(plugin.is_file(), "owned currency ESPFE is missing")
     require(pex.is_file(), "owned runtime-default PEX is missing")
     require(ohzer_pex.is_file(), "owned Ohzer transaction PEX is missing")
     require(seq.is_file(), "start-enabled quest SEQ is missing")
-    for script_path in (pex, ohzer_pex):
+    for script_path in (pex, ohzer_pex, madran_pex, *ece_guard_pex):
         pex_bytes = script_path.read_bytes()
         require(pex_bytes[:4] == bytes.fromhex("FA57C0DE"),
                 f"{script_path.name} is not a Skyrim PEX")
         require(int.from_bytes(pex_bytes[8:16], "big") == 946684800,
                 f"{script_path.name} timestamp is not normalized to the reproducible epoch")
+        source_name, user_name, machine_name = pex_header_strings(pex_bytes)
+        expected_source = (build_inputs["papyrusCompiler"]["normalizedSourcePrefix"] +
+                           "/" + script_path.stem + ".psc")
+        require((source_name, user_name, machine_name) == (
+                    expected_source,
+                    build_inputs["papyrusCompiler"]["normalizedUserName"],
+                    build_inputs["papyrusCompiler"]["normalizedMachineName"],
+                ), f"{script_path.name} PEX release metadata is not normalized")
     require(seq.read_bytes() == struct.pack("<II", 0x09000800, 0x09000803),
             "SEQ must target owned QUSTs 000800 and 000803 at file-relative master index 09")
     translation = PACKAGE / "interface" / "translations" / \
@@ -280,7 +344,6 @@ def main() -> None:
             "Dwarven scrap rule is not language-neutral")
     require(len(dwarven_rule["match"]["formId"]["anyOf"]) == 28,
             "ECE Dwarven scrap target set changed")
-    build_inputs = json.loads((ROOT / "build-inputs.json").read_text(encoding="utf-8"))
     expected_i4_hash = build_inputs["inventoryInjectorOverride"]["outputSha256"]
     require(hashlib.sha256(i4_bytes).hexdigest().upper() == expected_i4_hash,
             "owned ECE I4 override differs from the pinned one-change output")
@@ -393,13 +456,20 @@ def main() -> None:
     packaged_pex = [path.name for path in files if path.suffix.lower() == ".pex"]
     require(packaged_pex == [
         "DES_MadranSwapper.pex",
+        "EC_drakrsScript.pex",
+        "EC_dramsScript.pex",
+        "EC_medesScript.pex",
+        "EC_oshkasScript.pex",
+        "EC_septimsScript.pex",
+        "EC_ulfricsScript.pex",
         "Ensrick_CurrencyRuntimeDefaultsAlias.pex",
         "Ensrick_OhzerCurrencyScript.pex",
     ],
-            f"package contains a non-owned script binary: {packaged_pex}")
+            f"package contains an unexpected script binary: {packaged_pex}")
 
     notice = (PACKAGE / "NOTICE.txt").read_text(encoding="utf-8")
     license_text = (PACKAGE / "LICENSE.txt").read_text(encoding="utf-8")
+    notice_flat = " ".join(notice.split())
     for nexus_id in (51439, 178940, 141884, 37545):
         require(f"/mods/{nexus_id}" in notice, f"NOTICE lost Nexus attribution {nexus_id}")
     require("MorrowindUsesDrams_SWAP.ini" in notice and "MorrowindUsesDrams.json" in notice,
@@ -419,6 +489,20 @@ def main() -> None:
             "NOTICE lost owned Ohzer or M.I.N.T. interoperability provenance")
     require("DES_MadranSwapper.pex" in notice and "class-loader" in notice,
             "NOTICE lost the independently authored Ma'dran compatibility-shim provenance")
+    require("EC_septimsScript.pex" in notice and "HasKeywordString" in notice and
+            "six narrow ECE script derivatives" in notice_flat and "no-sale" in notice,
+            "NOTICE lost the ECE null-Location script provenance or restrictions")
+    require("zz_Ensrick_Currency_SeptimWeights.ini" in notice_flat and
+            "original, weight-only" in notice_flat and
+            "copies no ECE configuration text" in notice_flat,
+            "NOTICE lost the original modern-Septim weight-config boundary")
+    require("C.O.I.N. - Coins of Interesting Nature — created by Tate Taylor and VictorF" in
+            notice_flat and
+            "M.I.N.T. - Mint-Issued National Tenders — created by Tate Taylor" in
+            notice_flat and "Exchange Currency Enhanced — created by Nerapharu" in
+            notice_flat and "WiZkiD Ancient Imperial Septims — created by WiZkiD" in
+            notice_flat,
+            "NOTICE lost an upstream creator credit or official project title")
     require("SCOPE NOTICE" in license_text and "excluded" in license_text and
             "MIT License" in license_text and "Copyright (c) 2026 Ensrick" in license_text,
             "owned MIT license text is missing or incomplete")
@@ -429,10 +513,34 @@ def main() -> None:
             "NOTICE/LICENSE lost the mixed-terms ESP record boundary")
 
     manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
-    require(manifest.get("version") == "0.2.4" and
+    require(manifest.get("version") == "0.2.6" and
             manifest.get("madranCompatibilityShim", {}).get("file") ==
             "Scripts/DES_MadranSwapper.pex",
-            "manifest lost the v0.2.4 Ma'dran compatibility shim")
+            "manifest lost the v0.2.6 Ma'dran compatibility shim")
+    require(manifest.get("physicalSeptimWeights", {}).get("weights") == {
+                "copper": 0.06, "silver": 0.07, "gold": 0.13,
+            } and
+            manifest["physicalSeptimWeights"].get("hiddenGold001") == 0,
+            "manifest lost the approved modern-Septim weight policy")
+    binary_receipts = [
+        (manifest["runtimePatch"], plugin),
+        (manifest["papyrusHelper"], pex),
+        (manifest["ohzerHelper"], ohzer_pex),
+        (manifest["madranCompatibilityShim"], madran_pex),
+    ]
+    guard_receipts = manifest.get("eceLocationGuards", {}).get("scripts", [])
+    require([item.get("script") for item in guard_receipts] == ece_guard_names,
+            "manifest lost the exact six ECE null-Location overrides")
+    require(manifest["eceLocationGuards"].get("behavior") ==
+            "old/new None values are tested before every HasKeywordString call; non-null branches are unchanged",
+            "manifest lost the ECE null-Location behavioral boundary")
+    binary_receipts.extend((receipt, payload)
+                           for receipt, payload in zip(guard_receipts, ece_guard_pex, strict=True))
+    for receipt, payload in binary_receipts:
+        payload_bytes = payload.read_bytes()
+        require(receipt.get("bytes") == len(payload_bytes) and
+                receipt.get("sha256") == hashlib.sha256(payload_bytes).hexdigest().upper(),
+                f"manifest binary receipt differs from {payload.name}")
     hard_dependencies = {
         491, 10917, 12604, 32444, 37545, 51073, 51439, 55728, 60805,
         67925, 85702, 106659, 120152, 127686, 135618, 141884, 178940,
@@ -456,7 +564,7 @@ def main() -> None:
             "plugin audit did not prove the ECE alternate-currency quest override")
 
     print(f"PASS: {len(files)} files; loose coin 75/20/5; EV {expected_value:.2f}; "
-          "45-record ESPFE, ECE/M.I.N.T. VMAD repairs, weighted ancient currencies, "
+          "45-record ESPFE, ECE/M.I.N.T. VMAD repairs, weighted modern and ancient currencies, "
           "ten bank exchanges, 17 disabled smelting recipes, Ma'dran class-loader shim, three purses, two runtime quests, "
           "SEQ, Ohzer and notices covered")
 

@@ -7,11 +7,26 @@
     "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
     "debugInfo": false,
     "ckOptimizations": false,
-    "normalizedCompileUnixTime": 946684800
+    "normalizedCompileUnixTime": 946684800,
+    "normalizedSourcePrefix": "mods/currency-integration/papyrus",
+    "normalizedUserName": "Ensrick",
+    "normalizedMachineName": "reproducible-build"
   },
   "flags": {
     "relativePathFromGame": "Data/Source/Scripts/TESV_Papyrus_Flags.flg",
     "sha256": "AB61D098EF7A1402D8EE4D7BC77F26851D5380CD142EE4F3BF57CE41D0E7AFA7"
+  },
+  "septimWeightBaseline": {
+    "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/SKSE/Plugins/SkyPatcher/misc/ECE_septims_100.ini",
+    "sourceSha256": "4B664778BD9E5B016323334A96857C31E0DA47A6CB0817450813A9F5D43406BA",
+    "sourceBytes": 1210,
+    "physicalForms": [
+      "000B6D:exchangeCurrency_enhanced.esp",
+      "000823:exchangeCurrency_enhanced.esp",
+      "000824:exchangeCurrency_enhanced.esp"
+    ],
+    "releasedWeights": [0.01, 0.02, 0.03],
+    "ownedWeights": [0.06, 0.07, 0.13]
   },
   "translationOverride": {
     "path": "interface/translations/exchangecurrency_enhanced_english.txt",
@@ -48,6 +63,67 @@
     "replacementText": "",
     "expectedReplacements": 1
   },
+  "eceLocationGuardSources": [
+    {
+      "script": "EC_septimsScript",
+      "mode": "regionalDefault",
+      "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source/ec_septimsscript.psc",
+      "sourceSha256": "B94C6A8B2E07DB17F03D2D8B5840A534C5D820929B675CC11AB14175224B20BF",
+      "sourceBytes": 9962,
+      "expectedCompilerWarnings": 13,
+      "patchedRelativePath": "papyrus/EC_septimsScript.psc"
+    },
+    {
+      "script": "EC_drakrsScript",
+      "mode": "singleRegion",
+      "keyword": "isDrakrMoney",
+      "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source/EC_drakrsScript.psc",
+      "sourceSha256": "9CE22C99702D230369C19CD36108C58677CD13766BFFE9F61656936A0AB9B311",
+      "sourceBytes": 2792,
+      "expectedCompilerWarnings": 1,
+      "patchedRelativePath": "papyrus/EC_drakrsScript.psc"
+    },
+    {
+      "script": "EC_dramsScript",
+      "mode": "singleRegion",
+      "keyword": "isDramMoney",
+      "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source/EC_dramsScript.psc",
+      "sourceSha256": "1A0DE78B1EC1BE12EB0BA87B5168FBD82857659380191047DC816C286E6DC472",
+      "sourceBytes": 2781,
+      "expectedCompilerWarnings": 1,
+      "patchedRelativePath": "papyrus/EC_dramsScript.psc"
+    },
+    {
+      "script": "EC_medesScript",
+      "mode": "singleRegion",
+      "keyword": "isMedeMoney",
+      "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source/EC_medesScript.psc",
+      "sourceSha256": "0DB79E904FB5D9C4135B3E2D53995BDF2EA485E7DC85452A9D29F31C13FECF32",
+      "sourceBytes": 2567,
+      "expectedCompilerWarnings": 1,
+      "patchedRelativePath": "papyrus/EC_medesScript.psc"
+    },
+    {
+      "script": "EC_oshkasScript",
+      "mode": "singleRegion",
+      "keyword": "isOshMoney",
+      "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source/EC_oshkasScript.psc",
+      "sourceSha256": "7E535730EBB625BE05D693F6406E84F3B610A389BB66A3FC366CBD4D7B86D958",
+      "sourceBytes": 2782,
+      "expectedCompilerWarnings": 1,
+      "patchedRelativePath": "papyrus/EC_oshkasScript.psc"
+    },
+    {
+      "script": "EC_ulfricsScript",
+      "mode": "singleRegion",
+      "keyword": "isUlfMoney",
+      "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/scripts/source/EC_ulfricsScript.psc",
+      "sourceSha256": "F406C29B30078330998231B938A67ABB2991040744A8303D76E53258D84E23D2",
+      "sourceBytes": 2797,
+      "expectedCompilerWarnings": 1,
+      "patchedRelativePath": "papyrus/EC_ulfricsScript.psc"
+    }
+  ],
   "papyrusImports": [
     {
       "name": "SKSE64 Scripts",

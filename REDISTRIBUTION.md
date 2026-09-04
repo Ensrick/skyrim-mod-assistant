@@ -1,18 +1,26 @@
 # Redistribution Policy
 
-The MIT License applies only to the original scripts and documentation committed
-to this repository. It does not relicense any game, tool, or mod content used by
-a local workflow.
+The root MIT License applies only to original source code, scripts,
+documentation, and configurations committed to this repository. It does not
+relicense any game, tool, mod content, or vendor-derived record/configuration
+data used by a local workflow. A package-level `NOTICE` or scope notice governs
+mixed works and may identify a narrower MIT-original portion alongside material
+that remains under upstream terms.
 
 ## Never committed
 
 - Bethesda game masters, archives, executables, Creation Club content, or saves
-- Nexus or other mod archives and their extracted files
+- Nexus or other mod archives and unmodified extracted files. Narrow derived
+  interoperability files require documented permission and provenance review,
+  explicit attribution, and package-level licensing boundaries.
 - Third-party executables, libraries, or source snapshots
 - Generated ESP/ESL/ESM files unless every input and output right is separately
   verified
 - NIF, DDS, animation, audio, or other third-party assets
-- MO2/Vortex profiles, deployment manifests, download metadata, and logs
+- MO2/Vortex profiles, deployment manifests, download metadata, and raw or
+  private logs. Curated, scope-limited runtime-evidence snapshots may be
+  committed after review for secrets and personal data and when tied to
+  immutable source-log hashes.
 - Private build directories, test worlds, backups, and crash reports
 - `toolchain.json`, which contains machine-specific paths and executable hashes
 

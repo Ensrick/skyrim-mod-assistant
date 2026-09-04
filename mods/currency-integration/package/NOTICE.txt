@@ -13,17 +13,27 @@ redistribution must satisfy every applicable upstream term, including ECE's
 credit, no-sale, and no-Donation-Points conditions.
 
 This archive does not bundle any vendor mesh, texture, audio, plugin file, or
-unmodified script binary/source file. Required mods must be acquired separately
-from their authors:
+unmodified script binary/source file. It does include six narrow ECE script
+derivatives described below. The upstream works represented by
+included derivatives or referenced by this integration must be acquired
+separately from their authors. The complete runtime dependency and version list
+is maintained in the source repository:
+https://github.com/Ensrick/skyrim-mod-assistant/blob/ensrick/modpack-roadmap-2026-08-28/mods/currency-integration/README.md#required-runtime-and-load-order
 
-- C.O.I.N. - Coins of Interesting Natures
+- C.O.I.N. - Coins of Interesting Nature — created by Tate Taylor and VictorF
   https://www.nexusmods.com/skyrimspecialedition/mods/51439
-- M.I.N.T. - More Interesting New Tender
+- M.I.N.T. - Mint-Issued National Tenders — created by Tate Taylor
   https://www.nexusmods.com/skyrimspecialedition/mods/178940
-- Exchange Currency Enhanced
+- Exchange Currency Enhanced — created by Nerapharu
   https://www.nexusmods.com/skyrimspecialedition/mods/141884
-- WiZkiD Ancient Imperial Septims
+- WiZkiD Ancient Imperial Septims — created by WiZkiD
   https://www.nexusmods.com/skyrimspecialedition/mods/37545
+
+`zz_Ensrick_Currency_SeptimWeights.ini` is an original, weight-only
+interoperability configuration released under this package's MIT grant. It
+references three ECE form identifiers and is processed after ECE's runtime
+defaults so it is intended to override their weights, but copies no ECE
+configuration text or other vendor content.
 
 The two narrowly corrected M.I.N.T. configuration files,
 MorrowindUsesDrams_SWAP.ini and MorrowindUsesDrams.json, remain subject to the
@@ -56,6 +66,19 @@ explicit Gyldenhul exclusion and M.I.N.T.'s Deathbrand-treasure exclusions,
 and caused the barrow's placed piles and purses to diverge from its Septim
 loose-coin exception.
 
+`EC_septimsScript.pex`, `EC_drakrsScript.pex`, `EC_dramsScript.pex`,
+`EC_medesScript.pex`, `EC_oshkasScript.pex`, and `EC_ulfricsScript.pex` are six
+narrow ECE script derivatives. ECE 4.1.1 calls `HasKeywordString` directly on
+both parameters of `OnLocationChange`, although Skyrim may supply `None` for an
+old or new Location during valid transitions. Each derivative adds only local
+Boolean state and explicit `None` tests before those calls; all behavior for
+non-null locations is retained. The exact released sources and hashes are
+pinned, and the repository validator proves that no other source change is
+present. These PEX files and their repository PSC sources are excluded from
+the MIT grant and remain under the ECE author's Nexus permissions: Nerapharu
+must be credited, sale and Donation Points are prohibited, and ECE remains a
+required separate download.
+
 The same-path C.O.I.N. `C.O.I.N.json` is a narrow interoperability correction
 to version 3.5.3. It preserves every released rule and changes only the malformed
 `01DE5012|Update.esm` removal in `Randomize Leveled Drakr` to the valid
@@ -70,8 +93,8 @@ extend ECE's `EC_altCurrencyFunctions` class and supply the transaction handler
 missing for ECE's Ohzer record. These two files are expressly excluded from the
 MIT grant and remain governed by ECE's applicable Nexus modification/upload
 terms: credit is required, sale and Donation Points are not permitted, and ECE
-remains a required separate download. No ECE PEX or PSC is copied into the
-archive.
+remains a required separate download. No unmodified ECE PEX or PSC is copied
+into the archive.
 
 The plugin migrates M.I.N.T.'s Ma'dran alias from the obsolete
 `DES_MadranSwapper` class name to M.I.N.T. 1.0.6's shipped

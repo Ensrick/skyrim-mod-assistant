@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick Regional Currency Integration",
+  "version": "0.2.5",
+  "source": "mods/currency-integration",
+  "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
+  "runtime": "Skyrim 1.7.104 / SKSE 2.3.1 / Address Library v13 format 5",
+  "toolchain": {
+    "generator": ".NET 9 / Mutagen.Bethesda.Skyrim 0.54.4 / Mutagen.Bethesda.Synthesis 0.36.6",
+    "papyrusCompiler": {
+      "name": "Caprica",
+      "version": "0.3.0",
+      "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
+      "normalizedHeader": "timestamp 946684800, repository-relative source path, user Ensrick, machine reproducible-build"
+    },
+    "spriggit": {
+      "version": "0.41.0",
+      "treeSha256": "3AF12510A792E4A3E387516BC545FC9600B1C9B681AC79F101DDB745AEA96E09"
+    },
+    "entrypoint": "mods/currency-integration/regenerate.ps1"
+  },
+  "release": {
+    "archive": "mods/currency-integration/work/Ensrick-Regional-Currency-Integration-0.2.5.zip",
+    "files": 27,
+    "bytes": 22268,
+    "sha256": "95769D3F47E3961618AA2612436B8F766EAAED8997D4660DBC565ADC68C6D5CB",
+    "deterministicArchiveRuns": 2,
+    "installedMod": "Ensrick - Regional Currency Integration",
+    "mo2Priority": 274,
+    "transaction": "20260904T010502731Z-d39f206ece15"
+  },
+  "weightPatch": {
+    "path": "SKSE/Plugins/SkyPatcher/misc/zz_Ensrick_Currency_SeptimWeights.ini",
+    "bytes": 468,
+    "sha256": "E3549DD29C576FD09E605848181877D263A8D7C28B20D2F5905E2463545FFB29",
+    "rules": [
+      "000B6D:exchangeCurrency_enhanced.esp copper -> 0.06",
+      "000823:exchangeCurrency_enhanced.esp silver -> 0.07",
+      "000824:exchangeCurrency_enhanced.esp gold -> 0.13"
+    ],
+    "exclusions": [
+      "00000F:Skyrim.esm hidden Gold001 accounting backend",
+      "ECE display-only plural proxy MISCs",
+      "ancient and regional currency weights"
+    ],
+    "vendorBaseline": {
+      "path": "Exchange Currency Enhanced/SKSE/Plugins/SkyPatcher/misc/ECE_septims_100.ini",
+      "bytes": 1210,
+      "sha256": "4B664778BD9E5B016323334A96857C31E0DA47A6CB0817450813A9F5D43406BA"
+    },
+    "licenseScope": "MIT original weight-only interoperability configuration; no vendor text or asset copied"
+  },
+  "plugin": {
+    "path": "Ensrick Currency Integration Patch.esp",
+    "bytes": 16108,
+    "sha256": "C8010DEB9FAA2E9F01FE90AC023C7414C6F5EA65E8C01492B6238044DA2E6F06",
+    "unchangedFromVersion": "0.2.4",
+    "eslFlagged": true,
+    "records": 45,
+    "masters": 9,
+    "deletedRecords": 0,
+    "linksChecked": 397,
+    "engineIntrinsicPlayerRefLinks": 13,
+    "unresolvedLinks": 0,
+    "seqRelativeFormIds": ["09000800", "09000803"]
+  },
+  "scripts": [
+    {
+      "path": "Scripts/Ensrick_CurrencyRuntimeDefaultsAlias.pex",
+      "bytes": 2291,
+      "sha256": "9532A59B12D7D351ADDC6B7A0716C1B621129A2A39283ECC62DFC251D4A72094",
+      "sourceUnchangedFromVersion": "0.2.4",
+      "headerMetadata": "portable normalized release metadata"
+    },
+    {
+      "path": "Scripts/Ensrick_OhzerCurrencyScript.pex",
+      "bytes": 3013,
+      "sha256": "F5C9E0D110ADED07C2FA0AA65400E7867D5C77F353CC0BB53E5109C84BB51488",
+      "sourceUnchangedFromVersion": "0.2.4",
+      "headerMetadata": "portable normalized release metadata"
+    },
+    {
+      "path": "Scripts/DES_MadranSwapper.pex",
+      "bytes": 1103,
+      "sha256": "37623B5BF1017E81785464AFACE8A6B30C6BAED43EBCD579208612872C3807EC",
+      "sourceUnchangedFromVersion": "0.2.4",
+      "headerMetadata": "portable normalized release metadata"
+    }
+  ],
+  "verifiedPolicy": {
+    "looseSeptims": "75% copper / 20% silver / 5% gold at values 1/25/100; expected value 10.75 and +975% user-approved",
+    "physicalSeptimWeights": "copper 0.06, silver 0.07, gold 0.13; hidden Gold001 remains 0",
+    "weightConvention": "1.00 carry weight treated as approximately one pound; copper normalized near a historical one-ounce large circulation coin and precious metals scaled by rounded same-volume density ratios",
+    "precedence": "quest exception > ancient site > modern region > ordinary Septim denominations > hidden Gold001"
+  },
+  "runtimeEvidence": {
+    "launchReceipt": "records/launch-verify-20260903-200636.md",
+    "sourceLogs": {
+      "LaunchProbe.log": {
+        "bytes": 4531,
+        "sha256": "F1D9343252FDA8506EE9BD06DD4F7DF8585C8C7EAA8D8669D988082D146B29B0"
+      },
+      "SkyPatcher.log": {
+        "bytes": 16817,
+        "sha256": "D6D792E5F8153C949F9EC31EEB881F07252367A3D740F9852B2556BCBCB03AB6"
+      }
+    },
+    "snapshotNormalization": "LF line endings; LaunchProbe user-profile path redacted; SkyPatcher trailing whitespace stripped",
+    "contentSnapshots": {
+      "records/runtime-evidence/currency-v0.2.5-20260903-200636-LaunchProbe.log": "53213EF930E8AF15BA7CF40E87281F9E8D2AB4256B81DDD94ED7D91515FEFA73",
+      "records/runtime-evidence/currency-v0.2.5-20260903-200636-SkyPatcher.log": "CDF4D3BCB0D7AE44363FFA63F80AC31087ED1961B4C7D998032FC368E5D5B867"
+    }
+  },
+  "verification": [
+    "Static package validator passed with 27 exact files and exact three-line weight-only policy.",
+    "Two generator runs, two compilations of each of three PEX files, and two archive runs were byte-identical.",
+    "Plugin is byte-identical to v0.2.4; all three PEX sources are unchanged while portable header normalization deliberately changes their hashes.",
+    "Exact-record, master-minimality, FormLink, SEQ, and checked Spriggit semantic-roundtrip audits passed.",
+    "MO2 audit reported zero errors and the installed payload matched all 27 package files byte-for-byte, excluding meta.ini.",
+    "records/launch-verify-20260903-200636.md: main menu 43.2 seconds and existing save 52.9 seconds; the SKSE loader refused no plugin.",
+    "SkyPatcher processed ECE_septims_100.ini before zz_Ensrick_Currency_SeptimWeights.ini and completed the misc patcher without error; source-log hashes and explicitly normalized/redacted snapshots are retained with the launch receipt."
+  ],
+  "remainingAcceptance": [
+    "Inspect one physical coin of each modern denomination in game and confirm displayed inventory weights.",
+    "Targeted loose-coin, purse, merchant, service, exchange, reset, and duplication matrix.",
+    "Proteus multi-character switching across currency regions.",
+    "Semantic coverage for Beyond Reach, Wyrmstooth, Moonpath, Gray Cowl, and VIGILANT."
+  ],
+  "distribution": "mixed terms; the new weight INI is original MIT content, while the existing package boundary and required external downloads remain documented in package/NOTICE.txt"
+}

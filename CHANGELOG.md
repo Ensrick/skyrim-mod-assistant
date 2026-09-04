@@ -34,6 +34,38 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-03 20:06 - Physical Septim weight patch v0.2.5 installed and save-load verified (#207)
+
+- **What:** Replaced `Ensrick - Regional Currency Integration` in place with
+  the deterministic 27-file v0.2.5 archive at unchanged MO2 priority 274 and
+  plugin priority 265. Final transaction
+  `20260904T010502731Z-d39f206ece15`; archive 22,268 bytes, SHA-256
+  `95769D3F47E3961618AA2612436B8F766EAAED8997D4660DBC565ADC68C6D5CB`.
+  A new pack-owned late SkyPatcher file changes only ECE's physical copper,
+  silver, and gold Septim weights to 0.06/0.07/0.13. Hidden `Gold001`, the
+  display proxies, and ancient/regional weights are unchanged. ECE's vendor
+  folder remains untouched. The build now also normalizes Caprica's
+  checkout-dependent PEX source path, build user, and machine metadata. Papyrus
+  source and executable instructions are unchanged from v0.2.4; the three PEX
+  hashes deliberately change because their non-runtime headers are portable.
+  Earlier build/install candidates were superseded during publication review;
+  only the transaction and archive identity above are authoritative. Review
+  caught and corrected machine-dependent PEX metadata, incomplete upstream
+  credit, and non-portable runtime-evidence handling before this final build.
+- **Source:** User approved the historically grounded large-coin convention and
+  explicitly requested implementation as a patch. Form, mesh, and runtime-order
+  evidence is recorded in `records/coin-weight-realism-2026-09-03.md`.
+- **Verification:** **VERIFIED 2026-09-03.** Static 27-file policy validation,
+  two byte-identical plugin/script/archive builds, exact 45-record/9-master/
+  397-link ESPFE audit, zero unresolved links or deletions, checked Spriggit
+  round-trip, controller audit, and byte-for-byte live payload comparison all
+  passed. `records/launch-verify-20260903-200636.md` reached the main menu in
+  43.2s and loaded the existing save in 52.9s. The captured SkyPatcher log
+  processed `ECE_septims_100.ini` before
+  `zz_Ensrick_Currency_SeptimWeights.ini`; no currency-specific SkyPatcher
+  error was logged, the misc patcher completed normally, and both relevant
+  runtime logs have immutable content snapshots and hashes.
+
 ## 2026-09-03 16:54 - Regional currency stack v0.2.4 installed and save-load verified (#207)
 
 - **What:** Installed the complete current C.O.I.N. 3.5.3 / M.I.N.T. 1.0.6 /

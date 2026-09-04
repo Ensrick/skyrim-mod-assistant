@@ -36,6 +36,7 @@
 !/records/installed-mods.json
 !/records/overnight-audit-2026-08-23.jsonl
 !/records/launch-verify-20260903-135633.md
+!/records/launch-verify-20260903-200636.md
 !/records/launch-verify-20260903-165425.md
 !/records/sons-of-skyrim-2026-08-26.md
 !/records/skyking-signs-2026-08-29.md
@@ -68,6 +69,10 @@
 !/records/ui-slot-and-survival-readout-2026-09-02.md
 !/records/currency-economy-overhaul-research-2026-09-02.md
 !/records/currency-economy-overhaul-sources-2026-09-02.md
+!/records/coin-weight-realism-2026-09-03.md
+!/records/runtime-evidence/
+!/records/runtime-evidence/currency-v0.2.5-20260903-200636-LaunchProbe.log
+!/records/runtime-evidence/currency-v0.2.5-20260903-200636-SkyPatcher.log
 !/records/dds-workshop-npc-replacer-audit-2026-09-02.md
 !/records/modern-cloak-system-research-2026-08-30.md
 !/records/cloak-framework-rebuild-2026-09-02.md

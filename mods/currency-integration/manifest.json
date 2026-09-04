@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "Ensrick Regional Currency Integration",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "generatedDate": "2026-09-03",
   "gameRuntime": "Skyrim 1.7.104 / SKSE 2.3.1",
   "looseCoinDistribution": {
@@ -15,6 +15,18 @@
     },
     "expectedValue": 10.75,
     "increaseOverVanillaPercent": 975,
+    "status": "user-approved"
+  },
+  "physicalSeptimWeights": {
+    "weights": {
+      "copper": 0.06,
+      "silver": 0.07,
+      "gold": 0.13
+    },
+    "hiddenGold001": 0,
+    "scope": "ECE physical denomination MISCs only; display proxies and the hidden accounting backend are unchanged",
+    "convention": "Skyrim carry weight is abstract; the modlist treats 1.00 as approximately one pound for economy balancing",
+    "basis": "Copper is normalized to a historically plausible large circulation coin near one ounce; silver and gold preserve approximate same-volume density ratios",
     "status": "user-approved"
   },
   "precedence": [
@@ -104,26 +116,81 @@
   },
   "papyrusHelper": {
     "file": "Scripts/Ensrick_CurrencyRuntimeDefaultsAlias.pex",
-    "sha256": "7D12056AA0E836269EF327C70AE198228A0D6FF742A107B5B40F41AE34ABC834",
-    "bytes": 2335,
+    "sha256": "9532A59B12D7D351ADDC6B7A0716C1B621129A2A39283ECC62DFC251D4A72094",
+    "bytes": 2291,
     "deterministicCompilations": 2,
     "normalizedCompileUnixTime": 946684800
   },
   "ohzerHelper": {
     "file": "Scripts/Ensrick_OhzerCurrencyScript.pex",
-    "sha256": "BC5A420621EE845D473710CFD2613D647A0B61ED8FA3A131488EE4BDD3897D95",
-    "bytes": 3057,
+    "sha256": "F5C9E0D110ADED07C2FA0AA65400E7867D5C77F353CC0BB53E5109C84BB51488",
+    "bytes": 3013,
     "deterministicCompilations": 2,
     "normalizedCompileUnixTime": 946684800,
     "licenseScope": "ECE-derived interoperability flow; excluded from MIT and governed by ECE Nexus permissions"
   },
   "madranCompatibilityShim": {
     "file": "Scripts/DES_MadranSwapper.pex",
-    "sha256": "81E0D3AC40BE6B40390AAC84D4C96D13FB38EDB9668489099E5D84C89278C9F5",
-    "bytes": 1147,
+    "sha256": "37623B5BF1017E81785464AFACE8A6B30C6BAED43EBCD579208612872C3807EC",
+    "bytes": 1103,
     "deterministicCompilations": 2,
     "normalizedCompileUnixTime": 946684800,
     "purpose": "Independently authored loader-compatible fallback for ECE's obsolete DES_MadranSwapper VMAD attachment"
+  },
+  "eceLocationGuards": {
+    "source": "Exchange Currency Enhanced 4.1.1 pinned shipped/decompiled sources",
+    "behavior": "old/new None values are tested before every HasKeywordString call; non-null branches are unchanged",
+    "licenseScope": "Six narrow ECE script derivatives; excluded from MIT and governed by ECE Nexus permissions, including credit, no-sale, and no-Donation-Points requirements",
+    "scripts": [
+      {
+        "script": "EC_septimsScript",
+        "file": "Scripts/EC_septimsScript.pex",
+        "sha256": "216773B19F9554F0F42ADCB41E911DFCCBD6B05201FF573628E25EE9704E1948",
+        "bytes": 8328,
+        "deterministicCompilations": 2,
+        "normalizedCompileUnixTime": 946684800
+      },
+      {
+        "script": "EC_drakrsScript",
+        "file": "Scripts/EC_drakrsScript.pex",
+        "sha256": "0E90F7EB11D11ECEC6E2D09C0053A8D98D48971E564A54C3CF58C43E7497482A",
+        "bytes": 2786,
+        "deterministicCompilations": 2,
+        "normalizedCompileUnixTime": 946684800
+      },
+      {
+        "script": "EC_dramsScript",
+        "file": "Scripts/EC_dramsScript.pex",
+        "sha256": "2D7FF1100C104F3F204FB2D62E2115AE275890D43E92C797B48B195A3D34BEF3",
+        "bytes": 2779,
+        "deterministicCompilations": 2,
+        "normalizedCompileUnixTime": 946684800
+      },
+      {
+        "script": "EC_medesScript",
+        "file": "Scripts/EC_medesScript.pex",
+        "sha256": "4F7C9E257F329252D0A36B0E6E87944ED3B0B3AD5BD87D506BCA35F9EEABC0F2",
+        "bytes": 2638,
+        "deterministicCompilations": 2,
+        "normalizedCompileUnixTime": 946684800
+      },
+      {
+        "script": "EC_oshkasScript",
+        "file": "Scripts/EC_oshkasScript.pex",
+        "sha256": "8C4A119681F6D8A97DFF57151386423A652C4B7689046C0FCD3F339946017987",
+        "bytes": 2783,
+        "deterministicCompilations": 2,
+        "normalizedCompileUnixTime": 946684800
+      },
+      {
+        "script": "EC_ulfricsScript",
+        "file": "Scripts/EC_ulfricsScript.pex",
+        "sha256": "EF83C14D2EF9FDCFC70A40DB93219CB5B2B7C21F5AF4C42BA1D1DC0FECDA323F",
+        "bytes": 2790,
+        "deterministicCompilations": 2,
+        "normalizedCompileUnixTime": 946684800
+      }
+    ]
   },
   "interfaceOverrides": {
     "translation": {
@@ -198,7 +265,7 @@
     "C.O.I.N. Treasury Exchange (redundant exterior/cell edits)"
   ],
   "distribution": "distributable",
-  "distributionBasis": "Mixed terms documented in NOTICE.txt: original source and the original portions of 14 new records are MIT; narrow vendor-derived files, the ECE-derived Ohzer helper, and vendor-origin data in 31 ESP override records remain under applicable upstream terms; no vendor assets or complete vendor plugin files are bundled",
+  "distributionBasis": "Mixed terms documented in NOTICE.txt: original source and the original portions of 14 new records are MIT; narrow vendor-derived files, the ECE-derived Ohzer helper, six ECE null-Location script fixes, and vendor-origin data in 31 ESP override records remain under applicable upstream terms; no vendor assets or complete vendor plugin files are bundled",
   "knownDormantFamilies": [
     "Varken (ECE provides no IsVarkenMoney location assignment)"
   ],
@@ -207,10 +274,10 @@
   ],
   "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
   "archive": {
-    "fileName": "Ensrick-Regional-Currency-Integration-0.2.4.zip",
-    "files": 26,
-    "bytes": 21604,
-    "sha256": "DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B"
+    "fileName": "Ensrick-Regional-Currency-Integration-0.2.6.zip",
+    "files": 33,
+    "bytes": 31647,
+    "sha256": "C45B434DAF447DA163ADE5B18C4BBFC215B6878A88BE2B5A5248CC824BCFBCA2"
   },
   "gameplayAcceptance": "deterministic build, exact-record audit, link audit, Spriggit semantic round-trip, main-menu smoke, and existing-save load passed; targeted in-world currency matrix remains pending"
 }
