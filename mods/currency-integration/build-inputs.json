@@ -7,11 +7,26 @@
     "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
     "debugInfo": false,
     "ckOptimizations": false,
-    "normalizedCompileUnixTime": 946684800
+    "normalizedCompileUnixTime": 946684800,
+    "normalizedSourcePrefix": "mods/currency-integration/papyrus",
+    "normalizedUserName": "Ensrick",
+    "normalizedMachineName": "reproducible-build"
   },
   "flags": {
     "relativePathFromGame": "Data/Source/Scripts/TESV_Papyrus_Flags.flg",
     "sha256": "AB61D098EF7A1402D8EE4D7BC77F26851D5380CD142EE4F3BF57CE41D0E7AFA7"
+  },
+  "septimWeightBaseline": {
+    "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/SKSE/Plugins/SkyPatcher/misc/ECE_septims_100.ini",
+    "sourceSha256": "4B664778BD9E5B016323334A96857C31E0DA47A6CB0817450813A9F5D43406BA",
+    "sourceBytes": 1210,
+    "physicalForms": [
+      "000B6D:exchangeCurrency_enhanced.esp",
+      "000823:exchangeCurrency_enhanced.esp",
+      "000824:exchangeCurrency_enhanced.esp"
+    ],
+    "releasedWeights": [0.01, 0.02, 0.03],
+    "ownedWeights": [0.06, 0.07, 0.13]
   },
   "translationOverride": {
     "path": "interface/translations/exchangecurrency_enhanced_english.txt",

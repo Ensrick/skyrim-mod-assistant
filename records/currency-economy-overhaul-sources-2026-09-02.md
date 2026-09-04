@@ -128,8 +128,9 @@ Currency Swapper and Dynamic Dialogue Replacer require source-built 1.7.104
 overlays because their released DLLs parse the obsolete Address Library format
 2 rather than the installed format 5.
 
-The final v0.2.4 release receipt is
-`records/source-builds/ensrick-regional-currency-integration-0.2.4.json`.
+The current v0.2.5 release receipt is
+`records/source-builds/ensrick-regional-currency-integration-0.2.5.json`; the
+immutable v0.2.4 receipt remains alongside it for release history.
 Independent winning-record inspection parsed 2,486,676 major records across
 342 active plugin inputs without an error and followed every surviving
 Dragonborn silver/gold pile base through the enabled BOS rules. It found 92

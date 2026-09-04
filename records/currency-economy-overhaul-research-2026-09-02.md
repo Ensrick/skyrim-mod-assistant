@@ -443,10 +443,13 @@ Currency plumbing and price formation should be separate test gates.
   Overhaul are not first-playthrough foundations.
 
 Coin weight should be tested as an economy mechanic, not just a realism toggle.
-At ECE's documented weights, 100 value carried as copper weighs 1.00, four
-25-value silver coins weigh 0.08, and one 100-value gold coin weighs 0.03.
-Higher denominations and notes therefore become meaningful encumbrance relief;
-automatic passive compression would remove much of that gameplay.
+The approved v0.2.5 policy uses 0.06/0.07/0.13 for identically sized physical
+copper/silver/gold Septims. Under that policy, 100 value carried as copper
+weighs 6.00, four 25-value silver coins weigh 0.28, and one 100-value gold coin
+weighs 0.13. Higher denominations and notes therefore become meaningful
+encumbrance relief; automatic passive compression would remove much of that
+gameplay. Skyrim does not document carry weight as pounds, so the historical
+mass comparison is explicitly a modlist convention rather than engine canon.
 
 ## Verification gates
 
@@ -507,7 +510,9 @@ in a disposable profile and then a new long-form test save.
 ## Decision ledger
 
 1. **Resolved:** compatibility-first ECE accounting.
-2. **Resolved:** denomination values 1/25/100 and weights 0.01/0.02/0.03.
+2. **Resolved:** denomination values 1/25/100 and physical weights
+   0.06/0.07/0.13. Hidden `Gold001` stays at zero; ancient/regional coin weights
+   are a separate policy.
 3. **Resolved:** 75/20/5 on loose coins; +975% expected-value inflation accepted.
 4. **Resolved for testing:** exact 16-outcome mean-neutral purse lists under
    #211: small 2–28 (mean 10.75), medium 5–42 (mean 20.25), and large 10–70

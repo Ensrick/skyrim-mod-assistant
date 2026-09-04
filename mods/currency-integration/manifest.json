@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "Ensrick Regional Currency Integration",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "generatedDate": "2026-09-03",
   "gameRuntime": "Skyrim 1.7.104 / SKSE 2.3.1",
   "looseCoinDistribution": {
@@ -15,6 +15,18 @@
     },
     "expectedValue": 10.75,
     "increaseOverVanillaPercent": 975,
+    "status": "user-approved"
+  },
+  "physicalSeptimWeights": {
+    "weights": {
+      "copper": 0.06,
+      "silver": 0.07,
+      "gold": 0.13
+    },
+    "hiddenGold001": 0,
+    "scope": "ECE physical denomination MISCs only; display proxies and the hidden accounting backend are unchanged",
+    "convention": "Skyrim carry weight is abstract; the modlist treats 1.00 as approximately one pound for economy balancing",
+    "basis": "Copper is normalized to a historically plausible large circulation coin near one ounce; silver and gold preserve approximate same-volume density ratios",
     "status": "user-approved"
   },
   "precedence": [
@@ -104,23 +116,23 @@
   },
   "papyrusHelper": {
     "file": "Scripts/Ensrick_CurrencyRuntimeDefaultsAlias.pex",
-    "sha256": "7D12056AA0E836269EF327C70AE198228A0D6FF742A107B5B40F41AE34ABC834",
-    "bytes": 2335,
+    "sha256": "9532A59B12D7D351ADDC6B7A0716C1B621129A2A39283ECC62DFC251D4A72094",
+    "bytes": 2291,
     "deterministicCompilations": 2,
     "normalizedCompileUnixTime": 946684800
   },
   "ohzerHelper": {
     "file": "Scripts/Ensrick_OhzerCurrencyScript.pex",
-    "sha256": "BC5A420621EE845D473710CFD2613D647A0B61ED8FA3A131488EE4BDD3897D95",
-    "bytes": 3057,
+    "sha256": "F5C9E0D110ADED07C2FA0AA65400E7867D5C77F353CC0BB53E5109C84BB51488",
+    "bytes": 3013,
     "deterministicCompilations": 2,
     "normalizedCompileUnixTime": 946684800,
     "licenseScope": "ECE-derived interoperability flow; excluded from MIT and governed by ECE Nexus permissions"
   },
   "madranCompatibilityShim": {
     "file": "Scripts/DES_MadranSwapper.pex",
-    "sha256": "81E0D3AC40BE6B40390AAC84D4C96D13FB38EDB9668489099E5D84C89278C9F5",
-    "bytes": 1147,
+    "sha256": "37623B5BF1017E81785464AFACE8A6B30C6BAED43EBCD579208612872C3807EC",
+    "bytes": 1103,
     "deterministicCompilations": 2,
     "normalizedCompileUnixTime": 946684800,
     "purpose": "Independently authored loader-compatible fallback for ECE's obsolete DES_MadranSwapper VMAD attachment"
@@ -207,10 +219,10 @@
   ],
   "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
   "archive": {
-    "fileName": "Ensrick-Regional-Currency-Integration-0.2.4.zip",
-    "files": 26,
-    "bytes": 21604,
-    "sha256": "DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B"
+    "fileName": "Ensrick-Regional-Currency-Integration-0.2.5.zip",
+    "files": 27,
+    "bytes": 22268,
+    "sha256": "95769D3F47E3961618AA2612436B8F766EAAED8997D4660DBC565ADC68C6D5CB"
   },
   "gameplayAcceptance": "deterministic build, exact-record audit, link audit, Spriggit semantic round-trip, main-menu smoke, and existing-save load passed; targeted in-world currency matrix remains pending"
 }

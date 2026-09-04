@@ -1,0 +1,164 @@
+[20:05:39.980] [59996] [I] Skypatcher v7-0-0-0
+[20:05:39.980] [59996] [I] Enabled Features *******
+[20:05:39.980] [59996] [I] iAllowLeveledListsAddedToContainers false
+[20:05:39.981] [59996] [I] iUpdateRefs true
+[20:05:39.981] [59996] [I] iUpdateNPC true
+[20:05:39.981] [59996] [I] iRefreshNPCStats true
+[20:05:39.981] [59996] [I] iUpdateNPCExclude false
+[20:05:39.981] [59996] [I] iUpdateNPCVisualsOnLoad 1
+[20:05:39.981] [59996] [I] ************************
+[20:05:39.983] [59996] [I] Loaded ini files: \armor\Cloaks - CoS\Tweaks - Generic.ini
+[20:05:39.984] [59996] [I] Loaded ini files: \constructibleObject\ECE_AncientCoinsToIngot.ini
+[20:05:39.985] [59996] [I] Loaded ini files: \constructibleObject\ECE_CraftAndRecipes.ini
+[20:05:39.985] [59996] [I] Loaded ini files: \constructibleObject\ECE_ExchangerTransactionList.ini
+[20:05:39.989] [59996] [I] Loaded ini files: \leveledList\Chances\BanditGearChances.ini
+[20:05:39.989] [59996] [I] Loaded ini files: \leveledList\Chances\CloakChances.ini
+[20:05:39.990] [59996] [I] Loaded ini files: \leveledList\Chances\HeadgearChances.ini
+[20:05:39.991] [59996] [I] Loaded ini files: \leveledList\Cloaks\RMB SPID - Heavy Legion.esp.ini
+[20:05:39.991] [59996] [I] Loaded ini files: \leveledList\Cloaks\RMB SPID - New Legion.esp.ini
+[20:05:39.991] [59996] [I] Loaded ini files: \leveledList\Cloaks\RMB SPID - NordwarUA Vanilla Armor Replacer.esp.ini
+[20:05:39.992] [59996] [I] Loaded ini files: \leveledList\Cloaks\RMB SPID - Realistic Armors.esp.ini
+[20:05:39.992] [59996] [I] Loaded ini files: \leveledList\Cloaks\Sentinel.esp.ini
+[20:05:39.993] [59996] [I] Loaded ini files: \leveledList\Cloaks - Common\RMB SPID - NordwarUA GAR - Outfits.esp.ini
+[20:05:39.993] [59996] [I] Loaded ini files: \leveledList\Cloaks - Common\RMB SPID - Sons of Skyrim.esp.ini
+[20:05:39.994] [59996] [I] Loaded ini files: \leveledList\Cloaks - CoS\Cloaks - RMB SPCH.esp.ini
+[20:05:39.994] [59996] [I] Loaded ini files: \leveledList\Cloaks - Pelts o Plenty\RMB SPCH - Pelt Cloaks.esp.ini
+[20:05:39.995] [59996] [I] Loaded ini files: \leveledList\Headgear\RMB SPID - Core Definitions.esp.ini
+[20:05:39.995] [59996] [I] Loaded ini files: \leveledList\Headgear\RMB SPID - Realistic Armors.esp.ini
+[20:05:39.996] [59996] [I] Loaded ini files: \leveledList\moe-scarves.esl.ini
+[20:05:39.997] [59996] [I] Loaded ini files: \leveledList\zz Ensrick Cloak Balance\Ensrick - Cloak Balance.ini
+[20:05:39.998] [59996] [I] Loaded ini files: \leveledList\zz Ensrick Death Hound\Ensrick - Death Hound Loot.ini
+[20:05:39.999] [59996] [I] Loaded ini files: \misc\ECE_regionalCurrencies.ini
+[20:05:39.999] [59996] [I] Loaded ini files: \misc\ECE_septims_100.ini
+[20:05:40.000] [59996] [I] Loaded ini files: \misc\zz_Ensrick_Currency_AncientWeights.ini
+[20:05:40.000] [59996] [I] Loaded ini files: \misc\zz_Ensrick_Currency_SeptimWeights.ini
+[20:05:40.002] [59996] [I] Loaded ini files: \npc\Cloaks - CoS\Cloaks - RMB SPCH.esp.ini
+[20:05:40.003] [59996] [I] Loaded ini files: \npc\zz Ensrick Unique Cloaks\Ensrick - Unique Cloak Placement.ini
+[20:05:40.004] [59996] [I] Loaded ini files: \outfit\Cloaks\RMB SPID - Core Definitions.esp.ini
+[20:05:40.004] [59996] [I] Loaded ini files: \outfit\Headgear\RMB SPID - Core Definitions.esp.ini
+[20:05:40.008] [59996] [I] Loaded ini files: \weapon\Legacy of Ysgramor\Replace.ini
+[20:05:40.008] [59996] [I] ************************
+[20:06:21.744] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Magic Effect Patcher finished in 0.000922 seconds
+[20:06:21.745] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Ammo Patcher finished in 0.000955 seconds
+[20:06:21.746] [25724] [I] ************************************************************
+[20:06:21.747] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\weapon\\Legacy of Ysgramor\Replace.ini...
+[20:06:21.747] [25724] [I] ************************************************************
+[20:06:21.750] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Weapon Patcher finished in 0.005537 seconds
+[20:06:21.753] [25724] [I] ************************************************************
+[20:06:21.753] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\armor\\Cloaks - CoS\Tweaks - Generic.ini...
+[20:06:21.753] [25724] [I] ************************************************************
+[20:06:21.757] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Armor Patcher finished in 0.006733 seconds
+[20:06:21.758] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Race Patcher finished in 0.000733 seconds
+[20:06:21.761] [25724] [I] ************************************************************
+[20:06:21.761] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\npc\Cloaks - CoS\Cloaks - RMB SPCH.esp.ini...
+[20:06:21.761] [25724] [I] ************************************************************
+[20:06:21.762] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> NPC Patching (segment) finished in 0.000452 seconds
+[20:06:21.763] [25724] [I] ************************************************************
+[20:06:21.763] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\npc\zz Ensrick Unique Cloaks\Ensrick - Unique Cloak Placement.ini...
+[20:06:21.763] [25724] [I] ************************************************************
+[20:06:21.764] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> NPC Patching (segment) finished in 1.2e-05 seconds
+[20:06:21.765] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> NPC Patcher finished in 0.006242 seconds
+[20:06:21.765] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Ingestible Patcher finished in 0.000384 seconds
+[20:06:21.766] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Ingredient Patcher finished in 0.000557 seconds
+[20:06:21.766] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Spell Patcher finished in 0.000276 seconds
+[20:06:21.767] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Enchantment Patcher finished in 0.000573 seconds
+[20:06:21.768] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Projectile Patcher finished in 0.000517 seconds
+[20:06:21.769] [25724] [I] ************************************************************
+[20:06:21.769] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\outfit\\Cloaks\RMB SPID - Core Definitions.esp.ini...
+[20:06:21.769] [25724] [I] ************************************************************
+[20:06:21.771] [25724] [I] ************************************************************
+[20:06:21.771] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\outfit\\Headgear\RMB SPID - Core Definitions.esp.ini...
+[20:06:21.771] [25724] [I] ************************************************************
+[20:06:21.772] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Outfit Patcher finished in 0.0047 seconds
+[20:06:21.773] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Scroll Patcher finished in 0.00068 seconds
+[20:06:21.774] [25724] [I] ************************************************************
+[20:06:21.774] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\misc\\ECE_regionalCurrencies.ini...
+[20:06:21.774] [25724] [I] ************************************************************
+[20:06:21.775] [25724] [I] ************************************************************
+[20:06:21.775] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\misc\\ECE_septims_100.ini...
+[20:06:21.775] [25724] [I] ************************************************************
+[20:06:21.776] [25724] [I] ************************************************************
+[20:06:21.776] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\misc\\zz_Ensrick_Currency_AncientWeights.ini...
+[20:06:21.776] [25724] [I] ************************************************************
+[20:06:21.777] [25724] [I] ************************************************************
+[20:06:21.777] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\misc\\zz_Ensrick_Currency_SeptimWeights.ini...
+[20:06:21.777] [25724] [I] ************************************************************
+[20:06:21.777] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Misc Patcher finished in 0.00351 seconds
+[20:06:21.777] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Soul Gem Patcher finished in 0.000287 seconds
+[20:06:21.778] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Faction Patcher finished in 0.000491 seconds
+[20:06:21.779] [25724] [I] ************************************************************
+[20:06:21.779] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\constructibleObject\\ECE_AncientCoinsToIngot.ini...
+[20:06:21.779] [25724] [I] ************************************************************
+[20:06:21.780] [25724] [I] ************************************************************
+[20:06:21.780] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\constructibleObject\\ECE_CraftAndRecipes.ini...
+[20:06:21.780] [25724] [I] ************************************************************
+[20:06:21.781] [25724] [I] ************************************************************
+[20:06:21.781] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\constructibleObject\\ECE_ExchangerTransactionList.ini...
+[20:06:21.781] [25724] [I] ************************************************************
+[20:06:21.782] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Constructible Object Patcher finished in 0.003786 seconds
+[20:06:21.783] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Book Patcher finished in 0.000652 seconds
+[20:06:21.783] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Movement Type Patcher finished in 0.000286 seconds
+[20:06:21.786] [25724] [I] ************************************************************
+[20:06:21.786] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\moe-scarves.esl.ini...
+[20:06:21.786] [25724] [I] ************************************************************
+[20:06:21.788] [25724] [I] ************************************************************
+[20:06:21.788] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Chances\BanditGearChances.ini...
+[20:06:21.788] [25724] [I] ************************************************************
+[20:06:21.789] [25724] [I] ************************************************************
+[20:06:21.789] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Chances\CloakChances.ini...
+[20:06:21.789] [25724] [I] ************************************************************
+[20:06:21.790] [25724] [I] ************************************************************
+[20:06:21.790] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Chances\HeadgearChances.ini...
+[20:06:21.790] [25724] [I] ************************************************************
+[20:06:21.791] [25724] [I] ************************************************************
+[20:06:21.791] [25724] [I] RMB SPID - Heavy Legion.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks\RMB SPID - Heavy Legion.esp.ini.
+[20:06:21.791] [25724] [I] ************************************************************
+[20:06:21.791] [25724] [I] ************************************************************
+[20:06:21.791] [25724] [I] RMB SPID - New Legion.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks\RMB SPID - New Legion.esp.ini.
+[20:06:21.791] [25724] [I] ************************************************************
+[20:06:21.792] [25724] [I] ************************************************************
+[20:06:21.792] [25724] [I] RMB SPID - NordwarUA Vanilla Armor Replacer.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks\RMB SPID - NordwarUA Vanilla Armor Replacer.esp.ini.
+[20:06:21.792] [25724] [I] ************************************************************
+[20:06:21.792] [25724] [I] ************************************************************
+[20:06:21.792] [25724] [I] RMB SPID - Realistic Armors.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks\RMB SPID - Realistic Armors.esp.ini.
+[20:06:21.792] [25724] [I] ************************************************************
+[20:06:21.792] [25724] [I] ************************************************************
+[20:06:21.792] [25724] [I] Sentinel.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks\Sentinel.esp.ini.
+[20:06:21.792] [25724] [I] ************************************************************
+[20:06:21.793] [25724] [I] ************************************************************
+[20:06:21.793] [25724] [I] RMB SPID - NordwarUA GAR - Outfits.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks - Common\RMB SPID - NordwarUA GAR - Outfits.esp.ini.
+[20:06:21.793] [25724] [I] ************************************************************
+[20:06:21.793] [25724] [I] ************************************************************
+[20:06:21.793] [25724] [I] RMB SPID - Sons of Skyrim.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks - Common\RMB SPID - Sons of Skyrim.esp.ini.
+[20:06:21.793] [25724] [I] ************************************************************
+[20:06:21.794] [25724] [I] ************************************************************
+[20:06:21.794] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks - CoS\Cloaks - RMB SPCH.esp.ini...
+[20:06:21.794] [25724] [I] ************************************************************
+[20:06:21.795] [25724] [C] leveled Lists FE04EB62 Form not found: Cloaks - Dawnguard.esp|800
+[20:06:21.795] [25724] [I] ************************************************************
+[20:06:21.795] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Cloaks - Pelts o Plenty\RMB SPCH - Pelt Cloaks.esp.ini...
+[20:06:21.795] [25724] [I] ************************************************************
+[20:06:21.798] [25724] [I] ************************************************************
+[20:06:21.798] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Headgear\RMB SPID - Core Definitions.esp.ini...
+[20:06:21.798] [25724] [I] ************************************************************
+[20:06:21.799] [25724] [I] ************************************************************
+[20:06:21.799] [25724] [I] RMB SPID - Realistic Armors.esp not found or is not a valid plugin file, skipping config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\Headgear\RMB SPID - Realistic Armors.esp.ini.
+[20:06:21.799] [25724] [I] ************************************************************
+[20:06:21.799] [25724] [I] ************************************************************
+[20:06:21.799] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\zz Ensrick Cloak Balance\Ensrick - Cloak Balance.ini...
+[20:06:21.799] [25724] [I] ************************************************************
+[20:06:21.801] [25724] [I] ************************************************************
+[20:06:21.801] [25724] [I] Processing config file .\Data\SKSE\Plugins\SkyPatcher\leveledList\\zz Ensrick Death Hound\Ensrick - Death Hound Loot.ini...
+[20:06:21.801] [25724] [I] ************************************************************
+[20:06:21.801] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Leveled List Patcher finished in 0.018122 seconds
+[20:06:21.802] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Container Patcher finished in 0.000599 seconds
+[20:06:21.802] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> FormList Patcher finished in 0.000249 seconds
+[20:06:21.803] [25724] [I] Couldn't open directory .\Data\SKSE\Plugins\SkyPatcher\reference.
+[20:06:21.803] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Reference Patcher finished in 9.5e-05 seconds
+[20:06:21.803] [25724] [I] Couldn't open directory .\Data\SKSE\Plugins\SkyPatcher\cell\.
+[20:06:21.803] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Cell Patcher finished in 6.7e-05 seconds
+[20:06:21.803] [25724] [I] Couldn't open directory .\Data\SKSE\Plugins\SkyPatcher\location\.
+[20:06:21.803] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Location Patcher finished in 9.1e-05 seconds
+[20:06:21.803] [25724] [I] Couldn't open directory .\Data\SKSE\Plugins\SkyPatcher\encounterzone\.
+[20:06:21.803] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Encounterzone Patcher finished in 6.5e-05 seconds
+[20:06:21.804] [25724] [I] >>>>>>>>>>>>>>>>>>>>>>>>>>> Game load finished in 0.06297 seconds
