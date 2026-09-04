@@ -7,10 +7,16 @@ mods. Those remain separate Nexus downloads.
 ## Policy
 
 - Loose modern Septims resolve deterministically to 75% copper (value 1,
-  weight 0.01), 20% silver (value 25, weight 0.02), and 5% gold (value 100,
-  weight 0.03). Expected value is 10.75 per placed vanilla coin: a deliberate
+  weight 0.06), 20% silver (value 25, weight 0.07), and 5% gold (value 100,
+  weight 0.13). Expected value is 10.75 per placed vanilla coin: a deliberate
   975% increase accepted by the user because currency has weight and the final
   inventory/loot economy will be much stricter.
+- Skyrim exposes an abstract carry-weight number rather than a documented mass
+  unit. This modlist treats 1.00 as approximately one pound for economy
+  balancing. Copper's 0.06 is near the mass of a large historical one-ounce
+  circulation coin; silver and gold preserve approximate same-volume metal
+  density ratios. The three ECE meshes have identical dimensions, so their
+  weights differ by material rather than denomination value.
 - Quest-specific exceptions win first, then ancient-site currency, then modern
   regional tender, then the ordinary Septim mix. The hidden vanilla Gold001
   remains the accounting backend.
@@ -146,6 +152,11 @@ modifying the vendor mod folders:
     defensively. Its eighty placed silver/gold pile references, ordinary loose
     coins, purses, and containers consequently follow one consistent Septim
     route.
+24. ECE reapplies 0.01/0.02/0.03 to its physical copper, silver, and gold
+    Septim records through SkyPatcher at runtime. A separate, later-sorting
+    owned rule changes only those three weight fields to 0.06/0.07/0.13. The
+    hidden `Gold001` accounting object and display-only plural proxies remain
+    weightless, and no vendor file is edited or copied.
 
 The ECE omnibus `ECE_CraftAndRecipes.ini`, malformed
 `ECE_AncientCoinsToIngot.ini`, and `exchangeCurrency_patch_BS.esp` are
@@ -191,13 +202,14 @@ pwsh ./mods/currency-integration/regenerate.ps1 `
   -GameRoot "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition"
 ```
 
-That command verifies pinned source/tool hashes, compiles both owned Papyrus
-helpers twice, generates the plugin twice through the MO2 VFS, checks its exact
+That command verifies pinned source/tool hashes, compiles all three packaged
+Papyrus helpers twice, generates the plugin twice through the MO2 VFS, checks its exact
 record set and all links, validates the file-relative SEQ identity, performs a
 checked Spriggit semantic roundtrip, and builds the archive twice byte-for-byte.
-Caprica debug information and CK optimizations are disabled; its PEX header
-compile timestamp is normalized to 2000-01-01, the only nondeterministic byte
-remaining between clean compilations.
+Caprica debug information and CK optimizations are disabled. Its PEX header
+compile timestamp, checkout-dependent source path, build user and machine name
+are normalized to fixed release metadata, so identical source remains
+byte-identical across worktrees, clone paths and builders.
 
 The 45-record ESPFE declares exactly nine direct masters: Skyrim, Update,
 Dragonborn, Exchange Currency SE, ECE, C.O.I.N., M.I.N.T., the selected

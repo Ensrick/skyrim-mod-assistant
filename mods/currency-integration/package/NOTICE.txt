@@ -13,17 +13,26 @@ redistribution must satisfy every applicable upstream term, including ECE's
 credit, no-sale, and no-Donation-Points conditions.
 
 This archive does not bundle any vendor mesh, texture, audio, plugin file, or
-unmodified script binary/source file. Required mods must be acquired separately
-from their authors:
+unmodified script binary/source file. The upstream works represented by
+included derivatives or referenced by this integration must be acquired
+separately from their authors. The complete runtime dependency and version list
+is maintained in the source repository:
+https://github.com/Ensrick/skyrim-mod-assistant/blob/ensrick/modpack-roadmap-2026-08-28/mods/currency-integration/README.md#required-runtime-and-load-order
 
-- C.O.I.N. - Coins of Interesting Natures
+- C.O.I.N. - Coins of Interesting Nature — created by Tate Taylor and VictorF
   https://www.nexusmods.com/skyrimspecialedition/mods/51439
-- M.I.N.T. - More Interesting New Tender
+- M.I.N.T. - Mint-Issued National Tenders — created by Tate Taylor
   https://www.nexusmods.com/skyrimspecialedition/mods/178940
-- Exchange Currency Enhanced
+- Exchange Currency Enhanced — created by Nerapharu
   https://www.nexusmods.com/skyrimspecialedition/mods/141884
-- WiZkiD Ancient Imperial Septims
+- WiZkiD Ancient Imperial Septims — created by WiZkiD
   https://www.nexusmods.com/skyrimspecialedition/mods/37545
+
+`zz_Ensrick_Currency_SeptimWeights.ini` is an original, weight-only
+interoperability configuration released under this package's MIT grant. It
+references three ECE form identifiers and is processed after ECE's runtime
+defaults so it is intended to override their weights, but copies no ECE
+configuration text or other vendor content.
 
 The two narrowly corrected M.I.N.T. configuration files,
 MorrowindUsesDrams_SWAP.ini and MorrowindUsesDrams.json, remain subject to the

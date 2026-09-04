@@ -6,3 +6,7 @@
 # preserve upstream trailing whitespace as well as line endings.
 /mods/currency-integration/package/SKSE/Plugins/ContainerDistributionFramework/C.O.I.N.json whitespace=-blank-at-eol,cr-at-eol
 /mods/currency-integration/package/SKSE/Plugins/InventoryInjector/exchangeCurrency_enhanced.json whitespace=-blank-at-eol,cr-at-eol
+
+# Curated runtime evidence has content hashes recorded in release receipts.
+# Keep its reviewed LF representation stable across Windows/Linux checkouts.
+/records/runtime-evidence/*.log text eol=lf

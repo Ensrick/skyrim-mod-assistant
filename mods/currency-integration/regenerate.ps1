@@ -9,7 +9,7 @@ vendor mod folders or the live MO2 profile.
     -GameRoot "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition"
 
 The pipeline verifies pinned tools and Papyrus inputs, compiles all three packaged
-helpers twice, normalizes only the PEX header timestamp, generates the ESP twice through
+helpers twice, normalizes deterministic PEX header metadata, generates the ESP twice through
 the MO2 VFS, checks exact records/links/SEQ, performs a checked Spriggit semantic
 roundtrip, and creates the deterministic archive twice.
 #>
@@ -19,7 +19,7 @@ param(
     [Parameter(Mandatory)] [string] $InstanceRoot,
     [Parameter(Mandatory)] [string] $GameRoot,
     [string] $Profile = 'Default',
-    [string] $Version = '0.2.4'
+    [string] $Version = '0.2.5'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -28,8 +28,9 @@ $scriptName = 'Ensrick_CurrencyRuntimeDefaultsAlias'
 $ohzerScriptName = 'Ensrick_OhzerCurrencyScript'
 $madranShimName = 'DES_MadranSwapper'
 $ownedRoot = [IO.Path]::GetFullPath($PSScriptRoot)
-$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $ownedRoot '..\..'))
-$reposRoot = [IO.Path]::GetFullPath((Join-Path $repositoryRoot '..'))
+$toolchainManifestPath = [IO.Path]::GetFullPath($ToolchainManifest)
+$toolchainRepositoryRoot = Split-Path -Parent $toolchainManifestPath
+$reposRoot = [IO.Path]::GetFullPath((Join-Path $toolchainRepositoryRoot '..'))
 $generatorFolder = Join-Path $ownedRoot 'generator'
 $project = Join-Path $generatorFolder 'CurrencyIntegrationPatcher.csproj'
 $executable = Join-Path $generatorFolder 'bin\Release\net9.0\CurrencyIntegrationPatcher.exe'
@@ -161,7 +162,7 @@ function Get-TreeDigest([string] $Path) {
     [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes))
 }
 
-foreach ($required in @($ToolchainManifest, $InstanceRoot, $GameRoot, $dataFolder, $project,
+foreach ($required in @($toolchainManifestPath, $InstanceRoot, $GameRoot, $dataFolder, $project,
         $policy, $inputsPath, $source, $ohzerSource, $madranShimSource, $normalizer, $package)) {
     if (-not (Test-Path -LiteralPath $required)) { throw "Required path does not exist: $required" }
 }
@@ -172,7 +173,7 @@ if (Get-Process -Name 'SkyrimSE' -ErrorAction SilentlyContinue) {
     throw 'The game is running; refusing generation.'
 }
 
-$toolchain = Get-Content -LiteralPath $ToolchainManifest -Raw | ConvertFrom-Json
+$toolchain = Get-Content -LiteralPath $toolchainManifestPath -Raw | ConvertFrom-Json
 foreach ($toolName in @('mo2', 'spriggit')) {
     $tool = $toolchain.tools.$toolName
     if (-not $tool -or -not (Test-Path -LiteralPath ([string] $tool.path) -PathType Leaf)) {
@@ -198,6 +199,18 @@ if ((Get-FileHash -LiteralPath $caprica -Algorithm SHA256).Hash -ne [string] $in
 }
 if ((Get-FileHash -LiteralPath $flags -Algorithm SHA256).Hash -ne [string] $inputs.flags.sha256) {
     throw 'Papyrus flags hash differs from build-inputs.json.'
+}
+$septimBaseline = $inputs.septimWeightBaseline
+$septimBaselinePath = Join-Path $InstanceRoot ([string] $septimBaseline.sourceRelativePathFromInstance)
+if (-not (Test-Path -LiteralPath $septimBaselinePath -PathType Leaf)) {
+    throw "Pinned ECE Septim-weight baseline is missing: $septimBaselinePath"
+}
+if ((Get-Item -LiteralPath $septimBaselinePath).Length -ne [long] $septimBaseline.sourceBytes) {
+    throw 'ECE Septim-weight baseline byte count differs from build-inputs.json.'
+}
+if ((Get-FileHash -LiteralPath $septimBaselinePath -Algorithm SHA256).Hash -ne
+    [string] $septimBaseline.sourceSha256) {
+    throw 'ECE Septim-weight baseline hash differs from build-inputs.json.'
 }
 
 $importFolders = [Collections.Generic.List[string]]::new()
@@ -263,8 +276,9 @@ Invoke-HiddenProcess -FileName $dotnet -Arguments @('build', $project, '-c', 'Re
     '-p:RestoreLockedMode=true', '-nologo') -WorkingDirectory $generatorFolder `
     -LogStem (Join-Path $work 'build') -Environment $processEnvironment | Out-Null
 
-# Compile every owned script twice. Caprica's only remaining nondeterministic
-# byte is the standard PEX header compile time; normalize it to the fixed epoch.
+# Compile every owned script twice. Normalize Caprica's PEX header timestamp,
+# source path, user and machine to audited release metadata. This keeps
+# identical source byte-identical across worktrees, clone paths and builders.
 $pexRuns = @{}
 foreach ($ownedScriptName in $ownedScripts.Keys) {
     $pexRuns[$ownedScriptName] = [Collections.Generic.List[string]]::new()
@@ -280,7 +294,11 @@ foreach ($run in 1..2) {
             '--output', $outputFolder, $ownedSource) -WorkingDirectory $ownedRoot `
             -LogStem (Join-Path $work "papyrus-$run-$ownedScriptName") | Out-Null
         $pex = Join-Path $outputFolder "$ownedScriptName.pex"
-        Invoke-HiddenProcess -FileName $python -Arguments @('-3', $normalizer, $pex) `
+        $normalizedSourceName = "$($inputs.papyrusCompiler.normalizedSourcePrefix)/$ownedScriptName.psc"
+        Invoke-HiddenProcess -FileName $python -Arguments @('-3', $normalizer, $pex,
+            '--source-name', $normalizedSourceName,
+            '--user-name', ([string] $inputs.papyrusCompiler.normalizedUserName),
+            '--machine-name', ([string] $inputs.papyrusCompiler.normalizedMachineName)) `
             -WorkingDirectory $ownedRoot -LogStem (Join-Path $work "normalize-pex-$run-$ownedScriptName") | Out-Null
         $pexRuns[$ownedScriptName].Add($pex)
     }
