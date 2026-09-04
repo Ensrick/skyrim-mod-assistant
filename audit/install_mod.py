@@ -177,11 +177,12 @@ def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None)
         print(f"   plugin {p}: {'enabled' if r.get('ok') else r}")
 
     led = load()
-    # an update replaces the old ledger row for the same mod folder, not just
-    # a re-download of the identical file
+    # One source archive can legitimately be installed as multiple component
+    # folders (core, official patch, optional assets). File ID is provenance,
+    # not row identity. Replace only the row for this exact physical folder;
+    # global file-ID deduplication silently erased sibling components.
     led['mods'] = [m for m in led['mods']
-                   if m.get('fileId') != f['file_id']
-                   and not (replace and m.get('modName') == mod_name)]
+                   if str(m.get('modName') or '').casefold() != mod_name.casefold()]
     led['mods'].append({
         'modId': mid, 'modName': mod_name,
         'nexusName': f['name'], 'version': f.get('version'),
