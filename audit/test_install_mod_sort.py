@@ -42,7 +42,14 @@ class PluginMembershipTests(unittest.TestCase):
                 mock.patch.object(subject, 'mo2', return_value={
                     'discoveredCount': 1,
                     'plugins': [{'name': 'patch.esp', 'enabled': True}],
-                }):
+                }), \
+                mock.patch.object(subject.profile_reconcile, 'reconcile',
+                                  return_value={
+                                      'counts': {'errors': 0},
+                                      'reconciled': True,
+                                  }), \
+                mock.patch.object(subject.profile_reconcile, 'render',
+                                  return_value='fixture reconciled'):
             self.assertEqual(0, subject.verify())
 
 
