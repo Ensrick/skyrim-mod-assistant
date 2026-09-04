@@ -188,6 +188,7 @@ if ($Instance) {
 
 $process = [System.Diagnostics.Process]::new()
 $process.StartInfo = $processInfo
+$exitCode = 70
 
 try {
     if (-not $process.Start()) {
@@ -221,15 +222,7 @@ try {
         [System.Text.UTF8Encoding]::new($false)
     )
 
-    [pscustomobject]@{
-        Tool = $Tool
-        Profile = $Profile
-        Instance = $Instance
-        ExitCode = $process.ExitCode
-        RunDirectory = $runDirectory
-    }
-
-    exit $process.ExitCode
+    $exitCode = $process.ExitCode
 }
 finally {
     if (-not $process.HasExited) {
@@ -238,3 +231,35 @@ finally {
     }
     $process.Dispose()
 }
+
+$controllerResult = $null
+try {
+    $controllerResult = $stdout.Trim() | ConvertFrom-Json
+} catch {
+    # Preserve the raw logs and exit code when an older controller does not
+    # emit JSON. The caller will fail closed instead of inventing state.
+}
+
+$stateDeltaPath = $null
+if ($controllerResult -and $controllerResult.stateDelta) {
+    $stateDeltaPath = Join-Path $runDirectory 'controller-state-delta.json'
+    [System.IO.File]::WriteAllText(
+        $stateDeltaPath,
+        ($controllerResult.stateDelta | ConvertTo-Json -Depth 20),
+        [System.Text.UTF8Encoding]::new($false)
+    )
+}
+
+[pscustomobject]@{
+    tool = $Tool
+    profile = $Profile
+    instance = $Instance
+    exitCode = $exitCode
+    runDirectory = $runDirectory
+    controllerStateDelta = $(
+        if ($controllerResult) { $controllerResult.stateDelta } else { $null }
+    )
+    stateDeltaPath = $stateDeltaPath
+} | ConvertTo-Json -Depth 20 -Compress
+
+exit $exitCode
