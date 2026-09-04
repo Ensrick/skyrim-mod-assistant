@@ -58,5 +58,6 @@ jobs:
         run: |
           python audit/profile_reconcile.py --selftest
           python audit/keep_coverage.py --selftest
+          python audit/test_install_mod_lifecycle.py
           python audit/patch_impact.py --selftest
           python audit/verification_plan.py --selftest

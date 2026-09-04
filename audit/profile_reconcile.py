@@ -276,13 +276,21 @@ def reconcile(
             ledger_id = int(ledger_id or 0)
         except (TypeError, ValueError):
             ledger_id = 0
-        if disk["nexusId"] and ledger_id and disk["nexusId"] != ledger_id:
-            errors.append(_problem(
-                "nexus-id-mismatch",
-                f"Nexus ID mismatch: {disk['name']} ledger={ledger_id} meta={disk['nexusId']}",
-                modName=disk["name"], ledgerModId=ledger_id,
-                metadataModId=disk["nexusId"],
-            ))
+        if disk["nexusId"]:
+            if not ledger_id:
+                errors.append(_problem(
+                    "ledger-nexus-id-missing",
+                    f"physical mod identifies Nexus {disk['nexusId']} but ledger uses local/unknown provenance: {disk['name']}",
+                    modName=disk["name"], ledgerModId=ledger_id,
+                    metadataModId=disk["nexusId"],
+                ))
+            elif disk["nexusId"] != ledger_id:
+                errors.append(_problem(
+                    "nexus-id-mismatch",
+                    f"Nexus ID mismatch: {disk['name']} ledger={ledger_id} meta={disk['nexusId']}",
+                    modName=disk["name"], ledgerModId=ledger_id,
+                    metadataModId=disk["nexusId"],
+                ))
 
     for key, state in modlist.items():
         if key not in physical:
@@ -313,13 +321,16 @@ def reconcile(
     # Preserve modlist order: this instance writes highest-priority provider
     # first, so only that winner's disabledPlugins intent governs a duplicated
     # plugin basename. A parked lower copy must not override a live overlay.
+    physical_providers: dict[str, list[str]] = defaultdict(list)
     enabled_providers: dict[str, list[str]] = defaultdict(list)
     for mod_key, state in modlist.items():
         disk = physical.get(mod_key)
-        if not disk or not state.get("enabled"):
+        if not disk:
             continue
         for plugin in disk["plugins"]:
-            enabled_providers[_key(plugin)].append(disk["name"])
+            physical_providers[_key(plugin)].append(disk["name"])
+            if state.get("enabled"):
+                enabled_providers[_key(plugin)].append(disk["name"])
 
     disabled_intent_by_mod: dict[str, set[str]] = defaultdict(set)
     for key, row in ledger.items():
@@ -385,8 +396,9 @@ def reconcile(
             ))
 
     for plugin_key, state in plugins.items():
+        managed_providers = enabled_providers if state["active"] else physical_providers
         has_provider = (
-            plugin_key in enabled_providers or
+            plugin_key in managed_providers or
             plugin_key in data_plugin_paths or
             plugin_key in overwrite_plugin_paths
         )
@@ -529,6 +541,16 @@ def selftest() -> int:
         broken = reconcile(instance, "Default", ledger, data)
         warning_codes = {row["code"] for row in broken["warnings"]}
         assert "identical-data-plugin-in-overwrite" in warning_codes
+        checks += 1
+
+        # A folder which identifies a Nexus source cannot be laundered into an
+        # apparently local artifact merely by omitting provenance in the row.
+        (mods / "Asset only" / "meta.ini").write_text("modid=42\n", encoding="utf-8")
+        rows = json.loads(ledger.read_text(encoding="utf-8"))["mods"]
+        next(row for row in rows if row["modName"] == "Asset only")["modId"] = 0
+        _fixture_ledger(ledger, rows)
+        broken = reconcile(instance, "Default", ledger, data)
+        assert "ledger-nexus-id-missing" in {row["code"] for row in broken["errors"]}
         checks += 1
 
         # Empty fixture directories cannot turn absent authority files into a

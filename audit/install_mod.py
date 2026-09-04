@@ -55,6 +55,7 @@ REPO = os.path.dirname(SP)
 sys.path.insert(0, SP)
 import claim
 import human_presence as HP
+import keep_coverage
 import profile_reconcile
 
 CANONICAL = r'C:\Users\danjo\source\repos\skyrim-mod-assistant'
@@ -114,6 +115,127 @@ def plugins_of(mod_name):
                   if f.lower().endswith(('.esp', '.esm', '.esl'))) if os.path.isdir(d) else []
 
 
+def _plugin_states():
+    state = mo2('plugin-list')
+    if not state.get('ok'):
+        raise RuntimeError(f"cannot read plugin state: {state}")
+    return {str(row.get('name') or '').casefold(): bool(row.get('enabled'))
+            for row in state.get('plugins', []) if row.get('name')}
+
+
+def _ledger_row(previous, **current):
+    """Refresh provenance without erasing reviewed intent on an update."""
+    row = dict(previous or {})
+    row.pop('archivedTo', None)
+    row.update(current)
+    return row
+
+
+def _desired_active_plugins(plugins, mod_enabled, replacing, before_states):
+    return {
+        str(plugin).casefold() for plugin in plugins
+        if mod_enabled and (not replacing or before_states.get(str(plugin).casefold(), False))
+    }
+
+
+def _restore_ledger_snapshot(snapshot):
+    existed, payload = snapshot
+    if existed:
+        os.makedirs(os.path.dirname(LEDGER), exist_ok=True)
+        tmp = LEDGER + '.rollback.tmp'
+        with open(tmp, 'wb') as stream:
+            stream.write(payload)
+        os.replace(tmp, LEDGER)
+    elif os.path.exists(LEDGER):
+        os.remove(LEDGER)
+
+
+def _rollback_transactions(transaction_ids, ledger_snapshot=None):
+    """Reverse a logical install group in strict last-applied-first order."""
+    okay = True
+    for transaction_id in reversed([tx for tx in transaction_ids if tx]):
+        result = mo2('rollback', transaction_id)
+        if result.get('ok'):
+            print(f'   rolled back MO2 transaction {transaction_id}')
+        else:
+            okay = False
+            print(f'   ROLLBACK FAILED for MO2 transaction {transaction_id}: {result}')
+    if ledger_snapshot is not None:
+        try:
+            _restore_ledger_snapshot(ledger_snapshot)
+            print('   restored exact pre-transaction ledger bytes')
+        except Exception as exc:
+            okay = False
+            print(f'   LEDGER ROLLBACK FAILED: {type(exc).__name__}: {exc}')
+    return okay
+
+
+def _curation_precondition(mid, mod_name):
+    """Require readable, non-contradictory Keep/Skip state before mutation."""
+    try:
+        coverage = keep_coverage.audit()
+        decisions = keep_coverage.curator_decisions()
+        queued = keep_coverage.queued_keeps()
+        pending = _pending_decisions()
+    except Exception as exc:
+        print('REFUSING install: curator state is unreadable; a mutation may not '
+              f'guess Keep/Skip intent ({type(exc).__name__}: {exc})')
+        return False
+
+    target = decisions.get(int(mid), {})
+    if str(target.get('status') or '').casefold() == 'skip':
+        print(f'REFUSING install: Nexus {mid} is a live Skip. Record the user\'s '
+              'explicit reversal in the curator before installing it.')
+        return False
+
+    pending_target = [e for e in pending
+                      if str(e.get('mod', {}).get('modId')) == str(mid)
+                      and str(e.get('mod', {}).get('game') or '').casefold() ==
+                          'skyrimspecialedition']
+    pending_states = {str(e.get('status') or '').casefold() for e in pending_target}
+    if any(state != 'keep' for state in pending_states):
+        print(f'REFUSING install: Nexus {mid} has contradictory pending curator '
+              f'state: {", ".join(sorted(pending_states)) or "(blank)"}')
+        return False
+
+    failures = []
+    for row in coverage['installedWithoutKeep']:
+        if row['modId'] not in queued:
+            failures.append('installed without Keep: %d (%s)' %
+                            (row['modId'], ', '.join(row['mods'])))
+    for row in coverage['skipInstalled']:
+        failures.append('installed Skip: %d (%s)' %
+                        (row['modId'], ', '.join(row['mods'])))
+    for row in coverage['keepNotInstalled']:
+        if int(row['modId']) != int(mid):
+            failures.append('Keep with nothing installed: %d (%s)' %
+                            (row['modId'], row['title']))
+    installed_ids = {
+        nexus_id
+        for ids in keep_coverage.installed_ids().values()
+        for nexus_id in ids
+    }
+    for entry in pending:
+        if (str(entry.get('status') or '').casefold() != 'keep' or
+                str(entry.get('mod', {}).get('game') or '').casefold() !=
+                'skyrimspecialedition'):
+            continue
+        try:
+            pending_id = int(entry.get('mod', {}).get('modId'))
+        except (TypeError, ValueError):
+            failures.append('pending Keep has invalid mod ID')
+            continue
+        if pending_id not in installed_ids and pending_id != int(mid):
+            failures.append(f'pending Keep with nothing installed: {pending_id}')
+    if failures:
+        print('REFUSING install: existing curation state is not reconciled:')
+        for failure in failures:
+            print('   ' + failure)
+        return False
+
+    return True
+
+
 def refuse_if_human_playing(what):
     """#164: no profile mutation under a session a person is playing in.
 
@@ -161,7 +283,29 @@ def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None)
     archive = M.download(mid, f)
     sha = hashlib.sha256(open(archive, 'rb').read()).hexdigest()
 
-    args = ['mod-install', archive, mod_name, '--enable']
+    ledger_snapshot = (
+        os.path.exists(LEDGER),
+        open(LEDGER, 'rb').read() if os.path.exists(LEDGER) else b'',
+    )
+    led = load()
+    previous = next((m for m in led['mods']
+                     if str(m.get('modName') or '').casefold() == mod_name.casefold()), None)
+    if replace and previous is None:
+        print('REFUSING update: --replace requires an existing reconciled ledger row '
+              f'for {mod_name}')
+        return 1
+    try:
+        before_plugins = _plugin_states()
+    except RuntimeError as exc:
+        print(f'REFUSING install: {exc}')
+        return 1
+    desired_mod_enabled = bool(previous.get('enabled')) if replace else True
+
+    if not _curation_precondition(mid, mod_name):
+        return 1
+
+    args = ['mod-install', archive, mod_name,
+            '--enable' if desired_mod_enabled else '--disable']
     if replace:
         args += ['--replace']
     if plan:
@@ -170,43 +314,119 @@ def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None)
     if not res.get('ok'):
         print('install failed:', res); return 1
     print(f"installed {mod_name}  transaction {res.get('transaction')}")
+    transactions = [res.get('transaction')]
+    ledger_changed = False
+
+    def abort_applied(message):
+        print(message)
+        rolled_back = _rollback_transactions(
+            transactions, ledger_snapshot if ledger_changed else None)
+        if not rolled_back:
+            print('   logical transaction remains BROKEN; manual recovery is required')
+        return 1
 
     added = plugins_of(mod_name)
+    # New installs activate their selected plugins. Updates preserve the exact
+    # pre-update active membership; a newly introduced plugin stays inactive
+    # until it is explicitly reviewed instead of being silently activated.
+    desired_active = _desired_active_plugins(
+        added, desired_mod_enabled, replace, before_plugins)
+    try:
+        current_plugins = _plugin_states()
+    except RuntimeError as exc:
+        return abort_applied(f'install applied but plugin-state verification failed: {exc}')
     for p in added:
-        r = mo2('plugin-enable', p)
-        print(f"   plugin {p}: {'enabled' if r.get('ok') else r}")
+        key = p.casefold()
+        desired = key in desired_active
+        actual = current_plugins.get(key, False)
+        if actual == desired:
+            continue
+        r = mo2('plugin-enable' if desired else 'plugin-disable', p)
+        if not r.get('ok'):
+            return abort_applied(f"   plugin {p}: state update FAILED: {r}")
+        transactions.append(r.get('transaction'))
+        print(f"   plugin {p}: {'enabled' if desired else 'deliberately disabled'}")
 
-    led = load()
+    try:
+        after_plugins = _plugin_states()
+    except RuntimeError as exc:
+        return abort_applied(f'install applied but plugin-state verification failed: {exc}')
+    wrong = [p for p in added
+             if after_plugins.get(p.casefold(), False) != (p.casefold() in desired_active)]
+    if wrong:
+        return abort_applied(
+            'install applied but exact plugin-state postcondition failed: ' + ', '.join(wrong))
+
     # One source archive can legitimately be installed as multiple component
     # folders (core, official patch, optional assets). File ID is provenance,
     # not row identity. Replace only the row for this exact physical folder;
     # global file-ID deduplication silently erased sibling components.
     led['mods'] = [m for m in led['mods']
                    if str(m.get('modName') or '').casefold() != mod_name.casefold()]
-    led['mods'].append({
+    disabled_plugins = sorted(
+        (p for p in added if desired_mod_enabled and p.casefold() not in desired_active),
+        key=str.casefold)
+    current = {
         'modId': mid, 'modName': mod_name,
         'nexusName': f['name'], 'version': f.get('version'),
         'fileId': f['file_id'], 'fileName': f['file_name'],
         'sizeMb': round(f['size_kb'] / 1024, 2), 'sha256': sha,
-        'plugins': added, 'enabled': True,
+        'plugins': added, 'enabled': desired_mod_enabled,
         'installedUtc': datetime.datetime.now(datetime.timezone.utc)
                                  .strftime('%Y-%m-%dT%H:%M:%SZ'),
         'transaction': res.get('transaction'),
         **({'fomodPlan': plan} if plan else {}),
-    })
-    save(led)
+    }
+    row = _ledger_row(previous, **current)
+    if not plan:
+        row.pop('fomodPlan', None)
+    if disabled_plugins:
+        row['disabledPlugins'] = disabled_plugins
+    else:
+        row.pop('disabledPlugins', None)
+    if replace:
+        introduced = sorted(
+            set(added) - {str(p) for p in (previous.get('plugins') or [])},
+            key=str.casefold)
+        introduced_inactive = [p for p in introduced if p in disabled_plugins]
+        if introduced_inactive:
+            marker = ('Update introduced plugin(s) left inactive pending review: ' +
+                      ', '.join(introduced_inactive) + '.')
+            old_note = str(row.get('note') or '').strip()
+            if marker not in old_note:
+                row['note'] = (old_note + (' ' if old_note else '') + marker)
+    led['mods'].append(row)
+    try:
+        save(led)
+        ledger_changed = True
+    except Exception as exc:
+        return abort_applied(
+            f'install applied but ledger commit failed: {type(exc).__name__}: {exc}')
     print(f'ledger now holds {len(led["mods"])} mods -> {LEDGER}')
-    if not queue_keep(mid, mod_name):
-        print('install transaction completed, but lifecycle completion FAILED: '
-              'the required Keep could not be queued')
-        return 1
     state = profile_reconcile.reconcile()
     if not state['reconciled']:
-        print('install transaction completed, but the post-install profile does '
-              'not reconcile; this change remains INCOMPLETE (#102)')
         print(profile_reconcile.render(state))
-        return 1
+        return abort_applied(
+            'post-install profile does not reconcile; reverting the logical transaction (#102)')
+    if not queue_keep(mid, mod_name):
+        return abort_applied(
+            'required Keep could not be queued; reverting the logical transaction')
     return 0
+
+
+def _pending_keep_path():
+    return os.path.join(os.environ.get('TEMP', '.'), 'nlc-relay',
+                        'decisions-pending.json')
+
+
+def _pending_decisions():
+    pending = _pending_keep_path()
+    if not os.path.exists(pending):
+        return []
+    batch = json.load(open(pending, encoding='utf-8'))
+    if not isinstance(batch, list):
+        raise ValueError('curator pending batch is not a JSON array')
+    return batch
 
 
 def queue_keep(mid, mod_name):
@@ -219,16 +439,25 @@ def queue_keep(mid, mod_name):
     (merging with any batch not yet picked up, deduplicated by id) so the step
     can never be forgotten. audit/keep_coverage.py is the matching gate.
     """
-    spool = os.path.join(os.environ.get('TEMP', '.'), 'nlc-relay')
-    pending = os.path.join(spool, 'decisions-pending.json')
+    pending = _pending_keep_path()
+    spool = os.path.dirname(pending)
     try:
         os.makedirs(spool, exist_ok=True)
-        batch = []
-        if os.path.exists(pending):
-            batch = json.load(open(pending, encoding='utf-8'))
-        if any(str(e.get('mod', {}).get('modId')) == str(mid) for e in batch):
+        batch = _pending_decisions()
+        same_id = [e for e in batch
+                   if str(e.get('mod', {}).get('modId')) == str(mid)
+                   and str(e.get('mod', {}).get('game') or '').casefold() ==
+                       'skyrimspecialedition']
+        if any(str(e.get('status') or '').casefold() == 'keep' for e in same_id):
             print(f'keep {mid} already queued')
             return True
+        if same_id:
+            states = ', '.join(sorted({str(e.get('status') or '(blank)') for e in same_id}))
+            print(f'   KEEP QUEUE REFUSED for {mid}: existing Skyrim SE pending '
+                  f'decision is {states}, not Keep')
+            print('   resolve the contradictory curator decision explicitly; '
+                  'an install must never reinterpret Skip as Keep')
+            return False
         batch.append({'status': 'keep', 'mod': {
             'game': 'skyrimspecialedition', 'modId': str(mid),
             'title': mod_name,

@@ -74,7 +74,14 @@ def selftest():
             assert str(missing) in str(exc)
         else:
             raise AssertionError('missing curator fixture did not fail closed')
-    print('keep_coverage selftest PASS (2 assertions)')
+        instance = root / 'instance'
+        (instance / 'mods' / 'vendor').mkdir(parents=True)
+        ledger = root / 'ledger.json'
+        ledger.write_text(json.dumps({
+            'mods': [{'modName': 'Vendor', 'modId': 42}],
+        }), encoding='utf-8')
+        assert installed_ids(instance, ledger)['vendor'] == {42}
+    print('keep_coverage selftest PASS (3 assertions)')
     return 0
 
 
@@ -87,7 +94,7 @@ def installed_ids(instance=INSTANCE, ledger_path=LEDGER):
                 mid = int(row.get('modId') or 0)
             except (TypeError, ValueError):
                 continue
-            name = str(row.get('modName') or '')
+            name = str(row.get('modName') or '').strip().casefold()
             if name and mid > 0:
                 by_name.setdefault(name, set()).add(mid)
 
@@ -96,7 +103,7 @@ def installed_ids(instance=INSTANCE, ledger_path=LEDGER):
     for d in sorted(p for p in mods.iterdir() if p.is_dir()):
         if d.name.startswith('.') or d.name.endswith('_separator'):
             continue
-        ids = set(by_name.get(d.name, ()))
+        ids = set(by_name.get(d.name.strip().casefold(), ()))
         meta = d / 'meta.ini'
         if meta.exists():
             txt = meta.read_text(encoding='utf-8-sig', errors='replace')
