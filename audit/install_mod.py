@@ -8,12 +8,14 @@ transaction journal and visible in one file.
   py -3 audit/install_mod.py 12604 "SkyUI"
   py -3 audit/install_mod.py 12604 "SkyUI" --prefer "2K"     # pick a file variant
   py -3 audit/install_mod.py --list                          # show the ledger
-  py -3 audit/install_mod.py --sort                          # LOOT sort, then re-enable
+  py -3 audit/install_mod.py --sort                          # LOOT sort; preserve membership
   py -3 audit/install_mod.py 27962 "Skyrim Unbound Reborn" --plan records/fomod-plans/x.json
 
-Order matters after a LOOT sort: LootCLI rewrites plugins.txt and drops the
-enable markers on managed plugins, so plugin-enable has to run afterwards.
-`--verify` re-checks that every ledger plugin is still enabled.
+Order matters after a LOOT sort: LootCLI rewrites plugins.txt and may drop
+enable markers on managed plugins. MO2Headless restores the exact pre-run
+membership transactionally; this script independently compares the active set
+before and after and fails closed on any delta. `--verify` then re-checks ledger
+expectations as a separate gate.
 
 Ledger conventions for things that are OFF ON PURPOSE. `--verify` is a gate
 that must read `0 problem(s)`; a standing false positive trains everyone to
@@ -27,9 +29,9 @@ machine-readable, not just prose in `note`:
                             deliberately unstarred - a patch whose target is
                             absent, a variant superseded by another mod, an
                             asset-only install whose ESP must not load. They
-                            are reported as `deliberately-disabled`, are not
-                            counted as problems, and `sort_order()` will not
-                            re-enable them. One that IS active fails instead.
+                            are reported as `deliberately-disabled` and are not
+                            counted as problems. Sorting never changes their
+                            state. One that IS active fails instead.
 
 Always give the reason in `note` as well; the field says WHAT, the note says
 WHY. A plugin that is off with neither marker is a fault by definition - that
@@ -48,7 +50,7 @@ process audit:
                    session, or acquire the claim from the shell first; a claim
                    held by someone else stops this script before it downloads.
 """
-import json, os, re, sys, hashlib, subprocess, datetime
+import json, os, re, sys, hashlib, subprocess, datetime, uuid
 
 SP = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(SP)
@@ -255,15 +257,16 @@ def verify():
     print(profile_reconcile.render(reconciled) + '\n')
     led = load()
     state = mo2('plugin-list')
-    live = {p['name']: p['enabled'] for p in state.get('plugins', [])}
+    live = {p['name'].casefold(): p['enabled'] for p in state.get('plugins', [])}
     print(f"{len(led['mods'])} mods in ledger; {state.get('discoveredCount')} plugins discovered\n")
     bad = reconciled['counts']['errors']
     off_on_purpose = []          # (mod, plugin, why) - expected off, never a fault
     faults = []                  # the rows that actually matter
     for m in led['mods']:
         for p in m['plugins']:
-            ok = live.get(p)
-            flag = 'enabled' if ok else ('DISABLED' if p in live else 'MISSING')
+            key = p.casefold()
+            ok = live.get(key)
+            flag = 'enabled' if ok else ('DISABLED' if key in live else 'MISSING')
             if not m.get('enabled'):
                 # parked mod: its plugins are expected to be undiscovered
                 flag = 'parked' if not ok else 'ACTIVE-WHILE-PARKED'
@@ -272,7 +275,7 @@ def verify():
                     faults.append((m['modName'], p, flag))
                 else:
                     off_on_purpose.append((m['modName'], p, 'mod parked'))
-            elif p in m.get('disabledPlugins', []):
+            elif key in {name.casefold() for name in m.get('disabledPlugins', [])}:
                 # deliberately unstarred (e.g. its master is not installed)
                 flag = 'deliberately-disabled' if not ok else 'ACTIVE-BUT-MARKED-DISABLED'
                 if ok:
@@ -312,19 +315,75 @@ def sort_order():
         return _sort_order()
 
 
+def _plugin_snapshot(state):
+    """Return active plugins keyed by case-insensitive identity.
+
+    Plugin filenames are case-insensitive on the supported Windows profile.
+    Treating differently-cased spellings as different identities made the old
+    before/after comparison capable of reporting a false loss (or missing a
+    duplicate row).
+    """
+    active = {}
+    duplicates = []
+    for plugin in state.get('plugins', []):
+        if not plugin.get('enabled'):
+            continue
+        name = plugin.get('name', '')
+        key = name.casefold()
+        if not key:
+            continue
+        if key in active:
+            duplicates.append((active[key], name))
+        else:
+            active[key] = name
+    return active, duplicates
+
+
+def _membership_delta(before, after):
+    before_keys = set(before)
+    after_keys = set(after)
+    return {
+        'lost': [before[key] for key in sorted(before_keys - after_keys)],
+        'unexpectedlyEnabled': [after[key] for key in sorted(after_keys - before_keys)],
+        'caseChanges': [
+            {'before': before[key], 'after': after[key]}
+            for key in sorted(before_keys & after_keys)
+            if before[key] != after[key]
+        ],
+    }
+
+
+def _last_json_object(text):
+    for line in reversed((text or '').splitlines()):
+        try:
+            value = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, dict):
+            return value
+    return {}
+
+
+def _write_sort_delta(run_directory, report):
+    if not run_directory or not os.path.isdir(run_directory):
+        return None
+    path = os.path.join(run_directory, 'plugin-state-delta.json')
+    tmp = f'{path}.{uuid.uuid4().hex}.tmp'
+    with open(tmp, 'w', encoding='utf-8') as fh:
+        json.dump(report, fh, indent=2, ensure_ascii=False)
+        fh.write('\n')
+    os.replace(tmp, path)
+    return path
+
+
 def _sort_order():
-    """Sort with LootCLI through MO2's VFS, then restore enable markers.
+    """Sort with LootCLI through MO2's VFS without changing membership.
 
-    LootCLI rewrites plugins.txt and drops the '*' on managed plugins, so the
-    re-enable is not optional housekeeping - skip it and the mods you just
-    installed are silently inactive.
-
-    The restore is driven by what was ACTIVE before the sort, not by the ledger.
-    Driving it from the ledger silently disabled every plugin whose mod had no
-    ledger row - it cost the Legacy of Ysgramor stack once and the 559-record
-    Ensrick Lux Water CS patch a second time, both discovered only by accident.
-    A hand-made patch or a locally built overlay legitimately has no ledger row,
-    so the ledger is the wrong authority for "should this be on"."""
+    MO2Headless owns the transactional marker restore under the same lock as
+    the child run. This caller independently snapshots and compares the active
+    set so a controller regression fails closed. The ledger never participates:
+    sorting reorders plugins; it does not decide which plugins should be active.
+    """
     plugins = os.path.join(INSTANCE, 'profiles', PROFILE, 'plugins.txt')
     out = os.path.join(INSTANCE, 'loot-report.json')
     game = r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
@@ -337,7 +396,11 @@ def _sort_order():
     # snapshot the pre-sort active set: this, not the ledger, decides what gets
     # its marker back afterwards
     state = mo2('plugin-list')
-    was_active = {p['name'] for p in state.get('plugins', []) if p.get('enabled')}
+    was_active, before_duplicates = _plugin_snapshot(state)
+    if before_duplicates:
+        print('refusing to sort: duplicate case-insensitive active plugin rows: '
+              + ', '.join(f'{a} / {b}' for a, b in before_duplicates))
+        return 1
     if not was_active:
         print('refusing to sort: could not read the pre-sort active set, and '
               'sorting without it would drop every enable marker')
@@ -348,42 +411,47 @@ def _sort_order():
     p = subprocess.run(['pwsh', '-NoProfile', '-Command', script],
                        capture_output=True, text=True, timeout=1200, cwd=REPO)
     print('loot exit', p.returncode)
+    run = _last_json_object(p.stdout)
+    after_state = mo2('plugin-list')
+    after, after_duplicates = _plugin_snapshot(after_state)
+    delta = _membership_delta(was_active, after)
+    controller_delta = run.get('controllerStateDelta')
+    report = {
+        'schemaVersion': 1,
+        'operation': 'loot-sort-plugin-membership',
+        'profile': PROFILE,
+        'lootExitCode': p.returncode,
+        'beforeActiveCount': len(was_active),
+        'afterActiveCount': len(after),
+        'activeSetPreserved': not (delta['lost'] or delta['unexpectedlyEnabled']
+                                   or after_duplicates),
+        **delta,
+        'duplicateActiveRowsBefore': [list(pair) for pair in before_duplicates],
+        'duplicateActiveRowsAfter': [list(pair) for pair in after_duplicates],
+        'controllerStateDelta': controller_delta,
+    }
+    report_path = _write_sort_delta(run.get('runDirectory'), report)
+    print(f'active plugins before={len(was_active)}, after={len(after)}')
+    if report_path:
+        print(f'plugin state delta: {report_path}')
+    else:
+        print('plugin state delta: no run directory returned; JSON follows')
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
     if p.returncode != 0:
         print((p.stdout or p.stderr)[-500:])
         return 1
-    led = load()
-    # everything that was active before the sort goes back on, full stop. A
-    # plugin that was deliberately off is by definition not in the snapshot, so
-    # no ledger row gets a say here - a stale parked row must never be able to
-    # force a live plugin off (process audit 2026-08-30, F2)
-    failed = []
-    for pl in sorted(was_active):
-        r = mo2('plugin-enable', pl)
-        if not r.get('ok'):
-            failed.append((pl, r))
-    # anything newly installed this run is not in the snapshot; the ledger is
-    # the right authority for those, since they have never been active before
-    deliberate = {pl for m in led['mods']
-                  for pl in (m.get('disabledPlugins', []) if m.get('enabled')
-                             else m.get('plugins', []))}
-    fresh = [pl for m in led['mods'] if m.get('enabled')
-             for pl in m['plugins']
-             if pl not in was_active and pl not in deliberate]
-    for pl in fresh:
-        r = mo2('plugin-enable', pl)
-        if not r.get('ok'):
-            failed.append((pl, r))
-    # prove it: the post-sort active set must contain the pre-sort one
-    after = {p['name'] for p in mo2('plugin-list').get('plugins', []) if p.get('enabled')}
-    lost = sorted(was_active - after)
-    print(f'sorted, then restored {len(was_active)} previously active plugins '
-          f'and enabled {len(fresh)} newly installed one(s)')
-    for pl, r in failed:
-        print(f'   ENABLE FAILED {pl}: {r}')
-    if lost:
-        print(f'   LOST AFTER SORT ({len(lost)}): ' + ', '.join(lost))
-    rc = verify()
-    return 1 if (failed or lost) else rc
+    if delta['lost']:
+        print(f"   LOST AFTER SORT ({len(delta['lost'])}): "
+              + ', '.join(delta['lost']))
+    if delta['unexpectedlyEnabled']:
+        print(f"   UNEXPECTEDLY ENABLED ({len(delta['unexpectedlyEnabled'])}): "
+              + ', '.join(delta['unexpectedlyEnabled']))
+    if after_duplicates:
+        print('   DUPLICATE ACTIVE ROWS: '
+              + ', '.join(f'{a} / {b}' for a, b in after_duplicates))
+    if not report['activeSetPreserved']:
+        return 1
+    return verify()
 
 
 def show():
