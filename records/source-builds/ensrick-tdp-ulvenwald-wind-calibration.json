@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick TDP Ulvenwald Wind Calibration",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/29",
+  "implementation": {
+    "kind": "manual-spriggit",
+    "source": "mods/tdp-ulvenwald-wind-calibration/spriggit",
+    "codeJustification": "No code is used: eleven CK-native TREE overrides are directly reviewable Spriggit YAML."
+  },
+  "dependencies": [
+    {
+      "name": "Tree Diversity Project",
+      "nexusModId": 155974,
+      "nexusFileId": 680001,
+      "version": "1.0.1",
+      "external": true
+    },
+    {
+      "name": "Traverse the Ulvenwald",
+      "nexusModId": 57874,
+      "nexusFileId": 444742,
+      "version": "3.3.2",
+      "external": true,
+      "runtimeRole": "assets only; Ulvenwald.esp disabled"
+    }
+  ],
+  "tool": {
+    "name": "Spriggit",
+    "version": "0.41.0",
+    "sourceCommit": "8edce843689be67d66c7902d6941b319ac377c28",
+    "sha256": "D55E9733FAA4A45D9166D9981225F51DCC003A91B4166F1AD88B955D1B3EAE68"
+  },
+  "output": {
+    "plugin": "Ensrick TDP Ulvenwald Wind Calibration.esp",
+    "sha256": "424BCD2EAB9491513292593368730C956DED84ED8CA2661404782D45FE17426F",
+    "bytes": 2644,
+    "records": 11,
+    "recordTypes": {
+      "TREE": 11
+    },
+    "newForms": 0,
+    "eslFlaggedEsp": true,
+    "masters": [
+      "Tree_Diversity_Project.esp"
+    ]
+  },
+  "archive": {
+    "name": "Ensrick-TDP-Ulvenwald-Wind-Calibration-0.1.0.zip",
+    "sha256": "752BA2F86AF27C1D108FAADC3E01D7175B44C174A0424484DBA1DF0308273B2F",
+    "bytes": 1115,
+    "entries": 1,
+    "timestampUtc": "2000-01-01T00:00:00Z"
+  },
+  "validation": {
+    "byteIdenticalBuilds": 2,
+    "spriggitCheckedRoundTrip": true,
+    "motionFieldComparisons": 44,
+    "nonMotionIdentityComparisons": 11,
+    "unresolvedLinks": 0,
+    "foregroundAcceptance": "pending"
+  },
+  "distribution": {
+    "classification": "distributable",
+    "basis": "Own override-only compatibility patch; no vendor plugin or asset bytes are included. Both official mods remain external requirements."
+  }
+}

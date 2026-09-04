@@ -1,0 +1,14 @@
+FormKey: 000834:Tree_Diversity_Project.esp
+EditorID: TDP_sycamore_tall02_summer
+ObjectBounds:
+  First: -516, -369, -12
+  Second: 455, 452, 1263
+Model:
+  File: landscape\trees\Sycamore Forest\AutumnSycamoreTall02.nif
+  Data: 0x020000000000000000000000
+Production: {}
+TrunkFlexibility: 1.3
+BranchFlexibility: 1.75
+Unknown: 0x0AD7233DEB51383E8FC2753E60E5503E00004040000040409A9919400000803F
+LeafAmplitude: 3.5
+LeafFrequency: 1.5

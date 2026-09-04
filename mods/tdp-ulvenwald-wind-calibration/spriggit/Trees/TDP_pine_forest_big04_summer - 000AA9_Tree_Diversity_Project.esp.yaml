@@ -1,0 +1,14 @@
+FormKey: 000AA9:Tree_Diversity_Project.esp
+EditorID: TDP_pine_forest_big04_summer
+ObjectBounds:
+  First: -384, -355, -65
+  Second: 356, 381, 2544
+Model:
+  File: landscape\trees\treepineforest04.nif
+  Data: 0x020000000400000000000000FA6629B9646473003BAC5C0AB779ABDD646473003BAC5C0A261B5160646473003BAC5C0A5D2792DE646473003BAC5C0A
+Production: {}
+TrunkFlexibility: 1
+BranchFlexibility: 1
+Unknown: 0x0BD7233DEC51383E90C2753E61E5503E00004040000040409A9919400000803F
+LeafAmplitude: 2
+LeafFrequency: 1

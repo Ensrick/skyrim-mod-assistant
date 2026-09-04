@@ -187,6 +187,15 @@
 !/mods/wolf-territorial-patch/thinning/spriggit/
 !/mods/wolf-territorial-patch/thinning/spriggit/**
 
+# CK-native, override-only TREE compatibility patch (#29). The Spriggit YAML
+# is the authored source; generated plugin/package outputs stay ignored.
+!/mods/tdp-ulvenwald-wind-calibration/
+!/mods/tdp-ulvenwald-wind-calibration/README.md
+!/mods/tdp-ulvenwald-wind-calibration/manifest.json
+!/mods/tdp-ulvenwald-wind-calibration/spriggit/
+!/mods/tdp-ulvenwald-wind-calibration/spriggit/**
+!/records/tdp-ulvenwald-wind-calibration-2026-09-03.md
+
 # Source and distributable configuration payload for the owned regional
 # currency compatibility layer. It contains no vendor meshes/textures/plugins.
 !/mods/currency-integration/

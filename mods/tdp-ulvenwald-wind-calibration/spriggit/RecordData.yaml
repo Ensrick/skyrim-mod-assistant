@@ -1,0 +1,13 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Ensrick TDP Ulvenwald Wind Calibration.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: 'Calibrates TDP records that use Ulvenwald meshes to the wind values authored for those exact meshes. Issue #29. Override-only.'
+  MasterReferences:
+  - Master: Tree_Diversity_Project.esp
+    FileSize: 0

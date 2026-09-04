@@ -1,0 +1,14 @@
+FormKey: 000AB5:Tree_Diversity_Project.esp
+EditorID: TDP_pine_forest_big01_summer
+ObjectBounds:
+  First: -448, -422, -36
+  Second: 417, 404, 2247
+Model:
+  File: Spooknik\landscape\trees\treepineforest01_large.nif
+  Data: 0x020000000000000000000000
+Production: {}
+TrunkFlexibility: 1
+BranchFlexibility: 1
+Unknown: 0x0AD7233D8FC2F53D0AD7233E95430B3E0000004000000040CDCCCC3F0000803F
+LeafAmplitude: 2
+LeafFrequency: 1.5

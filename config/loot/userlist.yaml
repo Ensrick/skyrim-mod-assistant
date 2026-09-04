@@ -86,3 +86,11 @@ plugins:
       - 'exchangeCurrency_patch_COIN.esp'
       - 'C.O.I.N.esp'
       - 'M.I.N.T.esp'
+
+  # Tree wind calibration (#29): TDP supplies the records and Ulvenwald only
+  # supplies the selected meshes. This override must win TDP's motion fields;
+  # it deliberately does not require or enable Ulvenwald.esp.
+  - name: 'Ensrick TDP Ulvenwald Wind Calibration.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Tree_Diversity_Project.esp'

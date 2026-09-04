@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick TDP Ulvenwald Wind Calibration",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/29",
+  "implementation": "CK-native TREE overrides authored directly as Spriggit YAML; no generator",
+  "inputs": {
+    "treeDiversityProject": {
+      "nexusModId": 155974,
+      "nexusFileId": 680001,
+      "version": "1.0.1",
+      "archiveSha256": "606224ADE3AEE68444C681453712635DC45C4E66456D06E35EC7509F38185FCD",
+      "pluginSha256": "6530379EDDF5864F69B88D0D16120FA8B09230D07542D8FA7F5E651280E2F3FD",
+      "swapIniSha256": "72CC2A9458DB0F23F1049D298EFE33071E9D54515ACE10B3FBEEF9566939182B"
+    },
+    "ulvenwald": {
+      "nexusModId": 57874,
+      "nexusFileId": 444742,
+      "version": "3.3.2",
+      "archiveSha256": "6FD168C2F063A3C8DD4D3D5B8D1BC5D596B76721F3364542ACA80056DB0A7379",
+      "pluginSha256": "1BB684C5AA845090B68138B85081F2E0F2DA1045344DDAEDBB7AE7FC5DBE00B1",
+      "runtimePluginEnabled": false
+    }
+  },
+  "spriggit": {
+    "version": "0.41.0",
+    "binarySha256": "D55E9733FAA4A45D9166D9981225F51DCC003A91B4166F1AD88B955D1B3EAE68",
+    "treeSha256": "88505DE0E33A12571BE6B3D962DF223390750063CAC418FC8B80D3EE9CD97832",
+    "checkedRoundTrip": true
+  },
+  "output": {
+    "plugin": "Ensrick TDP Ulvenwald Wind Calibration.esp",
+    "pluginSha256": "424BCD2EAB9491513292593368730C956DED84ED8CA2661404782D45FE17426F",
+    "pluginBytes": 2644,
+    "archive": "package/Ensrick-TDP-Ulvenwald-Wind-Calibration-0.1.0.zip",
+    "archiveSha256": "752BA2F86AF27C1D108FAADC3E01D7175B44C174A0424484DBA1DF0308273B2F",
+    "archiveBytes": 1115,
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 11,
+    "newForms": 0,
+    "masters": [
+      "Tree_Diversity_Project.esp"
+    ]
+  },
+  "validation": {
+    "byteIdenticalBuilds": 2,
+    "motionFieldsChecked": 44,
+    "nonMotionIdentityChecks": 11,
+    "unresolvedLinks": 0,
+    "dynamicWindPresent": false,
+    "skyrimIsWindyPresent": false,
+    "foregroundAcceptance": "pending"
+  },
+  "distribution": "distributable patch; official TDP and Ulvenwald downloads remain external dependencies"
+}

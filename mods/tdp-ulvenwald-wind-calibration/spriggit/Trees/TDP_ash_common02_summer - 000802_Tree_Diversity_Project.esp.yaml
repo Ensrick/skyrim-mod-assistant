@@ -1,0 +1,14 @@
+FormKey: 000802:Tree_Diversity_Project.esp
+EditorID: TDP_ash_common02_summer
+ObjectBounds:
+  First: -994, -857, -80
+  Second: 783, 733, 1585
+Model:
+  File: landscape\trees\Ash Forest\AshTree02.nif
+  Data: 0x020000000000000000000000
+Production: {}
+TrunkFlexibility: 1.3
+BranchFlexibility: 1.75
+Unknown: 0x0AD7233DEB51383E8FC2753E60E5503E00004040000040409A9919400000803F
+LeafAmplitude: 3.5
+LeafFrequency: 1.5

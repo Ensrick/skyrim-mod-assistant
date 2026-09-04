@@ -1,0 +1,14 @@
+FormKey: 000AAE:Tree_Diversity_Project.esp
+EditorID: TDP_pine_forest_medium01_winter
+ObjectBounds:
+  First: -320, -336, 0
+  Second: 364, 314, 1564
+Model:
+  File: landscape\trees\Pine Forest\PineMedium01_winter.nif
+  Data: 0x020000000000000000000000
+Production: {}
+TrunkFlexibility: 1.3
+BranchFlexibility: 1.75
+Unknown: 0x000000009A99193ECDCC4C3E7B142E3E0000204000002040000000400000803F
+LeafAmplitude: 3.5
+LeafFrequency: 1.5
