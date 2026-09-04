@@ -76,7 +76,7 @@ def pex_header_strings(data: bytes) -> tuple[str, str, str]:
 
 def main() -> None:
     files = sorted(path for path in PACKAGE.rglob("*") if path.is_file())
-    require(len(files) == 27, f"expected 27 package files, found {len(files)}")
+    require(len(files) == 33, f"expected 33 package files, found {len(files)}")
     build_inputs = json.loads((ROOT / "build-inputs.json").read_text(encoding="utf-8"))
 
     for path in CDF.glob("*.json"):
@@ -285,12 +285,21 @@ def main() -> None:
     pex = PACKAGE / "Scripts" / "Ensrick_CurrencyRuntimeDefaultsAlias.pex"
     ohzer_pex = PACKAGE / "Scripts" / "Ensrick_OhzerCurrencyScript.pex"
     madran_pex = PACKAGE / "Scripts" / "DES_MadranSwapper.pex"
+    ece_guard_names = [
+        "EC_septimsScript",
+        "EC_drakrsScript",
+        "EC_dramsScript",
+        "EC_medesScript",
+        "EC_oshkasScript",
+        "EC_ulfricsScript",
+    ]
+    ece_guard_pex = [PACKAGE / "Scripts" / f"{name}.pex" for name in ece_guard_names]
     seq = PACKAGE / "SEQ" / "Ensrick Currency Integration Patch.seq"
     require(plugin.is_file(), "owned currency ESPFE is missing")
     require(pex.is_file(), "owned runtime-default PEX is missing")
     require(ohzer_pex.is_file(), "owned Ohzer transaction PEX is missing")
     require(seq.is_file(), "start-enabled quest SEQ is missing")
-    for script_path in (pex, ohzer_pex, madran_pex):
+    for script_path in (pex, ohzer_pex, madran_pex, *ece_guard_pex):
         pex_bytes = script_path.read_bytes()
         require(pex_bytes[:4] == bytes.fromhex("FA57C0DE"),
                 f"{script_path.name} is not a Skyrim PEX")
@@ -447,13 +456,20 @@ def main() -> None:
     packaged_pex = [path.name for path in files if path.suffix.lower() == ".pex"]
     require(packaged_pex == [
         "DES_MadranSwapper.pex",
+        "EC_drakrsScript.pex",
+        "EC_dramsScript.pex",
+        "EC_medesScript.pex",
+        "EC_oshkasScript.pex",
+        "EC_septimsScript.pex",
+        "EC_ulfricsScript.pex",
         "Ensrick_CurrencyRuntimeDefaultsAlias.pex",
         "Ensrick_OhzerCurrencyScript.pex",
     ],
-            f"package contains a non-owned script binary: {packaged_pex}")
+            f"package contains an unexpected script binary: {packaged_pex}")
 
     notice = (PACKAGE / "NOTICE.txt").read_text(encoding="utf-8")
     license_text = (PACKAGE / "LICENSE.txt").read_text(encoding="utf-8")
+    notice_flat = " ".join(notice.split())
     for nexus_id in (51439, 178940, 141884, 37545):
         require(f"/mods/{nexus_id}" in notice, f"NOTICE lost Nexus attribution {nexus_id}")
     require("MorrowindUsesDrams_SWAP.ini" in notice and "MorrowindUsesDrams.json" in notice,
@@ -473,7 +489,9 @@ def main() -> None:
             "NOTICE lost owned Ohzer or M.I.N.T. interoperability provenance")
     require("DES_MadranSwapper.pex" in notice and "class-loader" in notice,
             "NOTICE lost the independently authored Ma'dran compatibility-shim provenance")
-    notice_flat = " ".join(notice.split())
+    require("EC_septimsScript.pex" in notice and "HasKeywordString" in notice and
+            "six narrow ECE script derivatives" in notice_flat and "no-sale" in notice,
+            "NOTICE lost the ECE null-Location script provenance or restrictions")
     require("zz_Ensrick_Currency_SeptimWeights.ini" in notice_flat and
             "original, weight-only" in notice_flat and
             "copies no ECE configuration text" in notice_flat,
@@ -495,10 +513,10 @@ def main() -> None:
             "NOTICE/LICENSE lost the mixed-terms ESP record boundary")
 
     manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
-    require(manifest.get("version") == "0.2.5" and
+    require(manifest.get("version") == "0.2.6" and
             manifest.get("madranCompatibilityShim", {}).get("file") ==
             "Scripts/DES_MadranSwapper.pex",
-            "manifest lost the v0.2.5 Ma'dran compatibility shim")
+            "manifest lost the v0.2.6 Ma'dran compatibility shim")
     require(manifest.get("physicalSeptimWeights", {}).get("weights") == {
                 "copper": 0.06, "silver": 0.07, "gold": 0.13,
             } and
@@ -510,6 +528,14 @@ def main() -> None:
         (manifest["ohzerHelper"], ohzer_pex),
         (manifest["madranCompatibilityShim"], madran_pex),
     ]
+    guard_receipts = manifest.get("eceLocationGuards", {}).get("scripts", [])
+    require([item.get("script") for item in guard_receipts] == ece_guard_names,
+            "manifest lost the exact six ECE null-Location overrides")
+    require(manifest["eceLocationGuards"].get("behavior") ==
+            "old/new None values are tested before every HasKeywordString call; non-null branches are unchanged",
+            "manifest lost the ECE null-Location behavioral boundary")
+    binary_receipts.extend((receipt, payload)
+                           for receipt, payload in zip(guard_receipts, ece_guard_pex, strict=True))
     for receipt, payload in binary_receipts:
         payload_bytes = payload.read_bytes()
         require(receipt.get("bytes") == len(payload_bytes) and

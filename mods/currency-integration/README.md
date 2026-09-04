@@ -1,8 +1,9 @@
 # Ensrick Regional Currency Integration
 
 This is the owned compatibility layer for the approved currency stack. It does
-not contain meshes, textures, audio, scripts, or plugins from the required
-mods. Those remain separate Nexus downloads.
+not contain meshes, textures, audio, or plugins from the required mods. Six
+narrowly modified ECE script binaries are included under ECE's redistribution
+terms; all complete upstream mods remain separate Nexus downloads.
 
 ## Policy
 
@@ -157,6 +158,14 @@ modifying the vendor mod folders:
     owned rule changes only those three weight fields to 0.06/0.07/0.13. The
     hidden `Gold001` accounting object and display-only plural proxies remain
     weightless, and no vendor file is edited or copied.
+25. ECE's main Septim handler and all five regional handlers dereference both
+    `OnLocationChange` parameters without checking for `None`. Valid exterior,
+    worldspace, fast-travel, and root-location transitions produced 316
+    `HasKeywordString()`-on-None errors in the September 3 playtest. Six
+    same-class PEX overrides add only explicit old/new Location guards. Their
+    non-null branches remain byte-for-source equivalent to ECE 4.1.1, verified
+    against pinned vendor hashes; no currency value, route, or notification is
+    changed.
 
 The ECE omnibus `ECE_CraftAndRecipes.ini`, malformed
 `ECE_AncientCoinsToIngot.ini`, and `exchangeCurrency_patch_BS.esp` are
@@ -202,8 +211,9 @@ pwsh ./mods/currency-integration/regenerate.ps1 `
   -GameRoot "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition"
 ```
 
-That command verifies pinned source/tool hashes, compiles all three packaged
-Papyrus helpers twice, generates the plugin twice through the MO2 VFS, checks its exact
+That command verifies pinned source/tool hashes, proves the six ECE-derived
+sources differ only by their null guards, compiles all nine packaged Papyrus
+scripts twice, generates the plugin twice through the MO2 VFS, checks its exact
 record set and all links, validates the file-relative SEQ identity, performs a
 checked Spriggit semantic roundtrip, and builds the archive twice byte-for-byte.
 Caprica debug information and CK optimizations are disabled. Its PEX header
@@ -238,9 +248,9 @@ same-path CDF JSON are narrowly modified bug-fix configurations, redistributed
 with credit under their authors' Nexus modification/upload terms. The ECE
 translation override also preserves its shipped `$Gold` line. These
 vendor-derived text/config files are not relicensed as MIT. The owned Ohzer
-handler is an interoperability derivative of ECE's `EC_oshkasScript` flow and
-is likewise excluded from MIT; it remains under ECE's applicable Nexus terms,
-with credit and without sale or Donation Points. The ESP contains 14 newly
+handler and six null-Location repairs are interoperability derivatives of ECE
+scripts and are likewise excluded from MIT; they remain under ECE's applicable
+Nexus terms, with credit and without sale or Donation Points. The ESP contains 14 newly
 authored records and 31 compatibility overrides. MIT covers our source and
 original record content, but not the vendor-origin data serialized into those
 overrides; the mixed-terms ESP must not be described as an all-MIT binary.

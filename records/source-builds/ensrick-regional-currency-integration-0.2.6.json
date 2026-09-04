@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "name": "Ensrick Regional Currency Integration",
+  "version": "0.2.6",
+  "source": "mods/currency-integration",
+  "trackingIssues": [
+    "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
+    "https://github.com/Ensrick/skyrim-mod-assistant/issues/209"
+  ],
+  "baseRelease": {
+    "version": "0.2.5",
+    "commit": "5c83b6f89861152ec9d907655ecdef05bb494fb1",
+    "functionalDifference": "six ECE OnLocationChange null guards only"
+  },
+  "upstream": {
+    "name": "Exchange Currency Enhanced",
+    "version": "4.1.1",
+    "nexusModId": 141884,
+    "nexusFileId": 758183,
+    "permissions": "modification and upload allowed with credit; sale and Donation Points prohibited",
+    "sourceTreeSha256": "FC82A34415F04BED11603D5C1105DF163CC4690D836B9F8F065C801AC865DEEE",
+    "pinnedScripts": 6
+  },
+  "change": {
+    "symptom": "316 Cannot call HasKeywordString() on a None object errors in the September 3 play session",
+    "mechanism": "ECE 4.1.1 dereferences old/new OnLocationChange parameters without testing for None",
+    "scope": "explicit local Boolean state and None guards before each affected HasKeywordString call",
+    "preserved": "all non-null regional branches, values, exchange rates, properties, event registrations, and notifications"
+  },
+  "toolchain": {
+    "papyrusCompiler": "Caprica 0.3.0",
+    "papyrusCompilerSha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
+    "normalizedHeader": "timestamp 946684800, repository-relative source path, user Ensrick, machine reproducible-build",
+    "entrypoint": "mods/currency-integration/regenerate.ps1"
+  },
+  "scripts": [
+    {"script": "EC_septimsScript", "pexBytes": 8328, "pexSha256": "216773B19F9554F0F42ADCB41E911DFCCBD6B05201FF573628E25EE9704E1948", "pinnedVendorWarnings": 13},
+    {"script": "EC_drakrsScript", "pexBytes": 2786, "pexSha256": "0E90F7EB11D11ECEC6E2D09C0053A8D98D48971E564A54C3CF58C43E7497482A", "pinnedVendorWarnings": 1},
+    {"script": "EC_dramsScript", "pexBytes": 2779, "pexSha256": "2D7FF1100C104F3F204FB2D62E2115AE275890D43E92C797B48B195A3D34BEF3", "pinnedVendorWarnings": 1},
+    {"script": "EC_medesScript", "pexBytes": 2638, "pexSha256": "4F7C9E257F329252D0A36B0E6E87944ED3B0B3AD5BD87D506BCA35F9EEABC0F2", "pinnedVendorWarnings": 1},
+    {"script": "EC_oshkasScript", "pexBytes": 2783, "pexSha256": "8C4A119681F6D8A97DFF57151386423A652C4B7689046C0FCD3F339946017987", "pinnedVendorWarnings": 1},
+    {"script": "EC_ulfricsScript", "pexBytes": 2790, "pexSha256": "EF83C14D2EF9FDCFC70A40DB93219CB5B2B7C21F5AF4C42BA1D1DC0FECDA323F", "pinnedVendorWarnings": 1}
+  ],
+  "unchangedPayload": {
+    "pluginSha256": "C8010DEB9FAA2E9F01FE90AC023C7414C6F5EA65E8C01492B6238044DA2E6F06",
+    "pluginBytes": 16108,
+    "pluginRecords": 45,
+    "pluginLinksChecked": 397,
+    "pluginUnresolvedLinks": 0,
+    "ownedHelperScripts": 3,
+    "configurationFiles": 20
+  },
+  "release": {
+    "archive": "mods/currency-integration/work/Ensrick-Regional-Currency-Integration-0.2.6.zip",
+    "files": 33,
+    "bytes": 31647,
+    "sha256": "C45B434DAF447DA163ADE5B18C4BBFC215B6878A88BE2B5A5248CC824BCFBCA2",
+    "deterministicArchiveRuns": 2,
+    "deterministicPexRuns": 2,
+    "deployment": "pending independent review and transactional replacement"
+  },
+  "verification": [
+    "Six shipped source files pinned by exact byte count and SHA-256.",
+    "Read-only oracle proves each patched PSC differs from its pinned vendor source only by the documented guards.",
+    "All six scripts compile twice to byte-identical normalized PEX files.",
+    "The 18 W4001 warnings are unchanged unnecessary Boolean casts in vendor code, pinned per script; any other warning fails the build.",
+    "Existing 45-record ESPFE remains byte-identical; record, master, FormLink, SEQ, and Spriggit round-trip audits pass.",
+    "All 33 package paths and binary receipts validate; two ZIP builds are byte-identical."
+  ],
+  "remainingAcceptance": [
+    "Independent code/package review.",
+    "Transactional in-place deployment above ECE.",
+    "Existing-save wilderness/interior, root-location, fast-travel, Skyrim/new-land, and save/load matrix.",
+    "Papyrus log contains zero HasKeywordString-on-None errors from the six ECE handlers."
+  ],
+  "distribution": "mixed terms; six ECE-derived PSC/PEX fixes are excluded from MIT and retain ECE credit/no-sale/no-Donation-Points restrictions documented in package/NOTICE.txt"
+}

@@ -2,9 +2,10 @@ SCOPE NOTICE
 
 This MIT License applies only to Ensrick-authored files and original record
 content identified as MIT in NOTICE.txt. Vendor-derived configuration/text
-files, the ECE-derived Ohzer script, and vendor-origin data in the ESP's 31
-override records are excluded and remain under their stated terms. The mixed-
-terms ESP as a whole is not offered as an all-MIT binary.
+files, the ECE-derived Ohzer script, the six ECE null-Location script fixes,
+and vendor-origin data in the ESP's 31 override records are excluded and remain
+under their stated terms. The mixed-terms ESP as a whole is not offered as an
+all-MIT binary.
 
 MIT License
 
