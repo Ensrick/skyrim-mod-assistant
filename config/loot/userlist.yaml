@@ -5,6 +5,29 @@ groups:
     after: [ 'Ensrick Compatibility Patches' ]
 
 plugins:
+  # RDO Lite's author explicitly says its obsolete CRF/USSEP patch must not be
+  # used and that CRF itself must load after RDO. The upstream masterlist
+  # recognizes both RDO variants but does not encode that ordering edge.
+  - name: 'cutting room floor.esp'
+    after:
+      - 'Relationship Dialogue Overhaul.esp'
+
+  # Official optional patch selected from Skyrim Unbound Reborn's own FOMOD.
+  # Group it with vendor compatibility patches; its masters enforce both
+  # dependency edges, while this keeps it ahead of generated Ensrick patches.
+  - name: 'Skyrim Unbound - RDO Lite Patch.esp'
+    group: 'Ensrick Compatibility Patches'
+    after:
+      - 'Relationship Dialogue Overhaul.esp'
+      - 'Skyrim Unbound.esp'
+
+  # NFF's author directs this plugin near the end and provides an RDO script
+  # option. Keep the framework after the dialogue source and its Unbound patch.
+  - name: 'nwsFollowerFramework.esp'
+    after:
+      - 'Relationship Dialogue Overhaul.esp'
+      - 'Skyrim Unbound - RDO Lite Patch.esp'
+
   # Lux CS' own FOMOD says its Orbis plugin must load after Orbis and all
   # Orbis patches. The upstream masterlist does not currently enforce this.
   - name: 'Lux Orbis CS.esp'

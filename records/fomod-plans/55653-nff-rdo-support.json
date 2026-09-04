@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "35 RDO Main/Scripts",
+      "destination": "Scripts"
+    },
+    {
+      "source": "36 RDO Comments/Scripts",
+      "destination": "Scripts"
+    }
+  ]
+}

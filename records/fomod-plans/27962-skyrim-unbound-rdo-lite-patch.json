@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "source": "patches/RDOLite/Skyrim Unbound - RDO Lite Patch.esp",
+      "destination": "Skyrim Unbound - RDO Lite Patch.esp"
+    }
+  ]
+}
