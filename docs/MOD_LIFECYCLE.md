@@ -160,3 +160,11 @@ This policy is fail-closed for all new work. Existing gaps found by
 reconciliation: verify provenance, repair rows and explicit disabled intent,
 then capture a clean baseline. A generated stub is an investigation aid, not a
 finished ledger row.
+
+Archive identity is not yet proof of the extracted payload: a FOMOD selection
+or later in-place edit can produce a different folder while retaining the same
+download hash. Issue #233 tracks normalized installed-payload manifests and an
+automated vendor-drift gate. Until that gate lands, every changed or adopted
+folder needs a full file/hash manifest in its change receipt; unexplained
+third-party-folder drift blocks acceptance and is repaired by reinstalling the
+vendor payload plus a separate owned patch.
