@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "mappings": [
+    { "source": "meshes", "destination": "meshes" },
+    { "source": "Lux - Bittercup Patch.esp", "destination": "Lux - Bittercup Patch.esp" },
+    { "source": "Lux - Bloodchill Manor patch.esp", "destination": "Lux - Bloodchill Manor patch.esp" },
+    { "source": "Lux - CC Fish patch.esp", "destination": "Lux - CC Fish patch.esp" },
+    { "source": "Lux - Dawnfang CC.esp", "destination": "Lux - Dawnfang CC.esp" },
+    { "source": "Lux - Dead Mans Dread Patch.esp", "destination": "Lux - Dead Mans Dread Patch.esp" },
+    { "source": "Lux - Elite Crossbows.esp", "destination": "Lux - Elite Crossbows.esp" },
+    { "source": "Lux - Farmer patch.esp", "destination": "Lux - Farmer patch.esp" },
+    { "source": "Lux - Forgotten Seasons.esp", "destination": "Lux - Forgotten Seasons.esp" },
+    { "source": "Lux - Ghosts of the Tribunal CC.esp", "destination": "Lux - Ghosts of the Tribunal CC.esp" },
+    { "source": "Lux - Goblins CC.esp", "destination": "Lux - Goblins CC.esp" },
+    { "source": "Lux - Goldbrand CC.esp", "destination": "Lux - Goldbrand CC.esp" },
+    { "source": "Lux - Hendraheim patch.esp", "destination": "Lux - Hendraheim patch.esp" },
+    { "source": "Lux - Nchuanthumz Dwarven Home patch.esp", "destination": "Lux - Nchuanthumz Dwarven Home patch.esp" },
+    { "source": "Lux - Necrohouse patch.esp", "destination": "Lux - Necrohouse patch.esp" },
+    { "source": "Lux - Pets of Skyrim CC.esp", "destination": "Lux - Pets of Skyrim CC.esp" },
+    { "source": "Lux - Saints and Seducers patch.esp", "destination": "Lux - Saints and Seducers patch.esp" },
+    { "source": "Lux - Shadowfoot Sanctum patch.esp", "destination": "Lux - Shadowfoot Sanctum patch.esp" },
+    { "source": "Lux - Staff of Hasedoki CC.esp", "destination": "Lux - Staff of Hasedoki CC.esp" },
+    { "source": "Lux - The Cause patch.esp", "destination": "Lux - The Cause patch.esp" },
+    { "source": "Lux - Tundra Homestead patch.esp", "destination": "Lux - Tundra Homestead patch.esp" },
+    { "source": "Lux - Umbra CC.esp", "destination": "Lux - Umbra CC.esp" },
+    { "source": "Lux - Vigil Enforcer CC.esp", "destination": "Lux - Vigil Enforcer CC.esp" }
+  ]
+}
