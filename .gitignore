@@ -240,6 +240,9 @@ dist/
 !/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/
 !/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/
 !/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/*.ini
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/outfit/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/outfit/Headgear/
+!/overlays/ensrick-cloak-distribution-balance/SKSE/Plugins/SkyPatcher/outfit/Headgear/RMB SPID - Core Definitions.esp.ini
 !/overlays/ensrick-cloaks-of-skyrim-unique-placement/
 !/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/
 !/overlays/ensrick-cloaks-of-skyrim-unique-placement/SKSE/Plugins/
@@ -255,6 +258,7 @@ dist/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/*.ini
 !/records/block-animation-198-2026-09-02.md
+!/records/cloak-duplicate-shadow-2026-09-04.md
 
 # Wolf territorial patch (#42): source only, matching guard-scaling-patch.
 # The generator work dirs hold a 304 MB NuGet cache and built plugins; both are

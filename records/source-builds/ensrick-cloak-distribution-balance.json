@@ -1,98 +1,177 @@
 {
   "schemaVersion": 1,
   "component": "Ensrick - Cloak Distribution Balance",
-  "version": "2026-09-02",
+  "version": "2026-09-04.1",
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/200",
   "sourcePath": "overlays/ensrick-cloak-distribution-balance",
-  "kind": "SkyPatcher configuration overlay (no plugin, no generator, no vendor bytes)",
-  "auditRecord": "records/cloak-distribution-2026-09-02.md",
-  "analysisTooling": "records-work/cloak-dist-2026-09-02/ (lvli.py, resolve.py, ratio.py, outfit_probe.py, simulate.py)",
-  "output": {
-    "files": [
-      {
-        "path": "SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/Ensrick - Cloak Balance.ini",
-        "sha256": "66DC11069C7C966ED187C351FB7FB6CFA7758401731A126D3B57F09931431D99",
-        "bytes": 11107
-      }
-    ],
-    "plugins": [],
+  "kind": "Hand-authored SkyPatcher configuration overlay; no plugin and no vendor bytes",
+  "auditRecord": "records/cloak-duplicate-shadow-2026-09-04.md",
+  "ckFirst": {
+    "nativeAnswer": "Use MO2's exact virtual-path override to replace only the accidental second SkyPatcher config with a comment-only no-op. No Creation Kit record, ESPFE, Papyrus, or native code is required.",
+    "codeJustification": "The INI is hand-authored. Python is used only to fail closed on vendor-source drift, run regression checks, and package the owned files reproducibly; it does not generate game data."
+  },
+  "source": {
+    "provider": "RMB SPIDified - Core Framework",
+    "version": "6.3.0",
+    "nexusUrl": "https://www.nexusmods.com/skyrimspecialedition/mods/63625",
+    "fileId": 754890,
+    "archiveName": "RMB SPIDified - Core Framework-63625-6-3-0-1779405589.zip",
+    "archiveSha256": "59AA7240BC7CACB3C8E29D0FEE8F3B282730A2A054D35D0E9340628E7BE6960D",
+    "inputForm": "Installed/extracted immutable vendor payload; the archive and vendor files are not committed or redistributed"
+  },
+  "inputs": [
+    {
+      "source": "RMB SPIDified - Core Framework 6.3.0 / SKSE/Plugins/SkyPatcher/outfit/Cloaks/RMB SPID - Core Definitions.esp.ini",
+      "provider": "Nexus 63625 file 754890",
+      "bytes": 9623,
+      "sha256": "B3AA37FA441FCBA10BB4CB219866F9B9C312DDD2CCF746F78ECE580D2AA9D9EA",
+      "role": "legitimate cloak outfit injector; remains active and untouched"
+    },
+    {
+      "source": "RMB SPIDified - Core Framework 6.3.0 / SKSE/Plugins/SkyPatcher/outfit/Headgear/RMB SPID - Core Definitions.esp.ini",
+      "provider": "Nexus 63625 file 754890",
+      "bytes": 9623,
+      "sha256": "B3AA37FA441FCBA10BB4CB219866F9B9C312DDD2CCF746F78ECE580D2AA9D9EA",
+      "role": "accidental byte-identical second cloak injector; shadow target"
+    }
+  ],
+  "vendorDefect": {
+    "byteIdentical": true,
+    "filterByOutfitsDirectivesPerFile": 58,
+    "effectiveBefore": "Both files are processed and formsToAdd unconditionally push_backs; 58 directives execute twice for 116 outfit-list additions.",
+    "effectiveAfter": "The owned Headgear path is comment-only; the legitimate Cloaks path executes once for 58 additions."
+  },
+  "leveledListRules": {
+    "analysisTooling": "records-work/cloak-dist-2026-09-02/ (lvli.py, resolve.py, ratio.py, outfit_probe.py, simulate.py)",
     "directives": {
       "chanceNone": 40,
       "addToLLs": 7,
       "removeFromLLs": 9
-    }
+    },
+    "tunables": [
+      {
+        "id": "GUARDS",
+        "block": 1,
+        "expression": "chanceNone on RMB SPID - Core Definitions.esp|B6C..B74",
+        "value": 100,
+        "meaning": "100 = suppress the second RMB roll on the thirteen covered hold-guard outfits",
+        "deleteIf": "RMB SPIDified - Sons of Skyrim 83340 is adopted (#195)"
+      },
+      {
+        "id": "RATIO",
+        "block": 2,
+        "expression": "chanceNone on the 20 Cloaks of Skyrim leveled lists in Cloaks - RMB SPCH.esp",
+        "value": 0,
+        "vendorValue": "25-90 (LitemCloaksCommon 70, LitemCloaksThalmor 90)",
+        "meaning": "0 puts cloth and fur inner lists on the same chanceNone footing"
+      },
+      {
+        "id": "FREQUENCY",
+        "block": 3,
+        "expression": "chanceNone on the outfit-facing RMB lists",
+        "value": 55,
+        "vendorValue": 35,
+        "meaning": "share of covered non-guard NPCs with no cloak"
+      },
+      {
+        "id": "WARM PARITY",
+        "block": 5,
+        "expression": "4 addToLLs putting Cloaks of Skyrim into B99/B9A/B9E/B9F",
+        "value": "on",
+        "meaning": "comment out to leave the four warm buckets all-fur; see #189"
+      }
+    ],
+    "structuralFixes": [
+      "B62 Dawnguard repointed from absent Cloaks - Dawnguard.esp|800 to Cloaks - RMB SPCH.esp|984",
+      "B98/B9D dark buckets given LitemCloaksDarkCommon / LitemCloaksDarkEnch",
+      "9 removeFromLLs directives drop entry-identical Pelts 802/806/807 duplicate branches",
+      "B96/B9B/B97/B99 chanceNone set to 0 to remove compounded inner gates"
+    ],
+    "measured": {
+      "beforeCosShareOfCloaks": {
+        "generic": "1.0%",
+        "guards": "8.7-20.0%",
+        "factions": "0.0-25.4%"
+      },
+      "candidateCosShareOfCloaks": {
+        "generic": "23.8%",
+        "guards": "n/a for newly calculated B6C-B74 rolls",
+        "factions": "20.0-60.0%"
+      },
+      "candidateNoCloak": "55.0% of each covered non-guard NPC"
+    },
+    "semantics": "SkyPatcher source directly assigns chanceNone, so a later processed directive wins. The September 3 log placed this file after vendor configs, but opendir/readdir traversal does not guarantee lexical zz order; each launch must verify effective order until these rules are made order-independent."
   },
-  "tunables": [
-    {
-      "id": "GUARDS",
-      "block": 1,
-      "expression": "chanceNone on RMB SPID - Core Definitions.esp|B6C..B74",
-      "value": 100,
-      "meaning": "100 = guards wear only the Sons of Skyrim cloak their outfit already carries; 0 = restore RMB second cloak",
-      "deleteIf": "RMB SPIDified - Sons of Skyrim 83340 is adopted (#195) - that package performs the merge properly"
+  "transformation": {
+    "method": "Hand-author one comment-only file at the exact erroneous Headgear virtual path. Retain the existing owned leveled-list configuration unchanged except for factual comments correcting SkyPatcher ordering and the 13-plus-MQ304 outfit count.",
+    "command": "py -3 audit/cloak_duplicate_shadow.py --vendor-root <RMB-Core-6.3.0-Data-root> --output dist/issue-200/Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
+    "validator": {
+      "path": "audit/cloak_duplicate_shadow.py",
+      "bytes": 8877,
+      "sha256": "31596CFA5A440AF8D39D14AF43E3A9DFFA1C57C40CCE2FDD20E44E709BC567CD",
+      "interpreter": "CPython 3, standard library only"
     },
-    {
-      "id": "RATIO",
-      "block": 2,
-      "expression": "chanceNone on the 20 Cloaks of Skyrim leveled lists in Cloaks - RMB SPCH.esp",
-      "value": 0,
-      "vendorValue": "25-90 (LitemCloaksCommon 70, LitemCloaksThalmor 90)",
-      "meaning": "0 = cloth on the same footing as fur, which ships 0 on every list; higher = cloth rarer"
+    "test": {
+      "path": "audit/test_cloak_duplicate_shadow.py",
+      "bytes": 3848,
+      "sha256": "4C173926E2A9BF139645F9B6D014A29D1E20FA326C71A3944574F793E527AB61"
     },
-    {
-      "id": "FREQUENCY",
-      "block": 3,
-      "expression": "chanceNone on the outfit-facing RMB lists",
-      "value": 55,
-      "vendorValue": 35,
-      "meaning": "share of covered NPCs with no cloak at all"
-    },
-    {
-      "id": "WARM PARITY",
-      "block": 5,
-      "expression": "4 addToLLs putting Cloaks of Skyrim into B99/B9A/B9E/B9F",
-      "value": "on",
-      "meaning": "comment out to leave the four warm buckets all-fur; see #189"
-    }
-  ],
-  "structuralFixes": [
-    "B62 Dawnguard repointed from the absent Cloaks - Dawnguard.esp|800 to Cloaks - RMB SPCH.esp|984",
-    "B98/B9D dark buckets given LitemCloaksDarkCommon / LitemCloaksDarkEnch",
-    "9 removeFromLLs dropping RMB_PoP_*Trimmed_UNUSED 802/806/807, entry-identical duplicates of 803/801/800",
-    "B96/B9B/B97/B99 chanceNone 0 - RMB gated B5F and its children with the same 35, so the roll compounded"
-  ],
-  "measured": {
-    "method": "exact leveled-list probability over the patched graph, records-work/cloak-dist-2026-09-02/simulate.py",
-    "beforeCosShareOfCloaks": {
-      "generic": "1.0%",
-      "guards": "8.7-20.0%",
-      "factions": "0.0-25.4%"
-    },
-    "afterCosShareOfCloaks": {
-      "generic": "23.8%",
-      "guards": "n/a - one Sons of Skyrim cloak",
-      "factions": "20.0-60.0%"
-    },
-    "afterNoCloak": "55.0% of every covered non-guard NPC"
+    "reproduction": "The builder uses stored ZIP members, a fixed 2000-01-01 timestamp, sorted POSIX member paths, fixed Unix 0644 attributes, and byte-pinned LF source files. Two independent builds must have the recorded archive hash."
   },
-  "assumption": "SkyPatcher applies configs in file order and a later chanceNone replaces an earlier one. Processing order is proven from SkyPatcher.log; last-write-wins is NOT provable from disk and is settled by the first play session.",
-  "installation": {
-    "mo2Mod": "Ensrick - Cloak Distribution Balance",
-    "profile": "Default",
-    "enabled": true,
-    "modPriorityAtInstall": 260,
-    "stageTransaction": "20260903T041656059Z-01212abd1ef0",
-    "activePluginsAfter": 243,
-    "verify": "install_mod.py --verify: 0 problem(s); verify_order.py CLEAN"
+  "package": {
+    "files": {
+      "SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Cloak Balance/Ensrick - Cloak Balance.ini": {
+        "bytes": 11305,
+        "sha256": "6A51AA41BD0B4E5B5102141171785B7CACD34DBB8EF60EBB8B246ABA5AA1E47A"
+      },
+      "SKSE/Plugins/SkyPatcher/outfit/Headgear/RMB SPID - Core Definitions.esp.ini": {
+        "bytes": 1060,
+        "sha256": "A8AC4627CAF91DB255295F0EA54AD79748DF695897E84F4D94AFBF34E21BF2D9"
+      }
+    },
+    "archive": {
+      "name": "Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
+      "bytes": 12865,
+      "sha256": "5B36DB0301DB6759E83C342A938279935BB30B68D8B1D8EB32F0C22C2B1D81BD"
+    },
+    "containsVendorBytes": false
+  },
+  "outputPlugin": "Ensrick-Cloak-Distribution-Balance-2026-09-04.1.zip",
+  "output": {
+    "bytes": 12865,
+    "sha256": "5B36DB0301DB6759E83C342A938279935BB30B68D8B1D8EB32F0C22C2B1D81BD",
+    "plugins": [],
+    "skyPatcherDirectivesAddedByShadow": 0
+  },
+  "featureDefaultsDiff": {
+    "applicable": false,
+    "reason": "No source-built runtime component or defaults file; the new exact-path shadow is deliberately directive-free."
   },
   "validation": {
-    "launchVerify": "records/launch-verify-20260902-231840.md - PASS, main menu 32.0s, save loaded 40.4s",
-    "skyPatcherLog": "loaded and processed with no errors, after every RMB config",
-    "gameplayAcceptance": "pending - a distribution change needs NPCs walked past"
+    "unitCommand": "py -3 -m unittest discover -s audit -p test_*.py -v",
+    "unitResult": "PASS: 5 tests",
+    "coverage": [
+      "accept exact duplicate pair",
+      "reject non-identical source paths",
+      "reject source hash/directive-count drift",
+      "reject any active directive or unexpected owned file",
+      "prove byte-identical archives and owned-only members"
+    ],
+    "vendorVerifyCommand": "py -3 audit/cloak_duplicate_shadow.py --vendor-root <RMB-Core-6.3.0-Data-root> --verify-only",
+    "vendorVerifyResult": "PASS: both 9,623-byte files match B3AA37... and contain 58 filterByOutfits directives",
+    "reproducibility": "PASS: two builds SHA-256 5B36DB0301DB6759E83C342A938279935BB30B68D8B1D8EB32F0C22C2B1D81BD",
+    "runtimeAcceptance": "Pending installation under the live-profile claim. Exact test is documented in records/cloak-duplicate-shadow-2026-09-04.md."
+  },
+  "installation": {
+    "status": "candidate not installed",
+    "currentlyInstalledVersion": "2026-09-02",
+    "currentStageTransaction": "20260903T041656059Z-01212abd1ef0",
+    "profile": "Default",
+    "liveProfileChangedByThisBuild": false
   },
   "distribution": {
     "status": "distributable",
     "vendorFilesModified": false,
-    "basis": "our own INI; RMB SPCH 116030/179354 and RMB SPIDified 148689 files untouched (116030 forbids editing them, which is why this loads after his rather than editing); Cloaks of Skyrim 6369 grants open permission for compatibility patches"
+    "basis": "Both packaged INIs are Ensrick-authored text. The shadow reproduces no vendor directives or bytes; it only occupies the same virtual filename. RMB Core remains a separately acquired immutable prerequisite."
   }
 }

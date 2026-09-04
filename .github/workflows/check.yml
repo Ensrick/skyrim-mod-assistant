@@ -48,3 +48,7 @@ jobs:
             $failures | Write-Error
             exit 1
           }
+
+      - name: Run Python regression tests
+        shell: pwsh
+        run: python -m unittest discover -s audit -p 'test_*.py' -v
