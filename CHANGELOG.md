@@ -47,7 +47,9 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
   Source/policy/input/resource freshness is now a required preflight gate.
   Game-side activation was synced to all 268 verified profile entries, with
   its original file backed up; only the two new curation plugins were added
-  to the active set. No INI edits or Steam/game process actions.
+  to the active set. Existing LostLongSwords and WeaponBalancePatch entries
+  also move to their verified profile positions; all other 264 existing
+  activation rows retain relative order. No INI edits or Steam/game actions.
 - **Source:** User approved the September balancing proposal and the faction
   longsword distribution. Canonical source `043ccfd`, issues #239 and #237;
   reusable doctrine `docs/WEAPON_BALANCING_STANDARD.md`. Private generated

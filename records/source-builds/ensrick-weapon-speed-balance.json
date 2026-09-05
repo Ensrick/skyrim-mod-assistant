@@ -457,6 +457,12 @@
     "gameSideActivation": {
       "status": "PASS: exactly matches all 268 active profile rows in order",
       "onlyAddedActivePlugins": ["Ensrick Lost LongSwords Curation.esp", "Ensrick Lost LongSwords Stormcloak Distribution.esp"],
+      "reorderedExistingPlugins": [
+        {"plugin": "LostLongSwords.esp", "beforeActiveIndex": 205, "afterActiveIndex": 30},
+        {"plugin": "WeaponBalancePatch.esp", "beforeActiveIndex": 118, "afterActiveIndex": 267}
+      ],
+      "activationIndexBasis": "Zero-based active rows in the game-side activation file, not full runtime or managed-plugin indices.",
+      "remaining264ExistingRowsRelativeOrderUnchanged": true,
       "globalBalanceOrderedLast": true,
       "path": "%LOCALAPPDATA%/Skyrim Special Edition/Plugins.txt",
       "backup": "%LOCALAPPDATA%/Skyrim Special Edition/Plugins.txt.bak.weapon-balance-20260905-2249",

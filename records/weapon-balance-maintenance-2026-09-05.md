@@ -45,7 +45,10 @@ activation and relative ordering are unchanged by the global replacement.
 - Ledger/order/Keep gates: PASS; 194 installed Nexus IDs match 194 live Keeps.
 - Game-side activation now exactly matches all 268 profile entries in order.
   Its only added active plugins are the two owned curation plugins; the old
-  activation file is backed up. No launch, Steam cycling or INI changes.
+  activation file is backed up. Two existing entries also move to the verified
+  profile order: LostLongSwords active index 205 to 30 and WeaponBalancePatch
+  118 to 267 (zero-based active rows). All other 264 existing rows retain their
+  relative order. No launch, Steam cycling or INI changes.
 - Preflight: zero failures; three warnings (Steam overlay state not
   disk-verifiable, five existing Fable-owned ledger gaps #102, and the
   temporary root claim).
