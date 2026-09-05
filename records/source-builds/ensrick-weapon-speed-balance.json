@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "artifact": "Ensrick - Weapon Speed Balance",
+  "version": "0.1.0",
+  "status": "installed-test-build",
+  "receiptCreatedUtc": "2026-09-04T20:34:38Z",
+  "source": {
+    "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
+    "pullRequest": "https://github.com/Ensrick/skyrim-mod-assistant/pull/179",
+    "implementationCommit": "449101d31782accdd8ce6c9c53992118648bdf48",
+    "ciPinCommit": "1ad6299f4a9aeaad81d3321530348e08e0dc76d8",
+    "path": "mods/weapon-balance"
+  },
+  "policy": {
+    "designRecord": "mods/weapon-balance/DECISIONS.md",
+    "readme": "mods/weapon-balance/README.md",
+    "ckNativeAnswer": "Override WEAP.DNAM.Speed (Mutagen Weapon.Data.Speed) on each selected winning weapon record.",
+    "whyCode": "The selection is a deterministic rule over thousands of current load-order winners and must regenerate after weapon or load-order changes; hand-authoring 3,007 overrides is not reviewable or maintainable.",
+    "sharedGeneratorDebt": "The rule-over-many case justifies generation under CK-first rule 4, but the standalone .NET project should become a policy in the shared record-patch generator under rule 6.",
+    "targets": {
+      "dagger": 1.25,
+      "sword": 1.0,
+      "warAxe": 0.9375,
+      "mace": 0.88235295,
+      "greatsword": 0.8,
+      "battleaxe": 0.7692308,
+      "warhammer": 0.71428573
+    },
+    "includeNonPlayableWeapons": true,
+    "excludeEditorIdContains": [
+      "Dummy",
+      "GiantClub"
+    ],
+    "useAnimationFallback": true
+  },
+  "priorArt": {
+    "vanillaAndCk": "Vanilla stores per-base-weapon speed in WEAP.DNAM.Speed and identifies the seven conventional classes with standard WeapType keywords; no global CK record applies a per-class policy to arbitrary later mod weapons.",
+    "exactCandidate": {
+      "name": "Weapon Stat Synthesis Patcher",
+      "nexusModId": 149027,
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/149027",
+      "finding": "Exact architecture: a configurable Synthesis patcher normalizing melee weapon stats across all mods. Version 1.2 allows non-speed stats to be disabled and supports named-weapon offsets and more weapon families.",
+      "disposition": "User decision required before replacement; this receipt does not choose between the installed narrow policy and the broader released patcher."
+    },
+    "adjacentCandidates": [
+      {
+        "name": "Customize Weapon Speed",
+        "nexusModId": 22100,
+        "difference": "Papyrus/SKSE runtime mutation and name matching rather than a static override-only patch."
+      },
+      {
+        "name": "Weapon Speed - IPM",
+        "nexusModId": 96828,
+        "difference": "Runtime IPM/MCM implementation with additional dependencies."
+      },
+      {
+        "name": "Weapon Speed Mult Fix",
+        "nexusModId": 45502,
+        "difference": "Fixes WeaponSpeedMult actor-value stacking; it explicitly describes Customize Weapon Speed as changing a different parameter."
+      }
+    ],
+    "supersedesAuditSection": "records/prior-art-audit-2026-09-03.md section 29 missed Nexus 149027 and therefore cannot support its no-exact-prior-art conclusion."
+  },
+  "toolchain": {
+    "dotnetSdk": {
+      "version": "9.0.102",
+      "pin": "mods/weapon-balance/global.json",
+      "rollForward": "disable",
+      "note": "This pin applies to future rebuilds. The SDK used for the original 2026-09-02 output was not recorded and cannot be proven retroactively."
+    },
+    "targetFramework": "net9.0",
+    "synthesis": "0.36.5",
+    "mutagenBethesdaSkyrim": "0.54.3",
+    "nugetLock": "mods/weapon-balance/src/WeaponBalancePatcher/packages.lock.json",
+    "nugetLockSha256": "3B6F36BA8EDE8941934730623FA9E4171458FF029005B27ECFFFFC7B4392F37C",
+    "settingsSha256": "F33CBCD851803FA7A48EE6493737FA2F8BB3596D4582547BB62227996608CB41",
+    "recordAuditTool": {
+      "name": "skyrim-record-cli",
+      "commit": "1f3c8d9",
+      "sha256": "E3DDF1652F544CD189773F748FF34C0FBBA4BF97184BAA62F5820EB424381C50"
+    }
+  },
+  "commands": {
+    "buildAndGenerate": "pwsh -NoProfile -File mods/weapon-balance/generate.ps1",
+    "audit": "pwsh -NoProfile -File mods/weapon-balance/audit.ps1",
+    "package": "pwsh -NoProfile -File mods/weapon-balance/package.ps1",
+    "unitTests": "Push-Location mods/weapon-balance; dotnet run --project tests/WeaponBalancePatcher.Tests/WeaponBalancePatcher.Tests.csproj -c Release --locked-mode; Pop-Location"
+  },
+  "inputs": {
+    "profile": "Default",
+    "effectiveLoadOrderEntries": 311,
+    "effectiveLoadOrderSha256": "0FC4D1AF04BBB55186C0B710648BF51FD0AFFD8B08B3442D08813B96DEC4E74F",
+    "source": "Preserved mods/weapon-balance/work/plugins-with-creation-club.txt from the 2026-09-02 generation; ignored private build input, not distributed."
+  },
+  "output": {
+    "plugin": "WeaponBalancePatch.esp",
+    "pluginBytes": 1586973,
+    "pluginSha256": "74532E4375AC376B13EDDD7B3481E7BA01BDA3C0487062095D2070CB2765FA09",
+    "installedPluginSha256VerifiedUtc": "2026-09-04",
+    "archive": "Ensrick-Weapon-Speed-Balance-0.1.0.zip",
+    "archiveBytes": 107169,
+    "archiveSha256": "8DDE04CCCCBB05F1BED2E670AB9C7FD13214ED0A560A6A37660A5BCAC0063506",
+    "eslFlagged": true,
+    "overrideOnly": true,
+    "recordTypes": {
+      "WEAP": 3007
+    },
+    "masters": 35,
+    "classCounts": {
+      "dagger": 420,
+      "sword": 45,
+      "warAxe": 428,
+      "mace": 763,
+      "greatsword": 496,
+      "battleaxe": 441,
+      "warhammer": 414
+    }
+  },
+  "validation": {
+    "formulaAndParserTests": "PASS at implementation commit; rerun required after code changes.",
+    "artifactAudit20260904": "PASS: 3,007 Weapon records only, all class speeds exact, 35 masters.",
+    "packageRebuild20260904": "PASS: deterministic archive reproduced SHA-256 8DDE04CC...3506 without regenerating the plugin.",
+    "installedArtifactMatch20260904": true,
+    "featureDefaultsDiff": "not applicable (record patch, no runtime defaults)",
+    "gameplayAcceptance": "Launch-verified as recorded by the coordination board; disposable-save all-class animation/timing feel remains pending."
+  },
+  "installation": {
+    "mo2Mod": "Ensrick - Weapon Speed Balance",
+    "profile": "Default",
+    "enabled": true,
+    "stageTransaction": "20260902T174055139Z-86f86293fe2d",
+    "installedUtc": "2026-09-02T17:40:55Z"
+  },
+  "distribution": {
+    "status": "local-only-pending-record-rights-review",
+    "vendorFilesModified": false,
+    "basis": "The MIT generator/configuration is distributable. The generated override plugin copies winning third-party record data; override-only status does not itself grant redistribution rights, so the binary remains local-only until a concrete source-permissions review."
+  },
+  "evidenceLimits": [
+    "The original build's exact .NET SDK version was not logged; the new global.json pin prevents that omission on future rebuilds but cannot retroactively identify it.",
+    "Only the final plugin and package remain. The two original generation outputs asserted byte-identical in PR #179 were not both retained, so their equality cannot be independently replayed from two historical files.",
+    "The exact 2026-09-02 input list is retained locally and hashed but is intentionally ignored because it discloses the private load order; the public receipt records only its count and hash.",
+    "The installed 0.1.0 binary has not received a record-by-record redistribution-rights review and must not be published merely because it is override-only."
+  ]
+}

@@ -239,6 +239,7 @@
 !/mods/weapon-balance/src/WeaponBalancePatcher/*.csproj
 !/mods/weapon-balance/src/WeaponBalancePatcher/*.json
 !/mods/weapon-balance/tests/
+!/mods/weapon-balance/tests/*.ps1
 !/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/
 !/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/*.cs
 !/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/*.csproj

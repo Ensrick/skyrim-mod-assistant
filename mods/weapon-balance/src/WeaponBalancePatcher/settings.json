@@ -1,0 +1,116 @@
+{
+  "DaggerSpeed": 1.25,
+  "SwordSpeed": 1.0,
+  "LongswordSpeed": 1.0,
+  "WarAxeSpeed": 0.9375,
+  "MaceSpeed": 0.88235295,
+  "GreatswordSpeed": 0.8,
+  "BattleaxeSpeed": 0.7692308,
+  "WarhammerSpeed": 0.71428573,
+  "IncludeNonPlayableWeapons": true,
+  "ExcludeEditorIdContains": ["Dummy", "GiantClub"],
+  "RecordRules": [
+    {
+      "FormId": "04A38F:Skyrim.esm",
+      "Action": "Preserve",
+      "Reason": "Ebony Blade: preserve the winning named-artifact speed offset."
+    },
+    {
+      "FormId": "0EA29C:Skyrim.esm",
+      "Action": "Preserve",
+      "Reason": "Ebony Blade playable variant: preserve the winning named-artifact speed offset."
+    },
+    {
+      "FormId": "0AE085:Skyrim.esm",
+      "Action": "Preserve",
+      "Reason": "The Longhammer: preserve the winning named-artifact speed offset."
+    },
+    {
+      "FormId": "0063F6:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 19,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "00592D:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 18,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "008F16:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 13,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "000D63:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 12,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "000D6E:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 14,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "007423:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 13,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "003E2F:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 16,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "000D68:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 13,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "0099DF:LostLongSwords.esp",
+      "Action": "Class",
+      "Class": "Longsword",
+      "ExpectedWinningProvider": "Ensrick Lost LongSwords Curation.esp",
+      "ExpectedDamage": 13,
+      "Reason": "Approved two-handed Lost Longswords class; damage is owned by the private integration patch."
+    },
+    {
+      "FormId": "000D71:LostLongSwords.esp",
+      "Action": "Exclude",
+      "Reason": "Dwarven longsword is excluded by the approved private Lost Longswords integration."
+    },
+    {
+      "FormId": "003E2B:LostLongSwords.esp",
+      "Action": "Exclude",
+      "Reason": "Elven longsword is excluded by the approved private Lost Longswords integration."
+    },
+    {
+      "FormId": "004394:LostLongSwords.esp",
+      "Action": "Exclude",
+      "Reason": "Glass longsword is excluded by the approved private Lost Longswords integration."
+    }
+  ]
+}
