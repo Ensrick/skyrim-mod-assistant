@@ -155,14 +155,39 @@ def snapshot_watched_configs(fails, warns):
 
 
 # ------------------------------------------------------- (iv) saves backup
-def saves_dir():
-    st = os.path.join(PROFILE, 'settings.ini')
-    local = False
-    if os.path.exists(st):
-        local = re.search(r'^LocalSaves\s*=\s*true', io.open(st, encoding='utf-8',
-                                                             errors='replace').read(),
-                          re.M | re.I) is not None
-    return os.path.join(PROFILE, 'saves') if local else os.path.join(DOCS, 'Saves')
+def profile_local_saves(profile=None):
+    """Read MO2's authoritative ``LocalSaves`` profile setting.
+
+    A missing, duplicate, or non-boolean value is not equivalent to ``false``.
+    Silently treating an unreadable setting as false can make the harness load
+    and back up a save from Documents while MO2 is actually using the profile
+    directory.  Keep this parser shared by preflight and launch verification so
+    those two safety gates cannot disagree about which save tree is live.
+    """
+    profile = PROFILE if profile is None else profile
+    path = os.path.join(profile, 'settings.ini')
+    if not os.path.isfile(path):
+        raise FileNotFoundError(f'MO2 profile settings.ini is missing: {path}')
+    text = io.open(path, encoding='utf-8', errors='replace').read()
+    values = re.findall(r'^\s*LocalSaves\s*=\s*([^\r\n]*)$', text,
+                        re.M | re.I)
+    if len(values) != 1:
+        raise ValueError('MO2 profile settings.ini must contain exactly one '
+                         f'LocalSaves value; found {len(values)} in {path}')
+    value = values[0].strip().casefold()
+    if value not in ('true', 'false'):
+        raise ValueError(f'MO2 profile settings.ini has invalid LocalSaves={values[0]!r}; '
+                         'expected true or false')
+    return value == 'true'
+
+
+def saves_dir(profile=None, shared_saves=None):
+    """Resolve the exact save directory MO2 exposes for this profile."""
+    profile = PROFILE if profile is None else profile
+    shared_saves = (os.path.join(DOCS, 'Saves')
+                    if shared_saves is None else shared_saves)
+    return (os.path.join(profile, 'saves')
+            if profile_local_saves(profile) else shared_saves)
 
 
 def _saves_manifest(d):
@@ -269,8 +294,8 @@ def run_all(fails, warns):
                snapshot_watched_configs, backup_saves, report_claim):
         try:
             fn(fails, warns)
-        except Exception as e:           # a broken check must not hide the others
-            warns.append(f'{fn.__name__} crashed: {e!r}')
+        except Exception as e:           # continue, but never certify an incomplete gate
+            fails.append(f'{fn.__name__} crashed; invariant is unverified: {e!r}')
 
 
 if __name__ == '__main__':

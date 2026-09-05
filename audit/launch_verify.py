@@ -8,19 +8,19 @@ or it's a failure."* This is that test, as a pass/fail command.
   py -3 audit/launch_verify.py               # the real run
   py -3 audit/launch_verify.py --menu-budget 60 --save-budget 180
   py -3 audit/launch_verify.py --save Save7_17674846_0_...  # a specific save
-  py -3 audit/launch_verify.py --leave-running   # never kill, inspect it yourself
-  py -3 audit/launch_verify.py --attach-pid N    # self-test: watch a process, no launch
   py -3 audit/launch_verify.py --claim-owner NAME  # owner for the work claim ($SKYRIM_CLAIM_OWNER)
   py -3 audit/launch_verify.py --steam-chain     # legacy Steam launch; can never autoload
   py -3 audit/launch_verify.py --force-kill "reason"  # kill even if a human is detected (#164)
-  py -3 audit/launch_verify.py --no-autoload --leave-running  # stop at the MAIN MENU (menu
-                                                 # pilot work); verdict MENU-ONLY, never PASS
+  py -3 audit/launch_verify.py --no-autoload     # verify MAIN MENU, then close;
+                                                 # verdict MENU-ONLY, never PASS
 
 PASS requires BOTH:
   1. the real main menu open within --menu-budget seconds of process start, and
   2. a save actually loaded (kPostLoadGame, success).
 
-Exit 0 PASS, 1 FAIL. Either way a record lands in records/launch-verify-*.md.
+Exit 0 means PASS (or a dry-run rehearsal), 1 means FAIL/REFUSED, and 3 means
+MENU-ONLY. A menu-only observation is deliberately not process-level success.
+Either real observation writes a record under records/launch-verify-*.md.
 
 Unlike launch_watch.py this DOES launch the game and DOES kill it - the user
 authorized assistant-driven launches for verification runs specifically. It is
@@ -54,8 +54,8 @@ INCONCLUSIVE; it can never PASS.
 
 ## Human at the controls (#164)
 
-Before the kill at the end of a run (the only kill in this file; there is no
-idle timeout under --leave-running), `human_presence.judge` reads the probe
+Before the kill at the end of a run (the only kill in this file),
+`human_presence.judge` reads the probe
 logs: a gameplay menu opened after AUTOLOAD_SETTLED that no MenuPilot command
 explains within 2 s means a person is playing in the harness's session. Then
 the kill is REFUSED, `HUMAN_AT_CONTROLS` is logged
@@ -76,6 +76,7 @@ import launch_watch as W
 import threaddump as TD
 import claim
 import human_presence as HP
+import preflight_extra
 
 AUDIT = os.path.dirname(os.path.abspath(__file__))
 REPO = W.REPO
@@ -86,6 +87,8 @@ LAUNCHER = os.path.join(AUDIT, 'launch_skyrim.ps1')
 PROBE_DLL = 'LaunchProbe.dll'
 PROBE_STAGED = os.path.join(REPO, 'records', 'source-builds', 'launch-probe')
 EPOCH_DELTA = 11644473600            # FILETIME 1601 epoch -> unix 1970 epoch
+EXIT_MENU_ONLY = 3
+EXIT_USAGE = 64
 
 
 # --------------------------------------------------------------- environment
@@ -114,13 +117,12 @@ def probe_installed():
 
 
 def newest_save():
-    """The save the run will load. LocalSaves=false, so these live in Documents."""
-    local = False
-    st = os.path.join(PROFILE, 'settings.txt')
-    if os.path.exists(st):
-        local = 'localsaves=true' in io.open(st, encoding='utf-8',
-                                             errors='replace').read().lower()
-    d = os.path.join(PROFILE, 'saves') if local else SAVES
+    """Return the newest save from the directory MO2 actually exposes.
+
+    ``settings.ini`` is authoritative (not the historical ``settings.txt``).
+    Invalid settings fail closed rather than selecting Documents by default.
+    """
+    d = preflight_extra.saves_dir(PROFILE, SAVES)
     if not os.path.isdir(d):
         return None, d
     ess = [f for f in os.listdir(d) if f.lower().endswith('.ess')]
@@ -179,6 +181,9 @@ def decide(st, cfg):
     if st['menu_at'] is None and st['elapsed'] > cfg['menu_budget']:
         return True, 'FAIL', (f'no main menu within {cfg["menu_budget"]:.0f}s '
                               f'(last probe event: {st["detail"] or "none"})')
+    if st['save_at'] is not None and st['menu_at'] is None:
+        return True, 'FAIL', ('save-load success arrived without the required main-menu '
+                              'signal; telemetry cannot certify this launch')
     if cfg.get('no_autoload') and st['menu_at'] is not None:
         return True, 'MENU-ONLY', (f'main menu at {st["menu_at"]:.1f}s; no save load was '
                                    f'requested (--no-autoload), so this is NOT a PASS')
@@ -248,6 +253,35 @@ def _tail(path, n):
         return '(unavailable)'
 
 
+def _claim_is_current(owner, lease):
+    """The exact process/child holder still owns the live profile claim."""
+    try:
+        record = claim.read()
+        return bool(record and not claim.is_stale(record) and
+                    claim.same_holder(record, owner, lease))
+    except Exception:
+        return False
+
+
+def _taskkill_exact(pid, wait_seconds=5.0):
+    """Terminate one PID and prove both command success and exact PID absence."""
+    completed = subprocess.run(
+        ['taskkill', '/PID', str(pid), '/F'], capture_output=True, text=True)
+    detail = _tail_text((completed.stdout or '') + '\n' + (completed.stderr or ''), 400)
+    if completed.returncode != 0:
+        return False, f'taskkill exited {completed.returncode}: {detail or "no diagnostic"}'
+    deadline = time.monotonic() + max(0.0, wait_seconds)
+    while claim.pid_alive(pid) and time.monotonic() < deadline:
+        time.sleep(0.05)
+    if claim.pid_alive(pid):
+        return False, f'taskkill exited 0 but exact pid {pid} is still alive'
+    return True, detail
+
+
+def _tail_text(value, limit):
+    return str(value or '').strip()[-limit:]
+
+
 def kill(pid, why, cfg=None, r=None, since=None):
     """End the game process - unless a human is at the controls (#164).
 
@@ -273,8 +307,15 @@ def kill(pid, why, cfg=None, r=None, since=None):
         HP.log_refusal(verdict, f'launch_verify pid {os.getpid()} FORCE_KILL reason={cfg["force_kill"]!r}')
         if r is not None:
             r.evidence.append(line)
-    print(f'   killing pid {pid}: {why}')
-    subprocess.run(['taskkill', '/PID', str(pid), '/F'], capture_output=True, text=True)
+    print(f'   terminating pid {pid}: {why}')
+    killed, detail = _taskkill_exact(pid)
+    if not killed:
+        line = f'TERMINATION FAILED for pid {pid}: {detail}'
+        print('   ' + line)
+        if r is not None:
+            r.evidence.append(line)
+        return False
+    print(f'   confirmed pid {pid} is absent after taskkill')
     return True
 
 
@@ -282,13 +323,21 @@ def verify(cfg):
     r = Result()
     launch_started = time.time()
     probe_paths = probe_installed()
-    save, save_dir = (cfg['save'], None) if cfg['save'] else newest_save()
+    blockers = []
+    if cfg['save']:
+        save, save_dir = cfg['save'], None
+    else:
+        try:
+            save, save_dir = newest_save()
+        except (OSError, ValueError) as exc:
+            save, save_dir = None, '(unresolved)'
+            blockers.append('cannot resolve the authoritative MO2 save directory: '
+                            f'{exc}')
 
     print(f'probe:  {"installed: " + probe_paths[0] if probe_paths else "NOT INSTALLED"}')
     print(f'save:   {save}')
     print(f'budget: menu {cfg["menu_budget"]:.0f}s, save {cfg["save_budget"]:.0f}s')
 
-    blockers = []
     if not probe_paths and not cfg['allow_unverified']:
         blockers.append('LaunchProbe is not installed in any enabled mod, so a real '
                         'main menu cannot be distinguished from a wedge and no PASS '
@@ -298,7 +347,10 @@ def verify(cfg):
     if not save and not cfg['no_autoload']:
         blockers.append(f'no .ess save found in {save_dir}')
     owner = cfg['claim_owner'] or claim.default_owner()
-    other = claim.held_by_other(owner)
+    preheld = bool(cfg.get('_claim_preheld'))
+    inherited_lease = (cfg.get('_claim_lease') or
+                       os.environ.get('SKYRIM_CLAIM_LEASE'))
+    other = claim.held_by_other(owner, inherited_lease)
     if other:
         blockers.append(f'instance work claim is {claim.describe(other)} - not launching '
                         f'under someone else\'s work (#103)')
@@ -314,7 +366,10 @@ def verify(cfg):
     if cfg['steam_chain'] and not cfg['no_autoload']:
         blockers.append('--steam-chain cannot autoload: the launcher scrubs the probe '
                         'variables before Steam restarts (#141). Use the direct chain, '
-                        'or --no-autoload for a menu-only observation.')
+                         'or --no-autoload for a menu-only observation.')
+    if preheld and not _claim_is_current(owner, inherited_lease):
+        blockers.append('the launch wrapper lost its exact profile claim after '
+                        'preflight; refusing to launch a potentially changed build')
 
     # An empty SKYRIM_LAUNCH_PROBE_AUTOLOAD disables the probe's autoload
     # (LaunchProbe main.cpp: AutoLoadEnabled() == !autoLoadSave.empty()).
@@ -343,10 +398,23 @@ def verify(cfg):
         r.evidence = blockers[1:]
         return r
 
+    acquired_here = False
     if not cfg['attach_pid']:
         try:
-            claim.acquire(owner, f'launch_verify ({"menu-only" if cfg["no_autoload"] else "full"})',
-                          ttl=45, pid_bound=False)
+            if preheld:
+                claim_record = claim.read()
+                if not _claim_is_current(owner, inherited_lease):
+                    raise claim.ClaimHeld(claim_record or {
+                        'owner': '?', 'purpose': 'launch wrapper claim was lost'})
+            else:
+                claim_record, _ = claim.acquire(
+                    owner,
+                    f'launch_verify ({"menu-only" if cfg["no_autoload"] else "full"})',
+                    ttl=45, pid_bound=True, lease=inherited_lease)
+                acquired_here = True
+            env['SKYRIM_CLAIM_LEASE'] = (
+                inherited_lease or claim_record.get('holderLeaseId') or
+                claim_record['leaseId'])
         except claim.ClaimHeld as e:
             r.verdict, r.reason = 'REFUSED', f'instance work claim is {e}'
             return r
@@ -363,8 +431,26 @@ def verify(cfg):
         pid = cfg['attach_pid']
         print(f'\nATTACH MODE: not launching; watching existing pid {pid}')
     else:
+        if not _claim_is_current(owner, env.get('SKYRIM_CLAIM_LEASE')):
+            r.reason = 'exact profile claim was lost immediately before launch'
+            if acquired_here:
+                claim.release(owner, lease=env.get('SKYRIM_CLAIM_LEASE'))
+            return r
+        try:
+            env['SKYRIM_CLAIM_LAUNCH_CHECK'] = claim.issue_launch_check(
+                owner, env.get('SKYRIM_CLAIM_LEASE'), ttl_seconds=120)
+        except claim.ClaimHeld as exc:
+            r.reason = f'could not designate the launcher under the exact claim: {exc}'
+            if acquired_here:
+                claim.release(owner, lease=env.get('SKYRIM_CLAIM_LEASE'))
+            return r
         print('\nlaunching (launch_skyrim.ps1 cycles Steam first; this takes a minute)')
-        child, launcher_log = launch(env, steam_chain=cfg['steam_chain'])
+        try:
+            child, launcher_log = launch(env, steam_chain=cfg['steam_chain'])
+        except BaseException:
+            if acquired_here:
+                claim.release(owner, lease=env.get('SKYRIM_CLAIM_LEASE'))
+            raise
 
         # ---- wait for the process, then start the clock at ITS creation time
         pid = None
@@ -378,6 +464,8 @@ def verify(cfg):
             r.reason = (f'no SkyrimSE.exe appeared within {cfg["spawn_budget"]:.0f}s of '
                         f'starting the launch sequence')
             r.evidence.append('launcher output: ' + _tail(launcher_log, 1200))
+            if acquired_here:
+                claim.release(owner, lease=env.get('SKYRIM_CLAIM_LEASE'))
             return r
     r.pid, r.t0 = pid, start_epoch(pid)
     print(f'{"watching" if cfg["attach_pid"] else "game started:"} pid {pid}\n')
@@ -393,6 +481,12 @@ def verify(cfg):
     try:
         while True:
             time.sleep(cfg['interval'])
+            if (not cfg['attach_pid'] and
+                    not _claim_is_current(owner, env.get('SKYRIM_CLAIM_LEASE'))):
+                r.reason = ('exact profile claim was lost during verification; '
+                            'the observation cannot certify one immutable build')
+                r.evidence.append('CLAIM LOST: verification invalidated')
+                break
             now = time.time()
             elapsed = now - r.t0
             alive = p.alive()
@@ -460,17 +554,21 @@ def verify(cfg):
             r.threads = W.busiest_threads(pid)
         p.close()
         if not cfg['leave_running'] and (W.find_process() == pid or cfg['attach_pid']):
-            kill(pid, 'verification run finished'
-                 if r.verdict == 'PASS' else f'FAIL: {r.reason}',
-                 cfg=cfg, r=r, since=None if cfg['attach_pid'] else launch_started)
+            terminated = kill(pid, 'verification run finished'
+                              if r.verdict == 'PASS' else f'FAIL: {r.reason}',
+                              cfg=cfg, r=r,
+                              since=None if cfg['attach_pid'] else launch_started)
+            if not terminated and not r.human_at_controls:
+                r.verdict = 'FAIL'
+                r.reason = f'could not prove termination of verification pid {pid}'
         if child is not None:
             try:
                 child.wait(timeout=60)
             except Exception:
                 pass
             r.evidence.append('launcher output: ' + _tail(launcher_log, 800))
-        if not cfg['attach_pid'] and not cfg['keep_claim']:
-            claim.release(owner)
+        if acquired_here and not cfg['keep_claim']:
+            claim.release(owner, lease=env.get('SKYRIM_CLAIM_LEASE'))
     if cfg['allow_unverified'] and not probe_paths and r.verdict == 'PASS':
         r.verdict, r.reason = 'INCONCLUSIVE', (
             'ran without LaunchProbe, so no signal here can certify a real main '
@@ -561,6 +659,9 @@ def selftest():
         ('FAIL', 'menu fine, save never lands',
          dict(alive=True, elapsed=230, menu_at=40.0, save_at=None, save_ok=None,
               state='stalled', detail='')),
+        ('FAIL', 'save signal without menu is invalid',
+         dict(alive=True, elapsed=30, menu_at=None, save_at=29.0, save_ok=True,
+              state='loading', detail='success=1')),
         (None, 'still loading, nothing decided yet',
          dict(alive=True, elapsed=20, menu_at=None, save_at=None, save_ok=None,
               state='loading', detail='')),
@@ -572,6 +673,32 @@ def selftest():
         bad += got != want
         print(f'  {"ok  " if got == want else "FAIL"} {str(want):<5} {label:<34} '
               f'{(reason or "keep watching")[:60]}')
+    original_subprocess_run = subprocess.run
+    original_pid_alive = claim.pid_alive
+    try:
+        subprocess.run = lambda *_args, **_kwargs: type(
+            'TaskkillResult', (), {'returncode': 1, 'stdout': '',
+                                   'stderr': 'access denied'})()
+        claim.pid_alive = lambda _pid: False
+        ok = not _taskkill_exact(123, wait_seconds=0)[0]
+        bad += not ok
+        print(f'  {"ok  " if ok else "FAIL"} taskkill nonzero cannot report success')
+
+        subprocess.run = lambda *_args, **_kwargs: type(
+            'TaskkillResult', (), {'returncode': 0, 'stdout': 'SUCCESS',
+                                   'stderr': ''})()
+        claim.pid_alive = lambda _pid: True
+        ok = not _taskkill_exact(123, wait_seconds=0)[0]
+        bad += not ok
+        print(f'  {"ok  " if ok else "FAIL"} live exact PID defeats taskkill success text')
+
+        claim.pid_alive = lambda _pid: False
+        ok = _taskkill_exact(123, wait_seconds=0)[0]
+        bad += not ok
+        print(f'  {"ok  " if ok else "FAIL"} taskkill success plus PID absence passes')
+    finally:
+        subprocess.run = original_subprocess_run
+        claim.pid_alive = original_pid_alive
     # the parser, against the format the plugin actually writes
     sample = ('[2026-08-31 23:40:41.905] +41817ms MAIN_MENU_OPEN constant="Main Menu" '
               'ui_is_menu_open=1 has_movie_view=1\n'
@@ -594,54 +721,142 @@ def selftest():
     finally:
         W.PROBE_LOG = old
         os.remove(path)
-    print(f'\n{len(cases) + 1 - bad}/{len(cases) + 1} verification cases pass')
+    import tempfile
+    old_profile, old_saves = globals()['PROFILE'], globals()['SAVES']
+    with tempfile.TemporaryDirectory() as root:
+        profile = os.path.join(root, 'profile')
+        shared = os.path.join(root, 'shared-saves')
+        local_saves = os.path.join(profile, 'saves')
+        os.makedirs(local_saves)
+        os.makedirs(shared)
+        io.open(os.path.join(local_saves, 'LocalFixture.ess'), 'wb').write(b'local')
+        io.open(os.path.join(shared, 'SharedFixture.ess'), 'wb').write(b'shared')
+        globals()['PROFILE'], globals()['SAVES'] = profile, shared
+        settings = os.path.join(profile, 'settings.ini')
+        try:
+            io.open(settings, 'w', encoding='utf-8').write(
+                '[General]\nLocalSaves=true\n')
+            found, directory = newest_save()
+            ok = found == 'LocalFixture' and directory == local_saves
+            bad += not ok
+            print(f'  {"ok  " if ok else "FAIL"} LocalSaves=true selects profile saves')
+
+            io.open(settings, 'w', encoding='utf-8').write(
+                '[General]\nLocalSaves=false\n')
+            found, directory = newest_save()
+            ok = found == 'SharedFixture' and directory == shared
+            bad += not ok
+            print(f'  {"ok  " if ok else "FAIL"} LocalSaves=false selects shared saves')
+
+            io.open(settings, 'w', encoding='utf-8').write(
+                '[General]\nLocalSaves=perhaps\n')
+            try:
+                newest_save()
+                ok = False
+            except ValueError:
+                ok = True
+            bad += not ok
+            print(f'  {"ok  " if ok else "FAIL"} malformed LocalSaves fails closed')
+        finally:
+            globals()['PROFILE'], globals()['SAVES'] = old_profile, old_saves
+    for option in ('--skip-preflight', '--attach-pid', '--leave-running',
+                   '--keep-claim'):
+        ok = _capability_error([option]) is not None
+        bad += not ok
+        print(f'  {"ok  " if ok else "FAIL"} production CLI rejects {option}')
+    try:
+        launcher_text = io.open(
+            LAUNCHER, encoding='utf-8', errors='replace').read()
+        ok = 'IgnoreClaim' not in launcher_text
+    except OSError:
+        ok = False
+    bad += not ok
+    print(f'  {"ok  " if ok else "FAIL"} PowerShell launcher has no claim bypass')
+    safe_chain = ('Stop-Process -Name SkyrimSE' not in launcher_text and
+                  '[ABORT] pre-existing launch-chain process(es)' in launcher_text and
+                  '--launch-check' in launcher_text and
+                  'SKYRIM_CLAIM_LAUNCH_CHECK' in launcher_text)
+    bad += not safe_chain
+    print(f'  {"ok  " if safe_chain else "FAIL"} PowerShell launcher refuses '
+          'unknown live game/wrapper processes instead of killing them')
+    menu_result = Result()
+    menu_result.verdict = 'MENU-ONLY'
+    ok = _result_exit_code(menu_result) == EXIT_MENU_ONLY
+    bad += not ok
+    print(f'  {"ok  " if ok else "FAIL"} MENU-ONLY has distinct nonzero exit')
+    events = []
+
+    class FakeGuard:
+        def __enter__(self):
+            events.append('claim-enter')
+            return {'owner': 'fixture', 'leaseId': 'fixture-lease'}
+
+        def __exit__(self, *_exc):
+            events.append('claim-exit')
+
+    original_guard = claim.guard
+    original_run_gated = globals()['_run_gated']
+    try:
+        claim.guard = lambda *_args, **_kwargs: FakeGuard()
+
+        def fake_run_gated(candidate):
+            events.append('gated-run')
+            if (candidate.get('_claim_preheld') is not True or
+                    candidate.get('_claim_lease') != 'fixture-lease'):
+                return 1
+            return 0
+
+        globals()['_run_gated'] = fake_run_gated
+        rc = main(['--claim-owner', 'fixture', '--no-autoload'])
+    finally:
+        claim.guard = original_guard
+        globals()['_run_gated'] = original_run_gated
+    ok = rc == 0 and events == ['claim-enter', 'gated-run', 'claim-exit']
+    bad += not ok
+    print(f'  {"ok  " if ok else "FAIL"} claim brackets preflight/run/triage path')
+    total = len(cases) + 15
+    print(f'\n{total - bad}/{total} verification cases pass')
     print(f'probe installed: {probe_installed() or "no"}')
     print(f'save that would load: {newest_save()[0]}')
     return 1 if bad else 0
 
 
-def main():
-    a = sys.argv[1:]
-    if '--selftest' in a:
-        return selftest()
+def _capability_error(args):
+    if '--skip-preflight' in args:
+        return ('--skip-preflight is not a launch capability; preflight must run '
+                'while the launcher owns the profile claim')
+    if '--attach-pid' in args:
+        return ('--attach-pid is an internal test seam and may not target an '
+                'arbitrary desktop process from the production CLI')
+    if '--leave-running' in args:
+        return ('--leave-running is disabled until a durable owner can retain the '
+                'profile claim for the entire surviving game-process lifetime')
+    if '--keep-claim' in args:
+        return ('--keep-claim is disabled: a process-local guard cannot transfer a '
+                'durable claim when the launcher returns')
+    return None
 
-    def opt(name, cast, default):
-        if name not in a:
-            return default
-        i = a.index(name) + 1
-        return cast(a[i]) if i < len(a) and not a[i].startswith('--') else default
 
-    cfg = {
-        'menu_budget': opt('--menu-budget', float, 60.0),      # the user's criterion
-        'save_budget': opt('--save-budget', float, 180.0),
-        'spawn_budget': opt('--spawn-budget', float, 300.0),
-        'settle_ms': opt('--settle-ms', float, 1500.0),
-        'interval': opt('--interval', float, 3.0),
-        'hang_seconds': opt('--hang-seconds', float, 45.0),
-        'save': opt('--save', str, None),
-        'dry_run': '--dry-run' in a,
-        'leave_running': '--leave-running' in a,
-        'no_autoload': '--no-autoload' in a,      # stop at the main menu (MenuPilot)
-        'steam_chain': '--steam-chain' in a,      # legacy chain: no autoload possible
-        'claim_owner': opt('--claim-owner', str, None),
-        'keep_claim': '--keep-claim' in a,        # leave the claim held after the run
-        'allow_unverified': '--allow-unverified-signal' in a,
-        'attach_pid': opt('--attach-pid', int, None),   # self-test seam, see verify()
-        'force_kill': opt('--force-kill', str, None),   # reason; overrides the human guard (#164)
-    }
-    if '--force-kill' in a and not (cfg['force_kill'] or '').strip():
-        print('--force-kill needs the reason as its argument'); return 64
+def _result_exit_code(result):
+    if result.human_at_controls:
+        return HP.HUMAN_AT_CONTROLS
+    if result.verdict == 'MENU-ONLY':
+        return EXIT_MENU_ONLY
+    return 0 if result.verdict in ('PASS', 'DRY-RUN') else 1
 
+
+def _run_gated(cfg):
+    """Run preflight, observation, triage and record under the caller's claim."""
     print('=' * 72)
     print('[1] preflight')
     print('=' * 72)
-    if '--skip-preflight' not in a:
-        rc = subprocess.run([sys.executable, os.path.join(AUDIT, 'preflight.py')],
-                            capture_output=True, text=True, timeout=1800)
-        print((rc.stdout or '').rstrip())
-        if rc.returncode != 0:
-            print('\nSTOP: preflight failed, refusing to launch.')
-            return 1
+    rc = subprocess.run([sys.executable, os.path.join(AUDIT, 'preflight.py'),
+                         '--mode', 'test-harness'],
+                        capture_output=True, text=True, timeout=1800)
+    print((rc.stdout or '').rstrip())
+    if rc.returncode != 0:
+        print('\nSTOP: preflight failed, refusing to launch.')
+        return 1
 
     print('\n' + '=' * 72)
     print('[2] launch and verify' + ('  (DRY RUN)' if cfg['dry_run'] else ''))
@@ -671,8 +886,67 @@ def main():
     if r.human_at_controls:
         print(f'\nHUMAN_AT_CONTROLS: the game was left running (exit {HP.HUMAN_AT_CONTROLS}); '
               f'report this, do not retry with --force-kill unless the user says so')
-        return HP.HUMAN_AT_CONTROLS
-    return 0 if r.verdict in ('PASS', 'DRY-RUN', 'MENU-ONLY') else 1
+    return _result_exit_code(r)
+
+
+def main(argv=None):
+    a = list(sys.argv[1:] if argv is None else argv)
+    if '--selftest' in a:
+        return selftest()
+    capability_error = _capability_error(a)
+    if capability_error:
+        print('REFUSING: ' + capability_error)
+        return EXIT_USAGE
+
+    def opt(name, cast, default):
+        if name not in a:
+            return default
+        i = a.index(name) + 1
+        return cast(a[i]) if i < len(a) and not a[i].startswith('--') else default
+
+    cfg = {
+        'menu_budget': opt('--menu-budget', float, 60.0),      # the user's criterion
+        'save_budget': opt('--save-budget', float, 180.0),
+        'spawn_budget': opt('--spawn-budget', float, 300.0),
+        'settle_ms': opt('--settle-ms', float, 1500.0),
+        'interval': opt('--interval', float, 3.0),
+        'hang_seconds': opt('--hang-seconds', float, 45.0),
+        'save': opt('--save', str, None),
+        'dry_run': '--dry-run' in a,
+        # Internal direct-call seams only. Production CLI capability checks
+        # reject both until claim ownership can outlive this process safely.
+        'leave_running': '--leave-running' in a,
+        'no_autoload': '--no-autoload' in a,      # stop at the main menu (MenuPilot)
+        'steam_chain': '--steam-chain' in a,      # legacy chain: no autoload possible
+        'claim_owner': opt('--claim-owner', str, None),
+        'keep_claim': '--keep-claim' in a,
+        'allow_unverified': '--allow-unverified-signal' in a,
+        'attach_pid': None,                       # internal direct-call test seam only
+        'force_kill': opt('--force-kill', str, None),   # reason; overrides the human guard (#164)
+    }
+    if '--force-kill' in a and not (cfg['force_kill'] or '').strip():
+        print('--force-kill needs the reason as its argument'); return 64
+
+    if cfg['dry_run']:
+        return _run_gated(cfg)
+
+    owner = cfg['claim_owner'] or claim.default_owner()
+    try:
+        # Claim before preflight and retain it through triage/record creation.
+        # This closes the prior gate->launch TOCTOU where another installer
+        # could change the profile during the wait or Steam cycle.
+        with claim.guard(
+                owner,
+                f'launch_verify ({"menu-only" if cfg["no_autoload"] else "full"})',
+                ttl=45, wait=0) as record:
+            cfg['claim_owner'] = owner
+            cfg['_claim_preheld'] = True
+            cfg['_claim_lease'] = (record.get('holderLeaseId') or
+                                   record.get('leaseId'))
+            return _run_gated(cfg)
+    except claim.ClaimHeld as exc:
+        print(f'CLAIM HELD - refusing verification launch: {exc}')
+        return claim.ExTempFail
 
 
 if __name__ == '__main__':

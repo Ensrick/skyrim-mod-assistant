@@ -66,13 +66,22 @@ applies it.
 **The gate:** `py -3 audit/keep_coverage.py` is the enforcement. It fails when
 an installed Nexus id has no Keep, when a Keep has nothing installed, or when a
 Skip is installed. It runs inside `audit/preflight.py`, so a batch cannot reach
-a verification launch with the Keep list out of step - with one deliberate
-asymmetry: inside the LAUNCH gate a Keep with nothing installed is a WARNING,
-because it puts no files in the tree and cannot affect a launch, while a Skip
-that IS installed and an install that produced no Keep operation stay
-blocking. A queued-but-unapplied operation prints `PENDING` in the standalone
-gate; it is not a live Keep and the lifecycle remains open until applied.
+a verification launch with the Keep list out of step. A Keep with nothing
+installed remains a launch warning because it contributes no runtime files;
+an installed mod whose Keep is merely queued is a **blocking pending state**,
+as are an installed Skip and an install with no Keep operation. Pending queue
+identity is game-scoped (`skyrimspecialedition`) and expires after seven days;
+an ancient or cross-game numeric ID cannot conceal lifecycle debt. The
+standalone gate prints `PENDING` and exits nonzero until the curator applies it.
 `audit/install_mod.py` prints the Keep obligation for every id it installs.
+Malformed JSON, invalid or case-changed status, missing/timezone-less
+`queuedAt`, future or expired rows, and duplicate game/id identities are
+blocking queue-integrity defects. They are never filtered into an apparently
+empty, clean queue. The seven-day TTL is an observable lifecycle deadline, not
+a garbage-collection rule. Producers atomically claim an existing spool before
+merging and publish only to an absent destination, so a relay consume cannot be
+mistaken for permission to overwrite a concurrent decision. A stranded writer
+claim is itself a preflight failure and preserves both sides for reconciliation.
 
 For a mod that adds weapons, shields, armor, clothing, undergarments, or
 jewelry, adoption also opens a mandatory item-by-item integration record under

@@ -48,15 +48,27 @@ removal: a parked mod remains installed, remains Keep and has
 removes its live ledger state and clears its Keep only after rollback evidence
 has been retained.
 
-Only `runtime-verified` is a technically complete installation. Subjective
-acceptance can remain open without blocking unrelated work, provided its issue
-is labelled `status:needs-test`.
+Only `runtime-verified` is a technically complete installation. Until explicit
+multi-change batch semantics exist under #235, one lifecycle stays open through
+`playtest-accepted` and blocks the next mutation. This prevents a second change
+from silently making the first plan's build fingerprint stale. A future batch
+controller may share one final fingerprint and disposable test character across
+explicitly declared changes; it may not infer a batch after the fact.
 
 ## One transaction for every change
 
 The sequence below applies to installs, upgrades, downgrades, removals,
 enable/disable operations, FOMOD reselections, generated outputs, owned
-patches, INI changes and DLL replacements.
+patches, INI changes and DLL replacements. Issue #235 is the implementation
+master for routing all of those operations through one enforceable controller;
+until a mutation type is implemented there, it is unsupported manual work and
+must not be represented as lifecycle-complete.
+
+Accordingly, the legacy `install_mod.py --sort` mutation is fail-closed while
+#235 is open. LOOT may be run read-only for diagnostics, but applying an order
+must eventually create the same before/after, patch-impact, rollback and test
+receipts as any other profile change. PR #232's exact enable-state preservation
+is necessary but not sufficient by itself.
 
 1. **Declare scope.** Read the shared coordination board, name the exact target
    and acquire the MO2 profile claim before any live write. Never mutate from a
@@ -96,6 +108,59 @@ A failed transaction is never hidden by carrying on. Restore the before state
 through the MO2 journal or finish the missing postcondition, then reconcile
 again.
 
+### Nexus install command contract
+
+`install_mod.py` is deliberately a two-pass controller. Both passes require an
+issue number. The first pass downloads and installs the exact archive **with the
+mod disabled**, inventories the resolved FOMOD payload, computes its full
+content fingerprint and owned-artifact impact set, writes a draft beneath
+`records/impact-receipts/`, then rolls the MO2 transaction back. It never
+overwrites an existing draft or reviewed receipt.
+
+The operator reviews every artifact row, supplies an outcome plus concrete
+evidence (and exact hashes for amended/regenerated outputs), and repeats the
+same pinned install with `--impact-receipt`. The controller recomputes the
+payload and impact topology; any stale fingerprint, policy, artifact set,
+issue, parse error or blocked decision rejects the receipt and rolls back. Only
+an accepted receipt permits mod/plugin activation, ledger commit, Keep queue
+and creation of the fingerprint-bound verification plan.
+
+That receipt also carries the Nexus intake review: durable evidence of the
+user's explicit approval, exact-file selection rationale, licence and
+redistribution classification, requirements/required-patch review, staged LOOT
+evidence, conflict evidence and an empty open-decision list. Research or an
+issue number alone is not approval. Every named required patch must actually
+exist as one enabled, ledgered MO2 folder before the receipt can pass. A patch
+that ships plugins must name the required plugin identities in
+`requirements.requiredPlugins`; each must be starred and the effective winning
+file must come from that patch folder. A plugin-free patch is treated as an
+asset-only requirement and its rationale belongs in the requirements evidence.
+
+Every successful MO2 mutation must return a journal transaction ID. An absent
+ID is accepted only when exactly one new committed journal manifest proves the
+same operation and supplies it; a friendly response string or filesystem
+side-effect is not evidence. An ambiguous unjournaled delta restores captured
+profile before-images, quarantines a newly created target instead of deleting
+it, re-runs reconciliation, and appends `records/lifecycle-recovery.jsonl`.
+Expected failures and unexpected exceptions/interruptions after apply both
+roll back in strict last-applied-first order and restore the exact prior ledger
+bytes. A
+`--replace` operation may not silently change Nexus mod ID; that needs a future
+explicit curator migration transaction which can change old Keep to
+Unreviewed and new ID to Keep atomically.
+
+Updates are currently refused entirely. Correct update impact needs a retained
+before image and an after image so removed records and packed/loose assets enter
+the delta; auditing only the replacement folder would fail open. Removal,
+enable/disable, FOMOD reselection, order and configuration controllers likewise
+remain unsupported until #235 lands their transaction types.
+
+The verification gate scans active `records/test-plans/` in both directions.
+An install/update plan must have exactly one ledger binding. Deleting lifecycle
+fields from its ledger row, or leaving a managed plan behind with no matching
+row, is an invalid orphan and blocks preflight; abandoned plans must be moved to
+an explicitly archived evidence location.
+
 ## Patch-impact receipt
 
 Every profile change examines every owned patch which could depend on the
@@ -133,6 +198,18 @@ means “not affected.” Generated outputs tied to the whole load order (weapon
 normalization, leveled-list synthesis, conflict forwards, Pandora, BodySlide,
 xLODGen/TexGen/DynDOLOD) are stale after a relevant input or ordering change
 until regenerated or explicitly proved unchanged.
+
+Disabled owned patches are included in the review set as well: enabling one is
+a profile change, and a parked patch must not silently become stale. Policy
+modes that depend on `inputs`, `recordTypes` or `assetGlobs` require a non-empty
+selector. Overwrite is modeled as the highest-priority provider. Removal
+analysis requires a retained before-image manifest/root; an empty directory
+after deletion is not evidence about the records or assets which disappeared.
+Asset-path matching indexes paths inside BSA archives as well as loose files.
+Every referenced source-build record is content-hashed into the frozen audit
+signature; a missing, unreadable or edited recipe invalidates the receipt.
+Hashes for amended/regenerated output are accepted only from inside that exact
+owned artifact's MO2 directory, never from an unrelated file elsewhere.
 
 ## Change receipt minimum
 

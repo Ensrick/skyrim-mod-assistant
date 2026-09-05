@@ -14,13 +14,16 @@ Examples:
 from __future__ import annotations
 
 import argparse
+import copy
 import datetime as dt
 import glob
 import hashlib
 import json
 import os
 import pathlib
+import re
 import secrets
+import tempfile
 
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
@@ -29,6 +32,125 @@ PROFILE = "Default"
 LEDGER = REPO / "records" / "installed-mods.json"
 WATCHLIST = REPO / "audit" / "watched_configs.json"
 DOCUMENTS = pathlib.Path(os.environ.get("USERPROFILE", "")) / "Documents" / "My Games" / "Skyrim Special Edition"
+GAME_ROOT = pathlib.Path(
+    r"C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition"
+)
+CONTENT_CATALOG = pathlib.Path(os.environ.get("LOCALAPPDATA", "")) / \
+    "Skyrim Special Edition" / "ContentCatalog.txt"
+
+
+_VDF_TOKEN = re.compile(r'"((?:\\.|[^"\\])*)"|([{}])')
+
+
+def _tokenize_vdf(text):
+    tokens = []
+    cursor = 0
+    for match in _VDF_TOKEN.finditer(text):
+        if text[cursor:match.start()].strip():
+            raise ValueError("unexpected text in Steam app manifest")
+        tokens.append(
+            ("text", match.group(1)) if match.group(1) is not None
+            else ("brace", match.group(2))
+        )
+        cursor = match.end()
+    if text[cursor:].strip():
+        raise ValueError("unexpected trailing text in Steam app manifest")
+    return tokens
+
+
+def _parse_vdf_object(tokens, index=0, nested=False):
+    """Parse the quoted-string/braces subset used by Steam app manifests."""
+    result = {}
+    while index < len(tokens):
+        kind, value = tokens[index]
+        if kind == "brace" and value == "}":
+            if not nested:
+                raise ValueError("unexpected closing brace in Steam app manifest")
+            return result, index + 1
+        if kind != "text":
+            raise ValueError("expected a quoted key in Steam app manifest")
+        key = value
+        index += 1
+        if index >= len(tokens):
+            raise ValueError(f"Steam app manifest key has no value: {key}")
+        next_kind, next_value = tokens[index]
+        if next_kind == "brace" and next_value == "{":
+            child, index = _parse_vdf_object(tokens, index + 1, nested=True)
+        elif next_kind == "text":
+            child = next_value
+            index += 1
+        else:
+            raise ValueError(f"Steam app manifest key has invalid value: {key}")
+        result[key] = child
+    if nested:
+        raise ValueError("unterminated object in Steam app manifest")
+    return result, index
+
+
+def _vdf_field(mapping, name):
+    if not isinstance(mapping, dict):
+        return None
+    wanted = name.casefold()
+    return next((value for key, value in mapping.items()
+                 if str(key).casefold() == wanted), None)
+
+
+def _canonical_vdf(value):
+    if not isinstance(value, dict):
+        return str(value)
+    return {
+        str(key).casefold(): _canonical_vdf(child)
+        for key, child in sorted(value.items(), key=lambda item: str(item[0]).casefold())
+    }
+
+
+def steam_app_manifest_build_payload(path: pathlib.Path) -> bytes:
+    """Return stable, build-relevant Steam manifest state.
+
+    Raw appmanifest bytes also contain session state such as ``LastPlayed`` and
+    ``StateFlags``. Steam can change those while running the very verification
+    launch whose fingerprint we are trying to preserve. The build ID and depot
+    manifests identify installed content; language/beta selection identifies
+    the content variant.
+    """
+    path = pathlib.Path(path)
+    text = path.read_text(encoding="utf-8-sig")
+    tokens = _tokenize_vdf(text)
+    parsed, consumed = _parse_vdf_object(tokens)
+    if consumed != len(tokens):
+        raise ValueError("unparsed tokens remain in Steam app manifest")
+    app = _vdf_field(parsed, "AppState")
+    if not isinstance(app, dict):
+        raise ValueError("Steam app manifest has no AppState object")
+
+    state = {}
+    for field in ("appid", "installdir", "buildid"):
+        value = _vdf_field(app, field)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"Steam app manifest is missing {field}")
+        state[field] = value.strip()
+    size = _vdf_field(app, "SizeOnDisk")
+    if isinstance(size, str) and size.strip():
+        state["sizeondisk"] = size.strip()
+    beta = _vdf_field(app, "BetaKey")
+    if isinstance(beta, str) and beta.strip():
+        state["betakey"] = beta.strip()
+    for section_name in ("UserConfig", "MountedConfig"):
+        section = _vdf_field(app, section_name)
+        selected = {}
+        for field in ("language", "BetaKey"):
+            value = _vdf_field(section, field)
+            if isinstance(value, str) and value.strip():
+                selected[field.casefold()] = value.strip().casefold()
+        if selected:
+            state[section_name.casefold()] = selected
+    for field in ("InstalledDepots", "MountedDepots", "SharedDepots"):
+        value = _vdf_field(app, field)
+        if isinstance(value, dict):
+            state[field.casefold()] = _canonical_vdf(value)
+
+    return json.dumps(state, sort_keys=True, separators=(",", ":"),
+                      ensure_ascii=False).encode("utf-8")
 
 KINDS = {
     "asset": {"risk": 1, "roundTrip": False, "cycles": 1, "soak": False},
@@ -54,6 +176,8 @@ def build_fingerprint(
     instance: pathlib.Path = INSTANCE,
     profile: str = PROFILE,
     ledger: pathlib.Path = LEDGER,
+    repo_root: pathlib.Path = REPO,
+    game_root: pathlib.Path | None = GAME_ROOT,
 ) -> dict:
     """Hash durable authorities and runtime-bearing files, not whole textures.
 
@@ -63,31 +187,144 @@ def build_fingerprint(
     texture tree for every test.
     """
     instance = pathlib.Path(instance)
+    repo_root = pathlib.Path(repo_root)
+    game_root = pathlib.Path(game_root) if game_root is not None else None
     profile_dir = instance / "profiles" / profile
     inputs: list[dict] = []
     seen: set[str] = set()
 
-    def add(path: pathlib.Path, role: str) -> None:
+    def stable_identity(path: pathlib.Path) -> str:
+        resolved = path.resolve()
+        bases = [("instance", instance), ("repo", repo_root),
+                 ("documents", DOCUMENTS)]
+        if game_root is not None:
+            bases.append(("game", game_root))
+        for label, base in bases:
+            try:
+                return f"{label}/{resolved.relative_to(base.resolve()).as_posix()}"
+            except ValueError:
+                continue
+        return f"external/{resolved.name}"
+
+    def add(path: pathlib.Path, role: str, required: bool = False,
+            identity_override: str | None = None) -> None:
         identity = os.path.normcase(os.path.abspath(path))
+        if required and not path.is_file():
+            raise FileNotFoundError(f"required fingerprint input is missing: {path}")
         if path.is_file() and identity not in seen:
             seen.add(identity)
             inputs.append({
                 "role": role,
                 "path": str(path),
+                "identity": identity_override or stable_identity(path),
                 "bytes": path.stat().st_size,
                 "sha256": sha256(path),
             })
 
-    add(pathlib.Path(ledger), "ledger")
-    add(WATCHLIST, "watch-spec")
-    for path in sorted((REPO / "records" / "source-builds").glob("*.json"),
+    def add_normalized(path: pathlib.Path, role: str, payload: bytes,
+                       normalization: str,
+                       identity_override: str | None = None) -> None:
+        identity = os.path.normcase(os.path.abspath(path))
+        if identity in seen:
+            return
+        seen.add(identity)
+        inputs.append({
+            "role": role,
+            "path": str(path),
+            "identity": identity_override or stable_identity(path),
+            "bytes": len(payload),
+            "sha256": hashlib.sha256(payload).hexdigest().upper(),
+            "normalization": normalization,
+        })
+
+    ledger = pathlib.Path(ledger)
+    if not ledger.is_file():
+        raise FileNotFoundError(f"required fingerprint input is missing: {ledger}")
+    ledger_document = json.loads(ledger.read_text(encoding="utf-8-sig"))
+    if not isinstance(ledger_document, dict) or not isinstance(
+            ledger_document.get("mods"), list):
+        raise ValueError("installed-mod ledger must be an object with a mods array")
+    # The plan signature binds the build fingerprint, while the ledger stores
+    # that signature. Exclude only this derived field from the ledger input to
+    # avoid a cryptographic cycle; every source/test/receipt identity remains.
+    fingerprint_ledger = copy.deepcopy(ledger_document)
+    for row in fingerprint_ledger["mods"]:
+        if isinstance(row, dict):
+            row.pop("verificationContractSignature", None)
+    ledger_payload = json.dumps(
+        fingerprint_ledger, sort_keys=True, separators=(",", ":"),
+        ensure_ascii=False).encode("utf-8")
+    seen.add(os.path.normcase(os.path.abspath(ledger)))
+    inputs.append({
+        "role": "ledger",
+        "path": str(ledger),
+        "identity": stable_identity(ledger),
+        "bytes": len(ledger_payload),
+        "sha256": hashlib.sha256(ledger_payload).hexdigest().upper(),
+        "normalization": "canonical-json excluding verificationContractSignature",
+    })
+    watchlist = repo_root / "audit" / "watched_configs.json"
+    add(watchlist, "watch-spec", required=True)
+    for path in sorted((repo_root / "records" / "source-builds").glob("*.json"),
                        key=lambda p: p.name.casefold()):
         add(path, "owned-source-build")
+    receipt_root = (repo_root / "records" / "impact-receipts").resolve()
+    for row in ledger_document["mods"]:
+        if not isinstance(row, dict) or not str(row.get("impactReceipt") or "").strip():
+            continue
+        reference = pathlib.Path(str(row["impactReceipt"]))
+        if reference.is_absolute():
+            raise ValueError(f"impact receipt is not repository-relative: {reference}")
+        receipt = (repo_root / reference).resolve()
+        try:
+            receipt.relative_to(receipt_root)
+        except ValueError as exc:
+            raise ValueError(
+                f"impact receipt escapes records/impact-receipts: {reference}") from exc
+        add(receipt, "impact-receipt", required=True)
+
+    # Steam/Bethesda/Creations state is part of the tested build. Bind the
+    # preflight-maintained inventory (normalized relative path and exact SHA-256
+    # for every tracked official runtime/archive), plus exact executable,
+    # catalog and master/light-plugin bytes.
+    if game_root is not None:
+        if not game_root.is_dir():
+            raise FileNotFoundError(f"required game root is missing: {game_root}")
+        manifest = repo_root / "records" / "game-folder-manifest.json"
+        if not manifest.is_file():
+            canonical = pathlib.Path(
+                r"C:\Users\danjo\source\repos\skyrim-mod-assistant\records\game-folder-manifest.json"
+            )
+            if canonical.is_file():
+                manifest = canonical
+        add(manifest, "official-runtime-manifest", required=True,
+            identity_override="repo/records/game-folder-manifest.json")
+        add(game_root / "SkyrimSE.exe", "game-runtime", required=True)
+        add(game_root / "skse64_loader.exe", "game-runtime", required=True)
+        steam_manifest = game_root.parents[1] / "appmanifest_489830.acf"
+        if not steam_manifest.is_file():
+            raise FileNotFoundError(
+                f"required fingerprint input is missing: {steam_manifest}")
+        add_normalized(
+            steam_manifest,
+            "steam-app-manifest",
+            steam_app_manifest_build_payload(steam_manifest),
+            "canonical Steam build/depot fields; volatile session fields excluded",
+        )
+        add(CONTENT_CATALOG, "creations-content-catalog", required=True)
+        data_root = game_root / "Data"
+        for path in sorted(
+            (p for p in data_root.iterdir()
+             if p.is_file() and p.suffix.casefold() in {".esm", ".esl"}),
+            key=lambda p: p.name.casefold(),
+        ):
+            add(path, "official-master-or-creation")
     for name in (
         "modlist.txt", "plugins.txt", "loadorder.txt", "lockedorder.txt",
         "settings.ini", "skyrim.ini", "skyrimprefs.ini", "skyrimcustom.ini",
     ):
-        add(profile_dir / name, "profile")
+        add(profile_dir / name, "profile",
+            required=name in {"modlist.txt", "plugins.txt"})
 
     enabled: list[str] = []
     modlist = profile_dir / "modlist.txt"
@@ -103,7 +340,7 @@ def build_fingerprint(
     # not only the winner: the order file is already an input, and this makes a
     # shadowed DLL/plugin/script change visible before it unexpectedly becomes
     # live. Vendor archives and owned output receipts cover bulky asset trees.
-    suffixes = {".esm", ".esp", ".esl", ".dll"}
+    suffixes = {".esm", ".esp", ".esl", ".dll", ".bsa", ".ba2"}
     for mod_name in enabled:
         root = instance / "mods" / mod_name
         if not root.is_dir():
@@ -124,8 +361,8 @@ def build_fingerprint(
     # row. Expand the same declarative watch list used by preflight_extra.py,
     # excluding configs under parked mods.
     enabled_keys = {name.casefold() for name in enabled}
-    if WATCHLIST.is_file():
-        spec = json.loads(WATCHLIST.read_text(encoding="utf-8-sig"))
+    if watchlist.is_file():
+        spec = json.loads(watchlist.read_text(encoding="utf-8-sig"))
         for entry in spec.get("watch", []):
             pattern = entry.get("path") if isinstance(entry, dict) else entry
             if not pattern:
@@ -148,61 +385,103 @@ def build_fingerprint(
                 add(path, "watched-config")
 
     canonical = "\n".join(
-        f"{row['role']}\t{row['path'].casefold()}\t{row['bytes']}\t{row['sha256']}"
-        for row in sorted(inputs, key=lambda row: (row["path"].casefold(), row["role"]))
+        f"{row['role']}\t{row['identity'].casefold()}\t{row['bytes']}\t{row['sha256']}"
+        for row in sorted(inputs, key=lambda row: (row["identity"].casefold(), row["role"]))
     )
     return {
-        "algorithm": "sha256(authority-runtime-scripts-watched-config-v2)",
+        "algorithm": "sha256(stable-authority-runtime-archives-scripts-watched-config-v6)",
         "sha256": hashlib.sha256(canonical.encode("utf-8")).hexdigest().upper(),
         "inputs": inputs,
     }
 
 
-def make_plan(kinds: list[str], summary: str, issue: str | None,
-              crash_fix: bool, fingerprint: dict | None = None) -> dict:
+def contract_signature(plan: dict) -> str:
+    """Hash immutable test requirements; results/status remain writable."""
+    frozen = {
+        "schemaVersion": plan.get("schemaVersion"),
+        "testId": plan.get("testId"),
+        "createdUtc": plan.get("createdUtc"),
+        "summary": plan.get("summary"),
+        "issue": plan.get("issue"),
+        "source": plan.get("source"),
+        "changeKinds": plan.get("changeKinds"),
+        "riskClass": plan.get("riskClass"),
+        "crashFix": plan.get("crashFix"),
+        "freshCharacter": {
+            key: (plan.get("freshCharacter") or {}).get(key)
+            for key in ("required", "method", "reuseAcrossBuildFingerprints")
+        },
+        "cyclesRequired": plan.get("cyclesRequired"),
+        "stagesRequired": plan.get("stagesRequired"),
+        "campaignSave": plan.get("campaignSave"),
+        "buildFingerprint": {
+            key: (plan.get("buildFingerprint") or {}).get(key)
+            for key in ("algorithm", "sha256")
+        },
+    }
+    payload = json.dumps(frozen, sort_keys=True, separators=(",", ":"),
+                         ensure_ascii=False)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest().upper()
+
+
+def requirements(kinds: list[str], crash_fix: bool) -> dict:
     if not kinds:
         raise ValueError("at least one change kind is required")
     unknown = sorted(set(kinds) - set(KINDS))
     if unknown:
         raise ValueError("unknown change kind(s): " + ", ".join(unknown))
-    risk = max(KINDS[k]["risk"] for k in kinds)
-    cycles = max(KINDS[k]["cycles"] for k in kinds)
+    normalized = sorted(set(kinds))
+    risk = max(KINDS[k]["risk"] for k in normalized)
+    cycles = max(KINDS[k]["cycles"] for k in normalized)
     if crash_fix:
         cycles = max(cycles, 10)
-    round_trip = any(KINDS[k]["roundTrip"] for k in kinds)
-    soak = any(KINDS[k]["soak"] for k in kinds) or crash_fix
-    stamp = dt.datetime.now(dt.timezone.utc)
-    test_id = f"SVT-{stamp:%Y%m%dT%H%M%SZ}-{secrets.token_hex(3).upper()}"
-    required = ["V0-static", "V1-boot", "V2-fresh-start", "V3-feature-probes", "V5-log-diff"]
+    round_trip = any(KINDS[k]["roundTrip"] for k in normalized)
+    soak = any(KINDS[k]["soak"] for k in normalized) or crash_fix
+    required = ["V0-static", "V1-boot", "V2-fresh-start",
+                "V3-feature-probes", "V5-log-diff"]
     if round_trip:
         required.insert(4, "V4-save-load-round-trip")
     if soak:
         required.append("V6-soak")
     required.append("V7-human-play")
-    return {
+    return {"kinds": normalized, "risk": risk, "cycles": cycles,
+            "stages": required}
+
+
+def make_plan(kinds: list[str], summary: str, issue: str | None,
+              crash_fix: bool, fingerprint: dict | None = None,
+              source: dict | None = None) -> dict:
+    required_contract = requirements(kinds, crash_fix)
+    stamp = dt.datetime.now(dt.timezone.utc)
+    test_id = f"SVT-{stamp:%Y%m%dT%H%M%SZ}-{secrets.token_hex(3).upper()}"
+    plan = {
         "schemaVersion": 1,
         "testId": test_id,
         "createdUtc": stamp.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "summary": summary,
         "issue": issue,
-        "changeKinds": sorted(set(kinds)),
-        "riskClass": risk,
+        "source": copy.deepcopy(source),
+        "changeKinds": required_contract["kinds"],
+        "riskClass": required_contract["risk"],
+        "crashFix": bool(crash_fix),
         "freshCharacter": {
             "required": True,
             "method": "main-menu New Game flow; never clone/autoload an older clean save",
             "reuseAcrossBuildFingerprints": False,
         },
-        "cyclesRequired": cycles,
-        "stagesRequired": required,
+        "cyclesRequired": required_contract["cycles"],
+        "stagesRequired": required_contract["stages"],
         "campaignSave": {
             "required": False,
             "allowedAfterDisposablePassOnly": True,
             "purpose": "explicit migration test, never technical source of truth",
         },
-        "buildFingerprint": fingerprint,
+        "buildFingerprint": copy.deepcopy(fingerprint),
         "status": "planned",
         "results": {},
     }
+    plan["contractSignature"] = contract_signature(plan)
+    return plan
 
 
 def render(plan: dict) -> str:
@@ -229,7 +508,75 @@ def selftest() -> int:
     assert "V4-save-load-round-trip" in native["stagesRequired"]
     crash = make_plan(["native", "script"], "crash", "2", True, None)
     assert crash["cyclesRequired"] == 10 and "V6-soak" in crash["stagesRequired"]
-    print("verification_plan selftest PASS (5 assertions)")
+    assert crash["crashFix"] and crash["contractSignature"] == contract_signature(crash)
+    with tempfile.TemporaryDirectory(prefix="verification-fingerprint-") as raw:
+        root = pathlib.Path(raw)
+        instance = root / "instance"
+        profile = instance / "profiles" / "Default"
+        mod = instance / "mods" / "Archive Fixture"
+        profile.mkdir(parents=True)
+        mod.mkdir(parents=True)
+        (profile / "modlist.txt").write_text("+Archive Fixture\n", encoding="utf-8")
+        (profile / "plugins.txt").write_text("", encoding="utf-8")
+        ledger = root / "ledger.json"
+        ledger.write_text(json.dumps({"schemaVersion": 1, "mods": []}), encoding="utf-8")
+        archive = mod / "Fixture.bsa"
+        archive.write_bytes(b"ORIGINAL")
+        first = build_fingerprint(instance, "Default", ledger, REPO, game_root=None)
+        archive.write_bytes(b"CORRUPTED")
+        second = build_fingerprint(instance, "Default", ledger, REPO, game_root=None)
+        assert first["sha256"] != second["sha256"]
+        assert any(row["identity"].endswith("mods/Archive Fixture/Fixture.bsa")
+                   for row in second["inputs"])
+        try:
+            build_fingerprint(root / "missing-instance", "Default", ledger,
+                              REPO, game_root=None)
+        except FileNotFoundError:
+            pass
+        else:
+            raise AssertionError("missing profile authorities produced a fingerprint")
+        steam = root / "appmanifest_489830.acf"
+        steam.write_text('''"AppState"
+{
+    "appid" "489830"
+    "StateFlags" "4"
+    "installdir" "Skyrim Special Edition"
+    "LastPlayed" "1788541200"
+    "buildid" "20260904"
+    "SizeOnDisk" "17000000000"
+    "UserConfig" { "language" "english" }
+    "InstalledDepots"
+    {
+        "489831" { "manifest" "111" "size" "222" }
+    }
+}
+''', encoding="utf-8")
+        build_state = steam_app_manifest_build_payload(steam)
+        steam.write_text('''"AppState"
+{
+    "appid" "489830"
+    "StateFlags" "1026"
+    "installdir" "Skyrim Special Edition"
+    "LastPlayed" "1788549999"
+    "buildid" "20260904"
+    "SizeOnDisk" "17000000000"
+    "UserConfig" { "language" "english" }
+    "InstalledDepots" { "489831" { "manifest" "111" "size" "222" } }
+}
+''', encoding="utf-8")
+        assert steam_app_manifest_build_payload(steam) == build_state
+        steam.write_text('''"AppState"
+{
+    "appid" "489830"
+    "installdir" "Skyrim Special Edition"
+    "buildid" "20260905"
+    "SizeOnDisk" "17000000000"
+    "UserConfig" { "language" "english" }
+    "InstalledDepots" { "489831" { "manifest" "333" "size" "222" } }
+}
+''', encoding="utf-8")
+        assert steam_app_manifest_build_payload(steam) != build_state
+    print("verification_plan selftest PASS (11 assertions)")
     return 0
 
 
@@ -251,9 +598,9 @@ def main(argv: list[str] | None = None) -> int:
         return selftest()
     if not args.kind:
         parser.error("at least one --kind is required")
-    fingerprint = None if args.no_fingerprint else build_fingerprint(
-        args.instance, args.profile, args.ledger
-    )
+    if args.no_fingerprint:
+        parser.error("--no-fingerprint is disabled: a successful verification plan must bind a build")
+    fingerprint = build_fingerprint(args.instance, args.profile, args.ledger)
     plan = make_plan(args.kind, args.summary, args.issue, args.crash_fix, fingerprint)
     output = json.dumps(plan, indent=2) + "\n" if args.json or args.out else render(plan)
     if args.out:

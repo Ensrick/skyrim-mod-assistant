@@ -119,11 +119,13 @@ One owner mutates the live profile at a time. The claim is
 "nobody knew the other side was mid-install".
 
 - Before ANY profile-mutating work - install, sort, park/unpark, INI or config
-  edit, DLL swap, launch - acquire it:
+  edit, DLL swap, launch - acquire it. For a multi-command shell workflow set
+  both `SKYRIM_CLAIM_OWNER=<you>` and a random `SKYRIM_CLAIM_LEASE` (for
+  example `[guid]::NewGuid().ToString('N')` in PowerShell), then run
   `py -3 audit/claim.py acquire --owner <you> --purpose "<why>" [--ttl 30]`.
-  Set `SKYRIM_CLAIM_OWNER=<you>` once per session and every audit script picks
-  it up (`install_mod.py`, `launch_verify.py`, `launch_skyrim.ps1` all check
-  or acquire it themselves and stop when someone else holds it).
+  `install_mod.py` and `launch_verify.py` acquire their own claim when no outer
+  workflow exists. A name alone is never re-entrant: only the exact lease or
+  creating process may nest, so same-named sibling agents still serialize.
 - Release when the work is done: `py -3 audit/claim.py release --owner <you>`.
   Renew a long job with `renew`. `status` shows who holds it.
 - A claim past its TTL is stale and the next acquire takes it over with a

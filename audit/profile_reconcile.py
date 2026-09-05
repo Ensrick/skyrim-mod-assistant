@@ -22,6 +22,7 @@ reproducible state and must not be launched or changed again until reconciled.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import hashlib
 import json
 import os
@@ -39,6 +40,7 @@ GAME_DATA = pathlib.Path(
     r"C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data"
 )
 PLUGIN_SUFFIXES = {".esm", ".esp", ".esl"}
+LIFECYCLE_POLICY_EPOCH = dt.datetime(2026, 9, 4, tzinfo=dt.timezone.utc)
 
 
 def _key(value: object) -> str:
@@ -55,6 +57,24 @@ def _sha256(path: pathlib.Path) -> str:
 
 def _read_json(path: pathlib.Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def _parse_utc(value: object) -> dt.datetime | None:
+    try:
+        parsed = dt.datetime.fromisoformat(str(value or "").replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            return None
+        return parsed.astimezone(dt.timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def _within(path: pathlib.Path, root: pathlib.Path) -> bool:
+    try:
+        path.relative_to(root)
+        return True
+    except ValueError:
+        return False
 
 
 def parse_modlist(path: pathlib.Path) -> tuple[dict[str, dict], list[dict]]:
@@ -143,7 +163,11 @@ def metadata_nexus_id(path: pathlib.Path) -> int | None:
 
 def _ledger_rows(path: pathlib.Path) -> tuple[list[dict], dict[str, dict], list[dict]]:
     document = _read_json(path)
+    if not isinstance(document, dict):
+        raise ValueError("ledger root must be a JSON object")
     source = document.get("mods", [])
+    if not isinstance(source, list) or not all(isinstance(row, dict) for row in source):
+        raise ValueError("ledger mods must be an array of objects")
     by_name: dict[str, dict] = {}
     duplicates = []
     for index, row in enumerate(source):
@@ -167,9 +191,11 @@ def reconcile(
     profile: str = PROFILE,
     ledger_path: pathlib.Path = LEDGER,
     game_data: pathlib.Path = GAME_DATA,
+    repo_root: pathlib.Path = REPO,
 ) -> dict:
     instance = pathlib.Path(instance)
     ledger_path = pathlib.Path(ledger_path)
+    repo_root = pathlib.Path(repo_root)
     profile_dir = instance / "profiles" / profile
     errors: list[dict] = []
     warnings: list[dict] = []
@@ -192,8 +218,33 @@ def reconcile(
     plugins, plugin_dupes = parse_plugins(plugins_path)
     if ledger_path.exists():
         try:
+            ledger_document = _read_json(ledger_path)
+            if not isinstance(ledger_document, dict):
+                raise ValueError("ledger root must be a JSON object")
+            if ledger_document.get("schemaVersion") != 1:
+                errors.append(_problem(
+                    "ledger-schema-version-invalid",
+                    f"installed-mod ledger schemaVersion must be 1, got {ledger_document.get('schemaVersion')!r}",
+                    path=str(ledger_path),
+                ))
+            declared_instance = pathlib.Path(
+                str(ledger_document.get("instance") or ""))
+            if not str(ledger_document.get("instance") or "").strip() or \
+                    os.path.normcase(os.path.abspath(declared_instance)) != \
+                    os.path.normcase(os.path.abspath(instance)):
+                errors.append(_problem(
+                    "ledger-instance-mismatch",
+                    "installed-mod ledger instance does not match the audited instance",
+                    declared=str(ledger_document.get("instance") or ""), actual=str(instance),
+                ))
+            if str(ledger_document.get("profile") or "") != str(profile):
+                errors.append(_problem(
+                    "ledger-profile-mismatch",
+                    "installed-mod ledger profile does not match the audited profile",
+                    declared=str(ledger_document.get("profile") or ""), actual=str(profile),
+                ))
             ledger_rows, ledger, ledger_dupes = _ledger_rows(ledger_path)
-        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as exc:
             errors.append(_problem(
                 "ledger-unreadable",
                 f"installed-mod ledger is unreadable: {type(exc).__name__}: {exc}",
@@ -209,6 +260,71 @@ def reconcile(
         errors.append(_problem("duplicate-plugin-row", f"duplicate plugins.txt row: {row['name']}", **row))
     for row in ledger_dupes:
         errors.append(_problem("duplicate-ledger-row", f"invalid/duplicate ledger row: {row['name']!r}", **row))
+
+    receipt_root = (repo_root / "records" / "impact-receipts").resolve()
+    for row in ledger_rows:
+        raw_installed = str(row.get("installedUtc") or "").strip()
+        installed = _parse_utc(raw_installed)
+        if raw_installed and installed is None:
+            errors.append(_problem(
+                "installed-utc-invalid",
+                f"installedUtc is malformed or lacks a timezone: {row.get('modName')}",
+                modName=row.get("modName"), installedUtc=raw_installed,
+            ))
+        managed = bool(row.get("lifecyclePolicyVersion") or
+                       row.get("lifecycleOperation") or row.get("impactReceipt") or
+                       row.get("verificationPlan") or row.get("verificationTestId") or
+                       row.get("verificationContractSignature"))
+        required = managed or bool(installed and installed >= LIFECYCLE_POLICY_EPOCH)
+        reference = str(row.get("impactReceipt") or "").strip()
+        declared_hash = str(row.get("impactReceiptSha256") or "").strip().upper()
+        name = str(row.get("modName") or "(unnamed)")
+        if not reference:
+            if required:
+                errors.append(_problem(
+                    "impact-receipt-missing",
+                    f"post-policy ledger row has no impact receipt: {name}",
+                    modName=name,
+                ))
+            continue
+        if pathlib.Path(reference).is_absolute():
+            errors.append(_problem(
+                "impact-receipt-not-portable",
+                f"impact receipt must be repository-relative: {name}",
+                modName=name, impactReceipt=reference,
+            ))
+            continue
+        receipt_path = (repo_root / reference).resolve()
+        if not _within(receipt_path, receipt_root):
+            errors.append(_problem(
+                "impact-receipt-path-invalid",
+                f"impact receipt escapes records/impact-receipts: {name}",
+                modName=name, impactReceipt=reference,
+            ))
+            continue
+        if not re.fullmatch(r"[0-9A-F]{64}", declared_hash):
+            errors.append(_problem(
+                "impact-receipt-hash-invalid",
+                f"impact receipt hash is missing or invalid: {name}",
+                modName=name, impactReceipt=reference,
+            ))
+            continue
+        try:
+            actual_hash = _sha256(receipt_path)
+        except OSError as exc:
+            errors.append(_problem(
+                "impact-receipt-unreadable",
+                f"impact receipt is missing/unreadable: {name}: {exc}",
+                modName=name, impactReceipt=reference,
+            ))
+            continue
+        if actual_hash != declared_hash:
+            errors.append(_problem(
+                "impact-receipt-hash-mismatch",
+                f"impact receipt bytes changed after ledger commit: {name}",
+                modName=name, impactReceipt=reference,
+                expectedSha256=declared_hash, actualSha256=actual_hash,
+            ))
 
     for key, disk in physical.items():
         state = modlist.get(key)
@@ -453,9 +569,14 @@ def render(result: dict) -> str:
     return "\n".join(lines)
 
 
-def _fixture_ledger(path: pathlib.Path, rows: list[dict]) -> None:
+def _fixture_ledger(path: pathlib.Path, rows: list[dict], profile: str = "Default") -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"schemaVersion": 1, "mods": rows}), encoding="utf-8")
+    path.write_text(json.dumps({
+        "schemaVersion": 1,
+        "instance": str(path.parent / "instance"),
+        "profile": profile,
+        "mods": rows,
+    }), encoding="utf-8")
 
 
 def selftest() -> int:
@@ -483,6 +604,41 @@ def selftest() -> int:
         clean = reconcile(instance, "Default", ledger, data)
         assert clean["reconciled"], clean
         checks += 1
+
+        receipt = root / "records" / "impact-receipts" / "good.json"
+        receipt.parent.mkdir(parents=True)
+        receipt.write_bytes(b'{"reviewed":true}\n')
+        rows = json.loads(ledger.read_text(encoding="utf-8"))["mods"]
+        rows[0].update({
+            "installedUtc": "2026-09-04T01:00:00Z",
+            "impactReceipt": "records/impact-receipts/good.json",
+            "impactReceiptSha256": _sha256(receipt),
+        })
+        _fixture_ledger(ledger, rows)
+        assert reconcile(instance, "Default", ledger, data, root)["reconciled"]
+        receipt.write_bytes(b'{"reviewed":false}\n')
+        receipt_broken = reconcile(instance, "Default", ledger, data, root)
+        assert "impact-receipt-hash-mismatch" in {
+            row["code"] for row in receipt_broken["errors"]
+        }
+        checks += 2
+        _fixture_ledger(ledger, [
+            {"modId": 1, "modName": "Good", "plugins": ["Good.esp"], "enabled": True},
+            {"modId": 2, "modName": "Asset only", "plugins": [], "enabled": False},
+        ])
+
+        invalid_header = json.loads(ledger.read_text(encoding="utf-8"))
+        invalid_header.update({"schemaVersion": 999, "instance": "wrong", "profile": "wrong"})
+        ledger.write_text(json.dumps(invalid_header), encoding="utf-8")
+        broken_header = reconcile(instance, "Default", ledger, data)
+        header_codes = {row["code"] for row in broken_header["errors"]}
+        assert {"ledger-schema-version-invalid", "ledger-instance-mismatch",
+                "ledger-profile-mismatch"} <= header_codes
+        checks += 3
+        _fixture_ledger(ledger, [
+            {"modId": 1, "modName": "Good", "plugins": ["Good.esp"], "enabled": True},
+            {"modId": 2, "modName": "Asset only", "plugins": [], "enabled": False},
+        ])
 
         (mods / "Bypass").mkdir()
         (mods / "Bypass" / "Bypass.esl").write_bytes(b"x")
@@ -572,13 +728,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--profile", default=PROFILE)
     parser.add_argument("--ledger", type=pathlib.Path, default=LEDGER)
     parser.add_argument("--game-data", type=pathlib.Path, default=GAME_DATA)
+    parser.add_argument("--repo-root", type=pathlib.Path, default=REPO)
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--adoption-plan", action="store_true")
     parser.add_argument("--selftest", action="store_true")
     args = parser.parse_args(argv)
     if args.selftest:
         return selftest()
-    result = reconcile(args.instance, args.profile, args.ledger, args.game_data)
+    result = reconcile(args.instance, args.profile, args.ledger, args.game_data,
+                       args.repo_root)
     if args.adoption_plan:
         print(json.dumps({"schemaVersion": 1, "candidates": result["adoptionPlan"]}, indent=2))
     elif args.json:
