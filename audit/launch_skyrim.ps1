@@ -21,8 +21,7 @@ param(
     [int]$WaitSeconds = 200,
     [switch]$AllowInteractiveDesktop,
     [switch]$Direct,
-    [switch]$NoIniSync,
-    [switch]$IgnoreClaim
+    [switch]$NoIniSync
 )
 $ErrorActionPreference = 'SilentlyContinue'
 
@@ -40,17 +39,17 @@ $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 Write-Host "[0] instance claim"
 $claimArgs = @('check')
 if ($env:SKYRIM_CLAIM_OWNER) { $claimArgs += @('--owner', $env:SKYRIM_CLAIM_OWNER) }
+if ($env:SKYRIM_CLAIM_LAUNCH_CHECK) { $claimArgs += @('--launch-check', $env:SKYRIM_CLAIM_LAUNCH_CHECK) }
 $claimOut = (& py -3 "$PSScriptRoot\claim.py" @claimArgs 2>&1 | Out-String).Trim()
 if ($LASTEXITCODE -ne 0) {
-    if ($IgnoreClaim) {
-        Write-Host "    WARNING launching under another owner's claim (-IgnoreClaim): $claimOut"
-    } else {
-        Write-Host "[ABORT] $claimOut - acquire it first (py -3 audit/claim.py acquire --owner NAME --purpose ...) or wait"
-        exit 75
-    }
+    Write-Host "[ABORT] $claimOut - acquire it first (py -3 audit/claim.py acquire --owner NAME --purpose ...) or wait"
+    exit 75
 } else {
     Write-Host "    $claimOut"
 }
+# The nonce was consumed by the read-only check and must not enter Steam, MO2,
+# SKSE, or the game environment. It is a one-use launcher designation only.
+Remove-Item -LiteralPath 'Env:\SKYRIM_CLAIM_LAUNCH_CHECK'
 
 # Harvest the harness variables, then REMOVE them from this process so the
 # Steam restart below cannot inherit them. They are re-applied to the direct
@@ -59,7 +58,7 @@ if ($LASTEXITCODE -ne 0) {
 $harness = @{}
 foreach ($v in Get-ChildItem Env: | Where-Object {
         $_.Name -like 'SKYRIM_LAUNCH_PROBE_*' -or $_.Name -like 'SKYRIM_MENU_PILOT_*' -or
-        $_.Name -eq 'SKYRIM_CLAIM_OWNER' }) {
+        $_.Name -eq 'SKYRIM_CLAIM_OWNER' -or $_.Name -eq 'SKYRIM_CLAIM_LEASE' }) {
     $harness[$v.Name] = $v.Value
     Remove-Item -LiteralPath "Env:\$($v.Name)"
 }
@@ -67,12 +66,16 @@ $env:SKSE_AUTOMATION_SILENT_UI = '1'
 Write-Host ("    scrubbed {0} harness var(s) from the Steam environment: {1}" -f $harness.Count,
     $(if ($harness.Count) { ($harness.Keys | Sort-Object) -join ', ' } else { 'none present' }))
 
-Write-Host "[1] closing stale chain"
-Stop-Process -Name SkyrimSE, ModOrganizer, skse64_loader -Force
-$t = 15
-while ((Get-Process MO2Headless) -and $t -gt 0) { Start-Sleep -Seconds 1; $t -= 1 }   # a direct-chain wrapper exits by itself once the game is gone
-if (Get-Process MO2Headless) { Write-Host "    WARNING MO2Headless.exe still running (a mutation in progress?) - not killing it" }
-Start-Sleep -Seconds 3
+Write-Host "[1] proving a clean launch chain"
+$activeChain = @(Get-Process -Name SkyrimSE, ModOrganizer, skse64_loader, MO2Headless)
+if ($activeChain.Count -gt 0) {
+    $details = ($activeChain | Sort-Object ProcessName, Id | ForEach-Object {
+        "{0}.exe pid {1}" -f $_.ProcessName, $_.Id
+    }) -join ', '
+    Write-Host "[ABORT] pre-existing launch-chain process(es): $details. Provenance is unknown; this launcher will not kill or reuse them."
+    exit 75
+}
+Write-Host "    clean: no Skyrim, SKSE loader, Mod Organizer, or headless wrapper process exists"
 
 Write-Host "[2] profile INIs -> Documents (profile is the source of truth, #143)"
 $ownerLine = Select-String -Path "$PROF\settings.ini" -Pattern '^LocalSettings\s*=\s*(\w+)' | ForEach-Object { $_.Matches[0].Groups[1].Value }

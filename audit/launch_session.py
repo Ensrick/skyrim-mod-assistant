@@ -12,7 +12,7 @@ inside 60 seconds plus a loaded save, use `--verify`, which hands off to
   py -3 audit/launch_session.py
   py -3 audit/launch_session.py --verify [...]       # -> launch_verify.py
   py -3 audit/launch_session.py --wait 300 --hang-seconds 90
-  py -3 audit/launch_session.py --skip-preflight     # only when it just ran clean
+  py -3 audit/launch_session.py --claim-owner NAME
 
   1. preflight.py     - anything non-zero here and the user is NOT told to launch
   2. the user launches (this tool never launches the game itself)
@@ -23,7 +23,7 @@ inside 60 seconds plus a loaded save, use `--verify`, which hands off to
 Exit code is the first thing that failed: 1 preflight, 2 a hang was reported,
 3 died before the menu, 4 never started, 5 triage found refused plugins.
 """
-import io, os, subprocess, sys, time
+import io, os, subprocess, sys, tempfile, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # reconfigure, not a fresh TextIOWrapper: two of these modules import each
@@ -36,6 +36,7 @@ except (AttributeError, ValueError):
 
 import launch_watch as W
 import threaddump as TD
+import claim
 
 AUDIT = os.path.dirname(os.path.abspath(__file__))
 
@@ -53,31 +54,31 @@ def run(script, *args):
     return r.returncode
 
 
-def main():
-    a = sys.argv[1:]
-    if '--verify' in a:
-        rest = [x for x in a if x != '--verify']
-        return subprocess.call([sys.executable, os.path.join(AUDIT, 'launch_verify.py'),
-                                *rest])
+def _opt(args, name, cast, default):
+    if name not in args:
+        return default
+    index = args.index(name) + 1
+    if index >= len(args) or args[index].startswith('--'):
+        raise ValueError(f'{name} requires an argument')
+    return cast(args[index])
 
-    def opt(name, cast, default):
-        return cast(a[a.index(name) + 1]) if name in a else default
 
-    if '--skip-preflight' not in a:
-        step(1, 'preflight - is this build safe to launch at all?')
-        if run('preflight.py') != 0:
-            print('\nSTOP. Do not tell the user to launch. Fix the FAIL lines above, '
-                  'then run this again.')
-            return 1
+def _interactive(args):
+    """Run one interactive session while the caller owns the profile claim."""
+    step(1, 'preflight - is this build safe to launch at all?')
+    if run('preflight.py') != 0:
+        print('\nSTOP. Do not tell the user to launch. Fix the FAIL lines above, '
+              'then run this again.')
+        return 1
 
     step(2, 'launch')
     print('The game is NOT launched by this tool (standing rule: no autonomous '
           'launches).\nLaunch it now the usual way - Steam, or MO2 -> SKSE.\n')
 
     cfg = W.Cfg()
-    cfg.interval = opt('--interval', float, W.Cfg.interval)
-    cfg.hang_seconds = opt('--hang-seconds', float, W.Cfg.hang_seconds)
-    wait = opt('--wait', float, 300.0)
+    cfg.interval = _opt(args, '--interval', float, W.Cfg.interval)
+    cfg.hang_seconds = _opt(args, '--hang-seconds', float, W.Cfg.hang_seconds)
+    wait = _opt(args, '--wait', float, 300.0)
 
     step(3, 'watch - is it progressing?')
     dumps_before = set(os.listdir(W.SKSE_DIR)) if os.path.isdir(W.SKSE_DIR) else set()
@@ -109,6 +110,91 @@ def main():
     said = {0: 'clean', 2: 'HANG REPORTED', 3: 'DIED BEFORE MENU'}.get(rc, str(rc))
     print(f'watch said: {said}   triage exit: {trc}')
     return rc or (5 if trc == 2 else 0)
+
+
+def selftest():
+    """Prove claim ownership brackets preflight, waiting, watch, and triage."""
+    events = []
+
+    class FakeGuard:
+        def __enter__(self):
+            events.append('claim-enter')
+            return {'owner': 'fixture', 'leaseId': 'fixture-lease'}
+
+        def __exit__(self, *_exc):
+            events.append('claim-exit')
+
+    original_guard = claim.guard
+    original_run = globals()['run']
+    original_find = W.find_process
+    original_watch = W.watch
+    original_skse_dir = W.SKSE_DIR
+    try:
+        claim.guard = lambda *_args, **_kwargs: FakeGuard()
+        globals()['run'] = lambda script, *_args: (
+            events.append('preflight' if script == 'preflight.py' else 'triage') or 0)
+        W.find_process = lambda: (events.append('find-process') or 123)
+        W.watch = lambda _pid, _cfg: (events.append('watch') or 0)
+        with tempfile.TemporaryDirectory(prefix='launch-session-') as raw:
+            W.SKSE_DIR = raw
+            rc = main(['--wait', '0.1', '--claim-owner', 'fixture'])
+        expected = ['claim-enter', 'preflight', 'find-process', 'watch',
+                    'triage', 'claim-exit']
+        if rc != 0 or events != expected:
+            raise AssertionError(f'claim/session order mismatch: rc={rc}, events={events}')
+
+        events.clear()
+        globals()['run'] = lambda script, *_args: (
+            events.append('preflight') or (1 if script == 'preflight.py' else 0))
+        rc = main(['--claim-owner', 'fixture'])
+        if rc != 1 or events != ['claim-enter', 'preflight', 'claim-exit']:
+            raise AssertionError(
+                f'failed preflight escaped claim cleanup: rc={rc}, events={events}')
+
+        events.clear()
+        rc = main(['--skip-preflight'])
+        if rc != 64 or events:
+            raise AssertionError('proofless --skip-preflight did not fail before claiming')
+    finally:
+        claim.guard = original_guard
+        globals()['run'] = original_run
+        W.find_process = original_find
+        W.watch = original_watch
+        W.SKSE_DIR = original_skse_dir
+    print('launch_session selftest PASS (3 cases)')
+    return 0
+
+
+def main(argv=None):
+    a = list(sys.argv[1:] if argv is None else argv)
+    if '--selftest' in a:
+        return selftest()
+    if '--skip-preflight' in a:
+        print('REFUSING: --skip-preflight is not a launch capability. A clean gate '
+              'must run while this session owns the profile claim.')
+        return 64
+    if '--verify' in a:
+        rest = [x for x in a if x != '--verify']
+        return subprocess.call([sys.executable, os.path.join(AUDIT, 'launch_verify.py'),
+                                *rest])
+    try:
+        owner = _opt(a, '--claim-owner', str, None) or claim.default_owner()
+    except (TypeError, ValueError) as exc:
+        print(f'usage error: {exc}')
+        return 64
+    try:
+        # The claim starts before preflight and is released only after watch and
+        # triage. A cooperating installer therefore cannot invalidate a clean
+        # gate during the (potentially five-minute) wait for the human launch.
+        with claim.guard(owner, 'interactive launch: preflight -> watch -> triage',
+                         ttl=45, wait=0):
+            return _interactive(a)
+    except claim.ClaimHeld as exc:
+        print(f'CLAIM HELD - refusing an unowned launch window: {exc}')
+        return claim.ExTempFail
+    except (TypeError, ValueError) as exc:
+        print(f'usage error: {exc}')
+        return 64
 
 
 if __name__ == '__main__':

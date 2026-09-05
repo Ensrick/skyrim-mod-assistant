@@ -2,9 +2,9 @@ name: Check
 
 on:
   push:
-    branches: [main]
+    branches: [main, ensrick/modpack-roadmap-2026-08-28]
   pull_request:
-    branches: [main]
+    branches: [main, ensrick/modpack-roadmap-2026-08-28]
 
 permissions:
   contents: read
@@ -48,3 +48,22 @@ jobs:
             $failures | Write-Error
             exit 1
           }
+
+      - name: Compile Python audit tools
+        shell: pwsh
+        run: python -m compileall -q audit
+
+      - name: Run self-contained lifecycle tests
+        shell: pwsh
+        run: |
+          python audit/profile_reconcile.py --selftest
+          python audit/keep_coverage.py --selftest
+          python audit/claim.py --selftest
+          python audit/preflight.py --selftest
+          python audit/launch_session.py --selftest
+          python audit/launch_verify.py --selftest
+          python audit/test_install_mod_lifecycle.py
+          python audit/patch_impact.py --selftest
+          python audit/verification_plan.py --selftest
+          python audit/verification_status.py --selftest
+          python audit/verification_result.py --selftest
