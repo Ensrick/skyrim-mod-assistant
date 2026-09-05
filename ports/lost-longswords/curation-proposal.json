@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
-  "status": "PROPOSED_NUMBERS_AWAITING_USER_APPROVAL_NOT_DEPLOYED",
+  "status": "USER_APPROVED_IMPLEMENTATION_IN_PROGRESS_NOT_YET_DEPLOYED",
+  "approval": "2026-09-05: user approved the proposition and requested fixes, balancing, installation, and reusable future balancing logic",
   "issue": 237,
   "sourcePlugin": "LostLongSwords.esp",
   "sourcePluginSha256": "436E46C2BE9D25B0FD726271712421265C6309DB8C69D8A8AE8C7FF06EC5B54D",
@@ -10,7 +11,7 @@
   "longswordSpeed": 1.0,
   "longswordReach": 1.15,
   "longswordStagger": 0.9,
-  "damageRule": "Corresponding vanilla one-handed sword base damage + 5; Imperial and Stormcloak are proposed steel-grade variants",
+  "damageRule": "Corresponding vanilla one-handed sword base damage + 5; Imperial and Stormcloak are steel-grade variants",
   "hypotheticalDragonbone": {"damage": 20, "speed": 1.0, "index": 20, "included": false},
   "included": [
     {"formKey": "000D63:LostLongSwords.esp", "editorId": "IronLongSword", "damage": 12, "comparison": "012EB7:Skyrim.esm"},
@@ -20,8 +21,8 @@
     {"formKey": "0063F6:LostLongSwords.esp", "editorId": "DaedricLongSword", "damage": 19, "comparison": "0139B9:Skyrim.esm"},
     {"formKey": "003E2F:LostLongSwords.esp", "editorId": "SkyforgeSteelLongSword", "damage": 16, "comparison": "09F25C:Skyrim.esm"},
     {"formKey": "007423:LostLongSwords.esp", "editorId": "SilverLongSword", "damage": 13, "comparison": "10AA19:Skyrim.esm", "retainSilverEffect": true},
-    {"formKey": "008F16:LostLongSwords.esp", "editorId": "ImperialLongSword", "damage": 13, "comparison": "013989:Skyrim.esm", "rolePending": true},
-    {"formKey": "0099DF:LostLongSwords.esp", "editorId": "StormcloakLongSword", "damage": 13, "comparison": "013989:Skyrim.esm", "rolePending": true}
+    {"formKey": "008F16:LostLongSwords.esp", "editorId": "ImperialLongSword", "damage": 13, "comparison": "013989:Skyrim.esm", "role": "Imperial soldier two-handed pool at modest native-comparable rate; guards excluded"},
+    {"formKey": "0099DF:LostLongSwords.esp", "editorId": "StormcloakLongSword", "damage": 13, "comparison": "013989:Skyrim.esm", "role": "Stormcloak soldier two-handed pool at modest native-comparable rate; guards excluded"}
   ],
   "excludedByUser": [
     {"formKey": "009F46:LostLongSwords.esp", "editorId": "DragonboneLongSword", "alreadyAbsent": true},
@@ -31,12 +32,22 @@
   ],
   "distributionConstraints": {
     "excludeGuards": true,
-    "excludeImperialSoldiers": true,
-    "excludeStormcloakSoldiers": true,
+    "excludeImperialSoldiers": false,
+    "excludeStormcloakSoldiers": false,
+    "soldierExceptionsOnly": {
+      "Imperial": "008F16:LostLongSwords.esp",
+      "Stormcloak": "0099DF:LostLongSwords.esp"
+    },
+    "soldierApproval": "2026-09-05 follow-up explicitly permits corresponding faction longsword for soldiers at a reasonable rate compared to Sons of Skyrim alternatives; supersedes earlier blanket army exclusion",
+    "soldierRatePolicy": "Modest native-comparable share within two-handed choices, approximately one quarter where pool structure supports it; report actual conditional rate and retain other equipment",
+    "soldierImplementation": {
+      "Stormcloak": "One fourth of the clean Sons of Skyrim two-handed choice, whose ordinary mixed-style parent selects two-handed one third of the time: approximately one twelfth overall",
+      "Imperial": "Shared native gear lists also serve guards and commanders. Use an owned branch on the audited ordinary soldier template only, with one twelfth Imperial longsword and eleven twelfths existing native sword choice; preserve remaining gear and verify inheritance exclusions"
+    },
     "preserveSonsOfSkyrim": true,
     "noBlanketSharedWeaponPoolInjection": true,
     "preserveExistingFormIds": true,
     "newSaveForAcceptanceTest": true,
-    "status": "PLAN_ONLY_NOT_IMPLEMENTED"
+    "status": "APPROVED_IMPLEMENTATION_IN_PROGRESS"
   }
 }

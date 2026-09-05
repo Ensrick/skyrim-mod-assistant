@@ -1,5 +1,10 @@
 # Lost LongSwords: September balance and private integration proposal
 
+**Follow-up:** The user approved this proposition on 2026-09-05 and requested
+implementation. This document preserves the pre-approval analysis below;
+deployment and verification status belong to the subsequent build/install
+receipt. See [the reusable standard](../../docs/WEAPON_BALANCING_STANDARD.md).
+
 2026-09-05; [issue #237](https://github.com/Ensrick/skyrim-mod-assistant/issues/237).
 User requested the numbers **before approval**. No balance, distribution,
 exclusion, Keep, live profile, or game-launch changes have been made in this

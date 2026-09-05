@@ -44,6 +44,9 @@ record must include:
    value, armor class, warmth where applicable, enchantment, equip slots,
    material/type/vendor keywords, tempering material, crafting costs, perk
    gates, and improvement-perk behavior. Note every deliberate deviation.
+   Weapons must follow [Weapon balancing standard](WEAPON_BALANCING_STANDARD.md):
+   explicit class/exception rules, fresh generated inputs, final-winner checks,
+   and a clear distinction between a damage-times-speed index and measured DPS.
 5. **Acquisition implementation.** State whether the item uses a quest or
    placement, merchant/loot/leveled distribution, an NPC/outfit assignment,
    the future master distribution system, or a retained crafting recipe.

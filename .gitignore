@@ -223,6 +223,27 @@
 !/ports/lost-longswords/*.md
 !/ports/lost-longswords/*.ps1
 !/ports/lost-longswords/*.json
+!/ports/lost-longswords/*.py
+
+# Owned weapon generator source/tests only. Build caches, local plugin output,
+# receipts containing vendor record snapshots, and packages remain ignored.
+!/mods/weapon-balance/
+!/mods/weapon-balance/.gitignore
+!/mods/weapon-balance/*.md
+!/mods/weapon-balance/*.ps1
+!/mods/weapon-balance/*.py
+!/mods/weapon-balance/global.json
+!/mods/weapon-balance/src/
+!/mods/weapon-balance/src/WeaponBalancePatcher/
+!/mods/weapon-balance/src/WeaponBalancePatcher/*.cs
+!/mods/weapon-balance/src/WeaponBalancePatcher/*.csproj
+!/mods/weapon-balance/src/WeaponBalancePatcher/*.json
+!/mods/weapon-balance/tests/
+!/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/
+!/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/*.cs
+!/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/*.csproj
+!/mods/weapon-balance/tests/WeaponBalancePatcher.Tests/*.json
+!/.github/workflows/weapon-balance.yml
 
 !/audit/
 !/audit/*.py

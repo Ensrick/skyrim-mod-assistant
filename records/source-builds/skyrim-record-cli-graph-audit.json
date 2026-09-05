@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-05",
+  "name": "skyrim-record-cli exact distribution graph exports",
+  "source": "https://github.com/Ensrick/skyrim-record-cli",
+  "sourceCommit": "650de6b",
+  "pullRequest": "https://github.com/Ensrick/skyrim-record-cli/pull/5",
+  "buildRootRelativeToRepos": "skyrim-tools-builds/skyrim-record-cli-650de6b",
+  "executableSha256": "2EE5431F870CAC21CEF3D17368E2725DF054FB721634C4F1F4D265CD070DECD8",
+  "assemblySha256": "7DC41F1FE051F8BFB5D795BDF3644DBC6DE76A9CB759FBFBD7A0C31010E1E80C",
+  "framework": ".NET 10, existing private runtime; framework-dependent apphost requires correct DOTNET_ROOT",
+  "mutagen": "0.54.3, locked dependencies unchanged",
+  "commandsAdded": ["leveled-items", "record-links", "self-test-leveled-items"],
+  "purpose": "Exact current-load-order distribution graph inspection for Lost Longswords #237; avoids reflection truncation and opaque nested reference strings",
+  "limitations": [
+    "Per-plugin exports do not resolve MO2 winners or runtime patchers themselves",
+    "Record links need field-level interpretation before claiming inventory inheritance",
+    "Chance-none Global must be resolved; static fraction alone is insufficient when it is present"
+  ],
+  "validation": {
+    "lockedRestoreReleaseBuild": "PASS; zero warnings/errors",
+    "syntheticSelfTest": "PASS; empty lists, exact FormKeys/level/count/flags, 70-entry non-truncation, deterministic serialization, missing data, unset reference, chance-none Global",
+    "independentReview": "PASS after adding LVLG and null-reference fixes",
+    "immutableLostLongswordsExport": "63 LVLI, 512 entries, 123 record-link rows; repeated output deterministic",
+    "githubActions": "PASS; runs 33986642245 and 33986658531",
+    "gameOrProfileMutation": false
+  },
+  "toolchainPromotion": "Not promoted over the existing canonical toolchain pin; this versioned build is an explicit dependency of the scoped recipe",
+  "featureDefaultsDiff": {
+    "applicable": false,
+    "reason": "Read-only command additions; no runtime mod or third-party feature defaults changed"
+  },
+  "distribution": "original MIT source and tool build; no vendor plugin data or game assets included"
+}
