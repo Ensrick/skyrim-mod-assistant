@@ -89,6 +89,11 @@ forms. Existing saved inventories are not automatically purged.
    Owned patches are not fabricated Nexus mod IDs; Oldrim IDs are not SSE IDs.
 5. Check the **final winning fields**, not only the contents of the generated
    patch. Resolve load-order dependencies and downstream overrides explicitly.
+   Respect the engine's master-before-regular-plugin ordering: a master-flagged
+   USSEP cannot be moved after an ordinary ESP to recover lost fixes. Forward
+   reviewed overlap in an owned compatibility layer and preserve later winners.
+   Inspect active runtime weapon rules too; a plugin-only winner audit cannot
+   prove what SkyPatcher, scripts, perks, or native hooks do after loading.
 6. Keep static verification and runtime verification separate. No surprise
    launch: follow [background testing policy](BACKGROUND-TESTING-POLICY.md).
 
