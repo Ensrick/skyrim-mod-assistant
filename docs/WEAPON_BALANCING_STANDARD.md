@@ -58,6 +58,12 @@ the current input winner. Intentional damage changes, recipe changes, and
 distribution belong to separately reviewed rules/overlays with exact field
 assertions. Do not erase enchantments, scripts, critical effects, tempering,
 keywords, reach, weight, or other authors' compatibility fixes accidentally.
+Preservation includes localized names and descriptions, not just combat fields.
+A nonlocalized English-only output must not silently discard source translations.
+Generated localized string tables are part of the artifact: audit their contents,
+hash and package them, verify their actual MO2 file winners, and invalidate the
+output when any table is missing, altered or shadowed. Test mixed localized and
+nonlocalized inputs, including null versus explicitly empty text.
 
 Compare weight, power-attack stamina use, reach, stagger, enchantment hit rate,
 flat damage bonuses, perks, and improvement scaling separately. Speed alone

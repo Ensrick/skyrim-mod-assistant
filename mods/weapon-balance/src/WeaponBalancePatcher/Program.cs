@@ -4,7 +4,9 @@ using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Cache;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Strings;
 using Mutagen.Bethesda.Synthesis;
+using Mutagen.Bethesda.Synthesis.Pipeline;
 
 namespace WeaponBalancePatcher;
 
@@ -32,6 +34,12 @@ public static class Program
     private static Lazy<Settings> _settings = null!;
 
     public static async Task<int> Main(string[] args)
+    {
+        ConfigureLocalizationSemantics();
+        return await RunGuarded(() => RunCore(args));
+    }
+
+    private static async Task<int> RunCore(string[] args)
     {
         if (args.SequenceEqual(["self-test"], StringComparer.OrdinalIgnoreCase))
         {
@@ -61,8 +69,31 @@ public static class Program
             {
                 ExclusionMods = [ModKey.FromNameAndExtension(OutputPlugin)],
             })
-            .SetTypicalOpen(GameRelease.SkyrimSE, OutputPlugin)
+            .SetTypicalOpen(
+                GameRelease.SkyrimSE,
+                OutputPlugin,
+                new TypicalOpenExtraParameters
+                {
+                    TargetLanguage = Language.English,
+                    Localize = true,
+                })
             .Run(args);
+    }
+
+    public static async Task<int> RunGuarded(
+        Func<Task<int>> operation,
+        TextWriter? errorWriter = null)
+    {
+        try
+        {
+            return await operation();
+        }
+        catch (Exception exception)
+        {
+            var writer = errorWriter ?? Console.Error;
+            writer.WriteLine($"ERROR: {exception.GetType().Name}: {exception.Message}");
+            return 1;
+        }
     }
 
     private static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
@@ -72,6 +103,11 @@ public static class Program
         profile.Validate();
         var rules = Policy.ParseRecordRules(settings.RecordRules);
 
+        // Every WEAP override is a full winning record, not a partial field delta.
+        // A non-localized output would therefore replace translated FULL/DESC data
+        // with only the selected target language.  Force a localized output so
+        // Mutagen writes every available source translation to sidecar tables.
+        state.PatchMod.UsingLocalization = true;
         state.PatchMod.ModHeader.Author = "Ensrick";
         state.PatchMod.ModHeader.Description =
             "Generated speed-only weapon balance patch. Regenerate from the current winning load order.";
@@ -85,12 +121,30 @@ public static class Program
         var counts = Enum.GetValues<WeaponBalanceClass>()
             .ToDictionary(value => value, _ => new ClassCounts());
 
-        foreach (var context in state.LoadOrder.PriorityOrder
+        var contexts = state.LoadOrder.PriorityOrder
             .WinningContextOverrides<ISkyrimMod, ISkyrimModGetter, IWeapon, IWeaponGetter>(
-                state.LinkCache))
+                state.LinkCache)
+            .ToArray();
+        var planned = contexts.Select(context => new PlannedWeapon(
+            context,
+            Policy.Plan(context.Record, context.ModKey, settings, profile, rules)))
+            .ToArray();
+        var changedSources = planned
+            .Where(item => item.Decision.TargetSpeed is { } target &&
+                item.Context.Record.Data is { } data &&
+                Math.Abs(data.Speed - target) > SpeedTolerance)
+            .Select(item => item.Context.Record)
+            .ToArray();
+        var outputLanguages = LocalizationPolicy.DetermineOutputLanguages(changedSources);
+        var providerLocalization = state.LoadOrder.ListedOrder
+            .Where(listing => listing.Mod is not null)
+            .ToDictionary(listing => listing.ModKey, listing => listing.Mod!.UsingLocalization);
+
+        foreach (var item in planned)
         {
+            var context = item.Context;
             var weapon = context.Record;
-            var decision = Policy.Plan(weapon, context.ModKey, settings, profile, rules);
+            var decision = item.Decision;
             if (decision.ExplicitRule)
             {
                 resolvedRules.Add(weapon.FormKey);
@@ -136,6 +190,10 @@ public static class Program
 
             var patched = state.PatchMod.Weapons.GetOrAddAsOverride(weapon);
             ApplySpeedOnly(patched, targetSpeed);
+            Require(providerLocalization.TryGetValue(context.ModKey, out var sourceLocalized),
+                $"{weapon.FormKey}: winning provider {context.ModKey} is absent from the load order.");
+            LocalizationPolicy.PrepareForLocalizedOutput(
+                patched, sourceLocalized, outputLanguages);
             if (decision.WeaponClass is { } changedClass)
             {
                 counts[changedClass].Changed++;
@@ -226,9 +284,19 @@ public static class Program
         WriteIndented = true,
     };
 
+    public static void ConfigureLocalizationSemantics()
+    {
+        TranslatedString.DefaultLanguage = Language.English;
+        TranslatedString.DefaultLanguageComparisonOnly = false;
+    }
+
     private static int RunSelfTest()
     {
         BalanceRules.Defaults.Validate();
+        Require(TranslatedString.DefaultLanguage == Language.English,
+            "Localized WEAP comparison target must be English.");
+        Require(!TranslatedString.DefaultLanguageComparisonOnly,
+            "Only-Speed auditing must compare every available translation.");
         Require(StandardKeywords.Count == 7, "Expected seven standard weapon-type keywords.");
         Require(!StandardKeywords.ContainsKey(SteelMaterialKeyword),
             "WeapMaterialSteel must never be treated as a creature or weapon-type keyword.");
@@ -245,6 +313,10 @@ public static class Program
             throw new InvalidOperationException(message);
         }
     }
+
+    private sealed record PlannedWeapon(
+        IModContext<ISkyrimMod, ISkyrimModGetter, IWeapon, IWeaponGetter> Context,
+        SelectionDecision Decision);
 }
 
 public sealed class ClassCounts

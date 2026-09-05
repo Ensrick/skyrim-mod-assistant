@@ -1,7 +1,8 @@
 # Ensrick Weapon Speed Balance
 
-Status: 0.2.0 source candidate; final generation waits for the reviewed private
-Lost Longswords curation layer.
+Source version: 0.3.0. The current installation and acceptance status is recorded
+in `records/source-builds/ensrick-weapon-speed-balance.json`; source version alone
+does not establish that a generated build is installed or gameplay-tested.
 
 This is a generated, ESL-flagged Skyrim SE/AE patch that normalizes the speed
 of conventional melee weapon classes without editing any source mod in place.
@@ -50,6 +51,9 @@ enchantments, dual wielding, and animation event windows remain distinct.
   changes, or locational-damage implementation.
 - Carries only speed-changed winning WEAP overrides. Runtime/save acceptance is
   still required; the source does not make a blanket mid-save safety promise.
+- Preserves item names and descriptions across all available source languages.
+  Localized output includes the required `Strings/` tables; missing versus
+  explicitly empty text is checked rather than waived as serialization noise.
 
 ## Build and validation
 
@@ -67,17 +71,26 @@ matching `-ClaimOwner` whose live claim covers the ten-minute child timeout plus
 margin. The generated plugin, selection
 report, manifest, audit receipts, and archive are intentionally ignored by Git.
 Generation excludes its own output from the input order, verifies the physical
-winning provider and SHA-256 of every input plugin, performs a second
-deterministic build, and runs a semantic only-Speed audit. `audit.ps1
+winning provider and SHA-256 of every input plugin, inventories relevant source
+localization resources, performs a second deterministic build (including output
+string tables), and runs a semantic only-Speed audit. `audit.ps1
 -FreshnessOnly` performs no VFS launch and writes no files; it detects input
 name/order, input bytes/provider, source-policy, output hash, output file winner,
-plugin-priority, and final-winner-receipt drift.
+plugin-priority, source localization resource, output string-table, and
+final-winner-receipt drift.
 Release packaging reruns that read-only freshness gate and places the report,
 manifest, and final-winner receipt under `EnsrickMetadata/` beside the root
-plugin. `package.ps1 -AllowPendingFinalAudit` is only for an explicitly marked
+plugin and its `Strings/` directory. `package.ps1 -AllowPendingFinalAudit` is only for an explicitly marked
 non-release candidate and omits the not-yet-existing final receipt.
 The local .NET SDK is pinned by `global.json`; NuGet dependencies and hashes
 are pinned by `packages.lock.json`.
+
+Localization resource tracking follows the pinned Mutagen reader: loose
+provider-named string tables first, then archives applicable to that provider's
+ModKey. It is not an engine-wide translation-archive resolver. Arbitrarily named
+archives containing another plugin's translations are an upstream limitation
+([Mutagen #578](https://github.com/Mutagen-Modding/Mutagen/issues/578)); conflicting
+applicable archive sources are rejected rather than silently guessed.
 
 ## Prior art and code-weight ruling
 
@@ -95,8 +108,11 @@ across an entire load order, and version 1.2 can disable all non-speed edits.
 It also preserves named-weapon offsets and has broader weapon-family support.
 Replacing this patcher with that released implementation is therefore a user
 choice, not an engineering fact. The installed 0.1.0 artifact remains a
-historically receipted build; the current 0.2.0 source intentionally supersedes
-that generator and does not claim to reproduce the retired binary.
+historically receipted build; the current source intentionally supersedes that
+generator and does not claim to reproduce the retired binary. The intermediate
+0.2.0 full-profile candidate failed the non-Speed audit because it lost
+localized text and was never deployed. Version 0.3.0 addresses that defect;
+it does not weaken the text-preservation audit to accept it.
 
 Adjacent alternatives are not exact replacements. [Customize Weapon Speed](https://www.nexusmods.com/skyrimspecialedition/mods/22100)
 mutates base forms at runtime using Papyrus/SKSE and name matching, while

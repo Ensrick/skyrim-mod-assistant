@@ -21,11 +21,24 @@ function Invoke-Generator([string[]]$Arguments) {
     }
 }
 
+function Assert-CleanupTarget([string]$Path, [string]$Boundary, [string]$Prefix) {
+    $fullPath = [IO.Path]::GetFullPath($Path).TrimEnd('\')
+    $fullBoundary = [IO.Path]::GetFullPath($Boundary).TrimEnd('\')
+    if (-not $fullPath.StartsWith($fullBoundary + '\', [StringComparison]::OrdinalIgnoreCase) -or
+        -not [IO.Path]::GetFileName($fullPath).StartsWith($Prefix, [StringComparison]::Ordinal)) {
+        throw "Refusing cleanup outside the exact generated fixture root: $fullPath"
+    }
+    return $fullPath
+}
+
 $moduleRoot = Split-Path -Parent $PSScriptRoot
 $generator = Join-Path $moduleRoot 'generate.ps1'
-$artifactRoot = Join-Path $moduleRoot 'artifacts'
-$ownedTestRoot = Join-Path $artifactRoot ("_generation-safety-" + [guid]::NewGuid())
-$externalTestRoot = Join-Path ([IO.Path]::GetTempPath()) ("weapon-balance-safety-" + [guid]::NewGuid())
+$artifactRoot = [IO.Path]::GetFullPath((Join-Path $moduleRoot 'artifacts'))
+$tempBoundary = [IO.Path]::GetFullPath([IO.Path]::GetTempPath())
+$ownedTestRoot = [IO.Path]::GetFullPath((Join-Path $artifactRoot (
+    "_generation-safety-" + [guid]::NewGuid())))
+$externalTestRoot = [IO.Path]::GetFullPath((Join-Path $tempBoundary (
+    "weapon-balance-safety-" + [guid]::NewGuid())))
 try {
     $offlineData = Join-Path $externalTestRoot 'offline-data'
     New-Item -ItemType Directory -Force -Path $ownedTestRoot, $offlineData | Out-Null
@@ -105,9 +118,13 @@ try {
         }
         [IO.Directory]::Delete([IO.Path]::GetFullPath($junctionPath), $false)
     }
-    foreach ($cleanup in @($ownedTestRoot, $externalTestRoot)) {
-        if ($cleanup -and (Test-Path -LiteralPath $cleanup)) {
-            [IO.Directory]::Delete([IO.Path]::GetFullPath($cleanup), $true)
+    $cleanupTargets = @(
+        [pscustomobject]@{ path = $ownedTestRoot; boundary = $artifactRoot; prefix = '_generation-safety-' },
+        [pscustomobject]@{ path = $externalTestRoot; boundary = $tempBoundary; prefix = 'weapon-balance-safety-' })
+    foreach ($cleanup in $cleanupTargets) {
+        if ($cleanup.path -and (Test-Path -LiteralPath $cleanup.path)) {
+            $cleanupRoot = Assert-CleanupTarget $cleanup.path $cleanup.boundary $cleanup.prefix
+            [IO.Directory]::Delete($cleanupRoot, $true)
         }
     }
 }

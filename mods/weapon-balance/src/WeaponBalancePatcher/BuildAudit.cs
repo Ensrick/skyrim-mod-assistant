@@ -6,6 +6,7 @@ using Mutagen.Bethesda.Plugins.Cache;
 using Mutagen.Bethesda.Plugins.Order;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Strings;
 using Noggog;
 
 namespace WeaponBalancePatcher;
@@ -52,6 +53,8 @@ internal static class BuildAudit
         AuditKeywordFixtures(loadOrder);
         Program.Require(plugin.ModKey == ModKey.FromNameAndExtension(Program.OutputPlugin),
             $"Plugin key is {plugin.ModKey}, expected {Program.OutputPlugin}.");
+        Program.Require(plugin.UsingLocalization,
+            "Output plugin is not localized; full WEAP overrides would discard source translations.");
         Program.Require(plugin.ModHeader.Flags.HasFlag(SkyrimModHeader.HeaderFlag.Small),
             "Plugin is not ESL-flagged.");
         var lightPluginsBeforeOutput = loadOrder.ListedOrder.Count(listing =>
@@ -71,7 +74,14 @@ internal static class BuildAudit
             .WinningContextOverrides<ISkyrimMod, ISkyrimModGetter, IWeapon, IWeaponGetter>(linkCache)
             .ToArray();
         var contextByKey = contexts.ToDictionary(context => context.Record.FormKey);
-        var recomputed = new Dictionary<FormKey, (IWeaponGetter Source, SelectionDecision Decision)>();
+        var providerLocalization = loadOrder.ListedOrder
+            .Where(listing => listing.Mod is not null)
+            .ToDictionary(listing => listing.ModKey, listing => listing.Mod!.UsingLocalization);
+        var recomputed = new Dictionary<FormKey, (
+            IWeaponGetter Source,
+            ModKey Provider,
+            bool SourceUsesLocalization,
+            SelectionDecision Decision)>();
         var resolvedRules = new HashSet<FormKey>();
         var freshRows = new List<SelectionReportRow>();
         var freshReviewCandidates = new List<ReviewCandidate>();
@@ -103,7 +113,12 @@ internal static class BuildAudit
             if (decision.TargetSpeed is { } target && context.Record.Data is { } data &&
                 Math.Abs(data.Speed - target) > Program.SpeedTolerance)
             {
-                recomputed.Add(context.Record.FormKey, (context.Record, decision));
+                Program.Require(
+                    providerLocalization.TryGetValue(context.ModKey, out var sourceLocalized),
+                    $"{context.Record.FormKey}: winning provider {context.ModKey} is absent from the load order.");
+                recomputed.Add(
+                    context.Record.FormKey,
+                    (context.Record, context.ModKey, sourceLocalized, decision));
                 if (decision.WeaponClass is { } changedClass)
                 {
                     freshClassCounts[changedClass].Changed++;
@@ -141,6 +156,17 @@ internal static class BuildAudit
             "Selection-report patched FormKey set differs from a fresh policy evaluation.");
         Program.Require(pluginWeapons.Keys.ToHashSet().SetEquals(recomputed.Keys),
             "Output WEAP FormKey set differs from a fresh policy evaluation.");
+        var outputLanguages = LocalizationPolicy.DetermineOutputLanguages(
+            recomputed.Values.Select(value => value.Source));
+        var localizedSidecars = AuditLocalizedSidecars(pluginPath, outputLanguages);
+        var inputTranslationSemantics = BuildInputTranslationSemantics(recomputed);
+        var inputLocalizationResources = LocalizationResourceInventory.Create(
+            dataFolder,
+            inputTranslationSemantics.Providers
+                .Where(provider => provider.SourceUsesLocalization)
+                .Select(provider => new LocalizationProviderSpec(
+                    provider.Provider,
+                    provider.Languages.Select(value => Enum.Parse<Language>(value)).ToArray())));
 
         foreach (var context in contexts)
         {
@@ -211,6 +237,8 @@ internal static class BuildAudit
             // then compare every Mutagen field.
             var expectedRecord = expected.Source.DeepCopy();
             Program.ApplySpeedOnly(expectedRecord, target);
+            LocalizationPolicy.PrepareForLocalizedOutput(
+                expectedRecord, expected.SourceUsesLocalization, outputLanguages);
             Program.Require(expectedRecord.Equals(actual),
                 $"{formKey}: output differs from the winning input in a field other than WEAP.DNAM.Speed.");
 
@@ -268,10 +296,15 @@ internal static class BuildAudit
 
         var receipt = new
         {
-            schemaVersion = 2,
+            schemaVersion = 3,
             status = "pass",
             mode = "candidate-build",
             plugin = Program.OutputPlugin,
+            localized = true,
+            translationLanguages = outputLanguages.Select(value => value.ToString()).ToArray(),
+            localizedSidecars,
+            inputTranslationSemantics,
+            inputLocalizationResources,
             eslFlagged = true,
             ownLightFormCount = 0,
             lightPluginsBeforeOutput,
@@ -396,6 +429,143 @@ internal static class BuildAudit
             "WeapMaterialSteel entered the standard weapon-type keyword map.");
     }
 
+    private static LocalizedSidecarReceipt[] AuditLocalizedSidecars(
+        string pluginPath,
+        IReadOnlyCollection<Language> expectedLanguages)
+    {
+        var pluginDirectory = Path.GetDirectoryName(Path.GetFullPath(pluginPath))
+            ?? throw new InvalidOperationException("Output plugin has no parent directory.");
+        var stringsDirectory = Path.Combine(pluginDirectory, "Strings");
+        var outputKey = ModKey.FromNameAndExtension(Program.OutputPlugin);
+        var expected = expectedLanguages
+            .SelectMany(language => new[]
+            {
+                (Language: language, Source: StringsSource.Normal),
+                (Language: language, Source: StringsSource.IL),
+                (Language: language, Source: StringsSource.DL),
+            })
+            .Select(item =>
+            {
+                var fileName = StringsUtility.GetFileName(
+                    StringsLanguageFormat.FullName,
+                    outputKey,
+                    item.Language,
+                    item.Source);
+                return new
+                {
+                    item.Language,
+                    item.Source,
+                    FullPath = Path.Combine(stringsDirectory, fileName),
+                    RelativePath = $"Strings/{fileName}",
+                };
+            })
+            .OrderBy(item => item.RelativePath, StringComparer.Ordinal)
+            .ToArray();
+
+        var supportedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            $".{StringsUtility.StringsFileExtension}",
+            $".{StringsUtility.ILStringsFileExtension}",
+            $".{StringsUtility.DLStringsFileExtension}",
+        };
+        var actualPaths = Directory.Exists(stringsDirectory)
+            ? Directory.EnumerateFiles(stringsDirectory, $"{outputKey.Name}_*", SearchOption.TopDirectoryOnly)
+                .Where(path => supportedExtensions.Contains(Path.GetExtension(path)))
+                .Select(Path.GetFullPath)
+                .ToArray()
+            : [];
+        var expectedPaths = expected.Select(item => Path.GetFullPath(item.FullPath)).ToHashSet(
+            StringComparer.OrdinalIgnoreCase);
+        Program.Require(actualPaths.ToHashSet(StringComparer.OrdinalIgnoreCase).SetEquals(expectedPaths),
+            "Localized sidecar set differs from the exact language/source set required by output WEAP records.");
+
+        return expected.Select(item =>
+        {
+            Program.Require(File.Exists(item.FullPath),
+                $"Localized sidecar is absent: {item.RelativePath}.");
+            return new LocalizedSidecarReceipt(
+                item.RelativePath,
+                item.Language.ToString(),
+                item.Source.ToString(),
+                new FileInfo(item.FullPath).Length,
+                Sha256(item.FullPath));
+        }).ToArray();
+    }
+
+    private static InputTranslationSemanticsReceipt BuildInputTranslationSemantics(
+        IReadOnlyDictionary<FormKey, (
+            IWeaponGetter Source,
+            ModKey Provider,
+            bool SourceUsesLocalization,
+            SelectionDecision Decision)> sources)
+    {
+        var fields = sources
+            .OrderBy(pair => pair.Key.ToString(), StringComparer.OrdinalIgnoreCase)
+            .SelectMany(pair => new[]
+            {
+                SnapshotTranslatedField(
+                    pair.Key,
+                    pair.Value.Provider,
+                    pair.Value.SourceUsesLocalization,
+                    "Name",
+                    pair.Value.Source.Name),
+                SnapshotTranslatedField(
+                    pair.Key,
+                    pair.Value.Provider,
+                    pair.Value.SourceUsesLocalization,
+                    "Description",
+                    pair.Value.Source.Description),
+            })
+            .ToArray();
+        var canonicalBytes = JsonSerializer.SerializeToUtf8Bytes(fields, Program.JsonOptions);
+        var providers = fields
+            .GroupBy(field => new { field.Provider, field.SourceUsesLocalization })
+            .Select(group => new InputTranslationProviderReceipt(
+                group.Key.Provider,
+                group.Key.SourceUsesLocalization,
+                group.Select(field => field.FormKey).Distinct(StringComparer.OrdinalIgnoreCase).Count(),
+                group.Count(),
+                group.Sum(field => field.Values.Count),
+                group.SelectMany(field => field.Values)
+                    .Select(value => value.Language)
+                    .Distinct(StringComparer.Ordinal)
+                    .OrderBy(value => value, StringComparer.Ordinal)
+                    .ToArray()))
+            .OrderBy(item => item.Provider, StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+        var languages = fields
+            .SelectMany(field => field.Values)
+            .Select(value => value.Language)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(value => value, StringComparer.Ordinal)
+            .ToArray();
+        return new InputTranslationSemanticsReceipt(
+            SchemaVersion: 1,
+            Records: sources.Count,
+            Fields: fields.Length,
+            Values: fields.Sum(field => field.Values.Count),
+            Languages: languages,
+            Providers: providers,
+            Sha256: Convert.ToHexString(SHA256.HashData(canonicalBytes)));
+    }
+
+    private static InputTranslatedField SnapshotTranslatedField(
+        FormKey formKey,
+        ModKey provider,
+        bool sourceUsesLocalization,
+        string field,
+        ITranslatedStringGetter? value) => new(
+        formKey.ToString(),
+        provider.FileName.String,
+        sourceUsesLocalization,
+        field,
+        value is not null,
+        value is null
+            ? []
+            : value.OrderBy(pair => pair.Key.ToString(), StringComparer.Ordinal)
+                .Select(pair => new InputTranslatedValue(pair.Key.ToString(), pair.Value))
+                .ToArray());
+
     private static T ReadJson<T>(string path)
     {
         var value = JsonSerializer.Deserialize<T>(File.ReadAllText(path), new JsonSerializerOptions
@@ -426,6 +596,40 @@ internal static class BuildAudit
         File.WriteAllText(fullPath, json);
     }
 }
+
+internal sealed record LocalizedSidecarReceipt(
+    string RelativePath,
+    string Language,
+    string Source,
+    long Bytes,
+    string Sha256);
+
+internal sealed record InputTranslationSemanticsReceipt(
+    int SchemaVersion,
+    int Records,
+    int Fields,
+    int Values,
+    IReadOnlyList<string> Languages,
+    IReadOnlyList<InputTranslationProviderReceipt> Providers,
+    string Sha256);
+
+internal sealed record InputTranslationProviderReceipt(
+    string Provider,
+    bool SourceUsesLocalization,
+    int Records,
+    int Fields,
+    int Values,
+    IReadOnlyList<string> Languages);
+
+internal sealed record InputTranslatedField(
+    string FormKey,
+    string Provider,
+    bool SourceUsesLocalization,
+    string Field,
+    bool Present,
+    IReadOnlyList<InputTranslatedValue> Values);
+
+internal sealed record InputTranslatedValue(string Language, string Value);
 
 internal static class LoadOrderFile
 {

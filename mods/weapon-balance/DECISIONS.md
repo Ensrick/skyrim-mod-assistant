@@ -1,6 +1,6 @@
 # Deferred combat decisions
 
-The 0.2.0 candidate intentionally implements weapon speeds only. It follows
+The 0.3.0 generator intentionally implements weapon speeds only. It follows
 the repository-wide `docs/WEAPON_BALANCING_STANDARD.md`.
 
 ## Recorded speed policy
@@ -24,6 +24,21 @@ damage layer is absent or stale. They also require the Greatsword type keyword,
 two-handed skill, two-hand sword animation, and `BothHands` equip type so the
 custom class cannot silently inherit one-handed behavior or lose perk routing.
 
+## Localization and artifact integrity
+
+A speed-only override must not discard source translations or turn a missing
+description into authored text. The full-profile 0.2.0 candidate exposed this
+with Rulnik's Dagger from `ccKRTSSE001_Altar.esl`: nine source languages became
+English only. That candidate was rejected before deployment. Version 0.3.0
+uses localized output and preserves source-language content with explicit
+tests for mixed localized/inline-English inputs and empty descriptions.
+
+The output string tables are part of the artifact, not optional packaging
+extras. Deterministic builds, installed-winner checks, and read-only freshness
+checks cover them. Relevant source string tables and archives containing those
+tables are also input dependencies: unchanged ESP bytes alone cannot prove
+that a previous translation-preserving build is current.
+
 ## Armor matchups
 
 Deferred until the locational-damage layer is selected. Proposed design:
@@ -40,7 +55,8 @@ Hack and Slash/Limbsplitter, and Bone Breaker/Skull Crusher.
 
 ## Projectile attachment
 
-Deferred with locational damage. Proposed rule: killing arrows stick;
+Outside this generator's scope; implementation and current acceptance belong
+to the separate projectile project. The requested rule is: killing arrows stick;
 nonlethal headshots bounce; nonlethal body shots stick only at or below 50%
 post-hit health. Damage is unaffected.
 
