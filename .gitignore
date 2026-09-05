@@ -222,6 +222,7 @@
 !/ports/lost-longswords/
 !/ports/lost-longswords/*.md
 !/ports/lost-longswords/*.ps1
+!/ports/lost-longswords/*.json
 
 !/audit/
 !/audit/*.py
@@ -290,3 +291,4 @@ dist/
 !/records/apocalypse-inclusion-principle-2026-09-04.md
 
 !/records/grounded-progression-research-2026-09-04.md
+!/records/weapon-balance-maintenance-2026-09-05.md

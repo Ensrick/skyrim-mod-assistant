@@ -156,6 +156,16 @@ The small Python recipe is justified by a rule-based closure across more than
 It uses the existing Spriggit and NIF tools rather than adding a .NET project.
 The full mod's world/navmesh and quest behavior are not approximated in code.
 
+September 5 follow-up: `ports/chronicles-of-steel/convert.py` is now the
+original-ZIP front end. It verifies the exact download, refuses unsafe or
+ambiguous archive paths/existing output directories, checks the local toolchain,
+and orchestrates preparation plus verification without installing anything.
+See the port README and
+`records/source-builds/chronicles-of-steel-converter.json` for the fourteen safety
+tests, real-input read-only preflight, existing-output refusal, and structural
+recheck of the prior v5 output. Full wrapper end-to-end execution and packaged
+dependency delivery remain open; no duplicate multi-gigabyte build was created.
+
 Changing a plugin header to 44 is not by itself a conversion. Here the selected
 equipment data is parsed and written with the SkyrimSE schema, then checked
 again in its binary form. This does not establish equivalent behavior for the

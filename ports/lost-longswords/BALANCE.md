@@ -1,7 +1,15 @@
 # Lost LongSwords two-handed balance decision
 
+**Historical July baseline, not the current target.** The September 5 user
+request supersedes this design with a proposed Speed-1.0 longsword class and
+Dragonbone-reference damage 20. See
+[the current comparison and approval gates](SEPTEMBER_BALANCE_PROPOSAL.md).
+The old values below are still installed pending that review. “DPS” in the
+original notes is a `base damage * Speed` index, not measured real-time DPS.
+
 The original two-handed edition's weapon values are deliberately retained for the
-eleven surviving swords. Its common material tiers are already balanced against the
+surviving swords (12 WEAP records using 11 meshes before the new exclusions).
+Its common material tiers were compared against the
 installed Skyrim SE master:
 
 - Vanilla greatswords use speed `0.70`, reach `1.30`, and stagger `1.10`.

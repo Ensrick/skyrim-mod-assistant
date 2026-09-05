@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "PROPOSED_NUMBERS_AWAITING_USER_APPROVAL_NOT_DEPLOYED",
+  "issue": 237,
+  "sourcePlugin": "LostLongSwords.esp",
+  "sourcePluginSha256": "436E46C2BE9D25B0FD726271712421265C6309DB8C69D8A8AE8C7FF06EC5B54D",
+  "numericMetric": "BaseDamage * WEAP.Speed, a balance index, not measured real-time DPS",
+  "longswordAnimationType": "TwoHandSword",
+  "longswordSkill": "TwoHanded",
+  "longswordSpeed": 1.0,
+  "longswordReach": 1.15,
+  "longswordStagger": 0.9,
+  "damageRule": "Corresponding vanilla one-handed sword base damage + 5; Imperial and Stormcloak are proposed steel-grade variants",
+  "hypotheticalDragonbone": {"damage": 20, "speed": 1.0, "index": 20, "included": false},
+  "included": [
+    {"formKey": "000D63:LostLongSwords.esp", "editorId": "IronLongSword", "damage": 12, "comparison": "012EB7:Skyrim.esm"},
+    {"formKey": "000D68:LostLongSwords.esp", "editorId": "SteelLongSword", "damage": 13, "comparison": "013989:Skyrim.esm"},
+    {"formKey": "000D6E:LostLongSwords.esp", "editorId": "OrcishLongSword", "damage": 14, "comparison": "013991:Skyrim.esm"},
+    {"formKey": "00592D:LostLongSwords.esp", "editorId": "EbonyLongSword", "damage": 18, "comparison": "0139B1:Skyrim.esm"},
+    {"formKey": "0063F6:LostLongSwords.esp", "editorId": "DaedricLongSword", "damage": 19, "comparison": "0139B9:Skyrim.esm"},
+    {"formKey": "003E2F:LostLongSwords.esp", "editorId": "SkyforgeSteelLongSword", "damage": 16, "comparison": "09F25C:Skyrim.esm"},
+    {"formKey": "007423:LostLongSwords.esp", "editorId": "SilverLongSword", "damage": 13, "comparison": "10AA19:Skyrim.esm", "retainSilverEffect": true},
+    {"formKey": "008F16:LostLongSwords.esp", "editorId": "ImperialLongSword", "damage": 13, "comparison": "013989:Skyrim.esm", "rolePending": true},
+    {"formKey": "0099DF:LostLongSwords.esp", "editorId": "StormcloakLongSword", "damage": 13, "comparison": "013989:Skyrim.esm", "rolePending": true}
+  ],
+  "excludedByUser": [
+    {"formKey": "009F46:LostLongSwords.esp", "editorId": "DragonboneLongSword", "alreadyAbsent": true},
+    {"formKey": "003E2B:LostLongSwords.esp", "editorId": "ElvenLongSword", "alreadyAbsent": false},
+    {"formKey": "000D71:LostLongSwords.esp", "editorId": "DwarvenLongSword", "alreadyAbsent": false},
+    {"formKey": "004394:LostLongSwords.esp", "editorId": "GlassLongSword", "alreadyAbsent": false}
+  ],
+  "distributionConstraints": {
+    "excludeGuards": true,
+    "excludeImperialSoldiers": true,
+    "excludeStormcloakSoldiers": true,
+    "preserveSonsOfSkyrim": true,
+    "noBlanketSharedWeaponPoolInjection": true,
+    "preserveExistingFormIds": true,
+    "newSaveForAcceptanceTest": true,
+    "status": "PLAN_ONLY_NOT_IMPLEMENTED"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "name": "TCOSS user-side conversion front end",
+  "version": "0.1.0-prototype",
+  "date": "2026-09-05",
+  "issue": 238,
+  "source": "ports/chronicles-of-steel/convert.py",
+  "whyCode": "A user-owned archive must be version-validated, safely extracted and passed through existing generative record/asset conversion tools without distributing vendor data; this front end orchestrates that reproducible workflow rather than hand-authoring plugin records.",
+  "distribution": "recipe",
+  "vendorBytesCommitted": false,
+  "vendorBytesRedistributable": false,
+  "installed": false,
+  "profileChanged": false,
+  "gameLaunched": false,
+  "validation": {
+    "syntheticArchiveSafetyTests": {"groups": 7, "status": "PASS"},
+    "preflightAndReadOnlySafetyTests": {"groups": 7, "status": "PASS"},
+    "peerReview": "Unavailable-drive loop fixed with fixed-point guard; regression test passes",
+    "realArchiveAndLocalToolchainReadOnlyPreflight": "PASS",
+    "existingOutputRefusal": "PASS",
+    "existingV5PayloadIndependentStructuralRecheck": "PASS",
+    "recheckedRecords": 1441,
+    "recheckedMeshes": 894,
+    "recheckedOpaqueByteFields": 2361,
+    "newWrapperFullConversionRun": "NOT_RUN; avoids duplicating the previously tested multi-gigabyte backend outputs",
+    "visualOrRuntimeValidation": "NOT_RUN"
+  },
+  "featureDefaultsDiff": {
+    "applicable": false,
+    "reason": "Original offline command-line orchestration only; no rebuilt third-party runtime defaults or installed mod configuration."
+  },
+  "openGates": [
+    "Final equipment scope and item roles",
+    "TCOSS weapon/armor balance",
+    "Three missing texture mip chains",
+    "Distribution and compatibility",
+    "Packaged front-end end-to-end acceptance and dependency delivery",
+    "Visual and disposable-save gameplay validation",
+    "Publication permissions"
+  ]
+}

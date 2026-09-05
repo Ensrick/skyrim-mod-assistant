@@ -2,6 +2,7 @@
 import argparse
 import importlib.util
 import json
+import os
 from pathlib import Path
 import struct
 import subprocess
@@ -78,7 +79,8 @@ def main():
     assert len(binary_records) == len(actual) == len(set(binary_records))
     assert {f"{form & 0xFFFFFF:06X}:{recipe.OUTPUT_NAME}" for form in binary_records} == actual.keys()
     output = subprocess.run([str(args.nif_tool), "inspect", str(mod / "meshes")],
-                            capture_output=True, text=True, encoding="utf-8", check=True)
+                            capture_output=True, text=True, encoding="utf-8", check=True,
+                            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
     meshes = [json.loads(line) for line in output.stdout.splitlines() if line.strip()]
     local_assets = {p.relative_to(mod).as_posix().lower(): p for p in mod.rglob("*") if p.is_file()}
     report = json.loads((args.review / "review-report.json").read_text(encoding="utf-8"))

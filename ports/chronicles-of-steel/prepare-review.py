@@ -9,6 +9,7 @@ import collections
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -54,7 +55,8 @@ def digest(path):
 
 def run(*args):
     process = subprocess.run([str(a) for a in args], capture_output=True, text=True,
-                             encoding="utf-8", errors="strict")
+                             encoding="utf-8", errors="strict",
+                             creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
     if process.returncode:
         raise RuntimeError(f"{args[0]} failed ({process.returncode}):\n"
                            f"{process.stdout[-3000:]}\n{process.stderr[-3000:]}")
