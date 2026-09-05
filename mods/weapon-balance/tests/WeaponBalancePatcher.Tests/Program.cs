@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Order;
 using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.Strings;
 using WeaponBalancePatcher;
@@ -193,7 +194,78 @@ try
     localizedOutput.Weapons.Add(embeddedWeapon);
     localizedOutput.Weapons.Add(partialLocalizedWeapon);
     localizedOutput.Weapons.Add(descriptionCarrierWeapon);
-    localizedOutput.WriteToBinary(roundTripPath);
+    // Exceed Mutagen's default 100-record parallel cut size.  The production
+    // writer must remain byte-identical even when enough translated records
+    // exist for the ordinary parallel writer to schedule several tasks.
+    for (uint index = 0; index < 420; index++)
+    {
+        var stressWeapon = FixtureAt(
+            new FormKey(localizedOutputKey, 0x900 + index), "01E713:Skyrim.esm");
+        stressWeapon.Name = new TranslatedString(
+            Language.English, $"Deterministic translated weapon {index:D3}");
+        stressWeapon.Description = new TranslatedString(
+            Language.English, $"Deterministic description {index:D3}");
+        LocalizationPolicy.PrepareForLocalizedOutput(
+            stressWeapon, sourceUsesLocalization: false, outputLanguages);
+        localizedOutput.Weapons.Add(stressWeapon);
+    }
+
+    var deterministicTwin = new SkyrimMod(localizedOutputKey, SkyrimRelease.SkyrimSE)
+    {
+        UsingLocalization = true,
+    };
+    foreach (var weapon in localizedOutput.Weapons)
+    {
+        deterministicTwin.Weapons.Add(weapon.DeepCopy());
+    }
+
+    var skyrimMaster = new SkyrimMod(
+        ModKey.FromNameAndExtension("Skyrim.esm"), SkyrimRelease.SkyrimSE);
+    skyrimMaster.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Master;
+    var firstLoadOrder = new LoadOrder<IModListingGetter<ISkyrimModGetter>>(
+        [
+            new ModListing<ISkyrimModGetter>(skyrimMaster, enabled: true),
+            new ModListing<ISkyrimModGetter>(localizedOutput, enabled: true),
+        ],
+        disposeItems: false);
+    var secondLoadOrder = new LoadOrder<IModListingGetter<ISkyrimModGetter>>(
+        [
+            new ModListing<ISkyrimModGetter>(skyrimMaster, enabled: true),
+            new ModListing<ISkyrimModGetter>(deterministicTwin, enabled: true),
+        ],
+        disposeItems: false);
+
+    PatcherProgram.WriteDeterministically(
+        localizedOutput, roundTripPath, firstLoadOrder);
+    var deterministicRoot = Path.Combine(roundTripRoot, "determinism");
+    var deterministicPath = Path.Combine(
+        deterministicRoot, localizedOutputKey.FileName.String);
+    PatcherProgram.WriteDeterministically(
+        deterministicTwin, deterministicPath, secondLoadOrder);
+
+    Check(File.ReadAllBytes(roundTripPath).SequenceEqual(
+            File.ReadAllBytes(deterministicPath)),
+        "single-thread localized plugin output is not byte-for-byte deterministic");
+    var firstStringsDirectory = Path.Combine(roundTripRoot, "Strings");
+    var secondStringsDirectory = Path.Combine(deterministicRoot, "Strings");
+    var firstSidecarNames = Directory.EnumerateFiles(firstStringsDirectory)
+        .Select(Path.GetFileName)
+        .OrderBy(value => value, StringComparer.OrdinalIgnoreCase)
+        .ToArray();
+    var secondSidecarNames = Directory.EnumerateFiles(secondStringsDirectory)
+        .Select(Path.GetFileName)
+        .OrderBy(value => value, StringComparer.OrdinalIgnoreCase)
+        .ToArray();
+    Check(firstSidecarNames.SequenceEqual(secondSidecarNames,
+            StringComparer.OrdinalIgnoreCase),
+        "single-thread localized writes emitted different sidecar sets");
+    foreach (var fileName in firstSidecarNames)
+    {
+        Check(File.ReadAllBytes(Path.Combine(firstStringsDirectory, fileName!))
+                .SequenceEqual(File.ReadAllBytes(
+                    Path.Combine(secondStringsDirectory, fileName!))),
+            $"single-thread localized sidecar is not deterministic: {fileName}");
+    }
 
     var stringsDirectory = Path.Combine(roundTripRoot, "Strings");
     var sidecars = Directory.EnumerateFiles(stringsDirectory).ToArray();
@@ -332,6 +404,111 @@ finally
     }
 }
 
+// Exercise the actual Synthesis entry point in a disposable physical Data
+// folder.  This catches the important NoPatch contract: pinned Synthesis
+// supplies no PatchMod, yet our patcher must still create and write its owned
+// output through the serial writer.
+var pipelineRoot = Path.Combine(
+    Path.GetTempPath(), "WeaponBalancePatcher.Pipeline",
+    Guid.NewGuid().ToString("N"));
+try
+{
+    var pipelineData = Path.Combine(pipelineRoot, "Data");
+    var pipelineSettings = Path.Combine(pipelineRoot, "Settings");
+    var pipelineOutput = Path.Combine(pipelineRoot, "Output", PatcherProgram.OutputPlugin);
+    var pipelineReport = Path.Combine(pipelineRoot, "selection-report.json");
+    Directory.CreateDirectory(pipelineData);
+    Directory.CreateDirectory(pipelineSettings);
+
+    foreach (var masterName in new[]
+    {
+        "Skyrim.esm", "Update.esm", "Dawnguard.esm",
+        "HearthFires.esm", "Dragonborn.esm",
+    })
+    {
+        var master = new SkyrimMod(
+            ModKey.FromNameAndExtension(masterName), SkyrimRelease.SkyrimSE);
+        master.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Master;
+        master.WriteToBinary(Path.Combine(pipelineData, masterName));
+    }
+
+    var pipelineSourceKey = ModKey.FromNameAndExtension("FixtureWeapons.esp");
+    var pipelineSource = new SkyrimMod(pipelineSourceKey, SkyrimRelease.SkyrimSE)
+    {
+        UsingLocalization = true,
+    };
+    var pipelineWeapon = FixtureAt(
+        new FormKey(pipelineSourceKey, 0x800), "01E711:Skyrim.esm");
+    pipelineWeapon.Name = new TranslatedString(
+        Language.English,
+        new Dictionary<Language, string>
+        {
+            [Language.English] = "Pipeline sword",
+            [Language.French] = "Épée de pipeline",
+        });
+    pipelineSource.Weapons.Add(pipelineWeapon);
+    pipelineSource.WriteToBinary(
+        Path.Combine(pipelineData, pipelineSourceKey.FileName.String));
+
+    var pipelineLoadOrder = Path.Combine(pipelineRoot, "plugins.txt");
+    File.WriteAllText(pipelineLoadOrder, $"*{pipelineSourceKey.FileName.String}\n");
+    File.WriteAllText(
+        Path.Combine(pipelineSettings, "settings.json"),
+        JsonSerializer.Serialize(new Settings(), new JsonSerializerOptions
+        {
+            WriteIndented = true,
+        }));
+
+    var oldPipelineReport = Environment.GetEnvironmentVariable(
+        "WEAPON_BALANCE_REPORT_PATH");
+    int pipelineExit;
+    try
+    {
+        Environment.SetEnvironmentVariable(
+            "WEAPON_BALANCE_REPORT_PATH", pipelineReport);
+        pipelineExit = await PatcherProgram.Main([
+            "run-patcher",
+            "--DataFolderPath", pipelineData,
+            "--ExtraDataFolder", pipelineSettings,
+            "--GameRelease", "SkyrimSE",
+            "--LoadOrderFilePath", pipelineLoadOrder,
+            "--OutputPath", pipelineOutput,
+            "--ModKey", PatcherProgram.OutputPlugin,
+            "--Localize", "true",
+            "--LoadOrderIncludesCreationClub", "true",
+        ]);
+    }
+    finally
+    {
+        Environment.SetEnvironmentVariable(
+            "WEAPON_BALANCE_REPORT_PATH", oldPipelineReport);
+    }
+
+    Check(pipelineExit == 0 && File.Exists(pipelineOutput) && File.Exists(pipelineReport),
+        "NoPatch pipeline did not create its owned plugin and selection report");
+    if (File.Exists(pipelineOutput))
+    {
+        using var pipelineResult = SkyrimMod.CreateFromBinaryOverlay(
+            pipelineOutput, SkyrimRelease.SkyrimSE);
+        var pipelineResultWeapon = pipelineResult.Weapons.Single();
+        Check(Math.Abs(pipelineResultWeapon.Data!.Speed - BalanceRules.Defaults.Sword) <=
+                PatcherProgram.SpeedTolerance,
+            "NoPatch pipeline output did not apply the selected sword speed");
+        Check(pipelineResult.UsingLocalization &&
+                pipelineResultWeapon.Name!.TryLookup(
+                    Language.French, out var pipelineFrench) &&
+                pipelineFrench == "Épée de pipeline",
+            "NoPatch pipeline output did not retain source localization");
+    }
+}
+finally
+{
+    if (Directory.Exists(pipelineRoot))
+    {
+        Directory.Delete(pipelineRoot, recursive: true);
+    }
+}
+
 var archiveFixtureData = Environment.GetEnvironmentVariable(
     "WEAPON_BALANCE_ARCHIVE_FIXTURE_DATA");
 if (!string.IsNullOrWhiteSpace(archiveFixtureData))
@@ -380,6 +557,81 @@ if (!string.IsNullOrWhiteSpace(archiveFixtureData))
         LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(actualRealComparison);
         Check(expectedRealRecord.Equals(actualRealComparison),
             "real localized candidate differs after narrow empty-backing normalization");
+
+        var realDeterminismRoot = Path.Combine(
+            Path.GetTempPath(), "WeaponBalancePatcher.RealDeterminism",
+            Guid.NewGuid().ToString("N"));
+        try
+        {
+            var firstRoot = Path.Combine(realDeterminismRoot, "first");
+            var secondRoot = Path.Combine(realDeterminismRoot, "second");
+            var firstPath = Path.Combine(firstRoot, PatcherProgram.OutputPlugin);
+            var secondPath = Path.Combine(secondRoot, PatcherProgram.OutputPlugin);
+
+            LoadOrder<IModListingGetter<ISkyrimModGetter>> CandidateLoadOrder(
+                ISkyrimModGetter candidate)
+            {
+                var listings = candidate.ModHeader.MasterReferences
+                    .Select(reference =>
+                    {
+                        var stub = new SkyrimMod(reference.Master, SkyrimRelease.SkyrimSE);
+                        if (reference.Master.FileName.String.EndsWith(
+                                ".esm", StringComparison.OrdinalIgnoreCase))
+                        {
+                            stub.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Master;
+                        }
+                        else if (reference.Master.FileName.String.EndsWith(
+                                     ".esl", StringComparison.OrdinalIgnoreCase))
+                        {
+                            stub.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Master |
+                                SkyrimModHeader.HeaderFlag.Small;
+                        }
+                        return (IModListingGetter<ISkyrimModGetter>)
+                            new ModListing<ISkyrimModGetter>(stub, enabled: true);
+                    })
+                    .Append(new ModListing<ISkyrimModGetter>(candidate, enabled: true))
+                    .ToArray();
+                return new LoadOrder<IModListingGetter<ISkyrimModGetter>>(
+                    listings, disposeItems: false);
+            }
+
+            var candidateLoadOrder = CandidateLoadOrder(realCandidate);
+            PatcherProgram.WriteDeterministically(
+                realCandidate, firstPath, candidateLoadOrder);
+            using var secondRealCandidate = SkyrimMod.CreateFromBinaryOverlay(
+                realCandidatePath, SkyrimRelease.SkyrimSE);
+            var secondCandidateLoadOrder = CandidateLoadOrder(secondRealCandidate);
+            PatcherProgram.WriteDeterministically(
+                secondRealCandidate, secondPath, secondCandidateLoadOrder);
+
+            var firstRelativeFiles = Directory.EnumerateFiles(
+                    firstRoot, "*", SearchOption.AllDirectories)
+                .Select(path => Path.GetRelativePath(firstRoot, path))
+                .OrderBy(value => value, StringComparer.OrdinalIgnoreCase)
+                .ToArray();
+            var secondRelativeFiles = Directory.EnumerateFiles(
+                    secondRoot, "*", SearchOption.AllDirectories)
+                .Select(path => Path.GetRelativePath(secondRoot, path))
+                .OrderBy(value => value, StringComparer.OrdinalIgnoreCase)
+                .ToArray();
+            Check(firstRelativeFiles.SequenceEqual(
+                    secondRelativeFiles, StringComparer.OrdinalIgnoreCase),
+                "real candidate deterministic rewrites emitted different file sets");
+            foreach (var relativePath in firstRelativeFiles)
+            {
+                Check(File.ReadAllBytes(Path.Combine(firstRoot, relativePath))
+                        .SequenceEqual(File.ReadAllBytes(
+                            Path.Combine(secondRoot, relativePath))),
+                    $"real candidate deterministic rewrite differed: {relativePath}");
+            }
+        }
+        finally
+        {
+            if (Directory.Exists(realDeterminismRoot))
+            {
+                Directory.Delete(realDeterminismRoot, recursive: true);
+            }
+        }
     }
 }
 

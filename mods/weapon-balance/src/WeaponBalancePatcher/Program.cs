@@ -2,6 +2,7 @@ using System.Text.Json;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Cache;
+using Mutagen.Bethesda.Plugins.Order;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.Strings;
@@ -68,6 +69,13 @@ public static class Program
             .AddPatch<ISkyrimMod, ISkyrimModGetter>(RunPatch, new PatcherPreferences
             {
                 ExclusionMods = [ModKey.FromNameAndExtension(OutputPlugin)],
+                // Synthesis 0.36.5 always uses Mutagen's parallel writer and does
+                // not expose its ParallelWriteParameters.  Parallel localized
+                // writes assign string IDs in thread-arrival order, so otherwise
+                // identical runs are not byte-for-byte reproducible.  NoPatch
+                // suppresses that built-in writer; RunPatch creates and writes
+                // the output itself with the supported SingleThread builder API.
+                NoPatch = true,
             })
             .SetTypicalOpen(
                 GameRelease.SkyrimSE,
@@ -103,15 +111,22 @@ public static class Program
         profile.Validate();
         var rules = Policy.ParseRecordRules(settings.RecordRules);
 
+        // PatcherStateFactory intentionally supplies a null PatchMod when
+        // PatcherPreferences.NoPatch is enabled.  Keep ownership of this output
+        // explicit instead of relying on that unavailable state property.
+        var patchMod = new SkyrimMod(
+            ModKey.FromNameAndExtension(OutputPlugin),
+            SkyrimRelease.SkyrimSE);
+
         // Every WEAP override is a full winning record, not a partial field delta.
         // A non-localized output would therefore replace translated FULL/DESC data
         // with only the selected target language.  Force a localized output so
         // Mutagen writes every available source translation to sidecar tables.
-        state.PatchMod.UsingLocalization = true;
-        state.PatchMod.ModHeader.Author = "Ensrick";
-        state.PatchMod.ModHeader.Description =
+        patchMod.UsingLocalization = true;
+        patchMod.ModHeader.Author = "Ensrick";
+        patchMod.ModHeader.Description =
             "Generated speed-only weapon balance patch. Regenerate from the current winning load order.";
-        state.PatchMod.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Small;
+        patchMod.ModHeader.Flags |= SkyrimModHeader.HeaderFlag.Small;
 
         var rows = new List<SelectionReportRow>();
         var reviewCandidates = new List<ReviewCandidate>();
@@ -124,6 +139,9 @@ public static class Program
         var contexts = state.LoadOrder.PriorityOrder
             .WinningContextOverrides<ISkyrimMod, ISkyrimModGetter, IWeapon, IWeaponGetter>(
                 state.LinkCache)
+            .OrderBy(context => context.Record.FormKey.ModKey.FileName.String,
+                StringComparer.OrdinalIgnoreCase)
+            .ThenBy(context => context.Record.FormKey.ID)
             .ToArray();
         var planned = contexts.Select(context => new PlannedWeapon(
             context,
@@ -188,7 +206,7 @@ public static class Program
                 continue;
             }
 
-            var patched = state.PatchMod.Weapons.GetOrAddAsOverride(weapon);
+            var patched = patchMod.Weapons.GetOrAddAsOverride(weapon);
             ApplySpeedOnly(patched, targetSpeed);
             Require(providerLocalization.TryGetValue(context.ModKey, out var sourceLocalized),
                 $"{weapon.FormKey}: winning provider {context.ModKey} is absent from the load order.");
@@ -225,6 +243,8 @@ public static class Program
             DirectSpeedAlreadyTarget: directSpeedAlreadyTarget);
         WriteSelectionReport(report);
 
+        WriteDeterministically(patchMod, state.OutputPath.Path, state.LoadOrder);
+
         Console.WriteLine("Weapon speed normalization summary:");
         foreach (var (weaponClass, classCounts) in counts)
         {
@@ -246,6 +266,40 @@ public static class Program
         var data = weapon.Data
             ?? throw new InvalidOperationException($"{weapon.FormKey}: DATA is absent.");
         data.Speed = targetSpeed;
+    }
+
+    /// <summary>
+    /// Writes a Skyrim plugin deterministically against an explicit load order.
+    /// Localized string IDs are allocated serially in record traversal order.
+    /// </summary>
+    public static void WriteDeterministically(
+        ISkyrimModGetter mod,
+        string outputPath,
+        ILoadOrderGetter<IModListingGetter<ISkyrimModGetter>> loadOrder)
+    {
+        var fullPath = PrepareOutputPath(mod, outputPath);
+        mod.BeginWrite
+            .ToPath(fullPath)
+            .WithLoadOrder(loadOrder)
+            .NoModKeySync()
+            .WithTargetLanguage(Language.English)
+            .SingleThread()
+            .Write();
+    }
+
+    private static string PrepareOutputPath(ISkyrimModGetter mod, string outputPath)
+    {
+        Require(!string.IsNullOrWhiteSpace(outputPath), "Output path is empty.");
+        var fullPath = Path.GetFullPath(outputPath);
+        Require(string.Equals(
+                Path.GetFileName(fullPath),
+                mod.ModKey.FileName.String,
+                StringComparison.OrdinalIgnoreCase),
+            $"Output filename must match {mod.ModKey.FileName.String}: {fullPath}");
+        var parent = Path.GetDirectoryName(fullPath)
+            ?? throw new InvalidOperationException($"Output path has no parent: {fullPath}");
+        Directory.CreateDirectory(parent);
+        return fullPath;
     }
 
     internal static ReviewCandidate CreateReviewCandidate(

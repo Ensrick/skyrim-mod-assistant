@@ -82,6 +82,9 @@ string tables), and runs a semantic only-Speed audit. `audit.ps1
 name/order, input bytes/provider, source-policy, output hash, output file winner,
 plugin-priority, source localization resource, output string-table, and
 final-winner-receipt drift.
+Records are planned in stable FormKey order and written with Mutagen's supported
+single-threaded writer. The pinned parallel writer allocates localized string
+IDs by thread arrival, which preserves meaning but fails byte reproducibility.
 Release packaging reruns that read-only freshness gate and places the report,
 manifest, and final-winner receipt under `EnsrickMetadata/` beside the root
 plugin and its `Strings/` directory. `package.ps1 -AllowPendingFinalAudit` is only for an explicitly marked
