@@ -101,6 +101,18 @@ injection. Final item roles and balance remain user decisions on [issue
 remain immutable; any balancing/distribution work belongs in an owned,
 preferably ESP-FE patch and the future master distribution system.
 
+### Chronicles of Steel intake (Oldrim 12506 / 103289; 2026-09-05)
+
+[Issue #238](https://github.com/Ensrick/skyrim-mod-assistant/issues/238) tracks
+conversion, defect repair, balance, distribution and publication. The newer
+103289 archive contains all original Nord weapons and supersedes 12506. An
+isolated 532-item equipment review is built and structurally verified, but is
+not installed and does not create a Keep entry. Full Civil War-overhaul versus
+equipment-only versus Nord-only scope remains the user's decision. Prototype
+items, roles and balance are still review work. See
+[the complete intake](CHRONICLES_OF_STEEL_CONVERSION.md). Vendor-derived output
+stays private; the source-only recipe is not permission to publish its output.
+
 ## Protected vanilla gear (user constraint, 2026-08-29)
 
 Stated while reviewing the NordwarUA armour family. Armour and weapon mods are

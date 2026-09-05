@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "component": "Chronicles of Steel Equipment Review",
+  "auditedAt": "2026-09-05",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/238",
+  "status": "private-review-not-installed",
+  "sourceMod": {
+    "game": "skyrim",
+    "modId": 103289,
+    "fileId": 1000320407,
+    "archiveSha256": "CED4BA4A8FB6705C62706FF2F80FA988E1520917470D3A31171A78ED25568CF5",
+    "bsaSha256": "73BA09B6A2EBEC21EC0449DDD85BBA6C67621AA2FF149407B7DA3FC0AA6B9F99"
+  },
+  "sourceRecipe": "ports/chronicles-of-steel/prepare-review.py",
+  "verificationRecipe": "ports/chronicles-of-steel/verify-review.py",
+  "rationaleForCode": "This is a rule-based dependency closure and deterministic remapping over 1441 equipment records and hundreds of referenced assets, using existing Spriggit/NIF CLIs; it is not a program to change one field.",
+  "toolVersions": {
+    "Spriggit": "0.41.0",
+    "PyYAML": "6.0.3",
+    "nifPortCli": "source-built; repository toolchain c69d745",
+    "recordCli": "source-built 1f3c8d9",
+    "BSArch": "0.7"
+  },
+  "localOutput": "work/chronicles-of-steel/equipment-review-v5",
+  "plugin": {
+    "name": "Ensrick TCOSS Equipment Review.esp",
+    "sha256": "96C9201B05C07A7CAB2B14A12781682D6B1C3239E8350C372E72FA9BFA441127",
+    "formVersion": 44,
+    "light": true,
+    "masters": ["Skyrim.esm"],
+    "records": 1441,
+    "firstLocalFormId": "000800",
+    "lastLocalFormId": "000DA0",
+    "weapons": 381,
+    "armors": 143,
+    "ammunition": 8,
+    "actorSkinsExcluded": 5,
+    "formLinksChecked": 11506,
+    "unresolvedLinks": 0,
+    "noWorldNpcQuestOutfitLeveledRecords": true
+  },
+  "assets": {
+    "meshes": 894,
+    "textures": 270,
+    "sseStream100": true,
+    "privateNamespace": "ensrick/tcossreview",
+    "finalTextureReferencesResolved": true,
+    "implicitArmorWeightEndpointsChecked": true,
+    "texturesMissingMipChain": [
+      "realswords/imperial/legiongladiusold_em.dds",
+      "realswords/nord/axebeardedplainold_em.dds",
+      "realswords/nord/norland_n.dds"
+    ]
+  },
+  "verification": {
+    "structuralChecks": "PASS",
+    "opaqueByteFieldsRoundtripped": 2361,
+    "independentBuildPayloadFilesCompared": 1165,
+    "independentBuildPayloadDifferences": 0,
+    "binaryRoundtripMajorRecordsComparedIncludingHeader": 1442,
+    "binaryRoundtripMajorRecordDifferences": 0,
+    "binaryRoundtripWholeFileIdentical": false,
+    "binaryRoundtripDifference": "group metadata only; every major record header and body are identical",
+    "visualTested": false,
+    "runtimeTested": false,
+    "readyForInstallation": false
+  },
+  "publication": {
+    "recipeSource": "original project code",
+    "vendorBytesAllowed": false,
+    "generatedPluginIsSourceDerived": true,
+    "permissionResolved": false,
+    "restriction": "No generated plugin, serialized vendor data, NIF or DDS is committed or released. Public derivative rights still require resolution."
+  },
+  "cleanup": {
+    "redundantGiB": 6.2,
+    "status": "attempt blocked by execution policy; files retained",
+    "originalArchivesPreserved": true,
+    "finalReviewPreserved": true
+  },
+  "pending": [
+    "user scope selection",
+    "mipmap repairs",
+    "test/prototype content review",
+    "body and physics compatibility",
+    "balance and distribution",
+    "visual and disposable-save testing",
+    "publication permissions"
+  ]
+}

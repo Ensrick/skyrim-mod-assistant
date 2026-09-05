@@ -30,6 +30,13 @@
 !/docs/
 !/docs/*.md
 
+# TCOSS: original recipe and documentation only; all vendor-derived output
+# stays in the already ignored work directory.
+!/ports/
+!/ports/chronicles-of-steel/
+!/ports/chronicles-of-steel/*.py
+!/ports/chronicles-of-steel/README.md
+
 !/records/
 !/records/restricted-mods.json
 !/records/private-runtime-dependencies.json

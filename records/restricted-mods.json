@@ -3,6 +3,34 @@
   "auditedAt": "2026-08-30",
   "mods": [
     {
+      "name": "The Chronicles of Steel - Skyrim - Realswords",
+      "author": "Waalx and Shingouki",
+      "game": "Skyrim (2011)",
+      "nexusModId": 12506,
+      "nexusFileId": 41729,
+      "sourceFile": "The Chronicles of Steel - Skyrim-12506-1-0.rar",
+      "sourceSha256": "D14982E1729DC3336B0394C17A46FC792C28041B8D0AD8463DC416F03D40982B",
+      "redistribution": "not authorized; third-party asset rights reserved",
+      "modification": "permission required by page fields and author notes",
+      "localPolicy": "comparison source only; not installed; superseded by Finale 103289",
+      "publicListPolicy": "do not bundle archive or derivative assets/plugin; do not confuse this Oldrim ID with SSE 12506",
+      "audit": "docs/CHRONICLES_OF_STEEL_CONVERSION.md"
+    },
+    {
+      "name": "The Chronicles of Steel Skyrim - Weapons Of War (Finale)",
+      "author": "Shingouki and Waalx; additional artists credited in source readme",
+      "game": "Skyrim (2011)",
+      "nexusModId": 103289,
+      "nexusFileId": 1000320407,
+      "sourceFile": "Weapons of War-103289-Final-1591581196.zip",
+      "sourceSha256": "CED4BA4A8FB6705C62706FF2F80FA988E1520917470D3A31171A78ED25568CF5",
+      "redistribution": "not authorized for converted assets or source-derived review plugin",
+      "modification": "generic fields permit credited fixes; asset-reuse terms and author notes still reserve permission/contact",
+      "localPolicy": "isolated equipment review conversion only; not installed or activated",
+      "publicListPolicy": "original download remains external; original recipe may be tracked, but vendor-derived plugin/NIF/DDS output is private pending rights review",
+      "audit": "docs/CHRONICLES_OF_STEEL_CONVERSION.md"
+    },
+    {
       "name": "Lost LongSwords",
       "author": "Mr Brownstone",
       "game": "Skyrim (2011)",
