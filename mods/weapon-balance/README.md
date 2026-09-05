@@ -54,6 +54,10 @@ enchantments, dual wielding, and animation event windows remain distinct.
 - Preserves item names and descriptions across all available source languages.
   Localized output includes the required `Strings/` tables; missing versus
   explicitly empty text is checked rather than waived as serialization noise.
+  Before full-record comparison, exact field presence, target language/value,
+  and all translation pairs are checked separately. Only an empty translated
+  field's non-authored lookup-cache count is canonicalized on comparison copies;
+  absent fields, explicit empty strings, and changed translations remain errors.
 
 ## Build and validation
 

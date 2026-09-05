@@ -64,6 +64,10 @@ Generated localized string tables are part of the artifact: audit their contents
 hash and package them, verify their actual MO2 file winners, and invalidate the
 output when any table is missing, altered or shadowed. Test mixed localized and
 nonlocalized inputs, including null versus explicitly empty text.
+Do not confuse a library's cached language count with authored translation
+content. A comparison-only normalization is permissible only after exact
+presence, target-language/value and language-map checks prove equivalent content;
+it must not collapse absent fields, localized ID zero, and explicit empty text.
 
 Compare weight, power-attack stamina use, reach, stagger, enchantment hit rate,
 flat damage bonuses, perks, and improvement scaling separately. Speed alone

@@ -140,14 +140,25 @@ partialLocalizedWeapon.Name = new TranslatedString(
     Language.English,
     new Dictionary<Language, string> { [Language.English] = "Localized English only" });
 partialLocalizedWeapon.Description = null;
+var descriptionCarrierWeapon = FixtureAt(
+    new FormKey(localizedOutputKey, 0x803), "01E713:Skyrim.esm");
+descriptionCarrierWeapon.Name = new TranslatedString(
+    Language.English, "Description carrier");
+descriptionCarrierWeapon.Description = new TranslatedString(
+    Language.English, "Nonempty description keeps DLSTRINGS populated");
 var outputLanguages = LocalizationPolicy.DetermineOutputLanguages(
-    new IWeaponGetter[] { localizedWeapon, embeddedWeapon, partialLocalizedWeapon });
+    new IWeaponGetter[]
+    {
+        localizedWeapon, embeddedWeapon, partialLocalizedWeapon, descriptionCarrierWeapon,
+    });
 LocalizationPolicy.PrepareForLocalizedOutput(
     localizedWeapon, sourceUsesLocalization: true, outputLanguages);
 LocalizationPolicy.PrepareForLocalizedOutput(
     embeddedWeapon, sourceUsesLocalization: false, outputLanguages);
 LocalizationPolicy.PrepareForLocalizedOutput(
     partialLocalizedWeapon, sourceUsesLocalization: true, outputLanguages);
+LocalizationPolicy.PrepareForLocalizedOutput(
+    descriptionCarrierWeapon, sourceUsesLocalization: false, outputLanguages);
 Check(outputLanguages.ToHashSet().SetEquals(localizedValues.Keys),
     "mixed localized/embedded fixture did not retain the exact nine-language union");
 Check(localizedValues.All(pair => localizedWeapon.Name!.TryLookup(pair.Key, out var value) &&
@@ -181,6 +192,7 @@ try
     localizedOutput.Weapons.Add(localizedWeapon);
     localizedOutput.Weapons.Add(embeddedWeapon);
     localizedOutput.Weapons.Add(partialLocalizedWeapon);
+    localizedOutput.Weapons.Add(descriptionCarrierWeapon);
     localizedOutput.WriteToBinary(roundTripPath);
 
     var stringsDirectory = Path.Combine(roundTripRoot, "Strings");
@@ -229,6 +241,66 @@ try
     Check(localizedRoundTrip.Description is not null &&
             !localizedRoundTrip.Description.Any() && localizedRoundTrip.Description.String is null,
         "localized round-trip changed null/ID-0 Description semantics");
+    Check(localizedWeapon.Description!.NumLanguages == 0 &&
+            localizedRoundTrip.Description!.NumLanguages > 0 &&
+            !TranslatedString.AllLanguageComparer.Equals(
+                localizedWeapon.Description, localizedRoundTrip.Description),
+        "empty localized backing-count regression fixture was not reproduced");
+    try
+    {
+        LocalizationPolicy.RequireExactTranslatedSemantics(
+            localizedWeapon, localizedRoundTrip, "synthetic-empty-backing");
+    }
+    catch (InvalidOperationException exception)
+    {
+        failures.Add("exact translated semantic gate rejected equivalent ID-0 fields: " +
+            exception.Message);
+    }
+    var normalizedEmptyExpected = localizedWeapon.DeepCopy();
+    var normalizedEmptyActual = localizedRoundTrip.DeepCopy();
+    LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(normalizedEmptyExpected);
+    LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(normalizedEmptyActual);
+    Check(TranslatedString.AllLanguageComparer.Equals(
+            normalizedEmptyExpected.Description, normalizedEmptyActual.Description),
+        "empty localized backing normalization did not converge equivalent ID-0 fields");
+
+    var absentDescription = localizedWeapon.DeepCopy();
+    absentDescription.Description = null;
+    try
+    {
+        LocalizationPolicy.RequireExactTranslatedSemantics(
+            localizedWeapon, absentDescription, "synthetic-absent-description");
+        failures.Add("exact translated semantic gate accepted absent vs ID-0 Description");
+    }
+    catch (InvalidOperationException)
+    {
+        // Expected: subrecord presence remains semantically distinct.
+    }
+    var explicitEmptyDescription = localizedWeapon.DeepCopy();
+    explicitEmptyDescription.Description = new TranslatedString(Language.English, string.Empty);
+    try
+    {
+        LocalizationPolicy.RequireExactTranslatedSemantics(
+            localizedWeapon, explicitEmptyDescription, "synthetic-explicit-empty-description");
+        failures.Add("exact translated semantic gate accepted null/ID-0 vs explicit empty text");
+    }
+    catch (InvalidOperationException)
+    {
+        // Expected: null and explicit empty text remain semantically distinct.
+    }
+    var targetLanguageTamper = localizedWeapon.DeepCopy();
+    targetLanguageTamper.Name = new TranslatedString(
+        Language.French, targetLanguageTamper.Name!.ToArray());
+    try
+    {
+        LocalizationPolicy.RequireExactTranslatedSemantics(
+            localizedWeapon, targetLanguageTamper, "synthetic-target-language-tamper");
+        failures.Add("exact translated semantic gate accepted a target-language change");
+    }
+    catch (InvalidOperationException)
+    {
+        // Expected: the target language is part of the exact semantic contract.
+    }
     Check(TranslatedString.AllLanguageComparer.Equals(
             embeddedWeapon.Name, embeddedRoundTrip.Name),
         "localized round-trip changed the expanded embedded Name fallback");
@@ -273,6 +345,42 @@ if (!string.IsNullOrWhiteSpace(archiveFixtureData))
             creationClubInventory.Resolutions.Count == 27 &&
             creationClubInventory.Resolutions.All(item => item.Resolution == "archive"),
         "optional Creation Club integration fixture did not resolve 27 localized entries from one BSA");
+
+    var realCandidatePath = Environment.GetEnvironmentVariable(
+        "WEAPON_BALANCE_REAL_CANDIDATE");
+    if (!string.IsNullOrWhiteSpace(realCandidatePath))
+    {
+        var sourcePath = Path.Combine(archiveFixtureData, "ccKRTSSE001_Altar.esl");
+        using var realSource = SkyrimMod.CreateFromBinaryOverlay(
+            sourcePath, SkyrimRelease.SkyrimSE);
+        using var realCandidate = SkyrimMod.CreateFromBinaryOverlay(
+            realCandidatePath, SkyrimRelease.SkyrimSE);
+        var realFormKey = FormKey.Factory("000ECE:ccKRTSSE001_Altar.esl");
+        var expectedRealRecord = realSource.Weapons.Single(item =>
+            item.FormKey == realFormKey).DeepCopy();
+        PatcherProgram.ApplySpeedOnly(expectedRealRecord, 1.25f);
+        LocalizationPolicy.PrepareForLocalizedOutput(
+            expectedRealRecord,
+            sourceUsesLocalization: true,
+            LocalizationPolicy.DetermineOutputLanguages([expectedRealRecord]));
+        var actualRealRecord = realCandidate.Weapons.Single(item =>
+            item.FormKey == realFormKey);
+        try
+        {
+            LocalizationPolicy.RequireExactTranslatedSemantics(
+                expectedRealRecord, actualRealRecord, realFormKey.ToString());
+        }
+        catch (InvalidOperationException exception)
+        {
+            failures.Add("real localized candidate semantic comparison failed: " +
+                exception.Message);
+        }
+        var actualRealComparison = actualRealRecord.DeepCopy();
+        LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(expectedRealRecord);
+        LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(actualRealComparison);
+        Check(expectedRealRecord.Equals(actualRealComparison),
+            "real localized candidate differs after narrow empty-backing normalization");
+    }
 }
 
 using var guardedError = new StringWriter();

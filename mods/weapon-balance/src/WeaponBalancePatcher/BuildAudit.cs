@@ -239,7 +239,12 @@ internal static class BuildAudit
             Program.ApplySpeedOnly(expectedRecord, target);
             LocalizationPolicy.PrepareForLocalizedOutput(
                 expectedRecord, expected.SourceUsesLocalization, outputLanguages);
-            Program.Require(expectedRecord.Equals(actual),
+            LocalizationPolicy.RequireExactTranslatedSemantics(
+                expectedRecord, actual, formKey.ToString());
+            var actualForComparison = actual.DeepCopy();
+            LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(expectedRecord);
+            LocalizationPolicy.NormalizeEmptyBackingForRecordComparison(actualForComparison);
+            Program.Require(expectedRecord.Equals(actualForComparison),
                 $"{formKey}: output differs from the winning input in a field other than WEAP.DNAM.Speed.");
 
             var row = report.Patched.Single(item =>
