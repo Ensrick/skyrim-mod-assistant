@@ -17,15 +17,44 @@ writes them to:
 Each entry carries `modId`, `sourceUrl`, `author {username, userId}` and the
 current `decision` (empty when unreviewed).
 
-**The relay must be running or nothing arrives.** It has died five times in this
-project's history, each time silently:
+**The relay is a Scheduled Task, not a session job.** `NexusCurationRelay`
+runs `scripts/curation-relay.py` with a logon trigger, a 5-minute watchdog and
+restart on failure; `scripts/relay-ensure.ps1` registers and starts it. It died
+silently at least six times while it was a background job of one Claude Code
+session or an ad hoc process, which is why it no longer is.
+
+Ensure it, from any session:
 
 ```
-py -3 C:\Users\danjo\source\repos\nexus-local-curator\scripts\curation-relay.py
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\danjo\source\repos\nexus-local-curator\scripts\relay-ensure.ps1
 ```
+
+Pull the batch:
+
+```
+py -3 C:\Users\danjo\source\repos\nexus-local-curator\scripts\relay-batch.py
+```
+
+Any Claude Code session answers a batch by invoking `/ask-claude`, which runs
+both one-liners, applies the rules below, and queues skips through
+`scripts/queue-decisions.py`. Architecture, failure history and one-liners:
+`nexus-local-curator/scripts/RELAY.md`.
+
+The pipeline is not tied to Claude. `nexus-local-curator/scripts/ASSISTANT_PROMPT.md`
+carries this standard's binding subset and the reply format for any model.
+An agentic tool with a shell follows that file directly; a chat-only assistant
+gets the brief from `relay-batch.py --out --clip` and its reply's `verdicts`
+block is queued by `scripts/apply-verdicts.py --clipboard`. The button label
+says Claude; the relay does not care who answers.
 
 Check `reportedAt` against the current time before reviewing. A stale
-`page-latest.json` looks exactly like a fresh one.
+`page-latest.json` looks exactly like a fresh one. `relay-batch.py` prints a
+`WARNING: STALE batch` line past 60 minutes; a batch older than the user's
+request means the click never reached the relay - ask for another click.
+
+*Revised 2026-09-04 evening: user asked for the relay to be easy to attach to
+any open Claude conversation. Revised 2026-09-05: made assistant-neutral so
+any model can be swapped in.*
 
 ## What this is not
 
