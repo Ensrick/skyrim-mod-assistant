@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "status": "USER_APPROVED_PRIVATE_BUILD_SOURCE",
+  "issue": 237,
+  "proposalSha256": "82379D8F7BDFB763C1880F5004B52BCC1843E8B2EE9087B9335635D70EFAB870",
+  "source": {
+    "plugin": "LostLongSwords.esp",
+    "pluginSha256": "436E46C2BE9D25B0FD726271712421265C6309DB8C69D8A8AE8C7FF06EC5B54D",
+    "validationTree": "work/lost-longswords/private-port/validation-source",
+    "immutable": true
+  },
+  "output": {
+    "plugin": "Ensrick Lost LongSwords Curation.esp",
+    "flags": ["Small"],
+    "masters": ["Skyrim.esm", "unofficial skyrim special edition patch.esp", "LostLongSwords.esp"],
+    "expectedRecordTypes": {
+      "Weapon": 9,
+      "LeveledItem": 5
+    }
+  },
+  "stormcloakOutput": {
+    "plugin": "Ensrick Lost LongSwords Stormcloak Distribution.esp",
+    "flags": ["Small"],
+    "masters": ["Skyrim.esm", "LostLongSwords.esp", "NW_Sons_of_Skyrim.esp"],
+    "expectedRecordTypes": {
+      "LeveledItem": 3
+    },
+    "loadOrder": "immediately after NW_Sons_of_Skyrim.esp; the early curation ESP remains immediately after LostLongSwords.esp"
+  },
+  "masterForwarding": {
+    "reason": "Restore the exact reviewed vanilla/master semantics that the regular vendor ESP erases: USSEP LootDraugrWeapon25 plus the two vanilla Imperial gear lists whose native sword slots the vendor replaced",
+    "providers": [
+      {
+        "plugin": "Skyrim.esm",
+        "pluginSha256AtReview": "E198C3B85E5E48E0C92A6580D8F66E644256B68D812EE32B61735CF9B753DF73",
+        "pathAtReview": "game Data/Skyrim.esm"
+      },
+      {
+        "plugin": "unofficial skyrim special edition patch.esp",
+        "pluginSha256AtReview": "7D7CEA13683EFF2C1C766F5C266441D98FD6E99081815C3F098CF0E54752BD04",
+        "pathAtReview": "mo2-instances/skyrim-se/mods/USSEP/unofficial skyrim special edition patch.esp"
+      }
+    ],
+    "records": [
+      {"formKey": "088515:Skyrim.esm", "type": "LeveledItem", "editorId": "LootDraugrWeapon25", "provider": "unofficial skyrim special edition patch.esp"},
+      {"formKey": "10FAFC:Skyrim.esm", "type": "LeveledItem", "editorId": "CWSoldierImperialGearNoTorch", "provider": "Skyrim.esm"},
+      {"formKey": "10FAFD:Skyrim.esm", "type": "LeveledItem", "editorId": "CWSoldierImperialGearNoTorchNoBow", "provider": "Skyrim.esm"}
+    ],
+    "auditedNoOpCellOverlaps": [
+      {"formKey": "0151F9:Skyrim.esm", "finalMasterProvider": "3DNPC.esp", "finding": "no scalar CELL field difference after excluding child groups"},
+      {"formKey": "015233:Skyrim.esm", "finalMasterProvider": "3DNPC.esp", "finding": "no scalar CELL field difference after excluding child groups"},
+      {"formKey": "01DB4E:Skyrim.esm", "finalMasterProvider": "unofficial skyrim special edition patch.esp", "finding": "only Version2 bookkeeping differs; xEdit marks Version Control Info 2 cpIgnore"},
+      {"formKey": "05DE24:Skyrim.esm", "finalMasterProvider": "Landscape and Water Fixes.esp", "finding": "only Version2 bookkeeping differs; xEdit marks Version Control Info 2 cpIgnore"}
+    ]
+  },
+  "weapons": [
+    {"formKey": "000D63:LostLongSwords.esp", "editorId": "IronLongSword", "damage": 12, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "000D68:LostLongSwords.esp", "editorId": "SteelLongSword", "damage": 13, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "000D6E:LostLongSwords.esp", "editorId": "OrcishLongSword", "damage": 14, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "003E2F:LostLongSwords.esp", "editorId": "SkyforgeSteelLongSword", "damage": 16, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "00592D:LostLongSwords.esp", "editorId": "EbonyLongSword", "damage": 18, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "0063F6:LostLongSwords.esp", "editorId": "DaedricLongSword", "damage": 19, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "007423:LostLongSwords.esp", "editorId": "SilverLongSword", "damage": 13, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "008F16:LostLongSwords.esp", "editorId": "ImperialLongSword", "damage": 13, "speed": 1.0, "reach": 1.15, "stagger": 0.9},
+    {"formKey": "0099DF:LostLongSwords.esp", "editorId": "StormcloakLongSword", "damage": 13, "speed": 1.0, "reach": 1.15, "stagger": 0.9}
+  ],
+  "excludedWeapons": [
+    {"formKey": "009F46:LostLongSwords.esp", "editorId": "DragonboneLongSword", "alreadyAbsent": true},
+    {"formKey": "000D71:LostLongSwords.esp", "editorId": "DwarvenLongSword", "alreadyAbsent": false},
+    {"formKey": "003E2B:LostLongSwords.esp", "editorId": "ElvenLongSword", "alreadyAbsent": false},
+    {"formKey": "004394:LostLongSwords.esp", "editorId": "GlassLongSword", "alreadyAbsent": false}
+  ],
+  "ownedLeveledItems": [
+    {
+      "formKey": "000800:Ensrick Lost LongSwords Curation.esp",
+      "editorId": "EnsrickLLSImperialSoldierWeaponChoice",
+      "flags": ["CalculateFromAllLevelsLessThanOrEqualPlayer", "CalculateForEachItemInCount"],
+      "entries": [
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "0135B8:Skyrim.esm"},
+        {"level": 5, "count": 1, "referenceFormKey": "008F16:LostLongSwords.esp"}
+      ]
+    },
+    {
+      "formKey": "000801:Ensrick Lost LongSwords Curation.esp",
+      "editorId": "EnsrickLLSImperialSoldierGear",
+      "flags": ["UseAll"],
+      "entries": [
+        {"level": 1, "count": 1, "referenceFormKey": "013841:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "000800:Ensrick Lost LongSwords Curation.esp"},
+        {"level": 1, "count": 1, "referenceFormKey": "013986:Skyrim.esm"},
+        {"level": 1, "count": 20, "referenceFormKey": "037C0E:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10E0DE:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10E0E1:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "04F78D:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10FAFB:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "04F78D:Skyrim.esm"}
+      ]
+    }
+  ],
+  "stormcloakOwnedLeveledItems": [
+    {
+      "formKey": "000800:Ensrick Lost LongSwords Stormcloak Distribution.esp",
+      "editorId": "EnsrickLLSStormcloakSoldier2HChoice",
+      "sourceFormKey": "00C3B7:NW_Sons_of_Skyrim.esp",
+      "sourceEditorId": "0_SC_Weapons_2H",
+      "sourceProvider": "NW_Sons_of_Skyrim.esp",
+      "transform": {
+        "kind": "append",
+        "entry": {"level": 1, "count": 1, "referenceFormKey": "0099DF:LostLongSwords.esp"}
+      }
+    },
+    {
+      "formKey": "000801:Ensrick Lost LongSwords Stormcloak Distribution.esp",
+      "editorId": "EnsrickLLSStormcloakSoldierWeaponChoice",
+      "sourceFormKey": "00C3B9:NW_Sons_of_Skyrim.esp",
+      "sourceEditorId": "0_SC_Weapons_1H_or_2H",
+      "sourceProvider": "NW_Sons_of_Skyrim.esp",
+      "transform": {
+        "kind": "replaceExactlyOnce",
+        "from": "00C3B7:NW_Sons_of_Skyrim.esp",
+        "to": "000800:Ensrick Lost LongSwords Stormcloak Distribution.esp"
+      }
+    },
+    {
+      "formKey": "000802:Ensrick Lost LongSwords Stormcloak Distribution.esp",
+      "editorId": "EnsrickLLSStormcloakSoldierGear",
+      "sourceFormKey": "00C3BA:NW_Sons_of_Skyrim.esp",
+      "sourceEditorId": "0_SC_Gear_1H_2H",
+      "sourceProvider": "Sons of Skyrim - Lux Orbis Patch.esp",
+      "transform": {
+        "kind": "replaceExactlyOnce",
+        "from": "00C3B9:NW_Sons_of_Skyrim.esp",
+        "to": "000801:Ensrick Lost LongSwords Stormcloak Distribution.esp"
+      }
+    }
+  ],
+  "vendorLeveledEdges": [
+    {"target": "0A6E61:Skyrim.esm", "editorId": "CWSoldierImperialGear", "remove": "00947B:LostLongSwords.esp", "level": 1},
+    {"target": "10FAFC:Skyrim.esm", "editorId": "CWSoldierImperialGearNoTorch", "remove": "00947B:LostLongSwords.esp", "level": 1},
+    {"target": "10FAFD:Skyrim.esm", "editorId": "CWSoldierImperialGearNoTorchNoBow", "remove": "00947C:LostLongSwords.esp", "level": 1},
+    {"target": "037C21:Skyrim.esm", "editorId": "LItemBanditWeapon2H", "remove": "004E5E:LostLongSwords.esp", "level": 1},
+    {"target": "03DEDA:Skyrim.esm", "editorId": "LItemBanditWeapon2HBoss", "remove": "004E62:LostLongSwords.esp", "level": 1},
+    {"target": "09BC33:Skyrim.esm", "editorId": "LItemBlacksmithMinimum", "remove": "000D75:LostLongSwords.esp", "level": 1},
+    {"target": "0173D2:Skyrim.esm", "editorId": "LItemBlacksmithWeapon100", "remove": "000D74:LostLongSwords.esp", "level": 1},
+    {"target": "09BC30:Skyrim.esm", "editorId": "LItemBlacksmithWeapon75", "remove": "000D74:LostLongSwords.esp", "level": 1},
+    {"target": "024330:Skyrim.esm", "editorId": "LItemDraugr05EWeapon2H", "remove": "00592D:LostLongSwords.esp", "level": 20},
+    {"target": "070C21:Skyrim.esm", "editorId": "LItemDwarvenOnlyWeapons", "remove": "000D71:LostLongSwords.esp", "level": 1},
+    {"target": "017113:Skyrim.esm", "editorId": "LItemSilverHandWeapon", "remove": "007423:LostLongSwords.esp", "level": 1},
+    {"target": "01715C:Skyrim.esm", "editorId": "LItemSoldierSonsWeapon2H", "remove": "004E65:LostLongSwords.esp", "level": 1},
+    {"target": "02E1E7:Skyrim.esm", "editorId": "LItemVampireBossWeapon1H", "remove": "004E64:LostLongSwords.esp", "level": 1},
+    {"target": "02DF99:Skyrim.esm", "editorId": "LItemVampireWeapon1H", "remove": "004E63:LostLongSwords.esp", "level": 1},
+    {"target": "10962B:Skyrim.esm", "editorId": "LItemVampireWeaponBase", "remove": "004E5E:LostLongSwords.esp", "level": 1},
+    {"target": "0165B9:Skyrim.esm", "editorId": "LItemWeaponAny2H", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "1031B4:Skyrim.esm", "editorId": "LItemWeaponAny2HSpecial", "remove": "004E61:LostLongSwords.esp", "level": 1},
+    {"target": "0165D8:Skyrim.esm", "editorId": "LItemWeaponAny2HTown", "remove": "000D67:LostLongSwords.esp", "level": 1},
+    {"target": "0B4212:Skyrim.esm", "editorId": "LootBanditWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "068838:Skyrim.esm", "editorId": "LootBanditWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "087782:Skyrim.esm", "editorId": "LootBanditWeapon50", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "07161A:Skyrim.esm", "editorId": "LootCWImperialsWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "071520:Skyrim.esm", "editorId": "LootCWImperialsWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "071617:Skyrim.esm", "editorId": "LootCWSonsWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "071529:Skyrim.esm", "editorId": "LootCWSonsWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "0B4208:Skyrim.esm", "editorId": "LootDraugrWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "068837:Skyrim.esm", "editorId": "LootDraugrWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "088515:Skyrim.esm", "editorId": "LootDraugrWeapon25", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "070C1D:Skyrim.esm", "editorId": "LootDwarvenWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "070C1E:Skyrim.esm", "editorId": "LootDwarvenWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "01ECDE:Skyrim.esm", "editorId": "LootFalmerWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "01EBE7:Skyrim.esm", "editorId": "LootFalmerWeapon25", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "06A3CB:Skyrim.esm", "editorId": "LootForswornWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "06003C:Skyrim.esm", "editorId": "LootForswornWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "0D06FB:Skyrim.esm", "editorId": "LootGiantWeapon50", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "071036:Skyrim.esm", "editorId": "LootVampireWeapon10", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "071028:Skyrim.esm", "editorId": "LootVampireWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "03509C:Skyrim.esm", "editorId": "LootWarlockWeapon15", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "070D19:Skyrim.esm", "editorId": "LootWerewolfWeapon100", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "070D1A:Skyrim.esm", "editorId": "LootWerewolfWeapon25", "remove": "004E5D:LostLongSwords.esp", "level": 1},
+    {"target": "01E60E:Skyrim.esm", "editorId": "SublistThalmorWeaponElven1H", "remove": "003E2B:LostLongSwords.esp", "level": 1},
+    {"target": "07D97C:Skyrim.esm", "editorId": "SublistThalmorWeaponGlass1H", "remove": "004394:LostLongSwords.esp", "level": 1},
+    {"target": "07D97B:Skyrim.esm", "editorId": "SublistThalmorWeaponSteel1H", "remove": "000D68:LostLongSwords.esp", "level": 1},
+    {"target": "10FDEB:Skyrim.esm", "editorId": "VendorEorlundSkyforgeSteelSet", "remove": "003E2F:LostLongSwords.esp", "level": 1}
+  ],
+  "excludedInternalEdges": [
+    {"target": "000D67:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "000D67:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "000D74:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "000D74:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "000D74:LostLongSwords.esp", "remove": "004394:LostLongSwords.esp"},
+    {"target": "004E5D:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E5D:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E5D:LostLongSwords.esp", "remove": "004394:LostLongSwords.esp"},
+    {"target": "004E5E:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E5E:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E60:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E60:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E60:LostLongSwords.esp", "remove": "004394:LostLongSwords.esp"},
+    {"target": "004E61:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E61:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E61:LostLongSwords.esp", "remove": "004394:LostLongSwords.esp"},
+    {"target": "004E62:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E62:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E62:LostLongSwords.esp", "remove": "004394:LostLongSwords.esp"},
+    {"target": "004E63:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E63:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E64:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"},
+    {"target": "004E64:LostLongSwords.esp", "remove": "003E2B:LostLongSwords.esp"},
+    {"target": "004E64:LostLongSwords.esp", "remove": "004394:LostLongSwords.esp"},
+    {"target": "0053C8:LostLongSwords.esp", "remove": "000D71:LostLongSwords.esp"}
+  ],
+  "safeLeveledAdditions": [
+    {"target": "03DEDA:Skyrim.esm", "add": "004E62:LostLongSwords.esp", "level": 1, "count": 1, "role": "ordinary bandit boss two-handed branch; source prior-art cardinality"},
+    {"target": "068838:Skyrim.esm", "add": "004E5D:LostLongSwords.esp", "level": 1, "count": 1, "role": "15 percent bandit loot; one category entry as in source"},
+    {"target": "087782:Skyrim.esm", "add": "004E5D:LostLongSwords.esp", "level": 1, "count": 1, "role": "50 percent bandit loot; one category entry as in source"},
+    {"target": "0B4212:Skyrim.esm", "add": "004E5D:LostLongSwords.esp", "level": 1, "count": 1, "role": "100 percent bandit loot; one category entry as in source"},
+    {"target": "09BC30:Skyrim.esm", "add": "000D74:LostLongSwords.esp", "level": 1, "count": 1, "role": "ordinary 75 percent blacksmith weapon category; source prior art"},
+    {"target": "0173D2:Skyrim.esm", "add": "000D74:LostLongSwords.esp", "level": 1, "count": 1, "role": "ordinary 100 percent blacksmith weapon category; source prior art"},
+    {"target": "10FDEB:Skyrim.esm", "add": "003E2F:LostLongSwords.esp", "level": 1, "count": 1, "role": "Eorlund Skyforge specialist set; one peer of five native Skyforge weapons"},
+    {"target": "017113:Skyrim.esm", "add": "007423:LostLongSwords.esp", "level": 1, "count": 1, "role": "Silver Hand specialist pool; one of six weighted entries after addition"},
+    {"target": "000D74:LostLongSwords.esp", "add": "008F16:LostLongSwords.esp", "level": 2, "count": 1, "role": "Imperial steel-grade ordinary smith stock; level from source Imperial blacksmith list"},
+    {"target": "000D74:LostLongSwords.esp", "add": "0099DF:LostLongSwords.esp", "level": 10, "count": 1, "role": "Stormcloak steel-grade ordinary smith stock; level from source Stormcloak blacksmith list"},
+    {"target": "004E5D:LostLongSwords.esp", "add": "008F16:LostLongSwords.esp", "level": 5, "count": 1, "role": "Imperial steel-grade non-military bandit loot; level from source Imperial choice list"},
+    {"target": "004E5D:LostLongSwords.esp", "add": "0099DF:LostLongSwords.esp", "level": 10, "count": 1, "role": "Stormcloak steel-grade non-military bandit loot; level from source Stormcloak blacksmith list"}
+  ],
+  "approvedSemanticSubstitutions": [
+    {
+      "target": "017113:Skyrim.esm",
+      "editorId": "LItemSilverHandWeapon",
+      "reason": "approved one-weighted-slot Silver Longsword substitution; not a wholesale vendor forward",
+      "baseline": [
+        {"level": 1, "count": 1, "referenceFormKey": "10AA19:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10AA19:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10AA19:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10C6FB:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "037C1B:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "037C1B:Skyrim.esm"}
+      ],
+      "intendedFinal": [
+        {"level": 1, "count": 1, "referenceFormKey": "10AA19:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10AA19:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "10C6FB:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "037C1B:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "037C1B:Skyrim.esm"},
+        {"level": 1, "count": 1, "referenceFormKey": "007423:LostLongSwords.esp"}
+      ]
+    }
+  ],
+  "npcOperations": [
+    {"target": "02BF9F:Skyrim.esm", "editorId": "Hadvar", "remove": "008F16:LostLongSwords.esp", "reason": "remove vendor direct named-NPC assignment"},
+    {"target": "013BB8:Skyrim.esm", "editorId": "Irileth", "remove": "000D68:LostLongSwords.esp", "reason": "remove vendor direct named-NPC assignment"},
+    {"target": "01B547:Skyrim.esm", "editorId": "CWSoldierImperial", "replace": "10FAFC:Skyrim.esm", "with": "000801:Ensrick Lost LongSwords Curation.esp", "reason": "ordinary non-unique Imperial soldier template; 1/12 weapon-slot chance after level 5"},
+    {"target": "041B2E:Skyrim.esm", "editorId": "CWSiegeImperialSoldier", "replace": "10FAFC:Skyrim.esm", "with": "000801:Ensrick Lost LongSwords Curation.esp", "allowInheritedNoOp": true, "reason": "approved ordinary Inventory inheritor runtime-order hedge"},
+    {"target": "054A7A:Skyrim.esm", "editorId": "CWFinaleSoldierImperial", "replace": "10FAFC:Skyrim.esm", "with": "000801:Ensrick Lost LongSwords Curation.esp", "allowInheritedNoOp": true, "reason": "approved ordinary Inventory inheritor runtime-order hedge"},
+    {"target": "01B54B:Skyrim.esm", "editorId": "CWSoldierSons", "replace": "00C3BA:NW_Sons_of_Skyrim.esp", "with": "000802:Ensrick Lost LongSwords Stormcloak Distribution.esp", "reason": "ordinary non-unique Stormcloak soldier template only; isolated 1/12 branch"},
+    {"target": "054A7D:Skyrim.esm", "editorId": "CWFinaleSoldierSons", "replace": "00C3BA:NW_Sons_of_Skyrim.esp", "with": "000802:Ensrick Lost LongSwords Stormcloak Distribution.esp", "allowInheritedNoOp": true, "reason": "approved ordinary Inventory inheritor runtime-order hedge"}
+  ],
+  "imperialTemplateAudit": {
+    "directTemplate": "01B547:Skyrim.esm",
+    "directTemplateEditorId": "CWSoldierImperial",
+    "directTemplateIsUnique": false,
+    "inventoryInheritors": [
+      {"formKey": "041B2E:Skyrim.esm", "editorId": "CWSiegeImperialSoldier", "classification": "ordinary soldier"},
+      {"formKey": "054A7A:Skyrim.esm", "editorId": "CWFinaleSoldierImperial", "classification": "ordinary finale soldier"}
+    ],
+    "nonInventoryInheritors": [
+      "0205C9:Skyrim.esm",
+      "037B66:Skyrim.esm",
+      "03BCC6:Skyrim.esm",
+      "0559E0:Skyrim.esm",
+      "05D15A:Skyrim.esm",
+      "063F35:Skyrim.esm",
+      "063F3A:Skyrim.esm",
+      "0EA325:Skyrim.esm",
+      "0FD8AA:Skyrim.esm",
+      "1CDD07:3DNPC.esp"
+    ],
+    "guardOrCommanderInventoryInheritors": []
+  },
+  "stormcloakTemplateAudit": {
+    "directTemplate": "01B54B:Skyrim.esm",
+    "directTemplateEditorId": "CWSoldierSons",
+    "directTemplateIsUnique": false,
+    "winningProvider": "NW_Sons_of_Skyrim.esp",
+    "replacedGear": "00C3BA:NW_Sons_of_Skyrim.esp",
+    "inventoryInheritors": [
+      {"formKey": "054A7D:Skyrim.esm", "editorId": "CWFinaleSoldierSons", "classification": "ordinary finale soldier"}
+    ],
+    "nonInventoryInheritors": [
+      "0205C8:Skyrim.esm",
+      "0348B2:Skyrim.esm",
+      "037B67:Skyrim.esm",
+      "03BCC7:Skyrim.esm",
+      "041B2D:Skyrim.esm",
+      "0559DF:Skyrim.esm",
+      "05D15B:Skyrim.esm",
+      "063F38:Skyrim.esm",
+      "0E2FF6:Skyrim.esm",
+      "0EA326:Skyrim.esm",
+      "0FD826:Skyrim.esm",
+      "1CDD08:3DNPC.esp"
+    ],
+    "guardOrCommanderInventoryInheritors": []
+  },
+  "containerOperations": [
+    {"target": "0A6C07:Skyrim.esm", "editorId": "MerchantSolitudeBlacksmith", "remove": "00B4D1:LostLongSwords.esp"},
+    {"target": "0A3F17:Skyrim.esm", "editorId": "MerchantWindhelmBlacksmithChest", "remove": "0099E2:LostLongSwords.esp"}
+  ],
+  "disabledConstructibleObjects": [
+    {"formKey": "000D72:LostLongSwords.esp", "reason": "Dwarven longsword tempering excluded"},
+    {"formKey": "000D73:LostLongSwords.esp", "reason": "Dwarven longsword crafting excluded"},
+    {"formKey": "003E2D:LostLongSwords.esp", "reason": "Elven longsword tempering excluded"},
+    {"formKey": "003E2E:LostLongSwords.esp", "reason": "Elven longsword crafting excluded"},
+    {"formKey": "004395:LostLongSwords.esp", "reason": "Glass longsword tempering excluded"},
+    {"formKey": "004396:LostLongSwords.esp", "reason": "Glass longsword crafting excluded"},
+    {"formKey": "0053C9:LostLongSwords.esp", "reason": "unrelated duplicate vanilla Silver Sword tempering recipe"},
+    {"formKey": "0053CA:LostLongSwords.esp", "reason": "unrelated duplicate vanilla Silver Greatsword tempering recipe"},
+    {"formKey": "0089B2:LostLongSwords.esp", "reason": "unrelated duplicate vanilla Priest Dagger tempering recipe"}
+  ],
+  "retainedPlacedReferences": [
+    {"formKey": "0012D9:LostLongSwords.esp", "cell": "01DB4E:Skyrim.esm", "base": "000D63:LostLongSwords.esp", "reason": "approved kept Iron longsword placement; no demonstrated placement defect"},
+    {"formKey": "001D9E:LostLongSwords.esp", "cell": "05DE24:Skyrim.esm", "base": "000D63:LostLongSwords.esp", "reason": "approved kept Iron longsword placement; no demonstrated placement defect"},
+    {"formKey": "004E5F:LostLongSwords.esp", "cell": "0151F9:Skyrim.esm", "base": "000D63:LostLongSwords.esp", "reason": "approved kept Iron longsword placement; no demonstrated placement defect"},
+    {"formKey": "007426:LostLongSwords.esp", "cell": "015233:Skyrim.esm", "base": "007423:LostLongSwords.esp", "reason": "approved kept Silver longsword placement; no demonstrated placement defect"}
+  ],
+  "preservedVendorReferenceOverrides": [
+    {"formKey": "0F302A:Skyrim.esm", "cell": "015233:Skyrim.esm", "reason": "vendor Orotheim transform nudge is outside approved restoration scope; no fabricated CELL forward"},
+    {"formKey": "0F3030:Skyrim.esm", "cell": "015233:Skyrim.esm", "reason": "vendor Orotheim transform nudge is outside approved restoration scope; no fabricated CELL forward"}
+  ],
+  "compatibility": {
+    "sonsOfSkyrimPlugin": "NW_Sons_of_Skyrim.esp",
+    "sonsOfSkyrimSha256AtReview": "0610D825D420E84043BC2AF4CD6E5D8E68256C76C0A223A92021A52E838BC246",
+    "sonsOfSkyrimPathAtReview": "mo2-instances/skyrim-se/mods/Sons of Skyrim/NW_Sons_of_Skyrim.esp",
+    "sonsLuxOrbisPatchPlugin": "Sons of Skyrim - Lux Orbis Patch.esp",
+    "sonsLuxOrbisPatchSha256AtReview": "1E9BE650F7992D010C306A43E2638E662D8C4119B665823C356A7E0C77FCDD54",
+    "sonsLuxOrbisPatchPathAtReview": "mo2-instances/skyrim-se/mods/Sons of Skyrim - Lux Orbis Patch/Sons of Skyrim - Lux Orbis Patch.esp",
+    "skyPatcherMinimumReviewed": "7.0.3",
+    "vendorLoadOrderGate": "Order LostLongSwords.esp, then the early Ensrick Lost LongSwords Curation.esp; that ESPFE exactly restores USSEP LootDraugrWeapon25 and the two vanilla Imperial gear lists the vendor replaced. Load Ensrick Lost LongSwords Stormcloak Distribution.esp immediately after NW_Sons_of_Skyrim.esp; later regular compatibility patches remain later winners."
+  }
+}

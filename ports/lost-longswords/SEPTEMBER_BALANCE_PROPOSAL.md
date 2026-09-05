@@ -4,6 +4,10 @@
 implementation. This document preserves the pre-approval analysis below;
 deployment and verification status belong to the subsequent build/install
 receipt. See [the reusable standard](../../docs/WEAPON_BALANCING_STANDARD.md).
+The [private integration design](PRIVATE_INTEGRATION.md) records the audited
+implementation, including isolated soldier lists and rejected unsafe shared
+distribution routes. The proposal JSON remains the immutable approval input;
+its historical status is not the current installation receipt.
 
 2026-09-05; [issue #237](https://github.com/Ensrick/skyrim-mod-assistant/issues/237).
 User requested the numbers **before approval**. No balance, distribution,

@@ -70,6 +70,13 @@ approval permits only the Imperial longsword for Imperial soldiers and only the
 Stormcloak longsword for Stormcloak soldiers, at a modest native-comparable
 share of two-handed choices. Other longswords stay out of military pools.
 Shared lists and templates must be traced, not just lists named `Guard`.
+Resolve inventory inheritance flags and outfit contents from current winners;
+an NPC's raw inventory is not necessarily the inventory it inherits at runtime.
+When a desired list also feeds excluded actors, isolate the smallest branch
+and redirect only reviewed actor templates. Preserve the remaining equipment
+and selection probabilities. Split early compatibility restoration from a
+later dependent integration plugin if their master/load-order requirements
+conflict; do not falsify masters or copy unrelated records to force one plugin.
 Suppress unwanted acquisition paths without deleting or compacting vendor
 forms. Existing saved inventories are not automatically purged.
 
@@ -94,6 +101,10 @@ forms. Existing saved inventories are not automatically purged.
    reviewed overlap in an owned compatibility layer and preserve later winners.
    Inspect active runtime weapon rules too; a plugin-only winner audit cannot
    prove what SkyPatcher, scripts, perks, or native hooks do after loading.
+   Validate runtime configuration selectors/actions against the installed
+   parser, not only against the generator's own expected text. Require bounded,
+   nonempty selectors unless an all-record operation was explicitly reviewed.
+   An ignored unknown selector must never become an accidental catch-all.
 6. Keep static verification and runtime verification separate. No surprise
    launch: follow [background testing policy](BACKGROUND-TESTING-POLICY.md).
 

@@ -56,3 +56,5 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s audit -p test_weapon_timing.py -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python ports/lost-longswords/test_curation_units.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
