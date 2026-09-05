@@ -41,6 +41,16 @@
       "active": true
     },
     {
+      "component": "Ensrick Lost LongSwords Curation",
+      "mo2Mod": "Ensrick - Lost LongSwords Curation (Private)",
+      "artifact": "Ensrick Lost LongSwords Curation.esp and Ensrick Lost LongSwords Stormcloak Distribution.esp",
+      "sha256": "77A5C96874CEE87E01575DDE21F5578EF24105DF99E4F9D15E9C007936495F54",
+      "requiredFor": ["Approved private longsword stats, curation and isolated faction-soldier distribution"],
+      "reasonPrivate": "The ESP outputs contain copied third-party record data; being separate overrides does not establish redistribution permission. Original builder/policy source is published, not these generated binaries.",
+      "releaseGate": "Clear redistribution permissions or generate and validate locally from each user's authorized immutable inputs. Full two-plugin and configuration hashes: records/source-builds/ensrick-lost-longswords-curation.json.",
+      "active": true
+    },
+    {
       "component": "Ensrick Lux Water CS Patch",
       "mo2Mod": "Ensrick - Lux Water CS Patch",
       "artifact": "Ensrick Lux Water CS Patch.esp",

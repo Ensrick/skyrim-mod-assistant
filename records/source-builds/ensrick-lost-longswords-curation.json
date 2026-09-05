@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "artifact": "Ensrick - Lost LongSwords Curation (Private)",
+  "version": "0.1.0",
+  "status": "installed-static-verified-runtime-unverified",
+  "source": {
+    "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
+    "commit": "8716066c29613ca136827b7af215f1bd49901375",
+    "path": "ports/lost-longswords",
+    "builderSha256": "71F42CAA724937B5F62707745DD233EB3A9D6E89BE1C8DD2E2FB0C602C74242A",
+    "policySha256": "277A600C3FAA2DFEEB1E153268FA3094342153054A2B69A74AE449A425B7BEF1",
+    "proposalSha256": "82379D8F7BDFB763C1880F5004B52BCC1843E8B2EE9087B9335635D70EFAB870"
+  },
+  "output": {
+    "files": [
+      {
+        "path": "Ensrick Lost LongSwords Curation.esp",
+        "bytes": 5701,
+        "sha256": "77A5C96874CEE87E01575DDE21F5578EF24105DF99E4F9D15E9C007936495F54"
+      },
+      {
+        "path": "Ensrick Lost LongSwords Stormcloak Distribution.esp",
+        "bytes": 948,
+        "sha256": "2E6B1DE1686E2257BDB1E55F4154B9F5742F926C91BAE6B8F4ACF5F19B1EA098"
+      },
+      {
+        "path": "SKSE/Plugins/SkyPatcher/constructibleObject/zz Ensrick Lost LongSwords Curation/Ensrick Lost LongSwords Curation.ini",
+        "bytes": 558,
+        "sha256": "ED42B26B7D41CFB7B1F13A2771DCDC78CD685F5D604337CDC3C701ABAB659BCC"
+      },
+      {
+        "path": "SKSE/Plugins/SkyPatcher/container/zz Ensrick Lost LongSwords Curation/Ensrick Lost LongSwords Curation.ini",
+        "bytes": 168,
+        "sha256": "EB298D2BA9C7BC192E36F5140DD8044B9AFC3B867A73D419E3A8C6E5BE86FA2B"
+      },
+      {
+        "path": "SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Lost LongSwords Curation/Ensrick Lost LongSwords Curation.ini",
+        "bytes": 6119,
+        "sha256": "4331110A2F4CC408EFA7CBFEAD292C091A2CD91062D3F5C8470604D785EF5BEC"
+      },
+      {
+        "path": "SKSE/Plugins/SkyPatcher/npc/zz Ensrick Lost LongSwords Curation/Ensrick Lost LongSwords Curation.ini",
+        "bytes": 855,
+        "sha256": "5314FB292642DA3E9B71D4054F7BC9236102C7CF2D08B403B3268FCFCFFFC613"
+      }
+    ],
+    "totalBytes": 14349,
+    "plugins": [
+      {
+        "name": "Ensrick Lost LongSwords Curation.esp",
+        "records": {
+          "WEAP": 9,
+          "LVLI": 5
+        },
+        "newForms": 2,
+        "eslFlagged": true,
+        "masters": [
+          "Skyrim.esm",
+          "unofficial skyrim special edition patch.esp",
+          "LostLongSwords.esp"
+        ]
+      },
+      {
+        "name": "Ensrick Lost LongSwords Stormcloak Distribution.esp",
+        "records": {
+          "LVLI": 3
+        },
+        "newForms": 3,
+        "eslFlagged": true,
+        "masters": [
+          "Skyrim.esm",
+          "LostLongSwords.esp",
+          "NW_Sons_of_Skyrim.esp"
+        ]
+      }
+    ]
+  },
+  "installation": {
+    "modName": "Ensrick - Lost LongSwords Curation (Private)",
+    "profile": "Default",
+    "enabled": true,
+    "installedUtc": "2026-09-05T21:01:55Z",
+    "transactions": [
+      {
+        "dryRun": false,
+        "enabled": true,
+        "mod": "Ensrick - Lost LongSwords Curation (Private)",
+        "ok": true,
+        "operation": "mod-stage",
+        "previousEnabled": false,
+        "previousPriority": -1,
+        "priority": 285,
+        "replaced": false,
+        "transaction": "20260905T210155503Z-a6eaebf1b49c"
+      },
+      {
+        "changed": true,
+        "dryRun": false,
+        "ok": true,
+        "operation": "plugin-enable",
+        "plugin": "Ensrick Lost LongSwords Curation.esp",
+        "transaction": "20260905T210230269Z-01ea996cbfa3"
+      },
+      {
+        "changed": true,
+        "dryRun": false,
+        "ok": true,
+        "operation": "plugin-enable",
+        "plugin": "Ensrick Lost LongSwords Stormcloak Distribution.esp",
+        "transaction": "20260905T210232879Z-aca8fdd89fe3"
+      },
+      {
+        "changed": true,
+        "dryRun": false,
+        "ok": true,
+        "operation": "plugin-priority",
+        "plugin": "LostLongSwords.esp",
+        "transaction": "20260905T210235166Z-dbf2f2e237cd"
+      },
+      {
+        "changed": true,
+        "dryRun": false,
+        "ok": true,
+        "operation": "plugin-priority",
+        "plugin": "Ensrick Lost LongSwords Curation.esp",
+        "transaction": "20260905T210236808Z-b88dede6d55e"
+      },
+      {
+        "changed": true,
+        "dryRun": false,
+        "ok": true,
+        "operation": "plugin-priority",
+        "plugin": "Ensrick Lost LongSwords Stormcloak Distribution.esp",
+        "transaction": "20260905T210238633Z-54c6eb7bf074"
+      }
+    ],
+    "order": "LostLongSwords begins regular stage, early curation follows; Stormcloak distribution immediately follows Sons of Skyrim. Remaining unrelated plugin order preserved."
+  },
+  "validation": {
+    "bothStrictTwoGenerationRoundTrips": "PASS",
+    "earlyFormLinks": {
+      "checked": 146,
+      "unresolved": 0
+    },
+    "stormFormLinks": {
+      "checked": 15,
+      "unresolved": 0
+    },
+    "plannedProfileGraph": {
+      "checks": 214,
+      "status": "PASS",
+      "runtimePlugins": 348
+    },
+    "initialInstalledProfileGraph": {
+      "checks": 215,
+      "status": "PASS",
+      "runtimePlugins": 348
+    },
+    "nativeParser": {
+      "version": "SkyPatcher 7.0.3",
+      "activeLines": 99,
+      "leveledList": 81,
+      "npc": 7,
+      "container": 2,
+      "constructibleObject": 9,
+      "status": "PASS"
+    },
+    "syntheticTests": 13,
+    "installedPayloadMatchesFrozenBuild": true,
+    "globalBalanceRefresh": "Pending #239 final regeneration/audit; update final receipt after it completes",
+    "gameLaunched": false,
+    "runtimeAcceptance": "UNVERIFIED"
+  },
+  "distribution": {
+    "imperial": {
+      "templates": [
+        "01B547:Skyrim.esm",
+        "041B2E:Skyrim.esm",
+        "054A7A:Skyrim.esm"
+      ],
+      "rate": "1/12 at list level 5+, zero below"
+    },
+    "stormcloak": {
+      "templates": [
+        "01B54B:Skyrim.esm",
+        "054A7D:Skyrim.esm"
+      ],
+      "rate": "1/3 two-handed parent branch * 1/4 isolated weapon choice = 1/12"
+    },
+    "excluded": "Guards, commanders, unique/named military actors, and opposite-faction routes",
+    "ordinaryBanditEquipmentGap": "037C21 shared equipment route suppressed; targeted distribution deferred under #237/No Mere Bandits",
+    "publication": "Vendor-derived ESP output remains private; publish original source/recipe only until redistribution cleared or generated locally from authorized downloads."
+  },
+  "issues": [
+    237,
+    239,
+    160,
+    227
+  ]
+}

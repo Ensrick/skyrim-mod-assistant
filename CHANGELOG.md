@@ -34,6 +34,30 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-05 16:02 - Private longsword curation and isolated soldier distribution installed (#237)
+
+- **What:** Added `Ensrick - Lost LongSwords Curation (Private)` through the
+  claimed headless controller, transaction `20260905T210155503Z-a6eaebf1b49c`.
+  Two small ESPFEs (14 + 3 records), four SkyPatcher INIs/99 operations. Nine
+  retained two-handed longswords use the approved Speed 1.0/damage-by-tier
+  policy. Dwarven/Elven/Glass acquisition is suppressed; Dragonbone stays absent.
+  Matching Imperial/Stormcloak swords have approximately 1/12 eligible ordinary
+  soldier selection rates. Guard/commander/named military branches are excluded.
+  The unsafe shared ordinary-bandit equipment route is deferred; clean boss,
+  loot, smith, Skyforge and Silver Hand routes remain. Vendor assets/plugin and
+  saved inventories are not edited. Early placement restores reviewed master
+  fixes; a separate later Stormcloak plugin avoids illegal dependency ordering.
+- **Source:** User approval of the September balance proposal and subsequent
+  explicit request to distribute both faction longswords. Source `8716066`;
+  complete hashes/order transactions in
+  `records/source-builds/ensrick-lost-longswords-curation.json`.
+- **Verification:** **UNVERIFIED in-game.** Both strict round trips, all 161
+  output FormLinks, 99 native parser operations, 13 synthetic tests, planned
+  graph 214/214 and initial installed graph 215/215 passed. All six installed
+  files match the build. Order/ledger/Keep gates pass. No game was launched.
+  Global balance regeneration is tracked separately under #239; do not confuse
+  record-index balancing with measured swing cadence or stamina efficiency.
+
 ## 2026-09-03 16:54 - Regional currency stack v0.2.4 installed and save-load verified (#207)
 
 - **What:** Installed the complete current C.O.I.N. 3.5.3 / M.I.N.T. 1.0.6 /

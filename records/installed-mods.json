@@ -1508,6 +1508,25 @@
     },
     {
       "modId": 0,
+      "modName": "Ensrick - Lost LongSwords Curation (Private)",
+      "nexusName": "Ensrick-owned private longsword curation and soldier distribution",
+      "version": "0.1.0",
+      "fileId": 0,
+      "fileName": "Generated private directory: work/lost-longswords/private-curation/mod (source 8716066)",
+      "sizeMb": 0.014,
+      "sha256": "77A5C96874CEE87E01575DDE21F5578EF24105DF99E4F9D15E9C007936495F54",
+      "plugins": [
+        "Ensrick Lost LongSwords Curation.esp",
+        "Ensrick Lost LongSwords Stormcloak Distribution.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-05T21:01:55Z",
+      "transaction": "20260905T210155503Z-a6eaebf1b49c",
+      "distribution": "private-generated-output",
+      "note": "#237. Two ESPFEs: 14 records (9 WEAP, 5 LVLI) plus 3 isolated Stormcloak LVLI. Nine retained longswords use Speed 1, Damage vanilla 1H sword +5, Reach 1.15, Stagger 0.9; original vendor payload untouched. Imperial/Stormcloak swords reach only their matching ordinary soldier templates (~1/12 eligible), guards/commanders excluded. Dragonbone absent; Dwarven/Elven/Glass acquisition/recipes suppressed, existing save items not purged. Direct ordinary-bandit weapon pool deferred because it also reaches guards/Dremora; clean boss/loot/smith/Silver Hand routes retained. Four SkyPatcher INIs/99 native-parser-verified operations. Planned graph214/214 and initial installed graph215/215 PASS. sha256 is the early ESP only; both plugin and four INI hashes plus order transactions are in records/source-builds/ensrick-lost-longswords-curation.json. UNVERIFIED in-game; no game launch. Global balance regeneration is tracked separately in #239."
+    },
+    {
+      "modId": 0,
       "modName": "Ensrick - Lux Water CS Patch",
       "nexusName": null,
       "version": null,
