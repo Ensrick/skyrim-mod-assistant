@@ -2841,17 +2841,17 @@
       "modId": 0,
       "modName": "Ensrick - Weapon Speed Balance",
       "nexusName": "Ensrick-owned source-built weapon-speed normalizer",
-      "version": "0.1.0",
+      "version": "0.3.0",
       "fileId": 0,
-      "fileName": "local package from _codex_worktrees/weapon-balance/mods/weapon-balance (commits 449101d, 1ad6299; PR #179)",
-      "sizeMb": 1.51,
-      "sha256": "74532e4375ac376b13eddd7b3481e7ba01bda3c0487062095d2070cb2765fa09",
+      "fileName": "Ensrick-Weapon-Speed-Balance-0.3.0.zip (canonical mods/weapon-balance; source 043ccfd)",
+      "sizeMb": 7.34,
+      "sha256": "6bfe4e47de61a6a8b5e717213a13b992b9a8da7b2944f5ce874ca23026f92f92",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-02T17:40:55Z",
-      "note": "built and installed by Sol (Codex) 2026-09-02; 3,007 audited WEAP overrides to exact class speeds across 35 resolved masters, deterministic generation with repeated plugin/package SHA-256 equality. Tracker #180. sha256 is of the installed plugin, not an archive - there is no vendor archive."
+      "installedUtc": "2026-09-05T22:42:39Z",
+      "note": "Astra approved repair #239; source 043ccfd. Final package transaction 20260905T224239482Z-9c692e563731. 3,481 speed-only WEAP overrides, 40 exact masters, 347 inputs; 27 localized sidecars, deterministic repeated builds; 4,191 final balance/preserve rows PASS. Plugin last at managed priority 271. Nine separately curated longswords retained at Speed 1.0. sha256 is installed ESP; archive hash and full provenance in records/source-builds/ensrick-weapon-speed-balance.json. Private generated binary pending permissions review; original generator distributable. Runtime UNVERIFIED; no game launched."
     },
     {
       "modId": 0,

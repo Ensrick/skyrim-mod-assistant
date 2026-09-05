@@ -167,7 +167,14 @@
     },
     "syntheticTests": 13,
     "installedPayloadMatchesFrozenBuild": true,
-    "globalBalanceRefresh": "Pending #239 final regeneration/audit; update final receipt after it completes",
+    "globalBalanceRefresh": "Installed 0.3.0 (#239), source 043ccfd; 3,481 speed-only overrides, 4,191 final balance/preserve rows PASS. Nine longsword custom-class winners remain at the approved damage and Speed 1.0. See records/source-builds/ensrick-weapon-speed-balance.json.",
+    "combinedInstalledProfileGraph": {
+      "checks": 215,
+      "status": "PASS",
+      "runtimePlugins": 348,
+      "globalBalanceRuntimeIndex": 347,
+      "privatePayloadFilesBitIdentical": 6
+    },
     "gameLaunched": false,
     "runtimeAcceptance": "UNVERIFIED"
   },

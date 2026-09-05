@@ -1,145 +1,522 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "artifact": "Ensrick - Weapon Speed Balance",
-  "version": "0.1.0",
-  "status": "installed-test-build",
-  "receiptCreatedUtc": "2026-09-04T20:34:38Z",
+  "version": "0.3.0",
+  "status": "installed-static-verified-runtime-unverified",
+  "receiptCreatedUtc": "2026-09-05T22:46:54Z",
+  "supersedes": "records/source-builds/ensrick-weapon-speed-balance-v0.1.0-historical.json",
   "source": {
     "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
-    "pullRequest": "https://github.com/Ensrick/skyrim-mod-assistant/pull/179",
-    "implementationCommit": "449101d31782accdd8ce6c9c53992118648bdf48",
-    "ciPinCommit": "1ad6299f4a9aeaad81d3321530348e08e0dc76d8",
-    "path": "mods/weapon-balance"
+    "branch": "ensrick/modpack-roadmap-2026-08-28",
+    "implementationCommit": "043ccfdff83c4c4d492dc86daa1f62fc5ae72533",
+    "path": "mods/weapon-balance",
+    "sourceFingerprintSha256": "360DF0D382CF06E9CE121D20CED687EA11EF7367BCB0A26B04E1D98EDE52B10E",
+    "sourceFiles": [
+      {
+        "path": "audit.ps1",
+        "sha256": "6E6AA900820C88B75C599354B63E5127387BBED47D661293AE8B34223BA59C93"
+      },
+      {
+        "path": "DECISIONS.md",
+        "sha256": "4818C8DD8EFCF179E64825BBD473B83C42343072B1A2C1AD647680B7F220EA88"
+      },
+      {
+        "path": "generate.ps1",
+        "sha256": "AFA6C0041EDDD3EDDFB5DE71E62DD9C2D843021768471193E80683789AE69BD6"
+      },
+      {
+        "path": "global.json",
+        "sha256": "13DFBCDACA23FDEE3D0C92656CC37AE519BD9514A04FE52620D2B7E209D4D339"
+      },
+      {
+        "path": "package.ps1",
+        "sha256": "33044B984CC15616D460A8E1D94CD3B8C255ECE16E3F02415671FCC4B8F670AB"
+      },
+      {
+        "path": "README.md",
+        "sha256": "33D17552A408CF0EE9FE04DACD6AEB3204833AE5B4AD4E00BFBAD5F5F8BF31C2"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/BalanceRules.cs",
+        "sha256": "3A90E7C878315AC7A5BA8110443942CE0F20DCC1684E14489DE5DFF97FA26F19"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/BuildAudit.cs",
+        "sha256": "F7B39EC074DA68E353AC6D331DD07D1989BB3253301D72800926A0D2F7796575"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/LocalizationPolicy.cs",
+        "sha256": "EAB78675F0348C365FD9A3EFE76B32467C1919CD7F50AB1C480B8571825B7D49"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/LocalizationResourceInventory.cs",
+        "sha256": "0E26279D04C75BE700E3E62BA56F9289F9E82B4B0FF1A9CC95D4ABAA250A2992"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/packages.lock.json",
+        "sha256": "2BA85A2E84FF8458BAF0F5AEF1B8FE47E6F1016C718A541F4315E9225D897936"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/Policy.cs",
+        "sha256": "2B03A8D5F6F235621EB62C2361A5428F47665C50D96FE95AA214F16CE3C5C199"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/Program.cs",
+        "sha256": "E8372A045C8F41CED2734E763F40B3D0C2BD510F6980CDC60DCA017D5B2AED9F"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/Settings.cs",
+        "sha256": "8668997CC4581EABCC4CEEA9611C24F32D2140CF63255287439B33C7D008B53A"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/settings.json",
+        "sha256": "2869482931F743C350C40B2FD0C4872C60A2CAF6C96F201FCFA298CEC8E5B6CF"
+      },
+      {
+        "path": "src/WeaponBalancePatcher/WeaponBalancePatcher.csproj",
+        "sha256": "569F94680EBB61BF5AC7B061203E7B8D386F68D56E98556FAE05662646A1132C"
+      },
+      {
+        "path": "tests/FreshnessWrapper.Tests.ps1",
+        "sha256": "0587ADC98D9491CC73D4A1A5149596D6A3E31ABB5D25FD8202956FE2FC7E945C"
+      },
+      {
+        "path": "tests/GenerationSafety.Tests.ps1",
+        "sha256": "F3CE08E78E5C229F6CB0DB63226DBCF640AD30B5343BE90DAF920BE45C9A90A6"
+      },
+      {
+        "path": "tests/PackageSafety.Tests.ps1",
+        "sha256": "B5D48C96E0973A9995433EFC7FA45600D9F79ECF216C38D6B0A06C3D77BB2C20"
+      },
+      {
+        "path": "tests/WeaponBalancePatcher.Tests/packages.lock.json",
+        "sha256": "18BBFC523A3C2759B6FAA715BBF60D4CEB4F0056F7747DC19C7E64E819864C1F"
+      },
+      {
+        "path": "tests/WeaponBalancePatcher.Tests/Program.cs",
+        "sha256": "1BF34712490E89B4EE5813CF28BC767CAC7022C32DDA3D343CD77AADE04F32CC"
+      },
+      {
+        "path": "tests/WeaponBalancePatcher.Tests/WeaponBalancePatcher.Tests.csproj",
+        "sha256": "DB20F88397F44D3E5FC4F3178789312203D9907984D1C1F3A0F3A79644EA1E5C"
+      }
+    ],
+    "remoteCi": "Not claimed: existing PR #45 has an unrelated pre-existing merge conflict. Local suites and independent peer review passed."
   },
   "policy": {
-    "designRecord": "mods/weapon-balance/DECISIONS.md",
-    "readme": "mods/weapon-balance/README.md",
-    "ckNativeAnswer": "Override WEAP.DNAM.Speed (Mutagen Weapon.Data.Speed) on each selected winning weapon record.",
-    "whyCode": "The selection is a deterministic rule over thousands of current load-order winners and must regenerate after weapon or load-order changes; hand-authoring 3,007 overrides is not reviewable or maintainable.",
-    "sharedGeneratorDebt": "The rule-over-many case justifies generation under CK-first rule 4, but the standalone .NET project should become a policy in the shared record-patch generator under rule 6.",
+    "standard": "docs/WEAPON_BALANCING_STANDARD.md",
+    "design": "mods/weapon-balance/DECISIONS.md",
+    "settingsSha256": "2869482931F743C350C40B2FD0C4872C60A2CAF6C96F201FCFA298CEC8E5B6CF",
+    "basis": "Dragonbone damage x WEAP.Speed index, not measured real-time DPS. Preserve damage progression; class speeds across material tiers.",
     "targets": {
       "dagger": 1.25,
-      "sword": 1.0,
+      "sword": 1,
+      "longsword": 1,
       "warAxe": 0.9375,
       "mace": 0.88235295,
       "greatsword": 0.8,
       "battleaxe": 0.7692308,
       "warhammer": 0.71428573
     },
-    "includeNonPlayableWeapons": true,
-    "excludeEditorIdContains": [
-      "Dummy",
-      "GiantClub"
-    ],
-    "useAnimationFallback": true
-  },
-  "priorArt": {
-    "vanillaAndCk": "Vanilla stores per-base-weapon speed in WEAP.DNAM.Speed and identifies the seven conventional classes with standard WeapType keywords; no global CK record applies a per-class policy to arbitrary later mod weapons.",
-    "exactCandidate": {
-      "name": "Weapon Stat Synthesis Patcher",
-      "nexusModId": 149027,
-      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/149027",
-      "finding": "Exact architecture: a configurable Synthesis patcher normalizing melee weapon stats across all mods. Version 1.2 allows non-speed stats to be disabled and supports named-weapon offsets and more weapon families.",
-      "disposition": "User decision required before replacement; this receipt does not choose between the installed narrow policy and the broader released patcher."
+    "onlyGenericMutation": "WEAP.DNAM.Speed; forward all other fields and every available translation",
+    "selection": "Exactly one standard type keyword with coherent animation, reviewed utility guards; no animation-only fallback. Steel material keyword is eligible.",
+    "explicitRules": {
+      "configured": 15,
+      "resolved": 15,
+      "preserve": 3,
+      "lostLongswordsCustomClass": 9,
+      "lostLongswordsExcluded": 3
     },
-    "adjacentCandidates": [
-      {
-        "name": "Customize Weapon Speed",
-        "nexusModId": 22100,
-        "difference": "Papyrus/SKSE runtime mutation and name matching rather than a static override-only patch."
-      },
-      {
-        "name": "Weapon Speed - IPM",
-        "nexusModId": 96828,
-        "difference": "Runtime IPM/MCM implementation with additional dependencies."
-      },
-      {
-        "name": "Weapon Speed Mult Fix",
-        "nexusModId": 45502,
-        "difference": "Fixes WeaponSpeedMult actor-value stacking; it explicitly describes Customize Weapon Speed as changing a different parameter."
-      }
+    "longswords": "Exact private winning provider, approved damage, two-handed type/skill/equipment asserted. No duplicate override needed because all nine are already Speed 1.0.",
+    "signaturePreserve": [
+      "04A38F:Skyrim.esm",
+      "0EA29C:Skyrim.esm",
+      "0AE085:Skyrim.esm"
     ],
-    "supersedesAuditSection": "records/prior-art-audit-2026-09-03.md section 29 missed Nexus 149027 and therefore cannot support its no-exact-prior-art conclusion."
+    "runtimeWeaponConfigurationAudit": "Only 10 current Legacy of Ysgramor model/first-person weapon rules found; no active speed/damage/type/skill/equip/keyword mutations. Katana conversion was discovered inactive and was not activated.",
+    "whyCode": "Deterministic policy over thousands of current winners requires regeneration and field-level verification; hand-maintained overrides would be unsafe.",
+    "sharedGeneratorDebt": "Future integration into a shared record-patch generator remains #212 governance work; do not create additional competing generators."
   },
   "toolchain": {
-    "dotnetSdk": {
-      "version": "9.0.102",
-      "pin": "mods/weapon-balance/global.json",
-      "rollForward": "disable",
-      "note": "This pin applies to future rebuilds. The SDK used for the original 2026-09-02 output was not recorded and cannot be proven retroactively."
-    },
-    "targetFramework": "net9.0",
+    "dotnetSdk": "9.0.102",
     "synthesis": "0.36.5",
     "mutagenBethesdaSkyrim": "0.54.3",
-    "nugetLock": "mods/weapon-balance/src/WeaponBalancePatcher/packages.lock.json",
-    "nugetLockSha256": "3B6F36BA8EDE8941934730623FA9E4171458FF029005B27ECFFFFC7B4392F37C",
-    "settingsSha256": "F33CBCD851803FA7A48EE6493737FA2F8BB3596D4582547BB62227996608CB41",
-    "recordAuditTool": {
-      "name": "skyrim-record-cli",
-      "commit": "1f3c8d9",
-      "sha256": "E3DDF1652F544CD189773F748FF34C0FBBA4BF97184BAA62F5820EB424381C50"
-    }
-  },
-  "commands": {
-    "buildAndGenerate": "pwsh -NoProfile -File mods/weapon-balance/generate.ps1",
-    "audit": "pwsh -NoProfile -File mods/weapon-balance/audit.ps1",
-    "package": "pwsh -NoProfile -File mods/weapon-balance/package.ps1",
-    "unitTests": "Push-Location mods/weapon-balance; dotnet run --project tests/WeaponBalancePatcher.Tests/WeaponBalancePatcher.Tests.csproj -c Release --locked-mode; Pop-Location"
+    "writer": "Stable FormKey traversal; explicit owned SkyrimMod under Synthesis NoPatch; supported SingleThread writer with actual load order."
   },
   "inputs": {
     "profile": "Default",
-    "effectiveLoadOrderEntries": 311,
-    "effectiveLoadOrderSha256": "0FC4D1AF04BBB55186C0B710648BF51FD0AFFD8B08B3442D08813B96DEC4E74F",
-    "source": "Preserved mods/weapon-balance/work/plugins-with-creation-club.txt from the 2026-09-02 generation; ignored private build input, not distributed."
+    "runtimePlugins": 348,
+    "inputPlugins": 347,
+    "inputLoadOrderSha256": "F2215E85D3A3725471C163736646C54420C6365CC7F05C224C9D0BA5CE22A057",
+    "inputPluginBinariesSha256": "8B5ABAC9D73EAC97A7F42D60D350C9D09BADBA8C86F3A94749E21BE4428D0C88",
+    "localizedSourceProviders": 21,
+    "inputLocalizationResourceProvidersSha256": "166B46F52654834036DC35756F793DF9C52C5E536DF6AFD12C26B757555ED8B2",
+    "manifest": "Installed EnsrickMetadata/build-manifest.json retains ordered plugin/provider/hash and relevant loose/BSA resource resolutions.",
+    "manifestSha256": "DBDF2E053CD68A5E60717F81B0BE914DD9F4F15BE83B2821BDF32C650372585E",
+    "sourceLocalizationScope": "Matches pinned Mutagen loader contract: provider-named loose tables and applicable provider BSAs, not arbitrary unrelated-archive engine overrides. See module README and Mutagen issue #578."
   },
   "output": {
     "plugin": "WeaponBalancePatch.esp",
-    "pluginBytes": 1586973,
-    "pluginSha256": "74532E4375AC376B13EDDD7B3481E7BA01BDA3C0487062095D2070CB2765FA09",
-    "installedPluginSha256VerifiedUtc": "2026-09-04",
-    "archive": "Ensrick-Weapon-Speed-Balance-0.1.0.zip",
-    "archiveBytes": 107169,
-    "archiveSha256": "8DDE04CCCCBB05F1BED2E670AB9C7FD13214ED0A560A6A37660A5BCAC0063506",
-    "eslFlagged": true,
-    "overrideOnly": true,
+    "pluginBytes": 1766218,
+    "pluginSha256": "6BFE4E47DE61A6A8B5E717213A13B992B9A8DA7B2944F5CE874CA23026F92F92",
+    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0.zip",
+    "archiveBytes": 671853,
+    "archiveSha256": "E8740E57A08319954C301A2000775C2CA5B786889068E6F49E09B0EB1D02E5BA",
+    "installedPayloadFiles": 31,
+    "installedPayloadBytes": 7692854,
     "recordTypes": {
-      "WEAP": 3007
+      "WEAP": 3481
     },
-    "masters": 35,
+    "masters": 40,
+    "eslFlagged": true,
+    "ownLightFormCount": 0,
+    "localized": true,
+    "translationLanguages": [
+      "Chinese",
+      "English",
+      "French",
+      "German",
+      "Italian",
+      "Japanese",
+      "Polish",
+      "Russian",
+      "Spanish"
+    ],
+    "localizedSidecarsSha256": "6DD2508066B6681A26A347AE69832FE7B7D39F8A53461BB4A14634455092ECC4",
+    "localizedSidecars": [
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Chinese.DLSTRINGS",
+        "language": "Chinese",
+        "source": "DL",
+        "bytes": 22070,
+        "sha256": "B097F90D4AEE4F24CD2DD4A23547EDD11F708DC57D7C30EFB4C73660AFDA063B"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Chinese.ILSTRINGS",
+        "language": "Chinese",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Chinese.STRINGS",
+        "language": "Chinese",
+        "source": "Normal",
+        "bytes": 100759,
+        "sha256": "B4AA54DD91B0B71630EBB82DA178F003F1693E617127238CD9EF4F820BFB3FBD"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_English.DLSTRINGS",
+        "language": "English",
+        "source": "DL",
+        "bytes": 22083,
+        "sha256": "2A8233C2E4AB78BA8AB281C154EE5EDE94EE8CCB20349AA83E58B406B16FAECB"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_English.ILSTRINGS",
+        "language": "English",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_English.STRINGS",
+        "language": "English",
+        "source": "Normal",
+        "bytes": 115472,
+        "sha256": "280EAFD3779ECDA5EF0D867434C38580A2D35F42A4B8E464B2B85ADDE867D0E2"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_French.DLSTRINGS",
+        "language": "French",
+        "source": "DL",
+        "bytes": 22094,
+        "sha256": "D5C8D7191FB9F95CC39AD5BE0DD9F54983C4CA512B58B322BFA8F91AE7D35901"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_French.ILSTRINGS",
+        "language": "French",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_French.STRINGS",
+        "language": "French",
+        "source": "Normal",
+        "bytes": 118848,
+        "sha256": "674B3CC1CA00306651B25DA45DA0C3A404144DD94B9A507DF6A1424F606CD549"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_German.DLSTRINGS",
+        "language": "German",
+        "source": "DL",
+        "bytes": 22082,
+        "sha256": "F629F66BCD4AB96F96CBC26FB8EE71169329A4ED23A2C1A2B852AC0973209CD1"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_German.ILSTRINGS",
+        "language": "German",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_German.STRINGS",
+        "language": "German",
+        "source": "Normal",
+        "bytes": 125718,
+        "sha256": "22A217EBBB7A2D331799176FCC46E9C9B540BEF9966AD08450B21E8C86E729B3"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Italian.DLSTRINGS",
+        "language": "Italian",
+        "source": "DL",
+        "bytes": 22089,
+        "sha256": "78AD3CE9359B4BA8F1A43E3C0F89BFF8542131984A652968C3A43AFF0AA5A6C7"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Italian.ILSTRINGS",
+        "language": "Italian",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Italian.STRINGS",
+        "language": "Italian",
+        "source": "Normal",
+        "bytes": 121794,
+        "sha256": "03FA6635CAEB8CF3325FBED0757E58C6CFA3249E25545A67370B20972CD41C67"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Japanese.DLSTRINGS",
+        "language": "Japanese",
+        "source": "DL",
+        "bytes": 22097,
+        "sha256": "729C4C5F7252FD8CA3744830BCDB65D27ED62A2E4343D34DA4B67D8274B93AF5"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Japanese.ILSTRINGS",
+        "language": "Japanese",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Japanese.STRINGS",
+        "language": "Japanese",
+        "source": "Normal",
+        "bytes": 126847,
+        "sha256": "190565B4065904CD7F1E7B6245EFAAF6930C54E15AD3EF6079AC32CBD1230ACD"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Polish.DLSTRINGS",
+        "language": "Polish",
+        "source": "DL",
+        "bytes": 22088,
+        "sha256": "52D2989D97D5B046C0B3F905E3C7BC2343E39D3E6A9C59F1C67E02A16ECFFAF8"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Polish.ILSTRINGS",
+        "language": "Polish",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Polish.STRINGS",
+        "language": "Polish",
+        "source": "Normal",
+        "bytes": 124688,
+        "sha256": "E21A0F944ECB9BEEF7B673759E9B4223677FA0A105733C70F4A31EA2E26F8FE7"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Russian.DLSTRINGS",
+        "language": "Russian",
+        "source": "DL",
+        "bytes": 22114,
+        "sha256": "8EDE56655A728EDC62E3EAFA5E6DD1AE4F05ED0852960CA3E264081BE80941F1"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Russian.ILSTRINGS",
+        "language": "Russian",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Russian.STRINGS",
+        "language": "Russian",
+        "source": "Normal",
+        "bytes": 172832,
+        "sha256": "D8C530CF4B9D7FDF844B037B06FA9B6E6B8A206D31FE0F66929570757E1D2F4C"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Spanish.DLSTRINGS",
+        "language": "Spanish",
+        "source": "DL",
+        "bytes": 22082,
+        "sha256": "63BDDFB55443F99C9541F1CCE5AAD93EBA2739DAA9C78FD0372B3C325F9E24FB"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Spanish.ILSTRINGS",
+        "language": "Spanish",
+        "source": "IL",
+        "bytes": 8,
+        "sha256": "AF5570F5A1810B7AF78CAF4BC70A660F0DF51E42BAF91D4DE5B2328DE0E83DFC"
+      },
+      {
+        "relativePath": "Strings/WeaponBalancePatch_Spanish.STRINGS",
+        "language": "Spanish",
+        "source": "Normal",
+        "bytes": 128264,
+        "sha256": "EB575851A901A1A1152C647ED3E711490E79F8FC7D88D31ABCA1F9F71B217F14"
+      }
+    ],
+    "selectionReportSha256": "502A4781F4A3D1B58A2580E9C016E3F49ACCA0FEBFE2C620A5691D8D475484A2",
+    "finalWinnerAuditSha256": "CF9284BBB52AEBD21638FCB2CD50844FDDB0FE5FDA384C117361F70EA11EE087",
+    "finalWinnerCheckedRecords": 4191,
     "classCounts": {
-      "dagger": 420,
-      "sword": 45,
-      "warAxe": 428,
-      "mace": 763,
-      "greatsword": 496,
-      "battleaxe": 441,
-      "warhammer": 414
-    }
+      "dagger": {
+        "classified": 486,
+        "changed": 486,
+        "alreadyTarget": 0
+      },
+      "sword": {
+        "classified": 746,
+        "changed": 59,
+        "alreadyTarget": 687
+      },
+      "longsword": {
+        "classified": 9,
+        "changed": 0,
+        "alreadyTarget": 9
+      },
+      "warAxe": {
+        "classified": 513,
+        "changed": 513,
+        "alreadyTarget": 0
+      },
+      "mace": {
+        "classified": 854,
+        "changed": 854,
+        "alreadyTarget": 0
+      },
+      "greatsword": {
+        "classified": 583,
+        "changed": 572,
+        "alreadyTarget": 11
+      },
+      "battleaxe": {
+        "classified": 530,
+        "changed": 530,
+        "alreadyTarget": 0
+      },
+      "warhammer": {
+        "classified": 467,
+        "changed": 467,
+        "alreadyTarget": 0
+      }
+    },
+    "selectionRows": 5295,
+    "reviewCandidates": 848,
+    "reviewCandidatesMeaning": "Future signature-exception review queue, not exclusions or automatic evidence of a bug.",
+    "laterWeaponCoverage": {
+      "total": 32,
+      "changed": 16,
+      "alreadyTarget": 13,
+      "explicitlyExcluded": 3
+    },
+    "wuuthrad": "0956B5:Skyrim.esm now wins at 0.7692308; all other current RMB SPID record fields forwarded."
   },
   "validation": {
-    "formulaAndParserTests": "PASS at implementation commit; rerun required after code changes.",
-    "artifactAudit20260904": "PASS: 3,007 Weapon records only, all class speeds exact, 35 masters.",
-    "packageRebuild20260904": "PASS: deterministic archive reproduced SHA-256 8DDE04CC...3506 without regenerating the plugin.",
-    "installedArtifactMatch20260904": true,
-    "featureDefaultsDiff": "not applicable (record patch, no runtime defaults)",
-    "gameplayAcceptance": "Launch-verified as recorded by the coordination board; disposable-save all-class animation/timing feel remains pending."
+    "independentPeerReview": "GO on frozen final source",
+    "csharpSuite": "PASS including actual Synthesis NoPatch pipeline, localized semantic round-trips, >400-record stress and real 3481-record repeat writes",
+    "powershellSuites": "PASS: FreshnessWrapper, GenerationSafety, PackageSafety",
+    "pythonRegressions": "PASS: 7 freshness bridge + 5 timing + 13 private curation tests",
+    "candidateAudit": "PASS: complete selection coverage, all-language semantic only-Speed, exact masters and ESL safety",
+    "deterministicDoubleBuild": "PASS: final full-load-order ESP, selection report and all 27 sidecars exactly identical",
+    "finalWinners": "PASS: 4191 target/preserve rows",
+    "canonicalFreshness": "PASS; no VFS, zero files written",
+    "installedFreshness": "PASS; no VFS, zero files written",
+    "combinedPrivateCuration": "PASS: 215/215 actual installed-profile checks, six payload files identical",
+    "installLedgerVerification": "PASS: 280 rows, zero reported problems; independent preflight still warns five pre-existing enabled folders lack ledger rows",
+    "pluginOrder": "PASS: 268 active managed, 352 discoverable",
+    "keepCoverage": "PASS: 194 installed Nexus IDs and 194 live Keeps; owned artifacts have no fabricated Nexus ID",
+    "preflight": {
+      "status": "PASS",
+      "failures": 0,
+      "warnings": 3,
+      "details": [
+        "Steam overlay cannot be verified from disk.",
+        "Five existing Fable-owned enabled-folder ledger gaps remain #102.",
+        "Temporary root live claim; released after final bookkeeping."
+      ]
+    },
+    "gameSideActivation": {
+      "status": "PASS: exactly matches all 268 active profile rows in order",
+      "onlyAddedActivePlugins": ["Ensrick Lost LongSwords Curation.esp", "Ensrick Lost LongSwords Stormcloak Distribution.esp"],
+      "globalBalanceOrderedLast": true,
+      "path": "%LOCALAPPDATA%/Skyrim Special Edition/Plugins.txt",
+      "backup": "%LOCALAPPDATA%/Skyrim Special Edition/Plugins.txt.bak.weapon-balance-20260905-2249",
+      "beforeSha256": "04C4677FCB847B99C6646B2EF88972C73F4AE9126E0138A2808467FE7F10B994",
+      "afterSha256": "89D124574A8EFC2F1973DC768D53FBDE3455C339A9177548EE7B188A47D3F27B",
+      "safety": "Claim held; game and MO2 stopped; original backed up byte-for-byte. No INI, Steam, runtime process or user save changes."
+    },
+    "vendorLostLongswords": {
+      "files": 79,
+      "priorFiles": 79,
+      "bitIdentical": true,
+      "changed": []
+    },
+    "physicalGameDataRoot": {
+      "files": 177,
+      "unchanged": true
+    },
+    "profileState": {
+      "modsUnchanged": true,
+      "unrelatedPluginsOrderAndActivationUnchanged": true,
+      "globalLast": {
+        "enabled": true,
+        "name": "WeaponBalancePatch.esp",
+        "priority": 271
+      },
+      "managedPlugins": 272,
+      "activeManaged": 268
+    },
+    "gameLaunched": false,
+    "runtimeAcceptance": "UNVERIFIED: main menu/save load, acquisition, actual attack cadence, power attacks, stamina and gameplay feel require an approved disposable fresh-character test."
   },
   "installation": {
     "mo2Mod": "Ensrick - Weapon Speed Balance",
     "profile": "Default",
     "enabled": true,
-    "stageTransaction": "20260902T174055139Z-86f86293fe2d",
-    "installedUtc": "2026-09-02T17:40:55Z"
+    "modPriority": 237,
+    "managedPluginPriority": 271,
+    "runtimePluginIndex": 347,
+    "installedUtc": "2026-09-05T22:42:39Z",
+    "candidateInstallTransaction": "20260905T223958756Z-58f55b12dd51",
+    "pluginPriorityTransaction": "20260905T223959715Z-763af81519ec",
+    "finalInstallTransaction": "20260905T224239482Z-9c692e563731",
+    "rollback": "Headless transaction journal retains prior owned payload; no vendor files or saves modified."
   },
   "distribution": {
-    "status": "local-only-pending-record-rights-review",
+    "status": "local-only-pending-record-and-localization-rights-review",
     "vendorFilesModified": false,
-    "basis": "The MIT generator/configuration is distributable. The generated override plugin copies winning third-party record data; override-only status does not itself grant redistribution rights, so the binary remains local-only until a concrete source-permissions review."
+    "basis": "Original MIT generator/policy source is distributable. Generated winning-record copies and localized strings require exact permissions review or user-local generation from authorized inputs. No private ESP, mesh, texture, or translation output uploaded."
   },
-  "evidenceLimits": [
-    "The original build's exact .NET SDK version was not logged; the new global.json pin prevents that omission on future rebuilds but cannot retroactively identify it.",
-    "Only the final plugin and package remain. The two original generation outputs asserted byte-identical in PR #179 were not both retained, so their equality cannot be independently replayed from two historical files.",
-    "The exact 2026-09-02 input list is retained locally and hashed but is intentionally ignored because it discloses the private load order; the public receipt records only its count and hash.",
-    "The installed 0.1.0 binary has not received a record-by-record redistribution-rights review and must not be published merely because it is override-only."
+  "remaining": [
+    "Fresh-character launch/load, soldier acquisition and measured cadence/stamina acceptance #227/#237/#239.",
+    "Review requested unique-speed exceptions using selection-report review queue before changing the approved general policy.",
+    "Private curation ordinary-bandit shared-equipment route remains deferred (#237/No Mere Bandits), not silently broadened.",
+    "Future Imperial overhaul requires a new faction equipment graph/winner audit and balance regeneration; none installed now."
+  ],
+  "issues": [
+    239,
+    237,
+    212,
+    227,
+    160
   ]
 }

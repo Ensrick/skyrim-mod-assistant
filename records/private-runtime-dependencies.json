@@ -51,6 +51,16 @@
       "active": true
     },
     {
+      "component": "Ensrick Weapon Speed Balance",
+      "mo2Mod": "Ensrick - Weapon Speed Balance",
+      "artifact": "WeaponBalancePatch.esp and Strings/WeaponBalancePatch_*",
+      "sha256": "6BFE4E47DE61A6A8B5E717213A13B992B9A8DA7B2944F5CE874CA23026F92F92",
+      "requiredFor": ["Approved class-speed normalization of the current winning weapon records"],
+      "reasonPrivate": "The MIT generator is original distributable source, but its generated overrides and localized strings copy third-party record content. Separate-patch status alone does not establish redistribution permission.",
+      "releaseGate": "Review the exact source permissions or generate and validate locally against each user's authorized inputs. Never publish the private package automatically. Full build, input and localization hashes: records/source-builds/ensrick-weapon-speed-balance.json.",
+      "active": true
+    },
+    {
       "component": "Ensrick Lux Water CS Patch",
       "mo2Mod": "Ensrick - Lux Water CS Patch",
       "artifact": "Ensrick Lux Water CS Patch.esp",

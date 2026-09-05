@@ -34,6 +34,32 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-05 17:42 - Weapon Speed Balance 0.3 installed; global/private integration checked (#239, #237)
+
+- **What:** Replaced only the owned `Ensrick - Weapon Speed Balance` payload
+  through headless transaction `20260905T224239482Z-9c692e563731`; the plugin
+  is now last (managed priority 271). 3,481 WEAP overrides, 40 exact masters,
+  347 current input plugins, 27 localized string tables. Corrected the steel
+  selector, removed unsafe animation-only fallback, preserved reviewed unique
+  speed exceptions, and protected the nine approved custom-class longswords.
+  Generic output changes only Speed; material damage progression remains.
+  Repaired localization preservation and deterministic localized writing.
+  Source/policy/input/resource freshness is now a required preflight gate.
+  Game-side activation was synced to all 268 verified profile entries, with
+  its original file backed up; only the two new curation plugins were added
+  to the active set. No INI edits or Steam/game process actions.
+- **Source:** User approved the September balancing proposal and the faction
+  longsword distribution. Canonical source `043ccfd`, issues #239 and #237;
+  reusable doctrine `docs/WEAPON_BALANCING_STANDARD.md`. Private generated
+  binaries are not published; source/recipes and rights gates are tracked.
+- **Verification:** Static candidate/only-Speed comparison, repeated full
+  generation (ESP/report/all 27 sidecars identical), all 4,191 final balance
+  and preserve rows, and combined installed private graph 215/215 PASS.
+  **Runtime UNVERIFIED:** no game launch, save load, cadence, stamina, or
+  acquisition playtest performed this turn. Use a disposable new character for
+  fresh soldier inventory tests. See both source-build receipts for hashes,
+  remaining acceptance and final preflight evidence.
+
 ## 2026-09-05 16:02 - Private longsword curation and isolated soldier distribution installed (#237)
 
 - **What:** Added `Ensrick - Lost LongSwords Curation (Private)` through the
