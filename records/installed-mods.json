@@ -3597,6 +3597,26 @@
       "note": "Pure mesh replacer for standard Forsworn and Briarheart armor plus Forsworn sword and axe; male and female weighted meshes; no plugin, scripts, textures, bows, leveled-list changes, or stat edits"
     },
     {
+      "modId": 0,
+      "modName": "Lost LongSwords - Curated SSE (Private)",
+      "nexusName": "Lost LongSwords 2-HANDED",
+      "version": "1.1-private-sse",
+      "fileId": 0,
+      "fileName": "Lost LongSwords - Curated SSE (Private).zip",
+      "sizeMb": 28.8,
+      "sha256": "459003ccf9c290979e668dcde61fff310d4dad2997400afc096d7b04318617cb",
+      "plugins": [
+        "LostLongSwords.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-05T16:35:39Z",
+      "transaction": "20260905T163539868Z-f261a2f5b9ed",
+      "sourceUrl": "https://www.nexusmods.com/skyrim/mods/26261",
+      "note": "Private local SSE conversion of the user-supplied original two-handed v1.1 archive (SHA-256 51B08826468746B661AB81B3526C8D79925A8F1C021214EC265F525A3998E52D). The separately audited 2024 SSE upload 126568 was not used: it is the one-handed edition, retains a form-40 plugin, and its meshes retain Skyrim LE stream 83. Installed payload audit: form-44/header-1.7 LostLongSwords.esp (SHA-256 436E46C2BE9D25B0FD726271712421265C6309DB8C69D8A8AE8C7FF06EC5B54D), 12 surviving TwoHandSword/TwoHanded WEAP records, 11 SSE stream-100/BSTriShape meshes, 66 DDS textures, 0 unresolved links, and no Dragonbone records or assets. The July balance decision intentionally retains the original faster/lighter two-handed niche (generally speed 0.80, reach 1.15, stagger 0.90); WeaponBalancePatch.esp does not yet include these FormKeys. Compatibility and balance follow-up is tracked in issue #237. Evidence and regeneration procedure: ports/lost-longswords/COMPARISON.md, ports/lost-longswords/BALANCE.md, ports/lost-longswords/stage-private-port.ps1, and ports/lost-longswords/audit-private-port.ps1.",
+      "distribution": "local-only",
+      "distributionBasis": "MrBrownstone's Nexus permissions prohibit re-upload and require permission to modify; the converted archive, converted assets, and generated plugin must not be bundled or uploaded. Public packaging may reference the authorized original download and the repository's local transformation/validation recipe only, subject to the policy in records/restricted-mods.json and REDISTRIBUTION.md."
+    },
+    {
       "modId": 75349,
       "modName": "Lunar Guard Armor",
       "nexusName": "Lunar Guard - 2k Textures",

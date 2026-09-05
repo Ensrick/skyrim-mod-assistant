@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "auditedAt": "2026-09-02",
+  "auditedAt": "2026-09-05",
   "scope": "Active private artifacts whose exact local form is required by the current profile and cannot presently be included in a public release.",
   "publicationBlockers": [
     {
@@ -26,6 +26,18 @@
       ],
       "reasonPrivate": "No clear top-level redistribution license was found in the audited SKSE64Plugins source tree.",
       "releaseGate": "Establish redistribution permission or replace it with an officially supported or independently licensed implementation, then reproduce the build from reviewed source.",
+      "active": true
+    },
+    {
+      "component": "Lost LongSwords - Curated SSE (Private)",
+      "mo2Mod": "Lost LongSwords - Curated SSE (Private)",
+      "artifact": "Lost LongSwords - Curated SSE (Private).zip",
+      "sha256": "459003CCF9C290979E668DCDE61FFF310D4DAD2997400AFC096D7B04318617CB",
+      "requiredFor": [
+        "The selected two-handed Lost LongSwords SSE conversion with Dragonbone removed"
+      ],
+      "reasonPrivate": "Mr Brownstone's permissions prohibit redistribution and require permission to modify; the generated form-44 plugin and converted meshes/textures are derivative third-party content.",
+      "releaseGate": "Obtain explicit redistribution permission, or make the public installer regenerate and validate this payload locally from the user's authorized original archive (SHA-256 51B08826468746B661AB81B3526C8D79925A8F1C021214EC265F525A3998E52D) using the tracked recipe; never bundle the generated payload.",
       "active": true
     },
     {
