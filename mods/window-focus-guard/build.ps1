@@ -2,13 +2,25 @@
 param(
     [Parameter(Mandatory)][string]$SkseSdkRoot,
     [Parameter(Mandatory)][string]$Cmake,
-    [Parameter(Mandatory)][string]$BuildDirectory
+    [Parameter(Mandatory)][string]$BuildDirectory,
+    [string]$Generator = ''
 )
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $source = $PSScriptRoot
 $build = [IO.Path]::GetFullPath($BuildDirectory)
-& $Cmake -S $source -B $build -G 'Visual Studio 17 2022' -A x64 "-DSKSE_SDK_ROOT=$SkseSdkRoot"
+if (-not $Generator) {
+    $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio/Installer/vswhere.exe'
+    if (-not (Test-Path -LiteralPath $vswhere)) { throw 'vswhere unavailable; specify a supported Generator' }
+    $version = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationVersion
+    if ($LASTEXITCODE -ne 0 -or -not $version) { throw 'No installed x64 MSVC toolchain found' }
+    $major = ([version]($version | Select-Object -First 1)).Major
+    $capabilities = & $Cmake -E capabilities | ConvertFrom-Json
+    $matches = @($capabilities.generators | Where-Object name -Match "^Visual Studio $major ")
+    if ($matches.Count -ne 1) { throw "CMake has no unambiguous generator for installed Visual Studio major $major" }
+    $Generator = $matches[0].name
+}
+& $Cmake -S $source -B $build -G $Generator -A x64 "-DSKSE_SDK_ROOT=$SkseSdkRoot"
 if ($LASTEXITCODE -ne 0) { throw 'Configure failed' }
 & $Cmake --build $build --config Release
 if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
