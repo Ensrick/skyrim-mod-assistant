@@ -214,6 +214,16 @@ assignment is started.
 - Believable Weapons retexture compatibility audit. Xavbio Silver Armor and
   Weapons Retexture SE 2.1.1 is directly compatible; no patch is needed.
 
+## 2026-09-05 Astra playtest regressions — installed, runtime acceptance open
+
+- Arrow runtime classification: `arrow_runtime_fix`; full-health player incorrectly excluded as non-humanoid in the actual 0.3.1 log. Source/build only; root deploys.
+- Full-cloak equipment exclusivity: `cloak_slots_fix`; enforce one full cloak while preserving non-cloak mantle/scarf exceptions. Root deploys; no vendor mutations.
+- Sons of Skyrim cloak physics: `oldrim_12506_web`; read-only current asset/patch compatibility audit. CoS/ElSopa #193 remains unfinished separately.
+- Root owns serial live changes and receipts. No surprise game launches, no Fable INI/lighting/conflict-report edits, and no new third-party mods without the required approval.
+- Completion: ConditionalArrowEmbedding 0.3.2 installed; source PR `Ensrick/ConditionalArrowEmbedding#5`, runtime gate #1 remains open. Independent full-cloak exclusivity 0.1.0 installed; #240 tracks acceptance. All 33 cloak/strict-reader tests and installed static freshness checks pass. No gameplay pass claimed.
+- SoS HDT cloak patch SSE114690/main file483316 audited but NOT installed or added to Keep; user approval remains outstanding. Missing Horker pauldron meshes tracked separately in #241. CoS/ElSopa physics #193 remains open.
+- User is starting a playtest. Live claim released; all agents finished. No live profile/game changes during testing. Root is committing only this campaign's exact source/docs/ledger paths; the four preexisting dirty conflict reports are excluded.
+
 ## Overnight 2026-09-02 (Claude side) - do not double-dispatch
 
 User is asleep; Sol 5.6 is also working. Claude-side agents in flight, each

@@ -10,12 +10,14 @@ Exit 0 = safe to launch. Non-zero = do not tell the user to launch.
   py -3 audit/preflight.py
 """
 import io, json, os, re, subprocess, sys
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import preflight_extra   # 2026-09-01 hardening: DLL depth, ledger gap, watched configs,
                          # saves mirror, the REAL profile settings.ini, work claim
 import keep_coverage     # 2026-09-02: installed implies Keep (docs/CURATION_POLICY.md)
 import weapon_balance_gate  # #239: no stale or unaudited generated weapon output
+import cloak_exclusivity  # #240: reserved equipment slots must stay collision-free
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -376,6 +378,11 @@ def main():
     keep_coverage.run(fails, warns)
     weapon_balance_gate.run(fails, warns, repo=REPO, instance=INSTANCE,
                             profile='Default')
+    try:
+        fails.extend('full-cloak exclusivity: ' + problem for problem in
+                     cloak_exclusivity.check_installed(Path(INSTANCE), Path(GAME) / 'Data'))
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        fails.append('full-cloak reservation could not be verified: ' + str(error))
 
     for w in warns:
         print(f'  WARN  {w}')

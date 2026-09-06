@@ -34,6 +34,19 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-05 19:58 — Full-cloak equipment exclusivity 0.1.0
+
+- **What:** Installed one first-party SkyPatcher overlay for 240 exact full-cloak records, using audited unused slot 58 while preserving original slots and every mesh. Ten Pelts mantle-family pieces, collars, scarves and unrelated accessories are excluded. Added a preflight freshness gate, strict record reader, reproducible mesh-proof tool and CI regression suites. No third-party mod, physics, distribution or save mutation.
+- **Source:** User's simultaneous SoS/full-fur cloak reproduction; [#240](https://github.com/Ensrick/skyrim-mod-assistant/issues/240), parent #95. Separate missing Horker/test-mantle assets found and tracked in #241; not silently substituted.
+- **Verification:** **UNVERIFIED in game.** 33 unit-test groups pass; 348-plugin reservation and 576-path explicit/weight-companion audit pass with 569 parsed winners and seven preexisting absence sentinels. Installed hash/freshness, zero-error MO2 audit, unchanged plugin list and Keep coverage pass. No game launched. Receipt `records/source-builds/ensrick-full-cloak-exclusivity.json`; recoverable rollback transaction `20260906T005802828Z-936f950b7292`.
+
+## 2026-09-05 19:29 — Arrow player-eligibility hotfix 0.3.2
+
+- **What:** Replaced only `Ensrick - Conditional Arrow Embedding` with the clean source-built 0.3.2 package. Corrected version-aware ActorState access; added bounded player eligibility diagnostics and full-health unknown-region behavior. No damage, threshold, INI, plugin activation or ordering changes.
+- **Source:** User's full-health godmode arrow reproduction; actual runtime log; `ConditionalArrowEmbedding` commit `ba33a58490b20fdf52752ef94a033be98da65ddb`; reopened [runtime issue #1](https://github.com/Ensrick/ConditionalArrowEmbedding/issues/1).
+- **Verification:** **UNVERIFIED in game.** Three native/policy/source test groups, exact-executable hook and binary audits, installed SHA-256, zero-error controller audit, unchanged configuration/plugin list/mod-entry order, and weapon-balance freshness all pass. No game launched. Receipt: `records/source-builds/conditional-arrow-embedding-0.3.2.json`. Rollback transaction `20260906T002954272Z-de310310bb6d` retains the old installation recoverably.
+
+
 ## 2026-09-05 17:42 - Weapon Speed Balance 0.3 installed; global/private integration checked (#239, #237)
 
 - **What:** Replaced only the owned `Ensrick - Weapon Speed Balance` payload

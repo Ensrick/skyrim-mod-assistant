@@ -1379,19 +1379,19 @@
       "modId": 0,
       "modName": "Ensrick - Conditional Arrow Embedding",
       "nexusName": "Ensrick-owned Conditional Arrow Embedding SKSE plugin",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "fileId": 0,
-      "fileName": "ConditionalArrowEmbedding-0.3.1-Skyrim-1.7.104-win64.zip",
+      "fileName": "ConditionalArrowEmbedding-0.3.2-Skyrim-1.7.104-win64.zip",
       "sizeMb": 0.32,
-      "sha256": "0d3866eeb33e8c91ecaa00ef37b9eecd85cf9f1dc34401149f3e12731df15753",
+      "sha256": "d9987646ab780242694d6b1323deb280d2346a3499e5361271a51a6ddc9451c4",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-05T05:36:39Z",
-      "transaction": "20260905T053639947Z-86ebf9c68d07",
-      "note": "First-party SKSE 2.3.1 plugin for exact Skyrim runtime 1.7.104.0. Version 0.3.1 repairs the release-blocking 0.2.0 routing defect: the obsolete ID 44204 + 0x3AA site was a shooter-null fallback that normal arrows bypassed. The DLL wraps the verified owner-resolved physical-hit call at Address Library ID 38627 + 0x4A8 (RVA 0x6CD798), after synchronous damage and before ArrowProjectile/MissileProjectile ProcessImpacts consumes the result. It changes both missile-wide and current-impact Stick/Impale results to Bounce for nonlethal living-humanoid head/eye hits and body hits at or above 50% post-hit health. Version 0.3.1 additionally restricts mutation to the new, unprocessed impact-list head belonging to the struck actor, rejects processed/destroyed projectiles, uses the missile-wide result as authoritative, and retains an exact ArrowProjectile smart reference across damage callbacks. Lethal hits use pre-hit alive plus post-original Actor::IsDead, not the predictive kFatal flag; undead, constructs, animals, creatures, Daedra, dragons, ghosts, reanimated actors, utility races, blocked/ricochet hits, already-dead targets, and unknown locations fail open to vanilla. No ESP/ESL, Papyrus, MCM, health/damage edits, or save data. Policy matrix 1/1 passed; semantic control-flow verifier proves the normal route, rejects the old fallback, proves the later impact-result consumer, and enforces current-impact-only source structure; binary audit found only the three expected SKSE exports and no modal/focus/process/audio imports; release package reproduced byte-for-byte. Installed DLL SHA-256 2da8f3ef1f08b73ffb3e47db3bf870289004f4973e1079585dc331208f320aca. MO2 transaction preserved priority 249 and enabled state; profile audit returned zero errors. Bounded first-occurrence runtime telemetry is enabled at info level. Shooterless trap/script/debug arrows remain vanilla; the in-game behavior matrix remains the release gate.",
+      "installedUtc": "2026-09-06T00:29:54Z",
+      "transaction": "20260906T002954272Z-de310310bb6d",
+      "note": "First-party SKSE 2.3.1 plugin for exact Skyrim 1.7.104.0. Version 0.3.2 fixes a proven ActorState layout defect in 0.3.1: direct inherited IsReanimated read Actor+0xA8 instead of runtime-aware Actor+0xC8, potentially excluding living humanoids. The user's full-health player was observed as livingHumanoid=false in the actual log. Uses AsActorState and adds bounded per-player eligibility diagnostics. Healthy eligible humanoids also bounce when head/body metadata is unknown. Strict-below-50% body threshold, lethal precedence, creature exclusions, unchanged damage and current-impact-only verified normal-arrow hook are preserved. Three CTest groups passed including 144 native layout cases, policy matrix and production wiring guard; exact-executable hook and binary audits passed. Installed DLL SHA-256 87d6c4bbcdf9742ddd69453b584cca66d01431376100d90bd6740cb12f3fc357. Transaction preserved enabled state, priority 249, configuration bytes and every mod/plugin entry order; controller audit has zero errors. No ESP, scripts, save data, new mod dependency or game launch. This is a installed code repair, NOT in-game acceptance: runtime issue ConditionalArrowEmbedding#1 is reopened. Full receipt records/source-builds/conditional-arrow-embedding-0.3.2.json and records/arrow-cloak-playtest-regressions-2026-09-05.md.",
       "sourceUrl": "https://github.com/Ensrick/ConditionalArrowEmbedding",
       "distribution": "distributable",
-      "distributionBasis": "Project-authored code is MIT. Binary package includes project license, CommonLibSSE-NG GPL-3.0-or-later license and Modding Exception, vcpkg dependency notices, build provenance and SHA-256 manifest. Exact CommonLibSSE-NG corresponding-source archive SHA-256 3a8a8c7536280ea492c945c56bdf2d0c906ef22f535bac5d35e821216ba25944 accompanies the package. Source commit 1d265a4c064f9c9612c3bf3a858267a4c0abecca. Core Impact Framework and Ricochet Framework were inspected as behavior prior art but are neither linked nor copied. Do not publish a stable binary until the documented in-game matrix passes."
+      "distributionBasis": "Project-authored code is MIT. Binary package includes project license, CommonLibSSE-NG GPL-3.0-or-later license and Modding Exception, vcpkg dependency notices, build provenance and SHA-256 manifest. Exact CommonLibSSE-NG corresponding-source archive SHA-256 a8b5e4c1fade198fa576821f1e0aeb9ac4914cd63c3f525d5cd016febb3d44dd accompanies the package. Clean source commit ba33a58490b20fdf52752ef94a033be98da65ddb. Core Impact Framework and Ricochet Framework were inspected as behavior prior art but are neither linked nor copied. Do not publish a stable binary until the documented in-game matrix passes."
     },
     {
       "modId": 0,
@@ -1466,6 +1466,24 @@
         ],
         "verification": "2026-09-02: the archive entry's SHA-256 equals the installed file; the 2K and 4K tiers ship the identical 4096x8192 atlas (68F811AD853162F5019E228491661574166DBB24D8367F28C9EE749308791103, 44,739,428 B) and only the 1K tier carries the 2048x4096 atlas"
       }
+    },
+    {
+      "modId": 0,
+      "modName": "Ensrick - Full Cloak Exclusivity",
+      "nexusName": "Ensrick-owned SkyPatcher full-cloak equipment exclusion overlay",
+      "version": "0.1.0",
+      "fileId": 0,
+      "fileName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
+      "sizeMb": 0.114,
+      "sha256": "fd8f0510ecdb2fd39da6a0bc6464fcf44cc3eab786ffaa5456028ece38714bf7",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-06T00:58:02Z",
+      "transaction": "20260906T005802828Z-936f950b7292",
+      "note": "#240. Original configuration adds reserved slot58/index28 to240 exact full-cloak ARMO records and their attached ARMA while preserving every existing slot. Sources:99 Pelts full cloaks,122 CoS,12 SoS,4 Campfire,3 More Scarves. Ten Pelts mantle-family pieces, collars, hoods, scarves and unrelated accessories are excluded. Slot57 shortcut was rejected because it would block mantles. Static proof:348 plugins,8747 ARMO and4315 ARMA declarations including losing overrides, no preexisting slot58 occupancy or excluded shared-ARMA consumers;576 explicit/weight-companion model paths,569 parsed winners,zero partition58 hits and7 preexisting absence sentinels. Twenty-one cloak tests and12 strict-reader tests pass. Installed config SHA5716ae2ff6b0ca0c76eb766e1694ed88a6cc18250da70a758d7e85eb98f1ecdf; priority286. Installed freshness gate and MO2 audit pass; plugins.txt unchanged. No mesh edits, physics, NPC inventory cleanup or saved worn-flag migration. Existing collar/cloth46 and mantle/fur57 conflicts are retained, not newly introduced. In-game equip/visual acceptance remains UNVERIFIED. Missing Horker pauldron meshes tracked separately in#241. Source audit/cloak_exclusivity.py; receipt records/source-builds/ensrick-full-cloak-exclusivity.json.",
+      "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
+      "distribution": "distributable",
+      "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
     },
     {
       "modId": 0,
