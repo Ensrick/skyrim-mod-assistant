@@ -31,6 +31,7 @@
     "note": "Original module has no upstream defaults; behavior implements #149. Render/Havok and Media Keys Fix unchanged. No user-visible helper, dialog, audio or game launch."
   },
   "staticVerification": {
+    "publicSourceCi": "PASS: https://github.com/Ensrick/skyrim-mod-assistant/actions/runs/34011338284 at6e03aff; public SDK header and hosted MSVC discovery",
     "nativeTestGroups": 2,
     "pairingTestCases": 6,
     "independentReview": "PASS after fixing query-failure ownership, recycled-HWND validation and moving all file I/O off input message thread",

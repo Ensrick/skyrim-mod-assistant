@@ -38,7 +38,7 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 - **What:** Corrected WindowFocusGuard CI to fetch public SKSE71f41da instead of the local unpublished quiet-loader checkout872c2d6. PluginAPI.h is byte-identical (Git blobf4844ffe, SHA0F238CC8); no code, DLL or live configuration changes. Source README/receipt distinguish local and public provenance.
 - **Source:** First remote build rejected the unavailable SDK commit. The local build never depended on its unrelated loader edits.
-- **Verification:** Header equivalence and public commit availability confirmed. The next CI run exposed the hosted runner's newer Visual Studio, so the build script now discovers installed MSVC via vswhere and selects the matching supported CMake generator instead of assuming2022. No compiler install or runtime changes. CI rerun pending; gameplay remains UNVERIFIED.
+- **Verification:** Header equivalence and public commit availability confirmed. The next CI run exposed the hosted runner's newer Visual Studio, so the build script now discovers installed MSVC via vswhere and selects the matching supported CMake generator instead of assuming2022. No compiler install or runtime changes. GitHub Actions run34011338284 passed at6e03aff; gameplay remains UNVERIFIED.
 
 ## 2026-09-05 23:06 — Foreground cursor owner replaces unconditional confinement
 
