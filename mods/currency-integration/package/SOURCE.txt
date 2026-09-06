@@ -1,0 +1,31 @@
+SOURCE AND CORRESPONDING-SOURCE OFFER
+
+The exact Ensrick-authored plug-in source used to build the bundled
+EnsrickCurrencyDenominations.dll is included at:
+
+Source/EnsrickCurrencyDenominations
+
+That directory contains the 23 Ensrick and QuickLoot-interoperability
+source/build/test/license inputs enumerated by
+Source/EnsrickCurrencyDenominations/native-build-receipt.json. The receipt
+pins every file by byte size and SHA-256 and binds the build to the packaged
+runtime JSON and DLL. It is the complete plug-in-side build-input snapshot;
+it does not contain the external CommonLibSSE-NG source tree.
+
+Project repository:
+https://github.com/Ensrick/skyrim-mod-assistant.git
+
+CommonLibSSE-NG external corresponding source:
+https://github.com/Ensrick/CommonLibSSE-NG
+commit 90a64a4d65ce659a139137c968f42151bb6ecec9
+
+Build from the bundled plug-in source with build-native.ps1 and a clean
+checkout of that exact public CommonLibSSE-NG commit. The receipt records the supported MSVC,
+CMake/vcpkg, Skyrim runtime, SKSE, source, configuration, and output identity.
+COMMONLIBSSE-COPYING.txt and COMMONLIBSSE-EXCEPTIONS.md reproduce the exact
+license files from the pinned checkout.
+
+The public project source also contains the ESP generator, policy, validators,
+Papyrus sources, and deterministic private-asset recipe. Licensed generated
+ESP/SEQ/PEX/DLL/NIF/DDS artifacts are release outputs rather than public source
+inputs.

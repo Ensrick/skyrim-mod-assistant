@@ -8,8 +8,8 @@ vendor mod folders or the live MO2 profile.
     -InstanceRoot ../mo2-instances/skyrim-se `
     -GameRoot "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition"
 
-The pipeline verifies pinned tools and Papyrus inputs, compiles all three packaged
-helpers twice, normalizes only the PEX header timestamp, generates the ESP twice through
+The pipeline verifies pinned tools and Papyrus inputs, compiles all four packaged
+scripts twice, normalizes deterministic PEX header metadata, generates the ESP twice through
 the MO2 VFS, checks exact records/links/SEQ, performs a checked Spriggit semantic
 roundtrip, and creates the deterministic archive twice.
 #>
@@ -19,30 +19,30 @@ param(
     [Parameter(Mandatory)] [string] $InstanceRoot,
     [Parameter(Mandatory)] [string] $GameRoot,
     [string] $Profile = 'Default',
-    [string] $Version = '0.2.4'
+    [string] $Version = '0.3.0'
 )
 
 $ErrorActionPreference = 'Stop'
 $pluginName = 'Ensrick Currency Integration Patch.esp'
 $scriptName = 'Ensrick_CurrencyRuntimeDefaultsAlias'
-$ohzerScriptName = 'Ensrick_OhzerCurrencyScript'
+$dramCostScriptName = 'DES_DramCurrencySwapper'
+$ulfricCostScriptName = 'DES_UlfricCurrencySwapper'
 $madranShimName = 'DES_MadranSwapper'
 $ownedRoot = [IO.Path]::GetFullPath($PSScriptRoot)
-$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $ownedRoot '..\..'))
-$reposRoot = [IO.Path]::GetFullPath((Join-Path $repositoryRoot '..'))
+$toolchainManifestPath = [IO.Path]::GetFullPath($ToolchainManifest)
+$toolchainRepositoryRoot = Split-Path -Parent $toolchainManifestPath
+$reposRoot = [IO.Path]::GetFullPath((Join-Path $toolchainRepositoryRoot '..'))
 $generatorFolder = Join-Path $ownedRoot 'generator'
 $project = Join-Path $generatorFolder 'CurrencyIntegrationPatcher.csproj'
 $executable = Join-Path $generatorFolder 'bin\Release\net9.0\CurrencyIntegrationPatcher.exe'
 $policy = Join-Path $ownedRoot 'policy.json'
 $inputsPath = Join-Path $ownedRoot 'build-inputs.json'
 $manifestPath = Join-Path $ownedRoot 'manifest.json'
-$source = Join-Path $ownedRoot "papyrus\$scriptName.psc"
-$ohzerSource = Join-Path $ownedRoot "papyrus\$ohzerScriptName.psc"
-$madranShimSource = Join-Path $ownedRoot "papyrus\$madranShimName.psc"
-$ownedScripts = [ordered]@{
-    $scriptName = $source
-    $ohzerScriptName = $ohzerSource
-    $madranShimName = $madranShimSource
+$packagedScripts = [ordered]@{
+    $scriptName = Join-Path $ownedRoot "papyrus\$scriptName.psc"
+    $dramCostScriptName = Join-Path $ownedRoot "papyrus\$dramCostScriptName.psc"
+    $ulfricCostScriptName = Join-Path $ownedRoot "papyrus\$ulfricCostScriptName.psc"
+    $madranShimName = Join-Path $ownedRoot "papyrus\$madranShimName.psc"
 }
 $normalizer = Join-Path $ownedRoot 'normalize_pex.py'
 $package = Join-Path $ownedRoot 'package'
@@ -161,8 +161,16 @@ function Get-TreeDigest([string] $Path) {
     [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes))
 }
 
-foreach ($required in @($ToolchainManifest, $InstanceRoot, $GameRoot, $dataFolder, $project,
-        $policy, $inputsPath, $source, $ohzerSource, $madranShimSource, $normalizer, $package)) {
+function Write-ModuleManifestAtomic {
+    $manifestTemp = "$manifestPath.tmp.$stamp"
+    Assert-OwnedPath $manifestTemp
+    [IO.File]::WriteAllText($manifestTemp,
+        (($moduleManifest | ConvertTo-Json -Depth 12) + "`n"), [Text.UTF8Encoding]::new($false))
+    [IO.File]::Move($manifestTemp, $manifestPath, $true)
+}
+
+foreach ($required in @($toolchainManifestPath, $InstanceRoot, $GameRoot, $dataFolder, $project,
+        $policy, $inputsPath, $normalizer, $package) + @($packagedScripts.Values)) {
     if (-not (Test-Path -LiteralPath $required)) { throw "Required path does not exist: $required" }
 }
 if (Get-Process -Name 'ModOrganizer' -ErrorAction SilentlyContinue) {
@@ -172,7 +180,7 @@ if (Get-Process -Name 'SkyrimSE' -ErrorAction SilentlyContinue) {
     throw 'The game is running; refusing generation.'
 }
 
-$toolchain = Get-Content -LiteralPath $ToolchainManifest -Raw | ConvertFrom-Json
+$toolchain = Get-Content -LiteralPath $toolchainManifestPath -Raw | ConvertFrom-Json
 foreach ($toolName in @('mo2', 'spriggit')) {
     $tool = $toolchain.tools.$toolName
     if (-not $tool -or -not (Test-Path -LiteralPath ([string] $tool.path) -PathType Leaf)) {
@@ -198,6 +206,31 @@ if ((Get-FileHash -LiteralPath $caprica -Algorithm SHA256).Hash -ne [string] $in
 }
 if ((Get-FileHash -LiteralPath $flags -Algorithm SHA256).Hash -ne [string] $inputs.flags.sha256) {
     throw 'Papyrus flags hash differs from build-inputs.json.'
+}
+$septimBaseline = $inputs.septimWeightBaseline
+$septimBaselinePath = Join-Path $InstanceRoot ([string] $septimBaseline.sourceRelativePathFromInstance)
+if (-not (Test-Path -LiteralPath $septimBaselinePath -PathType Leaf)) {
+    throw "Pinned ECE Septim-weight baseline is missing: $septimBaselinePath"
+}
+if ((Get-Item -LiteralPath $septimBaselinePath).Length -ne [long] $septimBaseline.sourceBytes) {
+    throw 'ECE Septim-weight baseline byte count differs from build-inputs.json.'
+}
+if ((Get-FileHash -LiteralPath $septimBaselinePath -Algorithm SHA256).Hash -ne
+    [string] $septimBaseline.sourceSha256) {
+    throw 'ECE Septim-weight baseline hash differs from build-inputs.json.'
+}
+foreach ($sourcePin in $inputs.mintCompatibilitySources) {
+    $sourcePath = Join-Path $InstanceRoot ([string] $sourcePin.sourceRelativePathFromInstance)
+    if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
+        throw "Pinned M.I.N.T. compatibility source is missing: $sourcePath"
+    }
+    if ((Get-Item -LiteralPath $sourcePath).Length -ne [long] $sourcePin.sourceBytes) {
+        throw "$($sourcePin.script): pinned source byte count differs from build-inputs.json."
+    }
+    if ((Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash -ne
+        [string] $sourcePin.sourceSha256) {
+        throw "$($sourcePin.script): pinned source hash differs from build-inputs.json."
+    }
 }
 
 $importFolders = [Collections.Generic.List[string]]::new()
@@ -263,37 +296,44 @@ Invoke-HiddenProcess -FileName $dotnet -Arguments @('build', $project, '-c', 'Re
     '-p:RestoreLockedMode=true', '-nologo') -WorkingDirectory $generatorFolder `
     -LogStem (Join-Path $work 'build') -Environment $processEnvironment | Out-Null
 
-# Compile every owned script twice. Caprica's only remaining nondeterministic
-# byte is the standard PEX header compile time; normalize it to the fixed epoch.
+# Compile every owned script twice. Normalize Caprica's PEX header timestamp,
+# source path, user and machine to audited release metadata. This keeps
+# identical source byte-identical across worktrees, clone paths and builders.
 $pexRuns = @{}
-foreach ($ownedScriptName in $ownedScripts.Keys) {
-    $pexRuns[$ownedScriptName] = [Collections.Generic.List[string]]::new()
+foreach ($packagedScriptName in $packagedScripts.Keys) {
+    $pexRuns[$packagedScriptName] = [Collections.Generic.List[string]]::new()
 }
 foreach ($run in 1..2) {
     $outputFolder = Join-Path $work "papyrus-$run"
     New-Item -ItemType Directory -Path $outputFolder -Force | Out-Null
-    foreach ($ownedScriptName in $ownedScripts.Keys) {
-        $ownedSource = [string] $ownedScripts[$ownedScriptName]
-        Invoke-HiddenProcess -FileName $caprica -Arguments @('--ignorecwd', '--quiet', '--game', 'skyrim',
+    foreach ($packagedScriptName in $packagedScripts.Keys) {
+        $packagedSource = [string] $packagedScripts[$packagedScriptName]
+        $compilerArguments = @('--ignorecwd', '--quiet', '--game', 'skyrim',
             '--import', ($importFolders -join ';'), '--flags', $flags, '--strict=1',
-            '--all-warnings-as-errors', '--enable-ck-optimizations=0', '--enable-debug-info=0',
-            '--output', $outputFolder, $ownedSource) -WorkingDirectory $ownedRoot `
-            -LogStem (Join-Path $work "papyrus-$run-$ownedScriptName") | Out-Null
-        $pex = Join-Path $outputFolder "$ownedScriptName.pex"
-        Invoke-HiddenProcess -FileName $python -Arguments @('-3', $normalizer, $pex) `
-            -WorkingDirectory $ownedRoot -LogStem (Join-Path $work "normalize-pex-$run-$ownedScriptName") | Out-Null
-        $pexRuns[$ownedScriptName].Add($pex)
+            '--enable-ck-optimizations=0', '--enable-debug-info=0', '--all-warnings-as-errors')
+        $compilerArguments += @('--output', $outputFolder, $packagedSource)
+        $compileLogStem = Join-Path $work "papyrus-$run-$packagedScriptName"
+        Invoke-HiddenProcess -FileName $caprica -Arguments $compilerArguments `
+            -WorkingDirectory $ownedRoot -LogStem $compileLogStem | Out-Null
+        $pex = Join-Path $outputFolder "$packagedScriptName.pex"
+        $normalizedSourceName = "$($inputs.papyrusCompiler.normalizedSourcePrefix)/$packagedScriptName.psc"
+        Invoke-HiddenProcess -FileName $python -Arguments @('-3', $normalizer, $pex,
+            '--source-name', $normalizedSourceName,
+            '--user-name', ([string] $inputs.papyrusCompiler.normalizedUserName),
+            '--machine-name', ([string] $inputs.papyrusCompiler.normalizedMachineName)) `
+            -WorkingDirectory $ownedRoot -LogStem (Join-Path $work "normalize-pex-$run-$packagedScriptName") | Out-Null
+        $pexRuns[$packagedScriptName].Add($pex)
     }
 }
 $pexHashes = @{}
-foreach ($ownedScriptName in $ownedScripts.Keys) {
-    $hashes = @($pexRuns[$ownedScriptName] | ForEach-Object {
+foreach ($packagedScriptName in $packagedScripts.Keys) {
+    $hashes = @($pexRuns[$packagedScriptName] | ForEach-Object {
         (Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash
     })
     if ($hashes[0] -ne $hashes[1]) {
-        throw "$ownedScriptName PEX determinism failure: $($hashes -join ', ')"
+        throw "$packagedScriptName PEX determinism failure: $($hashes -join ', ')"
     }
-    $pexHashes[$ownedScriptName] = $hashes[0]
+    $pexHashes[$packagedScriptName] = $hashes[0]
 }
 
 # Generate the plugin twice through the profile's virtual filesystem.
@@ -318,16 +358,36 @@ $packageScripts = Join-Path $package 'Scripts'
 $packageSeq = Join-Path $package 'SEQ'
 New-Item -ItemType Directory -Path $packageScripts, $packageSeq -Force | Out-Null
 $packagePlugin = Join-Path $package $pluginName
-$packagePex = Join-Path $packageScripts "$scriptName.pex"
-$packageOhzerPex = Join-Path $packageScripts "$ohzerScriptName.pex"
-$packageMadranShimPex = Join-Path $packageScripts "$madranShimName.pex"
+$packagePexFiles = @{}
 $packageSeqFile = Join-Path $packageSeq 'Ensrick Currency Integration Patch.seq'
 $packageTranslation = Join-Path $package ([string] $inputs.translationOverride.path)
 $packageTranslations = Split-Path -Parent $packageTranslation
 Copy-Item -LiteralPath $pluginRuns[0] -Destination $packagePlugin -Force
-Copy-Item -LiteralPath $pexRuns[$scriptName][0] -Destination $packagePex -Force
-Copy-Item -LiteralPath $pexRuns[$ohzerScriptName][0] -Destination $packageOhzerPex -Force
-Copy-Item -LiteralPath $pexRuns[$madranShimName][0] -Destination $packageMadranShimPex -Force
+# The native single-ledger owner replaces every previously packaged ECE/Ohzer
+# transaction PEX. Clear only this owned package's script payload before copying
+# the deterministic four-script compatibility set.
+foreach ($stalePex in @(Get-ChildItem -LiteralPath $packageScripts -File -Filter '*.pex')) {
+    Assert-OwnedPath $stalePex.FullName
+    Remove-Item -LiteralPath $stalePex.FullName -Force
+}
+foreach ($packagedScriptName in $packagedScripts.Keys) {
+    $packagePexFiles[$packagedScriptName] = Join-Path $packageScripts "$packagedScriptName.pex"
+    Copy-Item -LiteralPath $pexRuns[$packagedScriptName][0] `
+        -Destination $packagePexFiles[$packagedScriptName] -Force
+}
+$packagePex = $packagePexFiles[$scriptName]
+$moduleManifest.runtimePatch.sha256 = $pluginHashes[0]
+$moduleManifest.runtimePatch.bytes = (Get-Item -LiteralPath $packagePlugin).Length
+$moduleManifest.papyrusScripts = @($packagedScripts.Keys | ForEach-Object {
+    [ordered]@{
+        script = $_
+        file = "Scripts/$_.pex"
+        sha256 = [string] $pexHashes[$_]
+        bytes = (Get-Item -LiteralPath $packagePexFiles[$_]).Length
+        deterministicCompilations = 2
+        normalizedCompileUnixTime = 946684800
+    }
+})
 New-Item -ItemType Directory -Path $packageTranslations -Force | Out-Null
 $translationLines = @($inputs.translationOverride.lines | ForEach-Object { [string] $_ })
 $translationContent = ($translationLines -join "`r`n") + "`r`n"
@@ -431,6 +491,7 @@ if ($spriggitDigest -ne $roundtripDigest) {
 }
 
 # Static package gate and two archive creations must be byte-identical.
+Write-ModuleManifestAtomic
 Invoke-HiddenProcess -FileName $python -Arguments @('-3', (Join-Path $ownedRoot 'validate.py')) `
     -WorkingDirectory $ownedRoot -LogStem (Join-Path $work 'validate') | Out-Null
 $buildScript = Join-Path $ownedRoot 'build.py'
@@ -452,11 +513,7 @@ $moduleManifest.archive.fileName = [IO.Path]::GetFileName($archive)
 $moduleManifest.archive.files = $packageFileCount
 $moduleManifest.archive.bytes = $archiveBytes
 $moduleManifest.archive.sha256 = $archiveHash1
-$manifestTemp = "$manifestPath.tmp.$stamp"
-Assert-OwnedPath $manifestTemp
-[IO.File]::WriteAllText($manifestTemp,
-    (($moduleManifest | ConvertTo-Json -Depth 12) + "`n"), [Text.UTF8Encoding]::new($false))
-[IO.File]::Move($manifestTemp, $manifestPath, $true)
+Write-ModuleManifestAtomic
 $releaseManifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 if ([string] $releaseManifest.archive.fileName -ne [IO.Path]::GetFileName($archive) -or
     [int] $releaseManifest.archive.files -ne $packageFileCount -or
@@ -474,26 +531,13 @@ $result = [ordered]@{
     plugin = $pluginName
     pluginSha256 = $pluginHashes[0]
     pluginBytes = (Get-Item -LiteralPath $packagePlugin).Length
-    pex = "Scripts/$scriptName.pex"
-    pexSha256 = [string] $pexHashes[$scriptName]
-    pexBytes = (Get-Item -LiteralPath $packagePex).Length
-    ownedScripts = @(
+    papyrusScripts = @($packagedScripts.Keys | ForEach-Object {
         [ordered]@{
-            path = "Scripts/$scriptName.pex"
-            sha256 = [string] $pexHashes[$scriptName]
-            bytes = (Get-Item -LiteralPath $packagePex).Length
-        },
-        [ordered]@{
-            path = "Scripts/$ohzerScriptName.pex"
-            sha256 = [string] $pexHashes[$ohzerScriptName]
-            bytes = (Get-Item -LiteralPath $packageOhzerPex).Length
-        },
-        [ordered]@{
-            path = "Scripts/$madranShimName.pex"
-            sha256 = [string] $pexHashes[$madranShimName]
-            bytes = (Get-Item -LiteralPath $packageMadranShimPex).Length
+            path = "Scripts/$_.pex"
+            sha256 = [string] $pexHashes[$_]
+            bytes = (Get-Item -LiteralPath $packagePexFiles[$_]).Length
         }
-    )
+    })
     deterministicPluginRuns = 2
     deterministicPexRuns = 2
     records = [int] $audit.records
@@ -502,10 +546,7 @@ $result = [ordered]@{
     linksChecked = [int] $linkAudit.linksChecked
     engineIntrinsicLinks = [int] $linkAudit.engineIntrinsic.Count
     unresolvedLinks = [int] $linkAudit.unresolved.Count
-    seqFileRelativeFormIds = @(
-        [string] $audit.runtimeQuest.seqFileRelativeFormId
-        [string] $audit.ohzerQuest.seqFileRelativeFormId
-    )
+    seqFileRelativeFormIds = @([string] $audit.runtimeQuest.seqFileRelativeFormId)
     spriggitTreeSha256 = $spriggitDigest
     archive = $archive
     archiveSha256 = $archiveHash1

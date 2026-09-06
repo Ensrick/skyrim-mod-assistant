@@ -7,23 +7,23 @@
   "recordReaderPath": "audit/biped_slot_audit.py",
   "recordReaderSha256": "7E43B86726D81EC317BFEBD9DF3192D2AD680B8324B226E1B6676CA98876D964",
   "layerProofGeneratorPath": "audit/generate_nif_slot_layer_proof.ps1",
-  "layerProofGeneratorSha256": "82761C3E31542E4A25919B3C425A5002B6157D507E2B6C3F773339C4D1EC208A",
+  "layerProofGeneratorSha256": "92E549A0767A496579D19AABF80333EB61342BEC0756489446A6D8CFB950C8A4",
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/240",
   "reservedBipedSlot": 58,
   "skyPatcherIndex": 28,
-  "installedUtc": "2026-09-06T04:10:18Z",
-  "transaction": "20260906T041018318Z-8af27c81c015",
-  "refreshReason": "Re-audit after the original WindowFocusGuard adds an enabled mod to the strict profile fingerprint. Same349 plugins/569 meshes/all240 directives; no equipment behavior changes.",
+  "installedUtc": "2026-09-06T06:42:00Z",
+  "transaction": "20260906T064200560Z-1dcaca3ea8b2",
+  "refreshReason": "Currency 0.3.0 changes the input ESP and adds one hash-pinned MISC-only SkyPatcher file. All240 cloak directives and569 parsed mesh winners remain unchanged.",
   "enabled": true,
   "modPriority": 286,
   "packageName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
-  "packageBytes": 120308,
-  "packageSha256": "BDD2C0FCBDB436DEE63CA51017678A64287371F2B69DC6D84B167713C1D54589",
+  "packageBytes": 120404,
+  "packageSha256": "7DA79EBCE44B89AEE27C9709EBDE862D1086F4A3207BD736AD45075F50412F1A",
   "configPath": "SKSE/Plugins/SkyPatcher/armor/Ensrick Full Cloak Exclusivity/Full Cloaks.ini",
   "configBytes": 20078,
   "configSha256": "5716AE2FF6B0CA0C76EB766E1694ED88A6CC18250DA70A758D7E85EB98F1ECDF",
-  "manifestSha256": "60A5469BD85C860948A42263CAE2020A93B4402CDD8629EA02367CF15A69EAC1",
-  "layerProofSha256": "264056A8258F07BE6D61280C73ABD6B0C89BB5748B30BB271774811A0AA125A9",
+  "manifestSha256": "F0EE6FFF37A7B10C6FFAE39D6E7600486BBA0DE895BD5AF6AF9B72B442D4443A",
+  "layerProofSha256": "F3BF28FF31E7E0E6C9895625DEA2B5273A0175245293CFA031121BF1647F980A",
   "counts": {
     "fullCloakDirectives": 240,
     "excludedItems": 232,
@@ -40,10 +40,11 @@
     "meshPartition58Hits": 0,
     "parseErrors": 0,
     "cloakUnitTestsPassed": 21,
-    "strictReaderTestsPassed": 12
+    "strictReaderTestsPassed": 12,
+    "winningSkyPatcherConfigs": 35
   },
   "staticVerification": "PASS: installed hashes, input/asset freshness and zero-error MO2 audit",
-  "pluginListScope": "Cloak overlay adds no ESP. This refresh follows addition of approved SonS_HDT_patch.esp before final WeaponBalancePatch.esp.",
+  "pluginListScope": "No plugin added or reordered; currency ESP replaced in place and WeaponBalancePatch.esp remains last.",
   "keepCoverage": "195 installed Nexus identities; new114690 Keep queued for Firefox pickup with author metadata. First-party artifact has no Nexus identity.",
   "runtimeVerification": "UNVERIFIED: no game launched; player/NPC equip and appearance matrix still required",
   "scopeLimits": [
@@ -55,5 +56,5 @@
     "Reservation is profile-specific. Relevant mod/plugin/config/mesh changes require re-audit before reuse."
   ],
   "distribution": "Original MIT source/configuration; no vendor binary assets",
-  "rollback": "MO2Headless rollback20260906T041018318Z-8af27c81c015 under claim with game/MO2 closed; older fingerprint requires review after removing the focus guard"
+  "rollback": "Recoverable controller transaction 20260906T064200560Z-1dcaca3ea8b2; re-audit the reverted profile before reuse."
 }

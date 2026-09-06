@@ -1,0 +1,1107 @@
+{
+  "schemaVersion": 1,
+  "status": "static-pass/runtime-unverified",
+  "privateOutputs": true,
+  "redistribution": "source recipe only; derive licensed NIF/DDS locally",
+  "packageRoot": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records-work\\currency-tier-assets-20260906\\build-b\\package",
+  "secondBuildRoot": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records-work\\currency-tier-assets-20260906\\build-c\\package",
+  "recipePath": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records-work\\currency-tier-assets-20260906\\recipe.py",
+  "recipeSha256": "C85B16567AC9E120417E18FB29ACDA6F2775256CA6F0FD69775679102A0F2FE9",
+  "inputReceiptSha256": "54DEADDCDB88E49D4EB33FD2FFF7C963E6A895B6294407613992108381A8306A",
+  "tools": {
+    "nif": {
+      "path": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-builds\\nif-port-cli\\Release\\nif-port-cli.exe",
+      "sha256": "48F750D3EF0EF8B69260023EF6BBEDE1383454FBD9813BFE749CF77C338B8762"
+    },
+    "magick": {
+      "path": "C:\\Program Files\\ImageMagick-7.1.2-Q16-HDRI\\magick.exe",
+      "sha256": "57B6F0ED5A8D813136A6EEBF4ED174253077DB009C7007ACC4E7AF0B8212298C"
+    },
+    "texconv": {
+      "path": "C:\\Users\\danjo\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Microsoft.DirectXTex.Texconv_Microsoft.Winget.Source_8wekyb3d8bbwe\\texconv.exe",
+      "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
+    }
+  },
+  "outputCount": 36,
+  "repeatability": "36/36 SHA256 and size identical",
+  "geometryBoundary": "OBJ equality checks shape name, transformed positions and triangle topology; texture binding checks preserve normals/environment/masks; no new UV authoring",
+  "files": [
+    {
+      "path": "Meshes/Ensrick/Currency/Mede/Mede_Copper.nif",
+      "bytes": 6500,
+      "sha256": "74A14C62657120E9992281A9A57C94F068979BC52C6F53180F2009940FE6C373",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
+      "sourceMember": null,
+      "sourceBytes": 6483,
+      "sourceSha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Mede\\Mede_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\Trotsky2302\\mede_n.dds",
+        "textures\\cubemaps\\steel_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mede\\Mede_Copper.dds",
+            "textures\\Trotsky2302\\mede_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mede/Mede_Copper.dds",
+      "bytes": 699236,
+      "sha256": "94923D73BA744E6E2D30D003628CAC3E099310D4D6F97A129CD7B8F1E0F69FF8",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
+      "sourceMember": null,
+      "sourceBytes": 699216,
+      "sourceSha256": "B860F7689364B35BCEDAA2486B98F5FF88E1793A979615140B76DDC28833CFDF",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mede/Mede_Silver.nif",
+      "bytes": 6500,
+      "sha256": "B859E9C63BC1774643A5F4060C407FFBAC46E14AD9BB4C5EE34A099C66DE2172",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
+      "sourceMember": null,
+      "sourceBytes": 6483,
+      "sourceSha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Mede\\Mede_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\Trotsky2302\\mede_n.dds",
+        "textures\\cubemaps\\steel_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mede\\Mede_Silver.dds",
+            "textures\\Trotsky2302\\mede_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mede/Mede_Silver.dds",
+      "bytes": 699236,
+      "sha256": "A80772DD70EE9DF755C178371EB52D21506C5BEA605832A7FBFCB98F6C413520",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
+      "sourceMember": null,
+      "sourceBytes": 699216,
+      "sourceSha256": "B860F7689364B35BCEDAA2486B98F5FF88E1793A979615140B76DDC28833CFDF",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mede/Mede_Gold.nif",
+      "bytes": 6498,
+      "sha256": "B152261140405B7FA0D8DC77805B73CFF9F8E6498E0F7EE019A735C90C249C23",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
+      "sourceMember": null,
+      "sourceBytes": 6483,
+      "sourceSha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Mede\\Mede_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\Trotsky2302\\mede_n.dds",
+        "textures\\cubemaps\\steel_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mede\\Mede_Gold.dds",
+            "textures\\Trotsky2302\\mede_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mede/Mede_Gold.dds",
+      "bytes": 699236,
+      "sha256": "8EF875CFB91595F1ABCB9119F89152C57C6E8E772A4A754065CC06D725768B6E",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
+      "sourceMember": null,
+      "sourceBytes": 699216,
+      "sourceSha256": "B860F7689364B35BCEDAA2486B98F5FF88E1793A979615140B76DDC28833CFDF",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Ulfric/Ulfric_Copper.nif",
+      "bytes": 6477,
+      "sha256": "E6D940445D7AAB2D75ADFCEB36B3E6A5EEA017BE0445CC02939DDA0169348C59",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\ulfric\\ulfric.nif",
+      "sourceBytes": 6458,
+      "sourceSha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\mint\\Ulfric\\Ulfric_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Copper.dds",
+            "textures\\mint\\Ulfric\\Ulfric_n.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Ulfric/Ulfric_Copper.dds",
+      "bytes": 699236,
+      "sha256": "6DD057D0A85B771D4556C74A6FC6F032C0B195B42B90E6E8584CADE3A29E7597",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\ulfric\\ulfric.dds",
+      "sourceBytes": 2097300,
+      "sourceSha256": "35C9E891057A46C7B3BCF7E49C94D8D4505E78F718732164177456E780E02954",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Ulfric/Ulfric_Silver.nif",
+      "bytes": 6477,
+      "sha256": "2E4559625A65D62025653E313D50A970E0918714D3D760A64EEF9790191EA154",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\ulfric\\ulfric.nif",
+      "sourceBytes": 6458,
+      "sourceSha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\mint\\Ulfric\\Ulfric_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Silver.dds",
+            "textures\\mint\\Ulfric\\Ulfric_n.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Ulfric/Ulfric_Silver.dds",
+      "bytes": 699236,
+      "sha256": "D1C8F354FDBAA14DE6E9F037186CE380D4AEE3B67277BC0D4C2EE6148C23B43D",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\ulfric\\ulfric.dds",
+      "sourceBytes": 2097300,
+      "sourceSha256": "35C9E891057A46C7B3BCF7E49C94D8D4505E78F718732164177456E780E02954",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Ulfric/Ulfric_Gold.nif",
+      "bytes": 6475,
+      "sha256": "07A999CFBF2C0B82464784C7C382A0DBDBAA1F707BCA5BCF47F519E5ABF30BE6",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\ulfric\\ulfric.nif",
+      "sourceBytes": 6458,
+      "sourceSha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\mint\\Ulfric\\Ulfric_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Gold.dds",
+            "textures\\mint\\Ulfric\\Ulfric_n.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Ulfric/Ulfric_Gold.dds",
+      "bytes": 699236,
+      "sha256": "BC68798B37B2CE54543A18A4093E9BF74CFA2FF3BDF156B090E65D6CF070BA1F",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\ulfric\\ulfric.dds",
+      "sourceBytes": 2097300,
+      "sourceSha256": "35C9E891057A46C7B3BCF7E49C94D8D4505E78F718732164177456E780E02954",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Dram/Dram_Copper.nif",
+      "bytes": 6767,
+      "sha256": "C1D7769F26E002C5812F32E6B931B1E2C91CBFD340AC29BF73D42B227BF888CB",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
+      "sourceMember": null,
+      "sourceBytes": 6748,
+      "sourceSha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Dram\\Dram_Copper.dds",
+        "textures\\MINT\\Dram\\dram_m.dds",
+        "textures\\MINT\\Dram\\dram_n.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coindram:0",
+          "vertices": 146,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Dram\\Dram_Copper.dds",
+            "textures\\MINT\\Dram\\dram_n.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\MINT\\Dram\\dram_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Dram/Dram_Copper.dds",
+      "bytes": 699236,
+      "sha256": "174C8D00AD12F2B181334C788A48084D71B87D5C986EC4EEAD30C02BA82C21E2",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
+      "sourceMember": null,
+      "sourceBytes": 699236,
+      "sourceSha256": "260A30841A4E4B9C35DD2E233EC8F9CDE35E18D65B399FBA53905FD9AF834367",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Dram/Dram_Silver.nif",
+      "bytes": 6767,
+      "sha256": "0083DBAA06F3A908593B7768E8977C7FA91C13151621030C94B918AEDDBD850B",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
+      "sourceMember": null,
+      "sourceBytes": 6748,
+      "sourceSha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Dram\\Dram_Silver.dds",
+        "textures\\MINT\\Dram\\dram_m.dds",
+        "textures\\MINT\\Dram\\dram_n.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coindram:0",
+          "vertices": 146,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Dram\\Dram_Silver.dds",
+            "textures\\MINT\\Dram\\dram_n.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\MINT\\Dram\\dram_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Dram/Dram_Silver.dds",
+      "bytes": 699236,
+      "sha256": "2B4C7F60AF4E788D60D6256B0CD36DB4908D525C8D6F5A04671B39FC493FACE2",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
+      "sourceMember": null,
+      "sourceBytes": 699236,
+      "sourceSha256": "260A30841A4E4B9C35DD2E233EC8F9CDE35E18D65B399FBA53905FD9AF834367",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Dram/Dram_Gold.nif",
+      "bytes": 6765,
+      "sha256": "570CB346CED7D9D0B394BBB1ED16CE3089462A070025E93C9962B7BF40188029",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
+      "sourceMember": null,
+      "sourceBytes": 6748,
+      "sourceSha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Dram\\Dram_Gold.dds",
+        "textures\\MINT\\Dram\\dram_m.dds",
+        "textures\\MINT\\Dram\\dram_n.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coindram:0",
+          "vertices": 146,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Dram\\Dram_Gold.dds",
+            "textures\\MINT\\Dram\\dram_n.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\MINT\\Dram\\dram_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Dram/Dram_Gold.dds",
+      "bytes": 699236,
+      "sha256": "340E666A796D5DAD833C49248093CDE7FD0C9AC0A7B04C05A6095556BCC421D2",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
+      "sourceMember": null,
+      "sourceBytes": 699236,
+      "sourceSha256": "260A30841A4E4B9C35DD2E233EC8F9CDE35E18D65B399FBA53905FD9AF834367",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Oshka/Oshka_Copper.nif",
+      "bytes": 7708,
+      "sha256": "7737BDF3FF85268CB68823035FC5A06855B512E1E3A3B1AA55ECBC3A3A8C5A76",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
+      "sourceMember": null,
+      "sourceBytes": 7694,
+      "sourceSha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Oshka\\Oshka_Copper.dds",
+        "textures\\Nerapharu\\Oshka\\oshka_m.dds",
+        "textures\\Nerapharu\\Oshka\\oshka_n.dds",
+        "textures\\cubemaps\\steel_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Circle",
+          "vertices": 180,
+          "triangles": 172,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Oshka\\Oshka_Copper.dds",
+            "textures\\Nerapharu\\Oshka\\oshka_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Nerapharu\\Oshka\\oshka_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Oshka/Oshka_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "C1CD9B308C0BD1876E68E170F018D3A7621C4B0569ED939872EAD82549706DE7",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
+      "sourceMember": null,
+      "sourceBytes": 1398276,
+      "sourceSha256": "647BBE6B867DA1FC4423DBF49C0C88D729142EDC71917C9B5B43F18BFBA858FB",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Oshka/Oshka_Silver.nif",
+      "bytes": 7708,
+      "sha256": "E5C82B72B1B46EF4C863AD3351C9CC3E29CC05A3DAEAF93C637A966850F2DC97",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
+      "sourceMember": null,
+      "sourceBytes": 7694,
+      "sourceSha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Oshka\\Oshka_Silver.dds",
+        "textures\\Nerapharu\\Oshka\\oshka_m.dds",
+        "textures\\Nerapharu\\Oshka\\oshka_n.dds",
+        "textures\\cubemaps\\steel_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Circle",
+          "vertices": 180,
+          "triangles": 172,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Oshka\\Oshka_Silver.dds",
+            "textures\\Nerapharu\\Oshka\\oshka_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Nerapharu\\Oshka\\oshka_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Oshka/Oshka_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "1507F1E0355EEEAE1E182EEAEE0608D4B7A228653BA8FB5641D92257397A9A56",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
+      "sourceMember": null,
+      "sourceBytes": 1398276,
+      "sourceSha256": "647BBE6B867DA1FC4423DBF49C0C88D729142EDC71917C9B5B43F18BFBA858FB",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Oshka/Oshka_Gold.nif",
+      "bytes": 7706,
+      "sha256": "C7E13E4474D122BFCC62507852EB1C7BF62525EE5862D42B82371F17973FCADA",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
+      "sourceMember": null,
+      "sourceBytes": 7694,
+      "sourceSha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8",
+      "sourceArchiveSha256": null,
+      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Oshka\\Oshka_Gold.dds",
+        "textures\\Nerapharu\\Oshka\\oshka_m.dds",
+        "textures\\Nerapharu\\Oshka\\oshka_n.dds",
+        "textures\\cubemaps\\steel_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Circle",
+          "vertices": 180,
+          "triangles": 172,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Oshka\\Oshka_Gold.dds",
+            "textures\\Nerapharu\\Oshka\\oshka_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Nerapharu\\Oshka\\oshka_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Oshka/Oshka_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "B1E3FB0955E85872CEB3B567B707A87CDE2EC7753F1A9EECE71AF5B11D4C63F1",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
+      "sourceMember": null,
+      "sourceBytes": 1398276,
+      "sourceSha256": "647BBE6B867DA1FC4423DBF49C0C88D729142EDC71917C9B5B43F18BFBA858FB",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Ohzer/Ohzer_Copper.nif",
+      "bytes": 12130,
+      "sha256": "905DBE3FA91869ADB6D9240EFE0DC22D5E13D5AE337DD70C227BA4E8366A9E81",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
+      "sourceMember": null,
+      "sourceBytes": 20324,
+      "sourceSha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1",
+      "sourceArchiveSha256": null,
+      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\steel_e.dds",
+        "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coin",
+          "vertices": 290,
+          "triangles": 392,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Copper.dds",
+            "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Ohzer/Ohzer_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "FA68CEB8768E4268A16E3FA88F3716337E2B148A59CD7FFF7E72E5949190AB9D",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
+      "sourceMember": null,
+      "sourceBytes": 22369776,
+      "sourceSha256": "630EDDA3D4B29378FE7931833B95B3F479A90B0C7E45B960DF56D17BCD1ED921",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Ohzer/Ohzer_Silver.nif",
+      "bytes": 12130,
+      "sha256": "E53B152E60503E55C2E95B92B1FA1662BCF7F2D123E722968EA62C1A293DFEFA",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
+      "sourceMember": null,
+      "sourceBytes": 20324,
+      "sourceSha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1",
+      "sourceArchiveSha256": null,
+      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\steel_e.dds",
+        "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coin",
+          "vertices": 290,
+          "triangles": 392,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Silver.dds",
+            "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Ohzer/Ohzer_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "B9FE9F7200173EA6752BA2FAADC2AC79E97FC0FDCD02D6841567A16BDEC57390",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
+      "sourceMember": null,
+      "sourceBytes": 22369776,
+      "sourceSha256": "630EDDA3D4B29378FE7931833B95B3F479A90B0C7E45B960DF56D17BCD1ED921",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Ohzer/Ohzer_Gold.nif",
+      "bytes": 12128,
+      "sha256": "9D4EA65E51FEA38E60C0EE159BE1ED3787F90783D591561D67821976EFC3AB2D",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
+      "sourceMember": null,
+      "sourceBytes": 20324,
+      "sourceSha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1",
+      "sourceArchiveSha256": null,
+      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\steel_e.dds",
+        "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coin",
+          "vertices": 290,
+          "triangles": 392,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Gold.dds",
+            "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Ohzer/Ohzer_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "4FA726C4C4A64276B25FBF536362E217BFA8AA11D0A350FE3024EB5645130315",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
+      "sourceMember": null,
+      "sourceBytes": 22369776,
+      "sourceSha256": "630EDDA3D4B29378FE7931833B95B3F479A90B0C7E45B960DF56D17BCD1ED921",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Varken/Varken_Copper.nif",
+      "bytes": 6663,
+      "sha256": "010E58537CACE69F12BD5E38BF20F7B9BBA95FAEECB0DE3130F7C6743CBB3DB4",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
+      "sourceMember": null,
+      "sourceBytes": 10599,
+      "sourceSha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15",
+      "sourceArchiveSha256": null,
+      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Varken\\Varken_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\steel_e.dds",
+        "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coin2",
+          "vertices": 16,
+          "triangles": 12,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Varken\\Varken_Copper.dds",
+            "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "COIN1",
+          "vertices": 120,
+          "triangles": 112,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Varken\\Varken_Copper.dds",
+            "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Varken/Varken_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "47756F0ED73521AD776775B0E354D7E11DB6614900D712B8152A48F0B8599B01",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
+      "sourceMember": null,
+      "sourceBytes": 22369776,
+      "sourceSha256": "7C9383D999BD30D9C50A86098A99CB362C33DC9620BA73D47A4C3F8F61417FAA",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Varken/Varken_Silver.nif",
+      "bytes": 6663,
+      "sha256": "A99359BA088F89CA556F5F952F2D34F6A8200B53D946EF903BDFFD12187BBAB2",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
+      "sourceMember": null,
+      "sourceBytes": 10599,
+      "sourceSha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15",
+      "sourceArchiveSha256": null,
+      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Varken\\Varken_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\steel_e.dds",
+        "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coin2",
+          "vertices": 16,
+          "triangles": 12,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Varken\\Varken_Silver.dds",
+            "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "COIN1",
+          "vertices": 120,
+          "triangles": 112,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Varken\\Varken_Silver.dds",
+            "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Varken/Varken_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "E05CF4AC7B0E1A18E29E03C703E9A6D120A8D1801EF566541A45C5C522F8F7DF",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
+      "sourceMember": null,
+      "sourceBytes": 22369776,
+      "sourceSha256": "7C9383D999BD30D9C50A86098A99CB362C33DC9620BA73D47A4C3F8F61417FAA",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Varken/Varken_Gold.nif",
+      "bytes": 6659,
+      "sha256": "B0E4D6B41FA83207DBD5CD032DFBF3F5FF564AD7A6C0D68E9DFFBAB570A9398F",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
+      "sourceMember": null,
+      "sourceBytes": 10599,
+      "sourceSha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15",
+      "sourceArchiveSha256": null,
+      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Varken\\Varken_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\steel_e.dds",
+        "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "coin2",
+          "vertices": 16,
+          "triangles": 12,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Varken\\Varken_Gold.dds",
+            "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "COIN1",
+          "vertices": 120,
+          "triangles": 112,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Varken\\Varken_Gold.dds",
+            "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds",
+            "textures\\cubemaps\\steel_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Varken/Varken_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "E2ACAE8E2507B9CDE4C2917CF4A62F38727838E7DF7B3E6DF563F8D98D79E585",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
+      "sourceMember": null,
+      "sourceBytes": 22369776,
+      "sourceSha256": "7C9383D999BD30D9C50A86098A99CB362C33DC9620BA73D47A4C3F8F61417FAA",
+      "sourceArchiveSha256": null,
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37"
+    }
+  ]
+}

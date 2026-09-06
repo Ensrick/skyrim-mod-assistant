@@ -1,0 +1,37 @@
+DEPENDENCY AND PROVENANCE NOTICE
+
+Native build dependency
+
+- CommonLibSSE-NG
+  Upstream: https://github.com/Ensrick/CommonLibSSE-NG
+  Commit: 90a64a4d65ce659a139137c968f42151bb6ecec9
+  License: GPL-3.0-or-later WITH Modding-Exception AND
+           GPL-3.0-Linking-Exception-with-Corresponding-Source
+  COPYING SHA-256: 72D2F09334F8B87DDED94A833BA7DA05E5280E77A037CA23B251F96EAE4CF719
+  EXCEPTIONS SHA-256: D3A3EC90E21AE118D3653D0834A2F6D1E6D32B773CC185023824992AD4BDCFCE
+
+- QuickLoot IE API interoperability header
+  License: MIT
+  Header SHA-256: 36A3386BDD695C4040F97AD3B805ECB840A7B4A18E6BE82565EAE14B353B86D2
+  Notice SHA-256: F5E66123BAEEC9AB86E279C188854E9A5EF0B16CB69CF11914B294C3456C0A34
+
+Runtime ABI
+
+- Skyrim Special Edition runtime 1.7.104.0
+- SKSE 2.3.1
+
+Required separate Skyrim mods
+
+- C.O.I.N. - Coins of Interesting Nature
+  https://www.nexusmods.com/skyrimspecialedition/mods/51439
+- M.I.N.T. - Mint-Issued National Tenders
+  https://www.nexusmods.com/skyrimspecialedition/mods/178940
+- Exchange Currency Enhanced
+  https://www.nexusmods.com/skyrimspecialedition/mods/141884
+- WiZkiD Ancient Imperial Septims
+  https://www.nexusmods.com/skyrimspecialedition/mods/37545
+
+README.md and manifest.json contain the complete pinned mod/load-order set.
+All vendor mods and the original normal/mask/environment textures must be
+installed separately. The local NIF/DDS tier outputs are derived under their
+source permissions and are not made public by this package notice.

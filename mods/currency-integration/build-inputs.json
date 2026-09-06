@@ -7,11 +7,26 @@
     "sha256": "D28CDDD7E476709C0DAA473AD558E783C00CA8E1B0DE407DDBA839C55E9A3630",
     "debugInfo": false,
     "ckOptimizations": false,
-    "normalizedCompileUnixTime": 946684800
+    "normalizedCompileUnixTime": 946684800,
+    "normalizedSourcePrefix": "mods/currency-integration/papyrus",
+    "normalizedUserName": "Ensrick",
+    "normalizedMachineName": "reproducible-build"
   },
   "flags": {
     "relativePathFromGame": "Data/Source/Scripts/TESV_Papyrus_Flags.flg",
     "sha256": "AB61D098EF7A1402D8EE4D7BC77F26851D5380CD142EE4F3BF57CE41D0E7AFA7"
+  },
+  "septimWeightBaseline": {
+    "sourceRelativePathFromInstance": "mods/Exchange Currency Enhanced/SKSE/Plugins/SkyPatcher/misc/ECE_septims_100.ini",
+    "sourceSha256": "4B664778BD9E5B016323334A96857C31E0DA47A6CB0817450813A9F5D43406BA",
+    "sourceBytes": 1210,
+    "physicalForms": [
+      "000B6D:exchangeCurrency_enhanced.esp",
+      "000823:exchangeCurrency_enhanced.esp",
+      "000824:exchangeCurrency_enhanced.esp"
+    ],
+    "releasedWeights": [0.01, 0.02, 0.03],
+    "ownedWeights": [0.06, 0.07, 0.13]
   },
   "translationOverride": {
     "path": "interface/translations/exchangecurrency_enhanced_english.txt",
@@ -47,6 +62,72 @@
     "sourceText": "Keyword = IsDrakrMoney|Location|0x0142A8~Dragonborn.esm\r\n",
     "replacementText": "",
     "expectedReplacements": 1
+  },
+  "mintCompatibilitySources": [
+    {
+      "script": "DES_DramCurrencySwapper",
+      "purpose": "property-compatible cost and stage maintenance baseline; all CurrencySwapper calls are intentionally omitted",
+      "sourceRelativePathFromInstance": "mods/M.I.N.T. - More Interesting New Tender/Source/Scripts/DES_DramCurrencySwapper.psc",
+      "sourceSha256": "C813AB1ED3346DB9779108B62C531E04F5CE260D51578E7652121FABFEE90744",
+      "sourceBytes": 3544,
+      "replacementRelativePath": "papyrus/DES_DramCurrencySwapper.psc"
+    },
+    {
+      "script": "DES_DramCurrencySwapperAlias",
+      "purpose": "zero-property alias proxy retained from the required M.I.N.T. dependency",
+      "sourceRelativePathFromInstance": "mods/M.I.N.T. - More Interesting New Tender/Source/Scripts/DES_DramCurrencySwapperAlias.psc",
+      "sourceSha256": "72A47858DAE4F1F1D64691E7B0DDCEB0D08DD854BF8962BE4C0C6905E54E0103",
+      "sourceBytes": 315,
+      "packaged": false
+    },
+    {
+      "script": "DES_UlfricCurrencySwapper",
+      "purpose": "property-compatible cost maintenance baseline; all CurrencySwapper calls are intentionally omitted",
+      "sourceRelativePathFromInstance": "mods/M.I.N.T. - More Interesting New Tender/Source/Scripts/DES_UlfricCurrencySwapper.psc",
+      "sourceSha256": "D0C77B38A074851C7CBDF1E2292A90B644CDACF200876F584074C9CA08E12643",
+      "sourceBytes": 4089,
+      "replacementRelativePath": "papyrus/DES_UlfricCurrencySwapper.psc"
+    },
+    {
+      "script": "DES_UlfricCurrencySwapperAlias",
+      "purpose": "zero-property alias proxy retained from the required M.I.N.T. dependency",
+      "sourceRelativePathFromInstance": "mods/M.I.N.T. - More Interesting New Tender/Source/Scripts/DES_UlfricCurrencySwapperAlias.psc",
+      "sourceSha256": "405EDD64555F1D1495E3B07FABDC1612B958F19DA3748DF12DDEDE2E8E35857F",
+      "sourceBytes": 320,
+      "packaged": false
+    }
+  ],
+  "tierAssetBuild": {
+    "status": "static-pass/runtime-unverified",
+    "privateOutputs": true,
+    "redistribution": "source recipe only; derive licensed NIF/DDS locally",
+    "recipeRelativePath": "assets/recipe.py",
+    "recipeSha256": "C85B16567AC9E120417E18FB29ACDA6F2775256CA6F0FD69775679102A0F2FE9",
+    "inputsRelativePath": "assets/inputs.json",
+    "inputsSha256": "54DEADDCDB88E49D4EB33FD2FFF7C963E6A895B6294407613992108381A8306A",
+    "finalizerRelativePath": "assets/finalize.py",
+    "finalizerSha256": "A5F0F18E0D306172B2A75F2CF52329F095879F3CDB44A44A7784639B95B6C7B4",
+    "receiptRelativePath": "assets/integration-receipt.json",
+    "receiptSha256": "D5FCDE1BD5E19B4FDF67BEF4F9411C25062E05FDDC98208647FDCB1D4C7A4B89",
+    "outputCount": 36,
+    "repeatability": "36/36 SHA256 and size identical",
+    "diffuseResolutionCap": 1024,
+    "geometryBoundary": "exact OBJ geometry equality; preserve non-diffuse texture bindings; no geometry realism claim"
+  },
+  "nativeBuild": {
+    "status": "deterministic-pass/runtime-unverified",
+    "receiptRelativePath": "assets/native-build-receipt.json",
+    "receiptSha256": "7A3C4A89C72B5410B5632468279B06C03EFA7E65A7711BCD491DF73B6555029D",
+    "packageSourceRoot": "Source/EnsrickCurrencyDenominations",
+    "sourceInputCount": 23,
+    "dllOutputPath": "SKSE/Plugins/EnsrickCurrencyDenominations.dll",
+    "dllSha256": "3866DD5FC35C8223C24A34379C464444C114A2BAD9A17A4D9EF3905802F50CF8",
+    "dllBytes": 1014784,
+    "repeatability": "2/2 SHA256 and size identical",
+    "commonLibUpstream": "https://github.com/Ensrick/CommonLibSSE-NG",
+    "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+    "combinedBinaryLicense": "GPL-3.0-or-later with CommonLibSSE-NG exceptions",
+    "pluginSourceBundled": true
   },
   "papyrusImports": [
     {

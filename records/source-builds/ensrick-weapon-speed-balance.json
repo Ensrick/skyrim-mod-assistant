@@ -3,8 +3,8 @@
   "artifact": "Ensrick - Weapon Speed Balance",
   "version": "0.3.0",
   "status": "installed-static-verified-runtime-unverified",
-  "receiptCreatedUtc": "2026-09-06T02:23:34Z",
-  "refreshReason": "Approved SoS physics armor-only plugin changes input inventory, not weapon policy. Repeated generation preserves exact ESP/27 translation sidecar bytes; refreshes audit provenance.",
+  "receiptCreatedUtc": "2026-09-06T06:39:00Z",
+  "refreshReason": "Currency 0.3.0 changes an input plugin, not weapon policy. Two builds preserve exact ESP and all27 translations; refresh audit provenance only.",
   "supersedes": "records/source-builds/ensrick-weapon-speed-balance-v0.1.0-historical.json",
   "source": {
     "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
@@ -149,20 +149,20 @@
     "runtimePlugins": 349,
     "inputPlugins": 348,
     "inputLoadOrderSha256": "87F5BA873BEFDB7BE21DB0985DD35A24170DC791E936E07BB446075F02F17D6E",
-    "inputPluginBinariesSha256": "BD95E60276539B9F4752A903D720F7EA5AB37929F9332135E65D1FEF40085FC7",
+    "inputPluginBinariesSha256": "E2E6EEFAD0C567A8C3759F927493E3810B5A5AF5C5BECFF2B7A4A09300D43184",
     "localizedSourceProviders": 21,
     "inputLocalizationResourceProvidersSha256": "166B46F52654834036DC35756F793DF9C52C5E536DF6AFD12C26B757555ED8B2",
     "manifest": "Installed EnsrickMetadata/build-manifest.json retains ordered plugin/provider/hash and relevant loose/BSA resource resolutions.",
-    "manifestSha256": "2500DDFEE63A6C99CE999B2367F147A1A637D28D035FD515D9D50FA5E7E2AB60",
+    "manifestSha256": "703EFF02B979B13F850C359B1D2194C4A4C42F06343FFFEDE7EBE06D940C2D3A",
     "sourceLocalizationScope": "Matches pinned Mutagen loader contract: provider-named loose tables and applicable provider BSAs, not arbitrary unrelated-archive engine overrides. See module README and Mutagen issue #578."
   },
   "output": {
     "plugin": "WeaponBalancePatch.esp",
     "pluginBytes": 1766218,
     "pluginSha256": "6BFE4E47DE61A6A8B5E717213A13B992B9A8DA7B2944F5CE874CA23026F92F92",
-    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-sos-20260906.zip",
-    "archiveBytes": 671926,
-    "archiveSha256": "4C84B28E2E98B691FE3324561A6C5FD72588C97872D02AA255C1D824D3397545",
+    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-currency-20260906.zip",
+    "archiveBytes": 671927,
+    "archiveSha256": "783107C601213291315736A53D74E7F6A0D5F36E7DBC1EEC434D637CFC3D5B25",
     "installedPayloadFiles": 31,
     "installedPayloadBytes": 7693064,
     "recordTypes": {
@@ -457,10 +457,21 @@
     },
     "gameSideActivation": {
       "status": "PASS: exactly matches all 268 active profile rows in order",
-      "onlyAddedActivePlugins": ["Ensrick Lost LongSwords Curation.esp", "Ensrick Lost LongSwords Stormcloak Distribution.esp"],
+      "onlyAddedActivePlugins": [
+        "Ensrick Lost LongSwords Curation.esp",
+        "Ensrick Lost LongSwords Stormcloak Distribution.esp"
+      ],
       "reorderedExistingPlugins": [
-        {"plugin": "LostLongSwords.esp", "beforeActiveIndex": 205, "afterActiveIndex": 30},
-        {"plugin": "WeaponBalancePatch.esp", "beforeActiveIndex": 118, "afterActiveIndex": 267}
+        {
+          "plugin": "LostLongSwords.esp",
+          "beforeActiveIndex": 205,
+          "afterActiveIndex": 30
+        },
+        {
+          "plugin": "WeaponBalancePatch.esp",
+          "beforeActiveIndex": 118,
+          "afterActiveIndex": 267
+        }
       ],
       "activationIndexBasis": "Zero-based active rows in the game-side activation file, not full runtime or managed-plugin indices.",
       "remaining264ExistingRowsRelativeOrderUnchanged": true,
@@ -510,10 +521,10 @@
     "modPriority": 237,
     "managedPluginPriority": 272,
     "runtimePluginIndex": 348,
-    "installedUtc": "2026-09-06T02:23:34Z",
+    "installedUtc": "2026-09-06T06:39:00Z",
     "candidateInstallTransaction": "20260905T223958756Z-58f55b12dd51",
     "pluginPriorityTransaction": "20260905T223959715Z-763af81519ec",
-    "finalInstallTransaction": "20260906T022334645Z-f67f81666720",
+    "finalInstallTransaction": "20260906T063900070Z-4ab34e480a6e",
     "rollback": "Headless transaction journal retains prior owned payload; no vendor files or saves modified."
   },
   "distribution": {

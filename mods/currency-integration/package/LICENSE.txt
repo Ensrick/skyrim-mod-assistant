@@ -1,14 +1,25 @@
-SCOPE NOTICE
-
-This MIT License applies only to Ensrick-authored files and original record
-content identified as MIT in NOTICE.txt. Vendor-derived configuration/text
-files, the ECE-derived Ohzer script, and vendor-origin data in the ESP's 31
-override records are excluded and remain under their stated terms. The mixed-
-terms ESP as a whole is not offered as an all-MIT binary.
-
-MIT License
+LICENSE SCOPE
 
 Copyright (c) 2026 Ensrick
+
+The MIT License below applies to original Ensrick-authored source in this
+integration unless a file or NOTICE.txt identifies a narrower or different
+scope. This includes the generator, validator, policy/configuration source,
+original Papyrus helper code, asset-build recipe code, and original native
+plug-in source.
+
+The compiled EnsrickCurrencyDenominations.dll is a combined work statically
+linked with CommonLibSSE-NG. The combined DLL is distributed under
+GPL-3.0-or-later with the CommonLibSSE-NG exceptions, not under MIT alone.
+See COMMONLIBSSE-COPYING.txt, COMMONLIBSSE-EXCEPTIONS.md, SOURCE.txt, and
+DEPENDENCIES.txt.
+
+This grant does not relicense Bethesda data, vendor record overrides,
+vendor-derived configuration or Papyrus work, or licensed NIF/DDS assets.
+Those portions retain their upstream terms. The release archive and generated
+ESP are mixed-terms works and are not an all-MIT distribution. See NOTICE.txt.
+
+MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

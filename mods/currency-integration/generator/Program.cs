@@ -18,26 +18,28 @@ public static class Program
     public const string RuntimeQuestEditorId = "Ensrick_CurrencyRuntimeDefaultsQuest";
     public const string RuntimeScriptName = "Ensrick_CurrencyRuntimeDefaultsAlias";
     public const uint RuntimeQuestId = 0x800;
-    public const string OhzerQuestEditorId = "Ensrick_OhzerCurrencyQuest";
-    public const uint OhzerQuestId = 0x803;
 
     public static readonly ModKey Ece = ModKey.FromNameAndExtension("exchangeCurrency_enhanced.esp");
     public static readonly ModKey Exchange = ModKey.FromNameAndExtension("SL99Exchanger.esp");
     public static readonly ModKey Coin = ModKey.FromNameAndExtension("C.O.I.N.esp");
     public static readonly ModKey Mint = ModKey.FromNameAndExtension("M.I.N.T.esp");
+    public static readonly ModKey Dram = ModKey.FromNameAndExtension("MorrowindUsesDrams.esp");
     public static readonly ModKey Windhelm = ModKey.FromNameAndExtension("WindhelmUsesUlfrics.esp");
     public static readonly ModKey CoinPatch = ModKey.FromNameAndExtension("exchangeCurrency_patch_COIN.esp");
+    public static readonly ModKey EceMintDram = ModKey.FromNameAndExtension("exchangeCurrency_patch_MINT_dram.esp");
     public static readonly ModKey EceMintUlfric = ModKey.FromNameAndExtension("exchangeCurrency_patch_MINT_ulfric.esp");
 
     public static readonly IReadOnlyList<ModKey> RequiredMasters =
     [
         ModKey.FromNameAndExtension("Skyrim.esm"),
         ModKey.FromNameAndExtension("Update.esm"),
+        ModKey.FromNameAndExtension("HearthFires.esm"),
         ModKey.FromNameAndExtension("Dragonborn.esm"),
         Exchange,
         Ece,
         Coin,
         Mint,
+        Dram,
         Windhelm,
         CoinPatch,
     ];
@@ -47,16 +49,20 @@ public static class Program
     private static readonly FormKey MintFrameworkQuest = FormKey.Factory("000800:M.I.N.T.esp");
     private static readonly FormKey MintConvertGlobal = FormKey.Factory("DE5037:Update.esm");
     private static readonly FormKey GiftUniversallyValuable = FormKey.Factory("0A0E55:Skyrim.esm");
+    private static readonly FormKey VendorNoSale = FormKey.Factory("0FF9FB:Skyrim.esm");
     private const int CompressedRecordFlag = 0x00040000;
 
     public sealed class Policy
     {
         [JsonPropertyName("schemaVersion")] public int SchemaVersion { get; set; }
         [JsonPropertyName("outputPlugin")] public string OutputPluginName { get; set; } = "";
+        [JsonPropertyName("runtimeReasonCounters")] public List<string> RuntimeReasonCounters { get; set; } = [];
         [JsonPropertyName("exchangeWorkbenchProvider")] public ExchangeWorkbenchProviderPolicy ExchangeWorkbenchProvider { get; set; } = new();
         [JsonPropertyName("quest")] public QuestPolicy Quest { get; set; } = new();
+        [JsonPropertyName("denominations")] public DenominationPolicy Denominations { get; set; } = new();
         [JsonPropertyName("overrides")] public OverridePolicy Overrides { get; set; } = new();
         [JsonPropertyName("disabledCurrencyToIngotRecipes")] public List<Target> DisabledRecipes { get; set; } = [];
+        [JsonPropertyName("disabledModernBankRecipes")] public List<Target> DisabledModernBankRecipes { get; set; } = [];
     }
 
     public sealed class ExchangeWorkbenchProviderPolicy
@@ -85,11 +91,11 @@ public static class Program
         [JsonPropertyName("coinPurses")] public List<PurseTarget> CoinPurses { get; set; } = [];
         [JsonPropertyName("gold001")] public KeywordTarget Gold { get; set; } = new();
         [JsonPropertyName("mintAutoConvert")] public GlobalTarget MintAutoConvert { get; set; } = new();
-        [JsonPropertyName("eceAltCurrencyQuest")] public ScriptPropertyTarget EceAltCurrencyQuest { get; set; } = new();
-        [JsonPropertyName("eceInheritedAltCoinBindings")] public List<InheritedCurrencyBinding> EceAltCoinBindings { get; set; } = [];
-        [JsonPropertyName("ohzerQuest")] public OhzerQuestPolicy OhzerQuest { get; set; } = new();
-        [JsonPropertyName("mintMadranQuest")] public ScriptMigrationTarget MintMadranQuest { get; set; } = new();
-        [JsonPropertyName("eceSeptimQuest")] public StalePropertyTarget EceSeptimQuest { get; set; } = new();
+        [JsonPropertyName("ecePlayerCurrencyQuests")] public List<QuestNeutralizationTarget> EcePlayerCurrencyQuests { get; set; } = [];
+        [JsonPropertyName("mintCostOnlyQuests")] public List<MintCostOnlyQuestPolicy> MintCostOnlyQuests { get; set; } = [];
+        [JsonPropertyName("mintMadranQuest")] public ScriptRemovalTarget MintMadranQuest { get; set; } = new();
+        [JsonPropertyName("disabledMintExchangeInfos")] public List<MintExchangeInfoPolicy> DisabledMintExchangeInfos { get; set; } = [];
+        [JsonPropertyName("mintBackendConditionInfos")] public List<MintBackendConditionPolicy> MintBackendConditionInfos { get; set; } = [];
         [JsonPropertyName("drakrPurseAdapters")] public DrakrPursePolicy DrakrPurseAdapters { get; set; } = new();
         [JsonPropertyName("drakrPile")] public ScriptPropertyTarget DrakrPile { get; set; } = new();
         [JsonPropertyName("ancientExchangeWorkbench")] public string AncientExchangeWorkbench { get; set; } = "";
@@ -115,6 +121,96 @@ public static class Program
     public sealed class PurseTarget : Target
     {
         [JsonPropertyName("counts")] public List<short> Counts { get; set; } = [];
+        [JsonPropertyName("floraFormKey")] public string FloraFormKey { get; set; } = "";
+        [JsonPropertyName("floraEditorId")] public string FloraEditorId { get; set; } = "";
+        [JsonPropertyName("canonicalFormIdBase")] public string CanonicalFormIdBase { get; set; } = "";
+        [JsonPropertyName("breakFormIdBase")] public string BreakFormIdBase { get; set; } = "";
+        [JsonPropertyName("selectorFormIdBase")] public string SelectorFormIdBase { get; set; } = "";
+    }
+
+    public sealed class DenominationPolicy
+    {
+        [JsonPropertyName("canonicalPercent")] public int CanonicalPercent { get; set; }
+        [JsonPropertyName("variantPercent")] public int VariantPercent { get; set; }
+        [JsonPropertyName("septim")] public SeptimFamilyPolicy Septim { get; set; } = new();
+        [JsonPropertyName("modernFamilies")] public List<ModernFamilyPolicy> ModernFamilies { get; set; } = [];
+        [JsonPropertyName("singletonFamilies")] public List<SingletonFamilyPolicy> SingletonFamilies { get; set; } = [];
+    }
+
+    public sealed class SeptimFamilyPolicy
+    {
+        [JsonPropertyName("id")] public string Id { get; set; } = "";
+        [JsonPropertyName("displayLabel")] public string DisplayLabel { get; set; } = "";
+        [JsonPropertyName("backendLabel")] public string BackendLabel { get; set; } = "";
+        [JsonPropertyName("copper")] public ExistingTierPolicy Copper { get; set; } = new();
+        [JsonPropertyName("silver")] public ExistingTierPolicy Silver { get; set; } = new();
+        [JsonPropertyName("gold")] public ExistingTierPolicy Gold { get; set; } = new();
+    }
+
+    public sealed class ExistingTierPolicy
+    {
+        [JsonPropertyName("formKey")] public string FormKey { get; set; } = "";
+        [JsonPropertyName("editorId")] public string EditorId { get; set; } = "";
+        [JsonPropertyName("name")] public string Name { get; set; } = "";
+        [JsonPropertyName("sourceValue")] public uint SourceValue { get; set; }
+        [JsonPropertyName("value")] public uint Value { get; set; }
+        [JsonPropertyName("sourceModel")] public string SourceModel { get; set; } = "";
+    }
+
+    public sealed class ModernFamilyPolicy
+    {
+        [JsonPropertyName("id")] public string Id { get; set; } = "";
+        [JsonPropertyName("enabled")] public bool Enabled { get; set; }
+        [JsonPropertyName("displayLabel")] public string DisplayLabel { get; set; } = "";
+        [JsonPropertyName("backendLabel")] public string BackendLabel { get; set; } = "";
+        [JsonPropertyName("routeKeyword")] public string RouteKeyword { get; set; } = "";
+        [JsonPropertyName("perk")] public string? Perk { get; set; }
+        [JsonPropertyName("sourcePlugin")] public string SourcePlugin { get; set; } = "";
+        [JsonPropertyName("copperFormKey")] public string CopperFormKey { get; set; } = "";
+        [JsonPropertyName("sourceEditorId")] public string SourceEditorId { get; set; } = "";
+        [JsonPropertyName("sourceName")] public string SourceName { get; set; } = "";
+        [JsonPropertyName("sourceValue")] public uint SourceValue { get; set; }
+        [JsonPropertyName("sourceWeight")] public float SourceWeight { get; set; }
+        [JsonPropertyName("runtimeWeight")] public float RuntimeWeight { get; set; }
+        [JsonPropertyName("sourceModel")] public string SourceModel { get; set; } = "";
+        [JsonPropertyName("copperName")] public string CopperName { get; set; } = "";
+        [JsonPropertyName("silverName")] public string SilverName { get; set; } = "";
+        [JsonPropertyName("goldName")] public string GoldName { get; set; } = "";
+        [JsonPropertyName("silverFormId")] public string SilverFormId { get; set; } = "";
+        [JsonPropertyName("goldFormId")] public string GoldFormId { get; set; } = "";
+        [JsonPropertyName("silverEditorId")] public string SilverEditorId { get; set; } = "";
+        [JsonPropertyName("goldEditorId")] public string GoldEditorId { get; set; } = "";
+        [JsonPropertyName("copperModel")] public string CopperModel { get; set; } = "";
+        [JsonPropertyName("silverModel")] public string SilverModel { get; set; } = "";
+        [JsonPropertyName("goldModel")] public string GoldModel { get; set; } = "";
+    }
+
+    public sealed class SingletonFamilyPolicy
+    {
+        [JsonPropertyName("id")] public string Id { get; set; } = "";
+        [JsonPropertyName("enabled")] public bool Enabled { get; set; }
+        [JsonPropertyName("displayLabel")] public string DisplayLabel { get; set; } = "";
+        [JsonPropertyName("backendLabel")] public string BackendLabel { get; set; } = "";
+        [JsonPropertyName("routeKeyword")] public string RouteKeyword { get; set; } = "";
+        [JsonPropertyName("ownedRouteKeywordFormId")] public string? OwnedRouteKeywordFormId { get; set; }
+        [JsonPropertyName("ownedRouteKeywordEditorId")] public string? OwnedRouteKeywordEditorId { get; set; }
+        [JsonPropertyName("perk")] public string? Perk { get; set; }
+        [JsonPropertyName("sourcePlugin")] public string SourcePlugin { get; set; } = "";
+        [JsonPropertyName("formKey")] public string FormKey { get; set; } = "";
+        [JsonPropertyName("editorId")] public string EditorId { get; set; } = "";
+        [JsonPropertyName("name")] public string Name { get; set; } = "";
+        [JsonPropertyName("sourceValue")] public uint SourceValue { get; set; }
+        [JsonPropertyName("value")] public uint Value { get; set; }
+        [JsonPropertyName("sourceWeight")] public float SourceWeight { get; set; }
+        [JsonPropertyName("runtimeWeight")] public float RuntimeWeight { get; set; }
+        [JsonPropertyName("sourceModel")] public string SourceModel { get; set; } = "";
+    }
+
+    public sealed class QuestNeutralizationTarget : Target
+    {
+        [JsonPropertyName("sourcePlugin")] public string SourcePlugin { get; set; } = "";
+        [JsonPropertyName("aliasId")] public short AliasId { get; set; }
+        [JsonPropertyName("transactionScripts")] public List<string> TransactionScripts { get; set; } = [];
     }
 
     public sealed class ScriptPropertyTarget : Target
@@ -125,11 +221,21 @@ public static class Program
         [JsonPropertyName("targetFormKey")] public string TargetFormKey { get; set; } = "";
     }
 
-    public sealed class ScriptMigrationTarget : Target
+    public sealed class MintCostOnlyQuestPolicy : Target
+    {
+        [JsonPropertyName("originalPlugin")] public string OriginalPlugin { get; set; } = "";
+        [JsonPropertyName("winningPlugin")] public string WinningPlugin { get; set; } = "";
+        [JsonPropertyName("questScript")] public string QuestScript { get; set; } = "";
+        [JsonPropertyName("playerAliasId")] public short PlayerAliasId { get; set; }
+        [JsonPropertyName("playerAliasScript")] public string PlayerAliasScript { get; set; } = "";
+        [JsonPropertyName("removedAliasScripts")] public List<string> RemovedAliasScripts { get; set; } = [];
+        [JsonPropertyName("costPropertyNames")] public List<string> CostPropertyNames { get; set; } = [];
+    }
+
+    public sealed class ScriptRemovalTarget : Target
     {
         [JsonPropertyName("aliasId")] public short AliasId { get; set; }
-        [JsonPropertyName("sourceScript")] public string SourceScript { get; set; } = "";
-        [JsonPropertyName("targetScript")] public string TargetScript { get; set; } = "";
+        [JsonPropertyName("transactionScript")] public string TransactionScript { get; set; } = "";
         [JsonPropertyName("staleQuestProperties")] public List<string> StaleQuestProperties { get; set; } = [];
     }
 
@@ -200,6 +306,19 @@ public static class Program
 
     public static async Task<int> Main(string[] args)
     {
+        try
+        {
+            return await RunMainAsync(args);
+        }
+        catch (Exception exception)
+        {
+            Console.Error.WriteLine(exception);
+            return 1;
+        }
+    }
+
+    private static async Task<int> RunMainAsync(string[] args)
+    {
         if (args is ["--audit-links", var dataFolder, var loadOrderFile, var pluginPath])
         {
             return LinkAudit.Run(dataFolder, loadOrderFile, pluginPath);
@@ -261,23 +380,26 @@ public static class Program
             Console.WriteLine($"Forwarded ECE activator {key} {target.EditorId}.");
         }
 
+        var septimForms = CreateDenominationRecords(state, policy.Denominations);
         foreach (var target in policy.Overrides.CoinPurses)
         {
-            PatchPurse(state, target);
+            PatchPurse(state, target, septimForms);
         }
 
         PatchGold(state, policy.Overrides.Gold);
         PatchMintGlobal(state, policy.Overrides.MintAutoConvert);
-        PatchEceAltCurrencyQuest(state, policy.Overrides.EceAltCurrencyQuest,
-            policy.Overrides.EceAltCoinBindings);
-        PatchMadranQuest(state, policy.Overrides.MintMadranQuest);
-        PatchEceSeptimQuest(state, policy.Overrides.EceSeptimQuest);
+        NeutralizeEcePlayerCurrencyQuests(state, policy.Overrides.EcePlayerCurrencyQuests);
+        RestoreMintCostOnlyQuestBindings(state, policy.Overrides.MintCostOnlyQuests);
+        RemoveMadranTransactionScript(state, policy.Overrides.MintMadranQuest);
+        DisableMintExchangeInfos(state, policy.Overrides.DisabledMintExchangeInfos);
+        RetargetMintBackendConditions(state, policy.Overrides.MintBackendConditionInfos);
         PatchDrakrPurseAdapters(state, policy.Overrides.DrakrPurseAdapters);
         PatchDrakrPile(state, policy.Overrides.DrakrPile);
         CreateAncientExchangeRecipes(state, policy.Overrides.AncientExchangeWorkbench,
             policy.Overrides.AncientExchangeRecipes);
 
-        foreach (var target in policy.DisabledRecipes.OrderBy(item => FormKey.Factory(item.FormKey).ID))
+        foreach (var target in policy.DisabledRecipes.Concat(policy.DisabledModernBankRecipes)
+                     .OrderBy(item => FormKey.Factory(item.FormKey).ID))
         {
             var key = FormKey.Factory(target.FormKey);
             var contexts = new FormLink<IConstructibleObjectGetter>(key)
@@ -291,33 +413,297 @@ public static class Program
             var patch = source.GetOrAddAsOverride(state.PatchMod);
             patch.WorkbenchKeyword.SetTo(FormKey.Null);
             ClearCompression(patch);
-            Console.WriteLine($"Disabled currency-to-ingot COBJ {key} {target.EditorId}.");
+            Console.WriteLine($"Disabled legacy currency COBJ {key} {target.EditorId}.");
         }
 
         CreateRuntimeQuest(state, policy.Quest);
-        CreateOhzerQuest(state, policy.Overrides.OhzerQuest);
+        ValidateDialogParentScopes(state, policy.Overrides.DisabledMintExchangeInfos,
+            policy.Overrides.MintBackendConditionInfos);
 
         var records = state.PatchMod.EnumerateMajorRecords().ToArray();
-        Require(records.Length == 45, $"Expected exactly 45 records, got {records.Length}.");
+        Require(records.Length == 286, $"Expected exactly 286 records, got {records.Length}.");
         Require(records.Count(record => record is IActivatorGetter) == 3,
             "Expected two pile forwards and one Drakr pile override.");
-        Require(records.Count(record => record is ILeveledItemGetter) == 8,
-            "Expected six LVLI purse overrides and two owned Drakr adapters.");
-        Require(records.Count(record => record is IMiscItemGetter) == 1, "Expected one MISC override.");
+        Require(records.Count(record => record is ILeveledItemGetter) == 152,
+            "Expected six purse overrides, two Drakr adapters, and 144 owned Septim purse lists.");
+        Require(records.Count(record => record is IMiscItemGetter) == 22,
+            "Expected Gold001, three Septim tiers, eighteen modern tiers, and two singleton currency overrides.");
         Require(records.Count(record => record is IGlobalGetter) == 1, "Expected one GLOB override.");
-        Require(records.Count(record => record is IConstructibleObjectGetter) == 27,
-            "Expected 17 disabled COBJ overrides and ten owned exchange recipes.");
+        Require(records.Count(record => record is IConstructibleObjectGetter) == 42,
+            "Expected 33 disabled COBJ overrides and nine owned ancient exchange recipes.");
         Require(records.Count(record => record is IQuestGetter) == 5,
-            "Expected three compatibility QUST overrides and two owned QUSTs.");
+            "Expected four compatibility QUST overrides and one owned runtime QUST.");
+        Require(records.Count(record => record is IKeywordGetter) == 1,
+            "Expected one owned Sancar route keyword.");
+        Require(records.Count(record => record is IDialogTopicGetter) == 20,
+            "Expected exactly twenty scoped parent DIAL overrides for the forty INFO overrides.");
+        Require(records.Count(record => record is IDialogResponsesGetter) == 40,
+            "Expected 38 disabled obsolete M.I.N.T. exchange INFOs and two backend-aware horse conditions.");
         Require(!records.Any(record => record.IsDeleted), "Output contains a deleted record.");
-        Require(records.Count(record => record.FormKey.ModKey == state.PatchMod.ModKey) == 14,
-            "Only two Drakr adapter LVLIs, two runtime quests, and ten exchange recipes may use owned FormKeys.");
-        Console.WriteLine("Generated 45 records: 14 semantic overrides, 17 disabled recipes, ten owned exchange recipes, two owned Drakr adapter LVLIs, and two owned runtime quests.");
+        Require(records.Count(record => record.FormKey.ModKey == state.PatchMod.ModKey) == 169,
+            "Owned FormKey count differs from 144 purse lists, twelve denominations, two Drakr adapters, ten recipes, and one runtime quest.");
+        Console.WriteLine("Generated 286 records: exact 1/10/100 denomination forms, singleton Drakr/Sancar tender, 144 value-conserving Septim purse lists, nine preserved ancient exchanges, 33 disabled legacy recipes, 20 exact parent DIAL scopes, 38 disabled M.I.N.T. exchange INFOs, two backend-aware horse checks, and neutralized ECE/M.I.N.T. currency owners.");
+    }
+
+    public sealed class MintExchangeInfoPolicy
+    {
+        [JsonPropertyName("formKey")] public string FormKey { get; set; } = "";
+        [JsonPropertyName("parentTopicFormKey")] public string ParentTopicFormKey { get; set; } = "";
+        [JsonPropertyName("parentTopicEditorId")] public string ParentTopicEditorId { get; set; } = "";
+        [JsonPropertyName("transactionScripts")] public List<string> TransactionScripts { get; set; } = [];
+        [JsonPropertyName("conditionCount")] public int ConditionCount { get; set; }
+    }
+
+    public sealed class MintBackendConditionPolicy
+    {
+        [JsonPropertyName("formKey")] public string FormKey { get; set; } = "";
+        [JsonPropertyName("parentTopicFormKey")] public string ParentTopicFormKey { get; set; } = "";
+        [JsonPropertyName("parentTopicEditorId")] public string ParentTopicEditorId { get; set; } = "";
+        [JsonPropertyName("script")] public string Script { get; set; } = "";
+        [JsonPropertyName("conditionIndex")] public int ConditionIndex { get; set; }
+        [JsonPropertyName("sourceCurrency")] public string SourceCurrency { get; set; } = "";
+        [JsonPropertyName("backendCurrency")] public string BackendCurrency { get; set; } = "";
+        [JsonPropertyName("comparisonGlobal")] public string ComparisonGlobal { get; set; } = "";
+        [JsonPropertyName("conditionCount")] public int ConditionCount { get; set; }
+        [JsonPropertyName("vmadVersion")] public int VmadVersion { get; set; }
+        [JsonPropertyName("vmadObjectFormat")] public int VmadObjectFormat { get; set; }
+        [JsonPropertyName("vmadCurrencyProperty")] public string VmadCurrencyProperty { get; set; } = "";
+        [JsonPropertyName("vmadProperties")] public List<MintVmadObjectPropertyPolicy> VmadProperties { get; set; } = [];
+    }
+
+    public sealed class MintVmadObjectPropertyPolicy
+    {
+        [JsonPropertyName("name")] public string Name { get; set; } = "";
+        [JsonPropertyName("formKey")] public string FormKey { get; set; } = "";
+        [JsonPropertyName("alias")] public int Alias { get; set; }
+    }
+
+    internal readonly record struct DenominationCounts(short Copper, short Silver, short Gold, string? BrokenTier);
+
+    internal static DenominationCounts DecomposeSeptims(int amount, bool singleBreak)
+    {
+        Require(amount >= 0 && amount <= short.MaxValue, $"Purse amount {amount} is outside LVLI count range.");
+        var gold = amount / 100;
+        var remainder = amount % 100;
+        var silver = remainder / 10;
+        var copper = remainder % 10;
+        string? brokenTier = null;
+        if (singleBreak && gold > 0)
+        {
+            gold--;
+            silver += 10;
+            brokenTier = "gold";
+        }
+        else if (singleBreak && silver > 0)
+        {
+            silver--;
+            copper += 10;
+            brokenTier = "silver";
+        }
+        var result = new DenominationCounts(
+            checked((short)copper), checked((short)silver), checked((short)gold), brokenTier);
+        Require(ValueOf(result) == amount, $"Denomination decomposition failed to conserve {amount}.");
+        return result;
+    }
+
+    internal static int ValueOf(DenominationCounts counts) =>
+        checked(counts.Copper + (10 * counts.Silver) + (100 * counts.Gold));
+
+    private static uint ParseOwnedId(string value) => uint.Parse(value,
+        System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
+
+    private static LeveledItem NewLeveledList(FormKey key, string editorId, LeveledItem.Flag flags) =>
+        new(key, SkyrimRelease.SkyrimSE)
+        {
+            EditorID = editorId,
+            Flags = flags,
+            ChanceNone = new Percent(0.0),
+            Entries = [],
+        };
+
+    private static void AddLeveledEntry(ILeveledItem list, FormKey form, short count)
+    {
+        list.Entries ??= [];
+        var entry = new LeveledItemEntry
+        {
+            Data = new LeveledItemEntryData { Level = 1, Count = count },
+        };
+        entry.Data.Reference.SetTo(form);
+        list.Entries.Add(entry);
+    }
+
+    private static void CreateUseAllPurseList(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        FormKey key,
+        string editorId,
+        DenominationCounts counts,
+        IReadOnlyDictionary<string, FormKey> forms)
+    {
+        var list = NewLeveledList(key, editorId, LeveledItem.Flag.UseAll);
+        if (counts.Copper > 0) AddLeveledEntry(list, forms["copper"], counts.Copper);
+        if (counts.Silver > 0) AddLeveledEntry(list, forms["silver"], counts.Silver);
+        if (counts.Gold > 0) AddLeveledEntry(list, forms["gold"], counts.Gold);
+        Require(list.Entries is { Count: > 0 }, $"{key}: a positive purse amount produced an empty list.");
+        state.PatchMod.LeveledItems.Add(list);
+    }
+
+    private static IReadOnlyDictionary<string, FormKey> CreateDenominationRecords(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        DenominationPolicy policy)
+    {
+        var septimTiers = new[]
+        {
+            (tier: "copper", data: policy.Septim.Copper),
+            (tier: "silver", data: policy.Septim.Silver),
+            (tier: "gold", data: policy.Septim.Gold),
+        };
+        foreach (var (tier, data) in septimTiers)
+        {
+            var key = FormKey.Factory(data.FormKey);
+            var source = state.LinkCache.Resolve<IMiscItemGetter>(key);
+            Require(source.EditorID == data.EditorId && source.Value == data.SourceValue &&
+                    source.Name?.String == data.Name &&
+                    string.Equals(source.Model?.File.ToString(), data.SourceModel, StringComparison.OrdinalIgnoreCase) &&
+                    HasKeyword(source, VendorNoSale),
+                $"{key}: pinned Septim {tier} source identity/value/model changed.");
+            if (data.Value != data.SourceValue)
+            {
+                var contexts = new FormLink<IMiscItemGetter>(key)
+                    .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IMiscItem, IMiscItemGetter>(state.LinkCache)
+                    .ToArray();
+                var winner = contexts[0];
+                var patch = winner.GetOrAddAsOverride(state.PatchMod);
+                patch.Value = data.Value;
+                patch.Name = data.Name;
+                EnsureKeyword(patch, VendorNoSale);
+                ClearCompression(patch);
+                Console.WriteLine($"Set {tier} Septim {key} to exact value {data.Value}.");
+            }
+        }
+
+        foreach (var family in policy.ModernFamilies)
+        {
+            var copperKey = FormKey.Factory(family.CopperFormKey);
+            var sourceMod = ModKey.FromNameAndExtension(family.SourcePlugin);
+            var contexts = new FormLink<IMiscItemGetter>(copperKey)
+                .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IMiscItem, IMiscItemGetter>(state.LinkCache)
+                .ToArray();
+            var sourceContext = contexts.Single(context => context.ModKey == sourceMod);
+            var source = sourceContext.Record;
+            Require(source.EditorID == family.SourceEditorId && source.Name?.String == family.SourceName &&
+                    source.Value == family.SourceValue && Math.Abs(source.Weight - family.SourceWeight) < 0.0001f &&
+                    string.Equals(source.Model?.File.ToString(), family.SourceModel, StringComparison.OrdinalIgnoreCase),
+                $"{copperKey}: {family.Id} source identity/value/weight/model changed.");
+
+            var copper = sourceContext.GetOrAddAsOverride(state.PatchMod);
+            copper.Name = family.CopperName;
+            copper.Value = 1;
+            copper.Weight = family.RuntimeWeight;
+            copper.Model ??= new Model();
+            copper.Model.File = family.CopperModel;
+            EnsureKeyword(copper, VendorNoSale);
+            ClearCompression(copper);
+
+            CreateOwnedTier(state, source, family, "silver", family.SilverFormId,
+                family.SilverEditorId, family.SilverName, family.SilverModel, 10);
+            CreateOwnedTier(state, source, family, "gold", family.GoldFormId,
+                family.GoldEditorId, family.GoldName, family.GoldModel, 100);
+            Console.WriteLine($"Created 1/10/100 {family.Id} family from pinned source model {family.SourceModel}.");
+        }
+
+        foreach (var family in policy.SingletonFamilies)
+        {
+            if (family.OwnedRouteKeywordFormId is not null)
+            {
+                var routeKey = new FormKey(state.PatchMod.ModKey, ParseOwnedId(family.OwnedRouteKeywordFormId));
+                Require(FormKey.Factory(family.RouteKeyword) == routeKey,
+                    $"{family.Id}: owned route keyword FormKey mismatch.");
+                state.PatchMod.Keywords.Add(new Keyword(routeKey, SkyrimRelease.SkyrimSE)
+                {
+                    EditorID = family.OwnedRouteKeywordEditorId,
+                });
+            }
+
+            var key = FormKey.Factory(family.FormKey);
+            var sourceMod = ModKey.FromNameAndExtension(family.SourcePlugin);
+            var contexts = new FormLink<IMiscItemGetter>(key)
+                .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IMiscItem, IMiscItemGetter>(state.LinkCache)
+                .ToArray();
+            var sourceContext = contexts.Single(context => context.ModKey == sourceMod);
+            var source = sourceContext.Record;
+            Require(source.EditorID == family.EditorId && source.Name?.String == family.Name &&
+                    source.Value == family.SourceValue && Math.Abs(source.Weight - family.SourceWeight) < 0.0001f &&
+                    string.Equals(source.Model?.File.ToString(), family.SourceModel, StringComparison.OrdinalIgnoreCase),
+                $"{key}: {family.Id} singleton source identity/value/weight/model changed.");
+            var patch = sourceContext.GetOrAddAsOverride(state.PatchMod);
+            patch.Name = family.Name;
+            patch.Value = family.Value;
+            patch.Weight = family.RuntimeWeight;
+            EnsureKeyword(patch, VendorNoSale);
+            ClearCompression(patch);
+            Console.WriteLine($"Pinned singleton {family.Id} tender {key} to value {family.Value}.");
+        }
+
+        return septimTiers.ToDictionary(item => item.tier,
+            item => FormKey.Factory(item.data.FormKey), StringComparer.Ordinal);
+    }
+
+    private static void CreateOwnedTier(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        IMiscItemGetter source,
+        ModernFamilyPolicy family,
+        string tier,
+        string formId,
+        string editorId,
+        string name,
+        string modelPath,
+        uint value)
+    {
+        var key = new FormKey(state.PatchMod.ModKey, ParseOwnedId(formId));
+        var item = new MiscItem(key, SkyrimRelease.SkyrimSE)
+        {
+            EditorID = editorId,
+            Name = name,
+            Value = value,
+            Weight = family.RuntimeWeight,
+            ObjectBounds = source.ObjectBounds.DeepCopy(),
+            Model = source.Model?.DeepCopy(),
+            Icons = source.Icons?.DeepCopy(),
+            Destructible = source.Destructible?.DeepCopy(),
+        };
+        if (item.Model is null) item.Model = new Model();
+        item.Model.File = modelPath;
+        item.PickUpSound.SetTo(source.PickUpSound.FormKey);
+        item.PutDownSound.SetTo(source.PutDownSound.FormKey);
+        if (source.Keywords is not null)
+        {
+            item.Keywords = [];
+            foreach (var keyword in source.Keywords)
+            {
+                item.Keywords.Add(new FormLink<IKeywordGetter>(keyword.FormKey));
+            }
+        }
+        EnsureKeyword(item, VendorNoSale);
+        state.PatchMod.MiscItems.Add(item);
+        Console.WriteLine($"Created {tier} {family.Id} {key} ({value}) using {modelPath}.");
+    }
+
+    private static bool HasKeyword(IMiscItemGetter item, FormKey keyword) =>
+        item.Keywords?.Any(candidate => candidate.FormKey == keyword) == true;
+
+    private static void EnsureKeyword(IMiscItem item, FormKey keyword)
+    {
+        item.Keywords ??= [];
+        if (!item.Keywords.Any(candidate => candidate.FormKey == keyword))
+        {
+            item.Keywords.Add(new FormLink<IKeywordGetter>(keyword));
+        }
     }
 
     private static void PatchPurse(
         IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
-        PurseTarget target)
+        PurseTarget target,
+        IReadOnlyDictionary<string, FormKey> septimForms)
     {
         var key = FormKey.Factory(target.FormKey);
         var contexts = new FormLink<ILeveledItemGetter>(key)
@@ -332,27 +718,52 @@ public static class Program
         Require(target.Counts.Count == 16 && target.Counts.Distinct().Count() == 16,
             $"{key}: purse policy must contain 16 unique counts.");
 
+        var floraKey = FormKey.Factory(target.FloraFormKey);
+        var flora = state.LinkCache.Resolve<IFloraGetter>(floraKey);
+        Require(flora.EditorID == target.FloraEditorId && flora.Ingredient.FormKey == key,
+            $"{floraKey}: purse FLOR must be {target.FloraEditorId} and harvest {key}.");
+
+        var canonicalBase = ParseOwnedId(target.CanonicalFormIdBase);
+        var breakBase = ParseOwnedId(target.BreakFormIdBase);
+        var selectorBase = ParseOwnedId(target.SelectorFormIdBase);
+        var selectors = new List<FormKey>();
+        for (var index = 0; index < target.Counts.Count; index++)
+        {
+            var amount = target.Counts[index];
+            var canonical = DecomposeSeptims(amount, false);
+            var broken = DecomposeSeptims(amount, true);
+            var canonicalKey = new FormKey(state.PatchMod.ModKey, canonicalBase + checked((uint)index));
+            var breakKey = new FormKey(state.PatchMod.ModKey, breakBase + checked((uint)index));
+            var selectorKey = new FormKey(state.PatchMod.ModKey, selectorBase + checked((uint)index));
+            CreateUseAllPurseList(state, canonicalKey,
+                $"Ensrick_SeptimPurse_{target.EditorId}_{amount:D2}_Canonical", canonical, septimForms);
+            CreateUseAllPurseList(state, breakKey,
+                $"Ensrick_SeptimPurse_{target.EditorId}_{amount:D2}_SingleBreak", broken, septimForms);
+
+            var selector = NewLeveledList(selectorKey,
+                $"Ensrick_SeptimPurse_{target.EditorId}_{amount:D2}_80_20", 0);
+            for (var choice = 0; choice < 5; choice++)
+            {
+                AddLeveledEntry(selector, choice < 4 ? canonicalKey : breakKey, 1);
+            }
+            state.PatchMod.LeveledItems.Add(selector);
+            selectors.Add(selectorKey);
+            Require(ValueOf(canonical) == amount && ValueOf(broken) == amount,
+                $"{key}: purse amount {amount} does not conserve value.");
+        }
+
         var patch = winner.GetOrAddAsOverride(state.PatchMod);
         patch.Flags = 0;
         patch.ChanceNone = new Percent(0.0);
         patch.Global.SetTo(FormKey.Null);
         patch.Entries ??= [];
         patch.Entries.Clear();
-        foreach (var count in target.Counts)
+        foreach (var selector in selectors)
         {
-            var entry = new LeveledItemEntry
-            {
-                Data = new LeveledItemEntryData
-                {
-                    Level = 1,
-                    Count = count,
-                },
-            };
-            entry.Data.Reference.SetTo(FormKey.Factory("00000F:Skyrim.esm"));
-            patch.Entries.Add(entry);
+            AddLeveledEntry(patch, selector, 1);
         }
         ClearCompression(patch);
-        Console.WriteLine($"Rebuilt purse LVLI {key} {target.EditorId}: 16 equal Gold001 choices {target.Counts.Min()}..{target.Counts.Max()}.");
+        Console.WriteLine($"Rebuilt purse LVLI {key} {target.EditorId}: 16 equal amount selectors, each with four canonical and one single-break value-conserving outcomes.");
     }
 
     private static void PatchGold(IPatcherState<ISkyrimMod, ISkyrimModGetter> state, KeywordTarget target)
@@ -393,6 +804,43 @@ public static class Program
         var shortGlobal = (GlobalShort)patch;
         shortGlobal.Data = target.Value;
         ClearCompression(shortGlobal);
+    }
+
+    private static void NeutralizeEcePlayerCurrencyQuests(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        IReadOnlyList<QuestNeutralizationTarget> targets)
+    {
+        foreach (var target in targets)
+        {
+            var key = FormKey.Factory(target.FormKey);
+            var sourceMod = ModKey.FromNameAndExtension(target.SourcePlugin);
+            var contexts = new FormLink<IQuestGetter>(key)
+                .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IQuest, IQuestGetter>(state.LinkCache)
+                .ToArray();
+            var winner = contexts[0];
+            Require(winner.ModKey == sourceMod,
+                $"{key}: winning ECE player-currency quest is {winner.ModKey}, expected {sourceMod}.");
+            Require(winner.Record.EditorID == target.EditorId &&
+                    winner.Record.Flags.HasFlag(Quest.Flag.StartGameEnabled),
+                $"{key}: pinned ECE quest identity/start flag changed.");
+            var patch = winner.GetOrAddAsOverride(state.PatchMod);
+            var vmad = patch.VirtualMachineAdapter
+                ?? throw new InvalidOperationException($"{key}: ECE quest VMAD is missing.");
+            var alias = vmad.Aliases.Single(candidate => candidate.Property.Alias == target.AliasId);
+            var actualNames = alias.Scripts.Select(script => script.Name).ToArray();
+            Require(actualNames.SequenceEqual(target.TransactionScripts),
+                $"{key}: ECE transaction script set/order changed ({string.Join(", ", actualNames)}).");
+            foreach (var scriptName in target.TransactionScripts)
+            {
+                var script = alias.Scripts.Single(candidate => candidate.Name == scriptName);
+                alias.Scripts.Remove(script);
+            }
+            patch.Flags &= ~Quest.Flag.StartGameEnabled;
+            ClearCompression(patch);
+            Require(alias.Scripts.Count == 0 && !patch.Flags.HasFlag(Quest.Flag.StartGameEnabled),
+                $"{key}: ECE player currency alias was not fully neutralized.");
+            Console.WriteLine($"Neutralized ECE player-currency quest {key}: removed {target.TransactionScripts.Count} exact scripts and StartGameEnabled only.");
+        }
     }
 
     private static void PatchEceAltCurrencyQuest(
@@ -509,45 +957,88 @@ public static class Program
         Console.WriteLine($"Created owned neutral-rate Ohzer transaction quest {questKey} with script {target.Script}.");
     }
 
-    private static void PatchMadranQuest(
+    private static void RestoreMintCostOnlyQuestBindings(
         IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
-        ScriptMigrationTarget target)
+        IReadOnlyList<MintCostOnlyQuestPolicy> targets)
+    {
+        foreach (var target in targets)
+        {
+            var key = FormKey.Factory(target.FormKey);
+            var originalMod = ModKey.FromNameAndExtension(target.OriginalPlugin);
+            var winningMod = ModKey.FromNameAndExtension(target.WinningPlugin);
+            var contexts = new FormLink<IQuestGetter>(key)
+                .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IQuest, IQuestGetter>(state.LinkCache)
+                .ToArray();
+            var original = contexts.Single(context => context.ModKey == originalMod).Record;
+            // Select the immutable input baseline by its named provider. A prior pass may
+            // already have created the output override, which then appears first in the
+            // mutable link cache and must not become the provenance record.
+            var winningInput = contexts.Single(context => context.ModKey == winningMod);
+            Require(original.EditorID == target.EditorId && winningInput.Record.EditorID == target.EditorId,
+                $"{key}: M.I.N.T. quest identity changed.");
+
+            var originalVmad = original.VirtualMachineAdapter
+                ?? throw new InvalidOperationException($"{key}: original M.I.N.T. quest VMAD is missing.");
+            var originalQuestScript = originalVmad.Scripts.Single(script => script.Name == target.QuestScript);
+            if (target.CostPropertyNames.Count > 0)
+            {
+                Require(originalQuestScript.Properties.Select(property => property.Name).ToHashSet(StringComparer.Ordinal)
+                        .SetEquals(target.CostPropertyNames),
+                    $"{key}: {target.QuestScript} property schema changed.");
+            }
+            var originalAlias = originalVmad.Aliases.Single(alias =>
+                alias.Property.Alias == target.PlayerAliasId);
+            var originalAliasNames = originalAlias.Scripts.Select(script => script.Name).ToHashSet(StringComparer.Ordinal);
+            Require(originalAliasNames.Contains(target.PlayerAliasScript) &&
+                    target.RemovedAliasScripts.All(originalAliasNames.Contains),
+                $"{key}: original player-alias currency script set changed.");
+
+            var patch = winningInput.GetOrAddAsOverride(state.PatchMod);
+            var vmad = patch.VirtualMachineAdapter
+                ?? throw new InvalidOperationException($"{key}: winning M.I.N.T. quest VMAD is missing.");
+            Require(!vmad.Scripts.Any(script => script.Name == target.QuestScript),
+                $"{key}: winning patch unexpectedly retains {target.QuestScript}; review single-owner scope.");
+            vmad.Scripts.Add(originalQuestScript.DeepCopy());
+
+            var alias = vmad.Aliases.SingleOrDefault(candidate =>
+                candidate.Property.Alias == target.PlayerAliasId);
+            if (alias is null)
+            {
+                alias = new QuestFragmentAlias();
+                alias.Property.Object.SetTo(key);
+                alias.Property.Alias = target.PlayerAliasId;
+                vmad.Aliases.Add(alias);
+            }
+            Require(!alias.Scripts.Any(script => script.Name == target.PlayerAliasScript) &&
+                    target.RemovedAliasScripts.All(name => !alias.Scripts.Any(script => script.Name == name)),
+                $"{key}: winning patch unexpectedly retains a M.I.N.T. transaction alias script.");
+            alias.Scripts.Add(originalAlias.Scripts.Single(script =>
+                script.Name == target.PlayerAliasScript).DeepCopy());
+            ClearCompression(patch);
+            Console.WriteLine($"Restored cost-only binding {target.QuestScript} and proxy {target.PlayerAliasScript} on {key}; transaction aliases remain absent.");
+        }
+    }
+
+    private static void RemoveMadranTransactionScript(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        ScriptRemovalTarget target)
     {
         var key = FormKey.Factory(target.FormKey);
         var contexts = new FormLink<IQuestGetter>(key)
             .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IQuest, IQuestGetter>(state.LinkCache)
             .ToArray();
-        var winner = contexts.Single(context => context.ModKey == EceMintUlfric);
-        Require(winner.ModKey == EceMintUlfric,
-            $"{key}: expected ECE M.I.N.T. Ulfric patch winner, found {winner.ModKey}.");
-        Require(winner.Record.EditorID == target.EditorId,
-            $"{key}: Ma'dran quest EditorID is {winner.Record.EditorID}, expected {target.EditorId}.");
-        var patch = winner.GetOrAddAsOverride(state.PatchMod);
+        // RestoreMintCostOnlyQuestBindings touches this same QUST first, so the patch
+        // context can already be the mutable cache winner. Keep the reviewed vendor
+        // baseline explicit and merge this removal into the existing output override.
+        var winningInput = contexts.Single(context => context.ModKey == EceMintUlfric);
+        Require(winningInput.Record.EditorID == target.EditorId,
+            $"{key}: expected ECE M.I.N.T. Ulfric input {target.EditorId}, found {winningInput.Record.EditorID}.");
+        var patch = winningInput.GetOrAddAsOverride(state.PatchMod);
         var vmad = patch.VirtualMachineAdapter
             ?? throw new InvalidOperationException($"{key}: Ma'dran quest VMAD is missing.");
         var alias = vmad.Aliases.Single(candidate => candidate.Property.Alias == target.AliasId);
-        var script = alias.Scripts.Single(candidate => candidate.Name == target.SourceScript);
-        var properties = script.Properties.OfType<ScriptObjectProperty>()
-            .ToDictionary(property => property.Name, StringComparer.Ordinal);
-        var expectedNames = new HashSet<string>(StringComparer.Ordinal)
-        {
-            "CurrencyFunctions", "DES_Ulfric", "DES_UlfricLocations", "DES_WindhelmPriceAdjustmentPerk",
-        };
-        Require(properties.Count == expectedNames.Count && properties.Keys.ToHashSet().SetEquals(expectedNames),
-            $"{key}: orphan Ma'dran property set changed; review the migration.");
-        Require(properties["CurrencyFunctions"].Object.FormKey == FormKey.Factory("000800:M.I.N.T.esp") &&
-                properties["DES_Ulfric"].Object.FormKey == FormKey.Factory("DE5024:Update.esm") &&
-                properties["DES_UlfricLocations"].Object.FormKey == FormKey.Factory("000802:WindhelmUsesUlfrics.esp") &&
-                properties["DES_WindhelmPriceAdjustmentPerk"].Object.FormKey == FormKey.Factory("000800:WindhelmUsesUlfrics.esp"),
-            $"{key}: orphan Ma'dran bindings changed; review the migration.");
-
-        script.Name = target.TargetScript;
-        properties["DES_Ulfric"].Name = "akCurrency";
-        properties["DES_UlfricLocations"].Name = "akSwapLocations";
-        properties["DES_WindhelmPriceAdjustmentPerk"].Name = "akPriceMod";
-        var player = new ScriptObjectProperty { Name = "PlayerRef" };
-        player.Object.SetTo(PlayerRef);
-        script.Properties.Add(player);
+        var script = alias.Scripts.Single(candidate => candidate.Name == target.TransactionScript);
+        alias.Scripts.Remove(script);
 
         var questFragment = vmad.Scripts.Single(candidate =>
             candidate.Name == "QF_DES_UlfricWindhelmService_03000002");
@@ -558,7 +1049,176 @@ public static class Program
             Console.WriteLine($"Removed stale M.I.N.T./ECE quest-fragment VMAD property {propertyName}.");
         }
         ClearCompression(patch);
-        Console.WriteLine($"Migrated Ma'dran alias {target.AliasId} from missing {target.SourceScript} to shipped {target.TargetScript}.");
+        Require(alias.Scripts.All(candidate => candidate.Name != target.TransactionScript),
+            $"{key}: Ma'dran transaction script remains attached.");
+        Console.WriteLine($"Removed Ma'dran alias {target.AliasId} transaction script {target.TransactionScript}; no barter swapper was substituted.");
+    }
+
+    private static void DisableMintExchangeInfos(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        IReadOnlyList<MintExchangeInfoPolicy> targets)
+    {
+        foreach (var target in targets)
+        {
+            var key = FormKey.Factory(target.FormKey);
+            var sourceMod = state.LoadOrder.ListedOrder.Single(listing => listing.ModKey == key.ModKey).Mod
+                ?? throw new InvalidOperationException($"{key.ModKey}: M.I.N.T. module is not loaded.");
+            var parent = sourceMod.DialogTopics.Single(topic =>
+                topic.Responses.Any(response => response.FormKey == key));
+            Require(parent.FormKey == FormKey.Factory(target.ParentTopicFormKey) &&
+                    parent.EditorID == target.ParentTopicEditorId,
+                $"{key}: parent M.I.N.T. exchange topic changed.");
+
+            var contexts = new FormLink<IDialogResponsesGetter>(key)
+                .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IDialogResponses, IDialogResponsesGetter>(state.LinkCache)
+                .ToArray();
+            var winner = contexts[0];
+            Require(winner.ModKey == key.ModKey && string.IsNullOrEmpty(winner.Record.EditorID) &&
+                    winner.Record.Conditions.Count == target.ConditionCount,
+                $"{key}: pinned M.I.N.T. exchange INFO identity/condition count changed.");
+            var sourceScripts = winner.Record.VirtualMachineAdapter?.Scripts.Select(script => script.Name).ToArray()
+                ?? [];
+            Require(sourceScripts.SequenceEqual(target.TransactionScripts),
+                $"{key}: transaction TIF/fragment set changed ({string.Join(", ", sourceScripts)}).");
+
+            var patch = winner.GetOrAddAsOverride(state.PatchMod);
+            if (patch.VirtualMachineAdapter is not null)
+            {
+                foreach (var scriptName in target.TransactionScripts)
+                {
+                    var script = patch.VirtualMachineAdapter.Scripts.Single(entry => entry.Name == scriptName);
+                    patch.VirtualMachineAdapter.Scripts.Remove(script);
+                }
+                Require(patch.VirtualMachineAdapter.Scripts.Count == 0,
+                    $"{key}: obsolete M.I.N.T. exchange callback remains.");
+            }
+
+            var data = new GetGlobalValueConditionData();
+            data.Global.Link.SetTo(MintConvertGlobal);
+            patch.Conditions.Insert(0, new ConditionFloat
+            {
+                CompareOperator = CompareOperator.EqualTo,
+                ComparisonValue = 1.0f,
+                Flags = 0,
+                Data = data,
+            });
+            ClearCompression(patch);
+            Console.WriteLine($"Disabled obsolete M.I.N.T. exchange INFO {key}: stripped exact TIF and gated on DES_ConvertCoins == 1 while global is forced 0.");
+        }
+    }
+
+    private static void RetargetMintBackendConditions(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        IReadOnlyList<MintBackendConditionPolicy> targets)
+    {
+        foreach (var target in targets)
+        {
+            var key = FormKey.Factory(target.FormKey);
+            var sourceMod = state.LoadOrder.ListedOrder.Single(listing => listing.ModKey == key.ModKey).Mod
+                ?? throw new InvalidOperationException($"{key.ModKey}: M.I.N.T. module is not loaded.");
+            var parent = sourceMod.DialogTopics.Single(topic =>
+                topic.Responses.Any(response => response.FormKey == key));
+            Require(parent.FormKey == FormKey.Factory(target.ParentTopicFormKey) &&
+                    parent.EditorID == target.ParentTopicEditorId,
+                $"{key}: parent M.I.N.T. service topic changed.");
+            var contexts = new FormLink<IDialogResponsesGetter>(key)
+                .ResolveAllContexts<ISkyrimMod, ISkyrimModGetter, IDialogResponses, IDialogResponsesGetter>(state.LinkCache)
+                .ToArray();
+            var winner = contexts[0];
+            var vmadScripts = winner.Record.VirtualMachineAdapter?.Scripts.Select(script => script.Name).ToArray()
+                ?? [];
+            var sourceVmad = winner.Record.VirtualMachineAdapter
+                ?? throw new InvalidOperationException($"{key}: pinned horse-purchase VMAD is missing.");
+            var sourceScript = sourceVmad.Scripts.Single(script => script.Name == target.Script);
+            var sourceProperties = sourceScript.Properties.OfType<IScriptObjectPropertyGetter>().ToArray();
+            Require(winner.ModKey == key.ModKey && string.IsNullOrEmpty(winner.Record.EditorID) &&
+                    winner.Record.Conditions.Count == target.ConditionCount &&
+                    vmadScripts.SequenceEqual(new[] { target.Script }) &&
+                    Convert.ToInt32(sourceVmad.Version) == target.VmadVersion &&
+                    Convert.ToInt32(sourceVmad.ObjectFormat) == target.VmadObjectFormat &&
+                    sourceScript.Properties.Count == target.VmadProperties.Count &&
+                    sourceProperties.Length == target.VmadProperties.Count,
+                $"{key}: pinned M.I.N.T. service INFO identity changed.");
+            foreach (var propertyTarget in target.VmadProperties)
+            {
+                var sourceProperty = sourceProperties.SingleOrDefault(property => property.Name == propertyTarget.Name);
+                Require(sourceProperty is not null &&
+                        sourceProperty.Object.FormKey == FormKey.Factory(propertyTarget.FormKey) &&
+                        RawVmadAlias(sourceProperty.Alias) == propertyTarget.Alias,
+                    $"{key}: pinned {target.Script}.{propertyTarget.Name} binding changed.");
+            }
+            var sourceCurrencyProperty = sourceProperties.Single(property =>
+                property.Name == target.VmadCurrencyProperty);
+            Require(sourceCurrencyProperty.Object.FormKey == FormKey.Factory(target.SourceCurrency),
+                $"{key}: pinned horse payment VMAD does not debit the reviewed source currency.");
+            Require(target.ConditionIndex >= 0 && target.ConditionIndex < winner.Record.Conditions.Count,
+                $"{key}: backend condition index is out of range.");
+            var sourceCondition = winner.Record.Conditions[target.ConditionIndex];
+            Require(sourceCondition is IConditionGlobalGetter sourceGlobal &&
+                    sourceGlobal.CompareOperator == CompareOperator.GreaterThanOrEqualTo &&
+                    sourceGlobal.ComparisonValue.FormKey == FormKey.Factory(target.ComparisonGlobal) &&
+                    sourceGlobal.Data is IGetItemCountConditionDataGetter sourceCount &&
+                    sourceCount.ItemOrList.Link.FormKey == FormKey.Factory(target.SourceCurrency) &&
+                    sourceCount.RunOnType == Condition.RunOnType.Reference &&
+                    sourceCount.Reference.FormKey == PlayerRef,
+                $"{key}: pinned M.I.N.T. global-backed GetItemCount condition changed.");
+
+            var patch = winner.GetOrAddAsOverride(state.PatchMod);
+            var condition = (ConditionGlobal)patch.Conditions[target.ConditionIndex];
+            var count = (GetItemCountConditionData)condition.Data!;
+            count.ItemOrList.Link.SetTo(FormKey.Factory(target.BackendCurrency));
+            var patchedVmad = patch.VirtualMachineAdapter
+                ?? throw new InvalidOperationException($"{key}: copied horse-purchase VMAD is missing.");
+            var patchedScript = patchedVmad.Scripts.Single(script => script.Name == target.Script);
+            var patchedCurrencyProperty = patchedScript.Properties.OfType<ScriptObjectProperty>()
+                .Single(property => property.Name == target.VmadCurrencyProperty);
+            patchedCurrencyProperty.Object.SetTo(FormKey.Factory(target.BackendCurrency));
+            ClearCompression(patch);
+            Console.WriteLine($"Retargeted M.I.N.T. service INFO {key} budget check and {target.Script}.{target.VmadCurrencyProperty} debit from {target.SourceCurrency} to backend {target.BackendCurrency}; preserved comparison global, five other VMAD bindings, and fragments.");
+        }
+    }
+
+    private static void ValidateDialogParentScopes(
+        IPatcherState<ISkyrimMod, ISkyrimModGetter> state,
+        IReadOnlyList<MintExchangeInfoPolicy> disabled,
+        IReadOnlyList<MintBackendConditionPolicy> backend)
+    {
+        var expected = disabled
+            .Select(target => (parent: FormKey.Factory(target.ParentTopicFormKey),
+                editorId: target.ParentTopicEditorId, child: FormKey.Factory(target.FormKey)))
+            .Concat(backend.Select(target => (parent: FormKey.Factory(target.ParentTopicFormKey),
+                editorId: target.ParentTopicEditorId, child: FormKey.Factory(target.FormKey))))
+            .GroupBy(target => (target.parent, target.editorId))
+            .ToArray();
+        Require(expected.Length == 20, $"Expected twenty policy DIAL parents, got {expected.Length}.");
+        var actualParents = state.PatchMod.DialogTopics.ToArray();
+        Require(actualParents.Length == expected.Length &&
+                actualParents.Select(parent => parent.FormKey).ToHashSet()
+                    .SetEquals(expected.Select(group => group.Key.parent)),
+            "Generated parent DIAL FormKey set differs from the exact INFO policy.");
+
+        foreach (var group in expected)
+        {
+            var sourceMod = state.LoadOrder.ListedOrder.Single(listing =>
+                    listing.ModKey == group.Key.parent.ModKey).Mod
+                ?? throw new InvalidOperationException($"{group.Key.parent.ModKey}: DIAL source is not loaded.");
+            var source = sourceMod.DialogTopics.Single(parent => parent.FormKey == group.Key.parent);
+            var actual = actualParents.Single(parent => parent.FormKey == group.Key.parent);
+            Require(source.EditorID == group.Key.editorId && actual.EditorID == source.EditorID &&
+                    actual.FormVersion == source.FormVersion &&
+                    actual.MajorRecordFlagsRaw == source.MajorRecordFlagsRaw &&
+                    actual.Version2 == source.Version2 && actual.VersionControl == source.VersionControl &&
+                    actual.Name?.String == source.Name?.String && actual.Priority == source.Priority &&
+                    actual.Quest.FormKey == source.Quest.FormKey && actual.Branch.FormKey == source.Branch.FormKey &&
+                    actual.Category == source.Category && actual.Subtype == source.Subtype &&
+                    actual.SubtypeName == source.SubtypeName && actual.Timestamp == source.Timestamp &&
+                    actual.TopicFlags == source.TopicFlags && actual.Unknown == source.Unknown,
+                $"{group.Key.parent}: generated DIAL metadata differs from its immutable source.");
+            var expectedChildren = group.Select(target => target.child).ToHashSet();
+            var actualChildren = actual.Responses.Select(response => response.FormKey).ToHashSet();
+            Require(actual.Responses.Count == expectedChildren.Count && actualChildren.SetEquals(expectedChildren),
+                $"{group.Key.parent}: parent DIAL contains a missing, duplicate, or sibling INFO override.");
+        }
     }
 
     private static void PatchEceSeptimQuest(
@@ -811,6 +1471,16 @@ public static class Program
     {
         Require(policy.SchemaVersion == 1, "policy.json schemaVersion must be 1.");
         Require(policy.OutputPluginName == OutputPlugin, "policy outputPlugin mismatch.");
+        Require(policy.RuntimeReasonCounters.SequenceEqual(new[]
+                {
+                    "player-task-interface-unavailable", "player-reconcile-failed",
+                    "source-invalid-count", "source-ambiguous-dual-accounting", "source-empty",
+                    "source-already-broken", "source-already-canonical", "source-value-out-of-range",
+                    "source-apply-failed", "source-converted-container", "source-converted-actor",
+                    "source-ancient-passthrough", "source-reference-safety-rejected",
+                    "source-actor-safety-rejected", "source-container-safety-rejected",
+                }),
+            "Runtime telemetry reason-counter contract changed.");
         var provider = policy.ExchangeWorkbenchProvider;
         Require(ModKey.FromNameAndExtension(provider.Plugin) == Exchange &&
                 FormKey.Factory(provider.FormKey) == FormKey.Factory("000801:SL99Exchanger.esp") &&
@@ -826,62 +1496,134 @@ public static class Program
         Require(policy.Overrides.CoinPurses.All(item => item.Counts.Count == 16 &&
                 item.Counts.Distinct().Count() == 16 && item.Counts.All(count => count > 0)),
             "Each purse must contain exactly 16 unique positive counts.");
-        Require(FormKey.Factory(policy.Overrides.EceAltCurrencyQuest.FormKey) ==
-                FormKey.Factory("000827:exchangeCurrency_patch_COIN.esp"),
-            "ECE alternate-currency quest target changed.");
-        Require(policy.Overrides.EceAltCurrencyQuest.EditorId == "EC_altCurrencyScript" &&
-                policy.Overrides.EceAltCurrencyQuest.Script == "EC_drakrsScript" &&
-                policy.Overrides.EceAltCurrencyQuest.Property == "Drakr",
-            "ECE Drakr VMAD policy identity changed.");
-        Require(FormKey.Factory(policy.Overrides.EceAltCurrencyQuest.SourceFormKey) ==
-                FormKey.Factory("DE5016:Update.esm") &&
-                FormKey.Factory(policy.Overrides.EceAltCurrencyQuest.TargetFormKey) ==
-                FormKey.Factory("DE5015:Update.esm"),
-            "ECE Drakr VMAD policy must correct leveled DE5016 to canonical MISC DE5015.");
-        var altBindings = policy.Overrides.EceAltCoinBindings;
-        Require(altBindings.Count == 5 &&
-                altBindings.Select(item => item.Script).SequenceEqual(new[]
+        var expectedPurseForms = new[]
+        {
+            (lvli: "0D790B:Skyrim.esm", flora: "0D790C:Skyrim.esm", floraEditorId: "CoinPurseSmall", canonical: "000900", broken: "000910", selector: "000920"),
+            (lvli: "0D8E7D:Skyrim.esm", flora: "0D8E7F:Skyrim.esm", floraEditorId: "CoinPurseMedium", canonical: "000930", broken: "000940", selector: "000950"),
+            (lvli: "0D8E7E:Skyrim.esm", flora: "0D8E80:Skyrim.esm", floraEditorId: "CoinPurseLarge", canonical: "000960", broken: "000970", selector: "000980"),
+        };
+        Require(policy.Overrides.CoinPurses.Zip(expectedPurseForms).All(pair =>
+                FormKey.Factory(pair.First.FormKey) == FormKey.Factory(pair.Second.lvli) &&
+                FormKey.Factory(pair.First.FloraFormKey) == FormKey.Factory(pair.Second.flora) &&
+                pair.First.FloraEditorId == pair.Second.floraEditorId &&
+                pair.First.CanonicalFormIdBase == pair.Second.canonical &&
+                pair.First.BreakFormIdBase == pair.Second.broken &&
+                pair.First.SelectorFormIdBase == pair.Second.selector),
+            "Purse FLOR/LVLI relationship or owned adapter ranges changed.");
+
+        var denomination = policy.Denominations;
+        Require(denomination.CanonicalPercent == 80 && denomination.VariantPercent == 20 &&
+                denomination.CanonicalPercent + denomination.VariantPercent == 100,
+            "Purse distribution must be exactly 80% canonical / 20% single-break.");
+        var septim = denomination.Septim;
+        Require(septim.Id == "septim" && septim.DisplayLabel == "Septim" && septim.BackendLabel == "Septims",
+            "Septim family labels changed.");
+        var septimTiers = new[] { septim.Copper, septim.Silver, septim.Gold };
+        Require(septimTiers.Select(item => FormKey.Factory(item.FormKey)).SequenceEqual(new[]
                 {
-                    "EC_ulfricsScript",
-                    "EC_dramsScript",
-                    "EC_medesScript",
-                    "EC_drakrsScript",
-                    "EC_oshkasScript",
+                    FormKey.Factory("000B6D:exchangeCurrency_enhanced.esp"),
+                    FormKey.Factory("000823:exchangeCurrency_enhanced.esp"),
+                    FormKey.Factory("000824:exchangeCurrency_enhanced.esp"),
                 }) &&
-                altBindings.Select(item => FormKey.Factory(item.CurrencyFormKey)).SequenceEqual(new[]
+                septimTiers.Select(item => item.Value).SequenceEqual(new uint[] { 1, 10, 100 }) &&
+                septimTiers.Select(item => item.SourceValue).SequenceEqual(new uint[] { 1, 25, 100 }) &&
+                septimTiers.Select(item => item.Name).SequenceEqual(new[]
                 {
+                    "Copper Septim", "Silver Septim", "Gold Septim",
+                }),
+            "Septim family must pin the existing 1/25/100 source and emit exact 1/10/100 tiers.");
+
+        var families = denomination.ModernFamilies;
+        Require(families.Count == 6 && families.Select(item => item.Id).SequenceEqual(new[]
+                { "mede", "ulfric", "dram", "oshka", "ohzer", "varken" }) &&
+                families.Take(5).All(item => item.Enabled) && !families[^1].Enabled,
+            "Modern family order/enabled state must be five active families plus dormant Varken.");
+        Require(families.Select(item => FormKey.Factory(item.CopperFormKey)).SequenceEqual(new[]
+                {
+                    FormKey.Factory("DE5021:Update.esm"),
                     FormKey.Factory("DE5024:Update.esm"),
                     FormKey.Factory("DE5029:Update.esm"),
-                    FormKey.Factory("DE5021:Update.esm"),
-                    FormKey.Factory("DE5015:Update.esm"),
                     FormKey.Factory("000871:exchangeCurrency_patch_COIN.esp"),
+                    FormKey.Factory("00086F:exchangeCurrency_patch_COIN.esp"),
+                    FormKey.Factory("000870:exchangeCurrency_patch_COIN.esp"),
                 }) &&
-                altBindings.Select(item => item.CurrencyProperty).SequenceEqual(new[]
+                families.Select(item => item.SilverFormId).SequenceEqual(new[]
+                    { "000820", "000822", "000824", "000826", "000828", "00082A" }) &&
+                families.Select(item => item.GoldFormId).SequenceEqual(new[]
+                    { "000821", "000823", "000825", "000827", "000829", "00082B" }),
+            "Modern copper or owned silver/gold FormIDs changed.");
+        Require(families.All(item => item.SourcePlugin == CoinPatch.FileName.String &&
+                !string.IsNullOrWhiteSpace(item.RouteKeyword) &&
+                !string.IsNullOrWhiteSpace(item.SourceModel) &&
+                item.CopperModel == $"Meshes\\Ensrick\\Currency\\{item.DisplayLabel}\\{item.DisplayLabel}_Copper.nif" &&
+                item.SilverModel == $"Meshes\\Ensrick\\Currency\\{item.DisplayLabel}\\{item.DisplayLabel}_Silver.nif" &&
+                item.GoldModel == $"Meshes\\Ensrick\\Currency\\{item.DisplayLabel}\\{item.DisplayLabel}_Gold.nif" &&
+                item.CopperName == $"Copper {item.DisplayLabel}" &&
+                item.SilverName == $"Silver {item.DisplayLabel}" &&
+                item.GoldName == $"Gold {item.DisplayLabel}"),
+            "Modern family source/model/name contract changed.");
+
+        var singletons = denomination.SingletonFamilies;
+        Require(singletons.Count == 2 && singletons.Select(item => item.Id).SequenceEqual(new[] { "drakr", "sancar" }) &&
+                singletons.All(item => item.Enabled && item.Value == 1),
+            "Singleton currency family order/value changed.");
+        Require(FormKey.Factory(singletons[0].FormKey) == FormKey.Factory("DE5015:Update.esm") &&
+                singletons[0].EditorId == "DES_DrakrWhale" && singletons[0].Name == "Ancient Nord Drakr" &&
+                FormKey.Factory(singletons[0].RouteKeyword) == FormKey.Factory("000B93:exchangeCurrency_enhanced.esp") &&
+                FormKey.Factory(singletons[0].Perk!) == FormKey.Factory("00082C:exchangeCurrency_patch_COIN.esp") &&
+                singletons[0].OwnedRouteKeywordFormId is null,
+            "Canonical Drakr singleton binding changed.");
+        Require(FormKey.Factory(singletons[1].FormKey) == FormKey.Factory("DE5023:Update.esm") &&
+                singletons[1].EditorId == "DES_Sancar" && singletons[1].Name == "Sancar" &&
+                singletons[1].OwnedRouteKeywordFormId == "000803" &&
+                singletons[1].OwnedRouteKeywordEditorId == "Ensrick_IsSancarMoney" &&
+                FormKey.Factory(singletons[1].RouteKeyword) ==
+                    new FormKey(ModKey.FromNameAndExtension(OutputPlugin), 0x803) &&
+                singletons[1].Perk is null,
+            "Sancar singleton/owned route-keyword binding changed.");
+
+        var neutralized = policy.Overrides.EcePlayerCurrencyQuests;
+        Require(neutralized.Count == 2 &&
+                FormKey.Factory(neutralized[0].FormKey) == FormKey.Factory("000B63:exchangeCurrency_enhanced.esp") &&
+                neutralized[0].SourcePlugin == Ece.FileName.String && neutralized[0].AliasId == 0 &&
+                neutralized[0].TransactionScripts.SequenceEqual(new[] { "EC_septimsFunctions", "EC_septimsScript" }) &&
+                FormKey.Factory(neutralized[1].FormKey) == FormKey.Factory("000827:exchangeCurrency_patch_COIN.esp") &&
+                neutralized[1].SourcePlugin == CoinPatch.FileName.String && neutralized[1].AliasId == 0 &&
+                neutralized[1].TransactionScripts.SequenceEqual(new[]
                 {
-                    "Ulfric", "Dram", "Mede", "Drakr", "Oshka",
+                    "EC_altCurrencyFunctions", "EC_ulfricsScript", "EC_dramsScript",
+                    "EC_medesScript", "EC_drakrsScript", "EC_oshkasScript",
                 }),
-            "ECE inherited altCoins binding policy changed.");
-        var ohzer = policy.Overrides.OhzerQuest;
-        Require(ohzer.FormId.Equals(OhzerQuestId.ToString("X6"), StringComparison.OrdinalIgnoreCase) &&
-                ohzer.EditorId == OhzerQuestEditorId &&
-                ohzer.AliasId == 0 && ohzer.AliasName == "PlayerRef" &&
-                FormKey.Factory(ohzer.TemplateQuestFormKey) ==
-                    FormKey.Factory("000827:exchangeCurrency_patch_COIN.esp") &&
-                ohzer.TemplateScript == "EC_oshkasScript" &&
-                ohzer.Script == "Ensrick_OhzerCurrencyScript" &&
-                ohzer.CurrencyProperty == "Ohzer" &&
-                FormKey.Factory(ohzer.CurrencyFormKey) ==
-                    FormKey.Factory("00086F:exchangeCurrency_patch_COIN.esp") &&
-                ohzer.KeywordProperty == "OhzerMoneyKeyword" &&
-                FormKey.Factory(ohzer.KeywordFormKey) ==
-                    FormKey.Factory("000BB5:exchangeCurrency_enhanced.esp"),
-            "Owned Ohzer transaction-quest policy changed.");
+            "ECE player currency quest neutralization set changed.");
+        var mintCostOnly = policy.Overrides.MintCostOnlyQuests;
+        Require(mintCostOnly.Count == 2 &&
+                FormKey.Factory(mintCostOnly[0].FormKey) == FormKey.Factory("00000D:MorrowindUsesDrams.esp") &&
+                mintCostOnly[0].EditorId == "DES_DramMorrowindServicesQuest" &&
+                mintCostOnly[0].OriginalPlugin == Dram.FileName.String &&
+                mintCostOnly[0].WinningPlugin == EceMintDram.FileName.String &&
+                mintCostOnly[0].QuestScript == "DES_DramCurrencySwapper" &&
+                mintCostOnly[0].PlayerAliasId == 1 &&
+                mintCostOnly[0].PlayerAliasScript == "DES_DramCurrencySwapperAlias" &&
+                mintCostOnly[0].RemovedAliasScripts.ToHashSet(StringComparer.Ordinal).SetEquals(new[]
+                    { "DES_CurrencyFramework_RegisterEvents", "DES_CurrencyFramework_GoldConverter" }) &&
+                FormKey.Factory(mintCostOnly[1].FormKey) == FormKey.Factory("000002:WindhelmUsesUlfrics.esp") &&
+                mintCostOnly[1].EditorId == "DES_UlfricWindhelmServicesQuest" &&
+                mintCostOnly[1].OriginalPlugin == Windhelm.FileName.String &&
+                mintCostOnly[1].WinningPlugin == EceMintUlfric.FileName.String &&
+                mintCostOnly[1].QuestScript == "DES_UlfricCurrencySwapper" &&
+                mintCostOnly[1].PlayerAliasId == 4 &&
+                mintCostOnly[1].PlayerAliasScript == "DES_UlfricCurrencySwapperAlias" &&
+                mintCostOnly[1].RemovedAliasScripts.ToHashSet(StringComparer.Ordinal).SetEquals(new[]
+                    { "DES_CurrencyFramework_RegisterEvents", "DES_CurrencyFramework_GoldConverter" }),
+            "M.I.N.T. cost-only quest binding set changed.");
+        Require(mintCostOnly[0].CostPropertyNames.Count == 12 && mintCostOnly[1].CostPropertyNames.Count == 19,
+            "M.I.N.T. cost-only quest property pins changed.");
+
         Require(FormKey.Factory(policy.Overrides.MintMadranQuest.FormKey) ==
                 FormKey.Factory("000002:WindhelmUsesUlfrics.esp") &&
                 policy.Overrides.MintMadranQuest.EditorId == "DES_UlfricWindhelmServicesQuest" &&
                 policy.Overrides.MintMadranQuest.AliasId == 5 &&
-                policy.Overrides.MintMadranQuest.SourceScript == "DES_MadranSwapper" &&
-                policy.Overrides.MintMadranQuest.TargetScript == "DES_CurrencyFramework_BarterExclusion" &&
+                policy.Overrides.MintMadranQuest.TransactionScript == "DES_MadranSwapper" &&
                 policy.Overrides.MintMadranQuest.StaleQuestProperties.SequenceEqual(new[]
                 {
                     "Alias_Brunwulf",
@@ -893,17 +1635,74 @@ public static class Program
                     "Alias_Torbjorn",
                     "Alias_Jora",
                 }),
-            "Ma'dran script-migration policy changed.");
-        Require(FormKey.Factory(policy.Overrides.EceSeptimQuest.FormKey) ==
-                FormKey.Factory("000B63:exchangeCurrency_enhanced.esp") &&
-                policy.Overrides.EceSeptimQuest.EditorId == "EC_septimsScript" &&
-                policy.Overrides.EceSeptimQuest.StaleProperties.SequenceEqual(new[]
+            "Ma'dran transaction-script removal policy changed.");
+        var disabledMintInfos = policy.Overrides.DisabledMintExchangeInfos;
+        var expectedDisabledMintInfoKeys = new[]
+        {
+            "000017:MorrowindUsesDrams.esp", "000019:MorrowindUsesDrams.esp",
+            "00001B:MorrowindUsesDrams.esp", "00001D:MorrowindUsesDrams.esp",
+            "00001F:MorrowindUsesDrams.esp", "000025:MorrowindUsesDrams.esp",
+            "000027:MorrowindUsesDrams.esp", "000029:MorrowindUsesDrams.esp",
+            "00002B:MorrowindUsesDrams.esp", "000032:MorrowindUsesDrams.esp",
+            "000034:MorrowindUsesDrams.esp", "000036:MorrowindUsesDrams.esp",
+            "000038:MorrowindUsesDrams.esp", "00003A:MorrowindUsesDrams.esp",
+            "000064:MorrowindUsesDrams.esp", "000065:MorrowindUsesDrams.esp",
+            "000066:MorrowindUsesDrams.esp", "000007:MorrowindUsesDrams.esp",
+            "000067:MorrowindUsesDrams.esp", "000068:MorrowindUsesDrams.esp",
+            "000069:MorrowindUsesDrams.esp", "00006A:MorrowindUsesDrams.esp",
+            "000009:MorrowindUsesDrams.esp", "000053:WindhelmUsesUlfrics.esp",
+            "000054:WindhelmUsesUlfrics.esp", "000055:WindhelmUsesUlfrics.esp",
+            "000056:WindhelmUsesUlfrics.esp", "000057:WindhelmUsesUlfrics.esp",
+            "000058:WindhelmUsesUlfrics.esp", "000059:WindhelmUsesUlfrics.esp",
+            "00005A:WindhelmUsesUlfrics.esp", "00005B:WindhelmUsesUlfrics.esp",
+            "00001F:WindhelmUsesUlfrics.esp", "00005C:WindhelmUsesUlfrics.esp",
+            "00005D:WindhelmUsesUlfrics.esp", "000093:WindhelmUsesUlfrics.esp",
+            "000095:WindhelmUsesUlfrics.esp", "000092:WindhelmUsesUlfrics.esp",
+        }.Select(value => FormKey.Factory(value)).ToArray();
+        Require(disabledMintInfos.Count == 38 &&
+                disabledMintInfos.Select(item => FormKey.Factory(item.FormKey))
+                    .SequenceEqual(expectedDisabledMintInfoKeys) &&
+                disabledMintInfos.Select(item => FormKey.Factory(item.FormKey)).Distinct().Count() == 38 &&
+                disabledMintInfos.All(item =>
+                    FormKey.Factory(item.ParentTopicFormKey).ModKey == FormKey.Factory(item.FormKey).ModKey &&
+                    !string.IsNullOrWhiteSpace(item.ParentTopicEditorId) &&
+                    item.ConditionCount is >= 2 and <= 5 &&
+                    item.TransactionScripts.Count <= 1 &&
+                    item.TransactionScripts.All(script => script.StartsWith("TIF__", StringComparison.Ordinal))),
+            "Obsolete M.I.N.T. exchange/failure INFO disable set changed.");
+        var backendInfos = policy.Overrides.MintBackendConditionInfos;
+        var expectedHorseProperties = new (string name, FormKey formKey, int alias)[]
+        {
+            ("Gold001", FormKey.Factory("DE5024:Update.esm"), 65535),
+            ("PlayerHorseFaction", FormKey.Factory("068D78:Skyrim.esm"), 65535),
+            ("PlayersHorse", FormKey.Factory("068D73:Skyrim.esm"), 40),
+            ("Alias_Horse", FormKey.Factory("068D73:Skyrim.esm"), 31),
+            ("HorseCost", FormKey.Factory("0000C9:WindhelmUsesUlfrics.esp"), 65535),
+            ("PlayerFaction", FormKey.Factory("000DB1:Skyrim.esm"), 65535),
+        };
+        Require(backendInfos.Count == 2 &&
+                backendInfos.Select(item => FormKey.Factory(item.FormKey)).SequenceEqual(new[]
                 {
-                    "EC_septimsFunctions.busy",
-                    "EC_septimsScript.busy",
-                    "EC_septimsScript.DES_ConvertCoins",
+                    FormKey.Factory("00000A:WindhelmUsesUlfrics.esp"),
+                    FormKey.Factory("00000C:WindhelmUsesUlfrics.esp"),
+                }) &&
+                backendInfos.All(item =>
+                    FormKey.Factory(item.ParentTopicFormKey) == FormKey.Factory("000006:WindhelmUsesUlfrics.esp") &&
+                    item.ParentTopicEditorId == "DES_UlfricBuyHorseTopic" && item.ConditionIndex == 0 &&
+                    FormKey.Factory(item.SourceCurrency) == FormKey.Factory("DE5024:Update.esm") &&
+                    FormKey.Factory(item.BackendCurrency) == FormKey.Factory("00000F:Skyrim.esm") &&
+                    FormKey.Factory(item.ComparisonGlobal) == FormKey.Factory("0000C9:WindhelmUsesUlfrics.esp") &&
+                    item.ConditionCount == 2 && item.VmadVersion == 5 && item.VmadObjectFormat == 2 &&
+                    item.VmadCurrencyProperty == "Gold001" && item.VmadProperties.Count == 6 &&
+                    item.VmadProperties.Zip(expectedHorseProperties).All(pair =>
+                        pair.First.Name == pair.Second.name &&
+                        FormKey.Factory(pair.First.FormKey) == pair.Second.formKey &&
+                        pair.First.Alias == pair.Second.alias)) &&
+                backendInfos.Select(item => item.Script).SequenceEqual(new[]
+                {
+                    "TIF__0009841D", "TIF__00098422",
                 }),
-            "ECE stale-VMAD cleanup policy changed.");
+            "M.I.N.T. backend-aware horse-purchase condition/payment set changed.");
         var drakr = policy.Overrides.DrakrPurseAdapters;
         Require(FormKey.Factory(drakr.CanonicalCoin) == FormKey.Factory("DE5015:Update.esm"),
             "Drakr purse adapters must emit ECE's canonical Drakr Whale MISC.");
@@ -943,16 +1742,16 @@ public static class Program
                 FormKey.Factory("000801:SL99Exchanger.esp"),
             "Ancient exchange recipes must use Exchange Currency SE's money-exchange workbench.");
         var exchangeRecipes = policy.Overrides.AncientExchangeRecipes;
-        Require(exchangeRecipes.Count == 10 &&
+        Require(exchangeRecipes.Count == 9 &&
                 exchangeRecipes.Select(item => item.FormId).SequenceEqual(new[]
                 {
-                    "000804", "000805", "000806", "000807",
+                    "000804", "000805", "000806",
                     "000808", "000809", "00080A", "00080B",
                     "00080C", "00080D",
                 }) &&
-                exchangeRecipes.Select(item => item.EditorId).Distinct().Count() == 10 &&
+                exchangeRecipes.Select(item => item.EditorId).Distinct().Count() == 9 &&
                 exchangeRecipes.All(item => item.InputCount > 0 && item.OutputCount > 0) &&
-                exchangeRecipes.Take(9).All(item => item.Purpose == "coin-default-rate") &&
+                exchangeRecipes.Take(8).All(item => item.Purpose == "coin-default-rate") &&
                 exchangeRecipes[^1].Purpose == "effective-mint-core-rate" &&
                 exchangeRecipes.All(item =>
                     FormKey.Factory(item.OutputFormKey) == FormKey.Factory("00000F:Skyrim.esm")),
@@ -962,7 +1761,6 @@ public static class Program
             [FormKey.Factory("DE5012:Update.esm")] = (20, 3),
             [FormKey.Factory("DE5013:Update.esm")] = (20, 3),
             [FormKey.Factory("DE5014:Update.esm")] = (20, 3),
-            [FormKey.Factory("DE5015:Update.esm")] = (20, 3),
             [FormKey.Factory("DE5019:Update.esm")] = (5, 2),
             [FormKey.Factory("DE5020:Update.esm")] = (5, 3),
             [FormKey.Factory("DE5022:Update.esm")] = (4, 1),
@@ -981,6 +1779,19 @@ public static class Program
             "Disabled-recipe FormKeys must be unique.");
         Require(policy.DisabledRecipes.All(item => FormKey.Factory(item.FormKey).ModKey == CoinPatch),
             "Every disabled recipe must originate in exchangeCurrency_patch_COIN.esp.");
+        var expectedBankIds = new uint[]
+        {
+            0x82D, 0x82E, 0x82F, 0x830, 0x834, 0x835, 0x84B, 0x84C,
+            0x84D, 0x84F, 0x853, 0x854, 0x873, 0x874, 0x875, 0x876,
+        };
+        Require(policy.DisabledModernBankRecipes.Count == 16 &&
+                policy.DisabledModernBankRecipes.Select(item => FormKey.Factory(item.FormKey).ID)
+                    .SequenceEqual(expectedBankIds) &&
+                policy.DisabledModernBankRecipes.All(item => FormKey.Factory(item.FormKey).ModKey == CoinPatch),
+            "Modern non-parity bank-recipe disable set changed.");
+        Require(policy.DisabledRecipes.Concat(policy.DisabledModernBankRecipes)
+                .Select(item => FormKey.Factory(item.FormKey)).Distinct().Count() == 33,
+            "All disabled legacy COBJ FormKeys must be unique.");
     }
 
     public static void ValidateExchangeWorkbenchProvider(
@@ -1013,6 +1824,17 @@ public static class Program
     private static void EnforceHardMasters(string outputPath)
     {
         var plugin = SkyrimMod.CreateFromBinary(outputPath, SkyrimRelease.SkyrimSE);
+        var derivedMasters = plugin.EnumerateMajorRecords()
+            .Select(record => record.FormKey.ModKey)
+            .Concat(plugin.EnumerateMajorRecords().SelectMany(record => record.EnumerateFormLinks())
+                .Where(link => !link.FormKey.IsNull)
+                .Select(link => link.FormKey.ModKey))
+            .Where(master => master != plugin.ModKey)
+            .ToHashSet();
+        Require(derivedMasters.SetEquals(RequiredMasters),
+            $"Refusing hard-master rewrite: derived link closure is " +
+            $"[{string.Join(", ", derivedMasters.Select(key => key.FileName.String).Order())}], " +
+            $"required contract is [{string.Join(", ", RequiredMasters.Select(key => key.FileName.String))}].");
         plugin.ModHeader.MasterReferences.Clear();
         foreach (var master in RequiredMasters)
         {
@@ -1020,14 +1842,29 @@ public static class Program
         }
         var temporary = outputPath + ".masters.tmp";
         if (File.Exists(temporary)) File.Delete(temporary);
-        plugin.BeginWrite
-            .ToPath(temporary)
-            .WithLoadOrder(RequiredMasters)
-            .WithKnownMasters([])
-            .NoMastersListContentCheck()
-            .NoModKeySync()
-            .Write();
-        File.Move(temporary, outputPath, true);
+        try
+        {
+            plugin.BeginWrite
+                .ToPath(temporary)
+                .WithLoadOrder(RequiredMasters)
+                .WithKnownMasters([])
+                .NoMastersListContentCheck()
+                .NoModKeySync()
+                .Write();
+            using (var check = SkyrimMod.CreateFromBinaryOverlay(
+                       new ModPath(plugin.ModKey, temporary), SkyrimRelease.SkyrimSE))
+            {
+                Require(check.ModHeader.MasterReferences.Select(reference => reference.Master)
+                        .SequenceEqual(RequiredMasters) &&
+                        check.EnumerateMajorRecords().Count() == 286,
+                    "Temporary hard-master rewrite failed its identity/count check; original output retained.");
+            }
+            File.Move(temporary, outputPath, true);
+        }
+        finally
+        {
+            if (File.Exists(temporary)) File.Delete(temporary);
+        }
         Console.WriteLine($"Declared {RequiredMasters.Count} hard masters.");
     }
 
@@ -1047,6 +1884,11 @@ public static class Program
 
     private static void ClearCompression(IMajorRecord record) =>
         record.MajorRecordFlagsRaw &= ~CompressedRecordFlag;
+
+    // VMAD serializes the no-alias sentinel as unsigned FFFF, while Mutagen
+    // exposes that same two-byte value as signed Int16 -1. Compare the raw
+    // 16-bit identity so FFFF remains distinct from every real alias ID.
+    internal static int RawVmadAlias(short alias) => unchecked((ushort)alias);
 
     internal static void Require(bool condition, string message)
     {

@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Static regression gate for the Ensrick regional-currency configuration."""
+"""Fail-closed static/release gate for the v0.3.0 currency integration."""
 
 from __future__ import annotations
 
 import hashlib
 import json
-import re
 import struct
 from pathlib import Path
+from typing import Any
 
 
 ROOT = Path(__file__).resolve().parent
 PACKAGE = ROOT / "package"
-CDF = PACKAGE / "SKSE" / "Plugins" / "ContainerDistributionFramework"
-REPO = ROOT.parent.parent
+WORK = ROOT / "work"
+PLUGIN_NAME = "Ensrick Currency Integration Patch.esp"
+RUNTIME_CONFIG = PACKAGE / "SKSE/Plugins/EnsrickCurrencyDenominations.json"
 
 
 def require(condition: bool, message: str) -> None:
@@ -21,444 +22,610 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
-def load_jsonc(text: str) -> object:
-    """Parse CDF's JSON-with-comments without damaging comment-like text in strings."""
-    output: list[str] = []
-    index = 0
-    in_string = False
-    escaped = False
-    while index < len(text):
-        char = text[index]
-        if in_string:
-            output.append(char)
-            if escaped:
-                escaped = False
-            elif char == "\\":
-                escaped = True
-            elif char == '"':
-                in_string = False
-            index += 1
-            continue
-        if char == '"':
-            in_string = True
-            output.append(char)
-            index += 1
-            continue
-        if char == "/" and index + 1 < len(text) and text[index + 1] == "/":
-            index += 2
-            while index < len(text) and text[index] not in "\r\n":
-                index += 1
-            continue
-        if char == "/" and index + 1 < len(text) and text[index + 1] == "*":
-            index += 2
-            while index + 1 < len(text) and text[index:index + 2] != "*/":
-                index += 1
-            require(index + 1 < len(text), "unterminated JSONC block comment")
-            index += 2
-            continue
-        output.append(char)
-        index += 1
-    return json.loads("".join(output))
+def load_json(path: Path) -> Any:
+    def no_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            require(key not in result, f"{path}: duplicate JSON key {key!r}")
+            result[key] = value
+        return result
+
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=no_duplicates)
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+
+
+def exact_keys(node: dict[str, Any], expected: set[str], context: str) -> None:
+    require(set(node) == expected,
+            f"{context}: keys {sorted(node)} differ from {sorted(expected)}")
+
+
+def denomination_counts(amount: int) -> tuple[int, int, int]:
+    gold, remainder = divmod(amount, 100)
+    silver, copper = divmod(remainder, 10)
+    return copper, silver, gold
+
+
+def one_break(amount: int) -> tuple[int, int, int, str | None]:
+    copper, silver, gold = denomination_counts(amount)
+    if gold:
+        return copper, silver + 10, gold - 1, "gold"
+    if silver:
+        return copper + 10, silver - 1, gold, "silver"
+    return copper, silver, gold, None
+
+
+def value(counts: tuple[int, int, int]) -> int:
+    copper, silver, gold = counts
+    return copper + 10 * silver + 100 * gold
+
+
+def i4_form(form_key: str) -> str:
+    local_id, plugin = form_key.split(":", 1)
+    return f"{plugin.lower()}|{int(local_id, 16):x}"
+
+
+def validate_policy(policy: dict[str, Any]) -> None:
+    denominations = policy["denominations"]
+    require((denominations["canonicalPercent"], denominations["variantPercent"]) == (80, 20),
+            "policy distribution is not exact 80/20")
+
+    septim = denominations["septim"]
+    septim_tiers = [septim[tier] for tier in ("copper", "silver", "gold")]
+    require([entry["value"] for entry in septim_tiers] == [1, 10, 100],
+            "Septim values are not 1/10/100")
+    require([entry["sourceValue"] for entry in septim_tiers] == [1, 25, 100],
+            "Septim source values changed; silver 25->10 correction is not pinned")
+    require([entry["name"] for entry in septim_tiers] ==
+            ["Copper Septim", "Silver Septim", "Gold Septim"],
+            "Septim tier names changed")
+
+    families = denominations["modernFamilies"]
+    expected_ids = ["mede", "ulfric", "dram", "oshka", "ohzer", "varken"]
+    require([family["id"] for family in families] == expected_ids,
+            "modern family order/set changed")
+    require([family["enabled"] for family in families] ==
+            [True, True, True, True, True, False],
+            "only Varken may remain dormant")
+    for family in families:
+        title = family["displayLabel"]
+        require([family["copperName"], family["silverName"], family["goldName"]] ==
+                [f"Copper {title}", f"Silver {title}", f"Gold {title}"],
+                f"{family['id']}: explicit tier names changed")
+        require(family["copperModel"].endswith(f"{title}\\{title}_Copper.nif") and
+                family["silverModel"].endswith(f"{title}\\{title}_Silver.nif") and
+                family["goldModel"].endswith(f"{title}\\{title}_Gold.nif"),
+                f"{family['id']}: deterministic owned NIF paths changed")
+        require(family["runtimeWeight"] in (0.01, 0.02),
+                f"{family['id']}: approved per-family weight changed")
+
+    singletons = denominations["singletonFamilies"]
+    require([(item["id"], item["formKey"], item["value"]) for item in singletons] == [
+        ("drakr", "DE5015:Update.esm", 1),
+        ("sancar", "DE5023:Update.esm", 1),
+    ], "canonical Drakr/Sancar singleton contract changed")
+    require(singletons[0]["routeKeyword"] == "000B93:exchangeCurrency_enhanced.esp" and
+            singletons[0]["perk"] == "00082C:exchangeCurrency_patch_COIN.esp",
+            "canonical Drakr route/perk changed")
+    require(singletons[1]["routeKeyword"] == f"000803:{PLUGIN_NAME}" and
+            singletons[1]["ownedRouteKeywordEditorId"] == "Ensrick_IsSancarMoney",
+            "owned Sancar route changed")
+
+    overrides = policy["overrides"]
+    ece = overrides["ecePlayerCurrencyQuests"]
+    require([item["formKey"] for item in ece] == [
+        "000B63:exchangeCurrency_enhanced.esp",
+        "000827:exchangeCurrency_patch_COIN.esp",
+    ], "exact two ECE transaction-owner quests changed")
+    require(ece[0]["transactionScripts"] == ["EC_septimsFunctions", "EC_septimsScript"],
+            "ECE Septim transaction script set changed")
+    require(ece[1]["transactionScripts"] == [
+        "EC_altCurrencyFunctions", "EC_ulfricsScript", "EC_dramsScript",
+        "EC_medesScript", "EC_drakrsScript", "EC_oshkasScript",
+    ], "ECE regional transaction script set changed")
+
+    cost_only = overrides["mintCostOnlyQuests"]
+    require([(item["formKey"], item["questScript"], item["playerAliasScript"])
+             for item in cost_only] == [
+        ("00000D:MorrowindUsesDrams.esp", "DES_DramCurrencySwapper",
+         "DES_DramCurrencySwapperAlias"),
+        ("000002:WindhelmUsesUlfrics.esp", "DES_UlfricCurrencySwapper",
+         "DES_UlfricCurrencySwapperAlias"),
+    ], "M.I.N.T. cost-only quest bindings changed")
+    require(overrides["mintMadranQuest"] == {
+        "formKey": "000002:WindhelmUsesUlfrics.esp",
+        "editorId": "DES_UlfricWindhelmServicesQuest",
+        "aliasId": 5,
+        "transactionScript": "DES_MadranSwapper",
+        "staleQuestProperties": [
+            "Alias_Brunwulf", "Alias_Nilsine", "Alias_Oengul", "Alias_Tova",
+            "Alias_Torsten", "Alias_CaptainLonelyGale", "Alias_Torbjorn", "Alias_Jora",
+        ],
+    }, "Ma'dran transaction alias removal changed")
+    require(len(overrides["disabledMintExchangeInfos"]) == 38,
+            "exact 38 obsolete M.I.N.T. exchange/failure INFOs are required")
+    require(len({item["formKey"] for item in overrides["disabledMintExchangeInfos"]}) == 38,
+            "M.I.N.T. disabled INFO list contains duplicates")
+    require([item["formKey"] for item in overrides["mintBackendConditionInfos"]] == [
+        "00000A:WindhelmUsesUlfrics.esp", "00000C:WindhelmUsesUlfrics.esp",
+    ], "exact two Ulfric horse budget INFOs changed")
+    require(all(item["backendCurrency"] == "00000F:Skyrim.esm" and
+                item["comparisonGlobal"] == "0000C9:WindhelmUsesUlfrics.esp"
+                for item in overrides["mintBackendConditionInfos"]),
+            "horse checks must target Gold001 while preserving the original price global")
+
+    require(len(policy["disabledCurrencyToIngotRecipes"]) == 17,
+            "exact 17 currency-to-ingot recipes must be disabled")
+    bank = policy["disabledModernBankRecipes"]
+    expected_bank_ids = [
+        "82D", "82E", "82F", "830", "834", "835", "84B", "84C",
+        "84D", "84F", "853", "854", "873", "874", "875", "876",
+    ]
+    require([item["formKey"] for item in bank] ==
+            [f"000{local}:exchangeCurrency_patch_COIN.esp" for local in expected_bank_ids],
+            "exact 16 non-parity modern bank recipes changed")
+    ancient = overrides["ancientExchangeRecipes"]
+    require(len(ancient) == 9, "only nine ancient face/Gibber exchanges may remain")
+    require("DE5015:Update.esm" not in {item["inputFormKey"] for item in ancient},
+            "canonical value-1 Drakr Whale still has a conflicting 20->3 recipe")
+
+    purses = overrides["coinPurses"]
+    require(len(purses) == 3 and all(len(item["counts"]) == 16 for item in purses),
+            "three pinned 16-outcome purse adapters are required")
+    for purse in purses:
+        for amount in purse["counts"]:
+            canonical = denomination_counts(amount)
+            broken = one_break(amount)
+            require(value(canonical) == amount and value(broken[:3]) == amount,
+                    f"purse {amount}: denomination value is not conserved")
+            changed = sum(left != right for left, right in zip(canonical, broken[:3]))
+            require(changed <= 2, f"purse {amount}: more than one tier was broken")
+    vectors = {
+        24: ((4, 2, 0), (14, 1, 0, "silver")),
+        100: ((0, 0, 1), (0, 10, 0, "gold")),
+        110: ((0, 1, 1), (0, 11, 0, "gold")),
+    }
+    for amount, (canonical, broken) in vectors.items():
+        require(denomination_counts(amount) == canonical and one_break(amount) == broken,
+                f"pinned purse vector {amount} changed")
+
+
+def validate_runtime_config(config: dict[str, Any], policy: dict[str, Any]) -> None:
+    exact_keys(config, {
+        "schemaVersion", "configId", "accounting", "distribution", "routing",
+        "sourceSafety", "sources", "telemetry", "disabledEcePlayerAliasQuests",
+        "families", "excludePhysicalFormsFromOrdinaryBarter",
+        "excludePhysicalFormsFromDrop",
+    }, "runtime root")
+    require(config["schemaVersion"] == 1 and
+            config["configId"] == "ensrick-currency-denominations-v0.3.0",
+            "runtime schema/config identity changed")
+    require(config["accounting"] == {
+        "backendForm": "00000F:Skyrim.esm",
+        "owner": "EnsrickCurrencyDenominations",
+        "strictSingleOwner": True,
+    }, "Gold001 strict-owner contract changed")
+    require(config["distribution"] == {
+        "canonicalPercent": 80,
+        "variantPercent": 20,
+        "breakAtMostOne": True,
+        "breakOrder": [100, 10],
+        "seed": "0x454E535249434B31",
+        "stableIdentity": ["sourceFormKey", "sourceReferenceFormId", "familyId"],
+    }, "runtime deterministic 80/20 distribution changed")
+    require(config["routing"]["precedence"] == [
+        "questExceptions", "ancientExclusions", "modernFamilies", "septimFallback",
+    ], "runtime route precedence changed")
+    require(config["routing"]["ancientExclusionKeywords"] == [
+        "000BAC:exchangeCurrency_enhanced.esp", "000B91:exchangeCurrency_enhanced.esp",
+        "DE5038:Update.esm", "DE5039:Update.esm", "DE5040:Update.esm",
+        "000D61:ccbgssse067-daedinv.esm", "08400C:BSHeartland.esm",
+    ], "reviewed ancient exclusions changed")
+
+    safety = config["sourceSafety"]
+    require(safety["actors"] == {
+        "mode": "deadGenericOnly", "requireAllowlistedSource": False,
+        "denyPlayer": True, "denyFollowers": True, "denyVendors": True,
+        "denyUniquePersistentEssentialProtected": True,
+    }, "actor safety gate changed")
+    require(safety["containers"] == {
+        "mode": "respawningSafeOnly", "requireAllowlistedSource": False,
+        "denyVendors": True, "denyPlayerStorage": True, "denyQuestStorage": True,
+    }, "container safety gate changed")
+    require(safety["purses"] == {
+        "mode": "allowlistedOnly", "requireAllowlistedBase": True,
+    }, "purse safety gate changed")
+    sources = config["sources"]
+    require(sources["actors"]["allowBaseForms"] == [] and
+            sources["containers"]["allowBaseForms"] == [],
+            "broad safe classification requires empty actor/container allow arrays")
+    require(len(sources["containers"]["denyReferences"]) == 12,
+            "reviewed storage deny-reference set changed")
+    require(sources["purses"] == {
+        "baseForms": [
+            "0D790C:Skyrim.esm", "0D8E7F:Skyrim.esm", "0D8E80:Skyrim.esm",
+            "000805:C.O.I.N.esp", "000804:C.O.I.N.esp", "000803:C.O.I.N.esp",
+        ],
+        "budgetLists": [
+            "0D790B:Skyrim.esm", "0D8E7D:Skyrim.esm", "0D8E7E:Skyrim.esm",
+            "000800:C.O.I.N.esp", "000801:C.O.I.N.esp", "000802:C.O.I.N.esp",
+        ],
+    }, "typed purse FLOR/LVLI allowlists changed")
+    require(config["telemetry"]["requiredReasonCounters"] is True and
+            config["telemetry"]["reasonCounters"] == policy["runtimeReasonCounters"] and
+            len(config["telemetry"]["reasonCounters"]) == 15 and
+            "source-ancient-passthrough" in config["telemetry"]["reasonCounters"],
+            "fail-closed source telemetry contract changed")
+    require(config["excludePhysicalFormsFromOrdinaryBarter"] is True and
+            config["excludePhysicalFormsFromDrop"] is False,
+            "physical coins must be VendorNoSale but remain droppable/storable")
+
+    policy_quests = policy["overrides"]["ecePlayerCurrencyQuests"]
+    require([(item["quest"], item["removedScripts"])
+             for item in config["disabledEcePlayerAliasQuests"]] ==
+            [(item["formKey"], item["transactionScripts"]) for item in policy_quests],
+            "runtime disabled-owner list differs from ESP policy")
+    require(all(item["startGameEnabledRemoved"] is True
+                for item in config["disabledEcePlayerAliasQuests"]),
+            "both ECE owners must lose start-game-enabled")
+
+    families = config["families"]
+    require([item["id"] for item in families] == [
+        "septim", "mede", "ulfric", "dram", "oshka", "ohzer", "varken",
+        "drakr", "sancar",
+    ], "runtime family order/set changed")
+    require(sum(item["enabled"] and item["fallback"] for item in families) == 1 and
+            families[0]["id"] == "septim" and families[0]["fallback"],
+            "Septim must be the sole enabled fallback")
+    for family in families:
+        values = sorted(item["value"] for item in family["denominations"])
+        require(values in ([1], [1, 10, 100]),
+                f"{family['id']}: invalid runtime denomination values")
+    physical = [denomination["form"] for family in families
+                for denomination in family["denominations"]]
+    require(len(physical) == len(set(physical)) == 23,
+            "each of 23 physical forms must belong to exactly one family")
+    require(config["accounting"]["backendForm"] not in physical,
+            "hidden Gold001 must never also be a physical denomination")
+
+
+def validate_distribution_configs(config: dict[str, Any]) -> None:
+    cdf = PACKAGE / "SKSE/Plugins/ContainerDistributionFramework"
+    masked = [
+        "00_Ensrick_Currency_30_Varken.json", "EC_medes.json",
+        "EC_ohzers.json", "EC_oshkas.json", "EC_septims_containers.json",
+        "EC_ulfrics.json", "EC_varkens.json", "MorrowindUsesDrams.json",
+        "WindhelmUsesUlfrics.json", "DominionUsesSancar.json",
+    ]
+    for name in masked:
+        require(load_json(cdf / name) == {"rules": []},
+                f"unsafe modern CDF owner not fully masked: {name}")
+    drakr_cdf = (cdf / "EC_drams_drakrs.json").read_text(encoding="utf-8")
+    require("DE5029" not in drakr_cdf and "Dram" not in drakr_cdf,
+            "combined CDF mask still distributes modern Drams")
+    require("DE5015" in drakr_cdf and "DE5022" in drakr_cdf,
+            "combined CDF mask lost canonical Drakr/Nchuark preservation")
+    require((cdf / "00_Ensrick_Currency_10_BrumaAyleid.json").is_file() and
+            (cdf / "zz_Ensrick_Currency_99_KolbjornCanonicalDrakr.json").is_file(),
+            "Bruma/Kolbjorn ancient route overrides are missing")
+
+    default_bos = (PACKAGE / "zz_Ensrick_Currency_10_DefaultSeptims_SWAP.ini").read_text(
+        encoding="utf-8")
+    require("chanceS(25)" in default_bos and "chanceS(5)" in default_bos and
+            "0x000B6D~exchangeCurrency_enhanced.esp" in default_bos,
+            "authored 75/20/5 loose Septim distribution changed")
+    regional = (PACKAGE / "zz_Ensrick_Currency_80_Regional_SWAP.ini").read_text(
+        encoding="utf-8")
+    runtime_by_id = {family["id"]: family for family in config["families"]}
+    for family_id in ("mede", "ulfric", "dram", "oshka", "ohzer", "varken"):
+        tiers = runtime_by_id[family_id]["denominations"]
+        for source, target in zip(runtime_by_id["septim"]["denominations"], tiers,
+                                  strict=True):
+            source_id, source_plugin = source["form"].split(":", 1)
+            target_id, target_plugin = target["form"].split(":", 1)
+            mapping = (f"0x{int(source_id, 16):06X}~{source_plugin}|"
+                       f"0x{int(target_id, 16):06X}~{target_plugin}")
+            require(mapping in regional,
+                    f"{family_id}: BOS no longer maps {source['tier']} to matching tier")
+    require("NorthwatchKeepLocation,SolitudeJusticiarsHeadquarters,ThalmorEmbassyLocation" in
+            regional and "0xDE5023~Update.esm" in regional,
+            "Dominion Sancar BOS route changed")
+    require("Wyrmstooth" not in regional and "BeyondReach" not in regional and
+            "arnima" not in regional.lower(),
+            "Wyrmstooth/Beyond Reach must continue through Septim fallback")
+    dram_bos = (PACKAGE / "MorrowindUsesDrams_SWAP.ini").read_text(encoding="utf-8")
+    require(dram_bos.count("0x000823~exchangeCurrency_enhanced.esp|0x000824~") == 2 and
+            dram_bos.count("0x000824~exchangeCurrency_enhanced.esp|0x000825~") == 2,
+            "M.I.N.T. Solstheim/Raven Rock routes lost tier-to-tier mapping")
+
+
+def validate_ui_and_runtime_overrides(config: dict[str, Any]) -> None:
+    sky = PACKAGE / "SKSE/Plugins/SkyPatcher/misc"
+    septim = (sky / "zz_Ensrick_Currency_SeptimWeights.ini").read_text(encoding="utf-8")
+    for needle in (
+        "0xb6d:value=1:weight=0.06:fullName=~Copper Septim~",
+        "0x823:value=10:weight=0.07:fullName=~Silver Septim~",
+        "0x824:value=100:weight=0.13:fullName=~Gold Septim~",
+    ):
+        require(needle in septim, f"Septim winning override missing {needle}")
+    modern = (sky / "zz_Ensrick_Currency_ModernDenominations.ini").read_text(
+        encoding="utf-8")
+    for family in config["families"][1:7]:
+        for denomination in family["denominations"]:
+            require(f"value={denomination['value']}" in modern and
+                    f"fullName=~{denomination['tier'].title()} {family['displayLabel']}~" in modern,
+                    f"{family['id']} {denomination['tier']}: winning name/value missing")
+
+    i4 = load_json(PACKAGE / "SKSE/Plugins/InventoryInjector/zz_Ensrick_CurrencyDenominations.json")
+    require(len(i4["rules"]) == 3, "I4 must expose exactly copper/silver/gold rules")
+    expected_by_color = {
+        "#B87333": {i4_form(family["denominations"][0]["form"])
+                    for family in config["families"]},
+        "#C0C0C0": {i4_form(family["denominations"][1]["form"])
+                    for family in config["families"] if len(family["denominations"]) == 3},
+        "#D4AF37": {i4_form(family["denominations"][2]["form"])
+                    for family in config["families"] if len(family["denominations"]) == 3},
+    }
+    for rule in i4["rules"]:
+        require(rule["assign"]["subType"] == "Gold" and
+                rule["assign"]["subTypeDisplay"] == "$Currency",
+                "I4 physical denomination classification changed")
+        color = rule["assign"]["iconColor"]
+        actual = {item.lower() for item in rule["match"]["formId"]["anyOf"]}
+        require(actual == expected_by_color[color], f"I4 {color} explicit form set changed")
+
+
+def validate_sources_and_package(inputs: dict[str, Any], manifest: dict[str, Any]) -> None:
+    runtime_receipt = manifest["runtimeConfig"]
+    require(runtime_receipt["file"] == "SKSE/Plugins/EnsrickCurrencyDenominations.json" and
+            runtime_receipt["sha256"] == sha256(RUNTIME_CONFIG) and
+            runtime_receipt["bytes"] == RUNTIME_CONFIG.stat().st_size and
+            runtime_receipt["strictParserFixture"] == "pass" and
+            runtime_receipt["ledgerFingerprint"] == "EC66DF8F57CF4726",
+            "runtime config parser/fingerprint receipt mismatch")
+    expected_psc = {
+        "DES_DramCurrencySwapper.psc", "DES_MadranSwapper.psc",
+        "DES_UlfricCurrencySwapper.psc", "Ensrick_CurrencyRuntimeDefaultsAlias.psc",
+    }
+    require({path.name for path in (ROOT / "papyrus").glob("*.psc")} == expected_psc,
+            "Papyrus source set must contain only the four owned compatibility scripts")
+    for path in (ROOT / "papyrus").glob("*.psc"):
+        text = path.read_text(encoding="utf-8").lower()
+        require("swapcurrency(" not in text and "resetcurrency(" not in text and
+                "setgoldvalue(" not in text and "registermodulequest(" not in text,
+                f"{path.name}: legacy CurrencySwapper/value-owner call returned")
+    dram_source = (ROOT / "papyrus/DES_DramCurrencySwapper.psc").read_text(encoding="utf-8")
+    require('Quest.GetQuest("DES_UlfricWindhelmServicesQuest")' in dram_source and
+            'Quest.GetQuest("DES_UlfricWindhelmServices")' not in dram_source,
+            "Dram cost helper must resolve the exact audited Windhelm QUST EditorID")
+    require(len(inputs["mintCompatibilitySources"]) == 4,
+            "four exact M.I.N.T. compatibility source pins are required")
+
+    asset_build = inputs.get("tierAssetBuild")
+    require(asset_build is not None, "build-inputs.json is missing the tier-asset recipe")
+    for field in ("recipe", "inputs", "finalizer", "receipt"):
+        source_path = ROOT / asset_build[f"{field}RelativePath"]
+        require(source_path.is_file() and sha256(source_path) == asset_build[f"{field}Sha256"],
+                f"tier asset {field} source/receipt hash mismatch")
+    asset_receipt = load_json(ROOT / asset_build["receiptRelativePath"])
+    require(asset_receipt["status"] == "static-pass/runtime-unverified" and
+            asset_receipt["privateOutputs"] is True and
+            asset_receipt["recipeSha256"] == asset_build["recipeSha256"] and
+            asset_receipt["inputReceiptSha256"] == asset_build["inputsSha256"] and
+            asset_receipt["repeatability"] == asset_build["repeatability"],
+            "tier asset provenance/repeatability receipt changed")
+    outputs = asset_receipt["files"]
+    require(len(outputs) == 36, "tier asset recipe must emit exact 18 NIF + 18 DDS files")
+    require(sum(item["path"].lower().endswith(".nif") for item in outputs) == 18 and
+            sum(item["path"].lower().endswith(".dds") for item in outputs) == 18,
+            "tier asset recipe extensions/counts changed")
+    for item in outputs:
+        path = PACKAGE / item["path"]
+        require(path.is_file(), f"tier asset missing: {item['path']}")
+        require(path.stat().st_size == item["bytes"] and sha256(path) == item["sha256"],
+                f"tier asset receipt mismatch: {item['path']}")
+        if path.suffix.lower() == ".dds":
+            require(item["dds"]["width"] <= 1024 and item["dds"]["height"] <= 1024 and
+                    item["dds"]["fourCC"] == "DX10",
+                    f"{item['path']}: diffuse exceeds the approved 1K clutter cap")
+        else:
+            require(item["sseCompatible"] is True and
+                    "exact OBJ geometry equality" in item["transform"] and
+                    item["textureBindings"],
+                    f"{item['path']}: NIF conversion/binding proof missing")
+
+    dll = PACKAGE / "SKSE/Plugins/EnsrickCurrencyDenominations.dll"
+    require(dll.is_file(), "deterministic native ledger-owner DLL is missing")
+    native = manifest["nativePlugin"]
+    native_build = inputs.get("nativeBuild")
+    require(native_build is not None, "build-inputs.json is missing the native-build receipt")
+    exact_keys(native_build, {
+        "status", "receiptRelativePath", "receiptSha256", "packageSourceRoot",
+        "sourceInputCount", "dllOutputPath", "dllSha256", "dllBytes",
+        "repeatability", "commonLibUpstream", "commonLibCommit",
+        "combinedBinaryLicense", "pluginSourceBundled",
+    }, "nativeBuild")
+    native_receipt_path = ROOT / native_build["receiptRelativePath"]
+    require(native_receipt_path.is_file() and
+            sha256(native_receipt_path) == native_build["receiptSha256"],
+            "native build receipt hash mismatch")
+    native_receipt = load_json(native_receipt_path)
+    require(native_build["status"] == "deterministic-pass/runtime-unverified" and
+            native_build["repeatability"] == "2/2 SHA256 and size identical" and
+            native_build["pluginSourceBundled"] is True and
+            native_build["commonLibUpstream"] ==
+            "https://github.com/Ensrick/CommonLibSSE-NG" and
+            native_build["commonLibCommit"] ==
+            "90a64a4d65ce659a139137c968f42151bb6ecec9" and
+            native_build["combinedBinaryLicense"] ==
+            "GPL-3.0-or-later with CommonLibSSE-NG exceptions",
+            "native build policy/provenance changed")
+    require(native_receipt["commonLibCommit"] == native_build["commonLibCommit"] and
+            native_receipt["commonLibTrackedStatus"] == "clean" and
+            native_receipt["runtime"] == "1.7.104.0" and
+            native_receipt["skse"] == "2.3.1" and
+            native_receipt["runtimeConfig"]["sha256"] == sha256(RUNTIME_CONFIG) and
+            native_receipt["runtimeConfig"]["bytes"] == RUNTIME_CONFIG.stat().st_size,
+            "native receipt is not bound to the released runtime/config inputs")
+    require(native_receipt["dll"]["relativePath"] == native_build["dllOutputPath"] and
+            native_receipt["dll"]["sha256"] == native_build["dllSha256"] == sha256(dll) and
+            native_receipt["dll"]["bytes"] == native_build["dllBytes"] == dll.stat().st_size,
+            "native DLL differs from its deterministic build receipt")
+    require(native["file"] == native_build["dllOutputPath"] and
+            native["sha256"] == native_build["dllSha256"] and
+            native["bytes"] == native_build["dllBytes"] and
+            native["deterministicBuilds"] == 2 and
+            native["buildReceiptSha256"] == native_build["receiptSha256"] and
+            native["sourceInputFiles"] == native_build["sourceInputCount"] and
+            native["correspondingSource"] == native_build["packageSourceRoot"] and
+            native["commonLibCommit"] == native_build["commonLibCommit"],
+            "manifest native DLL/source receipt differs from build-inputs.json")
+
+    source_root = PACKAGE / native_build["packageSourceRoot"]
+    require(source_root.is_dir(), "bundled Ensrick native source tree is missing")
+    source_inputs = native_receipt["sourceInputs"]
+    require(len(source_inputs) == native_build["sourceInputCount"] == 23,
+            "native corresponding-source input count changed")
+    expected_source_files = {item["relativePath"].replace("\\", "/") for item in source_inputs}
+    expected_source_files.add("native-build-receipt.json")
+    actual_source_files = {
+        path.relative_to(source_root).as_posix()
+        for path in source_root.rglob("*") if path.is_file()
+    }
+    require(actual_source_files == expected_source_files,
+            "bundled Ensrick native source tree differs from the exact build input set")
+    for item in source_inputs:
+        source_path = source_root / item["relativePath"]
+        require(source_path.stat().st_size == item["bytes"] and
+                sha256(source_path) == item["sha256"],
+                f"bundled native source mismatch: {item['relativePath']}")
+    bundled_receipt = source_root / "native-build-receipt.json"
+    require(bundled_receipt.stat().st_size == native_receipt_path.stat().st_size and
+            sha256(bundled_receipt) == native_build["receiptSha256"],
+            "bundled native receipt differs from the tracked build receipt")
+
+    license_files = {
+        "LICENSE.txt", "NOTICE.txt", "SOURCE.txt", "DEPENDENCIES.txt",
+        "COMMONLIBSSE-COPYING.txt", "COMMONLIBSSE-EXCEPTIONS.md",
+        "QuickLootIE-LICENSE.txt",
+    }
+    require(all((PACKAGE / name).is_file() for name in license_files),
+            "GPL/CommonLib/QuickLoot/source notice bundle is incomplete")
+    common_lib_license = native_receipt["commonLibLicense"]
+    require(sha256(PACKAGE / "COMMONLIBSSE-COPYING.txt") ==
+            common_lib_license["copyingSha256"] ==
+            "72D2F09334F8B87DDED94A833BA7DA05E5280E77A037CA23B251F96EAE4CF719" and
+            sha256(PACKAGE / "COMMONLIBSSE-EXCEPTIONS.md") ==
+            common_lib_license["exceptionsSha256"] ==
+            "D3A3EC90E21AE118D3653D0834A2F6D1E6D32B773CC185023824992AD4BDCFCE",
+            "CommonLibSSE-NG GPL/exception texts differ from the pinned checkout")
+    quickloot_input = next(
+        item for item in source_inputs
+        if item["relativePath"] == "third_party/QuickLootIE-LICENSE.txt"
+    )
+    require(sha256(PACKAGE / "QuickLootIE-LICENSE.txt") == quickloot_input["sha256"] and
+            (PACKAGE / "QuickLootIE-LICENSE.txt").stat().st_size == quickloot_input["bytes"],
+            "QuickLoot IE MIT notice differs from the built source input")
+    notice = (PACKAGE / "NOTICE.txt").read_text(encoding="utf-8")
+    source = (PACKAGE / "SOURCE.txt").read_text(encoding="utf-8")
+    dependencies = (PACKAGE / "DEPENDENCIES.txt").read_text(encoding="utf-8")
+    require("GPL-3.0-or-later" in notice and "CommonLibSSE-NG" in notice and
+            "combined DLL" in notice and "not an all-MIT" in notice,
+            "NOTICE misstates the linked DLL's GPL distribution terms")
+    require(native_build["commonLibCommit"] in dependencies and
+            native_build["commonLibUpstream"] in dependencies and
+            "QuickLoot" in dependencies,
+            "dependency provenance is incomplete")
+    require("corresponding source" in source.lower() and
+            native_build["packageSourceRoot"] in source and
+            native_build["commonLibCommit"] in source and
+            "https://github.com/Ensrick/skyrim-mod-assistant.git" in source,
+            "SOURCE.txt does not identify bundled plug-in source and external corresponding source")
+
+    scripts = PACKAGE / "Scripts"
+    expected_pex = {name.removesuffix(".psc") + ".pex" for name in expected_psc}
+    require({path.name for path in scripts.glob("*.pex")} == expected_pex,
+            "package PEX set still contains an old ECE/Ohzer transaction owner")
+    manifest_scripts = {entry["file"]: entry for entry in manifest["papyrusScripts"]}
+    require(set(manifest_scripts) == {f"Scripts/{name}" for name in expected_pex},
+            "manifest Papyrus receipt set differs")
+    for name in expected_pex:
+        path = scripts / name
+        receipt = manifest_scripts[f"Scripts/{name}"]
+        require(receipt["sha256"] == sha256(path) and receipt["bytes"] == path.stat().st_size and
+                receipt["deterministicCompilations"] == 2,
+                f"{name}: PEX receipt mismatch")
+
+
+def validate_generated_artifacts(manifest: dict[str, Any], policy: dict[str, Any]) -> None:
+    plugin = PACKAGE / PLUGIN_NAME
+    seq = PACKAGE / "SEQ/Ensrick Currency Integration Patch.seq"
+    audit_path = WORK / "plugin-audit.json"
+    require(plugin.is_file() and seq.is_file() and audit_path.is_file(),
+            "run the checked generator before release validation")
+    require(manifest["version"] == "0.3.0", "manifest version is not 0.3.0")
+    require(manifest["runtimePatch"]["sha256"] == sha256(plugin) and
+            manifest["runtimePatch"]["bytes"] == plugin.stat().st_size,
+            "ESP receipt mismatch")
+    require(manifest["runtimePatch"]["records"] == 286 and
+            manifest["runtimePatch"]["ownedRecords"] == 169 and
+            manifest["runtimePatch"]["recordsByType"] == {
+                "ACTI": 3, "LVLI": 152, "MISC": 22, "GLOB": 1,
+                "COBJ": 42, "QUST": 5, "KYWD": 1, "DIAL": 20, "INFO": 40,
+            }, "manifest ESP record/type contract changed")
+
+    audit = load_json(audit_path)
+    require(audit["plugin"] == PLUGIN_NAME and audit["eslFlag"] is True,
+            "plugin audit identity/ESL flag mismatch")
+    require(audit["records"] == 286 and audit["deletedRecords"] == 0,
+            "plugin must contain exactly 286 records and no deletions")
+    require(audit["runtimeReasonCounters"] == policy["runtimeReasonCounters"],
+            "plugin audit telemetry contract differs from runtime policy")
+    require(audit["masters"] == [
+        "Skyrim.esm", "Update.esm", "HearthFires.esm", "Dragonborn.esm", "SL99Exchanger.esp",
+        "exchangeCurrency_enhanced.esp", "C.O.I.N.esp", "M.I.N.T.esp",
+        "MorrowindUsesDrams.esp", "WindhelmUsesUlfrics.esp",
+        "exchangeCurrency_patch_COIN.esp",
+    ], "exact eleven-master set/order changed")
+    require(audit["disabledRecipeCount"] == 33 and
+            audit["disabledCurrencyToIngotRecipeCount"] == 17 and
+            audit["disabledModernBankRecipeCount"] == 16,
+            "disabled recipe counts changed")
+    require(len(audit["disabledMintExchangeInfos"]) == 38 and
+            len(audit["mintBackendConditionInfos"]) == 2,
+            "M.I.N.T. dialogue audit counts changed")
+    require(len(audit["dialogParentScopes"]) == 20 and
+            sum(len(parent["responseFormKeys"]) for parent in audit["dialogParentScopes"]) == 40 and
+            all(parent["metadataIdentical"] is True for parent in audit["dialogParentScopes"]),
+            "M.I.N.T. parent DIAL scope/metadata audit changed")
+    require(len(audit["neutralizedEcePlayerCurrencyQuests"]) == 2 and
+            len(audit["mintCostOnlyQuestBindings"]) == 2,
+            "transaction-owner/cost-only quest audit counts changed")
+    require(audit["madranTransactionRemoval"]["removedScript"] == "DES_MadranSwapper",
+            "Ma'dran transaction alias was not removed")
+
+    expected_seq_id = (11 << 24) | 0x800
+    require(seq.read_bytes() == struct.pack("<I", expected_seq_id),
+            "SEQ must contain only file-relative QUST 0B000800")
+    require(audit["runtimeQuest"]["seqFileRelativeFormId"] == f"{expected_seq_id:08X}",
+            "plugin audit SEQ identity changed")
 
 
 def main() -> None:
-    files = sorted(path for path in PACKAGE.rglob("*") if path.is_file())
-    require(len(files) == 26, f"expected 26 package files, found {len(files)}")
+    policy = load_json(ROOT / "policy.json")
+    inputs = load_json(ROOT / "build-inputs.json")
+    config = load_json(RUNTIME_CONFIG)
+    manifest = load_json(ROOT / "manifest.json")
 
-    for path in CDF.glob("*.json"):
-        data = load_jsonc(path.read_text(encoding="utf-8"))
-        require(isinstance(data.get("rules"), list) and data["rules"],
-                f"{path.name}: missing rules")
-
-    mint_json = json.loads((CDF / "MorrowindUsesDrams.json").read_text(encoding="utf-8"))
-    sanitize = next(rule for rule in mint_json["rules"]
-                    if rule["friendlyName"].startswith("Sanitize"))
-    require(sanitize["conditions"].get("locations") == ["0x014293|Dragonborn.esm"],
-            "Fort Frostmoth sanitization must be positively scoped")
-    require("!locations" not in sanitize["conditions"],
-            "the released inverted Fort Frostmoth condition returned")
-    vendor_rule = next(rule for rule in mint_json["rules"] if "Vendors" in rule["friendlyName"])
-    require(vendor_rule["conditions"].get("allowVendors") is True and
-            vendor_rule["conditions"].get("onlyVendors") is True,
-            "vendor distribution must remain vendor-only")
-    mint_general = mint_json["rules"][0]
-    require(set(mint_general["conditions"]["!locationKeywords"]) ==
-            {"LocSetNordicRuin", "LocSetDwarvenRuin"},
-            "Morrowind Dram rule lost its two shipped ancient-site exclusions")
-    require("!locationKeywords" not in vendor_rule["conditions"],
-            "Solstheim vendor rule must preserve M.I.N.T.'s one-pass native distribution")
-    require(not (CDF / "00_Ensrick_Currency_20_SolstheimDrams.json").exists(),
-            "obsolete early Solstheim Dram rule returned and will double-process Gold001")
-    kolbjorn = json.loads((CDF / "zz_Ensrick_Currency_99_KolbjornCanonicalDrakr.json")
-                          .read_text(encoding="utf-8"))["rules"][0]
-    require(kolbjorn["conditions"].get("locationKeywords") == ["IsKolbjorn"] and
-            kolbjorn["changes"] == [
-                {"remove": "0xDE5029|Update.esm", "add": ["0xDE5015|Update.esm"]},
-            ], "Kolbjorn late correction no longer resolves the earlier Dram result to canonical Drakr")
-
-    mede = (CDF / "EC_medes.json").read_text(encoding="utf-8")
-    require("0xDE5021|Update.esm" in mede, "Mede must resolve from Update.esm")
-    require("0xDE5021|exchangeCurrency_patch_COIN.esp" not in mede,
-            "released wrong-master Mede reference returned")
-
-    swap_text = "\n".join(path.read_text(encoding="utf-8")
-                           for path in PACKAGE.glob("*_SWAP.ini"))
-    require("DES_Mede" not in swap_text, "unresolved DES_Mede alias returned")
-    require(not re.search(r"0x0*F~Skyrim\.esm\|0xDE5016~Update\.esm", swap_text,
-                          flags=re.IGNORECASE),
-            "leveled-list Drakr target returned")
-
-    mint_swap = (PACKAGE / "MorrowindUsesDrams_SWAP.ini").read_text(encoding="utf-8")
-    require(len(re.findall(r"\|NONE\|chanceS\(60\)\s*$", mint_swap,
-                           flags=re.MULTILINE)) == 4,
-            "all four mixed Solstheim swaps must use chanceS(60)")
-    require(not re.search(r"\|60\s*$", mint_swap, flags=re.MULTILINE),
-            "bare BOS chance field returned")
-
-    default = (PACKAGE / "zz_Ensrick_Currency_10_DefaultSeptims_SWAP.ini").read_text(
-        encoding="utf-8")
-    default_header = next(line for line in default.splitlines() if line.startswith("[Forms|"))
-    require("-DLC2SolstheimLocation" in default_header,
-            "default BOS rule must yield all Solstheim loose coins to M.I.N.T.'s regional pass")
-    require(default.count("chanceS(25)") == 1 and default.count("chanceS(5)") == 1,
-            "default loose-coin thresholds changed")
-    buckets = {"gold": 0, "silver": 0, "copper": 0}
-    for stable_roll in range(100):
-        if stable_roll < 5:
-            buckets["gold"] += 1
-        elif stable_roll < 25:
-            buckets["silver"] += 1
-        else:
-            buckets["copper"] += 1
-    require(buckets == {"gold": 5, "silver": 20, "copper": 75},
-            f"distribution changed: {buckets}")
-    expected_value = (buckets["copper"] * 1 + buckets["silver"] * 25 +
-                      buckets["gold"] * 100) / 100
-    require(expected_value == 10.75, f"expected value changed: {expected_value}")
-
-    ancient = (PACKAGE / "zz_Ensrick_Currency_90_Ancient_SWAP.ini").read_text(
-        encoding="utf-8")
-    require("0x6028DC~BSAssets.esm|0xDE5019~Update.esm" in ancient,
-            "Bruma native Ayleid coin is not normalized to Mala")
-    require("CYRLocSetAyleid" in ancient and "ccBGSSSE067_LocTypeAyleidRuin" in ancient,
-            "Bruma/The Cause Ayleid coverage missing")
-    require("0xDE5027~Update.esm" in ancient,
-            "root caves must use the unified M.I.N.T. Gibber")
-    require("-DLC2GyldenhulBarrowLocation,-IsDrakrMoney" in ancient,
-            "ancient Nordic rules must defer to every active regional Drakr location")
-
-    regional = (PACKAGE / "zz_Ensrick_Currency_80_Regional_SWAP.ini").read_text(
-        encoding="utf-8")
-    regional_drkr_header = next(line for line in regional.splitlines()
-                                 if "0x000B93~exchangeCurrency_enhanced.esp" in line)
-    require("-DLC2GyldenhulBarrowLocation" in regional_drkr_header,
-            "regional Drakr swaps must defensively preserve Gyldenhul's Septim exception")
-    require("0xDE5023~Update.esm" in regional and "0x000F21~M.I.N.T.esp" in regional,
-            "Dominion Sancar loose/purse coverage missing")
-    require("0x000B90~exchangeCurrency_enhanced.esp" in regional and
-            "0x0009C6~C.O.I.N.esp" in regional,
-            "Kolbjorn Drakr loose/purse/pile precedence missing")
-    require("0x00000F~Skyrim.esm|0xDE5015~Update.esm" in regional,
-            "regional Drakr must resolve to ECE's canonical Drakr Whale MISC")
-    require("0xDE5012~Update.esm,0xDE5013~Update.esm,0xDE5014~Update.esm,0xDE5015~Update.esm"
-            not in regional, "regional transaction zones must not emit three nonfungible Drakr faces")
-    require("0xDE5012~Update.esm,0xDE5013~Update.esm,0xDE5014~Update.esm,0xDE5015~Update.esm"
-            in ancient, "ancient Nordic ruins must retain all four physical Drakr faces")
-
-    ece_drams_kid = (PACKAGE / "exchangeCurrency_enhanced_drams_KID.ini").read_text(
-        encoding="utf-8")
-    require("IsDrakrMoney|Location|0x0142A8~Dragonborn.esm" not in ece_drams_kid,
-            "ECE must not re-keyword Gyldenhul as a Drakr region")
-    require(len(ece_drams_kid.splitlines()) == 70 and
-            "IsDrakrMoney|Location|0x014298~Dragonborn.esm" in ece_drams_kid and
-            "IsKolbjorn|Location|0x0142BB~Dragonborn.esm" in ece_drams_kid,
-            "ECE KID override must differ only by the one Gyldenhul assignment")
-
-    containers = json.loads((CDF / "EC_septims_containers.json").read_text(
-        encoding="utf-8"))
-    refs = containers["rules"][0]["conditions"]["!references"]
-    require(len(refs) == 12 and len(set(refs)) == 12,
-            "quest/storage exception reference set changed")
-    require("references" not in containers["rules"][0]["conditions"],
-            "quest/storage exceptions must be exclusions, not conversion targets")
-    require(containers["rules"][0]["conditions"].get("!locations") ==
-            ["0x016E2A|Dragonborn.esm"],
-            "generic Septim CDF rule must yield the Solstheim tree to one late Dram pass")
-
-    deployed_names = {path.name for path in files}
-    craft_mask = PACKAGE / "SKSE" / "Plugins" / "SkyPatcher" / \
-        "constructibleObject" / "ECE_CraftAndRecipes.ini"
-    require(craft_mask.exists() and not any(
-        line.strip() and not line.lstrip().startswith(";")
-        for line in craft_mask.read_text(encoding="utf-8").splitlines()),
-        "ECE crafting mask must contain comments only")
-    ancient_mask = PACKAGE / "SKSE" / "Plugins" / "SkyPatcher" / \
-        "constructibleObject" / "ECE_AncientCoinsToIngot.ini"
-    require(ancient_mask.exists() and not any(
-        line.strip() and not line.lstrip().startswith(";")
-        for line in ancient_mask.read_text(encoding="utf-8").splitlines()),
-        "malformed ECE ancient-smelting config must remain masked")
-    require("exchangeCurrency_patch_BS.esp" not in deployed_names,
-            "broad Bruma crafting/plugin patch must stay out")
-
-    apocrypha = PACKAGE / "zz_Ensrick_Currency_Apocrypha_KID.ini"
-    apocrypha_rules = [line.strip() for line in apocrypha.read_text(encoding="utf-8").splitlines()
-                       if line.strip() and not line.lstrip().startswith(";")]
-    apocrypha_locations = [
-        "016E2B", "0142AC", "0142AE", "0142AF", "0142B0",
-        "01EE06", "01EE07", "01EE08", "0382F5", "03A1E7",
-    ]
-    expected_apocrypha = [
-        f"Keyword = 0xBB5~exchangeCurrency_enhanced.esp|Location|0x{form_id}~Dragonborn.esm"
-        for form_id in apocrypha_locations
-    ]
-    require(apocrypha_rules == expected_apocrypha,
-            "Apocrypha KID policy must use ECE's numeric Ohzer KYWD on the root plus nine exact child LCTNs")
-    require("isOhzerMoney|" not in apocrypha.read_text(encoding="utf-8"),
-            "bare Ohzer EditorID returned; KID rule must fail closed on numeric owner form")
-    ini_text = "\n".join(path.read_text(encoding="utf-8", errors="replace")
-                           for path in PACKAGE.rglob("*.ini"))
-    require(not re.search(r"^\s*Keyword\s*=.*Varken", ini_text,
-                          flags=re.IGNORECASE | re.MULTILINE),
-            "Varken received a location keyword despite the deliberate dormant policy")
-    ancient_weights = PACKAGE / "SKSE" / "Plugins" / "SkyPatcher" / "misc" / \
-        "zz_Ensrick_Currency_AncientWeights.ini"
-    weight_lines = [line.strip().lower() for line in
-                    ancient_weights.read_text(encoding="utf-8").splitlines()
-                    if line.strip() and not line.lstrip().startswith(";")]
-    require(weight_lines == [
-        "filterbymiscs=update.esm|0xde5012:weight=0.01",
-        "filterbymiscs=update.esm|0xde5013:weight=0.01",
-        "filterbymiscs=update.esm|0xde5014:weight=0.01",
-        "filterbymiscs=update.esm|0xde5017:weight=0.02",
-        "filterbymiscs=update.esm|0xde5018:weight=0.02",
-        "filterbymiscs=update.esm|0xde5027:weight=0.02",
-    ], "owned ancient-currency weight policy changed")
-
-    plugin = PACKAGE / "Ensrick Currency Integration Patch.esp"
-    pex = PACKAGE / "Scripts" / "Ensrick_CurrencyRuntimeDefaultsAlias.pex"
-    ohzer_pex = PACKAGE / "Scripts" / "Ensrick_OhzerCurrencyScript.pex"
-    seq = PACKAGE / "SEQ" / "Ensrick Currency Integration Patch.seq"
-    require(plugin.is_file(), "owned currency ESPFE is missing")
-    require(pex.is_file(), "owned runtime-default PEX is missing")
-    require(ohzer_pex.is_file(), "owned Ohzer transaction PEX is missing")
-    require(seq.is_file(), "start-enabled quest SEQ is missing")
-    for script_path in (pex, ohzer_pex):
-        pex_bytes = script_path.read_bytes()
-        require(pex_bytes[:4] == bytes.fromhex("FA57C0DE"),
-                f"{script_path.name} is not a Skyrim PEX")
-        require(int.from_bytes(pex_bytes[8:16], "big") == 946684800,
-                f"{script_path.name} timestamp is not normalized to the reproducible epoch")
-    require(seq.read_bytes() == struct.pack("<II", 0x09000800, 0x09000803),
-            "SEQ must target owned QUSTs 000800 and 000803 at file-relative master index 09")
-    translation = PACKAGE / "interface" / "translations" / \
-        "exchangecurrency_enhanced_english.txt"
-    translation_bytes = translation.read_bytes()
-    require(translation_bytes.startswith(bytes.fromhex("FFFE")),
-            "ECE English translation override must be UTF-16LE with BOM")
-    require(translation_bytes.decode("utf-16") ==
-            "$Gold\tSeptims\r\n$Currency\tCurrency\r\n",
-            "ECE English translation override has unexpected keys/content")
-    require("$Ore" not in translation_bytes.decode("utf-16") and
-            "$Ingot" not in translation_bytes.decode("utf-16"),
-            "speculative I4 translation keys must remain absent")
-
-    i4_path = PACKAGE / "SKSE" / "Plugins" / "InventoryInjector" / \
-        "exchangeCurrency_enhanced.json"
-    i4_bytes = i4_path.read_bytes()
-    require(not i4_bytes.startswith(bytes.fromhex("EFBBBF")),
-            "owned ECE I4 override must remain UTF-8 without BOM")
-    i4_text = i4_bytes.decode("utf-8")
-    require("Métal dwemer" not in i4_text,
-            "hard-coded French Dwarven scrap label returned")
-    require(i4_text.count('"subTypeDisplay": "$DwarvenScrap"') == 1,
-            "ECE I4 override must contain one localized Dwarven scrap label")
-    i4 = json.loads(i4_text)
-    dwarven_rule = next(rule for rule in i4["rules"]
-                        if rule.get("assign", {}).get("iconLabel") == "misc_dwarvenscrap")
-    require(dwarven_rule["assign"]["subTypeDisplay"] == "$DwarvenScrap",
-            "Dwarven scrap rule is not language-neutral")
-    require(len(dwarven_rule["match"]["formId"]["anyOf"]) == 28,
-            "ECE Dwarven scrap target set changed")
-    build_inputs = json.loads((ROOT / "build-inputs.json").read_text(encoding="utf-8"))
-    expected_i4_hash = build_inputs["inventoryInjectorOverride"]["outputSha256"]
-    require(hashlib.sha256(i4_bytes).hexdigest().upper() == expected_i4_hash,
-            "owned ECE I4 override differs from the pinned one-change output")
-    expected_kid_hash = build_inputs["keywordDistributorOverride"]["outputSha256"]
-    require(hashlib.sha256((PACKAGE / "exchangeCurrency_enhanced_drams_KID.ini")
-                           .read_bytes()).hexdigest().upper() == expected_kid_hash,
-            "owned ECE KID override differs from the pinned one-line-removal output")
-
-    coin_cdf_path = CDF / "C.O.I.N.json"
-    coin_cdf_bytes = coin_cdf_path.read_bytes()
-    require(not coin_cdf_bytes.startswith(bytes.fromhex("EFBBBF")),
-            "owned C.O.I.N. CDF override must remain UTF-8 without BOM")
-    coin_cdf_text = coin_cdf_bytes.decode("utf-8")
-    require('"remove" : "01DE5012|Update.esm"' not in coin_cdf_text,
-            "malformed C.O.I.N. Drakr removal returned")
-    require(coin_cdf_text.count('"remove" : "0xDE5012|Update.esm"') == 2,
-            "C.O.I.N. CDF must contain the corrected Drakr removal and its existing exact peer")
-    coin_cdf = load_jsonc(coin_cdf_text)
-    randomize_drakr = next(rule for rule in coin_cdf["rules"]
-                           if rule.get("friendlyName") == "Randomize Leveled Drakr")
-    require(randomize_drakr["changes"] == [{
-        "remove": "0xDE5012|Update.esm",
-        "add": ["0xDE5016|Update.esm"],
-    }], "C.O.I.N. Randomize Leveled Drakr rule is not the exact intended DE5012 -> DE5016 change")
-    expected_coin_cdf_hash = build_inputs["containerDistributionOverride"]["outputSha256"]
-    require(hashlib.sha256(coin_cdf_bytes).hexdigest().upper() == expected_coin_cdf_hash,
-            "owned C.O.I.N. CDF override differs from the pinned one-change output")
-
-    audit_path = ROOT / "work" / "plugin-audit.json"
-    require(audit_path.is_file(), "plugin audit receipt is missing")
-    audit = json.loads(audit_path.read_text(encoding="utf-8"))
-    require(audit["eslFlag"] is True and audit["records"] == 45,
-            "plugin audit did not prove ESPFE plus the exact 45-record set")
-    require(audit.get("exchangeWorkbenchProvider") == {
-        "plugin": "SL99Exchanger.esp",
-        "formKey": "000801:SL99Exchanger.esp",
-        "editorId": "SL99CraftingExchangeBank",
-        "sha256": "C9342F1B669A3AE1F4A51E0CA8FBD9CDA3AEC915D36DC4CC9A0798B09E5B2446",
-        "bytes": 159056,
-        "records": 470,
-        "smallFlag": True,
-        "exactWinningBinary": True,
-    }, "plugin audit did not pin the exact compact ECE exchange-workbench provider")
-    require(audit["deletedRecords"] == 0 and audit["disabledRecipeCount"] == 17,
-            "plugin audit did not prove no deletions and all 17 disabled recipes")
-    require(audit["runtimeQuest"]["seqFileRelativeFormId"] == "09000800" and
-            audit["ohzerQuest"]["seqFileRelativeFormId"] == "09000803",
-            "plugin audit SEQ identities differ")
-    require(audit["masterMinimality"]["exact"] is True and audit["masters"] == [
-        "Skyrim.esm", "Update.esm", "Dragonborn.esm", "SL99Exchanger.esp",
-        "exchangeCurrency_enhanced.esp", "C.O.I.N.esp", "M.I.N.T.esp",
-        "WindhelmUsesUlfrics.esp", "exchangeCurrency_patch_COIN.esp",
-    ], "plugin audit did not prove the exact minimal nine-master set")
-    require(audit["ohzerTransactionScript"]["script"] == "Ensrick_OhzerCurrencyScript" and
-            audit["ohzerTransactionScript"]["neutralBarterRate"] is True and
-            audit["ohzerTransactionScript"]["upgradeSafeNewQuest"] is True,
-            "plugin audit did not prove the owned Ohzer transaction architecture")
-    require([item["script"] for item in audit["eceInheritedAltCoinBindings"]] == [
-        "EC_ulfricsScript",
-        "EC_dramsScript",
-        "EC_medesScript",
-        "EC_drakrsScript",
-        "EC_oshkasScript",
-    ] and all(item["vendorBindingWasAbsent"] is True
-              for item in audit["eceInheritedAltCoinBindings"]),
-            "plugin audit did not prove all five inherited ECE altCoins repairs")
-    require(audit["madranScriptMigration"]["targetScript"] ==
-            "DES_CurrencyFramework_BarterExclusion" and
-            audit["madranScriptMigration"]["vendorPexBundled"] is False and
-            len(audit["madranScriptMigration"]["removedStaleQuestProperties"]) == 8,
-            "plugin audit did not prove the current M.I.N.T. Ma'dran migration")
-    require(audit["removedStaleVmadProperties"] == [
-        "EC_septimsFunctions.busy",
-        "EC_septimsScript.busy",
-        "EC_septimsScript.DES_ConvertCoins",
-    ], "plugin audit did not prove exact ECE stale-property cleanup")
-    require(len(audit["drakrPurseAdapters"]["ownedChangeLists"]) == 2 and
-            len(audit["drakrPurseAdapters"]["purseOverrides"]) == 3 and
-            audit["drakrPurseAdapters"]["sharedC_O_I_N_ChangeListsOverridden"] is False,
-            "plugin audit did not prove isolated canonical-Drakr purse adapters")
-    require(audit["drakrPileRepair"]["target"] == "DE5015:Update.esm",
-            "plugin audit did not prove the canonical-Drakr pile repair")
-    expected_exchange = [
-        ("DE5012:Update.esm", 20, 3, "coin-default-rate"),
-        ("DE5013:Update.esm", 20, 3, "coin-default-rate"),
-        ("DE5014:Update.esm", 20, 3, "coin-default-rate"),
-        ("DE5015:Update.esm", 20, 3, "coin-default-rate"),
-        ("DE5019:Update.esm", 5, 2, "coin-default-rate"),
-        ("DE5020:Update.esm", 5, 3, "coin-default-rate"),
-        ("DE5022:Update.esm", 4, 1, "coin-default-rate"),
-        ("DE5018:Update.esm", 5, 8, "coin-default-rate"),
-        ("DE5017:Update.esm", 1, 1, "coin-default-rate"),
-        ("DE5027:Update.esm", 1, 1, "effective-mint-core-rate"),
-    ]
-    actual_exchange = [(item["input"], item["inputCount"], item["outputCount"],
-                        item["purpose"]) for item in audit["ancientExchangeRecipes"]]
-    require(actual_exchange == expected_exchange and
-            all(item["output"] == "00000F:Skyrim.esm" and
-                item["workbench"] == "000801:SL99Exchanger.esp" and
-                item["oneWayCashout"] is True
-                for item in audit["ancientExchangeRecipes"]),
-            "plugin audit did not prove all ten one-way ancient bank exchanges")
-
-    forbidden_extensions = {".psc", ".bsa", ".ba2", ".nif", ".dds", ".wav", ".xwm"}
-    require(not [path for path in files if path.suffix.lower() in forbidden_extensions],
-            "package contains vendor-source or asset-like file types")
-    packaged_plugins = [path.name for path in files if path.suffix.lower() in {".esp", ".esm", ".esl"}]
-    require(packaged_plugins == ["Ensrick Currency Integration Patch.esp"],
-            f"package contains a non-owned plugin: {packaged_plugins}")
-    packaged_pex = [path.name for path in files if path.suffix.lower() == ".pex"]
-    require(packaged_pex == [
-        "DES_MadranSwapper.pex",
-        "Ensrick_CurrencyRuntimeDefaultsAlias.pex",
-        "Ensrick_OhzerCurrencyScript.pex",
-    ],
-            f"package contains a non-owned script binary: {packaged_pex}")
-
-    notice = (PACKAGE / "NOTICE.txt").read_text(encoding="utf-8")
-    license_text = (PACKAGE / "LICENSE.txt").read_text(encoding="utf-8")
-    for nexus_id in (51439, 178940, 141884, 37545):
-        require(f"/mods/{nexus_id}" in notice, f"NOTICE lost Nexus attribution {nexus_id}")
-    require("MorrowindUsesDrams_SWAP.ini" in notice and "MorrowindUsesDrams.json" in notice,
-            "NOTICE lost the M.I.N.T. terms exception")
-    require("exchangeCurrency_enhanced.json" in notice and "$DwarvenScrap" in notice,
-            "NOTICE lost the ECE I4 terms exception")
-    require("exchangeCurrency_enhanced_drams_KID.ini" in notice and
-            "Gyldenhul Barrow" in notice and "IsDrakrMoney" in notice,
-            "NOTICE lost the ECE Gyldenhul KID terms exception")
-    require("EC_medes.json" in notice and "wrong-master" in notice and "Update.esm" in notice,
-            "NOTICE lost the ECE Mede wrong-master terms exception")
-    require("C.O.I.N.json" in notice and "01DE5012" in notice and "0xDE5012" in notice,
-            "NOTICE lost the C.O.I.N. CDF terms exception")
-    require("Ensrick_OhzerCurrencyScript" in notice and "interoperability derivative" in notice and
-            "excluded from the\nMIT grant" in notice and "Donation Points" in notice and
-            "DES_CurrencyFramework_BarterExclusion" in notice,
-            "NOTICE lost owned Ohzer or M.I.N.T. interoperability provenance")
-    require("DES_MadranSwapper.pex" in notice and "class-loader" in notice,
-            "NOTICE lost the independently authored Ma'dran compatibility-shim provenance")
-    require("SCOPE NOTICE" in license_text and "excluded" in license_text and
-            "MIT License" in license_text and "Copyright (c) 2026 Ensrick" in license_text,
-            "owned MIT license text is missing or incomplete")
-    require("fourteen newly authored" in notice and
-            "thirty-one compatibility" in notice and
-            "not be represented or redistributed as an all-MIT work" in notice and
-            "vendor-origin data in the ESP's 31" in license_text,
-            "NOTICE/LICENSE lost the mixed-terms ESP record boundary")
-
-    manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
-    require(manifest.get("version") == "0.2.4" and
-            manifest.get("madranCompatibilityShim", {}).get("file") ==
-            "Scripts/DES_MadranSwapper.pex",
-            "manifest lost the v0.2.4 Ma'dran compatibility shim")
-    hard_dependencies = {
-        491, 10917, 12604, 32444, 37545, 51073, 51439, 55728, 60805,
-        67925, 85702, 106659, 120152, 127686, 135618, 141884, 178940,
-    }
-    require(hard_dependencies.issubset(set(manifest["requiredNexusMods"])),
-            "manifest lost a hard runtime/content dependency")
-
-    ece_plan = json.loads((REPO / "records" / "fomod-plans" /
-                           "141884-ece-coin-mint-wizkid.json").read_text(
-                               encoding="utf-8"))
-    selected_sources = {mapping["source"] for mapping in ece_plan["mappings"]}
-    forbidden_selections = {
-        "02 settings skypatcher/SKSE/Plugins/SkyPatcher/constructibleObject/ECE_AncientCoinsToIngot.ini",
-        "02 settings skypatcher/SKSE/Plugins/SkyPatcher/constructibleObject/ECE_CraftAndRecipes.ini",
-        "20 patches/Bruma/exchangeCurrency_patch_BS.esp",
-    }
-    require(not (selected_sources & forbidden_selections),
-            "ECE plan re-enabled a masked/broad optional component")
-
-    require("000827:exchangeCurrency_patch_COIN.esp" in audit["exactOverrides"],
-            "plugin audit did not prove the ECE alternate-currency quest override")
-
-    print(f"PASS: {len(files)} files; loose coin 75/20/5; EV {expected_value:.2f}; "
-          "45-record ESPFE, ECE/M.I.N.T. VMAD repairs, weighted ancient currencies, "
-          "ten bank exchanges, 17 disabled smelting recipes, Ma'dran class-loader shim, three purses, two runtime quests, "
-          "SEQ, Ohzer and notices covered")
+    validate_policy(policy)
+    validate_runtime_config(config, policy)
+    validate_distribution_configs(config)
+    validate_ui_and_runtime_overrides(config)
+    validate_sources_and_package(inputs, manifest)
+    validate_generated_artifacts(manifest, policy)
+    print("currency integration v0.3.0 static/release validation: PASS")
 
 
 if __name__ == "__main__":

@@ -1,154 +1,203 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "name": "Ensrick Regional Currency Integration",
-  "version": "0.2.4",
-  "generatedDate": "2026-09-03",
+  "version": "0.3.0",
+  "generatedDate": "2026-09-06",
   "gameRuntime": "Skyrim 1.7.104 / SKSE 2.3.1",
-  "looseCoinDistribution": {
-    "copperPercent": 75,
-    "silverPercent": 20,
-    "goldPercent": 5,
-    "values": {
-      "copper": 1,
-      "silver": 25,
-      "gold": 100
-    },
-    "expectedValue": 10.75,
-    "increaseOverVanillaPercent": 975,
-    "status": "user-approved"
+  "accounting": {
+    "owner": "EnsrickCurrencyDenominations",
+    "backend": "00000F:Skyrim.esm",
+    "physicalValues": [
+      1,
+      10,
+      100
+    ],
+    "physicalBarter": false,
+    "physicalDropAndStorage": true,
+    "vendorNoSale": "0FF9FB:Skyrim.esm"
   },
-  "precedence": [
-    "quest-specific exceptions",
-    "ancient-site currency",
-    "modern regional tender",
-    "weighted Septim denominations",
-    "hidden Gold001 accounting backend"
-  ],
+  "distribution": {
+    "sourcePolicy": "actors deadGenericOnly; containers respawningSafeOnly; purses exact allowlist",
+    "canonicalPercent": 80,
+    "singleBreakPercent": 20,
+    "breakAtMostOne": true,
+    "valueConserved": true,
+    "seed": "0x454E535249434B31",
+    "looseCoinBehavior": "authored BOS 75/20/5 copper/silver/gold choice retained"
+  },
+  "runtimeConfig": {
+    "file": "SKSE/Plugins/EnsrickCurrencyDenominations.json",
+    "sha256": "AF90BB34B1E2902512C2928943A04B73C860B9E59EBD1C48795B5EDBFD99F3FA",
+    "bytes": 8826,
+    "strictParserFixture": "pass",
+    "ledgerFingerprint": "EC66DF8F57CF4726"
+  },
   "runtimePatch": {
     "plugin": "Ensrick Currency Integration Patch.esp",
-    "sha256": "C8010DEB9FAA2E9F01FE90AC023C7414C6F5EA65E8C01492B6238044DA2E6F06",
-    "bytes": 16108,
+    "sha256": "2F59FB73FC1C55B373073C279E9CE809D12DE7C705D19CB374552153555C95D7",
+    "bytes": 61583,
     "eslFlagged": true,
-    "records": 45,
+    "records": 286,
+    "ownedRecords": 169,
+    "recordsByType": {
+      "ACTI": 3,
+      "LVLI": 152,
+      "MISC": 22,
+      "GLOB": 1,
+      "COBJ": 42,
+      "QUST": 5,
+      "KYWD": 1,
+      "DIAL": 20,
+      "INFO": 40
+    },
     "deletedRecords": 0,
     "disabledCurrencyToIngotRecipes": 17,
-    "coinPurseMeans": {
-      "small": 10.75,
-      "medium": 20.25,
-      "large": 34.75
-    },
+    "disabledModernBankRecipes": 16,
+    "disabledMintExchangeInfos": 38,
+    "backendRetargetedServiceInfos": 2,
     "directMasters": [
       "Skyrim.esm",
       "Update.esm",
+      "HearthFires.esm",
       "Dragonborn.esm",
       "SL99Exchanger.esp",
       "exchangeCurrency_enhanced.esp",
       "C.O.I.N.esp",
       "M.I.N.T.esp",
+      "MorrowindUsesDrams.esp",
       "WindhelmUsesUlfrics.esp",
       "exchangeCurrency_patch_COIN.esp"
     ],
-    "masterMinimality": "derived from all serialized record owners and FormLinks; exact",
-    "linksChecked": 397,
-    "engineIntrinsicLinks": [
-      "000014:Skyrim.esm PlayerRef (13 typed/generic VMAD and placed-reference links)"
-    ],
-    "unresolvedLinks": 0,
-    "eceDrakrVmadRepair": {
-      "quest": "000827:exchangeCurrency_patch_COIN.esp",
-      "scriptProperty": "EC_drakrsScript.Drakr",
-      "sourceForm": "DE5016:Update.esm (LVLI)",
-      "targetForm": "DE5015:Update.esm (MISC)"
-    },
-    "regionalDrakrPolicy": {
-      "transactionCurrency": "DE5015:Update.esm (Drakr Whale)",
-      "ancientRuinLooseCoins": "DE5012-DE5015 mixed physical faces"
-    },
-    "eceInheritedAltCoinBindings": [
-      "EC_ulfricsScript=DE5024:Update.esm",
-      "EC_dramsScript=DE5029:Update.esm",
-      "EC_medesScript=DE5021:Update.esm",
-      "EC_drakrsScript=DE5015:Update.esm",
-      "EC_oshkasScript=000871:exchangeCurrency_patch_COIN.esp"
-    ],
-    "ancientBankExchanges": {
-      "workbench": "000801:SL99Exchanger.esp",
-      "provider": {
-        "source": "ECE 4.1.1 compact bundled copy must win the MO2 left-pane conflict",
-        "editorId": "SL99CraftingExchangeBank",
-        "sha256": "C9342F1B669A3AE1F4A51E0CA8FBD9CDA3AEC915D36DC4CC9A0798B09E5B2446",
-        "bytes": 159056,
-        "records": 470,
-        "eslFlagged": true
-      },
-      "oneWay": true,
-      "recipes": 10,
-      "rates": [
-        "each Drakr face 20 -> 3 Septims",
-        "Mala 5 -> 2 Septims",
-        "Mallari 5 -> 3 Septims",
-        "Nchuark 4 -> 1 Septim",
-        "Gibber (Mania) 5 -> 8 Septims",
-        "Gibber (Dementia) 1 -> 1 Septim",
-        "M.I.N.T. unified Gibber 1 -> 1 Septim"
-      ]
-    },
-    "physicalAncientWeights": {
-      "alternateDrakr": 0.01,
-      "coinAndUnifiedGibbers": 0.02
-    },
     "seqFileRelativeFormIds": [
-      "09000800",
-      "09000803"
+      "0B000800"
     ]
   },
-  "papyrusHelper": {
-    "file": "Scripts/Ensrick_CurrencyRuntimeDefaultsAlias.pex",
-    "sha256": "7D12056AA0E836269EF327C70AE198228A0D6FF742A107B5B40F41AE34ABC834",
-    "bytes": 2335,
-    "deterministicCompilations": 2,
-    "normalizedCompileUnixTime": 946684800
+  "nativePlugin": {
+    "file": "SKSE/Plugins/EnsrickCurrencyDenominations.dll",
+    "sha256": "3866DD5FC35C8223C24A34379C464444C114A2BAD9A17A4D9EF3905802F50CF8",
+    "bytes": 1014784,
+    "deterministicBuilds": 2,
+    "buildReceipt": "Source/EnsrickCurrencyDenominations/native-build-receipt.json",
+    "buildReceiptSha256": "7A3C4A89C72B5410B5632468279B06C03EFA7E65A7711BCD491DF73B6555029D",
+    "sourceInputFiles": 23,
+    "correspondingSource": "Source/EnsrickCurrencyDenominations",
+    "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+    "combinedBinaryLicense": "GPL-3.0-or-later with CommonLibSSE-NG exceptions",
+    "runtimePatches": false
   },
-  "ohzerHelper": {
-    "file": "Scripts/Ensrick_OhzerCurrencyScript.pex",
-    "sha256": "BC5A420621EE845D473710CFD2613D647A0B61ED8FA3A131488EE4BDD3897D95",
-    "bytes": 3057,
-    "deterministicCompilations": 2,
-    "normalizedCompileUnixTime": 946684800,
-    "licenseScope": "ECE-derived interoperability flow; excluded from MIT and governed by ECE Nexus permissions"
-  },
-  "madranCompatibilityShim": {
-    "file": "Scripts/DES_MadranSwapper.pex",
-    "sha256": "81E0D3AC40BE6B40390AAC84D4C96D13FB38EDB9668489099E5D84C89278C9F5",
-    "bytes": 1147,
-    "deterministicCompilations": 2,
-    "normalizedCompileUnixTime": 946684800,
-    "purpose": "Independently authored loader-compatible fallback for ECE's obsolete DES_MadranSwapper VMAD attachment"
-  },
-  "interfaceOverrides": {
-    "translation": {
-      "path": "interface/translations/exchangecurrency_enhanced_english.txt",
-      "sha256": "756399DFB1B10236292C4F91C58A2DC5A807555CF67FF68629BDE542ACD757C2",
-      "encoding": "UTF-16LE-BOM"
+  "papyrusScripts": [
+    {
+      "script": "Ensrick_CurrencyRuntimeDefaultsAlias",
+      "file": "Scripts/Ensrick_CurrencyRuntimeDefaultsAlias.pex",
+      "sha256": "9532A59B12D7D351ADDC6B7A0716C1B621129A2A39283ECC62DFC251D4A72094",
+      "bytes": 2291,
+      "deterministicCompilations": 2,
+      "normalizedCompileUnixTime": 946684800
     },
-    "inventoryInjector": {
-      "path": "SKSE/Plugins/InventoryInjector/exchangeCurrency_enhanced.json",
-      "sha256": "BD736CC14D0FA2F9484541C60395310C463899AF1EA02D2BEC753DE6CF31F859",
-      "sourceSha256": "2A06D13402627DD80BAA2B575BA4B2F5F426E838E66B8EBEF873447AA1D3CAB5",
-      "change": "Métal dwemer -> $DwarvenScrap"
+    {
+      "script": "DES_DramCurrencySwapper",
+      "file": "Scripts/DES_DramCurrencySwapper.pex",
+      "sha256": "89A8D142AB20DB47B11D1863C10BD2BF6F2E1A7637DBB9FA85EA4E8AC3BDA1B2",
+      "bytes": 3335,
+      "deterministicCompilations": 2,
+      "normalizedCompileUnixTime": 946684800
     },
-    "containerDistribution": {
-      "path": "SKSE/Plugins/ContainerDistributionFramework/C.O.I.N.json",
-      "sha256": "DB02D43614F257DAB246E7045912D7B59612111C21767417E76F28C79C227D98",
-      "sourceSha256": "81F5069F3844816973D52102DBCEA64BBB3355072F62F2BEF88A682C756DD13E",
-      "change": "Randomize Leveled Drakr remove form 01DE5012 -> 0xDE5012"
+    {
+      "script": "DES_UlfricCurrencySwapper",
+      "file": "Scripts/DES_UlfricCurrencySwapper.pex",
+      "sha256": "CE03168AC459DDE8CE07E7F13A564E7F2B224128279AA9FCE0DE6A72911AE5EB",
+      "bytes": 4097,
+      "deterministicCompilations": 2,
+      "normalizedCompileUnixTime": 946684800
     },
-    "keywordDistributor": {
-      "path": "exchangeCurrency_enhanced_drams_KID.ini",
-      "sha256": "CFA7125AE6D03CC904D8D132F797C4AC64A8079ED6D42B4C7345E1CFA02B11EE",
-      "sourceSha256": "832FDA1B63FE98F6506F5EE215EC04ABFF9F97B2F440296EAE20D221083F8F8F",
-      "change": "Remove only Gyldenhul Barrow's contradictory IsDrakrMoney assignment"
+    {
+      "script": "DES_MadranSwapper",
+      "file": "Scripts/DES_MadranSwapper.pex",
+      "sha256": "A8DB1E342BE055A291FD57A59962CE88DCC7E9D484F798066641250A1872BF9E",
+      "bytes": 876,
+      "deterministicCompilations": 2,
+      "normalizedCompileUnixTime": 946684800
     }
+  ],
+  "tierAssets": {
+    "families": [
+      "Mede",
+      "Ulfric",
+      "Dram",
+      "Oshka",
+      "Ohzer",
+      "Varken"
+    ],
+    "tiers": [
+      "Copper",
+      "Silver",
+      "Gold"
+    ],
+    "nifFiles": 18,
+    "diffuseFiles": 18,
+    "diffuseResolutionCap": 1024,
+    "recipeSha256": "C85B16567AC9E120417E18FB29ACDA6F2775256CA6F0FD69775679102A0F2FE9",
+    "receiptSha256": "D5FCDE1BD5E19B4FDF67BEF4F9411C25062E05FDDC98208647FDCB1D4C7A4B89",
+    "repeatability": "36/36 SHA256 and size identical",
+    "redistribution": "private derived outputs; publish recipe/receipts only",
+    "normalMaskEnvironmentBindings": "vendor-owned and preserved",
+    "geometryClaim": "no geometry realism claim"
+  },
+  "transactionOwners": {
+    "disabledEcePlayerAliasQuests": [
+      "000B63:exchangeCurrency_enhanced.esp",
+      "000827:exchangeCurrency_patch_COIN.esp"
+    ],
+    "mintCostOnlyQuests": [
+      "00000D:MorrowindUsesDrams.esp",
+      "000002:WindhelmUsesUlfrics.esp"
+    ],
+    "madranAlias": "alias 5 DES_MadranSwapper removed; same-name PEX inert for stale instances",
+    "canonicalDrakr": "DE5015:Update.esm value 1; native bridge replaces shared ECE Drakr route",
+    "excludedAncientFaces": [
+      "DE5012:Update.esm",
+      "DE5013:Update.esm",
+      "DE5014:Update.esm"
+    ]
+  },
+  "routing": {
+    "precedence": [
+      "quest-specific exceptions",
+      "ancient-site exclusions",
+      "modern regional tender",
+      "Septim fallback"
+    ],
+    "activeModern": [
+      "Mede",
+      "Ulfric",
+      "Dram",
+      "Oshka",
+      "Ohzer"
+    ],
+    "dormant": [
+      "Varken (no exact shipped location route)"
+    ],
+    "singleton": [
+      "Drakr",
+      "Sancar"
+    ],
+    "fallbackWorldspaces": [
+      "Wyrmstooth",
+      "Beyond Reach"
+    ]
+  },
+  "licenses": {
+    "source": "MIT for original source, except identified interoperability data",
+    "linkedDll": "GPL-3.0-or-later with CommonLibSSE-NG exceptions",
+    "files": [
+      "LICENSE.txt",
+      "NOTICE.txt",
+      "SOURCE.txt",
+      "DEPENDENCIES.txt",
+      "COMMONLIBSSE-COPYING.txt",
+      "COMMONLIBSSE-EXCEPTIONS.md",
+      "QuickLootIE-LICENSE.txt"
+    ]
   },
   "requiredNexusMods": [
     491,
@@ -169,48 +218,11 @@
     141884,
     178940
   ],
-  "installedDependencyVersions": {
-    "Exchange Currency SE": "3.00 (file 15057)",
-    "Beyond Skyrim - Bruma": "1.6.4 (mod 10917)",
-    "SkyUI": "6.11 (file 749043)",
-    "Address Library": "13 / Skyrim 1.7.104 (file 795954)",
-    "WiZkiD Ancient Imperial Septims": "1.3 (file 447129)",
-    "powerofthree's Tweaks": "1.17.1 (file 794717)",
-    "C.O.I.N.": "3.5.3 (file 765231)",
-    "Keyword Item Distributor": "4.1.0 (file 794743)",
-    "Base Object Swapper": "3.5.0 (file 794962)",
-    "Notification Filter": "1.3.0 / Skyrim 1.7.104 (file 797725)",
-    "Inventory Interface Information Injector": "1.1.1 (file 796498)",
-    "SkyPatcher": "7.0.3 (file 796107)",
-    "Container Distribution Framework": "3.1.0 + Ensrick 1.7.104 overlay",
-    "Currency Swapper": "2.2.0 + Ensrick 1.7.104 overlay",
-    "Dynamic Dialogue Replacer": "1.4.1 + Ensrick 1.7.104 overlay",
-    "Exchange Currency Enhanced": "4.1.1 (file 758183)",
-    "M.I.N.T.": "1.0.6 (file 756598)"
-  },
-  "omissions": [
-    "Description Framework 2.1.2 (Address Library format-5 incompatible; optional flavor only)",
-    "ECE ECE_CraftAndRecipes.ini (unrelated recipe overrides)",
-    "ECE ECE_AncientCoinsToIngot.ini (unresolved/wrong currency recipe references)",
-    "ECE exchangeCurrency_patch_BS.esp (broad Bruma crafting/material/reward overrides)",
-    "ECE/C.O.I.N. currency-to-ingot smelting (all 17 active recipes disabled by owned ESPFE)",
-    "Dynamic String Distributor (optional cosmetic descriptions)",
-    "C.O.I.N. Treasury Exchange (redundant exterior/cell edits)"
-  ],
-  "distribution": "distributable",
-  "distributionBasis": "Mixed terms documented in NOTICE.txt: original source and the original portions of 14 new records are MIT; narrow vendor-derived files, the ECE-derived Ohzer helper, and vendor-origin data in 31 ESP override records remain under applicable upstream terms; no vendor assets or complete vendor plugin files are bundled",
-  "knownDormantFamilies": [
-    "Varken (ECE provides no IsVarkenMoney location assignment)"
-  ],
-  "activatedFamilies": [
-    "Ohzer (ECE numeric KYWD 000BB5 assigned to Apocrypha root plus nine direct child LCTNs)"
-  ],
-  "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
   "archive": {
-    "fileName": "Ensrick-Regional-Currency-Integration-0.2.4.zip",
-    "files": 26,
-    "bytes": 21604,
-    "sha256": "DF6991C75F05CEEFFF9F613735AA1DDF43E4EE03CB1FD2FAAF1688125D0A176B"
+    "fileName": "Ensrick-Regional-Currency-Integration-0.3.0.zip",
+    "files": 105,
+    "bytes": 10472443,
+    "sha256": "458476846560D89A95C374C244321872CF0DAF70AD5239A26D37A59F2C358772"
   },
-  "gameplayAcceptance": "deterministic build, exact-record audit, link audit, Spriggit semantic round-trip, main-menu smoke, and existing-save load passed; targeted in-world currency matrix remains pending"
+  "gameplayAcceptance": "Build/static checks are necessary but not sufficient. New-game main-menu/save admission and the in-world currency matrix remain release gates. Existing pre-v0.3.0 saves fail closed."
 }

@@ -1,0 +1,42 @@
+{
+  "rules": [
+    {
+      "friendlyName": "Septims to Nchuarks in Solstheim",
+      "conditions": {
+        "locationKeywords": ["isNchuarkMoney"],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0xF|Skyrim.esm",
+          "add": ["0xDE5022|Update.esm"]
+        }
+      ]
+    },
+    {
+      "friendlyName": "Septims to Nordic coins in Solstheim",
+      "conditions": {
+        "locationKeywords": ["isDrakrMoney", "isKolbjorn"],
+        "bypassUnsafeContainers": true
+      },
+      "changes": [
+        {
+          "remove": "0xF|Skyrim.esm",
+          "add": ["0xDE5015|Update.esm"]
+        },
+        {
+          "remove": "0xDE5012|Update.esm",
+          "add": ["0xDE5015|Update.esm"]
+        },
+        {
+          "remove": "0xDE5013|Update.esm",
+          "add": ["0xDE5015|Update.esm"]
+        },
+        {
+          "remove": "0xDE5014|Update.esm",
+          "add": ["0xDE5015|Update.esm"]
+        }
+      ]
+    }
+  ]
+}

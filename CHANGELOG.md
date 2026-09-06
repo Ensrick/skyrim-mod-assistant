@@ -34,6 +34,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-06 01:42 — Mixed regional denominations and single-owner currency repair
+
+- **What:** Replaced the owned currency integration with0.3.0: native ledger owner,286-record ESPFE, four compatibility scripts, explicit1/10/100 regional tiers and36 private tier assets. Eligible corpses/containers/purses use80% efficient change and20% one-tier break without changing value. Retired copper-only ECE payout/accounting handlers, fixed backend service debits, preserved ancient routing and the loose75/20/5 roll. Added trusted package/save checkpoint admission. Updated weapon metadata and cloak reservation; weapon ESP/27 translations and240 cloak directives are unchanged.
+- **Source:** User's repeated copper-only/Mede reports; #207/#209/#217; detailed [repair record](records/currency-denomination-repair-2026-09-06.md). Native/source/asset/record failures were corrected before deployment. Original/credited permitted source and local conversion recipes are public-source eligible; generated private coin designs are not uploaded. Five historical generated currency binaries are removed from the Git index, not deleted locally or rewritten out of history.
+- **Verification:** **UNVERIFIED in game; fresh character required. Do not load pre-0.3.0 saves with this package.** Two identical native/ESP/PEX/archive builds, independent reviewers, exact286-record/11-master/SEQ/VMAD/DIAL checks,1563 links/zero unresolved,36 repeatable assets,105 installed-file matches and73 effective runtime winners pass. Canonical packaging reproduces SHA45847684…58772. Currency/focus/cloak gates and controller audit pass. Currency transaction063118626Z-c71bb2e136f9, weapon063900070Z-4ab34e480a6e, cloak064200560Z-1dcaca3ea8b2 (all20260906T). Profile membership/order and all plugins remain; controller changes only its modlist header comment. Prior complete currency package is recoverable. No game or GUI launched; vendor folders, existing saves, render/Havok/lighting settings and four unrelated dirty conflict reports remain untouched.
+
 ## 2026-09-05 23:20 — Public build-input pin correction
 
 - **What:** Corrected WindowFocusGuard CI to fetch public SKSE71f41da instead of the local unpublished quiet-loader checkout872c2d6. PluginAPI.h is byte-identical (Git blobf4844ffe, SHA0F238CC8); no code, DLL or live configuration changes. Source README/receipt distinguish local and public provenance.

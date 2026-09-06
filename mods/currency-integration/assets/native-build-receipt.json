@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sourceRoot": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\ece-null-location-guard\\mods\\currency-integration\\native",
+  "commonLibRoot": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-source\\CurrencySwapper-1.7.104\\External\\CommonLibSSE",
+  "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+  "commonLibTrackedStatus": "clean",
+  "commonLibLicense": {
+    "expression": "GPL-3.0-or-later WITH Modding-Exception AND GPL-3.0-Linking-Exception-with-Corresponding-Source",
+    "copyingSha256": "72D2F09334F8B87DDED94A833BA7DA05E5280E77A037CA23B251F96EAE4CF719",
+    "exceptionsSha256": "D3A3EC90E21AE118D3653D0834A2F6D1E6D32B773CC185023824992AD4BDCFCE"
+  },
+  "toolchain": {
+    "discoveryVisualStudio": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools",
+    "generatorInstance": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools",
+    "cmake": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+    "vcpkg": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\vcpkg",
+    "generator": "Visual Studio 17 2022",
+    "triplet": "x64-windows-static",
+    "msvcRuntime": "MultiThreaded release / MultiThreadedDebug debug"
+  },
+  "runtime": "1.7.104.0",
+  "skse": "2.3.1",
+  "runtimeConfig": {
+    "path": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\ece-null-location-guard\\mods\\currency-integration\\package\\SKSE\\Plugins\\EnsrickCurrencyDenominations.json",
+    "sha256": "AF90BB34B1E2902512C2928943A04B73C860B9E59EBD1C48795B5EDBFD99F3FA",
+    "bytes": 8826
+  },
+  "sourceInputs": [
+    {
+      "relativePath": "build-native.ps1",
+      "sha256": "70411456669E80D0F93119A247F2B13E61258106A3E8196FC2DE5B780B879F10",
+      "bytes": 9031
+    },
+    {
+      "relativePath": "CMakeLists.txt",
+      "sha256": "3719077AE7324DD6FEBA0DB068737B3723F34F2D055352CC29FB3A1740576134",
+      "bytes": 3927
+    },
+    {
+      "relativePath": "README.md",
+      "sha256": "622020DE3667BF40059A8616A765DB5538C5739703955777CD03DF79FE1DED30",
+      "bytes": 2168
+    },
+    {
+      "relativePath": "src/Bridge.cpp",
+      "sha256": "F5593EB2C1D41E98F3ED6D490EF6F07C659D2D04D4CA01C56EB50AD65F8949E8",
+      "bytes": 35328
+    },
+    {
+      "relativePath": "src/Bridge.h",
+      "sha256": "9DE607C4DCC7EFA84B780C507F8D4757628FB67C79636736E37C1964C001B264",
+      "bytes": 6230
+    },
+    {
+      "relativePath": "src/Config.cpp",
+      "sha256": "766FAEDB09B4D058BDE0C605A89C65DEB56427214D90A62C1EB16DBFE8C4444A",
+      "bytes": 17219
+    },
+    {
+      "relativePath": "src/Config.h",
+      "sha256": "27B1AF12510FC982D16FB1036511DFEF0CFFB7C19815B1C2FEBA91A4397207F8",
+      "bytes": 2085
+    },
+    {
+      "relativePath": "src/DenominationMath.cpp",
+      "sha256": "D6B81CCA641B61CDA49F640F40F126D526DC5EF9A2C500F5D7963B7D5DF15EEF",
+      "bytes": 1793
+    },
+    {
+      "relativePath": "src/DenominationMath.h",
+      "sha256": "B4CF4A4CF030FBF639764259B6BB4C47D38D5A31E9BB1E24E458CC0CB09BDE9E",
+      "bytes": 652
+    },
+    {
+      "relativePath": "src/LedgerFingerprint.cpp",
+      "sha256": "58726B940B0B35A9BA8D4D77DD1094604F47ACC0DE7315E140F189D87FE26D7D",
+      "bytes": 1532
+    },
+    {
+      "relativePath": "src/LedgerFingerprint.h",
+      "sha256": "37F0C7A44EA3C1A9872EA35746D6D236F13DF33E8050C6C8086570C2997CF7DA",
+      "bytes": 166
+    },
+    {
+      "relativePath": "src/LedgerPolicy.cpp",
+      "sha256": "C12E2F09F98FC8F50374648C366B08E68576607FBD5E147C1833231420DF64C7",
+      "bytes": 2951
+    },
+    {
+      "relativePath": "src/LedgerPolicy.h",
+      "sha256": "F9E28F1033FE6B24C99171DCBCB253169C44F92EDE0FE7F13499CDED8F467864",
+      "bytes": 2120
+    },
+    {
+      "relativePath": "src/MessagePolicy.h",
+      "sha256": "51DB6A9B3AB820C97F05EC8411DAC11691A0016C1E624ADE85AE5F1D02EBB691",
+      "bytes": 388
+    },
+    {
+      "relativePath": "src/PCH.h",
+      "sha256": "DA207206EB070901B027AE597357238A0F78D7ECBEF28707BD26F13C023DCDEF",
+      "bytes": 544
+    },
+    {
+      "relativePath": "src/Plugin.cpp",
+      "sha256": "EB94B0287BB8ED5D0E7A5ACA28E21133CAC2BAD40E638628E182CDDB789EEEE3",
+      "bytes": 6402
+    },
+    {
+      "relativePath": "src/SaveMarkerPolicy.h",
+      "sha256": "F9254259494082C20B4F78CC6E995BB15BCB90BD81894CFEAFE7F4455BD82DF7",
+      "bytes": 2261
+    },
+    {
+      "relativePath": "src/SourcePolicy.h",
+      "sha256": "A5973133E29F04A2E06A6FF3ADEA66602DCEC59932B6518B62FCD23C546AFBC7",
+      "bytes": 360
+    },
+    {
+      "relativePath": "tests/ConfigParserTests.cpp",
+      "sha256": "626B368DE3A070BDEB1275C0DBDB59EB4AE5BFB546D2E62B20A31F0FC180D825",
+      "bytes": 1037
+    },
+    {
+      "relativePath": "tests/NativePolicyTests.cpp",
+      "sha256": "97DB61CBCFC37CC83FF7965CB45F1EA5ED05E25B10D85E2DA86AF8E2C8463792",
+      "bytes": 11399
+    },
+    {
+      "relativePath": "third_party/QuickLootAPI.h",
+      "sha256": "36A3386BDD695C4040F97AD3B805ECB840A7B4A18E6BE82565EAE14B353B86D2",
+      "bytes": 2454
+    },
+    {
+      "relativePath": "third_party/QuickLootIE-LICENSE.txt",
+      "sha256": "F5E66123BAEEC9AB86E279C188854E9A5EF0B16CB69CF11914B294C3456C0A34",
+      "bytes": 1074
+    },
+    {
+      "relativePath": "vcpkg.json",
+      "sha256": "F6452B8044AB1DC487B00DA391568BDA3573B6EC5FB67487A0FFA77F579A8BFB",
+      "bytes": 624
+    }
+  ],
+  "dll": {
+    "relativePath": "SKSE/Plugins/EnsrickCurrencyDenominations.dll",
+    "sha256": "3866DD5FC35C8223C24A34379C464444C114A2BAD9A17A4D9EF3905802F50CF8",
+    "bytes": 1014784
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Exit-9B/InventoryInjector/main/docs/InventoryInjector.schema.json",
+  "rules": [
+    {
+      "match": {
+        "formType": "MiscItem",
+        "formId": {
+          "anyOf": [
+            "exchangeCurrency_enhanced.esp|b6d",
+            "update.esm|de5021",
+            "update.esm|de5024",
+            "update.esm|de5029",
+            "exchangeCurrency_patch_COIN.esp|871",
+            "exchangeCurrency_patch_COIN.esp|86f",
+            "exchangeCurrency_patch_COIN.esp|870",
+            "update.esm|de5015",
+            "update.esm|de5023"
+          ]
+        }
+      },
+      "assign": {
+        "subType": "Gold",
+        "subTypeDisplay": "$Currency",
+        "iconColor": "#B87333"
+      }
+    },
+    {
+      "match": {
+        "formType": "MiscItem",
+        "formId": {
+          "anyOf": [
+            "exchangeCurrency_enhanced.esp|823",
+            "Ensrick Currency Integration Patch.esp|820",
+            "Ensrick Currency Integration Patch.esp|822",
+            "Ensrick Currency Integration Patch.esp|824",
+            "Ensrick Currency Integration Patch.esp|826",
+            "Ensrick Currency Integration Patch.esp|828",
+            "Ensrick Currency Integration Patch.esp|82a"
+          ]
+        }
+      },
+      "assign": {
+        "subType": "Gold",
+        "subTypeDisplay": "$Currency",
+        "iconColor": "#C0C0C0"
+      }
+    },
+    {
+      "match": {
+        "formType": "MiscItem",
+        "formId": {
+          "anyOf": [
+            "exchangeCurrency_enhanced.esp|824",
+            "Ensrick Currency Integration Patch.esp|821",
+            "Ensrick Currency Integration Patch.esp|823",
+            "Ensrick Currency Integration Patch.esp|825",
+            "Ensrick Currency Integration Patch.esp|827",
+            "Ensrick Currency Integration Patch.esp|829",
+            "Ensrick Currency Integration Patch.esp|82b"
+          ]
+        }
+      },
+      "assign": {
+        "subType": "Gold",
+        "subTypeDisplay": "$Currency",
+        "iconColor": "#D4AF37"
+      }
+    }
+  ]
+}
