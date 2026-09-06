@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "note": "Security Overhaul SKSE - Extra Locks (11 New Locks) v1.0. FOMOD required files are meshes/ and ExtraLocks_LID.ini; the only choice is the texture group, taken at 1k per TEXTURE_POLICY. Adds Vampire, Dawnguard, Farmhouse, Display Case, Imperial, Orc, Generic Chest, Upper Class Chest, Snowy Chest, Noble Chest and Snowy Nordic locks. Asset-only: no DLL, no plugin.",
+  "mappings": [
+    {
+      "source": "meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "ExtraLocks_LID.ini",
+      "destination": "ExtraLocks_LID.ini"
+    },
+    {
+      "source": "textures - 1k",
+      "destination": "textures"
+    }
+  ]
+}

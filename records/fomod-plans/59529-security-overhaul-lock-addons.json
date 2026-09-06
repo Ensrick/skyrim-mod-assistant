@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "note": "Security Overhaul SKSE - Lock Add-ons v0.1.9.1. FOMOD required files are meshes/ and Addons_LID.ini; the only choice is the texture resolution group, taken at 1k per TEXTURE_POLICY (locks are small clutter, 1024 cap). Asset-only add-on: no SKSE DLL and no plugin, so no runtime group.",
+  "mappings": [
+    {
+      "source": "meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "Addons_LID.ini",
+      "destination": "Addons_LID.ini"
+    },
+    {
+      "source": "1k textures",
+      "destination": "textures"
+    }
+  ]
+}

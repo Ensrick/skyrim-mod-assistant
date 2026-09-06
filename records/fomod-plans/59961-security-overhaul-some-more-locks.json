@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "note": "Security Overhaul SKSE - Some More Locks v1.0.13 (PRieST47). FOMOD choices: Main (safe, strongbox and Nord bridge locks) plus the 'SMIM Jail Door' option, which the installer marks Recommended and which applies because SMIM and SMIM Quality Addon are installed - it brings the jail lock mesh and two smim_imp_gate_pole textures that deliberately override SMIM's. Every other option is skipped because its target mod is absent: Snazzy Strongboxes (BOS variants), Strongbox Replacer, Kanjs Strongbox, ElSopa Safe and Strongbox Remade, HFs Strongbox/Safe/jail-grate remodels, JS Common Cages (so vanilla metal cages keep the vanilla lock), and the East Empire logo. The two cosmetic Lock UI Variations (SMIM Jail Door With Handle, Smaller Locks) are left off as taste choices, not defaults. Sources carry the archive's single top-level wrapper folder. The SMIM Jail Door option also ships SMIM's own smim_imp_gate_pole.dds and _n at 256x2048 (2017 vendor bytes, for people without SMIM); both are DROPPED here because SMIM Quality Addon provides that path at 512x4096 and this mod installs at a higher priority, so taking them would silently downgrade an approved asset. The jail lock mesh is kept and reads those paths from SMIM.",
+  "mappings": [
+    {
+      "source": "Security Overhaul SKSE - Some More Locks/main/MoreLocks_LID.ini",
+      "destination": "MoreLocks_LID.ini"
+    },
+    {
+      "source": "Security Overhaul SKSE - Some More Locks/main/meshes/interface/lockpicking/sos/lockpick_SafeLock01.nif",
+      "destination": "meshes/interface/lockpicking/sos/lockpick_SafeLock01.nif"
+    },
+    {
+      "source": "Security Overhaul SKSE - Some More Locks/main/meshes/interface/lockpicking/sos/lockpick_StrongboxLock01.nif",
+      "destination": "meshes/interface/lockpicking/sos/lockpick_StrongboxLock01.nif"
+    },
+    {
+      "source": "Security Overhaul SKSE - Some More Locks/main/meshes/interface/lockpicking/sos/lockpick_NorBridgeLock01.nif",
+      "destination": "meshes/interface/lockpicking/sos/lockpick_NorBridgeLock01.nif"
+    },
+    {
+      "source": "Security Overhaul SKSE - Some More Locks/main/meshes/interface/lockpicking/sos/lockpick_JailLock01.nif",
+      "destination": "meshes/interface/lockpicking/sos/lockpick_JailLock01.nif"
+    }
+  ]
+}

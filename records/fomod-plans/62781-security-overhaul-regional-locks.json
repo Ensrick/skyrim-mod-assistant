@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "note": "Security Overhaul SKSE - Regional Locks v1.0.1. FOMOD required files are meshes/ and RegionalLocks_LID.ini; the only choice is the texture group, taken at 1k per TEXTURE_POLICY. Adds hold-specific locks (Solitude, Whiterun, Windhelm, Markarth, Riften, Raven Rock, Tel Mithryn, College of Winterhold) plus cage, safe and strongbox locks. Asset-only: no DLL, no plugin. Note the Markarth lock is only visible with Unique Markarth Doors, which is not installed here.",
+  "mappings": [
+    {
+      "source": "meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "RegionalLocks_LID.ini",
+      "destination": "RegionalLocks_LID.ini"
+    },
+    {
+      "source": "1k textures",
+      "destination": "textures"
+    }
+  ]
+}
