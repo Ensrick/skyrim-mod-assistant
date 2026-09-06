@@ -34,6 +34,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-06 15:19 — JS Dragon Claws AE in; Skyrim 3D Trees and Plants skipped
+
+- **What:** Installed JS Dragon Claws AE (57038, v1.32, 1k) with the Wyrmstooth patch only, and queued a skip for Skyrim 3D Trees and Plants (12371).
+- **Source:** User: *"I think JS Dragon Claws is a safe and easy add... nothing much competing for that spot"*, and *"skip it"* for 12371 after asking whether the build already supersedes it. The trees half is superseded by Nature of the Wild Lands (821 tree meshes) plus Tree Diversity Project; the plant half cannot be taken alone (single 432 MB AIO whose page states "Incompatible: All flora related replacer mods, no exceptions"), and it was last updated 2020-06-15. `docs/ECOSYSTEM-SURVEY-2026-08-30.md:149` had already routed the plant slot to the Cathedral 3D family, which stays a candidate.
+- **Verification:** **UNVERIFIED in game.** Claws: asset-conflict scan over every enabled mod found 0 overlapping paths for its 153 assets; 115 DDS files peak at 1024x1024, zero over the clutter cap, so no texture-cap overlay is needed; the ESL-flagged Wyrmstooth patch carries 4 override records and sits at plugins.txt 276 against Wyrmstooth at 29; LotD museum patches deliberately not taken (LotD absent). `keep_coverage` clean at 195/195, `install_mod.py --verify` `0 problem(s)`, transaction `20260906T201908295Z-951c64615d6a`. Both curator decisions were delivered and applied (`decisions-applied-20260906-151331`, `-151914`).
+
 ## 2026-09-06 14:53 — Elianora excluded; Bloodchill entrance fixed with our own Dawnguard forward
 
 - **What:** Removed `Inigo - Bloodchill Manor Patch` (Nexus 58317, Elianora) and replaced it with `Ensrick - Inigo Bloodchill Landscape Forward`, built here. Root cause found: `Inigo.esp` lists only Skyrim.esm and Update.esm as masters, so the CK wrote its `LAND 00009FC4` and `NAVM 001062F7` from the Skyrim.esm versions and silently reverted Dawnguard.esm - which is what digs the ravine the CC entrance sits in. Our 4-record ESL-flagged patch forwards Dawnguard's landscape *and* navmesh byte-for-byte, so it fixes the buried door and the follower pathing that previously needed a second Nexus mod. New standing list: `docs/EXCLUDED_AUTHORS.md`.

@@ -3520,6 +3520,25 @@
       "sha256Note": "hash of the PATCHED deployed dll, not the archive"
     },
     {
+      "modId": 57038,
+      "modName": "JS Dragon Claws AE",
+      "nexusName": "JS Dragon Claws AE - 1k Textures",
+      "version": "1.32",
+      "fileId": 522298,
+      "fileName": "JS Dragon Claws AE - 1k Textures-57038-1-32-1721270522.7z",
+      "sizeMb": 69.88,
+      "sha256": "4c4fdd05926190ed270b3752842f6052f4479d35d81d97fb68785a18a88608f2",
+      "plugins": [
+        "JS Dragon Claws AE - Wyrmstooth.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:19:11Z",
+      "transaction": "20260906T201908295Z-951c64615d6a",
+      "fomodPlan": "records/fomod-plans/57038-js-dragon-claws-ae.json",
+      "note": "User's call 2026-09-06: \"I think JS Dragon Claws is a safe and easy add... nothing much competing for that spot\" - confirmed empirically. Supersedes JS Dragon Claws SE (1394, v1.0 2016), whose own page says so; 57038 is v1.32, last updated 2026-01-16. FOMOD choice (records/fomod-plans/57038-js-dragon-claws-ae.json): 1k MAIN file 522298, core meshes/textures/scripts, and the single third-party patch whose target is installed - Wyrmstooth (45565). LotD is not in this build, so neither the LOTD/LOTDv6 patches nor any JS_DBM_* museum-display variant was taken; Konahrik's Accoutrements, Helgen Reborn and Skyrim Sewers are absent too. Patch plugin: 4 override records (WTRustedClaw MISC plus WTPuzzleDoorKeyHole, WTBarrowDragonKeyholeActivator and WTRustedClawPedestalAct ACTI), ESL-flagged, masters Skyrim.esm + Wyrmstooth.esp, plugins.txt 276 (Wyrmstooth is 29). TEXTURE_POLICY: 115 DDS, largest 1024x1024 (88 files at 1024, rest 512 and below), zero over the 1024 clutter cap - the 1k download needs no cap overlay. Asset-conflict scan across every enabled mod: 153 asset paths, ZERO overlaps, so nothing is overwritten and nothing overwrites it at priority 290; SMIM's only 'claw' asset is the hagraven ingredient. Ships DLC2 amethyst claw and puzzle-door meshes so the Solstheim door gems match. keep_coverage clean, install_mod --verify 0 problems. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 55728,
       "modName": "Keyword Item Distributor",
       "nexusName": "Keyword Item Distributor (SE AE)",

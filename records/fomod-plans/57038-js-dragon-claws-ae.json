@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "note": "JS Dragon Claws AE 1k (file 522298). Core meshes/textures/scripts plus the one third-party patch whose target is installed: Wyrmstooth (45565). The JS_DBM_*.esp variants are Legacy of the Dragonborn museum-display patches and LotD is not installed, so none are taken; LOTD, LOTDv6, Konahriks Accroutments, Helgen Reborn and Skyrim Sewers are skipped for the same reason. The two .pex scripts are the mod's own display/start scripts, kept because they are inert without an ESP that attaches them and cost 3 kB.",
+  "mappings": [
+    {
+      "source": "meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "textures",
+      "destination": "textures"
+    },
+    {
+      "source": "scripts",
+      "destination": "scripts"
+    },
+    {
+      "source": "patches/Wyrmstooth/JS Dragon Claws AE - Wyrmstooth.esp",
+      "destination": "JS Dragon Claws AE - Wyrmstooth.esp"
+    }
+  ]
+}
