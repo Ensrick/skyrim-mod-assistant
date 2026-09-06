@@ -1,0 +1,181 @@
+{
+  "dateUtc": "2026-09-06T21:06:30.577304+00:00",
+  "status": "PASS_STATIC_SUBSET",
+  "runtime": "UNVERIFIED; no game launch",
+  "notRun": [
+    "mutable INI/config snapshots",
+    "save mirroring",
+    "game-folder manifest rewrite",
+    "game launch/save acceptance"
+  ],
+  "failures": [],
+  "warnings": [
+    "Steam overlay: cannot be verified from disk (Steam stores it encrypted). It was in the hung main thread on 2026-08-31. Confirm it is OFF for app 489830 before blaming a mod.",
+    "5 enabled mod(s) have no ledger row (#102), so --verify cannot reason about them: Nether's Follower Framework - RDO Support, Skyrim Unbound Reborn - RDO Lite Patch, Relationship Dialogue Overhaul Lite, Ensrick - TDP Ulvenwald Wind Calibration (Private Test), Ensrick - Proteus MCM Indexed Hotkeys"
+  ],
+  "controllerAudit": {
+    "errors": [],
+    "ok": true,
+    "operation": "audit",
+    "profile": "Default"
+  },
+  "currencyAdmission": [],
+  "windowFocusPairing": [],
+  "cloakInstalled": [],
+  "keep": {
+    "installedNexusIds": 201,
+    "liveKeeps": 201,
+    "installedWithoutKeep": [],
+    "keepNotInstalled": [],
+    "skipInstalled": []
+  },
+  "activeManagedPlugins": 275,
+  "onlyNewActivePlugins": [
+    "Apocalypse - Magic of Skyrim.esp",
+    "BCS-SP_TreasureMaps.esp",
+    "Book Covers Skyrim.esp",
+    "Lucien.esp"
+  ],
+  "priorPluginRelativeOrderPreservedExceptGlobalWeaponLast": true,
+  "payloadAudit": {
+    "status": "PASS_STATIC_PAYLOAD_AND_ORDER_ONLY",
+    "runtime": "UNVERIFIED",
+    "checks": [
+      {
+        "modName": "Book Covers Skyrim - Original Assets",
+        "path": "Book Covers Skyrim - Textures.bsa",
+        "bytes": 573031741,
+        "sha256": "1aa5a220158560efe038acddf3d96d735002abb6b87fb180d7844ab7326fc18e",
+        "actualSha256": "1aa5a220158560efe038acddf3d96d735002abb6b87fb180d7844ab7326fc18e",
+        "winningProvider": "Book Covers Skyrim - Original Assets",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - Original Assets",
+        "path": "Book Covers Skyrim.bsa",
+        "bytes": 73971482,
+        "sha256": "aa0faa019d6f19a2b8ea825d0ac3fa88fde7de12efc769783726aaa03d418096",
+        "actualSha256": "aa0faa019d6f19a2b8ea825d0ac3fa88fde7de12efc769783726aaa03d418096",
+        "winningProvider": "Book Covers Skyrim - Original Assets",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched ESL Resource",
+        "path": "Book Covers Skyrim.esp",
+        "bytes": 218703,
+        "sha256": "e114d548a2e9fe0fdd88a87f89cbe20592f02e2536eadbcbe4224ea2c91c9483",
+        "actualSha256": "e114d548a2e9fe0fdd88a87f89cbe20592f02e2536eadbcbe4224ea2c91c9483",
+        "winningProvider": "Book Covers Skyrim - SkyPatched ESL Resource",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched Config",
+        "path": "SKSE/Plugins/SkyPatcher/book/Book Covers Skyrim/000-Book Covers Skyrim.ini",
+        "bytes": 62929,
+        "sha256": "5b06ac773c478b8243af795f133771646f4127f3bb85853ac710e2e05ba52467",
+        "actualSha256": "5b06ac773c478b8243af795f133771646f4127f3bb85853ac710e2e05ba52467",
+        "winningProvider": "Book Covers Skyrim - SkyPatched Config",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched Config",
+        "path": "SKSE/Plugins/SkyPatcher/book/Book Covers Skyrim/002-Book Covers Skyrim-Dawnguard.ini",
+        "bytes": 10523,
+        "sha256": "8cdf457640d1658e63eddf79a6702b47c9dc2c7d2b05d1e04066c15685e1c504",
+        "actualSha256": "8cdf457640d1658e63eddf79a6702b47c9dc2c7d2b05d1e04066c15685e1c504",
+        "winningProvider": "Book Covers Skyrim - SkyPatched Config",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched Config",
+        "path": "SKSE/Plugins/SkyPatcher/book/Book Covers Skyrim/003-Book Covers Skyrim-HearthFires.ini",
+        "bytes": 2142,
+        "sha256": "fe6c5fc39964a8cb57bcce54d0027445f256e582fcf644ab806829fc30852b0b",
+        "actualSha256": "fe6c5fc39964a8cb57bcce54d0027445f256e582fcf644ab806829fc30852b0b",
+        "winningProvider": "Book Covers Skyrim - SkyPatched Config",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched Config",
+        "path": "SKSE/Plugins/SkyPatcher/book/Book Covers Skyrim/004-Book Covers Skyrim-Dragonborn.ini",
+        "bytes": 27441,
+        "sha256": "7f433398cdcfb9e363031b32afd1cc31161c68d3ed1daa3467f6445e88acf0cd",
+        "actualSha256": "7f433398cdcfb9e363031b32afd1cc31161c68d3ed1daa3467f6445e88acf0cd",
+        "winningProvider": "Book Covers Skyrim - SkyPatched Config",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched Missing Books",
+        "path": "BCS-SP_TreasureMaps.esp",
+        "bytes": 4745,
+        "sha256": "b114b26e221af0f7fccb3d5811b27e3f9fa2282540a2dc4b01475aae6f20fa2b",
+        "actualSha256": "b114b26e221af0f7fccb3d5811b27e3f9fa2282540a2dc4b01475aae6f20fa2b",
+        "winningProvider": "Book Covers Skyrim - SkyPatched Missing Books",
+        "pass": true
+      },
+      {
+        "modName": "Book Covers Skyrim - SkyPatched Missing Books",
+        "path": "SKSE/Plugins/SkyPatcher/book/Book Covers Skyrim/001-Book Covers Skyrim (Part 2).ini",
+        "bytes": 79311,
+        "sha256": "6d937c2fc548096d22fa8fa82571e11d4a58bd955a10127339ec3c1ea7791718",
+        "actualSha256": "6d937c2fc548096d22fa8fa82571e11d4a58bd955a10127339ec3c1ea7791718",
+        "winningProvider": "Book Covers Skyrim - SkyPatched Missing Books",
+        "pass": true
+      },
+      {
+        "path": "Apocalypse - Magic of Skyrim - Textures.bsa",
+        "bytes": 38322241,
+        "sha256": "37C82FA27B171F5F61C224F14C90F07BE0CBC6887A894C530CEC3D73D2DD088B",
+        "modName": "Apocalypse - Magic of Skyrim",
+        "actualSha256": "37c82fa27b171f5f61c224f14c90f07be0cbc6887a894c530cec3d73d2dd088b",
+        "winningProvider": "Apocalypse - Magic of Skyrim",
+        "pass": true
+      },
+      {
+        "path": "Apocalypse - Magic of Skyrim.bsa",
+        "bytes": 22657410,
+        "sha256": "CF710EDB11E02F0F53E1F2BD9C4DFFE07C9C086C0519B2CBCFE5DA884E88853F",
+        "modName": "Apocalypse - Magic of Skyrim",
+        "actualSha256": "cf710edb11e02f0f53e1f2bd9c4dffe07c9c086c0519b2cbcfe5da884e88853f",
+        "winningProvider": "Apocalypse - Magic of Skyrim",
+        "pass": true
+      },
+      {
+        "path": "Apocalypse - Magic of Skyrim.esp",
+        "bytes": 1446114,
+        "sha256": "B0A9632372F2117F7D96583E1522B42758F414129D3572F848B8F7AC65681384",
+        "modName": "Apocalypse - Magic of Skyrim",
+        "actualSha256": "b0a9632372f2117f7d96583e1522b42758f414129d3572f848b8f7ac65681384",
+        "winningProvider": "Apocalypse - Magic of Skyrim",
+        "pass": true
+      },
+      {
+        "path": "Lucien.bsa",
+        "bytes": 284858192,
+        "sha256": "04CE9AF0E3A186179A021A4E8E661AF1687827AAD320D396E30CF27C776B4578",
+        "modName": "Lucien - Immersive Fully Voiced Male Follower",
+        "actualSha256": "04ce9af0e3a186179a021a4e8e661af1687827aad320d396e30cf27c776b4578",
+        "winningProvider": "Lucien - Immersive Fully Voiced Male Follower",
+        "pass": true
+      },
+      {
+        "path": "Lucien.esp",
+        "bytes": 3674495,
+        "sha256": "A33E5FE06C36D4D2B504C8B00733AFAE0CA0F6002862E34FC135D6EAE5C0915A",
+        "modName": "Lucien - Immersive Fully Voiced Male Follower",
+        "actualSha256": "a33e5fe06c36d4d2b504c8b00733afae0ca0f6002862e34fc135d6eae5c0915a",
+        "winningProvider": "Lucien - Immersive Fully Voiced Male Follower",
+        "pass": true
+      },
+      {
+        "modName": "Animation Queue Fix",
+        "path": "SKSE/Plugins/AnimationQueueFix.dll",
+        "bytes": 617472,
+        "sha256": "EC6F0C63208BD6DF1B39D7E477C00125BED1FC32B8932C5EC568E8959DA3DBEE",
+        "actualSha256": "ec6f0c63208bd6df1b39d7e477c00125bed1fc32b8932c5ec568e8959da3dbee",
+        "winningProvider": "Animation Queue Fix",
+        "pass": true
+      }
+    ]
+  }
+}

@@ -9,8 +9,8 @@ after this snapshot; a prepared candidate is not an installed mod.
 | Component | Status at this handoff | Remaining gate |
 |---|---|---|
 | Animation Queue Fix | Official 1.0.2 installed and enabled; Keep verified | Authorized runtime acceptance, tracked in [#129](https://github.com/Ensrick/skyrim-mod-assistant/issues/129) |
-| Book Covers Skyrim + SkyPatched + Missing Books | Corrected exact-file installs completed; exact payload winners verified by root | Final ordering/provenance and dependent freshness verification; runtime acceptance |
-| Apocalypse | Official 10.3.0 installed by root | Final archive/script-winner and dependent patch-freshness gates; runtime acceptance |
+| Book Covers Skyrim + SkyPatched + Missing Books | Corrected exact-file installs completed; payload winners and dependent patch freshness passed static verification | Runtime acceptance; retained publication/compatibility caveats below |
+| Apocalypse | Official 10.3.0 installed; vendor payload winners and dependent patch freshness passed static verification | Runtime acceptance; summoned-equipment and Locate Gold follow-up in #248 |
 | High Poly Project and relevant fixes | **Not installed; pending owner subset-versus-hold decision** | [#246: decision and asset defects](https://github.com/Ensrick/skyrim-mod-assistant/issues/246) |
 | Lucien follow-on | Main 1.7.2 installed by root; optional dialogue patches unselected | [#249: optional integrations, Lux, equipment and NFF safety](https://github.com/Ensrick/skyrim-mod-assistant/issues/249) |
 
@@ -18,10 +18,26 @@ No game was launched by these preparation tasks. **All gameplay, visual and
 performance acceptance remains UNVERIFIED.** No Lost Library, book PBR or paper
 upscaler, MIC, alternate garlic/coal mod, horse mod or crafting overhaul was
 approved as part of this batch. Research frequency is not installation authority.
-Before the Lucien follow-on, root reported Keep coverage of **200 installed Nexus IDs / 200 kept**,
-with no installed-ID gaps or skips; this is not a count of MO2 folders or an
-assertion that remaining gates passed. Lucien's main package was subsequently
-installed; its optional dialogue additions remain a separate owner decision.
+After the Lucien follow-on, root reported Keep coverage of **201 installed
+Nexus IDs / 201 kept**, with no installed-ID gaps or skips. This is not a count
+of MO2 folders or a runtime pass. The six newly installed Nexus identities
+also have independently verified author-attributed live Keep journal rows.
+Lucien's optional dialogue additions remain a separate owner decision.
+
+Final bounded static gates reported by root:
+
+- All **15 vendor runtime payload files** win with reviewed hashes, including
+  the two Lucien files added after the original 13-file batch check.
+- The owned weapon patch passed source and installed freshness verification:
+  354 audited inputs, 4,212 output rows, and 13 new speed overrides.
+- The owned cloak patch passed source/installed verification after transaction
+  `20260906T210050324Z-568092e477fe`, with an empty failure list.
+- Exactly 275 active profile plugins were synchronized to game-side activation
+  without launching the game; the prior activation file was retained. Local
+  receipt: `records-work/approved-activation-sync.json`.
+
+These scoped checks do not resolve open gameplay issues or imply a global
+preflight pass. The final aggregate static receipt remains root-owned.
 
 ## Book Covers Skyrim: exact route
 
@@ -141,11 +157,12 @@ not constitute a full audit of every legacy installer transaction path.
 [#247](https://github.com/Ensrick/skyrim-mod-assistant/issues/247), under lifecycle
 tracker[#235](https://github.com/Ensrick/skyrim-mod-assistant/issues/235), records
 the incident, source fix and recovery. Root's subsequent **13 runtime-payload
-winner checks passed**, including exact Original file40352 BSA hashes and ESLfy
-file467900 resource ESP hash. The incorrect Desaturated/non-ESL choices no longer
-win. Dependent weapon/cloak freshness, final receipts and runtime acceptance are
-still separate pending gates at this handoff. Do not replace a reviewed hash
-with an accidentally selected file's hash to make the gate green.
+winner checks passed**, subsequently extended to **15 with Lucien**, including
+exact Original file40352 BSA hashes and ESLfy file467900 resource ESP hash.
+The incorrect Desaturated/non-ESL choices no longer win. The final owned
+weapon/cloak source and installed freshness checks also passed; runtime
+acceptance remains unverified. Do not replace a reviewed hash with an
+accidentally selected file's hash to make the gate green.
 
 ## High Poly Project: held decision, not an installed full package
 
@@ -232,7 +249,7 @@ do not repackage this vendor binary as our original work.
 Local receipts: `records-work/aqf-install-20260906/intake.json` and
 `verification.json`; their stage-time status strings predate root's installation.
 
-## Apocalypse: installed 10.3.0; final gates and integration follow-up open
+## Apocalypse: installed 10.3.0; runtime and integration follow-up open
 
 The approved [Apocalypse - Magic of Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/1090)
 candidate is **10.3.0, file793875, uploaded 2026-08-23**, one full-slot ESP plus two BSAs, with Skyrim/Update/
@@ -309,8 +326,14 @@ permitted integration is evaluated. Evidence is in local
 Root added an exact weapon-policy exclusion for Lucien's invisible Hunger
 natural attack `2E447A:Lucien.esp`, preserving vendor speed **5**. The normal
 Jailer's Battle Axe and 20 conventional Apocalypse melee weapons follow the
-existing balancing policy. Weapon fixture tests passed, but final generated
-winner/freshness verification is **not yet claimed here**. The control staff
+existing balancing policy. Weapon fixture tests and root's final source and
+installed freshness verification passed. A separate refreshed
+weapon-output review classified all 98 added WEAP records and verified only
+13 speed overrides (12 Apocalypse weapons and the Jailer's Battle Axe).
+The invisible Hunger attack is absent from the generated override plugin,
+preserving speed 5, and the 15 prior manual rules remain unchanged. Evidence
+is local `records-work/lucien-install-20260906/weapon-review.json`; this
+bounded output check is not a global preflight or runtime pass. The control staff
 and internal/quest armor must not be automatically treated as generic loot.
 
 Lucien's author prohibits importing him into NFF management. Existing NFF
@@ -324,6 +347,25 @@ stage-time status strings predate the root installation. **No runtime test
 was performed by this work.**
 
 ## Provenance, publication and test boundaries
+
+The initial narrow author read found no stored exclusions for DanielCoffey
+(901), Ershin (82395), EnaiSiaion (1090), or JosephRussell (20035). It did find
+legacy raw Excluded entries for SICreef (user 2812107, mod 109254) and Hishigami
+(user 2977510, mod 149814).
+
+Root then refreshed the six existing Keep decisions through the supported
+relay with official author metadata. The final independent read verified all
+six exact live mod-journal rows: Keep status, Nexus username, user ID, and
+profile URL, applying `shared.js`'s supported nested-author normalization.
+**SICreef and Hishigami are both effectively not excluded**, because their
+author identities now match the current Keep author index and the extension
+intentionally filters kept authors out of its effective blocked list.
+
+The raw legacy exclusions remain stored; no Include journal override or raw
+entry deletion is claimed. Only `blockedAuthors`, `nlcAuthorDecision:*`, and
+the six exact mod-journal keys were read; the large `modDecisions` value and
+unrelated decisions were not read by this final check. No Firefox database,
+extension code, or author-list mutation was made by the verification task.
 
 Vendor archives, textures, meshes, PEX/ESP/DLL binaries and private generated
 artifacts remain local; original sources/plans and receipts may be published

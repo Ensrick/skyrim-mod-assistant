@@ -84,6 +84,42 @@
       "transaction": "20260830T032705514Z-789acb19674c"
     },
     {
+      "modId": 82395,
+      "modName": "Animation Queue Fix",
+      "nexusName": "Animation Queue Fix",
+      "version": "1.0.2",
+      "fileId": 798212,
+      "fileName": "Animation Queue Fix 82395 1.0.2 2026-08-31T16-18Z PuQ2UKIR4.7z",
+      "sizeMb": 3.52,
+      "sha256": "b2deff34aa462d5d439f56fe5ed86b32028e959ed02d361cacdc51504bab1b89",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:27:45Z",
+      "transaction": "20260906T202745090Z-bd8e9a92185e",
+      "note": "Official 1.0.2 file798212; exact DLL EC6F0C63...93DBEE passes Address Library V5 / 1.7.104 static gate. No loader-gate bypass or private binary change. Runtime UNVERIFIED; #129.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
+    },
+    {
+      "modId": 1090,
+      "modName": "Apocalypse - Magic of Skyrim",
+      "nexusName": "Apocalypse 10.3.0",
+      "version": "10.3.0",
+      "fileId": 793875,
+      "fileName": "Apocalypse 10.3.0 1090 10.3.0 2026-08-23T13-59Z 587RqTfqi.zip",
+      "sizeMb": 52.1,
+      "sha256": "738181f46eb4e6bdcdfc9da9093972454a2a6e16c354c627a4ceef9bd1894848",
+      "plugins": [
+        "Apocalypse - Magic of Skyrim.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:43:33Z",
+      "transaction": "20260906T204333169Z-65fc5e62e6cc",
+      "note": "Official10.3.0 file793875; full ESP and2BSAs, no DLL. Before Water for ENB/late worldspace forwards; no absent-master perk patches or automatic NPC spell distribution.95WEAP:20 conventional,75 staff/bow;12 new speed overrides. PopulateLists runs once after60unpaused seconds. BowOfShadowsFix active; shared brawl scripts match. #248 custom coin LocateGold follow-up. Runtime UNVERIFIED.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
+    },
+    {
       "modId": 32117,
       "modName": "Assorted Mesh Fixes",
       "nexusName": "Assorted Mesh Fixes",
@@ -517,6 +553,82 @@
       "enabled": true,
       "installedUtc": "2026-08-23T06:15:18Z",
       "transaction": "20260823T061517308Z-49d7d2e62794"
+    },
+    {
+      "modId": 901,
+      "modName": "Book Covers Skyrim - Original Assets",
+      "nexusName": "Book Covers Skyrim SE - Original",
+      "version": "4.2",
+      "fileId": 40352,
+      "fileName": "Book Covers Skyrim SE - Original.7z-901-4-2.7z",
+      "sizeMb": 463.7,
+      "sha256": "a93548075a094cce92b4330b8d092d7bbad5ac104ae991f0b6ad88ed01a0e429",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:43:30Z",
+      "transaction": "20260906T204308682Z-a164235012fc",
+      "fomodPlan": "records/fomod-plans/901-book-covers-original-assets.json",
+      "note": "Original 4.2 file40352: two BSAs only, no original ESP. ESLfy resource plugin in separate row loads matching-name archives. Exact payload hash PASS; no texture cap needed. Runtime UNVERIFIED.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
+    },
+    {
+      "modId": 109254,
+      "modName": "Book Covers Skyrim - SkyPatched Config",
+      "nexusName": "Book Covers Skyrim - SkyPatched",
+      "version": "4.2",
+      "fileId": 461289,
+      "fileName": "Book Covers Skyrim - SkyPatched-109254-4-2-1705245666.zip",
+      "sizeMb": 0.04,
+      "sha256": "abf05dbb392ab7fbddab2698a016866c404b4087761defa790653635a105465f",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:43:31Z",
+      "transaction": "20260906T204331042Z-0da11d41ed8a",
+      "fomodPlan": "records/fomod-plans/109254-book-covers-skypatched-config.json",
+      "note": "Main4.2 file461289: four book-art SkyPatcher INIs only. Required alongside separate ESLfy download which contains no INIs. Vendor bytes unchanged; runtime UNVERIFIED.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
+    },
+    {
+      "modId": 109254,
+      "modName": "Book Covers Skyrim - SkyPatched ESL Resource",
+      "nexusName": "ESLfy-Book Covers Skyrim - SkyPatched",
+      "version": "1.0",
+      "fileId": 467900,
+      "fileName": "ESLfy-Book Covers Skyrim - SkyPatched-109254-1-0-1707110137.zip",
+      "sizeMb": 0.02,
+      "sha256": "af85844bb420cd918b30e991ec76376fece46ce1363a95c49e21cf242a62c0f1",
+      "plugins": [
+        "Book Covers Skyrim.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:43:32Z",
+      "transaction": "20260906T204331780Z-d7c016ab8d2c",
+      "fomodPlan": "records/fomod-plans/109254-book-covers-skypatched-eslfy.json",
+      "note": "ESLfy1.0 file467900: resource-only ESP-FE, all1330 owned FormIDs compacted. Requires exact OG ESPFE treasure patch, not original-BCS patches. Runtime UNVERIFIED.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
+    },
+    {
+      "modId": 149814,
+      "modName": "Book Covers Skyrim - SkyPatched Missing Books",
+      "nexusName": "Book Covers Skyrim - SkyPatched Missing Books",
+      "version": "1.0.3",
+      "fileId": 755004,
+      "fileName": "Book Covers Skyrim - SkyPatched Missing Books-149814-1-0-3-1779451836.7z",
+      "sizeMb": 0.01,
+      "sha256": "962cb27fcf82ea22087566cd35f6a753e229fa5dd461e5c421da8fc71e21d19d",
+      "plugins": [
+        "BCS-SP_TreasureMaps.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:41:12Z",
+      "transaction": "20260906T204111718Z-a6a9068fa4e3",
+      "fomodPlan": "records/fomod-plans/149814-book-covers-missing-books-og-espfe.json",
+      "note": "1.0.3 file755004 FOMOD Required + BCS-Original ESPFE treasure maps. All910 original BOOKs covered;36 compacted resource links resolve. Nonexistent Skyrim.esm|1BEF1 extra INI target harmless; correct Dragonborn target already covered. Runtime UNVERIFIED.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
     },
     {
       "modId": 33261,
@@ -1492,14 +1604,14 @@
       "version": "0.1.0",
       "fileId": 0,
       "fileName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
-      "sizeMb": 0.115,
-      "sha256": "8539d678b1cb63cafdf496158b4c3de17bdcf032dd93badb165b3cc3e3079f56",
+      "sizeMb": 0.12,
+      "sha256": "ffd3ef7807f516463efc698599b5bf87818bb1d2d94585a93e5e072884c1568e",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-06T17:58:56Z",
-      "transaction": "20260906T175856840Z-a7633843ec76",
+      "installedUtc": "2026-09-06T21:00:50Z",
+      "transaction": "20260906T210050324Z-568092e477fe",
       "refreshNote": "Currency 0.4.0 reservation refresh: 350 plugins, 35 SkyPatcher files, 569 parsed meshes, 240 unchanged directives. Static/installed freshness PASS; gameplay UNVERIFIED.",
-      "note": "#240. Original slot58/index28 reservation for 240 full-cloak ARMO and attached ARMA preserves existing masks and ten exempt Pelts mantle-family pieces. Proof: 350 plugins, 8759 ARMO / 4315 ARMA declarations, 576 model paths / 569 parsed winners, no partition58 hits and seven preexisting absence sentinels. Config SHA5716AE2F...1ECDF unchanged; priority286. No mesh, physics, distribution or saved-inventory changes. Collar/cloth46 and mantle/fur57 conflicts retained. Gameplay UNVERIFIED; missing models remain #241. Source audit/cloak_exclusivity.py; receipt records/source-builds/ensrick-full-cloak-exclusivity.json.",
+      "note": "Approved BCS/Apocalypse/Lucien/AQF and preceding JS/Inigo additions. All240 directives unchanged; five exact BOOK-only configurations reviewed; no new cloak scope or distribution. Static installed gate PASS; runtime UNVERIFIED. See records/source-builds/ensrick-full-cloak-exclusivity.json.",
       "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
       "distribution": "distributable",
       "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
@@ -2901,17 +3013,17 @@
       "nexusName": "Ensrick-owned source-built weapon-speed normalizer",
       "version": "0.3.0",
       "fileId": 0,
-      "fileName": "Ensrick-Weapon-Speed-Balance-0.3.0-currency-0.4-final.zip",
-      "sizeMb": 0.641,
-      "sha256": "191a9a4886d80913a0f9bce9174e5f1ca0bfe0b609d9794c84c51a712602a231",
+      "fileName": "Ensrick-Weapon-Speed-Balance-0.3.0-approved-batch-final.zip",
+      "sizeMb": 0.65,
+      "sha256": "3d128dc09421b12ca6ecc0bf6507ca82212fe7029363bbbb1b202b5c29c24c0d",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-06T17:48:20Z",
-      "transaction": "20260906T174820592Z-0fdb94f225b8",
+      "installedUtc": "2026-09-06T21:02:03Z",
+      "transaction": "20260906T205655761Z-5f8bc65f551b",
       "refreshNote": "Currency 0.4.0 input-hash refresh only: 350 runtime plugins / 349 inputs, exact weapon ESP and 27 translations unchanged. Final-winner and freshness checks PASS.",
-      "note": "#239. Source 043ccfd; 3481 speed-only WEAP overrides, 40 exact masters, 27 localized sidecars and 4191 final balance/preserve rows. Global patch remains last at managed priority273. Nine curated longswords retain Speed1.0. Ledger SHA is the current archive; exact ESP and provenance: records/source-builds/ensrick-weapon-speed-balance.json. Private generated output pending rights review; original generator distributable. Runtime UNVERIFIED; no game launched."
+      "note": "Approved AQF/BCS/Apocalypse/Lucien installation and preceding JS/Inigo changes. 13 new conventional WEAP speed overrides (12 Apocalypse, one Lucien); exact invisible Hunger helper exclusion. All original speed policy, damage, fields, translations and private longsword rules preserved. Final static/freshness PASS; runtime UNVERIFIED. Source receipt records/source-builds/ensrick-weapon-speed-balance.json."
     },
     {
       "modId": 0,
@@ -3713,6 +3825,26 @@
       "note": "Private local SSE conversion of the user-supplied original two-handed v1.1 archive (SHA-256 51B08826468746B661AB81B3526C8D79925A8F1C021214EC265F525A3998E52D). The separately audited 2024 SSE upload 126568 was not used: it is the one-handed edition, retains a form-40 plugin, and its meshes retain Skyrim LE stream 83. Installed payload audit: form-44/header-1.7 LostLongSwords.esp (SHA-256 436E46C2BE9D25B0FD726271712421265C6309DB8C69D8A8AE8C7FF06EC5B54D), 12 surviving TwoHandSword/TwoHanded WEAP records, 11 SSE stream-100/BSTriShape meshes, 66 DDS textures, 0 unresolved links, and no Dragonbone records or assets. The July balance decision intentionally retains the original faster/lighter two-handed niche (generally speed 0.80, reach 1.15, stagger 0.90); WeaponBalancePatch.esp does not yet include these FormKeys. Compatibility and balance follow-up is tracked in issue #237. Evidence and regeneration procedure: ports/lost-longswords/COMPARISON.md, ports/lost-longswords/BALANCE.md, ports/lost-longswords/stage-private-port.ps1, and ports/lost-longswords/audit-private-port.ps1.",
       "distribution": "local-only",
       "distributionBasis": "MrBrownstone's Nexus permissions prohibit re-upload and require permission to modify; the converted archive, converted assets, and generated plugin must not be bundled or uploaded. Public packaging may reference the authorized original download and the repository's local transformation/validation recipe only, subject to the policy in records/restricted-mods.json and REDISTRIBUTION.md."
+    },
+    {
+      "modId": 20035,
+      "modName": "Lucien - Immersive Fully Voiced Male Follower",
+      "nexusName": "Lucien",
+      "version": "1.7.2",
+      "fileId": 770173,
+      "fileName": "Lucien 20035 1.7.2 2026-06-30T22-11Z uhRBKsylB.zip",
+      "sizeMb": 210.45,
+      "sha256": "2d9ac2131ce7ebf1316e8f3d7563d03397c7eb56fadf54cb5a8c06ba68ef977d",
+      "plugins": [
+        "Lucien.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-06T20:48:48Z",
+      "transaction": "20260906T204846860Z-135ab81f06a8",
+      "fomodPlan": "records/fomod-plans/20035-lucien-main.json",
+      "note": "Official1.7.2 file770173 full ESP+BSA before SkyrimUnbound/Lux. No new runtime DLL; no current competing NAVM. Never import into NFF/Proteus follower management. Old Lux patch held: reintroduces5 retired references and resets3 music fields. Official AE/Bruma/Moonpath dialogue additions awaiting owner decision, not installed. Built-in Apocalypse training supported. Invisible Hunger attack excluded from weapon normalization; battleaxe normalized. #249; runtime UNVERIFIED.",
+      "staticVerification": "PASS: exact installed payloads and active file winners; see docs/APPROVED-INSTALL-BATCH-2026-09-06.md",
+      "runtimeVerification": "UNVERIFIED; no game launch"
     },
     {
       "modId": 75349,

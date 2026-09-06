@@ -34,6 +34,13 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-06 16:06 — Book Covers, Animation Queue Fix, Apocalypse and Lucien
+
+- **What:** Installed official Animation Queue Fix 1.0.2, Book Covers Skyrim Original 4.2 with SkyPatched main + ESLfy + Missing Books 1.0.3, Apocalypse 10.3.0, and Lucien 1.7.2. HPP remains staged, not installed or kept, pending the owner's subset-versus-hold decision (#246). Lucien's optional official commentary add-ons also await a decision; an obsolete Lux integration is held (#249).
+- **Source:** User's explicit installation approvals. [Batch report](docs/APPROVED-INSTALL-BATCH-2026-09-06.md), exact durable FOMOD plans and installed ledger. Fixed an exact-file CLI option silently ignored by the installer (#247): incorrect initial BCS variants were replaced and exact winning hashes verified before any game launch. No vendor asset, plugin or DLL was edited.
+- **Compatibility:** Regenerated the owned weapon patch: 3,494 speed-only overrides / 42 masters / 354 inputs, including 13 new overrides. Lucien's invisible Hunger attack is explicitly excluded, retaining speed 5. Refreshed cloak proof over 355 runtime plugins / 569 resolved meshes / 40 SkyPatcher configurations; all 240 cloak directives remain byte-identical. Existing worldspace and lighting forwards retain priority. No unrelated plugin was disabled; all prior relative ordering is retained except putting the global weapon patch last.
+- **Verification:** **UNVERIFIED in game; no visible or audible launch.** Fifteen exact vendor payload winners, repeat weapon builds, semantic and final-winner checks, weapon/cloak freshness, currency and focus pairing, controller audit and ledger checks pass. Keep is 201/201, with attributed metadata so kept authors are not effectively excluded. Game-side activation now matches all 275 active managed plugins; its prior file is retained. [Static receipt](records/approved-install-batch-2026-09-06.json) lists the intentionally omitted mutable snapshot/save-mirroring steps and preexisting warnings. Fresh-character acceptance remains required for the existing currency package; no old save was loaded or altered.
+
 ## 2026-09-06 15:19 — JS Dragon Claws AE in; Skyrim 3D Trees and Plants skipped
 
 - **What:** Installed JS Dragon Claws AE (57038, v1.32, 1k) with the Wyrmstooth patch only, and queued a skip for Skyrim 3D Trees and Plants (12371).
