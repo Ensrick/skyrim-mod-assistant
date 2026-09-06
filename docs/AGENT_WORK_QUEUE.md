@@ -5,6 +5,11 @@ does not disappear when all concurrency slots are occupied. It is not authority
 to install dependencies or change Keep/Skip decisions that the user has not
 approved.
 
+## Current repair batch — 2026-09-06 UTC
+
+- Root: player-arrow0.3.4 installed, WindowFocusGuard0.1.0 and paired cursor configuration installed. Native tests/audits pass; gameplay/desktop acceptance **UNVERIFIED**, #149 and arrow runtime issue1 remain open. No game launch. Canonical four preexisting conflict reports protected.
+- Currency lead: isolated `ece-null-location-guard`, native single accounting owner under `mods/currency-integration/native`; generator child owns denomination forms, static purse pools and exact ECE quest neutralization; API-mapping child owns read-only runtime/QuickLoot evidence. User-approved1/10/100 and mixed regional loot, #217. **Not installed; implementation active**, not a deferred user decision. No vendor PSC rebuild or live mutations by children.
+
 ## Coordination board - Claude <-> Sol 5.6 (user directive 2026-09-02)
 
 **Canonical handshake file (Sol created it, both use it):**

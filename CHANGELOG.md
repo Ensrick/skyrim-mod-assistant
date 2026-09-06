@@ -34,6 +34,18 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-05 23:06 — Foreground cursor owner replaces unconditional confinement
+
+- **What:** Installed original WindowFocusGuard0.1.0 as a separate native mod and changed only the owned Display Tweaks `LockCursor` key to false. Official rendering/Havok, framerate119, borderless configuration and Media Keys Fix remain. A dedicated message thread releases cursor ownership on Win/AltTab/focus loss and refuses foreign HWNDs; file logging never blocks its keyboard hook. Added paired-configuration preflight and CI tests. Refreshed the cloak reservation for the added enabled-mod fingerprint; all240 directives and meshes unchanged.
+- **Source:** User's latest inaccessible desktop/cursor report; [#149](https://github.com/Ensrick/skyrim-mod-assistant/issues/149). Official0.5.25 binary contains an unconditional GetWindowRect/ClipCursor callback; prior INI-only fixes did not meet the workflow. Three independent-review findings corrected before install.
+- **Verification:** **UNVERIFIED in game.** Native /W4/WX build, production policy/ownership tests, deterministic DLL, exact SKSE admission and installed hashes pass. Controller audit zero errors. Transactions guard `20260906T040650030Z-9a0f6eaed14d`, paired config `20260906T040650175Z-4f4630102ec4`, cloak proof `20260906T041018318Z-8af27c81c015`. No game launched; repeated Win/click/AltTab/scroll/menu/shader/exit acceptance remains open. Source-build receipt `records/source-builds/window-focus-guard-0.1.0.json`.
+
+## 2026-09-05 22:58 — Ordinary arrow admission repair 0.3.4
+
+- **What:** Replaced the owned arrow overlay only. Removed the mistaken assumption that projectile bit15 identifies an exceptional lifecycle: the current engine sets it on ordinary non-hitscan arrows. Actual explosion/chain-shatter exclusions, queued damage, killing-hit preservation, target rules and configuration remain unchanged. Added bounded, reason-specific admission telemetry.
+- **Source:** User's latest full-health player reproduction; latest0.3.3 log and independent executable inspection. [Runtime issue1](https://github.com/Ensrick/ConditionalArrowEmbedding/issues/1), source890831b/PR5.
+- **Verification:** **UNVERIFIED in game.** Five CTest groups,16-case actual helper matrix, four negative controls, executable/binary audits and reproducible DLL/package pass. Config and installed DLL hashes match; priority249 preserved. Transaction `20260906T035829555Z-a3dd4d4a48e6`; receipt `records/source-builds/conditional-arrow-embedding-0.3.4.json`. No game launch, issue closure or stable release.
+
 ## 2026-09-05 21:47 — Arrow lethal-hit timing repair 0.3.3
 
 - **What:** Replaced only the owned Conditional Arrow Embedding overlay from clean source `8bb94a3`. Observes actual queued damage completion, then releases the current impact to visual processing. Killing hits retain vanilla embedding; surviving humanoids follow the existing head/body threshold rules. Fixed-capacity/expiry and exact live-impact guards preserve vanilla when uncertain. Native handled-marker checks prevent replaying damage. Config, enabled state, priority and all mod/plugin entries unchanged.

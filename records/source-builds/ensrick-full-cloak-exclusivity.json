@@ -11,19 +11,19 @@
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/240",
   "reservedBipedSlot": 58,
   "skyPatcherIndex": 28,
-  "installedUtc": "2026-09-06T02:26:23Z",
-  "transaction": "20260906T022623085Z-2513a72abcd4",
-  "refreshReason": "Re-audit after approved SoS HDT physics input and Bruma helmet overlay. Original240 config directives unchanged; current winning meshes and plugin list rebound.",
+  "installedUtc": "2026-09-06T04:10:18Z",
+  "transaction": "20260906T041018318Z-8af27c81c015",
+  "refreshReason": "Re-audit after the original WindowFocusGuard adds an enabled mod to the strict profile fingerprint. Same349 plugins/569 meshes/all240 directives; no equipment behavior changes.",
   "enabled": true,
   "modPriority": 286,
   "packageName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
-  "packageBytes": 120279,
-  "packageSha256": "AA9665C5E15BA068E4013098362B5E92A3F3D0A1A65D4495F2F2BD082DD89E00",
+  "packageBytes": 120308,
+  "packageSha256": "BDD2C0FCBDB436DEE63CA51017678A64287371F2B69DC6D84B167713C1D54589",
   "configPath": "SKSE/Plugins/SkyPatcher/armor/Ensrick Full Cloak Exclusivity/Full Cloaks.ini",
   "configBytes": 20078,
   "configSha256": "5716AE2FF6B0CA0C76EB766E1694ED88A6CC18250DA70A758D7E85EB98F1ECDF",
-  "manifestSha256": "7B74293D66F47BF37109CC576E13F2BB24F4F5AF57E9E15569189A77319FC869",
-  "layerProofSha256": "3F4632FD4BFC5D87FBBA5A456A17D0112622BA8A3E0F33A8041540B1F8E8BD75",
+  "manifestSha256": "60A5469BD85C860948A42263CAE2020A93B4402CDD8629EA02367CF15A69EAC1",
+  "layerProofSha256": "264056A8258F07BE6D61280C73ABD6B0C89BB5748B30BB271774811A0AA125A9",
   "counts": {
     "fullCloakDirectives": 240,
     "excludedItems": 232,
@@ -55,5 +55,5 @@
     "Reservation is profile-specific. Relevant mod/plugin/config/mesh changes require re-audit before reuse."
   ],
   "distribution": "Original MIT source/configuration; no vendor binary assets",
-  "rollback": "MO2Headless rollback 20260906T022623085Z-2513a72abcd4 while holding the claim and with game/MO2 closed; prior reservation cannot be reused with changed physics inputs without re-audit"
+  "rollback": "MO2Headless rollback20260906T041018318Z-8af27c81c015 under claim with game/MO2 closed; older fingerprint requires review after removing the focus guard"
 }
