@@ -106,7 +106,10 @@ body-jiggle physics, glossy/flawless skin art direction. Parody and meme mods
 fail the earnestness bar and are Claude's call.
 
 **Everything else is the user's.** Sexual or skimpy content is never a reason to
-skip - flag it and leave it undecided. Author-level exclusion is his alone.
+skip - flag it and leave it undecided. Author-level exclusion is his alone: the
+standing list is `docs/EXCLUDED_AUTHORS.md` (Elianora, since 2026-09-06). A
+batch mod by a listed author gets flagged as such in the report, never skipped
+on Claude's own authority, and no name is ever added to that list by a review.
 
 ## Report format
 

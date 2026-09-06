@@ -34,6 +34,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-06 14:53 — Elianora excluded; Bloodchill entrance fixed with our own Dawnguard forward
+
+- **What:** Removed `Inigo - Bloodchill Manor Patch` (Nexus 58317, Elianora) and replaced it with `Ensrick - Inigo Bloodchill Landscape Forward`, built here. Root cause found: `Inigo.esp` lists only Skyrim.esm and Update.esm as masters, so the CK wrote its `LAND 00009FC4` and `NAVM 001062F7` from the Skyrim.esm versions and silently reverted Dawnguard.esm - which is what digs the ravine the CC entrance sits in. Our 4-record ESL-flagged patch forwards Dawnguard's landscape *and* navmesh byte-for-byte, so it fixes the buried door and the follower pathing that previously needed a second Nexus mod. New standing list: `docs/EXCLUDED_AUTHORS.md`.
+- **Source:** User, verbatim: *"We need a different patch or to make our own. I don't trust or use anything from Elianora"* and *"remove her patch from our list, and make sure it's documented not to use her mods."* Evidence, measurements and the deliberate navmesh trade-off: [record](records/inigo-bloodchill-landscape-forward-2026-09-06.md); build source `mods/inigo-bloodchill-landscape/`.
+- **Verification:** **UNVERIFIED in game.** Two builds byte-identical (`287c43a7...4e7ca`); LAND/NAVM identical subrecord-by-subrecord to Dawnguard.esm; heights 0/1089 vertices differ; Spriggit 0.41.0 `--Check --ErrorOnUnknown` exit 0; Mutagen reads 4 records with the CELL location resolving to Inigo.esp; load-order scan shows this plugin as the sole winner of both records; `install_mod.py --verify` `0 problem(s)`. All 230 Nexus-sourced ledger rows re-checked for the excluded author: 0 matches. MO2 trash is recoverable (`20260906T195320022Z-44a3cd70f0f4`); no game or MO2 GUI was running.
+
 ## 2026-09-06 13:03 — Complete copper/silver/gold tiers for every supported design
 
 - **What:** Replaced incomplete currency 0.3.0 with 0.4.0: 18 designs, 54 canonical physical tiers plus one alias, all 1/10/100. Added the required regional-purse companion and completed ancient/site routing, assets and whole-purse mixed payouts. Removed an unsafe SkyPatcher file-order assumption with two exact-path ECE overrides; no vendor files changed. Weapon ESP/27 translations and 240 cloak directives remain unchanged after refreshed proofs.
