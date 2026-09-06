@@ -11,24 +11,25 @@
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/240",
   "reservedBipedSlot": 58,
   "skyPatcherIndex": 28,
-  "installedUtc": "2026-09-06T00:58:02Z",
-  "transaction": "20260906T005802828Z-936f950b7292",
+  "installedUtc": "2026-09-06T02:26:23Z",
+  "transaction": "20260906T022623085Z-2513a72abcd4",
+  "refreshReason": "Re-audit after approved SoS HDT physics input and Bruma helmet overlay. Original240 config directives unchanged; current winning meshes and plugin list rebound.",
   "enabled": true,
   "modPriority": 286,
   "packageName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
-  "packageBytes": 119525,
-  "packageSha256": "FD8F0510ECDB2FD39DA6A0BC6464FCF44CC3EAB786FFAA5456028ECE38714BF7",
+  "packageBytes": 120279,
+  "packageSha256": "AA9665C5E15BA068E4013098362B5E92A3F3D0A1A65D4495F2F2BD082DD89E00",
   "configPath": "SKSE/Plugins/SkyPatcher/armor/Ensrick Full Cloak Exclusivity/Full Cloaks.ini",
   "configBytes": 20078,
   "configSha256": "5716AE2FF6B0CA0C76EB766E1694ED88A6CC18250DA70A758D7E85EB98F1ECDF",
-  "manifestSha256": "3EAB5D89206C3C7E6B6243136CC28907C0B6C4F13756D81648E8D2B93BB9BA4C",
-  "layerProofSha256": "926EA4A3CF92C56EE0EBF3DAB67C7E0EE80CA596023744246BCFB6DA1374E597",
+  "manifestSha256": "7B74293D66F47BF37109CC576E13F2BB24F4F5AF57E9E15569189A77319FC869",
+  "layerProofSha256": "3F4632FD4BFC5D87FBBA5A456A17D0112622BA8A3E0F33A8041540B1F8E8BD75",
   "counts": {
     "fullCloakDirectives": 240,
     "excludedItems": 232,
     "pairwiseExclusions": 28680,
-    "pluginsAudited": 348,
-    "armorDeclarations": 8747,
+    "pluginsAudited": 349,
+    "armorDeclarations": 8759,
     "armorAddonDeclarations": 4315,
     "targetedArmorAddons": 224,
     "explicitModelPaths": 302,
@@ -42,8 +43,8 @@
     "strictReaderTestsPassed": 12
   },
   "staticVerification": "PASS: installed hashes, input/asset freshness and zero-error MO2 audit",
-  "pluginListPreservedSha256": "F5066BAF08B5A066E5EB70EBE22B0AB6CABA9D1F23681197DFF9CA87AA37EA0A",
-  "keepCoverage": "PASS:287 installed directories,194 Nexus IDs,194 live Keeps; first-party artifact has no Nexus identity",
+  "pluginListScope": "Cloak overlay adds no ESP. This refresh follows addition of approved SonS_HDT_patch.esp before final WeaponBalancePatch.esp.",
+  "keepCoverage": "195 installed Nexus identities; new114690 Keep queued for Firefox pickup with author metadata. First-party artifact has no Nexus identity.",
   "runtimeVerification": "UNVERIFIED: no game launched; player/NPC equip and appearance matrix still required",
   "scopeLimits": [
     "Adds no physics and changes no meshes, distribution, spare inventory or saved worn flags.",
@@ -54,5 +55,5 @@
     "Reservation is profile-specific. Relevant mod/plugin/config/mesh changes require re-audit before reuse."
   ],
   "distribution": "Original MIT source/configuration; no vendor binary assets",
-  "rollback": "MO2Headless rollback 20260906T005802828Z-936f950b7292 while holding the claim and with game/MO2 closed"
+  "rollback": "MO2Headless rollback 20260906T022623085Z-2513a72abcd4 while holding the claim and with game/MO2 closed; prior reservation cannot be reused with changed physics inputs without re-audit"
 }

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "note": "User approved the existing Sons of Skyrim physics mod on 2026-09-06. Nexus SSE114690 main file483316 v1.1; source archive SHA256 C2037FE08D4CF4EA6B3B8BB24E1C7C3B64F608F72D491C59C8E5D3C32DC97FB0. Install the author's 48 meshes, two SMP XMLs and full 12-override ESP unchanged. Exclude promotional PNG only. Sentinel optional file484635 is not applicable. ESP must follow NW_Sons_of_Skyrim.esp; regenerate owned equipment reservation and weapon freshness audit. FSMP and SoS are already installed prerequisites. This plan does not grant redistribution rights for vendor assets.",
+  "mappings": [
+    { "source": "Sons of Skyrim HDT Cloaks 1_1/Meshes", "destination": "Meshes" },
+    { "source": "Sons of Skyrim HDT Cloaks 1_1/SKSE", "destination": "SKSE" },
+    { "source": "Sons of Skyrim HDT Cloaks 1_1/SonS_HDT_patch.esp", "destination": "SonS_HDT_patch.esp" }
+  ]
+}

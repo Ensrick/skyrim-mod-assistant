@@ -80,6 +80,8 @@
 !/records/cloak-framework-rebuild-2026-09-02.md
 !/records/cloak-layer-audit-2026-09-02.md
 !/records/arrow-cloak-playtest-regressions-2026-09-05.md
+!/records/playtest-followup-2026-09-06.md
+!/records/log-triage-2026-09-06.md
 !/records/book-covers-audit-2026-09-03.md
 !/records/cloak-install-2026-09-02.md
 !/records/oar-ied-rebuild-2026-09-02.md
@@ -250,6 +252,7 @@
 !/audit/
 !/audit/*.py
 !/audit/generate_nif_slot_layer_proof.ps1
+!/audit/repair_bruma_iron_helmet.ps1
 !/audit/*.md
 !/audit/watched_configs.json
 !/audit/fixtures/

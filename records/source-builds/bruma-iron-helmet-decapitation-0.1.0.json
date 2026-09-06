@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Bruma Iron Helmet Decapitation Repair",
+  "version": "0.1.0",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/242",
+  "recipe": "audit/repair_bruma_iron_helmet.ps1",
+  "recipeSha256": "5BF12108E9DC25FD75F4AB241612DD8C655D6740CF763CD66F2ADDCFA6688E83",
+  "input": {
+    "provider": "Beyond Skyrim - Bruma / BSHeartland - Textures.bsa",
+    "path": "meshes/bscyrodiil/armor/iron/cyrironhelmet.nif",
+    "bytes": 99651,
+    "sha256": "892AED580ACF254840E026CC0BA1919D29594C65E3448D69EE9290F16AC4968F"
+  },
+  "change": "BSDismemberSkinInstance partition0 Body Part 31 to 131, byte586 only; all other99650 bytes and decoded semantics preserved",
+  "meshSha256": "AC0A5D396756ECCBC7577945E5DBFEDC74BD0F40A28A0D0DAEAD3376AD02CCD8",
+  "packageSha256": "9D2E60BDA215CD25FCBE5708660BE68F37107B8ECA0678046EF44404AC224E91",
+  "packageBytes": 44251,
+  "installedUtc": "2026-09-06T02:22:23Z",
+  "transaction": "20260906T022223092Z-a95265063f98",
+  "modPriority": 288,
+  "verification": [
+    "Three independent recipe runs agree on mesh and deterministic package hashes.",
+    "Source/output decoded using NiflySharp1.1.0 through HousecarlCore; vanilla and beast variants independently compared.",
+    "AST parse and live-instance, game-directory and existing-output negative guards pass.",
+    "Installed loose winner equals generated mesh; vendor BSA/ESP remain untouched."
+  ],
+  "featureDefaultsDiff": {"changed": {}, "onlyInBuilt": {}, "onlyInUpstream": {}, "note": "No runtime/config defaults; one explicitly requested mesh metadata repair."},
+  "runtimeAcceptance": "UNVERIFIED: no game launch; fresh humanoid decapitations and normal equip/render behavior required",
+  "distribution": "Original MIT recipe/report can be public. Modified third-party NIF and generated ZIP remain user-local; users must generate from their own Bruma download.",
+  "rollback": "Disable/remove only this owned overlay under claim with game/MO2 closed; vendor archive remains unchanged."
+}

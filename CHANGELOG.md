@@ -34,6 +34,30 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-05 21:47 — Arrow lethal-hit timing repair 0.3.3
+
+- **What:** Replaced only the owned Conditional Arrow Embedding overlay from clean source `8bb94a3`. Observes actual queued damage completion, then releases the current impact to visual processing. Killing hits retain vanilla embedding; surviving humanoids follow the existing head/body threshold rules. Fixed-capacity/expiry and exact live-impact guards preserve vanilla when uncertain. Native handled-marker checks prevent replaying damage. Config, enabled state, priority and all mod/plugin entries unchanged.
+- **Source:** User's one-shot and above50%-health killing-hit failures; exact executable shows ProcessHit can queue and return before damage. [Runtime issue1](https://github.com/Ensrick/ConditionalArrowEmbedding/issues/1), source PR5; independent author/reviewer/root audits.
+- **Verification:** **UNVERIFIED in game.** Four final CTest groups, native control-flow audit, binary audit,19-file manifest and deterministic package pass. Installed DLL/config hashes match. Transaction `20260906T024735778Z-7d0cdb78853b`; receipt `records/source-builds/conditional-arrow-embedding-0.3.3.json`. No game launched, no stable release or issue closure. Real damage/visual and cross-load matrix remains required.
+
+## 2026-09-05 21:33 — CDF signed inventory-count safety repair
+
+- **What:** Replaced only the owned CDF native overlay with the reviewed canonical CI build at code `78fdfd9`; rejects nonpositive signed deltas before inventory mutations, checks aggregation and bounds work. Existing runtime/onlyVendors fixes, vendor rules, enabled state and priority remain. No save or existing inventory cleanup.
+- **Source:** User requested log-fault repairs; current negative-count warning and [#230](https://github.com/Ensrick/skyrim-mod-assistant/issues/230), fork PR2. Reused existing Sol work; no parallel reimplementation.
+- **Verification:** **UNVERIFIED in game.** Root native count tests and onlyVendors regression pass; canonical artifact provenance, runtime metadata and installed DLL SHA pass. Transaction `20260906T023351175Z-7c83c3949254`; receipt `records/source-builds/ensrick-cdf-nonpositive-counts-20260906.json`. No game launched.
+
+## 2026-09-05 21:26 — Approved SoS cloak physics and dependent receipts
+
+- **What:** Installed unchanged [Sons of Skyrim HDT Cloaks v1.1](https://www.nexusmods.com/skyrimspecialedition/mods/114690), main483316 only:48 NIFs,2 XMLs,12-override ESL-flagged ESP. Regenerated Full Cloak Exclusivity reservation and Weapon Speed Balance metadata for the new actual inputs. All240 cloak directives, the complete weapon ESP and27 translations are unchanged. Added only the new SoS ESP to game-side activation; existing row order retained and original backed up.
+- **Source:** User explicitly requested third-party SoS physics; #95/#240. Vendor source and assets remain unchanged; external download required. Initial four-female-XML suspicion was disproven by actual NIF string references; #244 closed without any asset edit.
+- **Verification:** **UNVERIFIED in game.** Two-pass install with first pass rolled back; all51 vendor files match archive;48 actual root XML links correct;349-plugin/576-path cloak audit and348-input weapon freshness pass. MO2 audit zero errors. Keep114690 is queued but not acknowledged by Firefox; installed195/liveKeep194 is a known blocking sync gap, not a completed installation. Receipts in `records/playtest-followup-2026-09-06.md`; physics/equipment acceptance requires fresh gameplay.
+
+## 2026-09-05 21:22 — Bruma human/elf iron helmet partition repair
+
+- **What:** Installed separate user-local mesh overlay; corrected dismember partition31 to131, changing one byte and preserving the other99,650. No plugin, armor slots, beast-race meshes, geometry or vendor BSA changes.
+- **Source:** User's floating Cyrodiil iron helmet after decapitation; [#242](https://github.com/Ensrick/skyrim-mod-assistant/issues/242). Exact vanilla and Bruma beast-variant comparisons support the repair.
+- **Verification:** **UNVERIFIED in game.** Independent parse, three deterministic builds, output-safety tests and installed hash pass. Transaction `20260906T022223092Z-a95265063f98`; receipt `records/source-builds/bruma-iron-helmet-decapitation-0.1.0.json`. Publish original recipe only; generated vendor-derived NIF remains private. Fresh decapitation/equip tests remain open.
+
 ## 2026-09-05 19:58 — Full-cloak equipment exclusivity 0.1.0
 
 - **What:** Installed one first-party SkyPatcher overlay for 240 exact full-cloak records, using audited unused slot 58 while preserving original slots and every mesh. Ten Pelts mantle-family pieces, collars, scarves and unrelated accessories are excluded. Added a preflight freshness gate, strict record reader, reproducible mesh-proof tool and CI regression suites. No third-party mod, physics, distribution or save mutation.

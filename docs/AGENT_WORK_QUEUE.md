@@ -224,6 +224,18 @@ assignment is started.
 - SoS HDT cloak patch SSE114690/main file483316 audited but NOT installed or added to Keep; user approval remains outstanding. Missing Horker pauldron meshes tracked separately in #241. CoS/ElSopa physics #193 remains open.
 - User is starting a playtest. Live claim released; all agents finished. No live profile/game changes during testing. Root is committing only this campaign's exact source/docs/ledger paths; the four preexisting dirty conflict reports are excluded.
 
+## 2026-09-06 Astra follow-up — installed/static-tested; acceptance open
+
+- User reports lethal arrows still bounce, a decapitated Bruma Cyrodiil iron helmet floats, and earlier Bards College wall flicker; explicitly approves using a third-party Sons of Skyrim cloak physics mod.
+- `arrow_runtime_fix`: lethal-hit native timing diagnosis and source/build/tests only. Root deploys.
+- `cloak_slots_fix`: exact Bruma helmet record/mesh decapitation diagnosis and separate repair proposal only. No cloak-generator or live writes.
+- `oldrim_12506_web`: current/archived log triage and Solitude overlap investigation only; no Fable INI or conflict-report edits.
+- Root: approved SoS HDT main-file install, dependent cloak/weapon audit regeneration, Keep/ledger/issues, serialized deployment under claim with game/MO2 closed. No game launch or unapproved third-party adoption.
+- Outcomes: arrow0.3.3 source8bb94a3 deployed after independent review; Bruma one-byte helmet repair installed as separate user-local recipe output; unchanged SoS physics main483316 installed and all48 root-linked SMP references audited. Cloak240 directives and weapon ESP/translations unchanged after dependent receipt regeneration. Existing CDF PR2 signed-count guard installed after root review/tests (#230).
+- `cloak_slots_fix` also independently reviewed arrow control flow and EC null guards. `oldrim_12506_web` prepared a private EC candidate; release held because decompiled-source recompilation needs unrelated-function PEX preservation proof (#209). No currency script/oracle change authorized beyond this bounded repair.
+- Bards College #243 needs precise visual/reference evidence; no city/INI edits. Missing Forsworn TRI #245 tracked. Raw-NIF-string false positive #244 disproven/closed; no XML repair made.
+- Current remaining gates: no game launch or feature acceptance yet; Keep114690 queued but Firefox unacknowledged (195 installed Nexus IDs/194 Keeps). Do not call the batch gameplay-verified or curation-synchronized. Complete record: `records/playtest-followup-2026-09-06.md`. Four preexisting dirty conflict reports remain excluded from this campaign.
+
 ## Overnight 2026-09-02 (Claude side) - do not double-dispatch
 
 User is asleep; Sol 5.6 is also working. Claude-side agents in flight, each

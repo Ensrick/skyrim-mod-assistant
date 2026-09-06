@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "component": "CDF 1.7.104 Native Overlay - Ensrick",
+  "version": "3.1.0-ensrick-count-safety",
+  "pluginReportedVersion": "3.1.0",
+  "sourceRepository": "https://github.com/Ensrick/DynamicContainerInventoryFramework",
+  "sourceCommit": "78fdfd9be3daf8eecbd50dc0b90c8ae6c9dd2d80",
+  "provenanceCommit": "785c3cbac4259f0443f22c832a2d7a7b19f6de7d",
+  "pullRequest": "https://github.com/Ensrick/DynamicContainerInventoryFramework/pull/2",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/230",
+  "license": "Apache-2.0",
+  "ciRun": 33920959352,
+  "ciArtifactId": 9955063110,
+  "ciArtifactDigest": "sha256:049a433b67e10eb61a3764340b1f1989dbb4d52b10afc0a17e34ad48135fa419",
+  "installedUtc": "2026-09-06T02:33:51Z",
+  "transaction": "20260906T023351175Z-7c83c3949254",
+  "modPriority": 275,
+  "dllBytes": 1132544,
+  "dllSha256": "69F3CA642F902ABD321B5A526D41A7827E7120757BD3D35D5ABFA74C837A7F5D",
+  "pdbBytes": 29036544,
+  "pdbSha256": "526E2199953F7CB77B5C23D96E3F68C77D4591D5ECB84E30C6CE988B16731160",
+  "buildManifestSha256": "DC82D4BE76F37766A7528B8BE7AA5938B7CC0D552DB9F2E41C3853FEA971E38B",
+  "sourceNoticeSha256": "F3E90B096979BE4BD58D15CAB35A6686B626918A6087DBAB7B67C53F96F57C34",
+  "licenseSha256": "1EB85FC97224598DAD1852B5D6483BBCF0AA8608790DCC657A5A2A761AE9C8C6",
+  "verification": [
+    "Existing reviewed CI candidate reused; source checkout clean and exact provenance commit verified.",
+    "Root rebuilt and executed native count-safety tests with MSVC /std:c++20 /W4 /WX; onlyVendors regression passed.",
+    "Signed delta checks run before removal/addition; checked keyword aggregation and bounded random/direct-add work inspected.",
+    "Version-data gate passes Skyrim1.7.104 with Address Library format5 support.",
+    "Installed DLL hash equals canonical candidate; existing priority/enabled state preserved."
+  ],
+  "featureDefaultsDiff": {
+    "changed": {}, "onlyInBuilt": {}, "onlyInUpstream": {},
+    "note": "No INI/JSON rule/configuration shipped or altered. Explicit count-safety corrections are intentional code behavior, not unreviewed feature defaults."
+  },
+  "runtimeAcceptance": "UNVERIFIED: no game launch; confirm contextual skipped-negative-delta logs and stable real container payouts on a disposable save",
+  "saveBoundary": "Prevents future invalid-count work; does not erase any already-created items or modify user saves/inventories.",
+  "distribution": "Source-built Apache-2.0 overlay with license, source notice and build manifest; unchanged Nexus vendor remains separately required.",
+  "rollback": "Recoverable prior owned overlay in MO2 transaction journal; rollback only under claim with game/MO2 closed."
+}

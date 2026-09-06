@@ -1,5 +1,7 @@
 {
   "schemaVersion": 1,
+  "historicalReceipt": true,
+  "supersededBy": "records/source-builds/ensrick-cdf-nonpositive-counts-20260906.json",
   "name": "Container Distribution Framework 3.1.0 - Skyrim 1.7.104 native overlay",
   "repository": "https://github.com/Ensrick/DynamicContainerInventoryFramework",
   "upstream": "https://github.com/SeaSparrowOG/DynamicContainerInventoryFramework",
