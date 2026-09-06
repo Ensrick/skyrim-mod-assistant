@@ -7,12 +7,16 @@
 /mods/currency-integration/native/** -text whitespace=cr-at-eol
 /mods/currency-integration/assets/** -text whitespace=cr-at-eol
 /mods/currency-integration/papyrus/*.psc -text whitespace=cr-at-eol
+/mods/currency-integration/bos-location-roots.json -text whitespace=cr-at-eol
+/mods/currency-integration/policy.json -text whitespace=cr-at-eol
+/audit/currency_purse_gate.py -text whitespace=cr-at-eol
+/audit/currency_winner_gate.py text eol=lf
+/audit/modasset.py text eol=lf
 # Preserve the reviewed/compiled derivative's harmless final blank line.
 /mods/currency-integration/papyrus/DES_UlfricCurrencySwapper.psc whitespace=-blank-at-eof,cr-at-eol
 
-# These two source-hash-pinned, one-change vendor derivatives intentionally
-# preserve upstream trailing whitespace as well as line endings.
-/mods/currency-integration/package/SKSE/Plugins/ContainerDistributionFramework/C.O.I.N.json whitespace=-blank-at-eol,cr-at-eol
+# This source-hash-pinned, one-change vendor derivative intentionally
+# preserves upstream trailing whitespace as well as line endings.
 /mods/currency-integration/package/SKSE/Plugins/InventoryInjector/exchangeCurrency_enhanced.json whitespace=-blank-at-eol,cr-at-eol
 
 # Original local-conversion recipe is hash-pinned by its build receipt.

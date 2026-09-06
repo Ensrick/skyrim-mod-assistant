@@ -320,13 +320,13 @@ if ($beforeCanonical -cne $afterCanonical) {
 if ($present + $absent -ne $all.Count -or $partitionCounts.ContainsKey([string]$slot)) {
     throw 'Layer proof totals or reserved-partition assertion failed'
 }
-# Currency 0.3.0 adds exactly one reviewed MISC-only file. It changes no biped
+# Currency 0.4.0 retains exactly one reviewed MISC-only file. It changes no biped
 # operations; pin that additional input rather than waiving the snapshot count.
 $currencyConfigKey = 'skse/plugins/skypatcher/misc/zz_ensrick_currency_moderndenominations.ini'
 $expectedConfigCount = 34
 if ($configs.ContainsKey($currencyConfigKey)) {
     if ((Get-Sha256File $configs[$currencyConfigKey].path) -ne
-        '4BA56920F2C5DC6903F9DDA9B1733F836A0604B56D496992D2C8D76844EAF77E') {
+        'DEBCF8022442B39A47BB31F36501339DEB81B081D34B365101D2939355BF2EBD') {
         throw 'Currency denomination config changed; review its biped impact before reserving the slot'
     }
     $expectedConfigCount = 35

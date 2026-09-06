@@ -12,7 +12,8 @@ from pathlib import Path
 DLL = 'SKSE/Plugins/EnsrickCurrencyDenominations.dll'
 CONFIG = 'SKSE/Plugins/EnsrickCurrencyDenominations.json'
 PLUGIN = 'Ensrick Currency Integration Patch.esp'
-RECEIPT = Path(__file__).resolve().parents[1] / 'records/source-builds/currency-integration-0.3.0.json'
+PURSES = 'Ensrick Currency Regional Purses.esp'
+RECEIPT = Path(__file__).resolve().parents[1] / 'records/source-builds/currency-integration-0.4.0.json'
 MAX_COSAVE = 256 * 1024 * 1024
 MAX_VALUE = 2**31 - 1
 MASK64 = 2**64 - 1
@@ -28,7 +29,9 @@ def winning_file(instance, game_data, relative, profile='Default'):
 
 
 def ledger_fingerprint(config):
-    """Byte-identical to Bridge::ComputeLedgerFingerprint, including JSON order."""
+    """Byte-identical to schema-2 ComputeLedgerFingerprint, including order."""
+    if config.get('schemaVersion') != 2:
+        raise ValueError('currency schema 2 is required; legacy exclusions are unsupported')
     data = bytearray()
 
     def integer(value):
@@ -46,17 +49,48 @@ def ledger_fingerprint(config):
         string(plugin, True)
         integer(int(local, 16))
 
-    string('EnsrickCurrencyLedgerV1')
+    string('EnsrickCurrencyLedgerV2')
+    string(config['accounting']['owner'])
+    integer(int(config['accounting']['strictSingleOwner']))
     form(config['accounting']['backendForm'])
+    integer(int(config['excludePhysicalFormsFromOrdinaryBarter']))
+    integer(int(config['excludePhysicalFormsFromDrop']))
+    integer(config['distribution']['canonicalPercent'])
+    integer(config['distribution']['variantPercent'])
+    integer(int(config['distribution']['seed'], 16))
+    integer(len(config['routing']['precedence']))
+    for phase in config['routing']['precedence']:
+        string(phase)
     integer(len(config['families']))
     for family in config['families']:
         string(family['id'])
+        string(family['displayLabel'])
+        string(family['backendLabel'])
+        integer(int(family['salt'], 16))
         integer(int(family['enabled']))
         integer(int(family['fallback']))
+        integer(int(family.get('perk') is not None))
+        if family.get('perk') is not None:
+            form(family['perk'])
         integer(len(family['denominations']))
         for denomination in family['denominations']:
+            string(denomination['tier'])
             integer(denomination['value'])
             form(denomination['form'])
+        aliases = family.get('inputAliases', [])
+        integer(len(aliases))
+        for alias in aliases:
+            string(alias['tier'])
+            form(alias['form'])
+    integer(len(config['routing']['rules']))
+    for rule in config['routing']['rules']:
+        string(rule['id'])
+        integer(len(rule['anyKeywords']))
+        for keyword in rule['anyKeywords']:
+            form(keyword)
+        integer(len(rule['familyIds']))
+        for identity in rule['familyIds']:
+            string(identity)
     result = 14695981039346656037
     for byte in data:
         result = ((result ^ byte) * 1099511628211) & MASK64
@@ -118,27 +152,34 @@ def check_save(instance, game_data, save_path, profile='Default', *, receipt_pat
         dll = winning_file(instance, game_data, DLL, profile)
         config_path = winning_file(instance, game_data, CONFIG, profile)
         esp = winning_file(instance, game_data, PLUGIN, profile)
-        if not dll and not config_path:
+        purses = winning_file(instance, game_data, PURSES, profile)
+        if not dll and not config_path and not purses:
             # Legacy profiles are unaffected, but the new reviewed ESP alone
             # cannot be allowed to masquerade as a pre-native installation.
             if not esp or not Path(receipt_path).is_file():
                 return []
             receipt = json.loads(Path(receipt_path).read_text(encoding='utf-8-sig'))
             expected = receipt['winningFiles'][PLUGIN]
+            if (not isinstance(expected, str) or len(expected) != 64
+                    or any(c not in '0123456789abcdefABCDEF' for c in expected)):
+                raise ValueError('invalid reviewed currency companion hash')
             if hashlib.sha256(esp.read_bytes()).hexdigest().lower() != expected.lower():
                 return []
-        if not dll or not config_path or not esp:
-            return ['native currency package is incomplete; DLL, configuration and companion ESP must be paired']
+        if not dll or not config_path or not esp or not purses:
+            return ['native currency package is incomplete; DLL, configuration, integration ESP and regional purse ESP must be paired']
         active = (Path(instance) / 'profiles' / profile / 'plugins.txt').read_text(encoding='utf-8-sig')
-        if PLUGIN.casefold() not in {row.strip()[1:].casefold() for row in active.splitlines()
-                                    if row.strip().startswith('*')}:
-            return ['native currency companion ESP is not active']
+        active_plugins = [row.strip()[1:].casefold() for row in active.splitlines()
+                          if row.strip().startswith('*')]
+        if any(name.casefold() not in active_plugins for name in (PLUGIN, PURSES)):
+            return ['native currency integration and regional purse ESPs must both be active']
+        if active_plugins.index(PURSES.casefold()) < active_plugins.index(PLUGIN.casefold()):
+            return ['regional purse ESP must load after its currency integration master']
         # This is the trusted repository release receipt, never a receipt
         # supplied by a mod folder. Fail closed if it is missing or malformed.
         receipt = json.loads(Path(receipt_path).read_text(encoding='utf-8-sig'))
-        if receipt['schemaVersion'] != 1 or receipt['version'] != '0.3.0':
+        if receipt['schemaVersion'] != 1 or receipt['version'] != '0.4.0':
             raise ValueError('unsupported reviewed currency release receipt')
-        for relative, winner in ((DLL, dll), (CONFIG, config_path), (PLUGIN, esp)):
+        for relative, winner in ((DLL, dll), (CONFIG, config_path), (PLUGIN, esp), (PURSES, purses)):
             expected = receipt['winningFiles'][relative]
             if (not isinstance(expected, str) or len(expected) != 64
                     or any(c not in '0123456789abcdefABCDEF' for c in expected)):

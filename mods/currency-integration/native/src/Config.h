@@ -25,6 +25,12 @@ namespace Ensrick::Currency
 		FormSpec form;
 	};
 
+	struct InputAliasConfig
+	{
+		std::string tier;
+		FormSpec form;
+	};
+
 	struct FamilyConfig
 	{
 		std::string id;
@@ -34,8 +40,15 @@ namespace Ensrick::Currency
 		bool enabled{ false };
 		bool fallback{ false };
 		std::optional<FormSpec> perk;
-		std::vector<FormSpec> routeKeywords;
 		std::vector<DenominationConfig> denominations;
+		std::vector<InputAliasConfig> inputAliases;
+	};
+
+	struct RoutingRuleConfig
+	{
+		std::string id;
+		std::vector<FormSpec> anyKeywords;
+		std::vector<std::string> familyIDs;
 	};
 
 	struct DisabledQuestConfig
@@ -74,7 +87,7 @@ namespace Ensrick::Currency
 		bool excludePhysicalFormsFromOrdinaryBarter{ true };
 		bool excludePhysicalFormsFromDrop{ false };
 		std::vector<std::string> routingPrecedence;
-		std::vector<FormSpec> ancientExclusionKeywords;
+		std::vector<RoutingRuleConfig> routingRules;
 		std::vector<DisabledQuestConfig> disabledQuests;
 		std::vector<FamilyConfig> families;
 		SourceSafetyConfig sources;

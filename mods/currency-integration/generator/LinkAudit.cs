@@ -11,7 +11,11 @@ namespace Ensrick.CurrencyIntegrationPatcher;
 
 internal static class LinkAudit
 {
-    public static int Run(string dataFolder, string loadOrderFile, string pluginPath)
+    public static int Run(
+        string dataFolder,
+        string loadOrderFile,
+        string pluginPath,
+        string? supportPluginPath = null)
     {
         var modKeys = LoadOrderFile.Read(loadOrderFile);
         using var loadOrder = LoadOrder.Import<ISkyrimModGetter>(
@@ -20,11 +24,29 @@ internal static class LinkAudit
             GameRelease.SkyrimSE,
             factory: modPath => SkyrimMod.CreateFromBinaryOverlay(modPath.Path, SkyrimRelease.SkyrimSE));
         using var plugin = SkyrimMod.CreateFromBinaryOverlay(pluginPath, SkyrimRelease.SkyrimSE);
-        using var cache = loadOrder.ListedOrder
+        using var support = supportPluginPath is null
+            ? null
+            : SkyrimMod.CreateFromBinaryOverlay(supportPluginPath, SkyrimRelease.SkyrimSE);
+        var cacheInputs = loadOrder.ListedOrder
             .Where(listing => listing.Mod is not null)
             .Select(listing => listing.Mod!)
-            .Append(plugin)
-            .ToImmutableLinkCache();
+            .ToList();
+        if (support is not null)
+        {
+            if (cacheInputs.Any(mod => mod.ModKey == support.ModKey))
+            {
+                throw new InvalidOperationException(
+                    $"Support plugin {support.ModKey} is already present in the imported load order.");
+            }
+            cacheInputs.Add(support);
+        }
+        if (cacheInputs.Any(mod => mod.ModKey == plugin.ModKey))
+        {
+            throw new InvalidOperationException(
+                $"Audited plugin {plugin.ModKey} is already present in the imported load order.");
+        }
+        cacheInputs.Add(plugin);
+        using var cache = cacheInputs.ToImmutableLinkCache();
         var unresolved = new List<object>();
         var engineIntrinsic = new List<object>();
         var linksChecked = 0;

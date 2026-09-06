@@ -136,15 +136,6 @@ namespace Ensrick::Currency
 			}
 		}
 
-		std::vector<FormSpec> OptionalForms(
-			const json& a_node,
-			const std::string_view a_key,
-			const std::string_view a_context)
-		{
-			return a_node.contains(a_key) ? FormArray(a_node.at(a_key),
-				std::format("{}.{}", a_context, a_key)) : std::vector<FormSpec>{};
-		}
-
 		std::string FormIdentity(const FormSpec& a_form)
 		{
 			auto plugin = a_form.plugin;
@@ -196,9 +187,9 @@ namespace Ensrick::Currency
 			{ "schemaVersion", "configId", "accounting", "distribution", "routing", "sourceSafety",
 				"sources", "telemetry", "disabledEcePlayerAliasQuests", "families",
 				"excludePhysicalFormsFromOrdinaryBarter", "excludePhysicalFormsFromDrop" },
-			{ "ancientExclusions" }, "root");
-		if (UInt32(root.at("schemaVersion"), "schemaVersion") != 1) {
-			Fail("schemaVersion must be exactly 1");
+			{}, "root");
+		if (UInt32(root.at("schemaVersion"), "schemaVersion") != 2) {
+			Fail("schemaVersion must be exactly 2; legacy partial-currency configs are unsupported");
 		}
 
 		Config result;
@@ -240,15 +231,35 @@ namespace Ensrick::Currency
 		result.seed = Hex64(distribution.at("seed"), "distribution.seed");
 
 		const auto& routing = root.at("routing");
-		ExactKeys(routing, { "precedence" }, { "ancientExclusionKeywords" }, "routing");
+		ExactKeys(routing, { "precedence", "rules" }, {}, "routing");
 		result.routingPrecedence = StringArray(routing.at("precedence"), "routing.precedence");
 		const std::vector<std::string> requiredPrecedence{
-			"questExceptions", "ancientExclusions", "modernFamilies", "septimFallback"
+			"questExceptions", "regionalRoutes", "septimFallback"
 		};
 		if (result.routingPrecedence != requiredPrecedence) {
 			Fail("routing.precedence does not match the reviewed order");
 		}
-		result.ancientExclusionKeywords = OptionalForms(routing, "ancientExclusionKeywords", "routing");
+		const auto& rules = routing.at("rules");
+		if (!rules.is_array() || rules.empty()) {
+			Fail("routing.rules must be a non-empty ordered array");
+		}
+		for (std::size_t index = 0; index < rules.size(); ++index) {
+			const auto& rule = rules[index];
+			const auto context = std::format("routing.rules[{}]", index);
+			ExactKeys(rule, { "id", "anyKeywords", "familyIds" }, {}, context);
+			RoutingRuleConfig parsed{
+				.id = String(rule.at("id"), context + ".id"),
+				.anyKeywords = FormArray(rule.at("anyKeywords"), context + ".anyKeywords"),
+				.familyIDs = StringArray(rule.at("familyIds"), context + ".familyIds"),
+			};
+			if (parsed.anyKeywords.empty() || parsed.familyIDs.empty()) {
+				Fail(context + " must have at least one keyword and one family");
+			}
+			RequireUnique(parsed.anyKeywords, FormIdentity, context + ".anyKeywords");
+			RequireUnique(parsed.familyIDs, [](const std::string& id) { return id; }, context + ".familyIds");
+			result.routingRules.push_back(std::move(parsed));
+		}
+		RequireUnique(result.routingRules, [](const RoutingRuleConfig& rule) { return rule.id; }, "routing.rules");
 
 		const auto& sourceSafety = root.at("sourceSafety");
 		ExactKeys(sourceSafety, { "containers", "actors", "purses" }, {}, "sourceSafety");
@@ -337,8 +348,8 @@ namespace Ensrick::Currency
 			const auto context = std::format("families[{}]", index);
 			ExactKeys(node,
 				{ "id", "enabled", "fallback", "displayLabel", "backendLabel", "salt",
-					"routeKeywords", "perk", "denominations" },
-				{ "legacySingleton" }, context);
+					"perk", "denominations" },
+				{ "inputAliases" }, context);
 			FamilyConfig family{
 				.id = String(node.at("id"), context + ".id"),
 				.displayLabel = String(node.at("displayLabel"), context + ".displayLabel"),
@@ -346,14 +357,13 @@ namespace Ensrick::Currency
 				.salt = Hex64(node.at("salt"), context + ".salt"),
 				.enabled = Bool(node.at("enabled"), context + ".enabled"),
 				.fallback = Bool(node.at("fallback"), context + ".fallback"),
-				.routeKeywords = FormArray(node.at("routeKeywords"), context + ".routeKeywords"),
 			};
 			if (!node.at("perk").is_null()) {
 				family.perk = ParseFormSpec(String(node.at("perk"), context + ".perk"));
 			}
 			const auto& denominations = node.at("denominations");
-			if (!denominations.is_array() || denominations.empty()) {
-				Fail(context + ".denominations must be a non-empty array");
+			if (!denominations.is_array() || denominations.size() != 3) {
+				Fail(context + ".denominations must contain exactly copper, silver, and gold");
 			}
 			for (std::size_t denominationIndex = 0; denominationIndex < denominations.size(); ++denominationIndex) {
 				const auto& denomination = denominations[denominationIndex];
@@ -364,6 +374,11 @@ namespace Ensrick::Currency
 					.value = UInt32(denomination.at("value"), denominationContext + ".value"),
 					.form = ParseFormSpec(String(denomination.at("form"), denominationContext + ".form")),
 				};
+				const auto& tier = parsedDenomination.tier;
+				const auto expectedValue = tier == "copper" ? 1U : tier == "silver" ? 10U : tier == "gold" ? 100U : 0U;
+				if (expectedValue == 0 || parsedDenomination.value != expectedValue) {
+					Fail(denominationContext + " must bind copper=1, silver=10, or gold=100 exactly");
+				}
 				if (!allForms.emplace(FormIdentity(parsedDenomination.form)).second) {
 					Fail("physical denomination form appears in more than one family: " + parsedDenomination.form.ToString());
 				}
@@ -374,14 +389,37 @@ namespace Ensrick::Currency
 				values.push_back(denomination.value);
 			}
 			std::ranges::sort(values);
-			if (values != std::vector<std::uint32_t>{ 1 } &&
-				values != std::vector<std::uint32_t>{ 1, 10, 100 }) {
-				Fail(context + " must provide either singleton value 1 or exact values 1/10/100");
+			if (values != std::vector<std::uint32_t>{ 1, 10, 100 }) {
+				Fail(context + " must provide each named tier exactly once");
+			}
+			if (node.contains("inputAliases")) {
+				const auto& aliases = node.at("inputAliases");
+				if (!aliases.is_array()) {
+					Fail(context + ".inputAliases must be an array");
+				}
+				for (std::size_t aliasIndex = 0; aliasIndex < aliases.size(); ++aliasIndex) {
+					const auto aliasContext = std::format("{}.inputAliases[{}]", context, aliasIndex);
+					const auto& alias = aliases[aliasIndex];
+					ExactKeys(alias, { "tier", "form" }, {}, aliasContext);
+					InputAliasConfig parsedAlias{
+						.tier = String(alias.at("tier"), aliasContext + ".tier"),
+						.form = ParseFormSpec(String(alias.at("form"), aliasContext + ".form")),
+					};
+					if (std::ranges::find(family.denominations, parsedAlias.tier, &DenominationConfig::tier) ==
+						family.denominations.end()) {
+						Fail(aliasContext + " must name an existing canonical tier");
+					}
+					if (!allForms.emplace(FormIdentity(parsedAlias.form)).second) {
+						Fail("source alias duplicates a canonical or alias physical form: " + parsedAlias.form.ToString());
+					}
+					family.inputAliases.push_back(std::move(parsedAlias));
+				}
 			}
 			result.families.push_back(std::move(family));
 		}
 
 		RequireUnique(result.families, [](const FamilyConfig& family) { return family.id; }, "families");
+		RequireUnique(result.families, [](const FamilyConfig& family) { return std::to_string(family.salt); }, "family salts");
 		if (allForms.contains(FormIdentity(result.backendForm))) {
 			Fail("accounting backend must not also be a physical denomination form");
 		}
@@ -389,6 +427,19 @@ namespace Ensrick::Currency
 				return family.enabled && family.fallback;
 			}) != 1) {
 			Fail("exactly one enabled family must be the fallback");
+		}
+		for (const auto& family : result.families) {
+			if (family.fallback && !family.enabled) {
+				Fail("a disabled family cannot be a fallback");
+			}
+		}
+		for (const auto& rule : result.routingRules) {
+			for (const auto& id : rule.familyIDs) {
+				const auto found = std::ranges::find(result.families, id, &FamilyConfig::id);
+				if (found == result.families.end() || !found->enabled) {
+					Fail("routing rule '" + rule.id + "' references an unknown or disabled family '" + id + "'");
+				}
+			}
 		}
 		return result;
 	}

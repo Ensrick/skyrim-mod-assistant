@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Regional Currency Integration",
+  "version": "0.4.0",
+  "status": "built-static-verified-not-installed",
+  "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
+  "sourcePath": "mods/currency-integration",
+  "runtime": "Skyrim 1.7.104 / SKSE 2.3.1",
+  "saveCompatibility": "Fresh character or exact matching 0.4.0 ECDN/ECMK v2 checkpoint only; no 0.3.0 or older-save migration",
+  "ledgerFingerprint": "6270B86774F9F4F3",
+  "winningFiles": {
+    "SKSE/Plugins/EnsrickCurrencyDenominations.dll": "879C230DF742570E2B218B25B6DD0E0AE2C073AA9F4E45621CE107E7720446C6",
+    "SKSE/Plugins/EnsrickCurrencyDenominations.json": "B86CD8524553EE8FB3FB00CD9B231D62997F2E991DED1D3DC80FC4158A99FC21",
+    "Ensrick Currency Integration Patch.esp": "BEB89F2A7FF52B06F5CCE1E81CD6C6150F7751B55910FF0415DD705711957F05",
+    "Ensrick Currency Regional Purses.esp": "873A1DD331270B0E76EBB28209F8D6D0378D05105CFAD3EABD4A98FA968A8B61"
+  },
+  "package": "Ensrick-Regional-Currency-Integration-0.4.0.zip",
+  "packageBytes": 33319850,
+  "packageFiles": 199,
+  "packageSha256": "1A403D0121A3672042A82F766DB54E70D58E2958F5D94367C3DB18C7E7628852",
+  "catalog": {
+    "designs": 18,
+    "canonicalPhysicalForms": 54,
+    "inputAliases": 1,
+    "recognizedPhysicalForms": 55,
+    "values": [
+      1,
+      10,
+      100
+    ],
+    "dormantDesigns": 0,
+    "singletonDesigns": 0,
+    "routingRules": 14,
+    "bosFiles": 24,
+    "cdfOwnerMasks": 14,
+    "newExactKidAssignments": 9,
+    "purseBases": {
+      "existing": 27,
+      "new": 15,
+      "total": 42
+    }
+  },
+  "pluginBytes": 429964,
+  "regionalPursePluginBytes": 69322,
+  "nativeDllBytes": 1032704,
+  "nativeSourceInputs": 23,
+  "nativeBuildReceiptSha256": "728A20CE75AC30D7D8CC2970D8E99839AC07D3182D47608687831BD9322494B7",
+  "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+  "staticVerification": {
+    "nativeBuildsIdentical": 2,
+    "pluginBuildsIdentical": 2,
+    "regionalPurseBuildsIdentical": 2,
+    "papyrusBuildsIdentical": 2,
+    "papyrusClasses": 4,
+    "archiveBuildsIdentical": 2,
+    "main": {
+      "records": 1772,
+      "ownedRecords": 1623,
+      "directMasters": 12,
+      "deletedRecords": 0,
+      "linksChecked": 13867,
+      "engineIntrinsicLinks": 145,
+      "unresolvedLinks": 0,
+      "seq": "0C000800",
+      "spriggitTreeSha256": "490FE1CF77ECD35C906CB80A27A9892BC57FAF4476E5873E6618E7578735AC86",
+      "regionalPurseDagNodes": 1434,
+      "regionalPurseRoots": 24,
+      "pinnedProviderPhysicalCatalog": 55,
+      "emittedPhysicalMiscOverrides": 54,
+      "otherMisc": "Gold001 backend; unchanged Copper Septim needs no override in current pinned provider"
+    },
+    "regionalPurses": {
+      "records": 405,
+      "ownedRecords": 405,
+      "floraClones": 15,
+      "reachableLists": 390,
+      "directMasters": 5,
+      "unresolvedLinks": 0,
+      "linksChecked": 1470,
+      "seq": [],
+      "spriggitTreeSha256": "B9921F9C8BD863687484E3799E1CC90605F293C3F668D8AA822806B6DA6BDF93",
+      "independentAuditSha256": "4D4B126558C56613094C6A9ACAB6D6C0BC057AACA0744271D9693B92A021DEAD",
+      "verifierSha256": "09B1F682C094BD50C94BF6A210318173A599C2CBA6AA0473A2A3F8D4CE194121",
+      "exactWholePurseProbabilities": "pass",
+      "originalFieldsAndLocalizedNames": "pass",
+      "negativeBinaryMutationsRejected": 12
+    },
+    "tierAssets": {
+      "designs": 17,
+      "nifFiles": 51,
+      "ddsFiles": 57,
+      "repeatability": "108/108 SHA256 and size identical; original 0.3.0 36-file outputs preserved",
+      "receiptSha256": "F6260E35DF5A508EA56DC736DCCC70669AA0C42E5A9A56AD65C93295C72EA40B",
+      "recipeSha256": "FB1E08E0C8AB44DCFA13E154B463193CFD13E99ADA0FB3DA01C435441D346106",
+      "inputReceiptSha256": "631E5673A3B7F3CC96B7C46F11A75BD2B4FBFA0ED69C118CAFB52E7BFA212479",
+      "finalizerSha256": "8D668F76B29AE019A10688B659AA0B45B43535BA2AD1E4FAEF0EAC66DAC53A8C",
+      "maxDiffuseResolution": 1024,
+      "fullMipBC7": true
+    },
+    "pythonRegressionTests": 128,
+    "releaseValidator": "pass; actual policy/config/BOS/KID/CDF/I4/MISC/purse/source/license hashes bound",
+    "finalPackageReview": "Independent static GO: 199 archive entries match package exactly; no duplicate/case collision/unsafe path, private binary tracked, or credential value found. Local installation only; runtime unverified.",
+    "candidateFinalWinners": {
+      "status": "PASS: substitution simulation, not installed",
+      "plugins": 350,
+      "physicalForms": 55,
+      "blockers": 0,
+      "verifierSha256": "7837C3B3BD523321F2C94E1C99D039C598D59EDF5EC6F3F5F6511122E4B0FE3D",
+      "reportSha256": "CC4D4F8047520268276767356193B268BA5D33FD76C1820BF47FA859AC40A307"
+    }
+  },
+  "generatedUtc": "2026-09-06T17:23:29Z",
+  "runtimeVerification": "UNVERIFIED: no game launched. Fresh-character source/transfer/service/save-reload acceptance remains required.",
+  "distribution": "Local generated package only. Publish eligible original/credited source and user-local recipes, not private coin NIF/DDS derivatives. Combined native DLL is GPL-3.0-or-later with CommonLib exceptions, not all-MIT.",
+  "keep": "First-party modId0 update is exempt from Nexus Keep; no new third-party adoption",
+  "issues": [
+    207,
+    209,
+    217
+  ],
+  "sourceSafety": "Only safe generic dead NPCs and unowned respawning nonquest containers are rewritten; protected/owned/ambiguous storage and special actors remain excluded, not a coin-design exemption.",
+  "openGameplayChoices": [
+    "Existing automatic regional wallet conversion versus preserving carried foreign coins until an explicit exchange.",
+    "Existing regional merchant buy/sell perks, separate from 1/10/100 accounting.",
+    "Whether to increase new helper purse budgets (currently 2-28 / 5-42 / 10-70); no gold is mathematically possible in those sub-100 budgets."
+  ],
+  "rollback": "Preserve the whole prior package with its matching saves. Never clean/delete co-save data. Rolling back also requires disabling/removing the 0.4 companion from the active profile and refreshing dependent weapon/cloak proofs."
+}

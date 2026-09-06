@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "license": "vendor-derived outputs: private/user-local generation only",
   "maximumDiffuseDimension": 1024,
   "colors": {
@@ -24,20 +24,41 @@
   "bsaReaderSha256": "56B02A5EA17593F5262D602DD2D9037F3B29C334F91B51E3961043E6A6FA8E3B",
   "sources": [
     {
+      "designId": "mede",
+      "currencyId": "mede",
       "family": "Mede",
+      "bindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\Trotsky2302\\mede.nif",
       "mesh": {
         "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
         "member": null,
         "sha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6"
       },
-      "diffuse": {
-        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
-        "member": null,
-        "sha256": "B860F7689364B35BCEDAA2486B98F5FF88E1793A979615140B76DDC28833CFDF"
-      },
-      "diffusePath": "textures\\Trotsky2302\\mede.dds",
+      "diffuses": [
+        {
+          "sourcePath": "textures\\Trotsky2302\\mede.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
+            "member": null,
+            "sha256": "B860F7689364B35BCEDAA2486B98F5FF88E1793A979615140B76DDC28833CFDF"
+          },
+          "dds": {
+            "width": 512,
+            "height": 1024,
+            "mips": 11,
+            "fourCC": "DXT5"
+          }
+        }
+      ],
       "inspection": {
-        "path": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/currency-tier-assets-20260906/inputs/Mede/source.nif",
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Mede/source.nif",
         "valid": true,
         "unknownBlocks": false,
         "version": "Gamebryo File Format, Version 20.2.0.7",
@@ -78,31 +99,46 @@
           "textures\\Trotsky2302\\mede_n.dds",
           "textures\\cubemaps\\steel_e.dds"
         ]
-      },
-      "dds": {
-        "width": 512,
-        "height": 1024,
-        "mips": 11,
-        "fourCC": "DXT5"
       }
     },
     {
+      "designId": "ulfric",
+      "currencyId": "ulfric",
       "family": "Ulfric",
+      "bindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\MINT\\Ulfric\\Ulfric.nif",
       "mesh": {
         "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
         "member": "meshes\\mint\\ulfric\\ulfric.nif",
         "sha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
         "archiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06"
       },
-      "diffuse": {
-        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
-        "member": "textures\\mint\\ulfric\\ulfric.dds",
-        "sha256": "35C9E891057A46C7B3BCF7E49C94D8D4505E78F718732164177456E780E02954",
-        "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
-      },
-      "diffusePath": "textures\\mint\\Ulfric\\Ulfric.dds",
+      "diffuses": [
+        {
+          "sourcePath": "textures\\mint\\Ulfric\\Ulfric.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+            "member": "textures\\mint\\ulfric\\ulfric.dds",
+            "sha256": "35C9E891057A46C7B3BCF7E49C94D8D4505E78F718732164177456E780E02954",
+            "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 2048,
+            "mips": 1,
+            "fourCC": "DX10"
+          }
+        }
+      ],
       "inspection": {
-        "path": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/currency-tier-assets-20260906/inputs/Ulfric/source.nif",
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Ulfric/source.nif",
         "valid": true,
         "unknownBlocks": false,
         "version": "Gamebryo File Format, Version 20.2.0.7",
@@ -141,29 +177,44 @@
           "textures\\mint\\Ulfric\\Ulfric.dds",
           "textures\\mint\\Ulfric\\Ulfric_n.dds"
         ]
-      },
-      "dds": {
-        "width": 1024,
-        "height": 2048,
-        "mips": 1,
-        "fourCC": "DX10"
       }
     },
     {
+      "designId": "dram",
+      "currencyId": "dram",
       "family": "Dram",
+      "bindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\MINT\\Dram\\Dram.nif",
       "mesh": {
         "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
         "member": null,
         "sha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271"
       },
-      "diffuse": {
-        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
-        "member": null,
-        "sha256": "260A30841A4E4B9C35DD2E233EC8F9CDE35E18D65B399FBA53905FD9AF834367"
-      },
-      "diffusePath": "textures\\MINT\\Dram\\dram.dds",
+      "diffuses": [
+        {
+          "sourcePath": "textures\\MINT\\Dram\\dram.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
+            "member": null,
+            "sha256": "260A30841A4E4B9C35DD2E233EC8F9CDE35E18D65B399FBA53905FD9AF834367"
+          },
+          "dds": {
+            "width": 512,
+            "height": 1024,
+            "mips": 11,
+            "fourCC": "DX10"
+          }
+        }
+      ],
       "inspection": {
-        "path": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/currency-tier-assets-20260906/inputs/Dram/source.nif",
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Dram/source.nif",
         "valid": true,
         "unknownBlocks": false,
         "version": "Gamebryo File Format, Version 20.2.0.7",
@@ -204,29 +255,44 @@
           "textures\\MINT\\Dram\\dram_n.dds",
           "textures\\cubemaps\\bronze_e.dds"
         ]
-      },
-      "dds": {
-        "width": 512,
-        "height": 1024,
-        "mips": 11,
-        "fourCC": "DX10"
       }
     },
     {
+      "designId": "oshka",
+      "currencyId": "oshka",
       "family": "Oshka",
+      "bindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "mesh": {
         "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
         "member": null,
         "sha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8"
       },
-      "diffuse": {
-        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
-        "member": null,
-        "sha256": "647BBE6B867DA1FC4423DBF49C0C88D729142EDC71917C9B5B43F18BFBA858FB"
-      },
-      "diffusePath": "textures\\Nerapharu\\Oshka\\oshka.dds",
+      "diffuses": [
+        {
+          "sourcePath": "textures\\Nerapharu\\Oshka\\oshka.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
+            "member": null,
+            "sha256": "647BBE6B867DA1FC4423DBF49C0C88D729142EDC71917C9B5B43F18BFBA858FB"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 1024,
+            "mips": 11,
+            "fourCC": "DX10"
+          }
+        }
+      ],
       "inspection": {
-        "path": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/currency-tier-assets-20260906/inputs/Oshka/source.nif",
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Oshka/source.nif",
         "valid": true,
         "unknownBlocks": false,
         "version": "Gamebryo File Format, Version 20.2.0.7",
@@ -267,29 +333,44 @@
           "textures\\Nerapharu\\Oshka\\oshka_n.dds",
           "textures\\cubemaps\\steel_e.dds"
         ]
-      },
-      "dds": {
-        "width": 1024,
-        "height": 1024,
-        "mips": 11,
-        "fourCC": "DX10"
       }
     },
     {
+      "designId": "ohzer",
+      "currencyId": "ohzer",
       "family": "Ohzer",
+      "bindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "mesh": {
         "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
         "member": null,
         "sha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1"
       },
-      "diffuse": {
-        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
-        "member": null,
-        "sha256": "630EDDA3D4B29378FE7931833B95B3F479A90B0C7E45B960DF56D17BCD1ED921"
-      },
-      "diffusePath": "textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
+      "diffuses": [
+        {
+          "sourcePath": "textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
+            "member": null,
+            "sha256": "630EDDA3D4B29378FE7931833B95B3F479A90B0C7E45B960DF56D17BCD1ED921"
+          },
+          "dds": {
+            "width": 4096,
+            "height": 4096,
+            "mips": 13,
+            "fourCC": "DXT5"
+          }
+        }
+      ],
       "inspection": {
-        "path": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/currency-tier-assets-20260906/inputs/Ohzer/source.nif",
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Ohzer/source.nif",
         "valid": true,
         "unknownBlocks": false,
         "version": "Gamebryo File Format, Version 20.2.0.7",
@@ -330,29 +411,44 @@
           "textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
           "textures\\mihail's shards of immersion\\coin apocrypha\\coin_n.dds"
         ]
-      },
-      "dds": {
-        "width": 4096,
-        "height": 4096,
-        "mips": 13,
-        "fourCC": "DXT5"
       }
     },
     {
+      "designId": "varken",
+      "currencyId": "varken",
       "family": "Varken",
+      "bindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "mesh": {
         "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
         "member": null,
         "sha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15"
       },
-      "diffuse": {
-        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
-        "member": null,
-        "sha256": "7C9383D999BD30D9C50A86098A99CB362C33DC9620BA73D47A4C3F8F61417FAA"
-      },
-      "diffusePath": "textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
+      "diffuses": [
+        {
+          "sourcePath": "textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
+            "member": null,
+            "sha256": "7C9383D999BD30D9C50A86098A99CB362C33DC9620BA73D47A4C3F8F61417FAA"
+          },
+          "dds": {
+            "width": 4096,
+            "height": 4096,
+            "mips": 13,
+            "fourCC": "DXT5"
+          }
+        }
+      ],
       "inspection": {
-        "path": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/currency-tier-assets-20260906/inputs/Varken/source.nif",
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Varken/source.nif",
         "valid": true,
         "unknownBlocks": false,
         "version": "Gamebryo File Format, Version 20.2.0.7",
@@ -412,12 +508,955 @@
           "textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
           "textures\\mihail's shards of immersion\\coin dremora\\coin_n.dds"
         ]
+      }
+    },
+    {
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "family": "DrakrDragon",
+      "bindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Drakr\\Drakr01.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\drakr\\drakr01.nif",
+        "sha256": "6AF62B6FD38BA92FC4D7E273B7995548E0CB096248E89F9CBD866B5693D56AA9",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
       },
-      "dds": {
-        "width": 4096,
-        "height": 4096,
-        "mips": 13,
-        "fourCC": "DXT5"
+      "diffuses": [
+        {
+          "sourcePath": "textures\\COIN\\Drakr\\Drakr.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\drakr\\drakr.dds",
+            "sha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 2048,
+            "height": 2048,
+            "mips": 12,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/DrakrDragon/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "",
+            "vertices": 149,
+            "triangles": 96,
+            "skinned": false,
+            "shader": {
+              "type": 0,
+              "flags1": 2185233153,
+              "flags2": 1
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\coin\\drakr\\drakr.dds",
+              "textures\\coin\\drakr\\drakr_n.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\coin\\drakr\\drakr.dds",
+          "textures\\coin\\drakr\\drakr_n.dds"
+        ]
+      }
+    },
+    {
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "family": "DrakrMoth",
+      "bindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Drakr\\Drakr02.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\drakr\\drakr02.nif",
+        "sha256": "B0A625821BDB4D49784CFE92C0D6FF047FA49952DDBA139FA658F20DC4B9D9A5",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\COIN\\Drakr\\Drakr.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\drakr\\drakr.dds",
+            "sha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 2048,
+            "height": 2048,
+            "mips": 12,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/DrakrMoth/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "",
+            "vertices": 149,
+            "triangles": 96,
+            "skinned": false,
+            "shader": {
+              "type": 0,
+              "flags1": 2185233153,
+              "flags2": 1
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\coin\\drakr\\drakr.dds",
+              "textures\\coin\\drakr\\drakr_n.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\coin\\drakr\\drakr.dds",
+          "textures\\coin\\drakr\\drakr_n.dds"
+        ]
+      }
+    },
+    {
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "family": "DrakrOwl",
+      "bindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Drakr\\Drakr03.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\drakr\\drakr03.nif",
+        "sha256": "1130C110DE01141B76791D58E68854532F264D126FB7520A88A5FAB09E841F62",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\COIN\\Drakr\\Drakr.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\drakr\\drakr.dds",
+            "sha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 2048,
+            "height": 2048,
+            "mips": 12,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/DrakrOwl/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "",
+            "vertices": 149,
+            "triangles": 96,
+            "skinned": false,
+            "shader": {
+              "type": 0,
+              "flags1": 2185233153,
+              "flags2": 1
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\coin\\drakr\\drakr.dds",
+              "textures\\coin\\drakr\\drakr_n.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\coin\\drakr\\drakr.dds",
+          "textures\\coin\\drakr\\drakr_n.dds"
+        ]
+      }
+    },
+    {
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "family": "DrakrWhale",
+      "bindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Drakr\\Drakr04.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\drakr\\drakr04.nif",
+        "sha256": "A732106AA7FAE7C4BBDD432542A40A425FB89639CC9445CC3B6377FFD5E33EF6",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\COIN\\Drakr\\Drakr.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\drakr\\drakr.dds",
+            "sha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 2048,
+            "height": 2048,
+            "mips": 12,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/DrakrWhale/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "",
+            "vertices": 149,
+            "triangles": 96,
+            "skinned": false,
+            "shader": {
+              "type": 0,
+              "flags1": 2185233153,
+              "flags2": 1
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\coin\\drakr\\drakr.dds",
+              "textures\\coin\\drakr\\drakr_n.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\coin\\drakr\\drakr.dds",
+          "textures\\coin\\drakr\\drakr_n.dds"
+        ]
+      }
+    },
+    {
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "family": "GibberFront",
+      "bindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "meshLogicalPath": "Meshes\\MINT\\Gibber\\GibberFront.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+        "member": "meshes\\mint\\gibber\\gibberfront.nif",
+        "sha256": "EA3C396958B01D088429D4A27926410275464398B3B0F2401CDDC00AC9C8C5C3",
+        "archiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\MINT\\Gibber\\GibberGold.dds",
+          "outputSuffix": "Face0",
+          "cacheFile": "source-Face0.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+            "member": "textures\\mint\\gibber\\gibbergold.dds",
+            "sha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+            "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 2048,
+            "mips": 0,
+            "fourCC": "DXT3"
+          }
+        },
+        {
+          "sourcePath": "textures\\MINT\\Gibber\\GibberDark.dds",
+          "outputSuffix": "Face10",
+          "cacheFile": "source-Face10.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+            "member": "textures\\mint\\gibber\\gibberdark.dds",
+            "sha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+            "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 2048,
+            "mips": 0,
+            "fourCC": "DXT3"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/GibberFront/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 2,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 2,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "Coin01:0",
+            "vertices": 144,
+            "triangles": 140,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\MINT\\Gibber\\GibberGold.dds",
+              "textures\\MINT\\Gibber\\Gibber_n.dds",
+              "textures\\cubemaps\\Ore_Gold_e.dds",
+              "textures\\Gray.dds"
+            ]
+          },
+          {
+            "name": "Coin01:10",
+            "vertices": 144,
+            "triangles": 140,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\MINT\\Gibber\\GibberDark.dds",
+              "textures\\MINT\\Gibber\\Gibber_n.dds",
+              "textures\\cubemaps\\ShinyContrast_e.dds",
+              "textures\\Gray.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\Gray.dds",
+          "textures\\MINT\\Gibber\\GibberDark.dds",
+          "textures\\MINT\\Gibber\\GibberGold.dds",
+          "textures\\MINT\\Gibber\\Gibber_n.dds",
+          "textures\\cubemaps\\Ore_Gold_e.dds",
+          "textures\\cubemaps\\ShinyContrast_e.dds"
+        ]
+      }
+    },
+    {
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "family": "GibberBack",
+      "bindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\MINT\\Gibber\\GibberBack.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+        "member": "meshes\\mint\\gibber\\gibberback.nif",
+        "sha256": "4B009D134EB82B17D60D13420F02E57E90A1D682535A00238076F9267D2D8473",
+        "archiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\MINT\\Gibber\\GibberGold.dds",
+          "outputSuffix": "Face0",
+          "cacheFile": "source-Face0.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+            "member": "textures\\mint\\gibber\\gibbergold.dds",
+            "sha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+            "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 2048,
+            "mips": 0,
+            "fourCC": "DXT3"
+          }
+        },
+        {
+          "sourcePath": "textures\\MINT\\Gibber\\GibberDark.dds",
+          "outputSuffix": "Face10",
+          "cacheFile": "source-Face10.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+            "member": "textures\\mint\\gibber\\gibberdark.dds",
+            "sha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+            "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 2048,
+            "mips": 0,
+            "fourCC": "DXT3"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/GibberBack/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 2,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 2,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "Coin01:0",
+            "vertices": 144,
+            "triangles": 140,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\MINT\\Gibber\\GibberGold.dds",
+              "textures\\MINT\\Gibber\\Gibber_n.dds",
+              "textures\\cubemaps\\Ore_Gold_e.dds",
+              "textures\\Gray.dds"
+            ]
+          },
+          {
+            "name": "Coin01:10",
+            "vertices": 144,
+            "triangles": 140,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\MINT\\Gibber\\GibberDark.dds",
+              "textures\\MINT\\Gibber\\Gibber_n.dds",
+              "textures\\cubemaps\\ShinyContrast_e.dds",
+              "textures\\Gray.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\Gray.dds",
+          "textures\\MINT\\Gibber\\GibberDark.dds",
+          "textures\\MINT\\Gibber\\GibberGold.dds",
+          "textures\\MINT\\Gibber\\Gibber_n.dds",
+          "textures\\cubemaps\\Ore_Gold_e.dds",
+          "textures\\cubemaps\\ShinyContrast_e.dds"
+        ]
+      }
+    },
+    {
+      "designId": "mala",
+      "currencyId": "mala",
+      "family": "Mala",
+      "bindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Mala\\Mala.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\mala\\mala.nif",
+        "sha256": "6CC816F7B3DEC4D3EC3EB1EED6100F3D0B5DE66E7564382314149B711AF03C72",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\COIN\\Mala\\Mala.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\mala\\mala.dds",
+            "sha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 256,
+            "height": 512,
+            "mips": 10,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Mala/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "Coin01",
+            "vertices": 147,
+            "triangles": 148,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\COIN\\Mala\\Mala.dds",
+              "textures\\COIN\\Mala\\Mala_n.dds",
+              "textures\\COIN\\Mala\\Mala_s.dds",
+              "textures\\cubemaps\\bronze_e.dds",
+              "textures\\Gray.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\COIN\\Mala\\Mala.dds",
+          "textures\\COIN\\Mala\\Mala_n.dds",
+          "textures\\COIN\\Mala\\Mala_s.dds",
+          "textures\\Gray.dds",
+          "textures\\cubemaps\\bronze_e.dds"
+        ]
+      }
+    },
+    {
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "family": "Mallari",
+      "bindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Mallari\\Mallari.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\mallari\\mallari.nif",
+        "sha256": "0A2AB118B5B7A399C18717065EA64D4224EA3CDFD76F5EB1EBC512E7AC4E0F17",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\COIN\\Mallari\\Mallari.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\mallari\\mallari.dds",
+            "sha256": "D2B53E67611F0F77E33C34863200DAC02187FF4C6B1322F6969FEF1871CF92D6",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 1024,
+            "height": 1024,
+            "mips": 11,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Mallari/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "Coin01:0",
+            "vertices": 1226,
+            "triangles": 764,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\COIN\\Mallari\\Mallari.dds",
+              "textures\\COIN\\Mallari\\Mallari_n.dds",
+              "textures\\cubemaps\\ShinyBright_e.dds",
+              "textures\\COIN\\Mallari\\Mallari_m.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\COIN\\Mallari\\Mallari.dds",
+          "textures\\COIN\\Mallari\\Mallari_m.dds",
+          "textures\\COIN\\Mallari\\Mallari_n.dds",
+          "textures\\cubemaps\\ShinyBright_e.dds"
+        ]
+      }
+    },
+    {
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "family": "Nchuark",
+      "bindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\COIN\\Nchuark\\Nchuark.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+        "member": "meshes\\coin\\nchuark\\nchuark.nif",
+        "sha256": "F153B3BE5F5B27182A192BE2D22B43DF17612BAAC7BC6EED7E4736BB2E129E6A",
+        "archiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "Textures\\COIN\\Nchuark\\Nchuark.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+            "member": "textures\\coin\\nchuark\\nchuark.dds",
+            "sha256": "9310F8E1041D9B7501F9E2199E748CE0404D72EFBB1EF07B16C6F416CB147EC3",
+            "archiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC"
+          },
+          "dds": {
+            "width": 2048,
+            "height": 1024,
+            "mips": 12,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Nchuark/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "DwrvCoin:6",
+            "vertices": 182,
+            "triangles": 320,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "Textures\\COIN\\Nchuark\\Nchuark.dds",
+              "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+              "textures\\cubemaps\\Bronze_e.dds",
+              "Textures\\COIN\\Nchuark\\Nchuark_m.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "Textures\\COIN\\Nchuark\\Nchuark.dds",
+          "Textures\\COIN\\Nchuark\\Nchuark_m.dds",
+          "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+          "textures\\cubemaps\\Bronze_e.dds"
+        ]
+      }
+    },
+    {
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "family": "Sancar",
+      "bindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\MINT\\Sancar\\Sancar.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+        "member": "meshes\\mint\\sancar\\sancar.nif",
+        "sha256": "9A787B34EDC9527166AE99BEBF79CE02D4886EE9E271528A3AEB57D6B40E0D5F",
+        "archiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\mint\\sancar\\sancar.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+            "member": "textures\\mint\\sancar\\sancar.dds",
+            "sha256": "A090E74B3C4101FA9947258D68DC2C5E9ED6AE4FE3581686509C630A37827D2F",
+            "archiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27"
+          },
+          "dds": {
+            "width": 512,
+            "height": 1024,
+            "mips": 11,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/Sancar/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 100,
+        "isLE": false,
+        "isSSE": true,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 0,
+        "niTriStrips": 0,
+        "bsTriShapes": 1,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "Sancar",
+            "vertices": 264,
+            "triangles": 384,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\mint\\sancar\\sancar.dds",
+              "textures\\mint\\sancar\\sancar_n.dds",
+              "textures\\cubemaps\\ore_gold_e.dds",
+              "textures\\Gray.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\Gray.dds",
+          "textures\\cubemaps\\ore_gold_e.dds",
+          "textures\\mint\\sancar\\sancar.dds",
+          "textures\\mint\\sancar\\sancar_n.dds"
+        ]
+      }
+    },
+    {
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "family": "BrumaAyleid",
+      "bindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "meshLogicalPath": "Meshes\\BSCyrodiil\\dungeons\\AyleidRuins\\AyleidCoin01.nif",
+      "mesh": {
+        "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+        "member": "meshes\\bscyrodiil\\dungeons\\ayleidruins\\ayleidcoin01.nif",
+        "sha256": "C3534BB8CBD667E3D78443E09369274CA1ADD50080059C9CA088F1986B5450B4",
+        "archiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D"
+      },
+      "diffuses": [
+        {
+          "sourcePath": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+          "outputSuffix": null,
+          "cacheFile": "source.dds",
+          "file": {
+            "path": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+            "member": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+            "sha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+            "archiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D"
+          },
+          "dds": {
+            "width": 256,
+            "height": 512,
+            "mips": 10,
+            "fourCC": "DXT1"
+          }
+        }
+      ],
+      "inspection": {
+        "path": "C:/b/currency-complete-tiers-assets-20260906/inputs/BrumaAyleid/source.nif",
+        "valid": true,
+        "unknownBlocks": false,
+        "version": "Gamebryo File Format, Version 20.2.0.7",
+        "userVersion": 12,
+        "streamVersion": 83,
+        "isLE": true,
+        "isSSE": false,
+        "sseGeometryCompatible": true,
+        "shapes": 1,
+        "niTriShapes": 1,
+        "niTriStrips": 0,
+        "bsTriShapes": 0,
+        "bsDynamicTriShapes": 0,
+        "shapeDetails": [
+          {
+            "name": "Coin01",
+            "vertices": 147,
+            "triangles": 148,
+            "skinned": false,
+            "shader": {
+              "type": 1,
+              "flags1": 2185233281,
+              "flags2": 32769
+            },
+            "hasEyeData": false,
+            "bones": [],
+            "textures": [
+              "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+              "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+              "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+              "textures\\cubemaps\\bronze_e.dds",
+              "textures\\Gray.dds"
+            ]
+          }
+        ],
+        "textures": [
+          "textures\\Gray.dds",
+          "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+          "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+          "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+          "textures\\cubemaps\\bronze_e.dds"
+        ]
       }
     }
   ]

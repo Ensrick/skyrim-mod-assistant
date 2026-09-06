@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "configId": "ensrick-currency-denominations-v0.3.0",
+  "schemaVersion": 2,
+  "configId": "ensrick-currency-denominations-v0.4.0",
   "accounting": {
     "backendForm": "00000F:Skyrim.esm",
     "owner": "EnsrickCurrencyDenominations",
@@ -15,15 +15,78 @@
     "stableIdentity": ["sourceFormKey", "sourceReferenceFormId", "familyId"]
   },
   "routing": {
-    "precedence": ["questExceptions", "ancientExclusions", "modernFamilies", "septimFallback"],
-    "ancientExclusionKeywords": [
-      "000BAC:exchangeCurrency_enhanced.esp",
-      "000B91:exchangeCurrency_enhanced.esp",
-      "DE5038:Update.esm",
-      "DE5039:Update.esm",
-      "DE5040:Update.esm",
-      "000D61:ccbgssse067-daedinv.esm",
-      "08400C:BSHeartland.esm"
+    "precedence": ["questExceptions", "regionalRoutes", "septimFallback"],
+    "rules": [
+      {
+        "id": "bruma-ayleid",
+        "anyKeywords": ["08400C:BSHeartland.esm"],
+        "familyIds": ["bruma_ayleid_mala"]
+      },
+      {
+        "id": "ayleid",
+        "anyKeywords": ["DE5039:Update.esm", "000D61:ccbgssse067-daedinv.esm"],
+        "familyIds": ["mala"]
+      },
+      {
+        "id": "falmer",
+        "anyKeywords": ["DE5038:Update.esm"],
+        "familyIds": ["mallari"]
+      },
+      {
+        "id": "root-cave",
+        "anyKeywords": ["DE5040:Update.esm"],
+        "familyIds": ["gibber_dementia", "gibber_mania"]
+      },
+      {
+        "id": "nordic-ruin",
+        "anyKeywords": ["0130F2:Skyrim.esm"],
+        "familyIds": ["drakr_dragon", "drakr_moth", "drakr_owl", "drakr_whale"]
+      },
+      {
+        "id": "dwemer-ruin",
+        "anyKeywords": ["0130F0:Skyrim.esm", "000B91:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["nchuark"]
+      },
+      {
+        "id": "drakr-region",
+        "anyKeywords": ["000B93:exchangeCurrency_enhanced.esp", "000B90:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["drakr_dragon", "drakr_moth", "drakr_owl", "drakr_whale"]
+      },
+      {
+        "id": "sancar-dominion",
+        "anyKeywords": ["000803:Ensrick Currency Integration Patch.esp"],
+        "familyIds": ["sancar"]
+      },
+      {
+        "id": "mede-region",
+        "anyKeywords": ["000B94:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["mede"]
+      },
+      {
+        "id": "ulfric-region",
+        "anyKeywords": ["000B73:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["ulfric"]
+      },
+      {
+        "id": "dram-region",
+        "anyKeywords": ["000B92:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["dram"]
+      },
+      {
+        "id": "oshka-region",
+        "anyKeywords": ["000BB4:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["oshka"]
+      },
+      {
+        "id": "ohzer-region",
+        "anyKeywords": ["000BB5:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["ohzer"]
+      },
+      {
+        "id": "varken-deadlands",
+        "anyKeywords": ["000BB6:exchangeCurrency_enhanced.esp"],
+        "familyIds": ["varken"]
+      }
     ]
   },
   "sourceSafety": {
@@ -73,20 +136,26 @@
     },
     "purses": {
       "baseForms": [
-        "0D790C:Skyrim.esm",
-        "0D8E7F:Skyrim.esm",
-        "0D8E80:Skyrim.esm",
-        "000805:C.O.I.N.esp",
-        "000804:C.O.I.N.esp",
-        "000803:C.O.I.N.esp"
+        "0D790C:Skyrim.esm", "0D8E7F:Skyrim.esm", "0D8E80:Skyrim.esm",
+        "000805:C.O.I.N.esp", "000804:C.O.I.N.esp", "000803:C.O.I.N.esp",
+        "00080F:C.O.I.N.esp", "00080E:C.O.I.N.esp", "00080D:C.O.I.N.esp",
+        "000934:C.O.I.N.esp", "000935:C.O.I.N.esp", "000936:C.O.I.N.esp",
+        "00093D:C.O.I.N.esp", "00093E:C.O.I.N.esp", "00093F:C.O.I.N.esp",
+        "000C5D:C.O.I.N.esp", "000C5E:C.O.I.N.esp", "000C5F:C.O.I.N.esp",
+        "000F1C:M.I.N.T.esp", "000F1D:M.I.N.T.esp", "000F1E:M.I.N.T.esp",
+        "000F1F:M.I.N.T.esp", "000F20:M.I.N.T.esp", "000F21:M.I.N.T.esp",
+        "000F22:M.I.N.T.esp", "000F23:M.I.N.T.esp", "000F24:M.I.N.T.esp"
       ],
       "budgetLists": [
-        "0D790B:Skyrim.esm",
-        "0D8E7D:Skyrim.esm",
-        "0D8E7E:Skyrim.esm",
-        "000800:C.O.I.N.esp",
-        "000801:C.O.I.N.esp",
-        "000802:C.O.I.N.esp"
+        "0D790B:Skyrim.esm", "0D8E7D:Skyrim.esm", "0D8E7E:Skyrim.esm",
+        "000800:C.O.I.N.esp", "000801:C.O.I.N.esp", "000802:C.O.I.N.esp",
+        "00080B:C.O.I.N.esp", "00080C:C.O.I.N.esp", "00080A:C.O.I.N.esp",
+        "000937:C.O.I.N.esp", "000938:C.O.I.N.esp", "000939:C.O.I.N.esp",
+        "000940:C.O.I.N.esp", "000941:C.O.I.N.esp", "000942:C.O.I.N.esp",
+        "000C61:C.O.I.N.esp", "000C62:C.O.I.N.esp", "000C63:C.O.I.N.esp",
+        "000F2B:M.I.N.T.esp", "000F2C:M.I.N.T.esp", "000F2D:M.I.N.T.esp",
+        "000F2E:M.I.N.T.esp", "000F2F:M.I.N.T.esp", "000F30:M.I.N.T.esp",
+        "000F31:M.I.N.T.esp", "000F32:M.I.N.T.esp", "000F33:M.I.N.T.esp"
       ]
     }
   },
@@ -104,7 +173,6 @@
       "source-apply-failed",
       "source-converted-container",
       "source-converted-actor",
-      "source-ancient-passthrough",
       "source-reference-safety-rejected",
       "source-actor-safety-rejected",
       "source-container-safety-rejected"
@@ -123,26 +191,16 @@
       "editorId": "EC_altCurrencyScript",
       "aliasId": 0,
       "removedScripts": [
-        "EC_altCurrencyFunctions",
-        "EC_ulfricsScript",
-        "EC_dramsScript",
-        "EC_medesScript",
-        "EC_drakrsScript",
-        "EC_oshkasScript"
+        "EC_altCurrencyFunctions", "EC_ulfricsScript", "EC_dramsScript",
+        "EC_medesScript", "EC_drakrsScript", "EC_oshkasScript"
       ],
       "startGameEnabledRemoved": true
     }
   ],
   "families": [
     {
-      "id": "septim",
-      "enabled": true,
-      "fallback": true,
-      "displayLabel": "Septim",
-      "backendLabel": "Septims",
-      "salt": "0x53455054494D0001",
-      "routeKeywords": [],
-      "perk": null,
+      "id": "septim", "enabled": true, "fallback": true,
+      "displayLabel": "Septim", "backendLabel": "Septims", "salt": "0x53455054494D0001", "perk": null,
       "denominations": [
         { "tier": "copper", "value": 1, "form": "000B6D:exchangeCurrency_enhanced.esp" },
         { "tier": "silver", "value": 10, "form": "000823:exchangeCurrency_enhanced.esp" },
@@ -150,14 +208,8 @@
       ]
     },
     {
-      "id": "mede",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Mede",
-      "backendLabel": "Medes",
-      "salt": "0x4D45444500000001",
-      "routeKeywords": ["000B94:exchangeCurrency_enhanced.esp"],
-      "perk": "00082B:exchangeCurrency_patch_COIN.esp",
+      "id": "mede", "enabled": true, "fallback": false,
+      "displayLabel": "Mede", "backendLabel": "Medes", "salt": "0x4D45444500000001", "perk": "00082B:exchangeCurrency_patch_COIN.esp",
       "denominations": [
         { "tier": "copper", "value": 1, "form": "DE5021:Update.esm" },
         { "tier": "silver", "value": 10, "form": "000820:Ensrick Currency Integration Patch.esp" },
@@ -165,14 +217,8 @@
       ]
     },
     {
-      "id": "ulfric",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Ulfric",
-      "backendLabel": "Ulfrics",
-      "salt": "0x554C465249430001",
-      "routeKeywords": ["000B73:exchangeCurrency_enhanced.esp"],
-      "perk": "000829:exchangeCurrency_patch_COIN.esp",
+      "id": "ulfric", "enabled": true, "fallback": false,
+      "displayLabel": "Ulfric", "backendLabel": "Ulfrics", "salt": "0x554C465249430001", "perk": "000829:exchangeCurrency_patch_COIN.esp",
       "denominations": [
         { "tier": "copper", "value": 1, "form": "DE5024:Update.esm" },
         { "tier": "silver", "value": 10, "form": "000822:Ensrick Currency Integration Patch.esp" },
@@ -180,14 +226,8 @@
       ]
     },
     {
-      "id": "dram",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Dram",
-      "backendLabel": "Drams",
-      "salt": "0x4452414D00000001",
-      "routeKeywords": ["000B92:exchangeCurrency_enhanced.esp"],
-      "perk": "00082A:exchangeCurrency_patch_COIN.esp",
+      "id": "dram", "enabled": true, "fallback": false,
+      "displayLabel": "Dram", "backendLabel": "Drams", "salt": "0x4452414D00000001", "perk": "00082A:exchangeCurrency_patch_COIN.esp",
       "denominations": [
         { "tier": "copper", "value": 1, "form": "DE5029:Update.esm" },
         { "tier": "silver", "value": 10, "form": "000824:Ensrick Currency Integration Patch.esp" },
@@ -195,14 +235,8 @@
       ]
     },
     {
-      "id": "oshka",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Oshka",
-      "backendLabel": "Oshkas",
-      "salt": "0x4F53484B41000001",
-      "routeKeywords": ["000BB4:exchangeCurrency_enhanced.esp"],
-      "perk": "000872:exchangeCurrency_patch_COIN.esp",
+      "id": "oshka", "enabled": true, "fallback": false,
+      "displayLabel": "Oshka", "backendLabel": "Oshkas", "salt": "0x4F53484B41000001", "perk": "000872:exchangeCurrency_patch_COIN.esp",
       "denominations": [
         { "tier": "copper", "value": 1, "form": "000871:exchangeCurrency_patch_COIN.esp" },
         { "tier": "silver", "value": 10, "form": "000826:Ensrick Currency Integration Patch.esp" },
@@ -210,14 +244,8 @@
       ]
     },
     {
-      "id": "ohzer",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Ohzer",
-      "backendLabel": "Ohzers",
-      "salt": "0x4F485A4552000001",
-      "routeKeywords": ["000BB5:exchangeCurrency_enhanced.esp"],
-      "perk": null,
+      "id": "ohzer", "enabled": true, "fallback": false,
+      "displayLabel": "Ohzer", "backendLabel": "Ohzers", "salt": "0x4F485A4552000001", "perk": null,
       "denominations": [
         { "tier": "copper", "value": 1, "form": "00086F:exchangeCurrency_patch_COIN.esp" },
         { "tier": "silver", "value": 10, "form": "000828:Ensrick Currency Integration Patch.esp" },
@@ -225,14 +253,8 @@
       ]
     },
     {
-      "id": "varken",
-      "enabled": false,
-      "fallback": false,
-      "displayLabel": "Varken",
-      "backendLabel": "Varkens",
-      "salt": "0x5641524B454E0001",
-      "routeKeywords": ["000BB6:exchangeCurrency_enhanced.esp"],
-      "perk": null,
+      "id": "varken", "enabled": true, "fallback": false,
+      "displayLabel": "Varken", "backendLabel": "Varkens", "salt": "0x5641524B454E0001", "perk": null,
       "denominations": [
         { "tier": "copper", "value": 1, "form": "000870:exchangeCurrency_patch_COIN.esp" },
         { "tier": "silver", "value": 10, "form": "00082A:Ensrick Currency Integration Patch.esp" },
@@ -240,31 +262,105 @@
       ]
     },
     {
-      "id": "drakr",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Drakr",
-      "backendLabel": "Drakrs",
-      "salt": "0x4452414B52000001",
-      "routeKeywords": ["000B93:exchangeCurrency_enhanced.esp"],
-      "perk": "00082C:exchangeCurrency_patch_COIN.esp",
-      "legacySingleton": true,
+      "id": "drakr_dragon", "enabled": true, "fallback": false,
+      "displayLabel": "Dragon Drakr", "backendLabel": "Dragon Drakrs", "salt": "0x4452445241470001", "perk": "00082C:exchangeCurrency_patch_COIN.esp",
       "denominations": [
-        { "tier": "copper", "value": 1, "form": "DE5015:Update.esm" }
+        { "tier": "copper", "value": 1, "form": "DE5012:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A00:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A01:Ensrick Currency Integration Patch.esp" }
       ]
     },
     {
-      "id": "sancar",
-      "enabled": true,
-      "fallback": false,
-      "displayLabel": "Sancar",
-      "backendLabel": "Sancars",
-      "salt": "0x53414E4341520001",
-      "routeKeywords": ["000803:Ensrick Currency Integration Patch.esp"],
-      "perk": null,
-      "legacySingleton": true,
+      "id": "drakr_moth", "enabled": true, "fallback": false,
+      "displayLabel": "Moth Drakr", "backendLabel": "Moth Drakrs", "salt": "0x44524D4F54480001", "perk": "00082C:exchangeCurrency_patch_COIN.esp",
       "denominations": [
-        { "tier": "copper", "value": 1, "form": "DE5023:Update.esm" }
+        { "tier": "copper", "value": 1, "form": "DE5013:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A02:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A03:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "drakr_owl", "enabled": true, "fallback": false,
+      "displayLabel": "Owl Drakr", "backendLabel": "Owl Drakrs", "salt": "0x44524F574C000001", "perk": "00082C:exchangeCurrency_patch_COIN.esp",
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5014:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A04:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A05:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "drakr_whale", "enabled": true, "fallback": false,
+      "displayLabel": "Whale Drakr", "backendLabel": "Whale Drakrs", "salt": "0x44525748414C0001", "perk": "00082C:exchangeCurrency_patch_COIN.esp",
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5015:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A06:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A07:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "gibber_dementia", "enabled": true, "fallback": false,
+      "displayLabel": "Dementia Gibber", "backendLabel": "Dementia Gibbers", "salt": "0x47494244454D0001", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5017:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A08:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A09:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "gibber_mania", "enabled": true, "fallback": false,
+      "displayLabel": "Mania Gibber", "backendLabel": "Mania Gibbers", "salt": "0x4749424D414E0001", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5018:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A0A:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A0B:Ensrick Currency Integration Patch.esp" }
+      ],
+      "inputAliases": [
+        { "tier": "copper", "form": "DE5027:Update.esm" }
+      ]
+    },
+    {
+      "id": "mala", "enabled": true, "fallback": false,
+      "displayLabel": "Ayleid Mala", "backendLabel": "Ayleid Malas", "salt": "0x4D414C4100000001", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5019:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A0C:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A0D:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "mallari", "enabled": true, "fallback": false,
+      "displayLabel": "Ancient Falmer Mallari", "backendLabel": "Ancient Falmer Mallari", "salt": "0x4D414C4C41520001", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5020:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A0E:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A0F:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "nchuark", "enabled": true, "fallback": false,
+      "displayLabel": "Dwarven Nchuark", "backendLabel": "Dwarven Nchuarks", "salt": "0x4E43485541520001", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5022:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A10:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A11:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "sancar", "enabled": true, "fallback": false,
+      "displayLabel": "Sancar", "backendLabel": "Sancars", "salt": "0x53414E4341520001", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "DE5023:Update.esm" },
+        { "tier": "silver", "value": 10, "form": "000A12:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A13:Ensrick Currency Integration Patch.esp" }
+      ]
+    },
+    {
+      "id": "bruma_ayleid_mala", "enabled": true, "fallback": false,
+      "displayLabel": "Bruma Ayleid Mala", "backendLabel": "Bruma Ayleid Malas", "salt": "0x425241594C454901", "perk": null,
+      "denominations": [
+        { "tier": "copper", "value": 1, "form": "6028DC:BSAssets.esm" },
+        { "tier": "silver", "value": 10, "form": "000A14:Ensrick Currency Integration Patch.esp" },
+        { "tier": "gold", "value": 100, "form": "000A15:Ensrick Currency Integration Patch.esp" }
       ]
     }
   ],

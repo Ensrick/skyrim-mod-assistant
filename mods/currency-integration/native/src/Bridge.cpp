@@ -127,9 +127,9 @@ namespace Ensrick::Currency
 					denomination.form,
 					std::format("{}.{} denomination", familyConfig.id, denomination.tier));
 				auto* misc = form->As<RE::TESObjectMISC>();
-				if (!misc || !misc->HasKeyword(vendorNoSale)) {
+				if (!misc || !misc->HasKeyword(vendorNoSale) || misc->value != static_cast<std::int32_t>(denomination.value)) {
 					throw std::runtime_error(std::format(
-						"{}.{} denomination is not a MISC form with VendorItemNoSale: {}",
+						"{}.{} denomination is not a MISC form with the exact configured value and VendorItemNoSale: {}",
 						familyConfig.id,
 						denomination.tier,
 						denomination.form.ToString()));
@@ -143,9 +143,25 @@ namespace Ensrick::Currency
 				});
 			}
 			std::ranges::sort(family.denominations, {}, &ResolvedDenomination::value);
-			for (const auto& keyword : familyConfig.routeKeywords) {
-				family.routeKeywords.push_back(ResolveForm<RE::BGSKeyword>(
-					keyword, std::format("{} route keyword", familyConfig.id)));
+			// Canonical tiers always occupy indices 0/1/2. Input aliases follow
+			// them so snapshots and rollback retain every recognized source form,
+			// while normalization emits zero of every alias.
+			for (const auto& alias : familyConfig.inputAliases) {
+				const auto tier = std::ranges::find(familyConfig.denominations, alias.tier, &DenominationConfig::tier);
+				if (tier == familyConfig.denominations.end()) {
+					throw std::runtime_error("source alias canonical tier did not resolve");
+				}
+				auto* misc = ResolveForm<RE::TESObjectMISC>(alias.form,
+					std::format("{}.{} input alias", familyConfig.id, alias.tier));
+				if (!misc->HasKeyword(vendorNoSale) || misc->value != static_cast<std::int32_t>(tier->value) ||
+					!_physicalValues.emplace(misc->GetFormID(), tier->value).second) {
+					throw std::runtime_error("source alias has a wrong value, lacks VendorItemNoSale, or duplicates a physical form");
+				}
+				family.denominations.push_back(ResolvedDenomination{
+					.value = tier->value,
+					.form = misc,
+					.isAlias = true,
+				});
 			}
 			if (familyConfig.perk) {
 				family.perk = ResolveForm<RE::BGSPerk>(*familyConfig.perk,
@@ -159,6 +175,27 @@ namespace Ensrick::Currency
 
 		if (_fallbackFamily == std::numeric_limits<std::size_t>::max()) {
 			throw std::runtime_error("no enabled fallback currency family resolved");
+		}
+		_routes.clear();
+		for (const auto& rule : _config.routingRules) {
+			ResolvedRoute route{ .id = rule.id };
+			for (const auto& keyword : rule.anyKeywords) {
+				route.anyKeywords.push_back(ResolveForm<RE::BGSKeyword>(
+					keyword, std::format("{} route keyword", rule.id)));
+			}
+			for (const auto& id : rule.familyIDs) {
+				const auto found = std::ranges::find_if(_families, [&](const ResolvedFamily& family) {
+					return family.config.id == id && family.config.enabled;
+				});
+				if (found == _families.end()) {
+					throw std::runtime_error(std::format("{} route family did not resolve: {}", rule.id, id));
+				}
+				route.candidates.push_back(RouteDesignCandidate{
+					.familyIndex = static_cast<std::size_t>(std::distance(_families.begin(), found)),
+					.familySalt = found->config.salt,
+				});
+			}
+			_routes.push_back(std::move(route));
 		}
 
 		auto resolveSet = [](const std::vector<FormSpec>& a_specs, const std::string_view a_context) {
@@ -176,11 +213,6 @@ namespace Ensrick::Currency
 		_allowedActorBases = resolveSet(_config.sources.allowedActorBases, "allowed actor base");
 		_deniedActorBases = resolveSet(_config.sources.deniedActorBases, "denied actor base");
 		_deniedActorReferences = resolveSet(_config.sources.deniedActorReferences, "denied actor reference");
-
-		_ancientExclusionKeywords.clear();
-		for (const auto& keyword : _config.ancientExclusionKeywords) {
-			_ancientExclusionKeywords.push_back(ResolveForm<RE::BGSKeyword>(keyword, "ancient exclusion keyword"));
-		}
 
 		_disabledQuests.clear();
 		for (const auto& disabled : _config.disabledQuests) {
@@ -380,22 +412,19 @@ namespace Ensrick::Currency
 		LogReasonSummary();
 	}
 
-	std::size_t Bridge::DetermineFamily(const RE::BGSLocation* a_location) const
+	std::size_t Bridge::DetermineFamily(
+		const RE::BGSLocation* a_location,
+		const std::uint64_t a_sourceIdentity) const
 	{
-		for (auto* excluded : _ancientExclusionKeywords) {
-			if (LocationHasKeyword(a_location, excluded)) {
-				return _fallbackFamily;
-			}
-		}
-		for (std::size_t index = 0; index < _families.size(); ++index) {
-			const auto& family = _families[index];
-			if (!family.config.enabled || family.config.fallback) {
-				continue;
-			}
-			if (std::ranges::any_of(family.routeKeywords, [&](const auto* keyword) {
+		// Ordered, explicit rules cover modern and ancient currencies alike.
+		// Only unmatched locations use the fallback. Identity zero gives the
+		// player's wallet a stable regional design; sources retain individual
+		// deterministic choices across repeated activation/QuickLoot reads.
+		for (const auto& route : _routes) {
+			if (std::ranges::any_of(route.anyKeywords, [&](const auto* keyword) {
 					return LocationHasKeyword(a_location, keyword);
 				})) {
-				return index;
+				return SelectRouteDesign(route.candidates, a_sourceIdentity).value_or(_fallbackFamily);
 			}
 		}
 		return _fallbackFamily;
@@ -637,16 +666,6 @@ namespace Ensrick::Currency
 		const auto* sourceLocation = a_source->GetCurrentLocation();
 		const auto* effectiveLocation = sourceLocation ? sourceLocation :
 			RE::PlayerCharacter::GetSingleton()->GetCurrentLocation();
-		const bool ancientLocation = std::ranges::any_of(
-			_ancientExclusionKeywords,
-			[&](const auto* keyword) { return LocationHasKeyword(effectiveLocation, keyword); });
-		if (ClassifySourceLocation(ancientLocation) == SourceLocationPolicy::preserveAncient) {
-			// Ancient-source CDF routes intentionally place face currencies such
-			// as Drakr. The player's fallback wallet route is a separate concern;
-			// never reinterpret the source display stack as modern Septims.
-			CountReason("source-ancient-passthrough");
-			return true;
-		}
 		const auto original = ReadSnapshot(a_source);
 		const auto backend = NonNegative(original.backend);
 		const auto physical = PhysicalValue(original);
@@ -664,10 +683,10 @@ namespace Ensrick::Currency
 			return false;
 		}
 
-		const auto family = DetermineFamily(effectiveLocation);
 		const std::uint64_t identity =
 			(static_cast<std::uint64_t>(a_source->GetFormID()) << 32) ^
 			static_cast<std::uint64_t>(a_source->GetBaseObject()->GetFormID()) ^ _config.seed;
+		const auto family = DetermineFamily(effectiveLocation, identity);
 		const bool broken = UseBrokenVariant(identity, _families[family].config.salt, _config.variantPercent);
 		if (*backend == 0 && SnapshotMatchesFamily(original, family, value, broken)) {
 			CountReason(broken ? "source-already-broken" : "source-already-canonical");
@@ -856,28 +875,15 @@ namespace Ensrick::Currency
 			return std::nullopt;
 		}
 		const auto& denominations = _families[a_familyIndex].denominations;
-		std::vector<std::int32_t> result(denominations.size(), 0);
-		if (denominations.size() == 1 && denominations.front().value == 1) {
-			if (a_value > static_cast<std::uint64_t>(std::numeric_limits<std::int32_t>::max())) {
-				return std::nullopt;
-			}
-			result.front() = static_cast<std::int32_t>(a_value);
-			return result;
-		}
-		if (denominations.size() != 3 || denominations[0].value != 1 ||
-			denominations[1].value != 10 || denominations[2].value != 100) {
+		if (denominations.size() < 3 || denominations[0].value != 1 ||
+			denominations[1].value != 10 || denominations[2].value != 100 ||
+			denominations[0].isAlias || denominations[1].isAlias || denominations[2].isAlias ||
+			!std::all_of(denominations.begin() + 3, denominations.end(), [](const ResolvedDenomination& entry) {
+				return entry.isAlias;
+			})) {
 			return std::nullopt;
 		}
-		const auto counts = Decompose(a_value, a_broken);
-		for (const auto count : { counts.copper, counts.silver, counts.gold }) {
-			if (count > static_cast<std::uint64_t>(std::numeric_limits<std::int32_t>::max())) {
-				return std::nullopt;
-			}
-		}
-		result[0] = static_cast<std::int32_t>(counts.copper);
-		result[1] = static_cast<std::int32_t>(counts.silver);
-		result[2] = static_cast<std::int32_t>(counts.gold);
-		return result;
+		return CanonicalCountsWithAliases(a_value, a_broken, denominations.size() - 3);
 	}
 
 	bool Bridge::ApplySnapshot(

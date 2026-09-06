@@ -6,6 +6,7 @@
 #include "SourcePolicy.h"
 
 #include <array>
+#include <algorithm>
 #include <cstdint>
 #include <iostream>
 #include <limits>
@@ -32,10 +33,34 @@ int main()
 		"PostLoadGame pointer-value one must mean success without dereferencing address 0x1");
 	Check(!PostLoadSucceeded(reinterpret_cast<const void*>(static_cast<std::uintptr_t>(1)), sizeof(bool*)),
 		"unexpected PostLoadGame payload lengths must fail closed");
-	Check(ClassifySourceLocation(true) == SourceLocationPolicy::preserveAncient,
-		"ancient-exclusion locations must preserve authored source currency");
-	Check(ClassifySourceLocation(false) == SourceLocationPolicy::normalizeModern,
-		"modern locations remain eligible for denomination normalization");
+	constexpr std::array<RouteDesignCandidate, 3> faceDesigns{
+		RouteDesignCandidate{ .familyIndex = 1, .familySalt = 0x4452414B52424541ULL },
+		RouteDesignCandidate{ .familyIndex = 2, .familySalt = 0x4452414B524D4F54ULL },
+		RouteDesignCandidate{ .familyIndex = 3, .familySalt = 0x4452414B524F574CULL },
+	};
+	auto reversedDesigns = faceDesigns;
+	std::ranges::reverse(reversedDesigns);
+	std::array<std::uint64_t, 4> faceSelections{};
+	for (std::uint64_t source = 0; source < 100'000; ++source) {
+		const auto selectedFamily = SelectRouteDesign(faceDesigns, source);
+		Check(selectedFamily && *selectedFamily >= 1 && *selectedFamily <= 3,
+			"each source selects exactly one configured ancient face design");
+		Check(selectedFamily == SelectRouteDesign(reversedDesigns, source),
+			"face selection must be stable and independent of candidate list order");
+		if (selectedFamily && *selectedFamily < faceSelections.size()) {
+			++faceSelections[*selectedFamily];
+		}
+		const auto payout = Decompose(source, UseBrokenVariant(source, faceDesigns[0].familySalt, 20));
+		Check(ValueOf(payout) == source,
+			"face choice must not copy, multiply, or discard the source budget");
+	}
+	for (std::size_t family = 1; family <= 3; ++family) {
+		Check(faceSelections[family] >= 32'500 && faceSelections[family] <= 34'200,
+			"equal-weight configured faces must all receive reasonable deterministic coverage");
+	}
+	Check(SelectRouteDesign(std::span(faceDesigns).first(1), 0) == 1,
+		"one-family routes select that family for the player identity zero");
+	Check(!SelectRouteDesign({}, 0), "empty face candidates must not invent a family");
 
 	const SaveCheckpoint checkpoint{
 		.ledgerFingerprint = 0x123456789ABCDEF0ULL,
@@ -60,10 +85,16 @@ int main()
 		"a changed ledger mapping must invalidate the checkpoint");
 
 	Config fingerprintFixture{
+		.owner = "EnsrickCurrencyDenominations",
 		.backendForm = FormSpec{ .plugin = "Skyrim.esm", .localID = 0x00000F },
 	};
+	fingerprintFixture.seed = 0x454E535249434B31ULL;
+	fingerprintFixture.routingPrecedence = { "questExceptions", "regionalRoutes", "septimFallback" };
 	FamilyConfig fingerprintFamily{
 		.id = "septim",
+		.displayLabel = "Septims",
+		.backendLabel = "Septim value",
+		.salt = 0x53657074696DULL,
 		.enabled = true,
 		.fallback = true,
 	};
@@ -75,9 +106,44 @@ int main()
 		DenominationConfig{ .tier = "gold", .value = 100,
 			.form = FormSpec{ .plugin = "Test.esp", .localID = 0x000802 } },
 	};
+	fingerprintFamily.inputAliases = {
+		InputAliasConfig{ .tier = "copper", .form = FormSpec{ .plugin = "Test.esp", .localID = 0x000803 } },
+	};
 	fingerprintFixture.families.push_back(std::move(fingerprintFamily));
-	Check(ComputeLedgerFingerprint(fingerprintFixture) == 0xA56F44DC7EE62385ULL,
+	fingerprintFixture.routingRules.push_back(RoutingRuleConfig{
+		.id = "test-route",
+		.anyKeywords = { FormSpec{ .plugin = "Test.esp", .localID = 0x000900 } },
+		.familyIDs = { "septim" },
+	});
+	Check(ComputeLedgerFingerprint(fingerprintFixture) == 0x0D15619C721A4FAFULL,
 		"C++ ledger fingerprint must match the independent Python launch gate");
+	const auto originalFingerprint = ComputeLedgerFingerprint(fingerprintFixture);
+	auto changedFingerprint = fingerprintFixture;
+	changedFingerprint.families[0].denominations[0].tier = "wrong-name";
+	Check(ComputeLedgerFingerprint(changedFingerprint) != originalFingerprint,
+		"named tiers must be protected by the save fingerprint");
+	changedFingerprint = fingerprintFixture;
+	changedFingerprint.routingRules[0].anyKeywords[0].localID += 1;
+	Check(ComputeLedgerFingerprint(changedFingerprint) != originalFingerprint,
+		"regional routing changes must invalidate the previous save fingerprint");
+	changedFingerprint = fingerprintFixture;
+	changedFingerprint.families[0].salt += 1;
+	Check(ComputeLedgerFingerprint(changedFingerprint) != originalFingerprint,
+		"face selection salt changes must invalidate the previous save fingerprint");
+	changedFingerprint = fingerprintFixture;
+	changedFingerprint.families[0].inputAliases[0].form.localID += 1;
+	Check(ComputeLedgerFingerprint(changedFingerprint) != originalFingerprint,
+		"source alias bindings must be protected by the save fingerprint");
+	const auto alias24 = CanonicalCountsWithAliases(24, false, 1);
+	Check(alias24 && *alias24 == std::vector<std::int32_t>{ 4, 2, 0, 0 },
+		"source alias value must pay into canonical tiers with zero alias output");
+	const auto alias124 = CanonicalCountsWithAliases(124, true, 2);
+	Check(alias124 && *alias124 == std::vector<std::int32_t>{ 4, 12, 0, 0, 0 },
+		"broken output must still clear every source alias without paying twice");
+	Check(!CanonicalCountsWithAliases(MaximumLedgerValue + 1, false, 1),
+		"source alias normalization must preserve ledger overflow protections");
+	Check(!CanonicalCountsWithAliases(24, false, std::numeric_limits<std::size_t>::max()),
+		"an overflowing alias layout must fail closed");
 
 	constexpr std::array<std::uint64_t, 13> boundaries{
 		0, 1, 9, 10, 11, 19, 20, 99, 100, 109, 110, 199, 200

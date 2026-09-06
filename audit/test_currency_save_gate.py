@@ -8,11 +8,24 @@ import unittest
 
 import currency_save_gate as gate
 
-CONFIG = {'accounting': {'backendForm': '00000F:Skyrim.esm'}, 'families': [
-    {'id': 'septim', 'enabled': True, 'fallback': True, 'denominations': [
-        {'value': 1, 'form': '000800:Test.esp'},
-        {'value': 10, 'form': '000801:Test.esp'},
-        {'value': 100, 'form': '000802:Test.esp'}]}]}
+CONFIG = {
+    'schemaVersion': 2,
+    'accounting': {'backendForm': '00000F:Skyrim.esm',
+                   'owner': 'EnsrickCurrencyDenominations', 'strictSingleOwner': True},
+    'excludePhysicalFormsFromOrdinaryBarter': True,
+    'excludePhysicalFormsFromDrop': False,
+    'distribution': {'canonicalPercent': 80, 'variantPercent': 20, 'seed': '0x454E535249434B31'},
+    'routing': {'precedence': ['questExceptions', 'regionalRoutes', 'septimFallback'],
+                'rules': [{'id': 'test-route', 'anyKeywords': ['000900:Test.esp'],
+                           'familyIds': ['septim']}]},
+    'families': [{
+        'id': 'septim', 'displayLabel': 'Septims', 'backendLabel': 'Septim value',
+        'salt': '0x53657074696D', 'enabled': True, 'fallback': True, 'perk': None,
+        'denominations': [
+            {'tier': 'copper', 'value': 1, 'form': '000800:Test.esp'},
+            {'tier': 'silver', 'value': 10, 'form': '000801:Test.esp'},
+            {'tier': 'gold', 'value': 100, 'form': '000802:Test.esp'}],
+        'inputAliases': [{'tier': 'copper', 'form': '000803:Test.esp'}]}]}
 FINGERPRINT = gate.ledger_fingerprint(CONFIG)
 
 
@@ -69,12 +82,34 @@ class CheckpointTests(unittest.TestCase):
                 gate.read_checkpoint(candidate, FINGERPRINT)
 
     def test_fingerprint_case_fold_and_order(self):
-        self.assertEqual(0xA56F44DC7EE62385, FINGERPRINT)
+        self.assertEqual(0x0D15619C721A4FAF, FINGERPRINT)
         changed = copy.deepcopy(CONFIG)
         changed['accounting']['backendForm'] = '00000f:SKYRIM.ESM'
         self.assertEqual(FINGERPRINT, gate.ledger_fingerprint(changed))
         changed['families'][0]['denominations'].reverse()
         self.assertNotEqual(FINGERPRINT, gate.ledger_fingerprint(changed))
+
+    def test_fingerprint_binds_tiers_routes_and_source_aliases(self):
+        for defect in ('tier', 'keyword', 'alias', 'salt', 'distribution'):
+            changed = copy.deepcopy(CONFIG)
+            if defect == 'tier':
+                changed['families'][0]['denominations'][0]['tier'] = 'gold'
+            elif defect == 'keyword':
+                changed['routing']['rules'][0]['anyKeywords'][0] = '000901:Test.esp'
+            elif defect == 'alias':
+                changed['families'][0]['inputAliases'] = []
+            elif defect == 'salt':
+                changed['families'][0]['salt'] = '0x1'
+            else:
+                changed['distribution']['seed'] = '0x2'
+            with self.subTest(defect=defect):
+                self.assertNotEqual(FINGERPRINT, gate.ledger_fingerprint(changed))
+
+    def test_schema1_fingerprint_is_not_an_admission_path(self):
+        changed = copy.deepcopy(CONFIG)
+        changed['schemaVersion'] = 1
+        with self.assertRaisesRegex(ValueError, 'schema 2'):
+            gate.ledger_fingerprint(changed)
 
 
 class ProfileTests(unittest.TestCase):
@@ -100,10 +135,12 @@ class ProfileTests(unittest.TestCase):
         self.write(self.mod / gate.DLL, b'dll')
         self.write(self.mod / gate.CONFIG, json.dumps(CONFIG))
         self.write(self.mod / gate.PLUGIN, b'esp')
-        self.write(self.instance / 'profiles/Default/plugins.txt', '*' + gate.PLUGIN + '\n')
-        self.write(self.receipt, json.dumps({'schemaVersion': 1, 'version': '0.3.0', 'winningFiles': {
+        self.write(self.mod / gate.PURSES, b'purses')
+        self.write(self.instance / 'profiles/Default/plugins.txt',
+                   '*' + gate.PLUGIN + '\n*' + gate.PURSES + '\n')
+        self.write(self.receipt, json.dumps({'schemaVersion': 1, 'version': '0.4.0', 'winningFiles': {
             relative: hashlib.sha256((self.mod / relative).read_bytes()).hexdigest()
-            for relative in (gate.DLL, gate.CONFIG, gate.PLUGIN)}}))
+            for relative in (gate.DLL, gate.CONFIG, gate.PLUGIN, gate.PURSES)}}))
 
     def check(self, path='default'):
         return gate.check_save(self.instance, self.data, self.save if path == 'default' else path,
@@ -132,6 +169,16 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual([], self.check(None))
         (self.mod / gate.DLL).unlink()
         self.assertTrue(self.check(None))
+
+    def test_esp_only_malformed_receipt_returns_clean_blocker(self):
+        self.adopt()
+        (self.mod / gate.DLL).unlink()
+        (self.mod / gate.CONFIG).unlink()
+        (self.mod / gate.PURSES).unlink()
+        self.write(self.receipt, json.dumps({'winningFiles': {gate.PLUGIN: 123}}))
+        failures = self.check(None)
+        self.assertTrue(failures)
+        self.assertIn('invalid reviewed currency companion hash', failures[0])
 
     def test_missing_disabled_or_tampered_companion_refused(self):
         for defect in ('missing', 'disabled', 'overridden', 'stale'):
@@ -173,6 +220,37 @@ class ProfileTests(unittest.TestCase):
         self.adopt()
         (self.mod / gate.DLL).unlink()
         (self.mod / gate.CONFIG).unlink()
+        self.assertTrue(self.check(None))
+
+    def test_regional_purse_plugin_missing_inactive_stale_or_early_is_blocked(self):
+        for defect in ('missing', 'inactive', 'stale', 'early'):
+            with self.subTest(defect=defect):
+                self.adopt()
+                if defect == 'missing':
+                    (self.mod / gate.PURSES).unlink()
+                elif defect == 'stale':
+                    self.write(self.mod / gate.PURSES, b'wrong purse generation')
+                elif defect == 'early':
+                    self.write(self.instance / 'profiles/Default/plugins.txt',
+                               '*' + gate.PURSES + '\n*' + gate.PLUGIN + '\n')
+                else:
+                    self.write(self.instance / 'profiles/Default/plugins.txt',
+                               '*' + gate.PLUGIN + '\n' + gate.PURSES + '\n')
+                self.assertTrue(self.check(None))
+
+    def test_orphan_purse_esp_cannot_be_mistaken_for_legacy_profile(self):
+        self.write(self.mod / gate.PURSES, b'purses')
+        self.write(self.mod / gate.PLUGIN, b'old ESP unrelated to new receipt')
+        self.assertTrue(self.check(None))
+
+    def test_purse_winner_override_and_malformed_purse_hash_are_blocked(self):
+        self.adopt()
+        self.write(self.instance / 'overwrite' / gate.PURSES, b'wrong override')
+        self.assertTrue(self.check(None))
+        (self.instance / 'overwrite' / gate.PURSES).unlink()
+        receipt = json.loads(self.receipt.read_text())
+        receipt['winningFiles'][gate.PURSES] = None
+        self.write(self.receipt, json.dumps(receipt))
         self.assertTrue(self.check(None))
 
 

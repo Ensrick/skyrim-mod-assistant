@@ -86,3 +86,11 @@ plugins:
       - 'exchangeCurrency_patch_COIN.esp'
       - 'C.O.I.N.esp'
       - 'M.I.N.T.esp'
+
+  # Mandatory companion in the same currency package: 15 owned regional
+  # purses and their exact mixed-denomination lists. Its main master must win
+  # the currency records before these harvestable sources are loaded.
+  - name: 'Ensrick Currency Regional Purses.esp'
+    group: 'Ensrick Generated Patches'
+    after:
+      - 'Ensrick Currency Integration Patch.esp'

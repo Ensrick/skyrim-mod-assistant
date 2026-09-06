@@ -1,4 +1,4 @@
-Ensrick Regional Currency Integration 0.3.0
+Ensrick Regional Currency Integration 0.4.0
 
 This is a mixed-terms compatibility package for a private Skyrim Special
 Edition modlist. It is not an all-MIT work and must not be represented as one.
@@ -30,7 +30,7 @@ The package contains exactly four compiled Papyrus classes:
 
 The two M.I.N.T. derivatives retain their upstream terms and are not
 relicensed by the MIT grant. No ECE transaction-handler derivative is included
-in version 0.3.0.
+in version 0.4.0.
 
 M.I.N.T. permission terms were checked on 2026-09-06 at
 https://www.nexusmods.com/skyrimspecialedition/mods/178940 . The published
@@ -41,7 +41,7 @@ assets, and remain subject to those upstream terms.
 
 GENERATED ESP AND CONFIGURATION
 
-The generated ESP contains original records and compatibility overrides copied
+The two generated ESL-flagged ESPs contain original records and compatibility overrides copied
 from Skyrim and required vendor plugins. Vendor-origin fields remain governed
 by their respective owners. The patch disables legacy physical-to-ledger
 owners, obsolete modern exchange dialogue, non-parity bank recipes, and unsafe
@@ -55,7 +55,7 @@ to the extent they are original.
 
 TIER ASSETS
 
-The local/private package contains eighteen NIF variants and eighteen diffuse
+The local/private package contains fifty-one NIF variants and fifty-seven diffuse
 DDS variants derived from separately installed, licensed source mods. These
 derived binaries are private modlist outputs and are not granted for public
 redistribution by this notice. The public repository may contain only the

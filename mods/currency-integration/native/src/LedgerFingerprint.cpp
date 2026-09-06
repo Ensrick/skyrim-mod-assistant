@@ -31,17 +31,53 @@ namespace Ensrick::Currency
 			appendInteger(form.localID);
 		};
 
-		appendString("EnsrickCurrencyLedgerV1", false);
+		appendString("EnsrickCurrencyLedgerV2", false);
+		appendString(a_config.owner, false);
+		appendInteger(a_config.strictSingleOwner ? 1 : 0);
 		appendForm(a_config.backendForm);
+		appendInteger(a_config.excludePhysicalFormsFromOrdinaryBarter ? 1 : 0);
+		appendInteger(a_config.excludePhysicalFormsFromDrop ? 1 : 0);
+		appendInteger(a_config.canonicalPercent);
+		appendInteger(a_config.variantPercent);
+		appendInteger(a_config.seed);
+		appendInteger(a_config.routingPrecedence.size());
+		for (const auto& phase : a_config.routingPrecedence) {
+			appendString(phase, false);
+		}
 		appendInteger(a_config.families.size());
 		for (const auto& family : a_config.families) {
 			appendString(family.id, false);
+			appendString(family.displayLabel, false);
+			appendString(family.backendLabel, false);
+			appendInteger(family.salt);
 			appendInteger(family.enabled ? 1 : 0);
 			appendInteger(family.fallback ? 1 : 0);
+			appendInteger(family.perk ? 1 : 0);
+			if (family.perk) {
+				appendForm(*family.perk);
+			}
 			appendInteger(family.denominations.size());
 			for (const auto& denomination : family.denominations) {
+				appendString(denomination.tier, false);
 				appendInteger(denomination.value);
 				appendForm(denomination.form);
+			}
+			appendInteger(family.inputAliases.size());
+			for (const auto& alias : family.inputAliases) {
+				appendString(alias.tier, false);
+				appendForm(alias.form);
+			}
+		}
+		appendInteger(a_config.routingRules.size());
+		for (const auto& rule : a_config.routingRules) {
+			appendString(rule.id, false);
+			appendInteger(rule.anyKeywords.size());
+			for (const auto& keyword : rule.anyKeywords) {
+				appendForm(keyword);
+			}
+			appendInteger(rule.familyIDs.size());
+			for (const auto& familyID : rule.familyIDs) {
+				appendString(familyID, false);
 			}
 		}
 		return hash;

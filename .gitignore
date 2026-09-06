@@ -215,6 +215,8 @@
 !/mods/currency-integration/README.md
 !/mods/currency-integration/manifest.json
 !/mods/currency-integration/validate.py
+!/mods/currency-integration/generate_bos.py
+!/mods/currency-integration/bos-location-roots.json
 !/mods/currency-integration/build.py
 !/mods/currency-integration/build-inputs.json
 !/mods/currency-integration/normalize_pex.py

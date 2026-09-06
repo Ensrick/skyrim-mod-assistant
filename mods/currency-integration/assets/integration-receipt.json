@@ -1,13 +1,13 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "status": "static-pass/runtime-unverified",
   "privateOutputs": true,
   "redistribution": "source recipe only; derive licensed NIF/DDS locally",
-  "packageRoot": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records-work\\currency-tier-assets-20260906\\build-b\\package",
-  "secondBuildRoot": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records-work\\currency-tier-assets-20260906\\build-c\\package",
-  "recipePath": "C:\\Users\\danjo\\source\\repos\\skyrim-mod-assistant\\records-work\\currency-tier-assets-20260906\\recipe.py",
-  "recipeSha256": "C85B16567AC9E120417E18FB29ACDA6F2775256CA6F0FD69775679102A0F2FE9",
-  "inputReceiptSha256": "54DEADDCDB88E49D4EB33FD2FFF7C963E6A895B6294407613992108381A8306A",
+  "packageRoot": "C:\\b\\currency-complete-tiers-assets-parallel-20260906\\build-c\\package",
+  "secondBuildRoot": "C:\\b\\currency-complete-tiers-assets-parallel-20260906\\build-e\\package",
+  "recipePath": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\currency-complete-tiers\\mods\\currency-integration\\assets\\recipe.py",
+  "recipeSha256": "FB1E08E0C8AB44DCFA13E154B463193CFD13E99ADA0FB3DA01C435441D346106",
+  "inputReceiptSha256": "631E5673A3B7F3CC96B7C46F11A75BD2B4FBFA0ED69C118CAFB52E7BFA212479",
   "tools": {
     "nif": {
       "path": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-builds\\nif-port-cli\\Release\\nif-port-cli.exe",
@@ -22,20 +22,36 @@
       "sha256": "563D9ECA9882207438FE9BF39A03802C987692360DA86F1AACAB361F40BA904C"
     }
   },
-  "outputCount": 36,
-  "repeatability": "36/36 SHA256 and size identical",
+  "designCount": 17,
+  "designTierCount": 51,
+  "outputCount": 108,
+  "repeatability": "108/108 SHA256 and size identical",
+  "preservedV030Baseline": {
+    "receiptSha256": "D5FCDE1BD5E19B4FDF67BEF4F9411C25062E05FDDC98208647FDCB1D4C7A4B89",
+    "preservedOutputCount": 36,
+    "status": "36/36 path, size, and SHA256 tuples unchanged"
+  },
   "geometryBoundary": "OBJ equality checks shape name, transformed positions and triangle topology; texture binding checks preserve normals/environment/masks; no new UV authoring",
   "files": [
     {
       "path": "Meshes/Ensrick/Currency/Mede/Mede_Copper.nif",
       "bytes": 6500,
       "sha256": "74A14C62657120E9992281A9A57C94F068979BC52C6F53180F2009940FE6C373",
+      "designId": "mede",
+      "currencyId": "mede",
+      "formBindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Trotsky2302\\mede.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
       "sourceMember": null,
       "sourceBytes": 6483,
       "sourceSha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Mede\\Mede_Copper.dds",
         "textures\\Gray.dds",
@@ -69,6 +85,15 @@
       "path": "textures/Ensrick/Currency/Mede/Mede_Copper.dds",
       "bytes": 699236,
       "sha256": "94923D73BA744E6E2D30D003628CAC3E099310D4D6F97A129CD7B8F1E0F69FF8",
+      "designId": "mede",
+      "currencyId": "mede",
+      "formBindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "sourceLogicalPath": "textures\\Trotsky2302\\mede.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
       "sourceMember": null,
       "sourceBytes": 699216,
@@ -81,18 +106,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#B87333"
+      "targetColor": "#B87333",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Mede/Mede_Silver.nif",
       "bytes": 6500,
       "sha256": "B859E9C63BC1774643A5F4060C407FFBAC46E14AD9BB4C5EE34A099C66DE2172",
+      "designId": "mede",
+      "currencyId": "mede",
+      "formBindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Trotsky2302\\mede.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
       "sourceMember": null,
       "sourceBytes": 6483,
       "sourceSha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Mede\\Mede_Silver.dds",
         "textures\\Gray.dds",
@@ -126,6 +161,15 @@
       "path": "textures/Ensrick/Currency/Mede/Mede_Silver.dds",
       "bytes": 699236,
       "sha256": "A80772DD70EE9DF755C178371EB52D21506C5BEA605832A7FBFCB98F6C413520",
+      "designId": "mede",
+      "currencyId": "mede",
+      "formBindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "sourceLogicalPath": "textures\\Trotsky2302\\mede.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
       "sourceMember": null,
       "sourceBytes": 699216,
@@ -138,18 +182,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#C0C0C0"
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Mede/Mede_Gold.nif",
       "bytes": 6498,
       "sha256": "B152261140405B7FA0D8DC77805B73CFF9F8E6498E0F7EE019A735C90C249C23",
+      "designId": "mede",
+      "currencyId": "mede",
+      "formBindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Trotsky2302\\mede.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Trotsky2302\\mede.nif",
       "sourceMember": null,
       "sourceBytes": 6483,
       "sourceSha256": "D044727558BE431F795F76F650E09EE971919CA3C5AD25ECDD8DA3EA43412BF6",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Mede\\Mede_Gold.dds",
         "textures\\Gray.dds",
@@ -183,6 +237,15 @@
       "path": "textures/Ensrick/Currency/Mede/Mede_Gold.dds",
       "bytes": 699236,
       "sha256": "8EF875CFB91595F1ABCB9119F89152C57C6E8E772A4A754065CC06D725768B6E",
+      "designId": "mede",
+      "currencyId": "mede",
+      "formBindings": [
+        {
+          "formKey": "DE5021:Update.esm",
+          "editorId": "EC_Mede"
+        }
+      ],
+      "sourceLogicalPath": "textures\\Trotsky2302\\mede.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Trotsky2302\\mede.dds",
       "sourceMember": null,
       "sourceBytes": 699216,
@@ -195,18 +258,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#D4AF37"
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Ulfric/Ulfric_Copper.nif",
       "bytes": 6477,
       "sha256": "E6D940445D7AAB2D75ADFCEB36B3E6A5EEA017BE0445CC02939DDA0169348C59",
+      "designId": "ulfric",
+      "currencyId": "ulfric",
+      "formBindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Ulfric\\Ulfric.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
       "sourceMember": "meshes\\mint\\ulfric\\ulfric.nif",
       "sourceBytes": 6458,
       "sourceSha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
       "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Copper.dds",
         "textures\\Gray.dds",
@@ -238,6 +311,15 @@
       "path": "textures/Ensrick/Currency/Ulfric/Ulfric_Copper.dds",
       "bytes": 699236,
       "sha256": "6DD057D0A85B771D4556C74A6FC6F032C0B195B42B90E6E8584CADE3A29E7597",
+      "designId": "ulfric",
+      "currencyId": "ulfric",
+      "formBindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mint\\Ulfric\\Ulfric.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
       "sourceMember": "textures\\mint\\ulfric\\ulfric.dds",
       "sourceBytes": 2097300,
@@ -250,18 +332,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#B87333"
+      "targetColor": "#B87333",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Ulfric/Ulfric_Silver.nif",
       "bytes": 6477,
       "sha256": "2E4559625A65D62025653E313D50A970E0918714D3D760A64EEF9790191EA154",
+      "designId": "ulfric",
+      "currencyId": "ulfric",
+      "formBindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Ulfric\\Ulfric.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
       "sourceMember": "meshes\\mint\\ulfric\\ulfric.nif",
       "sourceBytes": 6458,
       "sourceSha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
       "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Silver.dds",
         "textures\\Gray.dds",
@@ -293,6 +385,15 @@
       "path": "textures/Ensrick/Currency/Ulfric/Ulfric_Silver.dds",
       "bytes": 699236,
       "sha256": "D1C8F354FDBAA14DE6E9F037186CE380D4AEE3B67277BC0D4C2EE6148C23B43D",
+      "designId": "ulfric",
+      "currencyId": "ulfric",
+      "formBindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mint\\Ulfric\\Ulfric.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
       "sourceMember": "textures\\mint\\ulfric\\ulfric.dds",
       "sourceBytes": 2097300,
@@ -305,18 +406,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#C0C0C0"
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Ulfric/Ulfric_Gold.nif",
       "bytes": 6475,
       "sha256": "07A999CFBF2C0B82464784C7C382A0DBDBAA1F707BCA5BCF47F519E5ABF30BE6",
+      "designId": "ulfric",
+      "currencyId": "ulfric",
+      "formBindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Ulfric\\Ulfric.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
       "sourceMember": "meshes\\mint\\ulfric\\ulfric.nif",
       "sourceBytes": 6458,
       "sourceSha256": "B5C0487F298497720F9100690AD34D1A712C36C71CA9F0C4426C666658D28B34",
       "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Ulfric\\Ulfric_Gold.dds",
         "textures\\Gray.dds",
@@ -348,6 +459,15 @@
       "path": "textures/Ensrick/Currency/Ulfric/Ulfric_Gold.dds",
       "bytes": 699236,
       "sha256": "BC68798B37B2CE54543A18A4093E9BF74CFA2FF3BDF156B090E65D6CF070BA1F",
+      "designId": "ulfric",
+      "currencyId": "ulfric",
+      "formBindings": [
+        {
+          "formKey": "DE5024:Update.esm",
+          "editorId": "DES_Ulfric"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mint\\Ulfric\\Ulfric.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
       "sourceMember": "textures\\mint\\ulfric\\ulfric.dds",
       "sourceBytes": 2097300,
@@ -360,18 +480,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#D4AF37"
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Dram/Dram_Copper.nif",
       "bytes": 6767,
       "sha256": "C1D7769F26E002C5812F32E6B931B1E2C91CBFD340AC29BF73D42B227BF888CB",
+      "designId": "dram",
+      "currencyId": "dram",
+      "formBindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Dram\\Dram.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
       "sourceMember": null,
       "sourceBytes": 6748,
       "sourceSha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Dram\\Dram_Copper.dds",
         "textures\\MINT\\Dram\\dram_m.dds",
@@ -405,6 +535,15 @@
       "path": "textures/Ensrick/Currency/Dram/Dram_Copper.dds",
       "bytes": 699236,
       "sha256": "174C8D00AD12F2B181334C788A48084D71B87D5C986EC4EEAD30C02BA82C21E2",
+      "designId": "dram",
+      "currencyId": "dram",
+      "formBindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Dram\\dram.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
       "sourceMember": null,
       "sourceBytes": 699236,
@@ -417,18 +556,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#B87333"
+      "targetColor": "#B87333",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Dram/Dram_Silver.nif",
       "bytes": 6767,
       "sha256": "0083DBAA06F3A908593B7768E8977C7FA91C13151621030C94B918AEDDBD850B",
+      "designId": "dram",
+      "currencyId": "dram",
+      "formBindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Dram\\Dram.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
       "sourceMember": null,
       "sourceBytes": 6748,
       "sourceSha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Dram\\Dram_Silver.dds",
         "textures\\MINT\\Dram\\dram_m.dds",
@@ -462,6 +611,15 @@
       "path": "textures/Ensrick/Currency/Dram/Dram_Silver.dds",
       "bytes": 699236,
       "sha256": "2B4C7F60AF4E788D60D6256B0CD36DB4908D525C8D6F5A04671B39FC493FACE2",
+      "designId": "dram",
+      "currencyId": "dram",
+      "formBindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Dram\\dram.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
       "sourceMember": null,
       "sourceBytes": 699236,
@@ -474,18 +632,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#C0C0C0"
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Dram/Dram_Gold.nif",
       "bytes": 6765,
       "sha256": "570CB346CED7D9D0B394BBB1ED16CE3089462A070025E93C9962B7BF40188029",
+      "designId": "dram",
+      "currencyId": "dram",
+      "formBindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Dram\\Dram.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\MINT\\Dram\\Dram.nif",
       "sourceMember": null,
       "sourceBytes": 6748,
       "sourceSha256": "55880DB0C1605B535D0838B5E8FB0A8E1CE59C5C2C6BA26CD6F46BD977466271",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Dram\\Dram_Gold.dds",
         "textures\\MINT\\Dram\\dram_m.dds",
@@ -519,6 +687,15 @@
       "path": "textures/Ensrick/Currency/Dram/Dram_Gold.dds",
       "bytes": 699236,
       "sha256": "340E666A796D5DAD833C49248093CDE7FD0C9AC0A7B04C05A6095556BCC421D2",
+      "designId": "dram",
+      "currencyId": "dram",
+      "formBindings": [
+        {
+          "formKey": "DE5029:Update.esm",
+          "editorId": "DES_Dram"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Dram\\dram.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\MINT\\Dram\\dram.dds",
       "sourceMember": null,
       "sourceBytes": 699236,
@@ -531,18 +708,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#D4AF37"
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Oshka/Oshka_Copper.nif",
       "bytes": 7708,
       "sha256": "7737BDF3FF85268CB68823035FC5A06855B512E1E3A3B1AA55ECBC3A3A8C5A76",
+      "designId": "oshka",
+      "currencyId": "oshka",
+      "formBindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "sourceMember": null,
       "sourceBytes": 7694,
       "sourceSha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Oshka\\Oshka_Copper.dds",
         "textures\\Nerapharu\\Oshka\\oshka_m.dds",
@@ -576,6 +763,15 @@
       "path": "textures/Ensrick/Currency/Oshka/Oshka_Copper.dds",
       "bytes": 1398276,
       "sha256": "C1CD9B308C0BD1876E68E170F018D3A7621C4B0569ED939872EAD82549706DE7",
+      "designId": "oshka",
+      "currencyId": "oshka",
+      "formBindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "sourceLogicalPath": "textures\\Nerapharu\\Oshka\\oshka.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
       "sourceMember": null,
       "sourceBytes": 1398276,
@@ -588,18 +784,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#B87333"
+      "targetColor": "#B87333",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Oshka/Oshka_Silver.nif",
       "bytes": 7708,
       "sha256": "E5C82B72B1B46EF4C863AD3351C9CC3E29CC05A3DAEAF93C637A966850F2DC97",
+      "designId": "oshka",
+      "currencyId": "oshka",
+      "formBindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "sourceMember": null,
       "sourceBytes": 7694,
       "sourceSha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Oshka\\Oshka_Silver.dds",
         "textures\\Nerapharu\\Oshka\\oshka_m.dds",
@@ -633,6 +839,15 @@
       "path": "textures/Ensrick/Currency/Oshka/Oshka_Silver.dds",
       "bytes": 1398276,
       "sha256": "1507F1E0355EEEAE1E182EEAEE0608D4B7A228653BA8FB5641D92257397A9A56",
+      "designId": "oshka",
+      "currencyId": "oshka",
+      "formBindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "sourceLogicalPath": "textures\\Nerapharu\\Oshka\\oshka.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
       "sourceMember": null,
       "sourceBytes": 1398276,
@@ -645,18 +860,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#C0C0C0"
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Oshka/Oshka_Gold.nif",
       "bytes": 7706,
       "sha256": "C7E13E4474D122BFCC62507852EB1C7BF62525EE5862D42B82371F17973FCADA",
+      "designId": "oshka",
+      "currencyId": "oshka",
+      "formBindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Nerapharu\\Oshka\\oshka.nif",
       "sourceMember": null,
       "sourceBytes": 7694,
       "sourceSha256": "A7AA357996BB008CDF26ADF27C0EBB5BF9D652F5BDF1FC4103E1EFFD672C0FD8",
       "sourceArchiveSha256": null,
-      "transform": "remap diffuse only; exact OBJ geometry equality",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Oshka\\Oshka_Gold.dds",
         "textures\\Nerapharu\\Oshka\\oshka_m.dds",
@@ -690,6 +915,15 @@
       "path": "textures/Ensrick/Currency/Oshka/Oshka_Gold.dds",
       "bytes": 1398276,
       "sha256": "B1E3FB0955E85872CEB3B567B707A87CDE2EC7753F1A9EECE71AF5B11D4C63F1",
+      "designId": "oshka",
+      "currencyId": "oshka",
+      "formBindings": [
+        {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka"
+        }
+      ],
+      "sourceLogicalPath": "textures\\Nerapharu\\Oshka\\oshka.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\Nerapharu\\Oshka\\oshka.dds",
       "sourceMember": null,
       "sourceBytes": 1398276,
@@ -702,18 +936,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#D4AF37"
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Ohzer/Ohzer_Copper.nif",
       "bytes": 12130,
       "sha256": "905DBE3FA91869ADB6D9240EFE0DC22D5E13D5AE337DD70C227BA4E8366A9E81",
+      "designId": "ohzer",
+      "currencyId": "ohzer",
+      "formBindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "sourceMember": null,
       "sourceBytes": 20324,
       "sourceSha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1",
       "sourceArchiveSha256": null,
-      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Copper.dds",
         "textures\\Gray.dds",
@@ -747,6 +991,15 @@
       "path": "textures/Ensrick/Currency/Ohzer/Ohzer_Copper.dds",
       "bytes": 1398276,
       "sha256": "FA68CEB8768E4268A16E3FA88F3716337E2B148A59CD7FFF7E72E5949190AB9D",
+      "designId": "ohzer",
+      "currencyId": "ohzer",
+      "formBindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
       "sourceMember": null,
       "sourceBytes": 22369776,
@@ -759,18 +1012,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#B87333"
+      "targetColor": "#B87333",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Ohzer/Ohzer_Silver.nif",
       "bytes": 12130,
       "sha256": "E53B152E60503E55C2E95B92B1FA1662BCF7F2D123E722968EA62C1A293DFEFA",
+      "designId": "ohzer",
+      "currencyId": "ohzer",
+      "formBindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "sourceMember": null,
       "sourceBytes": 20324,
       "sourceSha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1",
       "sourceArchiveSha256": null,
-      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Silver.dds",
         "textures\\Gray.dds",
@@ -804,6 +1067,15 @@
       "path": "textures/Ensrick/Currency/Ohzer/Ohzer_Silver.dds",
       "bytes": 1398276,
       "sha256": "B9FE9F7200173EA6752BA2FAADC2AC79E97FC0FDCD02D6841567A16BDEC57390",
+      "designId": "ohzer",
+      "currencyId": "ohzer",
+      "formBindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
       "sourceMember": null,
       "sourceBytes": 22369776,
@@ -816,18 +1088,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#C0C0C0"
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Ohzer/Ohzer_Gold.nif",
       "bytes": 12128,
       "sha256": "9D4EA65E51FEA38E60C0EE159BE1ED3787F90783D591561D67821976EFC3AB2D",
+      "designId": "ohzer",
+      "currencyId": "ohzer",
+      "formBindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
       "sourceMember": null,
       "sourceBytes": 20324,
       "sourceSha256": "1E080B983DCA2B100904D033E9DAFCC9D6AE557EFCA487A25B2AE382490844C1",
       "sourceArchiveSha256": null,
-      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Ohzer\\Ohzer_Gold.dds",
         "textures\\Gray.dds",
@@ -861,6 +1143,15 @@
       "path": "textures/Ensrick/Currency/Ohzer/Ohzer_Gold.dds",
       "bytes": 1398276,
       "sha256": "4FA726C4C4A64276B25FBF536362E217BFA8AA11D0A350FE3024EB5645130315",
+      "designId": "ohzer",
+      "currencyId": "ohzer",
+      "formBindings": [
+        {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin apocrypha\\coin.dds",
       "sourceMember": null,
       "sourceBytes": 22369776,
@@ -873,18 +1164,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#D4AF37"
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Varken/Varken_Copper.nif",
       "bytes": 6663,
       "sha256": "010E58537CACE69F12BD5E38BF20F7B9BBA95FAEECB0DE3130F7C6743CBB3DB4",
+      "designId": "varken",
+      "currencyId": "varken",
+      "formBindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "sourceMember": null,
       "sourceBytes": 10599,
       "sourceSha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15",
       "sourceArchiveSha256": null,
-      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Varken\\Varken_Copper.dds",
         "textures\\Gray.dds",
@@ -937,6 +1238,15 @@
       "path": "textures/Ensrick/Currency/Varken/Varken_Copper.dds",
       "bytes": 1398276,
       "sha256": "47756F0ED73521AD776775B0E354D7E11DB6614900D712B8152A48F0B8599B01",
+      "designId": "varken",
+      "currencyId": "varken",
+      "formBindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
       "sourceMember": null,
       "sourceBytes": 22369776,
@@ -949,18 +1259,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#B87333"
+      "targetColor": "#B87333",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Varken/Varken_Silver.nif",
       "bytes": 6663,
       "sha256": "A99359BA088F89CA556F5F952F2D34F6A8200B53D946EF903BDFFD12187BBAB2",
+      "designId": "varken",
+      "currencyId": "varken",
+      "formBindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "sourceMember": null,
       "sourceBytes": 10599,
       "sourceSha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15",
       "sourceArchiveSha256": null,
-      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Varken\\Varken_Silver.dds",
         "textures\\Gray.dds",
@@ -1013,6 +1333,15 @@
       "path": "textures/Ensrick/Currency/Varken/Varken_Silver.dds",
       "bytes": 1398276,
       "sha256": "E05CF4AC7B0E1A18E29E03C703E9A6D120A8D1801EF566541A45C5C522F8F7DF",
+      "designId": "varken",
+      "currencyId": "varken",
+      "formBindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
       "sourceMember": null,
       "sourceBytes": 22369776,
@@ -1025,18 +1354,28 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#C0C0C0"
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
     },
     {
       "path": "Meshes/Ensrick/Currency/Varken/Varken_Gold.nif",
       "bytes": 6659,
       "sha256": "B0E4D6B41FA83207DBD5CD032DFBF3F5FF564AD7A6C0D68E9DFFBAB570A9398F",
+      "designId": "varken",
+      "currencyId": "varken",
+      "formBindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
       "sourceMember": null,
       "sourceBytes": 10599,
       "sourceSha256": "E9A5C42526BCF944F5767D75B7F29E17EBFB63AD42ED6FEB92CD4D9769860D15",
       "sourceArchiveSha256": null,
-      "transform": "nifly LE-to-SSE conversion; remap diffuse only; exact OBJ geometry equality",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
       "textureBindings": [
         "textures\\Ensrick\\Currency\\Varken\\Varken_Gold.dds",
         "textures\\Gray.dds",
@@ -1089,6 +1428,15 @@
       "path": "textures/Ensrick/Currency/Varken/Varken_Gold.dds",
       "bytes": 1398276,
       "sha256": "E2ACAE8E2507B9CDE4C2917CF4A62F38727838E7DF7B3E6DF563F8D98D79E585",
+      "designId": "varken",
+      "currencyId": "varken",
+      "formBindings": [
+        {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
       "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Exchange Currency Enhanced\\textures\\mihail's shards of immersion\\coin dremora\\coin.dds",
       "sourceMember": null,
       "sourceBytes": 22369776,
@@ -1101,7 +1449,2819 @@
         "mips": 11,
         "fourCC": "DX10"
       },
-      "targetColor": "#D4AF37"
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrDragon/DrakrDragon_Copper.nif",
+      "bytes": 6442,
+      "sha256": "E4690599729197E2A84AAFB7CE568348ACE23E81311941F374A4D2383C3A5822",
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr01.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr01.nif",
+      "sourceBytes": 6411,
+      "sourceSha256": "6AF62B6FD38BA92FC4D7E273B7995548E0CB096248E89F9CBD866B5693D56AA9",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Copper.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Copper.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrDragon/DrakrDragon_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "D7B077E7505F527C4DBF758B3208743EAE58C87D6872A82578A651BAA410388E",
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrDragon/DrakrDragon_Silver.nif",
+      "bytes": 6442,
+      "sha256": "CDA00D76A10C66037B461D210ABDB040860DE6AEECD1B0749913FEA5DDFF39E7",
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr01.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr01.nif",
+      "sourceBytes": 6411,
+      "sourceSha256": "6AF62B6FD38BA92FC4D7E273B7995548E0CB096248E89F9CBD866B5693D56AA9",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Silver.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Silver.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrDragon/DrakrDragon_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "4773AC9D40DC05255319EF2A1E9773BC86FE1C6F69DF790BF021F2EBAE0C73D7",
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrDragon/DrakrDragon_Gold.nif",
+      "bytes": 6440,
+      "sha256": "FB6F2C44BB67601BCAFFBE17E28261CC7092AEE1096A58AF48A85C40EA892D7B",
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr01.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr01.nif",
+      "sourceBytes": 6411,
+      "sourceSha256": "6AF62B6FD38BA92FC4D7E273B7995548E0CB096248E89F9CBD866B5693D56AA9",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Gold.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Gold.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrDragon/DrakrDragon_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "21F607BB52F003E06491816C306B9D4849D51C2AA980793B9FD4194D8173A3F5",
+      "designId": "drakr-dragon",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5012:Update.esm",
+          "editorId": "DES_DrakrDragon"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrMoth/DrakrMoth_Copper.nif",
+      "bytes": 6438,
+      "sha256": "C8CDBBB0ECF41126AB389A04167BD691473D13821CFFAD996E29BA88C7C61966",
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr02.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr02.nif",
+      "sourceBytes": 6411,
+      "sourceSha256": "B0A625821BDB4D49784CFE92C0D6FF047FA49952DDBA139FA658F20DC4B9D9A5",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Copper.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Copper.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrMoth/DrakrMoth_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "D7B077E7505F527C4DBF758B3208743EAE58C87D6872A82578A651BAA410388E",
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrMoth/DrakrMoth_Silver.nif",
+      "bytes": 6438,
+      "sha256": "EB19980A6288CDF1C869217CB28E91EE01F934B53C3306BF96BDF9980B43557D",
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr02.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr02.nif",
+      "sourceBytes": 6411,
+      "sourceSha256": "B0A625821BDB4D49784CFE92C0D6FF047FA49952DDBA139FA658F20DC4B9D9A5",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Silver.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Silver.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrMoth/DrakrMoth_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "4773AC9D40DC05255319EF2A1E9773BC86FE1C6F69DF790BF021F2EBAE0C73D7",
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrMoth/DrakrMoth_Gold.nif",
+      "bytes": 6436,
+      "sha256": "279BFB16E8DFA050469A3E2EFAD2E7E3DBFCEF668B53D47519987517170D9960",
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr02.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr02.nif",
+      "sourceBytes": 6411,
+      "sourceSha256": "B0A625821BDB4D49784CFE92C0D6FF047FA49952DDBA139FA658F20DC4B9D9A5",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Gold.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Gold.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrMoth/DrakrMoth_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "21F607BB52F003E06491816C306B9D4849D51C2AA980793B9FD4194D8173A3F5",
+      "designId": "drakr-moth",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5013:Update.esm",
+          "editorId": "DES_DrakrMoth"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrOwl/DrakrOwl_Copper.nif",
+      "bytes": 6437,
+      "sha256": "FEC615EDBB33EC81EE5CADAD867378417116424F475681219026816A2F826834",
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr03.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr03.nif",
+      "sourceBytes": 6412,
+      "sourceSha256": "1130C110DE01141B76791D58E68854532F264D126FB7520A88A5FAB09E841F62",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Copper.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Copper.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrOwl/DrakrOwl_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "D7B077E7505F527C4DBF758B3208743EAE58C87D6872A82578A651BAA410388E",
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrOwl/DrakrOwl_Silver.nif",
+      "bytes": 6437,
+      "sha256": "F216DE718A7F76FFC82B5C53DB8047BFDD4624A1A332590C75B256EE415C32E0",
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr03.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr03.nif",
+      "sourceBytes": 6412,
+      "sourceSha256": "1130C110DE01141B76791D58E68854532F264D126FB7520A88A5FAB09E841F62",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Silver.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Silver.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrOwl/DrakrOwl_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "4773AC9D40DC05255319EF2A1E9773BC86FE1C6F69DF790BF021F2EBAE0C73D7",
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrOwl/DrakrOwl_Gold.nif",
+      "bytes": 6435,
+      "sha256": "DB8B6DA3B5B71F1D1F20385B6D81DE29BE21F80C043F08EC7BBB561DA073773B",
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr03.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr03.nif",
+      "sourceBytes": 6412,
+      "sourceSha256": "1130C110DE01141B76791D58E68854532F264D126FB7520A88A5FAB09E841F62",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Gold.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Gold.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrOwl/DrakrOwl_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "21F607BB52F003E06491816C306B9D4849D51C2AA980793B9FD4194D8173A3F5",
+      "designId": "drakr-owl",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5014:Update.esm",
+          "editorId": "DES_DrakrOwl"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrWhale/DrakrWhale_Copper.nif",
+      "bytes": 6441,
+      "sha256": "5DA2ACD8CDC0531FC5CE03613CD2B7397F21015429FDA10E20D1CF17F484470C",
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr04.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr04.nif",
+      "sourceBytes": 6412,
+      "sourceSha256": "A732106AA7FAE7C4BBDD432542A40A425FB89639CC9445CC3B6377FFD5E33EF6",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Copper.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Copper.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrWhale/DrakrWhale_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "D7B077E7505F527C4DBF758B3208743EAE58C87D6872A82578A651BAA410388E",
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrWhale/DrakrWhale_Silver.nif",
+      "bytes": 6441,
+      "sha256": "36D9B41196452E16C2C3947A64781043218F293AC864FBB34B0962E40AC0FFDB",
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr04.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr04.nif",
+      "sourceBytes": 6412,
+      "sourceSha256": "A732106AA7FAE7C4BBDD432542A40A425FB89639CC9445CC3B6377FFD5E33EF6",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Silver.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Silver.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrWhale/DrakrWhale_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "4773AC9D40DC05255319EF2A1E9773BC86FE1C6F69DF790BF021F2EBAE0C73D7",
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/DrakrWhale/DrakrWhale_Gold.nif",
+      "bytes": 6439,
+      "sha256": "F097FBA31D7A941C54895F647D46163764E5DFC3213936538672022681BCDC14",
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Drakr\\Drakr04.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\drakr\\drakr04.nif",
+      "sourceBytes": 6412,
+      "sourceSha256": "A732106AA7FAE7C4BBDD432542A40A425FB89639CC9445CC3B6377FFD5E33EF6",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Gold.dds",
+        "textures\\coin\\drakr\\drakr_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "",
+          "vertices": 149,
+          "triangles": 96,
+          "skinned": false,
+          "shader": {
+            "type": 0,
+            "flags1": 2185233153,
+            "flags2": 1
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Gold.dds",
+            "textures\\coin\\drakr\\drakr_n.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/DrakrWhale/DrakrWhale_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "21F607BB52F003E06491816C306B9D4849D51C2AA980793B9FD4194D8173A3F5",
+      "designId": "drakr-whale",
+      "currencyId": "drakr",
+      "formBindings": [
+        {
+          "formKey": "DE5015:Update.esm",
+          "editorId": "DES_DrakrWhale"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Drakr\\Drakr.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\drakr\\drakr.dds",
+      "sourceBytes": 2796344,
+      "sourceSha256": "0786B4D5E053416F41D9B15441083F755B39BD21AE998EBECDD1C537BC7A43B8",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/GibberFront/GibberFront_Copper.nif",
+      "bytes": 11911,
+      "sha256": "EA87F8CD581B432CB860668D677B3A7C80662E4FEC2EC2EEA9762B19344652E3",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Gibber\\GibberFront.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\gibber\\gibberfront.nif",
+      "sourceBytes": 11848,
+      "sourceSha256": "EA3C396958B01D088429D4A27926410275464398B3B0F2401CDDC00AC9C8C5C3",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Copper_Face0.dds",
+        "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Copper_Face10.dds",
+        "textures\\Gray.dds",
+        "textures\\MINT\\Gibber\\Gibber_n.dds",
+        "textures\\cubemaps\\Ore_Gold_e.dds",
+        "textures\\cubemaps\\ShinyContrast_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Copper_Face0.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\Ore_Gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "Coin01:10",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Copper_Face10.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\ShinyContrast_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberFront/GibberFront_Copper_Face0.dds",
+      "bytes": 699236,
+      "sha256": "D21B831C61EBE86286F91A38EDF3EE5B3B456B16057369F31D93E4707B51A23D",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberGold.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibbergold.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": "Face0"
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberFront/GibberFront_Copper_Face10.dds",
+      "bytes": 699236,
+      "sha256": "82B752CB7B9D00130EDA20668F357200A6207D187B887FAB6AC50A58A726BA00",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberDark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibberdark.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": "Face10"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/GibberFront/GibberFront_Silver.nif",
+      "bytes": 11911,
+      "sha256": "9C18EACB205A02F72DDC581EB96DE482E173AE23E2363BF6F0F580DBB6AFE872",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Gibber\\GibberFront.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\gibber\\gibberfront.nif",
+      "sourceBytes": 11848,
+      "sourceSha256": "EA3C396958B01D088429D4A27926410275464398B3B0F2401CDDC00AC9C8C5C3",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Silver_Face0.dds",
+        "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Silver_Face10.dds",
+        "textures\\Gray.dds",
+        "textures\\MINT\\Gibber\\Gibber_n.dds",
+        "textures\\cubemaps\\Ore_Gold_e.dds",
+        "textures\\cubemaps\\ShinyContrast_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Silver_Face0.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\Ore_Gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "Coin01:10",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Silver_Face10.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\ShinyContrast_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberFront/GibberFront_Silver_Face0.dds",
+      "bytes": 699236,
+      "sha256": "602F2B4F73E4B89120B7665D692D69FAA6E0C832196E49FD5DF037E1E1AD7700",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberGold.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibbergold.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": "Face0"
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberFront/GibberFront_Silver_Face10.dds",
+      "bytes": 699236,
+      "sha256": "AD33BE0CE598B49A6A17E4CE5FD49BA1459567DEE8D5E92C2349F83A28E1F0F3",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberDark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibberdark.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": "Face10"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/GibberFront/GibberFront_Gold.nif",
+      "bytes": 11907,
+      "sha256": "E1A7DA31970CFFD50C1089343950202A6278FE281478432BA059F38DFBD2E8C9",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Gibber\\GibberFront.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\gibber\\gibberfront.nif",
+      "sourceBytes": 11848,
+      "sourceSha256": "EA3C396958B01D088429D4A27926410275464398B3B0F2401CDDC00AC9C8C5C3",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Gold_Face0.dds",
+        "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Gold_Face10.dds",
+        "textures\\Gray.dds",
+        "textures\\MINT\\Gibber\\Gibber_n.dds",
+        "textures\\cubemaps\\Ore_Gold_e.dds",
+        "textures\\cubemaps\\ShinyContrast_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Gold_Face0.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\Ore_Gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "Coin01:10",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberFront\\GibberFront_Gold_Face10.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\ShinyContrast_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberFront/GibberFront_Gold_Face0.dds",
+      "bytes": 699236,
+      "sha256": "542DB6162407D1E6E7EDC18753B18DFE8A18B57941A4B5AC0E495ED2D35C5652",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberGold.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibbergold.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": "Face0"
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberFront/GibberFront_Gold_Face10.dds",
+      "bytes": 699236,
+      "sha256": "6617C7C166DC7F12E8AE018F3D95DD01BB7EDC38A4A29BE9DF3733B481016CA8",
+      "designId": "gibber-front",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5018:Update.esm",
+          "editorId": "DES_GibberFront"
+        },
+        {
+          "formKey": "DE5027:Update.esm",
+          "editorId": "DES_Gibber",
+          "assetAlias": true
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberDark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibberdark.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": "Face10"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/GibberBack/GibberBack_Copper.nif",
+      "bytes": 11907,
+      "sha256": "172BA82D20B98D1BA7C275BBDF051163F9F513C256588BDDDCDCFFB82407B72E",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Gibber\\GibberBack.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\gibber\\gibberback.nif",
+      "sourceBytes": 11848,
+      "sourceSha256": "4B009D134EB82B17D60D13420F02E57E90A1D682535A00238076F9267D2D8473",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Copper_Face0.dds",
+        "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Copper_Face10.dds",
+        "textures\\Gray.dds",
+        "textures\\MINT\\Gibber\\Gibber_n.dds",
+        "textures\\cubemaps\\Ore_Gold_e.dds",
+        "textures\\cubemaps\\ShinyContrast_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Copper_Face0.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\Ore_Gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "Coin01:10",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Copper_Face10.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\ShinyContrast_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberBack/GibberBack_Copper_Face0.dds",
+      "bytes": 699236,
+      "sha256": "D21B831C61EBE86286F91A38EDF3EE5B3B456B16057369F31D93E4707B51A23D",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberGold.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibbergold.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": "Face0"
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberBack/GibberBack_Copper_Face10.dds",
+      "bytes": 699236,
+      "sha256": "82B752CB7B9D00130EDA20668F357200A6207D187B887FAB6AC50A58A726BA00",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberDark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibberdark.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": "Face10"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/GibberBack/GibberBack_Silver.nif",
+      "bytes": 11907,
+      "sha256": "5C60C1231D5C3DE7A51DD11CA3CED2E3C7C97F64D954C731C33CDC1993D48E55",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Gibber\\GibberBack.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\gibber\\gibberback.nif",
+      "sourceBytes": 11848,
+      "sourceSha256": "4B009D134EB82B17D60D13420F02E57E90A1D682535A00238076F9267D2D8473",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Silver_Face0.dds",
+        "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Silver_Face10.dds",
+        "textures\\Gray.dds",
+        "textures\\MINT\\Gibber\\Gibber_n.dds",
+        "textures\\cubemaps\\Ore_Gold_e.dds",
+        "textures\\cubemaps\\ShinyContrast_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Silver_Face0.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\Ore_Gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "Coin01:10",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Silver_Face10.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\ShinyContrast_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberBack/GibberBack_Silver_Face0.dds",
+      "bytes": 699236,
+      "sha256": "602F2B4F73E4B89120B7665D692D69FAA6E0C832196E49FD5DF037E1E1AD7700",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberGold.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibbergold.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": "Face0"
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberBack/GibberBack_Silver_Face10.dds",
+      "bytes": 699236,
+      "sha256": "AD33BE0CE598B49A6A17E4CE5FD49BA1459567DEE8D5E92C2349F83A28E1F0F3",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberDark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibberdark.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": "Face10"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/GibberBack/GibberBack_Gold.nif",
+      "bytes": 11903,
+      "sha256": "E2F4A78873804364B44EAC4C6F7BDDD92ECEE2DFF431B0CE59B4561BE8AA3931",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Gibber\\GibberBack.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\gibber\\gibberback.nif",
+      "sourceBytes": 11848,
+      "sourceSha256": "4B009D134EB82B17D60D13420F02E57E90A1D682535A00238076F9267D2D8473",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Gold_Face0.dds",
+        "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Gold_Face10.dds",
+        "textures\\Gray.dds",
+        "textures\\MINT\\Gibber\\Gibber_n.dds",
+        "textures\\cubemaps\\Ore_Gold_e.dds",
+        "textures\\cubemaps\\ShinyContrast_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Gold_Face0.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\Ore_Gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        },
+        {
+          "name": "Coin01:10",
+          "vertices": 144,
+          "triangles": 140,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\GibberBack\\GibberBack_Gold_Face10.dds",
+            "textures\\MINT\\Gibber\\Gibber_n.dds",
+            "textures\\cubemaps\\ShinyContrast_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberBack/GibberBack_Gold_Face0.dds",
+      "bytes": 699236,
+      "sha256": "542DB6162407D1E6E7EDC18753B18DFE8A18B57941A4B5AC0E495ED2D35C5652",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberGold.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibbergold.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "089E5621035A4308D18763695D530AAED0185627AA5EAEB20F09266407754B12",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": "Face0"
+    },
+    {
+      "path": "textures/Ensrick/Currency/GibberBack/GibberBack_Gold_Face10.dds",
+      "bytes": 699236,
+      "sha256": "6617C7C166DC7F12E8AE018F3D95DD01BB7EDC38A4A29BE9DF3733B481016CA8",
+      "designId": "gibber-back",
+      "currencyId": "gibber",
+      "formBindings": [
+        {
+          "formKey": "DE5017:Update.esm",
+          "editorId": "DES_GibberBack"
+        }
+      ],
+      "sourceLogicalPath": "textures\\MINT\\Gibber\\GibberDark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\gibber\\gibberdark.dds",
+      "sourceBytes": 2097280,
+      "sourceSha256": "084C10837DF9B222C05F8F83BDF15E494192F813C3F912E49BD8E932FCCB3B3F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": "Face10"
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mala/Mala_Copper.nif",
+      "bytes": 6664,
+      "sha256": "5B11CE371E618768D01A5D41EBE748D916278131D22A7F38668818BF083CB3F2",
+      "designId": "mala",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Mala\\Mala.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\mala\\mala.nif",
+      "sourceBytes": 6645,
+      "sourceSha256": "6CC816F7B3DEC4D3EC3EB1EED6100F3D0B5DE66E7564382314149B711AF03C72",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\COIN\\Mala\\Mala_n.dds",
+        "textures\\COIN\\Mala\\Mala_s.dds",
+        "textures\\Ensrick\\Currency\\Mala\\Mala_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01",
+          "vertices": 147,
+          "triangles": 148,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mala\\Mala_Copper.dds",
+            "textures\\COIN\\Mala\\Mala_n.dds",
+            "textures\\COIN\\Mala\\Mala_s.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mala/Mala_Copper.dds",
+      "bytes": 174948,
+      "sha256": "E0AC6CED2845F2E5E44D98B4392D3993E2230803CC0AF1A2F90CCAB26CBC731D",
+      "designId": "mala",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Mala\\Mala.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\mala\\mala.dds",
+      "sourceBytes": 87528,
+      "sourceSha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 256,
+        "height": 512,
+        "mips": 10,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mala/Mala_Silver.nif",
+      "bytes": 6664,
+      "sha256": "69BB60565218B29AEE54D1C9D0CC6C934532AE96E238BD91E777AA00E3290669",
+      "designId": "mala",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Mala\\Mala.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\mala\\mala.nif",
+      "sourceBytes": 6645,
+      "sourceSha256": "6CC816F7B3DEC4D3EC3EB1EED6100F3D0B5DE66E7564382314149B711AF03C72",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\COIN\\Mala\\Mala_n.dds",
+        "textures\\COIN\\Mala\\Mala_s.dds",
+        "textures\\Ensrick\\Currency\\Mala\\Mala_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01",
+          "vertices": 147,
+          "triangles": 148,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mala\\Mala_Silver.dds",
+            "textures\\COIN\\Mala\\Mala_n.dds",
+            "textures\\COIN\\Mala\\Mala_s.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mala/Mala_Silver.dds",
+      "bytes": 174948,
+      "sha256": "48E238DA4302E7C4FC091B81E82A92BB965FE967F9496EECBC276936FC0B8217",
+      "designId": "mala",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Mala\\Mala.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\mala\\mala.dds",
+      "sourceBytes": 87528,
+      "sourceSha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 256,
+        "height": 512,
+        "mips": 10,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mala/Mala_Gold.nif",
+      "bytes": 6662,
+      "sha256": "F5DFC48AB46B5F331BEC59973D6F9A0E506EB496FF0EEF6328874859CF658378",
+      "designId": "mala",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Mala\\Mala.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\mala\\mala.nif",
+      "sourceBytes": 6645,
+      "sourceSha256": "6CC816F7B3DEC4D3EC3EB1EED6100F3D0B5DE66E7564382314149B711AF03C72",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\COIN\\Mala\\Mala_n.dds",
+        "textures\\COIN\\Mala\\Mala_s.dds",
+        "textures\\Ensrick\\Currency\\Mala\\Mala_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01",
+          "vertices": 147,
+          "triangles": 148,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mala\\Mala_Gold.dds",
+            "textures\\COIN\\Mala\\Mala_n.dds",
+            "textures\\COIN\\Mala\\Mala_s.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mala/Mala_Gold.dds",
+      "bytes": 174948,
+      "sha256": "14EDD37925BCA6199833BA021CD1EA5EC6B7E292308F5D9C076CE6BA1C1F1B39",
+      "designId": "mala",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "DE5019:Update.esm",
+          "editorId": "DES_Mala"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Mala\\Mala.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\mala\\mala.dds",
+      "sourceBytes": 87528,
+      "sourceSha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 256,
+        "height": 512,
+        "mips": 10,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mallari/Mallari_Copper.nif",
+      "bytes": 40600,
+      "sha256": "D9504ADA9437B407511F7B3A86B55B6878E031A55EF1E14E4226A87DEFE3A200",
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "formBindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Mallari\\Mallari.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\mallari\\mallari.nif",
+      "sourceBytes": 40581,
+      "sourceSha256": "0A2AB118B5B7A399C18717065EA64D4224EA3CDFD76F5EB1EBC512E7AC4E0F17",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\COIN\\Mallari\\Mallari_m.dds",
+        "textures\\COIN\\Mallari\\Mallari_n.dds",
+        "textures\\Ensrick\\Currency\\Mallari\\Mallari_Copper.dds",
+        "textures\\cubemaps\\ShinyBright_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 1226,
+          "triangles": 764,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mallari\\Mallari_Copper.dds",
+            "textures\\COIN\\Mallari\\Mallari_n.dds",
+            "textures\\cubemaps\\ShinyBright_e.dds",
+            "textures\\COIN\\Mallari\\Mallari_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mallari/Mallari_Copper.dds",
+      "bytes": 1398276,
+      "sha256": "5D4D11CE8C9AFE289AAC9AECD83330F613BF54F191477304A6F61A996B481114",
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "formBindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Mallari\\Mallari.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\mallari\\mallari.dds",
+      "sourceBytes": 699192,
+      "sourceSha256": "D2B53E67611F0F77E33C34863200DAC02187FF4C6B1322F6969FEF1871CF92D6",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mallari/Mallari_Silver.nif",
+      "bytes": 40600,
+      "sha256": "9B16160FBCC4E70DCCD518CB6CF55CF0B79FF20056BD5F0F05E81EF66FEC6226",
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "formBindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Mallari\\Mallari.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\mallari\\mallari.nif",
+      "sourceBytes": 40581,
+      "sourceSha256": "0A2AB118B5B7A399C18717065EA64D4224EA3CDFD76F5EB1EBC512E7AC4E0F17",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\COIN\\Mallari\\Mallari_m.dds",
+        "textures\\COIN\\Mallari\\Mallari_n.dds",
+        "textures\\Ensrick\\Currency\\Mallari\\Mallari_Silver.dds",
+        "textures\\cubemaps\\ShinyBright_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 1226,
+          "triangles": 764,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mallari\\Mallari_Silver.dds",
+            "textures\\COIN\\Mallari\\Mallari_n.dds",
+            "textures\\cubemaps\\ShinyBright_e.dds",
+            "textures\\COIN\\Mallari\\Mallari_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mallari/Mallari_Silver.dds",
+      "bytes": 1398276,
+      "sha256": "12E1DC8373C1450887F30BC36B5178BCA9CD72512F9EB6985665CBB79693C0A7",
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "formBindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Mallari\\Mallari.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\mallari\\mallari.dds",
+      "sourceBytes": 699192,
+      "sourceSha256": "D2B53E67611F0F77E33C34863200DAC02187FF4C6B1322F6969FEF1871CF92D6",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Mallari/Mallari_Gold.nif",
+      "bytes": 40598,
+      "sha256": "7B7A784448879035D27A391DEF4BBC7A8D84B5948F5464C155F8A8BE007EC7FE",
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "formBindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Mallari\\Mallari.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\mallari\\mallari.nif",
+      "sourceBytes": 40581,
+      "sourceSha256": "0A2AB118B5B7A399C18717065EA64D4224EA3CDFD76F5EB1EBC512E7AC4E0F17",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\COIN\\Mallari\\Mallari_m.dds",
+        "textures\\COIN\\Mallari\\Mallari_n.dds",
+        "textures\\Ensrick\\Currency\\Mallari\\Mallari_Gold.dds",
+        "textures\\cubemaps\\ShinyBright_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01:0",
+          "vertices": 1226,
+          "triangles": 764,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Mallari\\Mallari_Gold.dds",
+            "textures\\COIN\\Mallari\\Mallari_n.dds",
+            "textures\\cubemaps\\ShinyBright_e.dds",
+            "textures\\COIN\\Mallari\\Mallari_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Mallari/Mallari_Gold.dds",
+      "bytes": 1398276,
+      "sha256": "7DCA1602C3B86BC9BCECB0F9722654143E84CF4368466CB1E67B4BB85C28A58F",
+      "designId": "mallari",
+      "currencyId": "mallari",
+      "formBindings": [
+        {
+          "formKey": "DE5020:Update.esm",
+          "editorId": "DES_Mallari"
+        }
+      ],
+      "sourceLogicalPath": "textures\\COIN\\Mallari\\Mallari.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\mallari\\mallari.dds",
+      "sourceBytes": 699192,
+      "sourceSha256": "D2B53E67611F0F77E33C34863200DAC02187FF4C6B1322F6969FEF1871CF92D6",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Nchuark/Nchuark_Copper.nif",
+      "bytes": 8657,
+      "sha256": "CF4C9402F6A8B1FC2806489222003D5773F6217F61B8F736B164F662E92668AC",
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "formBindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Nchuark\\Nchuark.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\nchuark\\nchuark.nif",
+      "sourceBytes": 8638,
+      "sourceSha256": "F153B3BE5F5B27182A192BE2D22B43DF17612BAAC7BC6EED7E4736BB2E129E6A",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "Textures\\COIN\\Nchuark\\Nchuark_m.dds",
+        "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+        "textures\\Ensrick\\Currency\\Nchuark\\Nchuark_Copper.dds",
+        "textures\\cubemaps\\Bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "DwrvCoin:6",
+          "vertices": 182,
+          "triangles": 320,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Nchuark\\Nchuark_Copper.dds",
+            "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+            "textures\\cubemaps\\Bronze_e.dds",
+            "Textures\\COIN\\Nchuark\\Nchuark_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Nchuark/Nchuark_Copper.dds",
+      "bytes": 699236,
+      "sha256": "F7F2BA70541DAD90914CD980AB5AE6D1826DB2F27DF6A9C44636A75C0D3C8FD8",
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "formBindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "sourceLogicalPath": "Textures\\COIN\\Nchuark\\Nchuark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\nchuark\\nchuark.dds",
+      "sourceBytes": 1398248,
+      "sourceSha256": "9310F8E1041D9B7501F9E2199E748CE0404D72EFBB1EF07B16C6F416CB147EC3",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 512,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Nchuark/Nchuark_Silver.nif",
+      "bytes": 8657,
+      "sha256": "2681B6E31ABBF289A60E8A1A624DDBD8740F0611FC6180E605C80B98ADEAF9BC",
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "formBindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Nchuark\\Nchuark.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\nchuark\\nchuark.nif",
+      "sourceBytes": 8638,
+      "sourceSha256": "F153B3BE5F5B27182A192BE2D22B43DF17612BAAC7BC6EED7E4736BB2E129E6A",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "Textures\\COIN\\Nchuark\\Nchuark_m.dds",
+        "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+        "textures\\Ensrick\\Currency\\Nchuark\\Nchuark_Silver.dds",
+        "textures\\cubemaps\\Bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "DwrvCoin:6",
+          "vertices": 182,
+          "triangles": 320,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Nchuark\\Nchuark_Silver.dds",
+            "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+            "textures\\cubemaps\\Bronze_e.dds",
+            "Textures\\COIN\\Nchuark\\Nchuark_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Nchuark/Nchuark_Silver.dds",
+      "bytes": 699236,
+      "sha256": "6A5C24AACAF8BC96413BA800E458477A3F032B9602078F71D13B4EE8E680DA9F",
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "formBindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "sourceLogicalPath": "Textures\\COIN\\Nchuark\\Nchuark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\nchuark\\nchuark.dds",
+      "sourceBytes": 1398248,
+      "sourceSha256": "9310F8E1041D9B7501F9E2199E748CE0404D72EFBB1EF07B16C6F416CB147EC3",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 512,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Nchuark/Nchuark_Gold.nif",
+      "bytes": 8655,
+      "sha256": "C17120A1B839545F0D761E792C61CD0EC478F69E1EA9DAA7CB97987B9F02406A",
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "formBindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\COIN\\Nchuark\\Nchuark.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N.bsa",
+      "sourceMember": "meshes\\coin\\nchuark\\nchuark.nif",
+      "sourceBytes": 8638,
+      "sourceSha256": "F153B3BE5F5B27182A192BE2D22B43DF17612BAAC7BC6EED7E4736BB2E129E6A",
+      "sourceArchiveSha256": "236D4AD172642072749BDA32FD9E12DBD154AC06AA9A9923BD53CE75B0C52143",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "Textures\\COIN\\Nchuark\\Nchuark_m.dds",
+        "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+        "textures\\Ensrick\\Currency\\Nchuark\\Nchuark_Gold.dds",
+        "textures\\cubemaps\\Bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "DwrvCoin:6",
+          "vertices": 182,
+          "triangles": 320,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Nchuark\\Nchuark_Gold.dds",
+            "Textures\\COIN\\Nchuark\\Nchuark_n.dds",
+            "textures\\cubemaps\\Bronze_e.dds",
+            "Textures\\COIN\\Nchuark\\Nchuark_m.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Nchuark/Nchuark_Gold.dds",
+      "bytes": 699236,
+      "sha256": "9ADB54B3AA3AB32495F01E51C6886AF480770B81CFC8F1FD55D27C7BC5A8FBBA",
+      "designId": "nchuark",
+      "currencyId": "nchuark",
+      "formBindings": [
+        {
+          "formKey": "DE5022:Update.esm",
+          "editorId": "DES_Nchuark"
+        }
+      ],
+      "sourceLogicalPath": "Textures\\COIN\\Nchuark\\Nchuark.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\C.O.I.N. - Coins of Interesting Natures\\C.O.I.N - Textures.bsa",
+      "sourceMember": "textures\\coin\\nchuark\\nchuark.dds",
+      "sourceBytes": 1398248,
+      "sourceSha256": "9310F8E1041D9B7501F9E2199E748CE0404D72EFBB1EF07B16C6F416CB147EC3",
+      "sourceArchiveSha256": "DE5FB9E3289C72DCBCCAFFA41ACF49F35ECC9F2F78BC7C1A07132911A091C9FC",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 1024,
+        "height": 512,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Sancar/Sancar_Copper.nif",
+      "bytes": 11303,
+      "sha256": "00C212A7619FBC4517A8010B8291F38AD88B3D199F4B49E5C8F7B841F284AF65",
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "formBindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Sancar\\Sancar.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\sancar\\sancar.nif",
+      "sourceBytes": 11284,
+      "sourceSha256": "9A787B34EDC9527166AE99BEBF79CE02D4886EE9E271528A3AEB57D6B40E0D5F",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Sancar\\Sancar_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\ore_gold_e.dds",
+        "textures\\mint\\sancar\\sancar_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Sancar",
+          "vertices": 264,
+          "triangles": 384,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Sancar\\Sancar_Copper.dds",
+            "textures\\mint\\sancar\\sancar_n.dds",
+            "textures\\cubemaps\\ore_gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Sancar/Sancar_Copper.dds",
+      "bytes": 699236,
+      "sha256": "73882551BF766B0DC4E4D46F63674A725E013843D832F358784C1D1DF8C67BDA",
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "formBindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mint\\sancar\\sancar.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\sancar\\sancar.dds",
+      "sourceBytes": 349672,
+      "sourceSha256": "A090E74B3C4101FA9947258D68DC2C5E9ED6AE4FE3581686509C630A37827D2F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Sancar/Sancar_Silver.nif",
+      "bytes": 11303,
+      "sha256": "442C6307B8D3F9C2B9A5F1D404C592A2F88F3BDCFBAEA2DCEC0C8C3F3CDD5437",
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "formBindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Sancar\\Sancar.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\sancar\\sancar.nif",
+      "sourceBytes": 11284,
+      "sourceSha256": "9A787B34EDC9527166AE99BEBF79CE02D4886EE9E271528A3AEB57D6B40E0D5F",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Sancar\\Sancar_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\ore_gold_e.dds",
+        "textures\\mint\\sancar\\sancar_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Sancar",
+          "vertices": 264,
+          "triangles": 384,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Sancar\\Sancar_Silver.dds",
+            "textures\\mint\\sancar\\sancar_n.dds",
+            "textures\\cubemaps\\ore_gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Sancar/Sancar_Silver.dds",
+      "bytes": 699236,
+      "sha256": "6595BA9FDCC22EFF562905A159EE3880CEAE4F88199307214E389068E9DDA27A",
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "formBindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mint\\sancar\\sancar.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\sancar\\sancar.dds",
+      "sourceBytes": 349672,
+      "sourceSha256": "A090E74B3C4101FA9947258D68DC2C5E9ED6AE4FE3581686509C630A37827D2F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/Sancar/Sancar_Gold.nif",
+      "bytes": 11301,
+      "sha256": "293F18B43C035E262BCCC7F4C3DF82CEB86F202DA7E128D43B8B79042D1490EC",
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "formBindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\MINT\\Sancar\\Sancar.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T.bsa",
+      "sourceMember": "meshes\\mint\\sancar\\sancar.nif",
+      "sourceBytes": 11284,
+      "sourceSha256": "9A787B34EDC9527166AE99BEBF79CE02D4886EE9E271528A3AEB57D6B40E0D5F",
+      "sourceArchiveSha256": "C9DA1A81B1F814422D68E6BF6AFAFA494ECD2B8AEE4FCDFE4EA3DE34ECBD6F06",
+      "transform": "remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\Sancar\\Sancar_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\cubemaps\\ore_gold_e.dds",
+        "textures\\mint\\sancar\\sancar_n.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Sancar",
+          "vertices": 264,
+          "triangles": 384,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\Sancar\\Sancar_Gold.dds",
+            "textures\\mint\\sancar\\sancar_n.dds",
+            "textures\\cubemaps\\ore_gold_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/Sancar/Sancar_Gold.dds",
+      "bytes": 699236,
+      "sha256": "1807D8A7AC0B0A4D479FAE23C1F0A6388D24E8524BD309D587F434BE7102C7A0",
+      "designId": "sancar",
+      "currencyId": "sancar",
+      "formBindings": [
+        {
+          "formKey": "DE5023:Update.esm",
+          "editorId": "DES_Sancar"
+        }
+      ],
+      "sourceLogicalPath": "textures\\mint\\sancar\\sancar.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\M.I.N.T. - More Interesting New Tender\\M.I.N.T - Textures.bsa",
+      "sourceMember": "textures\\mint\\sancar\\sancar.dds",
+      "sourceBytes": 349672,
+      "sourceSha256": "A090E74B3C4101FA9947258D68DC2C5E9ED6AE4FE3581686509C630A37827D2F",
+      "sourceArchiveSha256": "79320B7DF48A412DF2AE93F644D4D5B5FD9D08E48D937E9329AFD6646599BA27",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 512,
+        "height": 1024,
+        "mips": 11,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/BrumaAyleid/BrumaAyleid_Copper.nif",
+      "bytes": 6738,
+      "sha256": "D9089800D6FF55CAA37236B718B24E519C432D880D2F0FBF6366D0A88C645CD9",
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\BSCyrodiil\\dungeons\\AyleidRuins\\AyleidCoin01.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+      "sourceMember": "meshes\\bscyrodiil\\dungeons\\ayleidruins\\ayleidcoin01.nif",
+      "sourceBytes": 13264,
+      "sourceSha256": "C3534BB8CBD667E3D78443E09369274CA1ADD50080059C9CA088F1986B5450B4",
+      "sourceArchiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Copper.dds",
+        "textures\\Gray.dds",
+        "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+        "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01",
+          "vertices": 147,
+          "triangles": 148,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Copper.dds",
+            "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+            "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/BrumaAyleid/BrumaAyleid_Copper.dds",
+      "bytes": 174948,
+      "sha256": "E0AC6CED2845F2E5E44D98B4392D3993E2230803CC0AF1A2F90CCAB26CBC731D",
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "sourceLogicalPath": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+      "sourceMember": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+      "sourceBytes": 87528,
+      "sourceSha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+      "sourceArchiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 256,
+        "height": 512,
+        "mips": 10,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#B87333",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/BrumaAyleid/BrumaAyleid_Silver.nif",
+      "bytes": 6738,
+      "sha256": "A20FC7605480C15792D83607D0EE223E62D37822FA78F0967B92C29A033F65D4",
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\BSCyrodiil\\dungeons\\AyleidRuins\\AyleidCoin01.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+      "sourceMember": "meshes\\bscyrodiil\\dungeons\\ayleidruins\\ayleidcoin01.nif",
+      "sourceBytes": 13264,
+      "sourceSha256": "C3534BB8CBD667E3D78443E09369274CA1ADD50080059C9CA088F1986B5450B4",
+      "sourceArchiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Silver.dds",
+        "textures\\Gray.dds",
+        "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+        "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01",
+          "vertices": 147,
+          "triangles": 148,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Silver.dds",
+            "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+            "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/BrumaAyleid/BrumaAyleid_Silver.dds",
+      "bytes": 174948,
+      "sha256": "48E238DA4302E7C4FC091B81E82A92BB965FE967F9496EECBC276936FC0B8217",
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "sourceLogicalPath": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+      "sourceMember": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+      "sourceBytes": 87528,
+      "sourceSha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+      "sourceArchiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 256,
+        "height": 512,
+        "mips": 10,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#C0C0C0",
+      "outputSuffix": null
+    },
+    {
+      "path": "Meshes/Ensrick/Currency/BrumaAyleid/BrumaAyleid_Gold.nif",
+      "bytes": 6736,
+      "sha256": "BF37E1B5C118DA96A1588495D9F0C50645C2C1987B004FFE528375B38337169B",
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "sourceLogicalPath": "Meshes\\BSCyrodiil\\dungeons\\AyleidRuins\\AyleidCoin01.nif",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+      "sourceMember": "meshes\\bscyrodiil\\dungeons\\ayleidruins\\ayleidcoin01.nif",
+      "sourceBytes": 13264,
+      "sourceSha256": "C3534BB8CBD667E3D78443E09369274CA1ADD50080059C9CA088F1986B5450B4",
+      "sourceArchiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D",
+      "transform": "nifly LE-to-SSE conversion; remap every authored diffuse slot only; exact OBJ geometry equality",
+      "textureBindings": [
+        "textures\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Gold.dds",
+        "textures\\Gray.dds",
+        "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+        "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+        "textures\\cubemaps\\bronze_e.dds"
+      ],
+      "shapeDetails": [
+        {
+          "name": "Coin01",
+          "vertices": 147,
+          "triangles": 148,
+          "skinned": false,
+          "shader": {
+            "type": 1,
+            "flags1": 2185233281,
+            "flags2": 32769
+          },
+          "hasEyeData": false,
+          "bones": [],
+          "textures": [
+            "textures\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Gold.dds",
+            "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_n.dds",
+            "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01_s.dds",
+            "textures\\cubemaps\\bronze_e.dds",
+            "textures\\Gray.dds"
+          ]
+        }
+      ],
+      "sseCompatible": true
+    },
+    {
+      "path": "textures/Ensrick/Currency/BrumaAyleid/BrumaAyleid_Gold.dds",
+      "bytes": 174948,
+      "sha256": "14EDD37925BCA6199833BA021CD1EA5EC6B7E292308F5D9C076CE6BA1C1F1B39",
+      "designId": "bruma-ayleid",
+      "currencyId": "mala",
+      "formBindings": [
+        {
+          "formKey": "6028DC:BSAssets.esm",
+          "editorId": "BSKAyleidGold001"
+        }
+      ],
+      "sourceLogicalPath": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+      "sourcePath": "C:\\Users\\danjo\\source\\repos\\mo2-instances\\skyrim-se\\mods\\Beyond Skyrim - Assets\\BSAssets - Textures.bsa",
+      "sourceMember": "textures\\bscyrodiil\\dungeons\\ayleidruins\\ayleiscoin01.dds",
+      "sourceBytes": 87528,
+      "sourceSha256": "B0CA3372B7AF033437F649FE255A55A095E838EA627E797501A4E00CC3F1DEB0",
+      "sourceArchiveSha256": "0269BBD3D143383DD6C077A341143006AB5E9584BE15982967B6D332D513AD4D",
+      "transform": "neutral luminance; 55% tier tint; <=1024 without upscaling; BC7 CPU; complete mip chain",
+      "dds": {
+        "width": 256,
+        "height": 512,
+        "mips": 10,
+        "fourCC": "DX10"
+      },
+      "targetColor": "#D4AF37",
+      "outputSuffix": null
     }
   ]
 }
