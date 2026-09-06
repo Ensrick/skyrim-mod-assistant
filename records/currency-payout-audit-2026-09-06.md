@@ -65,6 +65,35 @@ must have an explicit, non-overlapping classification.
 
 ## Existing-save admission remains a separate gate
 
+The independent M.I.N.T. audit also identified one conflicting owner added by
+our older generator: Ma'dran alias 5 of `000002:WindhelmUsesUlfrics.esp` is
+assigned `DES_CurrencyFramework_BarterExclusion`. That handler resets Currency
+Swapper on activation and calls its currency-switching function after dialogue
+closes. The new generator must remove that exact ownership path. Do not stop
+the shared `000800:M.I.N.T.esp` functions quest or the whole Windhelm/Dram
+module quests; they retain dialogue, exchange and service responsibilities.
+Keep the narrow `DE5037:Update.esm` automatic-conversion-off policy. Module
+price/global maintenance stripped by prior ECE overrides is a separate
+compatibility obligation, not permission to restore all original switching
+scripts.
+
+The follow-up winning-record audit confirmed 29 old modern-exchange INFO
+callbacks still win: Dram local IDs `17,19,1B,1D,1F,25,27,29,2B,32,34,36,38,3A`
+and Ulfric `53,54,55,56,57,58,59,5A,5B,1F,5C,5D,93,95,92` in their respective
+module ESPs. Nine additional Dram responses belong to those same obsolete
+exchange branches (`64,65,66,7,67,68,69,6A,9`); `7` retains an older
+`TIF__ExchangeAll` attachment. They cannot be assumed absent merely because
+their quest-level currency-switching scripts were removed.
+
+Separately, Ulfric INFOs `A` and `C` are horse-purchase responses. Their
+`GetItemCount` conditions count `DE5024:Update.esm` physical copper against
+the `0000C9:WindhelmUsesUlfrics.esp` horse-cost global. Forward only the counted
+form to backend Gold001, preserving the cost global and unrelated dialogue.
+The winning ECE overrides already remove `DialogueGenericScript` from both
+module quests; do not restore its obsolete copper-only Gold binding while
+restoring unrelated cost maintenance. All these INFO records have no EditorID;
+audit identities by FormKey, type and exact relevant fields instead.
+
 Stopping a quest is not, by itself, evidence that all old latent script work
 is gone. The inspected handlers contain menu waits, delayed refresh functions
 that register menus again, and `ExitMintExchanger`, which waits two seconds
@@ -72,14 +101,39 @@ before replacing all backend Gold001 with a regional count. A pending instance
 must not be allowed to resume over a new ledger.
 
 CurrencySwapper also persists a custom currency independently of these quests.
-The implementation must await a successful `SEA_BarterFunctions.ResetCurrency`
+The implementation must await a successful CurrencySwapper backend-selection
 callback at the appropriate load/new-game boundary before accepting money
-events. That reset alone does not prove legacy Papyrus stacks are retired.
+events. The reviewed candidate calls `SEA_BarterFunctions.SetCurrency(Gold001)`;
+the pinned source confirms that this also clears per-trainer currency overrides.
+Successful selection alone does not prove legacy Papyrus stacks are retired.
 If safe old-save migration cannot be established, require a documented fresh
 test character instead of mutating the user's existing save under an assumed
 safety guarantee.
 
+Native review also caught and returned three implementation defects before
+deployment: SKSE's PostLoadGame bool is encoded in the pointer value, not a
+dereferenceable bool pointer; SKSE drains newly queued tasks in the same loop,
+so immediate self-requeue is not a next-frame timer; and an origin marker alone
+cannot preserve a pickup/drop awaiting reconciliation when an autosave occurs.
+The revised candidate must use the actual message contract, bounded scheduling,
+and a validated serialized ledger checkpoint. These remain candidate review
+requirements, not evidence of an in-game pass.
+
 ## Required acceptance
+
+The read-only `audit/currency_save_gate.py` now gates `launch_verify` autoload:
+the selected `.ess` must have an intact SKSE v1 co-save wrapper containing
+exactly one native ECDN/ECMK v2 checkpoint with the matching ledger-configuration
+fingerprint. Missing, old, duplicate, malformed and changed-configuration
+checkpoints are refused before launch. A menu-only observation remains allowed
+and is never a loaded-save PASS. General preflight prints the fresh-character
+restriction rather than implying that any existing save is safe. Ten synthetic
+test groups pass, including every truncation boundary, pending pickup/spending/
+drop checkpoints and winner-config drift. No real save is modified by this gate.
+
+This tool cannot prevent a person from manually selecting an incompatible save
+from Skyrim's own menu. Do not do so with the new package: retain the old package
+and its save together, and use a fresh character for initial acceptance.
 
 Fresh corpse and purse contents, Quick Loot's first displayed contents, normal
 container transfer, loose regional coins, pickup/drop/storage, shopping,

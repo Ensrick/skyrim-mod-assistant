@@ -76,6 +76,7 @@ import launch_watch as W
 import threaddump as TD
 import claim
 import human_presence as HP
+import currency_save_gate
 
 AUDIT = os.path.dirname(os.path.abspath(__file__))
 REPO = W.REPO
@@ -282,7 +283,8 @@ def verify(cfg):
     r = Result()
     launch_started = time.time()
     probe_paths = probe_installed()
-    save, save_dir = (cfg['save'], None) if cfg['save'] else newest_save()
+    newest, save_dir = newest_save()
+    save = cfg['save'] or newest
 
     print(f'probe:  {"installed: " + probe_paths[0] if probe_paths else "NOT INSTALLED"}')
     print(f'save:   {save}')
@@ -297,6 +299,11 @@ def verify(cfg):
                         'for a timing observation that can never PASS.')
     if not save and not cfg['no_autoload']:
         blockers.append(f'no .ess save found in {save_dir}')
+    if not cfg['attach_pid']:
+        save_path = None if cfg['no_autoload'] else os.path.join(save_dir, (save or '') + '.ess')
+        blockers.extend(currency_save_gate.check_save(
+            INSTANCE, r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data',
+            save_path))
     owner = cfg['claim_owner'] or claim.default_owner()
     other = claim.held_by_other(owner)
     if other:

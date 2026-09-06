@@ -378,6 +378,8 @@ def main():
     preflight_extra.run_all(fails, warns)
     keep_coverage.run(fails, warns)
     window_focus_guard.run(fails, instance=INSTANCE, repo=REPO, game_data=Path(GAME) / 'Data')
+    import currency_save_gate
+    currency_save_gate.run(fails, warns, instance=INSTANCE, game_data=Path(GAME) / 'Data')
     weapon_balance_gate.run(fails, warns, repo=REPO, instance=INSTANCE,
                             profile='Default')
     try:
