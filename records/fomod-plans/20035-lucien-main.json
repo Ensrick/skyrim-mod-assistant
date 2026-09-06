@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "note": "Lucien 1.7.2 main, Nexus SSE20035/file770173, ZIP SHA256 2D9AC2131CE7EBF1316E8F3D7563D03397C7EB56FADF54CB5A8C06BA68EF977D. Full ESP and matching BSA, no compaction. Built-in follower system only; never import into NFF or Proteus. Old Lux integration and optional official commentary add-ons were not selected in this plan.",
+  "mappings": [
+    {"source": "Lucien.esp", "destination": "Lucien.esp"},
+    {"source": "Lucien.bsa", "destination": "Lucien.bsa"}
+  ]
+}

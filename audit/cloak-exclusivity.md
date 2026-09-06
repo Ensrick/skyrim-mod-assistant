@@ -69,6 +69,52 @@ a fresh audit; slot 58 is not claimed universally free across arbitrary mods.
 
 ## Rebuild and installation boundary
 
+### September 6 book-config admission and Apocalypse review
+
+Book Covers Skyrim SkyPatched (SSE 109254, file 461289) and its Missing Books
+addition (149814, file 755004) introduce five BOOK-only SkyPatcher INIs, with
+316/401/52/10/130 active lines respectively. The layer-proof script admits
+only their exact virtual paths and SHA-256 digests, and independently requires
+every active line to select `filterByBooks` and use only `model`,
+`alternateTexturesToAdd`, and `inventoryArt` operations. These are book art
+changes, not biped or equipment operations. Missing optional files add no
+allowance; changed bytes, renamed files and unknown extra files do not pass a
+generic config-count exception. With all five and the reviewed currency
+config present, the expected total becomes 40 instead of 35. The original
+one biped config / five biped directive lines requirement remains unchanged.
+The proof records which exact book files were admitted.
+
+`audit/test_nif_slot_layer_config_admission.ps1` exercises the production
+functions extracted through PowerShell's AST, using original synthetic
+fixtures only. It rejects hash drift, count drift, non-BOOK selectors,
+equipment operations, unknown operations and malformed/empty assignments.
+Run it with PowerShell 7; it does not read or write MO2 or launch the game.
+
+The inspected Apocalypse 10.3.0 ESP (SSE 1090, file 793875, SHA-256
+`B0A9632372F2117F7D96583E1522B42758F414129D3572F848B8F7AC65681384`)
+contains 87 ARMO / 65 ARMA records. Its
+`0B1C12:Apocalypse - Magic of Skyrim.esp` (`WB_ConjureCraftlord_Cloak`) is
+NonPlayable, weight zero and slot 35 (Amulet); its own ARMA `0B1C11` also uses
+35 and names `apocnew/nikinoodles_model/cloak_1.nif`. The dedicated outfit
+`123E5E` contains it and is assigned to Craftlord NPC `0B00DB`, whose editor
+ID is `WB_Con_Human_Actor_ConjureCraftlord`. The active RMB base cloak injector
+targets 58 explicit Skyrim/Dawnguard outfits, not this Apocalypse outfit.
+
+The reviewed conclusion is to leave the six-source, 240-item equipment
+allowlist unchanged during this installation. A named non-player summon
+costume is not automatically a new ordinary equip/distribution target. This
+does not establish that every new-land/summon costume can never overlap a
+future outfit injector; a future distribution or playable-item change needs
+its own review. Apocalypse's new ARMO/ARMA declarations still participate in
+the global slot-58 and shared-ARMA scan. No blanket NonPlayable exclusion was
+added to that scan or to the generator.
+
+The profile fingerprint includes **every enabled plugin hash and its order**,
+including `WeaponBalancePatch.esp`; do not omit the weapon patch to bypass
+freshness. Finish root's final weapon generation/install and all mod/config
+changes before producing the cloak staging receipt, all-layer proof and ZIP.
+Source/config edits described here are not an installation or runtime pass.
+
 ```powershell
 $cloakInstance = 'C:/Users/danjo/source/repos/mo2-instances/skyrim-se'
 $cloakGameData = 'C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/Data'

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "note": "BCS Original 4.2, Nexus SSE 901 file 40352, SHA256 a93548075a094cce92b4330b8d092d7bbad5ac104ae991f0b6ad88ed01a0e429. Assets only. Deliberately omit original Book Covers Skyrim.esp; its SkyPatched ESLfy replacement must be active for these matching-name BSAs to load. No Desaturated/Lost Library/PBR/upscalers or vendor ESP patches.",
+  "mappings": [
+    { "source": "Book Covers Skyrim.bsa", "destination": "Book Covers Skyrim.bsa" },
+    { "source": "Book Covers Skyrim - Textures.bsa", "destination": "Book Covers Skyrim - Textures.bsa" }
+  ]
+}

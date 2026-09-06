@@ -73,6 +73,67 @@ function Get-Sha256File([string] $Path) {
     }
 }
 
+function Get-ReviewedBookConfigSpecifications {
+    # Reviewed original vendor bytes: BCS SkyPatched 109254/file461289 and
+    # Missing Books 149814/file755004. These are BOOK art directives only.
+    # A new file, renamed path or edited byte sequence needs a fresh review.
+    $prefix = 'skse/plugins/skypatcher/book/book covers skyrim/'
+    return @{
+        ($prefix + '000-book covers skyrim.ini') = @{
+            sha256 = '5B06AC773C478B8243AF795F133771646F4127F3BB85853AC710E2E05BA52467'; lines = 316
+        }
+        ($prefix + '001-book covers skyrim (part 2).ini') = @{
+            sha256 = '6D937C2FC548096D22FA8FA82571E11D4A58BD955A10127339EC3C1EA7791718'; lines = 401
+        }
+        ($prefix + '002-book covers skyrim-dawnguard.ini') = @{
+            sha256 = '8CDF457640D1658E63EDDF79A6702B47C9DC2C7D2B05D1E04066C15685E1C504'; lines = 52
+        }
+        ($prefix + '003-book covers skyrim-hearthfires.ini') = @{
+            sha256 = 'FE6C5FC39964A8CB57BCCE54D0027445F256E582FCF644AB806829FC30852B0B'; lines = 10
+        }
+        ($prefix + '004-book covers skyrim-dragonborn.ini') = @{
+            sha256 = '7F433398CDCFB9E363031B32AFD1CC31161C68D3ED1DAA3467F6445E88ACF0CD'; lines = 130
+        }
+    }
+}
+
+function Get-ReviewedBookConfigAdmissions($Configs, $Specifications) {
+    $admitted = [Collections.Generic.List[object]]::new()
+    $allowedKeys = @('filterByBooks', 'model', 'alternateTexturesToAdd', 'inventoryArt')
+    foreach ($key in @($Specifications.Keys | Sort-Object)) {
+        if (-not $Configs.ContainsKey($key)) { continue }
+        $specification = $Specifications[$key]
+        $path = $Configs[$key].path
+        $hash = Get-Sha256File $path
+        if ($hash -cne $specification.sha256) {
+            throw "Reviewed book config changed; inspect its biped impact: $key"
+        }
+        $lines = @([IO.File]::ReadAllLines($path) | ForEach-Object { $_.Trim() } |
+            Where-Object { $_ -and -not $_.StartsWith(';') })
+        if ($lines.Count -ne $specification.lines) {
+            throw "Reviewed book config directive count changed: $key"
+        }
+        foreach ($line in $lines) {
+            if ($line -notmatch '^(?i)filterByBooks\s*=') {
+                throw "Reviewed book config has a non-BOOK selector: $key"
+            }
+            foreach ($segment in $line.Split(':')) {
+                $assignment = $segment.Split('=', 2)
+                if ($assignment.Count -ne 2 -or
+                    $assignment[0].Trim() -notin $allowedKeys -or
+                    -not $assignment[1].Trim()) {
+                    throw "Reviewed book config contains an unreviewed operation: $key"
+                }
+            }
+        }
+        $admitted.Add([pscustomobject][ordered]@{
+            relativePath = $key; sha256 = $hash; activeDirectiveLines = $lines.Count
+            classification = 'BOOK model/alternate-texture/inventory-art only; no biped operations'
+        })
+    }
+    return $admitted.ToArray()
+}
+
 function Get-PhysicalReference([string] $Path) {
     $full = [IO.Path]::GetFullPath($Path)
     $instanceRoot = [IO.Path]::GetFullPath($Instance).TrimEnd('\') + '\'
@@ -250,7 +311,7 @@ finally {
 }
 
 # Enumerate the actual winning loose SkyPatcher INIs and retain the exact files
-# containing biped directives. All 34 config hashes are also covered by the
+# containing biped directives. All winning config hashes are also covered by the
 # imported profile fingerprint below.
 $roots = [Collections.Generic.List[object]]::new()
 $roots.Add([pscustomobject]@{ name = 'overwrite'; path = $overwrite })
@@ -331,6 +392,8 @@ if ($configs.ContainsKey($currencyConfigKey)) {
     }
     $expectedConfigCount = 35
 }
+$reviewedBookConfigs = @(Get-ReviewedBookConfigAdmissions $configs (Get-ReviewedBookConfigSpecifications))
+$expectedConfigCount += $reviewedBookConfigs.Count
 if ($bipedConfigs.Count -ne 1 -or $bipedLines -ne 5 -or $configs.Count -ne $expectedConfigCount) {
     throw "Unexpected SkyPatcher config state: $($configs.Count) winners, $($bipedConfigs.Count) biped configs, $bipedLines lines"
 }
@@ -366,6 +429,7 @@ $proof = [ordered]@{
         winningSkyPatcherConfigs = $configs.Count
         bipedDirectiveConfigs = $bipedConfigs.Count
         activeBipedDirectiveLines = $bipedLines
+        reviewedBookOnlyConfigs = $reviewedBookConfigs.Count
     }
     partitionFileCounts = [ordered]@{}
     assets = @($assets)
@@ -378,6 +442,7 @@ $proof = [ordered]@{
             sha256 = Get-Sha256File $skyResolution.path
         }
         winningBipedConfigs = @($bipedConfigs)
+        reviewedBookOnlyConfigs = $reviewedBookConfigs
     }
     absenceSemantics = 'Absent rows are sentinels, not working-asset claims. A newly resolving provider invalidates this proof.'
     limitations = @(

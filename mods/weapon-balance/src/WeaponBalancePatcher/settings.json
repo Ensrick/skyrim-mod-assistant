@@ -11,6 +11,11 @@
   "ExcludeEditorIdContains": ["Dummy", "GiantClub"],
   "RecordRules": [
     {
+      "FormId": "2E447A:Lucien.esp",
+      "Action": "Exclude",
+      "Reason": "Invisible Hunger natural-attack helper carried by JRmihailhunger, not a conventional sword. Preserve vendor speed 5; Lucien 1.7.2 intake review."
+    },
+    {
       "FormId": "04A38F:Skyrim.esm",
       "Action": "Preserve",
       "Reason": "Ebony Blade: preserve the winning named-artifact speed offset."

@@ -1,4 +1,68 @@
-# Book Covers Skyrim audit: adopt the assets, refuse the plugin
+# Book Covers Skyrim audit: candidate routes and corrected evidence
+
+## Review corrections — 2026-09-06
+
+**Research only; no installation or Keep/Skip decision is authorized by this
+document.** This review supersedes the categorical recommendations in the
+September 3 audit. Historical archive inventories and measurements below have
+not been rerun against the current profile and must not be presented as current
+acceptance evidence.
+
+- **LOOT was read backwards.** The cited CRCs are under `clean:`, not `dirty:`.
+  They identify recognized clean plugins, not instructions to QuickAutoClean.
+  Record overlaps still merit conflict review, but overlaps and a partial field
+  comparison are not proof of ITMs or safe-to-delete records.
+- **SkyPatched needs the matching treasure-map plugin.** The
+  [Missing Books author](https://www.nexusmods.com/skyrimspecialedition/mods/149814)
+  explicitly supplies a small ESP-FE for 12 vanilla treasure maps, whose drawing
+  overlays cannot be handled by those INIs alone. Select the variant matching
+  the actual SkyPatched ESP/ESP-FE and filename. It is not exclusive to an
+  original-plugin installation. The INI-only instructions below were wrong.
+- **ESLfy compacts every owned resource FormID.** Fresh September 6 payload
+  inspection of file `467900` verifies the same 1,330 record bodies and
+  EditorIDs by EditorID, but **all 1,330 FormIDs differ from original BCS**.
+  The old identical-FormKey statement must not be applied to the ESLfy
+  variant. Use Missing Books' `1-Treasure - OG ESPFE` variant for the unchanged
+  `Book Covers Skyrim.esp` filename; original/non-ESL resource links are not
+  interchangeable. See the current [approved-batch record](../docs/APPROVED-INSTALL-BATCH-2026-09-06.md).
+- **Coverage numbers are retracted pending a distinct-FormKey recount.** The
+  prior combination of 1,586 total, 910 covered and 1,012 uncovered is internally
+  inconsistent. `BSHeartland.esm` is Beyond Skyrim: Bruma, not Beyond Reach;
+  `arnima.esm` is Beyond Reach. A texture-path audit is also required before
+  claiming that every uncovered mod-added book uses vanilla covers.
+- **Image-frequency statistics are not art-quality verdicts.** The historical
+  samples measure different images and a threshold calibrated on skin. They
+  cannot establish that smoother paper is defective, a cover is worse, Original
+  is the user's preferred palette, or Lost Library should be skipped. Retained
+  measurements are descriptive, unvalidated observations, not a pass/fail gate.
+- **The traditional patch route is still viable.**
+  [Vanilla-like Tweaks and Fixes](https://www.nexusmods.com/skyrimspecialedition/mods/59669)
+  v1.8 (2026-04-27) updates USSEP content and deliberately restores mostly
+  vanilla names, with its own series-title conventions; it does not preserve
+  all of BCS's cataloguing names. Do not combine its original-plugin patches
+  blindly with the SkyPatched replacement route.
+- **Do not reject PBR solely because Lost Library is unselected.** The
+  [PBR files page](https://www.nexusmods.com/skyrimspecialedition/mods/155254?tab=files)
+  has separate 1K Original and Lost Library downloads, although the shared
+  dependency table lists both. Inspect the Original package's actual JSON and
+  assets before deciding whether it has any cross-dependency. This optional
+  route also needs working TruePBR and a PGPatcher-generated mesh layer.
+- **Texture policy still applies.** Better Books and Letters offers a
+  [1K/512 standalone option](https://www.nexusmods.com/skyrimspecialedition/mods/68909);
+  the previously recommended 2K/1K option is not blanket-compliant with the 1K
+  small-clutter ceiling. Shared reading-page assets need an explicit scope
+  decision, not an assumed exemption.
+
+Current recommendation: BCS remains a viable unique-cover candidate. For this
+SkyPatcher-enabled build, evaluate its assets plus SkyPatched, Missing Books and
+the correctly matched treasure-map ESP-FE. Traditional BCS plus maintained
+compatibility patches is an alternative, not a disproven route. Original versus
+Desaturated, optional vanilla-page textures, PBR and Lost Library content remain
+user decisions. [BCS Updated REDUX (69568)](https://www.nexusmods.com/skyrimspecialedition/mods/69568)
+is currently hidden (since 2024-07-18), so it is not a generally available
+replacement recommendation. No binary audit was repeated for this correction.
+
+---
 
 Audit date: 2026-09-03.
 
@@ -25,7 +89,7 @@ download cache and were extracted to `downloads\x*`, outside `mods\`.
    **hf x0.61 (256 px) and x0.58 (128 px)** — under the project's 0.70 floor on
    25/40 and 31/40 of the sample. Against the vanilla 1024px read-model textures
    the same files score **x0.79 and x0.87**, and at 512 px they are **x1.12 to
-   x1.57**, clearly ahead. Both readings are real; they differ because vanilla
+   x1.57** in that metric. The readings differ because vanilla
    ships the same book art twice, small and large (receipt in §3). The 0.70
    floor was calibrated on *skin*, where "matte at distance" is a defect. A book
    cover is a flat printed object, and much of vanilla's high-frequency energy at
@@ -41,53 +105,55 @@ download cache and were extracted to `downloads\x*`, outside `mods\`.
    uses. On `largebookpaper01.dds` — the page that fills half the screen when you
    read — BCS measures **hf x0.39** against vanilla and
    [Better Books and Letters](https://www.nexusmods.com/skyrimspecialedition/mods/68909)
-   measures **x0.90**. Letting BBL win that file is measurably better but pairs
-   BCS's covers with upscaled *vanilla* paper instead of BCS's own. Numbers say
-   BBL; the look is yours.
+   measures **x0.90**. Letting BBL win changes the measured texture detail but pairs
+   BCS's covers with upscaled *vanilla* paper instead of BCS's own. The metric
+   does not select the better-looking paper; that remains a visual decision.
 4. **Lost Library: 295 new books, or not?** Its record footprint is clean and
    small; its textures are not (hf x0.24–x0.32 at distance, **24 of 25 sampled
-   covers below the floor** — the worst measured set in this audit). It is a
-   *content* mod whose art is weak. Do you want the books enough to accept that?
+   covers below the historical threshold**). This does not establish poor art
+   quality. It is a separate *content* decision, with a visual comparison needed.
 
-Everything else below is decided by evidence.
+The September 6 corrections above qualify the historical conclusions below.
 
 ---
 
 ## Recommendation
 
-**Adopt with conditions — as an asset pack, not as a plugin.**
+**Candidate route, not an adoption decision: assets plus SkyPatched.**
 
 Take the **Original** MAIN file `40352` for its two BSAs, and drive it with
 [Book Covers Skyrim - SkyPatched](https://www.nexusmods.com/skyrimspecialedition/mods/109254)
 (`109254`, ESLfy file `467900`) plus
 [Book Covers Skyrim - SkyPatched Missing Books](https://www.nexusmods.com/skyrimspecialedition/mods/149814)
-(`149814`, v1.0.3, updated 2026-05-22) instead of DanielCoffey's ESP. SkyPatcher
+(`149814`, v1.0.3, updated 2026-05-22), including its correctly matched
+treasure-map ESP-FE, instead of DanielCoffey's ESP. SkyPatcher
 is **already installed and enabled** in this build
 (`mods\SkyPatcher\SKSE\Plugins\SkyPatcher.dll`).
 
 Why: the shipped ESP overrides 1,185 vanilla records, of which **640 are also
 written by USSEP**, and on **355 of the 566 shared BOOK records** its version
 differs from USSEP's. The SkyPatched ESP keeps all 1,330 of BCS's *new* records
-at byte-identical FormIDs and EditorIDs and drops **every one** of the 1,185
+with matching record bodies and EditorIDs; **the ESLfy variant compacts all
+1,330 FormIDs**. It drops **every one** of the 1,185
 overrides, applying the model / alternate-texture / inventory-art swap at runtime
-instead. The conflict does not need resolving; it stops existing.
+instead. This avoids that override surface; the complete result still requires
+coverage, model-link, treasure-map and runtime verification.
 
-Pair it with **Better Books and Letters** (`68909`, 2K-1K file `287896`), which
-is a plugin-free upscale of the vanilla book art. It fixes the one place BCS
-measurably regresses (page textures, §3), and it is the only thing that improves
-the **1,012 of 1,586 books in this load order that BCS does not cover at all**
-(§3) — Vigilant, Beyond Reach, 3DNPC, Wyrmstooth, Arnima and 29 Creation Club
-books all keep vanilla covers under BCS.
+**Better Books and Letters** (`68909`) is an optional plugin-free upscale of
+vanilla book art, not a required fix. Its 1K/512 option is the starting candidate
+under the small-clutter policy; the earlier 2K/1K measurement is historical only.
+It can improve shared vanilla assets, but the old audit did not establish exact
+active-book coverage or that every uncovered book uses those paths (§3).
 
-**Lost Library: skip for now.** The plugin is well behaved but the textures are
-the weakest measured here, and it collides with USSEP and `arnima.esm` on three
-vanilla leveled lists (§6).
+**Lost Library: separate unresolved content decision.** Historical inspection
+reports overlaps with USSEP and `arnima.esm` on three vanilla leveled lists (§6).
+Image-frequency scores alone are not a reason to skip its books.
 
 ---
 
 ## 1. Rule 0 — prior art
 
-### What already touches book assets in this build: nothing
+### Historical September 3 book-asset inventory, not current-state proof
 
 Scan of all 251 enabled mods, loose files and BSAs, for anything under
 `textures/clutter/books`, `textures/interface/books`, `meshes/clutter/books`,
@@ -114,14 +180,14 @@ slot is empty. Nothing collides with BCS's added paths.
 |---|---|---|---|---|---|
 | [Book Covers Skyrim](https://www.nexusmods.com/skyrimspecialedition/mods/901) | 901 | 4.2 | 2017-12-03 | 910 unique covers via a 2,515-record ESP | the subject |
 | [Book Covers Skyrim - SkyPatched](https://www.nexusmods.com/skyrimspecialedition/mods/109254) | 109254 | 4.2 | 2024-02-05 | same assets, **zero vanilla overrides**, SkyPatcher INIs | **the answer to the plugin problem** |
-| [BCS - SkyPatched Missing Books](https://www.nexusmods.com/skyrimspecialedition/mods/149814) | 149814 | 1.0.3 | 2026-05-22 | +401 INI lines the base SkyPatched set omits | required for full coverage |
+| [BCS - SkyPatched Missing Books](https://www.nexusmods.com/skyrimspecialedition/mods/149814) | 149814 | 1.0.3 | 2026-05-22 | historical count +401 INI lines, plus matching treasure-map ESP-FE | completes the author's intended route; combined coverage must still be verified |
 | [Better Books and Letters - Cleaned and Upscaled](https://www.nexusmods.com/skyrimspecialedition/mods/68909) | 68909 | 1.0 / 1.1 | 2022-06-10 | 167 files, 100% vanilla paths, **no plugin** | the lighter rival; complementary, not exclusive |
 | [Vanilla-like Tweaks and Fixes for BCS (USSEP and CRF)](https://www.nexusmods.com/skyrimspecialedition/mods/59669) | 59669 | 1.8 | **2026-04-27** | ESL patch forwarding USSEP over BCS + a CRF patch | the answer *if* you keep the vendor ESP |
-| [Book Covers Skyrim PBR](https://www.nexusmods.com/skyrimspecialedition/mods/155254) | 155254 | 2.0.0 | 2025-09-17 | CS TruePBR conversion, 527.7 MB + 155.6 MB | hard-requires 901 and 902; TruePBR must be on |
-| [BCS - Lost Library REDUX 4K-2K](https://www.nexusmods.com/skyrimspecialedition/mods/70272) | 70272 | 1.0 | 2023-02-13 | XilaMonstrr's 4K/2K rebuild of 902, **ESP-FE plugin** | supersedes 902 if Lost Library is ever wanted |
+| [Book Covers Skyrim PBR](https://www.nexusmods.com/skyrimspecialedition/mods/155254) | 155254 | 2.0.0 | 2025-09-17 | separate Original and Lost Library 1K conversions, 527.7 MB / 155.6 MB | needs TruePBR + PGPatcher; inspect actual package dependencies rather than infer both content mods are mandatory |
+| [BCS - Lost Library REDUX 4K-2K](https://www.nexusmods.com/skyrimspecialedition/mods/70272) | 70272 | 1.0 | 2023-02-13 | standalone upscale with **ESP-FE plugin**, also 1K/512 option | alternate packaging, not proof of universally better art; old compatibility patches do not work with its changed plugin |
 | [Book Covers Skyrim - Wrye Bash Edition](https://www.nexusmods.com/skyrimspecialedition/mods/81641) | 81641 | 5.0 | 2022-12-30 | ESL import source for a Bashed Patch | only relevant if you run Wrye Bash |
 | [Books of Skyrim SE - Reimagined](https://www.nexusmods.com/skyrimspecialedition/mods/46991) | 46991 | 6.7 | 2026-08-02 | rewrites book *text*, 6.6 MB | orthogonal, not a retexture |
-| [Book Cover Skyrim Enhanced Textures](https://www.nexusmods.com/skyrimspecialedition/mods/178820) | 178820 | 1 | 2026-04-30 | Topaz Gigapixel upscale of BCS, 6.2 GB (4K) / 1.6 GB (2K) | 23 endorsements, 1,138 downloads; an AI upscale of an 8-year-old source. Not recommended |
+| [Book Cover Skyrim Enhanced Textures](https://www.nexusmods.com/skyrimspecialedition/mods/178820) | 178820 | 1 | 2026-04-30 | Topaz Gigapixel upscale of BCS, 6.2 GB (4K) / 1.6 GB (2K) | not a direct fit for the 1K small-clutter cap; no visual-quality verdict established |
 
 Searched: Nexus v1 API (`/mods/<id>.json`, `/mods/<id>/files.json`) for every id
 above; web search on `nexusmods skyrimspecialedition "book covers" PBR parallax
@@ -162,12 +228,13 @@ Hearthfires/Dragonborn):
 Split by FormID source: **1,330 new** (621 STAT + 709 TXST) and **1,185
 overrides** (910 BOOK, 210 REFR, 63 CELL, 2 WRLD).
 
-### The plugin is dirty, by LOOT's own record
+### LOOT recognizes these checksums as clean
 
 `zlib.crc32` of the shipped ESP is **`0x32587221`** — one of the two CRCs LOOT
 lists under `clean:` for this plugin (`masterlist.yaml:18746-18750`). Lost
 Library's ESP is **`0xDA570813`**, likewise listed (`masterlist.yaml:18769`).
-Both shipped files need SSEEdit QuickAutoClean. LOOT also tags BCS
+These entries do **not** prescribe QuickAutoClean: the original audit inverted
+their meaning. Verify any different archive checksum separately. LOOT also tags BCS
 `Graphics, Names, ObjectBounds, Sound, Stats` — its own view that this plugin
 carries far more than graphics.
 
@@ -238,15 +305,17 @@ BCS loads after USSEP:
 `DunHillgrundsTombValsVeransLetter`, `TG05GallusJournal`, `MGR01Book1`,
 `FreeformWinterholdCollegeANotes`, `FavorRunilJournal`, `dunRagnvaldBook01`,
 `dunMzinchaleftGuardNote`, plus cells `FellglowKeep01` and `SolitudeCastleDour`.
-Small, and mod `59669` ships a two-record `Patch - BCS CRF.esp` (ESL, 3,846
-bytes) for exactly these.
+Mod `59669` ships a two-record `Patch - BCS CRF.esp` (ESL, 3,846 bytes).
+Two records do not by themselves prove that all nine overlapping FormKeys need
+or receive a patch; field-level conflict review remains necessary.
 
-### The cells are dirt, and Lux is downstream of them
+### Historical cell-overlap inspection; cleaning conclusion withdrawn
 
 BCS's 63 CELL records were compared field-by-field against their masters
 (`scratchpad\bcs\cell_diff.py`, 21 semantic fields):
 
-- **42 of 63 are identical to vanilla on every semantic field** — pure ITMs.
+- **42 of 63 matched vanilla on the sampled semantic fields.** This is not a
+  complete-record ITM determination.
 - The other 21 differ only in incidental fields: WaterHeight 16, Music 2, Grid 2,
   AcousticSpace 1, SkyAndWeatherFromRegion 1, Owner 1, Lighting 1.
 - The 210 PlacedObject overrides look the same; the sampled `000E7D:Skyrim.esm`
@@ -261,9 +330,10 @@ Haven Temple, Vlindrel Hall, Thalmor Embassy, Helgen Keep, Twilight Sepulcher an
 Under a LOOT sort it does not: `Lux.esp` is in group `Cell Weather & Lighting`
 (`masterlist.yaml:5390`), which loads after the default group
 (`masterlist.yaml:848-850`), and BCS has no group. So Lux wins. That is a
-guardrail, not a fix — it depends on nobody ever hand-placing BCS. Both routes
-below remove the risk entirely: cleaning the plugin deletes the ITMs, and the
-SkyPatched plugin has **no CELL records at all**.
+guardrail, not proof of current ordering. The historical SkyPatched inventory
+has **no CELL records at all**, avoiding those particular overrides. The former
+claim that cleaning would necessarily remove them is withdrawn; LOOT recognizes
+the cited original-plugin CRC as clean.
 
 ### The route that dissolves the whole section
 
@@ -275,10 +345,13 @@ bytes, `0x200` set on the second):
 1,330 records — Static 621, TextureSet 709.  Book 0, Cell 0, PlacedObject 0, Worldspace 0.
 ```
 
-Verified against BCS's own records: **all 1,330 FormKeys identical, 0 EditorID
-mismatches, 0 extra records** — it is BCS's plugin with the 1,185 overrides
-deleted and nothing else changed. It keeps the same filename, so BCS's two BSAs
-still load. The graphics swap moves to SkyPatcher INIs:
+The historical identical-FormKey statement did not distinguish variants.
+Fresh September 6 inspection of ESLfy file `467900` verifies **all 1,330
+record bodies identical by EditorID, 0 EditorID mismatches, 0 extra resource
+records, and all 1,330 owned FormIDs compacted** relative to original BCS.
+It is therefore not only an override deletion, and original/non-ESL patches
+must not be used against its compacted resources. It keeps the same filename,
+so BCS's two BSAs still load. The graphics swap moves to SkyPatcher INIs:
 
 ```
 filterByBooks=Skyrim.esm|10F776:model=clutter\books\BCSSENote.nif
@@ -288,12 +361,16 @@ filterByBooks=Skyrim.esm|10F776:model=clutter\books\BCSSENote.nif
 
 Only `model`, `alternateTexturesToAdd` and `inventoryArt` — Name, BookText,
 Value and PickUpSound are never touched, so USSEP stays the winner on all 566.
-Coverage: base SkyPatched ships **508** `filterByBooks` lines, Missing Books adds
-**401**, for **909 lines / 899 distinct BOOK FormKeys** against BCS's 910
-overrides. Both are needed.
+Historical INI coverage: base SkyPatched ships **508** `filterByBooks` lines,
+Missing Books adds **401**, for **909 lines / 899 distinct BOOK FormKeys**
+against BCS's 910 overrides. These are not a complete coverage count: the
+Missing Books author handles 12 vanilla treasure maps through the matching
+ESP-FE, not those INIs. Recount the combined plugin-and-INI result before claiming
+complete coverage.
 
-What SkyPatched gives up: BCS's 63 CELL and 210 REFR overrides. Since those
-measure as ITMs (above), the loss is nil.
+What SkyPatched gives up: BCS's 63 CELL and 210 REFR overrides. Their absence is
+verified by the historical inventory; the original assertion that all were ITMs
+and their loss was necessarily nil is unsupported by the partial comparison.
 
 ---
 
@@ -368,21 +445,25 @@ budget and shows x0.58–0.61 of its high-frequency energy at the same sampled
 width — the extra resolution buys legible, distinct cover art and title text, not
 grain. Whether that reads as *clean* or *flat* is shortlist item 1.
 
-Notes fare worse: BCS's 1024x1024 note diffuses measure **hf x0.43–x0.52** and
+Notes have lower measured frequency: BCS's 1024x1024 note diffuses measure **hf x0.43–x0.52** and
 tone x0.68–x0.76 against the vanilla note set at 256 and 128 px, 8–10 of 12 below
 the floor.
 
-### The five true vanilla-path replacements — the strict policy test
+### The five true vanilla-path replacements — historical measurements
+
+The old pass/fail quality labels are withdrawn. Different paper artwork can have
+different frequency content without being defective; only measured resolution
+and format facts below are independent of that visual judgement.
 
 Only **20 of BCS's 2,212 payload files sit on vanilla paths** (15 spell-tome
 NIFs + 5 textures). The textures:
 
 | file | vanilla | BCS | mid/far hf | tone | verdict |
 |---|---|---|---|---|---|
-| `book01paper.dds` | 256² BC1 | 512² BC1 | **x1.19** (x1.36 @256) | x1.25 | **pass** |
+| `book01paper.dds` | 256² BC1 | 512² BC1 | **x1.19** (x1.36 @256) | x1.25 | descriptive measurement only |
 | `book01paper_n.dds` | 256² BC3 | 512² BC3 | x0.35 | x3.17 | flatter, deeper relief |
-| `largebookpaper01.dds` | 1024² BC1 | 1024² BC1 | **x0.39** (x0.90 @mip0) | x0.65 | **fail** |
-| `largebookpaper01_n.dds` | 1024² BC3 | **512² BC3** | **x0.19** | x0.20 | **fail + downres** |
+| `largebookpaper01.dds` | 1024² BC1 | 1024² BC1 | **x0.39** (x0.90 @mip0) | x0.65 | descriptive measurement only |
+| `largebookpaper01_n.dds` | 1024² BC3 | **512² BC3** | **x0.19** | x0.20 | lower source resolution; visual effect unverified |
 | `dragonparchment_d.dds` | 2048x1024 BC3 | 2048x1024 BC3 | x0.47 | x1.47 | less grain, more contrast |
 
 Original and Desaturated score **identically** on all five — the desaturation was
@@ -394,8 +475,10 @@ applied to coloured cover art only, not to neutral paper.
 2K-1K (`287896`, 345,491,711 bytes, sha256 `3d4d5b64…0bf021`): 167 files,
 **167/167 on vanilla paths, 0 new paths, no plugin**, all BC7, 0 short mip chains
 (1024² ×119, 2048² ×42, 512² ×6). Against vanilla, mid/far **hf median x0.83**
-(0.57–1.15), tone x0.99, **5 of 92 diffuses below the floor**. It passes the
-project standard where BCS's page textures do not.
+(0.57–1.15), tone x0.99, **5 of 92 diffuses below the historical threshold**.
+This does not prove a general visual-quality advantage. The 2K/1K archive also
+exceeds the 1K small-clutter limit on some files; the author's 1K/512 option is
+the policy-aligned candidate for a future audit.
 
 It is not a substitute — it upscales seven generic covers, it does not create 910
 unique ones — but it is **complementary**, and it wins where it overlaps. The two
@@ -408,9 +491,9 @@ mods share exactly **4 files**:
 | `largebookpaper01.dds` | x0.39 | **x0.90** |
 | `largebookpaper01_n.dds` | x0.19 | **x1.05** |
 
-BBL wins three of four, including both halves of the page you actually read.
-Let it win the file conflict (higher in `modlist.txt`, which is stored in
-descending priority). Note also that BBL ships loose and BCS ships BSA-packed —
+BBL is closer to the vanilla high-frequency measurement on three of four files;
+whether those pages should replace BCS's paper is a user choice. If approved,
+verify it wins the intended files. BBL ships loose and BCS ships BSA-packed —
 in SSE, loose assets take precedence over archived ones, so this likely resolves
 in BBL's favour regardless of MO2 order. *[unverified — not tested in-game.]*
 
@@ -419,14 +502,15 @@ in BBL's favour regardless of MO2 order. *[unverified — not tested in-game.]*
 Counting every BOOK FormKey defined anywhere in the 262 active plugins against
 BCS's 910 (`scratchpad\bcs\coverage.py`):
 
-**1,586 books in the active order. BCS covers 910. 1,012 get nothing:**
-Vigilant 179, Beyond Reach (`BSHeartland`) 163, 3DNPC 137, `BSAssets` 135,
-Wyrmstooth 96, Arnima 94, Campfire 43, Gray Cowl 29, Creation Club 29
-(`ccbgssse025-advdsgs` 21 + `ccbgssse001-fish` 8), Inigo 16, plus stragglers.
-
-**BCS covers 57% of the books in this build.** The other 43% keep vanilla art —
-which is the strongest argument for adding Better Books and Letters, since that
-is the art all 1,012 of them still use.
+**Retracted: no reliable total, uncovered count or coverage percentage was
+established.** The prior report gave mutually inconsistent totals (1,586 total,
+910 covered and 1,012 uncovered), apparently mixing counting scopes. Do not
+reuse the associated 57%/43% claim or the per-mod figures without recounting
+distinct active BOOK FormKeys and the complete SkyPatched/treasure-map output.
+`BSHeartland.esm` belongs to **Beyond Skyrim: Bruma**; `arnima.esm` belongs to
+**Beyond Reach**. Neither the old counts nor an unmatched FormKey proves the
+book uses a vanilla texture path. Shared vanilla retextures help only where
+the winning mesh/material actually references those files.
 
 ---
 
@@ -470,9 +554,9 @@ saturated weather suite does not add chroma back to an interior. *[That last
 sentence is reasoning from how the stack works, not a measurement — the measured
 part is the x0.50 chroma cut and the vanilla comparison above.]*
 
-**Take Original, file `40352`.** Desaturated would be the pick only if you find
-vanilla books too colourful, which the numbers say you do not, since vanilla sits
-between them and nearer Original.
+**Original versus Desaturated remains a user decision.** The historical sample
+describes palette differences, not the user's preference, and does not measure
+the result under the current lighting configuration. Neither option was adopted.
 
 ---
 
@@ -534,8 +618,8 @@ Nothing here lands in **local-only**.
 ## 6. Lost Library, judged separately
 
 `skyrim-record-cli plugin-info "Book Covers Skyrim - Lost Library.esp"`
-(sha256 `2a699b21…645d`, 1,899,295 bytes, CRC `0xDA570813` — on LOOT's clean
-list):
+(sha256 `2a699b21…645d`, 1,899,295 bytes, CRC `0xDA570813` — recognized clean
+by LOOT, not marked for cleaning):
 
 ```
 1,094 records — TextureSet 300, Static 299, Book 298, PlacedObject 130,
@@ -571,59 +655,66 @@ Papyrus script (`BCSLL_VendorScript.pex`) and 9 new containers.
 - 3 worldspace overrides (Tamriel, Solstheim, Soul Cairn), touched by ~40 active
   plugins already — routine.
 
-**The art is the problem.** 25-cover random sample, same method as §3:
+**Historical image-frequency sample, not an art-quality verdict.** 25 covers,
+same method as §3:
 
 | vs | 512 px | 256 px | 128 px | 64 px | below floor |
 |---|---|---|---|---|---|
 | vanilla `book01–07` | hf x0.60 | **x0.25** | **x0.24** | x0.36 | 24–25 of 25 |
 | vanilla `largebook01–07` | x0.43 | x0.32 | x0.36 | x0.43 | 24 of 25 |
 
-Tone x0.46–0.63. This is the weakest measured set in the audit by a wide margin —
-worse at distance than anything in the cloak audit except the PBR pack. Format
-hygiene is fine (BC1 diffuse / BC3 normal, 608/608 full mip chains, 1024x512),
-but the source art simply carries very little high-frequency detail.
+Tone x0.46–0.63. These lower frequency measurements do not establish that the
+art is worse than vanilla, cloaks or PBR. Historical format inspection found
+BC1 diffuse / BC3 normal, 608/608 full mip chains and 1024x512 cover sheets.
+Visual acceptance remains untested.
 
 Desaturated vs Original behaves the same way as the base mod: chroma x0.500,
 luminance x0.973.
 
-**Verdict: skip 902.** If the 295 books are wanted later, start from
+**No Keep/Skip decision.** If the 295 books are wanted later, compare 902 with
 [Lost Library REDUX 4K-2K](https://www.nexusmods.com/skyrimspecialedition/mods/70272)
 (`70272`, XilaMonstrr, ESP-FE plugin file `294218`, 2K files `294299`/`294316`,
-LoTD patch `359410`) rather than 902 — LOOT's own masterlist links REDUX from the
-902 entry — and budget a leveled-list forward for USSEP and Arnima either way.
+LoTD patch `359410`; a 1K/512 option also exists). LOOT links REDUX, but that is
+not a quality or universal-supersession verdict. Its author warns its ESP-FE
+does not work with previously made patches. Audit integration with USSEP and
+Beyond Reach (`arnima.esm`) for whichever route is chosen.
 
 ---
 
-## What adoption would take
+## What adoption would take, if separately approved
 
 1. Install **BCS Original `40352`** for its two BSAs; do **not** enable
    `Book Covers Skyrim.esp` from that archive.
 2. Install **SkyPatched `109254` file `467900`** (ESLfy) over it — same filename,
    so the BSAs still load; the plugin is ESP-FE and costs no full slot.
-3. Install **Missing Books `149814` file `755004`** (`0-Required` INI folder;
-   the FOMOD's `1-Treasure` ESP options are only for the vendor-ESP route).
-4. Install **Better Books and Letters `68909` file `287896`** and let it win the
-   four shared page files.
-5. Ledger rows for four vendor mods (source URL, file id, archive SHA-256), four
-   Keeps queued at the *end* of the install per `docs/CURATION_POLICY.md`, a
+3. Install **Missing Books `149814` file `755004`**, including its required INIs
+   **and the treasure-map ESP-FE matching the selected SkyPatched ESP/ESP-FE and
+   filename**. Inspect the FOMOD and links; do not select the variant by guesswork.
+4. Only if separately approved, evaluate **Better Books and Letters `68909`**
+   (start with the 1K/512 option) and verify intended shared-page winners.
+5. Ledger rows for each approved vendor mod (source URL, file id, archive SHA-256),
+   matching Keeps queued at the *end* of the install per `docs/CURATION_POLICY.md`, a
    `CHANGELOG.md` entry naming this record, and a `py -3 audit/launch_verify.py`
    PASS before any of it is called done.
 6. `py -3 audit/file_conflicts.py` afterwards to confirm the only BCS/BBL
    collision is the expected four files.
 
-**If instead the vendor ESP is kept** (because the 211 catalogue renames are
-wanted, and SkyPatcher does not do names): clean it with SSEEdit QuickAutoClean
-(CRC `0x32587221` is on LOOT's list), then add **`59669` file `746258`**
+**If instead the vendor ESP route is chosen:** CRC `0x32587221` is on LOOT's
+**clean** list, not an instruction to QuickAutoClean. Evaluate **`59669` file `746258`**
 (`Patch - BCS USSEP.esp`, ESL, 465 BOOK + 3 CELL + 3 REFR forwards) and
 **file `247720`** (`Patch - BCS CRF.esp`, ESL, 2 records). That patch is v1.8,
 updated 2026-04-27 — actively maintained. It restores USSEP's text and stats
-while keeping BCS's models; it does **not** restore USSEP's names, which is the
-point of shortlist item 2.
+while keeping BCS's models. Contrary to the original audit's claim, its author
+explicitly restores mostly vanilla names, with separate conventions for series,
+notes and journals. Select naming behavior deliberately and check the current
+USSEP/CRF versions; do not mix original-plugin patches into the SkyPatched route.
 
-Not recommended either way: `178820` (6.2 GB AI upscale, 23 endorsements) and
-`155254` (PBR) — the latter hard-requires both 901 **and** 902, and 902 is a skip.
-TruePBR ships in the installed CS build (`Shaders/Features/TruePBR.ini`) but
-whether it is enabled at runtime was not determined from disk. *[unverified]*
+The 2K/4K `178820` downloads are not direct fits for the 1K small-clutter ceiling;
+neither source age nor endorsement count establishes visual quality. `155254`
+(PBR) remains an optional material upgrade: its separate Original and Lost
+Library downloads need a dependency/JSON inspection, working TruePBR and
+PGPatcher output. Presence of `Shaders/Features/TruePBR.ini` alone did not prove
+the feature was enabled at runtime. *[unverified]*
 
 ---
 

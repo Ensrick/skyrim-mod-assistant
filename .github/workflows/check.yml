@@ -66,6 +66,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s audit -p test_cloak_exclusivity.py -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pwsh -NoProfile -File audit/test_nif_slot_layer_config_admission.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Test native currency save admission with synthetic co-saves
         shell: pwsh

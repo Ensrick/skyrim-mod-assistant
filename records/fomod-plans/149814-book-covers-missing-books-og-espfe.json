@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "note": "BCS SkyPatched Missing Books 1.0.3, Nexus SSE 149814 file 755004, SHA256 962cb27fcf82ea22087566cd35f6a753e229fa5dd461e5c421da8fc71e21d19d. FOMOD: Plugin Format Select / Plugin Type = ESPFE; ESPFE Patches / Treasure Maps = BCS - Original. Always include 0-Required. Actual plugin is ESL flagged with Skyrim.esm and Book Covers Skyrim.esp masters; all 36 resource links resolve against file467900. Do not select OG ESP or REDUX variants. Treasure plugin intentionally replaces embedded BookText image markup to prevent duplicate map drawings; preserves current English names and gameplay fields. No Legacy of the Dragonborn active. Known extra no-op INI target Skyrim.esm|1BEF1 is not valid; correct Dragonborn.esm|1BEF1 already exists in the base INI.",
+  "mappings": [
+    { "source": "0-Required/SKSE", "destination": "SKSE" },
+    { "source": "1-Treasure - OG ESPFE/BCS-SP_TreasureMaps.esp", "destination": "BCS-SP_TreasureMaps.esp" }
+  ]
+}

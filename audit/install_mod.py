@@ -48,7 +48,7 @@ process audit:
                    session, or acquire the claim from the shell first; a claim
                    held by someone else stops this script before it downloads.
 """
-import json, os, re, sys, hashlib, subprocess, datetime
+import argparse, json, os, re, sys, hashlib, subprocess, datetime
 
 SP = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(SP)
@@ -139,8 +139,13 @@ def install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
 
 
 def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None):
+    if not isinstance(mid, int) or isinstance(mid, bool) or mid <= 0:
+        raise ValueError('Nexus mod ID must be a positive integer')
+    if file_id is not None and (not isinstance(file_id, int)
+                               or isinstance(file_id, bool) or file_id <= 0):
+        raise ValueError('Nexus file ID must be a positive integer')
     import modasset as M
-    if file_id:
+    if file_id is not None:
         # an exact, dossier-verified file: never re-pick, because pick_file only
         # scans MAIN and would silently choose a different (or newer) variant
         files = M.v1(f'/mods/{mid}/files.json')['files']
@@ -170,9 +175,10 @@ def _install(mid, mod_name, prefer=None, plan=None, replace=False, file_id=None)
     led = load()
     # an update replaces the old ledger row for the same mod folder, not just
     # a re-download of the identical file
+    # Different installed components may legitimately use the same archive.
+    # The physical folder, not the Nexus file ID, identifies a ledger row.
     led['mods'] = [m for m in led['mods']
-                   if m.get('fileId') != f['file_id']
-                   and not (replace and m.get('modName') == mod_name)]
+                   if m.get('modName', '').casefold() != mod_name.casefold()]
     led['mods'].append({
         'modId': mid, 'modName': mod_name,
         'nexusName': f['name'], 'version': f.get('version'),
@@ -365,6 +371,23 @@ def show():
               f"{', '.join(m['plugins']) or '-'}")
 
 
+def parse_install_arguments(arguments):
+    """Reject misspelled options instead of silently auto-selecting a file."""
+    def positive_id(value):
+        parsed = int(value)
+        if parsed <= 0:
+            raise argparse.ArgumentTypeError('Nexus IDs must be positive integers')
+        return parsed
+    parser = argparse.ArgumentParser(description='Install an audited Nexus file', allow_abbrev=False)
+    parser.add_argument('mod_id', type=positive_id)
+    parser.add_argument('mod_name')
+    parser.add_argument('--prefer')
+    parser.add_argument('--plan')
+    parser.add_argument('--replace', action='store_true')
+    parser.add_argument('--file', '--file-id', dest='file_id', type=positive_id)
+    return parser.parse_args(arguments)
+
+
 if __name__ == '__main__':
     a = sys.argv[1:]
     override = '--i-know-what-im-doing' in a
@@ -381,20 +404,10 @@ if __name__ == '__main__':
         except claim.ClaimHeld as e:
             print(f'CLAIM HELD - not sorting: {e}'); sys.exit(claim.ExTempFail)
     else:
+        args = parse_install_arguments(a)
         guard_canonical(override)
-        prefer = None
-        plan = None
-        replace = False
-        if '--prefer' in a:
-            i = a.index('--prefer'); prefer = a[i + 1]; a = a[:i] + a[i + 2:]
-        if '--plan' in a:
-            i = a.index('--plan'); plan = a[i + 1]; a = a[:i] + a[i + 2:]
-        if '--replace' in a:
-            a.remove('--replace'); replace = True
-        file_id = None
-        if '--file' in a:
-            i = a.index('--file'); file_id = int(a[i + 1]); a = a[:i] + a[i + 2:]
         try:
-            sys.exit(install(int(a[0]), a[1], prefer, plan, replace, file_id))
+            sys.exit(install(args.mod_id, args.mod_name, args.prefer, args.plan,
+                             args.replace, args.file_id))
         except claim.ClaimHeld as e:
             print(f'CLAIM HELD - not installing: {e}'); sys.exit(claim.ExTempFail)

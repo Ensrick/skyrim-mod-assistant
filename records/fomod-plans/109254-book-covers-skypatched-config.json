@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "note": "BCS SkyPatched main 4.2, Nexus SSE 109254 file 461289, SHA256 abf05dbb392ab7fbddab2698a016866c404b4087761defa790653635a105465f. Install its four SKSE book INIs only; the separate ESLfy archive contains no INIs, so this component is mandatory. Omit this archive's non-ESL ESP. SkyPatcher and BCS assets required.",
+  "mappings": [
+    { "source": "SKSE", "destination": "SKSE" }
+  ]
+}

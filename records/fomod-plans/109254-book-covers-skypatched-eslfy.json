@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "note": "BCS SkyPatched ESLfy overlay 1.0, Nexus SSE 109254 file 467900, SHA256 af85844bb420cd918b30e991ec76376fece46ce1363a95c49e21cf242a62c0f1. CRITICAL: all 1330 owned resource FormIDs are compacted relative to the original BCS plugin; do not use original BCS patches or the non-ESL treasure variant. Keep filename Book Covers Skyrim.esp unchanged to auto-load Original BSAs. Activate this ESP-FE and pair with Missing Books 1-Treasure - OG ESPFE. Its 1330 STAT/TXST bodies and EditorIDs match original source, but FormIDs DO NOT.",
+  "mappings": [
+    { "source": "Book Covers Skyrim.esp", "destination": "Book Covers Skyrim.esp" }
+  ]
+}

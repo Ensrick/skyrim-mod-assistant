@@ -1,8 +1,26 @@
 # Ecosystem survey - 2026-08-30
 
+**Update 2026-09-06:** the original sections below are a dated survey, not today's live inventory or current release manifest. The five requested slots (HPP, books, crafting, AQF and horses) now have a [fresh research review](REQUESTED-MODS-REVIEW-2026-09-06.md) and [reproducible export census](REQUESTED-SLOTS-CENSUS-2026-09-06.md). Those findings supersede older statements about those slots. Old n/19 and n/27 counts are retained as historical evidence and are not combined with the new n/15 sample. In particular, the earlier AQF 1.0.1 compatibility hold does not evaluate official 1.0.2, released August 31 with declared 1.7.99+ support. No mods were installed or curator decisions changed by this update.
+
 What the big curated lists run per slot, versus this build (SkyrimSE 1.7.104, Community Shaders, CBBE Curvy / HIMBO, Lux, Azurite III, Water for ENB, Pandora + OAR, NFF, Skyrim Unbound Reborn, Sons of Skyrim, Proteus, six worldspaces). Research only; nothing installed.
 
 ## Method and sources
+
+### September 6 requested-slot refresh
+
+Twenty exports re-fetched; fifteen dated 2025–26 have available MO2 modlists, including nine updated in 2026. GTS/ElderTeej plugin-only exports are excluded from absence counts; the available NGVO/Winds of the North/Wildlander exports are pre-2025 and kept only as historical supplements. This is a convenience sample, not a popularity ranking; presence and text validity do not prove export completeness. Exact enabled-main-folder evidence, timestamps, uploader metadata, hashes, aliases and all exclusions are in the [census](REQUESTED-SLOTS-CENSUS-2026-09-06.md); patches and disabled options do not count as main-mod adoption.
+
+| Slot | 2025–26 exports /15 (2026-only /9) | Current interpretation for this build |
+|---|---|---|
+| High Poly Project | HPP 10 (5); Mesh Improvement Compilation 3 (2) | HPP remains common, often selectively overridden. MIC is not a universal successor; Vagabond includes both. Evaluate actual mesh winners and cost, not age alone. |
+| Book Covers Skyrim | Standalone BCS family 7 (5); **BCS-or-LOTD provider routes 13 (8)** | Still widely represented: LOTD bundles BCS. Original-plus-patches and the corrected SkyPatched/Missing Books route are candidates for our non-LOTD build, not duplicate installs for LOTD lists. Old audit's dirty/clean and coverage claims have been corrected. |
+| Ars Metallica/crafting | Ars 0 (0); CCOR 1 (0); CRD 4 (2) | No single equivalent successor established. Decide salvage, XP and progression scope; CRD is a framework, not a crafting overhaul. Local CRD is disabled despite its stale ledger flag. |
+| Animation Queue Fix | 15 (9) | Strong consensus; OAR's normal preload path still expects it. Official 1.0.2 claims 1.7.99+; downloaded-release binary/runtime validation remains outstanding. |
+| Convenient Horses | CH 0 (0); Simplest Horses 7 (5) | Simplest Horses is the sampled minimalist default. CH retains broader features; Press H and A Horse's Life deserve consideration for our capacity/survival design. NFF/Proteus integration must be tested. |
+
+See the [review and owner decisions](REQUESTED-MODS-REVIEW-2026-09-06.md) for release dates, source links, explicitly documented migrations, alternative features and runtime caveats. A zero match is not proof of obsolescence or brokenness; pinned/third-party exports do not establish the newest available release or installed package content. Nothing is automatically Keep/Skip or approved for installation.
+
+### Original August 30 method
 
 Two evidence classes are kept apart below. **Documented** = the list's own README, wiki, or changelog. **Exported** = the list's `modlist.txt` / `loadorder.txt` as published on Load Order Library (LOL), read through its public API; a few of those exports (`gts`, `nolvus-awakening`, `wunduniik-chapter-v`) are third-party mirrors, so treat them as "what the list shipped on that date", not as author statements. Counts of the form "n/19" are presence counts across the 19 LOL exports listed here; STEP and Lexy's are guide pages, not exports, and are cited separately.
 

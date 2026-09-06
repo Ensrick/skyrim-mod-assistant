@@ -36,6 +36,9 @@ enchantments, dual wielding, and animation event windows remain distinct.
   utility EditorID fragments. Unkeyworded records are default-denied.
 - Does not infer a class from animation alone. This prevents the former eight
   fallback leaks (spears, invisible attacks, a test sword, and utility tools).
+- Explicitly excludes Lucien's `2E447A` invisible Hunger natural-attack helper.
+  Its sword keyword does not make it a conventional weapon; the reviewed
+  creature-only attack retains its authored speed 5.
 - Treats `01E719:Skyrim.esm` correctly as `WeapMaterialSteel`; it is neither a
   creature keyword nor a weapon-type keyword.
 - Skips records with multiple standard class keywords and reports them.

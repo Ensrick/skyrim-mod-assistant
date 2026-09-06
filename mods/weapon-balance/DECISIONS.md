@@ -39,7 +39,18 @@ checks cover them. Relevant source string tables and archives containing those
 tables are also input dependencies: unchanged ESP bytes alone cannot prove
 that a previous translation-preserving build is current.
 
-## Armor matchups
+## September 6 Lucien intake: natural attacks remain outside scope
+
+Lucien 1.7.2's `2E447A:Lucien.esp` (`JRmihailinvhungerstrike`) is a
+non-playable, cannot-drop invisible attack carried by the Hunger creature
+`2E4476`, not ordinary weapon loot. Although it carries a sword keyword and
+animation, normalizing its authored speed 5 to 1 would alter creature combat
+outside the approved conventional-weapon policy. An exact `Exclude` rule
+preserves it; no broad exclusion of NPC-only weapons or unusual speeds was
+added. The Jailer's Battle Axe remains conventional and receives the existing
+class policy; the Damaged Control Rod remains an excluded staff.
+
+## Armor matchups (deferred)
 
 Deferred until the locational-damage layer is selected. Proposed design:
 

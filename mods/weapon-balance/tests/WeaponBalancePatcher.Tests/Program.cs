@@ -672,14 +672,25 @@ var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllText(settingsPat
     new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
     ?? throw new InvalidOperationException("Could not parse copied settings fixture.");
 var rules = Policy.ParseRecordRules(settings.RecordRules);
-Check(rules.Count == 15, $"expected 15 reviewed record rules, got {rules.Count}");
+Check(rules.Count == 16, $"expected 16 reviewed record rules, got {rules.Count}");
 Check(rules.Values.Count(rule => rule.Action == RecordRuleAction.Preserve) == 3,
     "expected three named speed-preservation rules");
 Check(rules.Values.Count(rule => rule.Action == RecordRuleAction.Class &&
         rule.WeaponClass == WeaponBalanceClass.Longsword) == 9,
     "expected nine Lost Longswords custom-class rules");
-Check(rules.Values.Count(rule => rule.Action == RecordRuleAction.Exclude) == 3,
-    "expected three excluded Lost Longswords rules");
+Check(rules.Values.Count(rule => rule.Action == RecordRuleAction.Exclude) == 4,
+    "expected three excluded Lost Longswords rules and one creature helper exclusion");
+
+var hungerKey = FormKey.Factory("2E447A:Lucien.esp");
+var hungerAttack = FixtureAt(hungerKey, "01E711:Skyrim.esm", "08F958:Skyrim.esm",
+    "0C5C03:Skyrim.esm");
+hungerAttack.EditorID = "JRmihailinvhungerstrike";
+hungerAttack.MajorFlags |= Weapon.MajorFlag.NonPlayable;
+hungerAttack.Data!.Speed = 5.0f;
+var hungerDecision = Policy.Plan(hungerAttack, hungerKey.ModKey, settings, settings.ToProfile(), rules);
+Check(hungerDecision.ExplicitRule && hungerDecision.Action == RecordRuleAction.Exclude &&
+        hungerDecision.TargetSpeed is null && hungerAttack.Data.Speed == 5.0f,
+    "Lucien invisible Hunger attack was normalized as a conventional sword");
 
 foreach (var formKey in new[]
 {
