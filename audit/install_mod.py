@@ -204,22 +204,61 @@ def queue_keep(mid, mod_name):
     The Keep itself is applied by the Firefox extension on its next Nexus page
     load, so the guaranteed part is the QUEUE: this appends to the relay spool
     (merging with any batch not yet picked up, deduplicated by id) so the step
-    can never be forgotten. audit/keep_coverage.py is the matching gate.
+    can never be forgotten. Include the public uploader identity so Keep also
+    removes that author from Excluded. audit/keep_coverage.py is the matching
+    gate; queueing is not proof that Firefox has applied the decision.
     """
     spool = os.path.join(os.environ.get('TEMP', '.'), 'nlc-relay')
     pending = os.path.join(spool, 'decisions-pending.json')
     try:
+        def read_batch():
+            if not os.path.exists(pending):
+                return []
+            with open(pending, encoding='utf-8') as fh:
+                entries = json.load(fh)
+            if not isinstance(entries, list) or any(
+                    not isinstance(e, dict) or not isinstance(e.get('mod'), dict)
+                    for e in entries):
+                raise ValueError('Invalid pending decision batch')
+            return entries
+
+        def matching_keep(entries):
+            matches = [e for e in entries
+                       if e['mod'].get('game', '').casefold() == 'skyrimspecialedition'
+                       and str(e['mod'].get('modId')) == str(mid)]
+            # Installing does not authorize overwriting a newer owner decision.
+            if len(matches) > 1 or any(e.get('status') != 'keep' for e in matches):
+                raise ValueError('Conflicting pending decision requires review')
+            return matches[0] if matches else None
+
+        matching_keep(read_batch())
+        import modasset as M
+        metadata = M.v1(f'/mods/{mid}.json')
+        author = str(metadata.get('uploaded_by') or metadata.get('author') or '').strip()
+        profile = str(metadata.get('uploaded_users_profile_url') or '')
+        user = re.match(r'^https?://(?:www\.)?nexusmods\.com/users/([1-9]\d*)(?:[/?#]|$)',
+                        profile, re.I)
+        user_id = user.group(1) if user else ''
+        if not author and not user_id:
+            raise ValueError('Nexus metadata has no uploader identity')
+        identity = {
+            'author': author, 'authorUserId': user_id,
+            # Persist only the public profile, never query strings or API data.
+            'authorProfileUrl': f'https://www.nexusmods.com/users/{user_id}' if user_id else '',
+        }
+        # The API call may take time: merge the latest batch, not its old copy.
+        batch = read_batch()
+        entry = matching_keep(batch)
+        if entry is None:
+            entry = {'status': 'keep', 'mod': {
+                'game': 'skyrimspecialedition', 'modId': str(mid),
+                'title': mod_name,
+                'sourceUrl': f'https://www.nexusmods.com/skyrimspecialedition/mods/{mid}'}}
+            batch.append(entry)
+        entry['mod'].update(identity)
+        entry.setdefault('queuedAt', datetime.datetime.now(datetime.timezone.utc)
+                         .strftime('%Y-%m-%dT%H:%M:%SZ'))
         os.makedirs(spool, exist_ok=True)
-        batch = []
-        if os.path.exists(pending):
-            batch = json.load(open(pending, encoding='utf-8'))
-        if any(str(e.get('mod', {}).get('modId')) == str(mid) for e in batch):
-            print(f'keep {mid} already queued')
-            return
-        batch.append({'status': 'keep', 'mod': {
-            'game': 'skyrimspecialedition', 'modId': str(mid),
-            'title': mod_name,
-            'sourceUrl': f'https://www.nexusmods.com/skyrimspecialedition/mods/{mid}'}})
         tmp = pending + '.tmp'
         with open(tmp, 'w', encoding='utf-8') as fh:
             json.dump(batch, fh, ensure_ascii=False, indent=1)
@@ -229,7 +268,8 @@ def queue_keep(mid, mod_name):
               'py -3 audit/keep_coverage.py is the gate')
     except Exception as exc:
         # never fail an otherwise-good install on this, but never hide it either
-        print(f'   KEEP QUEUE FAILED for {mid}: {type(exc).__name__}: {exc}')
+        # Network/import exceptions can contain credentials or signed URLs.
+        print(f'   KEEP QUEUE FAILED for {mid}: {type(exc).__name__}')
         print('   queue it by hand before the batch is called done')
 
 
