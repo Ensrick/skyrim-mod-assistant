@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "component": "Ensrick - Regional Currency Integration",
   "version": "0.4.0",
-  "status": "built-static-verified-not-installed",
+  "status": "installed-static-verified-runtime-unverified",
   "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
   "sourcePath": "mods/currency-integration",
   "runtime": "Skyrim 1.7.104 / SKSE 2.3.1",
@@ -111,7 +111,7 @@
     },
     "pythonRegressionTests": 136,
     "releaseValidator": "pass; actual policy/config/BOS/KID/CDF/I4/MISC/purse/source/license hashes bound",
-    "finalPackageReview": "Original 199-file independent static GO supplemented by exact 201-file archive-only review: two compatibility additions, no old payload changes. No public private assets or gameplay verification claimed.",
+    "finalPackageReview": "Independent GO: exact 201-file archive closure and installed/effective payload; two same-path masks remove 14 legacy physical edits without dropping five backend/plural effects.",
     "candidateFinalWinners": {
       "status": "PASS: substitution simulation, not installed",
       "plugins": 350,
@@ -119,10 +119,36 @@
       "blockers": 0,
       "verifierSha256": "7837C3B3BD523321F2C94E1C99D039C598D59EDF5EC6F3F5F6511122E4B0FE3D",
       "reportSha256": "CC4D4F8047520268276767356193B268BA5D33FD76C1820BF47FA859AC40A307"
+    },
+    "installedEffectivePayload": {
+      "status": "PASS",
+      "installedFilesMatched": 201,
+      "effectiveFilesMatched": 201,
+      "physicalFormsWithExactlyOneCorrectSkyPatcherWriter": 55,
+      "competingPhysicalWriters": 0,
+      "unknownBroadMiscWriters": 0,
+      "evidenceSha256": "C1B10C52C71B467312E91784806566303990AB5527E542C528D8B5EBE1E93EC5"
+    },
+    "actualPluginWinners": {
+      "status": "PASS",
+      "runtimePlugins": 350,
+      "physicalForms": 55,
+      "blockers": 0,
+      "evidenceSha256": "8ED8A4A4EC291AA0C3FF6F8E823DE2C1A0FA6F220319A42D8A2F64D72066782C"
     }
   },
   "generatedUtc": "2026-09-06T17:23:29Z",
   "runtimeVerification": "UNVERIFIED: no game launched. Fresh-character source/transfer/service/save-reload acceptance remains required.",
+  "finalPreflight": {
+    "status": "PASS: zero blocking problems, eight warnings at the time of the audit",
+    "controllerAudit": "PASS: zero errors",
+    "ledgerPluginVerification": "PASS: zero problems",
+    "orderVerification": "CLEAN",
+    "keepCoverage": "PASS: 195 installed Nexus identities and 195 live Keeps",
+    "freshCharacterAdmission": "PASS",
+    "warningSummary": "Unsynchronized new helper in game-side Plugins.txt; five preexisting unledgered enabled mods (#102); historical INI/config snapshot changes; unverifiable Steam overlay state; standard save backup; current work claim; old-save admission warning.",
+    "launchSync": "Use the sanctioned launcher on the next authorized launch to synchronize the companion plugin. No game or sync-only workaround was invoked."
+  },
   "distribution": "Local generated package only. Publish eligible original/credited source and user-local recipes, not private coin NIF/DDS derivatives. Combined native DLL is GPL-3.0-or-later with CommonLib exceptions, not all-MIT.",
   "keep": "First-party modId0 update is exempt from Nexus Keep; no new third-party adoption",
   "issues": [
@@ -136,5 +162,45 @@
     "Existing regional merchant buy/sell perks, separate from 1/10/100 accounting.",
     "Whether to increase new helper purse budgets (currently 2-28 / 5-42 / 10-70); no gold is mathematically possible in those sub-100 budgets."
   ],
-  "rollback": "Preserve the whole prior package with its matching saves. Never clean/delete co-save data. Rolling back also requires disabling/removing the 0.4 companion from the active profile and refreshing dependent weapon/cloak proofs."
+  "rollback": "Preserve the whole prior package with its matching saves. Never clean/delete co-save data. Rolling back also requires disabling/removing the 0.4 companion from the active profile and refreshing dependent weapon/cloak proofs.",
+  "installedUtc": "2026-09-06T17:56:35Z",
+  "installation": {
+    "profile": "Default",
+    "modPriority": 274,
+    "transaction": "20260906T175635745Z-6c53c4cf09b2",
+    "initial201PredecessorTransaction": "20260906T174025519Z-c4816ce7c689",
+    "helperEnableTransaction": "20260906T174026192Z-4b7477a38719",
+    "helperPriorityTransaction": "20260906T174026491Z-610d46f121c5",
+    "mainPluginPriority": 270,
+    "regionalPursePluginPriority": 271,
+    "weaponPluginLastPriority": 273,
+    "managedPlugins": 274,
+    "activeManagedPlugins": 270,
+    "unrelatedPluginOrderAndActivationUnchanged": true,
+    "modOrderAndActivationUnchanged": true,
+    "gameLaunched": false
+  },
+  "sourceBuild": {
+    "implementationCommit": "0aa6e4a86318088bd4d477dee5e2f365bf9b5fa3",
+    "orderIndependenceFixCommit": "a79d2d5033423347fc7bb1e453ae8847d09600c3",
+    "canonicalImports": [
+      "704f691",
+      "2e2951d"
+    ],
+    "ci": [
+      "https://github.com/Ensrick/skyrim-mod-assistant/actions/runs/34049267248",
+      "https://github.com/Ensrick/skyrim-mod-assistant/actions/runs/34050098303"
+    ],
+    "ciConclusion": "success",
+    "freshCheckoutPublicGates": "PASS; pinned modasset LF and winner-gate hashes preserved"
+  },
+  "dependentRefresh": {
+    "weapon": "records/source-builds/ensrick-weapon-speed-balance.json; exact ESP and 27 translations unchanged",
+    "cloak": "records/source-builds/ensrick-full-cloak-exclusivity.json; 240 directives unchanged, 569 mesh winners parsed, 35 SkyPatcher files"
+  },
+  "publicationDebts": [
+    "Expand standalone DEPENDENCIES.txt to include every runtime and master provider.",
+    "Make public provenance paths portable while retaining factual local build evidence.",
+    "Align native Plugin.cpp cosmetic version log (0.1.0) with native project 0.2.0; package is 0.4.0."
+  ]
 }

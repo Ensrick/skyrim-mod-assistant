@@ -76,7 +76,11 @@ No additional static overlap was found in the owned ranges:
 
 The generator assertions for the `0xA00` jump and final `0xF40` cursor are appropriate. This is a source-range review, not proof of the final binary output; generated plugins must be enumerated before release.
 
-## Final static release gate
+## Superseded 199-file static release gate
+
+This section records the original 199-file review. Its archive identity is
+superseded by the 201-file compatibility correction below; the unchanged
+ESP/DLL/PEX/assets evidence remains applicable.
 
 The completed private candidate is a **static GO for commit and local serial
 installation**. This is not gameplay acceptance.
@@ -137,6 +141,67 @@ installed SKSE, SkyPatcher, or asset winners. The installed winning-file gate
 must therefore repeat the check after deployment; a future profile that adds a
 later override must fail closed rather than rely only on the named ECE source
 record.
+
+## Superseding 201-file static release gate
+
+The corrected candidate is a **static GO for commit and local serial
+installation**. This supersedes the 199-file archive identity above; it does
+not grant gameplay acceptance.
+
+The installed ECE source files were compared directly with the two packaged
+same-path overrides. The original `ECE_regionalCurrencies.ini` contained 11
+active physical-coin rows, each assigning value zero. Its override is now
+comment-only (zero active rows), SHA-256
+`ABCDABB6DA16E12354B69B62C9E2CA29F0470BAB188B76D6181773798ED8DF25`.
+The original `ECE_septims_100.ini` contained three physical Septim edits,
+including Silver Septim value 25. Its override removes those three rows while
+preserving byte-for-byte the `Gold001` value-1/weight-0/name-`Septim` backend
+row and all four plural-display rows, SHA-256
+`D5A26D41EF4EE9D1A00C11FC8C189DF7A32E01BFF8FD922D1931C5C755DA60A0`.
+Because these are same-relative-path MO2 winners, no SkyPatcher directory
+iteration order is required once the integration mod's file priority is
+verified after installation.
+
+- Archive: `Ensrick-Regional-Currency-Integration-0.4.0.zip`, SHA-256
+  `AC738CCA9AD67ECFAC109B7A85D73C979985F8BBC3311A7015D165C3C4F8F86A`,
+  33,320,658 bytes.
+- Independent current closure: exactly 201 archive entries and 201 package
+  files, with zero missing, extra, content/size-mismatched, duplicate,
+  case-colliding, unsafe-path, or zero-byte entries. Every entry has the fixed
+  timestamp `2000-01-01T00:00:00`.
+- The archive-refresh receipt, SHA-256
+  `4B580F40E6BFE2920F8930D70AC03F9066DDDD12A75A2585A3A43582830A2432`,
+  records two byte-identical archive builds and an exact comparison with the
+  prior 199-entry inventory: precisely the two masks were added; zero prior
+  entries changed or were removed.
+- The main ESP remains
+  `BEB89F2A7FF52B06F5CCE1E81CD6C6150F7751B55910FF0415DD705711957F05`;
+  the companion ESP remains
+  `873A1DD331270B0E76EBB28209F8D6D0378D05105CFAD3EABD4A98FA968A8B61`;
+  and the native DLL remains
+  `879C230DF742570E2B218B25B6DD0E0AE2C073AA9F4E45621CE107E7720446C6`.
+- The exact-byte mask validator, all eight new mask regression tests, the full
+  currency release validator, and `git diff --check` pass locally. Package
+  files are covered by the repository's `-text` attribute, preventing checkout
+  line-ending conversion from invalidating the byte-pinned masks.
+
+The exact correction commit
+`a79d2d5033423347fc7bb1e453ae8847d09600c3` passed GitHub workflow `Check`,
+run `34050098303`, including the new mask suite and actual currency
+policy/distribution step. The subsequent post-install static audit also passed:
+all 201 archive files match both the installed integration folder and effective
+MO2 winners; both same-path masks win from the owned integration mod; and all
+55 physical forms have exactly one classified value/name/weight writer. Its
+active SkyPatcher MISC row counts are regional 0, backend/display 5, ancient 0,
+modern 52, and Septim 3. The canonical evidence is
+`records-work/currency-040-deployment/currency-effective-payload.json`, SHA-256
+`C1B10C52C71B467312E91784806566303990AB5527E542C528D8B5EBE1E93EC5`.
+The reviewed DLL, configuration, and four compiled scripts were unchanged.
+
+This closes the static candidate-winner and installed-file-priority gates. The
+three publication/telemetry debts already listed above remain open. No game was
+launched for this review, so SKSE/SkyPatcher execution and the required
+disposable-save matrix remain runtime acceptance gates.
 
 ## Required runtime acceptance
 

@@ -1493,13 +1493,13 @@
       "fileId": 0,
       "fileName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
       "sizeMb": 0.115,
-      "sha256": "7da79ebce44b89aee27c9709ebde862d1086f4a3207bd736ad45075f50412f1a",
+      "sha256": "8539d678b1cb63cafdf496158b4c3de17bdcf032dd93badb165b3cc3e3079f56",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-06T06:42:00Z",
-      "transaction": "20260906T064200560Z-1dcaca3ea8b2",
-      "refreshNote": "Currency0.3.0 reservation refresh:349 plugins,35 winning SkyPatcher files,569 meshes,240 unchanged directives. Static PASS; gameplay UNVERIFIED.",
-      "note": "#240. Original configuration adds reserved slot58/index28 to240 exact full-cloak ARMO records and their attached ARMA while preserving every existing slot. Sources:99 Pelts full cloaks,122 CoS,12 SoS,4 Campfire,3 More Scarves. Ten Pelts mantle-family pieces, collars, hoods, scarves and unrelated accessories are excluded. Slot57 shortcut was rejected because it would block mantles. Static proof:348 plugins,8747 ARMO and4315 ARMA declarations including losing overrides, no preexisting slot58 occupancy or excluded shared-ARMA consumers;576 explicit/weight-companion model paths,569 parsed winners,zero partition58 hits and7 preexisting absence sentinels. Twenty-one cloak tests and12 strict-reader tests pass. Installed config SHA5716ae2ff6b0ca0c76eb766e1694ed88a6cc18250da70a758d7e85eb98f1ecdf; priority286. Installed freshness gate and MO2 audit pass; plugins.txt unchanged. No mesh edits, physics, NPC inventory cleanup or saved worn-flag migration. Existing collar/cloth46 and mantle/fur57 conflicts are retained, not newly introduced. In-game equip/visual acceptance remains UNVERIFIED. Missing Horker pauldron meshes tracked separately in#241. Source audit/cloak_exclusivity.py; receipt records/source-builds/ensrick-full-cloak-exclusivity.json.",
+      "installedUtc": "2026-09-06T17:58:56Z",
+      "transaction": "20260906T175856840Z-a7633843ec76",
+      "refreshNote": "Currency 0.4.0 reservation refresh: 350 plugins, 35 SkyPatcher files, 569 parsed meshes, 240 unchanged directives. Static/installed freshness PASS; gameplay UNVERIFIED.",
+      "note": "#240. Original slot58/index28 reservation for 240 full-cloak ARMO and attached ARMA preserves existing masks and ten exempt Pelts mantle-family pieces. Proof: 350 plugins, 8759 ARMO / 4315 ARMA declarations, 576 model paths / 569 parsed winners, no partition58 hits and seven preexisting absence sentinels. Config SHA5716AE2F...1ECDF unchanged; priority286. No mesh, physics, distribution or saved-inventory changes. Collar/cloth46 and mantle/fur57 conflicts retained. Gameplay UNVERIFIED; missing models remain #241. Source audit/cloak_exclusivity.py; receipt records/source-builds/ensrick-full-cloak-exclusivity.json.",
       "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
       "distribution": "distributable",
       "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
@@ -1792,18 +1792,19 @@
       "modId": 0,
       "modName": "Ensrick - Regional Currency Integration",
       "nexusName": "Ensrick-owned regional currency compatibility layer",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "fileId": 0,
-      "fileName": "Ensrick-Regional-Currency-Integration-0.3.0.zip",
-      "sizeMb": 9.987,
-      "sha256": "458476846560d89a95c374c244321872cf0daf70ad5239a26d37a59f2c358772",
+      "fileName": "Ensrick-Regional-Currency-Integration-0.4.0.zip",
+      "sizeMb": 31.777,
+      "sha256": "ac738cca9ad67ecfac109b7a85d73c979985f8bbc3311a7015d165c3c4f8f86a",
       "plugins": [
-        "Ensrick Currency Integration Patch.esp"
+        "Ensrick Currency Integration Patch.esp",
+        "Ensrick Currency Regional Purses.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-06T06:33:05Z",
-      "transaction": "20260906T063118626Z-c71bb2e136f9",
-      "note": "#207/#209/#217. Currency0.3.0: one native Gold001 ledger owner and weighted 1/10/100 physical tiers; 80% canonical,20% single-break contents for safe corpse/container/purse sources; regional Copper/Silver/Gold names and distinct <=1K diffuses. 286-record ESPFE,11 masters,4 narrow PEX,105-file private package; legacy ECE accounting retired, MINT service debits corrected. Fresh character/exact nativev2 checkpoint only; NO old-save migration. Deterministic builds, exact records/links/SEQ/Spriggit/assets and installed winners pass. No game launch; transaction matrix UNVERIFIED. Source-build receipt records/source-builds/currency-integration-0.3.0.json.",
+      "installedUtc": "2026-09-06T17:56:35Z",
+      "transaction": "20260906T175635745Z-6c53c4cf09b2",
+      "note": "#207/#209/#217. Complete 18-design / 54-tier currency plus one input alias, all 1/10/100; ancient designs included. Main 1772-record ESPFE and mandatory 405-record regional-purse ESPFE; one native ledger owner, 80/20 value-preserving mixed payouts, 14 regional/cultural routes and distinct <=1K tier diffuses. All 201 installed/effective files and 55 plugin/SkyPatcher winners pass. Two exact-path ECE overrides remove legacy coin write-order dependency. FRESH CHARACTER required; no old-save migration. No game launched; gameplay UNVERIFIED. Full provenance: records/source-builds/currency-integration-0.4.0.json.",
       "distribution": "local-only-generated-assets",
       "distributionBasis": "Publish original/credited permitted source and user-local recipes. Private coin NIF/DDS derivatives are not upload-authorized. Native combined DLL retains CommonLib GPL3+ exceptions and corresponding source; package is not all-MIT.",
       "recipe": {
@@ -1812,9 +1813,9 @@
         "validation": "mods/currency-integration/validate.py",
         "source": "mods/currency-integration",
         "trackingIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/207",
-        "verification": "See currency-integration-0.3.0 source-build receipt. Static PASS; runtime UNVERIFIED."
+        "verification": "See currency-integration-0.4.0 source-build receipt. Static and installed checks PASS; runtime UNVERIFIED."
       },
-      "refreshNote": "2026-09-06: currency repair campaign; installed hashes match reviewed archive; profile membership/order unchanged, controller header comment only changed; gameplay UNVERIFIED. See current source-build receipt."
+      "refreshNote": "2026-09-06: paired complete-currency replacement; helper follows main. Other plugin/mod relative order and activation unchanged. Weapon/cloak proofs refreshed without changing their gameplay data."
     },
     {
       "modId": 0,
@@ -2881,17 +2882,17 @@
       "nexusName": "Ensrick-owned source-built weapon-speed normalizer",
       "version": "0.3.0",
       "fileId": 0,
-      "fileName": "Ensrick-Weapon-Speed-Balance-0.3.0-currency-20260906.zip",
+      "fileName": "Ensrick-Weapon-Speed-Balance-0.3.0-currency-0.4-final.zip",
       "sizeMb": 0.641,
-      "sha256": "783107c601213291315736a53d74e7f6a0d5f36e7dbc1eec434d637cfc3d5b25",
+      "sha256": "191a9a4886d80913a0f9bce9174e5f1ca0bfe0b609d9794c84c51a712602a231",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-06T06:39:00Z",
-      "transaction": "20260906T063900070Z-4ab34e480a6e",
-      "refreshNote": "Currency0.3.0 input-hash refresh only; exact ESP and27 translations unchanged; final winner/freshness checks recorded in source-build receipt.",
-      "note": "Astra approved repair #239; source 043ccfd. Final package transaction 20260905T224239482Z-9c692e563731. 3,481 speed-only WEAP overrides, 40 exact masters, 347 inputs; 27 localized sidecars, deterministic repeated builds; 4,191 final balance/preserve rows PASS. Plugin last at managed priority 271. Nine separately curated longswords retained at Speed 1.0. sha256 is installed ESP; archive hash and full provenance in records/source-builds/ensrick-weapon-speed-balance.json. Private generated binary pending permissions review; original generator distributable. Runtime UNVERIFIED; no game launched."
+      "installedUtc": "2026-09-06T17:48:20Z",
+      "transaction": "20260906T174820592Z-0fdb94f225b8",
+      "refreshNote": "Currency 0.4.0 input-hash refresh only: 350 runtime plugins / 349 inputs, exact weapon ESP and 27 translations unchanged. Final-winner and freshness checks PASS.",
+      "note": "#239. Source 043ccfd; 3481 speed-only WEAP overrides, 40 exact masters, 27 localized sidecars and 4191 final balance/preserve rows. Global patch remains last at managed priority273. Nine curated longswords retain Speed1.0. Ledger SHA is the current archive; exact ESP and provenance: records/source-builds/ensrick-weapon-speed-balance.json. Private generated output pending rights review; original generator distributable. Runtime UNVERIFIED; no game launched."
     },
     {
       "modId": 0,

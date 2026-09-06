@@ -34,6 +34,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-06 13:03 — Complete copper/silver/gold tiers for every supported design
+
+- **What:** Replaced incomplete currency 0.3.0 with 0.4.0: 18 designs, 54 canonical physical tiers plus one alias, all 1/10/100. Added the required regional-purse companion and completed ancient/site routing, assets and whole-purse mixed payouts. Removed an unsafe SkyPatcher file-order assumption with two exact-path ECE overrides; no vendor files changed. Weapon ESP/27 translations and 240 cloak directives remain unchanged after refreshed proofs.
+- **Source:** User's explicit correction that every coin design must have all three metals; #207/#209/#217. Detailed outcome, evidence and open decisions: [complete-tier report](records/currency-complete-tiers-2026-09-06.md). Source `0aa6e4a` and ordering correction `a79d2d5` have passing Windows CI; canonical imports `704f691`/`2e2951d`. Generated licensed coin assets remain private.
+- **Verification:** **UNVERIFIED in game; fresh character required.** Independent record, purse, asset, native, archive and installed-winner audits pass. Final 201-file archive SHA `AC738CCA...F8F86A`; all 55 physical forms have correct plugin winners and one runtime configuration writer. MO2, ledger, order and fresh-character admission pass; Keep is 195/195. Full preflight has zero blockers and eight documented warnings. Companion activation is synchronized by the sanctioned launcher on the next authorized launch. No game, old-save migration or vendor edit. Four unrelated conflict reports preserved. Final currency transaction `20260906T175635745Z-6c53c4cf09b2`.
+
 ## 2026-09-06 01:42 — Mixed regional denominations and single-owner currency repair
 
 - **What:** Replaced the owned currency integration with0.3.0: native ledger owner,286-record ESPFE, four compatibility scripts, explicit1/10/100 regional tiers and36 private tier assets. Eligible corpses/containers/purses use80% efficient change and20% one-tier break without changing value. Retired copper-only ECE payout/accounting handlers, fixed backend service debits, preserved ancient routing and the loose75/20/5 roll. Added trusted package/save checkpoint admission. Updated weapon metadata and cloak reservation; weapon ESP/27 translations and240 cloak directives are unchanged.

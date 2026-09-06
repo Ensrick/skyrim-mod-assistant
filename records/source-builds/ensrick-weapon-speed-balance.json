@@ -3,8 +3,8 @@
   "artifact": "Ensrick - Weapon Speed Balance",
   "version": "0.3.0",
   "status": "installed-static-verified-runtime-unverified",
-  "receiptCreatedUtc": "2026-09-06T06:39:00Z",
-  "refreshReason": "Currency 0.3.0 changes an input plugin, not weapon policy. Two builds preserve exact ESP and all27 translations; refresh audit provenance only.",
+  "receiptCreatedUtc": "2026-09-06T17:48:20Z",
+  "refreshReason": "Complete currency 0.4.0 replaces one input plugin and adds the regional-purse companion. Two builds preserve the exact weapon ESP and all 27 translations; only audit provenance is refreshed.",
   "supersedes": "records/source-builds/ensrick-weapon-speed-balance-v0.1.0-historical.json",
   "source": {
     "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
@@ -146,25 +146,25 @@
   },
   "inputs": {
     "profile": "Default",
-    "runtimePlugins": 349,
-    "inputPlugins": 348,
-    "inputLoadOrderSha256": "87F5BA873BEFDB7BE21DB0985DD35A24170DC791E936E07BB446075F02F17D6E",
-    "inputPluginBinariesSha256": "E2E6EEFAD0C567A8C3759F927493E3810B5A5AF5C5BECFF2B7A4A09300D43184",
+    "runtimePlugins": 350,
+    "inputPlugins": 349,
+    "inputLoadOrderSha256": "FD59879053649933A739180FD23C3FEC7EFE4B5CE16DB1CE980A62BFEF4980CC",
+    "inputPluginBinariesSha256": "D555760224D7EC5DAC863AB7BD4CD4815C957AEE32B020199257EB67F84F0C02",
     "localizedSourceProviders": 21,
     "inputLocalizationResourceProvidersSha256": "166B46F52654834036DC35756F793DF9C52C5E536DF6AFD12C26B757555ED8B2",
     "manifest": "Installed EnsrickMetadata/build-manifest.json retains ordered plugin/provider/hash and relevant loose/BSA resource resolutions.",
-    "manifestSha256": "703EFF02B979B13F850C359B1D2194C4A4C42F06343FFFEDE7EBE06D940C2D3A",
+    "manifestSha256": "1AD45C628B3B30D3974B846D3B14095F32A2CF56D489C03256EBB77B0EAAB061",
     "sourceLocalizationScope": "Matches pinned Mutagen loader contract: provider-named loose tables and applicable provider BSAs, not arbitrary unrelated-archive engine overrides. See module README and Mutagen issue #578."
   },
   "output": {
     "plugin": "WeaponBalancePatch.esp",
     "pluginBytes": 1766218,
     "pluginSha256": "6BFE4E47DE61A6A8B5E717213A13B992B9A8DA7B2944F5CE874CA23026F92F92",
-    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-currency-20260906.zip",
-    "archiveBytes": 671927,
-    "archiveSha256": "783107C601213291315736A53D74E7F6A0D5F36E7DBC1EEC434D637CFC3D5B25",
+    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-currency-0.4-final.zip",
+    "archiveBytes": 671982,
+    "archiveSha256": "191A9A4886D80913A0F9BCE9174E5F1CA0BFE0B609D9794C84C51A712602A231",
     "installedPayloadFiles": 31,
-    "installedPayloadBytes": 7693064,
+    "installedPayloadBytes": 7693286,
     "recordTypes": {
       "WEAP": 3481
     },
@@ -511,7 +511,7 @@
     "deterministicDoubleBuild": "PASS: ESP, selection report and27 sidecars; weapon/translation payloads also equal prior installation",
     "finalWinners": "PASS:4191 target/preserve rows",
     "finalWinnerAuditSha256": "CF9284BBB52AEBD21638FCB2CD50844FDDB0FE5FDA384C117361F70EA11EE087",
-    "fullProjectPreflight": "Not rerun as part of this refresh; original20260905Validation is historical, not a new global PASS",
+    "fullProjectPreflight": "Currency 0.4.0 campaign final preflight recorded separately; no global gameplay PASS claimed.",
     "runtimeAcceptance": "UNVERIFIED; no game launch"
   },
   "installation": {
@@ -519,12 +519,12 @@
     "profile": "Default",
     "enabled": true,
     "modPriority": 237,
-    "managedPluginPriority": 272,
-    "runtimePluginIndex": 348,
-    "installedUtc": "2026-09-06T06:39:00Z",
-    "candidateInstallTransaction": "20260905T223958756Z-58f55b12dd51",
-    "pluginPriorityTransaction": "20260905T223959715Z-763af81519ec",
-    "finalInstallTransaction": "20260906T063900070Z-4ab34e480a6e",
+    "managedPluginPriority": 273,
+    "runtimePluginIndex": 349,
+    "installedUtc": "2026-09-06T17:48:20Z",
+    "candidateInstallTransaction": "20260906T174424147Z-97b96d8ec5a2",
+    "pluginPriorityTransaction": "No weapon reorder in this refresh; currency companion inserted earlier by transaction 20260906T174026491Z-610d46f121c5.",
+    "finalInstallTransaction": "20260906T174820592Z-0fdb94f225b8",
     "rollback": "Headless transaction journal retains prior owned payload; no vendor files or saves modified."
   },
   "distribution": {
