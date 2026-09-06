@@ -34,6 +34,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 
 ---
 
+## 2026-09-05 23:20 — Public build-input pin correction
+
+- **What:** Corrected WindowFocusGuard CI to fetch public SKSE71f41da instead of the local unpublished quiet-loader checkout872c2d6. PluginAPI.h is byte-identical (Git blobf4844ffe, SHA0F238CC8); no code, DLL or live configuration changes. Source README/receipt distinguish local and public provenance.
+- **Source:** First remote build rejected the unavailable SDK commit. The local build never depended on its unrelated loader edits.
+- **Verification:** Header equivalence and public commit availability confirmed; CI rerun pending. Gameplay status unchanged, UNVERIFIED.
+
 ## 2026-09-05 23:06 — Foreground cursor owner replaces unconditional confinement
 
 - **What:** Installed original WindowFocusGuard0.1.0 as a separate native mod and changed only the owned Display Tweaks `LockCursor` key to false. Official rendering/Havok, framerate119, borderless configuration and Media Keys Fix remain. A dedicated message thread releases cursor ownership on Win/AltTab/focus loss and refuses foreign HWNDs; file logging never blocks its keyboard hook. Added paired-configuration preflight and CI tests. Refreshed the cloak reservation for the added enabled-mod fingerprint; all240 directives and meshes unchanged.

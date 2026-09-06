@@ -8,6 +8,8 @@
   "sourceFilesDirty": false,
   "runtime": "Skyrim SE1.7.104; no game memory hooks or structures",
   "sdkCommit": "872c2d6fe4bc17b9e7f74d66b38c229750ce18e0",
+  "sdkPublicEquivalentHeaderCommit": "71f41da518f964345f0050471ec0232fa3a3afc8",
+  "sdkProvenanceNote": "Local checkout includes unpublished quiet-loader edits outside PluginAPI.h. Header blob f4844ffe722d300223d78519619d1308fe32f06b is byte-identical to public upstream71f41da. CI pins public commit; installed package README records the historical local checkout, corrected in source documentation.",
   "sdkHeaderSha256": "0F238CC870C726A91BEFCF96F1C45DB0019E223242434B8300B973AB2B0A3C95",
   "compiler": "MSVC19.44.35223 x64 /W4 /WX /permissive- /Brepro static CRT",
   "package": "WindowFocusGuard-0.1.0-win64.zip",

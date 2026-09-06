@@ -28,8 +28,11 @@ the cursor free. This intentionally favors desktop access over confinement.
 ## Build / distribution
 
 Configure CMake with `-DSKSE_SDK_ROOT=<external checkout>` and MSVC x64. Header SHA
-is pinned in CMakeLists.txt to SKSE commit
-`872c2d6fe4bc17b9e7f74d66b38c229750ce18e0`. The SDK remains an external build input.
+is pinned in CMakeLists.txt; public SKSE commit
+`71f41da518f964345f0050471ec0232fa3a3afc8` contains the identical header.
+The local build used checkout872c2d6 (unpublished headless changes elsewhere);
+those changes are not needed or shipped. CI fetches the public header commit.
+The SDK remains an external build input.
 Build Release and run CTest. Ship only our DLL under `SKSE/Plugins` plus the owned
 configuration overlay; never ship the SDK or vendor Display Tweaks DLL.
 Original source uses the monorepo LICENSE. Build outputs remain ignored.
