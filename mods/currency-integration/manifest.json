@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "name": "Ensrick Regional Currency Integration",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "generatedDate": "2026-09-06",
   "gameRuntime": "Skyrim 1.7.104 / SKSE 2.3.1",
   "accounting": {
@@ -17,32 +17,32 @@
     "vendorNoSale": "0FF9FB:Skyrim.esm"
   },
   "distribution": {
-    "sourcePolicy": "actors deadGenericOnly; containers respawningSafeOnly; purses exact allowlist",
+    "sourcePolicy": "actors deadGenericOnly; containers respawning, unowned safe-only; FLOR purses use exact typed LVLI/FLOR routes",
     "canonicalPercent": 80,
     "singleBreakPercent": 20,
     "breakAtMostOne": true,
     "valueConserved": true,
     "seed": "0x454E535249434B31",
-    "looseCoinBehavior": "authored BOS 75/20/5 copper/silver/gold choice retained"
+    "looseCoinBehavior": "all eighteen routed designs use stable BOS 75/20/5 copper/silver/gold; existing physical tiers never reroll"
   },
   "runtimeConfig": {
     "file": "SKSE/Plugins/EnsrickCurrencyDenominations.json",
-    "sha256": "AF90BB34B1E2902512C2928943A04B73C860B9E59EBD1C48795B5EDBFD99F3FA",
-    "bytes": 8826,
+    "sha256": "B86CD8524553EE8FB3FB00CD9B231D62997F2E991DED1D3DC80FC4158A99FC21",
+    "bytes": 15778,
     "strictParserFixture": "pass",
-    "ledgerFingerprint": "EC66DF8F57CF4726"
+    "ledgerFingerprint": "6270B86774F9F4F3"
   },
   "runtimePatch": {
     "plugin": "Ensrick Currency Integration Patch.esp",
-    "sha256": "2F59FB73FC1C55B373073C279E9CE809D12DE7C705D19CB374552153555C95D7",
-    "bytes": 61583,
+    "sha256": "BEB89F2A7FF52B06F5CCE1E81CD6C6150F7751B55910FF0415DD705711957F05",
+    "bytes": 429964,
     "eslFlagged": true,
-    "records": 286,
-    "ownedRecords": 169,
+    "records": 1772,
+    "ownedRecords": 1623,
     "recordsByType": {
       "ACTI": 3,
-      "LVLI": 152,
-      "MISC": 22,
+      "LVLI": 1605,
+      "MISC": 55,
       "GLOB": 1,
       "COBJ": 42,
       "QUST": 5,
@@ -60,6 +60,7 @@
       "Update.esm",
       "HearthFires.esm",
       "Dragonborn.esm",
+      "BSAssets.esm",
       "SL99Exchanger.esp",
       "exchangeCurrency_enhanced.esp",
       "C.O.I.N.esp",
@@ -69,16 +70,36 @@
       "exchangeCurrency_patch_COIN.esp"
     ],
     "seqFileRelativeFormIds": [
-      "0B000800"
+      "0C000800"
     ]
+  },
+  "regionalPursePatch": {
+    "plugin": "Ensrick Currency Regional Purses.esp",
+    "sha256": "873A1DD331270B0E76EBB28209F8D6D0378D05105CFAD3EABD4A98FA968A8B61",
+    "bytes": 69322,
+    "eslFlagged": true,
+    "records": 405,
+    "ownedRecords": 405,
+    "recordsByType": {
+      "FLOR": 15,
+      "LVLI": 390
+    },
+    "directMasters": [
+      "Skyrim.esm",
+      "Update.esm",
+      "BSAssets.esm",
+      "exchangeCurrency_patch_COIN.esp",
+      "Ensrick Currency Integration Patch.esp"
+    ],
+    "seqFileRelativeFormIds": []
   },
   "nativePlugin": {
     "file": "SKSE/Plugins/EnsrickCurrencyDenominations.dll",
-    "sha256": "3866DD5FC35C8223C24A34379C464444C114A2BAD9A17A4D9EF3905802F50CF8",
-    "bytes": 1014784,
+    "sha256": "879C230DF742570E2B218B25B6DD0E0AE2C073AA9F4E45621CE107E7720446C6",
+    "bytes": 1032704,
     "deterministicBuilds": 2,
     "buildReceipt": "Source/EnsrickCurrencyDenominations/native-build-receipt.json",
-    "buildReceiptSha256": "7A3C4A89C72B5410B5632468279B06C03EFA7E65A7711BCD491DF73B6555029D",
+    "buildReceiptSha256": "728A20CE75AC30D7D8CC2970D8E99839AC07D3182D47608687831BD9322494B7",
     "sourceInputFiles": 23,
     "correspondingSource": "Source/EnsrickCurrencyDenominations",
     "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
@@ -126,19 +147,30 @@
       "Dram",
       "Oshka",
       "Ohzer",
-      "Varken"
+      "Varken",
+      "Dragon Drakr",
+      "Moth Drakr",
+      "Owl Drakr",
+      "Whale Drakr",
+      "Dementia Gibber",
+      "Mania Gibber",
+      "Ayleid Mala",
+      "Ancient Falmer Mallari",
+      "Dwarven Nchuark",
+      "Sancar",
+      "Bruma Ayleid Mala"
     ],
     "tiers": [
       "Copper",
       "Silver",
       "Gold"
     ],
-    "nifFiles": 18,
-    "diffuseFiles": 18,
+    "nifFiles": 51,
+    "diffuseFiles": 57,
     "diffuseResolutionCap": 1024,
-    "recipeSha256": "C85B16567AC9E120417E18FB29ACDA6F2775256CA6F0FD69775679102A0F2FE9",
-    "receiptSha256": "D5FCDE1BD5E19B4FDF67BEF4F9411C25062E05FDDC98208647FDCB1D4C7A4B89",
-    "repeatability": "36/36 SHA256 and size identical",
+    "recipeSha256": "FB1E08E0C8AB44DCFA13E154B463193CFD13E99ADA0FB3DA01C435441D346106",
+    "receiptSha256": "F6260E35DF5A508EA56DC736DCCC70669AA0C42E5A9A56AD65C93295C72EA40B",
+    "repeatability": "108/108 SHA256 and size identical",
     "redistribution": "private derived outputs; publish recipe/receipts only",
     "normalMaskEnvironmentBindings": "vendor-owned and preserved",
     "geometryClaim": "no geometry realism claim"
@@ -153,37 +185,40 @@
       "000002:WindhelmUsesUlfrics.esp"
     ],
     "madranAlias": "alias 5 DES_MadranSwapper removed; same-name PEX inert for stale instances",
-    "canonicalDrakr": "DE5015:Update.esm value 1; native bridge replaces shared ECE Drakr route",
-    "excludedAncientFaces": [
-      "DE5012:Update.esm",
-      "DE5013:Update.esm",
-      "DE5014:Update.esm"
-    ]
+    "canonicalDrakr": "All four authored Drakr faces are distinct 1/10/100 families; source identity and exact routed face selection are preserved",
+    "excludedAncientFaces": []
   },
   "routing": {
     "precedence": [
-      "quest-specific exceptions",
-      "ancient-site exclusions",
-      "modern regional tender",
-      "Septim fallback"
+      "questExceptions",
+      "regionalRoutes",
+      "septimFallback"
     ],
-    "activeModern": [
+    "activeDesigns": [
+      "Septim",
       "Mede",
       "Ulfric",
       "Dram",
       "Oshka",
-      "Ohzer"
+      "Ohzer",
+      "Varken",
+      "Drakr Dragon",
+      "Drakr Moth",
+      "Drakr Owl",
+      "Drakr Whale",
+      "Gibber Dementia",
+      "Gibber Mania",
+      "Mala",
+      "Mallari",
+      "Nchuark",
+      "Sancar",
+      "Bruma Ayleid Mala"
     ],
-    "dormant": [
-      "Varken (no exact shipped location route)"
-    ],
-    "singleton": [
-      "Drakr",
-      "Sancar"
-    ],
+    "dormant": [],
+    "singleton": [],
     "fallbackWorldspaces": [
-      "Wyrmstooth",
-      "Beyond Reach"
+      "Unmatched locations in Wyrmstooth",
+      "Unmatched locations in Beyond Reach"
     ]
   },
   "licenses": {
@@ -219,10 +254,10 @@
     178940
   ],
   "archive": {
-    "fileName": "Ensrick-Regional-Currency-Integration-0.3.0.zip",
-    "files": 105,
-    "bytes": 10472443,
-    "sha256": "458476846560D89A95C374C244321872CF0DAF70AD5239A26D37A59F2C358772"
+    "fileName": "Ensrick-Regional-Currency-Integration-0.4.0.zip",
+    "files": 199,
+    "bytes": 33319850,
+    "sha256": "1A403D0121A3672042A82F766DB54E70D58E2958F5D94367C3DB18C7E7628852"
   },
-  "gameplayAcceptance": "Build/static checks are necessary but not sufficient. New-game main-menu/save admission and the in-world currency matrix remain release gates. Existing pre-v0.3.0 saves fail closed."
+  "gameplayAcceptance": "Build/static checks are necessary but not sufficient. New-game main-menu/save admission and the in-world currency matrix remain release gates. No save created under any prior currency architecture, including 0.3.0, is supported; those saves must fail closed. Runtime acceptance remains unverified."
 }

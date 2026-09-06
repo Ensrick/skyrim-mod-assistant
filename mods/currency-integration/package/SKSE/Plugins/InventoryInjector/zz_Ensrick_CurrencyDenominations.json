@@ -7,14 +7,24 @@
         "formId": {
           "anyOf": [
             "exchangeCurrency_enhanced.esp|b6d",
-            "update.esm|de5021",
-            "update.esm|de5024",
-            "update.esm|de5029",
+            "Update.esm|de5021",
+            "Update.esm|de5024",
+            "Update.esm|de5029",
             "exchangeCurrency_patch_COIN.esp|871",
             "exchangeCurrency_patch_COIN.esp|86f",
             "exchangeCurrency_patch_COIN.esp|870",
-            "update.esm|de5015",
-            "update.esm|de5023"
+            "Update.esm|de5012",
+            "Update.esm|de5013",
+            "Update.esm|de5014",
+            "Update.esm|de5015",
+            "Update.esm|de5017",
+            "Update.esm|de5018",
+            "Update.esm|de5027",
+            "Update.esm|de5019",
+            "Update.esm|de5020",
+            "Update.esm|de5022",
+            "Update.esm|de5023",
+            "BSAssets.esm|6028dc"
           ]
         }
       },
@@ -35,7 +45,18 @@
             "Ensrick Currency Integration Patch.esp|824",
             "Ensrick Currency Integration Patch.esp|826",
             "Ensrick Currency Integration Patch.esp|828",
-            "Ensrick Currency Integration Patch.esp|82a"
+            "Ensrick Currency Integration Patch.esp|82a",
+            "Ensrick Currency Integration Patch.esp|a00",
+            "Ensrick Currency Integration Patch.esp|a02",
+            "Ensrick Currency Integration Patch.esp|a04",
+            "Ensrick Currency Integration Patch.esp|a06",
+            "Ensrick Currency Integration Patch.esp|a08",
+            "Ensrick Currency Integration Patch.esp|a0a",
+            "Ensrick Currency Integration Patch.esp|a0c",
+            "Ensrick Currency Integration Patch.esp|a0e",
+            "Ensrick Currency Integration Patch.esp|a10",
+            "Ensrick Currency Integration Patch.esp|a12",
+            "Ensrick Currency Integration Patch.esp|a14"
           ]
         }
       },
@@ -56,7 +77,18 @@
             "Ensrick Currency Integration Patch.esp|825",
             "Ensrick Currency Integration Patch.esp|827",
             "Ensrick Currency Integration Patch.esp|829",
-            "Ensrick Currency Integration Patch.esp|82b"
+            "Ensrick Currency Integration Patch.esp|82b",
+            "Ensrick Currency Integration Patch.esp|a01",
+            "Ensrick Currency Integration Patch.esp|a03",
+            "Ensrick Currency Integration Patch.esp|a05",
+            "Ensrick Currency Integration Patch.esp|a07",
+            "Ensrick Currency Integration Patch.esp|a09",
+            "Ensrick Currency Integration Patch.esp|a0b",
+            "Ensrick Currency Integration Patch.esp|a0d",
+            "Ensrick Currency Integration Patch.esp|a0f",
+            "Ensrick Currency Integration Patch.esp|a11",
+            "Ensrick Currency Integration Patch.esp|a13",
+            "Ensrick Currency Integration Patch.esp|a15"
           ]
         }
       },

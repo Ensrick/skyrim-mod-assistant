@@ -54,6 +54,23 @@ namespace Ensrick::Currency
 		return a_value ^ (a_value >> 31);
 	}
 
+	std::optional<std::vector<std::int32_t>> CanonicalCountsWithAliases(
+		const std::uint64_t a_value,
+		const bool a_breakOneLargerCoin,
+		const std::size_t a_aliasCount)
+	{
+		if (a_value > static_cast<std::uint64_t>(std::numeric_limits<std::int32_t>::max()) ||
+			a_aliasCount > std::numeric_limits<std::size_t>::max() - 3) {
+			return std::nullopt;
+		}
+		const auto counts = Decompose(a_value, a_breakOneLargerCoin);
+		std::vector<std::int32_t> result(3 + a_aliasCount, 0);
+		result[0] = static_cast<std::int32_t>(counts.copper);
+		result[1] = static_cast<std::int32_t>(counts.silver);
+		result[2] = static_cast<std::int32_t>(counts.gold);
+		return result;
+	}
+
 	bool UseBrokenVariant(
 		const std::uint64_t a_sourceIdentity,
 		const std::uint64_t a_familySalt,

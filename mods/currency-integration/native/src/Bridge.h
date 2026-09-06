@@ -3,6 +3,7 @@
 #include "Config.h"
 #include "LedgerPolicy.h"
 #include "SaveMarkerPolicy.h"
+#include "SourcePolicy.h"
 
 #include <RE/Skyrim.h>
 
@@ -47,14 +48,21 @@ namespace Ensrick::Currency
 		{
 			std::uint32_t value{ 0 };
 			RE::TESBoundObject* form{ nullptr };
+			bool isAlias{ false };
 		};
 
 		struct ResolvedFamily
 		{
 			FamilyConfig config;
 			std::vector<ResolvedDenomination> denominations;
-			std::vector<RE::BGSKeyword*> routeKeywords;
 			RE::BGSPerk* perk{ nullptr };
+		};
+
+		struct ResolvedRoute
+		{
+			std::string id;
+			std::vector<RE::BGSKeyword*> anyKeywords;
+			std::vector<RouteDesignCandidate> candidates;
 		};
 
 		struct RecognizedSnapshot
@@ -92,7 +100,7 @@ namespace Ensrick::Currency
 		bool RequestCurrencySwapperOwnership(std::uint64_t a_generation);
 		void CompleteAdmission(std::uint64_t a_generation);
 
-		std::size_t DetermineFamily(const RE::BGSLocation* a_location) const;
+		std::size_t DetermineFamily(const RE::BGSLocation* a_location, std::uint64_t a_sourceIdentity = 0) const;
 		bool LocationHasKeyword(const RE::BGSLocation* a_location, const RE::BGSKeyword* a_keyword) const;
 		void ApplyRoute(std::size_t a_familyIndex);
 		void ApplyPricePerk(bool a_enable);
@@ -141,6 +149,7 @@ namespace Ensrick::Currency
 		Config _config;
 		RE::TESBoundObject* _backend{ nullptr };
 		std::vector<ResolvedFamily> _families;
+		std::vector<ResolvedRoute> _routes;
 		std::unordered_map<RE::FormID, std::uint32_t> _physicalValues;
 		std::unordered_set<RE::FormID> _allowedContainerBases;
 		std::unordered_set<RE::FormID> _deniedContainerBases;
@@ -148,7 +157,6 @@ namespace Ensrick::Currency
 		std::unordered_set<RE::FormID> _allowedActorBases;
 		std::unordered_set<RE::FormID> _deniedActorBases;
 		std::unordered_set<RE::FormID> _deniedActorReferences;
-		std::vector<RE::BGSKeyword*> _ancientExclusionKeywords;
 		std::vector<RE::TESQuest*> _disabledQuests;
 		std::size_t _fallbackFamily{ 0 };
 		std::uint64_t _ledgerFingerprint{ 0 };

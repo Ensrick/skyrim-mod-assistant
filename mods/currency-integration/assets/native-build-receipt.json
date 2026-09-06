@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceRoot": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\ece-null-location-guard\\mods\\currency-integration\\native",
+  "sourceRoot": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\currency-complete-tiers\\mods\\currency-integration\\native",
   "commonLibRoot": "C:\\Users\\danjo\\source\\repos\\skyrim-tools-source\\CurrencySwapper-1.7.104\\External\\CommonLibSSE",
   "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
   "commonLibTrackedStatus": "clean",
@@ -21,9 +21,9 @@
   "runtime": "1.7.104.0",
   "skse": "2.3.1",
   "runtimeConfig": {
-    "path": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\ece-null-location-guard\\mods\\currency-integration\\package\\SKSE\\Plugins\\EnsrickCurrencyDenominations.json",
-    "sha256": "AF90BB34B1E2902512C2928943A04B73C860B9E59EBD1C48795B5EDBFD99F3FA",
-    "bytes": 8826
+    "path": "C:\\Users\\danjo\\source\\repos\\_codex_worktrees\\currency-complete-tiers\\mods\\currency-integration\\package\\SKSE\\Plugins\\EnsrickCurrencyDenominations.json",
+    "sha256": "B86CD8524553EE8FB3FB00CD9B231D62997F2E991DED1D3DC80FC4158A99FC21",
+    "bytes": 15778
   },
   "sourceInputs": [
     {
@@ -33,48 +33,48 @@
     },
     {
       "relativePath": "CMakeLists.txt",
-      "sha256": "3719077AE7324DD6FEBA0DB068737B3723F34F2D055352CC29FB3A1740576134",
+      "sha256": "B142AD035D2063F79AA5B38C96203C201FBF102CCACBA50D7131BDC8D85BE988",
       "bytes": 3927
     },
     {
       "relativePath": "README.md",
-      "sha256": "622020DE3667BF40059A8616A765DB5538C5739703955777CD03DF79FE1DED30",
-      "bytes": 2168
+      "sha256": "1B8B56B39308F3255D15FEE40C57D1F78C4A880A30813F84C076D22D04E70EB9",
+      "bytes": 4286
     },
     {
       "relativePath": "src/Bridge.cpp",
-      "sha256": "F5593EB2C1D41E98F3ED6D490EF6F07C659D2D04D4CA01C56EB50AD65F8949E8",
-      "bytes": 35328
+      "sha256": "7E28184E1D88044F8A9E75C02065E1630550E0A21591291EC87D46AEB6DDD733",
+      "bytes": 36067
     },
     {
       "relativePath": "src/Bridge.h",
-      "sha256": "9DE607C4DCC7EFA84B780C507F8D4757628FB67C79636736E37C1964C001B264",
-      "bytes": 6230
+      "sha256": "C43F4EAFAA36850360CA2C3A00DE2A15620F952EB5CCA94C3D7EEE2AA3226281",
+      "bytes": 6397
     },
     {
       "relativePath": "src/Config.cpp",
-      "sha256": "766FAEDB09B4D058BDE0C605A89C65DEB56427214D90A62C1EB16DBFE8C4444A",
-      "bytes": 17219
+      "sha256": "B55EF3197840B79FB2979C3B8EC2794FE19194FA1D3FA73BB5EA4B977B99A86F",
+      "bytes": 19851
     },
     {
       "relativePath": "src/Config.h",
-      "sha256": "27B1AF12510FC982D16FB1036511DFEF0CFFB7C19815B1C2FEBA91A4397207F8",
-      "bytes": 2085
+      "sha256": "6FBA15AE58893298A0621B383EB488A5C474BB4C4B3A51787182DF500A78C688",
+      "bytes": 2286
     },
     {
       "relativePath": "src/DenominationMath.cpp",
-      "sha256": "D6B81CCA641B61CDA49F640F40F126D526DC5EF9A2C500F5D7963B7D5DF15EEF",
-      "bytes": 1793
+      "sha256": "6A0DBD5EC75C639C95036FCC67A74144BB6DB2506905381D4361EABD8190DE83",
+      "bytes": 2455
     },
     {
       "relativePath": "src/DenominationMath.h",
-      "sha256": "B4CF4A4CF030FBF639764259B6BB4C47D38D5A31E9BB1E24E458CC0CB09BDE9E",
-      "bytes": 652
+      "sha256": "37EC7E4CF102307FDCD1011BB017383F7755FD87CA82465FF236563D01FAA319",
+      "bytes": 852
     },
     {
       "relativePath": "src/LedgerFingerprint.cpp",
-      "sha256": "58726B940B0B35A9BA8D4D77DD1094604F47ACC0DE7315E140F189D87FE26D7D",
-      "bytes": 1532
+      "sha256": "B6E4358E9950128C1A9E46FC14C3C3A5D25E268E26EED2AEED6F8A4FC88EDC5B",
+      "bytes": 2840
     },
     {
       "relativePath": "src/LedgerFingerprint.h",
@@ -113,18 +113,18 @@
     },
     {
       "relativePath": "src/SourcePolicy.h",
-      "sha256": "A5973133E29F04A2E06A6FF3ADEA66602DCEC59932B6518B62FCD23C546AFBC7",
-      "bytes": 360
+      "sha256": "67110BDB9D9A08AF665EC46AAAEB3B4CA138B5C9275428B26D740FD80F2B61AF",
+      "bytes": 1161
     },
     {
       "relativePath": "tests/ConfigParserTests.cpp",
-      "sha256": "626B368DE3A070BDEB1275C0DBDB59EB4AE5BFB546D2E62B20A31F0FC180D825",
-      "bytes": 1037
+      "sha256": "00CB9206FAEFF2D79BE837B8DA6CF1FE2DFDE29D25DE7CA4B60977EFC4DB1EAC",
+      "bytes": 5860
     },
     {
       "relativePath": "tests/NativePolicyTests.cpp",
-      "sha256": "97DB61CBCFC37CC83FF7965CB45F1EA5ED05E25B10D85E2DA86AF8E2C8463792",
-      "bytes": 11399
+      "sha256": "9B489B2F232D98EE28EA1E282B36383562FA378568A88118654171FDE8339B1D",
+      "bytes": 15165
     },
     {
       "relativePath": "third_party/QuickLootAPI.h",
@@ -138,13 +138,13 @@
     },
     {
       "relativePath": "vcpkg.json",
-      "sha256": "F6452B8044AB1DC487B00DA391568BDA3573B6EC5FB67487A0FFA77F579A8BFB",
+      "sha256": "96D69DD1D26BEE698AB6D5FBA16905206EA5382FA74E365662AD4F7126C3B6DF",
       "bytes": 624
     }
   ],
   "dll": {
     "relativePath": "SKSE/Plugins/EnsrickCurrencyDenominations.dll",
-    "sha256": "3866DD5FC35C8223C24A34379C464444C114A2BAD9A17A4D9EF3905802F50CF8",
-    "bytes": 1014784
+    "sha256": "879C230DF742570E2B218B25B6DD0E0AE2C073AA9F4E45621CE107E7720446C6",
+    "bytes": 1032704
   }
 }

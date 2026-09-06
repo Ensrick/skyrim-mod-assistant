@@ -81,7 +81,7 @@ internal static class CurrencyAudit
             $"Hard-master set/order mismatch: {string.Join(", ", actualMasters.Select(key => key.FileName.String))}.");
 
         var records = plugin.EnumerateMajorRecords().ToArray();
-        Program.Require(records.Length == 286, $"Expected exactly 286 records, found {records.Length}.");
+        Program.Require(records.Length == 1772, $"Expected exactly 1772 records, found {records.Length}.");
         Program.Require(!records.Any(record => record.IsDeleted), "Plugin contains a deleted record.");
         var derivedMasters = records
             .Select(record => record.FormKey.ModKey)
@@ -100,6 +100,7 @@ internal static class CurrencyAudit
             .ToHashSet();
         Program.Require(expectedDialogParentKeys.Count == 20,
             "Exact parent DIAL policy must contain twenty unique FormKeys.");
+        var expectedDenominationOverrides = ExpectedDenominationOverrides(loadOrder, policy.Denominations);
         var expectedOverrideKeys = policy.Overrides.GoldPiles.Select(item => FormKey.Factory(item.FormKey))
             .Concat(policy.Overrides.CoinPurses.Select(item => FormKey.Factory(item.FormKey)))
             .Append(FormKey.Factory(policy.Overrides.Gold.FormKey))
@@ -107,11 +108,11 @@ internal static class CurrencyAudit
             .Concat(policy.Overrides.EcePlayerCurrencyQuests.Select(item => FormKey.Factory(item.FormKey)))
             .Concat(policy.Overrides.MintCostOnlyQuests.Select(item => FormKey.Factory(item.FormKey)))
             .Append(FormKey.Factory(policy.Overrides.MintMadranQuest.FormKey))
-            .Concat(policy.Overrides.DrakrPurseAdapters.Purses.Select(item => FormKey.Factory(item.FormKey)))
+            .Concat(policy.Overrides.RegionalPurseGraph.Families
+                .SelectMany(family => family.Purses)
+                .Select(item => FormKey.Factory(item.FormKey)))
             .Append(FormKey.Factory(policy.Overrides.DrakrPile.FormKey))
-            .Append(FormKey.Factory(policy.Denominations.Septim.Silver.FormKey))
-            .Concat(policy.Denominations.ModernFamilies.Select(item => FormKey.Factory(item.CopperFormKey)))
-            .Concat(policy.Denominations.SingletonFamilies.Select(item => FormKey.Factory(item.FormKey)))
+            .Concat(expectedDenominationOverrides)
             .Concat(policy.Overrides.DisabledMintExchangeInfos.Select(item => FormKey.Factory(item.FormKey)))
             .Concat(policy.Overrides.MintBackendConditionInfos.Select(item => FormKey.Factory(item.FormKey)))
             .Concat(expectedDialogParentKeys)
@@ -127,14 +128,14 @@ internal static class CurrencyAudit
         var expectedOwnedKeys = new HashSet<FormKey>
         {
             new(plugin.ModKey, Program.RuntimeQuestId),
-            new(plugin.ModKey, 0x801),
-            new(plugin.ModKey, 0x802),
             new(plugin.ModKey, 0x803),
         };
-        foreach (var family in policy.Denominations.ModernFamilies)
+        foreach (var family in policy.Denominations.TieredFamilies)
         {
-            expectedOwnedKeys.Add(new FormKey(plugin.ModKey, ParseId(family.SilverFormId)));
-            expectedOwnedKeys.Add(new FormKey(plugin.ModKey, ParseId(family.GoldFormId)));
+            foreach (var tier in family.Tiers.Values.Where(tier => tier.FormId is not null))
+            {
+                expectedOwnedKeys.Add(new FormKey(plugin.ModKey, ParseId(tier.FormId!)));
+            }
         }
         foreach (var purse in policy.Overrides.CoinPurses)
         {
@@ -151,6 +152,11 @@ internal static class CurrencyAudit
             new FormKey(plugin.ModKey, uint.Parse(target.FormId,
                 System.Globalization.NumberStyles.HexNumber,
                 System.Globalization.CultureInfo.InvariantCulture))));
+        foreach (var id in Enumerable.Range(0x990, 0x70)
+                     .Concat(Enumerable.Range(0xA16, 0x52A)))
+        {
+            expectedOwnedKeys.Add(new FormKey(plugin.ModKey, checked((uint)id)));
+        }
         var actualOwnedKeys = records.Where(record => record.FormKey.ModKey == plugin.ModKey)
             .Select(record => record.FormKey).ToHashSet();
         Program.Require(actualOwnedKeys.SetEquals(expectedOwnedKeys),
@@ -158,7 +164,8 @@ internal static class CurrencyAudit
 
         AuditPiles(plugin, loadOrder);
         var denominationReceipt = AuditDenominations(plugin, loadOrder, policy.Denominations);
-        var purseReceipts = AuditPurses(plugin, policy.Overrides.CoinPurses, policy.Denominations.Septim);
+        var purseReceipts = AuditPurses(plugin, policy.Overrides.CoinPurses,
+            policy.Denominations.TieredFamilies.Single(family => family.Id == "septim"));
 
         var gold = plugin.MiscItems.Single(record => record.FormKey == Gold001);
         Program.Require(gold.Keywords?.Count(link => link.FormKey == GiftUniversallyValuable) == 1,
@@ -180,8 +187,8 @@ internal static class CurrencyAudit
             policy.Overrides.MintBackendConditionInfos);
         var dialogParentReceipt = AuditDialogParentScopes(plugin, loadOrder,
             policy.Overrides.DisabledMintExchangeInfos, policy.Overrides.MintBackendConditionInfos);
-        var drakrPurseReceipt = AuditDrakrPurseAdapters(plugin, loadOrder,
-            policy.Overrides.DrakrPurseAdapters);
+        var regionalPurseReceipt = AuditRegionalPurseGraph(plugin,
+            policy.Overrides.RegionalPurseGraph, policy.Denominations);
         var drakrPileReceipt = AuditDrakrPile(plugin, loadOrder, policy.Overrides.DrakrPile);
 
         var disabled = new List<object>();
@@ -242,7 +249,7 @@ internal static class CurrencyAudit
             disabledMintExchangeInfos = disabledMintInfoReceipt,
             mintBackendConditionInfos = backendConditionReceipt,
             dialogParentScopes = dialogParentReceipt,
-            drakrPurseAdapters = drakrPurseReceipt,
+            regionalPurseGraph = regionalPurseReceipt,
             drakrPileRepair = drakrPileReceipt,
             disabledRecipeCount = disabled.Count,
             disabledCurrencyToIngotRecipeCount = policy.DisabledRecipes.Count,
@@ -275,84 +282,171 @@ internal static class CurrencyAudit
     private static uint ParseId(string value) => uint.Parse(value,
         System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
 
+    private static IMiscItemGetter ResolvePinnedSource(
+        ILoadOrderGetter<IModListingGetter<ISkyrimModGetter>> loadOrder,
+        Program.SourceRecordPolicy policy,
+        string description)
+    {
+        var key = FormKey.Factory(policy.FormKey);
+        var sourceModKey = ModKey.FromNameAndExtension(policy.SourcePlugin);
+        var sourceMod = loadOrder.ListedOrder.Single(listing => listing.ModKey == sourceModKey).Mod
+            ?? throw new InvalidOperationException($"{sourceModKey}: {description} provider is not loaded.");
+        var source = sourceMod.MiscItems.Single(record => record.FormKey == key);
+        Program.Require(source.EditorID == policy.EditorId && source.Name?.String == policy.Name &&
+                source.Value == policy.SourceValue &&
+                Math.Abs(source.Weight - policy.SourceWeight) < 0.0001f &&
+                string.Equals(source.Model?.File.ToString(), policy.SourceModel,
+                    StringComparison.OrdinalIgnoreCase),
+            $"{key}: pinned {description} identity/value/weight/model changed.");
+        return source;
+    }
+
+    private static Program.SourceRecordPolicy ExistingTierSource(
+        Program.TieredFamilyPolicy family,
+        string tierName,
+        Program.TierPolicy tier) =>
+        tierName == "copper"
+            ? family.PrimarySource
+            : new Program.SourceRecordPolicy
+            {
+                FormKey = tier.FormKey!,
+                SourcePlugin = tier.SourcePlugin ?? string.Empty,
+                EditorId = tier.EditorId,
+                Name = tier.SourceName ?? tier.Name,
+                SourceValue = tier.SourceValue ?? uint.MaxValue,
+                SourceWeight = tier.SourceWeight ?? float.NaN,
+                SourceModel = tier.SourceModel ?? string.Empty,
+            };
+
+    private static bool NeedsTierOverride(
+        IMiscItemGetter source,
+        Program.TierPolicy tier,
+        float runtimeWeight) =>
+        source.Name?.String != tier.Name || source.Value != tier.Value ||
+        Math.Abs(source.Weight - runtimeWeight) >= 0.0001f ||
+        !string.Equals(source.Model?.File.ToString(), tier.Model, StringComparison.OrdinalIgnoreCase) ||
+        !HasKeyword(source, VendorNoSale);
+
+    private static HashSet<FormKey> ExpectedDenominationOverrides(
+        ILoadOrderGetter<IModListingGetter<ISkyrimModGetter>> loadOrder,
+        Program.DenominationPolicy policy)
+    {
+        var result = new HashSet<FormKey>();
+        foreach (var family in policy.TieredFamilies)
+        {
+            foreach (var (tierName, tier) in family.Tiers)
+            {
+                if (tier.FormKey is null) continue;
+                var sourcePolicy = ExistingTierSource(family, tierName, tier);
+                var source = ResolvePinnedSource(loadOrder, sourcePolicy,
+                    $"{family.Id}/{tierName} existing tier");
+                if (NeedsTierOverride(source, tier, family.RuntimeWeight))
+                {
+                    result.Add(source.FormKey);
+                }
+            }
+            foreach (var alias in family.SourceAliases)
+            {
+                var source = ResolvePinnedSource(loadOrder, alias, $"{family.Id} source alias");
+                var tier = family.Tiers[alias.NormalizesToTier];
+                if (NeedsTierOverride(source, tier, family.RuntimeWeight))
+                {
+                    result.Add(source.FormKey);
+                }
+            }
+        }
+        return result;
+    }
+
     private static object AuditDenominations(
         ISkyrimModGetter plugin,
         ILoadOrderGetter<IModListingGetter<ISkyrimModGetter>> loadOrder,
         Program.DenominationPolicy policy)
     {
-        var ece = loadOrder.ListedOrder.Single(listing => listing.ModKey == Program.Ece).Mod
-            ?? throw new InvalidOperationException("ECE is not loaded.");
-        var septimReceipt = new List<object>();
-        foreach (var pair in new[]
-                 {
-                     (tier: "copper", data: policy.Septim.Copper),
-                     (tier: "silver", data: policy.Septim.Silver),
-                     (tier: "gold", data: policy.Septim.Gold),
-                 })
-        {
-            var key = FormKey.Factory(pair.data.FormKey);
-            var source = ece.MiscItems.Single(record => record.FormKey == key);
-            Program.Require(source.EditorID == pair.data.EditorId && source.Value == pair.data.SourceValue &&
-                    source.Name?.String == pair.data.Name &&
-                    string.Equals(source.Model?.File.ToString(), pair.data.SourceModel,
-                        StringComparison.OrdinalIgnoreCase) && HasKeyword(source, VendorNoSale),
-                $"{key}: pinned {pair.tier} Septim source changed.");
-            var actual = pair.data.Value == pair.data.SourceValue
-                ? source
-                : plugin.MiscItems.Single(record => record.FormKey == key);
-            Program.Require(actual.Value == pair.data.Value && actual.Name?.String == pair.data.Name,
-                $"{key}: effective {pair.tier} Septim is not exact value/name {pair.data.Value}/{pair.data.Name}.");
-            Program.Require(HasKeyword(actual, VendorNoSale),
-                $"{key}: {pair.tier} Septim is missing VendorNoSale.");
-            septimReceipt.Add(new
-            {
-                tier = pair.tier,
-                formKey = key.ToString(),
-                sourceValue = pair.data.SourceValue,
-                value = pair.data.Value,
-                name = pair.data.Name,
-                sourceModel = pair.data.SourceModel,
-                owned = false,
-            });
-        }
-
-        var coinPatch = loadOrder.ListedOrder.Single(listing => listing.ModKey == Program.CoinPatch).Mod
-            ?? throw new InvalidOperationException("ECE C.O.I.N. patch is not loaded.");
         var familyReceipts = new List<object>();
-        foreach (var family in policy.ModernFamilies)
+        var physicalForms = new HashSet<FormKey>();
+        foreach (var family in policy.TieredFamilies)
         {
-            var copperKey = FormKey.Factory(family.CopperFormKey);
-            var source = coinPatch.MiscItems.Single(record => record.FormKey == copperKey);
-            var copper = plugin.MiscItems.Single(record => record.FormKey == copperKey);
-            var silverKey = new FormKey(plugin.ModKey, ParseId(family.SilverFormId));
-            var goldKey = new FormKey(plugin.ModKey, ParseId(family.GoldFormId));
-            var silver = plugin.MiscItems.Single(record => record.FormKey == silverKey);
-            var gold = plugin.MiscItems.Single(record => record.FormKey == goldKey);
-            Program.Require(source.EditorID == family.SourceEditorId && source.Name?.String == family.SourceName &&
-                    source.Value == family.SourceValue && Math.Abs(source.Weight - family.SourceWeight) < 0.0001f &&
-                    string.Equals(source.Model?.File.ToString(), family.SourceModel,
-                        StringComparison.OrdinalIgnoreCase),
-                $"{copperKey}: pinned {family.Id} source changed.");
-            var expectedKeywords = (source.Keywords?.Select(keyword => keyword.FormKey) ?? [])
-                .Append(VendorNoSale).ToHashSet();
-            var actual = new[]
+            var primary = ResolvePinnedSource(loadOrder, family.PrimarySource, $"{family.Id} primary source");
+            var tierReceipts = new List<object>();
+            foreach (var tierName in new[] { "copper", "silver", "gold" })
             {
-                (tier: "copper", item: copper, key: copperKey, value: 1u, name: family.CopperName, model: family.CopperModel, owned: false),
-                (tier: "silver", item: silver, key: silverKey, value: 10u, name: family.SilverName, model: family.SilverModel, owned: true),
-                (tier: "gold", item: gold, key: goldKey, value: 100u, name: family.GoldName, model: family.GoldModel, owned: true),
-            };
-            foreach (var tier in actual)
-            {
-                Program.Require(tier.item.Value == tier.value && tier.item.Name?.String == tier.name &&
-                        Math.Abs(tier.item.Weight - family.RuntimeWeight) < 0.0001f &&
-                        string.Equals(tier.item.Model?.File.ToString(), tier.model,
+                var tier = family.Tiers[tierName];
+                var owned = tier.FormId is not null;
+                var key = owned
+                    ? new FormKey(plugin.ModKey, ParseId(tier.FormId!))
+                    : FormKey.Factory(tier.FormKey!);
+                var source = owned
+                    ? primary
+                    : ResolvePinnedSource(loadOrder, ExistingTierSource(family, tierName, tier),
+                        $"{family.Id}/{tierName} existing tier");
+                var item = owned || NeedsTierOverride(source, tier, family.RuntimeWeight)
+                    ? plugin.MiscItems.Single(record => record.FormKey == key)
+                    : source;
+                var expectedKeywords = (source.Keywords?.Select(keyword => keyword.FormKey) ?? [])
+                    .Append(VendorNoSale).ToHashSet();
+                Program.Require(item.EditorID == tier.EditorId && item.Value == tier.Value &&
+                        item.Name?.String == tier.Name &&
+                        Math.Abs(item.Weight - family.RuntimeWeight) < 0.0001f &&
+                        string.Equals(item.Model?.File.ToString(), tier.Model,
                             StringComparison.OrdinalIgnoreCase) &&
-                        tier.item.PickUpSound.FormKey == source.PickUpSound.FormKey &&
-                        tier.item.PutDownSound.FormKey == source.PutDownSound.FormKey &&
-                        HasKeyword(tier.item, VendorNoSale) &&
-                        (tier.item.Keywords?.Select(keyword => keyword.FormKey) ?? [])
+                        item.PickUpSound.FormKey == source.PickUpSound.FormKey &&
+                        item.PutDownSound.FormKey == source.PutDownSound.FormKey &&
+                        HasKeyword(item, VendorNoSale) &&
+                        (item.Keywords?.Select(keyword => keyword.FormKey) ?? [])
                             .ToHashSet().SetEquals(expectedKeywords),
-                    $"{tier.key}: {family.Id} {tier.tier} value/name/weight/model/sound differs from policy/source.");
+                    $"{key}: {family.Id} {tierName} value/name/weight/model/sound differs from policy/source.");
+                Program.Require(physicalForms.Add(key),
+                    $"{key}: physical denomination FormKey is duplicated across families.");
+                tierReceipts.Add(new
+                {
+                    tier = tierName,
+                    formKey = key.ToString(),
+                    value = tier.Value,
+                    name = tier.Name,
+                    model = tier.Model,
+                    owned,
+                    sourcePlugin = source.FormKey.ModKey.FileName.String,
+                    sourceForm = source.FormKey.ToString(),
+                });
+            }
+
+            var aliasReceipts = new List<object>();
+            foreach (var alias in family.SourceAliases)
+            {
+                var source = ResolvePinnedSource(loadOrder, alias, $"{family.Id} source alias");
+                var key = source.FormKey;
+                var tier = family.Tiers[alias.NormalizesToTier];
+                var item = plugin.MiscItems.Single(record => record.FormKey == key);
+                var expectedKeywords = (source.Keywords?.Select(keyword => keyword.FormKey) ?? [])
+                    .Append(VendorNoSale).ToHashSet();
+                Program.Require(item.EditorID == alias.EditorId && item.Value == tier.Value &&
+                        item.Name?.String == tier.Name &&
+                        Math.Abs(item.Weight - family.RuntimeWeight) < 0.0001f &&
+                        string.Equals(item.Model?.File.ToString(), tier.Model,
+                            StringComparison.OrdinalIgnoreCase) &&
+                        item.PickUpSound.FormKey == source.PickUpSound.FormKey &&
+                        item.PutDownSound.FormKey == source.PutDownSound.FormKey &&
+                        HasKeyword(item, VendorNoSale) &&
+                        (item.Keywords?.Select(keyword => keyword.FormKey) ?? [])
+                            .ToHashSet().SetEquals(expectedKeywords),
+                    $"{key}: {family.Id} source alias does not normalize exactly to {alias.NormalizesToTier}.");
+                Program.Require(physicalForms.Add(key),
+                    $"{key}: source alias FormKey is duplicated across families.");
+                aliasReceipts.Add(new
+                {
+                    formKey = key.ToString(),
+                    normalizesToTier = alias.NormalizesToTier,
+                    canonicalFormKey = tier.FormKey ?? $"{tier.FormId}:{plugin.ModKey.FileName.String}",
+                });
+            }
+
+            if (family.OwnedRouteKeywordFormId is not null)
+            {
+                var routeKey = new FormKey(plugin.ModKey, ParseId(family.OwnedRouteKeywordFormId));
+                var route = plugin.Keywords.Single(record => record.FormKey == routeKey);
+                Program.Require(route.EditorID == family.OwnedRouteKeywordEditorId,
+                    $"{family.Id}: owned route keyword differs from policy.");
             }
             familyReceipts.Add(new
             {
@@ -360,83 +454,28 @@ internal static class CurrencyAudit
                 family.Enabled,
                 family.DisplayLabel,
                 family.BackendLabel,
-                routeKeyword = family.RouteKeyword,
                 perk = family.Perk,
-                sourcePlugin = family.SourcePlugin,
-                sourceForm = copperKey.ToString(),
-                sourceEditorId = family.SourceEditorId,
-                sourceValue = family.SourceValue,
-                sourceWeight = family.SourceWeight,
+                sourcePlugin = family.PrimarySource.SourcePlugin,
+                sourceForm = family.PrimarySource.FormKey,
+                sourceEditorId = family.PrimarySource.EditorId,
+                sourceValue = family.PrimarySource.SourceValue,
+                sourceWeight = family.PrimarySource.SourceWeight,
                 runtimeWeight = family.RuntimeWeight,
-                sourceModel = family.SourceModel,
-                tierModels = new { copper = family.CopperModel, silver = family.SilverModel, gold = family.GoldModel },
-                tiers = actual.Select(tier => new
-                {
-                    tier.tier,
-                    formKey = tier.key.ToString(),
-                    tier.value,
-                    tier.name,
-                    model = tier.model,
-                    tier.owned,
-                }).ToArray(),
+                sourceModel = family.PrimarySource.SourceModel,
+                tiers = tierReceipts,
+                sourceAliases = aliasReceipts,
             });
         }
-        var singletonReceipts = new List<object>();
-        foreach (var family in policy.SingletonFamilies)
-        {
-            var key = FormKey.Factory(family.FormKey);
-            var sourceModKey = ModKey.FromNameAndExtension(family.SourcePlugin);
-            var sourceMod = loadOrder.ListedOrder.Single(listing => listing.ModKey == sourceModKey).Mod
-                ?? throw new InvalidOperationException($"{sourceModKey}: singleton source plugin is not loaded.");
-            var source = sourceMod.MiscItems.Single(record => record.FormKey == key);
-            var actual = plugin.MiscItems.Single(record => record.FormKey == key);
-            Program.Require(source.EditorID == family.EditorId && source.Name?.String == family.Name &&
-                    source.Value == family.SourceValue && Math.Abs(source.Weight - family.SourceWeight) < 0.0001f &&
-                    string.Equals(source.Model?.File.ToString(), family.SourceModel, StringComparison.OrdinalIgnoreCase),
-                $"{key}: pinned {family.Id} singleton source changed.");
-            var expectedKeywords = (source.Keywords?.Select(keyword => keyword.FormKey) ?? [])
-                .Append(VendorNoSale).ToHashSet();
-            Program.Require(actual.EditorID == family.EditorId && actual.Name?.String == family.Name &&
-                    actual.Value == family.Value && Math.Abs(actual.Weight - family.RuntimeWeight) < 0.0001f &&
-                    string.Equals(actual.Model?.File.ToString(), family.SourceModel, StringComparison.OrdinalIgnoreCase) &&
-                    HasKeyword(actual, VendorNoSale) &&
-                    (actual.Keywords?.Select(keyword => keyword.FormKey) ?? [])
-                        .ToHashSet().SetEquals(expectedKeywords),
-                $"{key}: effective {family.Id} singleton differs from policy.");
-            if (family.OwnedRouteKeywordFormId is not null)
-            {
-                var route = plugin.Keywords.Single(record =>
-                    record.FormKey == new FormKey(plugin.ModKey, ParseId(family.OwnedRouteKeywordFormId)));
-                Program.Require(route.EditorID == family.OwnedRouteKeywordEditorId &&
-                        route.FormKey == FormKey.Factory(family.RouteKeyword),
-                    $"{family.Id}: owned route keyword differs from policy.");
-            }
-            singletonReceipts.Add(new
-            {
-                id = family.Id,
-                family.Enabled,
-                family.DisplayLabel,
-                family.BackendLabel,
-                formKey = key.ToString(),
-                family.EditorId,
-                family.SourceValue,
-                family.Value,
-                family.RuntimeWeight,
-                family.RouteKeyword,
-                family.Perk,
-                vendorNoSale = true,
-            });
-        }
+        Program.Require(physicalForms.Count == 55,
+            $"Expected exactly 55 canonical/alias physical currency forms, found {physicalForms.Count}.");
         return new
         {
             canonicalPercent = policy.CanonicalPercent,
             variantPercent = policy.VariantPercent,
-            septim = septimReceipt,
-            modernFamilies = familyReceipts,
-            singletonFamilies = singletonReceipts,
+            tieredFamilies = familyReceipts,
             outputValues = new[] { 1, 10, 100 },
             vendorNoSale = VendorNoSale.ToString(),
-            physicalFormsAudited = 23,
+            physicalFormsAudited = physicalForms.Count,
         };
     }
 
@@ -446,14 +485,14 @@ internal static class CurrencyAudit
     private static IReadOnlyList<object> AuditPurses(
         ISkyrimModGetter plugin,
         IReadOnlyList<Program.PurseTarget> targets,
-        Program.SeptimFamilyPolicy septim)
+        Program.TieredFamilyPolicy septim)
     {
         AuditDecompositionVectors();
         var forms = new Dictionary<FormKey, int>
         {
-            [FormKey.Factory(septim.Copper.FormKey)] = 1,
-            [FormKey.Factory(septim.Silver.FormKey)] = 10,
-            [FormKey.Factory(septim.Gold.FormKey)] = 100,
+            [FormKey.Factory(septim.Tiers["copper"].FormKey!)] = 1,
+            [FormKey.Factory(septim.Tiers["silver"].FormKey!)] = 10,
+            [FormKey.Factory(septim.Tiers["gold"].FormKey!)] = 100,
         };
         var receipts = new List<object>();
         foreach (var target in targets)
@@ -1258,116 +1297,303 @@ internal static class CurrencyAudit
             $"{record}: unexpected VMAD property type {expected.GetType().Name} on {scriptName}.{expected.Name}.");
     }
 
-    private static object AuditDrakrPurseAdapters(
+    private static object AuditRegionalPurseGraph(
         ISkyrimModGetter plugin,
-        ILoadOrderGetter<IModListingGetter<ISkyrimModGetter>> loadOrder,
-        Program.DrakrPursePolicy policy)
+        Program.RegionalPurseGraphPolicy policy,
+        Program.DenominationPolicy denominations)
     {
-        var coinMod = loadOrder.ListedOrder.Single(listing => listing.ModKey == Program.Coin).Mod
-            ?? throw new InvalidOperationException("C.O.I.N. is not loaded.");
-        var canonical = FormKey.Factory(policy.CanonicalCoin);
-        var ownedBySource = new Dictionary<FormKey, FormKey>();
-        var cloneReceipts = new List<object>();
-        foreach (var target in policy.ChangeLists)
-        {
-            var sourceKey = FormKey.Factory(target.SourceFormKey);
-            var ownedKey = new FormKey(plugin.ModKey, uint.Parse(target.FormId,
-                System.Globalization.NumberStyles.HexNumber,
-                System.Globalization.CultureInfo.InvariantCulture));
-            var source = coinMod.LeveledItems.Single(record => record.FormKey == sourceKey);
-            var actual = plugin.LeveledItems.Single(record => record.FormKey == ownedKey);
-            Program.Require(source.EditorID == target.SourceEditorId && actual.EditorID == target.EditorId,
-                $"{sourceKey}: Drakr adapter identity changed.");
-            Program.Require(actual.Flags == source.Flags &&
-                    (double)actual.ChanceNone == (double)source.ChanceNone &&
-                    actual.Global.FormKey == source.Global.FormKey,
-                $"{sourceKey}: owned Drakr change-list header differs from source.");
-            var sourceEntries = source.Entries
-                ?? throw new InvalidOperationException($"{sourceKey}: source Drakr change-list entries are null.");
-            var actualEntries = actual.Entries
-                ?? throw new InvalidOperationException($"{ownedKey}: owned Drakr change-list entries are null.");
-            Program.Require(actualEntries.Count == sourceEntries.Count && actualEntries.Count == 4,
-                $"{ownedKey}: owned Drakr change-list entry count changed.");
-            for (var index = 0; index < sourceEntries.Count; index++)
-            {
-                var sourceData = sourceEntries[index].Data
-                    ?? throw new InvalidOperationException($"{sourceKey}: source entry {index} is null.");
-                var actualData = actualEntries[index].Data
-                    ?? throw new InvalidOperationException($"{ownedKey}: owned entry {index} is null.");
-                Program.Require(actualData.Level == sourceData.Level && actualData.Count == sourceData.Count &&
-                        actualData.Reference.FormKey == canonical,
-                    $"{ownedKey}: owned Drakr change-list entry {index} changed.");
-            }
-            ownedBySource.Add(sourceKey, ownedKey);
-            cloneReceipts.Add(new
-            {
-                sourceFormKey = sourceKey.ToString(),
-                ownedFormKey = ownedKey.ToString(),
-                sourceEditorId = target.SourceEditorId,
-                target.EditorId,
-                canonicalCoin = canonical.ToString(),
-            });
-        }
+        var start = ParseId(policy.OwnedFormIdBase);
+        Program.Require(start == 0x990, "Regional purse graph must start at owned FormID 000990.");
+        var expectedOwned = Enumerable.Range(0x990, 0x70)
+            .Concat(Enumerable.Range(0xA16, 0x52A))
+            .Select(id => new FormKey(plugin.ModKey, checked((uint)id))).ToHashSet();
+        var actualOwned = plugin.LeveledItems.Where(record => expectedOwned.Contains(record.FormKey)).ToArray();
+        Program.Require(actualOwned.Length == expectedOwned.Count &&
+                actualOwned.Select(record => record.FormKey).ToHashSet().SetEquals(expectedOwned),
+            "Regional purse graph must contain exact ranges 000990-0009FF and 000A16-000F3F without colliding with A00-A15 denomination forms.");
 
-        var expectedOwned = ownedBySource.Values.ToHashSet();
-        Program.Require(expectedOwned.Count == policy.ChangeLists.Count,
-            "Owned Drakr adapter policy reuses an output LVLI FormKey.");
-        var actualOwned = plugin.LeveledItems.Where(record => expectedOwned.Contains(record.FormKey))
-            .Select(record => record.FormKey).ToHashSet();
-        Program.Require(actualOwned.SetEquals(expectedOwned),
-            "Owned Drakr adapter LVLI set differs from policy.");
-
+        var denominationForms = denominations.TieredFamilies.ToDictionary(
+            family => family.Id,
+            family => family.Tiers.Values.Select(tier => tier.FormKey is not null
+                    ? FormKey.Factory(tier.FormKey)
+                    : new FormKey(plugin.ModKey, ParseId(tier.FormId!)))
+                .ToHashSet(),
+            StringComparer.Ordinal);
+        var roots = new HashSet<FormKey>();
         var purseReceipts = new List<object>();
-        foreach (var target in policy.Purses)
+        foreach (var family in policy.Families)
         {
-            var key = FormKey.Factory(target.FormKey);
-            var source = coinMod.LeveledItems.Single(record => record.FormKey == key);
-            var actual = plugin.LeveledItems.Single(record => record.FormKey == key);
-            Program.Require(actual.EditorID == source.EditorID && actual.EditorID == target.EditorId &&
-                    actual.Flags == source.Flags &&
-                    (double)actual.ChanceNone == (double)source.ChanceNone &&
-                    actual.Global.FormKey == source.Global.FormKey,
-                $"{key}: Drakr purse header differs from C.O.I.N.");
-            var sourceEntries = source.Entries
-                ?? throw new InvalidOperationException($"{key}: source Drakr purse entries are null.");
-            var actualEntries = actual.Entries
-                ?? throw new InvalidOperationException($"{key}: patched Drakr purse entries are null.");
-            Program.Require(sourceEntries.Count == target.Entries.Count &&
-                    actualEntries.Count == target.Entries.Count,
-                $"{key}: Drakr purse entry count changed.");
-            var mappedTargets = new List<string>();
-            for (var index = 0; index < target.Entries.Count; index++)
+            var allowedLeaves = denominationForms[family.FamilyId];
+            foreach (var purse in family.Purses)
             {
-                var mapping = target.Entries[index];
-                var sourceData = sourceEntries[index].Data
-                    ?? throw new InvalidOperationException($"{key}: source purse entry {index} is null.");
-                var actualData = actualEntries[index].Data
-                    ?? throw new InvalidOperationException($"{key}: patched purse entry {index} is null.");
-                var expectedTarget = mapping.TargetFormKey == "$canonical"
-                    ? canonical
-                    : ownedBySource[FormKey.Factory(mapping.SourceFormKey)];
-                Program.Require(sourceData.Level == 1 && sourceData.Count == mapping.Count &&
-                        sourceData.Reference.FormKey == FormKey.Factory(mapping.SourceFormKey) &&
-                        actualData.Level == sourceData.Level && actualData.Count == sourceData.Count &&
-                        actualData.Reference.FormKey == expectedTarget,
-                    $"{key}: Drakr purse entry {index} differs from the pinned mapping.");
-                mappedTargets.Add(expectedTarget.ToString());
+                var key = FormKey.Factory(purse.FormKey);
+                var actual = plugin.LeveledItems.Single(record => record.FormKey == key);
+                var entries = actual.Entries
+                    ?? throw new InvalidOperationException($"{key}: rebuilt regional purse entries are null.");
+                var root = entries.Count == 1 ? entries[0].Data : null;
+                Program.Require(actual.EditorID == purse.EditorId && actual.Flags == LeveledItem.Flag.UseAll &&
+                        (double)actual.ChanceNone == 0.0 && actual.Global.IsNull &&
+                        root is { Level: 1, Count: 1 } && expectedOwned.Contains(root.Reference.FormKey),
+                    $"{key}: regional purse does not point to one owned probability-DAG root.");
+                roots.Add(root!.Reference.FormKey);
+                purseReceipts.Add(new
+                {
+                    familyId = family.FamilyId,
+                    formKey = key.ToString(),
+                    purse.EditorId,
+                    root = root.Reference.FormKey.ToString(),
+                    purse.BaseCoinCount,
+                    purse.PrimaryChangeRolls,
+                    purse.SecondaryChangeRolls,
+                    allowedLeaves = allowedLeaves.Select(form => form.ToString()).Order().ToArray(),
+                });
             }
-            purseReceipts.Add(new
-            {
-                formKey = key.ToString(),
-                target.EditorId,
-                mappedTargets,
-                distributionPreserved = true,
-            });
+        }
+        Program.Require(roots.Count == 24, "Regional purse graph must expose exactly 24 distinct purse roots.");
+
+        var byKey = actualOwned.ToDictionary(record => record.FormKey);
+        var reachable = new HashSet<FormKey>();
+        var owners = new Dictionary<FormKey, string>();
+        var distributionReceipts = new List<object>();
+
+        static int Gcd(int left, int right)
+        {
+            left = Math.Abs(left);
+            right = Math.Abs(right);
+            while (right != 0) (left, right) = (right, left % right);
+            return left;
         }
 
+        static IReadOnlyList<(short amount, long weight)> SourceOptions(
+            Program.RegionalChangeListPolicy change)
+        {
+            var raw = new Dictionary<short, int>
+            {
+                [0] = checked(change.ChanceNonePercent * change.Counts.Count),
+            };
+            foreach (var amount in change.Counts)
+                raw[amount] = raw.GetValueOrDefault(amount) + (100 - change.ChanceNonePercent);
+            var divisor = raw.Values.Where(value => value > 0).Aggregate(Gcd);
+            return raw.Where(pair => pair.Value > 0).OrderBy(pair => pair.Key)
+                .Select(pair => (pair.Key, (long)(pair.Value / divisor))).ToArray();
+        }
+
+        static Dictionary<int, long> ApplyRoll(
+            IReadOnlyDictionary<int, long> current,
+            IReadOnlyList<(short amount, long weight)> options)
+        {
+            var result = new Dictionary<int, long>();
+            foreach (var state in current)
+            foreach (var option in options)
+            {
+                var amount = checked(state.Key + option.amount);
+                result[amount] = checked(result.GetValueOrDefault(amount) +
+                    checked(state.Value * option.weight));
+            }
+            return result;
+        }
+
+        static Dictionary<int, long> ExpectedTotals(
+            Program.RegionalPurseTarget purse,
+            Program.RegionalPurseFamilyPolicy family)
+        {
+            IReadOnlyDictionary<int, long> result = new Dictionary<int, long>
+            {
+                [purse.BaseCoinCount] = 1,
+            };
+            var primary = SourceOptions(family.PrimaryChange);
+            for (var roll = 0; roll < purse.PrimaryChangeRolls; roll++)
+                result = ApplyRoll(result, primary);
+            var secondary = SourceOptions(family.SecondaryChange);
+            return ApplyRoll(result, secondary);
+        }
+
+        static Dictionary<(short copper, short silver, short gold), long> ExpectedVectors(
+            IReadOnlyDictionary<int, long> totals)
+        {
+            var result = new Dictionary<(short copper, short silver, short gold), long>();
+            foreach (var total in totals)
+            {
+                var canonical = Program.DecomposeSeptims(total.Key, false);
+                var broken = Program.DecomposeSeptims(total.Key, true);
+                var canonicalKey = (canonical.Copper, canonical.Silver, canonical.Gold);
+                var brokenKey = (broken.Copper, broken.Silver, broken.Gold);
+                if (canonicalKey == brokenKey)
+                {
+                    result[canonicalKey] = checked(result.GetValueOrDefault(canonicalKey) +
+                        checked(total.Value * 5));
+                }
+                else
+                {
+                    result[canonicalKey] = checked(result.GetValueOrDefault(canonicalKey) +
+                        checked(total.Value * 4));
+                    result[brokenKey] = checked(result.GetValueOrDefault(brokenKey) + total.Value);
+                }
+            }
+            return result;
+        }
+
+        void Visit(
+            FormKey key,
+            string familyId,
+            HashSet<FormKey> allowedLeaves,
+            HashSet<FormKey> familyReachable,
+            HashSet<FormKey> visiting)
+        {
+            if (!expectedOwned.Contains(key))
+            {
+                Program.Require(allowedLeaves.Contains(key), $"{key}: purse graph reached another family's denomination.");
+                return;
+            }
+            if (familyReachable.Contains(key)) return;
+            Program.Require(visiting.Add(key), $"{key}: regional purse graph contains a cycle.");
+            Program.Require(!owners.TryGetValue(key, out var owner) || owner == familyId,
+                $"{key}: regional purse graph node is shared by {owner} and {familyId}.");
+            owners[key] = familyId;
+            var record = byKey[key];
+            var entries = record.Entries
+                ?? throw new InvalidOperationException($"{key}: owned purse graph node has null entries.");
+            Program.Require(record.Global.IsNull && (double)record.ChanceNone == 0.0 && entries.Count > 0 &&
+                    (record.Flags == 0 || record.Flags == LeveledItem.Flag.UseAll) &&
+                    entries.All(entry => entry.Data is { Level: 1, Count: > 0 }),
+                $"{key}: owned purse graph node has an invalid header or entry.");
+            foreach (var entry in entries)
+                Visit(entry.Data!.Reference.FormKey, familyId, allowedLeaves, familyReachable, visiting);
+            visiting.Remove(key);
+            familyReachable.Add(key);
+            reachable.Add(key);
+        }
+        foreach (var family in policy.Families)
+        {
+            var leaves = denominationForms[family.FamilyId];
+            var tierVectors = new Dictionary<FormKey, (short copper, short silver, short gold)>
+            {
+                [denominations.TieredFamilies.Single(item => item.Id == family.FamilyId).Tiers["copper"].FormKey is { } copper
+                    ? FormKey.Factory(copper)
+                    : new FormKey(plugin.ModKey, ParseId(denominations.TieredFamilies.Single(item => item.Id == family.FamilyId).Tiers["copper"].FormId!))] = (1, 0, 0),
+                [denominations.TieredFamilies.Single(item => item.Id == family.FamilyId).Tiers["silver"].FormKey is { } silver
+                    ? FormKey.Factory(silver)
+                    : new FormKey(plugin.ModKey, ParseId(denominations.TieredFamilies.Single(item => item.Id == family.FamilyId).Tiers["silver"].FormId!))] = (0, 1, 0),
+                [denominations.TieredFamilies.Single(item => item.Id == family.FamilyId).Tiers["gold"].FormKey is { } gold
+                    ? FormKey.Factory(gold)
+                    : new FormKey(plugin.ModKey, ParseId(denominations.TieredFamilies.Single(item => item.Id == family.FamilyId).Tiers["gold"].FormId!))] = (0, 0, 1),
+            };
+            var familyReachable = new HashSet<FormKey>();
+            var visiting = new HashSet<FormKey>();
+            var probabilityCache = new Dictionary<FormKey,
+                Dictionary<(short copper, short silver, short gold), double>>();
+
+            Dictionary<(short copper, short silver, short gold), double> Evaluate(FormKey key)
+            {
+                if (tierVectors.TryGetValue(key, out var physical))
+                    return new Dictionary<(short, short, short), double> { [physical] = 1.0 };
+                if (probabilityCache.TryGetValue(key, out var cached)) return cached;
+                var record = byKey[key];
+                var entries = record.Entries!;
+                var result = new Dictionary<(short copper, short silver, short gold), double>();
+                if (record.Flags == LeveledItem.Flag.UseAll)
+                {
+                    short copper = 0, silver = 0, gold = 0;
+                    foreach (var entry in entries)
+                    {
+                        var data = entry.Data!;
+                        Program.Require(tierVectors.TryGetValue(data.Reference.FormKey, out var part),
+                            $"{key}: deterministic denomination vector contains a nested/non-family target.");
+                        copper = checked((short)(copper + checked(part.copper * data.Count)));
+                        silver = checked((short)(silver + checked(part.silver * data.Count)));
+                        gold = checked((short)(gold + checked(part.gold * data.Count)));
+                    }
+                    result[(copper, silver, gold)] = 1.0;
+                }
+                else
+                {
+                    var choiceProbability = 1.0 / entries.Count;
+                    foreach (var entry in entries)
+                    {
+                        var data = entry.Data!;
+                        if (tierVectors.TryGetValue(data.Reference.FormKey, out var part))
+                        {
+                            var vector = (checked((short)(part.copper * data.Count)),
+                                checked((short)(part.silver * data.Count)),
+                                checked((short)(part.gold * data.Count)));
+                            result[vector] = result.GetValueOrDefault(vector) + choiceProbability;
+                            continue;
+                        }
+                        Program.Require(data.Count == 1,
+                            $"{key}: probabilistic nested list count must be one for exact audit evaluation.");
+                        foreach (var outcome in Evaluate(data.Reference.FormKey))
+                            result[outcome.Key] = result.GetValueOrDefault(outcome.Key) +
+                                (choiceProbability * outcome.Value);
+                    }
+                }
+                probabilityCache.Add(key, result);
+                return result;
+            }
+
+            foreach (var purse in family.Purses)
+            {
+                var root = plugin.LeveledItems.Single(record => record.FormKey == FormKey.Factory(purse.FormKey))
+                    .Entries!.Single().Data!.Reference.FormKey;
+                Visit(root, family.FamilyId, leaves, familyReachable, visiting);
+                var expectedTotals = ExpectedTotals(purse, family);
+                var expectedVectors = ExpectedVectors(expectedTotals);
+                var denominator = checked(expectedTotals.Values.Sum() * 5);
+                var actualVectors = Evaluate(root);
+                Program.Require(actualVectors.Keys.ToHashSet().SetEquals(expectedVectors.Keys) &&
+                        expectedVectors.All(pair => Math.Abs(actualVectors[pair.Key] -
+                            ((double)pair.Value / denominator)) < 1e-12),
+                    $"{purse.FormKey}: serialized purse DAG probability distribution differs from the pinned source/80-20 policy.");
+                Program.Require(expectedTotals.Keys.Where(value => value >= 10).All(value =>
+                        Program.DecomposeSeptims(value, false).Silver > 0 ||
+                        Program.DecomposeSeptims(value, false).Gold > 0) &&
+                    expectedTotals.Keys.Where(value => value >= 100).All(value =>
+                        Program.DecomposeSeptims(value, false).Gold > 0),
+                    $"{purse.FormKey}: canonical denomination threshold coverage failed.");
+                distributionReceipts.Add(new
+                {
+                    familyId = family.FamilyId,
+                    formKey = purse.FormKey,
+                    purse.EditorId,
+                    sourceTotalWeight = expectedTotals.Values.Sum(),
+                    sourceTotals = expectedTotals.OrderBy(pair => pair.Key).Select(pair => new
+                    {
+                        value = pair.Key,
+                        weight = pair.Value,
+                    }).ToArray(),
+                    denominationWeightDenominator = denominator,
+                    denominationOutcomes = expectedVectors
+                        .OrderBy(pair => Program.ValueOf(new Program.DenominationCounts(
+                            pair.Key.copper, pair.Key.silver, pair.Key.gold, null)))
+                        .ThenBy(pair => pair.Key.gold).ThenBy(pair => pair.Key.silver)
+                        .Select(pair => new
+                        {
+                            value = Program.ValueOf(new Program.DenominationCounts(
+                                pair.Key.copper, pair.Key.silver, pair.Key.gold, null)),
+                            pair.Key.copper,
+                            pair.Key.silver,
+                            pair.Key.gold,
+                            weight = pair.Value,
+                            probabilityPercent = Math.Round(100.0 * pair.Value / denominator, 12),
+                        }).ToArray(),
+                });
+            }
+        }
+        Program.Require(reachable.SetEquals(expectedOwned),
+            $"Regional purse graph reachability differs: reached {reachable.Count}/{expectedOwned.Count} nodes.");
+        Program.Require(owners.Count == expectedOwned.Count,
+            "Every owned regional purse graph node must belong to exactly one currency family.");
         return new
         {
-            canonicalCoin = canonical.ToString(),
-            ownedChangeLists = cloneReceipts,
+            ownedFormIdRanges = new[] { new[] { "000990", "0009FF" }, new[] { "000A16", "000F3F" } },
+            ownedNodes = expectedOwned.Count,
             purseOverrides = purseReceipts,
-            sharedC_O_I_N_ChangeListsOverridden = false,
+            flattenedDistributions = distributionReceipts,
+            exactSourceProbabilityDag = true,
+            wholePurseCanonicalPercent = 80,
+            wholePurseSingleBreakPercent = 20,
+            noCrossFamilyLeaves = true,
+            noCrossFamilyNodes = true,
+            acyclic = true,
         };
     }
 

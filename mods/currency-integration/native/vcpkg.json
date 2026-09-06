@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
   "name": "ensrick-currency-denominations",
-  "version-string": "0.1.0",
+  "version-string": "0.2.0",
   "description": "Value-preserving regional currency denomination bridge for Skyrim 1.7.104.",
   "license": "MIT AND GPL-3.0-or-later",
   "builtin-baseline": "ee12231b20c95013c6638d845d04c91559a1d1ff",

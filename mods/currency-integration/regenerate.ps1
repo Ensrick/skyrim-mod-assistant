@@ -9,9 +9,10 @@ vendor mod folders or the live MO2 profile.
     -GameRoot "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition"
 
 The pipeline verifies pinned tools and Papyrus inputs, compiles all four packaged
-scripts twice, normalizes deterministic PEX header metadata, generates the ESP twice through
-the MO2 VFS, checks exact records/links/SEQ, performs a checked Spriggit semantic
-roundtrip, and creates the deterministic archive twice.
+scripts twice, normalizes deterministic PEX header metadata, generates the main
+ESP and the regional-purse companion ESP twice, checks exact records/links and
+the main ESP's SEQ, performs checked Spriggit semantic roundtrips, and creates
+the deterministic archive twice.
 #>
 [CmdletBinding()]
 param(
@@ -19,11 +20,12 @@ param(
     [Parameter(Mandatory)] [string] $InstanceRoot,
     [Parameter(Mandatory)] [string] $GameRoot,
     [string] $Profile = 'Default',
-    [string] $Version = '0.3.0'
+    [string] $Version = '0.4.0'
 )
 
 $ErrorActionPreference = 'Stop'
 $pluginName = 'Ensrick Currency Integration Patch.esp'
+$regionalPursePluginName = 'Ensrick Currency Regional Purses.esp'
 $scriptName = 'Ensrick_CurrencyRuntimeDefaultsAlias'
 $dramCostScriptName = 'DES_DramCurrencySwapper'
 $ulfricCostScriptName = 'DES_UlfricCurrencySwapper'
@@ -267,7 +269,8 @@ foreach ($line in Get-Content -LiteralPath $pluginsFile) {
 $ordered = [Collections.Generic.List[string]]::new()
 $seen = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 function Add-EffectivePlugin([string] $Name) {
-    if ($Name -and $Name -ine $pluginName -and $seen.Add($Name)) { $ordered.Add("*$Name") }
+    if ($Name -and $Name -ine $pluginName -and $Name -ine $regionalPursePluginName -and
+        $seen.Add($Name)) { $ordered.Add("*$Name") }
 }
 foreach ($base in @('Skyrim.esm', 'Update.esm', 'Dawnguard.esm', 'HearthFires.esm', 'Dragonborn.esm')) {
     Add-EffectivePlugin $base
@@ -280,7 +283,9 @@ foreach ($line in Get-Content -LiteralPath $loadOrderFile) {
     $name = $line.Trim().TrimStart('*')
     if ($name -and -not $name.StartsWith('#') -and $active.Contains($name)) { Add-EffectivePlugin $name }
 }
-$missing = @($active | Where-Object { $_ -ine $pluginName -and -not $seen.Contains($_) } | Sort-Object)
+$missing = @($active | Where-Object {
+    $_ -ine $pluginName -and $_ -ine $regionalPursePluginName -and -not $seen.Contains($_)
+} | Sort-Object)
 if ($missing.Count) { throw "loadorder.txt omits active plugins: $($missing -join ', ')" }
 [IO.File]::WriteAllLines($effectiveLoadOrder, $ordered, [Text.UTF8Encoding]::new($false))
 
@@ -336,8 +341,12 @@ foreach ($packagedScriptName in $packagedScripts.Keys) {
     $pexHashes[$packagedScriptName] = $hashes[0]
 }
 
-# Generate the plugin twice through the profile's virtual filesystem.
+# Generate the main plugin twice through the profile's virtual filesystem, then
+# build each companion from the exact paired main output. The companion only
+# clones pinned Skyrim FLORs and links to reviewed source/main forms, so it does
+# not resolve arbitrary VFS winners while building.
 $pluginRuns = @()
+$regionalPursePluginRuns = @()
 foreach ($run in 1..2) {
     $outputFolder = Join-Path $work "generation-$run"
     New-Item -ItemType Directory -Path $outputFolder -Force | Out-Null
@@ -350,19 +359,32 @@ foreach ($run in 1..2) {
         '--PersistencePath', (Join-Path $outputFolder 'persistence'),
         '--ExtraDataFolder', $ownedRoot
     ) -ChildWorkingDirectory $generatorFolder -LogStem (Join-Path $work "generation-$run") | Out-Null
+    $regionalPurseOutput = Join-Path $outputFolder $regionalPursePluginName
+    $regionalPursePluginRuns += $regionalPurseOutput
+    Invoke-HiddenProcess -FileName $executable -Arguments @('--build-regional-purses',
+        $dataFolder, $output, $policy, $regionalPurseOutput) -WorkingDirectory $generatorFolder `
+        -LogStem (Join-Path $work "regional-purses-$run") -Environment $processEnvironment | Out-Null
 }
 $pluginHashes = @($pluginRuns | ForEach-Object { (Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash })
 if ($pluginHashes[0] -ne $pluginHashes[1]) { throw "ESP determinism failure: $($pluginHashes -join ', ')" }
+$regionalPursePluginHashes = @($regionalPursePluginRuns | ForEach-Object {
+    (Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash
+})
+if ($regionalPursePluginHashes[0] -ne $regionalPursePluginHashes[1]) {
+    throw "Regional-purse ESP determinism failure: $($regionalPursePluginHashes -join ', ')"
+}
 
 $packageScripts = Join-Path $package 'Scripts'
 $packageSeq = Join-Path $package 'SEQ'
 New-Item -ItemType Directory -Path $packageScripts, $packageSeq -Force | Out-Null
 $packagePlugin = Join-Path $package $pluginName
+$packageRegionalPursePlugin = Join-Path $package $regionalPursePluginName
 $packagePexFiles = @{}
 $packageSeqFile = Join-Path $packageSeq 'Ensrick Currency Integration Patch.seq'
 $packageTranslation = Join-Path $package ([string] $inputs.translationOverride.path)
 $packageTranslations = Split-Path -Parent $packageTranslation
 Copy-Item -LiteralPath $pluginRuns[0] -Destination $packagePlugin -Force
+Copy-Item -LiteralPath $regionalPursePluginRuns[0] -Destination $packageRegionalPursePlugin -Force
 # The native single-ledger owner replaces every previously packaged ECE/Ohzer
 # transaction PEX. Clear only this owned package's script payload before copying
 # the deterministic four-script compatibility set.
@@ -378,6 +400,21 @@ foreach ($packagedScriptName in $packagedScripts.Keys) {
 $packagePex = $packagePexFiles[$scriptName]
 $moduleManifest.runtimePatch.sha256 = $pluginHashes[0]
 $moduleManifest.runtimePatch.bytes = (Get-Item -LiteralPath $packagePlugin).Length
+if (-not $moduleManifest.PSObject.Properties['regionalPursePatch']) {
+    $moduleManifest | Add-Member -NotePropertyName regionalPursePatch -NotePropertyValue ([pscustomobject]@{})
+}
+$moduleManifest.regionalPursePatch = [ordered]@{
+    plugin = $regionalPursePluginName
+    sha256 = $regionalPursePluginHashes[0]
+    bytes = (Get-Item -LiteralPath $packageRegionalPursePlugin).Length
+    eslFlagged = $true
+    records = 405
+    ownedRecords = 405
+    recordsByType = [ordered]@{ FLOR = 15; LVLI = 390 }
+    directMasters = @('Skyrim.esm', 'Update.esm', 'BSAssets.esm',
+        'exchangeCurrency_patch_COIN.esp', $pluginName)
+    seqFileRelativeFormIds = @()
+}
 $moduleManifest.papyrusScripts = @($packagedScripts.Keys | ForEach-Object {
     [ordered]@{
         script = $_
@@ -419,17 +456,25 @@ if (-not (Test-Path -LiteralPath $cdfSource -PathType Leaf)) {
 if ((Get-FileHash -LiteralPath $cdfSource -Algorithm SHA256).Hash -ne [string] $cdfOverride.sourceSha256) {
     throw 'C.O.I.N. CDF source hash differs from build-inputs.json.'
 }
-$cdfSourceText = [IO.File]::ReadAllText($cdfSource, [Text.UTF8Encoding]::new($false))
-$cdfNeedle = [string] $cdfOverride.sourceText
-$cdfReplacement = [string] $cdfOverride.replacementText
-$cdfOccurrences = ([regex]::Matches($cdfSourceText, [regex]::Escape($cdfNeedle))).Count
-if ($cdfOccurrences -ne [int] $cdfOverride.expectedReplacements) {
-    throw "C.O.I.N. CDF source has $cdfOccurrences malformed Drakr removals; expected $($cdfOverride.expectedReplacements)."
+if ([string] $cdfOverride.mode -ne 'empty-mask') {
+    throw 'C.O.I.N. CDF override must use the reviewed empty-mask mode.'
 }
 $packageCdf = Join-Path $package ([string] $cdfOverride.outputPath)
 New-Item -ItemType Directory -Path (Split-Path -Parent $packageCdf) -Force | Out-Null
-[IO.File]::WriteAllText($packageCdf, $cdfSourceText.Replace($cdfNeedle, $cdfReplacement),
-    [Text.UTF8Encoding]::new($false))
+[IO.File]::WriteAllText($packageCdf, "{`n  `"rules`": []`n}`n", [Text.UTF8Encoding]::new($false))
+if ((Get-Item -LiteralPath $packageCdf).Length -ne [long] $cdfOverride.outputBytes -or
+    (Get-FileHash -LiteralPath $packageCdf -Algorithm SHA256).Hash -ne [string] $cdfOverride.outputSha256) {
+    throw 'Generated C.O.I.N. CDF empty-mask bytes/hash differ from build-inputs.json.'
+}
+$cdfFolder = Split-Path -Parent $packageCdf
+$cdfMasks = @(Get-ChildItem -LiteralPath $cdfFolder -File -Filter '*.json' | Sort-Object Name)
+if ($cdfMasks.Count -ne 14) { throw "Expected exactly fourteen currency CDF masks, found $($cdfMasks.Count)." }
+foreach ($cdfMask in $cdfMasks) {
+    $cdfJson = Get-Content -LiteralPath $cdfMask.FullName -Raw | ConvertFrom-Json
+    if (@($cdfJson.rules).Count -ne 0) {
+        throw "$($cdfMask.Name): legacy CDF currency mutation remains active; native ownership requires an empty mask."
+    }
+}
 $kidOverride = $inputs.keywordDistributorOverride
 $kidSource = Join-Path $InstanceRoot ([string] $kidOverride.sourceRelativePathFromInstance)
 if (-not (Test-Path -LiteralPath $kidSource -PathType Leaf)) {
@@ -453,44 +498,115 @@ if ((Get-FileHash -LiteralPath $packageKid -Algorithm SHA256).Hash -ne [string] 
 }
 Invoke-HiddenProcess -FileName $executable -Arguments @('--write-seq', $packagePlugin, $packageSeqFile) `
     -WorkingDirectory $generatorFolder -LogStem (Join-Path $work 'seq') | Out-Null
+$seqFiles = @(Get-ChildItem -LiteralPath $packageSeq -File -Filter '*.seq')
+if ($seqFiles.Count -ne 1 -or $seqFiles[0].Name -ne 'Ensrick Currency Integration Patch.seq') {
+    throw 'Only the main currency runtime quest may ship a SEQ; the regional-purse companion has no startup quest.'
+}
 
 $auditOutput = Join-Path $work 'plugin-audit.json'
 Invoke-Mo2Child -ChildPath $executable -ChildArguments @('--audit-plugin', $dataFolder,
     $effectiveLoadOrder, $packagePlugin, $policy, $packageSeqFile, $auditOutput) `
     -ChildWorkingDirectory $generatorFolder -LogStem (Join-Path $work 'plugin-audit') | Out-Null
+$audit = Get-Content -LiteralPath $auditOutput -Raw | ConvertFrom-Json
+$moduleManifest.runtimePatch.records = [int] $audit.records
+$moduleManifest.runtimePatch.ownedRecords = 1623
+$moduleManifest.runtimePatch.recordsByType = [ordered]@{
+    ACTI = 3; LVLI = 1605; MISC = 55; GLOB = 1; COBJ = 42
+    QUST = 5; KYWD = 1; DIAL = 20; INFO = 40
+}
+$moduleManifest.runtimePatch.deletedRecords = [int] $audit.deletedRecords
+$moduleManifest.runtimePatch.disabledCurrencyToIngotRecipes = [int] $audit.disabledCurrencyToIngotRecipeCount
+$moduleManifest.runtimePatch.disabledModernBankRecipes = [int] $audit.disabledModernBankRecipeCount
+$moduleManifest.runtimePatch.disabledMintExchangeInfos = @($audit.disabledMintExchangeInfos).Count
+$moduleManifest.runtimePatch.backendRetargetedServiceInfos = @($audit.mintBackendConditionInfos).Count
+$moduleManifest.runtimePatch.directMasters = @($audit.masters)
+$moduleManifest.runtimePatch.seqFileRelativeFormIds = @([string] $audit.runtimeQuest.seqFileRelativeFormId)
 $linkEnvelope = Invoke-Mo2Child -ChildPath $executable -ChildArguments @('--audit-links',
     $dataFolder, $effectiveLoadOrder, $packagePlugin) -ChildWorkingDirectory $generatorFolder `
     -LogStem (Join-Path $work 'link-audit')
 $linkLine = @($linkEnvelope.stdout -split "`r?`n" | Where-Object { $_.Trim().StartsWith('{"records"') })[0]
 $linkAudit = $linkLine | ConvertFrom-Json
 if ($linkAudit.unresolved.Count) { throw "Link audit found $($linkAudit.unresolved.Count) unresolved links." }
+$regionalLinkEnvelope = Invoke-Mo2Child -ChildPath $executable -ChildArguments @('--audit-links',
+    $dataFolder, $effectiveLoadOrder, $packageRegionalPursePlugin, $packagePlugin) `
+    -ChildWorkingDirectory $generatorFolder -LogStem (Join-Path $work 'regional-purse-link-audit')
+$regionalLinkLine = @($regionalLinkEnvelope.stdout -split "`r?`n" |
+    Where-Object { $_.Trim().StartsWith('{"records"') })[0]
+$regionalLinkAudit = $regionalLinkLine | ConvertFrom-Json
+if ($regionalLinkAudit.unresolved.Count) {
+    throw "Regional-purse link audit found $($regionalLinkAudit.unresolved.Count) unresolved links."
+}
 
-# Checked Spriggit serialize -> deserialize -> serialize semantic roundtrip.
+# Checked Spriggit serialize -> deserialize -> serialize semantic roundtrip for
+# both independently loadable ESPFE outputs.
 $spriggit = [string] $toolchain.tools.spriggit.path
-$spriggitText = Join-Path $work 'spriggit-source'
-$roundtripPluginFolder = Join-Path $work 'spriggit-roundtrip'
-$roundtripText = Join-Path $work 'spriggit-roundtrip-text'
-New-Item -ItemType Directory -Path $spriggitText, $roundtripPluginFolder, $roundtripText -Force | Out-Null
 $spriggitArgs = @('--GameRelease', 'SkyrimSE', '--PackageName', 'Spriggit.Yaml.Skyrim',
     '--PackageVersion', '0.41.0', '--Check', '--ErrorOnUnknown')
-Invoke-HiddenProcess -FileName $spriggit -Arguments (@('serialize', '--InputPath', $packagePlugin,
-    '--OutputPath', $spriggitText) + $spriggitArgs) -WorkingDirectory $ownedRoot `
-    -LogStem (Join-Path $work 'spriggit-serialize') -Environment $processEnvironment | Out-Null
-$roundtripPlugin = Join-Path $roundtripPluginFolder $pluginName
-Invoke-HiddenProcess -FileName $spriggit -Arguments @('deserialize', '--InputPath', $spriggitText,
-    '--OutputPath', $roundtripPlugin, '--PackageName', 'Spriggit.Yaml.Skyrim',
-    '--PackageVersion', '0.41.0', '--BackupDays', '0') -WorkingDirectory $ownedRoot `
-    -LogStem (Join-Path $work 'spriggit-deserialize') -Environment $processEnvironment | Out-Null
-Invoke-HiddenProcess -FileName $spriggit -Arguments (@('serialize', '--InputPath', $roundtripPlugin,
-    '--OutputPath', $roundtripText) + $spriggitArgs) -WorkingDirectory $ownedRoot `
-    -LogStem (Join-Path $work 'spriggit-reserialize') -Environment $processEnvironment | Out-Null
-$spriggitDigest = Get-TreeDigest $spriggitText
-$roundtripDigest = Get-TreeDigest $roundtripText
-if ($spriggitDigest -ne $roundtripDigest) {
-    throw "Spriggit semantic roundtrip differs: $spriggitDigest != $roundtripDigest"
+$spriggitDigests = @{}
+foreach ($spriggitTarget in @(
+    [pscustomobject]@{ Key = 'main'; Path = $packagePlugin },
+    [pscustomobject]@{ Key = 'regional-purses'; Path = $packageRegionalPursePlugin }
+)) {
+    $key = [string] $spriggitTarget.Key
+    $targetPath = [string] $spriggitTarget.Path
+    $spriggitText = Join-Path $work "spriggit-$key-source"
+    $roundtripPluginFolder = Join-Path $work "spriggit-$key-roundtrip"
+    $roundtripText = Join-Path $work "spriggit-$key-roundtrip-text"
+    New-Item -ItemType Directory -Path $spriggitText, $roundtripPluginFolder, $roundtripText -Force | Out-Null
+    Invoke-HiddenProcess -FileName $spriggit -Arguments (@('serialize', '--InputPath', $targetPath,
+        '--OutputPath', $spriggitText) + $spriggitArgs) -WorkingDirectory $ownedRoot `
+        -LogStem (Join-Path $work "spriggit-$key-serialize") -Environment $processEnvironment | Out-Null
+    $roundtripPlugin = Join-Path $roundtripPluginFolder ([IO.Path]::GetFileName($targetPath))
+    Invoke-HiddenProcess -FileName $spriggit -Arguments @('deserialize', '--InputPath', $spriggitText,
+        '--OutputPath', $roundtripPlugin, '--PackageName', 'Spriggit.Yaml.Skyrim',
+        '--PackageVersion', '0.41.0', '--BackupDays', '0') -WorkingDirectory $ownedRoot `
+        -LogStem (Join-Path $work "spriggit-$key-deserialize") -Environment $processEnvironment | Out-Null
+    Invoke-HiddenProcess -FileName $spriggit -Arguments (@('serialize', '--InputPath', $roundtripPlugin,
+        '--OutputPath', $roundtripText) + $spriggitArgs) -WorkingDirectory $ownedRoot `
+        -LogStem (Join-Path $work "spriggit-$key-reserialize") -Environment $processEnvironment | Out-Null
+    $spriggitDigest = Get-TreeDigest $spriggitText
+    $roundtripDigest = Get-TreeDigest $roundtripText
+    if ($spriggitDigest -ne $roundtripDigest) {
+        throw "$key Spriggit semantic roundtrip differs: $spriggitDigest != $roundtripDigest"
+    }
+    $spriggitDigests[$key] = $spriggitDigest
+}
+
+# Independent binary/FLOR/probability gate. It reads the original Skyrim
+# English STRINGS member directly from the pinned game archive in memory and
+# must pass on the exact paired ESPs before either can enter a release archive.
+$repositoryRoot = [IO.Path]::GetFullPath((Join-Path $ownedRoot '..\..'))
+$purseGate = Join-Path $repositoryRoot 'audit\currency_purse_gate.py'
+$purseAuditOutput = Join-Path $work 'regional-purse-independent-audit.json'
+$runtimeConfig = Join-Path $package 'SKSE\Plugins\EnsrickCurrencyDenominations.json'
+$skyrimMaster = Join-Path $dataFolder 'Skyrim.esm'
+$skyrimInterfaceArchive = Join-Path $dataFolder 'Skyrim - Interface.bsa'
+foreach ($required in @($purseGate, $runtimeConfig, $skyrimMaster, $skyrimInterfaceArchive)) {
+    if (-not (Test-Path -LiteralPath $required -PathType Leaf)) {
+        throw "Independent regional-purse audit input is missing: $required"
+    }
+}
+Invoke-HiddenProcess -FileName $python -Arguments @('-3', $purseGate,
+    '--companion', $packageRegionalPursePlugin, '--main', $packagePlugin,
+    '--skyrim', $skyrimMaster, '--strings-archive', $skyrimInterfaceArchive,
+    '--policy', $policy, '--config', $runtimeConfig, '--output', $purseAuditOutput) `
+    -WorkingDirectory $repositoryRoot -LogStem (Join-Path $work 'regional-purse-independent-audit') | Out-Null
+$purseProof = Get-Content -LiteralPath $purseAuditOutput -Raw | ConvertFrom-Json
+if ([string] $purseProof.status -ne 'offline-binary-and-exact-probability-pass; not in-game verification' -or
+    [string] $purseProof.companionSha256 -ne $regionalPursePluginHashes[0] -or
+    [string] $purseProof.mainSha256 -ne $pluginHashes[0] -or
+    [int] $purseProof.ownedRecords -ne 405 -or [int] $purseProof.floraClones -ne 15 -or
+    [int] $purseProof.reachableLists -ne 390 -or @($purseProof.purses).Count -ne 15) {
+    throw 'Independent regional-purse binary/FLOR/probability audit contract failed.'
 }
 
 # Static package gate and two archive creations must be byte-identical.
+$bosGenerator = Join-Path $ownedRoot 'generate_bos.py'
+if (-not (Test-Path -LiteralPath $bosGenerator -PathType Leaf)) {
+    throw "Deterministic BOS generator is missing: $bosGenerator"
+}
+Invoke-HiddenProcess -FileName $python -Arguments @('-3', $bosGenerator, '--check') `
+    -WorkingDirectory $ownedRoot -LogStem (Join-Path $work 'bos-check') | Out-Null
 Write-ModuleManifestAtomic
 Invoke-HiddenProcess -FileName $python -Arguments @('-3', (Join-Path $ownedRoot 'validate.py')) `
     -WorkingDirectory $ownedRoot -LogStem (Join-Path $work 'validate') | Out-Null
@@ -522,7 +638,6 @@ if ([string] $releaseManifest.archive.fileName -ne [IO.Path]::GetFileName($archi
     throw 'Atomic release-manifest verification failed.'
 }
 
-$audit = Get-Content -LiteralPath $auditOutput -Raw | ConvertFrom-Json
 $result = [ordered]@{
     schemaVersion = 1
     version = $Version
@@ -539,6 +654,7 @@ $result = [ordered]@{
         }
     })
     deterministicPluginRuns = 2
+    deterministicRegionalPursePluginRuns = 2
     deterministicPexRuns = 2
     records = [int] $audit.records
     disabledRecipes = [int] $audit.disabledRecipeCount
@@ -547,7 +663,17 @@ $result = [ordered]@{
     engineIntrinsicLinks = [int] $linkAudit.engineIntrinsic.Count
     unresolvedLinks = [int] $linkAudit.unresolved.Count
     seqFileRelativeFormIds = @([string] $audit.runtimeQuest.seqFileRelativeFormId)
-    spriggitTreeSha256 = $spriggitDigest
+    regionalPursePlugin = $regionalPursePluginName
+    regionalPursePluginSha256 = $regionalPursePluginHashes[0]
+    regionalPursePluginBytes = (Get-Item -LiteralPath $packageRegionalPursePlugin).Length
+    regionalPurseRecords = [int] $regionalLinkAudit.records
+    regionalPurseLinksChecked = [int] $regionalLinkAudit.linksChecked
+    regionalPurseUnresolvedLinks = [int] $regionalLinkAudit.unresolved.Count
+    regionalPurseIndependentAudit = $purseAuditOutput
+    regionalPurseIndependentAuditSha256 = (Get-FileHash -LiteralPath $purseAuditOutput -Algorithm SHA256).Hash
+    regionalPurseVerifierSha256 = [string] $purseProof.verifierSha256
+    spriggitTreeSha256 = [string] $spriggitDigests['main']
+    regionalPurseSpriggitTreeSha256 = [string] $spriggitDigests['regional-purses']
     archive = $archive
     archiveSha256 = $archiveHash1
     archiveBytes = $archiveBytes

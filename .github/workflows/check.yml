@@ -2,7 +2,7 @@ name: Check
 
 on:
   push:
-    branches: [main, 'ensrick/modpack-roadmap-*']
+    branches: [main, 'ensrick/modpack-roadmap-*', 'ensrick/currency-complete-tiers']
   pull_request:
     branches: [main]
 
@@ -71,4 +71,18 @@ jobs:
         shell: pwsh
         run: |
           python -m unittest discover -s audit -p test_currency_save_gate.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s audit -p test_currency_tier_contract.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s audit -p test_currency_bos_gate.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s audit -p test_currency_purse_gate.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s audit -p test_currency_winner_gate.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Check actual complete currency policy and distribution payloads
+        shell: pwsh
+        run: |
+          python -c "import sys; sys.path.insert(0,'mods/currency-integration'); import validate as v; p=v.load_json(v.ROOT/'policy.json'); c=v.load_json(v.RUNTIME_CONFIG); v.validate_policy(p); v.validate_runtime_config(c,p); v.validate_distribution_configs(c); v.validate_ui_and_runtime_overrides(c); print('Complete currency policy/runtime/BOS/KID/CDF/UI: PASS')"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

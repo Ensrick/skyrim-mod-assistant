@@ -13,7 +13,6 @@
     "source-apply-failed",
     "source-converted-container",
     "source-converted-actor",
-    "source-ancient-passthrough",
     "source-reference-safety-rejected",
     "source-actor-safety-rejected",
     "source-container-safety-rejected"
@@ -37,238 +36,837 @@
   "denominations": {
     "canonicalPercent": 80,
     "variantPercent": 20,
-    "septim": {
-      "id": "septim",
-      "displayLabel": "Septim",
-      "backendLabel": "Septims",
-      "copper": {
-        "formKey": "000B6D:exchangeCurrency_enhanced.esp",
-        "editorId": "Gold004",
-        "name": "Copper Septim",
-        "sourceValue": 1,
-        "value": 1,
-        "sourceModel": "Meshes\\Clutter\\Coin01.nif"
+    "tieredFamilies": [
+      {
+        "id": "septim",
+        "enabled": true,
+        "displayLabel": "Septim",
+        "backendLabel": "Septims",
+        "salt": "0x53455054494D0001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.01,
+        "primarySource": {
+          "formKey": "000B6D:exchangeCurrency_enhanced.esp",
+          "sourcePlugin": "exchangeCurrency_enhanced.esp",
+          "editorId": "Gold004",
+          "name": "Copper Septim",
+          "sourceValue": 1,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\Clutter\\Coin01.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "Gold004",
+            "name": "Copper Septim",
+            "value": 1,
+            "model": "Meshes\\Clutter\\Coin01.nif",
+            "formKey": "000B6D:exchangeCurrency_enhanced.esp",
+            "sourcePlugin": "exchangeCurrency_enhanced.esp",
+            "sourceName": "Copper Septim",
+            "sourceValue": 1,
+            "sourceWeight": 0.01,
+            "sourceModel": "Meshes\\Clutter\\Coin01.nif"
+          },
+          "silver": {
+            "editorId": "Gold002",
+            "name": "Silver Septim",
+            "value": 10,
+            "model": "Meshes\\Clutter\\silvercoin.nif",
+            "formKey": "000823:exchangeCurrency_enhanced.esp",
+            "sourcePlugin": "exchangeCurrency_enhanced.esp",
+            "sourceName": "Silver Septim",
+            "sourceValue": 25,
+            "sourceWeight": 0.02,
+            "sourceModel": "Meshes\\Clutter\\silvercoin.nif"
+          },
+          "gold": {
+            "editorId": "Gold003",
+            "name": "Gold Septim",
+            "value": 100,
+            "model": "Meshes\\Clutter\\goldcoin.nif",
+            "formKey": "000824:exchangeCurrency_enhanced.esp",
+            "sourcePlugin": "exchangeCurrency_enhanced.esp",
+            "sourceName": "Gold Septim",
+            "sourceValue": 100,
+            "sourceWeight": 0.03,
+            "sourceModel": "Meshes\\Clutter\\goldcoin.nif"
+          }
+        }
       },
-      "silver": {
-        "formKey": "000823:exchangeCurrency_enhanced.esp",
-        "editorId": "Gold002",
-        "name": "Silver Septim",
-        "sourceValue": 25,
-        "value": 10,
-        "sourceModel": "Meshes\\Clutter\\silvercoin.nif"
-      },
-      "gold": {
-        "formKey": "000824:exchangeCurrency_enhanced.esp",
-        "editorId": "Gold003",
-        "name": "Gold Septim",
-        "sourceValue": 100,
-        "value": 100,
-        "sourceModel": "Meshes\\Clutter\\goldcoin.nif"
-      }
-    },
-    "modernFamilies": [
       {
         "id": "mede",
         "enabled": true,
         "displayLabel": "Mede",
         "backendLabel": "Medes",
-        "routeKeyword": "000B94:exchangeCurrency_enhanced.esp",
+        "salt": "0x4D45444500000001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
         "perk": "00082B:exchangeCurrency_patch_COIN.esp",
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "copperFormKey": "DE5021:Update.esm",
-        "sourceEditorId": "EC_Mede",
-        "sourceName": "Mede",
-        "sourceValue": 0,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.01,
-        "sourceModel": "Meshes\\Trotsky2302\\mede.nif",
-        "copperName": "Copper Mede",
-        "silverName": "Silver Mede",
-        "goldName": "Gold Mede",
-        "silverFormId": "000820",
-        "goldFormId": "000821",
-        "silverEditorId": "Ensrick_MedeSilver",
-        "goldEditorId": "Ensrick_MedeGold",
-        "copperModel": "Meshes\\Ensrick\\Currency\\Mede\\Mede_Copper.nif",
-        "silverModel": "Meshes\\Ensrick\\Currency\\Mede\\Mede_Silver.nif",
-        "goldModel": "Meshes\\Ensrick\\Currency\\Mede\\Mede_Gold.nif"
+        "primarySource": {
+          "formKey": "DE5021:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Mede",
+          "name": "Mede",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\Trotsky2302\\mede.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "EC_Mede",
+            "name": "Copper Mede",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Mede\\Mede_Copper.nif",
+            "formKey": "DE5021:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_MedeSilver",
+            "name": "Silver Mede",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Mede\\Mede_Silver.nif",
+            "formId": "000820"
+          },
+          "gold": {
+            "editorId": "Ensrick_MedeGold",
+            "name": "Gold Mede",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Mede\\Mede_Gold.nif",
+            "formId": "000821"
+          }
+        }
       },
       {
         "id": "ulfric",
         "enabled": true,
         "displayLabel": "Ulfric",
         "backendLabel": "Ulfrics",
-        "routeKeyword": "000B73:exchangeCurrency_enhanced.esp",
+        "salt": "0x554C465249430001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
         "perk": "000829:exchangeCurrency_patch_COIN.esp",
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "copperFormKey": "DE5024:Update.esm",
-        "sourceEditorId": "DES_Ulfric",
-        "sourceName": "Ulfric",
-        "sourceValue": 0,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.01,
-        "sourceModel": "Meshes\\MINT\\Ulfric\\Ulfric.nif",
-        "copperName": "Copper Ulfric",
-        "silverName": "Silver Ulfric",
-        "goldName": "Gold Ulfric",
-        "silverFormId": "000822",
-        "goldFormId": "000823",
-        "silverEditorId": "Ensrick_UlfricSilver",
-        "goldEditorId": "Ensrick_UlfricGold",
-        "copperModel": "Meshes\\Ensrick\\Currency\\Ulfric\\Ulfric_Copper.nif",
-        "silverModel": "Meshes\\Ensrick\\Currency\\Ulfric\\Ulfric_Silver.nif",
-        "goldModel": "Meshes\\Ensrick\\Currency\\Ulfric\\Ulfric_Gold.nif"
+        "primarySource": {
+          "formKey": "DE5024:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_Ulfric",
+          "name": "Ulfric",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\MINT\\Ulfric\\Ulfric.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_Ulfric",
+            "name": "Copper Ulfric",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Ulfric\\Ulfric_Copper.nif",
+            "formKey": "DE5024:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_UlfricSilver",
+            "name": "Silver Ulfric",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Ulfric\\Ulfric_Silver.nif",
+            "formId": "000822"
+          },
+          "gold": {
+            "editorId": "Ensrick_UlfricGold",
+            "name": "Gold Ulfric",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Ulfric\\Ulfric_Gold.nif",
+            "formId": "000823"
+          }
+        }
       },
       {
         "id": "dram",
         "enabled": true,
         "displayLabel": "Dram",
         "backendLabel": "Drams",
-        "routeKeyword": "000B92:exchangeCurrency_enhanced.esp",
+        "salt": "0x4452414D00000001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
         "perk": "00082A:exchangeCurrency_patch_COIN.esp",
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "copperFormKey": "DE5029:Update.esm",
-        "sourceEditorId": "DES_Dram",
-        "sourceName": "Dram",
-        "sourceValue": 0,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.01,
-        "sourceModel": "Meshes\\MINT\\Dram\\Dram.nif",
-        "copperName": "Copper Dram",
-        "silverName": "Silver Dram",
-        "goldName": "Gold Dram",
-        "silverFormId": "000824",
-        "goldFormId": "000825",
-        "silverEditorId": "Ensrick_DramSilver",
-        "goldEditorId": "Ensrick_DramGold",
-        "copperModel": "Meshes\\Ensrick\\Currency\\Dram\\Dram_Copper.nif",
-        "silverModel": "Meshes\\Ensrick\\Currency\\Dram\\Dram_Silver.nif",
-        "goldModel": "Meshes\\Ensrick\\Currency\\Dram\\Dram_Gold.nif"
+        "primarySource": {
+          "formKey": "DE5029:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_Dram",
+          "name": "Dram",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\MINT\\Dram\\Dram.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_Dram",
+            "name": "Copper Dram",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Dram\\Dram_Copper.nif",
+            "formKey": "DE5029:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_DramSilver",
+            "name": "Silver Dram",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Dram\\Dram_Silver.nif",
+            "formId": "000824"
+          },
+          "gold": {
+            "editorId": "Ensrick_DramGold",
+            "name": "Gold Dram",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Dram\\Dram_Gold.nif",
+            "formId": "000825"
+          }
+        }
       },
       {
         "id": "oshka",
         "enabled": true,
         "displayLabel": "Oshka",
         "backendLabel": "Oshkas",
-        "routeKeyword": "000BB4:exchangeCurrency_enhanced.esp",
+        "salt": "0x4F53484B41000001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
         "perk": "000872:exchangeCurrency_patch_COIN.esp",
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "copperFormKey": "000871:exchangeCurrency_patch_COIN.esp",
-        "sourceEditorId": "EC_Oshka",
-        "sourceName": "Oshka",
-        "sourceValue": 0,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.01,
-        "sourceModel": "Meshes\\Nerapharu\\Oshka\\oshka.nif",
-        "copperName": "Copper Oshka",
-        "silverName": "Silver Oshka",
-        "goldName": "Gold Oshka",
-        "silverFormId": "000826",
-        "goldFormId": "000827",
-        "silverEditorId": "Ensrick_OshkaSilver",
-        "goldEditorId": "Ensrick_OshkaGold",
-        "copperModel": "Meshes\\Ensrick\\Currency\\Oshka\\Oshka_Copper.nif",
-        "silverModel": "Meshes\\Ensrick\\Currency\\Oshka\\Oshka_Silver.nif",
-        "goldModel": "Meshes\\Ensrick\\Currency\\Oshka\\Oshka_Gold.nif"
+        "primarySource": {
+          "formKey": "000871:exchangeCurrency_patch_COIN.esp",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Oshka",
+          "name": "Oshka",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\Nerapharu\\Oshka\\oshka.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "EC_Oshka",
+            "name": "Copper Oshka",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Oshka\\Oshka_Copper.nif",
+            "formKey": "000871:exchangeCurrency_patch_COIN.esp"
+          },
+          "silver": {
+            "editorId": "Ensrick_OshkaSilver",
+            "name": "Silver Oshka",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Oshka\\Oshka_Silver.nif",
+            "formId": "000826"
+          },
+          "gold": {
+            "editorId": "Ensrick_OshkaGold",
+            "name": "Gold Oshka",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Oshka\\Oshka_Gold.nif",
+            "formId": "000827"
+          }
+        }
       },
       {
         "id": "ohzer",
         "enabled": true,
         "displayLabel": "Ohzer",
         "backendLabel": "Ohzers",
-        "routeKeyword": "000BB5:exchangeCurrency_enhanced.esp",
+        "salt": "0x4F485A4552000001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
         "perk": null,
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "copperFormKey": "00086F:exchangeCurrency_patch_COIN.esp",
-        "sourceEditorId": "EC_Ohzer",
-        "sourceName": "Ohzer",
-        "sourceValue": 12,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.02,
-        "sourceModel": "Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif",
-        "copperName": "Copper Ohzer",
-        "silverName": "Silver Ohzer",
-        "goldName": "Gold Ohzer",
-        "silverFormId": "000828",
-        "goldFormId": "000829",
-        "silverEditorId": "Ensrick_OhzerSilver",
-        "goldEditorId": "Ensrick_OhzerGold",
-        "copperModel": "Meshes\\Ensrick\\Currency\\Ohzer\\Ohzer_Copper.nif",
-        "silverModel": "Meshes\\Ensrick\\Currency\\Ohzer\\Ohzer_Silver.nif",
-        "goldModel": "Meshes\\Ensrick\\Currency\\Ohzer\\Ohzer_Gold.nif"
+        "primarySource": {
+          "formKey": "00086F:exchangeCurrency_patch_COIN.esp",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Ohzer",
+          "name": "Ohzer",
+          "sourceValue": 12,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\Mihail's Shards of Immersion\\Coin Apocrypha\\ohzer.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "EC_Ohzer",
+            "name": "Copper Ohzer",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Ohzer\\Ohzer_Copper.nif",
+            "formKey": "00086F:exchangeCurrency_patch_COIN.esp"
+          },
+          "silver": {
+            "editorId": "Ensrick_OhzerSilver",
+            "name": "Silver Ohzer",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Ohzer\\Ohzer_Silver.nif",
+            "formId": "000828"
+          },
+          "gold": {
+            "editorId": "Ensrick_OhzerGold",
+            "name": "Gold Ohzer",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Ohzer\\Ohzer_Gold.nif",
+            "formId": "000829"
+          }
+        }
       },
       {
         "id": "varken",
-        "enabled": false,
+        "enabled": true,
         "displayLabel": "Varken",
         "backendLabel": "Varkens",
-        "routeKeyword": "000BB6:exchangeCurrency_enhanced.esp",
+        "salt": "0x5641524B454E0001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
         "perk": null,
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "copperFormKey": "000870:exchangeCurrency_patch_COIN.esp",
-        "sourceEditorId": "EC_Varken",
-        "sourceName": "Varken",
-        "sourceValue": 16,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.02,
-        "sourceModel": "Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif",
-        "copperName": "Copper Varken",
-        "silverName": "Silver Varken",
-        "goldName": "Gold Varken",
-        "silverFormId": "00082A",
-        "goldFormId": "00082B",
-        "silverEditorId": "Ensrick_VarkenSilver",
-        "goldEditorId": "Ensrick_VarkenGold",
-        "copperModel": "Meshes\\Ensrick\\Currency\\Varken\\Varken_Copper.nif",
-        "silverModel": "Meshes\\Ensrick\\Currency\\Varken\\Varken_Silver.nif",
-        "goldModel": "Meshes\\Ensrick\\Currency\\Varken\\Varken_Gold.nif"
-      }
-    ],
-    "singletonFamilies": [
+        "primarySource": {
+          "formKey": "000870:exchangeCurrency_patch_COIN.esp",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "EC_Varken",
+          "name": "Varken",
+          "sourceValue": 16,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\Mihail's Shards of Immersion\\Coin Dremora\\varken.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "EC_Varken",
+            "name": "Copper Varken",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Varken\\Varken_Copper.nif",
+            "formKey": "000870:exchangeCurrency_patch_COIN.esp"
+          },
+          "silver": {
+            "editorId": "Ensrick_VarkenSilver",
+            "name": "Silver Varken",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Varken\\Varken_Silver.nif",
+            "formId": "00082A"
+          },
+          "gold": {
+            "editorId": "Ensrick_VarkenGold",
+            "name": "Gold Varken",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Varken\\Varken_Gold.nif",
+            "formId": "00082B"
+          }
+        }
+      },
       {
-        "id": "drakr",
+        "id": "drakr_dragon",
         "enabled": true,
-        "displayLabel": "Drakr",
-        "backendLabel": "Drakrs",
-        "routeKeyword": "000B93:exchangeCurrency_enhanced.esp",
+        "displayLabel": "Dragon Drakr",
+        "backendLabel": "Dragon Drakrs",
+        "salt": "0x4452445241470001",
         "ownedRouteKeywordFormId": null,
         "ownedRouteKeywordEditorId": null,
         "perk": "00082C:exchangeCurrency_patch_COIN.esp",
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "formKey": "DE5015:Update.esm",
-        "editorId": "DES_DrakrWhale",
-        "name": "Ancient Nord Drakr",
-        "sourceValue": 0,
-        "value": 1,
-        "sourceWeight": 0.02,
         "runtimeWeight": 0.02,
-        "sourceModel": "Meshes\\COIN\\Drakr\\Drakr04.nif"
+        "primarySource": {
+          "formKey": "DE5012:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_DrakrDragon",
+          "name": "Ancient Nord Drakr",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Drakr\\Drakr01.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_DrakrDragon",
+            "name": "Copper Dragon Drakr",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Copper.nif",
+            "formKey": "DE5012:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_DrakrDragonSilver",
+            "name": "Silver Dragon Drakr",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Silver.nif",
+            "formId": "000A00"
+          },
+          "gold": {
+            "editorId": "Ensrick_DrakrDragonGold",
+            "name": "Gold Dragon Drakr",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrDragon\\DrakrDragon_Gold.nif",
+            "formId": "000A01"
+          }
+        }
+      },
+      {
+        "id": "drakr_moth",
+        "enabled": true,
+        "displayLabel": "Moth Drakr",
+        "backendLabel": "Moth Drakrs",
+        "salt": "0x44524D4F54480001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": "00082C:exchangeCurrency_patch_COIN.esp",
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "DE5013:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_DrakrMoth",
+          "name": "Ancient Nord Drakr",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Drakr\\Drakr02.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_DrakrMoth",
+            "name": "Copper Moth Drakr",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Copper.nif",
+            "formKey": "DE5013:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_DrakrMothSilver",
+            "name": "Silver Moth Drakr",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Silver.nif",
+            "formId": "000A02"
+          },
+          "gold": {
+            "editorId": "Ensrick_DrakrMothGold",
+            "name": "Gold Moth Drakr",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrMoth\\DrakrMoth_Gold.nif",
+            "formId": "000A03"
+          }
+        }
+      },
+      {
+        "id": "drakr_owl",
+        "enabled": true,
+        "displayLabel": "Owl Drakr",
+        "backendLabel": "Owl Drakrs",
+        "salt": "0x44524F574C000001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": "00082C:exchangeCurrency_patch_COIN.esp",
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "DE5014:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_DrakrOwl",
+          "name": "Ancient Nord Drakr",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Drakr\\Drakr03.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_DrakrOwl",
+            "name": "Copper Owl Drakr",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Copper.nif",
+            "formKey": "DE5014:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_DrakrOwlSilver",
+            "name": "Silver Owl Drakr",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Silver.nif",
+            "formId": "000A04"
+          },
+          "gold": {
+            "editorId": "Ensrick_DrakrOwlGold",
+            "name": "Gold Owl Drakr",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrOwl\\DrakrOwl_Gold.nif",
+            "formId": "000A05"
+          }
+        }
+      },
+      {
+        "id": "drakr_whale",
+        "enabled": true,
+        "displayLabel": "Whale Drakr",
+        "backendLabel": "Whale Drakrs",
+        "salt": "0x44525748414C0001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": "00082C:exchangeCurrency_patch_COIN.esp",
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "DE5015:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_DrakrWhale",
+          "name": "Ancient Nord Drakr",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Drakr\\Drakr04.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_DrakrWhale",
+            "name": "Copper Whale Drakr",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Copper.nif",
+            "formKey": "DE5015:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_DrakrWhaleSilver",
+            "name": "Silver Whale Drakr",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Silver.nif",
+            "formId": "000A06"
+          },
+          "gold": {
+            "editorId": "Ensrick_DrakrWhaleGold",
+            "name": "Gold Whale Drakr",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\DrakrWhale\\DrakrWhale_Gold.nif",
+            "formId": "000A07"
+          }
+        }
+      },
+      {
+        "id": "gibber_dementia",
+        "enabled": true,
+        "displayLabel": "Dementia Gibber",
+        "backendLabel": "Dementia Gibbers",
+        "salt": "0x47494244454D0001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.01,
+        "primarySource": {
+          "formKey": "DE5017:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_GibberBack",
+          "name": "Gibber",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\MINT\\Gibber\\GibberBack.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_GibberBack",
+            "name": "Copper Dementia Gibber",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\GibberBack\\GibberBack_Copper.nif",
+            "formKey": "DE5017:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_GibberDementiaSilver",
+            "name": "Silver Dementia Gibber",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\GibberBack\\GibberBack_Silver.nif",
+            "formId": "000A08"
+          },
+          "gold": {
+            "editorId": "Ensrick_GibberDementiaGold",
+            "name": "Gold Dementia Gibber",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\GibberBack\\GibberBack_Gold.nif",
+            "formId": "000A09"
+          }
+        }
+      },
+      {
+        "id": "gibber_mania",
+        "enabled": true,
+        "displayLabel": "Mania Gibber",
+        "backendLabel": "Mania Gibbers",
+        "salt": "0x4749424D414E0001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.01,
+        "primarySource": {
+          "formKey": "DE5018:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_GibberFront",
+          "name": "Gibber",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\MINT\\Gibber\\GibberFront.nif"
+        },
+        "sourceAliases": [
+          {
+            "formKey": "DE5027:Update.esm",
+            "sourcePlugin": "M.I.N.T.esp",
+            "editorId": "DES_Gibber",
+            "name": "Gibber",
+            "sourceValue": 1,
+            "sourceWeight": 0.0,
+            "sourceModel": "Meshes\\MINT\\Gibber\\GibberFront.nif",
+            "normalizesToTier": "copper"
+          }
+        ],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_GibberFront",
+            "name": "Copper Mania Gibber",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\GibberFront\\GibberFront_Copper.nif",
+            "formKey": "DE5018:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_GibberManiaSilver",
+            "name": "Silver Mania Gibber",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\GibberFront\\GibberFront_Silver.nif",
+            "formId": "000A0A"
+          },
+          "gold": {
+            "editorId": "Ensrick_GibberManiaGold",
+            "name": "Gold Mania Gibber",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\GibberFront\\GibberFront_Gold.nif",
+            "formId": "000A0B"
+          }
+        }
+      },
+      {
+        "id": "mala",
+        "enabled": true,
+        "displayLabel": "Ayleid Mala",
+        "backendLabel": "Ayleid Malas",
+        "salt": "0x4D414C4100000001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "DE5019:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_Mala",
+          "name": "Ayleid Mala",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Mala\\Mala.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_Mala",
+            "name": "Copper Ayleid Mala",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Mala\\Mala_Copper.nif",
+            "formKey": "DE5019:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_MalaSilver",
+            "name": "Silver Ayleid Mala",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Mala\\Mala_Silver.nif",
+            "formId": "000A0C"
+          },
+          "gold": {
+            "editorId": "Ensrick_MalaGold",
+            "name": "Gold Ayleid Mala",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Mala\\Mala_Gold.nif",
+            "formId": "000A0D"
+          }
+        }
+      },
+      {
+        "id": "mallari",
+        "enabled": true,
+        "displayLabel": "Ancient Falmer Mallari",
+        "backendLabel": "Ancient Falmer Mallari",
+        "salt": "0x4D414C4C41520001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "DE5020:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_Mallari",
+          "name": "Ancient Falmer Mallari",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Mallari\\Mallari.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_Mallari",
+            "name": "Copper Ancient Falmer Mallari",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Mallari\\Mallari_Copper.nif",
+            "formKey": "DE5020:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_MallariSilver",
+            "name": "Silver Ancient Falmer Mallari",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Mallari\\Mallari_Silver.nif",
+            "formId": "000A0E"
+          },
+          "gold": {
+            "editorId": "Ensrick_MallariGold",
+            "name": "Gold Ancient Falmer Mallari",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Mallari\\Mallari_Gold.nif",
+            "formId": "000A0F"
+          }
+        }
+      },
+      {
+        "id": "nchuark",
+        "enabled": true,
+        "displayLabel": "Dwarven Nchuark",
+        "backendLabel": "Dwarven Nchuarks",
+        "salt": "0x4E43485541520001",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "DE5022:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_Nchuark",
+          "name": "Dwarven Nchuark",
+          "sourceValue": 0,
+          "sourceWeight": 0.02,
+          "sourceModel": "Meshes\\COIN\\Nchuark\\Nchuark.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_Nchuark",
+            "name": "Copper Dwarven Nchuark",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Nchuark\\Nchuark_Copper.nif",
+            "formKey": "DE5022:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_NchuarkSilver",
+            "name": "Silver Dwarven Nchuark",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Nchuark\\Nchuark_Silver.nif",
+            "formId": "000A10"
+          },
+          "gold": {
+            "editorId": "Ensrick_NchuarkGold",
+            "name": "Gold Dwarven Nchuark",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Nchuark\\Nchuark_Gold.nif",
+            "formId": "000A11"
+          }
+        }
       },
       {
         "id": "sancar",
         "enabled": true,
         "displayLabel": "Sancar",
         "backendLabel": "Sancars",
-        "routeKeyword": "000803:Ensrick Currency Integration Patch.esp",
+        "salt": "0x53414E4341520001",
         "ownedRouteKeywordFormId": "000803",
         "ownedRouteKeywordEditorId": "Ensrick_IsSancarMoney",
         "perk": null,
-        "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
-        "formKey": "DE5023:Update.esm",
-        "editorId": "DES_Sancar",
-        "name": "Sancar",
-        "sourceValue": 0,
-        "value": 1,
-        "sourceWeight": 0.01,
         "runtimeWeight": 0.01,
-        "sourceModel": "Meshes\\MINT\\Sancar\\Sancar.nif"
+        "primarySource": {
+          "formKey": "DE5023:Update.esm",
+          "sourcePlugin": "exchangeCurrency_patch_COIN.esp",
+          "editorId": "DES_Sancar",
+          "name": "Sancar",
+          "sourceValue": 0,
+          "sourceWeight": 0.01,
+          "sourceModel": "Meshes\\MINT\\Sancar\\Sancar.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "DES_Sancar",
+            "name": "Copper Sancar",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\Sancar\\Sancar_Copper.nif",
+            "formKey": "DE5023:Update.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_SancarSilver",
+            "name": "Silver Sancar",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\Sancar\\Sancar_Silver.nif",
+            "formId": "000A12"
+          },
+          "gold": {
+            "editorId": "Ensrick_SancarGold",
+            "name": "Gold Sancar",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\Sancar\\Sancar_Gold.nif",
+            "formId": "000A13"
+          }
+        }
+      },
+      {
+        "id": "bruma_ayleid_mala",
+        "enabled": true,
+        "displayLabel": "Bruma Ayleid Mala",
+        "backendLabel": "Bruma Ayleid Malas",
+        "salt": "0x425241594C454901",
+        "ownedRouteKeywordFormId": null,
+        "ownedRouteKeywordEditorId": null,
+        "perk": null,
+        "runtimeWeight": 0.02,
+        "primarySource": {
+          "formKey": "6028DC:BSAssets.esm",
+          "sourcePlugin": "BSAssets.esm",
+          "editorId": "BSKAyleidGold001",
+          "name": "Ayleid Mala",
+          "sourceValue": 1,
+          "sourceWeight": 0.0,
+          "sourceModel": "Meshes\\BSCyrodiil\\dungeons\\AyleidRuins\\AyleidCoin01.nif"
+        },
+        "sourceAliases": [],
+        "tiers": {
+          "copper": {
+            "editorId": "BSKAyleidGold001",
+            "name": "Copper Bruma Ayleid Mala",
+            "value": 1,
+            "model": "Meshes\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Copper.nif",
+            "formKey": "6028DC:BSAssets.esm"
+          },
+          "silver": {
+            "editorId": "Ensrick_BrumaAyleidMalaSilver",
+            "name": "Silver Bruma Ayleid Mala",
+            "value": 10,
+            "model": "Meshes\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Silver.nif",
+            "formId": "000A14"
+          },
+          "gold": {
+            "editorId": "Ensrick_BrumaAyleidMalaGold",
+            "name": "Gold Bruma Ayleid Mala",
+            "value": 100,
+            "model": "Meshes\\Ensrick\\Currency\\BrumaAyleid\\BrumaAyleid_Gold.nif",
+            "formId": "000A15"
+          }
+        }
       }
     ]
   },
   "overrides": {
     "dragonbornGoldPiles": [
-      { "formKey": "018486:Dragonborn.esm", "editorId": "DLC2GoldPile01" },
-      { "formKey": "018488:Dragonborn.esm", "editorId": "DLC2GoldPile02" }
+      {
+        "formKey": "018486:Dragonborn.esm",
+        "editorId": "DLC2GoldPile01"
+      },
+      {
+        "formKey": "018488:Dragonborn.esm",
+        "editorId": "DLC2GoldPile02"
+      }
     ],
     "coinPurses": [
       {
@@ -279,7 +877,24 @@
         "canonicalFormIdBase": "000900",
         "breakFormIdBase": "000910",
         "selectorFormIdBase": "000920",
-        "counts": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 22, 28]
+        "counts": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15,
+          17,
+          22,
+          28
+        ]
       },
       {
         "formKey": "0D8E7D:Skyrim.esm",
@@ -289,7 +904,24 @@
         "canonicalFormIdBase": "000930",
         "breakFormIdBase": "000940",
         "selectorFormIdBase": "000950",
-        "counts": [5, 8, 10, 12, 14, 16, 18, 19, 20, 21, 22, 24, 27, 30, 36, 42]
+        "counts": [
+          5,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          19,
+          20,
+          21,
+          22,
+          24,
+          27,
+          30,
+          36,
+          42
+        ]
       },
       {
         "formKey": "0D8E7E:Skyrim.esm",
@@ -299,18 +931,46 @@
         "canonicalFormIdBase": "000960",
         "breakFormIdBase": "000970",
         "selectorFormIdBase": "000980",
-        "counts": [10, 14, 18, 22, 26, 29, 31, 33, 35, 36, 38, 41, 45, 50, 58, 70]
+        "counts": [
+          10,
+          14,
+          18,
+          22,
+          26,
+          29,
+          31,
+          33,
+          35,
+          36,
+          38,
+          41,
+          45,
+          50,
+          58,
+          70
+        ]
       }
     ],
-    "gold001": { "formKey": "00000F:Skyrim.esm", "editorId": "Gold001", "requiredKeyword": "0A0E55:Skyrim.esm" },
-    "mintAutoConvert": { "formKey": "DE5037:Update.esm", "editorId": "DES_ConvertCoins", "value": 0 },
+    "gold001": {
+      "formKey": "00000F:Skyrim.esm",
+      "editorId": "Gold001",
+      "requiredKeyword": "0A0E55:Skyrim.esm"
+    },
+    "mintAutoConvert": {
+      "formKey": "DE5037:Update.esm",
+      "editorId": "DES_ConvertCoins",
+      "value": 0
+    },
     "ecePlayerCurrencyQuests": [
       {
         "formKey": "000B63:exchangeCurrency_enhanced.esp",
         "editorId": "EC_septimsScript",
         "sourcePlugin": "exchangeCurrency_enhanced.esp",
         "aliasId": 0,
-        "transactionScripts": ["EC_septimsFunctions", "EC_septimsScript"]
+        "transactionScripts": [
+          "EC_septimsFunctions",
+          "EC_septimsScript"
+        ]
       },
       {
         "formKey": "000827:exchangeCurrency_patch_COIN.esp",
@@ -407,44 +1067,332 @@
       ]
     },
     "disabledMintExchangeInfos": [
-      { "formKey": "000017:MorrowindUsesDrams.esp", "parentTopicFormKey": "000012:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert02a", "transactionScripts": ["TIF__CurrencyFramework_ExchangeRoom"], "conditionCount": 2 },
-      { "formKey": "000019:MorrowindUsesDrams.esp", "parentTopicFormKey": "000018:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert02b", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "00001B:MorrowindUsesDrams.esp", "parentTopicFormKey": "00001A:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert02c", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "00001D:MorrowindUsesDrams.esp", "parentTopicFormKey": "00001C:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert02d", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "00001F:MorrowindUsesDrams.esp", "parentTopicFormKey": "00001E:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert02e", "transactionScripts": ["TIF__CurrencyFramework_ExchangeAll"], "conditionCount": 2 },
-      { "formKey": "000025:MorrowindUsesDrams.esp", "parentTopicFormKey": "000024:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03a", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "000027:MorrowindUsesDrams.esp", "parentTopicFormKey": "000026:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03b", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "000029:MorrowindUsesDrams.esp", "parentTopicFormKey": "000028:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03c", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "00002B:MorrowindUsesDrams.esp", "parentTopicFormKey": "00002A:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03d", "transactionScripts": ["TIF__CurrencyFramework_ExchangeAll"], "conditionCount": 2 },
-      { "formKey": "000032:MorrowindUsesDrams.esp", "parentTopicFormKey": "000030:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04b", "transactionScripts": ["TIF__CurrencyFramework_ExchangeRoom"], "conditionCount": 2 },
-      { "formKey": "000034:MorrowindUsesDrams.esp", "parentTopicFormKey": "000033:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04c", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "000036:MorrowindUsesDrams.esp", "parentTopicFormKey": "000035:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04d", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "000038:MorrowindUsesDrams.esp", "parentTopicFormKey": "000037:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04e", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 2 },
-      { "formKey": "00003A:MorrowindUsesDrams.esp", "parentTopicFormKey": "000039:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04f", "transactionScripts": ["TIF__CurrencyFramework_ExchangeAll"], "conditionCount": 2 },
-      { "formKey": "000064:MorrowindUsesDrams.esp", "parentTopicFormKey": "000024:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03a", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000065:MorrowindUsesDrams.esp", "parentTopicFormKey": "000026:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03b", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000066:MorrowindUsesDrams.esp", "parentTopicFormKey": "000028:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03c", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000007:MorrowindUsesDrams.esp", "parentTopicFormKey": "00002A:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert03d", "transactionScripts": ["TIF__ExchangeAll"], "conditionCount": 2 },
-      { "formKey": "000067:MorrowindUsesDrams.esp", "parentTopicFormKey": "000030:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04b", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000068:MorrowindUsesDrams.esp", "parentTopicFormKey": "000033:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04c", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000069:MorrowindUsesDrams.esp", "parentTopicFormKey": "000035:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04d", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "00006A:MorrowindUsesDrams.esp", "parentTopicFormKey": "000037:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04e", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000009:MorrowindUsesDrams.esp", "parentTopicFormKey": "000039:MorrowindUsesDrams.esp", "parentTopicEditorId": "DES_DramExchangerConvert04f", "transactionScripts": [], "conditionCount": 2 },
-      { "formKey": "000053:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000013:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert02", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 5 },
-      { "formKey": "000054:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000013:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert02", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 5 },
-      { "formKey": "000055:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000013:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert02", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 4 },
-      { "formKey": "000056:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000014:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert03", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 5 },
-      { "formKey": "000057:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000014:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert03", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 5 },
-      { "formKey": "000058:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000014:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert03", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 4 },
-      { "formKey": "000059:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000015:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert04", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 5 },
-      { "formKey": "00005A:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000015:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert04", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 5 },
-      { "formKey": "00005B:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000015:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert04", "transactionScripts": ["TIF__CurrencyFramework_Exchange"], "conditionCount": 4 },
-      { "formKey": "00001F:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000016:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert05", "transactionScripts": ["TIF__CurrencyFramework_ExchangeAll"], "conditionCount": 5 },
-      { "formKey": "00005C:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000016:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert05", "transactionScripts": ["TIF__CurrencyFramework_ExchangeAll"], "conditionCount": 5 },
-      { "formKey": "00005D:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000016:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert05", "transactionScripts": ["TIF__CurrencyFramework_ExchangeAll"], "conditionCount": 4 },
-      { "formKey": "000093:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000091:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert01a", "transactionScripts": ["TIF__CurrencyFramework_ExchangeRoom"], "conditionCount": 5 },
-      { "formKey": "000095:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000091:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert01a", "transactionScripts": ["TIF__CurrencyFramework_ExchangeRoom"], "conditionCount": 5 },
-      { "formKey": "000092:WindhelmUsesUlfrics.esp", "parentTopicFormKey": "000091:WindhelmUsesUlfrics.esp", "parentTopicEditorId": "DES_UlfricExchangerConvert01a", "transactionScripts": ["TIF__CurrencyFramework_ExchangeRoom"], "conditionCount": 4 }
+      {
+        "formKey": "000017:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000012:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert02a",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeRoom"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000019:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000018:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert02b",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "00001B:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "00001A:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert02c",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "00001D:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "00001C:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert02d",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "00001F:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "00001E:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert02e",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeAll"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000025:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000024:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03a",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000027:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000026:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03b",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000029:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000028:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03c",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "00002B:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "00002A:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03d",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeAll"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000032:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000030:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04b",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeRoom"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000034:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000033:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04c",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000036:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000035:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04d",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000038:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000037:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04e",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "00003A:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000039:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04f",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeAll"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000064:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000024:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03a",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000065:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000026:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03b",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000066:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000028:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03c",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000007:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "00002A:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert03d",
+        "transactionScripts": [
+          "TIF__ExchangeAll"
+        ],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000067:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000030:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04b",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000068:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000033:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04c",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000069:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000035:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04d",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "00006A:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000037:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04e",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000009:MorrowindUsesDrams.esp",
+        "parentTopicFormKey": "000039:MorrowindUsesDrams.esp",
+        "parentTopicEditorId": "DES_DramExchangerConvert04f",
+        "transactionScripts": [],
+        "conditionCount": 2
+      },
+      {
+        "formKey": "000053:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000013:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert02",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "000054:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000013:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert02",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "000055:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000013:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert02",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 4
+      },
+      {
+        "formKey": "000056:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000014:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert03",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "000057:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000014:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert03",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "000058:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000014:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert03",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 4
+      },
+      {
+        "formKey": "000059:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000015:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert04",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "00005A:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000015:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert04",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "00005B:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000015:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert04",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_Exchange"
+        ],
+        "conditionCount": 4
+      },
+      {
+        "formKey": "00001F:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000016:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert05",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeAll"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "00005C:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000016:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert05",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeAll"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "00005D:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000016:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert05",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeAll"
+        ],
+        "conditionCount": 4
+      },
+      {
+        "formKey": "000093:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000091:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert01a",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeRoom"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "000095:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000091:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert01a",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeRoom"
+        ],
+        "conditionCount": 5
+      },
+      {
+        "formKey": "000092:WindhelmUsesUlfrics.esp",
+        "parentTopicFormKey": "000091:WindhelmUsesUlfrics.esp",
+        "parentTopicEditorId": "DES_UlfricExchangerConvert01a",
+        "transactionScripts": [
+          "TIF__CurrencyFramework_ExchangeRoom"
+        ],
+        "conditionCount": 4
+      }
     ],
     "mintBackendConditionInfos": [
       {
@@ -461,12 +1409,36 @@
         "vmadObjectFormat": 2,
         "vmadCurrencyProperty": "Gold001",
         "vmadProperties": [
-          { "name": "Gold001", "formKey": "DE5024:Update.esm", "alias": 65535 },
-          { "name": "PlayerHorseFaction", "formKey": "068D78:Skyrim.esm", "alias": 65535 },
-          { "name": "PlayersHorse", "formKey": "068D73:Skyrim.esm", "alias": 40 },
-          { "name": "Alias_Horse", "formKey": "068D73:Skyrim.esm", "alias": 31 },
-          { "name": "HorseCost", "formKey": "0000C9:WindhelmUsesUlfrics.esp", "alias": 65535 },
-          { "name": "PlayerFaction", "formKey": "000DB1:Skyrim.esm", "alias": 65535 }
+          {
+            "name": "Gold001",
+            "formKey": "DE5024:Update.esm",
+            "alias": 65535
+          },
+          {
+            "name": "PlayerHorseFaction",
+            "formKey": "068D78:Skyrim.esm",
+            "alias": 65535
+          },
+          {
+            "name": "PlayersHorse",
+            "formKey": "068D73:Skyrim.esm",
+            "alias": 40
+          },
+          {
+            "name": "Alias_Horse",
+            "formKey": "068D73:Skyrim.esm",
+            "alias": 31
+          },
+          {
+            "name": "HorseCost",
+            "formKey": "0000C9:WindhelmUsesUlfrics.esp",
+            "alias": 65535
+          },
+          {
+            "name": "PlayerFaction",
+            "formKey": "000DB1:Skyrim.esm",
+            "alias": 65535
+          }
         ]
       },
       {
@@ -483,59 +1455,187 @@
         "vmadObjectFormat": 2,
         "vmadCurrencyProperty": "Gold001",
         "vmadProperties": [
-          { "name": "Gold001", "formKey": "DE5024:Update.esm", "alias": 65535 },
-          { "name": "PlayerHorseFaction", "formKey": "068D78:Skyrim.esm", "alias": 65535 },
-          { "name": "PlayersHorse", "formKey": "068D73:Skyrim.esm", "alias": 40 },
-          { "name": "Alias_Horse", "formKey": "068D73:Skyrim.esm", "alias": 31 },
-          { "name": "HorseCost", "formKey": "0000C9:WindhelmUsesUlfrics.esp", "alias": 65535 },
-          { "name": "PlayerFaction", "formKey": "000DB1:Skyrim.esm", "alias": 65535 }
+          {
+            "name": "Gold001",
+            "formKey": "DE5024:Update.esm",
+            "alias": 65535
+          },
+          {
+            "name": "PlayerHorseFaction",
+            "formKey": "068D78:Skyrim.esm",
+            "alias": 65535
+          },
+          {
+            "name": "PlayersHorse",
+            "formKey": "068D73:Skyrim.esm",
+            "alias": 40
+          },
+          {
+            "name": "Alias_Horse",
+            "formKey": "068D73:Skyrim.esm",
+            "alias": 31
+          },
+          {
+            "name": "HorseCost",
+            "formKey": "0000C9:WindhelmUsesUlfrics.esp",
+            "alias": 65535
+          },
+          {
+            "name": "PlayerFaction",
+            "formKey": "000DB1:Skyrim.esm",
+            "alias": 65535
+          }
         ]
       }
     ],
-    "drakrPurseAdapters": {
-      "canonicalCoin": "DE5015:Update.esm",
-      "changeLists": [
+    "regionalPurseGraph": {
+      "ownedFormIdBase": "000990",
+      "families": [
         {
-          "sourceFormKey": "000D66:C.O.I.N.esp",
-          "sourceEditorId": "DES_Drakr_GoldChange",
-          "formId": "000801",
-          "editorId": "Ensrick_DrakrCurrencyChange"
+          "familyId": "drakr_dragon",
+          "sourcePlugin": "C.O.I.N.esp",
+          "primaryCoinFormKey": "DE5012:Update.esm",
+          "primaryChange": {
+            "formKey": "000D66:C.O.I.N.esp", "editorId": "DES_Drakr_GoldChange",
+            "sourceCoinFormKey": "DE5012:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true,
+            "counts": [1, 1, 2, 2]
+          },
+          "secondaryChange": {
+            "formKey": "000D67:C.O.I.N.esp", "editorId": "DES_Drakr_GoldChange25",
+            "sourceCoinFormKey": "DE5012:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": false, "calculateForEachItemInCount": true,
+            "counts": [1, 1, 2, 2]
+          },
+          "purses": [
+            { "formKey": "000800:C.O.I.N.esp", "editorId": "DES_Drakr_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000801:C.O.I.N.esp", "editorId": "DES_Drakr_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000802:C.O.I.N.esp", "editorId": "DES_Drakr_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
         },
         {
-          "sourceFormKey": "000D67:C.O.I.N.esp",
-          "sourceEditorId": "DES_Drakr_GoldChange25",
-          "formId": "000802",
-          "editorId": "Ensrick_DrakrCurrencyChange25"
+          "familyId": "nchuark", "sourcePlugin": "C.O.I.N.esp", "primaryCoinFormKey": "DE5022:Update.esm",
+          "primaryChange": {
+            "formKey": "000808:C.O.I.N.esp", "editorId": "DES_Nchuark_GoldChange", "sourceCoinFormKey": "DE5022:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 1, 2, 2]
+          },
+          "secondaryChange": {
+            "formKey": "000809:C.O.I.N.esp", "editorId": "DES_Nchuark_GoldChange25", "sourceCoinFormKey": "DE5022:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 1, 2, 2]
+          },
+          "purses": [
+            { "formKey": "00080B:C.O.I.N.esp", "editorId": "DES_Nchuark_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "00080C:C.O.I.N.esp", "editorId": "DES_Nchuark_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "00080A:C.O.I.N.esp", "editorId": "DES_Nchuark_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
+        },
+        {
+          "familyId": "mallari", "sourcePlugin": "C.O.I.N.esp", "primaryCoinFormKey": "DE5020:Update.esm",
+          "primaryChange": {
+            "formKey": "000860:C.O.I.N.esp", "editorId": "DES_Mallari_GoldChange25", "sourceCoinFormKey": "DE5020:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 1, 2, 2]
+          },
+          "secondaryChange": {
+            "formKey": "00093C:C.O.I.N.esp", "editorId": "DES_Mallari_GoldChange", "sourceCoinFormKey": "DE5020:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 1, 2, 2]
+          },
+          "purses": [
+            { "formKey": "000937:C.O.I.N.esp", "editorId": "DES_Mallari_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000938:C.O.I.N.esp", "editorId": "DES_Mallari_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000939:C.O.I.N.esp", "editorId": "DES_Mallari_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
+        },
+        {
+          "familyId": "mala", "sourcePlugin": "C.O.I.N.esp", "primaryCoinFormKey": "DE5019:Update.esm",
+          "primaryChange": {
+            "formKey": "000943:C.O.I.N.esp", "editorId": "DES_Mala_GoldChange", "sourceCoinFormKey": "DE5019:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          },
+          "secondaryChange": {
+            "formKey": "000944:C.O.I.N.esp", "editorId": "DES_Mala_GoldChange25", "sourceCoinFormKey": "DE5019:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 1, 2, 2]
+          },
+          "purses": [
+            { "formKey": "000940:C.O.I.N.esp", "editorId": "DES_Mala_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000941:C.O.I.N.esp", "editorId": "DES_Mala_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000942:C.O.I.N.esp", "editorId": "DES_Mala_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
+        },
+        {
+          "familyId": "gibber_mania", "sourcePlugin": "C.O.I.N.esp", "primaryCoinFormKey": "DE5018:Update.esm",
+          "primaryChange": {
+            "formKey": "000C64:C.O.I.N.esp", "editorId": "DES_Gibber_GoldChange", "sourceCoinFormKey": "DE5018:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          },
+          "secondaryChange": {
+            "formKey": "000C65:C.O.I.N.esp", "editorId": "DES_Gibber_GoldChange25", "sourceCoinFormKey": "DE5018:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 1, 2, 2]
+          },
+          "purses": [
+            { "formKey": "000C61:C.O.I.N.esp", "editorId": "DES_Gibber_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000C62:C.O.I.N.esp", "editorId": "DES_Gibber_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000C63:C.O.I.N.esp", "editorId": "DES_Gibber_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
+        },
+        {
+          "familyId": "dram", "sourcePlugin": "M.I.N.T.esp", "primaryCoinFormKey": "DE5029:Update.esm",
+          "primaryChange": {
+            "formKey": "000F25:M.I.N.T.esp", "editorId": "DES_Dram_LootGoldChange", "sourceCoinFormKey": "DE5029:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [3, 6, 6, 7, 8, 9, 9, 12, 15]
+          },
+          "secondaryChange": {
+            "formKey": "000F26:M.I.N.T.esp", "editorId": "DES_Dram_LootGoldChange25", "sourceCoinFormKey": "DE5029:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [3, 6, 9, 12, 15, 18, 21, 24, 27]
+          },
+          "purses": [
+            { "formKey": "000F2B:M.I.N.T.esp", "editorId": "DES_Dram_CoinPurseGoldSmall", "baseCoinCount": 15, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000F2C:M.I.N.T.esp", "editorId": "DES_Dram_CoinPurseGoldMedium", "baseCoinCount": 30, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000F2D:M.I.N.T.esp", "editorId": "DES_Dram_CoinPurseGoldLarge", "baseCoinCount": 60, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
+        },
+        {
+          "familyId": "sancar", "sourcePlugin": "M.I.N.T.esp", "primaryCoinFormKey": "DE5023:Update.esm",
+          "primaryChange": {
+            "formKey": "000F27:M.I.N.T.esp", "editorId": "DES_Sancar_LootGoldChange", "sourceCoinFormKey": "DE5023:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          },
+          "secondaryChange": {
+            "formKey": "000F28:M.I.N.T.esp", "editorId": "DES_Sancar_LootGoldChange25", "sourceCoinFormKey": "DE5023:Update.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          },
+          "purses": [
+            { "formKey": "000F2E:M.I.N.T.esp", "editorId": "DES_Sancar_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000F2F:M.I.N.T.esp", "editorId": "DES_Sancar_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000F30:M.I.N.T.esp", "editorId": "DES_Sancar_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
+        },
+        {
+          "familyId": "ulfric", "sourcePlugin": "M.I.N.T.esp", "primaryCoinFormKey": "DE5024:Update.esm",
+          "primaryChange": {
+            "formKey": "000F29:M.I.N.T.esp", "editorId": "DES_Ulfric_LootGoldChange", "sourceCoinFormKey": "DE5024:Update.esm", "chanceNonePercent": 10,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          },
+          "secondaryChange": {
+            "formKey": "000F2A:M.I.N.T.esp", "editorId": "DES_Ulfric_LootGoldChange25", "sourceCoinFormKey": "00000F:Skyrim.esm", "chanceNonePercent": 75,
+            "calculateFromAllLevelsLessThanOrEqualPlayer": true, "calculateForEachItemInCount": true, "counts": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          },
+          "purses": [
+            { "formKey": "000F31:M.I.N.T.esp", "editorId": "DES_Ulfric_CoinPurseGoldSmall", "baseCoinCount": 5, "primaryChangeRolls": 1, "secondaryChangeRolls": 1 },
+            { "formKey": "000F32:M.I.N.T.esp", "editorId": "DES_Ulfric_CoinPurseGoldMedium", "baseCoinCount": 10, "primaryChangeRolls": 2, "secondaryChangeRolls": 1 },
+            { "formKey": "000F33:M.I.N.T.esp", "editorId": "DES_Ulfric_CoinPurseGoldLarge", "baseCoinCount": 20, "primaryChangeRolls": 3, "secondaryChangeRolls": 1 }
+          ]
         }
-      ],
-      "purses": [
-        {
-          "formKey": "000800:C.O.I.N.esp",
-          "editorId": "DES_Drakr_CoinPurseGoldSmall",
-          "entries": [
-            { "sourceFormKey": "DE5012:Update.esm", "targetFormKey": "$canonical", "count": 5 },
-            { "sourceFormKey": "000D66:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 },
-            { "sourceFormKey": "000D67:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 }
-          ]
-        },
-        {
-          "formKey": "000801:C.O.I.N.esp",
-          "editorId": "DES_Drakr_CoinPurseGoldMedium",
-          "entries": [
-            { "sourceFormKey": "DE5012:Update.esm", "targetFormKey": "$canonical", "count": 10 },
-            { "sourceFormKey": "000D66:C.O.I.N.esp", "targetFormKey": "$owned", "count": 2 },
-            { "sourceFormKey": "000D67:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 }
-          ]
-        },
-        {
-          "formKey": "000802:C.O.I.N.esp",
-          "editorId": "DES_Drakr_CoinPurseGoldLarge",
-          "entries": [
-            { "sourceFormKey": "DE5012:Update.esm", "targetFormKey": "$canonical", "count": 20 },
-            { "sourceFormKey": "000D66:C.O.I.N.esp", "targetFormKey": "$owned", "count": 3 },
-            { "sourceFormKey": "000D67:C.O.I.N.esp", "targetFormKey": "$owned", "count": 1 }
-          ]
-        }
+      ]
+    },
+    "regionalPurseCompanion": {
+      "outputPlugin": "Ensrick Currency Regional Purses.esp",
+      "terminalFormIdBase": "000820",
+      "families": [
+        { "familyId": "mede", "floraFormIdBase": "000800", "budgetFormIdBase": "000810" },
+        { "familyId": "oshka", "floraFormIdBase": "000803", "budgetFormIdBase": "000813" },
+        { "familyId": "ohzer", "floraFormIdBase": "000806", "budgetFormIdBase": "000816" },
+        { "familyId": "varken", "floraFormIdBase": "000809", "budgetFormIdBase": "000819" },
+        { "familyId": "bruma_ayleid_mala", "floraFormIdBase": "00080C", "budgetFormIdBase": "00081C" }
       ]
     },
     "drakrPile": {
@@ -544,7 +1644,7 @@
       "script": "DLC2GoldPileScript",
       "property": "Gold001",
       "sourceFormKey": "DE5012:Update.esm",
-      "targetFormKey": "DE5015:Update.esm"
+      "targetFormKey": "DE5012:Update.esm"
     },
     "ancientExchangeWorkbench": "000801:SL99Exchanger.esp",
     "ancientExchangeRecipes": [
@@ -552,64 +1652,64 @@
         "formId": "000804",
         "editorId": "Ensrick_ExchangeDrakrDragonToSeptims",
         "inputFormKey": "DE5012:Update.esm",
-        "inputCount": 20,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
-        "outputCount": 3,
-        "purpose": "coin-default-rate"
+        "outputCount": 1,
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "000805",
         "editorId": "Ensrick_ExchangeDrakrMothToSeptims",
         "inputFormKey": "DE5013:Update.esm",
-        "inputCount": 20,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
-        "outputCount": 3,
-        "purpose": "coin-default-rate"
+        "outputCount": 1,
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "000806",
         "editorId": "Ensrick_ExchangeDrakrOwlToSeptims",
         "inputFormKey": "DE5014:Update.esm",
-        "inputCount": 20,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
-        "outputCount": 3,
-        "purpose": "coin-default-rate"
+        "outputCount": 1,
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "000808",
         "editorId": "Ensrick_ExchangeMalaToSeptims",
         "inputFormKey": "DE5019:Update.esm",
-        "inputCount": 5,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
-        "outputCount": 2,
-        "purpose": "coin-default-rate"
+        "outputCount": 1,
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "000809",
         "editorId": "Ensrick_ExchangeMallariToSeptims",
         "inputFormKey": "DE5020:Update.esm",
-        "inputCount": 5,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
-        "outputCount": 3,
-        "purpose": "coin-default-rate"
+        "outputCount": 1,
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "00080A",
         "editorId": "Ensrick_ExchangeNchuarkToSeptims",
         "inputFormKey": "DE5022:Update.esm",
-        "inputCount": 4,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
         "outputCount": 1,
-        "purpose": "coin-default-rate"
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "00080B",
         "editorId": "Ensrick_ExchangeGibberManiaToSeptims",
         "inputFormKey": "DE5018:Update.esm",
-        "inputCount": 5,
+        "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
-        "outputCount": 8,
-        "purpose": "coin-default-rate"
+        "outputCount": 1,
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "00080C",
@@ -618,7 +1718,7 @@
         "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
         "outputCount": 1,
-        "purpose": "coin-default-rate"
+        "purpose": "tier-value-parity"
       },
       {
         "formId": "00080D",
@@ -627,45 +1727,144 @@
         "inputCount": 1,
         "outputFormKey": "00000F:Skyrim.esm",
         "outputCount": 1,
-        "purpose": "effective-mint-core-rate"
+        "purpose": "tier-value-parity"
       }
     ]
   },
   "disabledCurrencyToIngotRecipes": [
-    { "formKey": "000800:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeSancarToIngotGold" },
-    { "formKey": "000803:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrDragonToIngotSilver" },
-    { "formKey": "000806:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrMothToIngotSilver" },
-    { "formKey": "000809:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrNordToIngotSilver" },
-    { "formKey": "00080C:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrOwlToIngotSilver" },
-    { "formKey": "00080F:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeDrakrWhaleToIngotSilver" },
-    { "formKey": "000812:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeMalaToIngotMalachite" },
-    { "formKey": "000815:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeMallariToIngotSilver" },
-    { "formKey": "000818:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeMedeToIngotSilver" },
-    { "formKey": "00081B:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeNchuarkToIngotDwemer" },
-    { "formKey": "00081E:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeUlfricToIngotQuickSilver" },
-    { "formKey": "000821:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeGibberToIngotEbony" },
-    { "formKey": "000824:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeGibberFrontToIngotEbony" },
-    { "formKey": "000836:exchangeCurrency_patch_COIN.esp", "editorId": "EC_RecipeDramToIngotCopper" },
-    { "formKey": "000877:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeOshkaToIngotOrichalcum" },
-    { "formKey": "000878:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeOhzerToIngotEbony" },
-    { "formKey": "000879:exchangeCurrency_patch_COIN.esp", "editorId": "EC_COIN_RecipeVarkenToIngotEbony" }
+    {
+      "formKey": "000800:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeSancarToIngotGold"
+    },
+    {
+      "formKey": "000803:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeDrakrDragonToIngotSilver"
+    },
+    {
+      "formKey": "000806:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeDrakrMothToIngotSilver"
+    },
+    {
+      "formKey": "000809:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeDrakrNordToIngotSilver"
+    },
+    {
+      "formKey": "00080C:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeDrakrOwlToIngotSilver"
+    },
+    {
+      "formKey": "00080F:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeDrakrWhaleToIngotSilver"
+    },
+    {
+      "formKey": "000812:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeMalaToIngotMalachite"
+    },
+    {
+      "formKey": "000815:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeMallariToIngotSilver"
+    },
+    {
+      "formKey": "000818:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeMedeToIngotSilver"
+    },
+    {
+      "formKey": "00081B:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeNchuarkToIngotDwemer"
+    },
+    {
+      "formKey": "00081E:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeUlfricToIngotQuickSilver"
+    },
+    {
+      "formKey": "000821:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeGibberToIngotEbony"
+    },
+    {
+      "formKey": "000824:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeGibberFrontToIngotEbony"
+    },
+    {
+      "formKey": "000836:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_RecipeDramToIngotCopper"
+    },
+    {
+      "formKey": "000877:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeOshkaToIngotOrichalcum"
+    },
+    {
+      "formKey": "000878:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeOhzerToIngotEbony"
+    },
+    {
+      "formKey": "000879:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_COIN_RecipeVarkenToIngotEbony"
+    }
   ],
   "disabledModernBankRecipes": [
-    { "formKey": "00082D:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeUlfrictoGoldNoPerk" },
-    { "formKey": "00082E:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeUlfrictoGoldPerk" },
-    { "formKey": "00082F:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeMedetoGoldNoPerk" },
-    { "formKey": "000830:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeMedetoGoldPerk" },
-    { "formKey": "000834:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeDramtoGoldPerk" },
-    { "formKey": "000835:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeDramtoGoldNoPerk" },
-    { "formKey": "00084B:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToMedeNoPerk" },
-    { "formKey": "00084C:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToMedePerk" },
-    { "formKey": "00084D:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToDramPerk" },
-    { "formKey": "00084F:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToUlfricNoPerk" },
-    { "formKey": "000853:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToDramNoPerk" },
-    { "formKey": "000854:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToUlfricPerk" },
-    { "formKey": "000873:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToOshkaPerk" },
-    { "formKey": "000874:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeGoldToOshkaNoPerk" },
-    { "formKey": "000875:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeOshkatoGoldPerk" },
-    { "formKey": "000876:exchangeCurrency_patch_COIN.esp", "editorId": "EC_ExchangeOshkatoGoldNoPerk" }
+    {
+      "formKey": "00082D:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeUlfrictoGoldNoPerk"
+    },
+    {
+      "formKey": "00082E:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeUlfrictoGoldPerk"
+    },
+    {
+      "formKey": "00082F:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeMedetoGoldNoPerk"
+    },
+    {
+      "formKey": "000830:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeMedetoGoldPerk"
+    },
+    {
+      "formKey": "000834:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeDramtoGoldPerk"
+    },
+    {
+      "formKey": "000835:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeDramtoGoldNoPerk"
+    },
+    {
+      "formKey": "00084B:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToMedeNoPerk"
+    },
+    {
+      "formKey": "00084C:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToMedePerk"
+    },
+    {
+      "formKey": "00084D:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToDramPerk"
+    },
+    {
+      "formKey": "00084F:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToUlfricNoPerk"
+    },
+    {
+      "formKey": "000853:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToDramNoPerk"
+    },
+    {
+      "formKey": "000854:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToUlfricPerk"
+    },
+    {
+      "formKey": "000873:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToOshkaPerk"
+    },
+    {
+      "formKey": "000874:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeGoldToOshkaNoPerk"
+    },
+    {
+      "formKey": "000875:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeOshkatoGoldPerk"
+    },
+    {
+      "formKey": "000876:exchangeCurrency_patch_COIN.esp",
+      "editorId": "EC_ExchangeOshkatoGoldNoPerk"
+    }
   ]
 }

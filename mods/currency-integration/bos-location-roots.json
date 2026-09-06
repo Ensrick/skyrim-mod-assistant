@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed-source-roots/runtime-unverified",
+  "sourceInventorySha256": "8625F2F3094F406EE552B27C506712B9EA3E7F51E5BB7AFE21D9CD9ED35B7B52",
+  "sourceScriptSha256": "BAA42E9FCBEDB51CFEF3BF0265B7997DE20893DC6F6CBD054C1D1FEA63D90DE9",
+  "runtimeConfigSha256": "B86CD8524553EE8FB3FB00CD9B231D62997F2E991DED1D3DC80FC4158A99FC21",
+  "inspectedPluginCount": 349,
+  "inspectedLocationCount": 1639,
+  "routeLocations": {
+    "bruma-ayleid": [
+      "000F08:bsheartland.esm",
+      "000F74:bsheartland.esm",
+      "000F78:bsheartland.esm"
+    ],
+    "ayleid": [
+      "015889:ccbgssse067-daedinv.esm"
+    ],
+    "falmer": [
+      "00A87C:dawnguard.esm",
+      "0162AC:dawnguard.esm"
+    ],
+    "root-cave": [
+      "0010CF:ccbgssse025-advdsgs.esm"
+    ],
+    "nordic-ruin": [
+      "000C82:ccasvsse001-almsivi.esm",
+      "003CFD:dawnguard.esm",
+      "004EE8:dawnguard.esm",
+      "006C48:ccbgssse016-umbra.esm",
+      "00E53B:wyrmstooth.esp",
+      "01429A:dragonborn.esm",
+      "0142A8:dragonborn.esm",
+      "0142B6:dragonborn.esm",
+      "0142BA:dragonborn.esm",
+      "0142BB:dragonborn.esm",
+      "0142BC:dragonborn.esm",
+      "018EE3:skyrim.esm",
+      "018EE9:skyrim.esm",
+      "018EED:skyrim.esm",
+      "019161:skyrim.esm",
+      "019173:skyrim.esm",
+      "019179:skyrim.esm",
+      "01917A:skyrim.esm",
+      "019188:skyrim.esm",
+      "019191:skyrim.esm",
+      "019195:skyrim.esm",
+      "019260:skyrim.esm",
+      "019261:skyrim.esm",
+      "019262:skyrim.esm",
+      "019265:skyrim.esm",
+      "01928C:skyrim.esm",
+      "01928F:skyrim.esm",
+      "019290:skyrim.esm",
+      "019293:skyrim.esm",
+      "019299:skyrim.esm",
+      "0192AA:skyrim.esm",
+      "0192AB:skyrim.esm",
+      "0192AF:skyrim.esm",
+      "0192B8:skyrim.esm",
+      "0192BF:skyrim.esm",
+      "0192C2:skyrim.esm",
+      "0192C3:skyrim.esm",
+      "0192C8:skyrim.esm",
+      "0192C9:skyrim.esm",
+      "029926:arnima.esm",
+      "033DA0:skyrim.esm",
+      "0350BC:skyrim.esm",
+      "03A07F:dragonborn.esm",
+      "04B679:skyrim.esm",
+      "06CCC6:skyrim.esm",
+      "079F17:bsheartland.esm",
+      "07EE10:arnima.esm",
+      "0998BE:skyrim.esm",
+      "0A0E30:skyrim.esm",
+      "0EAA62:skyrim.esm",
+      "0EF0A2:skyrim.esm",
+      "0FD685:skyrim.esm",
+      "486524:wyrmstooth.esp",
+      "4D8B1A:wyrmstooth.esp"
+    ],
+    "dwemer-ruin": [
+      "000A3A:ccafdsse001-dwesanctuary.esm",
+      "003901:cctwbsse001-puzzledungeon.esm",
+      "004D6D:dawnguard.esm",
+      "004D6E:dawnguard.esm",
+      "005826:dawnguard.esm",
+      "00E3F4:gray fox cowl.esm",
+      "0142A0:dragonborn.esm",
+      "0142A2:dragonborn.esm",
+      "0142B4:dragonborn.esm",
+      "018EE1:skyrim.esm",
+      "018EE5:skyrim.esm",
+      "018EE8:skyrim.esm",
+      "019152:skyrim.esm",
+      "01919D:skyrim.esm",
+      "019280:skyrim.esm",
+      "019281:skyrim.esm",
+      "019283:skyrim.esm",
+      "01DACC:gray fox cowl.esm",
+      "0233EE:skyrim.esm",
+      "070CF1:arnima.esm",
+      "090576:skyrim.esm",
+      "0B2391:skyrim.esm",
+      "0DF724:hlioremi.esp",
+      "10FE41:skyrim.esm",
+      "10FE42:skyrim.esm",
+      "10FE46:skyrim.esm",
+      "1C9AC7:wyrmstooth.esp"
+    ],
+    "drakr-region": [
+      "014298:dragonborn.esm",
+      "01429A:dragonborn.esm",
+      "0142B6:dragonborn.esm",
+      "0142BA:dragonborn.esm",
+      "0142BB:dragonborn.esm",
+      "0142BC:dragonborn.esm",
+      "0142CB:dragonborn.esm",
+      "0143BA:dragonborn.esm",
+      "0143BB:dragonborn.esm",
+      "017BAD:dragonborn.esm",
+      "0247C6:dragonborn.esm",
+      "03A07F:dragonborn.esm",
+      "03A42F:dragonborn.esm"
+    ],
+    "sancar-dominion": [
+      "00844E:cutting room floor.esp",
+      "018C92:skyrim.esm",
+      "019285:skyrim.esm"
+    ],
+    "mede-region": [
+      "000F55:bsheartland.esm",
+      "000F7D:bsheartland.esm",
+      "06E790:bsheartland.esm",
+      "0AA0F6:bsheartland.esm",
+      "0DB0E3:bsheartland.esm",
+      "6036AD:bsassets.esm"
+    ],
+    "ulfric-region": [
+      "018A50:skyrim.esm",
+      "018A51:skyrim.esm",
+      "018A57:skyrim.esm",
+      "01926B:skyrim.esm",
+      "01926D:skyrim.esm",
+      "01926F:skyrim.esm",
+      "019272:skyrim.esm",
+      "019274:skyrim.esm",
+      "019276:skyrim.esm",
+      "019278:skyrim.esm",
+      "01927A:skyrim.esm"
+    ],
+    "dram-region": [
+      "014296:dragonborn.esm",
+      "01429C:dragonborn.esm",
+      "01429E:dragonborn.esm",
+      "0142A6:dragonborn.esm",
+      "0142AA:dragonborn.esm",
+      "0142BB:dragonborn.esm",
+      "0142C0:dragonborn.esm",
+      "0142C1:dragonborn.esm",
+      "0142C2:dragonborn.esm",
+      "0142C3:dragonborn.esm",
+      "0142C4:dragonborn.esm",
+      "0142C7:dragonborn.esm",
+      "0142C9:dragonborn.esm",
+      "0142CA:dragonborn.esm",
+      "0142DA:dragonborn.esm",
+      "0142DE:dragonborn.esm",
+      "0142DF:dragonborn.esm",
+      "0143B9:dragonborn.esm",
+      "0143BC:dragonborn.esm",
+      "019D2B:dragonborn.esm",
+      "01FF28:dragonborn.esm",
+      "0296DA:dragonborn.esm",
+      "032892:dragonborn.esm",
+      "035BF3:dragonborn.esm",
+      "039F98:dragonborn.esm"
+    ],
+    "oshka-region": [
+      "019171:skyrim.esm",
+      "019263:skyrim.esm",
+      "01927C:skyrim.esm",
+      "019282:skyrim.esm"
+    ],
+    "ohzer-region": [
+      "016E2B:dragonborn.esm"
+    ],
+    "varken-deadlands": [
+      "033F39:ccbgssse067-daedinv.esm"
+    ]
+  },
+  "originalRootCounts": [
+    {
+      "rule": "bruma-ayleid",
+      "count": 3
+    },
+    {
+      "rule": "ayleid",
+      "count": 1
+    },
+    {
+      "rule": "falmer",
+      "count": 5
+    },
+    {
+      "rule": "root-cave",
+      "count": 1
+    },
+    {
+      "rule": "nordic-ruin",
+      "count": 54
+    },
+    {
+      "rule": "dwemer-ruin",
+      "count": 30
+    },
+    {
+      "rule": "drakr-region",
+      "count": 22
+    },
+    {
+      "rule": "sancar-dominion",
+      "count": 3
+    },
+    {
+      "rule": "mede-region",
+      "count": 312
+    },
+    {
+      "rule": "ulfric-region",
+      "count": 11
+    },
+    {
+      "rule": "dram-region",
+      "count": 43
+    },
+    {
+      "rule": "oshka-region",
+      "count": 6
+    },
+    {
+      "rule": "ohzer-region",
+      "count": 10
+    },
+    {
+      "rule": "varken-deadlands",
+      "count": 1
+    }
+  ],
+  "requiredKidAssignments": [
+    {
+      "ruleId": "falmer",
+      "keyword": "DE5038:update.esm",
+      "location": {
+        "formKey": "00A87C:dawnguard.esm",
+        "type": "LCTN",
+        "editorId": "DLC1FalmerValleyLocation",
+        "keywords": [],
+        "parent": "0130FF:skyrim.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "Dawnguard.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "falmer",
+      "keyword": "DE5038:update.esm",
+      "location": {
+        "formKey": "0162AC:dawnguard.esm",
+        "type": "LCTN",
+        "editorId": "DLC1DarkfallPassageLocation",
+        "keywords": [],
+        "parent": "0130FF:skyrim.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "Dawnguard.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "falmer",
+      "keyword": "DE5038:update.esm",
+      "location": {
+        "formKey": "0162B0:dawnguard.esm",
+        "type": "LCTN",
+        "editorId": "DLC1zFalmerValley01Location",
+        "keywords": [],
+        "parent": "00A87C:dawnguard.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "Dawnguard.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "falmer",
+      "keyword": "DE5038:update.esm",
+      "location": {
+        "formKey": "0162B2:dawnguard.esm",
+        "type": "LCTN",
+        "editorId": "DLC1zFalmerValley02Location",
+        "keywords": [],
+        "parent": "00A87C:dawnguard.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "Dawnguard.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "falmer",
+      "keyword": "DE5038:update.esm",
+      "location": {
+        "formKey": "0162B4:dawnguard.esm",
+        "type": "LCTN",
+        "editorId": "DLC1zFalmerValley03Location",
+        "keywords": [],
+        "parent": "00A87C:dawnguard.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "Dawnguard.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "root-cave",
+      "keyword": "DE5040:update.esm",
+      "location": {
+        "formKey": "0010CF:ccbgssse025-advdsgs.esm",
+        "type": "LCTN",
+        "editorId": "ccBGSSSE025_RootDungeonLocation",
+        "keywords": [
+          "0F5E80:skyrim.esm",
+          "0130DB:skyrim.esm",
+          "0130EF:skyrim.esm"
+        ],
+        "parent": "018A5A:skyrim.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "ccbgssse025-advdsgs.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "dwemer-ruin",
+      "keyword": "000B91:exchangecurrency_enhanced.esp",
+      "location": {
+        "formKey": "018EE8:skyrim.esm",
+        "type": "LCTN",
+        "editorId": "BlackreachLocation",
+        "keywords": [
+          "0130EF:skyrim.esm",
+          "0130DB:skyrim.esm",
+          "0130E4:skyrim.esm"
+        ],
+        "parent": "01676B:skyrim.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "Unofficial Skyrim Modders Patch.esp"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "sancar-dominion",
+      "keyword": "000803:ensrick currency integration patch.esp",
+      "location": {
+        "formKey": "00844E:cutting room floor.esp",
+        "type": "LCTN",
+        "editorId": "CRFSolitudeThalmorHQLocation",
+        "keywords": [
+          "0130DC:skyrim.esm",
+          "01CD57:skyrim.esm"
+        ],
+        "parent": "018A5A:skyrim.esm",
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "cutting room floor.esp"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    },
+    {
+      "ruleId": "varken-deadlands",
+      "keyword": "000BB6:exchangecurrency_enhanced.esp",
+      "location": {
+        "formKey": "033F39:ccbgssse067-daedinv.esm",
+        "type": "LCTN",
+        "editorId": "ccBGSSSE067_DeadlandsLocation",
+        "keywords": [],
+        "parent": null,
+        "location": null,
+        "deleted": false,
+        "winningPlugin": "ccbgssse067-daedinv.esm"
+      },
+      "status": "root-approved exact KID target; this inventory does not install it"
+    }
+  ],
+  "notes": [
+    "Explicit location roots preserve native ancestor-location routing in BOS without retagging every child location.",
+    "Derived from inspected installed records and currency KID rules. Review/regenerate when location parents, currency tags, CRF headquarters XLCN, or selected new-land plugins change.",
+    "Wyrmstooth and Beyond Reach use Septim fallback only where no authored cultural-site route matches; their inspected Nordic/Dwemer sites are covered.",
+    "Required KID rows below are now supplied by the owned currency package, never vendor edits.",
+    "Asset appearance and engine location resolution remain fresh-game acceptance items."
+  ]
+}
