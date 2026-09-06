@@ -127,9 +127,16 @@ exactly one native ECDN/ECMK v2 checkpoint with the matching ledger-configuratio
 fingerprint. Missing, old, duplicate, malformed and changed-configuration
 checkpoints are refused before launch. A menu-only observation remains allowed
 and is never a loaded-save PASS. General preflight prints the fresh-character
-restriction rather than implying that any existing save is safe. Ten synthetic
+restriction rather than implying that any existing save is safe. Thirteen synthetic
 test groups pass, including every truncation boundary, pending pickup/spending/
 drop checkpoints and winner-config drift. No real save is modified by this gate.
+
+The gate also requires the companion ESP to be reachable and active, and pins
+the winning DLL, JSON and ESP to the trusted repository release receipt. It
+rejects missing, disabled, stale and overridden companions, a replaced DLL,
+and missing or malformed receipts. A mod-local receipt cannot authorize itself.
+This closes the case where a valid co-save would otherwise pass while runtime
+initialization failed because its companion records were unavailable.
 
 This tool cannot prevent a person from manually selecting an incompatible save
 from Skyrim's own menu. Do not do so with the new package: retain the old package
@@ -141,3 +148,34 @@ training, bank exchanges, zero funds, and save/reload all need real runtime
 acceptance. Native unit tests and static record audits are necessary but do not
 replace it. Regional items need explicit Copper/Silver/Gold names as well as
 distinct visuals so their identity does not depend on color perception.
+
+## Final integration findings
+
+The two Windhelm horse INFOs require **both** the GetItemCount condition and
+their VMAD `Gold001` property retargeted to backend `00000F:Skyrim.esm`.
+The actual vanilla `TIF__0009841D` and `TIF__00098422` handlers debit that
+property. Retargeting only the condition would allow a purchase without the
+correct debit. Preserve the five other property bindings, including horse
+alias IDs 40 and 31, the cost global and original fragments. The Dram cost-only
+shim must look up the exact `DES_UlfricWindhelmServicesQuest` EditorID, with
+the `Quest` suffix. Existing blank rental INFOs are not restored, and bounty
+responses retain vanilla `PlayerPayCrimeGold` behavior.
+
+The native actor gate must inspect effective/template data, not only the raw
+NPC base flags: vanilla leveled bandit and commoner wrappers have zero flags
+while inheriting BaseData. The reviewed implementation bounds template walks,
+rejects cycles and retains unique/essential/protected/vendor exclusions across
+the chain. Fresh-game admission conserves physical coins received before the
+asynchronous backend-selection callback instead of erasing them. Source
+rollback failure suspends accounting; stale generation callbacks are ignored.
+Ancient-source passthrough is distinct from the player's modern fallback so
+the CDF Drakr route is not silently changed into Septims.
+
+Root generated and independently repeated 18 SSE coin NIFs and 18 BC7 diffuse
+textures. All 36 hashes and sizes match across two clean builds; all mesh
+geometry and non-diffuse bindings are preserved. Mede/Dram/Ulfric diffuses are
+512 x 1024; other modern families are 1024 x 1024, with complete mip chains.
+Copper/Silver/Gold treatment preserves engraving and is supplemented by names
+and inventory icon colors. These are private derived assets, not permission
+to redistribute the vendor designs. Septim weights remain 0.06/0.07/0.13;
+regional source weights are retained, not newly certified as realistic.

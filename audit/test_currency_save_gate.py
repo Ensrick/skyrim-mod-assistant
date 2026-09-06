@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 from pathlib import Path
 import struct
@@ -84,6 +85,7 @@ class ProfileTests(unittest.TestCase):
         self.write(self.instance / 'profiles/Default/modlist.txt', '+Currency\n')
         self.mod = self.instance / 'mods/Currency'
         self.save = self.root / 'Save.ess'
+        self.receipt = self.root / 'reviewed-release.json'
         self.write(self.save, b'untouched')
 
     def tearDown(self):
@@ -97,9 +99,15 @@ class ProfileTests(unittest.TestCase):
     def adopt(self):
         self.write(self.mod / gate.DLL, b'dll')
         self.write(self.mod / gate.CONFIG, json.dumps(CONFIG))
+        self.write(self.mod / gate.PLUGIN, b'esp')
+        self.write(self.instance / 'profiles/Default/plugins.txt', '*' + gate.PLUGIN + '\n')
+        self.write(self.receipt, json.dumps({'schemaVersion': 1, 'version': '0.3.0', 'winningFiles': {
+            relative: hashlib.sha256((self.mod / relative).read_bytes()).hexdigest()
+            for relative in (gate.DLL, gate.CONFIG, gate.PLUGIN)}}))
 
     def check(self, path='default'):
-        return gate.check_save(self.instance, self.data, self.save if path == 'default' else path)
+        return gate.check_save(self.instance, self.data, self.save if path == 'default' else path,
+                               receipt_path=self.receipt)
 
     def test_legacy_profile_unaffected(self):
         self.assertEqual([], self.check())
@@ -123,6 +131,48 @@ class ProfileTests(unittest.TestCase):
         self.adopt()
         self.assertEqual([], self.check(None))
         (self.mod / gate.DLL).unlink()
+        self.assertTrue(self.check(None))
+
+    def test_missing_disabled_or_tampered_companion_refused(self):
+        for defect in ('missing', 'disabled', 'overridden', 'stale'):
+            with self.subTest(defect=defect):
+                self.adopt()
+                override = self.instance / 'overwrite' / gate.PLUGIN
+                if override.exists():
+                    override.unlink()
+                if defect == 'missing':
+                    (self.mod / gate.PLUGIN).unlink()
+                elif defect == 'disabled':
+                    self.write(self.instance / 'profiles/Default/plugins.txt', gate.PLUGIN + '\n')
+                elif defect == 'overridden':
+                    self.write(override, b'other esp')
+                else:
+                    self.write(self.mod / gate.PLUGIN, b'old esp')
+                self.assertTrue(self.check(None))
+
+    def test_replaced_dll_and_missing_or_malformed_receipt_refused(self):
+        for defect in ('dll', 'missing receipt', 'invalid hash', 'version', 'mod receipt'):
+            with self.subTest(defect=defect):
+                self.adopt()
+                if defect == 'dll':
+                    self.write(self.mod / gate.DLL, b'other dll')
+                elif defect in ('missing receipt', 'mod receipt'):
+                    if defect == 'mod receipt':
+                        self.write(self.mod / self.receipt.name, self.receipt.read_bytes())
+                    self.receipt.unlink()
+                else:
+                    receipt = json.loads(self.receipt.read_text())
+                    if defect == 'invalid hash':
+                        receipt['winningFiles'][gate.DLL] = 'x' * 64
+                    else:
+                        receipt['version'] = '0.2.6'
+                    self.write(self.receipt, json.dumps(receipt))
+                self.assertTrue(self.check(None))
+
+    def test_reviewed_esp_without_both_native_files_refused(self):
+        self.adopt()
+        (self.mod / gate.DLL).unlink()
+        (self.mod / gate.CONFIG).unlink()
         self.assertTrue(self.check(None))
 
 

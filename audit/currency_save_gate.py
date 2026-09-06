@@ -4,12 +4,15 @@ SKSE wrapper layout: pinned skse64 Serialization.cpp Header/PluginHeader/
 ChunkHeader. Currency payload: SaveMarkerPolicy.h ECMK v2. Passing proves a
 matching checkpoint, not gameplay correctness or complete save health.
 """
+import hashlib
 import json
 import struct
 from pathlib import Path
 
 DLL = 'SKSE/Plugins/EnsrickCurrencyDenominations.dll'
 CONFIG = 'SKSE/Plugins/EnsrickCurrencyDenominations.json'
+PLUGIN = 'Ensrick Currency Integration Patch.esp'
+RECEIPT = Path(__file__).resolve().parents[1] / 'records/source-builds/currency-integration-0.3.0.json'
 MAX_COSAVE = 256 * 1024 * 1024
 MAX_VALUE = 2**31 - 1
 MASK64 = 2**64 - 1
@@ -109,15 +112,39 @@ def read_checkpoint(raw, expected_fingerprint):
     return checkpoint
 
 
-def check_save(instance, game_data, save_path, profile='Default'):
+def check_save(instance, game_data, save_path, profile='Default', *, receipt_path=RECEIPT):
     """Return launch blockers only when the native package is reachable."""
     try:
         dll = winning_file(instance, game_data, DLL, profile)
         config_path = winning_file(instance, game_data, CONFIG, profile)
+        esp = winning_file(instance, game_data, PLUGIN, profile)
         if not dll and not config_path:
-            return []
-        if not dll or not config_path:
-            return ['native currency package is incomplete; DLL and configuration must be paired']
+            # Legacy profiles are unaffected, but the new reviewed ESP alone
+            # cannot be allowed to masquerade as a pre-native installation.
+            if not esp or not Path(receipt_path).is_file():
+                return []
+            receipt = json.loads(Path(receipt_path).read_text(encoding='utf-8-sig'))
+            expected = receipt['winningFiles'][PLUGIN]
+            if hashlib.sha256(esp.read_bytes()).hexdigest().lower() != expected.lower():
+                return []
+        if not dll or not config_path or not esp:
+            return ['native currency package is incomplete; DLL, configuration and companion ESP must be paired']
+        active = (Path(instance) / 'profiles' / profile / 'plugins.txt').read_text(encoding='utf-8-sig')
+        if PLUGIN.casefold() not in {row.strip()[1:].casefold() for row in active.splitlines()
+                                    if row.strip().startswith('*')}:
+            return ['native currency companion ESP is not active']
+        # This is the trusted repository release receipt, never a receipt
+        # supplied by a mod folder. Fail closed if it is missing or malformed.
+        receipt = json.loads(Path(receipt_path).read_text(encoding='utf-8-sig'))
+        if receipt['schemaVersion'] != 1 or receipt['version'] != '0.3.0':
+            raise ValueError('unsupported reviewed currency release receipt')
+        for relative, winner in ((DLL, dll), (CONFIG, config_path), (PLUGIN, esp)):
+            expected = receipt['winningFiles'][relative]
+            if (not isinstance(expected, str) or len(expected) != 64
+                    or any(c not in '0123456789abcdefABCDEF' for c in expected)):
+                raise ValueError('invalid reviewed currency winner hash')
+            if hashlib.sha256(winner.read_bytes()).hexdigest().lower() != expected.lower():
+                raise ValueError('winning currency file differs from reviewed release: ' + relative)
         if save_path is None:
             return []  # Menu-only launch, not permission to load an old save.
         save = Path(save_path)
