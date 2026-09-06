@@ -358,8 +358,47 @@ def validate_distribution_configs(config: dict[str, Any]) -> None:
     currency_bos_gate.check(config, actual, roots, generate_bos.PURSES)
 
 
+def validate_skypatcher_legacy_masks(sky: Path) -> None:
+    # SkyPatcher's file enumeration is not a certified ordering contract.
+    # Same-path MO2 overrides remove all competing physical writes, retaining
+    # the five original nonphysical ledger/display effects verbatim.
+    expected = {
+        'ECE_regionalCurrencies.ini': (
+            '; Owned same-path compatibility mask for Exchange Currency Enhanced.\n'
+            '; All eleven legacy regional coin edits are superseded by the complete-tier\n'
+            '; ModernDenominations configuration. No active rows: no file-order dependency.\n'
+        ),
+        'ECE_septims_100.ini': (
+            '; Owned same-path compatibility override for Exchange Currency Enhanced.\n'
+            '; Preserve the hidden ledger and four plural-display forms only. Physical\n'
+            '; Septim values and weights are owned solely by SeptimWeights, regardless of\n'
+            '; SkyPatcher file iteration order.\n'
+            'filterByMiscs= skyrim.esm|0xf:value=1:weight=0:fullName=~Septim~\n'
+            'filterByMiscs= exchangeCurrency_enhanced.esp|0xbd2:fullName=~Septims~\n'
+            'filterByMiscs= exchangeCurrency_enhanced.esp|0xbd0:fullName=~Copper Septims~\n'
+            'filterByMiscs= exchangeCurrency_enhanced.esp|0xbcf:fullName=~Silver Septims~\n'
+            'filterByMiscs= exchangeCurrency_enhanced.esp|0xbd1:fullName=~Gold Septims~\n'
+        ),
+    }
+    required = set(expected) | {
+        'zz_Ensrick_Currency_SeptimWeights.ini',
+        'zz_Ensrick_Currency_ModernDenominations.ini',
+        'zz_Ensrick_Currency_AncientWeights.ini',
+    }
+    require({path.relative_to(sky).as_posix() for path in sky.rglob('*.ini')} == required,
+            'SkyPatcher misc file set changed; an omitted mask or extra writer is unsafe')
+    for name, text in expected.items():
+        require((sky / name).read_bytes() == text.encode('utf-8'),
+                f'SkyPatcher exact same-path compatibility override changed: {name}')
+    ancient = (sky / 'zz_Ensrick_Currency_AncientWeights.ini').read_text(encoding='utf-8')
+    require(not any(line.strip() and not line.lstrip().startswith(';')
+                    for line in ancient.splitlines()),
+            'obsolete ancient weight file must remain an inert compatibility mask')
+
+
 def validate_ui_and_runtime_overrides(config: dict[str, Any]) -> None:
     sky = PACKAGE / "SKSE/Plugins/SkyPatcher/misc"
+    validate_skypatcher_legacy_masks(sky)
     septim = (sky / "zz_Ensrick_Currency_SeptimWeights.ini").read_text(encoding="utf-8")
     for needle in (
         "0xb6d:value=1:weight=0.06:fullName=~Copper Septim~",

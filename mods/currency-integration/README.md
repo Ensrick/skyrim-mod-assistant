@@ -122,6 +122,13 @@ lands remains an owner decision, not an invented assignment.
 
 ## Single-owner compatibility
 
+Two same-path SkyPatcher overrides remove the original ECE physical-coin edits:
+the regional file is inert, and the Septim file retains only the hidden ledger
+and four plural-display forms. Each physical coin consequently has exactly one
+owned value/name/weight writer, independent of directory iteration order. A `zz`
+filename is not treated as an ordering guarantee. Eight negative/positive mask
+regressions and the installed winning-file audit guard this boundary.
+
 The ESP removes the transaction attachments and start-enabled flag from exactly
 two ECE player-alias quests:
 

@@ -15,9 +15,21 @@
     "Ensrick Currency Regional Purses.esp": "873A1DD331270B0E76EBB28209F8D6D0378D05105CFAD3EABD4A98FA968A8B61"
   },
   "package": "Ensrick-Regional-Currency-Integration-0.4.0.zip",
-  "packageBytes": 33319850,
-  "packageFiles": 199,
-  "packageSha256": "1A403D0121A3672042A82F766DB54E70D58E2958F5D94367C3DB18C7E7628852",
+  "packageBytes": 33320658,
+  "packageFiles": 201,
+  "packageSha256": "AC738CCA9AD67ECFAC109B7A85D73C979985F8BBC3311A7015D165C3C4F8F86A",
+  "archiveOnlyRefresh": {
+    "reason": "Remove SkyPatcher file-iteration ordering dependency with two exact-path ECE compatibility overrides.",
+    "previousArchiveSha256": "1A403D0121A3672042A82F766DB54E70D58E2958F5D94367C3DB18C7E7628852",
+    "addedFiles": 2,
+    "changedExistingFiles": 0,
+    "removedFiles": 0,
+    "receiptSha256": "4B580F40E6BFE2920F8930D70AC03F9066DDDD12A75A2585A3A43582830A2432",
+    "twoArchivesIdentical": true,
+    "nativePluginsPapyrusAssetsRebuilt": false,
+    "regionalMaskSha256": "ABCDABB6DA16E12354B69B62C9E2CA29F0470BAB188B76D6181773798ED8DF25",
+    "septimMaskSha256": "D5A26D41EF4EE9D1A00C11FC8C189DF7A32E01BFF8FD922D1931C5C755DA60A0"
+  },
   "catalog": {
     "designs": 18,
     "canonicalPhysicalForms": 54,
@@ -97,9 +109,9 @@
       "maxDiffuseResolution": 1024,
       "fullMipBC7": true
     },
-    "pythonRegressionTests": 128,
+    "pythonRegressionTests": 136,
     "releaseValidator": "pass; actual policy/config/BOS/KID/CDF/I4/MISC/purse/source/license hashes bound",
-    "finalPackageReview": "Independent static GO: 199 archive entries match package exactly; no duplicate/case collision/unsafe path, private binary tracked, or credential value found. Local installation only; runtime unverified.",
+    "finalPackageReview": "Original 199-file independent static GO supplemented by exact 201-file archive-only review: two compatibility additions, no old payload changes. No public private assets or gameplay verification claimed.",
     "candidateFinalWinners": {
       "status": "PASS: substitution simulation, not installed",
       "plugins": 350,

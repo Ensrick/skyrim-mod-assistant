@@ -255,9 +255,9 @@
   ],
   "archive": {
     "fileName": "Ensrick-Regional-Currency-Integration-0.4.0.zip",
-    "files": 199,
-    "bytes": 33319850,
-    "sha256": "1A403D0121A3672042A82F766DB54E70D58E2958F5D94367C3DB18C7E7628852"
+    "files": 201,
+    "bytes": 33320658,
+    "sha256": "AC738CCA9AD67ECFAC109B7A85D73C979985F8BBC3311A7015D165C3C4F8F86A"
   },
   "gameplayAcceptance": "Build/static checks are necessary but not sufficient. New-game main-menu/save admission and the in-world currency matrix remain release gates. No save created under any prior currency architecture, including 0.3.0, is supported; those saves must fail closed. Runtime acceptance remains unverified."
 }
