@@ -18,6 +18,7 @@ import preflight_extra   # 2026-09-01 hardening: DLL depth, ledger gap, watched 
 import keep_coverage     # 2026-09-02: installed implies Keep (docs/CURATION_POLICY.md)
 import weapon_balance_gate  # #239: no stale or unaudited generated weapon output
 import cloak_exclusivity  # #240: reserved equipment slots must stay collision-free
+import window_focus_guard  # #149: one cursor owner and foreground-only input
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -376,6 +377,7 @@ def main():
     check_steam_overlay()
     preflight_extra.run_all(fails, warns)
     keep_coverage.run(fails, warns)
+    window_focus_guard.run(fails, instance=INSTANCE, repo=REPO, game_data=Path(GAME) / 'Data')
     weapon_balance_gate.run(fails, warns, repo=REPO, instance=INSTANCE,
                             profile='Default')
     try:

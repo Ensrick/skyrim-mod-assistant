@@ -26,6 +26,7 @@
 !/.github/dependabot.yml
 !/.github/workflows/
 !/.github/workflows/check.yml
+!/.github/workflows/window-focus-guard.yml
 
 !/docs/
 !/docs/*.md
@@ -109,6 +110,10 @@
 !/config/loot/*.yaml
 
 !/overlays/
+!/overlays/ensrick-sse-display-tweaks-config/
+!/overlays/ensrick-sse-display-tweaks-config/SKSE/
+!/overlays/ensrick-sse-display-tweaks-config/SKSE/Plugins/
+!/overlays/ensrick-sse-display-tweaks-config/SKSE/Plugins/SSEDisplayTweaks_Custom.ini
 !/overlays/ensrick-mlo2-foundation-config/
 !/overlays/ensrick-mlo2-foundation-config/SKSE/
 !/overlays/ensrick-mlo2-foundation-config/SKSE/Plugins/
@@ -127,6 +132,12 @@
 !/overlays/ensrick-vanilla-skin-soft-light-maps/build.py
 
 !/mods/
+!/mods/window-focus-guard/
+!/mods/window-focus-guard/*.cpp
+!/mods/window-focus-guard/*.h
+!/mods/window-focus-guard/*.md
+!/mods/window-focus-guard/*.ps1
+!/mods/window-focus-guard/CMakeLists.txt
 !/mods/period-underlayers/
 !/mods/period-underlayers/*.ini
 !/mods/period-underlayers/skse/

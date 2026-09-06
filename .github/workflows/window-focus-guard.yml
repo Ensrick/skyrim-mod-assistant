@@ -1,0 +1,27 @@
+name: Window Focus Guard
+on:
+  push:
+    paths: ['mods/window-focus-guard/**', '.github/workflows/window-focus-guard.yml']
+  pull_request:
+    paths: ['mods/window-focus-guard/**', '.github/workflows/window-focus-guard.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: External pinned ABI headers
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ianpatt/skse64
+          ref: 872c2d6fe4bc17b9e7f74d66b38c229750ce18e0
+          path: _build/skse-sdk
+          persist-credentials: false
+      - name: Build and test original module
+        shell: pwsh
+        run: |
+          ./mods/window-focus-guard/build.ps1 -SkseSdkRoot "$pwd/_build/skse-sdk" -Cmake (Get-Command cmake).Source -BuildDirectory "$pwd/_build/focus"
+      - name: Pairing regression tests
+        shell: pwsh
+        run: python -m unittest discover -s audit -p test_window_focus_guard.py -v
