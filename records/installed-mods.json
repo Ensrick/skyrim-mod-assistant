@@ -1723,15 +1723,15 @@
       "nexusName": "Ensrick-owned SkyPatcher full-cloak equipment exclusion overlay",
       "version": "0.1.0",
       "fileId": 0,
-      "fileName": "records-work/cloak-slot-repair-2026-09-07/smoothcam-nyhus-refresh/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
+      "fileName": "records-work/cloak-slot-repair-2026-09-07/post-smoothcam-concurrent-refresh-2008/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
       "sizeMb": 0.12,
-      "sha256": "9d59309680f1ad67a642b6db0d144d419e937f7b9dffe0ab72d3544f648db574",
+      "sha256": "af2df01d78b625ce5d28bc5454e57239358a4ab14cce2ced979aa65f55dcb464",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T19:18:43Z",
-      "transaction": "20260907T191843748Z-c2d107f4be77",
-      "refreshNote": "Current 373-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
-      "note": "SmoothCam, the concurrently completed Nyhus intake and the refreshed weapon winner changed the exact profile fingerprint. Slot 58 was re-audited across 8961 ARMO and 4461 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
+      "installedUtc": "2026-09-07T20:14:25Z",
+      "transaction": "20260907T201425485Z-6767f5a5e340",
+      "refreshNote": "Current 376-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
+      "note": "Three concurrent plug-in additions after the SmoothCam/Nyhus refresh changed the exact profile fingerprint. Slot 58 was re-audited after the final weapon winner across 8961 ARMO and 4461 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
       "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
       "distribution": "distributable",
       "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
@@ -3133,17 +3133,17 @@
       "nexusName": "Ensrick-owned source-built weapon-speed normalizer",
       "version": "0.3.0",
       "fileId": 0,
-      "fileName": "mods/weapon-balance/artifacts/Ensrick-Weapon-Speed-Balance-0.3.0.zip",
+      "fileName": "mods/weapon-balance/artifacts/Ensrick-Weapon-Speed-Balance-0.3.0-post-smoothcam-concurrent-final.zip",
       "sizeMb": 0.65,
-      "sha256": "2635b2b65e77662a6482a17f3d2087aceb94bd7eb98debedf418c786d5a32cb9",
+      "sha256": "f3ab6396c6e13956bd375cc20b086b8255226d67e5d1072c6ba48ecd617e56cf",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-07T19:16:59Z",
-      "transaction": "20260907T191659161Z-97e6bf57357e",
-      "refreshNote": "SmoothCam/Nyhus refresh: 372 inputs, 3504 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
-      "note": "Regenerated deterministically after SmoothCam and the concurrently completed Nyhus intake changed the active plugin fingerprint. The final-winner gate caught LOOT moving the global patch above the Wuuthrad add-on; WeaponBalancePatch.esp was restored to the last managed position. It is the unique final active plugin and all 4225 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
+      "installedUtc": "2026-09-07T20:07:09Z",
+      "transaction": "20260907T200709608Z-a2ca4678c2c4",
+      "refreshNote": "Post-SmoothCam concurrent-install refresh: 375 inputs, 3504 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
+      "note": "Regenerated deterministically after three concurrent plug-in additions changed the active profile fingerprint. WeaponBalancePatch.esp is the unique final active plug-in and all 4225 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
     },
     {
       "modId": 0,
@@ -7060,6 +7060,42 @@
       "note": "2026-09-01: Farmer patches re-enabled - intact BeAFarmer.esl restored under canonical name (BSA still parked as truncated; Farming assets missing until store re-download, #142)."
     },
     {
+      "modId": 23801,
+      "modName": "Skyrim Reborn - Hjaalmarch Hold",
+      "nexusName": "Skyrim Reborn - Hjaalmarch Hold 1.1.4",
+      "version": "1.1.4",
+      "fileId": 324068,
+      "fileName": "Skyrim Reborn - Hjaalmarch Hold 1.1.4-23801-1-1-4-1665783321.rar",
+      "sizeMb": 5.39,
+      "sha256": "914066bb8c90059ddca2a996f9d32c8e7b6cd000719d12ab0932591b674e2956",
+      "plugins": [
+        "Skyrim Reborn - Hjaalmarch Hold.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T20:21:48Z",
+      "transaction": "20260907T202148162Z-b1ab98d79a1f",
+      "note": "User: \"Well, I want Skyrim Reborn - Hjaalmarch Hold! It looks great!\" By mnikjom (not ThatDamnKapi, whose profile the user linked in the same message - a different author). v1.1.4, main file 2022-10-14, page updated 2025-09-06, 1,603 endorsements. Part 2 of the Reborn series; part 1 is Whiterun Hold (16530, 2,505 endorsements, not installed). All-in-one overhaul of ten Hjaalmarch locations: Orotheim, MEEKO'S SHACK, Skyborn Altar, Folgunthur, The Lord Stone, Stonehills, Ustengrav, Mzinchaleft, Dead Men's Respite and the Hjaalmarch Stormcloak camp. 2,734 records (2,431 REFR, 81 STAT, 64 NAVM, 60 CELL, 40 ACHR), masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/USSEP. Asset overlap is small: 66 paths, 6 shared with Snazzy Location Resources (AARS bookset/openbook meshes and textures), which it wins at priority 335. OPEN, USER'S CALL: its Meeko's Shack Reborn competes with Man's Best Friend (160130) and Meeko's Shack Reborn standalone (179541); if either is taken, the disable patch 173788 is the tool that keeps Reborn's other nine locations while yielding the shack. The Bards College Excavation optional patch (662914) was not taken - no such mod or Creation Club file is present. The mod page recommends Nordic Ruins of Skyrim SSE as a companion; not installed. NOT verified in game. LOAD ORDER FIXED ON INSTALL: both plugins landed at plugins.txt 302/303, past the local resolver block, and audit/resolver_last_gate.py - written an hour earlier for exactly this - failed with 16 violations including WRLD 00003C:skyrim.esm against Ensrick General Compatibility Patch. Moved to 293/294, ahead of Ensrick Lux Water CS Patch and still after Cutting Room Floor and USSEP; gate now reports clean. First time the gate caught a live regression rather than a reconstruction. Profile files backed up as .bak.v<stamp>-pre-reborn-move.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 23801,
+      "modName": "Skyrim Reborn Hjaalmarch Hold - CRF Patch",
+      "nexusName": "Skyrim Reborn Hjaalmarch Hold - CRF Patch",
+      "version": "1.0",
+      "fileId": 149698,
+      "fileName": "Skyrim Reborn Hjaalmarch Hold - CRF Patch-23801-1-0-1594388056.rar",
+      "sizeMb": 0.17,
+      "sha256": "4970eb002cdc7d209de188b306aef2382e5d86a1a8c5b0ed11e996a3256b9f08",
+      "plugins": [
+        "Skyrim Reborn Hjaalmarch Hold - CRF Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T20:21:57Z",
+      "transaction": "20260907T202156586Z-c904ebbcfc0b",
+      "note": "Optional CRF patch shipped by Skyrim Reborn - Hjaalmarch Hold (file 149698, 2020-07-10). Taken because Cutting Room Floor is installed. NOT verified in game. LOAD ORDER FIXED ON INSTALL: both plugins landed at plugins.txt 302/303, past the local resolver block, and audit/resolver_last_gate.py - written an hour earlier for exactly this - failed with 16 violations including WRLD 00003C:skyrim.esm against Ensrick General Compatibility Patch. Moved to 293/294, ahead of Ensrick Lux Water CS Patch and still after Cutting Room Floor and USSEP; gate now reports clean. First time the gate caught a live regression rather than a reconstruction. Profile files backed up as .bak.v<stamp>-pre-reborn-move.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 27962,
       "modName": "Skyrim Unbound Reborn",
       "nexusName": "Skyrim Unbound Reborn",
@@ -7223,16 +7259,16 @@
       "modId": 0,
       "modName": "SmoothCam 1.7.104 Native Overlay - Ensrick",
       "nexusName": "Ensrick source-built current-runtime overlay for SmoothCam 1.7.1",
-      "version": "1.7.1+66f3960-local",
+      "version": "1.7.1+66f3960-local.2",
       "fileId": 0,
-      "fileName": "records-work/smoothcam-1.7.104-20260907-v1/SmoothCam 1.7.104 Native Overlay - Ensrick.zip",
-      "sizeMb": 9.17,
-      "sha256": "5173779445FDC9F3F6B6949210EA6C5CEA5EB9DE3FFB3A4B178DB4FF4D824388",
+      "fileName": "records-work/smoothcam-1.7.104-20260907-v2/SmoothCam 1.7.104 Native Overlay - Ensrick v2.zip",
+      "sizeMb": 9.18,
+      "sha256": "D50E9E489388C590D652C92D0C2ECB2BD363431DF7B284BD1AD3776D4212FCAD",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T18:49:34Z",
-      "transaction": "20260907T184934806Z-ac01b9a831fb",
-      "note": "DLL/PDB-only source-built overlay above the untouched SmoothCam 1.7.1 Nexus package (41252 / file 729856). The stock DLL stopped the user's manual Skyrim 1.7.104 launch at SKSE's 'loading plugin SmoothCam' line and produced no SmoothCam log. This overlay rebuilds the same upstream revision against audited CommonLibSSE-NG 6.7.1, declares exact 1.7.104 and Address Library V5 compatibility, and migrates current runtime-data APIs. Vendor ESL, MCM, scripts, configuration, translations and assets remain authoritative and unchanged. Installed DLL hash matches the artifact and passes the static native gate. Runtime acceptance after this overlay is UNVERIFIED pending the user's manual relaunch.",
+      "installedUtc": "2026-09-07T19:50:27Z",
+      "transaction": "20260907T195027816Z-660939414f37",
+      "note": "DLL/PDB-only source-built overlay above the untouched SmoothCam 1.7.1 Nexus package (41252 / file 729856). The vendor DLL failed the first manual Skyrim 1.7.104 launch. Local candidate 1 then opened an Address Library ID-0 popup because the upstream AE table attempted to resolve three unused zero-valued render placeholders. Candidate 2 omits those unused resolutions; all 46 IDs it does resolve are present and nonzero in the installed 1.7.104 format-5 database. SmoothCam warning, fatal, CommonLib fatal and minidump-notification paths are non-modal while retaining logs and fail-fast behavior; the built DLL imports neither MessageBox nor FatalAppExit. Vendor ESL, MCM, scripts, configuration, translations and assets remain authoritative and unchanged. Installed DLL hash matches the artifact and passes the static native gate. Runtime acceptance is UNVERIFIED pending the user's manual relaunch.",
       "distribution": "local-only",
       "distributionBasis": "Upstream revision 66f3960 has no license declaration or license file. The local derivative and symbols must not be published or bundled without permission.",
       "recipe": {
@@ -7240,7 +7276,7 @@
         "record": "records/source-builds/ensrick-smoothcam-1.7.104.json",
         "repository": "https://github.com/mwilsnd/SkyrimSE-SmoothCam",
         "upstreamBase": "66f3960ec4de2b28af5e863c794a3924e6a2dfdd",
-        "workingTree": "uncommitted compatibility changes recorded in receipt"
+        "workingTree": "uncommitted compatibility and zero-popup changes recorded in receipt"
       }
     },
     {
