@@ -9,7 +9,7 @@ Exit 0 = safe to launch. Non-zero = do not tell the user to launch.
 
   py -3 audit/preflight.py
 """
-import io, json, os, re, subprocess, sys
+import hashlib, io, json, os, re, subprocess, sys
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -19,6 +19,7 @@ import keep_coverage     # 2026-09-02: installed implies Keep (docs/CURATION_POL
 import weapon_balance_gate  # #239: no stale or unaudited generated weapon output
 import cloak_exclusivity  # #240: reserved equipment slots must stay collision-free
 import window_focus_guard  # #149: one cursor owner and foreground-only input
+import resolver_last_gate  # 2026-09-07: the local resolver patches must load last
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTANCE = r'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
@@ -147,6 +148,37 @@ def _enabled_dlls_named(plugin_name):
     return hits
 
 
+def _replacement_for_failed_launch(plugin_name, log_path, effective_relative_path):
+    """Return an audited replacement receipt for the exact failed log, if any.
+
+    An incomplete SKSE log normally blocks the next launch while its culprit is
+    enabled. A byte-different replacement must be allowed one validation launch,
+    but only when a checked-in receipt binds the old log, failed DLL and current
+    effective DLL hashes. A second failure writes a different log hash and is
+    therefore blocking again rather than becoming a permanent waiver.
+    """
+    receipt_path = os.path.join(REPO, 'records',
+                                'last-launch-plugin-failure-replacements.json')
+    if not os.path.isfile(receipt_path):
+        return None
+    try:
+        receipt = json.load(io.open(receipt_path, encoding='utf-8'))
+        log_hash = hashlib.sha256(Path(log_path).read_bytes()).hexdigest().upper()
+        effective_path = os.path.join(INSTANCE, effective_relative_path)
+        effective_hash = hashlib.sha256(Path(effective_path).read_bytes()).hexdigest().upper()
+    except (OSError, ValueError, TypeError, KeyError):
+        return None
+    for entry in receipt.get('replacements', []):
+        failed = entry.get('failedDll') or {}
+        replacement = entry.get('replacementDll') or {}
+        if (str(entry.get('pluginName', '')).lower() == plugin_name.lower()
+                and str(entry.get('failedLogSha256', '')).upper() == log_hash
+                and str(failed.get('sha256', '')).upper() != effective_hash
+                and str(replacement.get('sha256', '')).upper() == effective_hash):
+            return entry
+    return None
+
+
 def check_last_launch_completed():
     """Did the previous launch finish loading plugins, or die partway?
 
@@ -178,8 +210,16 @@ def check_last_launch_completed():
         # launch that proves the park (2026-09-01, Light Placer re-park).
         still = _enabled_dlls_named(culprit)
         if still:
-            fails.append(msg + f' It is still enabled ({still[0]}). Park it before '
-                               f'launching again (#140)')
+            replacement = _replacement_for_failed_launch(culprit, log, still[0])
+            if replacement:
+                old_hash = replacement['failedDll']['sha256'][:12]
+                new_hash = replacement['replacementDll']['sha256'][:12]
+                warns.append(msg + f' The failed DLL ({old_hash}) has been replaced '
+                             f'by the audited effective DLL ({new_hash}); allow one '
+                             f'validation launch. The replacement is still UNVERIFIED.')
+            else:
+                fails.append(msg + f' It is still enabled ({still[0]}). Park it before '
+                                   f'launching again (#140)')
         else:
             warns.append(msg + f' No enabled mod ships a DLL named "{culprit}" now, '
                                f'so it is parked; this launch is its confirmation (#140)')
@@ -377,6 +417,7 @@ def main():
     check_steam_overlay()
     preflight_extra.run_all(fails, warns)
     keep_coverage.run(fails, warns)
+    resolver_last_gate.run(fails, warns)
     window_focus_guard.run(fails, instance=INSTANCE, repo=REPO, game_data=Path(GAME) / 'Data')
     import currency_save_gate
     currency_save_gate.run(fails, warns, instance=INSTANCE, game_data=Path(GAME) / 'Data')
