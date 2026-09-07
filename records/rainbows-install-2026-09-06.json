@@ -1,0 +1,71 @@
+{
+  "checkedUtc": "2026-09-07T01:02:36.977839+00:00",
+  "status": "PASS_STATIC_SUBSET",
+  "runtime": "UNVERIFIED; no game launch",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/250",
+  "failures": [],
+  "warnings": [
+    "Steam overlay: cannot be verified from disk (Steam stores it encrypted). It was in the hung main thread on 2026-08-31. Confirm it is OFF for app 489830 before blaming a mod.",
+    "5 enabled mod(s) have no ledger row (#102), so --verify cannot reason about them: Nether's Follower Framework - RDO Support, Skyrim Unbound Reborn - RDO Lite Patch, Relationship Dialogue Overhaul Lite, Ensrick - TDP Ulvenwald Wind Calibration (Private Test), Ensrick - Proteus MCM Indexed Hotkeys"
+  ],
+  "controllerAudit": {
+    "errors": [],
+    "ok": true,
+    "operation": "audit",
+    "profile": "Default"
+  },
+  "keep": {
+    "installedNexusIds": 207,
+    "liveKeeps": 207,
+    "installedWithoutKeep": [],
+    "keepNotInstalled": [],
+    "skipInstalled": []
+  },
+  "curation": {
+    "88161": "keep",
+    "13044": "skip",
+    "73090": "skip"
+  },
+  "rainbows": {
+    "mainFile": 374394,
+    "hotfixFile": 382939,
+    "textures": "8 DDS,1024x1024 BC7,11 mip levels each",
+    "mainTransaction": "20260907T005307374Z-f2c63aed0acd",
+    "hotfixTransaction": "20260907T005308545Z-4606f47cb607",
+    "repairTransaction": "20260907T005523615Z-5e4cc30e5874",
+    "payloadFiles": 14,
+    "meshTargetsResolved": 11,
+    "pluginNewRecords": 18,
+    "pluginOverrides": 0,
+    "pluginNewEquipment": 0,
+    "nativeDlls": 0,
+    "repair": "Exact existing vendor mesh mapped into separate higher-priority moonbow path; public recipe only, no vendor edit"
+  },
+  "dependencyRefresh": {
+    "weapon": "3494 WEAP/27 translations unchanged; double generation, final winners and installed freshness PASS",
+    "weaponTransaction": "20260907T005834771Z-6c4e08348687",
+    "cloak": "356plugins/240directives/569presentmesh winners; gameplay data unchanged",
+    "cloakTransaction": "20260907T010108462Z-a0023ae61a19"
+  },
+  "activation": {
+    "activePlugins": 276,
+    "beforeSha256": "8F06C043D43CE306DCBE4FCA0FA0DF6CC857D4271CA20E93BBC51A78B269F97E",
+    "afterSha256": "70CCA93A16BC562D99C0854C4E19894ED0779ED78B9EBB8C2687BABDDF64C5EC",
+    "priorRelativeOrderPreserved": true,
+    "noLaunch": true
+  },
+  "protectedConflictReportsUnchanged": {
+    "active-file-conflicts.json": true,
+    "active-file-conflicts.md": true,
+    "active-record-conflicts.json": true,
+    "active-record-conflicts.md": true
+  },
+  "notPerformed": [
+    "game launch",
+    "save change",
+    "INI change",
+    "face or sound installation",
+    "upstream comment",
+    "licensed asset publication"
+  ]
+}

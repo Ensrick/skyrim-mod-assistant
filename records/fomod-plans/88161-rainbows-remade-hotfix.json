@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "note": "Required official v1.2.1 hotfix file382939. Preserve vendor meshes intact. A separate owned overlay repairs its remaining moonbowpartiall.nif texture path.",
+  "mappings": [
+    {"source":"meshes/rainbows/moonbowfull.nif","destination":"meshes/rainbows/moonbowfull.nif"},
+    {"source":"meshes/rainbows/moonbowpartiall.nif","destination":"meshes/rainbows/moonbowpartiall.nif"},
+    {"source":"meshes/rainbows/moonbowpartialr.nif","destination":"meshes/rainbows/moonbowpartialr.nif"},
+    {"source":"meshes/rainbows/rainbowdoublefull.nif","destination":"meshes/rainbows/rainbowdoublefull.nif"},
+    {"source":"meshes/rainbows/rainbowdoublefullpartiall.nif","destination":"meshes/rainbows/rainbowdoublefullpartiall.nif"},
+    {"source":"meshes/rainbows/rainbowdoublefullpartialr.nif","destination":"meshes/rainbows/rainbowdoublefullpartialr.nif"},
+    {"source":"meshes/rainbows/rainbowdoublepartiall.nif","destination":"meshes/rainbows/rainbowdoublepartiall.nif"},
+    {"source":"meshes/rainbows/rainbowdoublepartialr.nif","destination":"meshes/rainbows/rainbowdoublepartialr.nif"},
+    {"source":"meshes/rainbows/rainbowfull.nif","destination":"meshes/rainbows/rainbowfull.nif"},
+    {"source":"meshes/rainbows/rainbowpartiall.nif","destination":"meshes/rainbows/rainbowpartiall.nif"},
+    {"source":"meshes/rainbows/rainbowpartialr.nif","destination":"meshes/rainbows/rainbowpartialr.nif"}
+  ]
+}

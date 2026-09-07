@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "note": "User-local repair recipe, not a vendor asset redistribution. Official hotfix file382939 contains a broken MoonbowPartialL texture path. Its rainbowpartiall.nif is byte-identical to the correctly repaired moonbowpartiall.nif (SHA256 2CD39FF5FB5392F6DDCD10AA72402969C893FB0C5A9A99558A657380F066B405). Map that verified intact vendor asset to the moonbow path in a separate higher-priority overlay. No mesh geometry, material, script or texture changes; no bespoke binary editor needed. Preserve both original vendor rows.",
+  "mappings": [
+    {"source":"meshes/rainbows/rainbowpartiall.nif","destination":"meshes/rainbows/moonbowpartiall.nif"}
+  ]
+}

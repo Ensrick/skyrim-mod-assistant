@@ -3,8 +3,8 @@
   "artifact": "Ensrick - Weapon Speed Balance",
   "version": "0.3.0",
   "status": "installed-static-verified-runtime-unverified",
-  "receiptCreatedUtc": "2026-09-06T21:02:03Z",
-  "refreshReason": "Approved AQF/BCS/Apocalypse/Lucien installation and preceding JS/Inigo changes. 13 new conventional WEAP speed overrides (12 Apocalypse, one Lucien); exact invisible Hunger helper exclusion. All original speed policy, damage, fields, translations and private longsword rules preserved.",
+  "receiptCreatedUtc": "2026-09-07T01:01:08.691286+00:00",
+  "refreshReason": "Approved Rainbows Remade and preceding Security Overhaul asset additions: regeneration proves identical3494WEAP/27localized sidecars. Only input/freshness receipts changed; no weapon policy changes.",
   "supersedes": "records/source-builds/ensrick-weapon-speed-balance-v0.1.0-historical.json",
   "source": {
     "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
@@ -148,25 +148,25 @@
   },
   "inputs": {
     "profile": "Default",
-    "runtimePlugins": 355,
-    "inputPlugins": 354,
-    "inputLoadOrderSha256": "4D7588D43335DB67E6C1D1ADE7DB84ADBBA6FEBE51AA6BFB1032D96C9405CE56",
-    "inputPluginBinariesSha256": "E29DCFBEFA25471B83375ACAF5E5FD6DC85E1F907DF0A5B2B21C51A87216A83A",
+    "runtimePlugins": 356,
+    "inputPlugins": 355,
+    "inputLoadOrderSha256": "6C8A6349E71224E863D269D1EE1C4D00704CD6C3C5356C302677944AF6E1E5FE",
+    "inputPluginBinariesSha256": "AB4C5DD2DBC4D9CFDFEA86C90624B75DDB4E1D59AAA32B69AA93C65390E0A009",
     "localizedSourceProviders": 21,
     "inputLocalizationResourceProvidersSha256": "166B46F52654834036DC35756F793DF9C52C5E536DF6AFD12C26B757555ED8B2",
     "manifest": "Installed EnsrickMetadata/build-manifest.json retains ordered plugin/provider/hash and relevant loose/BSA resource resolutions.",
-    "manifestSha256": "136BBA15289089BFE97E85610AC28286D26C29E666DAAB085F8417F459626C32",
+    "manifestSha256": "918D92516C61C33E69DB98130828804F5A05BC64CCAA2FB07A8061F854775720",
     "sourceLocalizationScope": "Matches pinned Mutagen loader contract: provider-named loose tables and applicable provider BSAs, not arbitrary unrelated-archive engine overrides. See module README and Mutagen issue #578."
   },
   "output": {
     "plugin": "WeaponBalancePatch.esp",
     "pluginBytes": 1772056,
     "pluginSha256": "1631FA969EF6F5D7C244B8FB3D97CC9D4FF34B50BF2C99A5F71B31DF957F56F0",
-    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-approved-batch-final.zip",
-    "archiveBytes": 677435,
-    "archiveSha256": "3D128DC09421B12CA6ECC0BF6507CA82212FE7029363BBBB1B202B5C29C24C0D",
+    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-rainbows.zip",
+    "archiveBytes": 677503,
+    "archiveSha256": "3BD1E84648C2CF113A50CFD3FEA692FC8AF7CE018AABDCECB6968A0B1ABC138B",
     "installedPayloadFiles": 31,
-    "installedPayloadBytes": 7755782,
+    "installedPayloadBytes": 7755968,
     "recordTypes": {
       "weap": 3494
     },
@@ -513,7 +513,7 @@
     "deterministicDoubleBuild": "PASS: ESP, selection report, all 27 localized sidecars",
     "finalWinners": "PASS: 4212 target/preserve rows",
     "finalWinnerAuditSha256": "86209283BE982ADF65EED7CD820ED86E346172E0406C210369EE49FD29373C92",
-    "installedFreshness": "PASS after final package deployment; rerun with complete batch final gates",
+    "installedFreshness": "PASS: final installed no-write verifier; whole-batch gates recorded separately",
     "runtimeAcceptance": "UNVERIFIED; no game launch"
   },
   "installation": {
@@ -521,12 +521,12 @@
     "profile": "Default",
     "enabled": true,
     "modPriority": 237,
-    "managedPluginPriority": 278,
-    "runtimePluginIndex": 354,
-    "installedUtc": "2026-09-06T21:02:03Z",
-    "candidateInstallTransaction": "20260906T205508811Z-017257721e5c",
-    "pluginPriorityTransaction": "20260906T204849318Z-dab68741100b",
-    "finalInstallTransaction": "20260906T205655761Z-5f8bc65f551b",
+    "managedPluginPriority": 279,
+    "runtimePluginIndex": 355,
+    "installedUtc": "2026-09-07T01:01:08.691286+00:00",
+    "candidateInstallTransaction": null,
+    "pluginPriorityTransaction": "20260907T005350625Z-a3481bd8d9e8",
+    "finalInstallTransaction": "20260907T005834771Z-6c4e08348687",
     "rollback": "Headless transaction journal retains prior owned payload; no vendor files or saves modified."
   },
   "distribution": {

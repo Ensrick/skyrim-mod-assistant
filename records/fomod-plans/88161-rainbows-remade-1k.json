@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "note": "Owner-approved Rainbows Remade: exact main 1K file374394 v1.2.0. Requires separate official file382939 v1.2.1 mesh hotfix and owned partial-left moonbow path repair. No 2K/4K/8K texture upscale, no optional notification change.",
+  "mappings": [
+    {"source": "Rainbows Remade.bsa", "destination": "Rainbows Remade.bsa"},
+    {"source": "Rainbows Remade.esp", "destination": "Rainbows Remade.esp"}
+  ]
+}

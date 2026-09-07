@@ -19,6 +19,19 @@ role, distribution, or balance.
 
 ## Session log - 2026-08-23 afternoon walk-through
 
+### September 6, 2026 weather decision (current owner instruction)
+
+- Nexus SSE88161, Rainbows Remade: approved and installed with the official
+  1K main, required v1.2.1 hotfix and separate exact-path moonbow repair recipe.
+  Keep reconciliation and current verification are recorded in the installation
+  receipt; gameplay remains unverified until an authorized test.
+- Nexus SSE13044, Wonders of Weather: explicitly Skip; live curator confirmed.
+- Nexus SSE73090, Shooting Stars SE: explicitly Skip; live curator confirmed.
+- Expressive Facegen Morphs, male/female Expressive Facial Animation and Sounds
+  of Skyrim Complete remain research-only, not new Keep/Skip decisions.
+- No lightning mod was approved. Wonders of Weather provides splashes, rainbows
+  and shooting stars, not actual lightning strikes.
+
 - **A resolved**: all 6 fallout skips confirmed and applied (AFT, EFF, old
   HDT-SMP, Downgrade Patcher, BnP skin, Tempered Skins).
 - **C**: Night Mother pair - drop both, applied. FISSES patch + LOD-grass ini

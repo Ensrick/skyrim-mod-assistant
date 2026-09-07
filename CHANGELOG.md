@@ -18,6 +18,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-06 20:01 — Rainbows Remade and separate partial moonbow repair
+
+- **What:** Installed Rainbows Remade1K (88161/file374394) plus the required official1.2.1hotfix (file382939). A separate deterministic mapping overlay repairs one remaining missing-texture path using an already-correct intact mesh from that same hotfix. Wonders of Weather13044 and Shooting Stars SE73090 are confirmed Skip. No face, audio or lightning mod added.
+- **Source:** User: "just take rainbows, skip on wonders of weather and shooting stars." The partial-left moonbow defect was independently identified in the selected files; tracked in [#250](https://github.com/Ensrick/skyrim-mod-assistant/issues/250). Exact public installation recipes and limits: [report](docs/RAINBOWS-INSTALL-2026-09-06.md). Expressive face and sound research reports are linked from the ecosystem survey; favorable recommendations remain unapproved candidates.
+- **Verification:** **UNVERIFIED in game.** Fourteen installed vendor payloads match; all11 effective mesh texture references resolve; eightDDS are1K BC7/full-mip. ESP-FE has18 new records/no overrides/equipment/DLL. Global weapon regeneration preserves3494WEAP and27translations exactly; cloak proof preserves240directives and569presentmesh winners.276 active game-side plugins synchronized with a retained backup, prior relative order preserved. Keep207/207; exact skips verified. Final bounded gates and warnings are in [receipt](records/rainbows-install-2026-09-06.json). No vendor-file edit, INI/save change or game launch. Original plans/receipts only for publication; third-party assets remain local.
+
 > **STATE (2026-09-01 17:28): VERIFIED BASELINE RESTORED.** The 08-31 failure
 > wave was root-caused to the truncated `ccvsvsse004-beafarmer.bsa` (#142, no
 > mod at fault) plus a LaunchProbe kPostLoadGame handler bug that AV'd only on

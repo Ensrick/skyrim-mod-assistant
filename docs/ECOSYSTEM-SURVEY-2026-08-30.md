@@ -6,6 +6,19 @@ What the big curated lists run per slot, versus this build (SkyrimSE 1.7.104, Co
 
 ## Method and sources
 
+### September 6 expressive-face and sound follow-up
+
+The [expressive-face review](EXPRESSIVE-FACES-REVIEW-2026-09-06.md) distinguishes
+character-creation morphs from expression animation and newer expression controllers.
+The [sound-stack review](SOUND-STACK-REVIEW-2026-09-06.md) records the actual
+AOS/ISC foundation and repeats the same 15-export census for audio: AOS14,
+ISC11, SRD15, Regional Sounds Expansion11, Reverb Interior Sounds Expansion11,
+ASIF9 and Sounds of Skyrim Complete1. The nine 2026-only exports contain
+AOS8, ISC7, RSE8, RISE8, ASIF6 and SoS Complete0. These are presence counts,
+not quality rankings. The linked review supersedes the older blanket statement
+that every ASIF route requires a Lux plugin patch. No face or sound mod was
+approved or installed by these reviews.
+
 ### September 6 requested-slot refresh
 
 Twenty exports re-fetched; fifteen dated 2025–26 have available MO2 modlists, including nine updated in 2026. GTS/ElderTeej plugin-only exports are excluded from absence counts; the available NGVO/Winds of the North/Wildlander exports are pre-2025 and kept only as historical supplements. This is a convenience sample, not a popularity ranking; presence and text validity do not prove export completeness. Exact enabled-main-folder evidence, timestamps, uploader metadata, hashes, aliases and all exclusions are in the [census](REQUESTED-SLOTS-CENSUS-2026-09-06.md); patches and disabled options do not count as main-mod adoption.
