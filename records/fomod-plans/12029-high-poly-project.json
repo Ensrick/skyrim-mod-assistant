@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "note": "High Poly Project v5.3 (2021-10-22, LucidAPs). FOMOD equivalent of 'Install Everything': all 31 content folders (001-031), each contributing its meshes/ and, where present, textures/, plus the Vaermina's Torpor plugin that ships inside folder 030. Patch folders: 102 Firewood SnowFix CAMPFIRE Patch is taken because Campfire (667) is installed; 101 is its non-Campfire twin and would be the wrong one; 100 No Snow Under the Roof Patch is skipped because NSUTR is not installed. The separate 4k-texture download (2017) is not taken. KNOWN HEAVY CATEGORIES, kept but flagged: 017 Ingredients holds the garlic braid that the Garlic mod (78848) measures at 92,694 triangles / 5 draw calls against 5,016 / 2, and 020 Smelter Coal is what Less Poly Coal (164303) targets - LoreRim and Wunduniik run HPP with lower-poly coal overrides, and Nolvus Ascension hides the ingredients directory outright. Drop those two folder mappings, or install the targeted replacements over the top, if the geometry cost shows up in play.",
+  "mappings": [
+    {
+      "source": "001 Hearthfire Breads/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "001 Hearthfire Breads/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "002 Vanilla Breads - includes animation/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "002 Vanilla Breads - includes animation/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "003 Farmhouse Stone Walls/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "003 Farmhouse Stone Walls/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "004 Solitude Ropes/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "005 Tents/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "006 Whiterun Clutter/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "007 Windhelm Throne/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "007 Windhelm Throne/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "008 Bones/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "009 Burnt Corpses/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "010 Candles/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "010 Candles/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "011 Common Clutter - includes animation/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "011 Common Clutter - includes animation/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "012 Dragon Parts - Bones and Items/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "013 Food/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "013 Food/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "014 Hagraven/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "014 Hagraven/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "015 Hay/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "015 Hay/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "016 Horker Tusk/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "017 Ingredients/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "017 Ingredients/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "018 Shrines/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "019 Silverware/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "020 Smelter Coal/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "020 Smelter Coal/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "021 Statues/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "022 Wine Bottles/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "022 Wine Bottles/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "023 Dungeons/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "024 Furniture/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "025 Plants/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "025 Plants/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "026 Riften 3D Leaves/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "026 Riften 3D Leaves/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "027 Sacks/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "027 Sacks/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "028 Satchel/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "028 Satchel/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "029 Mead Barrel/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "029 Mead Barrel/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "030 Vearmina's Torpor/HPP - Vaermina's Torpor.esp",
+      "destination": "HPP - Vaermina's Torpor.esp"
+    },
+    {
+      "source": "030 Vearmina's Torpor/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "030 Vearmina's Torpor/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "031 Firewood Chopping Block - includes animation/meshes",
+      "destination": "meshes"
+    },
+    {
+      "source": "031 Firewood Chopping Block - includes animation/textures",
+      "destination": "textures"
+    },
+    {
+      "source": "102 Firewood SnowFix Campfire Patch/HPP - FirewoodSnow Campfire.esp",
+      "destination": "HPP - FirewoodSnow Campfire.esp"
+    }
+  ]
+}

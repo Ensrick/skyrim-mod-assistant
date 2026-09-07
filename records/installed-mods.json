@@ -3349,6 +3349,44 @@
       "note": "Pristine vendor payload retained disabled. The active local-only overlay carries the same 21,090-triangle SSE mesh with all eight supplied 1K texture references remapped under textures/ensrick/werewolf_totem_98175. This preserves the intended hag-feather decoration without globally replacing the vanilla hag-feather ingredient. SMIM remains a soft asset dependency for the two rope texture references. No plugin, script, DLL, or global hag-feather path is active."
     },
     {
+      "modId": 12029,
+      "modName": "High Poly Project",
+      "nexusName": "High Poly Project",
+      "version": "v5.3",
+      "fileId": 236420,
+      "fileName": "High Poly Project-12029-v5-3-1634909383.zip",
+      "sizeMb": 375.78,
+      "sha256": "e117974239b2d0edba6bb963ebe0515051d34bbbe252fe83fb60e8144c26932e",
+      "plugins": [
+        "HPP - FirewoodSnow Campfire.esp",
+        "HPP - Vaermina's Torpor.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T01:30:33Z",
+      "transaction": "20260907T013031170Z-32120fd707bb",
+      "fomodPlan": "records/fomod-plans/12029-high-poly-project.json",
+      "note": "User: \"Get the damn high poly project, just make sure we know why 9 seem to have chosen not to include it.\" v5.3, last updated 2021-10-22; the living support is Xtudo's fix set (63425, v2.7, 2026-01-20), installed alongside. FOMOD equivalent of 'Install Everything': all 31 content folders (001-031) with their meshes and textures, plus the Vaermina's Torpor plugin from folder 030 and the 102 Firewood SnowFix CAMPFIRE patch (Campfire 667 is installed; 101 is the non-Campfire twin, 100 needs No Snow Under the Roof which is absent). The 2017 4k-texture download was not taken. PLACEMENT, which is the whole game here: priority 35, ABOVE SMIM (32) and SMIM Quality Addon (34) so its geometry wins, BELOW Skyland AIO 1K (41), Unofficial Material Fix (223), Assorted Mesh Fixes (225) and Skyrim Landscape and Water Fixes (232) so every targeted fix mod still wins - the 'protected winners' rule in docs/REQUESTED-MODS-REVIEW-2026-09-06.md. Measured after the reorder: 272 asset paths; HPP wins 29 against SMIM and 8 firewood meshes against Traverse the Ulvenwald; it LOSES 22 to Assorted Mesh Fixes, 14 to Unofficial Material Fix, 3 to Skyland AIO and 1 to Landscape and Water Fixes, all intentional; Xtudo's four mods (36-39) win their 56 files over it, also intentional. WHY 9 OF 19 LISTS DECLINED IT (asked for explicitly): two removed it on the record - Nordic Souls 3.0 dropped HPP and added MIC, Lexy's July 2026 changelog dropped it as 'no longer needed'; specific meshes are extreme - the Garlic mod (78848) measures HPP's garlic braid at 92,694 triangles / 5 draw calls against 5,016 / 2, which is why LoreRim and Wunduniik run lower-poly coal overrides and Nolvus Ascension hides the ingredients directory; it is unmaintained since 2021 and needs third-party fixes to be safe; and MIC (131131, v0.6.4 2026-01-18) is now a maintained alternative. Also note HPP ships no plugin of its own, so the two plugin-only exports (Gate to Sovngarde, Constellations) cannot show it - the honest count is 10 of 17 measurable lists, not 10/19. 166 NIF, 106 DDS, 562 MB; 8 textures at 4096x4096, none above the ceiling. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 63425,
+      "modName": "High Poly Project - Xtudo Fixes",
+      "nexusName": "HPP - My Fixes by Xtudo - AIO Campfire",
+      "version": "2.0",
+      "fileId": 333337,
+      "fileName": "HPP - My Fixes by Xtudo - AIO Campfire-63425-2-0-1668977525.7z",
+      "sizeMb": 69.56,
+      "sha256": "019038626bf75339c906a3ed0828c87518e8cb036f719d376bedf8759ea44381",
+      "plugins": [
+        "HPP - My fixes by Xtudo - Chopping Blocks - Campfire.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T01:34:02Z",
+      "transaction": "20260907T013358849Z-65d7afc63ed1",
+      "note": "MAIN file 333337 'AIO Campfire' v2.0, the Campfire variant, because Campfire (667) is installed - the 'AIO Vanilla' twin (333335) would be wrong here. Priority 36, directly above High Poly Project, and it wins 49 of HPP's files: chopping blocks, firewood, mammoth skulls, candles, hay. Ships 'HPP - My fixes by Xtudo - Chopping Blocks - Campfire.esp'. Optional Xtudo patches deliberately not taken, targets absent: JK's Whiterun Outskirts Apples (698584), Winterhold Restored (584320), Hagraven bowl Seasons (499502), and the No Snow / No Ash chopping-block set (345204). NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 46311,
       "modName": "HIMBO",
       "nexusName": "01b) HIMBO V5 - Core (Nude Body with SOS or TNG)",
@@ -3379,6 +3417,54 @@
       "enabled": true,
       "installedUtc": "2026-08-23T05:26:33Z",
       "transaction": "20260823T052549675Z-6cfec5c42545"
+    },
+    {
+      "modId": 63425,
+      "modName": "HPP - Xtudo Fixes - Animated Chopped Wood 2.7",
+      "nexusName": "HPP - My Fixes by Xtudo - Animated chopped wood",
+      "version": "2.7",
+      "fileId": 711810,
+      "fileName": "HPP - My Fixes by Xtudo - Animated chopped wood-63425-2-7-1768909708.7z",
+      "sizeMb": 1.97,
+      "sha256": "e4aaa6b8d0ba6a171351c3fe14b9cfbb3c4b9ec73afa16410be43138f8504b69",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T01:34:51Z",
+      "transaction": "20260907T013450925Z-7424cb0f142b",
+      "note": "UPDATE file 711810 v2.7 (2026-01-20), the current head of Xtudo's fix set; the AIO main is still v2.0 from 2022, so this carries the newer work. Priority 37, above the AIO. Optional Xtudo patches deliberately not taken, targets absent: JK's Whiterun Outskirts Apples (698584), Winterhold Restored (584320), Hagraven bowl Seasons (499502), and the No Snow / No Ash chopping-block set (345204). NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 63425,
+      "modName": "HPP - Xtudo Fixes - Hay Missing Wheat Textures",
+      "nexusName": "HPP - My Fixes - Hay SE-AE - Missing Wheat textures",
+      "version": "2.2",
+      "fileId": 351809,
+      "fileName": "HPP - My Fixes - Hay SE-AE - Missing Wheat textures-63425-2-2-1674343846.7z",
+      "sizeMb": 0.18,
+      "sha256": "a4f8aafe8d31a7acf9d954116579028d74c3c4aa705fb53ed6978badc1aa857c",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T01:34:55Z",
+      "transaction": "20260907T013455717Z-2195ec17bad8",
+      "note": "UPDATE file 351809 v2.2 (2023-01-21), two missing wheat textures for HPP's hay meshes. Priority 39. Optional Xtudo patches deliberately not taken, targets absent: JK's Whiterun Outskirts Apples (698584), Winterhold Restored (584320), Hagraven bowl Seasons (499502), and the No Snow / No Ash chopping-block set (345204). NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 63425,
+      "modName": "HPP - Xtudo Fixes - Modern Lighting Overhaul",
+      "nexusName": "HPP - My Fixes by Xtudo - Modern Lighting Overhaul",
+      "version": "2.5",
+      "fileId": 675848,
+      "fileName": "HPP - My Fixes by Xtudo - Modern Lighting Overhaul-63425-2-5-1760442004.7z",
+      "sizeMb": 0.27,
+      "sha256": "fb8f23e02ec55b261d58f9c1f95cb26c6027b136fc12aa98038d570fa6e2c6ed",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T01:34:54Z",
+      "transaction": "20260907T013454469Z-bec2f98e7d18",
+      "note": "UPDATE file 675848 v2.5 (2025-10-14), the MLO2 compatibility piece. Taken because Modern Lighting Overhaul 2 (160748) is installed - docs/REQUESTED-MODS-REVIEW-2026-09-06.md flags Campfire and MLO2 as the two systems in this build that Xtudo's set has options for. Priority 38, 3 meshes. Optional Xtudo patches deliberately not taken, targets absent: JK's Whiterun Outskirts Apples (698584), Winterhold Restored (584320), Hagraven bowl Seasons (499502), and the No Snow / No Ash chopping-block set (345204). NOT verified in game.",
+      "distribution": "vendor"
     },
     {
       "modId": 3479,
