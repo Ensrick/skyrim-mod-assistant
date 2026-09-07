@@ -354,6 +354,47 @@
       "transaction": "20260903T223529943Z-22355591313e"
     },
     {
+      "modId": 64339,
+      "modName": "Better Third Person Selection",
+      "nexusName": "Better Third Person Selection (AE - SE)",
+      "version": "0.8.9",
+      "fileId": 635566,
+      "fileName": "Better Third Person Selection (AE - SE)-64339-0-8-9-1749297418.7z",
+      "sizeMb": 0.74,
+      "sha256": "a13d81859cfa2a0d7a3fe40fa1a90c5a506d495e313609c667c0ec4e0b5bcb69",
+      "plugins": [
+        "BetterThirdPersonSelection.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:48Z",
+      "transaction": "20260907T165747788Z-37d8e9c4c78a",
+      "fomodPlan": "records\\fomod-plans\\64339-btps-0.8.9.json"
+    },
+    {
+      "modId": 0,
+      "modName": "Better Third Person Selection 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for Better Third Person Selection 0.8.9",
+      "version": "0.8.9+93e05fb-local",
+      "fileId": 0,
+      "fileName": "records-work/approved-ui-embers-uscccp-2026-09-07/overlays/Better Third Person Selection 1.7.104 Native Overlay - Ensrick.zip",
+      "sizeMb": 13.22,
+      "sha256": "125D4F0C500FAC488910364A5C0480B7FE5B19EE86FFCB8F57E038D48F6A0278",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:58:12Z",
+      "transaction": "20260907T165811902Z-1c2c4ab00461",
+      "note": "DLL-only source-built overlay above untouched Better Third Person Selection 0.8.9 (Nexus 64339 / file 635566). It supplies only SKSE/Plugins/BetterThirdPersonSelection.dll (plus symbols, Apache-2.0 license, and build note); vendor assets/configuration remain authoritative. The installed DLL hash matches the build artifact and passes the static Skyrim 1.7.104 Address Library/version-independence gate. No game launch was authorized, so runtime acceptance remains UNVERIFIED.",
+      "distribution": "distributable",
+      "distributionBasis": "Apache-2.0 source derivative; retain the included license and publish corresponding modified source before external distribution.",
+      "recipe": {
+        "kind": "local-build",
+        "record": "records/source-builds/ensrick-better-third-person-selection-1.7.104.json",
+        "repository": "https://gitlab.com/Shrimperator/skyrim-mod-betterthirdpersonselection",
+        "upstreamBase": "93e05fb5b1a4caddb24728f3d0aaaacdef7a40f0",
+        "workingTree": "uncommitted compatibility changes recorded in receipt"
+      }
+    },
+    {
       "modId": 3008,
       "modName": "Beyond Reach",
       "nexusName": "Beyond Reach 4.8",
@@ -712,10 +753,12 @@
       "plugins": [
         "BowOfShadowsFix.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-08-30T16:14:47Z",
       "transaction": "20260830T161446997Z-049461a1c1ed",
-      "note": "Seally25's fix for the Creation Club Bow of Shadows leaving a lingering invisibility state, which makes Inigo and other AI-driven followers behave as though the player is invisible when they are not. Linked from Inigo's own page. Installed because the user owns all 74 CC items so ccbgssse038-bowofshadows.esl is active and the defect is live. One MGEF override, zero new, zero deleted, already ESL-flagged, plus one replacement script ccbgssse038_invisibilityscript.pex. The optional 'Distribute Bow of Shadows Perk to Everyone' file was NOT taken."
+      "note": "Seally25's fix for the Creation Club Bow of Shadows leaving a lingering invisibility state, which makes Inigo and other AI-driven followers behave as though the player is invisible when they are not. Linked from Inigo's own page. Installed because the user owns all 74 CC items so ccbgssse038-bowofshadows.esl is active and the defect is live. One MGEF override, zero new, zero deleted, already ESL-flagged, plus one replacement script ccbgssse038_invisibilityscript.pex. The optional 'Distribute Bow of Shadows Perk to Everyone' file was NOT taken. PARKED 2026-09-07 (recoverable, not deleted): superseded by the installed USCCCP 8.5 merged package, which includes the Creation Club Bow of Shadows correction; keeping both enabled would duplicate ownership of the same fix.",
+      "disabledTransaction": "20260907T165830662Z-5ebe42d20e82",
+      "pluginDisabledTransaction": "20260907T170155768Z-9b80c7465ed1"
     },
     {
       "modId": 0,
@@ -837,6 +880,44 @@
       "installedUtc": "2026-08-30T17:17:26Z",
       "transaction": null,
       "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local source build. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
+    },
+    {
+      "modId": 74484,
+      "modName": "Compass Navigation Overhaul",
+      "nexusName": "Compass Navigation Overhaul",
+      "version": "2.2.0",
+      "fileId": 481665,
+      "fileName": "Compass Navigation Overhaul-74484-2-2-0-1710712304.rar",
+      "sizeMb": 0.56,
+      "sha256": "a32ae6e0cc6d685ba114d1f415feda0d204cd792557fa106862b5bedb33f3473",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:46Z",
+      "transaction": "20260907T165746633Z-a06c27a3c836"
+    },
+    {
+      "modId": 0,
+      "modName": "Compass Navigation Overhaul 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for Compass Navigation Overhaul 2.2.0",
+      "version": "2.2.0+4055b00-local",
+      "fileId": 0,
+      "fileName": "records-work/approved-ui-embers-uscccp-2026-09-07/overlays/Compass Navigation Overhaul 1.7.104 Native Overlay - Ensrick.zip",
+      "sizeMb": 11.05,
+      "sha256": "8729FDE19F8D9538F2DA89183E1CF6C9FA7D637415B5D8847F1F17BF7C5FFD17",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:58:11Z",
+      "transaction": "20260907T165811706Z-2b63c0d851d7",
+      "note": "DLL-only source-built overlay above untouched Compass Navigation Overhaul 2.2.0 (Nexus 74484 / file 481665). It supplies only SKSE/Plugins/CompassNavigationOverhaul.dll (plus symbols, MIT license, and build note); vendor assets/configuration remain authoritative. The installed DLL hash matches the build artifact and passes the static Skyrim 1.7.104 Address Library/version-independence gate. No game launch was authorized, so runtime acceptance remains UNVERIFIED.",
+      "distribution": "distributable",
+      "distributionBasis": "MIT source derivative; retain the included license and publish corresponding modified source before external distribution.",
+      "recipe": {
+        "kind": "local-build",
+        "record": "records/source-builds/ensrick-compass-navigation-overhaul-1.7.104.json",
+        "repository": "https://github.com/alexsylex/CompassNavigationOverhaul",
+        "upstreamBase": "4055b008dff7c78d692897a8d10cba14796ea100",
+        "workingTree": "uncommitted compatibility changes recorded in receipt"
+      }
     },
     {
       "modId": 0,
@@ -1209,6 +1290,27 @@
       "installedUtc": "2026-09-02T23:39:52Z",
       "transaction": "20260902T233952259Z-780376765150",
       "note": "Mandatory companion to the 2k texture install, not an optional refinement: it is the Special Edition conversion (user version 100, BSTriShape) of the 394 Oldrim meshes in the MAIN archives. It is also what binds ElSopa's renamed textures - all 394 meshes reference 141 texture paths base CoS never used, and 169 of 169 references resolve inside ElSopa's own archive. Must load ABOVE Cloaks of Skyrim. Collides with Artesian Cloaks 17416 on 381 of its 391 SMP meshes, which is why 17416 is held pending #193. records/cloak-layer-audit-2026-09-02.md 7."
+    },
+    {
+      "modId": 37085,
+      "modName": "Embers XD",
+      "nexusName": "Embers XD 1K",
+      "version": "3.2.8",
+      "fileId": 800802,
+      "fileName": "Embers XD 1K 37085 3.2.8 2026-09-05T16-12Z OyYrPuWIo.zip",
+      "sizeMb": 319.14,
+      "sha256": "1b9ca4e213a6f56157f2e99764fd46f7ed36c338158f6d47533b633a8bbb742b",
+      "plugins": [
+        "Embers XD - Patch - Beyond Skyrim - Bruma.esp",
+        "Embers XD - Patch - Campfire.esp",
+        "Embers XD - Patch - Goldenhills Plantation.esp",
+        "Embers XD - Patch - Survival Mode Improved.esp",
+        "Embers XD.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:56:26Z",
+      "transaction": "20260907T165620729Z-8fc8d661b732",
+      "fomodPlan": "records\\fomod-plans\\37085-embers-xd-3.2.8-community-shaders-lux-orbis.json"
     },
     {
       "modId": 22574,
@@ -1603,15 +1705,15 @@
       "nexusName": "Ensrick-owned SkyPatcher full-cloak equipment exclusion overlay",
       "version": "0.1.0",
       "fileId": 0,
-      "fileName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
+      "fileName": "records-work/cloak-slot-repair-2026-09-07/ui-batch-refresh/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
       "sizeMb": 0.12,
-      "sha256": "3ce249b539ac93451672bd40606b5e0011fa098040ac532a08cd88556e57f5b0",
+      "sha256": "bfab03fef1e76b9ec112bdefc74bf60a158b460fbcb9975773aa9b4f5b281a2f",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T01:01:08.691286+00:00",
-      "transaction": "20260907T010108462Z-a0023ae61a19",
-      "refreshNote": "Rainbows batch: 356 plugins, 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
-      "note": "Rainbows Remade and preceding Security Overhaul asset additions: full slot reservation refreshed; all240 directives and existing cloak mesh winners unchanged. Runtime UNVERIFIED; see source-build receipt and #250.",
+      "installedUtc": "2026-09-07T17:15:17Z",
+      "transaction": "20260907T171517750Z-29f1f6ffadce",
+      "refreshNote": "Current 369-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
+      "note": "The approved UI/Embers/USCCCP batch and refreshed weapon winner changed only the exact profile fingerprint. Slot 58 was re-audited across 8897 ARMO and 4405 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
       "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
       "distribution": "distributable",
       "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
@@ -3013,17 +3115,17 @@
       "nexusName": "Ensrick-owned source-built weapon-speed normalizer",
       "version": "0.3.0",
       "fileId": 0,
-      "fileName": "Ensrick-Weapon-Speed-Balance-0.3.0-rainbows.zip",
+      "fileName": "mods/weapon-balance/artifacts/Ensrick-Weapon-Speed-Balance-0.3.0.zip",
       "sizeMb": 0.65,
-      "sha256": "3bd1e84648c2cf113a50cfd3fea692fc8af7ce018aabdcecb6968a0b1abc138b",
+      "sha256": "99c88c04ebe8ffa109481bc1d06004a5fe109f3afa38f55de746e7acee1602b4",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-07T01:01:08.691286+00:00",
-      "transaction": "20260907T005834771Z-6c4e08348687",
-      "refreshNote": "Rainbows batch: 356 runtime plugins / 355 inputs; exact weapon ESP and 27 translations unchanged. Final-winner and installed freshness checks PASS.",
-      "note": "Approved Rainbows Remade and preceding Security Overhaul asset additions: regeneration proves identical3494WEAP/27localized sidecars. Only input/freshness receipts changed; no weapon policy changes. Runtime UNVERIFIED; see source-build receipt and #250."
+      "installedUtc": "2026-09-07T17:13:15Z",
+      "transaction": "20260907T171315489Z-9db71caca938",
+      "refreshNote": "Approved UI/Embers/USCCCP refresh: 368 inputs, 3496 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
+      "note": "Regenerated deterministically after USCCCP, Embers XD and Better Third Person Selection changed the active plugin fingerprint. USCCCP becomes the winning source for its corrected Creation Club weapons. WeaponBalancePatch.esp is the unique final active plugin and all 4213 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
     },
     {
       "modId": 0,
@@ -3198,6 +3300,24 @@
       "note": "FOV control per user request 2026-08-26: FP world 120 / TP 90 / hands 80 in FirstPersonFOV.ini (1.0.11 dll string-verified to read the TP override keys). INSTALL BUG worked around: MO2Headless stripped the archive top-level skse/ dir as data root - files hand-moved to SKSE\\\\Plugins (fork bug to fix in Ensrick/modorganizer headless). In-game sliders need SKSE Menu Framework - NOT installed: its dll predates addr-lib format 5 and would popup-abort; rebuild assessment running. Base Skyrim.ini fDefaultWorldFOV=120 kept as fallback."
     },
     {
+      "modId": 4018,
+      "modName": "Folkstead and the Border of Hammerfell",
+      "nexusName": "SSE Folkstead 5.6 ESMified",
+      "version": "5.6",
+      "fileId": 801203,
+      "fileName": "SSE Folkstead 5.6 ESMified 4018 5.6 2026-09-06T09-26Z aChSzYTPb.rar",
+      "sizeMb": 589.19,
+      "sha256": "035adb5495edb376f6455d9b647ebd8c99a98f62c102beb02cc74a5e67d7f873",
+      "plugins": [
+        "Folkstead.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T19:02:04Z",
+      "transaction": "20260907T190152782Z-acc21efc993e",
+      "note": "Folkstead and the Border of Hammerfell v5.6, uploaded 2026-09-06, the day before install - the most recently maintained of the trilogy. Plugin Folkstead.esp: 33,971 records, ESM-flagged, masters Skyrim/Update/Dawnguard; 2,253 vanilla-space overrides (784 CELL, 748 LAND, 647 REFR, 71 NAVM). Largest overlap in the build is Skyrim Landscape and Water Fixes at 50 shared records (30 CELL, 15 LAND); 6 with BS Bruma, 3 with Beyond Reach, 4 with Lux Via, 3 with Inigo. plugins.txt 10 after the sort. User asked for all three of JoopvanDie's border-town mods (\"get them all along with the necessary patches. Skip the alternate start patches, obviously\"). NECESSARY PATCHES: none exist for this build. The patches these pages advertise target Rigmor of Bruma, Seapoint Settlement and Journey to Baan Malur / The Sadrasi Town of Pryai, none of which are installed; A Clear Map of Skyrim ships no border-town map patch (its only optional is Lazy Roads); and all three pages list BS Bruma and Beyond Reach as COMPATIBLE WITH, both of which are installed. The 2016 Alternate Start extensions (6393 / 6397 / 6399) were skipped on the user's instruction and would not apply anyway - they need Alternate Start - Live Another Life, and this build runs Skyrim Unbound. Survey: 0/19 exports carry any of the trilogy, expected for a 2016-origin series that never entered the Wabbajack circuit; not evidence against them. ESMified variant taken so the plugin is master-flagged (TES4 flag 0x1 verified) and sorts into the early block where other mods can patch it. MEASURED COLLISIONS, keyed by (master, local id) rather than raw formid: between the three themselves, 2-11 shared records each, essentially the shared Tamriel WRLD header plus a cell or two (Folkstead/Nyhus also share 5 NAVM). LOOT sort run after install placed all three in the early block, so the local resolver plugins and Ensrick Inigo Bloodchill Landscape Forward still win their records - verified after the sort. NOT verified in game; these add worldspaces, quests and NPCs, so a fresh character is the honest test.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 125349,
       "modName": "Freak's Floral Fields 3.2.3 - Realistic Regional Mix",
       "nexusName": "Freak's Floral Fields - A Grass Overhaul",
@@ -3329,6 +3449,24 @@
       "installedUtc": "2026-08-30T21:24:36Z",
       "transaction": "20260830T212433508Z-056f5c588b19",
       "fomodPlan": "records\\fomod-plans\\157450-grand-solitude-patches.json"
+    },
+    {
+      "modId": 4017,
+      "modName": "Haafstad and the Border of High Rock",
+      "nexusName": "SSE Haafstad 9.8.1 ESMified",
+      "version": "9.8.1",
+      "fileId": 797108,
+      "fileName": "SSE Haafstad 9.8.1 ESMified 4017 9.8.1 2026-08-29T18-20Z s6Og0dUXN.rar",
+      "sizeMb": 546.46,
+      "sha256": "d3d0d31306a0c15d37f4ef0dc1781f88a0d9fbaf0b0288bb9fbcdb72fdc2fe7b",
+      "plugins": [
+        "Jehanna.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T19:03:13Z",
+      "transaction": "20260907T190302900Z-a4beab38c8b8",
+      "note": "Haafstad and the Border of High Rock v9.8.1, 2026-08-29. Plugin Jehanna.esp (not Haafstad.esp): 57,817 records, the biggest of the three, ESM-flagged, masters Skyrim/Update/Dawnguard; 633 vanilla-space overrides (237 CELL, 224 LAND, 123 REFR, 44 NAVM). Overlaps: Landscape and Water Fixes 16, BS Bruma 2, Beyond Reach 2, Lux Via 2, Inigo 2. plugins.txt 17. User asked for all three of JoopvanDie's border-town mods (\"get them all along with the necessary patches. Skip the alternate start patches, obviously\"). NECESSARY PATCHES: none exist for this build. The patches these pages advertise target Rigmor of Bruma, Seapoint Settlement and Journey to Baan Malur / The Sadrasi Town of Pryai, none of which are installed; A Clear Map of Skyrim ships no border-town map patch (its only optional is Lazy Roads); and all three pages list BS Bruma and Beyond Reach as COMPATIBLE WITH, both of which are installed. The 2016 Alternate Start extensions (6393 / 6397 / 6399) were skipped on the user's instruction and would not apply anyway - they need Alternate Start - Live Another Life, and this build runs Skyrim Unbound. Survey: 0/19 exports carry any of the trilogy, expected for a 2016-origin series that never entered the Wabbajack circuit; not evidence against them. ESMified variant taken so the plugin is master-flagged (TES4 flag 0x1 verified) and sorts into the early block where other mods can patch it. MEASURED COLLISIONS, keyed by (master, local id) rather than raw formid: between the three themselves, 2-11 shared records each, essentially the shared Tamriel WRLD header plus a cell or two (Folkstead/Nyhus also share 5 NAVM). LOOT sort run after install placed all three in the early block, so the local resolver plugins and Ensrick Inigo Bloodchill Landscape Forward still win their records - verified after the sort. NOT verified in game; these add worldspaces, quests and NPCs, so a fresh character is the honest test.",
+      "distribution": "vendor"
     },
     {
       "modId": 98175,
@@ -3518,6 +3656,44 @@
       "installedUtc": "2026-09-02T18:37:48Z",
       "transaction": "20260902T183719292Z-a353c37bcfac",
       "note": "installed by Sol (Codex) 2026-09-02 as an INACTIVE vendor source at priority 244, the companion intake to Immersive Armors 3479, pending item-by-item equipment intake (#181, docs/EQUIPMENT_INTAKE_POLICY.md). The plugin is deliberately inactive and undiscovered while the mod is parked - the `enabled: false` marker covers it."
+    },
+    {
+      "modId": 74483,
+      "modName": "Infinity UI",
+      "nexusName": "Infinity UI",
+      "version": "2.0.3",
+      "fileId": 556134,
+      "fileName": "Infinity UI-74483-2-0-3-1730049690.rar",
+      "sizeMb": 0.39,
+      "sha256": "2bf145178d6821e2d5a9ab5277ddf66082d57c0d72b34209912335e187da6638",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:45Z",
+      "transaction": "20260907T165745718Z-47dd1187d99b"
+    },
+    {
+      "modId": 0,
+      "modName": "Infinity UI 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for Infinity UI 2.0.3",
+      "version": "2.1.0+bd7f560-local",
+      "fileId": 0,
+      "fileName": "records-work/approved-ui-embers-uscccp-2026-09-07/overlays/Infinity UI 1.7.104 Native Overlay - Ensrick.zip",
+      "sizeMb": 8.02,
+      "sha256": "F670EC3F5178DAF79B58F5606F872E828CF74CF2E5DEA0F8A6F3E36F6BB29317",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:58:11Z",
+      "transaction": "20260907T165811540Z-a7fc013c3f0c",
+      "note": "DLL-only source-built overlay above untouched Infinity UI 2.0.3 (Nexus 74483 / file 556134). It supplies only SKSE/Plugins/InfinityUI.dll (plus symbols, MIT license, and build note); vendor assets/configuration remain authoritative. The installed DLL hash matches the build artifact and passes the static Skyrim 1.7.104 Address Library/version-independence gate. No game launch was authorized, so runtime acceptance remains UNVERIFIED.",
+      "distribution": "distributable",
+      "distributionBasis": "MIT source derivative; retain the included license and publish corresponding modified source before external distribution.",
+      "recipe": {
+        "kind": "local-build",
+        "record": "records/source-builds/ensrick-infinity-ui-1.7.104.json",
+        "repository": "https://github.com/alexsylex/InfinityUI",
+        "upstreamBase": "bd7f560cc51fdde9dbae84f85a292f9210035ca4",
+        "workingTree": "uncommitted compatibility changes recorded in receipt"
+      }
     },
     {
       "modId": 1461,
@@ -3735,6 +3911,20 @@
       "fomodPlan": "records/fomod-plans/57038-js-dragon-claws-ae.json",
       "note": "User's call 2026-09-06: \"I think JS Dragon Claws is a safe and easy add... nothing much competing for that spot\" - confirmed empirically. Supersedes JS Dragon Claws SE (1394, v1.0 2016), whose own page says so; 57038 is v1.32, last updated 2026-01-16. FOMOD choice (records/fomod-plans/57038-js-dragon-claws-ae.json): 1k MAIN file 522298, core meshes/textures/scripts, and the single third-party patch whose target is installed - Wyrmstooth (45565). LotD is not in this build, so neither the LOTD/LOTDv6 patches nor any JS_DBM_* museum-display variant was taken; Konahrik's Accoutrements, Helgen Reborn and Skyrim Sewers are absent too. Patch plugin: 4 override records (WTRustedClaw MISC plus WTPuzzleDoorKeyHole, WTBarrowDragonKeyholeActivator and WTRustedClawPedestalAct ACTI), ESL-flagged, masters Skyrim.esm + Wyrmstooth.esp, plugins.txt 276 (Wyrmstooth is 29). TEXTURE_POLICY: 115 DDS, largest 1024x1024 (88 files at 1024, rest 512 and below), zero over the 1024 clutter cap - the 1k download needs no cap overlay. Asset-conflict scan across every enabled mod: 153 asset paths, ZERO overlaps, so nothing is overwritten and nothing overwrites it at priority 290; SMIM's only 'claw' asset is the hagraven ingredient. Ships DLC2 amethyst claw and puzzle-door meshes so the Solstheim door gems match. keep_coverage clean, install_mod --verify 0 problems. NOT verified in game.",
       "distribution": "vendor"
+    },
+    {
+      "modId": 33394,
+      "modName": "JS Shrines of the Divines SE",
+      "nexusName": "JS Shrines of the Divines SE - 2K",
+      "version": "1.3",
+      "fileId": 282601,
+      "fileName": "JS Shrines of the Divines SE - 2K-33394-1-3-1652146205.7z",
+      "sizeMb": 73.82,
+      "sha256": "bc0e601c633ef735745804bba8ea2177fb2996623dc26d6f63d3f29a69e25e99",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:52Z",
+      "transaction": "20260907T165749386Z-8aa2d70e8aa2"
     },
     {
       "modId": 55728,
@@ -4518,6 +4708,23 @@
       "note": "FOMOD selection recorded in fomodPlan: __main + _HIMBO + _VanillaF + __loweredHood. _3BA and _BHUNP omitted - this build runs CBBE + HIMBO with no 3BA, BHUNP or OBody. The female route is NOT finished: _VanillaF is the starting shape and a BodySlide build against the installed CBBE Curvy preset is still owed, using the shipped slider sets in CalienteTools. __loweredHood supplies the Dynamic Armor Variants configs and the HT_ArmorHood KID rule that wire the three hooded capes to Helmet Toggle 2, which is not installed yet, so those configs are inert for now. records/cloak-layer-audit-2026-09-02.md 5."
     },
     {
+      "modId": 12688,
+      "modName": "moreHUD",
+      "nexusName": "moreHUD Light Master - SE and AE",
+      "version": "5.4.4.0",
+      "fileId": 800457,
+      "fileName": "moreHUD Light Master - SE and AE 12688 5.4.4.0 2026-09-05T02-15Z rvwm2BdSQ.7z",
+      "sizeMb": 6.08,
+      "sha256": "931cd0abd52ee2f5e74e0f46d29c13ea844107ec2b9d7ae8f8fa48b74eb3b1af",
+      "plugins": [
+        "AHZmoreHUD.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:44Z",
+      "transaction": "20260907T165744145Z-9d9cbbf75946",
+      "fomodPlan": "records\\fomod-plans\\12688-morehud-5.4.4-light-master.json"
+    },
+    {
       "modId": 63604,
       "modName": "Nature of the Wild Lands",
       "nexusName": "Nature of the Wild Lands",
@@ -4640,6 +4847,24 @@
       "fomodPlan": "records\\fomod-plans\\67925-notification-filter-1.7.104.json"
     },
     {
+      "modId": 4016,
+      "modName": "Nyhus and the border of Cyrodiil",
+      "nexusName": "Nyhus SSE 9 ESMified",
+      "version": "9",
+      "fileId": 779837,
+      "fileName": "Nyhus SSE 9 ESMified 4016 9 2026-07-22T14-34Z zYsEpQrXb.rar",
+      "sizeMb": 259.74,
+      "sha256": "f32dc2f4c43b5083d0701f0ae6fa661c97ebb46cef1cd3715eaab923044de63e",
+      "plugins": [
+        "Nyhus.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T19:03:48Z",
+      "transaction": "20260907T190342539Z-f6924f532abb",
+      "note": "Nyhus and the border of Cyrodiil v9, 2026-07-22. Plugin Nyhus.esp: 27,550 records, ESM-flagged, masters Skyrim/Update/Dragonborn; 771 vanilla-space overrides (335 CELL, 315 LAND, 84 REFR, 29 NAVM) and 4 WRLD. Sits at the Cyrodiil border, the same approach as BS Bruma, and shares only 2 records with it. Overlaps: Landscape and Water Fixes 11, Lux Via 5, Beyond Reach 2, Inigo 2. plugins.txt 12. User asked for all three of JoopvanDie's border-town mods (\"get them all along with the necessary patches. Skip the alternate start patches, obviously\"). NECESSARY PATCHES: none exist for this build. The patches these pages advertise target Rigmor of Bruma, Seapoint Settlement and Journey to Baan Malur / The Sadrasi Town of Pryai, none of which are installed; A Clear Map of Skyrim ships no border-town map patch (its only optional is Lazy Roads); and all three pages list BS Bruma and Beyond Reach as COMPATIBLE WITH, both of which are installed. The 2016 Alternate Start extensions (6393 / 6397 / 6399) were skipped on the user's instruction and would not apply anyway - they need Alternate Start - Live Another Life, and this build runs Skyrim Unbound. Survey: 0/19 exports carry any of the trilogy, expected for a 2016-origin series that never entered the Wabbajack circuit; not evidence against them. ESMified variant taken so the plugin is master-flagged (TES4 flag 0x1 verified) and sorts into the early block where other mods can patch it. MEASURED COLLISIONS, keyed by (master, local id) rather than raw formid: between the three themselves, 2-11 shared records each, essentially the shared Tamriel WRLD header plus a cell or two (Folkstead/Nyhus also share 5 NAVM). LOOT sort run after install placed all three in the early block, so the local resolver plugins and Ensrick Inigo Bloodchill Landscape Forward still win their records - verified after the sort. NOT verified in game; these add worldspaces, quests and NPCs, so a fresh character is the honest test.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 62271,
       "modName": "One-handed warhammers",
       "nexusName": "One-handed warhammers",
@@ -4689,21 +4914,21 @@
       "modId": 0,
       "modName": "Pandora Output - Ensrick",
       "nexusName": "Ensrick-owned generated behaviour output (Pandora Behaviour Engine+ 4.4.0-beta, headless fork)",
-      "version": "2026-08-30",
+      "version": "2026-09-07",
       "fileId": 0,
       "fileName": "written directly by 'Pandora Behaviour Engine+.exe --headless -o' (records/source-builds/ensrick-pandora-headless.json); no meta.ini",
-      "sizeMb": 7.21,
-      "sha256": "0714bd816819e9a7cac3ce261ab4d8dd972b5b8d5e3943a51221757a82f391a6",
+      "sizeMb": 10.7,
+      "sha256": "87c2fc5ee5f9f9593f165c42ea201d8bfe41e10634837d1ac28f757feb6494e6",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-08-31T00:15:33Z",
+      "installedUtc": "2026-09-07T05:22:29Z",
       "transaction": null,
-      "note": "Generated behaviour output: 208 files = 202 under meshes/actors/character (patched behaviour HKX plus the OpenAnimationReplacer XPMSE weapon-style animation sets), animationdatasinglefile.txt, animationsetdatasinglefile.txt, SKSE/Plugins/fnis_aa, Pandora_Engine/ActiveMods.json + PreviousOutput.txt, and the generator's Engine.log. Regenerated 2026-08-30 19:15 local (= installedUtc, from Engine.log's mtime) via the headless fork (MO2Headless run through USVFS, tools/run-pandora.cmd). The engine writes the folder itself, so there is no MO2Headless transaction; the modlist entry is at line 17. Only XPMSSE weapon styles depend on it today; rerun after every animation or skeleton mod change (docs/STANDARDS-DIGEST-2026-08-30.md). Engine.log is excluded from packaging by .packagingignore. Row sha256 = aggregate over the 208 files (sha256 of the sorted 'path<TAB>SHA256' lines, lower-cased paths). Parked/unparked in the #142 bisect round 3. Row added 2026-09-02 (#160).",
+      "note": "Generated behaviour output: 223 files, including 220 runtime payload files. Regenerated 2026-09-07 through MO2's VFS with the headless Pandora fork after Precision 2.0.6 installation. Active mods: Precision colis, SkyParkour first person, SkyParkour third person, Pandora Base; FNIS input: XPMSE. Engine exit 0; 186 HKX files produced; Precision logged as Pandora Mod 1. The engine writes this folder directly, so there is no MO2Headless transaction. Engine.log is excluded from packaging. Row sha256 is the aggregate over every generated file. No game launched; runtime acceptance is UNVERIFIED.",
       "distribution": "recipe",
       "distributionBasis": "Payload: generated output derived from the installed animation and skeleton mods (XPMSSE et al.) and Pandora's own templates; vendor-derived generated data, never bundled. Basis: the installer regenerates it by running the headless Pandora fork (records/source-builds/ensrick-pandora-headless.json, Ensrick/pandora-behaviour-engine 6adf04b, GPL-3.0-or-later, pushed) against the user's own installed mods with -o into this mod folder; output depends on the exact mod set, so a bundled copy would drift. [ledger row added and classified 2026-09-02, #160] Machine-readable recipe field added 2026-09-02 (tool kind: headless exe pin, input aggregates + vendor archive hashes, run command, SHA-256 of every payload output). [recipe gaps closed 2026-09-02, #160]",
       "recipe": {
         "kind": "tool",
-        "recordedAt": "2026-09-02",
+        "recordedAt": "2026-09-07",
         "tool": {
           "name": "Pandora Behaviour Engine+ (Ensrick headless fork)",
           "version": "4.4.0-beta+ensrick-headless",
@@ -4716,7 +4941,7 @@
           "note": "records/source-builds/ensrick-pandora-headless.json (build + rebuild); companions Pandora_Engine/ and Nemesis_Engine/ beside the exe"
         },
         "command": "MO2Headless.exe --root <instance> --timeout 3600 run \"<repo>/tools/pandora-headless/Pandora Behaviour Engine+.exe\" --arguments \"--headless -o \\\"<mods>/Pandora Output - Ensrick\\\"\"  (tools/run-pandora.cmd)",
-        "method": "Runs Pandora once through MO2's USVFS so it sees every enabled mod's Nemesis_Engine patches and FNIS animation lists, and writes the patched behaviour graphs, animation data singlefiles, the FNIS-AA to OpenAnimationReplacer sets and fnis_aa config into the output mod. Engine.log of the recorded run lists exactly: Pandora Mod 1 SkyParkour 1st Person, Mod 2 SkyParkour 3rd Person, Mod 3 Pandora Base, FNIS Mod 1 FNIS_XPMSE_List.",
+        "method": "Runs Pandora once through MO2's USVFS so it sees every enabled mod's Nemesis_Engine patches and FNIS animation lists. Active Pandora mods in this generation: Precision, SkyParkour first person, SkyParkour third person, and Pandora Base; FNIS mod: FNIS_XPMSE_List. Writes patched behavior graphs, animation data singlefiles, Precision recoil registrations, FNIS-AA OAR sets and fnis_aa config into the dedicated output mod.",
         "inputs": [
           {
             "source": "Pandora_Engine templates + vanilla behaviour projects (tools/pandora-headless/Pandora_Engine beside the exe; byte-identical to mods/Pandora Behaviour Engine/Pandora_Engine)",
@@ -4769,6 +4994,19 @@
             "source": "XP32 Maximum Skeleton Special Extended 5.06 archive (Nexus 1988 file 469854)",
             "sha256": "62335BAD563800402A4F47E410BF96B5A6B3B920A6B5EA606CD723D03973ED41",
             "role": "vendor archive (XPMSE animations)"
+          },
+          {
+            "source": "Nemesis_Engine/mod/colis from installed Precision 2.0.6",
+            "sha256": "352dc7e25fad7a3be469fe793f1829336beec215f3be12c5d4f83ad77e5a845d",
+            "bytes": 1097288,
+            "files": 223,
+            "aggregate": "sha256 over sorted lower-case forward-slash path, TAB, upper-case file SHA-256 lines joined by LF",
+            "role": "Pandora Mod 1: Precision"
+          },
+          {
+            "source": "Precision 2.0.6 archive (Nexus 72347 file 798533)",
+            "sha256": "9E5EE9957B012ED0CED0ADD274EE6477077DDDB10D68BD20A2ABB055E00D8E98",
+            "role": "vendor archive providing Precision colis behavior patch"
           }
         ],
         "outputs": [
@@ -4799,7 +5037,7 @@
           },
           {
             "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_1/config.json",
-            "sha256": "CBE815990E6516389EEEF5E7ADC9EDD5D58F8F8196E1E98C65A9092124E5789D",
+            "sha256": "6337376E907102A51BA192940027FA2AB0EF9C1241376FB2BBF9F94E009B4590",
             "bytes": 399
           },
           {
@@ -4814,7 +5052,7 @@
           },
           {
             "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_2/config.json",
-            "sha256": "120051086056EA823D87387E434A762C43BDACAB1BE000C4DA646404B08CCEBC",
+            "sha256": "DEBA2DD3342BEE7622F62E32BB40A6319F4FCD53B9DAE2B5EE3C51FD5A996D8B",
             "bytes": 399
           },
           {
@@ -4829,7 +5067,7 @@
           },
           {
             "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_1hmeqp_3/config.json",
-            "sha256": "F71F9EA9662574CF986591CC21A643285074C06804CFDC4A6EF4AF2A36C30D3D",
+            "sha256": "5C0C3D164DF3CCA848394B7A85DA881CA1AEA49476356D4C4325E50706C98E07",
             "bytes": 399
           },
           {
@@ -5074,7 +5312,7 @@
           },
           {
             "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_4/config.json",
-            "sha256": "E774D267C7C03F188B727A0C0096997295D852F7C8E33B976D9158D04FEA507A",
+            "sha256": "89B708E3AD39AE8CFF8FA28F9876EBBA6D605360E498F66D6AFBE0017C62AF9B",
             "bytes": 399
           },
           {
@@ -5089,7 +5327,7 @@
           },
           {
             "path": "meshes/actors/character/animations/OpenAnimationReplacer/XPMSE/xpe_dageqp_5/config.json",
-            "sha256": "B54B3D1125CFDD96CCEAFFDFF82330238F93CF2AF04D2F7156B842D8C8147D36",
+            "sha256": "675BC588EEB71DE83873B3FD925395B73FB8092FAC19F6C28C1B25FB490A536D",
             "bytes": 399
           },
           {
@@ -5759,33 +5997,108 @@
           },
           {
             "path": "meshes/actors/character/Behaviors/0_Master.hkx",
-            "sha256": "DEB389BE9021994DCC2C6932DAC51B32DBB2E773F3620A624D431E0665172AF9",
-            "bytes": 585136
+            "sha256": "19A29CF5F40B074E343A20DC436F99497A24BB5CF740A88F8C50787A2B21910C",
+            "bytes": 599168
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/1hm_behavior.hkx",
+            "sha256": "B9CB38F26BC4F4A5F2D59ECAF7C3419BD06DA570A4695D71DE9D3EE1FE855D6C",
+            "bytes": 1225696
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/1hm_locomotion.hkx",
+            "sha256": "7EA6BDEACE232FD1DB9C0B3D571D3D014475EB769F516E8FEC1943EB65FD78B8",
+            "bytes": 165840
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/bashbehavior.hkx",
+            "sha256": "F485514594C70EFB9CFC5E95F451D03227559125532EAEDBD3A995F22C283F00",
+            "bytes": 35968
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/blockbehavior.hkx",
+            "sha256": "0CBC7AA6C7DDA12C407AA547392100F90CA46E3626E139E6C7FD0CC0CA845671",
+            "bytes": 193808
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/bow_direction_behavior.hkx",
+            "sha256": "8E07C22659A559A7BEBD2D7C250A6FD15E996ACB97E19E709BB595996F1651EF",
+            "bytes": 46304
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/crossbow_direction_behavior.hkx",
+            "sha256": "6BD25A67FE67731517844DCBD31724466DCD4DCCC4F92704D28FB589AA979C32",
+            "bytes": 46400
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/horsebehavior.hkx",
+            "sha256": "4778FD77A230442674BC20B31D0ED3354BCA9832549320B1A489EDAE395830BD",
+            "bytes": 164240
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/idlebehavior.hkx",
+            "sha256": "6E002F6FB17CEE573412C0C2B2293E93BF998F36C620C332BD7E6753AC89A477",
+            "bytes": 319232
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/magic_readied_direction_behavior.hkx",
+            "sha256": "6F85A62D09C346AF67C9F226AD421B2D64A76357BFED39FC6ACE3E573FDD5FB1",
+            "bytes": 67376
           },
           {
             "path": "meshes/actors/character/Behaviors/magicbehavior.hkx",
-            "sha256": "D7DFC8F8E6D7BDD438D335DE0731859C1640707A24D5670E18F5C9BB79593F81",
-            "bytes": 276960
+            "sha256": "323B239E06DCFD08A184C8D124CEB1CE3F9C1F9A5B927112A7BE2C940478D9B4",
+            "bytes": 277200
           },
           {
             "path": "meshes/actors/character/Behaviors/magicmountedbehavior.hkx",
-            "sha256": "11C63919B1BF955156E3A69BE8BF6E3791E889762E3027137AF4135D97CAB06B",
-            "bytes": 121488
+            "sha256": "BB51578814F94F5A0A6F0477109857FD179B929A1C7ED94AFCDA7F326CA49FCF",
+            "bytes": 121728
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/mt_behavior.hkx",
+            "sha256": "E02CEF6DF7723776A9290E3D4C8703E223756BD0F4D70ED6ADEA9CC752FF5494",
+            "bytes": 1149776
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/shout_behavior.hkx",
+            "sha256": "6672DF5B737BB3A084A31D9C6AA63284AF81F4A627065549A6C1AC20C6197288",
+            "bytes": 67072
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/shoutmounted_behavior.hkx",
+            "sha256": "95B45B27B50899E7EB12A49E05D0A1223B5763613B9DB61686DE4462A1A0AE58",
+            "bytes": 34416
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/sprintbehavior.hkx",
+            "sha256": "618DFC43606F12011FF055A485DB6CCFD42765575949EF16C2DDDDC8EEA6DA1E",
+            "bytes": 33424
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/staggerbehavior.hkx",
+            "sha256": "7EB8879B7CF1CFE6CFB4ACF4B354478EEE4DB1521D35B64EF7DB618026F699B1",
+            "bytes": 25776
+          },
+          {
+            "path": "meshes/actors/character/Behaviors/weapequip.hkx",
+            "sha256": "704772A014BC4F3382EC4877EB1B56E3BD2DC2F4F7AA8A34657A3719D33A46F3",
+            "bytes": 63840
           },
           {
             "path": "meshes/actors/character/Characters Female/DefaultFemale.hkx",
-            "sha256": "7B129EA5792DE57A8260DAF489A99D32317F0771067323AE8A7EB893BE915833",
-            "bytes": 109888
+            "sha256": "18030BD37D4ECDFAA49AD8CD7790BB6B2BCA0DAE8E363AA06EEFA1BE57B2E6F5",
+            "bytes": 110160
           },
           {
             "path": "meshes/actors/character/Characters/DefaultMale.hkx",
-            "sha256": "F8436FF6A1FC2DC4CC765DAD1C91C67559E86267C3604C97A37027124F993D0F",
-            "bytes": 109664
+            "sha256": "229E5AB446A9B46BE4EFE307A582AD1D26A8F53CE22E9E00EF0A241CE79BAED6",
+            "bytes": 109936
           },
           {
             "path": "meshes/animationdatasinglefile.txt",
-            "sha256": "81CA6207838BBBB44853BFC93D78E3526CAAE2045BF2A908E453793A319D0FC5",
-            "bytes": 1932969
+            "sha256": "E7423428A2DC85009398C4FCD1437AC8A5AAFC91E2101A84532BF8DE116D5D3A",
+            "bytes": 1935291
           },
           {
             "path": "meshes/animationsetdatasinglefile.txt",
@@ -5914,6 +6227,25 @@
       "installedUtc": "2026-08-25T04:32:25Z",
       "transaction": "20260825T043224962Z-d35c254ae689",
       "note": "official 1.17.1 post-CommonLib-6.7.0 rebuild | sha256 re-recorded 2026-08-26 from retained archive (original hash described a transient repack; archive verified against fresh Nexus download)"
+    },
+    {
+      "modId": 72347,
+      "modName": "Precision",
+      "nexusName": "Precision",
+      "version": "2.0.6",
+      "fileId": 798533,
+      "fileName": "Precision 72347 2.0.6 2026-09-01T07-51Z pQ0AZ3jtL.7z",
+      "sizeMb": 5.54,
+      "sha256": "9e5ee9957b012ed0ced0add274ee6477077dddb10d68bd20a2abb055e00d8e98",
+      "plugins": [
+        "Precision.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T05:20:03Z",
+      "transaction": "20260907T052002855Z-cd9c6e3637a2",
+      "fomodPlan": "records\\fomod-plans\\72347-precision-2.0.6.json",
+      "note": "User adoption 2026-09-07. Precision 2.0.6 exact MAIN file 798533; explicit FOMOD plan installs the core payload and colis behavior patch, with no TK Dodge/Ultimate Combat compatibility option. Precision.dll reports plugin 2.0.6.0, V5 address-library independence and PASS for runtime 1.7.104; 248 selected payload files had zero loose-file collisions before installation. Precision.esp is ESL-flagged and contains 3 new records (GLOB, QUST, FLST), no overrides or deletions. Pandora regenerated successfully with colis active as Pandora Mod 1. Upstream defaults retain trails, hitstop, hitstop camera shake, recoil and recoil camera shake; these remain runtime feel-test decisions. No game launched.",
+      "staticVerification": "PASS: exact archive hash and file ID, DLL version gate, zero pre-install loose conflicts, active Precision.esp, and Pandora output generated with Precision active; runtime/gameplay UNVERIFIED"
     },
     {
       "modId": 62934,
@@ -6853,6 +7185,47 @@
       "note": "direct archive. PRIORITY FIXED 2026-09-06 (transaction 20260907T010439764Z-db37694c8434): raised from 30 to 34 so it sits directly above SMIM (32). It had been installed 7 minutes before SMIM on 2026-08-24 and landed below it, so SMIM overrode ALL 48 of their shared assets and only this addon's 5 unique paths applied - 43 reworked meshes (Markarth architecture, upper-class furniture, Nordic pull chains, anchor chains, hanging animals, the Whiterun drawbridge) plus 5 textures where the addon is higher resolution: smim_upperchest .dds/_n/_weathered/_weathered_snow at 4096x4096 against SMIM's 2048x2048, and smim_imp_gate_pole.dds at 512x4096 against 256x2048. records/active-file-conflicts.md had already recorded the symptom (\"mesh SMIM over SMIM Quality Addon: 35 files\", \"texture ... 5 files\") without anyone acting on it, and nothing in the ledger said the order was deliberate. Found while installing Security Overhaul - Some More Locks, which bundles SMIM's own 256x2048 gate-pole textures for people without SMIM (byte-identical to SMIM's, sha256 307a86dd7917 / 8b7ba56a2116); those were dropped from that install, which is now load-bearing - at priority 302 they would override this addon's 512x4096. Unofficial Material Fix (218) and Assorted Mesh Fixes (220) still win their 6 and 2 files over this addon, which is the intended order. NOT verified in game."
     },
     {
+      "modId": 41252,
+      "modName": "SmoothCam",
+      "nexusName": "SmoothCam",
+      "version": "1.7.1",
+      "fileId": 729856,
+      "fileName": "SmoothCam-41252-1-7-1-1773112010.zip",
+      "sizeMb": 34.94,
+      "sha256": "cc69c9219313bea9a8d2da1eebc95dfe1edf7c266988df04b8d837c3225fc316",
+      "plugins": [
+        "SmoothCam.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T18:10:41Z",
+      "transaction": "20260907T181041172Z-96f4bc62d063",
+      "fomodPlan": "records/fomod-plans/41252-smoothcam-1.7.1-ae-esl.json"
+    },
+    {
+      "modId": 0,
+      "modName": "SmoothCam 1.7.104 Native Overlay - Ensrick",
+      "nexusName": "Ensrick source-built current-runtime overlay for SmoothCam 1.7.1",
+      "version": "1.7.1+66f3960-local",
+      "fileId": 0,
+      "fileName": "records-work/smoothcam-1.7.104-20260907-v1/SmoothCam 1.7.104 Native Overlay - Ensrick.zip",
+      "sizeMb": 9.17,
+      "sha256": "5173779445FDC9F3F6B6949210EA6C5CEA5EB9DE3FFB3A4B178DB4FF4D824388",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-07T18:49:34Z",
+      "transaction": "20260907T184934806Z-ac01b9a831fb",
+      "note": "DLL/PDB-only source-built overlay above the untouched SmoothCam 1.7.1 Nexus package (41252 / file 729856). The stock DLL stopped the user's manual Skyrim 1.7.104 launch at SKSE's 'loading plugin SmoothCam' line and produced no SmoothCam log. This overlay rebuilds the same upstream revision against audited CommonLibSSE-NG 6.7.1, declares exact 1.7.104 and Address Library V5 compatibility, and migrates current runtime-data APIs. Vendor ESL, MCM, scripts, configuration, translations and assets remain authoritative and unchanged. Installed DLL hash matches the artifact and passes the static native gate. Runtime acceptance after this overlay is UNVERIFIED pending the user's manual relaunch.",
+      "distribution": "local-only",
+      "distributionBasis": "Upstream revision 66f3960 has no license declaration or license file. The local derivative and symbols must not be published or bundled without permission.",
+      "recipe": {
+        "kind": "local-build",
+        "record": "records/source-builds/ensrick-smoothcam-1.7.104.json",
+        "repository": "https://github.com/mwilsnd/SkyrimSE-SmoothCam",
+        "upstreamBase": "66f3960ec4de2b28af5e863c794a3924e6a2dfdd",
+        "workingTree": "uncommitted compatibility changes recorded in receipt"
+      }
+    },
+    {
       "modId": 113045,
       "modName": "Snazzy Furniture and Clutter Overhaul 3 - BOS",
       "nexusName": "SFCO3 - BOS",
@@ -7232,6 +7605,22 @@
       "note": "Official NOTWL base + Ulvenwald swap selection. Installs only the already-ESL-flagged 515-record STAT/TREE library and one 14-line BOS swap INI; no Vanilla dummy, Seasons files, or Ulvenwald-base meshes. The plugin has zero overrides, placed references, cells, worldspaces, navmeshes, scripts, or quests."
     },
     {
+      "modId": 62775,
+      "modName": "TrueHUD",
+      "nexusName": "TrueHUD",
+      "version": "1.1.10",
+      "fileId": 798218,
+      "fileName": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
+      "sizeMb": 4.18,
+      "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5",
+      "plugins": [
+        "TrueHUD.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:43Z",
+      "transaction": "20260907T165742521Z-145cbd265cc4"
+    },
+    {
       "modId": 17561,
       "modName": "UIExtensions",
       "nexusName": "UIExtensions v1-2-0",
@@ -7278,6 +7667,23 @@
       "installedUtc": "2026-08-31T03:01:07Z",
       "transaction": "20260831T030106107Z-95516f98791c",
       "note": "Part of the #107 DLL-free fix floor. Elzee's UMF 1.18.0: 217 meshes, ALL SE format (stream 100), no plugin, no textures, no DLL - it only corrects material/shader flags on vanilla meshes, so it costs no plugin slot and has no record surface."
+    },
+    {
+      "modId": 18975,
+      "modName": "Unofficial Skyrim Creation Club Content Patches",
+      "nexusName": "Unofficial Creation Club Content Patch",
+      "version": "8.5",
+      "fileId": 784827,
+      "fileName": "Unofficial Creation Club Content Patch 18975 8.5 2026-08-03T02-18Z Dc5uGktyp.zip",
+      "sizeMb": 45.9,
+      "sha256": "09eb5bee7fa951fab142aa656cf70cc7e6d0d514059dad36f0c3c6ffe6ae4133",
+      "plugins": [
+        "unofficial skyrim creation club content patch.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T16:57:41Z",
+      "transaction": "20260907T165740813Z-01e356a6d7c3",
+      "fomodPlan": "records\\fomod-plans\\18975-uscccp-8.5-merged.json"
     },
     {
       "modId": 49616,
