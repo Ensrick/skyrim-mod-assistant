@@ -39,6 +39,24 @@
       "note": "DoubleYou's map overhaul, v4.0. Supersedes A Quality World Map (5804), which was not installed, so nothing had to be disabled. FOMOD plan records/fomod-plans/56367-acmos.json selects: Core Files; LOD Setup = 'No DynDOLOD LOD32'; DynDOLOD rules = None; Other Worlds = Beyond Reach + Bruma + Wyrmstooth; Optional Components = Remove Clouds (the author's Recommended default - revert by reinstalling without it). NOT selected: Falskaar (skipped per BASELINE.md), Midwood Isle, Vominheim (not installed), Worldspace Transition Tweaks patch (WTT 48889 not installed). LOD32 IS THE DANGEROUS OPTION and was avoided: the author warns 'Do NOT install the With DynDOLOD LOD32 option if you are not going to use DynDOLOD 3! This will cause significant issues with LODS otherwise!' Verified by hash - the installed A Clear Map of Skyrim.ini matches 100 Default INI (uLockedObjectMapLOD=16), not 101 LOD32 INI (=32); that one line is the whole difference. MUST BE REINSTALLED with LOD32 + DynDOLOD 3 rules when DynDOLOD is first generated: #81 carries the full procedure including Expert=1 / Level32=1 and the FOLIP road path. All four plugins are ALREADY ESL-flagged despite the .esp extension (LOOT: isLightMaster true), so they cost zero of the 254 slots; LOOT's masterlist also marks all four verified clean. Core plugin: 36 records, 28 new, 8 overrides, 0 deleted - 15 IMGS, 14 WTHR and 7 WRLD (Tamriel, DLC2SolstheimWorld, DLC01FalmerValley, DLC01SoulCairn, Blackreach, SkuldafnWorld, Sovngarde). It edits base WRLD records and must load at the bottom; LOOT places it 200-203 of 206, satisfied. NO ROADS are installed: the 'ACMOS - Lazy Roads' optional file is mutually exclusive with the FOLIP path the build is heading for ('ONLY if you are NOT using ACMOS Road Generator and/or FOLIP'), so it was skipped rather than installed-then-removed. Moonpath to Elsweyr, Gray Cowl 10th and VIGILANT get the global camera and map-weather improvements but no height adjustment or roads - ACMOS ships no plugin for them and no official patch exists; FOLIP at DynDOLOD time is what covers them. Unique Map Weather (59919) is a SOFT requirement by the author's own wording and was not installed, so the six shipped MapWeathers/*.json files sit inert. No SKSE DLL."
     },
     {
+      "modId": 189927,
+      "modName": "A Thanedom Of Dirfjord - Folkstead Patch",
+      "nexusName": "PatchDirfjordFolkstead",
+      "version": "1",
+      "fileId": 796634,
+      "fileName": "PatchDirfjordFolkstead 189927 1 2026-08-28T21-08Z izKcFprlr.rar",
+      "sizeMb": 0.05,
+      "sha256": "b62f3194ce661748c0a4514ad8d4bdb69778cac88ccc32e80bc54353b8310ec8",
+      "plugins": [
+        "PatchDirfjordFolkstead.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T19:37:10Z",
+      "transaction": "20260907T193709651Z-7f21a06c331b",
+      "note": "The reason this cluster exists: the user asked about this patch first, and it needs BOTH sides - it was useless until Dirfjord was installed alongside Folkstead. v1, 2026-08-28, 0 endorsements, 50 KB, by JoopvanDie with Axis1211's permission. 9 records and they are exactly the border seam: WRLD Tamriel plus CELL 009CC3 / 009CC4 (DirfjordExterior01) / 009CE4 / 009CE5 and their four LAND records. 13 masters including Folkstead.esp, USSEP, Thanedom Assets.esl and five Creation Club plugins. MOVED after install: it landed at plugins.txt 301, past the local resolver block, where its WRLD Tamriel record (MNAM 7e0a3019, TNAM 09e5743e, UNAM 495f7b44) would have overridden Ensrick General Compatibility Patch's (MNAM aa288a23, TNAM b3a5a1ba, UNAM 510f802e) - the same trap MIC hit. The three Thanedom rows were moved to 291-293, immediately before Ensrick Lux Water CS Patch, keeping them after Folkstead (10) and in their own dependency order; the resolver block wins WRLD Tamriel again, verified. plugins.txt/loadorder.txt backed up as .bak.v<stamp>-pre-thanedom-move. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 74342,
       "modName": "ACMOS - Water for ENB Patch",
       "nexusName": "ACMOS and Wyrmstooth - Water for ENB Patch",
@@ -1705,15 +1723,15 @@
       "nexusName": "Ensrick-owned SkyPatcher full-cloak equipment exclusion overlay",
       "version": "0.1.0",
       "fileId": 0,
-      "fileName": "records-work/cloak-slot-repair-2026-09-07/ui-batch-refresh/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
+      "fileName": "records-work/cloak-slot-repair-2026-09-07/smoothcam-nyhus-refresh/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
       "sizeMb": 0.12,
-      "sha256": "bfab03fef1e76b9ec112bdefc74bf60a158b460fbcb9975773aa9b4f5b281a2f",
+      "sha256": "9d59309680f1ad67a642b6db0d144d419e937f7b9dffe0ab72d3544f648db574",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T17:15:17Z",
-      "transaction": "20260907T171517750Z-29f1f6ffadce",
-      "refreshNote": "Current 369-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
-      "note": "The approved UI/Embers/USCCCP batch and refreshed weapon winner changed only the exact profile fingerprint. Slot 58 was re-audited across 8897 ARMO and 4405 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
+      "installedUtc": "2026-09-07T19:18:43Z",
+      "transaction": "20260907T191843748Z-c2d107f4be77",
+      "refreshNote": "Current 373-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
+      "note": "SmoothCam, the concurrently completed Nyhus intake and the refreshed weapon winner changed the exact profile fingerprint. Slot 58 was re-audited across 8961 ARMO and 4461 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
       "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
       "distribution": "distributable",
       "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
@@ -3117,15 +3135,15 @@
       "fileId": 0,
       "fileName": "mods/weapon-balance/artifacts/Ensrick-Weapon-Speed-Balance-0.3.0.zip",
       "sizeMb": 0.65,
-      "sha256": "99c88c04ebe8ffa109481bc1d06004a5fe109f3afa38f55de746e7acee1602b4",
+      "sha256": "2635b2b65e77662a6482a17f3d2087aceb94bd7eb98debedf418c786d5a32cb9",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-07T17:13:15Z",
-      "transaction": "20260907T171315489Z-9db71caca938",
-      "refreshNote": "Approved UI/Embers/USCCCP refresh: 368 inputs, 3496 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
-      "note": "Regenerated deterministically after USCCCP, Embers XD and Better Third Person Selection changed the active plugin fingerprint. USCCCP becomes the winning source for its corrected Creation Club weapons. WeaponBalancePatch.esp is the unique final active plugin and all 4213 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
+      "installedUtc": "2026-09-07T19:16:59Z",
+      "transaction": "20260907T191659161Z-97e6bf57357e",
+      "refreshNote": "SmoothCam/Nyhus refresh: 372 inputs, 3504 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
+      "note": "Regenerated deterministically after SmoothCam and the concurrently completed Nyhus intake changed the active plugin fingerprint. The final-winner gate caught LOOT moving the global patch above the Wuuthrad add-on; WeaponBalancePatch.esp was restored to the last managed position. It is the unique final active plugin and all 4225 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
     },
     {
       "modId": 0,
@@ -7530,6 +7548,42 @@
       "enabled": true,
       "installedUtc": "2026-08-26T22:22:58Z",
       "transaction": "20260826T222257887Z-cf70113c8270"
+    },
+    {
+      "modId": 47792,
+      "modName": "Thanedom Assets",
+      "nexusName": "Thanedom Assets BSA Version",
+      "version": "1.3.2",
+      "fileId": 448438,
+      "fileName": "Thanedom Assets BSA Version-47792-1-3-2-1701600510.rar",
+      "sizeMb": 1.52,
+      "sha256": "1856e7c4d45db9df32758589717092c06b8f1c75a94f3e47e440850e09d91fd3",
+      "plugins": [
+        "Thanedom Assets.esl"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T19:37:01Z",
+      "transaction": "20260907T193701141Z-6b41bf194935",
+      "note": "Hard requirement of Thanedom Of Dirfjord (85184), pulled in for it. Took the 'Thanedom Assets BSA Version' v1.3.2 (file 448438, 2023-12-03), NOT the 43 MB 'Thanedom Dialogue Assets' MAIN (760212), which the author describes as an addon of generic dialogue for FUTURE Thanedom mods and which Dirfjord does not require. Ships Thanedom Assets.esl: 334 records, all new - 243 STAT, 56 LVLI, 20 FURN, 6 NPC_, 4 PACK - masters Skyrim/HearthFires/Dragonborn. plugins.txt 291. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 85184,
+      "modName": "Thanedom Of Dirfjord",
+      "nexusName": "Thanedom Of Dirfjord",
+      "version": "1.1",
+      "fileId": 380365,
+      "fileName": "Thanedom Of Dirfjord-85184-1-1-1682028920.rar",
+      "sizeMb": 2.62,
+      "sha256": "23c49b9d2b2fedb45d4f96a5243d7e1fd32d94e61892dffcf141bd0ed9ac9edb",
+      "plugins": [
+        "ThanedomDirfjord.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-07T19:37:08Z",
+      "transaction": "20260907T193707718Z-df22da3a2774",
+      "note": "User: \"I like A Thanedom of Dirfjord.\" v1.0, file v1.1 (2023-04-20), 176 endorsements, 2.6 MB, by Axis1211. Adds the Thanedom of Dirfjord in the far south - Asen clan town with a smith, general store and inn, plus one short quest for 500 gold. Requires Thanedom Assets and USSEP, both present. ThanedomDirfjord.esp: 1,044 records (882 REFR, 27 ACHR, 26 PACK, 21 NPC_, 15 CELL), masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/USSEP/Thanedom Assets.esl. Packaged as a BSA. plugins.txt 292. NOT verified in game.",
+      "distribution": "vendor"
     },
     {
       "modId": 141327,
