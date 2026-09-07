@@ -1,0 +1,176 @@
+From 98d5a5ecb3fa1a3002fca3dbc752f8e64c4da54f Mon Sep 17 00:00:00 2001
+From: Ensrick <truthisfact@gmail.com>
+Date: Mon, 7 Sep 2026 16:15:47 -0500
+Subject: [PATCH] Fix selection trampoline register width and execute native
+ regression
+
+---
+ src/RevE/Hooks.cpp             | 28 ++------------
+ src/RevE/SelectionTrampoline.h | 27 ++++++++++++++
+ tests/selection_trampoline.cpp | 67 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 97 insertions(+), 25 deletions(-)
+ create mode 100644 src/RevE/SelectionTrampoline.h
+ create mode 100644 tests/selection_trampoline.cpp
+
+diff --git a/src/RevE/Hooks.cpp b/src/RevE/Hooks.cpp
+index 440dced..c8ce94c 100644
+--- a/src/RevE/Hooks.cpp
++++ b/src/RevE/Hooks.cpp
+@@ -5,6 +5,7 @@
+ #include "FocusManager.h"
+ #include "Settings.h"
+ #include "Offsets.h"
++#include "SelectionTrampoline.h"
+ #include "Filters/FilterManager.h"
+ 
+ #include <UI/SelectionWidget.h>
+@@ -90,30 +91,7 @@ namespace Hooks
+ 	{
+ 		logger::info("BTPS applying SelectionHook");
+ 
+-		struct Patch : Xbyak::CodeGenerator
+-		{
+-			Patch(REL::Relocation<std::uintptr_t> jmpBackAddress)
+-			{
+-				// move objectRef into register
+-				//mov(ptr[r15 + 4], eax);
+-
+-				mov(rcx, eax);
+-
+-				// call OnSetCrosshairTargetRef
+-				mov(rax, (size_t)&OnSetCrosshairTargetRef);
+-				call(rax);
+-
+-				// move return value into rbx
+-				mov(rbx, rax);
+-
+-				// mov from original asm that is overridden as well
+-				mov(rcx, rbx);
+-
+-				// jump back
+-				mov(r10, jmpBackAddress.address());
+-				jmp(r10);
+-			}
+-		};
++		static_assert(sizeof(RE::ObjectRefHandle) == sizeof(std::uint32_t));
+ 
+ 		// SE: 3AA4B0 - CrossHairPickData::Pick
+ 		// SE: 0xCF0  - mov in the function where the new focus is applied
+@@ -121,7 +99,7 @@ namespace Hooks
+ 		// AE: 0xDA8  - mov in the function where the new focus is applied
+ 		REL::Relocation<std::uintptr_t> target{ RELOCATION_ID(25591, 26127), REL::VariantOffset( 0xCF0, 0xE38, 0xE38) };
+ 		REL::Relocation<std::uintptr_t> jmpBackAddress{ RELOCATION_ID(25591, 26127), REL::VariantOffset(0xCF7, 0xE3F, 0xE3F) }; // this is right after the changed assembly
+-		Patch code(jmpBackAddress);
++		SelectionTrampoline code(reinterpret_cast<std::uintptr_t>(&OnSetCrosshairTargetRef), jmpBackAddress.address());
+ 		code.ready();
+ 
+ 		auto& trampoline = SKSE::GetTrampoline();
+diff --git a/src/RevE/SelectionTrampoline.h b/src/RevE/SelectionTrampoline.h
+new file mode 100644
+index 0000000..67ed8ce
+--- /dev/null
++++ b/src/RevE/SelectionTrampoline.h
+@@ -0,0 +1,27 @@
++#pragma once
++
++#include <cstdint>
++#include <xbyak/xbyak.h>
++
++namespace Hooks
++{
++    // Entry: EAX contains the native 32-bit reference handle. The enclosing
++    // game function provides aligned stack/shadow space for the callback.
++    // Exit: RBX and RCX contain the selected reference; resume after the two
++    // replaced instructions. The callback updates CrosshairPickData::target.
++    struct SelectionTrampoline : Xbyak::CodeGenerator
++    {
++        SelectionTrampoline(std::uintptr_t callback, std::uintptr_t resume)
++        {
++            // Writing ECX also clears the upper half of RCX. mov(rcx, eax)
++            // is not encodable and throws Xbyak::ERR_BAD_SIZE_OF_REGISTER.
++            mov(ecx, eax);
++            mov(rax, callback);
++            call(rax);
++            mov(rbx, rax);
++            mov(rcx, rbx);
++            mov(r10, resume);
++            jmp(r10);
++        }
++    };
++}
+diff --git a/tests/selection_trampoline.cpp b/tests/selection_trampoline.cpp
+new file mode 100644
+index 0000000..020e1d8
+--- /dev/null
++++ b/tests/selection_trampoline.cpp
+@@ -0,0 +1,67 @@
++// Headless native regression for the production Xbyak trampoline (Windows x64).
++#include "RevE/SelectionTrampoline.h"
++#include <cstdio>
++#include <stdexcept>
++
++static std::uintptr_t seen;
++static std::uintptr_t result;
++static std::uintptr_t Callback(std::uintptr_t handle)
++{
++    seen = handle;
++    return result;
++}
++
++int main()
++{
++    try {
++        bool reproduced = false;
++        try {
++            Xbyak::CodeGenerator old;
++            old.mov(old.rcx, old.eax);
++        } catch (const Xbyak::Error& e) {
++            reproduced = int(e) == Xbyak::ERR_BAD_SIZE_OF_REGISTER;
++        }
++        if (!reproduced) throw std::runtime_error("old bug did not reproduce");
++
++        // A test caller recreates the hook's stack alignment/shadow space and
++        // preserves RBX for the real caller. Resume checks both output registers.
++        Xbyak::CodeGenerator resume;
++        resume.cmp(resume.rcx, resume.rbx);
++        Xbyak::Label matched;
++        resume.je(matched);
++        resume.ud2();
++        resume.L(matched);
++        resume.mov(resume.rax, resume.rbx);
++        resume.add(resume.rsp, 32);
++        resume.pop(resume.rbx);
++        resume.ret();
++        resume.ready();
++        Hooks::SelectionTrampoline patch(
++            reinterpret_cast<std::uintptr_t>(&Callback),
++            reinterpret_cast<std::uintptr_t>(resume.getCode()));
++        patch.ready();
++        if (patch.getCode()[0] != 0x89 || patch.getCode()[1] != 0xC1)
++            throw std::runtime_error("expected mov ecx,eax (89 C1)");
++        const std::uintptr_t handles[] = {0, 1, 0x7fffffff, 0x80000000, 0xffffffff};
++        const std::uintptr_t results[] = {0, 0x123456789ABC};
++        for (auto handle : handles) for (auto selected : results) {
++            result = selected;
++            seen = ~std::uintptr_t(0);
++            Xbyak::CodeGenerator caller;
++            caller.push(caller.rbx);
++            caller.sub(caller.rsp, 32);
++            caller.mov(caller.rax, 0xDEADBEEF00000000ULL | handle);
++            caller.mov(caller.r10, reinterpret_cast<std::uintptr_t>(patch.getCode()));
++            caller.jmp(caller.r10);
++            caller.ready();
++            auto returned = caller.getCode<std::uintptr_t(*)()>()();
++            if (seen != handle || returned != selected)
++                throw std::runtime_error("handle/selected-reference mismatch");
++        }
++        std::puts("PASS: old exception reproduced; production trampoline executes all 10 handle/reference cases; upper bits cleared; RBX/RCX/resume correct.");
++        return 0;
++    } catch (const std::exception& e) {
++        std::fprintf(stderr, "FAIL: %s\n", e.what());
++        return 1;
++    }
++}
+-- 
+2.55.0.windows.4
+
