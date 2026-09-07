@@ -1,23 +1,48 @@
 # Texture resolution policy
 
-Approved 2026-08-26 for the Historical-Mythic Skyrim build.
+Approved 2026-08-26 for the Historical-Mythic Skyrim build. Rebalanced
+2026-09-06: the figures are ideals, 4096 is the only hard limit - see "Ideals,
+and the one real limit" below, which governs where it and an older sentence
+disagree.
 
 ## Governing rule
 
-Match the resolution of the asset being replaced by default. A replacement may
-increase by no more than one conventional resolution step when the additional
-detail is real, visible at a normal viewing distance, and proportionate to the
-asset's UV coverage. No texture dimension may exceed 4096 pixels.
+Match the resolution of the asset being replaced by default. A replacement
+should not usually increase by more than one conventional resolution step, and
+the case for a step is that the additional detail is real, visible at a normal
+viewing distance, and proportionate to the asset's UV coverage. No texture
+dimension may exceed 4096 pixels.
 
 One conventional step doubles each relevant dimension while preserving aspect
 ratio: 256 to 512, 512 to 1024, 1024 to 2048, or 2048 to 4096. Because doubling
 both dimensions quadruples pixel count, a permitted step is a ceiling rather
 than an automatic preference.
 
-## Mandatory limits
+## Ideals, and the one real limit (user, 2026-09-06)
 
-- A texture dedicated to a small clutter object is capped at 1024 pixels on
-  either axis, even when a larger download is available.
+**User directive, verbatim:** *"treat the texture limits less as limits and more
+as ideal. The lockpicking interface is pretty large so having high res
+locksmithing is normal."*
+
+Everything below except the 4096 ceiling is a **default to justify departing
+from, not a gate that refuses**. The figures still say what to pick when nothing
+argues otherwise, and the review record below still has to be written when a
+build goes above them - the change is that a documented reason now settles it
+instead of a cap overriding the reason.
+
+**Screen coverage decides.** The trigger case: `locksmallpiece_snow.dds` in
+Security Overhaul SKSE - Lock Variations is 512x2048 and lives under
+`textures/interface/objects/lockpicking/`. The lockpicking view fills much of
+the screen, so the object is not clutter at the moment it is looked at, and the
+1024 figure never applied to it in spirit. Ask where the asset is actually seen
+from before applying a number to it.
+
+## Limits
+
+- **4096 pixels on either axis is a hard ceiling** and stays one.
+- A texture dedicated to a small clutter object **should** be 1024 pixels or
+  less on either axis unless its normal viewing case says otherwise, and an
+  interface or close-inspection asset is exactly that exception.
 - Every DDS image is capped at 4096 pixels on either axis. This includes color,
   normal, material, mask, glow, cubemap-face, interface, and generated texture
   assets.

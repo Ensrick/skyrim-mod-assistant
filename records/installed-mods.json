@@ -6200,10 +6200,10 @@
       "sha256": "0d98682ab26816d0c0a9264b0bf13f8b724fb3158b51b9ac8114a5344dadb0e4",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-06T21:17:17Z",
-      "transaction": "20260906T211706233Z-499012511e07",
+      "installedUtc": "2026-09-07T01:05:37Z",
+      "transaction": "20260907T010521848Z-8306cf801d58",
       "fomodPlan": "records/fomod-plans/126119-security-overhaul-extra-locks.json",
-      "note": "7/19 in the survey. Adds Vampire, Dawnguard, Farmhouse, Display Case, Imperial, Orc, Generic Chest, Upper Class Chest, Snowy Chest, Noble Chest and Snowy Nordic locks. Asset-only. FOMOD: required meshes/ and ExtraLocks_LID.ini, 'textures - 1k' tier. 31 DDS (30 at 1024x1024), 11 NIF, zero overlaps. Priority 301. NOT verified in game.",
+      "note": "7/19 in the survey. Adds Vampire, Dawnguard, Farmhouse, Display Case, Imperial, Orc, Generic Chest, Upper Class Chest, Snowy Chest, Noble Chest and Snowy Nordic locks. Asset-only. FOMOD: required meshes/ and ExtraLocks_LID.ini. 31 DDS (30 at 2048x2048), 11 NIF, zero overlaps. Priority 301. TEXTURE TIER: 2K, retiered from 1k on 2026-09-06 after the user's texture-policy directive (\"treat the texture limits less as limits and more as ideal. The lockpicking interface is pretty large so having high res locksmithing is normal\") - these assets are drawn at high screen coverage in the lockpicking view, so the small-clutter default never fitted them. Under the 4096 hard ceiling; the family costs ~421 MB at 2K against ~90 MB at 1K, and 4k was not taken (22 MB per map; 2k is the tier the surveyed lists tag). NOT verified in game.",
       "distribution": "vendor"
     },
     {
@@ -6217,10 +6217,10 @@
       "sha256": "8304cb49dc72161a543b6b49ea62c8598a0f93e375d54e36e509af4ddb708cf8",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-06T21:14:40Z",
-      "transaction": "20260906T211433754Z-f6941911229d",
+      "installedUtc": "2026-09-07T01:05:04Z",
+      "transaction": "20260907T010456702Z-9fae0a010fa2",
       "fomodPlan": "records/fomod-plans/59529-security-overhaul-lock-addons.json",
-      "note": "10/19 in the survey. Asset-only add-on, no DLL and no plugin. FOMOD: required meshes/ and Addons_LID.ini, 1k texture tier. 16 DDS (14 at 1024x1024), 6 NIF, zero path overlaps with any enabled mod. Priority 299, directly above Lock Variations. NOT verified in game.",
+      "note": "10/19 in the survey. Asset-only add-on, no DLL and no plugin. FOMOD: required meshes/ and Addons_LID.ini. 16 DDS (14 at 2048x2048), 6 NIF, zero path overlaps with any enabled mod. Priority 299, directly above Lock Variations. TEXTURE TIER: 2K, retiered from 1k on 2026-09-06 after the user's texture-policy directive (\"treat the texture limits less as limits and more as ideal. The lockpicking interface is pretty large so having high res locksmithing is normal\") - these assets are drawn at high screen coverage in the lockpicking view, so the small-clutter default never fitted them. Under the 4096 hard ceiling; the family costs ~421 MB at 2K against ~90 MB at 1K, and 4k was not taken (22 MB per map; 2k is the tier the surveyed lists tag). NOT verified in game.",
       "distribution": "vendor"
     },
     {
@@ -6234,10 +6234,10 @@
       "sha256": "12a3f85ebd87a0c6bbfb908af55f7747f4335efa2b7b23100adc78b40b4d185f",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-06T21:12:59Z",
-      "transaction": "20260906T211252534Z-2862e760bc58",
+      "installedUtc": "2026-09-07T01:04:55Z",
+      "transaction": "20260907T010448210Z-9fc36dd83e54",
       "fomodPlan": "records/fomod-plans/58224-security-overhaul-lock-variations.json",
-      "note": "Base of the Security Overhaul family and the ecosystem's clear standard: 12/19 surveyed Load Order Library exports carry it (LoreRim, Nordic Souls, Nolvus, Wunduniik, Apostasy, Anvil, Septimus, Tuxborn, Tempus, Eldergleam, Winds of the North, NGVO) and no list runs an add-on without it; nothing else in the survey replaces lock models, so the slot has no rival. FOMOD (records/fomod-plans/58224-security-overhaul-lock-variations.json): required meshes/ and LockVariations_LID.ini, 1K texture tier per TEXTURE_POLICY, and the AE runtime folder, whose FOMOD label is 'SSE/AE v1.7.99+ ... latest update' - AE1170 (1.6.1170/1.6.1179) and SE (1.5.97) are the wrong runtimes for this 1.7.104 build. SKSE plugin po3_LockVariations.dll (1,107,968 B, 2026-08-25) contains the string 'commonlib-shared', the migration that gives Address Library format 5 support per memory reference_po3_skse_plugin_rebuild_1_7_104 - the same fork move that let BOS and Papyrus Extender run unmodified on 1.7.104 where Light Placer needed a local rebuild. That is strong evidence, not proof; the launch log is the proof. TEXTURE_POLICY: 13 DDS at 1024x1024 plus locksmallpiece_snow.dds at 512x2048 - FLAGGED, not capped: it is 1,048,576 pixels, the exact budget of a compliant 1024x1024, its aspect is preserved, the author ships byte-identical copies of it in the 1K, 2K and 4K tiers so no smaller tier exists, and it is drawn near full-screen in the lockpicking view rather than as distant clutter. Cap it with texconv to 256x1024 if the strict per-axis reading is preferred. Asset-conflict scan across every enabled mod: 19 paths, ZERO overlaps. No ESP. NOT verified in game.",
+      "note": "Base of the Security Overhaul family and the ecosystem's clear standard: 12/19 surveyed Load Order Library exports carry it (LoreRim, Nordic Souls, Nolvus, Wunduniik, Apostasy, Anvil, Septimus, Tuxborn, Tempus, Eldergleam, Winds of the North, NGVO) and no list runs an add-on without it; nothing else in the survey replaces lock models, so the slot has no rival. FOMOD choices in records/fomod-plans/58224-security-overhaul-lock-variations.json: required meshes/ and LockVariations_LID.ini, plus the AE runtime folder, whose FOMOD label is 'SSE/AE v1.7.99+ ... latest update' - AE1170 (1.6.1170/1.6.1179) and SE (1.5.97) are the wrong runtimes for this 1.7.104 build. SKSE plugin po3_LockVariations.dll (1,107,968 B, 2026-08-25) contains the string 'commonlib-shared', the migration that gives Address Library format 5 support per memory reference_po3_skse_plugin_rebuild_1_7_104 - the same fork move that let BOS and Papyrus Extender run unmodified on 1.7.104 where Light Placer needed a local rebuild. Strong evidence, not proof; the launch log is the proof. 13 DDS at 2048x2048 plus locksmallpiece_snow.dds at 512x2048, which the author ships byte-identical in all three tiers. Asset-conflict scan across every enabled mod: 19 paths, ZERO overlaps. No ESP. TEXTURE TIER: 2K, retiered from 1k on 2026-09-06 after the user's texture-policy directive (\"treat the texture limits less as limits and more as ideal. The lockpicking interface is pretty large so having high res locksmithing is normal\") - these assets are drawn at high screen coverage in the lockpicking view, so the small-clutter default never fitted them. Under the 4096 hard ceiling; the family costs ~421 MB at 2K against ~90 MB at 1K, and 4k was not taken (22 MB per map; 2k is the tier the surveyed lists tag). NOT verified in game.",
       "distribution": "vendor"
     },
     {
@@ -6251,10 +6251,10 @@
       "sha256": "7c717a91a19417f482cfa3c4392ceb09b68d8562d790c09fc6e3e70198fc7d29",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-06T21:16:06Z",
-      "transaction": "20260906T211552525Z-ce7d5226c0ad",
+      "installedUtc": "2026-09-07T01:05:20Z",
+      "transaction": "20260907T010505547Z-6416a83599d1",
       "fomodPlan": "records/fomod-plans/62781-security-overhaul-regional-locks.json",
-      "note": "10/19 in the survey. Adds hold-specific locks - Solitude, Whiterun, Windhelm, Markarth, Riften, Raven Rock, Tel Mithryn, College of Winterhold - plus cage, safe and strongbox locks. Asset-only. FOMOD: required meshes/ and RegionalLocks_LID.ini, 1k tier. 26 DDS all at 1024x1024, 10 NIF, zero overlaps. KNOWN GAP: the Markarth lock only shows with Unique Markarth Doors, which this build does not have. Priority 300. NOT verified in game.",
+      "note": "10/19 in the survey. Adds hold-specific locks - Solitude, Whiterun, Windhelm, Markarth, Riften, Raven Rock, Tel Mithryn, College of Winterhold - plus cage, safe and strongbox locks. Asset-only. FOMOD: required meshes/ and RegionalLocks_LID.ini. 26 DDS all at 2048x2048, 10 NIF, zero overlaps. KNOWN GAP: the Markarth lock only shows with Unique Markarth Doors, which this build does not have. Priority 300. TEXTURE TIER: 2K, retiered from 1k on 2026-09-06 after the user's texture-policy directive (\"treat the texture limits less as limits and more as ideal. The lockpicking interface is pretty large so having high res locksmithing is normal\") - these assets are drawn at high screen coverage in the lockpicking view, so the small-clutter default never fitted them. Under the 4096 hard ceiling; the family costs ~421 MB at 2K against ~90 MB at 1K, and 4k was not taken (22 MB per map; 2k is the tier the surveyed lists tag). NOT verified in game.",
       "distribution": "vendor"
     },
     {
@@ -6698,7 +6698,7 @@
       "enabled": true,
       "installedUtc": "2026-08-24T02:29:58Z",
       "transaction": "20260824T022955700Z-1477cffea32a",
-      "note": "direct archive"
+      "note": "direct archive. PRIORITY FIXED 2026-09-06 (transaction 20260907T010439764Z-db37694c8434): raised from 30 to 34 so it sits directly above SMIM (32). It had been installed 7 minutes before SMIM on 2026-08-24 and landed below it, so SMIM overrode ALL 48 of their shared assets and only this addon's 5 unique paths applied - 43 reworked meshes (Markarth architecture, upper-class furniture, Nordic pull chains, anchor chains, hanging animals, the Whiterun drawbridge) plus 5 textures where the addon is higher resolution: smim_upperchest .dds/_n/_weathered/_weathered_snow at 4096x4096 against SMIM's 2048x2048, and smim_imp_gate_pole.dds at 512x4096 against 256x2048. records/active-file-conflicts.md had already recorded the symptom (\"mesh SMIM over SMIM Quality Addon: 35 files\", \"texture ... 5 files\") without anyone acting on it, and nothing in the ledger said the order was deliberate. Found while installing Security Overhaul - Some More Locks, which bundles SMIM's own 256x2048 gate-pole textures for people without SMIM (byte-identical to SMIM's, sha256 307a86dd7917 / 8b7ba56a2116); those were dropped from that install, which is now load-bearing - at priority 302 they would override this addon's 512x4096. Unofficial Material Fix (218) and Assorted Mesh Fixes (220) still win their 6 and 2 files over this addon, which is the intended order. NOT verified in game."
     },
     {
       "modId": 113045,

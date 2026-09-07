@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "note": "Security Overhaul SKSE - Lock Variations v4.1.0. FOMOD required files are meshes/ and LockVariations_LID.ini. Texture group: 1K, per TEXTURE_POLICY (locks are small clutter, 1024 cap) - the 2K and 4K options are 5.5 MB and 22 MB per map. Runtime group: the AE folder, whose FOMOD label is \"SSE/AE v1.7.99+ (Anniversary/Special Edition) - latest update\"; this build runs 1.7.104. AE1170 (1.6.1170/1.6.1179) and SE (1.5.97) are the wrong runtimes here. Sources carry the archive's single top-level wrapper folder; MO2Headless does not strip it.",
+  "note": "Security Overhaul SKSE - Lock Variations v4.1.0. FOMOD required files are meshes/ and LockVariations_LID.ini. Texture group: 1K, per TEXTURE_POLICY (locks are small clutter, 1024 cap) - the 2K and 4K options are 5.5 MB and 22 MB per map. Runtime group: the AE folder, whose FOMOD label is \"SSE/AE v1.7.99+ (Anniversary/Special Edition) - latest update\"; this build runs 1.7.104. AE1170 (1.6.1170/1.6.1179) and SE (1.5.97) are the wrong runtimes here. Sources carry the archive's single top-level wrapper folder; MO2Headless does not strip it. RETIERED 2026-09-06 from 1k to 2k after the user's texture-policy directive (\"treat the texture limits less as limits and more as ideal. The lockpicking interface is pretty large so having high res locksmithing is normal\"): these assets are drawn at high screen coverage in the lockpicking view, so the small-clutter default does not fit them. 2048 stays under the 4096 hard ceiling. 4k was not taken - it is 22 MB per map against 5.5 MB at 2k, and 2k is what the surveyed lists that tag a tier (Nolvus) use.",
   "mappings": [
     {
       "source": "Security Overhaul SKSE - Lock Variations/meshes",
@@ -11,7 +11,7 @@
       "destination": "LockVariations_LID.ini"
     },
     {
-      "source": "Security Overhaul SKSE - Lock Variations/1K/textures",
+      "source": "Security Overhaul SKSE - Lock Variations/2K/textures",
       "destination": "textures"
     },
     {
