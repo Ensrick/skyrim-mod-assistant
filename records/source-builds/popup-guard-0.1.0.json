@@ -33,8 +33,17 @@
   "dllName": "!PopupGuard.dll",
   "dllBytes": 160256,
   "dllSha256": "133DCD433D73F97121C6D6820CC787D6C4AEE172BF0E62024E28F7B79A660F64",
-  "dllImports": ["USER32.dll", "SHELL32.dll", "ole32.dll", "KERNEL32.dll"],
-  "dllExports": ["SKSEPlugin_Load", "SKSEPlugin_Preload", "SKSEPlugin_Version"],
+  "dllImports": [
+    "USER32.dll",
+    "SHELL32.dll",
+    "ole32.dll",
+    "KERNEL32.dll"
+  ],
+  "dllExports": [
+    "SKSEPlugin_Load",
+    "SKSEPlugin_Preload",
+    "SKSEPlugin_Version"
+  ],
   "package": "PopupGuard-0.1.0-win64.zip",
   "packageBytes": 92923,
   "packageSha256": "4A9FB9D8B539B05499F1DF4304B128ABA44FA74EE299980785B6D2FF62442B67",
@@ -48,9 +57,9 @@
       "LICENSE-MinHook.txt": "D5C2224982B0B95A16B098A561335FA93F3EAF4D0AA964B7843EDB986DF78DC8"
     }
   },
-  "installedUtc": null,
-  "transaction": null,
-  "modPriority": null,
+  "installedUtc": "2026-09-08T01:30:56Z",
+  "transaction": "20260908T013056824Z-cb2479bb344f",
+  "modPriority": 299,
   "loadOrder": {
     "dllName": "!PopupGuard.dll",
     "reason": "SKSE iterates SKSE/Plugins/*.dll with FindFirstFile (skse64/PluginManager.cpp ScanPlugins) and loads in that order. NTFS FindFirstFile on this machine placed !PopupGuard.dll at position 0 against the 64 distinct installed plugin file names (0_PopupGuard.dll would be 1, PopupGuard.dll 43, _PopupGuard.dll 63 = last). MO2's virtual listing is name ordered too: skse64.log of the 2026-09-07 19:00 launch lists the 53 'checking plugin' lines in strict case-insensitive alphabetical order.",
@@ -62,7 +71,18 @@
   },
   "featureDefaultsDiff": {
     "onlyInBuilt": {
-      "hookedEntryPoints": ["user32!MessageBoxA", "user32!MessageBoxW", "user32!MessageBoxExA", "user32!MessageBoxExW", "user32!MessageBoxTimeoutA", "user32!MessageBoxTimeoutW", "user32!MessageBoxIndirectA", "user32!MessageBoxIndirectW", "kernel32!FatalAppExitA", "kernel32!FatalAppExitW"],
+      "hookedEntryPoints": [
+        "user32!MessageBoxA",
+        "user32!MessageBoxW",
+        "user32!MessageBoxExA",
+        "user32!MessageBoxExW",
+        "user32!MessageBoxTimeoutA",
+        "user32!MessageBoxTimeoutW",
+        "user32!MessageBoxIndirectA",
+        "user32!MessageBoxIndirectW",
+        "kernel32!FatalAppExitA",
+        "kernel32!FatalAppExitW"
+      ],
       "messageBoxReply": "IDOK, immediately, no window, original never called",
       "fatalAppExit": "log line then TerminateProcess(GetCurrentProcess(), 1)",
       "logPath": "Documents\\My Games\\Skyrim Special Edition\\SKSE\\PopupGuard.log",
@@ -79,23 +99,75 @@
     "deterministicCleanRebuild": true,
     "deterministicEvidence": "Three fresh build directories (build2, build3, build4) produced byte-identical !PopupGuard.dll SHA256 133DCD433D73F97121C6D6820CC787D6C4AEE172BF0E62024E28F7B79A660F64; build2 and build3 zips identical, build4 zip differs only by the README text committed in aeb8e4a",
     "nativeTestGroups": 3,
-    "nativeChecks": {"line_policy": 29, "process_wide_hooks": 54, "plugin_dll_attach": 17},
+    "nativeChecks": {
+      "line_policy": 29,
+      "process_wide_hooks": 54,
+      "plugin_dll_attach": 17
+    },
     "ctestSummary": "100% tests passed, 0 tests failed out of 3 (build2, build3 and build4)",
-    "hookTimingsMs": {"MessageBoxW": 0.025, "MessageBoxA": 0.009, "MessageBoxExW": 0.004, "MessageBoxExA": 0.004, "MessageBoxTimeoutW": 0.004, "MessageBoxTimeoutA": 0.005, "MessageBoxIndirectW": 0.004, "MessageBoxIndirectA": 0.004, "helper module MessageBoxW": 0.011, "loaded plugin DllMain hook MessageBoxW": 0.007},
+    "hookTimingsMs": {
+      "MessageBoxW": 0.025,
+      "MessageBoxA": 0.009,
+      "MessageBoxExW": 0.004,
+      "MessageBoxExA": 0.004,
+      "MessageBoxTimeoutW": 0.004,
+      "MessageBoxTimeoutA": 0.005,
+      "MessageBoxIndirectW": 0.004,
+      "MessageBoxIndirectA": 0.004,
+      "helper module MessageBoxW": 0.011,
+      "loaded plugin DllMain hook MessageBoxW": 0.007
+    },
     "attribution": "direct calls logged as module=PopupHookTests.exe+0x<rva>; helper DLL call logged as module=PopupHelperDll.dll+0x1020; FatalAppExitW child exited 1 with its line logged; a tail-jumping wrapper is attributed to its caller (documented)",
     "funnelProbe": {
       "user32": "6.2.26100.9278",
-      "edges": ["MessageBoxA +0x40 call MessageBoxTimeoutA", "MessageBoxW +0x40 call MessageBoxTimeoutW", "MessageBoxExA +0x13 call MessageBoxTimeoutA", "MessageBoxExW +0x13 call MessageBoxTimeoutW"],
-      "noDirectEdge": ["MessageBoxTimeoutA", "MessageBoxTimeoutW", "MessageBoxIndirectA", "MessageBoxIndirectW"],
+      "edges": [
+        "MessageBoxA +0x40 call MessageBoxTimeoutA",
+        "MessageBoxW +0x40 call MessageBoxTimeoutW",
+        "MessageBoxExA +0x13 call MessageBoxTimeoutA",
+        "MessageBoxExW +0x13 call MessageBoxTimeoutW"
+      ],
+      "noDirectEdge": [
+        "MessageBoxTimeoutA",
+        "MessageBoxTimeoutW",
+        "MessageBoxIndirectA",
+        "MessageBoxIndirectW"
+      ],
       "conclusion": "W and ExW funnel into MessageBoxTimeoutW; the ANSI path goes through MessageBoxTimeoutA and the Indirect variants use an internal worker, so a single MessageBoxTimeoutW hook would not provably cover them. All exported entry points are hooked; the first hook answers without calling the original, so each call yields one record."
     },
     "publicSourceCi": "PASS: https://github.com/Ensrick/skyrim-mod-assistant/actions/runs/34175043912 at 72faa82 (public SDK header, microsoft/vcpkg checked out at the manifest baseline and bootstrapped, hosted MSVC; identical mods/popup-guard sources to aeb8e4a). First run 34174856827 at aeb8e4a failed before configuring because the runner image's preinstalled vcpkg clone predates baseline ddd0023b.",
     "workflowCommit": "72faa82e1ed34d48472948ca098a6d8a8c3c6e93",
-    "installedHashMatches": null,
-    "controllerAuditErrors": null
+    "installedHashMatches": true,
+    "controllerAuditErrors": "not run separately; preflight skipped the MO2 plugin/load-order checks because the user's game session was live (#103)",
+    "ledgerVerify": "install_mod.py --verify: 0 problems",
+    "preflight": "clean, 7 documented warnings (2026-09-07 20:46 local, game session live)"
   },
-  "runtimeVerification": "UNVERIFIED: built and tested offline only. Not installed into the MO2 profile, no profile claim taken, no game launched. On the next launch verify PopupGuard.log shows the hook table plus 'preload phase' and 'load phase' lines, skse64.log lists 'checking plugin !PopupGuard.dll' first and 'preloading plugin \"PopupGuard\"' before EngineFixes, and the game reaches the main menu and loads a save.",
+  "runtimeVerification": "PARTIAL: skse64.log of the user's 20:35 session lists checking plugin !PopupGuard.dll first, preloading plugin \"PopupGuard\" before EngineFixes, loaded correctly (handle 1), 52 plugins loaded, none refused; PopupGuard.log shows hooks 10 of 10 at DLL attach, preload and load. No dialog was raised in that session, so the intercept path itself is only host-tested. The exact final state after the 20:38 order restore and 20:46 cloak refresh has not been launched. Explicit user sign-off pending.",
   "limitations": "Covers only calls that reach the hooked exported entry points inside the game process: not skse64_loader.exe or Windows Error Reporting dialogs (separate processes), not comctl32 TaskDialog or custom dialog windows, not hangs that never call MessageBox. Callers that branch on the answer receive IDOK even for MB_YESNO (flags are logged). Attribution names the nearest frame that pushed a return address; a tail-jumping wrapper is attributed to its caller. Lines raised before the log opens are buffered (16 x 512 bytes).",
   "distribution": "Original MIT code/DLL plus README/LICENSE and the MinHook BSD-2-Clause notice; external pinned SDK header is build input only; no game assets.",
-  "rollback": "Under the claim with game/MO2 closed, disable or remove the mod; no paired configuration changes exist."
+  "rollback": "Under the claim with game/MO2 closed, disable or remove the mod; no paired configuration changes exist.",
+  "installedDllSha256": "133DCD433D73F97121C6D6820CC787D6C4AEE172BF0E62024E28F7B79A660F64",
+  "orderRestore": {
+    "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/253",
+    "finding": "First preflight (before the install) had weapon-balance and full-cloak gates red: SmoothCam.esl alone had rotated from vetted managed active slot 35 (after TrueHUD.esl, before Thanedom Assets.esl) to 37; all other 377 manifest inputs were in place.",
+    "transactions": [
+      "20260908T013622009Z-805ee9515efa (index 115, wrong space)",
+      "20260908T013735293Z-9724f6f0c087 (index 35, wrong space)",
+      "20260908T013818488Z-54620e127e78 (index 38 = final, active slot 35)"
+    ],
+    "backups": "profiles/Default/loadorder.txt.bak.v20260907-203613-pre-smoothcam-restore, plugins.txt.bak.v20260907-203613-pre-smoothcam-restore",
+    "weaponGateAfter": "PASS, filesWritten 0",
+    "note": "plugin-priority index = position in the controller list with disabled plugins first, not the loadorder.txt line."
+  },
+  "cloakRefresh": {
+    "transaction": "20260908T014631617Z-271b346caccb",
+    "packageSha256": "49945B12AD44FB44D6893AF08EF2DFAA30EDC7A296F6CB245A3011F47B6ACB23",
+    "manifestSha256": "32F0F6B08944FE3FB7CCA3B2557E50E4F6389F1DB5A5A24E2DBA7AF918072B70",
+    "directives": 240,
+    "presentMeshes": "569/576",
+    "parseErrors": 0,
+    "partition58Hits": 0
+  },
+  "launchVerdict": "VERIFIED by the user's own live session (MO2 GUI launch 20:35:50 local, after the install, before the order restore): main menu 35.0 s, kPostLoadGame success 50.8 s (human-loaded save), gameplay past 20:47, no crash log, no [critical]. No assistant-driven launch: a human was at the controls (#164).",
+  "logSnapshot": "records/log-snapshots/20260907-204800-popup-guard-255",
+  "processNote": "The SmoothCam restore (20:36-20:38) and cloak replace (20:46) transactions ran while the user's session and its MO2 GUI were open: my Git Bash `tasklist /FI` check was mangled by MSYS path conversion and reported no process. The running game had already read plugins.txt and the cloak INI (unchanged bytes); profile files were re-verified at 20:48. If the GUI rewrites the lists on exit, the SmoothCam slot must be re-checked."
 }
