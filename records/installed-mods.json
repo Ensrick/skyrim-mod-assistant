@@ -3442,6 +3442,24 @@
       "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
+      "modId": 134092,
+      "modName": "FuzzBeed's Asset Library",
+      "nexusName": "FuzzBeed's Resources AIO",
+      "version": "12.11",
+      "fileId": 783733,
+      "fileName": "FuzzBeed's Resources AIO 134092 12.11 2026-07-31T16-43Z L5WQbq2y0.zip",
+      "sizeMb": 427.6,
+      "sha256": "385d88399f0d71acc996b3f0531e2028370c0b75109bf7b7922784a20d399f80",
+      "plugins": [
+        "FuzzBeed Resources.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T04:03:41Z",
+      "transaction": "20260908T040338718Z-88364e897465",
+      "note": "FuzzBeed's Asset Library v12.11 (2026-07-31, 428 MB), the shared resource pack Man's Best Friend v2.0+ hard-requires. Ships FuzzBeed Resources.esp. Pulled in for the shack, not chosen on its own merits. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 157506,
       "modName": "Grand Solitude - The Walls of High King Erling",
       "nexusName": "Grand Solitude - The Walls of High King Erling",
@@ -4475,6 +4493,60 @@
       "installedUtc": "2026-09-03T17:21:13Z",
       "transaction": "20260903T172111727Z-c57045cbd542",
       "fomodPlan": "records\\fomod-plans\\178940-mint-active-profile.json"
+    },
+    {
+      "modId": 160130,
+      "modName": "Man's Best Friend - A Meeko's Shack Overhaul",
+      "nexusName": "Man's Best Friend",
+      "version": "2.0",
+      "fileId": 675099,
+      "fileName": "Man's Best Friend-160130-2-0-1760264620.zip",
+      "sizeMb": 0.08,
+      "sha256": "191c768673a1119dd6db29c2a572460479f759e2bc973fdd22a6fd7301ef9bdf",
+      "plugins": [
+        "Mans Best Friend.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T04:03:48Z",
+      "transaction": "20260908T040348095Z-26b19a9585da",
+      "note": "User's pick for the Meeko's Shack slot: \"I like this Meeko's shack.\" v2.0 (2025-10-12, FuzzBeed), 326 endorsements - new custom shack model plus lore-friendly clutter. 112 records (98 REFR, 6 CELL, 4 LAND, 1 NAVM), masters Skyrim/Update/FuzzBeed Resources.esp. Its page states it is \"Incompatible with any mod that overhauls Meeko's\", which is why the Skyrim Reborn disable patch (173788) was taken alongside. Chosen over Meeko's Shack Reborn (179541, wheelabout, burial feature) and over Skyrim Reborn's own built-in version - a taste call, put to the user rather than decided here. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 167114,
+      "modName": "Man's Best Friend - Fixes",
+      "nexusName": "A Meeko's Shack Overhaul - Fixes",
+      "version": "1.0",
+      "fileId": 698093,
+      "fileName": "Man's Best Friend - A Meeko's Shack Overhaul - Fix-167114-1-0-1765750224.rar",
+      "sizeMb": 0.16,
+      "sha256": "627e6217f2062f2d4e6fae9310c4e2ee11b953428da6c8d0f45b63aee9a33b15",
+      "plugins": [
+        "Man's Best Friend - A Meeko's Shack Overhaul - Fixes.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T04:03:50Z",
+      "transaction": "20260908T040349808Z-d4a389a51c78",
+      "note": "Fix pack for Man's Best Friend by DrainvolOFF (v1.0, 2025-12-14): landscape edit, navmesh rework, object alignment. Two files taken: the MAIN fixes plus the plain NOTWL patch. The 'NOTWL NC' variant is for Nature of the Wild Lands NORDIC CUT, which this build does not use - the NotWL install note records 'no autumn, Seasons, animation, PBR, Nordic Cut'. Northern Roads and Fabled Forests patches skipped, neither mod installed. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 167114,
+      "modName": "Man's Best Friend - Fixes - NOTWL Patch",
+      "nexusName": "A Meeko's Shack Overhaul Fixes - NOTWL Patch",
+      "version": "1.0",
+      "fileId": 698098,
+      "fileName": "A Meeko's Shack Overhaul Fixes - NOTWL Patch-167114-1-0-1765750324.rar",
+      "sizeMb": 0.05,
+      "sha256": "c7d46ef10206dd231bf8f759f00c33a471e5e165794c76cb55468064c3b6a490",
+      "plugins": [
+        "A Meeko's Shack Overhaul Fixes - NOTWL Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T04:03:51Z",
+      "transaction": "20260908T040351437Z-377371deebc2",
+      "note": "Fix pack for Man's Best Friend by DrainvolOFF (v1.0, 2025-12-14): landscape edit, navmesh rework, object alignment. Two files taken: the MAIN fixes plus the plain NOTWL patch. The 'NOTWL NC' variant is for Nature of the Wild Lands NORDIC CUT, which this build does not use - the NotWL install note records 'no autumn, Seasons, animation, PBR, Nordic Cut'. Northern Roads and Fabled Forests patches skipped, neither mod installed. NOT verified in game.",
+      "distribution": "vendor"
     },
     {
       "modId": 53000,
@@ -7092,6 +7164,24 @@
       "installedUtc": "2026-09-07T20:21:48Z",
       "transaction": "20260907T202148162Z-b1ab98d79a1f",
       "note": "User: \"Well, I want Skyrim Reborn - Hjaalmarch Hold! It looks great!\" By mnikjom (not ThatDamnKapi, whose profile the user linked in the same message - a different author). v1.1.4, main file 2022-10-14, page updated 2025-09-06, 1,603 endorsements. Part 2 of the Reborn series; part 1 is Whiterun Hold (16530, 2,505 endorsements, not installed). All-in-one overhaul of ten Hjaalmarch locations: Orotheim, MEEKO'S SHACK, Skyborn Altar, Folgunthur, The Lord Stone, Stonehills, Ustengrav, Mzinchaleft, Dead Men's Respite and the Hjaalmarch Stormcloak camp. 2,734 records (2,431 REFR, 81 STAT, 64 NAVM, 60 CELL, 40 ACHR), masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/USSEP. Asset overlap is small: 66 paths, 6 shared with Snazzy Location Resources (AARS bookset/openbook meshes and textures), which it wins at priority 335. OPEN, USER'S CALL: its Meeko's Shack Reborn competes with Man's Best Friend (160130) and Meeko's Shack Reborn standalone (179541); if either is taken, the disable patch 173788 is the tool that keeps Reborn's other nine locations while yielding the shack. The Bards College Excavation optional patch (662914) was not taken - no such mod or Creation Club file is present. The mod page recommends Nordic Ruins of Skyrim SSE as a companion; not installed. NOT verified in game. LOAD ORDER FIXED ON INSTALL: both plugins landed at plugins.txt 302/303, past the local resolver block, and audit/resolver_last_gate.py - written an hour earlier for exactly this - failed with 16 violations including WRLD 00003C:skyrim.esm against Ensrick General Compatibility Patch. Moved to 293/294, ahead of Ensrick Lux Water CS Patch and still after Cutting Room Floor and USSEP; gate now reports clean. First time the gate caught a live regression rather than a reconstruction. Profile files backed up as .bak.v<stamp>-pre-reborn-move.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 173788,
+      "modName": "Skyrim Reborn Hjaalmarch - Disable Meeko's Shack Edits",
+      "nexusName": "No Meekos Shack Skyrim Reborn",
+      "version": "1.0.0",
+      "fileId": 727153,
+      "fileName": "No Meekos Shack Skyrim Reborn-173788-1-0-0-1772424605.zip",
+      "sizeMb": 0.04,
+      "sha256": "717ab1c4fca21bff32728131b87ef01eb40474b58379ee99f5a0c513a4db9861",
+      "plugins": [
+        "Man's Best Friend - Meeko's Shack Skyrim Reborn.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T04:03:53Z",
+      "transaction": "20260908T040352864Z-2f33b5191d19",
+      "note": "The patch the user first asked about when neither side was installed, and which became useful once both were. Disables ONLY Skyrim Reborn - Hjaalmarch Hold's Meeko's Shack edits so Man's Best Friend owns that location, leaving Reborn's other nine Hjaalmarch overhauls intact. 233 records (229 REFR, 2 CELL, 1 ACHR, 1 WRLD), 12 masters including Skyrim Reborn - Hjaalmarch Hold.esp and five Creation Club plugins. v1, 2026-03-02, 0 endorsements. NOT verified in game.",
       "distribution": "vendor"
     },
     {
