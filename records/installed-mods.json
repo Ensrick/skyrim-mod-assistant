@@ -7712,22 +7712,6 @@
       "note": "Official NOTWL base + Ulvenwald swap selection. Installs only the already-ESL-flagged 515-record STAT/TREE library and one 14-line BOS swap INI; no Vanilla dummy, Seasons files, or Ulvenwald-base meshes. The plugin has zero overrides, placed references, cells, worldspaces, navmeshes, scripts, or quests."
     },
     {
-      "modId": 62775,
-      "modName": "TrueHUD",
-      "nexusName": "TrueHUD",
-      "version": "1.1.10",
-      "fileId": 798218,
-      "fileName": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
-      "sizeMb": 4.18,
-      "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5",
-      "plugins": [
-        "TrueHUD.esl"
-      ],
-      "enabled": true,
-      "installedUtc": "2026-09-07T16:57:43Z",
-      "transaction": "20260907T165742521Z-145cbd265cc4"
-    },
-    {
       "modId": 17561,
       "modName": "UIExtensions",
       "nexusName": "UIExtensions v1-2-0",
