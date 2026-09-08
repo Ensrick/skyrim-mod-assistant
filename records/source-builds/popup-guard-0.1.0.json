@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Popup Guard",
+  "version": "0.1.0",
+  "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
+  "sourcePath": "mods/popup-guard",
+  "sourceCommit": "aeb8e4a6cdeeb38da4243049834a556ceb344302",
+  "sourceFilesDirty": false,
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/255",
+  "runtime": "Skyrim SE 1.7.104; no game memory hooks or structures; process-wide inline hooks on exported user32/kernel32 entry points only",
+  "sdkCommit": "872c2d6fe4bc17b9e7f74d66b38c229750ce18e0",
+  "sdkPublicEquivalentHeaderCommit": "71f41da518f964345f0050471ec0232fa3a3afc8",
+  "sdkHeaderSha256": "0F238CC870C726A91BEFCF96F1C45DB0019E223242434B8300B973AB2B0A3C95",
+  "sdkProvenanceNote": "Local checkout C:/Users/danjo/source/repos/skyrim-tools-source/skse64 (the headless SKSE fork that is also the installed skse64_1_7_104.dll, SHA256 66450B620A5D21FAA16EAE5383FF6700AE45DA0B4A0E196905257C28120F451E). Its skse64/PluginAPI.h is byte-identical to public upstream 71f41da; CI pins the public commit. The SDK is a build input only.",
+  "thirdParty": {
+    "minhook": {
+      "version": "1.3.4",
+      "license": "BSD-2-Clause",
+      "source": "vcpkg port minhook 1.3.4 (TsudaKageyu/minhook v1.3.4) at vcpkg baseline ddd0023b0eee70986e42ed49d9d4afb8098f212e, triplet x64-windows-static, manifest mods/popup-guard/vcpkg.json",
+      "staticLibSha256": "E03579ACA7F901E3F7BCFD08FFCFA984BA3406581E597EA609D37AF13994188D",
+      "copyrightSha256": "D5C2224982B0B95A16B098A561335FA93F3EAF4D0AA964B7843EDB986DF78DC8",
+      "shippedAs": "LICENSE-MinHook.txt"
+    }
+  },
+  "compiler": "MSVC 19.44.35207 (Visual Studio Build Tools 17.14.37012.4) x64 /W4 /WX /permissive- /Brepro static CRT; CMake 3.31.6-msvc6, generator Visual Studio 17 2022 -A x64; Windows SDK 10.0.26100.0",
+  "commandLines": [
+    "pwsh: & mods/popup-guard/build.ps1 -SkseSdkRoot C:/Users/danjo/source/repos/skyrim-tools-source/skse64 -VcpkgRoot C:/Users/danjo/source/repos/vcpkg -Cmake 'C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe' -BuildDirectory records-work/popup-guard-0.1.0-build/build4",
+    "cmake -S mods/popup-guard -B <build> -G 'Visual Studio 17 2022' -A x64 -DSKSE_SDK_ROOT=C:/Users/danjo/source/repos/skyrim-tools-source/skse64 -DCMAKE_TOOLCHAIN_FILE=C:/Users/danjo/source/repos/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static",
+    "cmake --build <build> --config Release",
+    "ctest --test-dir <build> -C Release --output-on-failure",
+    "py -3 audit/skse_version_data.py records-work/popup-guard-0.1.0-build/build2/Release/!PopupGuard.dll"
+  ],
+  "dllName": "!PopupGuard.dll",
+  "dllBytes": 160256,
+  "dllSha256": "133DCD433D73F97121C6D6820CC787D6C4AEE172BF0E62024E28F7B79A660F64",
+  "dllImports": ["USER32.dll", "SHELL32.dll", "ole32.dll", "KERNEL32.dll"],
+  "dllExports": ["SKSEPlugin_Load", "SKSEPlugin_Preload", "SKSEPlugin_Version"],
+  "package": "PopupGuard-0.1.0-win64.zip",
+  "packageBytes": 92923,
+  "packageSha256": "4A9FB9D8B539B05499F1DF4304B128ABA44FA74EE299980785B6D2FF62442B67",
+  "staged": {
+    "path": "records-work/popup-guard-0.1.0",
+    "files": {
+      "SKSE/Plugins/!PopupGuard.dll": "133DCD433D73F97121C6D6820CC787D6C4AEE172BF0E62024E28F7B79A660F64",
+      "SKSE/Plugins/PopupGuard.ini": "ECEEFF22AA8F5AE65D1F96D20EB20CE2409110A91130BB81F06F06E7F3B2FAB8",
+      "README.md": "61892B18E0E6CED5DEF942EC0D2D263672B020A9CA99D3DEECB54479E96D763C",
+      "LICENSE": "E5A55C03AC6BF2487F162A39F1CE6DE2A55A8B5FD9F85701F04C8817AC172577",
+      "LICENSE-MinHook.txt": "D5C2224982B0B95A16B098A561335FA93F3EAF4D0AA964B7843EDB986DF78DC8"
+    }
+  },
+  "installedUtc": null,
+  "transaction": null,
+  "modPriority": null,
+  "loadOrder": {
+    "dllName": "!PopupGuard.dll",
+    "reason": "SKSE iterates SKSE/Plugins/*.dll with FindFirstFile (skse64/PluginManager.cpp ScanPlugins) and loads in that order. NTFS FindFirstFile on this machine placed !PopupGuard.dll at position 0 against the 64 distinct installed plugin file names (0_PopupGuard.dll would be 1, PopupGuard.dll 43, _PopupGuard.dll 63 = last). MO2's virtual listing is name ordered too: skse64.log of the 2026-09-07 19:00 launch lists the 53 'checking plugin' lines in strict case-insensitive alphabetical order.",
+    "preload": "Exports SKSEPlugin_Preload, so SKSE maps and calls it in its preinit hook (before the game's global initializers), ahead of every Load-phase plugin's DllMain. EngineFixes is the only other preload plugin installed and sorts after '!'."
+  },
+  "attachTiming": {
+    "hooksInstalledAt": "DllMain(DLL_PROCESS_ATTACH)",
+    "reason": "Under the loader lock the plugin touches only kernel32/ntdll (INI read via CreateFileW, GetProcAddress on already-mapped user32/kernel32, a static user32 import anchor guarantees mapping) and MinHook (private heap, VirtualAlloc, thread freeze via Toolhelp + Get/SetThreadContext). No shell32/COM, CRT file I/O, LoadLibrary or thread creation in DllMain. The Documents log needs SHGetKnownFolderPath, so it opens at the first SKSE entry point (SKSEPlugin_Preload, main thread, outside DllMain); attach-time lines are buffered (16 x 512 bytes) and flushed then. In SKSE's flow nothing runs between our LoadLibrary and our SKSEPlugin_Preload. The module pins itself at the first SKSE entry point so inline hooks never outlive their code; a plain LoadLibrary/FreeLibrary pair without SKSE (host tests) unhooks on detach."
+  },
+  "featureDefaultsDiff": {
+    "onlyInBuilt": {
+      "hookedEntryPoints": ["user32!MessageBoxA", "user32!MessageBoxW", "user32!MessageBoxExA", "user32!MessageBoxExW", "user32!MessageBoxTimeoutA", "user32!MessageBoxTimeoutW", "user32!MessageBoxIndirectA", "user32!MessageBoxIndirectW", "kernel32!FatalAppExitA", "kernel32!FatalAppExitW"],
+      "messageBoxReply": "IDOK, immediately, no window, original never called",
+      "fatalAppExit": "log line then TerminateProcess(GetCurrentProcess(), 1)",
+      "logPath": "Documents\\My Games\\Skyrim Special Edition\\SKSE\\PopupGuard.log",
+      "logRecord": "HH:MM:SS.mmm <api> module=<caller basename>+0x<offset> type=0x<flags> caption=\"<escaped, 256 bytes>\" text=\"<escaped, 2048 bytes>\"",
+      "logBounds": "4096 bytes per line, 1000 lines per session, one unbuffered WriteFile per line under one SRW lock, thread-local re-entry guard",
+      "optOut": "SKSE/Plugins/PopupGuard.ini Enabled=false installs nothing and logs that"
+    },
+    "onlyInUpstream": {},
+    "changed": {},
+    "note": "Original module has no upstream defaults; behavior implements #255 fix 1. No game settings, INIs or other mods change. The installed SKSE fork's SKSE_AUTOMATION_SILENT_UI import redirection (automation launches only, per-plugin IAT) is unaffected and coexists."
+  },
+  "staticVerification": {
+    "skseMetadata": "PASS (explicit compatibleVersions entry for 1.7.104); name=PopupGuard pluginVersion=0.1.0.0 versionIndependence=0 versionIndependenceEx=1; PE stamp 3110784517 is a /Brepro content hash, not consulted by the gate for versionIndependence=0",
+    "deterministicCleanRebuild": true,
+    "deterministicEvidence": "Three fresh build directories (build2, build3, build4) produced byte-identical !PopupGuard.dll SHA256 133DCD433D73F97121C6D6820CC787D6C4AEE172BF0E62024E28F7B79A660F64; build2 and build3 zips identical, build4 zip differs only by the README text committed in aeb8e4a",
+    "nativeTestGroups": 3,
+    "nativeChecks": {"line_policy": 29, "process_wide_hooks": 54, "plugin_dll_attach": 17},
+    "ctestSummary": "100% tests passed, 0 tests failed out of 3 (build2, build3 and build4)",
+    "hookTimingsMs": {"MessageBoxW": 0.025, "MessageBoxA": 0.009, "MessageBoxExW": 0.004, "MessageBoxExA": 0.004, "MessageBoxTimeoutW": 0.004, "MessageBoxTimeoutA": 0.005, "MessageBoxIndirectW": 0.004, "MessageBoxIndirectA": 0.004, "helper module MessageBoxW": 0.011, "loaded plugin DllMain hook MessageBoxW": 0.007},
+    "attribution": "direct calls logged as module=PopupHookTests.exe+0x<rva>; helper DLL call logged as module=PopupHelperDll.dll+0x1020; FatalAppExitW child exited 1 with its line logged; a tail-jumping wrapper is attributed to its caller (documented)",
+    "funnelProbe": {
+      "user32": "6.2.26100.9278",
+      "edges": ["MessageBoxA +0x40 call MessageBoxTimeoutA", "MessageBoxW +0x40 call MessageBoxTimeoutW", "MessageBoxExA +0x13 call MessageBoxTimeoutA", "MessageBoxExW +0x13 call MessageBoxTimeoutW"],
+      "noDirectEdge": ["MessageBoxTimeoutA", "MessageBoxTimeoutW", "MessageBoxIndirectA", "MessageBoxIndirectW"],
+      "conclusion": "W and ExW funnel into MessageBoxTimeoutW; the ANSI path goes through MessageBoxTimeoutA and the Indirect variants use an internal worker, so a single MessageBoxTimeoutW hook would not provably cover them. All exported entry points are hooked; the first hook answers without calling the original, so each call yields one record."
+    },
+    "publicSourceCi": "PASS: https://github.com/Ensrick/skyrim-mod-assistant/actions/runs/34175043912 at 72faa82 (public SDK header, microsoft/vcpkg checked out at the manifest baseline and bootstrapped, hosted MSVC; identical mods/popup-guard sources to aeb8e4a). First run 34174856827 at aeb8e4a failed before configuring because the runner image's preinstalled vcpkg clone predates baseline ddd0023b.",
+    "workflowCommit": "72faa82e1ed34d48472948ca098a6d8a8c3c6e93",
+    "installedHashMatches": null,
+    "controllerAuditErrors": null
+  },
+  "runtimeVerification": "UNVERIFIED: built and tested offline only. Not installed into the MO2 profile, no profile claim taken, no game launched. On the next launch verify PopupGuard.log shows the hook table plus 'preload phase' and 'load phase' lines, skse64.log lists 'checking plugin !PopupGuard.dll' first and 'preloading plugin \"PopupGuard\"' before EngineFixes, and the game reaches the main menu and loads a save.",
+  "limitations": "Covers only calls that reach the hooked exported entry points inside the game process: not skse64_loader.exe or Windows Error Reporting dialogs (separate processes), not comctl32 TaskDialog or custom dialog windows, not hangs that never call MessageBox. Callers that branch on the answer receive IDOK even for MB_YESNO (flags are logged). Attribution names the nearest frame that pushed a return address; a tail-jumping wrapper is attributed to its caller. Lines raised before the log opens are buffered (16 x 512 bytes).",
+  "distribution": "Original MIT code/DLL plus README/LICENSE and the MinHook BSD-2-Clause notice; external pinned SDK header is build input only; no game assets.",
+  "rollback": "Under the claim with game/MO2 closed, disable or remove the mod; no paired configuration changes exist."
+}
