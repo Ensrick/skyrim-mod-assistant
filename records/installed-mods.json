@@ -1178,6 +1178,42 @@
       "distribution": "vendor"
     },
     {
+      "modId": 191198,
+      "modName": "Daedric Armor Redone - Xtudo CC Plate Replacer",
+      "nexusName": "Daedric Redone - SE by Xtudo - CC Plate 4K",
+      "version": "1",
+      "fileId": 802454,
+      "fileName": "Daedric Redone - SE by Xtudo - CC Plate 4K 191198 1 2026-09-08T18-36Z kATsMWfIn.7z",
+      "sizeMb": 9.19,
+      "sha256": "473b0a25ca0d07ccad737cc6123a1737a27ce1afd539259559115d721c1db9d5",
+      "plugins": [
+        "ccbgssse050-ba_daedric - DaedricArmorRedone replacer by Xtudo.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T19:04:43Z",
+      "transaction": "20260908T190443077Z-d49e38de3d77",
+      "note": "Xtudo's patch pack for Daedric Armor Redone (190071), published 2026-09-08. Xtudo's fix packs are already trusted in this build (Legacy of Ysgramor, Sons of Skyrim, High Poly Project). Fixes carried: weight sliders on the Argonian and Khajiit helmets, heavy footstep sounds instead of light, concealed amulets, Wood Elf removed from the Argonian helmet records, proper Object Bounds on the replacer items, MISSING BODY PARTS added to the female armour and to both 1st-person models, a body/naked-hand seam fixed on the male armour, ground-item proportions adjusted, optimized textures (especially the metallic _m maps), skinning removed from ground/inventory items, USSEP's vanilla-Daedric fixes carried on without requiring USSEP, and the \"Warm\" keyword added for Survival mode - which matters here, since this build runs Survival Mode Improved and the CC survival plugin. ESL-flagged and mid-game safe per the author. VARIANT: CC Plate 4K (file 802454), the DEFAULT one, not the GTS variant (802453) - Gate To Sovngarde is a modlist, not a mod in this build. Applies because Creation Club Alternative Armors - Daedric Plate is installed as ccbgssse050-ba_daedric.esl. The author states it can be used alongside the Replacer, which is how it is installed. 17 records (6 ARMA, 6 ARMO, 2 COBJ, 2 OTFT), masters Skyrim + Update + ccbgssse050-ba_daedric.esl. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
+      "modId": 191198,
+      "modName": "Daedric Armor Redone - Xtudo Fixes",
+      "nexusName": "Daedric Redone - SE by Xtudo - Replacer 4K",
+      "version": "1",
+      "fileId": 802457,
+      "fileName": "Daedric Redone - SE by Xtudo - Replacer 4K 191198 1 2026-09-08T18-38Z L5WQbqjCq.7z",
+      "sizeMb": 9.19,
+      "sha256": "a79d07b099fb3b73d1967f930045dd65b431d27506418dae9eaa062d12f54115",
+      "plugins": [
+        "DaedricArmorRedone.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T19:04:41Z",
+      "transaction": "20260908T190440251Z-e3e4024d3a49",
+      "note": "Xtudo's patch pack for Daedric Armor Redone (190071), published 2026-09-08. Xtudo's fix packs are already trusted in this build (Legacy of Ysgramor, Sons of Skyrim, High Poly Project). Fixes carried: weight sliders on the Argonian and Khajiit helmets, heavy footstep sounds instead of light, concealed amulets, Wood Elf removed from the Argonian helmet records, proper Object Bounds on the replacer items, MISSING BODY PARTS added to the female armour and to both 1st-person models, a body/naked-hand seam fixed on the male armour, ground-item proportions adjusted, optimized textures (especially the metallic _m maps), skinning removed from ground/inventory items, USSEP's vanilla-Daedric fixes carried on without requiring USSEP, and the \"Warm\" keyword added for Survival mode - which matters here, since this build runs Survival Mode Improved and the CC survival plugin. ESL-flagged and mid-game safe per the author. VARIANT: Replacer 4K (file 802457), matching the base mod's Replacer install; it replaces DaedricArmorRedone.esp outright, so it is staged above the base mod at priority 344 and wins all 21 shared asset paths plus the plugin. Its ESP is 14 records (8 ARMO, 6 ARMA), masters Skyrim + Update. Standalone (802456) and LOTD (802455) variants not taken - wrong install type and LOTD absent. The optional 2K-1K texture download was skipped to keep the 4K set. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 78772,
       "modName": "Daedric Shrines - All in One",
       "nexusName": "Daedric Shrines - All in One  - 2K",

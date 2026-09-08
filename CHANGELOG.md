@@ -18,6 +18,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-08 14:04 — Xtudo's Daedric Armor Redone patches
+
+- **What:** Installed Xtudo's patch pack for Daedric Armor Redone (191198): the **Replacer 4K** main matching our install, plus the **CC Plate 4K** variant, which applies because Creation Club Alternative Armors - Daedric Plate is present as `ccbgssse050-ba_daedric.esl`.
+- **Source:** User asked whether it was a good add-on. It is: it fixes real defects in the base mod - missing body parts on the female armour and on both 1st-person models, a body/naked-hand seam on the male armour, weight sliders on the Argonian and Khajiit helmets, Wood Elf wrongly present on Argonian helmet records, light instead of heavy footstep sounds, Object Bounds, ground-item proportions - and adds the **"Warm" keyword for Survival mode**, which this build uses. Xtudo's fix packs are already trusted here (Legacy of Ysgramor, Sons of Skyrim, High Poly Project). Not taken: Standalone (wrong install type), LOTD (absent), CC Plate **GTS** (Gate To Sovngarde is a modlist, not a mod here), and the 2K-1K texture downgrade.
+- **Verification:** **UNVERIFIED in game.** The Replacer patch overrides the base mod on all 21 shared asset paths and replaces `DaedricArmorRedone.esp` outright at priority 344 against the base at 343. Both plugins ESL-flagged: 14 records (8 ARMO, 6 ARMA) and 17 records (6 ARMA, 6 ARMO, 2 COBJ, 2 OTFT) respectively. Resolver-order gate clean, `install_mod.py --verify` `0 problem(s)`.
+
 ## 2026-09-08 13:47 — Daedric Armor Redone installed (Replacer)
 
 - **What:** Installed Daedric Armor Redone (190071, v1, NickTiev) - a from-scratch rebuild of the Daedric set following Ray Lederer's original concept art. Took the **Replacer** main, not the Standalone.
