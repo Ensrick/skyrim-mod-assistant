@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "popup-guard",
+  "version-string": "0.1.0",
+  "description": "SKSE plugin that turns modal Win32 error dialogs into log lines",
+  "dependencies": [
+    "minhook"
+  ],
+  "overrides": [
+    {
+      "name": "minhook",
+      "version": "1.3.4"
+    }
+  ],
+  "builtin-baseline": "ddd0023b0eee70986e42ed49d9d4afb8098f212e"
+}

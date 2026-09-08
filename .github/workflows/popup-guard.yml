@@ -1,0 +1,24 @@
+name: Popup Guard
+on:
+  push:
+    paths: ['mods/popup-guard/**', '.github/workflows/popup-guard.yml']
+  pull_request:
+    paths: ['mods/popup-guard/**', '.github/workflows/popup-guard.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: External pinned ABI headers
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ianpatt/skse64
+          ref: 71f41da518f964345f0050471ec0232fa3a3afc8
+          path: _build/skse-sdk
+          persist-credentials: false
+      - name: Build and test original module
+        shell: pwsh
+        run: |
+          ./mods/popup-guard/build.ps1 -SkseSdkRoot "$pwd/_build/skse-sdk" -VcpkgRoot $env:VCPKG_INSTALLATION_ROOT -Cmake (Get-Command cmake).Source -BuildDirectory "$pwd/_build/popup"
