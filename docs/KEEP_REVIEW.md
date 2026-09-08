@@ -32,6 +32,20 @@ role, distribution, or balance.
 - No lightning mod was approved. Wonders of Weather provides splashes, rainbows
   and shooting stars, not actual lightning strikes.
 
+### September 7, 2026 QuickLoot removal (current owner instruction)
+
+- QuickLoot family: **Skip**. User: "I don't really like quick loot, remove
+  that, and skip the quick loot mods." The installed mod was `QuickLoot IE -
+  Ensrick 1.7.99`, a local rebuild of the Ensrick/QuickLootIE GitHub fork (no
+  Nexus id; the #254 gamepad-id crash fix, PR Ensrick/QuickLootIE#29). It is
+  now disabled and its `QuickLootIE.esp` deactivated (mod-disable txn
+  20260908T021916099Z-b5a21e8188f5, plugin-disable txn
+  20260908T021953655Z-9afb92dc8eea); the folder is kept for reversibility, and
+  having no Nexus id it does not trip the installed-Skip gate. QuickLoot IE,
+  QuickLoot EE and the LootMenu variants are not to be reinstalled. The GitHub
+  fork and PR #29 stay as-is, just shelved. The live curator-extension Skip for
+  the Nexus family is the separate, still-pending confirmation step.
+
 - **A resolved**: all 6 fallout skips confirmed and applied (AFT, EFF, old
   HDT-SMP, Downgrade Patcher, BnP skin, Tempered Skins).
 - **C**: Night Mother pair - drop both, applied. FISSES patch + LOD-grass ini

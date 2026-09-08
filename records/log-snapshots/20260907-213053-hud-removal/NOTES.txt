@@ -1,0 +1,8 @@
+PopupGuard #255 + HUD removal batch verification launch, 2026-09-07 21:30 (harness MENU-ONLY, MO2Headless run direct chain).
+Verdict: main menu reached (MAIN_MENU_OPEN +32.6s from probe / ~40s from process start, under 60s), 52 plugins checked, 0 refused.
+!PopupGuard.dll checked first (skse64.log:6), preloaded before EngineFixes (:59), loaded correctly handle 1 (:244); PopupGuard.log hooks 10/10.
+QuickLootIE: 0 mentions in skse64.log (removed). 51 loaded correctly; only msdia140.dll "no version data" (not an SKSE plugin).
+No new crash log. Only [critical]: 2 in EnsrickCurrencyDenominations.log = known native-currency fresh-character gate (#207/#209/#217).
+#164 human guard refused the kill (Console menu opened +7ms after MAIN_MENU_OPEN, the recurring main-menu-init pattern; user at machine): game left running, exit 88. Not force-killed.
+crash-2026-09-07-20-57-35.log = the user's in-session save-reload AV (#256), archived for reference; not reproduced by this launch.
+UNVERIFIED: TrueHUD actor-info-bars-off and CNO marker-text suppression are visual and need the user's play session; #256 needs an in-session reload to repro.

@@ -11,24 +11,24 @@
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/240",
   "reservedBipedSlot": 58,
   "skyPatcherIndex": 28,
-  "installedUtc": "2026-09-08T01:46:31+00:00",
-  "transaction": "20260908T014631617Z-271b346caccb",
-  "refreshReason": "PopupGuard 0.1.0 (#255) added an enabled DLL-only mod, changing enabledModOrderExcludingSelf, and SmoothCam.esl was restored to its vetted slot after the #253 order drift. The reservation was rebuilt from the corrected 378-plugin runtime profile; its 240 allowlisted directives remain byte-identical.",
+  "installedUtc": "2026-09-08T02:27:16+00:00",
+  "transaction": "20260908T022716205Z-ad4eab7bca80",
+  "refreshReason": "QuickLootIE.esp was removed (#255 batch); the reservation was rebuilt from the 377-plugin runtime profile. Its 240 allowlisted directives remain byte-identical (INI 5716AE2F).",
   "enabled": true,
   "modPriority": 295,
   "packageName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
-  "packageBytes": 125926,
-  "packageSha256": "49945B12AD44FB44D6893AF08EF2DFAA30EDC7A296F6CB245A3011F47B6ACB23",
+  "packageBytes": 125814,
+  "packageSha256": "6FC90791227CB4C47D053FBBED1A0C49B5D158FDB9D0FE9C1D86D107D41FC014",
   "configPath": "SKSE/Plugins/SkyPatcher/armor/Ensrick Full Cloak Exclusivity/Full Cloaks.ini",
   "configBytes": 20078,
   "configSha256": "5716AE2FF6B0CA0C76EB766E1694ED88A6CC18250DA70A758D7E85EB98F1ECDF",
-  "manifestSha256": "32F0F6B08944FE3FB7CCA3B2557E50E4F6389F1DB5A5A24E2DBA7AF918072B70",
-  "layerProofSha256": "15C9D577F882A6DE2A9F85BDC4598A871495B6A1C79D337AD707827BB8260277",
+  "manifestSha256": "01DFCBB9858C1B7D1793D91A540743863925640B259258D1117A637FF3D18E6B",
+  "layerProofSha256": "63A2E11C342AAF236F8F7C48A17D8440DE1A824C7878269829289DE34BD85930",
   "counts": {
     "fullCloakDirectives": 240,
     "excludedItems": 232,
     "pairwiseExclusions": 28680,
-    "pluginsAudited": 378,
+    "pluginsAudited": 377,
     "armorDeclarations": 8961,
     "armorAddonDeclarations": 4461,
     "targetedArmorAddons": 224,
@@ -46,7 +46,7 @@
     "bookConfigAdmissionTests": 15
   },
   "staticVerification": "PASS: exact-profile slot reservation, installed hashes, all-layer mesh proof, and preflight freshness; runtime remains unverified",
-  "pluginListScope": "378 audited runtime plugins (298 managed active + 80 unmanaged) after the SmoothCam.esl slot restore; WeaponBalancePatch.esp remains the unique final active plugin. PopupGuard adds no plugin.",
+  "pluginListScope": "377 audited runtime plugins after QuickLootIE.esp removal; WeaponBalancePatch.esp remains the unique final active plugin. SmoothCam.esl restored to its vetted slot earlier this session.",
   "keepCoverage": "Owned patch has no Nexus identity. Third-party coverage is enforced separately by audit/keep_coverage.py.",
   "runtimeVerification": "UNVERIFIED: no game launched; player/NPC equip and appearance matrix still required",
   "scopeLimits": [
@@ -58,7 +58,7 @@
     "Reservation is profile-specific. Relevant mod/plugin/config/mesh changes require re-audit before reuse."
   ],
   "distribution": "Original MIT source/configuration; no vendor binary assets",
-  "rollback": "Recoverable controller transaction 20260908T014631617Z-271b346caccb; re-audit any reverted profile.",
+  "rollback": "Recoverable controller transaction 20260908T022716205Z-ad4eab7bca80; re-audit any reverted profile.",
   "sourceCommit": "71e4cd325da5f4ec642bc5994124b8652c2a54d4",
-  "workDirectory": "records-work/cloak-slot-repair-2026-09-07/post-popupguard-refresh-2039"
+  "workDirectory": "records-work/cloak-slot-repair-2026-09-07/post-quickloot-removal-2126"
 }

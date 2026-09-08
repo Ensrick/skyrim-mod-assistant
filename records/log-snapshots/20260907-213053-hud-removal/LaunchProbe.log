@@ -1,0 +1,32 @@
+[2026-09-07 21:30:16.968] +2ms POPUP_PATCHED api="MessageBoxW" scope="LaunchProbe.dll import table"
+[2026-09-07 21:30:16.970] +3ms POPUP_PATCHED api="MessageBoxA" scope="LaunchProbe.dll import table"
+[2026-09-07 21:30:16.970] +3ms PROBE_OPEN plugin="LaunchProbe" plugin_version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\LaunchProbe.log"
+[2026-09-07 21:30:16.970] +3ms DLL_ATTACH wall="2026-09-07 21:30:16.966" detail="static initializer; SKSE skips SKSEPlugin_Query for PluginVersionData plug-ins"
+[2026-09-07 21:30:16.971] +4ms PLUGIN_LOAD runtime_skse="1.7.104.0" runtime_module="1.7.104.0" skse_version=33751056 is_editor=0 pid=55328
+[2026-09-07 21:30:16.971] +4ms CONFIG autoload_enabled=0 autoload_save="" delay_ms=1500 heartbeat_ms=0
+[2026-09-07 21:30:16.973] +6ms LISTENER_REGISTERED sender="SKSE"
+[2026-09-07 21:30:16.973] +6ms PROBE_READY
+[2026-09-07 21:30:17.385] +419ms SKSE_MESSAGE name="kPostLoad" sender="SKSE" type=0 data_len=0
+[2026-09-07 21:30:17.385] +419ms SINK_REGISTERED stage="kPostLoad" event="RE::MenuOpenCloseEvent"
+[2026-09-07 21:30:17.702] +735ms SKSE_MESSAGE name="kPostPostLoad" sender="SKSE" type=1 data_len=0
+[2026-09-07 21:30:37.580] +20614ms SKSE_MESSAGE name="kInputLoaded" sender="SKSE" type=6 data_len=0
+[2026-09-07 21:30:38.883] +21917ms MENU_OPEN name="SkyParkour"
+[2026-09-07 21:30:38.890] +21923ms MENU_OPEN name="Loading Menu"
+[2026-09-07 21:30:38.903] +21937ms MENU_OPEN name="Mist Menu"
+[2026-09-07 21:30:38.907] +21940ms MENU_OPEN name="Fader Menu"
+[2026-09-07 21:30:38.915] +21948ms MENU_OPEN name="LoadWaitSpinner"
+[2026-09-07 21:30:48.126] +31159ms MENU_OPEN name="BTPS Ovelay Menu"
+[2026-09-07 21:30:48.577] +31611ms SKSE_MESSAGE name="kDataLoaded" sender="SKSE" type=8 data_len=0
+[2026-09-07 21:30:49.590] +32624ms MENU_OPEN name="Main Menu"
+[2026-09-07 21:30:49.590] +32624ms MAIN_MENU_OPEN constant="Main Menu" ui_is_menu_open=1 has_movie_view=1
+[2026-09-07 21:30:49.593] +32627ms MENU_OPEN name="Cursor Menu"
+[2026-09-07 21:30:49.597] +32631ms MENU_OPEN name="Console"
+[2026-09-07 21:30:49.605] +32638ms MENU_OPEN name="TrueHUD"
+[2026-09-07 21:30:49.605] +32639ms MENU_CLOSE name="Console"
+[2026-09-07 21:30:49.605] +32639ms MENU_CLOSE name="Cursor Menu"
+[2026-09-07 21:30:49.606] +32640ms MENU_CLOSE name="LoadWaitSpinner"
+[2026-09-07 21:30:49.606] +32640ms MENU_CLOSE name="Loading Menu"
+[2026-09-07 21:30:49.611] +32644ms MENU_OPEN name="Cursor Menu"
+[2026-09-07 21:30:49.622] +32656ms MENU_OPEN name="BTPS Menu"
+[2026-09-07 21:30:49.623] +32656ms MENU_CLOSE name="Cursor Menu"
+[2026-09-07 21:30:49.625] +32659ms MENU_OPEN name="Cursor Menu"

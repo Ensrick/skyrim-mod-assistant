@@ -1,0 +1,4 @@
+[2026-09-07 21:30:16.872] [info] Ensrick Currency Denominations 0.1.0 loading on runtime 1-7-104-0 with SKSE 2-3-1-0
+[2026-09-07 21:30:16.873] [info] plugin loaded; waiting for DataLoaded
+[2026-09-07 21:30:48.500] [critical] initialization failed safely: accounting backend did not resolve as the required form type: 00000F:Skyrim.esm
+[2026-09-07 21:30:48.500] [critical] currency bridge remains inactive because initialization failed

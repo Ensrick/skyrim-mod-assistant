@@ -1,0 +1,556 @@
+SKSE64 runtime: initialize (version = 2.3.1 01070680 01DD3F39F8805270, os = 6.2 (9200))
+imagebase = 00007FF742D40000
+reloc mgr imagebase = 00007FF742D40000
+plugin directory = C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\
+scanning plugin directory C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\
+checking plugin !PopupGuard.dll
+checking plugin AHZmoreHUDPlugin.dll
+checking plugin AnimationQueueFix.dll
+checking plugin BetterJumpingSE.dll
+checking plugin BetterThirdPersonSelection.dll
+checking plugin CommunityShaders.dll
+checking plugin CompassNavigationOverhaul.dll
+checking plugin ConditionalArrowEmbedding.dll
+checking plugin ConsoleUtilSSE.dll
+checking plugin ContainerDistributionFramework.dll
+checking plugin CrashLogger.dll
+checking plugin CurrencySwapper.dll
+checking plugin DynamicDialogueReplacer.dll
+checking plugin EngineFixes.dll
+checking plugin EnsrickCurrencyDenominations.dll
+checking plugin FirstPersonFOV.dll
+checking plugin fnis_aa.dll
+checking plugin hdtsmp64.dll
+checking plugin InfinityUI.dll
+checking plugin InventoryInjector.dll
+checking plugin JContainers64.dll
+checking plugin LaunchProbe.dll
+checking plugin MCMHelper.dll
+checking plugin MediaKeysFix.dll
+checking plugin MenuPilot.dll
+checking plugin MLO.dll
+checking plugin msdia140.dll
+plugin msdia140.dll (00000000  00000000) no version data 0 (handle 0)
+checking plugin NotificationFilter.dll
+checking plugin OpenAnimationReplacer.dll
+checking plugin PapyrusUtil.dll
+checking plugin po3_BaseObjectSwapper.dll
+checking plugin po3_KeywordItemDistributor.dll
+checking plugin po3_LightPlacer.dll
+checking plugin po3_LockVariations.dll
+checking plugin po3_PapyrusExtender.dll
+checking plugin po3_SpellPerkItemDistributor.dll
+checking plugin po3_Tweaks.dll
+checking plugin Precision.dll
+checking plugin Proteus.dll
+checking plugin SimpleDualSheath.dll
+checking plugin skee64.dll
+checking plugin SKSEMenuFramework.dll
+checking plugin SkyParkourNG.dll
+checking plugin SkyPatcher.dll
+checking plugin SmoothCam.dll
+checking plugin SoundRecordDistributor.dll
+checking plugin SSEDisplayTweaks.dll
+checking plugin SurvivalModeImproved.dll
+checking plugin TheNewGentleman.dll
+checking plugin TrueHUD.dll
+checking plugin Underwear.dll
+checking plugin WindowFocusGuard.dll
+preloading plugin "PopupGuard"
+automation silent UI: redirected 1 modal import(s) for !PopupGuard.dll
+preloading plugin "EngineFixes"
+automation silent UI: redirected 2 modal import(s) for EngineFixes.dll
+preinit complete
+config path = C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\skse.ini
+loading plugin "PopupGuard"
+loading plugin "Ahzaab's moreHUD Plugin"
+automation silent UI: redirected 1 modal import(s) for AHZmoreHUDPlugin.dll
+plugin 2 allocated 64 bytes from branch pool
+registering plugin listener for SKSE at 2 of 53
+loading plugin "AnimationQueueFix"
+automation silent UI: redirected 1 modal import(s) for AnimationQueueFix.dll
+plugin 3 allocated 14 bytes from branch pool
+loading plugin "BetterJumpingSE"
+automation silent UI: redirected 1 modal import(s) for BetterJumpingSE.dll
+plugin 4 allocated 128 bytes from branch pool
+loading plugin "BetterThirdPersonSelection"
+automation silent UI: redirected 2 modal import(s) for BetterThirdPersonSelection.dll
+plugin 5 allocated 128 bytes from branch pool
+registering plugin listener for SKSE at 5 of 53
+loading plugin "CommunityShaders"
+automation silent UI: redirected 1 modal import(s) for CommunityShaders.dll
+plugin 6 allocated 1024 bytes from branch pool
+registering plugin listener for SKSE at 6 of 53
+loading plugin "CompassNavigationOverhaul"
+automation silent UI: redirected 2 modal import(s) for CompassNavigationOverhaul.dll
+registering plugin listener for SKSE at 7 of 53
+plugin 7 allocated 103 bytes from branch pool
+loading plugin "ConditionalArrowEmbedding"
+plugin 8 allocated 128 bytes from branch pool
+loading plugin "ConsoleUtilSSE"
+automation silent UI: redirected 2 modal import(s) for ConsoleUtilSSE.dll
+registering plugin listener for SKSE at 9 of 53
+loading plugin "ContainerDistributionFramework"
+plugin 10 allocated 28 bytes from branch pool
+registering plugin listener for SKSE at 10 of 53
+loading plugin "CrashLogger"
+automation silent UI: redirected 1 modal import(s) for CrashLogger.dll
+registering plugin listener for SKSE at 11 of 53
+loading plugin "CurrencySwapper"
+plugin 12 allocated 252 bytes from branch pool
+loading plugin "DynamicDialogueReplacer"
+plugin 13 allocated 64 bytes from branch pool
+registering plugin listener for SKSE at 13 of 53
+loading plugin "EngineFixes"
+registering plugin listener for SKSE at 14 of 53
+loading plugin "Ensrick Currency Denominations"
+registering plugin listener for SKSE at 15 of 53
+loading plugin "FirstPersonFOV"
+automation silent UI: redirected 1 modal import(s) for FirstPersonFOV.dll
+registering plugin listener for SKSE at 16 of 53
+loading plugin "fnis_aa"
+automation silent UI: redirected 1 modal import(s) for fnis_aa.dll
+registering plugin listener for SKSE at 17 of 53
+loading plugin "hdtsmp64"
+automation silent UI: redirected 2 modal import(s) for hdtsmp64.dll
+registering plugin listener for SKSE at 18 of 53
+plugin 18 allocated 14 bytes from branch pool
+plugin 18 allocated 41 bytes from branch pool
+loading plugin "InfinityUI"
+automation silent UI: redirected 2 modal import(s) for InfinityUI.dll
+plugin 19 allocated 84 bytes from branch pool
+loading plugin "InventoryInjector"
+automation silent UI: redirected 1 modal import(s) for InventoryInjector.dll
+plugin 20 allocated 8 bytes from branch pool
+registering plugin listener for SKSE at 20 of 53
+loading plugin "JContainers64"
+automation silent UI: redirected 1 modal import(s) for JContainers64.dll
+registering plugin listener for SKSE at 21 of 53
+loading plugin "LaunchProbe"
+automation silent UI: redirected 2 modal import(s) for LaunchProbe.dll
+registering plugin listener for SKSE at 22 of 53
+loading plugin "MCMHelper"
+automation silent UI: redirected 1 modal import(s) for MCMHelper.dll
+registering plugin listener for SKSE at 23 of 53
+loading plugin "MediaKeysFix"
+automation silent UI: redirected 1 modal import(s) for MediaKeysFix.dll
+loading plugin "MenuPilot"
+automation silent UI: redirected 2 modal import(s) for MenuPilot.dll
+registering plugin listener for SKSE at 25 of 53
+loading plugin "MLO"
+automation silent UI: redirected 2 modal import(s) for MLO.dll
+plugin 26 allocated 1024 bytes from branch pool
+registering plugin listener for SKSE at 26 of 53
+plugin 26 allocated 256 bytes from branch pool
+loading plugin "NotificationFilter"
+automation silent UI: redirected 2 modal import(s) for NotificationFilter.dll
+plugin 27 allocated 14 bytes from branch pool
+loading plugin "OpenAnimationReplacer"
+automation silent UI: redirected 1 modal import(s) for OpenAnimationReplacer.dll
+registering plugin listener for SKSE at 28 of 53
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 61 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+plugin 28 allocated 14 bytes from branch pool
+loading plugin "PapyrusUtil"
+automation silent UI: redirected 1 modal import(s) for PapyrusUtil.dll
+loading plugin "Base Object Swapper"
+automation silent UI: redirected 2 modal import(s) for po3_BaseObjectSwapper.dll
+registering plugin listener for SKSE at 30 of 53
+loading plugin "Keyword Item Distributor"
+automation silent UI: redirected 2 modal import(s) for po3_KeywordItemDistributor.dll
+registering plugin listener for SKSE at 31 of 53
+loading plugin "LightPlacer"
+plugin 32 allocated 512 bytes from branch pool
+registering plugin listener for SKSE at 32 of 53
+loading plugin "Security Overhaul SKSE"
+automation silent UI: redirected 2 modal import(s) for po3_LockVariations.dll
+plugin 33 allocated 98 bytes from branch pool
+registering plugin listener for SKSE at 33 of 53
+loading plugin "powerofthree's Papyrus Extender"
+automation silent UI: redirected 2 modal import(s) for po3_PapyrusExtender.dll
+plugin 34 allocated 264 bytes from branch pool
+registering plugin listener for SKSE at 34 of 53
+loading plugin "Spell Perk Item Distributor"
+automation silent UI: redirected 1 modal import(s) for po3_SpellPerkItemDistributor.dll
+plugin 35 allocated 196 bytes from branch pool
+registering plugin listener for SKSE at 35 of 53
+loading plugin "powerofthree's Tweaks"
+automation silent UI: redirected 2 modal import(s) for po3_Tweaks.dll
+plugin 36 allocated 450 bytes from branch pool
+registering plugin listener for SKSE at 36 of 53
+loading plugin "Precision"
+automation silent UI: redirected 1 modal import(s) for Precision.dll
+plugin 37 allocated 1024 bytes from branch pool
+registering plugin listener for SKSE at 37 of 53
+loading plugin "Proteus"
+automation silent UI: redirected 1 modal import(s) for Proteus.dll
+loading plugin "SimpleDualSheath"
+automation silent UI: redirected 1 modal import(s) for SimpleDualSheath.dll
+plugin 39 allocated 200 bytes from branch pool
+plugin 39 allocated 800 bytes from local pool
+registering plugin listener for SKSE at 39 of 53
+loading plugin "skee"
+registering plugin listener for SKSE at 40 of 53
+plugin 40 allocated 512 bytes from branch pool
+plugin 40 allocated 512 bytes from local pool
+loading plugin "SKSEMenuFramework"
+automation silent UI: redirected 1 modal import(s) for SKSEMenuFramework.dll
+registering plugin listener for SKSE at 41 of 53
+plugin 41 allocated 14 bytes from branch pool
+plugin 41 allocated 14 bytes from branch pool
+plugin 41 allocated 14 bytes from branch pool
+plugin 41 allocated 14 bytes from branch pool
+loading plugin "SkyParkourNG"
+automation silent UI: redirected 1 modal import(s) for SkyParkourNG.dll
+registering plugin listener for SKSE at 42 of 53
+loading plugin "Skypatcher"
+automation silent UI: redirected 2 modal import(s) for SkyPatcher.dll
+registering plugin listener for SKSE at 43 of 53
+loading plugin "SmoothCam"
+registering plugin listener for SKSE at 44 of 53
+plugin 44 allocated 512 bytes from branch pool
+loading plugin "SoundRecordDistributor"
+automation silent UI: redirected 1 modal import(s) for SoundRecordDistributor.dll
+registering plugin listener for SKSE at 45 of 53
+loading plugin "SSEDisplayTweaks"
+automation silent UI: redirected 1 modal import(s) for SSEDisplayTweaks.dll
+plugin 46 allocated 512 bytes from branch pool
+plugin 46 allocated 1536 bytes from local pool
+registering plugin listener for SKSE at 46 of 53
+loading plugin "SurvivalModeImproved"
+automation silent UI: redirected 1 modal import(s) for SurvivalModeImproved.dll
+plugin 47 allocated 42 bytes from branch pool
+registering plugin listener for SKSE at 47 of 53
+loading plugin "TheNewGentleman"
+automation silent UI: redirected 1 modal import(s) for TheNewGentleman.dll
+registering plugin listener for SKSE at 48 of 53
+loading plugin "TrueHUD"
+automation silent UI: redirected 1 modal import(s) for TrueHUD.dll
+plugin 49 allocated 256 bytes from branch pool
+registering plugin listener for SKSE at 49 of 53
+loading plugin "Underwear"
+automation silent UI: redirected 2 modal import(s) for Underwear.dll
+registering plugin listener for SKSE at 50 of 53
+loading plugin "WindowFocusGuard"
+plugin !PopupGuard.dll (00000001 PopupGuard 00010000) loaded correctly (handle 1)
+plugin AHZmoreHUDPlugin.dll (00000001 Ahzaab's moreHUD Plugin 05040040) loaded correctly (handle 2)
+plugin AnimationQueueFix.dll (00000001 AnimationQueueFix 01000020) loaded correctly (handle 3)
+plugin BetterJumpingSE.dll (00000001 BetterJumpingSE 01090040) loaded correctly (handle 4)
+plugin BetterThirdPersonSelection.dll (00000001 BetterThirdPersonSelection 00080090) loaded correctly (handle 5)
+plugin CommunityShaders.dll (00000001 CommunityShaders 01080000) loaded correctly (handle 6)
+plugin CompassNavigationOverhaul.dll (00000001 CompassNavigationOverhaul 02020000) loaded correctly (handle 7)
+plugin ConditionalArrowEmbedding.dll (00000001 ConditionalArrowEmbedding 00030040) loaded correctly (handle 8)
+plugin ConsoleUtilSSE.dll (00000001 ConsoleUtilSSE 01060018) loaded correctly (handle 9)
+plugin ContainerDistributionFramework.dll (00000001 ContainerDistributionFramework 03010000) loaded correctly (handle 10)
+plugin CrashLogger.dll (00000001 CrashLogger 01190000) loaded correctly (handle 11)
+plugin CurrencySwapper.dll (00000001 CurrencySwapper 02020000) loaded correctly (handle 12)
+plugin DynamicDialogueReplacer.dll (00000001 DynamicDialogueReplacer 01040010) loaded correctly (handle 13)
+plugin EngineFixes.dll (00000001 EngineFixes 07000000) loaded correctly (handle 14)
+plugin EnsrickCurrencyDenominations.dll (00000001 Ensrick Currency Denominations 00020000) loaded correctly (handle 15)
+plugin FirstPersonFOV.dll (00000001 FirstPersonFOV 01000000) loaded correctly (handle 16)
+plugin fnis_aa.dll (00000001 fnis_aa 03000010) loaded correctly (handle 17)
+plugin hdtsmp64.dll (00000001 hdtsmp64 04010010) loaded correctly (handle 18)
+plugin InfinityUI.dll (00000001 InfinityUI 02010000) loaded correctly (handle 19)
+plugin InventoryInjector.dll (00000001 InventoryInjector 01010010) loaded correctly (handle 20)
+plugin JContainers64.dll (00000001 JContainers64 00000004) loaded correctly (handle 21)
+plugin LaunchProbe.dll (00000001 LaunchProbe 01000000) loaded correctly (handle 22)
+plugin MCMHelper.dll (00000001 MCMHelper 01060030) loaded correctly (handle 23)
+plugin MediaKeysFix.dll (00000001 MediaKeysFix 01000020) loaded correctly (handle 24)
+plugin MenuPilot.dll (00000001 MenuPilot 01000000) loaded correctly (handle 25)
+plugin MLO.dll (00000001 MLO 01000000) loaded correctly (handle 26)
+plugin NotificationFilter.dll (00000001 NotificationFilter 01030000) loaded correctly (handle 27)
+plugin OpenAnimationReplacer.dll (00000001 OpenAnimationReplacer 03020010) loaded correctly (handle 28)
+plugin PapyrusUtil.dll (00000001 PapyrusUtil 00000002) loaded correctly (handle 29)
+plugin po3_BaseObjectSwapper.dll (00000001 Base Object Swapper 03050000) loaded correctly (handle 30)
+plugin po3_KeywordItemDistributor.dll (00000001 Keyword Item Distributor 04010000) loaded correctly (handle 31)
+plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 32)
+plugin po3_LockVariations.dll (00000001 Security Overhaul SKSE 04010000) loaded correctly (handle 33)
+plugin po3_PapyrusExtender.dll (00000001 powerofthree's Papyrus Extender 06050010) loaded correctly (handle 34)
+plugin po3_SpellPerkItemDistributor.dll (00000001 Spell Perk Item Distributor 07000000) loaded correctly (handle 35)
+plugin po3_Tweaks.dll (00000001 powerofthree's Tweaks 01110010) loaded correctly (handle 36)
+plugin Precision.dll (00000001 Precision 02000060) loaded correctly (handle 37)
+plugin Proteus.dll (00000001 Proteus 01010000) loaded correctly (handle 38)
+plugin SimpleDualSheath.dll (00000001 SimpleDualSheath 00010509) loaded correctly (handle 39)
+plugin skee64.dll (00000001 skee 00000001) loaded correctly (handle 40)
+plugin SKSEMenuFramework.dll (00000001 SKSEMenuFramework 030D0000) loaded correctly (handle 41)
+plugin SkyParkourNG.dll (00000001 SkyParkourNG 03060030) loaded correctly (handle 42)
+plugin SkyPatcher.dll (00000001 Skypatcher 07000000) loaded correctly (handle 43)
+plugin SmoothCam.dll (00000001 SmoothCam 00000012) loaded correctly (handle 44)
+plugin SoundRecordDistributor.dll (00000001 SoundRecordDistributor 01050030) loaded correctly (handle 45)
+plugin SSEDisplayTweaks.dll (00000001 SSEDisplayTweaks 00000519) loaded correctly (handle 46)
+plugin SurvivalModeImproved.dll (00000001 SurvivalModeImproved 01060050) loaded correctly (handle 47)
+plugin TheNewGentleman.dll (00000001 TheNewGentleman 04000000) loaded correctly (handle 48)
+plugin TrueHUD.dll (00000001 TrueHUD 010100A0) loaded correctly (handle 49)
+plugin Underwear.dll (00000001 Underwear 01030010) loaded correctly (handle 50)
+plugin WindowFocusGuard.dll (00000001 WindowFocusGuard 00010000) loaded correctly (handle 51)
+dispatch message (0) to plugin listeners
+sending message type 0 to plugin 2
+sending message type 0 to plugin 5
+sending message type 0 to plugin 6
+sending message type 0 to plugin 7
+registering plugin listener for InfinityUI at 7 of 53
+sending message type 0 to plugin 9
+sending message type 0 to plugin 10
+sending message type 0 to plugin 11
+sending message type 0 to plugin 13
+sending message type 0 to plugin 14
+sending message type 0 to plugin 15
+sending message type 0 to plugin 16
+sending message type 0 to plugin 17
+sending message type 0 to plugin 18
+sending message type 0 to plugin 20
+sending message type 0 to plugin 21
+sending message type 0 to plugin 22
+sending message type 0 to plugin 23
+sending message type 0 to plugin 25
+sending message type 0 to plugin 26
+sending message type 0 to plugin 28
+sending message type 0 to plugin 30
+sending message type 0 to plugin 31
+sending message type 0 to plugin 32
+sending message type 0 to plugin 33
+sending message type 0 to plugin 34
+sending message type 0 to plugin 35
+sending message type 0 to plugin 36
+sending message type 0 to plugin 37
+sending message type 0 to plugin 39
+sending message type 0 to plugin 40
+registering plugin listener for (null) at 40 of 53
+sending message type 0 to plugin 41
+sending message type 0 to plugin 42
+sending message type 0 to plugin 43
+sending message type 0 to plugin 44
+registering plugin listener for (null) at 44 of 53
+sending message type 0 to plugin 45
+sending message type 0 to plugin 46
+sending message type 0 to plugin 47
+sending message type 0 to plugin 48
+sending message type 0 to plugin 49
+sending message type 0 to plugin 50
+dispatched message.
+dispatch message (1) to plugin listeners
+sending message type 1 to plugin 2
+sending message type 1 to plugin 5
+sending message type 1 to plugin 6
+sending message type 1 to plugin 7
+sending message type 1 to plugin 9
+sending message type 1 to plugin 10
+sending message type 1 to plugin 11
+sending message type 1 to plugin 13
+sending message type 1 to plugin 14
+sending message type 1 to plugin 15
+sending message type 1 to plugin 16
+sending message type 1 to plugin 17
+sending message type 1 to plugin 18
+plugin 18 allocated 14 bytes from branch pool
+plugin 18 allocated 14 bytes from branch pool
+dispatch message (0) to plugin listeners
+sending message type 0 to plugin 40
+sending message type 0 to plugin 44
+dispatch message (0) to plugin listeners
+dispatched message.
+dispatched message.
+sending message type 1 to plugin 20
+sending message type 1 to plugin 21
+dispatch message (1) to plugin listeners
+sending message type 1 to plugin 40
+sending message type 1 to plugin 44
+dispatched message.
+sending message type 1 to plugin 22
+sending message type 1 to plugin 23
+sending message type 1 to plugin 25
+sending message type 1 to plugin 26
+sending message type 1 to plugin 28
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 30
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 31
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 32
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 33
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 34
+dispatch message (-69227266) to plugin listeners
+sending message type 1 to plugin 35
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 36
+sending message type 1 to plugin 37
+sending message type 1 to plugin 39
+sending message type 1 to plugin 40
+sending message type 1 to plugin 41
+dispatch message (-355783686) to plugin listeners
+sending message type 1 to plugin 42
+sending message type 1 to plugin 43
+sending message type 1 to plugin 44
+sending message type 1 to plugin 45
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 46
+sending message type 1 to plugin 47
+sending message type 1 to plugin 48
+sending message type 1 to plugin 49
+sending message type 1 to plugin 50
+dispatched message.
+init complete
+hooked dinput
+dispatch message (6) to plugin listeners
+sending message type 6 to plugin 2
+sending message type 6 to plugin 5
+sending message type 6 to plugin 6
+sending message type 6 to plugin 7
+sending message type 6 to plugin 9
+sending message type 6 to plugin 10
+sending message type 6 to plugin 11
+sending message type 6 to plugin 13
+sending message type 6 to plugin 14
+sending message type 6 to plugin 15
+sending message type 6 to plugin 16
+sending message type 6 to plugin 17
+sending message type 6 to plugin 18
+sending message type 6 to plugin 20
+sending message type 6 to plugin 21
+sending message type 6 to plugin 22
+sending message type 6 to plugin 23
+sending message type 6 to plugin 25
+sending message type 6 to plugin 26
+sending message type 6 to plugin 28
+sending message type 6 to plugin 30
+sending message type 6 to plugin 31
+sending message type 6 to plugin 32
+sending message type 6 to plugin 33
+sending message type 6 to plugin 34
+sending message type 6 to plugin 35
+sending message type 6 to plugin 36
+sending message type 6 to plugin 37
+sending message type 6 to plugin 39
+sending message type 6 to plugin 40
+sending message type 6 to plugin 41
+sending message type 6 to plugin 42
+sending message type 6 to plugin 43
+sending message type 6 to plugin 44
+sending message type 6 to plugin 45
+sending message type 6 to plugin 46
+sending message type 6 to plugin 47
+sending message type 6 to plugin 48
+sending message type 6 to plugin 49
+sending message type 6 to plugin 50
+dispatched message.
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+Reading translations from Interface\Translations\Campfire_ENGLISH.txt...
+Reading translations from Interface\Translations\Vigilant_ENGLISH.txt...
+Reading translations from Interface\Translations\TheNewGentleman_ENGLISH.txt...
+Reading translations from Interface\Translations\Wyrmstooth_ENGLISH.txt...
+Reading translations from Interface\Translations\TrueHUD_ENGLISH.txt...
+Reading translations from Interface\Translations\AHZmoreHUD_ENGLISH.txt...
+Reading translations from Interface\Translations\SkyUI_SE_ENGLISH.txt...
+Reading translations from Interface\Translations\I4IconAddon_ENGLISH.txt...
+Reading translations from Interface\Translations\Audio Overhaul Skyrim_ENGLISH.txt...
+Reading translations from Interface\Translations\C.O.I.N_ENGLISH.txt...
+Reading translations from Interface\Translations\M.I.N.T_ENGLISH.txt...
+Reading translations from Interface\Translations\exchangeCurrency_enhanced_ENGLISH.txt...
+Reading translations from Interface\Translations\RaceMenu_ENGLISH.txt...
+Reading translations from Interface\Translations\RaceMenuPlugin_ENGLISH.txt...
+Reading translations from Interface\Translations\UIExtensions_ENGLISH.txt...
+Reading translations from Interface\Translations\XPMSE_ENGLISH.txt...
+Reading translations from Interface\Translations\VioLens SE_ENGLISH.txt...
+Reading translations from Interface\Translations\SkyParkour_ENGLISH.txt...
+Reading translations from Interface\Translations\MCMHelper_ENGLISH.txt...
+Reading translations from Interface\Translations\run for your lives_ENGLISH.txt...
+Reading translations from Interface\Translations\Precision_ENGLISH.txt...
+Reading translations from Interface\Translations\BetterThirdPersonSelection_ENGLISH.txt...
+Reading translations from Interface\Translations\Skyrim Unbound_ENGLISH.txt...
+Reading translations from Interface\Translations\nwsFollowerFramework_ENGLISH.txt...
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (8) to plugin listeners
+sending message type 8 to plugin 2
+sending message type 8 to plugin 5
+sending message type 8 to plugin 6
+dispatch message (-1707140088) to plugin listeners
+sending message type 8 to plugin 7
+sending message type 8 to plugin 9
+sending message type 8 to plugin 10
+sending message type 8 to plugin 11
+sending message type 8 to plugin 13
+sending message type 8 to plugin 14
+sending message type 8 to plugin 15
+sending message type 8 to plugin 16
+plugin 16 allocated 14 bytes from branch pool
+plugin 16 allocated 14 bytes from branch pool
+sending message type 8 to plugin 17
+sending message type 8 to plugin 18
+sending message type 8 to plugin 20
+dispatch message (-422868135) to plugin listeners
+sending message type 8 to plugin 21
+sending message type 8 to plugin 22
+sending message type 8 to plugin 23
+sending message type 8 to plugin 25
+sending message type 8 to plugin 26
+sending message type 8 to plugin 28
+sending message type 8 to plugin 30
+sending message type 8 to plugin 31
+sending message type 8 to plugin 32
+sending message type 8 to plugin 33
+sending message type 8 to plugin 34
+sending message type 8 to plugin 35
+sending message type 8 to plugin 36
+sending message type 8 to plugin 37
+sending message type 8 to plugin 39
+sending message type 8 to plugin 40
+sending message type 8 to plugin 41
+sending message type 8 to plugin 42
+sending message type 8 to plugin 43
+sending message type 8 to plugin 44
+sending message type 8 to plugin 45
+sending message type 8 to plugin 46
+sending message type 8 to plugin 47
+sending message type 8 to plugin 48
+sending message type 8 to plugin 49
+sending message type 8 to plugin 50
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 7
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
