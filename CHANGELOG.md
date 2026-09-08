@@ -18,6 +18,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-08 10:26 — Voiced Narrative - The Cause installed
+
+- **What:** Installed Voiced Narrative - The Cause (191177, v1.0). ~200 ElevenLabs-generated dialogue lines for the Creation Club quest, which ships with almost none: Mythic Dawn cultist greetings and combat lines, a villain speech for Vonos, Vigilant commentary, and follower commentary on Red Scar Cavern, Rielle and the Deadlands.
+- **Source:** User: *"This seems neat, if there's no issues, let's add it!"* Issues checked and none blocking. The requirement is The Cause itself, which is `ccbgssse067-daedinv.esm` - confirmed present by scanning all 74 installed Creation Club plugins for Rielle/Vonos/MythicDawn/RedScar records; it was the only match, with 100. The author states compatibility with the Unofficial Skyrim Creation Club Content Patch (installed), that NPC records are untouched so face overhauls are unaffected, and that it is mid-save safe both ways.
+- **Verification:** **UNVERIFIED in game.** Plugin is dialogue-only as advertised: 51 records, 34 INFO / 11 DIAL / 3 QUST / 1 CELL / 1 REFR, masters ending in `ccbgssse067-daedinv.esm`. Payload is one ESP, one BSA, one INI. plugins.txt 307, resolver-order gate clean, `install_mod.py --verify` `0 problem(s)`. **Two things to know rather than defects:** it was published the same day it was installed and has 0 endorsements, so there is no field evidence behind it; and the voices are AI-generated, which the mod page states plainly.
+
 ## 2026-09-07 21:30 — QuickLoot IE removed; floating healthbars and compass marker text off
 
 - **What:** Four user-requested changes, one claimed session, one verification launch.

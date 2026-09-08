@@ -8033,6 +8033,24 @@
       "fomodPlan": "C:\\Users\\danjo\\AppData\\Local\\Temp\\claude\\C--Users-danjo-source-repos\\8cb7eb06-e1bd-4a5c-a603-fe2544d83e14\\scratchpad\\668-violens.json"
     },
     {
+      "modId": 191177,
+      "modName": "Voiced Narrative - The Cause",
+      "nexusName": "The Cause   Voiced",
+      "version": "1.0",
+      "fileId": 802376,
+      "fileName": "The Cause Voiced 191177 1.0 2026-09-08T14-52Z MWx0rv6YZ.zip",
+      "sizeMb": 5.57,
+      "sha256": "0f9b72e8ac4b61178ea95f235c28f78835a7846a58554be3fb5fe07556e26743",
+      "plugins": [
+        "The Cause - Voiced.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T15:26:27Z",
+      "transaction": "20260908T152627249Z-d56e6c5768f1",
+      "note": "User: \"This seems neat, if there's no issues, let's add it!\" v1.0 published 2026-09-08, the same day it was installed; 0 endorsements, so no field evidence yet - that is the only real risk here. Adds ~200 dialogue lines to The Cause (Creation Club), which ships with almost no dialogue: greeting and combat lines for Mythic Dawn cultists, a speech and combat lines for Vonos, Vigilant commentary during and after the quest, and follower commentary on Red Scar Cavern, Rielle and the Deadlands (keyed to the LocTypeAyleidRuin keyword, so it also fires in Ayleid dungeon mods). REQUIREMENT MET: The Cause is ccbgssse067-daedinv.esm, confirmed present by scanning all 74 installed CC plugins for Rielle/Vonos/MythicDawn/RedScar records - it was the only match, with 100. PAYLOAD: one ESP, one BSA, one INI. The plugin is 51 records and dialogue-only as advertised: 34 INFO, 11 DIAL, 3 QUST, 1 CELL, 1 REFR; masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/ccbgssse067-daedinv.esm. Author states it is compatible with the Unofficial Skyrim Creation Club Content Patch (installed here), that NPC records are left intact so face-overhaul mods are unaffected, and that it is safe to add or remove mid-save - removal reverts to vanilla lines. TASTE FLAG, not a defect: the voices are ElevenLabs-generated, stated plainly on the mod page. plugins.txt 307. Resolver-order gate clean; install_mod --verify 0 problems. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 37061,
       "modName": "Water for ENB",
       "nexusName": "Water for ENB",
