@@ -1,0 +1,2111 @@
+SKSE64 runtime: initialize (version = 2.3.1 01070680 01DD3F2EC16F17E8, os = 6.2 (9200))
+imagebase = 00007FF7ED300000
+reloc mgr imagebase = 00007FF7ED300000
+plugin directory = C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\
+scanning plugin directory C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\
+checking plugin AHZmoreHUDPlugin.dll
+checking plugin AnimationQueueFix.dll
+checking plugin BetterJumpingSE.dll
+checking plugin BetterThirdPersonSelection.dll
+checking plugin CommunityShaders.dll
+checking plugin CompassNavigationOverhaul.dll
+checking plugin ConditionalArrowEmbedding.dll
+checking plugin ConsoleUtilSSE.dll
+checking plugin ContainerDistributionFramework.dll
+checking plugin CrashLogger.dll
+checking plugin CurrencySwapper.dll
+checking plugin DynamicDialogueReplacer.dll
+checking plugin EngineFixes.dll
+checking plugin EnsrickCurrencyDenominations.dll
+checking plugin FirstPersonFOV.dll
+checking plugin fnis_aa.dll
+checking plugin hdtsmp64.dll
+checking plugin InfinityUI.dll
+checking plugin InventoryInjector.dll
+checking plugin JContainers64.dll
+checking plugin LaunchProbe.dll
+checking plugin MCMHelper.dll
+checking plugin MediaKeysFix.dll
+checking plugin MenuPilot.dll
+checking plugin MLO.dll
+checking plugin msdia140.dll
+plugin msdia140.dll (00000000  00000000) no version data 0 (handle 0)
+checking plugin NotificationFilter.dll
+checking plugin OpenAnimationReplacer.dll
+checking plugin PapyrusUtil.dll
+checking plugin po3_BaseObjectSwapper.dll
+checking plugin po3_KeywordItemDistributor.dll
+checking plugin po3_LightPlacer.dll
+checking plugin po3_LockVariations.dll
+checking plugin po3_PapyrusExtender.dll
+checking plugin po3_SpellPerkItemDistributor.dll
+checking plugin po3_Tweaks.dll
+checking plugin Precision.dll
+checking plugin Proteus.dll
+checking plugin QuickLootIE.dll
+checking plugin SimpleDualSheath.dll
+checking plugin skee64.dll
+checking plugin SKSEMenuFramework.dll
+checking plugin SkyParkourNG.dll
+checking plugin SkyPatcher.dll
+checking plugin SmoothCam.dll
+checking plugin SoundRecordDistributor.dll
+checking plugin SSEDisplayTweaks.dll
+checking plugin SurvivalModeImproved.dll
+checking plugin TheNewGentleman.dll
+checking plugin TrueHUD.dll
+checking plugin Underwear.dll
+checking plugin WindowFocusGuard.dll
+preloading plugin "EngineFixes"
+automation silent UI: redirected 2 modal import(s) for EngineFixes.dll
+preinit complete
+config path = C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\skse.ini
+loading plugin "Ahzaab's moreHUD Plugin"
+automation silent UI: redirected 1 modal import(s) for AHZmoreHUDPlugin.dll
+plugin 1 allocated 64 bytes from branch pool
+registering plugin listener for SKSE at 1 of 53
+loading plugin "AnimationQueueFix"
+automation silent UI: redirected 1 modal import(s) for AnimationQueueFix.dll
+plugin 2 allocated 14 bytes from branch pool
+loading plugin "BetterJumpingSE"
+automation silent UI: redirected 1 modal import(s) for BetterJumpingSE.dll
+plugin 3 allocated 128 bytes from branch pool
+loading plugin "BetterThirdPersonSelection"
+automation silent UI: redirected 2 modal import(s) for BetterThirdPersonSelection.dll
+plugin 4 allocated 128 bytes from branch pool
+registering plugin listener for SKSE at 4 of 53
+loading plugin "CommunityShaders"
+automation silent UI: redirected 1 modal import(s) for CommunityShaders.dll
+plugin 5 allocated 1024 bytes from branch pool
+registering plugin listener for SKSE at 5 of 53
+loading plugin "CompassNavigationOverhaul"
+automation silent UI: redirected 2 modal import(s) for CompassNavigationOverhaul.dll
+registering plugin listener for SKSE at 6 of 53
+plugin 6 allocated 103 bytes from branch pool
+loading plugin "ConditionalArrowEmbedding"
+plugin 7 allocated 128 bytes from branch pool
+loading plugin "ConsoleUtilSSE"
+automation silent UI: redirected 2 modal import(s) for ConsoleUtilSSE.dll
+registering plugin listener for SKSE at 8 of 53
+loading plugin "ContainerDistributionFramework"
+plugin 9 allocated 28 bytes from branch pool
+registering plugin listener for SKSE at 9 of 53
+loading plugin "CrashLogger"
+automation silent UI: redirected 1 modal import(s) for CrashLogger.dll
+registering plugin listener for SKSE at 10 of 53
+loading plugin "CurrencySwapper"
+plugin 11 allocated 252 bytes from branch pool
+loading plugin "DynamicDialogueReplacer"
+plugin 12 allocated 64 bytes from branch pool
+registering plugin listener for SKSE at 12 of 53
+loading plugin "EngineFixes"
+registering plugin listener for SKSE at 13 of 53
+loading plugin "Ensrick Currency Denominations"
+registering plugin listener for SKSE at 14 of 53
+loading plugin "FirstPersonFOV"
+automation silent UI: redirected 1 modal import(s) for FirstPersonFOV.dll
+registering plugin listener for SKSE at 15 of 53
+loading plugin "fnis_aa"
+automation silent UI: redirected 1 modal import(s) for fnis_aa.dll
+registering plugin listener for SKSE at 16 of 53
+loading plugin "hdtsmp64"
+automation silent UI: redirected 2 modal import(s) for hdtsmp64.dll
+registering plugin listener for SKSE at 17 of 53
+plugin 17 allocated 14 bytes from branch pool
+plugin 17 allocated 41 bytes from branch pool
+loading plugin "InfinityUI"
+automation silent UI: redirected 2 modal import(s) for InfinityUI.dll
+plugin 18 allocated 84 bytes from branch pool
+loading plugin "InventoryInjector"
+automation silent UI: redirected 1 modal import(s) for InventoryInjector.dll
+plugin 19 allocated 8 bytes from branch pool
+registering plugin listener for SKSE at 19 of 53
+loading plugin "JContainers64"
+automation silent UI: redirected 1 modal import(s) for JContainers64.dll
+registering plugin listener for SKSE at 20 of 53
+loading plugin "LaunchProbe"
+automation silent UI: redirected 2 modal import(s) for LaunchProbe.dll
+registering plugin listener for SKSE at 21 of 53
+loading plugin "MCMHelper"
+automation silent UI: redirected 1 modal import(s) for MCMHelper.dll
+registering plugin listener for SKSE at 22 of 53
+loading plugin "MediaKeysFix"
+automation silent UI: redirected 1 modal import(s) for MediaKeysFix.dll
+loading plugin "MenuPilot"
+automation silent UI: redirected 2 modal import(s) for MenuPilot.dll
+registering plugin listener for SKSE at 24 of 53
+loading plugin "MLO"
+automation silent UI: redirected 2 modal import(s) for MLO.dll
+plugin 25 allocated 1024 bytes from branch pool
+registering plugin listener for SKSE at 25 of 53
+plugin 25 allocated 256 bytes from branch pool
+loading plugin "NotificationFilter"
+automation silent UI: redirected 2 modal import(s) for NotificationFilter.dll
+plugin 26 allocated 14 bytes from branch pool
+loading plugin "OpenAnimationReplacer"
+automation silent UI: redirected 1 modal import(s) for OpenAnimationReplacer.dll
+registering plugin listener for SKSE at 27 of 53
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 61 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+plugin 27 allocated 14 bytes from branch pool
+loading plugin "PapyrusUtil"
+automation silent UI: redirected 1 modal import(s) for PapyrusUtil.dll
+loading plugin "Base Object Swapper"
+automation silent UI: redirected 2 modal import(s) for po3_BaseObjectSwapper.dll
+registering plugin listener for SKSE at 29 of 53
+loading plugin "Keyword Item Distributor"
+automation silent UI: redirected 2 modal import(s) for po3_KeywordItemDistributor.dll
+registering plugin listener for SKSE at 30 of 53
+loading plugin "LightPlacer"
+plugin 31 allocated 512 bytes from branch pool
+registering plugin listener for SKSE at 31 of 53
+loading plugin "Security Overhaul SKSE"
+automation silent UI: redirected 2 modal import(s) for po3_LockVariations.dll
+plugin 32 allocated 98 bytes from branch pool
+registering plugin listener for SKSE at 32 of 53
+loading plugin "powerofthree's Papyrus Extender"
+automation silent UI: redirected 2 modal import(s) for po3_PapyrusExtender.dll
+plugin 33 allocated 264 bytes from branch pool
+registering plugin listener for SKSE at 33 of 53
+loading plugin "Spell Perk Item Distributor"
+automation silent UI: redirected 1 modal import(s) for po3_SpellPerkItemDistributor.dll
+plugin 34 allocated 196 bytes from branch pool
+registering plugin listener for SKSE at 34 of 53
+loading plugin "powerofthree's Tweaks"
+automation silent UI: redirected 2 modal import(s) for po3_Tweaks.dll
+plugin 35 allocated 450 bytes from branch pool
+registering plugin listener for SKSE at 35 of 53
+loading plugin "Precision"
+automation silent UI: redirected 1 modal import(s) for Precision.dll
+plugin 36 allocated 1024 bytes from branch pool
+registering plugin listener for SKSE at 36 of 53
+loading plugin "Proteus"
+automation silent UI: redirected 1 modal import(s) for Proteus.dll
+loading plugin "QuickLootIE"
+plugin 38 allocated 256 bytes from branch pool
+registering plugin listener for SKSE at 38 of 53
+loading plugin "SimpleDualSheath"
+automation silent UI: redirected 1 modal import(s) for SimpleDualSheath.dll
+plugin 39 allocated 200 bytes from branch pool
+plugin 39 allocated 800 bytes from local pool
+registering plugin listener for SKSE at 39 of 53
+loading plugin "skee"
+registering plugin listener for SKSE at 40 of 53
+plugin 40 allocated 512 bytes from branch pool
+plugin 40 allocated 512 bytes from local pool
+loading plugin "SKSEMenuFramework"
+automation silent UI: redirected 1 modal import(s) for SKSEMenuFramework.dll
+registering plugin listener for SKSE at 41 of 53
+plugin 41 allocated 14 bytes from branch pool
+plugin 41 allocated 14 bytes from branch pool
+plugin 41 allocated 14 bytes from branch pool
+plugin 41 allocated 14 bytes from branch pool
+loading plugin "SkyParkourNG"
+automation silent UI: redirected 1 modal import(s) for SkyParkourNG.dll
+registering plugin listener for SKSE at 42 of 53
+loading plugin "Skypatcher"
+automation silent UI: redirected 2 modal import(s) for SkyPatcher.dll
+registering plugin listener for SKSE at 43 of 53
+loading plugin "SmoothCam"
+registering plugin listener for SKSE at 44 of 53
+plugin 44 allocated 512 bytes from branch pool
+loading plugin "SoundRecordDistributor"
+automation silent UI: redirected 1 modal import(s) for SoundRecordDistributor.dll
+registering plugin listener for SKSE at 45 of 53
+loading plugin "SSEDisplayTweaks"
+automation silent UI: redirected 1 modal import(s) for SSEDisplayTweaks.dll
+plugin 46 allocated 512 bytes from branch pool
+plugin 46 allocated 1536 bytes from local pool
+registering plugin listener for SKSE at 46 of 53
+loading plugin "SurvivalModeImproved"
+automation silent UI: redirected 1 modal import(s) for SurvivalModeImproved.dll
+plugin 47 allocated 42 bytes from branch pool
+registering plugin listener for SKSE at 47 of 53
+loading plugin "TheNewGentleman"
+automation silent UI: redirected 1 modal import(s) for TheNewGentleman.dll
+registering plugin listener for SKSE at 48 of 53
+loading plugin "TrueHUD"
+automation silent UI: redirected 1 modal import(s) for TrueHUD.dll
+plugin 49 allocated 256 bytes from branch pool
+registering plugin listener for SKSE at 49 of 53
+loading plugin "Underwear"
+automation silent UI: redirected 2 modal import(s) for Underwear.dll
+registering plugin listener for SKSE at 50 of 53
+loading plugin "WindowFocusGuard"
+plugin AHZmoreHUDPlugin.dll (00000001 Ahzaab's moreHUD Plugin 05040040) loaded correctly (handle 1)
+plugin AnimationQueueFix.dll (00000001 AnimationQueueFix 01000020) loaded correctly (handle 2)
+plugin BetterJumpingSE.dll (00000001 BetterJumpingSE 01090040) loaded correctly (handle 3)
+plugin BetterThirdPersonSelection.dll (00000001 BetterThirdPersonSelection 00080090) loaded correctly (handle 4)
+plugin CommunityShaders.dll (00000001 CommunityShaders 01080000) loaded correctly (handle 5)
+plugin CompassNavigationOverhaul.dll (00000001 CompassNavigationOverhaul 02020000) loaded correctly (handle 6)
+plugin ConditionalArrowEmbedding.dll (00000001 ConditionalArrowEmbedding 00030040) loaded correctly (handle 7)
+plugin ConsoleUtilSSE.dll (00000001 ConsoleUtilSSE 01060018) loaded correctly (handle 8)
+plugin ContainerDistributionFramework.dll (00000001 ContainerDistributionFramework 03010000) loaded correctly (handle 9)
+plugin CrashLogger.dll (00000001 CrashLogger 01190000) loaded correctly (handle 10)
+plugin CurrencySwapper.dll (00000001 CurrencySwapper 02020000) loaded correctly (handle 11)
+plugin DynamicDialogueReplacer.dll (00000001 DynamicDialogueReplacer 01040010) loaded correctly (handle 12)
+plugin EngineFixes.dll (00000001 EngineFixes 07000000) loaded correctly (handle 13)
+plugin EnsrickCurrencyDenominations.dll (00000001 Ensrick Currency Denominations 00020000) loaded correctly (handle 14)
+plugin FirstPersonFOV.dll (00000001 FirstPersonFOV 01000000) loaded correctly (handle 15)
+plugin fnis_aa.dll (00000001 fnis_aa 03000010) loaded correctly (handle 16)
+plugin hdtsmp64.dll (00000001 hdtsmp64 04010010) loaded correctly (handle 17)
+plugin InfinityUI.dll (00000001 InfinityUI 02010000) loaded correctly (handle 18)
+plugin InventoryInjector.dll (00000001 InventoryInjector 01010010) loaded correctly (handle 19)
+plugin JContainers64.dll (00000001 JContainers64 00000004) loaded correctly (handle 20)
+plugin LaunchProbe.dll (00000001 LaunchProbe 01000000) loaded correctly (handle 21)
+plugin MCMHelper.dll (00000001 MCMHelper 01060030) loaded correctly (handle 22)
+plugin MediaKeysFix.dll (00000001 MediaKeysFix 01000020) loaded correctly (handle 23)
+plugin MenuPilot.dll (00000001 MenuPilot 01000000) loaded correctly (handle 24)
+plugin MLO.dll (00000001 MLO 01000000) loaded correctly (handle 25)
+plugin NotificationFilter.dll (00000001 NotificationFilter 01030000) loaded correctly (handle 26)
+plugin OpenAnimationReplacer.dll (00000001 OpenAnimationReplacer 03020010) loaded correctly (handle 27)
+plugin PapyrusUtil.dll (00000001 PapyrusUtil 00000002) loaded correctly (handle 28)
+plugin po3_BaseObjectSwapper.dll (00000001 Base Object Swapper 03050000) loaded correctly (handle 29)
+plugin po3_KeywordItemDistributor.dll (00000001 Keyword Item Distributor 04010000) loaded correctly (handle 30)
+plugin po3_LightPlacer.dll (00000001 LightPlacer 04020010) loaded correctly (handle 31)
+plugin po3_LockVariations.dll (00000001 Security Overhaul SKSE 04010000) loaded correctly (handle 32)
+plugin po3_PapyrusExtender.dll (00000001 powerofthree's Papyrus Extender 06050010) loaded correctly (handle 33)
+plugin po3_SpellPerkItemDistributor.dll (00000001 Spell Perk Item Distributor 07000000) loaded correctly (handle 34)
+plugin po3_Tweaks.dll (00000001 powerofthree's Tweaks 01110010) loaded correctly (handle 35)
+plugin Precision.dll (00000001 Precision 02000060) loaded correctly (handle 36)
+plugin Proteus.dll (00000001 Proteus 01010000) loaded correctly (handle 37)
+plugin QuickLootIE.dll (00000001 QuickLootIE 04000000) loaded correctly (handle 38)
+plugin SimpleDualSheath.dll (00000001 SimpleDualSheath 00010509) loaded correctly (handle 39)
+plugin skee64.dll (00000001 skee 00000001) loaded correctly (handle 40)
+plugin SKSEMenuFramework.dll (00000001 SKSEMenuFramework 030D0000) loaded correctly (handle 41)
+plugin SkyParkourNG.dll (00000001 SkyParkourNG 03060030) loaded correctly (handle 42)
+plugin SkyPatcher.dll (00000001 Skypatcher 07000000) loaded correctly (handle 43)
+plugin SmoothCam.dll (00000001 SmoothCam 00000012) loaded correctly (handle 44)
+plugin SoundRecordDistributor.dll (00000001 SoundRecordDistributor 01050030) loaded correctly (handle 45)
+plugin SSEDisplayTweaks.dll (00000001 SSEDisplayTweaks 00000519) loaded correctly (handle 46)
+plugin SurvivalModeImproved.dll (00000001 SurvivalModeImproved 01060050) loaded correctly (handle 47)
+plugin TheNewGentleman.dll (00000001 TheNewGentleman 04000000) loaded correctly (handle 48)
+plugin TrueHUD.dll (00000001 TrueHUD 010100A0) loaded correctly (handle 49)
+plugin Underwear.dll (00000001 Underwear 01030010) loaded correctly (handle 50)
+plugin WindowFocusGuard.dll (00000001 WindowFocusGuard 00010000) loaded correctly (handle 51)
+dispatch message (0) to plugin listeners
+sending message type 0 to plugin 1
+sending message type 0 to plugin 4
+sending message type 0 to plugin 5
+sending message type 0 to plugin 6
+registering plugin listener for InfinityUI at 6 of 53
+sending message type 0 to plugin 8
+sending message type 0 to plugin 9
+sending message type 0 to plugin 10
+sending message type 0 to plugin 12
+sending message type 0 to plugin 13
+sending message type 0 to plugin 14
+sending message type 0 to plugin 15
+sending message type 0 to plugin 16
+sending message type 0 to plugin 17
+sending message type 0 to plugin 19
+sending message type 0 to plugin 20
+sending message type 0 to plugin 21
+sending message type 0 to plugin 22
+sending message type 0 to plugin 24
+sending message type 0 to plugin 25
+sending message type 0 to plugin 27
+sending message type 0 to plugin 29
+sending message type 0 to plugin 30
+sending message type 0 to plugin 31
+sending message type 0 to plugin 32
+sending message type 0 to plugin 33
+sending message type 0 to plugin 34
+sending message type 0 to plugin 35
+sending message type 0 to plugin 36
+sending message type 0 to plugin 38
+sending message type 0 to plugin 39
+sending message type 0 to plugin 40
+registering plugin listener for (null) at 40 of 53
+sending message type 0 to plugin 41
+sending message type 0 to plugin 42
+sending message type 0 to plugin 43
+sending message type 0 to plugin 44
+registering plugin listener for (null) at 44 of 53
+sending message type 0 to plugin 45
+sending message type 0 to plugin 46
+sending message type 0 to plugin 47
+sending message type 0 to plugin 48
+sending message type 0 to plugin 49
+sending message type 0 to plugin 50
+dispatched message.
+dispatch message (1) to plugin listeners
+sending message type 1 to plugin 1
+sending message type 1 to plugin 4
+sending message type 1 to plugin 5
+sending message type 1 to plugin 6
+sending message type 1 to plugin 8
+sending message type 1 to plugin 9
+sending message type 1 to plugin 10
+sending message type 1 to plugin 12
+sending message type 1 to plugin 13
+sending message type 1 to plugin 14
+sending message type 1 to plugin 15
+sending message type 1 to plugin 16
+sending message type 1 to plugin 17
+plugin 17 allocated 14 bytes from branch pool
+plugin 17 allocated 14 bytes from branch pool
+dispatch message (0) to plugin listeners
+sending message type 0 to plugin 40
+sending message type 0 to plugin 44
+dispatch message (0) to plugin listeners
+dispatched message.
+dispatched message.
+sending message type 1 to plugin 19
+sending message type 1 to plugin 20
+dispatch message (1) to plugin listeners
+sending message type 1 to plugin 40
+sending message type 1 to plugin 44
+dispatched message.
+sending message type 1 to plugin 21
+sending message type 1 to plugin 22
+sending message type 1 to plugin 24
+sending message type 1 to plugin 25
+sending message type 1 to plugin 27
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 29
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 30
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 31
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 32
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 33
+dispatch message (-69227266) to plugin listeners
+sending message type 1 to plugin 34
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 35
+sending message type 1 to plugin 36
+sending message type 1 to plugin 38
+sending message type 1 to plugin 39
+sending message type 1 to plugin 40
+sending message type 1 to plugin 41
+dispatch message (-355783686) to plugin listeners
+sending message type 1 to plugin 42
+sending message type 1 to plugin 43
+sending message type 1 to plugin 44
+sending message type 1 to plugin 45
+dispatch message (-422868135) to plugin listeners
+sending message type 1 to plugin 46
+sending message type 1 to plugin 47
+sending message type 1 to plugin 48
+sending message type 1 to plugin 49
+sending message type 1 to plugin 50
+dispatched message.
+init complete
+hooked dinput
+dispatch message (6) to plugin listeners
+sending message type 6 to plugin 1
+sending message type 6 to plugin 4
+sending message type 6 to plugin 5
+sending message type 6 to plugin 6
+sending message type 6 to plugin 8
+sending message type 6 to plugin 9
+sending message type 6 to plugin 10
+sending message type 6 to plugin 12
+sending message type 6 to plugin 13
+sending message type 6 to plugin 14
+sending message type 6 to plugin 15
+sending message type 6 to plugin 16
+sending message type 6 to plugin 17
+sending message type 6 to plugin 19
+sending message type 6 to plugin 20
+sending message type 6 to plugin 21
+sending message type 6 to plugin 22
+sending message type 6 to plugin 24
+sending message type 6 to plugin 25
+sending message type 6 to plugin 27
+sending message type 6 to plugin 29
+sending message type 6 to plugin 30
+sending message type 6 to plugin 31
+sending message type 6 to plugin 32
+sending message type 6 to plugin 33
+sending message type 6 to plugin 34
+sending message type 6 to plugin 35
+sending message type 6 to plugin 36
+sending message type 6 to plugin 38
+sending message type 6 to plugin 39
+sending message type 6 to plugin 40
+sending message type 6 to plugin 41
+sending message type 6 to plugin 42
+sending message type 6 to plugin 43
+sending message type 6 to plugin 44
+sending message type 6 to plugin 45
+sending message type 6 to plugin 46
+sending message type 6 to plugin 47
+sending message type 6 to plugin 48
+sending message type 6 to plugin 49
+sending message type 6 to plugin 50
+dispatched message.
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+dispatch message (-1707140088) to plugin listeners
+Reading translations from Interface\Translations\Campfire_ENGLISH.txt...
+Reading translations from Interface\Translations\Vigilant_ENGLISH.txt...
+Reading translations from Interface\Translations\TheNewGentleman_ENGLISH.txt...
+Reading translations from Interface\Translations\Wyrmstooth_ENGLISH.txt...
+Reading translations from Interface\Translations\TrueHUD_ENGLISH.txt...
+Reading translations from Interface\Translations\AHZmoreHUD_ENGLISH.txt...
+Reading translations from Interface\Translations\SkyUI_SE_ENGLISH.txt...
+Reading translations from Interface\Translations\I4IconAddon_ENGLISH.txt...
+Reading translations from Interface\Translations\Audio Overhaul Skyrim_ENGLISH.txt...
+Reading translations from Interface\Translations\C.O.I.N_ENGLISH.txt...
+Reading translations from Interface\Translations\M.I.N.T_ENGLISH.txt...
+Reading translations from Interface\Translations\exchangeCurrency_enhanced_ENGLISH.txt...
+Reading translations from Interface\Translations\RaceMenu_ENGLISH.txt...
+Reading translations from Interface\Translations\RaceMenuPlugin_ENGLISH.txt...
+Reading translations from Interface\Translations\UIExtensions_ENGLISH.txt...
+Reading translations from Interface\Translations\XPMSE_ENGLISH.txt...
+Reading translations from Interface\Translations\VioLens SE_ENGLISH.txt...
+Reading translations from Interface\Translations\SkyParkour_ENGLISH.txt...
+Reading translations from Interface\Translations\MCMHelper_ENGLISH.txt...
+Reading translations from Interface\Translations\QuickLootIE_ENGLISH.txt...
+Reading translations from Interface\Translations\run for your lives_ENGLISH.txt...
+Reading translations from Interface\Translations\Precision_ENGLISH.txt...
+Reading translations from Interface\Translations\BetterThirdPersonSelection_ENGLISH.txt...
+Reading translations from Interface\Translations\Skyrim Unbound_ENGLISH.txt...
+Reading translations from Interface\Translations\nwsFollowerFramework_ENGLISH.txt...
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (8) to plugin listeners
+sending message type 8 to plugin 1
+sending message type 8 to plugin 4
+sending message type 8 to plugin 5
+dispatch message (-1707140088) to plugin listeners
+sending message type 8 to plugin 6
+sending message type 8 to plugin 8
+sending message type 8 to plugin 9
+sending message type 8 to plugin 10
+sending message type 8 to plugin 12
+sending message type 8 to plugin 13
+sending message type 8 to plugin 14
+sending message type 8 to plugin 15
+plugin 15 allocated 14 bytes from branch pool
+plugin 15 allocated 14 bytes from branch pool
+sending message type 8 to plugin 16
+sending message type 8 to plugin 17
+sending message type 8 to plugin 19
+dispatch message (-422868135) to plugin listeners
+sending message type 8 to plugin 20
+sending message type 8 to plugin 21
+sending message type 8 to plugin 22
+sending message type 8 to plugin 24
+sending message type 8 to plugin 25
+sending message type 8 to plugin 27
+sending message type 8 to plugin 29
+sending message type 8 to plugin 30
+sending message type 8 to plugin 31
+sending message type 8 to plugin 32
+sending message type 8 to plugin 33
+sending message type 8 to plugin 34
+sending message type 8 to plugin 35
+sending message type 8 to plugin 36
+sending message type 8 to plugin 38
+sending message type 8 to plugin 39
+sending message type 8 to plugin 40
+sending message type 8 to plugin 41
+sending message type 8 to plugin 42
+sending message type 8 to plugin 43
+sending message type 8 to plugin 44
+sending message type 8 to plugin 45
+sending message type 8 to plugin 46
+sending message type 8 to plugin 47
+sending message type 8 to plugin 48
+sending message type 8 to plugin 49
+sending message type 8 to plugin 50
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+save name is Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260906033306_6_1
+full save path: C:\Users\danjo\Documents\My Games\Skyrim Special Edition\Saves\\Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260906033306_6_1.skse
+dispatch message (2) to plugin listeners
+sending message type 2 to plugin 1
+sending message type 2 to plugin 4
+sending message type 2 to plugin 5
+sending message type 2 to plugin 6
+sending message type 2 to plugin 8
+sending message type 2 to plugin 9
+sending message type 2 to plugin 10
+sending message type 2 to plugin 12
+sending message type 2 to plugin 13
+sending message type 2 to plugin 14
+sending message type 2 to plugin 15
+sending message type 2 to plugin 16
+sending message type 2 to plugin 17
+sending message type 2 to plugin 19
+sending message type 2 to plugin 20
+sending message type 2 to plugin 21
+sending message type 2 to plugin 22
+sending message type 2 to plugin 24
+sending message type 2 to plugin 25
+sending message type 2 to plugin 27
+sending message type 2 to plugin 29
+sending message type 2 to plugin 30
+sending message type 2 to plugin 31
+sending message type 2 to plugin 32
+sending message type 2 to plugin 33
+sending message type 2 to plugin 34
+sending message type 2 to plugin 35
+sending message type 2 to plugin 36
+sending message type 2 to plugin 38
+sending message type 2 to plugin 39
+sending message type 2 to plugin 40
+sending message type 2 to plugin 41
+sending message type 2 to plugin 42
+sending message type 2 to plugin 43
+sending message type 2 to plugin 44
+sending message type 2 to plugin 45
+sending message type 2 to plugin 46
+sending message type 2 to plugin 47
+sending message type 2 to plugin 48
+sending message type 2 to plugin 49
+sending message type 2 to plugin 50
+dispatched message.
+dispatch message (3) to plugin listeners
+sending message type 3 to plugin 1
+sending message type 3 to plugin 4
+sending message type 3 to plugin 5
+sending message type 3 to plugin 6
+sending message type 3 to plugin 8
+sending message type 3 to plugin 9
+sending message type 3 to plugin 10
+sending message type 3 to plugin 12
+sending message type 3 to plugin 13
+sending message type 3 to plugin 14
+sending message type 3 to plugin 15
+sending message type 3 to plugin 16
+sending message type 3 to plugin 17
+sending message type 3 to plugin 19
+sending message type 3 to plugin 20
+sending message type 3 to plugin 21
+sending message type 3 to plugin 22
+dispatch message (-422868135) to plugin listeners
+sending message type 3 to plugin 24
+sending message type 3 to plugin 25
+sending message type 3 to plugin 27
+sending message type 3 to plugin 29
+sending message type 3 to plugin 30
+sending message type 3 to plugin 31
+sending message type 3 to plugin 32
+sending message type 3 to plugin 33
+dispatch message (1178861568) to plugin listeners
+sending message type 1178861568 to plugin 40
+sending message type 1178861568 to plugin 44
+dispatched message.
+dispatch message (1145523712) to plugin listeners
+sending message type 1145523712 to plugin 40
+sending message type 1145523712 to plugin 44
+dispatched message.
+sending message type 3 to plugin 34
+sending message type 3 to plugin 35
+sending message type 3 to plugin 36
+sending message type 3 to plugin 38
+sending message type 3 to plugin 39
+sending message type 3 to plugin 40
+sending message type 3 to plugin 41
+sending message type 3 to plugin 42
+sending message type 3 to plugin 43
+sending message type 3 to plugin 44
+sending message type 3 to plugin 45
+sending message type 3 to plugin 46
+sending message type 3 to plugin 47
+sending message type 3 to plugin 48
+sending message type 3 to plugin 49
+sending message type 3 to plugin 50
+dispatched message.
+cleared save path
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+save name is Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260906033306_6_1
+full save path: C:\Users\danjo\Documents\My Games\Skyrim Special Edition\Saves\\Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260906033306_6_1.skse
+dispatch message (2) to plugin listeners
+sending message type 2 to plugin 1
+sending message type 2 to plugin 4
+sending message type 2 to plugin 5
+sending message type 2 to plugin 6
+sending message type 2 to plugin 8
+sending message type 2 to plugin 9
+sending message type 2 to plugin 10
+sending message type 2 to plugin 12
+sending message type 2 to plugin 13
+sending message type 2 to plugin 14
+sending message type 2 to plugin 15
+sending message type 2 to plugin 16
+sending message type 2 to plugin 17
+sending message type 2 to plugin 19
+sending message type 2 to plugin 20
+sending message type 2 to plugin 21
+sending message type 2 to plugin 22
+sending message type 2 to plugin 24
+sending message type 2 to plugin 25
+sending message type 2 to plugin 27
+sending message type 2 to plugin 29
+sending message type 2 to plugin 30
+sending message type 2 to plugin 31
+sending message type 2 to plugin 32
+sending message type 2 to plugin 33
+sending message type 2 to plugin 34
+sending message type 2 to plugin 35
+sending message type 2 to plugin 36
+sending message type 2 to plugin 38
+sending message type 2 to plugin 39
+sending message type 2 to plugin 40
+sending message type 2 to plugin 41
+sending message type 2 to plugin 42
+sending message type 2 to plugin 43
+sending message type 2 to plugin 44
+sending message type 2 to plugin 45
+sending message type 2 to plugin 46
+sending message type 2 to plugin 47
+sending message type 2 to plugin 48
+sending message type 2 to plugin 49
+sending message type 2 to plugin 50
+dispatched message.
+dispatch message (0) to plugin listeners
+sending message type 0 to plugin 6
+sending message type 0 to plugin 40
+sending message type 0 to plugin 44
+dispatch message (0) to plugin listeners
+dispatched message.
+dispatched message.
+dispatch message (2) to plugin listeners
+sending message type 2 to plugin 6
+sending message type 2 to plugin 40
+sending message type 2 to plugin 44
+dispatched message.
+dispatch message (1) to plugin listeners
+sending message type 1 to plugin 6
+sending message type 1 to plugin 40
+sending message type 1 to plugin 44
+dispatched message.
+dispatch message (2) to plugin listeners
+sending message type 2 to plugin 6
+sending message type 2 to plugin 40
+sending message type 2 to plugin 44
+dispatched message.
+dispatch message (4) to plugin listeners
+sending message type 4 to plugin 6
+sending message type 4 to plugin 40
+sending message type 4 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+loading co-save
+Loading plugin list:
+	(0 -> 0)	Skyrim.esm
+	(1 -> 1)	Update.esm
+	(2 -> 2)	Dawnguard.esm
+	(3 -> 3)	HearthFires.esm
+	(4 -> 4)	Dragonborn.esm
+	(5 -> 5)	ccasvsse001-almsivi.esm
+	(6 -> 6)	ccbgssse001-fish.esm
+	(1040384 -> 1040384)	ccbgssse002-exoticarrows.esl
+	(1040385 -> 1040385)	ccbgssse003-zombies.esl
+	(1040386 -> 1040386)	ccbgssse004-ruinsedge.esl
+	(1040387 -> 1040387)	ccbgssse005-goldbrand.esl
+	(1040388 -> 1040388)	ccbgssse006-stendarshammer.esl
+	(1040389 -> 1040389)	ccbgssse007-chrysamere.esl
+	(1040390 -> 1040390)	ccbgssse010-petdwarvenarmoredmudcrab.esl
+	(1040391 -> 1040391)	ccbgssse011-hrsarmrelvn.esl
+	(1040392 -> 1040392)	ccbgssse012-hrsarmrstl.esl
+	(1040393 -> 1040393)	ccbgssse014-spellpack01.esl
+	(1040394 -> 1040394)	ccbgssse019-staffofsheogorath.esl
+	(1040395 -> 1040395)	ccbgssse020-graycowl.esl
+	(1040396 -> 1040396)	ccbgssse021-lordsmail.esl
+	(1040397 -> 1040397)	ccmtysse001-knightsofthenine.esl
+	(1040398 -> 1040398)	ccqdrsse001-survivalmode.esl
+	(7 -> 7)	cctwbsse001-puzzledungeon.esm
+	(8 -> 8)	cceejsse001-hstead.esm
+	(1040399 -> 1040399)	ccqdrsse002-firewood.esl
+	(1040400 -> 1040400)	ccbgssse018-shadowrend.esl
+	(1040401 -> 1040401)	ccbgssse035-petnhound.esl
+	(1040402 -> 1040402)	ccfsvsse001-backpacks.esl
+	(1040403 -> 1040403)	cceejsse002-tower.esl
+	(1040404 -> 1040404)	ccedhsse001-norjewel.esl
+	(1040405 -> 1040405)	ccvsvsse002-pets.esl
+	(1040406 -> 1040406)	ccBGSSSE037-Curios.esl
+	(1040407 -> 1040407)	ccbgssse034-mntuni.esl
+	(1040408 -> 1040408)	ccbgssse045-hasedoki.esl
+	(1040409 -> 1040409)	ccbgssse008-wraithguard.esl
+	(1040410 -> 1040410)	ccbgssse036-petbwolf.esl
+	(1040411 -> 1040411)	ccffbsse001-imperialdragon.esl
+	(1040412 -> 1040412)	ccmtysse002-ve.esl
+	(1040413 -> 1040413)	ccbgssse043-crosselv.esl
+	(1040414 -> 1040414)	ccvsvsse001-winter.esl
+	(1040415 -> 1040415)	cceejsse003-hollow.esl
+	(9 -> 9)	ccbgssse016-umbra.esm
+	(10 -> 10)	ccbgssse031-advcyrus.esm
+	(1040416 -> 1040416)	ccbgssse038-bowofshadows.esl
+	(1040417 -> 1040417)	ccbgssse040-advobgobs.esl
+	(1040418 -> 1040418)	ccbgssse050-ba_daedric.esl
+	(1040419 -> 1040419)	ccbgssse052-ba_iron.esl
+	(1040420 -> 1040420)	ccbgssse054-ba_orcish.esl
+	(1040421 -> 1040421)	ccbgssse058-ba_steel.esl
+	(1040422 -> 1040422)	ccbgssse059-ba_dragonplate.esl
+	(1040423 -> 1040423)	ccbgssse061-ba_dwarven.esl
+	(1040424 -> 1040424)	ccpewsse002-armsofchaos.esl
+	(1040425 -> 1040425)	ccbgssse041-netchleather.esl
+	(1040426 -> 1040426)	ccedhsse002-splkntset.esl
+	(1040427 -> 1040427)	ccbgssse064-ba_elven.esl
+	(1040428 -> 1040428)	ccbgssse063-ba_ebony.esl
+	(1040429 -> 1040429)	ccbgssse062-ba_dwarvenmail.esl
+	(1040430 -> 1040430)	ccbgssse060-ba_dragonscale.esl
+	(1040431 -> 1040431)	ccbgssse056-ba_silver.esl
+	(1040432 -> 1040432)	ccbgssse055-ba_orcishscaled.esl
+	(1040433 -> 1040433)	ccbgssse053-ba_leather.esl
+	(1040434 -> 1040434)	ccbgssse051-ba_daedricmail.esl
+	(1040435 -> 1040435)	ccbgssse057-ba_stalhrim.esl
+	(1040436 -> 1040436)	ccbgssse066-staves.esl
+	(11 -> 11)	ccbgssse067-daedinv.esm
+	(1040437 -> 1040437)	ccbgssse068-bloodfall.esl
+	(1040438 -> 1040438)	ccbgssse069-contest.esl
+	(1040439 -> 1040439)	ccvsvsse003-necroarts.esl
+	(1040440 -> 1040440)	ccvsvsse004-beafarmer.esl
+	(12 -> 12)	ccbgssse025-advdsgs.esm
+	(1040441 -> 1040441)	ccffbsse002-crossbowpack.esl
+	(1040442 -> 1040442)	ccbgssse013-dawnfang.esl
+	(1040443 -> 1040443)	ccrmssse001-necrohouse.esl
+	(1040444 -> 1040444)	ccedhsse003-redguard.esl
+	(1040445 -> 1040445)	cceejsse004-hall.esl
+	(13 -> 13)	cceejsse005-cave.esm
+	(1040446 -> 1040446)	cckrtsse001_altar.esl
+	(1040447 -> 1040447)	cccbhsse001-gaunt.esl
+	(14 -> 14)	ccafdsse001-dwesanctuary.esm
+	(1040448 -> 1040448)	_ResourcePack.esl
+	(15 -> 15)	unofficial skyrim special edition patch.esp
+	(1040449 -> 1040450)	Vanilla Script MicroOptimizations.esl
+	(1040450 -> 1040451)	Navigator-NavFixes.esl
+	(16 -> 16)	Unofficial Skyrim Modders Patch.esp
+	(1040451 -> 1040452)	Skyrim Landscape and Water Fixes - Light Sources.esp
+	(1040452 -> 1040453)	Landscape and Water Fixes.esp
+	(17 -> 17)	Grand Solitude - The Walls of High King Erling.esp
+	(18 -> 19)	3DNPC.esp
+	(19 -> 21)	Snazzy Location Resources.esp
+	(1040453 -> 1040454)	Snazzy Solitude Mid-Houses.esp
+	(1040454 -> 1040455)	Snazzy Interiors - Solitude Vittoria Vici's House.esp
+	(1040455 -> 1040456)	Snazzy Interiors - Solitude Bryling's House.esp
+	(1040456 -> 1040457)	Snazzy Interiors - Solitude Erikur's House.esp
+	(1040457 -> 1040458)	Lux Orbis - Master plugin.esm
+	(20 -> 23)	arnima.esm
+	(21 -> 24)	BSAssets.esm
+	(1040458 -> 1040459)	Lux - Master plugin.esm
+	(22 -> 25)	BSHeartland.esm
+	(23 -> 26)	BS_DLC_patch.esp
+	(24 -> 27)	Campfire.esm
+	(25 -> 28)	Vigilant.esm
+	(26 -> 29)	Gray Fox Cowl.esm
+	(27 -> 30)	moonpath.esp
+	(1040459 -> 1040460)	Lux - Resources.esp
+	(1040460 -> 1040461)	1ChitinBow.esl
+	(1040461 -> 1040462)	TheNewGentleman.esp
+	(1040462 -> 1040463)	RMB SPID - Core Definitions.esp
+	(28 -> 32)	Wyrmstooth.esp
+	(1040463 -> 1040464)	moe-scarves.esl
+	(29 -> 31)	Lux Via.esp
+	(30 -> 43)	LostLongSwords.esp
+	(1040464 -> 1040482)	Ensrick Lost LongSwords Curation.esp
+	(1040465 -> 1040470)	SkyUI_SE.esp
+	(1040466 -> 1040469)	Particle Patch.esp
+	(31 -> 33)	dD - Enhanced Blood Main LITE.esp
+	(1040467 -> 1040471)	I4IconAddon.esp
+	(32 -> 34)	SMIM-SE-Merged-All.esp
+	(1040468 -> 1040472)	SurvivalModeImproved.esp
+	(33 -> 35)	Audio Overhaul Skyrim.esp
+	(34 -> 36)	Immersive Sounds - Compendium.esp
+	(1040469 -> 1040473)	AOS_ISC_Integration.esp
+	(1040470 -> 1040483)	Azurite Weathers III.esp
+	(1040471 -> 1040484)	Azurite III CS.esp
+	(1040472 -> 1040485)	Azurite III CS - Darker Nights.esp
+	(1040473 -> 1040486)	CBBE.esp
+	(35 -> 37)	Nature of the Wild Lands.esp
+	(1040474 -> 1040474)	Lux Orbis.esp
+	(36 -> 44)	FNIS.esp
+	(1040475 -> 1040487)	HIMBO.esp
+	(37 -> 38)	Landscape Fixes For Grass Mods.esp
+	(1040476 -> 1040475)	Landscape and Water Fixes - Patch - LFfGM.esp
+	(1040477 -> 1040476)	Landscape and Water Fixes - Patch - LFfGM - GotT.esp
+	(1040478 -> 1040477)	Vanilla hair remake SMP NPCs.esp
+	(38 -> 39)	Relationship Dialogue Overhaul.esp
+	(39 -> 40)	cutting room floor.esp
+	(1040479 -> 1040478)	Moonpath Music, Weather and Other Fixes.esp
+	(1040480 -> 1040479)	Lux Via - plugin.esp
+	(1040481 -> 1040480)	SFCO3-BOS - Resources.esp
+	(1040482 -> 1040481)	SFCO3-BOS - Addons.esp
+	(40 -> 45)	JRMoonpathtoElsweyrPatch.esp
+	(1040483 -> 1040488)	Lux Orbis - Grand Solitude patch.esp
+	(1040484 -> 1040489)	3DNPCNavFix.esp
+	(41 -> 46)	Solitude Docks.esp
+	(42 -> 47)	man_DaedricShrines.esp
+	(43 -> 48)	Inigo.esp
+	(44 -> 49)	HLIORemi.esp
+	(1040485 -> 1040491)	Freak's Floral Fields.esp
+	(1040486 -> 1040492)	Landscape and Water Fixes - Patch - Farming.esp
+	(1040487 -> 1040493)	Landscape and Water Fixes - Patch - Tundra Homestead.esp
+	(1040488 -> 1040499)	Lux Orbis - Cutting Room Floor patch.esp
+	(1040489 -> 1040500)	Lux Orbis - 3DNPC patch.esp
+	(1040490 -> 1040501)	SFCO3-Addons - Snazzy Interiors - Solitude Vittoria Vici's House patch.esp
+	(1040491 -> 1040512)	SL99Exchanger.esp
+	(1040492 -> 1040513)	exchangeCurrency_enhanced.esp
+	(1040493 -> 1040490)	Freak's Floral Solstheim.esp
+	(1040494 -> 1040502)	SFCO3-Addons - Grand Solitude patch.esp
+	(1040495 -> 1040494)	C.O.I.N.esp
+	(1040496 -> 1040495)	M.I.N.T.esp
+	(1040497 -> 1040496)	MorrowindUsesDrams.esp
+	(1040498 -> 1040497)	MorrowindUsesDrams - No Office.esp
+	(1040499 -> 1040503)	Collectibles Helper.esp
+	(1040500 -> 1040504)	VigilantNavFix.esp
+	(45 -> 50)	PROTEUS.esp
+	(1040501 -> 1040505)	Grand Solitude - 3DNPC patch.esp
+	(46 -> 51)	VLIOVarinia.esp
+	(1040502 -> 1040506)	Lux Orbis - Solitude Docks Updated patch.esp
+	(1040503 -> 1040507)	Grand Solitude - Lux Via patch.esp
+	(1040504 -> 1040508)	Shadow's NotWL - Solitude Docks Patch.esp
+	(1040505 -> 1040509)	Grand Solitude - Nature of the Wild Lands patch.esp
+	(1040506 -> 1040510)	Nature of the Wild Lands - CuttingRoomFloor.esp
+	(1040507 -> 1040511)	Nature of the Wild Lands - CC Tundra Homestead.esp
+	(1040508 -> 1040514)	Lux Orbis - USSEP patch.esp
+	(1040509 -> 1040515)	Lux Orbis - Riften Sconce Patch.esp
+	(47 -> 41)	NW_Sons_of_Skyrim.esp
+	(1040510 -> 1040516)	Ensrick Lost LongSwords Stormcloak Distribution.esp
+	(1040511 -> 1040517)	Sons of Skyrim - Lux Orbis Patch.esp
+	(1040512 -> 1040518)	Lux Orbis CS.esp
+	(48 -> 53)	RaceMenu.esp
+	(49 -> 54)	RaceMenuPlugin.esp
+	(50 -> 55)	RaceMenuMorphsCBBE.esp
+	(1040513 -> 1040519)	RaceMenuMorphsHIMBO.esp
+	(51 -> 56)	UIExtensions.esp
+	(52 -> 57)	XPMSE.esp
+	(1040514 -> 1040520)	Underwear.esp
+	(1040515 -> 1040521)	JRMoonpathBrumaPatch.esp
+	(1040516 -> 1040522)	Nature of the Wild Lands - Bruma.esp
+	(1040517 -> 1040523)	Water for ENB - Patch - Beyond Skyrim.esp
+	(1040518 -> 1040524)	Landscape and Water Fixes - Patch - Myrwatch - LFfGM.esp
+	(1040519 -> 1040525)	Landscape and Water Fixes - CC Fishing patch.esp
+	(1040520 -> 1040526)	Nature of the Wild Lands - Lux Via.esp
+	(53 -> 255)	Eli_InigoBloodchillPatch.esp
+	(1040521 -> 1040527)	Moonpath Music, Weather and Other Fixes - JRMoonpathBrumaPatch.esp
+	(1040522 -> 1040528)	Moonpath Blacksmith Forge Water Fix.esp
+	(54 -> 58)	VioLens SE.esp
+	(1040523 -> 1040529)	Starfrost.esp
+	(1040524 -> 1040530)	StarfrostVanillaHunger.esp
+	(1040525 -> 1040531)	NW_Sons_of_Skyrim - My fixes by Xtudo.esp
+	(1040526 -> 1040532)	Water for ENB - Patch - Beyond Reach.esp
+	(55 -> 59)	NW_Companions_Replacer_Light.esp
+	(1040527 -> 1040533)	RMB SPID - Legacy of Ysgramor.esp
+	(56 -> 60)	One-handed warhammers.esp
+	(1040528 -> 1040536)	RMB SPID - Legacy of Ysgramor - Wuuthrad.esp
+	(1040529 -> 1040537)	Beyond Reach missing textures.esp
+	(1040530 -> 1040538)	Beyond Reach missing textures 2.esp
+	(1040531 -> 1040539)	Adabala Building System - Ayleid Transfusion.esp
+	(1040532 -> 1040540)	GKB Beyond Reach Trees.esp
+	(1040533 -> 1040541)	Ring of Khajiit - Replacer.esp
+	(1040534 -> 1040542)	Skykings Unique Signs.esp
+	(1040535 -> 1040543)	Skyking Signs - Bruma.esp
+	(57 -> 61)	NW_Steel_Plate_Armors.esp
+	(1040536 -> 1040544)	Disable Screen Blood.esp
+	(1040537 -> 1040545)	NoRadialBlurOnHit.esp
+	(1040538 -> 1040546)	3DNPC0.esp
+	(1040539 -> 1040547)	3DNPC1.esp
+	(1040540 -> 1040535)	Landscape and Water Fixes - Patch - USMP.esp
+	(58 -> 63)	QSSwordPack.esp
+	(1040541 -> 1040548)	Grand Solitude - Solitude Docks patch.esp
+	(1040542 -> 1040549)	Landscape and Water Fixes - Patch - Alternative Armors - Elven Hunter.esp
+	(1040543 -> 1040551)	interesting npcs ILS fix.esp
+	(1040544 -> 1040552)	FjonaFamiliarFix.esp
+	(1040545 -> 1040553)	3DNPC - Survival Mode.esp
+	(1040546 -> 1040554)	Skyking Signs - Interesting NPCs Patch.esp
+	(1040547 -> 1040555)	LunarGuardArmor.esp
+	(59 -> 64)	Baltimore Weapons.esp
+	(60 -> 65)	Vikings Weaponry - Johnskyrim.esp
+	(1040548 -> 1040556)	3DNPC - CRF Patch.esp
+	(1040549 -> 1040557)	Inigo Official Patch SE (ESPFE).esp
+	(1040550 -> 1040558)	Dynamic Activation Key.esp
+	(1040551 -> 1040559)	Simple Hunting Overhaul.esp
+	(1040552 -> 1040560)	SHO - Bruma Patch.esp
+	(61 -> 66)	DIS_NordScale.esp
+	(1040553 -> 1040561)	RallysAnimMarket.esp
+	(1040554 -> 255)	BowOfShadowsFix.esp
+	(1040555 -> 1040534)	Grand Solitude - CRF patch.esp
+	(1040556 -> 1040562)	SFCO3-Addons - CRF patch.esp
+	(1040557 -> 1040563)	Grand Solitude - CC Lords Mail patch.esp
+	(1040558 -> 1040564)	Grand Solitude - CC Alternative Armors - Dragon Plate patch.esp
+	(1040559 -> 1040565)	Grand Solitude - CC Alternative Armors - Leather patch.esp
+	(1040560 -> 1040566)	Grand Solitude - CC Civil War Champions patch.esp
+	(1040561 -> 1040567)	Grand Solitude - CC Crossbows patch.esp
+	(1040562 -> 1040568)	Grand Solitude - CC Gray Cowl Returns patch.esp
+	(1040563 -> 1040569)	SFCO3-Addons - Snazzy Interiors - Solitude Erikur's House patch.esp
+	(1040564 -> 1040570)	Snazzy Interiors - Solitude Erikur's House - CC Gray Cowl Returns patch.esp
+	(1040565 -> 1040571)	Snazzy Interiors - Solitude Erikur's House - USSEP patch.esp
+	(1040566 -> 1040572)	Snazzy Solitude Mid-Houses - CC Fishing patch.esp
+	(1040567 -> 1040573)	SFCO3-Addons - 3DNPC patch.esp
+	(1040568 -> 1040574)	SFCO3-Addons - Snazzy Interiors - Solitude Bryling's House patch.esp
+	(1040569 -> 1040575)	SFCO3-Addons - Snazzy Solitude Mid-Houses patch.esp
+	(1040570 -> 1040576)	SFCO3-Addons - Solitude Docks Updated patch.esp
+	(1040571 -> 1040577)	SFCO3-Addons - The Gray Cowl of Nocturnal Patch.esp
+	(1040572 -> 1040578)	SFCO3-Addons - Vigilant Patch.esp
+	(1040573 -> 1040579)	SFCO3-Addons - Wyrmstooth patch.esp
+	(1040574 -> 1040580)	Lux Orbis - Wyrmstooth.esp
+	(1040575 -> 1040581)	Tree_Diversity_Project.esp
+	(1040576 -> 1040582)	Freak's Floral Fields- Realistic Tundra.esp
+	(1040577 -> 1040583)	Freak's Floral Fields-  Realistic Pine.esp
+	(1040578 -> 1040584)	Freak's Floral Fields- Realistic Rift.esp
+	(1040579 -> 1040585)	Freak's Floral Fields- Mixed Reach.esp
+	(1040580 -> 1040586)	Freak's Floral Fields- Volcanic Wasteland.esp
+	(1040581 -> 1040587)	Freak's Floral Fields- Dead Snow Grass.esp
+	(1040582 -> 1040588)	SightlessNavFix.esp
+	(1040583 -> 1040589)	Freak's Floral Veil.esp
+	(1040584 -> 1040590)	Landscape and Water Fixes - Patch - Hendraheim.esp
+	(1040585 -> 1040591)	Landscape and Water Fixes - Patch - Myrwatch.esp
+	(1040586 -> 1040592)	Landscape and Water Fixes - Patch - Navigator ESL.esp
+	(1040587 -> 1040593)	Landscape and Water Fixes - Patch - Vigil Enforcer Armor Set.esp
+	(1040588 -> 1040594)	SkyParkour.esp
+	(1040589 -> 1040595)	MCMHelper.esp
+	(1040590 -> 1040596)	TerrainHelper.esp
+	(1040591 -> 1040597)	QuickLootIE.esp
+	(1040592 -> 1040598)	HLIZRemiArnima.esp
+	(1040593 -> 1040599)	HLIONameFix.esp
+	(62 -> 67)	run for your lives.esp
+	(1040594 -> 1040600)	Cloaks - RMB SPCH.esp
+	(1040595 -> 1040601)	Pelt Cloaks.esp
+	(1040596 -> 1040602)	RMB SPCH - Pelt Cloaks.esp
+	(1040597 -> 1040603)	C.O.I.N. - Beyond Skyrim Patch.esp
+	(1040598 -> 1040604)	C.O.I.N. - The Cause Patch.esp
+	(1040599 -> 1040605)	DominionUsesSancar.esp
+	(1040600 -> 1040606)	WindhelmUsesUlfrics.esp
+	(1040601 -> 1040607)	WindhelmUsesUlfrics - No Stall.esp
+	(1040602 -> 1040608)	exchangeCurrency_patch_COIN.esp
+	(1040603 -> 1040609)	exchangeCurrency_dial_medes.esp
+	(1040604 -> 1040610)	exchangeCurrency_dial_ulfrics.esp
+	(1040605 -> 1040611)	exchangeCurrency_patch_MINT_dram.esp
+	(1040606 -> 1040612)	exchangeCurrency_patch_MINT_ulfric.esp
+	(1040607 -> 1040613)	Ensrick TDP Ulvenwald Wind Calibration.esp
+	(63 -> 68)	Skyrim Unbound.esp
+	(1040608 -> 1040628)	Skyrim Unbound - RDO Lite Patch.esp
+	(64 -> 69)	nwsFollowerFramework.esp
+	(65 -> 70)	Lux.esp
+	(1040609 -> 1040629)	Lux CS Templates - Default.esp
+	(1040610 -> 1040630)	Lux CS - Bulbs.esp
+	(1040611 -> 1040631)	Lux - Vigil Enforcer CC.esp
+	(1040612 -> 1040632)	Snazzy Interiors - Solitude Erikur's House - Lux patch.esp
+	(1040613 -> 1040633)	Lux - Grand Solitude patch.esp
+	(1040614 -> 1040634)	Lux - USSEP patch.esp
+	(1040615 -> 1040635)	Lux - Umbra CC.esp
+	(1040616 -> 1040636)	Lux - The Cause patch.esp
+	(1040617 -> 1040637)	Lux - Staff of Hasedoki CC.esp
+	(1040618 -> 1040638)	Lux - Saints and Seducers patch.esp
+	(1040619 -> 1040639)	Lux - Tundra Homestead patch.esp
+	(1040620 -> 1040640)	Lux - 3DNPC patch.esp
+	(1040621 -> 1040641)	Lux - Pets of Skyrim CC.esp
+	(1040622 -> 1040642)	Lux - Nchuanthumz Dwarven Home patch.esp
+	(1040623 -> 1040643)	Lux - Goldbrand CC.esp
+	(1040624 -> 1040644)	Lux - Goblins CC.esp
+	(1040625 -> 1040645)	Lux - Ghosts of the Tribunal CC.esp
+	(1040626 -> 1040646)	Lux - Forgotten Seasons.esp
+	(1040627 -> 1040647)	Lux - Elite Crossbows.esp
+	(1040628 -> 1040648)	Lux - Dead Mans Dread Patch.esp
+	(1040629 -> 1040649)	Lux - CC Fish patch.esp
+	(66 -> 71)	Lux - BS Bruma patch.esp
+	(1040630 -> 1040650)	Lux - Bloodchill Manor patch.esp
+	(1040631 -> 1040651)	Lux - Bittercup Patch.esp
+	(1040632 -> 1040652)	Lux - Dawnfang CC.esp
+	(1040633 -> 1040653)	Lux - Necrohouse patch.esp
+	(1040634 -> 1040654)	Lux - Hendraheim patch.esp
+	(1040635 -> 1040655)	Lux - Shadowfoot Sanctum patch.esp
+	(1040636 -> 1040656)	Lux - HDR.esp
+	(1040637 -> 1040657)	Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp
+	(1040638 -> 1040658)	Lux - Vigilant patch.esp
+	(1040639 -> 1040659)	Lux - Wyrmstooth.esp
+	(1040640 -> 1040660)	Lux - Cuting Room Floor.esp
+	(1040641 -> 1040661)	Lux - Skyrim Unbound patch.esp
+	(1040642 -> 1040662)	Snazzy Interiors - Solitude Bryling's House - Lux patch.esp
+	(1040643 -> 1040663)	Snazzy Interiors - Solitude Vittoria Vici's House - Lux Patch.esp
+	(1040644 -> 1040664)	Snazzy Solitude Mid-Houses - Lux patch.esp
+	(1040645 -> 1040665)	Lux - Solitude Docks patch.esp
+	(1040646 -> 1040666)	Ensrick - Collectibles Helper USSEP Forward.esp
+	(1040647 -> 1040667)	Lux - Farmer patch.esp
+	(67 -> 72)	Water for ENB (Shades of Skyrim).esp
+	(1040648 -> 1040668)	Water for ENB - Patch - Wyrmstooth.esp
+	(1040649 -> 1040669)	WENB Shades USSEP.esp
+	(1040650 -> 1040670)	ACMOS and Wyrmstooth - Water for ENB Patch.esp
+	(68 -> 73)	ENB Light.esp
+	(1040651 -> 1040671)	A Clear Map of Skyrim.esp
+	(1040652 -> 1040672)	ACMOS - Wyrmstooth.esp
+	(1040653 -> 1040673)	ACMOS - Beyond Reach.esp
+	(1040654 -> 1040674)	ACMOS - Bruma.esp
+	(1040655 -> 1040675)	Lux - Water for ENB (Shades of skyrim) patch.esp
+	(1040656 -> 1040677)	Ensrick Lux Water CS Patch.esp
+	(1040657 -> 1040678)	Ensrick General Compatibility Patch.esp
+	(1040658 -> 1040679)	Ensrick CRF Semantic Patch.esp
+	(1040659 -> 1040680)	Ensrick Guard Scaling Patch.esp
+	(1040660 -> 1040681)	Ensrick Wolf Territorial Patch.esp
+	(1040661 -> 1040682)	Ensrick Currency Integration Patch.esp
+	(1040662 -> 1040614)	SonS_HDT_patch.esp
+	(1040663 -> 1040684)	WeaponBalancePatch.esp
+Loading menu open/close event registrations...
+Loading key input event registrations...
+Loading control input event registrations...
+Loading mod callback event registrations...
+Loading crosshair ref event registrations...
+Loading camera event registrations...
+Loading actor action event registrations...
+Loading NiNode update event registrations...
+Loading SKSEPersistentObjectStorage data...
+Loading SKSEDelayFunctorManager data...
+dispatch message (3) to plugin listeners
+sending message type 3 to plugin 1
+sending message type 3 to plugin 4
+sending message type 3 to plugin 5
+sending message type 3 to plugin 6
+sending message type 3 to plugin 8
+sending message type 3 to plugin 9
+sending message type 3 to plugin 10
+sending message type 3 to plugin 12
+sending message type 3 to plugin 13
+sending message type 3 to plugin 14
+sending message type 3 to plugin 15
+sending message type 3 to plugin 16
+sending message type 3 to plugin 17
+sending message type 3 to plugin 19
+sending message type 3 to plugin 20
+sending message type 3 to plugin 21
+sending message type 3 to plugin 22
+sending message type 3 to plugin 24
+sending message type 3 to plugin 25
+sending message type 3 to plugin 27
+sending message type 3 to plugin 29
+sending message type 3 to plugin 30
+sending message type 3 to plugin 31
+sending message type 3 to plugin 32
+sending message type 3 to plugin 33
+dispatch message (1178861568) to plugin listeners
+sending message type 1178861568 to plugin 40
+sending message type 1178861568 to plugin 44
+dispatched message.
+dispatch message (1145523712) to plugin listeners
+sending message type 1145523712 to plugin 40
+sending message type 1145523712 to plugin 44
+dispatched message.
+sending message type 3 to plugin 34
+sending message type 3 to plugin 35
+sending message type 3 to plugin 36
+sending message type 3 to plugin 38
+sending message type 3 to plugin 39
+sending message type 3 to plugin 40
+sending message type 3 to plugin 41
+sending message type 3 to plugin 42
+sending message type 3 to plugin 43
+sending message type 3 to plugin 44
+sending message type 3 to plugin 45
+sending message type 3 to plugin 46
+sending message type 3 to plugin 47
+sending message type 3 to plugin 48
+sending message type 3 to plugin 49
+sending message type 3 to plugin 50
+dispatched message.
+cleared save path
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (-1707140088) to plugin listeners
+WidgetLoader.as: setRootPath(a_path = exported/)
+WidgetLoader.as: loadWidget(a_widgetID = 0, a_widgetSource = skyui/activeeffects.swf)
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+save name is Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260908011117_6_1
+full save path: C:\Users\danjo\Documents\My Games\Skyrim Special Edition\Saves\\Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260908011117_6_1.skse
+dispatch message (4) to plugin listeners
+sending message type 4 to plugin 1
+sending message type 4 to plugin 4
+sending message type 4 to plugin 5
+sending message type 4 to plugin 6
+sending message type 4 to plugin 8
+sending message type 4 to plugin 9
+sending message type 4 to plugin 10
+sending message type 4 to plugin 12
+sending message type 4 to plugin 13
+sending message type 4 to plugin 14
+sending message type 4 to plugin 15
+sending message type 4 to plugin 16
+sending message type 4 to plugin 17
+sending message type 4 to plugin 19
+sending message type 4 to plugin 20
+sending message type 4 to plugin 21
+sending message type 4 to plugin 22
+sending message type 4 to plugin 24
+sending message type 4 to plugin 25
+sending message type 4 to plugin 27
+sending message type 4 to plugin 29
+sending message type 4 to plugin 30
+sending message type 4 to plugin 31
+sending message type 4 to plugin 32
+sending message type 4 to plugin 33
+sending message type 4 to plugin 34
+sending message type 4 to plugin 35
+sending message type 4 to plugin 36
+sending message type 4 to plugin 38
+sending message type 4 to plugin 39
+sending message type 4 to plugin 40
+sending message type 4 to plugin 41
+sending message type 4 to plugin 42
+sending message type 4 to plugin 43
+sending message type 4 to plugin 44
+sending message type 4 to plugin 45
+sending message type 4 to plugin 46
+sending message type 4 to plugin 47
+sending message type 4 to plugin 48
+sending message type 4 to plugin 49
+sending message type 4 to plugin 50
+dispatched message.
+creating co-save
+Saving plugin list:
+	[0]	Skyrim.esm
+	[1]	Update.esm
+	[2]	Dawnguard.esm
+	[3]	HearthFires.esm
+	[4]	Dragonborn.esm
+	[5]	ccasvsse001-almsivi.esm
+	[6]	ccbgssse001-fish.esm
+	[FE:0]	ccbgssse002-exoticarrows.esl
+	[FE:1]	ccbgssse003-zombies.esl
+	[FE:2]	ccbgssse004-ruinsedge.esl
+	[FE:3]	ccbgssse005-goldbrand.esl
+	[FE:4]	ccbgssse006-stendarshammer.esl
+	[FE:5]	ccbgssse007-chrysamere.esl
+	[FE:6]	ccbgssse010-petdwarvenarmoredmudcrab.esl
+	[FE:7]	ccbgssse011-hrsarmrelvn.esl
+	[FE:8]	ccbgssse012-hrsarmrstl.esl
+	[FE:9]	ccbgssse014-spellpack01.esl
+	[FE:10]	ccbgssse019-staffofsheogorath.esl
+	[FE:11]	ccbgssse020-graycowl.esl
+	[FE:12]	ccbgssse021-lordsmail.esl
+	[FE:13]	ccmtysse001-knightsofthenine.esl
+	[FE:14]	ccqdrsse001-survivalmode.esl
+	[7]	cctwbsse001-puzzledungeon.esm
+	[8]	cceejsse001-hstead.esm
+	[FE:15]	ccqdrsse002-firewood.esl
+	[FE:16]	ccbgssse018-shadowrend.esl
+	[FE:17]	ccbgssse035-petnhound.esl
+	[FE:18]	ccfsvsse001-backpacks.esl
+	[FE:19]	cceejsse002-tower.esl
+	[FE:20]	ccedhsse001-norjewel.esl
+	[FE:21]	ccvsvsse002-pets.esl
+	[FE:22]	ccBGSSSE037-Curios.esl
+	[FE:23]	ccbgssse034-mntuni.esl
+	[FE:24]	ccbgssse045-hasedoki.esl
+	[FE:25]	ccbgssse008-wraithguard.esl
+	[FE:26]	ccbgssse036-petbwolf.esl
+	[FE:27]	ccffbsse001-imperialdragon.esl
+	[FE:28]	ccmtysse002-ve.esl
+	[FE:29]	ccbgssse043-crosselv.esl
+	[FE:30]	ccvsvsse001-winter.esl
+	[FE:31]	cceejsse003-hollow.esl
+	[9]	ccbgssse016-umbra.esm
+	[10]	ccbgssse031-advcyrus.esm
+	[FE:32]	ccbgssse038-bowofshadows.esl
+	[FE:33]	ccbgssse040-advobgobs.esl
+	[FE:34]	ccbgssse050-ba_daedric.esl
+	[FE:35]	ccbgssse052-ba_iron.esl
+	[FE:36]	ccbgssse054-ba_orcish.esl
+	[FE:37]	ccbgssse058-ba_steel.esl
+	[FE:38]	ccbgssse059-ba_dragonplate.esl
+	[FE:39]	ccbgssse061-ba_dwarven.esl
+	[FE:40]	ccpewsse002-armsofchaos.esl
+	[FE:41]	ccbgssse041-netchleather.esl
+	[FE:42]	ccedhsse002-splkntset.esl
+	[FE:43]	ccbgssse064-ba_elven.esl
+	[FE:44]	ccbgssse063-ba_ebony.esl
+	[FE:45]	ccbgssse062-ba_dwarvenmail.esl
+	[FE:46]	ccbgssse060-ba_dragonscale.esl
+	[FE:47]	ccbgssse056-ba_silver.esl
+	[FE:48]	ccbgssse055-ba_orcishscaled.esl
+	[FE:49]	ccbgssse053-ba_leather.esl
+	[FE:50]	ccbgssse051-ba_daedricmail.esl
+	[FE:51]	ccbgssse057-ba_stalhrim.esl
+	[FE:52]	ccbgssse066-staves.esl
+	[11]	ccbgssse067-daedinv.esm
+	[FE:53]	ccbgssse068-bloodfall.esl
+	[FE:54]	ccbgssse069-contest.esl
+	[FE:55]	ccvsvsse003-necroarts.esl
+	[FE:56]	ccvsvsse004-beafarmer.esl
+	[12]	ccbgssse025-advdsgs.esm
+	[FE:57]	ccffbsse002-crossbowpack.esl
+	[FE:58]	ccbgssse013-dawnfang.esl
+	[FE:59]	ccrmssse001-necrohouse.esl
+	[FE:60]	ccedhsse003-redguard.esl
+	[FE:61]	cceejsse004-hall.esl
+	[13]	cceejsse005-cave.esm
+	[FE:62]	cckrtsse001_altar.esl
+	[FE:63]	cccbhsse001-gaunt.esl
+	[14]	ccafdsse001-dwesanctuary.esm
+	[FE:64]	_ResourcePack.esl
+	[15]	unofficial skyrim special edition patch.esp
+	[FE:65]	unofficial skyrim creation club content patch.esl
+	[FE:66]	Vanilla Script MicroOptimizations.esl
+	[FE:67]	Navigator-NavFixes.esl
+	[16]	Unofficial Skyrim Modders Patch.esp
+	[FE:68]	Skyrim Landscape and Water Fixes - Light Sources.esp
+	[FE:69]	Landscape and Water Fixes.esp
+	[17]	Grand Solitude - The Walls of High King Erling.esp
+	[18]	Folkstead.esp
+	[19]	3DNPC.esp
+	[20]	Nyhus.esp
+	[21]	Snazzy Location Resources.esp
+	[FE:70]	Snazzy Solitude Mid-Houses.esp
+	[FE:71]	Snazzy Interiors - Solitude Vittoria Vici's House.esp
+	[FE:72]	Snazzy Interiors - Solitude Bryling's House.esp
+	[22]	Jehanna.esp
+	[FE:73]	Snazzy Interiors - Solitude Erikur's House.esp
+	[FE:74]	Lux Orbis - Master plugin.esm
+	[23]	arnima.esm
+	[24]	BSAssets.esm
+	[FE:75]	Lux - Master plugin.esm
+	[25]	BSHeartland.esm
+	[26]	BS_DLC_patch.esp
+	[27]	Campfire.esm
+	[28]	Vigilant.esm
+	[29]	Gray Fox Cowl.esm
+	[30]	moonpath.esp
+	[FE:76]	Lux - Resources.esp
+	[FE:77]	1ChitinBow.esl
+	[FE:78]	TheNewGentleman.esp
+	[FE:79]	RMB SPID - Core Definitions.esp
+	[31]	Lux Via.esp
+	[32]	Wyrmstooth.esp
+	[FE:80]	moe-scarves.esl
+	[FE:81]	TrueHUD.esl
+	[FE:82]	SmoothCam.esl
+	[FE:83]	Thanedom Assets.esl
+	[FE:84]	AHZmoreHUD.esl
+	[FE:85]	Particle Patch.esp
+	[33]	dD - Enhanced Blood Main LITE.esp
+	[FE:86]	SkyUI_SE.esp
+	[FE:87]	I4IconAddon.esp
+	[34]	SMIM-SE-Merged-All.esp
+	[FE:88]	SurvivalModeImproved.esp
+	[35]	Audio Overhaul Skyrim.esp
+	[36]	Immersive Sounds - Compendium.esp
+	[FE:89]	AOS_ISC_Integration.esp
+	[37]	Nature of the Wild Lands.esp
+	[FE:90]	Lux Orbis.esp
+	[38]	Landscape Fixes For Grass Mods.esp
+	[FE:91]	Landscape and Water Fixes - Patch - LFfGM.esp
+	[FE:92]	Landscape and Water Fixes - Patch - LFfGM - GotT.esp
+	[FE:93]	Vanilla hair remake SMP NPCs.esp
+	[39]	Relationship Dialogue Overhaul.esp
+	[40]	cutting room floor.esp
+	[FE:94]	Moonpath Music, Weather and Other Fixes.esp
+	[FE:95]	Lux Via - plugin.esp
+	[FE:96]	SFCO3-BOS - Resources.esp
+	[FE:97]	SFCO3-BOS - Addons.esp
+	[41]	NW_Sons_of_Skyrim.esp
+	[42]	Embers XD.esp
+	[43]	LostLongSwords.esp
+	[FE:98]	Ensrick Lost LongSwords Curation.esp
+	[FE:99]	Azurite Weathers III.esp
+	[FE:100]	Azurite III CS.esp
+	[FE:101]	Azurite III CS - Darker Nights.esp
+	[FE:102]	CBBE.esp
+	[44]	FNIS.esp
+	[FE:103]	HIMBO.esp
+	[45]	JRMoonpathtoElsweyrPatch.esp
+	[FE:104]	Lux Orbis - Grand Solitude patch.esp
+	[FE:105]	3DNPCNavFix.esp
+	[46]	Solitude Docks.esp
+	[FE:106]	Freak's Floral Solstheim.esp
+	[47]	man_DaedricShrines.esp
+	[48]	Inigo.esp
+	[49]	HLIORemi.esp
+	[FE:107]	Freak's Floral Fields.esp
+	[FE:108]	Landscape and Water Fixes - Patch - Farming.esp
+	[FE:109]	Landscape and Water Fixes - Patch - Tundra Homestead.esp
+	[FE:110]	C.O.I.N.esp
+	[FE:111]	M.I.N.T.esp
+	[FE:112]	MorrowindUsesDrams.esp
+	[FE:113]	MorrowindUsesDrams - No Office.esp
+	[FE:114]	Mesh Improvement Compilation.esp
+	[FE:115]	Lux Orbis - Cutting Room Floor patch.esp
+	[FE:116]	Lux Orbis - 3DNPC patch.esp
+	[FE:117]	SFCO3-Addons - Snazzy Interiors - Solitude Vittoria Vici's House patch.esp
+	[FE:118]	SFCO3-Addons - Grand Solitude patch.esp
+	[FE:119]	Collectibles Helper.esp
+	[FE:120]	VigilantNavFix.esp
+	[50]	PROTEUS.esp
+	[FE:121]	Grand Solitude - 3DNPC patch.esp
+	[51]	VLIOVarinia.esp
+	[FE:122]	Lux Orbis - Solitude Docks Updated patch.esp
+	[52]	Apocalypse - Magic of Skyrim.esp
+	[FE:123]	Grand Solitude - Lux Via patch.esp
+	[FE:124]	Shadow's NotWL - Solitude Docks Patch.esp
+	[FE:125]	Grand Solitude - Nature of the Wild Lands patch.esp
+	[FE:126]	Nature of the Wild Lands - CuttingRoomFloor.esp
+	[FE:127]	Nature of the Wild Lands - CC Tundra Homestead.esp
+	[FE:128]	SL99Exchanger.esp
+	[FE:129]	exchangeCurrency_enhanced.esp
+	[FE:130]	Lux Orbis - USSEP patch.esp
+	[FE:131]	Lux Orbis - Riften Sconce Patch.esp
+	[FE:132]	Ensrick Lost LongSwords Stormcloak Distribution.esp
+	[FE:133]	Sons of Skyrim - Lux Orbis Patch.esp
+	[FE:134]	Lux Orbis CS.esp
+	[53]	RaceMenu.esp
+	[54]	RaceMenuPlugin.esp
+	[55]	RaceMenuMorphsCBBE.esp
+	[FE:135]	RaceMenuMorphsHIMBO.esp
+	[56]	UIExtensions.esp
+	[57]	XPMSE.esp
+	[FE:136]	Underwear.esp
+	[FE:137]	JRMoonpathBrumaPatch.esp
+	[FE:138]	Nature of the Wild Lands - Bruma.esp
+	[FE:139]	Water for ENB - Patch - Beyond Skyrim.esp
+	[FE:140]	Landscape and Water Fixes - Patch - Myrwatch - LFfGM.esp
+	[FE:141]	Landscape and Water Fixes - CC Fishing patch.esp
+	[FE:142]	Nature of the Wild Lands - Lux Via.esp
+	[FE:143]	Moonpath Music, Weather and Other Fixes - JRMoonpathBrumaPatch.esp
+	[FE:144]	Moonpath Blacksmith Forge Water Fix.esp
+	[58]	VioLens SE.esp
+	[FE:145]	Starfrost.esp
+	[FE:146]	StarfrostVanillaHunger.esp
+	[FE:147]	NW_Sons_of_Skyrim - My fixes by Xtudo.esp
+	[FE:148]	Water for ENB - Patch - Beyond Reach.esp
+	[59]	NW_Companions_Replacer_Light.esp
+	[FE:149]	RMB SPID - Legacy of Ysgramor.esp
+	[60]	One-handed warhammers.esp
+	[61]	NW_Steel_Plate_Armors.esp
+	[FE:150]	Grand Solitude - CRF patch.esp
+	[62]	Lucien.esp
+	[FE:151]	Landscape and Water Fixes - Patch - USMP.esp
+	[63]	QSSwordPack.esp
+	[64]	Baltimore Weapons.esp
+	[65]	Vikings Weaponry - Johnskyrim.esp
+	[FE:152]	RMB SPID - Legacy of Ysgramor - Wuuthrad.esp
+	[FE:153]	Beyond Reach missing textures.esp
+	[FE:154]	Beyond Reach missing textures 2.esp
+	[FE:155]	Adabala Building System - Ayleid Transfusion.esp
+	[FE:156]	GKB Beyond Reach Trees.esp
+	[FE:157]	Ring of Khajiit - Replacer.esp
+	[FE:158]	Skykings Unique Signs.esp
+	[FE:159]	Skyking Signs - Bruma.esp
+	[FE:160]	Disable Screen Blood.esp
+	[FE:161]	NoRadialBlurOnHit.esp
+	[FE:162]	3DNPC0.esp
+	[FE:163]	3DNPC1.esp
+	[FE:164]	Grand Solitude - Solitude Docks patch.esp
+	[FE:165]	Landscape and Water Fixes - Patch - Alternative Armors - Elven Hunter.esp
+	[FE:166]	Ensrick Inigo Bloodchill Landscape Forward.esp
+	[FE:167]	interesting npcs ILS fix.esp
+	[FE:168]	FjonaFamiliarFix.esp
+	[FE:169]	3DNPC - Survival Mode.esp
+	[FE:170]	Skyking Signs - Interesting NPCs Patch.esp
+	[FE:171]	LunarGuardArmor.esp
+	[FE:172]	3DNPC - CRF Patch.esp
+	[FE:173]	Inigo Official Patch SE (ESPFE).esp
+	[FE:174]	Dynamic Activation Key.esp
+	[FE:175]	Simple Hunting Overhaul.esp
+	[FE:176]	SHO - Bruma Patch.esp
+	[66]	DIS_NordScale.esp
+	[FE:177]	RallysAnimMarket.esp
+	[FE:178]	SFCO3-Addons - CRF patch.esp
+	[FE:179]	Grand Solitude - CC Lords Mail patch.esp
+	[FE:180]	Grand Solitude - CC Alternative Armors - Dragon Plate patch.esp
+	[FE:181]	Grand Solitude - CC Alternative Armors - Leather patch.esp
+	[FE:182]	Grand Solitude - CC Civil War Champions patch.esp
+	[FE:183]	Grand Solitude - CC Crossbows patch.esp
+	[FE:184]	Grand Solitude - CC Gray Cowl Returns patch.esp
+	[FE:185]	SFCO3-Addons - Snazzy Interiors - Solitude Erikur's House patch.esp
+	[FE:186]	Snazzy Interiors - Solitude Erikur's House - CC Gray Cowl Returns patch.esp
+	[FE:187]	Snazzy Interiors - Solitude Erikur's House - USSEP patch.esp
+	[FE:188]	Snazzy Solitude Mid-Houses - CC Fishing patch.esp
+	[FE:189]	SFCO3-Addons - 3DNPC patch.esp
+	[FE:190]	SFCO3-Addons - Snazzy Interiors - Solitude Bryling's House patch.esp
+	[FE:191]	SFCO3-Addons - Snazzy Solitude Mid-Houses patch.esp
+	[FE:192]	SFCO3-Addons - Solitude Docks Updated patch.esp
+	[FE:193]	SFCO3-Addons - The Gray Cowl of Nocturnal Patch.esp
+	[FE:194]	SFCO3-Addons - Vigilant Patch.esp
+	[FE:195]	SFCO3-Addons - Wyrmstooth patch.esp
+	[FE:196]	Lux Orbis - Wyrmstooth.esp
+	[FE:197]	Tree_Diversity_Project.esp
+	[FE:198]	Freak's Floral Fields- Realistic Tundra.esp
+	[FE:199]	Freak's Floral Fields-  Realistic Pine.esp
+	[FE:200]	Freak's Floral Fields- Realistic Rift.esp
+	[FE:201]	Freak's Floral Fields- Mixed Reach.esp
+	[FE:202]	Freak's Floral Fields- Volcanic Wasteland.esp
+	[FE:203]	Freak's Floral Fields- Dead Snow Grass.esp
+	[FE:204]	SightlessNavFix.esp
+	[FE:205]	Freak's Floral Veil.esp
+	[FE:206]	Landscape and Water Fixes - Patch - Hendraheim.esp
+	[FE:207]	Landscape and Water Fixes - Patch - Myrwatch.esp
+	[FE:208]	Landscape and Water Fixes - Patch - Navigator ESL.esp
+	[FE:209]	Landscape and Water Fixes - Patch - Vigil Enforcer Armor Set.esp
+	[FE:210]	SkyParkour.esp
+	[FE:211]	MCMHelper.esp
+	[FE:212]	TerrainHelper.esp
+	[FE:213]	QuickLootIE.esp
+	[FE:214]	HLIZRemiArnima.esp
+	[FE:215]	HLIONameFix.esp
+	[67]	run for your lives.esp
+	[FE:216]	Cloaks - RMB SPCH.esp
+	[FE:217]	Pelt Cloaks.esp
+	[FE:218]	RMB SPCH - Pelt Cloaks.esp
+	[FE:219]	C.O.I.N. - Beyond Skyrim Patch.esp
+	[FE:220]	C.O.I.N. - The Cause Patch.esp
+	[FE:221]	DominionUsesSancar.esp
+	[FE:222]	WindhelmUsesUlfrics.esp
+	[FE:223]	WindhelmUsesUlfrics - No Stall.esp
+	[FE:224]	exchangeCurrency_patch_COIN.esp
+	[FE:225]	exchangeCurrency_dial_medes.esp
+	[FE:226]	exchangeCurrency_dial_ulfrics.esp
+	[FE:227]	exchangeCurrency_patch_MINT_dram.esp
+	[FE:228]	exchangeCurrency_patch_MINT_ulfric.esp
+	[FE:229]	Ensrick TDP Ulvenwald Wind Calibration.esp
+	[FE:230]	SonS_HDT_patch.esp
+	[FE:231]	JS Dragon Claws AE - Wyrmstooth.esp
+	[FE:232]	Book Covers Skyrim.esp
+	[FE:233]	BCS-SP_TreasureMaps.esp
+	[FE:234]	Rainbows Remade.esp
+	[FE:235]	HPP - My fixes by Xtudo - Chopping Blocks - Campfire.esp
+	[FE:236]	HPP - FirewoodSnow Campfire.esp
+	[FE:237]	HPP - Vaermina's Torpor.esp
+	[FE:238]	Precision.esp
+	[FE:239]	Embers XD - Patch - Beyond Skyrim - Bruma.esp
+	[FE:240]	Embers XD - Patch - Campfire.esp
+	[FE:241]	Embers XD - Patch - Goldenhills Plantation.esp
+	[FE:242]	Embers XD - Patch - Survival Mode Improved.esp
+	[FE:243]	BetterThirdPersonSelection.esp
+	[68]	Skyrim Unbound.esp
+	[FE:244]	Skyrim Unbound - RDO Lite Patch.esp
+	[69]	nwsFollowerFramework.esp
+	[70]	Lux.esp
+	[FE:245]	Lux CS Templates - Default.esp
+	[FE:246]	Lux CS - Bulbs.esp
+	[FE:247]	Lux - Vigil Enforcer CC.esp
+	[FE:248]	Snazzy Interiors - Solitude Erikur's House - Lux patch.esp
+	[FE:249]	Lux - Grand Solitude patch.esp
+	[FE:250]	Lux - USSEP patch.esp
+	[FE:251]	Lux - Umbra CC.esp
+	[FE:252]	Lux - The Cause patch.esp
+	[FE:253]	Lux - Staff of Hasedoki CC.esp
+	[FE:254]	Lux - Saints and Seducers patch.esp
+	[FE:255]	Lux - Tundra Homestead patch.esp
+	[FE:256]	Lux - 3DNPC patch.esp
+	[FE:257]	Lux - Pets of Skyrim CC.esp
+	[FE:258]	Lux - Nchuanthumz Dwarven Home patch.esp
+	[FE:259]	Lux - Goldbrand CC.esp
+	[FE:260]	Lux - Goblins CC.esp
+	[FE:261]	Lux - Ghosts of the Tribunal CC.esp
+	[FE:262]	Lux - Forgotten Seasons.esp
+	[FE:263]	Lux - Elite Crossbows.esp
+	[FE:264]	Lux - Dead Mans Dread Patch.esp
+	[FE:265]	Lux - CC Fish patch.esp
+	[71]	Lux - BS Bruma patch.esp
+	[FE:266]	Lux - Bloodchill Manor patch.esp
+	[FE:267]	Lux - Bittercup Patch.esp
+	[FE:268]	Lux - Dawnfang CC.esp
+	[FE:269]	Lux - Necrohouse patch.esp
+	[FE:270]	Lux - Hendraheim patch.esp
+	[FE:271]	Lux - Shadowfoot Sanctum patch.esp
+	[FE:272]	Lux - HDR.esp
+	[FE:273]	Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp
+	[FE:274]	Lux - Vigilant patch.esp
+	[FE:275]	Lux - Wyrmstooth.esp
+	[FE:276]	Lux - Cuting Room Floor.esp
+	[FE:277]	Lux - Skyrim Unbound patch.esp
+	[FE:278]	Snazzy Interiors - Solitude Bryling's House - Lux patch.esp
+	[FE:279]	Snazzy Interiors - Solitude Vittoria Vici's House - Lux Patch.esp
+	[FE:280]	Snazzy Solitude Mid-Houses - Lux patch.esp
+	[FE:281]	Lux - Solitude Docks patch.esp
+	[FE:282]	Ensrick - Collectibles Helper USSEP Forward.esp
+	[FE:283]	Lux - Farmer patch.esp
+	[72]	Water for ENB (Shades of Skyrim).esp
+	[FE:284]	Water for ENB - Patch - Wyrmstooth.esp
+	[FE:285]	WENB Shades USSEP.esp
+	[FE:286]	ACMOS and Wyrmstooth - Water for ENB Patch.esp
+	[73]	ENB Light.esp
+	[FE:287]	A Clear Map of Skyrim.esp
+	[FE:288]	ACMOS - Wyrmstooth.esp
+	[FE:289]	ACMOS - Beyond Reach.esp
+	[FE:290]	ACMOS - Bruma.esp
+	[FE:291]	Lux - Water for ENB (Shades of skyrim) patch.esp
+	[74]	ThanedomDirfjord.esp
+	[75]	PatchDirfjordFolkstead.esp
+	[76]	Skyrim Reborn - Hjaalmarch Hold.esp
+	[FE:292]	Skyrim Reborn Hjaalmarch Hold - CRF Patch.esp
+	[FE:293]	Ensrick Lux Water CS Patch.esp
+	[FE:294]	Ensrick General Compatibility Patch.esp
+	[FE:295]	Ensrick CRF Semantic Patch.esp
+	[FE:296]	Ensrick Guard Scaling Patch.esp
+	[FE:297]	Ensrick Wolf Territorial Patch.esp
+	[FE:298]	Ensrick Currency Integration Patch.esp
+	[FE:299]	Ensrick Currency Regional Purses.esp
+	[FE:300]	WeaponBalancePatch.esp
+Saving menu open/close event registrations...
+Saving key input event registrations...
+Saving control input event registrations...
+Saving mod callback event registrations...
+Saving crosshair ref event registrations...
+Saving camera event registrations...
+Saving actor action event registrations...
+Saving NiNode update event registrations...
+Saving SKSEPersistentObjectStorage data...
+Saving SKSEDelayFunctorManager data...
+cleared save path
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+save name is Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260908011117_6_1
+full save path: C:\Users\danjo\Documents\My Games\Skyrim Special Edition\Saves\\Quicksave0_389B9F8E_0_416476656E747572657233_CYRSerpentsTrail01_000345_20260908011117_6_1.skse
+dispatch message (2) to plugin listeners
+sending message type 2 to plugin 1
+sending message type 2 to plugin 4
+sending message type 2 to plugin 5
+sending message type 2 to plugin 6
+sending message type 2 to plugin 8
+sending message type 2 to plugin 9
+sending message type 2 to plugin 10
+sending message type 2 to plugin 12
+sending message type 2 to plugin 13
+sending message type 2 to plugin 14
+sending message type 2 to plugin 15
+sending message type 2 to plugin 16
+sending message type 2 to plugin 17
+sending message type 2 to plugin 19
+sending message type 2 to plugin 20
+sending message type 2 to plugin 21
+sending message type 2 to plugin 22
+sending message type 2 to plugin 24
+sending message type 2 to plugin 25
+sending message type 2 to plugin 27
+sending message type 2 to plugin 29
+sending message type 2 to plugin 30
+sending message type 2 to plugin 31
+sending message type 2 to plugin 32
+sending message type 2 to plugin 33
+sending message type 2 to plugin 34
+sending message type 2 to plugin 35
+sending message type 2 to plugin 36
+sending message type 2 to plugin 38
+sending message type 2 to plugin 39
+sending message type 2 to plugin 40
+sending message type 2 to plugin 41
+sending message type 2 to plugin 42
+sending message type 2 to plugin 43
+sending message type 2 to plugin 44
+sending message type 2 to plugin 45
+sending message type 2 to plugin 46
+sending message type 2 to plugin 47
+sending message type 2 to plugin 48
+sending message type 2 to plugin 49
+sending message type 2 to plugin 50
+dispatched message.
+loading co-save
+Loading plugin list:
+	(0 -> 0)	Skyrim.esm
+	(1 -> 1)	Update.esm
+	(2 -> 2)	Dawnguard.esm
+	(3 -> 3)	HearthFires.esm
+	(4 -> 4)	Dragonborn.esm
+	(5 -> 5)	ccasvsse001-almsivi.esm
+	(6 -> 6)	ccbgssse001-fish.esm
+	(1040384 -> 1040384)	ccbgssse002-exoticarrows.esl
+	(1040385 -> 1040385)	ccbgssse003-zombies.esl
+	(1040386 -> 1040386)	ccbgssse004-ruinsedge.esl
+	(1040387 -> 1040387)	ccbgssse005-goldbrand.esl
+	(1040388 -> 1040388)	ccbgssse006-stendarshammer.esl
+	(1040389 -> 1040389)	ccbgssse007-chrysamere.esl
+	(1040390 -> 1040390)	ccbgssse010-petdwarvenarmoredmudcrab.esl
+	(1040391 -> 1040391)	ccbgssse011-hrsarmrelvn.esl
+	(1040392 -> 1040392)	ccbgssse012-hrsarmrstl.esl
+	(1040393 -> 1040393)	ccbgssse014-spellpack01.esl
+	(1040394 -> 1040394)	ccbgssse019-staffofsheogorath.esl
+	(1040395 -> 1040395)	ccbgssse020-graycowl.esl
+	(1040396 -> 1040396)	ccbgssse021-lordsmail.esl
+	(1040397 -> 1040397)	ccmtysse001-knightsofthenine.esl
+	(1040398 -> 1040398)	ccqdrsse001-survivalmode.esl
+	(7 -> 7)	cctwbsse001-puzzledungeon.esm
+	(8 -> 8)	cceejsse001-hstead.esm
+	(1040399 -> 1040399)	ccqdrsse002-firewood.esl
+	(1040400 -> 1040400)	ccbgssse018-shadowrend.esl
+	(1040401 -> 1040401)	ccbgssse035-petnhound.esl
+	(1040402 -> 1040402)	ccfsvsse001-backpacks.esl
+	(1040403 -> 1040403)	cceejsse002-tower.esl
+	(1040404 -> 1040404)	ccedhsse001-norjewel.esl
+	(1040405 -> 1040405)	ccvsvsse002-pets.esl
+	(1040406 -> 1040406)	ccBGSSSE037-Curios.esl
+	(1040407 -> 1040407)	ccbgssse034-mntuni.esl
+	(1040408 -> 1040408)	ccbgssse045-hasedoki.esl
+	(1040409 -> 1040409)	ccbgssse008-wraithguard.esl
+	(1040410 -> 1040410)	ccbgssse036-petbwolf.esl
+	(1040411 -> 1040411)	ccffbsse001-imperialdragon.esl
+	(1040412 -> 1040412)	ccmtysse002-ve.esl
+	(1040413 -> 1040413)	ccbgssse043-crosselv.esl
+	(1040414 -> 1040414)	ccvsvsse001-winter.esl
+	(1040415 -> 1040415)	cceejsse003-hollow.esl
+	(9 -> 9)	ccbgssse016-umbra.esm
+	(10 -> 10)	ccbgssse031-advcyrus.esm
+	(1040416 -> 1040416)	ccbgssse038-bowofshadows.esl
+	(1040417 -> 1040417)	ccbgssse040-advobgobs.esl
+	(1040418 -> 1040418)	ccbgssse050-ba_daedric.esl
+	(1040419 -> 1040419)	ccbgssse052-ba_iron.esl
+	(1040420 -> 1040420)	ccbgssse054-ba_orcish.esl
+	(1040421 -> 1040421)	ccbgssse058-ba_steel.esl
+	(1040422 -> 1040422)	ccbgssse059-ba_dragonplate.esl
+	(1040423 -> 1040423)	ccbgssse061-ba_dwarven.esl
+	(1040424 -> 1040424)	ccpewsse002-armsofchaos.esl
+	(1040425 -> 1040425)	ccbgssse041-netchleather.esl
+	(1040426 -> 1040426)	ccedhsse002-splkntset.esl
+	(1040427 -> 1040427)	ccbgssse064-ba_elven.esl
+	(1040428 -> 1040428)	ccbgssse063-ba_ebony.esl
+	(1040429 -> 1040429)	ccbgssse062-ba_dwarvenmail.esl
+	(1040430 -> 1040430)	ccbgssse060-ba_dragonscale.esl
+	(1040431 -> 1040431)	ccbgssse056-ba_silver.esl
+	(1040432 -> 1040432)	ccbgssse055-ba_orcishscaled.esl
+	(1040433 -> 1040433)	ccbgssse053-ba_leather.esl
+	(1040434 -> 1040434)	ccbgssse051-ba_daedricmail.esl
+	(1040435 -> 1040435)	ccbgssse057-ba_stalhrim.esl
+	(1040436 -> 1040436)	ccbgssse066-staves.esl
+	(11 -> 11)	ccbgssse067-daedinv.esm
+	(1040437 -> 1040437)	ccbgssse068-bloodfall.esl
+	(1040438 -> 1040438)	ccbgssse069-contest.esl
+	(1040439 -> 1040439)	ccvsvsse003-necroarts.esl
+	(1040440 -> 1040440)	ccvsvsse004-beafarmer.esl
+	(12 -> 12)	ccbgssse025-advdsgs.esm
+	(1040441 -> 1040441)	ccffbsse002-crossbowpack.esl
+	(1040442 -> 1040442)	ccbgssse013-dawnfang.esl
+	(1040443 -> 1040443)	ccrmssse001-necrohouse.esl
+	(1040444 -> 1040444)	ccedhsse003-redguard.esl
+	(1040445 -> 1040445)	cceejsse004-hall.esl
+	(13 -> 13)	cceejsse005-cave.esm
+	(1040446 -> 1040446)	cckrtsse001_altar.esl
+	(1040447 -> 1040447)	cccbhsse001-gaunt.esl
+	(14 -> 14)	ccafdsse001-dwesanctuary.esm
+	(1040448 -> 1040448)	_ResourcePack.esl
+	(15 -> 15)	unofficial skyrim special edition patch.esp
+	(1040449 -> 1040449)	unofficial skyrim creation club content patch.esl
+	(1040450 -> 1040450)	Vanilla Script MicroOptimizations.esl
+	(1040451 -> 1040451)	Navigator-NavFixes.esl
+	(16 -> 16)	Unofficial Skyrim Modders Patch.esp
+	(1040452 -> 1040452)	Skyrim Landscape and Water Fixes - Light Sources.esp
+	(1040453 -> 1040453)	Landscape and Water Fixes.esp
+	(17 -> 17)	Grand Solitude - The Walls of High King Erling.esp
+	(18 -> 18)	Folkstead.esp
+	(19 -> 19)	3DNPC.esp
+	(20 -> 20)	Nyhus.esp
+	(21 -> 21)	Snazzy Location Resources.esp
+	(1040454 -> 1040454)	Snazzy Solitude Mid-Houses.esp
+	(1040455 -> 1040455)	Snazzy Interiors - Solitude Vittoria Vici's House.esp
+	(1040456 -> 1040456)	Snazzy Interiors - Solitude Bryling's House.esp
+	(22 -> 22)	Jehanna.esp
+	(1040457 -> 1040457)	Snazzy Interiors - Solitude Erikur's House.esp
+	(1040458 -> 1040458)	Lux Orbis - Master plugin.esm
+	(23 -> 23)	arnima.esm
+	(24 -> 24)	BSAssets.esm
+	(1040459 -> 1040459)	Lux - Master plugin.esm
+	(25 -> 25)	BSHeartland.esm
+	(26 -> 26)	BS_DLC_patch.esp
+	(27 -> 27)	Campfire.esm
+	(28 -> 28)	Vigilant.esm
+	(29 -> 29)	Gray Fox Cowl.esm
+	(30 -> 30)	moonpath.esp
+	(1040460 -> 1040460)	Lux - Resources.esp
+	(1040461 -> 1040461)	1ChitinBow.esl
+	(1040462 -> 1040462)	TheNewGentleman.esp
+	(1040463 -> 1040463)	RMB SPID - Core Definitions.esp
+	(31 -> 31)	Lux Via.esp
+	(32 -> 32)	Wyrmstooth.esp
+	(1040464 -> 1040464)	moe-scarves.esl
+	(1040465 -> 1040465)	TrueHUD.esl
+	(1040466 -> 1040466)	SmoothCam.esl
+	(1040467 -> 1040467)	Thanedom Assets.esl
+	(1040468 -> 1040468)	AHZmoreHUD.esl
+	(1040469 -> 1040469)	Particle Patch.esp
+	(33 -> 33)	dD - Enhanced Blood Main LITE.esp
+	(1040470 -> 1040470)	SkyUI_SE.esp
+	(1040471 -> 1040471)	I4IconAddon.esp
+	(34 -> 34)	SMIM-SE-Merged-All.esp
+	(1040472 -> 1040472)	SurvivalModeImproved.esp
+	(35 -> 35)	Audio Overhaul Skyrim.esp
+	(36 -> 36)	Immersive Sounds - Compendium.esp
+	(1040473 -> 1040473)	AOS_ISC_Integration.esp
+	(37 -> 37)	Nature of the Wild Lands.esp
+	(1040474 -> 1040474)	Lux Orbis.esp
+	(38 -> 38)	Landscape Fixes For Grass Mods.esp
+	(1040475 -> 1040475)	Landscape and Water Fixes - Patch - LFfGM.esp
+	(1040476 -> 1040476)	Landscape and Water Fixes - Patch - LFfGM - GotT.esp
+	(1040477 -> 1040477)	Vanilla hair remake SMP NPCs.esp
+	(39 -> 39)	Relationship Dialogue Overhaul.esp
+	(40 -> 40)	cutting room floor.esp
+	(1040478 -> 1040478)	Moonpath Music, Weather and Other Fixes.esp
+	(1040479 -> 1040479)	Lux Via - plugin.esp
+	(1040480 -> 1040480)	SFCO3-BOS - Resources.esp
+	(1040481 -> 1040481)	SFCO3-BOS - Addons.esp
+	(41 -> 41)	NW_Sons_of_Skyrim.esp
+	(42 -> 42)	Embers XD.esp
+	(43 -> 43)	LostLongSwords.esp
+	(1040482 -> 1040482)	Ensrick Lost LongSwords Curation.esp
+	(1040483 -> 1040483)	Azurite Weathers III.esp
+	(1040484 -> 1040484)	Azurite III CS.esp
+	(1040485 -> 1040485)	Azurite III CS - Darker Nights.esp
+	(1040486 -> 1040486)	CBBE.esp
+	(44 -> 44)	FNIS.esp
+	(1040487 -> 1040487)	HIMBO.esp
+	(45 -> 45)	JRMoonpathtoElsweyrPatch.esp
+	(1040488 -> 1040488)	Lux Orbis - Grand Solitude patch.esp
+	(1040489 -> 1040489)	3DNPCNavFix.esp
+	(46 -> 46)	Solitude Docks.esp
+	(1040490 -> 1040490)	Freak's Floral Solstheim.esp
+	(47 -> 47)	man_DaedricShrines.esp
+	(48 -> 48)	Inigo.esp
+	(49 -> 49)	HLIORemi.esp
+	(1040491 -> 1040491)	Freak's Floral Fields.esp
+	(1040492 -> 1040492)	Landscape and Water Fixes - Patch - Farming.esp
+	(1040493 -> 1040493)	Landscape and Water Fixes - Patch - Tundra Homestead.esp
+	(1040494 -> 1040494)	C.O.I.N.esp
+	(1040495 -> 1040495)	M.I.N.T.esp
+	(1040496 -> 1040496)	MorrowindUsesDrams.esp
+	(1040497 -> 1040497)	MorrowindUsesDrams - No Office.esp
+	(1040498 -> 1040498)	Mesh Improvement Compilation.esp
+	(1040499 -> 1040499)	Lux Orbis - Cutting Room Floor patch.esp
+	(1040500 -> 1040500)	Lux Orbis - 3DNPC patch.esp
+	(1040501 -> 1040501)	SFCO3-Addons - Snazzy Interiors - Solitude Vittoria Vici's House patch.esp
+	(1040502 -> 1040502)	SFCO3-Addons - Grand Solitude patch.esp
+	(1040503 -> 1040503)	Collectibles Helper.esp
+	(1040504 -> 1040504)	VigilantNavFix.esp
+	(50 -> 50)	PROTEUS.esp
+	(1040505 -> 1040505)	Grand Solitude - 3DNPC patch.esp
+	(51 -> 51)	VLIOVarinia.esp
+	(1040506 -> 1040506)	Lux Orbis - Solitude Docks Updated patch.esp
+	(52 -> 52)	Apocalypse - Magic of Skyrim.esp
+	(1040507 -> 1040507)	Grand Solitude - Lux Via patch.esp
+	(1040508 -> 1040508)	Shadow's NotWL - Solitude Docks Patch.esp
+	(1040509 -> 1040509)	Grand Solitude - Nature of the Wild Lands patch.esp
+	(1040510 -> 1040510)	Nature of the Wild Lands - CuttingRoomFloor.esp
+	(1040511 -> 1040511)	Nature of the Wild Lands - CC Tundra Homestead.esp
+	(1040512 -> 1040512)	SL99Exchanger.esp
+	(1040513 -> 1040513)	exchangeCurrency_enhanced.esp
+	(1040514 -> 1040514)	Lux Orbis - USSEP patch.esp
+	(1040515 -> 1040515)	Lux Orbis - Riften Sconce Patch.esp
+	(1040516 -> 1040516)	Ensrick Lost LongSwords Stormcloak Distribution.esp
+	(1040517 -> 1040517)	Sons of Skyrim - Lux Orbis Patch.esp
+	(1040518 -> 1040518)	Lux Orbis CS.esp
+	(53 -> 53)	RaceMenu.esp
+	(54 -> 54)	RaceMenuPlugin.esp
+	(55 -> 55)	RaceMenuMorphsCBBE.esp
+	(1040519 -> 1040519)	RaceMenuMorphsHIMBO.esp
+	(56 -> 56)	UIExtensions.esp
+	(57 -> 57)	XPMSE.esp
+	(1040520 -> 1040520)	Underwear.esp
+	(1040521 -> 1040521)	JRMoonpathBrumaPatch.esp
+	(1040522 -> 1040522)	Nature of the Wild Lands - Bruma.esp
+	(1040523 -> 1040523)	Water for ENB - Patch - Beyond Skyrim.esp
+	(1040524 -> 1040524)	Landscape and Water Fixes - Patch - Myrwatch - LFfGM.esp
+	(1040525 -> 1040525)	Landscape and Water Fixes - CC Fishing patch.esp
+	(1040526 -> 1040526)	Nature of the Wild Lands - Lux Via.esp
+	(1040527 -> 1040527)	Moonpath Music, Weather and Other Fixes - JRMoonpathBrumaPatch.esp
+	(1040528 -> 1040528)	Moonpath Blacksmith Forge Water Fix.esp
+	(58 -> 58)	VioLens SE.esp
+	(1040529 -> 1040529)	Starfrost.esp
+	(1040530 -> 1040530)	StarfrostVanillaHunger.esp
+	(1040531 -> 1040531)	NW_Sons_of_Skyrim - My fixes by Xtudo.esp
+	(1040532 -> 1040532)	Water for ENB - Patch - Beyond Reach.esp
+	(59 -> 59)	NW_Companions_Replacer_Light.esp
+	(1040533 -> 1040533)	RMB SPID - Legacy of Ysgramor.esp
+	(60 -> 60)	One-handed warhammers.esp
+	(61 -> 61)	NW_Steel_Plate_Armors.esp
+	(1040534 -> 1040534)	Grand Solitude - CRF patch.esp
+	(62 -> 62)	Lucien.esp
+	(1040535 -> 1040535)	Landscape and Water Fixes - Patch - USMP.esp
+	(63 -> 63)	QSSwordPack.esp
+	(64 -> 64)	Baltimore Weapons.esp
+	(65 -> 65)	Vikings Weaponry - Johnskyrim.esp
+	(1040536 -> 1040536)	RMB SPID - Legacy of Ysgramor - Wuuthrad.esp
+	(1040537 -> 1040537)	Beyond Reach missing textures.esp
+	(1040538 -> 1040538)	Beyond Reach missing textures 2.esp
+	(1040539 -> 1040539)	Adabala Building System - Ayleid Transfusion.esp
+	(1040540 -> 1040540)	GKB Beyond Reach Trees.esp
+	(1040541 -> 1040541)	Ring of Khajiit - Replacer.esp
+	(1040542 -> 1040542)	Skykings Unique Signs.esp
+	(1040543 -> 1040543)	Skyking Signs - Bruma.esp
+	(1040544 -> 1040544)	Disable Screen Blood.esp
+	(1040545 -> 1040545)	NoRadialBlurOnHit.esp
+	(1040546 -> 1040546)	3DNPC0.esp
+	(1040547 -> 1040547)	3DNPC1.esp
+	(1040548 -> 1040548)	Grand Solitude - Solitude Docks patch.esp
+	(1040549 -> 1040549)	Landscape and Water Fixes - Patch - Alternative Armors - Elven Hunter.esp
+	(1040550 -> 1040550)	Ensrick Inigo Bloodchill Landscape Forward.esp
+	(1040551 -> 1040551)	interesting npcs ILS fix.esp
+	(1040552 -> 1040552)	FjonaFamiliarFix.esp
+	(1040553 -> 1040553)	3DNPC - Survival Mode.esp
+	(1040554 -> 1040554)	Skyking Signs - Interesting NPCs Patch.esp
+	(1040555 -> 1040555)	LunarGuardArmor.esp
+	(1040556 -> 1040556)	3DNPC - CRF Patch.esp
+	(1040557 -> 1040557)	Inigo Official Patch SE (ESPFE).esp
+	(1040558 -> 1040558)	Dynamic Activation Key.esp
+	(1040559 -> 1040559)	Simple Hunting Overhaul.esp
+	(1040560 -> 1040560)	SHO - Bruma Patch.esp
+	(66 -> 66)	DIS_NordScale.esp
+	(1040561 -> 1040561)	RallysAnimMarket.esp
+	(1040562 -> 1040562)	SFCO3-Addons - CRF patch.esp
+	(1040563 -> 1040563)	Grand Solitude - CC Lords Mail patch.esp
+	(1040564 -> 1040564)	Grand Solitude - CC Alternative Armors - Dragon Plate patch.esp
+	(1040565 -> 1040565)	Grand Solitude - CC Alternative Armors - Leather patch.esp
+	(1040566 -> 1040566)	Grand Solitude - CC Civil War Champions patch.esp
+	(1040567 -> 1040567)	Grand Solitude - CC Crossbows patch.esp
+	(1040568 -> 1040568)	Grand Solitude - CC Gray Cowl Returns patch.esp
+	(1040569 -> 1040569)	SFCO3-Addons - Snazzy Interiors - Solitude Erikur's House patch.esp
+	(1040570 -> 1040570)	Snazzy Interiors - Solitude Erikur's House - CC Gray Cowl Returns patch.esp
+	(1040571 -> 1040571)	Snazzy Interiors - Solitude Erikur's House - USSEP patch.esp
+	(1040572 -> 1040572)	Snazzy Solitude Mid-Houses - CC Fishing patch.esp
+	(1040573 -> 1040573)	SFCO3-Addons - 3DNPC patch.esp
+	(1040574 -> 1040574)	SFCO3-Addons - Snazzy Interiors - Solitude Bryling's House patch.esp
+	(1040575 -> 1040575)	SFCO3-Addons - Snazzy Solitude Mid-Houses patch.esp
+	(1040576 -> 1040576)	SFCO3-Addons - Solitude Docks Updated patch.esp
+	(1040577 -> 1040577)	SFCO3-Addons - The Gray Cowl of Nocturnal Patch.esp
+	(1040578 -> 1040578)	SFCO3-Addons - Vigilant Patch.esp
+	(1040579 -> 1040579)	SFCO3-Addons - Wyrmstooth patch.esp
+	(1040580 -> 1040580)	Lux Orbis - Wyrmstooth.esp
+	(1040581 -> 1040581)	Tree_Diversity_Project.esp
+	(1040582 -> 1040582)	Freak's Floral Fields- Realistic Tundra.esp
+	(1040583 -> 1040583)	Freak's Floral Fields-  Realistic Pine.esp
+	(1040584 -> 1040584)	Freak's Floral Fields- Realistic Rift.esp
+	(1040585 -> 1040585)	Freak's Floral Fields- Mixed Reach.esp
+	(1040586 -> 1040586)	Freak's Floral Fields- Volcanic Wasteland.esp
+	(1040587 -> 1040587)	Freak's Floral Fields- Dead Snow Grass.esp
+	(1040588 -> 1040588)	SightlessNavFix.esp
+	(1040589 -> 1040589)	Freak's Floral Veil.esp
+	(1040590 -> 1040590)	Landscape and Water Fixes - Patch - Hendraheim.esp
+	(1040591 -> 1040591)	Landscape and Water Fixes - Patch - Myrwatch.esp
+	(1040592 -> 1040592)	Landscape and Water Fixes - Patch - Navigator ESL.esp
+	(1040593 -> 1040593)	Landscape and Water Fixes - Patch - Vigil Enforcer Armor Set.esp
+	(1040594 -> 1040594)	SkyParkour.esp
+	(1040595 -> 1040595)	MCMHelper.esp
+	(1040596 -> 1040596)	TerrainHelper.esp
+	(1040597 -> 1040597)	QuickLootIE.esp
+	(1040598 -> 1040598)	HLIZRemiArnima.esp
+	(1040599 -> 1040599)	HLIONameFix.esp
+	(67 -> 67)	run for your lives.esp
+	(1040600 -> 1040600)	Cloaks - RMB SPCH.esp
+	(1040601 -> 1040601)	Pelt Cloaks.esp
+	(1040602 -> 1040602)	RMB SPCH - Pelt Cloaks.esp
+	(1040603 -> 1040603)	C.O.I.N. - Beyond Skyrim Patch.esp
+	(1040604 -> 1040604)	C.O.I.N. - The Cause Patch.esp
+	(1040605 -> 1040605)	DominionUsesSancar.esp
+	(1040606 -> 1040606)	WindhelmUsesUlfrics.esp
+	(1040607 -> 1040607)	WindhelmUsesUlfrics - No Stall.esp
+	(1040608 -> 1040608)	exchangeCurrency_patch_COIN.esp
+	(1040609 -> 1040609)	exchangeCurrency_dial_medes.esp
+	(1040610 -> 1040610)	exchangeCurrency_dial_ulfrics.esp
+	(1040611 -> 1040611)	exchangeCurrency_patch_MINT_dram.esp
+	(1040612 -> 1040612)	exchangeCurrency_patch_MINT_ulfric.esp
+	(1040613 -> 1040613)	Ensrick TDP Ulvenwald Wind Calibration.esp
+	(1040614 -> 1040614)	SonS_HDT_patch.esp
+	(1040615 -> 1040615)	JS Dragon Claws AE - Wyrmstooth.esp
+	(1040616 -> 1040616)	Book Covers Skyrim.esp
+	(1040617 -> 1040617)	BCS-SP_TreasureMaps.esp
+	(1040618 -> 1040618)	Rainbows Remade.esp
+	(1040619 -> 1040619)	HPP - My fixes by Xtudo - Chopping Blocks - Campfire.esp
+	(1040620 -> 1040620)	HPP - FirewoodSnow Campfire.esp
+	(1040621 -> 1040621)	HPP - Vaermina's Torpor.esp
+	(1040622 -> 1040622)	Precision.esp
+	(1040623 -> 1040623)	Embers XD - Patch - Beyond Skyrim - Bruma.esp
+	(1040624 -> 1040624)	Embers XD - Patch - Campfire.esp
+	(1040625 -> 1040625)	Embers XD - Patch - Goldenhills Plantation.esp
+	(1040626 -> 1040626)	Embers XD - Patch - Survival Mode Improved.esp
+	(1040627 -> 1040627)	BetterThirdPersonSelection.esp
+	(68 -> 68)	Skyrim Unbound.esp
+	(1040628 -> 1040628)	Skyrim Unbound - RDO Lite Patch.esp
+	(69 -> 69)	nwsFollowerFramework.esp
+	(70 -> 70)	Lux.esp
+	(1040629 -> 1040629)	Lux CS Templates - Default.esp
+	(1040630 -> 1040630)	Lux CS - Bulbs.esp
+	(1040631 -> 1040631)	Lux - Vigil Enforcer CC.esp
+	(1040632 -> 1040632)	Snazzy Interiors - Solitude Erikur's House - Lux patch.esp
+	(1040633 -> 1040633)	Lux - Grand Solitude patch.esp
+	(1040634 -> 1040634)	Lux - USSEP patch.esp
+	(1040635 -> 1040635)	Lux - Umbra CC.esp
+	(1040636 -> 1040636)	Lux - The Cause patch.esp
+	(1040637 -> 1040637)	Lux - Staff of Hasedoki CC.esp
+	(1040638 -> 1040638)	Lux - Saints and Seducers patch.esp
+	(1040639 -> 1040639)	Lux - Tundra Homestead patch.esp
+	(1040640 -> 1040640)	Lux - 3DNPC patch.esp
+	(1040641 -> 1040641)	Lux - Pets of Skyrim CC.esp
+	(1040642 -> 1040642)	Lux - Nchuanthumz Dwarven Home patch.esp
+	(1040643 -> 1040643)	Lux - Goldbrand CC.esp
+	(1040644 -> 1040644)	Lux - Goblins CC.esp
+	(1040645 -> 1040645)	Lux - Ghosts of the Tribunal CC.esp
+	(1040646 -> 1040646)	Lux - Forgotten Seasons.esp
+	(1040647 -> 1040647)	Lux - Elite Crossbows.esp
+	(1040648 -> 1040648)	Lux - Dead Mans Dread Patch.esp
+	(1040649 -> 1040649)	Lux - CC Fish patch.esp
+	(71 -> 71)	Lux - BS Bruma patch.esp
+	(1040650 -> 1040650)	Lux - Bloodchill Manor patch.esp
+	(1040651 -> 1040651)	Lux - Bittercup Patch.esp
+	(1040652 -> 1040652)	Lux - Dawnfang CC.esp
+	(1040653 -> 1040653)	Lux - Necrohouse patch.esp
+	(1040654 -> 1040654)	Lux - Hendraheim patch.esp
+	(1040655 -> 1040655)	Lux - Shadowfoot Sanctum patch.esp
+	(1040656 -> 1040656)	Lux - HDR.esp
+	(1040657 -> 1040657)	Lux - The Gray Cowl of Nocturnal - 10th Anniversary patch.esp
+	(1040658 -> 1040658)	Lux - Vigilant patch.esp
+	(1040659 -> 1040659)	Lux - Wyrmstooth.esp
+	(1040660 -> 1040660)	Lux - Cuting Room Floor.esp
+	(1040661 -> 1040661)	Lux - Skyrim Unbound patch.esp
+	(1040662 -> 1040662)	Snazzy Interiors - Solitude Bryling's House - Lux patch.esp
+	(1040663 -> 1040663)	Snazzy Interiors - Solitude Vittoria Vici's House - Lux Patch.esp
+	(1040664 -> 1040664)	Snazzy Solitude Mid-Houses - Lux patch.esp
+	(1040665 -> 1040665)	Lux - Solitude Docks patch.esp
+	(1040666 -> 1040666)	Ensrick - Collectibles Helper USSEP Forward.esp
+	(1040667 -> 1040667)	Lux - Farmer patch.esp
+	(72 -> 72)	Water for ENB (Shades of Skyrim).esp
+	(1040668 -> 1040668)	Water for ENB - Patch - Wyrmstooth.esp
+	(1040669 -> 1040669)	WENB Shades USSEP.esp
+	(1040670 -> 1040670)	ACMOS and Wyrmstooth - Water for ENB Patch.esp
+	(73 -> 73)	ENB Light.esp
+	(1040671 -> 1040671)	A Clear Map of Skyrim.esp
+	(1040672 -> 1040672)	ACMOS - Wyrmstooth.esp
+	(1040673 -> 1040673)	ACMOS - Beyond Reach.esp
+	(1040674 -> 1040674)	ACMOS - Bruma.esp
+	(1040675 -> 1040675)	Lux - Water for ENB (Shades of skyrim) patch.esp
+	(74 -> 74)	ThanedomDirfjord.esp
+	(75 -> 75)	PatchDirfjordFolkstead.esp
+	(76 -> 76)	Skyrim Reborn - Hjaalmarch Hold.esp
+	(1040676 -> 1040676)	Skyrim Reborn Hjaalmarch Hold - CRF Patch.esp
+	(1040677 -> 1040677)	Ensrick Lux Water CS Patch.esp
+	(1040678 -> 1040678)	Ensrick General Compatibility Patch.esp
+	(1040679 -> 1040679)	Ensrick CRF Semantic Patch.esp
+	(1040680 -> 1040680)	Ensrick Guard Scaling Patch.esp
+	(1040681 -> 1040681)	Ensrick Wolf Territorial Patch.esp
+	(1040682 -> 1040682)	Ensrick Currency Integration Patch.esp
+	(1040683 -> 1040683)	Ensrick Currency Regional Purses.esp
+	(1040684 -> 1040684)	WeaponBalancePatch.esp
+Loading menu open/close event registrations...
+Loading key input event registrations...
+Loading control input event registrations...
+Loading mod callback event registrations...
+Loading crosshair ref event registrations...
+Loading camera event registrations...
+Loading actor action event registrations...
+Loading NiNode update event registrations...
+Loading SKSEPersistentObjectStorage data...
+Loading SKSEDelayFunctorManager data...
+dispatch message (3) to plugin listeners
+sending message type 3 to plugin 1
+sending message type 3 to plugin 4
+sending message type 3 to plugin 5
+sending message type 3 to plugin 6
+sending message type 3 to plugin 8
+sending message type 3 to plugin 9
+sending message type 3 to plugin 10
+sending message type 3 to plugin 12
+sending message type 3 to plugin 13
+sending message type 3 to plugin 14
+sending message type 3 to plugin 15
+sending message type 3 to plugin 16
+sending message type 3 to plugin 17
+sending message type 3 to plugin 19
+sending message type 3 to plugin 20
+sending message type 3 to plugin 21
+sending message type 3 to plugin 22
+sending message type 3 to plugin 24
+sending message type 3 to plugin 25
+sending message type 3 to plugin 27
+sending message type 3 to plugin 29
+sending message type 3 to plugin 30
+sending message type 3 to plugin 31
+sending message type 3 to plugin 32
+sending message type 3 to plugin 33
+dispatch message (1178861568) to plugin listeners
+sending message type 1178861568 to plugin 40
+sending message type 1178861568 to plugin 44
+dispatched message.
+dispatch message (1145523712) to plugin listeners
+sending message type 1145523712 to plugin 40
+sending message type 1145523712 to plugin 44
+dispatched message.
+sending message type 3 to plugin 34
+sending message type 3 to plugin 35
+sending message type 3 to plugin 36
+sending message type 3 to plugin 38
+sending message type 3 to plugin 39
+sending message type 3 to plugin 40
+sending message type 3 to plugin 41
+sending message type 3 to plugin 42
+sending message type 3 to plugin 43
+sending message type 3 to plugin 44
+sending message type 3 to plugin 45
+sending message type 3 to plugin 46
+sending message type 3 to plugin 47
+sending message type 3 to plugin 48
+sending message type 3 to plugin 49
+sending message type 3 to plugin 50
+dispatched message.
+cleared save path
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+WidgetLoader.as: loadWidget(a_widgetID = 0, a_widgetSource = skyui/activeeffects.swf)
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.
+dispatch message (5) to plugin listeners
+sending message type 5 to plugin 6
+sending message type 5 to plugin 40
+sending message type 5 to plugin 44
+dispatched message.

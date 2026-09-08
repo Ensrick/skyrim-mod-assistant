@@ -392,16 +392,16 @@
       "modId": 0,
       "modName": "Better Third Person Selection 1.7.104 Native Overlay - Ensrick",
       "nexusName": "Ensrick source-built current-runtime overlay for Better Third Person Selection 0.8.9",
-      "version": "0.8.9+93e05fb-local",
+      "version": "0.8.9+98d5a5e-selection-fix",
       "fileId": 0,
-      "fileName": "records-work/approved-ui-embers-uscccp-2026-09-07/overlays/Better Third Person Selection 1.7.104 Native Overlay - Ensrick.zip",
-      "sizeMb": 13.22,
-      "sha256": "125D4F0C500FAC488910364A5C0480B7FE5B19EE86FFCB8F57E038D48F6A0278",
+      "fileName": "records-work/btps-crash-20260907/BTPS-selection-hook-repair.zip",
+      "sizeMb": 15.0,
+      "sha256": "FDFD14DF622E9F708133F2D6CEB0F3DA43270179523DCF0595C50C04AC555542",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T16:58:12Z",
-      "transaction": "20260907T165811902Z-1c2c4ab00461",
-      "note": "DLL-only source-built overlay above untouched Better Third Person Selection 0.8.9 (Nexus 64339 / file 635566). It supplies only SKSE/Plugins/BetterThirdPersonSelection.dll (plus symbols, Apache-2.0 license, and build note); vendor assets/configuration remain authoritative. The installed DLL hash matches the build artifact and passes the static Skyrim 1.7.104 Address Library/version-independence gate. No game launch was authorized, so runtime acceptance remains UNVERIFIED.",
+      "installedUtc": "2026-09-07T21:16:44Z",
+      "transaction": "20260907T211644698Z-12e0891e937e",
+      "note": "DLL-only source-built overlay above untouched BTPS 0.8.9 (64339/635566). Repairs the confirmed 2026-09-07 startup Xbyak exception: invalid mov(rcx,eax) replaced with mov(ecx,eax). Production trampoline passes ten native execution cases; all four hook sites verified against actual 1.7.104 executable; compiled callback consumes ECX. Same priority/enabled state. No assets, configuration or records changed. See docs/BTPS-CRASH-REPAIR-2026-09-07.md. No game launch; runtime acceptance remains UNVERIFIED.",
       "distribution": "distributable",
       "distributionBasis": "Apache-2.0 source derivative; retain the included license and publish corresponding modified source before external distribution.",
       "recipe": {
@@ -409,7 +409,7 @@
         "record": "records/source-builds/ensrick-better-third-person-selection-1.7.104.json",
         "repository": "https://gitlab.com/Shrimperator/skyrim-mod-betterthirdpersonselection",
         "upstreamBase": "93e05fb5b1a4caddb24728f3d0aaaacdef7a40f0",
-        "workingTree": "uncommitted compatibility changes recorded in receipt"
+        "workingTree": "repair commit 98d5a5e plus preserved preexisting uncommitted compatibility changes recorded in receipt"
       }
     },
     {
@@ -1723,15 +1723,15 @@
       "nexusName": "Ensrick-owned SkyPatcher full-cloak equipment exclusion overlay",
       "version": "0.1.0",
       "fileId": 0,
-      "fileName": "records-work/cloak-slot-repair-2026-09-07/post-smoothcam-concurrent-refresh-2008/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
+      "fileName": "records-work/cloak-slot-repair-2026-09-07/post-smoothcam-reborn-refresh-2029/package/Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
       "sizeMb": 0.12,
-      "sha256": "af2df01d78b625ce5d28bc5454e57239358a4ab14cce2ced979aa65f55dcb464",
+      "sha256": "478913a67e735966b914731bc0b774cf8fd96b2de8ae3d1d15503391e463b4ed",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T20:14:25Z",
-      "transaction": "20260907T201425485Z-6767f5a5e340",
-      "refreshNote": "Current 376-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
-      "note": "Three concurrent plug-in additions after the SmoothCam/Nyhus refresh changed the exact profile fingerprint. Slot 58 was re-audited after the final weapon winner across 8961 ARMO and 4461 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
+      "installedUtc": "2026-09-07T20:30:10Z",
+      "transaction": "20260907T203010431Z-515ee23b0b98",
+      "refreshNote": "Current 378-plugin profile: 40 SkyPatcher configurations, 569 present mesh winners and 240 unchanged directives. Static freshness PASS; gameplay UNVERIFIED.",
+      "note": "Concurrent additions ending with Skyrim Reborn and its CRF patch changed the exact profile fingerprint after the SmoothCam refresh. Slot 58 was re-audited after the final weapon winner across 8961 ARMO and 4461 ARMA declarations: 240 directives, 576 model paths, 569 present winners, zero parse errors, zero reserved-partition hits and no collision. Runtime UNVERIFIED; no game launch.",
       "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
       "distribution": "distributable",
       "distributionBasis": "Original MIT generator/configuration, exact form references, factual audit manifest and project license only. No vendor ESP, NIF, DDS or DLL. User-local reservation proof must be regenerated for a different profile; other mods remain separately obtained prerequisites. As a first-party artifact with modId0 it is exempt from Nexus Keep, not a new third-party adoption."
@@ -3133,17 +3133,17 @@
       "nexusName": "Ensrick-owned source-built weapon-speed normalizer",
       "version": "0.3.0",
       "fileId": 0,
-      "fileName": "mods/weapon-balance/artifacts/Ensrick-Weapon-Speed-Balance-0.3.0-post-smoothcam-concurrent-final.zip",
+      "fileName": "mods/weapon-balance/artifacts/Ensrick-Weapon-Speed-Balance-0.3.0-post-smoothcam-reborn-final.zip",
       "sizeMb": 0.65,
-      "sha256": "f3ab6396c6e13956bd375cc20b086b8255226d67e5d1072c6ba48ecd617e56cf",
+      "sha256": "7bb1abc046dddf068582a332a385a46ca7e563855174dc50c5dd2587360ef067",
       "plugins": [
         "WeaponBalancePatch.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-09-07T20:07:09Z",
-      "transaction": "20260907T200709608Z-a2ca4678c2c4",
-      "refreshNote": "Post-SmoothCam concurrent-install refresh: 375 inputs, 3504 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
-      "note": "Regenerated deterministically after three concurrent plug-in additions changed the active profile fingerprint. WeaponBalancePatch.esp is the unique final active plug-in and all 4225 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
+      "installedUtc": "2026-09-07T20:28:17Z",
+      "transaction": "20260907T202817409Z-3dda5dff09c6",
+      "refreshNote": "Post-SmoothCam Skyrim Reborn refresh: 377 inputs, 3504 WEAP overrides and 27 localized sidecars. Candidate, final-winner and installed freshness gates PASS.",
+      "note": "Regenerated deterministically after concurrent plug-in additions ending with Skyrim Reborn and its CRF patch changed the active profile fingerprint. WeaponBalancePatch.esp is the unique final active plug-in and all 4225 target/preserve winners pass. Runtime UNVERIFIED; no game launch."
     },
     {
       "modId": 0,
@@ -6322,18 +6322,18 @@
       "nexusName": null,
       "version": null,
       "fileId": null,
-      "fileName": "local rebuild staged at .codex-tmp/quicklootie-1799-f87f9a3 (Ensrick/QuickLootIE f87f9a3; records/source-builds/ensrick-quickloot-ie-1799.json)",
+      "fileName": "local rebuild staged at records-work/quicklootie-254-20260907 (Ensrick/QuickLootIE fix/1.7-gamepad-id e49021c; PR #29; records/source-builds/ensrick-quickloot-ie-1799-1.7.104-gamepadfix.json)",
       "sizeMb": 1.5,
-      "sha256": "7d8eae2ca1aeb280a2176acefd540a493cc7d8b0754f2e11db1abee1d445b4e4",
+      "sha256": "2298567d6705c9e8f3656ba3755eff96879ba17a41da8d8afa276503b5c1bd52",
       "plugins": [
         "QuickLootIE.esp"
       ],
       "enabled": true,
-      "installedUtc": "2026-08-30T17:17:26Z",
-      "transaction": null,
-      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa).",
+      "installedUtc": "2026-09-08T00:56:51Z",
+      "transaction": "20260908T005651616Z-4d9bd19be4bd",
+      "note": "ledger row added 2026-08-30 so LOOT-sort re-enable (old and new code paths) restores its plugin; local rebuild overlay. Was silently disabled by every ledger-driven sort until now. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa). | REBUILT 2026-09-07 (#254): Ensrick/QuickLootIE fix/1.7-gamepad-id commit e49021c (PR #29). QUsingGamepad now maps runtime >=1.7.0.0 to Address Library id 443396 (510926 is absent on 1.7.104 and caused the loot-menu freeze); CommonLib+own fatal paths made non-modal (no MessageBox import). DLL-only replace transaction 20260908T005651616Z-4d9bd19be4bd, priority 104 kept, other 19 payload files byte-identical. Prior DLL 7d8eae2c preserved via git history.",
       "distribution": "distributable",
-      "distributionBasis": "Payload: complete QuickLoot IE package (DLL, 2 SWF, ESP, 4 PEX, 9 translations, QuickLootIE.json, QLIE-LICENSE.md) built from Ensrick/QuickLootIE commit f87f9a3 (branch agent/fix-theft-owner-policy, pushed); installed DLL SHA-256 7D8EAE2CA1AEB280A2176ACEFD540A493CC7D8B0754F2E11DB1ABEE1D445B4E4 matches .codex-tmp/quicklootie-1799-f87f9a3. Basis: MIT License (QLIE-LICENSE.md ships in the package; FORK_NOTES.md: 'The project remains available under the MIT License ... notice ... must accompany redistributed copies'). Correction to #160: MIT, not GPL. Build record: records/source-builds/ensrick-quickloot-ie-1799.json (written 2026-09-02: commit, submodule pin, xmake/MSVC toolchain, all 20 package hashes, provenance of every file); the CI artifact run-30936417704 DLL (9BE1B7BC...) is a different, earlier build. Row sha256 = installed DLL. Name says 1.7.99 while the runtime is 1.7.104; the DLL is version-independent so this is cosmetic. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160]"
+      "distributionBasis": "Payload: complete QuickLoot IE package (DLL, 2 SWF, ESP, 4 PEX, 9 translations, QuickLootIE.json, QLIE-LICENSE.md) built from Ensrick/QuickLootIE commit f87f9a3 (branch agent/fix-theft-owner-policy, pushed); installed DLL SHA-256 7D8EAE2CA1AEB280A2176ACEFD540A493CC7D8B0754F2E11DB1ABEE1D445B4E4 matches .codex-tmp/quicklootie-1799-f87f9a3. Basis: MIT License (QLIE-LICENSE.md ships in the package; FORK_NOTES.md: 'The project remains available under the MIT License ... notice ... must accompany redistributed copies'). Correction to #160: MIT, not GPL. Build record: records/source-builds/ensrick-quickloot-ie-1799.json (written 2026-09-02: commit, submodule pin, xmake/MSVC toolchain, all 20 package hashes, provenance of every file); the CI artifact run-30936417704 DLL (9BE1B7BC...) is a different, earlier build. Row sha256 = installed DLL. Name says 1.7.99 while the runtime is 1.7.104; the DLL is version-independent so this is cosmetic. [classified 2026-09-02, #160] [recipe gaps closed 2026-09-02, #160] [updated 2026-09-07 #254: installed DLL is now 2298567D6705C9E8F3656BA3755EFF96879BA17A41DA8D8AFA276503B5C1BD52 from commit e49021c (branch fix/1.7-gamepad-id); the 7D8EAE... hash named above is the superseded f87f9a3 build. Still MIT; QLIE-LICENSE.md unchanged in the package. Build receipt records/source-builds/ensrick-quickloot-ie-1799-1.7.104-gamepadfix.json.]"
     },
     {
       "modId": 77594,

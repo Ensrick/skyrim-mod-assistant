@@ -1,0 +1,63 @@
+[2026-09-07 20:10:00.082] +3ms POPUP_PATCHED api="MessageBoxW" scope="MenuPilot.dll import table"
+[2026-09-07 20:10:00.083] +4ms POPUP_PATCHED api="MessageBoxA" scope="MenuPilot.dll import table"
+[2026-09-07 20:10:00.083] +4ms PILOT_OPEN plugin="MenuPilot" version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\menupilot.log" pid=55352
+[2026-09-07 20:10:00.083] +4ms PLUGIN_LOAD runtime="1.7.104.0" skse_version=33751056
+[2026-09-07 20:10:00.086] +7ms PILOT_READY detail="inert until a commands.jsonl appears after kInputLoaded"
+[2026-09-07 20:10:22.961] +22882ms STAGE name="kInputLoaded"
+[2026-09-07 20:10:22.964] +22885ms POLL_START file="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\commands.jsonl" interval_ms=250
+[2026-09-07 20:10:35.074] +34995ms STAGE name="kDataLoaded"
+[2026-09-07 20:11:43.368] +103289ms BATCH_CLAIMED n=0 stamp="20260908-011143"
+[2026-09-07 20:11:43.369] +103290ms COMMAND id=1 op="ping" raw="{'op':'ping'}"
+[2026-09-07 20:11:43.375] +103296ms RESULT id=1 op="ping" ok=1 runtime="1.7.104.0" ui=1 paused=0 menus_on_stack=5
+[2026-09-07 20:11:43.375] +103296ms COMMAND id=2 op="menu.list" raw="{'op':'menu.list'}"
+[2026-09-07 20:11:43.383] +103304ms STACK id=2 depth=0 name="SkyParkour"
+[2026-09-07 20:11:43.383] +103304ms STACK id=2 depth=1 name="TrueHUD"
+[2026-09-07 20:11:43.383] +103304ms STACK id=2 depth=2 name="BTPS Ovelay Menu"
+[2026-09-07 20:11:43.383] +103304ms STACK id=2 depth=3 name="BTPS Menu"
+[2026-09-07 20:11:43.383] +103304ms STACK id=2 depth=4 name="HUD Menu"
+[2026-09-07 20:11:43.383] +103304ms MENU id=2 name="Mod Manager Menu" open=0 has_view=0
+[2026-09-07 20:11:43.383] +103304ms MENU id=2 name="ContainerMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="BTPS Ovelay Menu" open=1 has_view=1
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="BTPS Menu" open=1 has_view=1
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Fader Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Crafting Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Marketplace Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="TrueHUD" open=1 has_view=1
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Mist Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="GiftMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Console" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="HUD Menu" open=1 has_view=1
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Loading Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Cursor Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Dialogue Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="MapMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="FavoritesMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="SafeZoneMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Book Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="LoadWaitSpinner" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="BarterMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="CustomMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="LootMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="StatsMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Console Native UI Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Credits Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Journal Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="TweenMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="LevelUp Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Main Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Tutorial Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Sleep/Wait Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="SkyParkour" open=1 has_view=1
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="InventoryMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Login Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Lockpicking Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="RaceSex Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="MessageBoxMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="MagicMenu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Kinect Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="Training Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms MENU id=2 name="TitleSequence Menu" open=0 has_view=0
+[2026-09-07 20:11:43.384] +103305ms RESULT id=2 op="menu.list" ok=1 registered=42 open=5 stack=5
+[2026-09-07 20:11:43.384] +103305ms COMMAND id=3 op="menu.query" raw="{'op':'menu.query','menu':'LootMenu'}"
+[2026-09-07 20:11:43.392] +103313ms RESULT id=3 op="menu.query" ok=1 menu="LootMenu" open=0 has_view=0 swf=""
+[2026-09-07 20:11:43.393] +103314ms BATCH_DONE n=0 commands=3 archived=1

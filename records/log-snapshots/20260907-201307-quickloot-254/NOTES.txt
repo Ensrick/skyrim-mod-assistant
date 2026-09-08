@@ -1,0 +1,28 @@
+QuickLoot IE #254 verification launch snapshot, 2026-09-07 20:13.
+
+BUILD/INSTALL
+- New DLL sha256 2298567d6705c9e8f3656ba3755eff96879ba17a41da8d8afa276503b5c1bd52
+  (Ensrick/QuickLootIE fix/1.7-gamepad-id e49021c, PR #29), installed by
+  MO2Headless --replace transaction 20260908T005651616Z-4d9bd19be4bd, priority 104.
+
+HARNESS LAUNCH (assistant)
+- launch_verify --no-autoload --leave-running: MENU-ONLY, main menu at 43.0s.
+  SKSE loader: 52 plugins checked, 0 refused.
+- QuickLootIE.log: "Starting QuickLootIE 4.0.0.0 on Skyrim 1.7.104.0";
+  "Installed class QuickLoot::LootMenu as LootMenu"; MenuPilot ping runtime=1.7.104.0.
+- The native-currency fresh-character save gate refused the harness autoload, so the
+  harness did NOT load a gameplay save.
+
+IN-GAME PROOF (human at the controls)
+- human_presence.judge() reported human=True after the main menu, so the game
+  (pid 55352) was LEFT RUNNING and never killed by the harness.
+- A human then loaded a save and played. QuickLootIE.log records the EXACT scenario
+  that crashed on the old DLL: "Blocking activation prompt 'Search Smuggler'" ->
+  "Creating new loot menu instance" -> "Loading swf", repeated. This time it
+  succeeds: 8 "Creating new loot menu instance", 8 MENU_OPEN name="LootMenu" /
+  MENU_CLOSE in LaunchProbe.log, and later "Using cached swf".
+- ZERO [critical] and ZERO "Failed to find the id" lines in the whole session.
+- No crash log was produced (newest crash log is 2026-09-07 15:55, predating this run);
+  the game exited cleanly.
+CONCLUSION: the id-510926 freeze does not reproduce on the new build; the loot menu
+opens in gameplay on Skyrim SE 1.7.104. Final acceptance remains the user's to state.

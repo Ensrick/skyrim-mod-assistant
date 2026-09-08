@@ -1,0 +1,462 @@
+[20:10:00.255] [info] [39116] Starting QuickLootIE 4.0.0.0 on Skyrim 1.7.104.0
+[20:10:00.255] [info] [39116] Profiler is disabled
+[20:10:35.555] [info] [58980] --------------------------------[ kDataLoaded start ]--------------------------------
+[20:10:35.566] [info] [58980] Installed class QuickLoot::LootMenu as LootMenu
+[20:10:35.566] [info] [58980] Installed class QuickLoot::Config::Papyrus
+[20:10:35.567] [debug] [58980] Default Trampoline => 21B / 256B (08.20%)
+[20:10:35.567] [debug] [58980] Default Trampoline => 29B / 256B (11.33%)
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Input::InputManager
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Input::InputObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::CameraStateObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::CombatStateObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::ContainerObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::CrosshairRefObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::GrabStateObserver
+[20:10:35.567] [debug] [58980] Default Trampoline => 51B / 256B (19.92%)
+[20:10:35.567] [debug] [58980] Default Trampoline => 59B / 256B (23.05%)
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::LifeStateObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::LockChangedObserver
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::MenuObserver
+[20:10:35.567] [debug] [58980] Default Trampoline => 73B / 256B (28.52%)
+[20:10:35.567] [debug] [58980] Default Trampoline => 87B / 256B (33.98%)
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Observers::SneakStateObserver
+[20:10:35.567] [debug] [58980] Default Trampoline => 101B / 256B (39.45%)
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Behaviors::ActivationPrompt
+[20:10:35.567] [debug] [58980] Default Trampoline => 115B / 256B (44.92%)
+[20:10:35.567] [debug] [58980] Default Trampoline => 129B / 256B (50.39%)
+[20:10:35.567] [info] [58980] Installed class QuickLoot::Behaviors::LockpickActivation
+[20:10:35.567] [info] [58980] Plugin DBM_RelicNotifications.esp not found
+[20:10:35.567] [info] [58980] Plugin Artifact Tracker.esp not found
+[20:10:35.568] [info] [58980] --------------------------------[ kDataLoaded end ]--------------------------------
+[20:10:41.707] [info] [39116] ! OnConfigInit
+[20:10:41.777] [info] [39116] ! ImportSettings
+[20:10:41.793] [info] [39116] ! ResetSettings
+[20:10:54.756] [info] [27052] MCM pointer set successfully
+[20:10:54.756] [trace] [27052] QLIE_ShowInCombat: true
+[20:10:54.756] [trace] [27052] QLIE_ShowWhenEmpty: false
+[20:10:54.756] [trace] [27052] QLIE_ShowWhenSneaking: true
+[20:10:54.756] [trace] [27052] QLIE_ShowWhenUnlocked: true
+[20:10:54.756] [trace] [27052] QLIE_ShowInThirdPerson: true
+[20:10:54.756] [trace] [27052] QLIE_ShowWhenMounted: false
+[20:10:54.756] [trace] [27052] QLIE_EnableForContainers: true
+[20:10:54.756] [trace] [27052] QLIE_EnableForCorpses: true
+[20:10:54.756] [trace] [27052] QLIE_EnableForAnimals: true
+[20:10:54.756] [trace] [27052] QLIE_EnableForDragons: true
+[20:10:54.756] [trace] [27052] QLIE_BreakInvisibility: true
+[20:10:54.756] [trace] [27052] QLIE_PlayScrollSound: true
+[20:10:54.756] [trace] [27052] QLIE_WindowOffsetX: 100
+[20:10:54.756] [trace] [27052] QLIE_WindowOffsetY: -200
+[20:10:54.756] [trace] [27052] QLIE_WindowScale: 1
+[20:10:54.756] [trace] [27052] QLIE_WindowAnchor: 0
+[20:10:54.756] [trace] [27052] QLIE_WindowMinLines: 0
+[20:10:54.756] [trace] [27052] QLIE_WindowMaxLines: 7
+[20:10:54.756] [trace] [27052] QLIE_WindowOpacityNormal: 1
+[20:10:54.756] [trace] [27052] QLIE_WindowOpacityEmpty: 0.3
+[20:10:54.756] [trace] [27052] QLIE_ShowIconItem: true
+[20:10:54.756] [trace] [27052] QLIE_ShowIconBest: false
+[20:10:54.756] [trace] [27052] QLIE_ShowIconRead: true
+[20:10:54.756] [trace] [27052] QLIE_ShowIconStolen: true
+[20:10:54.756] [trace] [27052] QLIE_ShowIconEnchanted: true
+[20:10:54.756] [trace] [27052] QLIE_ShowIconEnchantedKnown: true
+[20:10:54.756] [trace] [27052] QLIE_ShowIconEnchantedSpecial: true
+[20:10:54.756] [trace] [27052] QLIE_InfoColumns: 3 strings
+[20:10:54.756] [trace] [27052] QLIE_SortRulesActive: 22 strings
+[20:10:54.756] [trace] [27052] QLIE_KeybindingUse: 18
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTake: 18
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeAll: 19
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTransfer: 16
+[20:10:54.756] [trace] [27052] QLIE_KeybindingDisable: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingEnable: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingUseModifier: 42
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeAllModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTransferModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingDisableModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingEnableModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingUseGamepad: 279
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeGamepad: 276
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeAllGamepad: 278
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTransferGamepad: 271
+[20:10:54.756] [trace] [27052] QLIE_KeybindingDisableGamepad: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingEnableGamepad: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingUseGamepadModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeGamepadModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTakeAllGamepadModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingTransferGamepadModifier: -1
+[20:10:54.756] [trace] [27052] QLIE_KeybindingDisableGamepadModifier: -1
+[20:10:54.757] [trace] [27052] QLIE_KeybindingEnableGamepadModifier: -1
+[20:10:54.757] [trace] [27052] QLIE_ShowIconArtifactNew: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconArtifactCarried: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconArtifactDisplayed: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconCompletionistNeeded: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconCompletionistCollected: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconCompletionistDisplayable: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconCompletionistDisplayed: true
+[20:10:54.757] [trace] [27052] QLIE_ShowIconCompletionistOccupied: true
+[20:10:54.757] [info] [27052] Updating event mappings
+[20:10:54.757] [info] [27052] Disabling optional control group 140
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Favorites (device 0, key code 16)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Activate (device 0, key code 18)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Ready Weapon (device 0, key code 19)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Zoom In (device 1, key code 8)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Zoom Out (device 1, key code 9)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Activate (device 1, key code 255)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 1)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 2)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Wait (device 2, key code 32)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Activate (device 2, key code 4096)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Ready Weapon (device 2, key code 16384)
+[20:10:54.757] [debug] [27052] Added mapping to the QuickLoot user event group: Jump (device 2, key code 32768)
+[20:11:17.086] [trace] [39116] QLIE_ShowInCombat: true
+[20:11:17.086] [trace] [39116] QLIE_ShowWhenEmpty: false
+[20:11:17.086] [trace] [39116] QLIE_ShowWhenSneaking: true
+[20:11:17.086] [trace] [39116] QLIE_ShowWhenUnlocked: true
+[20:11:17.086] [trace] [39116] QLIE_ShowInThirdPerson: true
+[20:11:17.086] [trace] [39116] QLIE_ShowWhenMounted: false
+[20:11:17.086] [trace] [39116] QLIE_EnableForContainers: true
+[20:11:17.086] [trace] [39116] QLIE_EnableForCorpses: true
+[20:11:17.086] [trace] [39116] QLIE_EnableForAnimals: true
+[20:11:17.086] [trace] [39116] QLIE_EnableForDragons: true
+[20:11:17.086] [trace] [39116] QLIE_BreakInvisibility: true
+[20:11:17.086] [trace] [39116] QLIE_PlayScrollSound: true
+[20:11:17.086] [trace] [39116] QLIE_WindowOffsetX: 100
+[20:11:17.086] [trace] [39116] QLIE_WindowOffsetY: -200
+[20:11:17.086] [trace] [39116] QLIE_WindowScale: 1
+[20:11:17.086] [trace] [39116] QLIE_WindowAnchor: 0
+[20:11:17.086] [trace] [39116] QLIE_WindowMinLines: 0
+[20:11:17.086] [trace] [39116] QLIE_WindowMaxLines: 7
+[20:11:17.086] [trace] [39116] QLIE_WindowOpacityNormal: 1
+[20:11:17.086] [trace] [39116] QLIE_WindowOpacityEmpty: 0.3
+[20:11:17.086] [trace] [39116] QLIE_ShowIconItem: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconBest: false
+[20:11:17.086] [trace] [39116] QLIE_ShowIconRead: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconStolen: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconEnchanted: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconEnchantedKnown: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconEnchantedSpecial: true
+[20:11:17.086] [trace] [39116] QLIE_InfoColumns: 3 strings
+[20:11:17.086] [trace] [39116] QLIE_SortRulesActive: 22 strings
+[20:11:17.086] [trace] [39116] QLIE_KeybindingUse: 18
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTake: 18
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeAll: 19
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTransfer: 16
+[20:11:17.086] [trace] [39116] QLIE_KeybindingDisable: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingEnable: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingUseModifier: 42
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeAllModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTransferModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingDisableModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingEnableModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingUseGamepad: 279
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeGamepad: 276
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeAllGamepad: 278
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTransferGamepad: 271
+[20:11:17.086] [trace] [39116] QLIE_KeybindingDisableGamepad: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingEnableGamepad: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingUseGamepadModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeGamepadModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTakeAllGamepadModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingTransferGamepadModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingDisableGamepadModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_KeybindingEnableGamepadModifier: -1
+[20:11:17.086] [trace] [39116] QLIE_ShowIconArtifactNew: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconArtifactCarried: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconArtifactDisplayed: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconCompletionistNeeded: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconCompletionistCollected: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconCompletionistDisplayable: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconCompletionistDisplayed: true
+[20:11:17.086] [trace] [39116] QLIE_ShowIconCompletionistOccupied: true
+[20:11:17.086] [info] [39116] Updating event mappings
+[20:11:17.086] [info] [39116] Disabling optional control group 140
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 0, key code 16)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 0, key code 18)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Ready Weapon (device 0, key code 19)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Zoom In (device 1, key code 8)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Zoom Out (device 1, key code 9)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 1, key code 255)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 1)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 2)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Wait (device 2, key code 32)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 2, key code 4096)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Ready Weapon (device 2, key code 16384)
+[20:11:17.086] [debug] [39116] Added mapping to the QuickLoot user event group: Jump (device 2, key code 32768)
+[20:11:43.851] [trace] [39116] Blocking activation prompt 'Search Smuggler'
+[20:11:43.853] [debug] [50852] Creating new loot menu instance
+[20:11:43.853] [debug] [50852] Loading swf
+[20:11:43.997] [trace] [39116] Blocking activation prompt 'Search Smuggler'
+[20:11:43.998] [debug] [27052] Creating new loot menu instance
+[20:11:43.998] [debug] [27052] Using cached swf
+[20:11:59.934] [trace] [39116] Blocking activation prompt 'Search Smuggler'
+[20:11:59.935] [debug] [52308] Creating new loot menu instance
+[20:11:59.935] [debug] [52308] Using cached swf
+[20:12:03.800] [trace] [39116] Blocking activation prompt 'Search Smuggler'
+[20:12:03.802] [debug] [50852] Creating new loot menu instance
+[20:12:03.802] [debug] [50852] Using cached swf
+[20:12:03.915] [debug] [52308] LootMenu disabled because the game is paused
+[20:12:03.917] [debug] [52308] LootMenu disabled because the game is paused
+[20:12:07.680] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:07.680] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:07.680] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:07.682] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:09.327] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:09.327] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.335] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.352] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.353] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.353] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.353] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.354] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.354] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.354] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.356] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.356] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.360] [trace] [39116] QLIE_ShowInCombat: true
+[20:12:10.360] [trace] [39116] QLIE_ShowWhenEmpty: false
+[20:12:10.360] [trace] [39116] QLIE_ShowWhenSneaking: true
+[20:12:10.360] [trace] [39116] QLIE_ShowWhenUnlocked: true
+[20:12:10.360] [trace] [39116] QLIE_ShowInThirdPerson: true
+[20:12:10.360] [trace] [39116] QLIE_ShowWhenMounted: false
+[20:12:10.360] [trace] [39116] QLIE_EnableForContainers: true
+[20:12:10.360] [trace] [39116] QLIE_EnableForCorpses: true
+[20:12:10.360] [trace] [39116] QLIE_EnableForAnimals: true
+[20:12:10.360] [trace] [39116] QLIE_EnableForDragons: true
+[20:12:10.360] [trace] [39116] QLIE_BreakInvisibility: true
+[20:12:10.360] [trace] [39116] QLIE_PlayScrollSound: true
+[20:12:10.360] [trace] [39116] QLIE_WindowOffsetX: 100
+[20:12:10.360] [trace] [39116] QLIE_WindowOffsetY: -200
+[20:12:10.360] [trace] [39116] QLIE_WindowScale: 1
+[20:12:10.360] [trace] [39116] QLIE_WindowAnchor: 0
+[20:12:10.360] [trace] [39116] QLIE_WindowMinLines: 0
+[20:12:10.360] [trace] [39116] QLIE_WindowMaxLines: 7
+[20:12:10.360] [trace] [39116] QLIE_WindowOpacityNormal: 1
+[20:12:10.360] [trace] [39116] QLIE_WindowOpacityEmpty: 0.3
+[20:12:10.360] [trace] [39116] QLIE_ShowIconItem: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconBest: false
+[20:12:10.360] [trace] [39116] QLIE_ShowIconRead: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconStolen: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconEnchanted: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconEnchantedKnown: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconEnchantedSpecial: true
+[20:12:10.360] [trace] [39116] QLIE_InfoColumns: 3 strings
+[20:12:10.360] [trace] [39116] QLIE_SortRulesActive: 22 strings
+[20:12:10.360] [trace] [39116] QLIE_KeybindingUse: 18
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTake: 18
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeAll: 19
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTransfer: 16
+[20:12:10.360] [trace] [39116] QLIE_KeybindingDisable: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingEnable: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingUseModifier: 42
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeAllModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTransferModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingDisableModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingEnableModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingUseGamepad: 279
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeGamepad: 276
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeAllGamepad: 278
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTransferGamepad: 271
+[20:12:10.360] [trace] [39116] QLIE_KeybindingDisableGamepad: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingEnableGamepad: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingUseGamepadModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeGamepadModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTakeAllGamepadModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingTransferGamepadModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingDisableGamepadModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_KeybindingEnableGamepadModifier: -1
+[20:12:10.360] [trace] [39116] QLIE_ShowIconArtifactNew: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconArtifactCarried: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconArtifactDisplayed: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconCompletionistNeeded: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconCompletionistCollected: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconCompletionistDisplayable: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconCompletionistDisplayed: true
+[20:12:10.360] [trace] [39116] QLIE_ShowIconCompletionistOccupied: true
+[20:12:10.360] [info] [39116] Updating event mappings
+[20:12:10.360] [info] [39116] Disabling optional control group 140
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 0, key code 16)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 0, key code 18)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Ready Weapon (device 0, key code 19)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Zoom In (device 1, key code 8)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Zoom Out (device 1, key code 9)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 1, key code 255)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 1)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 2)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Wait (device 2, key code 32)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 2, key code 4096)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Ready Weapon (device 2, key code 16384)
+[20:12:10.360] [debug] [39116] Added mapping to the QuickLoot user event group: Jump (device 2, key code 32768)
+[20:12:10.360] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.361] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.361] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.361] [debug] [39116] LootMenu disabled because the game is paused
+[20:12:10.385] [debug] [56696] LootMenu disabled because the game is paused
+[20:12:10.385] [debug] [56696] LootMenu disabled because the game is paused
+[20:12:10.385] [debug] [56696] LootMenu disabled because the game is paused
+[20:12:10.385] [debug] [56696] LootMenu disabled because the game is paused
+[20:12:10.598] [debug] [39116] LootMenu disabled because player is commanding a follower
+[20:12:10.676] [debug] [39116] LootMenu disabled because player is commanding a follower
+[20:12:14.850] [debug] [39116] LootMenu disabled because player is commanding a follower
+[20:12:14.850] [debug] [39116] LootMenu disabled because player is commanding a follower
+[20:12:14.850] [debug] [39116] LootMenu disabled because player is commanding a follower
+[20:12:14.874] [debug] [56696] LootMenu disabled because player is commanding a follower
+[20:12:15.127] [info] [56092] MCM pointer set successfully
+[20:12:15.127] [trace] [56092] QLIE_ShowInCombat: true
+[20:12:15.127] [trace] [56092] QLIE_ShowWhenEmpty: false
+[20:12:15.127] [trace] [56092] QLIE_ShowWhenSneaking: true
+[20:12:15.127] [trace] [56092] QLIE_ShowWhenUnlocked: true
+[20:12:15.127] [trace] [56092] QLIE_ShowInThirdPerson: true
+[20:12:15.127] [trace] [56092] QLIE_ShowWhenMounted: false
+[20:12:15.127] [trace] [56092] QLIE_EnableForContainers: true
+[20:12:15.127] [trace] [56092] QLIE_EnableForCorpses: true
+[20:12:15.127] [trace] [56092] QLIE_EnableForAnimals: true
+[20:12:15.127] [trace] [56092] QLIE_EnableForDragons: true
+[20:12:15.127] [trace] [56092] QLIE_BreakInvisibility: true
+[20:12:15.127] [trace] [56092] QLIE_PlayScrollSound: true
+[20:12:15.127] [trace] [56092] QLIE_WindowOffsetX: 100
+[20:12:15.127] [trace] [56092] QLIE_WindowOffsetY: -200
+[20:12:15.127] [trace] [56092] QLIE_WindowScale: 1
+[20:12:15.127] [trace] [56092] QLIE_WindowAnchor: 0
+[20:12:15.127] [trace] [56092] QLIE_WindowMinLines: 0
+[20:12:15.127] [trace] [56092] QLIE_WindowMaxLines: 7
+[20:12:15.127] [trace] [56092] QLIE_WindowOpacityNormal: 1
+[20:12:15.127] [trace] [56092] QLIE_WindowOpacityEmpty: 0.3
+[20:12:15.127] [trace] [56092] QLIE_ShowIconItem: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconBest: false
+[20:12:15.127] [trace] [56092] QLIE_ShowIconRead: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconStolen: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconEnchanted: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconEnchantedKnown: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconEnchantedSpecial: true
+[20:12:15.127] [trace] [56092] QLIE_InfoColumns: 3 strings
+[20:12:15.127] [trace] [56092] QLIE_SortRulesActive: 22 strings
+[20:12:15.127] [trace] [56092] QLIE_KeybindingUse: 18
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTake: 18
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeAll: 19
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTransfer: 16
+[20:12:15.127] [trace] [56092] QLIE_KeybindingDisable: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingEnable: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingUseModifier: 42
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeAllModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTransferModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingDisableModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingEnableModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingUseGamepad: 279
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeGamepad: 276
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeAllGamepad: 278
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTransferGamepad: 271
+[20:12:15.127] [trace] [56092] QLIE_KeybindingDisableGamepad: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingEnableGamepad: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingUseGamepadModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeGamepadModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTakeAllGamepadModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingTransferGamepadModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingDisableGamepadModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_KeybindingEnableGamepadModifier: -1
+[20:12:15.127] [trace] [56092] QLIE_ShowIconArtifactNew: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconArtifactCarried: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconArtifactDisplayed: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconCompletionistNeeded: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconCompletionistCollected: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconCompletionistDisplayable: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconCompletionistDisplayed: true
+[20:12:15.127] [trace] [56092] QLIE_ShowIconCompletionistOccupied: true
+[20:12:15.127] [info] [56092] Updating event mappings
+[20:12:15.127] [info] [56092] Disabling optional control group 140
+[20:12:15.127] [debug] [56092] Added mapping to the QuickLoot user event group: Favorites (device 0, key code 16)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Activate (device 0, key code 18)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Ready Weapon (device 0, key code 19)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Zoom In (device 1, key code 8)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Zoom Out (device 1, key code 9)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Activate (device 1, key code 255)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 1)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 2)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Wait (device 2, key code 32)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Activate (device 2, key code 4096)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Ready Weapon (device 2, key code 16384)
+[20:12:15.128] [debug] [56092] Added mapping to the QuickLoot user event group: Jump (device 2, key code 32768)
+[20:12:25.276] [debug] [27052] Creating new loot menu instance
+[20:12:25.276] [debug] [27052] Using cached swf
+[20:12:26.482] [debug] [27052] Creating new loot menu instance
+[20:12:26.482] [debug] [27052] Using cached swf
+[20:12:28.756] [debug] [19900] Creating new loot menu instance
+[20:12:28.756] [debug] [19900] Using cached swf
+[20:12:44.379] [trace] [39116] QLIE_ShowInCombat: true
+[20:12:44.379] [trace] [39116] QLIE_ShowWhenEmpty: false
+[20:12:44.379] [trace] [39116] QLIE_ShowWhenSneaking: true
+[20:12:44.379] [trace] [39116] QLIE_ShowWhenUnlocked: true
+[20:12:44.379] [trace] [39116] QLIE_ShowInThirdPerson: true
+[20:12:44.379] [trace] [39116] QLIE_ShowWhenMounted: false
+[20:12:44.379] [trace] [39116] QLIE_EnableForContainers: true
+[20:12:44.379] [trace] [39116] QLIE_EnableForCorpses: true
+[20:12:44.379] [trace] [39116] QLIE_EnableForAnimals: true
+[20:12:44.379] [trace] [39116] QLIE_EnableForDragons: true
+[20:12:44.379] [trace] [39116] QLIE_BreakInvisibility: true
+[20:12:44.379] [trace] [39116] QLIE_PlayScrollSound: true
+[20:12:44.379] [trace] [39116] QLIE_WindowOffsetX: 100
+[20:12:44.379] [trace] [39116] QLIE_WindowOffsetY: -200
+[20:12:44.379] [trace] [39116] QLIE_WindowScale: 1
+[20:12:44.379] [trace] [39116] QLIE_WindowAnchor: 0
+[20:12:44.379] [trace] [39116] QLIE_WindowMinLines: 0
+[20:12:44.379] [trace] [39116] QLIE_WindowMaxLines: 7
+[20:12:44.379] [trace] [39116] QLIE_WindowOpacityNormal: 1
+[20:12:44.379] [trace] [39116] QLIE_WindowOpacityEmpty: 0.3
+[20:12:44.379] [trace] [39116] QLIE_ShowIconItem: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconBest: false
+[20:12:44.379] [trace] [39116] QLIE_ShowIconRead: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconStolen: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconEnchanted: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconEnchantedKnown: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconEnchantedSpecial: true
+[20:12:44.379] [trace] [39116] QLIE_InfoColumns: 3 strings
+[20:12:44.379] [trace] [39116] QLIE_SortRulesActive: 22 strings
+[20:12:44.379] [trace] [39116] QLIE_KeybindingUse: 18
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTake: 18
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeAll: 19
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTransfer: 16
+[20:12:44.379] [trace] [39116] QLIE_KeybindingDisable: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingEnable: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingUseModifier: 42
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeAllModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTransferModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingDisableModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingEnableModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingUseGamepad: 279
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeGamepad: 276
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeAllGamepad: 278
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTransferGamepad: 271
+[20:12:44.379] [trace] [39116] QLIE_KeybindingDisableGamepad: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingEnableGamepad: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingUseGamepadModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeGamepadModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTakeAllGamepadModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingTransferGamepadModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingDisableGamepadModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_KeybindingEnableGamepadModifier: -1
+[20:12:44.379] [trace] [39116] QLIE_ShowIconArtifactNew: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconArtifactCarried: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconArtifactDisplayed: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconCompletionistNeeded: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconCompletionistCollected: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconCompletionistDisplayable: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconCompletionistDisplayed: true
+[20:12:44.379] [trace] [39116] QLIE_ShowIconCompletionistOccupied: true
+[20:12:44.379] [info] [39116] Updating event mappings
+[20:12:44.379] [info] [39116] Disabling optional control group 140
+[20:12:44.379] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 0, key code 16)
+[20:12:44.379] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 0, key code 18)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Ready Weapon (device 0, key code 19)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Zoom In (device 1, key code 8)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Zoom Out (device 1, key code 9)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 1, key code 255)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 1)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Favorites (device 2, key code 2)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Wait (device 2, key code 32)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Activate (device 2, key code 4096)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Ready Weapon (device 2, key code 16384)
+[20:12:44.380] [debug] [39116] Added mapping to the QuickLoot user event group: Jump (device 2, key code 32768)
+[20:12:45.067] [debug] [50852] Creating new loot menu instance
+[20:12:45.067] [debug] [50852] Using cached swf

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "component": "QuickLoot IE (Ensrick rebuild for Skyrim SE 1.7.104, gamepad Address Library id fix)",
+  "mo2Mod": "QuickLoot IE - Ensrick 1.7.99",
+  "supersedes": "records/source-builds/ensrick-quickloot-ie-1799.json",
+  "purpose": "Rebuild of the Ensrick QuickLoot IE fork that no longer freezes on Skyrim SE 1.7.104. QUsingGamepad selected Address Library id 510926 for every runtime >= 1.6.1179, but 510926 (and 68622) are absent from the 1.7.104 version database; only 443396 maps BSInputDeviceManager::IsGamepadEnabled (base game function 67320, RVA 0xCF97B0). The failed lookup when the loot menu first built its button bar drove CommonLib report_and_fail into a MessageBoxW hidden behind the borderless window, then TerminateProcess - the apparent freeze. skyrim-mod-assistant #254.",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/254",
+  "license": "MIT. QLIE-LICENSE.md ships inside the package; FORK_NOTES.md preserves the MIT notice for redistributed copies. (#160 corrected an earlier GPL claim to MIT.)",
+  "distribution": {
+    "class": "distributable",
+    "basis": "MIT; QLIE-LICENSE.md must accompany redistributed copies",
+    "vendorFilesModified": false
+  },
+  "source": {
+    "repository": "https://github.com/Ensrick/QuickLootIE",
+    "branch": "fix/1.7-gamepad-id",
+    "commit": "e49021c",
+    "commitFull": "e49021c (Fix 1.7.104 gamepad Address Library ID and remove modal fatal paths (#254))",
+    "baseCommit": "f87f9a3f355dfa6569ab797ae496776b7650ae85",
+    "baseBranch": "agent/fix-theft-owner-policy",
+    "pullRequest": "https://github.com/Ensrick/QuickLootIE/pull/29",
+    "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/QuickLootIE-tests",
+    "changedFiles": [
+      "src/Input/InputManager.cpp: QUsingGamepad adds a runtime >= 1.7.0.0 -> 443396 branch ahead of the 1.6.1179 check; 1.6.1179 (GOG) -> 510926, 1.6.1130 -> 443396, older AE -> 68622 unchanged",
+      "src/SanityChecks.cpp: ShowFatalError logs spdlog::critical instead of WIN32::MessageBoxA; the checks already return false, which disables the plugin",
+      "xmake.lua: add_defines(\"COMMONLIBSSE_NO_MODAL_ERRORS\") on the QuickLootIE target",
+      ".gitmodules: extern/CommonLibSSE-NG repointed to https://github.com/Ensrick/CommonLibSSE-NG.git branch ensrick/no-modal-fail-v6.7.1"
+    ],
+    "workingTreeAtBuild": "xmake-requires.lock modified and uncommitted (same as the f87f9a3 build): the xmake package repository is the gitlab.com/tboox/xmake-repo mirror (297a306f), cmake 4.3.4. Deliberately NOT committed to the fork branch so the PR does not impose that mirror on other builders.",
+    "submodules": {
+      "extern/CommonLibSSE-NG": {
+        "commit": "68b6ba48d163093527dc4421861a9333d65ae0ce",
+        "branch": "ensrick/no-modal-fail-v6.7.1",
+        "remote": "https://github.com/Ensrick/CommonLibSSE-NG.git",
+        "baseVersion": "6.7.1 (70c1acd5261210982bd52f6d4468a082fe04d798)",
+        "delta": "6.7.1 + two commits: (e94bc5272) opt-in COMMONLIBSSE_NO_MODAL_ERRORS guard in SKSE/Impl/PCH.h report_and_error (log + flush + TerminateProcess, no MessageBoxW) plus a RUNTIME_SSE_1_7_104 constant; (68b6ba48d) define COMMONLIBSSE_NO_MODAL_ERRORS (public) on the commonlibsse-ng xmake target so the library's own inline COMDAT copies match the consumer's. Tree at 70c1acd is byte-identical to the alandtse CommonLibVR 6.7.1 pin the f87f9a3 build used.",
+        "note": "Pushed to the Ensrick fork; the base pin is unchanged from the prior build, so the only functional delta is the modal-free fatal path."
+      }
+    }
+  },
+  "build": {
+    "system": "xmake v3.0.9+HEAD.2b184e178 (C:/Users/danjo/source/repos/skyrim-tools-source/.tools/xmake-3.0.9/xmake/xmake.exe), XMAKE_ROOT=y",
+    "globalPackageDir": "C:/Users/danjo/AppData/Local/.xmake (default); all packages resolved from cache, no network",
+    "compiler": "MSVC 14.44.35207 cl.exe HostX64/x64 (Visual Studio 2022 BuildTools), detected by xmake config",
+    "config": "plat=windows arch=x64 mode=release kind=static ccache=true skse_xbyak=true skyrim_se=true skyrim_ae=true skyrim_vr=true (from xmake.lua set_config)",
+    "languageAndWarnings": "cxx23; warnings allextra treated as errors; optimize fastest; symbols debug",
+    "exactCommandLine": [
+      "xmake f -p windows -a x64 -m release -c -y",
+      "xmake -y"
+    ],
+    "exactCommandLineRecorded": true,
+    "buildSpentSeconds": 210.14,
+    "builtUtc": "2026-09-08T00:52:33Z",
+    "peStampUtc": "2026-09-08T00:52:32Z",
+    "buildDir": "build/windows/x64/release: QuickLootIE.dll, QuickLootIE.pdb, QuickLootIE.lib, commonlibsse-ng.lib",
+    "packages": ["fmt", "magic_enum", "nlohmann_json", "xbyak v7.06", "spdlog v1.16.0 (via CommonLib)", "directxtk 24.2.0", "directxmath 2024.02"]
+  },
+  "tests": {
+    "project": "tests/ (QuickLootIEPolicyTests, catch2 v3.15.2)",
+    "command": "xmake f -F xmake.lua -P . -y -m release -p windows -a x64 && xmake -F xmake.lua -P . -y && xmake run -F xmake.lua -P . QuickLootIEPolicyTests --reporter console --colour-mode none  (run from the tests/ directory)",
+    "result": "PASS: All tests passed (18 assertions in 3 test cases)"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/QuickLootIE.dll",
+    "sha256": "2298567D6705C9E8F3656BA3755EFF96879BA17A41DA8D8AFA276503B5C1BD52",
+    "bytes": 1256960,
+    "pluginVersion": "4.0.0.0",
+    "matchesBuildDir": true,
+    "matchesInstalled": true,
+    "supersededDllSha256": "7D8EAE2CA1AEB280A2176ACEFD540A493CC7D8B0754F2E11DB1ABEE1D445B4E4"
+  },
+  "modalAudit": {
+    "tool": "dumpbin /imports (MSVC 14.44)",
+    "result": "PASS: no MessageBoxA, MessageBoxW or FatalAppExit import; user32.dll is not imported at all",
+    "importedModules": ["KERNEL32.dll", "MSVCP140.dll", "SHELL32.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll", "VERSION.dll", "ole32.dll", "api-ms-win-crt-*.dll"]
+  },
+  "staticGate": {
+    "tool": "audit/skse_version_data.py",
+    "result": "PASS (version independent): versionIndependence=1 (Address Library), pluginVersion 4.0.0.0, name QuickLootIE. Same independence class as the superseded build."
+  },
+  "featureDefaultsDiff": "none: this build changes only DLL code (the gamepad id table and the two fatal paths). Interface/*.swf, QuickLootIE.esp, Scripts/*.pex, Interface/translations/*.txt and SKSE/Plugins/QuickLootIE.json (the MCM feature defaults) are byte-identical to the superseded f87f9a3 package, so no shipped feature default changed.",
+  "package": {
+    "stagingPath": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/quicklootie-254-20260907/pkg",
+    "archive": "records-work/quicklootie-254-20260907/QuickLootIE-Ensrick-1.7.104-gamepadfix.zip",
+    "archiveSha256": "714A10B853FD775684B2D58B8E9404DD934DB6C268D3067FBBE202E6F66E2429",
+    "fileCount": 19,
+    "onlyDllDiffersFromPriorInstall": true,
+    "provenance": "The 19 payload files other than SKSE/Plugins/QuickLootIE.dll were copied byte-for-byte from the previously installed 'QuickLoot IE - Ensrick 1.7.99' mod folder (themselves from the f87f9a3 package); only the DLL was swapped for this build."
+  },
+  "installation": {
+    "installedUtc": "2026-09-08T00:56:51Z",
+    "installedBy": "MO2Headless mod-install --replace --enable",
+    "transaction": "20260908T005651616Z-4d9bd19be4bd",
+    "profile": "Default",
+    "priorityAtInstall": 104,
+    "enabled": true,
+    "plugin": "QuickLootIE.esp",
+    "claim": "fable/quickloot-254",
+    "note": "DLL-only replacement: priority 104 and enabled state preserved by --replace; installed DLL sha256 verified equal to the build artifact; the other 19 files re-extracted identical."
+  },
+  "validation": {
+    "loaderGate": "PASS: launch_verify --no-autoload --leave-running reached the main menu at 43.0s; SKSE loader 52 plugins, 0 refused; QuickLootIE.log 'Starting QuickLootIE 4.0.0.0 on Skyrim 1.7.104.0' and 'Installed class QuickLoot::LootMenu as LootMenu'; MenuPilot ping runtime=1.7.104.0; 0 [critical].",
+    "gameplayLootMenu": "PROVEN by the user's live play session (human at the controls; the harness never autoloaded, blocked by the native-currency fresh-character save gate). QuickLootIE.log records the exact prior-crash sequence: 'Blocking activation prompt \\'Search Smuggler\\'' -> 'Creating new loot menu instance' -> 'Loading swf', 8 times, with 8 MENU_OPEN name=\"LootMenu\" in LaunchProbe.log and 0 [critical] / 0 'Failed to find the id' across the whole session. No crash log produced; clean exit. Logs archived at records/log-snapshots/20260907-201307-quickloot-254/.",
+    "gameplayAcceptance": "The id-510926 freeze does not reproduce on 1.7.104; final acceptance is the user's to state per docs/CURATION_POLICY.md.",
+    "runtimeAcceptancePolicy": "compile success and static gates are not proof; the receipt relies on the archived in-game logs above."
+  },
+  "gaps": [
+    "exact xmake-requires.lock mirror change left uncommitted on the fork branch by design",
+    "Spriggit (ESP) and Papyrus (PEX) were not rebuilt this pass - those files are byte-identical to the f87f9a3 package and unaffected by the code change"
+  ]
+}
