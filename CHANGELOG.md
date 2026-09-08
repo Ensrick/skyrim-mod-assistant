@@ -18,6 +18,12 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-08 13:47 — Daedric Armor Redone installed (Replacer)
+
+- **What:** Installed Daedric Armor Redone (190071, v1, NickTiev) - a from-scratch rebuild of the Daedric set following Ray Lederer's original concept art. Took the **Replacer** main, not the Standalone.
+- **Source:** User: *"I want this, can we add it?"* Replacer over Standalone is the mechanical reading of a "redone" set: Standalone would leave the vanilla meshes in place and need separate distribution. The 512/1k/4k optional texture downloads were unnecessary - the main already ships 2K with a 4K cuirass.
+- **Verification:** **UNVERIFIED in game.** 32 DDS measured after install: 21 at 2048x2048, 11 at 4096x4096, none over the ceiling; 31 NIF. Plugin is 18 records (12 ARMO, 6 ARMA) with `Skyrim.esm` as its only master. Asset-conflict scan across every enabled mod: 63 paths, **zero overlaps**, priority 343. Resolver-order gate clean, `install_mod.py --verify` `0 problem(s)`. **Body note:** the author states no HDT or alternate-body support, so on this CBBE/HIMBO build the armour keeps its own vanilla-derived shape and has no BodySlide refit - normal for an armour replacer. Weapons and shield are not in this release; the author says they are planned.
+
 ## 2026-09-08 10:26 — Voiced Narrative - The Cause installed
 
 - **What:** Installed Voiced Narrative - The Cause (191177, v1.0). ~200 ElevenLabs-generated dialogue lines for the Creation Club quest, which ships with almost none: Mythic Dawn cultist greetings and combat lines, a villain speech for Vonos, Vigilant commentary, and follower commentary on Red Scar Cavern, Rielle and the Deadlands.

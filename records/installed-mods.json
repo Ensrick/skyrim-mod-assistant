@@ -1160,6 +1160,24 @@
       "fomodPlan": "records\\fomod-plans\\276-cutting-room-floor.json"
     },
     {
+      "modId": 190071,
+      "modName": "Daedric Armor Redone",
+      "nexusName": "Daedric Armor Redone - Replacer",
+      "version": "1",
+      "fileId": 797252,
+      "fileName": "Daedric Armor Redone - Replacer 190071 1 2026-08-29T22-31Z IoFlhfOzS.7z",
+      "sizeMb": 87.91,
+      "sha256": "5b9a29e4467692a695345f166838632c8e6bf5aa2420227ddb7cc6876c87bd5c",
+      "plugins": [
+        "DaedricArmorRedone.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-08T18:47:34Z",
+      "transaction": "20260908T184730161Z-990ad138d3a5",
+      "note": "User: \"I want this, can we add it?\" v1 (2026-08-29, NickTiev), 180 endorsements - a from-scratch rebuild of the Daedric set following Ray Lederer's original concept art. VARIANT CHOSEN: the REPLACER main (file 797252), not the Standalone (797256) - a 'redone' set is meant to become the vanilla armour, and Standalone would leave the vanilla meshes in place and require separate distribution. Base textures are 2K with a 4K cuirass per the file description; measured after install, 32 DDS - 21 at 2048x2048 and 11 at 4096x4096, nothing over the 4096 ceiling - so the separate 512/1k/4k optional downloads were not needed. Plugin DaedricArmorRedone.esp: 18 records, 12 ARMO and 6 ARMA, master Skyrim.esm only. Asset-conflict scan across every enabled mod: 63 paths, ZERO overlaps, priority 343. BODY NOTE, not a defect: the author states no HDT or alternate-body support and asks others to make patches. This build runs CBBE and HIMBO, so the armour keeps its own vanilla-derived shape rather than matching those bodies - normal for an armour replacer, since the armour mesh replaces the body while worn, but it means no BodySlide refit exists for it. Weapons and shield are not included; the author says they are planned. NOT verified in game.",
+      "distribution": "vendor"
+    },
+    {
       "modId": 78772,
       "modName": "Daedric Shrines - All in One",
       "nexusName": "Daedric Shrines - All in One  - 2K",
