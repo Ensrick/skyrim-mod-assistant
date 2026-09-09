@@ -15,6 +15,7 @@ outside this repo.
 | Author | Since | Stated as |
 |---|---|---|
 | Elianora | 2026-09-06 | "I don't trust or use anything from Elianora" |
+| Brenandvalidor | 2026-09-08 | "The author has no idea what they're doing... I already excluded the author" |
 
 ## What an exclusion means in practice
 
@@ -39,6 +40,8 @@ outside this repo.
 against the Nexus API `author` and `uploaded_by` fields on 2026-09-06:
 **230 rows looked up, 0 lookups failed, 0 matches** after the removal below.
 Re-run that check after any bulk install.
+
+Brenandvalidor was excluded 2026-09-08 after the user inspected MMAT - More Merchants And Traders (190647) and found the plugin declares **every AE plugin as a master**, plus masters for mods it does not use - the signature of experimenting in the Creation Kit and uploading the result. Nothing by that author is or was installed. The mod's *idea* is wanted and is tracked separately as an open slot; the exclusion is about this author's work, not about merchants.
 
 ## Removals made under this list
 
