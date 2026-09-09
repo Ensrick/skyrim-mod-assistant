@@ -1,5 +1,10 @@
 # Crash256 recovery: current-profile verification refresh
 
+**Later follow-up:** [BTPS control-map repair](BTPS_CONTROLMAP_REPAIR_2026-09-09.md)
+now documents a concrete native fix and targeted save/cold-reload verification.
+The maintenance results below remain valid; their original-crash pending status
+is superseded by that report, not by these freshness checks alone.
+
 This is prerequisite maintenance, not a claim that the original input crash
 has been fixed. No new third-party mods or balance choices were introduced.
 

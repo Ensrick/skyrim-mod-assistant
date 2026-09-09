@@ -410,24 +410,24 @@
       "modId": 0,
       "modName": "Better Third Person Selection 1.7.104 Native Overlay - Ensrick",
       "nexusName": "Ensrick source-built current-runtime overlay for Better Third Person Selection 0.8.9",
-      "version": "0.8.9+98d5a5e-selection-fix",
+      "version": "0.8.9+c159d8e-controlmap-fix",
       "fileId": 0,
-      "fileName": "records-work/btps-crash-20260907/BTPS-selection-hook-repair.zip",
-      "sizeMb": 15.0,
-      "sha256": "FDFD14DF622E9F708133F2D6CEB0F3DA43270179523DCF0595C50C04AC555542",
+      "fileName": "records-work/btps-controlmap-20260909/BTPS-controlmap-repair.zip",
+      "sizeMb": 15.17,
+      "sha256": "47D6D795D69A060C359F04F598EE77589183EB7B5B35B38C8C07D91698838CC1",
       "plugins": [],
       "enabled": true,
-      "installedUtc": "2026-09-07T21:16:44Z",
-      "transaction": "20260907T211644698Z-12e0891e937e",
-      "note": "DLL-only source-built overlay above untouched BTPS 0.8.9 (64339/635566). Repairs the confirmed 2026-09-07 startup Xbyak exception: invalid mov(rcx,eax) replaced with mov(ecx,eax). Production trampoline passes ten native execution cases; all four hook sites verified against actual 1.7.104 executable; compiled callback consumes ECX. Same priority/enabled state. No assets, configuration or records changed. See docs/BTPS-CRASH-REPAIR-2026-09-07.md. No game launch; runtime acceptance remains UNVERIFIED.",
+      "installedUtc": "2026-09-09T17:23:55Z",
+      "transaction": "20260909T172355268Z-f6b13f6d00b4",
+      "note": "Separate source-built overlay above untouched BTPS 0.8.9 (64339/635566). Retains selection trampoline repair; fixes patch-only version comparison that wrote wheel-control flags to ControlMap context count+0x118 on 1.7.104 instead of flags+0x120. 32768 native memory-isolation cases pass; live held/released modifier reads preserve count1 and correctly toggle only flags; save and cold reload pass. Same priority326/enabled state. No vendor assets, configuration or plugin records changed. See docs/BTPS_CONTROLMAP_REPAIR_2026-09-09.md. Targeted runtime repair verified; broad gameplay and old-campaign migration are not certified.",
       "distribution": "distributable",
       "distributionBasis": "Apache-2.0 source derivative; retain the included license and publish corresponding modified source before external distribution.",
       "recipe": {
         "kind": "local-build",
-        "record": "records/source-builds/ensrick-better-third-person-selection-1.7.104.json",
+        "record": "records/source-builds/ensrick-btps-controlmap-1.7.104.json",
         "repository": "https://gitlab.com/Shrimperator/skyrim-mod-betterthirdpersonselection",
         "upstreamBase": "93e05fb5b1a4caddb24728f3d0aaaacdef7a40f0",
-        "workingTree": "repair commit 98d5a5e plus preserved preexisting uncommitted compatibility changes recorded in receipt"
+        "workingTree": "repair commit c159d8e (includes earlier 98d5a5e) plus preserved preexisting uncommitted compatibility changes recorded in receipt"
       }
     },
     {

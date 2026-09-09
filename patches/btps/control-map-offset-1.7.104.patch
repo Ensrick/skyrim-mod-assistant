@@ -1,0 +1,126 @@
+diff --git a/src/lib/ControlMapLayout.h b/src/lib/ControlMapLayout.h
+new file mode 100644
+index 0000000..3ee1ff6
+--- /dev/null
++++ b/src/lib/ControlMapLayout.h
+@@ -0,0 +1,22 @@
++#pragma once
++#include <array>
++#include <cstddef>
++#include <cstdint>
++
++namespace BTPS::ControlMapLayout {
++using Version = std::array<std::uint16_t, 4>;
++
++constexpr std::ptrdiff_t EnabledOffset(bool ae, Version version) noexcept
++{
++    // The full version matters: 1.7.104 is newer than 1.6.1130 despite 104<1130.
++    // On post-1130 AE, 0x118 is contextPriorityStack.size(), NOT control flags.
++    return ae && version >= Version{1, 6, 1130, 0} ? 0x120 : 0x118;
++}
++
++inline std::uint32_t* EnabledPointer(void* controlMap, bool ae, Version version) noexcept
++{
++    if (!controlMap) return nullptr;
++    return reinterpret_cast<std::uint32_t*>(
++        static_cast<std::byte*>(controlMap) + EnabledOffset(ae, version));
++}
++}
+diff --git a/src/lib/Util.cpp b/src/lib/Util.cpp
+index 4ef28bc..1c162c0 100644
+--- a/src/lib/Util.cpp
++++ b/src/lib/Util.cpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ #include "Util.h"
++#include "ControlMapLayout.h"
+ #include "Settings.h"
+ #include "UI/DebugAPI.h"
+ #include "bhkRigidBodyT.h"
+@@ -1183,10 +1184,10 @@ bool Util::IsPlayerInFirstPerson()
+ 
+ uint32_t * Util::GetControlsEnabledPtr()
+ {
+-	auto post1130 = REL::Module::get().IsAE() && (REL::Module::get().version().patch() > 0x400);
+-	auto enConAddr = (std::uintptr_t)RE::ControlMap::GetSingleton() + std::ptrdiff_t(post1130 ? 0x120 : 0x118);
+-
+-	return REL::Relocation<std::uint32_t(*)>(enConAddr).get();
++	const auto version = REL::Module::get().version();
++	return BTPS::ControlMapLayout::EnabledPointer(
++		RE::ControlMap::GetSingleton(), REL::Module::get().IsAE(),
++		{version.major(), version.minor(), version.patch(), version.build()});
+ }
+ 
+ void Util::DisableControlFlag(RE::ControlMap::UEFlag flag)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+new file mode 100644
+index 0000000..8a19789
+--- /dev/null
++++ b/tests/CMakeLists.txt
+@@ -0,0 +1,7 @@
++cmake_minimum_required(VERSION 3.21)
++project(BTPSControlMapRegression LANGUAGES CXX)
++enable_testing()
++add_executable(btps_control_map_layout control_map_layout.cpp)
++target_include_directories(btps_control_map_layout PRIVATE ../src)
++target_compile_features(btps_control_map_layout PRIVATE cxx_std_20)
++add_test(NAME control_map_layout COMMAND btps_control_map_layout)
+diff --git a/tests/control_map_layout.cpp b/tests/control_map_layout.cpp
+new file mode 100644
+index 0000000..04b3fdd
+--- /dev/null
++++ b/tests/control_map_layout.cpp
+@@ -0,0 +1,53 @@
++#include "lib/ControlMapLayout.h"
++#include <cstdio>
++#include <stdexcept>
++
++using BTPS::ControlMapLayout::EnabledOffset;
++using BTPS::ControlMapLayout::EnabledPointer;
++using BTPS::ControlMapLayout::Version;
++constexpr std::uint32_t wheel = 1u << 9;
++
++static void require(bool value, const char* why) { if (!value) throw std::runtime_error(why); }
++
++int main()
++{
++    try {
++        std::array<std::uint32_t, 0x130 / 4> old{};
++        old[0x118 / 4] = 3;
++        const auto oldOffset = (104 > 0x400) ? 0x120 : 0x118;
++        old[oldOffset / 4] |= wheel;
++        require(old[0x118 / 4] == 515, "original 1.7.104 stack-count corruption not reproduced");
++
++        require(EnabledOffset(true, {1,6,1025,0}) == 0x118, "pre-1130 boundary");
++        require(EnabledOffset(true, {1,6,1129,65535}) == 0x118, "last old layout");
++        require(EnabledOffset(true, {1,6,1130,0}) == 0x120, "first new layout");
++        require(EnabledOffset(true, {1,7,104,0}) == 0x120, "actual runtime");
++        require(EnabledPointer(nullptr, true, {1,7,104,0}) == nullptr, "null must stay null");
++        unsigned checked = 0;
++        for (std::uint16_t minor = 5; minor <= 8; ++minor) {
++            for (std::uint16_t patch = 0; patch < 4096; ++patch) {
++                for (bool ae : {false, true}) {
++                    Version version{1, minor, patch, 0};
++                    const auto expected = ae && (minor > 6 || (minor == 6 && patch >= 1130)) ? 0x120 : 0x118;
++                    std::array<std::uint32_t, 0x130 / 4> storage;
++                    storage.fill(0xA5A5A5A5);
++                    storage[expected / 4] &= ~wheel;
++                    const auto before = storage;
++                    auto* flags = EnabledPointer(storage.data(), ae, version);
++                    require(flags == &storage[expected / 4], "wrong production pointer");
++                    *flags |= wheel;
++                    for (std::size_t i = 0; i < storage.size(); ++i)
++                        require(storage[i] == (i == expected / 4 ? before[i] | wheel : before[i]), "adjacent memory changed on enable");
++                    *flags &= ~wheel;
++                    require(storage == before, "disable did not restore only the flags field");
++                    ++checked;
++                }
++            }
++        }
++        std::printf("PASS: original count3 ->515 reproduced; %u production-pointer/memory-isolation cases; boundary and null tests\n", checked);
++        return 0;
++    } catch (const std::exception& error) {
++        std::fprintf(stderr, "FAIL: %s\n", error.what());
++        return 1;
++    }
++}

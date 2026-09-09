@@ -55,6 +55,12 @@ jobs:
           pwsh -NoProfile -File audit/test_quiet_worker.ps1
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+      - name: Test published BTPS control-map repair
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -File audit/test_btps_controlmap_patch.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test weapon audit gates with synthetic fixtures
         shell: pwsh
         run: |

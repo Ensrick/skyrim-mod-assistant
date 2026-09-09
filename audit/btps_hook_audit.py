@@ -57,6 +57,17 @@ def audit(exe, library):
         target = address+5+struct.unpack('<i', read(address+1, 4))[0]
         assert target == expected_target, f'{name}: unexpected target {target:x}'
         checks[-1]['targetRva'] = hex(target)
+    # #256: the crashing index is an input CONTEXT, not the event device.
+    # ControlMap runtime data moved by eight bytes in post-1.6.1130 AE.
+    exact('context mapper entry', rva(68542), bytes.fromhex('4889542410'))
+    exact('context stack count is ControlMap+118', rva(68542)+0xAE,
+          bytes.fromhex('8b8718010000'))
+    exact('context stack data is ControlMap+108', rva(68542)+0xBC,
+          bytes.fromhex('488b9708010000'))
+    exact('index is the context-stack element at RBX', rva(68542)+0x128,
+          bytes.fromhex('486303488b4cc760'))
+    exact('event device read occurs after the crashing instruction', rva(68542)+0x141,
+          bytes.fromhex('4d636508'))
     return {'result': 'PASS', 'runtime': '1.7.104.0', 'checks': checks,
             'exeSha256': hashlib.sha256(data).hexdigest(),
             'addressLibrarySha256': hashlib.sha256(ids).hexdigest(),

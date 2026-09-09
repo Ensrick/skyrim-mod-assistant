@@ -11,8 +11,10 @@ has been repaired and admitted fresh-save/cold-reload tests passed; see
 [currency repair](CURRENCY_NATIVE_INIT_REPAIR_2026-09-09.md). Weapon and cloak
 freshness proofs have also been refreshed against the current profile; see
 [verification refresh](CRASH256_VERIFICATION_REFRESH_2026-09-09.md). The original
-September 7 input-processing crash is still not proven fixed. The sections
-below retain the evidence and pending state at the time of the first report.
+September 7 input-processing crash now has a concrete BTPS layout repair and
+targeted runtime verification; see [control-map repair](BTPS_CONTROLMAP_REPAIR_2026-09-09.md).
+The sections below retain the historical evidence and pending state at the time
+of the first report; the linked follow-ups supersede their resolved items.
 
 The current mod configuration successfully initialized a genuinely new character,
 saved it, reloaded it in-session, and loaded that same save after a cold restart.
@@ -170,7 +172,14 @@ batch remains, and `ModOrganizer.ini` matches its pre-test SHA-256
 Original saves were not changed. The existing general preflight also made its
 normal 178 MiB save-backup snapshot; no conversations or user data were deleted.
 
-## Second Fable review: original input crash
+## Second Fable review: original input crash (historical; interpretation corrected)
+
+**Correction:** the paragraph below misidentified the faulting index. Exact
+1.7.104 disassembly shows RDI is ControlMap and RAX is an input-context ID read
+from its context stack, not a device enum. BTPS's patch-only version comparison
+wrote the wheel-zoom bit into that stack's count. The September 9 control-map
+repair report supersedes the old "no supported native patch" conclusion. The
+other observations about MenuPilot do not establish or rule out every fault.
 
 A separate bounded read-only Fable 5 CLI run reviewed the September 7 log and
 MenuPilot's actual event creation/dispatch. No supported native patch was found.

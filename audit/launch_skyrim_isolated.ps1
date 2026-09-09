@@ -138,127 +138,8 @@ $pluginExisted = Test-Path -LiteralPath $pluginTarget
 $pluginOriginal = if ($pluginExisted) { [IO.File]::ReadAllBytes($pluginTarget) } else { $null }
 $pluginHeader = '# This file is used by Skyrim to keep track of your downloaded content.'
 
-if (-not ('SkyrimIsolatedDesktop.Native' -as [type])) {
-    Add-Type -TypeDefinition @'
-using System;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-
-namespace SkyrimIsolatedDesktop
-{
-    public static class Native
-    {
-        private const uint DESKTOP_ALL_ACCESS = 0x000F01FF;
-        private const uint CREATE_NO_WINDOW = 0x08000000;
-        private const uint STARTF_USESHOWWINDOW = 0x00000001;
-        private const short SW_HIDE = 0;
-        private const uint WAIT_TIMEOUT = 0x00000102;
-
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        private struct STARTUPINFO
-        {
-            public int cb;
-            public string lpReserved;
-            public string lpDesktop;
-            public string lpTitle;
-            public uint dwX;
-            public uint dwY;
-            public uint dwXSize;
-            public uint dwYSize;
-            public uint dwXCountChars;
-            public uint dwYCountChars;
-            public uint dwFillAttribute;
-            public uint dwFlags;
-            public short wShowWindow;
-            public short cbReserved2;
-            public IntPtr lpReserved2;
-            public IntPtr hStdInput;
-            public IntPtr hStdOutput;
-            public IntPtr hStdError;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct PROCESS_INFORMATION
-        {
-            public IntPtr hProcess;
-            public IntPtr hThread;
-            public uint dwProcessId;
-            public uint dwThreadId;
-        }
-
-        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern IntPtr CreateDesktop(
-            string name, IntPtr device, IntPtr devmode, uint flags,
-            uint desiredAccess, IntPtr securityAttributes);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool CloseDesktop(IntPtr desktop);
-
-        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool CreateProcess(
-            string applicationName, string commandLine, IntPtr processAttributes,
-            IntPtr threadAttributes, bool inheritHandles, uint creationFlags,
-            IntPtr environment, string currentDirectory, ref STARTUPINFO startupInfo,
-            out PROCESS_INFORMATION processInformation);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern uint WaitForSingleObject(IntPtr handle, uint milliseconds);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern bool GetExitCodeProcess(IntPtr process, out uint exitCode);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern bool TerminateProcess(IntPtr process, uint exitCode);
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        private static extern bool CloseHandle(IntPtr handle);
-
-        public static uint Run(string desktopName, string application, string arguments,
-            string workingDirectory, uint timeoutMilliseconds)
-        {
-            IntPtr desktop = CreateDesktop(
-                desktopName, IntPtr.Zero, IntPtr.Zero, 0,
-                DESKTOP_ALL_ACCESS, IntPtr.Zero);
-            if (desktop == IntPtr.Zero)
-                throw new Win32Exception(Marshal.GetLastWin32Error(), "CreateDesktop failed");
-
-            PROCESS_INFORMATION process = new PROCESS_INFORMATION();
-            try
-            {
-                STARTUPINFO startup = new STARTUPINFO();
-                startup.cb = Marshal.SizeOf<STARTUPINFO>();
-                startup.lpDesktop = "WinSta0\\" + desktopName;
-                startup.dwFlags = STARTF_USESHOWWINDOW;
-                startup.wShowWindow = SW_HIDE;
-                string commandLine = "\"" + application + "\" " + arguments;
-
-                if (!CreateProcess(application, commandLine, IntPtr.Zero, IntPtr.Zero,
-                    false, CREATE_NO_WINDOW, IntPtr.Zero, workingDirectory,
-                    ref startup, out process))
-                    throw new Win32Exception(Marshal.GetLastWin32Error(), "CreateProcess failed");
-
-                uint wait = WaitForSingleObject(process.hProcess, timeoutMilliseconds);
-                if (wait == WAIT_TIMEOUT)
-                {
-                    TerminateProcess(process.hProcess, 124);
-                    WaitForSingleObject(process.hProcess, 5000);
-                }
-
-                uint exitCode;
-                if (!GetExitCodeProcess(process.hProcess, out exitCode))
-                    throw new Win32Exception(Marshal.GetLastWin32Error(), "GetExitCodeProcess failed");
-                return exitCode;
-            }
-            finally
-            {
-                if (process.hThread != IntPtr.Zero) CloseHandle(process.hThread);
-                if (process.hProcess != IntPtr.Zero) CloseHandle(process.hProcess);
-                CloseDesktop(desktop);
-            }
-        }
-    }
-}
-'@
+if (-not ('QuietWorker' -as [type])) {
+    Add-Type -Path (Join-Path $PSScriptRoot 'QuietWorker.cs')
 }
 
 $env:SKSE_AUTOMATION_SILENT_UI = '1'
@@ -266,7 +147,6 @@ Get-ChildItem Env: | Where-Object {
     $_.Name -like 'SKYRIM_LAUNCH_PROBE_*' -or $_.Name -like 'SKYRIM_MENU_PILOT_*'
 } | ForEach-Object { Remove-Item -LiteralPath ('Env:' + $_.Name) }
 if ($LoadTestSave) { $env:SKYRIM_LAUNCH_PROBE_AUTOLOAD = $LoadTestSave }
-$desktopName = 'CodexSkyrimSmoke-' + [Guid]::NewGuid().ToString('N').Substring(0, 12)
 $arguments = @(
     '-p', ('"' + $smokeProfileName + '"'),
     '--timeout', [string]$WaitSeconds,
@@ -283,7 +163,7 @@ try {
     # MO2's checkSteam advisory offers No="Continue" without elevation.
     # Select that documented, non-elevating option for this isolated run only.
     # Never restart Steam, answer UAC, or change a security setting here.
-    $organizerText = [Text.Encoding]::UTF8.GetString($organizerOriginal)
+    $organizerText = [Text.UTF8Encoding]::new($false, $true).GetString($organizerOriginal)
     $choice = 'steamAdminQuery\skse64_loader.exe=65536'
     if ($organizerText -match '(?m)^steamAdminQuery\\skse64_loader\.exe=') {
         $organizerText = [Regex]::Replace($organizerText,
@@ -295,25 +175,34 @@ try {
         $organizerText += "`r`n[DialogChoices]`r`n" + $choice + "`r`n"
     }
     [IO.File]::WriteAllText($organizerPath, $organizerText, [Text.UTF8Encoding]::new($false))
-    $exitCode = [SkyrimIsolatedDesktop.Native]::Run(
-        $desktopName,
+    $exitCode = [QuietWorker]::Run(
         $controller,
         $arguments,
         $instance,
         [uint32](($WaitSeconds + 30) * 1000)
     )
 } finally {
-    # Diagnostic cleanup only: game processes present before this launch were
-    # rejected. Fully verified process-tree ownership remains #227 work.
-    Get-Process -Name SkyrimSE, skse64_loader -ErrorAction SilentlyContinue |
-        Where-Object { $_.StartTime -ge $startedAt } | Stop-Process -Force
-    [IO.File]::WriteAllBytes($organizerPath, $organizerOriginal)
-    if ($pluginExisted) { [IO.File]::WriteAllBytes($pluginTarget, $pluginOriginal) }
-    elseif (Test-Path -LiteralPath $pluginTarget) { Remove-Item -LiteralPath $pluginTarget }
+    # QuietWorker owns only its suspended-then-assigned process tree. Never
+    # kill processes by name/start time: another session could start meanwhile.
+    for ($attempt=0; $attempt -lt 20; ++$attempt) {
+        try {
+            [IO.File]::WriteAllBytes($organizerPath, $organizerOriginal)
+            if ($pluginExisted) { [IO.File]::WriteAllBytes($pluginTarget, $pluginOriginal) }
+            elseif (Test-Path -LiteralPath $pluginTarget) { Remove-Item -LiteralPath $pluginTarget }
+            if ([Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([IO.File]::ReadAllBytes($organizerPath))) -ne
+                [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($organizerOriginal))) {
+                throw 'MO2 INI restoration mismatch.'
+            }
+            break
+        } catch {
+            if ($attempt -eq 19) { throw }
+            Start-Sleep -Milliseconds 250
+        }
+    }
 }
 
 [pscustomobject]@{
-    Desktop = $desktopName
+    Desktop = 'Private QuietWorker desktop; never switched to the interactive desktop'
     ControllerExitCode = $exitCode
     StartedAt = $startedAt.ToUniversalTime().ToString('o')
     FinishedAt = [DateTime]::UtcNow.ToString('o')

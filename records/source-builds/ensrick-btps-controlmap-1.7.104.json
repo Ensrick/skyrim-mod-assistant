@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "component": "Better Third Person Selection 1.7.104 Native Overlay - Ensrick",
+  "version": "0.8.9+c159d8e-controlmap-fix",
+  "runtime": "1.7.104.0",
+  "source": {
+    "repository": "https://gitlab.com/Shrimperator/skyrim-mod-betterthirdpersonselection",
+    "upstreamBase": "93e05fb5b1a4caddb24728f3d0aaaacdef7a40f0",
+    "localCommit": "c159d8e",
+    "previousRepair": "98d5a5e",
+    "patch": "patches/btps/control-map-offset-1.7.104.patch",
+    "commonLibCommit": "70c1acd5261210982bd52f6d4468a082fe04d798",
+    "workingTreeCaveat": "Preserved prior uncommitted compatibility changes; publish those deltas before distributing the full binary. New commit includes only this repair and tests.",
+    "configuration": "RelWithDebInfo",
+    "toolchain": "Visual Studio 2022 MSVC 14.44.35207"
+  },
+  "artifact": {
+    "dll": "SKSE/Plugins/BetterThirdPersonSelection.dll",
+    "sha256": "47D6D795D69A060C359F04F598EE77589183EB7B5B35B38C8C07D91698838CC1",
+    "bytes": 2844160,
+    "embeddedPluginVersion": "0.8.9.0",
+    "archive": "records-work/btps-controlmap-20260909/BTPS-controlmap-repair.zip",
+    "archiveSha256": "6B8E29B636CE31FBE5F819A6B066BE664A40C7B9A36E507B5A5531860A58B86E",
+    "archiveBytes": 15903887,
+    "previousDllSha256": "FDFD14DF622E9F708133F2D6CEB0F3DA43270179523DCF0595C50C04AC555542",
+    "vendorDllSha256": "CE24158A1AAC15E7984D4280CFF5A71B9FF75290DF8803D7C03C5042454D627C"
+  },
+  "installation": {
+    "installedUtc": "2026-09-09T17:23:55Z",
+    "transaction": "20260909T172355268Z-f6b13f6d00b4",
+    "profile": "Default",
+    "enabled": true,
+    "priority": 326,
+    "vendorFilesModified": false
+  },
+  "tests": {
+    "controlMapNative": "PASS: old count corruption reproduced;32768 production-pointer/memory-isolation cases plus boundaries/null",
+    "selectionTrampoline": "PASS:10 native cases",
+    "actualExecutableAudit": "PASS:12 checks, including five exact context-mapper byte checks",
+    "runtime": "PASS:24 modifier cycles across two isolated runs; count1 stable during held/released flag transitions; save and cold reload admitted; two clean desktop exits; no new crash log",
+    "scope": "Targeted current-runtime verification, not broad gameplay or old-save repair",
+    "report": "docs/BTPS_CONTROLMAP_REPAIR_2026-09-09.md"
+  },
+  "license": "Apache-2.0; included in separate overlay",
+  "fullBinaryPublicRelease": "held pending publication of preexisting compatibility source deltas and normal gameplay acceptance"
+}
