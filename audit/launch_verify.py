@@ -77,6 +77,7 @@ import threaddump as TD
 import claim
 import human_presence as HP
 import currency_save_gate
+import save_plugin_gate
 
 AUDIT = os.path.dirname(os.path.abspath(__file__))
 REPO = W.REPO
@@ -115,13 +116,8 @@ def probe_installed():
 
 
 def newest_save():
-    """The save the run will load. LocalSaves=false, so these live in Documents."""
-    local = False
-    st = os.path.join(PROFILE, 'settings.txt')
-    if os.path.exists(st):
-        local = 'localsaves=true' in io.open(st, encoding='utf-8',
-                                             errors='replace').read().lower()
-    d = os.path.join(PROFILE, 'saves') if local else SAVES
+    """Resolve the actual MO2 settings.ini save location, not settings.txt."""
+    d = str(save_plugin_gate.saves_directory(PROFILE, SAVES))
     if not os.path.isdir(d):
         return None, d
     ess = [f for f in os.listdir(d) if f.lower().endswith('.ess')]
@@ -304,6 +300,7 @@ def verify(cfg):
         blockers.extend(currency_save_gate.check_save(
             INSTANCE, r'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data',
             save_path))
+        blockers.extend(save_plugin_gate.check_save(PROFILE, save_path))
     owner = cfg['claim_owner'] or claim.default_owner()
     other = claim.held_by_other(owner)
     if other:

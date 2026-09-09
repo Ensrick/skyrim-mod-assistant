@@ -58,7 +58,18 @@ def status():
     return 0 if ready else 1
 
 
+def game_running():
+    """Do not queue commands against a stale log after the game has exited."""
+    if os.name != 'nt':
+        return False
+    from launch_watch import find_process  # read-only Win32 process enumeration
+    return find_process() is not None
+
+
 def send(lines, timeout):
+    if not game_running():
+        print('REFUSED: SkyrimSE.exe is not running; no commands queued.')
+        return 2
     os.makedirs(PILOT, exist_ok=True)
     for line in lines:
         parsed = json.loads(line)          # refuse to send malformed commands
