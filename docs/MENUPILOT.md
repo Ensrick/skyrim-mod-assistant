@@ -26,6 +26,24 @@ Driver: `py -3 audit/menupilot.py send '<json>' ...` | `tail` | `status` | `pani
 
 ## Commands (one JSON object per line)
 
+### Verified in-game desktop quit (2026-09-09)
+
+On the current Journal menu: open Journal, invoke `SystemTab.onPress` then
+`onRelease` under `_root.QuestJournalFader.Menu_mc`, and inspect
+`SystemFader.Page_mc.CategoryList_mc.List_mc`. EntriesA index9 is `$QUIT`;
+read `iSelectedIndex` before selecting. Accept opens
+`SystemFader.Page_mc.PCQuitList`, whose EntriesA index1 is `$Desktop`.
+Its initial selection was -1; two Down events selected index1. Read back,
+Accept, then confirm the exact prompt in
+`SystemFader.Page_mc.ConfirmPanel.ConfirmText.textField.text`:
+`Quit to desktop?  Any unsaved progress will be lost.`
+Only then Accept. The process exits during the input-down callback, so the
+driver may time out waiting for BATCH_DONE; require controller exit0, process
+absence and no fresh crash report instead. Never interpret that timeout alone
+as a crash, nor use this flow to close an unowned/user play session.
+
+### Low-level commands
+
 | op | args | effect |
 |---|---|---|
 | `ping` | - | runtime version, UI alive, paused, stack size |

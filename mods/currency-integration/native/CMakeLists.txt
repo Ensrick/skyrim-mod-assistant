@@ -6,7 +6,7 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 project(
 	EnsrickCurrencyDenominations
-	VERSION 0.2.0
+	VERSION 0.2.2
 	LANGUAGES CXX
 )
 
@@ -44,6 +44,15 @@ target_include_directories(EnsrickCurrencyPolicyTests PRIVATE src)
 target_compile_options(EnsrickCurrencyPolicyTests PRIVATE /W4 /WX)
 enable_testing()
 add_test(NAME EnsrickCurrencyPolicyTests COMMAND EnsrickCurrencyPolicyTests)
+
+add_executable(EnsrickCurrencyFormLookupTests tests/FormLookupTests.cpp)
+target_include_directories(EnsrickCurrencyFormLookupTests PRIVATE src)
+target_compile_options(EnsrickCurrencyFormLookupTests PRIVATE /W4 /WX)
+add_test(NAME EnsrickCurrencyFormLookupTests COMMAND EnsrickCurrencyFormLookupTests)
+add_executable(EnsrickCurrencyQuestStateTests tests/QuestStateTests.cpp)
+target_include_directories(EnsrickCurrencyQuestStateTests PRIVATE src)
+target_compile_options(EnsrickCurrencyQuestStateTests PRIVATE /W4 /WX)
+add_test(NAME EnsrickCurrencyQuestStateTests COMMAND EnsrickCurrencyQuestStateTests)
 
 option(ENSRICK_BUILD_PLUGIN "Build the SKSE plugin in addition to pure policy tests" ON)
 if(ENSRICK_BUILD_PLUGIN)
@@ -88,7 +97,8 @@ if(ENSRICK_BUILD_PLUGIN)
 			src/LedgerPolicy.cpp
 	)
 	target_include_directories(EnsrickCurrencyDenominations PRIVATE src "${CMAKE_CURRENT_SOURCE_DIR}")
-	target_compile_definitions(EnsrickCurrencyDenominations PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
+	target_compile_definitions(EnsrickCurrencyDenominations PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN
+		ENSRICK_CURRENCY_VERSION="${PROJECT_VERSION}")
 	target_link_libraries(EnsrickCurrencyDenominations PRIVATE nlohmann_json::nlohmann_json)
 	target_precompile_headers(EnsrickCurrencyDenominations PRIVATE src/PCH.h)
 	target_compile_options(EnsrickCurrencyDenominations PRIVATE /W4 /WX)

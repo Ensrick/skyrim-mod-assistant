@@ -90,3 +90,21 @@ jobs:
         run: |
           python -c "import sys; sys.path.insert(0,'mods/currency-integration'); import validate as v; p=v.load_json(v.ROOT/'policy.json'); c=v.load_json(v.RUNTIME_CONFIG); v.validate_policy(p); v.validate_runtime_config(c,p); v.validate_distribution_configs(c); v.validate_ui_and_runtime_overrides(c); print('Complete currency policy/runtime/BOS/KID/CDF/UI: PASS')"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Check out pinned currency header contract
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Ensrick/CommonLibSSE-NG
+          ref: 90a64a4d65ce659a139137c968f42151bb6ecec9
+          path: .ci/currency-commonlib
+          persist-credentials: false
+
+      - name: Test native currency policy and initialization adapters
+        shell: pwsh
+        run: |
+          cmake -S mods/currency-integration/native -B .ci/currency-tests -A x64 -DCOMMONLIBSSE_ROOT="${{ github.workspace }}/.ci/currency-commonlib" -DENSRICK_BUILD_PLUGIN=OFF
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmake --build .ci/currency-tests --config Release
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ctest --test-dir .ci/currency-tests -C Release --output-on-failure
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

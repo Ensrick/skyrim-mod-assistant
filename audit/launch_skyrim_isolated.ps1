@@ -5,6 +5,8 @@ param(
     [int] $WaitSeconds = 120,
     [ValidatePattern('^[A-Za-z0-9 _-]+$')]
     [string] $TestProfileName = 'Codex Smoke - Muted',
+    [ValidatePattern('^[A-Za-z0-9 _-]+$')]
+    [string] $SourceProfileName = 'Default',
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
     [string] $LoadTestSave,
     [string] $ClaimOwner = $env:SKYRIM_CLAIM_OWNER
@@ -13,9 +15,10 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $instance = 'C:\Users\danjo\source\repos\mo2-instances\skyrim-se'
-$sourceProfileName = 'Default'
 $smokeProfileName = $TestProfileName
-if ($smokeProfileName -eq $sourceProfileName) { throw 'Tests must not use the Default profile.' }
+if ($smokeProfileName -eq 'Default' -or $smokeProfileName -eq $sourceProfileName) {
+    throw 'Tests must not overwrite Default or their source profile.'
+}
 $sourceProfile = Join-Path $instance ('profiles\' + $sourceProfileName)
 $profile = Join-Path $instance ('profiles\' + $smokeProfileName)
 $game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'

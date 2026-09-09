@@ -156,7 +156,8 @@ SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 	try {
 		const auto skseVersion = REL::Version::unpack(a_skse->SKSEVersion());
 		logger::info(
-			"Ensrick Currency Denominations 0.1.0 loading on runtime {} with SKSE {}",
+			"Ensrick Currency Denominations {} loading on runtime {} with SKSE {}",
+			ENSRICK_CURRENCY_VERSION,
 			a_skse->RuntimeVersion().string(),
 			skseVersion.string());
 		if (a_skse->RuntimeVersion() != REL::Version(1, 7, 104, 0)) {

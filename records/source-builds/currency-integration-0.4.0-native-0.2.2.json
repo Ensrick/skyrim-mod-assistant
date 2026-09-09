@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "version": "0.4.0",
+  "nativeVersion": "0.2.2",
+  "component": "Ensrick - Currency Native Initialization Fix",
+  "parentRelease": "currency-integration-0.4.0.json",
+  "status": "installed; fresh-character and cold-reload admission verified; wider gameplay unverified",
+  "winningFiles": {
+    "SKSE/Plugins/EnsrickCurrencyDenominations.dll": "C8ED83D13E0EEFC0353A20D4C7C40438CD2DF31596B15979994BBB501074007E",
+    "SKSE/Plugins/EnsrickCurrencyDenominations.json": "B86CD8524553EE8FB3FB00CD9B231D62997F2E991DED1D3DC80FC4158A99FC21",
+    "Ensrick Currency Integration Patch.esp": "BEB89F2A7FF52B06F5CCE1E81CD6C6150F7751B55910FF0415DD705711957F05",
+    "Ensrick Currency Regional Purses.esp": "873A1DD331270B0E76EBB28209F8D6D0378D05105CFAD3EABD4A98FA968A8B61"
+  },
+  "ledgerFingerprint": "6270B86774F9F4F3",
+  "nativeBuildReceiptSha256": "137D1D0D17936F7ED62E5CF8F5485D46357108F5B3AABA06DB82C011EC076D31",
+  "commonLibCommit": "90a64a4d65ce659a139137c968f42151bb6ecec9",
+  "commonLibTrackedStatus": "clean",
+  "sourcePath": "mods/currency-integration/native",
+  "packagingRecipe": "audit/package_currency_native_hotfix.py",
+  "overlayFileName": "Ensrick-Currency-Native-Initialization-Fix-0.2.2.zip",
+  "overlaySha256": "8F89B6F9562D347F0D6F63FC52B3682E41A50F3A1330EC8F49AF805BBAF9A0FA",
+  "overlayBytes": 540235,
+  "overlayFiles": 38,
+  "archiveRepeatability": "2/2 byte-identical; native build itself was not rebuilt twice",
+  "installedUtc": "2026-09-09T07:47:40Z",
+  "transaction": "20260909T074740372Z-24829af68b5b",
+  "profile": "Default",
+  "priority": 346,
+  "runtimeEvidence": "docs/CURRENCY_NATIVE_INIT_REPAIR_2026-09-09.md",
+  "tests": {
+    "policyConservation": "PASS",
+    "strictConfiguration": "18 families accepted and 27 negative contracts rejected",
+    "formLookup": "9 mock checks PASS; actual game resolved 18 families and 55 physical forms",
+    "questQuiescence": "131072 flags/promotion combinations and null rejection PASS",
+    "freshSave": "valid v2 checkpoint; ledger=0; unpaused; clean exit0",
+    "coldReload": "same admitted save; kPostLoadGame success=1; currency admission3 complete; unpaused; clean exit0"
+  },
+  "scope": "Separate native overlay only. Base 0.4.0 archive, JSON, ESPs, Papyrus, assets, values and distribution unchanged. No save migration or new third-party dependency.",
+  "distribution": "Combined native DLL GPL-3.0-or-later with CommonLib exceptions; exact corresponding source and notices included. No coin/vendor assets included. Not an all-MIT binary.",
+  "rollback": "Disable this overlay and restore the prior matching gate receipt only for diagnostics. This restores the known broken native bridge, not working currency. Preserve all saves/co-saves.",
+  "issues": [217, 256, 227]
+}

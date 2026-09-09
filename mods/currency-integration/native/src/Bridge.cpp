@@ -1,6 +1,8 @@
 #include "PCH.h"
 
 #include "Bridge.h"
+#include "FormLookup.h"
+#include "QuestStatePolicy.h"
 #include "LedgerFingerprint.h"
 #include "SourcePolicy.h"
 #include "third_party/QuickLootAPI.h"
@@ -13,7 +15,7 @@ namespace Ensrick::Currency
 		T* ResolveForm(const FormSpec& a_spec, const std::string_view a_context)
 		{
 			auto* handler = RE::TESDataHandler::GetSingleton();
-			auto* form = handler ? handler->LookupForm<T>(a_spec.localID, a_spec.plugin) : nullptr;
+			auto* form = LookupCompatibleForm<T>(handler, a_spec.localID, a_spec.plugin);
 			if (!form) {
 				throw std::runtime_error(std::format(
 					"{} did not resolve as the required form type: {}", a_context, a_spec.ToString()));
@@ -313,7 +315,7 @@ namespace Ensrick::Currency
 			if (!quest) {
 				return false;
 			}
-			if (quest->IsRunning() || quest->IsStarting()) {
+			if (quest->IsEnabled()) {
 				quest->Stop();
 			}
 		}
@@ -359,8 +361,10 @@ namespace Ensrick::Currency
 			return;
 		}
 		for (const auto* quest : _disabledQuests) {
-			if (quest && (quest->IsRunning() || quest->IsStarting())) {
-				logger::critical("admission {} transaction quest {} is still running", a_generation, quest->GetFormID());
+			if (!IsTransactionQuestQuiescent(quest)) {
+				logger::critical("admission {} transaction quest {:08X} is not quiescent (enabled={} stopped={} promoting={})",
+					a_generation, quest ? quest->GetFormID() : 0,
+					quest && quest->IsEnabled(), quest && quest->IsStopped(), quest && static_cast<bool>(quest->promoteTask));
 				return;
 			}
 		}

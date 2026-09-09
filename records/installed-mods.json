@@ -4,6 +4,24 @@
   "profile": "Default",
   "mods": [
     {
+      "modId": 0,
+      "modName": "Ensrick - Currency Native Initialization Fix",
+      "nexusName": "Original native initialization hotfix; no Nexus adoption",
+      "version": "0.2.2",
+      "fileId": 0,
+      "fileName": "Ensrick-Currency-Native-Initialization-Fix-0.2.2.zip",
+      "sizeMb": 0.515,
+      "sha256": "8f89b6f9562d347f0d6f63fc52b3682e41a50f3a1330ec8f49af805bbaf9a0fa",
+      "plugins": [],
+      "enabled": true,
+      "installedUtc": "2026-09-09T07:47:40Z",
+      "transaction": "20260909T074740372Z-24829af68b5b",
+      "distribution": "distributable-with-corresponding-source",
+      "distributionBasis": "Original native adapter fixes; combined DLL GPL-3.0-or-later with pinned CommonLib exceptions, exact corresponding native source and notices bundled. No vendor assets/ESP/Papyrus/config included.",
+      "sourceBuildReceipt": "records/source-builds/currency-integration-0.4.0-native-0.2.2.json",
+      "note": "Separate overlay after Regional Currency Integration 0.4.0; only runtime override is its DLL. Repairs exact-base-form lookup and stopped-quest IsRunning false-positive. Actual fresh-character and cold-reload currency admission PASS; wider gameplay and original input-pool crash remain unverified. No values/distribution changes, save migration or third-party adoption. Two test-only overlays exist outside Default and are not production mods."
+    },
+    {
       "modId": 25316,
       "modName": "3rd Person Camera Stagger Remover",
       "nexusName": "3rd Person Camera Stagger Remover",
