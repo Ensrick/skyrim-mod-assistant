@@ -44,6 +44,11 @@ def cosave(*plugins):
 
 
 class CheckpointTests(unittest.TestCase):
+    def test_missing_checkpoint_does_not_diagnose_save_age(self):
+        with self.assertRaisesRegex(ValueError, 'failed bridge initialization/serialization') as caught:
+            gate.read_checkpoint(cosave(), FINGERPRINT)
+        self.assertNotIn('predates', str(caught.exception))
+
     def test_pending_transactions_remain_valid(self):
         for values in ((105, 100, 105), (0, 0, 100), (0, 100, 0), (0, 0, 0)):
             with self.subTest(values=values):

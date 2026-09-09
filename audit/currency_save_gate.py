@@ -142,7 +142,8 @@ def read_checkpoint(raw, expected_fingerprint):
     if offset != len(raw):
         raise ValueError('trailing co-save data')
     if checkpoint is None:
-        raise ValueError('save predates the native currency ledger (no v2 checkpoint)')
+        raise ValueError('no native currency v2 checkpoint; this can mean an older save '
+                         'or failed bridge initialization/serialization, not proof of save age')
     return checkpoint
 
 
@@ -198,8 +199,9 @@ def check_save(instance, game_data, save_path, profile='Default', *, receipt_pat
         read_checkpoint(cosave.read_bytes(), ledger_fingerprint(config))
         return []
     except (OSError, ValueError, KeyError, TypeError, struct.error) as error:
-        return [f'currency save admission refused: {error}. Start a fresh character with this package, '
-                'or restore the old matching package to use an old save; do not clean or delete save data.']
+        return [f'currency save admission refused: {error}. Verify bridge initialization and '
+                'package/save compatibility before retrying; a fresh character must also produce '
+                'a valid checkpoint. Do not clean or delete save data.']
 
 
 def run(fails, warns, *, instance, game_data):
