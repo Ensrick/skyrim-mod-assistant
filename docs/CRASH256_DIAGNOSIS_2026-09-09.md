@@ -161,3 +161,29 @@ batch remains, and `ModOrganizer.ini` matches its pre-test SHA-256
 `dfe909806cecf03ab08aca4115c348dc9cf62671e33ee7b80ad600d3ebd8e615`.
 Original saves were not changed. The existing general preflight also made its
 normal 178 MiB save-backup snapshot; no conversations or user data were deleted.
+
+## Second Fable review: original input crash
+
+A separate bounded read-only Fable 5 CLI run reviewed the September 7 log and
+MenuPilot's actual event creation/dispatch. No supported native patch was found.
+The invalid index is consistent with accessing the input manager's devices array
+using string bytes instead of an input-device enumeration. The decoded event
+address is in engine static storage, whereas MenuPilot creates heap events.
+MenuPilot dispatches synchronously on an SKSE task and intentionally does not
+free its synthetic event; no demonstrated use-after-free was found there.
+
+No September 7 consumed-command archive is present, although archives from
+surrounding dates remain. That supports automation having been idle, but archive
+absence is not absolute proof (files might have been removed). We do not adopt
+the stronger claim that any DLL is conclusively exonerated by this alone.
+
+Comparing the September 7 Crash Logger **SKSE PLUGINS** section against the
+successful September 9 cold run's SKSE **loaded correctly** entries gives exactly
+two removals and no additions: **TrueHUD.dll and QuickLootIE.dll**. This is a
+filename-set comparison, not binary-hash equivalence or proof of guilt. Do not
+reenable either just to experiment on the user's campaign. Capture a new sample
+if the original input signature recurs under the admitted current configuration.
+
+The currency gate's misleading save-age wording was subsequently corrected in
+commit `690685d`, without weakening admission. Its twenty tests pass. The actual
+currency bridge initialization defect remains open under #217.
