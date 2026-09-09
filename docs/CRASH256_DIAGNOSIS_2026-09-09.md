@@ -6,6 +6,14 @@ Tracking: [#256](https://github.com/Ensrick/skyrim-mod-assistant/issues/256),
 
 ## Outcome
 
+**Follow-up, September 9:** the currency initialization defect described below
+has been repaired and admitted fresh-save/cold-reload tests passed; see
+[currency repair](CURRENCY_NATIVE_INIT_REPAIR_2026-09-09.md). Weapon and cloak
+freshness proofs have also been refreshed against the current profile; see
+[verification refresh](CRASH256_VERIFICATION_REFRESH_2026-09-09.md). The original
+September 7 input-processing crash is still not proven fixed. The sections
+below retain the evidence and pending state at the time of the first report.
+
 The current mod configuration successfully initialized a genuinely new character,
 saved it, reloaded it in-session, and loaded that same save after a cold restart.
 No further mods were removed, reinstalled, upgraded or enabled. Default modlist

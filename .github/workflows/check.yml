@@ -49,6 +49,12 @@ jobs:
             exit 1
           }
 
+      - name: Test private-desktop worker containment
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -File audit/test_quiet_worker.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test weapon audit gates with synthetic fixtures
         shell: pwsh
         run: |

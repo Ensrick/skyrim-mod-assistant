@@ -3,8 +3,8 @@
   "artifact": "Ensrick - Weapon Speed Balance",
   "version": "0.3.0",
   "status": "installed-static-verified-runtime-unverified",
-  "receiptCreatedUtc": "2026-09-07T20:28:17+00:00",
-  "refreshReason": "Regenerated for the 376-input profile after QuickLootIE.esp was removed (#255 batch, user rejected QuickLoot). WeaponBalancePatch.esp bytes are unchanged (QuickLoot carries no WEAP records); only the input manifest updated. MO2Vfs generate, deterministic double build, final-winner audit and freshness gate all PASS.",
+  "receiptCreatedUtc": "2026-09-09T17:00:40+00:00",
+  "refreshReason": "Regenerated for the current 383-input profile during crash256 recovery. Approved policy, ESP and all 27 localized sidecars remain unchanged; metadata refreshed. Private-desktop MO2Vfs generation, deterministic double build, semantic only-Speed audit, final winners and installed freshness PASS. Plugin restored to the unique final managed priority307; no unrelated plugins moved or activated.",
   "supersedes": "records/source-builds/ensrick-weapon-speed-balance-v0.1.0-historical.json",
   "source": {
     "repository": "https://github.com/Ensrick/skyrim-mod-assistant",
@@ -148,25 +148,25 @@
   },
   "inputs": {
     "profile": "Default",
-    "runtimePlugins": 376,
-    "inputPlugins": 376,
-    "inputLoadOrderSha256": "E3ADD64B82FC698A27E2D4CD5D772442C9F77CC271D47E604E0ECE5044D7D244",
-    "inputPluginBinariesSha256": "33BD01D0EAED41B1AC71E395B192F8421B956945C04A83620EFF51E47CE7DB0F",
+    "runtimePlugins": 384,
+    "inputPlugins": 383,
+    "inputLoadOrderSha256": "63AD342CB97B3485CDBF04FAE2B7E8E6DBDB3364193F99D9065279654AD83999",
+    "inputPluginBinariesSha256": "95E4B17D0E948A693F35C6CA7647B755C45A105DF4B41274DA05C464F4FFB83F",
     "localizedSourceProviders": 18,
     "inputLocalizationResourceProvidersSha256": "109DE83425F1673F2D7CD431FD88D36CAC2E377EC1C52498B4CB5A0972D7D02C",
     "manifest": "Installed EnsrickMetadata/build-manifest.json retains ordered plugin/provider/hash and relevant loose/BSA resource resolutions.",
-    "manifestSha256": "C7FAA8F05D1CCFA283768229C5DB04888601DC883BE6822D6F32B90355496E36",
+    "manifestSha256": "B6D5D3D8E3211CA78C54FC51B80CE288D68FA8C849A49644B28337A392339771",
     "sourceLocalizationScope": "Matches pinned Mutagen loader contract: provider-named loose tables and applicable provider BSAs, not arbitrary unrelated-archive engine overrides. See module README and Mutagen issue #578."
   },
   "output": {
     "plugin": "WeaponBalancePatch.esp",
     "pluginBytes": 1777024,
     "pluginSha256": "52A5E2C47F721AD7BB2408C57B6B6985634CC7EDA7F6DB30C06C64BCE8E48D12",
-    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0.zip",
-    "archiveBytes": 680575,
-    "archiveSha256": "69729AF7F1212F486A52BF2D6CA4F96DE0A4844710614779045D60D2A46AEA58",
+    "archive": "Ensrick-Weapon-Speed-Balance-0.3.0-crash256-20260909.zip",
+    "archiveBytes": 681038,
+    "archiveSha256": "77CF12C67707D14B67644557337E86A6096AFBB12995730276F6F8F27CD9CDDD",
     "installedPayloadFiles": 32,
-    "installedPayloadBytes": 7757186,
+    "installedPayloadBytes": 7725950,
     "recordTypes": {
       "weap": 3504
     },
@@ -513,7 +513,7 @@
     "deterministicDoubleBuild": "PASS: ESP, selection report and all 27 localized sidecars",
     "finalWinners": "PASS: 4225 target/preserve rows",
     "finalWinnerAuditSha256": "8F421F3405DD68B5960A8FA19483E535A893ADB4C7EA52A10304E3C6AA4BCE00",
-    "installedFreshness": "PASS: 377 current inputs; output is the unique final active plugin; installed plugin, strings and final-winner receipt match",
+    "installedFreshness": "PASS: 383 current inputs; output is the unique final active plugin; installed plugin, strings and final-winner receipt match",
     "runtimeAcceptance": "UNVERIFIED; no game launch"
   },
   "installation": {
@@ -521,12 +521,12 @@
     "profile": "Default",
     "enabled": true,
     "modPriority": 246,
-    "managedPluginPriority": 301,
-    "runtimePluginIndex": 376,
-    "installedUtc": "2026-09-08T02:25:41+00:00",
+    "managedPluginPriority": 307,
+    "runtimePluginIndex": 383,
+    "installedUtc": "2026-09-09T17:00:40+00:00",
     "candidateInstallTransaction": "20260907T202622607Z-be4ebf6fdde7",
-    "pluginPriorityTransaction": "20260907T191514192Z-2ab2f65f13ee",
-    "finalInstallTransaction": "20260908T022541549Z-a8dfa9820ac3",
+    "pluginPriorityTransaction": "20260909T075550797Z-b72d8a16c58b",
+    "finalInstallTransaction": "20260909T170040731Z-cb6cd2b1fa13",
     "rollback": "Headless transaction journal retains prior owned payload; no vendor files or saves modified."
   },
   "distribution": {
