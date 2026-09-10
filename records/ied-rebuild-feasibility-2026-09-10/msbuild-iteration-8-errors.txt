@@ -1,0 +1,18 @@
+TUs seen: 2
+unique errors: 15
+by code: [('C2039', 8), ('C2737', 3), ('C3536', 3), ('C2440', 1)]
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(101,13): error C2039: 'GetColMM': is not a member of 'NiMatrix33'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(102,13): error C2039: 'GetColMM': is not a member of 'NiMatrix33'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(103,13): error C2039: 'GetColMM': is not a member of 'NiMatrix33'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(100,10): error C2440: 'return': cannot convert from 'initializer list' to 'DirectX::XMMATRIX'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(116,49): error C2039: 'GetMM': is not a member of 'NiPoint3'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(121,19): error C2039: 'GetMM': is not a member of 'NiPoint3'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(133,39): error C2039: 'GetColMM': is not a member of 'NiMatrix33'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(133,14): error C2737: 'worldDir': const object must be initialized
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(134,39): error C2039: 'GetColMM': is not a member of 'NiMatrix33'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(134,14): error C2737: 'worldUp': const object must be initialized
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(135,39): error C2039: 'GetMM': is not a member of 'NiPoint3'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(135,14): error C2737: 'worldPos': const object must be initialized
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(137,11): error C3536: 'worldPos': cannot be used before it is initialized
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(141,4): error C3536: 'worldDir': cannot be used before it is initialized
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\VectorMath.cpp(142,4): error C3536: 'worldUp': cannot be used before it is initialized

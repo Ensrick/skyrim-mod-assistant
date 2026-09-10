@@ -1,0 +1,95 @@
+TUs seen: 1
+unique errors: 92
+by code: [('C2065', 38), ('C2027', 30), ('C2270', 7), ('C2011', 4), ('C2355', 4), ('C2953', 2), ('C2995', 1), ('C2374', 1), ('C2086', 1), ('C2766', 1), ('C3861', 1), ('C2668', 1), ('C1003', 1)]
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(18,7): error C2953: 'NiPointer': class template has already been defined
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(149,7): error C2995: 'T_to *niptr_cast(const T_from &)': function template has already been defined
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(156,7): error C2953: 'NiRect': class template has already been defined
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(166,7): error C2011: 'NiFrustum': 'class' type redefinition
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(179,7): error C2011: 'NiQuaternion': 'class' type redefinition
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(191,7): error C2011: 'NiPoint2': 'class' type redefinition
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(199,17): error C2374: '_EPSILON': redefinition; multiple initialization
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(199,17): error C2086: 'const float _EPSILON': redefinition
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(202,7): error C2011: 'NiPoint3': 'class' type redefinition
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(292,1): error C2766: explicit specialization; 'boost::serialization::version<NiPoint3>' has already been defined
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(296,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(296,20): error C2270: '-': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(298,22): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(298,26): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(298,30): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(301,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(301,20): error C2270: '+': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,21): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,25): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,31): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,35): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,41): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,45): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(303,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(306,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(306,20): error C2270: '-': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,21): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,25): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,31): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,35): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,41): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,45): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(308,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(311,21): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(313,5): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(313,10): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(314,5): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(314,10): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(315,5): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(315,10): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(316,13): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(318,21): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(320,5): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(320,10): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(321,5): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(321,10): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(322,5): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(322,10): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(323,13): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(327,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(327,20): error C2270: '*': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(329,30): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(329,42): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(329,54): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(329,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(331,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(331,20): error C2270: '/': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(334,33): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(334,48): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(334,63): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(334,20): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(337,21): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(339,5): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(340,5): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(341,5): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(342,13): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(344,21): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(347,5): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(348,5): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(349,5): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(350,13): error C2355: 'this': can only be referenced inside non-static member functions or non-static data member initializers
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(353,17): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(353,17): error C2270: 'Length': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(355,22): error C3861: 'Length2': identifier not found
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(355,17): error C2668: 'sqrt': ambiguous call to overloaded function
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(358,17): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(358,17): error C2270: 'Length2': modifiers not allowed on nonmember functions
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(360,12): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(360,16): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(360,20): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(360,24): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(360,28): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(360,32): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(363,16): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(369,5): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(370,5): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(371,5): error C2065: 'z': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(374,17): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(376,12): error C2065: 'x': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(376,16): error C2027: use of undefined type 'NiPoint3'
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(376,23): error C2065: 'y': undeclared identifier
+sse-build-resources\skse64\skse64\skse64\NiTypes.h(376,23): error C1003: error count exceeds 100; stopping compilation

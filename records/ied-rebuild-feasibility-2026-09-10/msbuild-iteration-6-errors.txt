@@ -1,0 +1,4 @@
+TUs seen: 1
+unique errors: 1
+by code: [('C1083', 1)]
+_ied_feas_scratch\ImmersiveEquipmentDisplays\version.h(3,10): error C1083: Cannot open include file: 'skse_version.h': No such file or directory

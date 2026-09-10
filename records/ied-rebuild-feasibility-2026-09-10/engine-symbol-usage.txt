@@ -1,0 +1,231 @@
+########## ShadowSceneNode
+./IED/CharacterLightingDetection.cpp:64:		auto shadowSceneNode  = RE::ShadowSceneNode::GetSingleton();
+./IED/CharacterLightingDetection.cpp:114:		RE::ShadowSceneNode* a_shadowSceneNode,
+./IED/CharacterLightingDetection.h:45:			RE::ShadowSceneNode* a_shadowSceneNode,
+./IED/Controller/INode.cpp:157:		fUnk12BAFB0(RE::ShadowSceneNode::GetSingleton(), a_root, false);
+./IED/Controller/INode.h:89:		using fUnk1412BAFB0_t                = NiAVObject* (*)(RE::ShadowSceneNode* a_shadowSceneNode, NiAVObject* a_object, bool) noexcept;
+./IED/Controller/IObjectManager.cpp:1633:		const auto ssn = RE::ShadowSceneNode::GetSingleton();
+./IED/Controller/IObjectManager.h:272:		using unkSSN1_t                      = NiNode* (*)(RE::ShadowSceneNode* a_node, NiAVObject* a_object) noexcept;
+./IED/EngineExtensions.cpp:1052:		RE::ShadowSceneNode* a_ssn)
+./IED/EngineExtensions.cpp:1060:		RE::ShadowSceneNode* a_ssn)
+./IED/EngineExtensions.h:189:		static void                              PlayerCharacter_unk_205_RefreshMagicCasterLights_Hook(PlayerCharacter* a_actor, RE::ShadowSceneNode* a_ssn);
+./IED/EngineExtensions.h:190:		static void                              PlayerCharacter_RefreshLights_RefreshMagicCasterLights_Hook(PlayerCharacter* a_actor, RE::ShadowSceneNode* a_ssn);
+./IED/ReferenceLightController.cpp:194:			RE::ShadowSceneNode::GetSingleton()->CreateAndAddLight(a_entry.data.niObject.get(), params);
+./IED/ReferenceLightController.cpp:229:					RE::ShadowSceneNode::GetSingleton()->QueueAddLight(
+./IED/ReferenceLightController.cpp:246:					RE::ShadowSceneNode::GetSingleton()->UnkQueueBSLight(
+########## BSLight
+./IED/CharacterLightingDetection.cpp:17:		const RE::BSLight* a_light) noexcept
+./IED/CharacterLightingDetection.cpp:20:		if (ReferenceLightController::GetSingleton().HasBSLight(a_actor->formID, a_light))
+./IED/CharacterLightingDetection.cpp:38:		const RE::BSLight* a_light,
+./IED/CharacterLightingDetection.h:37:			const RE::BSLight* a_light) noexcept;
+./IED/CharacterLightingDetection.h:40:			const RE::BSLight* a_light,
+./IED/Controller/ObjectLight.h:10:		NiPointer<RE::BSLight>         bsObject;
+./IED/ReferenceLightController.cpp:246:					RE::ShadowSceneNode::GetSingleton()->UnkQueueBSLight(
+./IED/ReferenceLightController.cpp:282:						RE::ShadowSceneNode::GetSingleton()->UnkQueueBSLight(
+./IED/ReferenceLightController.cpp:293:						RE::ShadowSceneNode::GetSingleton()->UnkQueueBSLight(
+./IED/ReferenceLightController.cpp:439:	bool ReferenceLightController::HasBSLight(
+./IED/ReferenceLightController.cpp:441:		const RE::BSLight* a_light) noexcept
+./IED/ReferenceLightController.h:75:		bool HasBSLight(Game::FormID a_actor, const RE::BSLight* a_light) noexcept;
+########## WeaponAnimationGraphManagerHolder
+./IED/AnimationUpdateController.cpp:56:		const RE::WeaponAnimationGraphManagerHolderPtr& a_ptr) noexcept
+./IED/AnimationUpdateController.cpp:70:		const RE::WeaponAnimationGraphManagerHolderPtr& a_ptr) noexcept
+./IED/AnimationUpdateController.cpp:106:		RE::WeaponAnimationGraphManagerHolderPtr& a_out,
+./IED/AnimationUpdateController.cpp:122:		auto result = RE::WeaponAnimationGraphManagerHolder::Create();
+./IED/AnimationUpdateController.cpp:146:		std::pair<BSFixedString, RE::WeaponAnimationGraphManagerHolderPtr>& a_out)
+./IED/AnimationUpdateController.cpp:156:			RE::WeaponAnimationGraphManagerHolder::Create());
+./IED/AnimationUpdateController.cpp:173:		RE::WeaponAnimationGraphManagerHolderPtr& a_out,
+./IED/AnimationUpdateController.cpp:195:		const RE::WeaponAnimationGraphManagerHolderPtr& a_graph) noexcept
+./IED/AnimationUpdateController.h:18:			RE::WeaponAnimationGraphManagerHolder& a_holder,
+./IED/AnimationUpdateController.h:21:		using Entry = RE::WeaponAnimationGraphManagerHolderPtr;
+./IED/AnimationUpdateController.h:54:			const RE::WeaponAnimationGraphManagerHolderPtr& a_ptr) noexcept;
+./IED/AnimationUpdateController.h:58:			const RE::WeaponAnimationGraphManagerHolderPtr& a_ptr) noexcept;
+./IED/AnimationUpdateController.h:64:			RE::WeaponAnimationGraphManagerHolderPtr& a_out,
+./IED/AnimationUpdateController.h:69:			std::pair<BSFixedString, RE::WeaponAnimationGraphManagerHolderPtr>& a_out);
+########## Calendar
+./IED/AreaLightingDetection.cpp:62:				const auto* const calendar = RE::Calendar::GetSingleton();
+./IED/ConditionsCommon.h:185:				return RE::Calendar::GetSingleton()->GetDayOfWeek() == a_match.dayOfWeek;
+./IED/ConfigEquipmentOverrideCondition.h:375:				RE::Calendar::Day dayOfWeek;
+./IED/ConfigEquipmentOverrideCondition.h:378:				static_assert(std::is_same_v<std::underlying_type_t<RE::Calendar::Day>, std::int32_t>);
+./IED/ConfigNodeOverride.h:373:				RE::Calendar::Day dayOfWeek;
+./IED/ConfigNodeOverride.h:376:				static_assert(std::is_same_v<std::underlying_type_t<RE::Calendar::Day>, std::int32_t>);
+./IED/Controller/ActorProcessorTask.cpp:370:			const auto calendar = RE::Calendar::GetSingleton();
+./IED/Controller/ActorProcessorTask.h:163:			RE::Calendar::Day     dayOfWeek{ RE::Calendar::Day::kSundas };
+./IED/GeneralInfo.cpp:51:		if (const auto* const calendar = RE::Calendar::GetSingleton())
+./IED/GeneralInfo.h:23:		RE::Calendar::Day dayOfWeek{ RE::Calendar::Day::kSundas };
+./IED/UI/UIGeneralInfo.cpp:107:			DrawCalendarTree(a_data);
+./IED/UI/UIGeneralInfo.cpp:166:		void UIGeneralInfo::DrawCalendarTree(const Data& a_data)
+./IED/UI/UIGeneralInfo.cpp:176:					UIL::LS(UIGeneralInfoStrings::Calendar)))
+./IED/UI/UIGeneralInfo.h:59:			void DrawCalendarTree(const Data& a_data);
+########## BSString
+./IED/AnimationUpdateController.cpp:99:			BSStringHolder::GetSingleton()->m_bged);
+./IED/Controller/ActorObjectHolder.cpp:141:						BSStringHolder::GetSingleton()->m_npcroot) :
+./IED/Controller/CMENodeEntry.cpp:11:		const BSStringHolder* a_sh) noexcept
+./IED/Controller/CMENodeEntry.cpp:39:		const BSStringHolder* a_sh) const noexcept
+./IED/Controller/CMENodeEntry.h:8:	class BSStringHolder;
+./IED/Controller/CMENodeEntry.h:64:			const BSStringHolder* a_sh) noexcept;
+./IED/Controller/CMENodeEntry.h:67:			const BSStringHolder* a_sh) const noexcept;
+./IED/Controller/Controller.cpp:677:		auto npcroot = GetNodeByName(root, BSStringHolder::GetSingleton()->m_npcroot);
+./IED/Controller/Controller.cpp:709:		auto npcroot = GetNodeByName(root, BSStringHolder::GetSingleton()->m_npcroot);
+./IED/Controller/Controller.cpp:2638:								BSStringHolder::NUM_DYN_ARROWS);
+./IED/Controller/Controller.cpp:2685:							BSStringHolder::NUM_DYN_ARROWS);
+./IED/Controller/Controller.cpp:3154:								BSStringHolder::NUM_DYN_ARROWS);
+./IED/Controller/Controller.cpp:3239:						BSStringHolder::NUM_DYN_ARROWS);
+./IED/Controller/Controller.cpp:4951:		auto npcroot = GetNodeByName(root, BSStringHolder::GetSingleton()->m_npcroot);
+########## GarbageCollector
+./IED/AnimationUpdateController.cpp:202:				RE::GarbageCollector::GetSingleton()->QueueBehaviorGraph(manager);
+./IED/EngineExtensions.cpp:45:		Install_REFR_GarbageCollector();
+./IED/EngineExtensions.cpp:184:	void EngineExtensions::Install_REFR_GarbageCollector()
+./IED/EngineExtensions.cpp:189:				std::uintptr_t(GarbageCollectorReference_Hook),
+./IED/EngineExtensions.cpp:895:	bool EngineExtensions::GarbageCollectorReference_Hook(TESObjectREFR* a_refr)
+./IED/EngineExtensions.h:118:		void Install_REFR_GarbageCollector();
+./IED/EngineExtensions.h:182:		static bool                              GarbageCollectorReference_Hook(TESObjectREFR* a_refr);
+./IED/EngineExtensions.h:241:		decltype(&GarbageCollectorReference_Hook)           m_garbageCollectorReference_o{ nullptr };
+./IED/OM/BGSOutfitHolder.cpp:52:				RE::GarbageCollector::GetSingleton()->QueueForm(m_form);
+########## BSAnimationUpdateData
+./IED/AnimationUpdateController.cpp:40:		const BSAnimationUpdateData& a_data) const noexcept
+./IED/AnimationUpdateController.h:11:			const BSAnimationUpdateData&      a_data) noexcept;
+./IED/AnimationUpdateController.h:50:			const BSAnimationUpdateData& a_data) const noexcept;
+./IED/Controller/ActorObjectHolder.h:34:struct BSAnimationUpdateData;
+./IED/Controller/ActorProcessorTask.h:31:			//BSAnimationUpdateData   data;
+./IED/Controller/ObjectManagerData.h:59:		void Update(const BSAnimationUpdateData& a_data) const;
+./IED/Controller/ObjectManagerData.h:61:		void UpdateNoLock(const BSAnimationUpdateData& a_data) const;
+./IED/EngineExtensions.cpp:1019:		const BSAnimationUpdateData& a_data)
+./IED/EngineExtensions.h:186:		static const RE::BSTSmartPointer<Biped>& UpdateRefAnim_Hook(TESObjectREFR* a_refr, const BSAnimationUpdateData& a_data);  // getbiped1
+########## hkaSkeleton
+./IED/EngineExtensions.cpp:932:		const RE::hkaSkeleton& a_hkaSkeleton) noexcept
+./IED/EngineExtensions.cpp:951:		if (!a_hkaSkeleton.name ||
+./IED/EngineExtensions.cpp:952:		    stl::stricmp(a_hkaSkeleton.name, StringHolder::HK_NPC_ROOT) != 0)
+./IED/EngineExtensions.cpp:1002:		const RE::hkaSkeleton&    a_hkaSkeleton)
+./IED/EngineExtensions.cpp:1004:		if (hkaShouldBlockNode(a_root, a_name, a_hkaSkeleton))
+./IED/EngineExtensions.h:185:		static bool                              hkaLookupSkeletonNode_Hook(NiNode* a_root, const BSFixedString& a_name, hkaGetSkeletonNodeResult& a_result, const RE::hkaSkeleton& a_hkaSkeleton);
+./IED/EngineExtensions.h:199:		static bool hkaShouldBlockNode(NiAVObject* a_root, const BSFixedString& a_name, const RE::hkaSkeleton& a_hkaSkeleton) noexcept;
+########## ShaderReferenceEffect
+./IED/EngineExtensions.cpp:560:		const auto addr = m_ShaderReferenceEffect_Resume_a.get() + 0x84;
+./IED/EngineExtensions.cpp:585:				reinterpret_cast<std::uintptr_t>(ShaderReferenceEffect_Resume_GetAttachRoot));
+./IED/EngineExtensions.cpp:1076:	NiAVObject* EngineExtensions::ShaderReferenceEffect_Resume_GetAttachRoot(
+./IED/EngineExtensions.cpp:1077:		RE::ShaderReferenceEffect* a_this,
+./IED/EngineExtensions.h:192:		static NiAVObject*                       ShaderReferenceEffect_Resume_GetAttachRoot(RE::ShaderReferenceEffect* a_this, TESObjectREFR* a_refr);
+./IED/EngineExtensions.h:226:		inline static const auto m_ShaderReferenceEffect_Resume_a     = IAL::Address<std::uintptr_t>(34114, 34916);
+########## BSAnimationGraphManager
+./IED/AnimationUpdateController.cpp:199:			RE::BSAnimationGraphManagerPtr manager;
+./IED/Controller/ActorObjectHolder.cpp:273:		/*RE::BSAnimationGraphManagerPtr agm;
+./IED/Controller/ActorObjectHolder.cpp:291:		/*RE::BSAnimationGraphManagerPtr agm;
+./IED/Controller/IObjectManager.cpp:834:				/*RE::BSAnimationGraphManagerPtr agm;
+./IED/Controller/ObjectEntryBase.cpp:403:			/*RE::BSAnimationGraphManagerPtr agm;
+########## IOTask
+./IED/Controller/ObjectCloningTask.h:11:		public IOTaskBase<ObjectCloningTask>
+./IED/Controller/QueuedModel.h:12:		public IOTaskBase<QueuedModel>
+./IED/Controller/ShaderTextureLoadTask.h:15:		public IOTaskBase<ShaderTextureLoadTask>
+./IED/IOTaskBase.h:8:	class IOTaskBase :
+./IED/IOTaskBase.h:9:		public RE::IOTask
+########## SKSESerializationEvent
+./IED/Controller/Controller.cpp:70:		auto& seh = SKSESerializationEventHandler::GetSingleton();
+./IED/Controller/Controller.cpp:72:		seh.GetDispatcher<SKSESerializationEvent>().AddSink(this);
+./IED/Controller/Controller.cpp:5155:	void Controller::Receive(const SKSESerializationEvent& a_evn)
+./IED/Controller/Controller.cpp:5159:		case SKSESerializationEventType::kSave:
+./IED/Controller/Controller.cpp:5162:		case SKSESerializationEventType::kRevert:
+./IED/Controller/Controller.h:53:		public ::Events::EventSink<SKSESerializationEvent>,
+./IED/Controller/Controller.h:849:		virtual void Receive(const SKSESerializationEvent& a_evn) override;
+./IED/Main.cpp:244:		SKSESerializationEventHandler::GetSingleton().Setup(
+./IED/OM/PersistentOutfitFormManager.cpp:51:			//auto& seh = SKSESerializationEventHandler::GetSingleton();
+./IED/OM/PersistentOutfitFormManager.cpp:53:			//seh.GetDispatcher<SKSESerializationEvent>().AddSink(this);
+./IED/OM/PersistentOutfitFormManager.cpp:646:		/*void PersistentOutfitFormManager::Receive(const SKSESerializationEvent& a_evn)
+./IED/OM/PersistentOutfitFormManager.cpp:650:			case SKSESerializationEventType::kRevert:
+./IED/OM/PersistentOutfitFormManager.h:8:#	include <ext/SKSESerializationEventHandler.h>
+./IED/OM/PersistentOutfitFormManager.h:20:			//public ::Events::EventSink<SKSESerializationEvent>,
+########## SKSEMessagingHandler
+./IED/Controller/Controller.cpp:80:		SKSEMessagingHandler::GetSingleton().AddSink(this);
+./IED/Main.cpp:86:		SKSEMessagingHandler::GetSingleton().AddSink(this);
+./IED/Main.cpp:228:		SKSEMessagingHandler::GetSingleton().Setup(handle, messagingInterface);
+./IED/OM/PersistentOutfitFormManager.cpp:17://#	include <ext/SKSEMessagingHandler.h>
+./IED/OM/PersistentOutfitFormManager.cpp:55:			//SKSEMessagingHandler::GetSingleton().AddSink(this);
+########## ConcreteFormFactory
+./IED/OM/BGSOutfitHolder.cpp:15:			const auto factory = RE::IFormFactory::GetConcreteFormFactoryByType<BGSOutfit>();
+./IED/OM/BGSOutfitHolder.cpp:24:			if (const auto factory = RE::IFormFactory::GetConcreteFormFactoryByType<BGSOutfit>())
+./IED/OM/BGSOutfitHolder.h:29:				if (const auto factory = RE::IFormFactory::GetConcreteFormFactoryByType<BGSOutfit>())
+########## BackgroundProcessThread
+./IED/Controller/EffectShaderData.cpp:109:				auto thrd = RE::BackgroundProcessThread::GetSingleton();
+./IED/Controller/IObjectManager.cpp:1507:		const auto thrd = RE::BackgroundProcessThread::GetSingleton();
+./IED/Controller/ObjectDatabase.cpp:31:				const auto thrd = RE::BackgroundProcessThread::GetSingleton();
+########## INIConfReader
+./IED/ConfigINI.cpp:36:		INIConfReader reader(a_path);
+########## ISerializationBase
+./IED/Controller/Controller.h:40:		public ISerializationBase,
+########## BSThread
+./IED/Controller/ActorProcessorTask.cpp:800:		RE::BSThread(),
+./IED/Controller/ActorProcessorTask.h:40:				public RE::BSThread
+########## BSShaderPropertyLightData
+./IED/CharacterLightingDetection.cpp:147:		RE::BSShaderPropertyLightData* a_spld,
+./IED/CharacterLightingDetection.h:50:			RE::BSShaderPropertyLightData* a_spld,
+########## ImageSpaceManager
+./IED/CharacterLightingDetection.cpp:104:			return lm * 0.3f + RE::ImageSpaceManager::GetSingleton()->data.baseData.hdr.sunlightScale * sunLightDiffuseMag;
+########## BGSLensFlare
+########## LightCreateParams
+########## InteriorData
+########## RefrInteraction
+########## TESClimate
+########## Clouds
+########## MemoryValidation
+########## D3D11
+./Common/VectorMath.cpp:167:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.cpp:203:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.cpp:222:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.cpp:241:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.cpp:261:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.cpp:280:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.cpp:298:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:56:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:65:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:71:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:77:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:84:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:90:		const CD3D11_VIEWPORT& a_viewport,
+./Common/VectorMath.h:96:		const CD3D11_VIEWPORT& a_viewport,
+########## BipedObject
+./IED/CommonParams.h:119:			return npc->GetShieldBipedObject();
+./IED/CommonParams.h:124:			return npc->GetBodyBipedObject();
+./IED/CommonParams.h:129:			return npc->GetHeadBipedObject();
+./IED/CommonParams.h:134:			return npc->GetHairBipedObject();
+./IED/ConfigBipedObjectList.h:7:		using configBipedObjectList_t = stl::boost_vector<BIPED_OBJECT>;
+./IED/ConfigLastEquipped.h:45:			configBipedObjectList_t         bipedSlots;
+./IED/Controller/Controller.cpp:2791:						const auto bipedObject = ItemData::SlotToBipedObject(a_params.actor, f.slot);
+./IED/Data.h:789:			[[nodiscard]] constexpr BIPED_OBJECT SlotToBipedObject(
+./IED/Data.h:819:					return a_actor->GetShieldBipedObject();
+./IED/PapyrusInterface/PapyrusMisc.cpp:27:						return a_actor->GetHeadBipedObject();
+./IED/PapyrusInterface/PapyrusMisc.cpp:29:						return a_actor->GetHairBipedObject();
+./IED/PapyrusInterface/PapyrusMisc.cpp:31:						return a_actor->GetShieldBipedObject();
+./IED/PapyrusInterface/PapyrusMisc.cpp:33:						return a_actor->GetBodyBipedObject();
+./IED/Parsers/JSONConfigBipedObjectListParser.cpp:10:		bool Parser<Data::configBipedObjectList_t>::Parse(
+########## BSAudio\|BGSSoundDescriptor\|SoundHandle\|PlaySound
+########## \bTES\b
+./IED/CharacterLightingDetection.cpp:88:			auto tes = RE::TES::GetSingleton();
+./IED/CommonParams.cpp:203:							RE::TES::GetSingleton()->sky,
+./IED/CommonParams.cpp:242:					RE::TES::GetSingleton()->sky,
+./IED/Controller/ActorProcessorTask.cpp:285:			const auto* const sky = RE::TES::GetSingleton()->sky;
+./IED/Controller/ActorProcessorTask.cpp:333:			const auto* const sky = RE::TES::GetSingleton()->sky;
+./IED/Controller/CachedActorData.cpp:430:			return a_lightLevel < ALD::GetTorchLightLevel(RE::TES::GetSingleton()->sky);
+./IED/Controller/CachedActorData.cpp:438:		auto       sky               = RE::TES::GetSingleton()->sky;
+./IED/Controller/IActorInfo.cpp:69:			const auto sky = RE::TES::GetSingleton()->sky;
+./IED/Controller/IActorInfo.cpp:86:			const auto sky                     = RE::TES::GetSingleton()->sky;
+./IED/Controller/IActorInfo.cpp:91:		if (const auto lt = ALD::GetActiveLightingTemplate(a_actor, RE::TES::GetSingleton()->sky))
+./IED/EngineExtensions.cpp:1095:	void EngineExtensions::PlayerCharacter_unk_205_Post_Hook(RE::TES* a_tes)
+./IED/EngineExtensions.h:193:		static void                              PlayerCharacter_unk_205_Post_Hook(RE::TES* a_tes);
+./IED/GeneralInfo.cpp:13:		if (const auto* const sky = RE::TES::GetSingleton()->sky)
+./IED/GlobalParams.cpp:13:			isExteriorDark.emplace(ALD::IsExteriorDark(RE::TES::GetSingleton()->sky));
+########## \bSky\b
+./IED/AreaLightingDetection.cpp:27:				const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:50:			static bool is_nighttime(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:116:			static bool get_sun_angle(const RE::Sky* a_sky, float& a_out) noexcept
+./IED/AreaLightingDetection.cpp:133:		bool IsExteriorDark(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:140:		float GetExteriorAmbientLightLevel(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:146:		float GetTorchLightLevel(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:154:		float GetTorchLightLevelRatio(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:160:		bool IsInteriorDark(const Actor* a_actor, const RE::Sky* a_sky, const TESObjectCELL* a_cell) noexcept
+./IED/AreaLightingDetection.cpp:185:		float GetInteriorAmbientLightLevel(const Actor* a_actor, const RE::Sky* a_sky, const TESObjectCELL* a_cell) noexcept
+./IED/AreaLightingDetection.cpp:210:		bool IsSunAngleLessThan(const RE::Sky* a_sky, float a_angle) noexcept
+./IED/AreaLightingDetection.cpp:225:		float GetRoundedSunAngle(const RE::Sky* a_sky, float a_nearest) noexcept
+./IED/AreaLightingDetection.cpp:242:		float GetSunAngle(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:257:		BGSLightingTemplate* GetRoomLightingTemplate(const RE::Sky* a_sky) noexcept
+./IED/AreaLightingDetection.cpp:263:		BGSLightingTemplate* GetActiveLightingTemplate(const Actor* a_actor, const RE::Sky* a_sky) noexcept
+########## IDebugLog\|gLog
+########## LUID\|luid

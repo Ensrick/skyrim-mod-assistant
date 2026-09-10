@@ -1,0 +1,2 @@
+skse64/BipedObject.h
+skse64/GameAudio.h

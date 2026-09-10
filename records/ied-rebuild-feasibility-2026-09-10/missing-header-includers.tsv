@@ -1,0 +1,51 @@
+BGSLensFlare.h	1	pch.h 
+BSAnimationGraphManager.h	1	pch.h 
+BSAnimationUpdateData.h	1	IED/Controller/ActorObjectHolder.cpp 
+BSLight.h	1	pch.h 
+BSShaderPropertyLightData.h	1	IED/CharacterLightingDetection.cpp 
+BSString.h	1	IED/PluginInterface.h 
+BSThread.h	1	pch.h 
+BackgroundProcessThread.h	1	pch.h 
+Calendar.h	1	pch.h 
+Clouds.h	1	IED/UI/I3DI/I3DIMain.cpp 
+ConcreteFormFactory.h	1	IED/OM/BGSOutfitHolder.h 
+D3D11Backup.h	1	IED/D3D/D3DCommon.h 
+GarbageCollector.h	2	IED/AnimationUpdateController.cpp IED/OM/BGSOutfitHolder.cpp 
+IDebugLog.h	1	pch.h 
+ILUID.h	1	pch.h 
+INIConfReader.h	1	IED/ConfigINI.h 
+IOTask.h	1	IED/IOTaskBase.h 
+ISerializationBase.h	2	IED/D3D/D3DEffectResources.cpp pch.h 
+ImageSpaceManager.h	1	IED/CharacterLightingDetection.cpp 
+InteriorData.h	1	IED/UI/Widgets/UILightingTemplateInheritanceFlagsWidget.h 
+LightCreateParams.h	1	pch.h 
+MemoryValidation.h	1	IED/EngineExtensions.cpp 
+PluginInterfaceBase.h	1	pch.h 
+PluginInterfaceSDS.h	1	pch.h 
+RefrInteraction.h	1	IED/Controller/CachedActorData.cpp 
+SDSPlayerShieldOnBackSwitchEvent.h	1	IED/Controller/Controller.h 
+SKSEMessagingEvents.h	1	pch.h 
+SKSEMessagingHandler.h	2	IED/Controller/Controller.cpp IED/Main.cpp 
+SKSESerializationEventHandler.h	2	IED/Controller/Controller.cpp IED/Main.cpp 
+SKSESerializationEvents.h	1	pch.h 
+ShaderReferenceEffect.h	1	pch.h 
+ShadowSceneNode.h	1	pch.h 
+Sky.h	3	IED/CommonParams.h IED/UI/I3DI/I3DIMain.cpp pch.h 
+TES.h	2	IED/CharacterLightingDetection.cpp pch.h 
+TESClimate.h	1	pch.h 
+WeaponAnimationGraphManagerHolder.h	2	IED/Controller/ActorObjectHolder.h pch.h 
+compiletime-strings.h	1	pch.h 
+hkaSkeleton.h	1	pch.h 
+stl_boost_serialization_containers.h	1	pch.h 
+stl_comparison.h	1	pch.h 
+stl_csr.h	1	pch.h 
+stl_error.h	1	pch.h 
+stl_fixed_string.h	1	pch.h 
+stl_flat_map.h	1	pch.h 
+stl_flat_set.h	1	pch.h 
+stl_mutex.h	1	pch.h 
+stl_queue.h	1	IED/Controller/ObjectDatabase.h 
+stl_smart_pointer.h	1	pch.h 
+stl_str_conv.h	1	pch.h 
+stl_str_helpers.h	1	pch.h 
+stl_typeid.h	1	IED/UI/UIClipboard.h 

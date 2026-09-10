@@ -1,0 +1,57 @@
+TUs seen: 1
+unique errors: 54
+by code: [('C2679', 31), ('C2593', 19), ('C2440', 1), ('C2039', 1), ('C2065', 1), ('C1189', 1)]
+bullet3\src\LinearMath\btVector3.h(978,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btVector3.h(979,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btVector3.h(980,11): error C2440: 'initializing': cannot convert from 'btVector3' to '__m128'
+bullet3\src\LinearMath\btVector3.h(982,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btVector3.h(983,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btVector3.h(984,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(262,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(267,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(272,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(275,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(277,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(278,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(280,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(643,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(648,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(653,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(656,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(658,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(659,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(662,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(731,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(736,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(741,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(743,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(745,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(814,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(819,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(824,7): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btQuaternion.h(826,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btQuaternion.h(828,2): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(239,8): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(240,8): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(241,8): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(244,9): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(252,9): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(253,9): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(255,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(256,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(257,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(261,8): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(262,8): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(263,8): error C2593: 'operator *' is ambiguous
+bullet3\src\LinearMath\btMatrix3x3.h(265,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(266,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(267,3): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(911,9): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(912,9): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(913,9): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(1003,9): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(1004,9): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+bullet3\src\LinearMath\btMatrix3x3.h(1005,9): error C2679: binary '=': no operator found which takes a right-hand operand of type 'btVector3' (or there is no acceptable conversion)
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\BulletExtensions.h(143,36): error C2039: 'noinit_arg_t': is not a member of 'NiTransform'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\Common\BulletExtensions.h(143,36): error C2065: 'noinit_arg_t': undeclared identifier
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\winrt\wrl\def.h(48,1): error C1189: #error:  WRL requires NTDDI_VERSION to be #defined at least to NTDDI_VISTA or greater

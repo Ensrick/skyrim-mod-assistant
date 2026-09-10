@@ -1,0 +1,5 @@
+TUs seen: 1
+unique errors: 2
+by code: [('C2760', 1), ('C2059', 1)]
+_ied_feas_scratch\ImmersiveEquipmentDisplays\pch.h(160,33): error C2760: syntax error: '<' was unexpected here; expected ';'
+_ied_feas_scratch\ImmersiveEquipmentDisplays\pch.h(160,51): error C2059: syntax error: '>'

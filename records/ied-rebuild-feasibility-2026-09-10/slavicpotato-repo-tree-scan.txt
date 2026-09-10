@@ -1,0 +1,25 @@
+===== ied-dev (master)
+blob	ImmersiveEquipmentDisplays.sln
+===== SimpleDualSheath (master)
+blob	SimpleDualSheath.sln
+===== SSMT_Fix (master)
+blob	SSMTFix.sln
+===== OpenAnimationReplacer-IEDConditionExtensions (master)
+===== UnlimitedFastTravel (master)
+blob	UnlimitedFastTravel.sln
+===== EquipEnchantmentFix (master)
+blob	EquipEnchantmentFix.sln
+===== SSEDisplayTweaks (master)
+blob	SSEDisplayTweaks.sln
+===== CBPSSE (master)
+blob	CBP.sln
+===== skee64-memleak-patch (master)
+blob	skee64-memleak-patch.sln
+===== PluginTestingGrounds (master)
+blob	Plugs.sln
+===== PluginLoader (master)
+blob	PluginLoader.sln
+===== misc-tools (master)
+blob	misc-tools.sln
+===== ImmersiveEquipmentMeshGen (main)
+blob	ImmersiveEquipmentMeshGen.sln
