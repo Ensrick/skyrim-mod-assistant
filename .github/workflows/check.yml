@@ -57,6 +57,12 @@ jobs:
           python audit/launch_verify.py --selftest
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+      - name: Test read-only SKSE event inventory
+        shell: pwsh
+        run: |
+          python -m unittest discover -s audit -p test_skse_mod_event_inventory.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test pinned Unbound jail-pool source transformation
         shell: pwsh
         run: |
