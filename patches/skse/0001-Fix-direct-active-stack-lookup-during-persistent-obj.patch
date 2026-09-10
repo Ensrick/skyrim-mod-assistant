@@ -1,0 +1,330 @@
+From 3778070a8486359b36e12d3924360d351c417d3b Mon Sep 17 00:00:00 2001
+From: Ensrick <truthisfact@gmail.com>
+Date: Wed, 9 Sep 2026 18:44:24 -0500
+Subject: [PATCH] Fix direct active-stack lookup during persistent object save
+ cleanup
+
+---
+ .github/workflows/stack-lookup.yml  | 27 ++++++++++
+ skse64/PapyrusObjects.cpp           | 79 +++++++++++++++++++++++++----
+ skse64/PapyrusVM.cpp                | 12 ++---
+ tests/stack_lookup/CMakeLists.txt   | 19 +++++++
+ tests/stack_lookup/README.md        | 40 +++++++++++++++
+ tests/stack_lookup/stack_lookup.cpp | 64 +++++++++++++++++++++++
+ 6 files changed, 226 insertions(+), 15 deletions(-)
+ create mode 100644 .github/workflows/stack-lookup.yml
+ create mode 100644 tests/stack_lookup/CMakeLists.txt
+ create mode 100644 tests/stack_lookup/README.md
+ create mode 100644 tests/stack_lookup/stack_lookup.cpp
+
+diff --git a/.github/workflows/stack-lookup.yml b/.github/workflows/stack-lookup.yml
+new file mode 100644
+index 0000000..b7eabb8
+--- /dev/null
++++ b/.github/workflows/stack-lookup.yml
+@@ -0,0 +1,27 @@
++name: Stack lookup regression
++on:
++  push:
++    paths:
++      - 'skse64/PapyrusVM.cpp'
++      - 'tests/stack_lookup/**'
++      - '.github/workflows/stack-lookup.yml'
++  pull_request:
++    paths:
++      - 'skse64/PapyrusVM.cpp'
++      - 'tests/stack_lookup/**'
++      - '.github/workflows/stack-lookup.yml'
++permissions:
++  contents: read
++jobs:
++  regression:
++    strategy:
++      matrix:
++        os: [ubuntu-latest, windows-latest]
++    runs-on: ${{ matrix.os }}
++    steps:
++      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
++        with:
++          persist-credentials: false
++      - run: cmake -S tests/stack_lookup -B build-stack-lookup
++      - run: cmake --build build-stack-lookup --config Release
++      - run: ctest --test-dir build-stack-lookup -C Release --output-on-failure
+diff --git a/skse64/PapyrusObjects.cpp b/skse64/PapyrusObjects.cpp
+index eb7d177..402f270 100644
+--- a/skse64/PapyrusObjects.cpp
++++ b/skse64/PapyrusObjects.cpp
+@@ -5,9 +5,14 @@
+ #include "PapyrusVM.h"
+ #include <algorithm>
+ 
+-namespace
+-{
+-	static const size_t kMaxNameLen  = 1024;
++namespace
++{
++	static const size_t kMaxNameLen  = 1024;
++	bool StackLookupProbeEnabled()
++	{
++		char flag[2] = {};
++		return GetEnvironmentVariableA("SKSE_AUTOMATION_STACK_LOOKUP_PROBE", flag, sizeof(flag)) == 1 && flag[0] == '1';
++	}
+ }
+ 
+ ///
+@@ -40,9 +45,61 @@ const ISKSEObjectFactory* SKSEObjectRegistry::GetFactoryByName(const char* name)
+ /// SKSEPersistentObjectStorage
+ ///
+ 
+-void SKSEPersistentObjectStorage::CleanDroppedStacks()
+-{
+-	VMClassRegistry* registry = (*g_skyrimVM)->GetClassRegistry();
++void SKSEPersistentObjectStorage::CleanDroppedStacks()
++{
++	VMClassRegistry* registry = (*g_skyrimVM)->GetClassRegistry();
++
++	// Explicit automation-only coverage of the active-stack lookup. An empty
++	// persistent-object table otherwise skips the path which crashed on save.
++	// Read an existing engine stack; do not create stacks or alter save payloads.
++	if (StackLookupProbeEnabled())
++	{
++		UInt32 probeId = 0;
++		void* expected = nullptr;
++		registry->stackLock.Lock();
++		UInt64 legacyValue = 0;
++		auto choose = [&](VMStackTableItem* item) {
++			if (!item->data) return true;
++			UInt32 embeddedId = 0;
++			memcpy(&embeddedId, reinterpret_cast<const char*>(item->data) + 0x80, sizeof(embeddedId));
++			if (embeddedId != item->stackId) return true;
++			probeId = item->stackId;
++			expected = item->data;
++			memcpy(&legacyValue, reinterpret_cast<const char*>(expected) + 0x18, sizeof(legacyValue));
++			return false;
++		};
++		registry->allStacks.ForEach(choose);
++		registry->stackLock.Release();
++		if (expected) {
++			_MESSAGE("STACK_LOOKUP_PROBE_BEGIN id=%u expected=%p legacy_first_value=%016llX persistent_slots=%u", probeId, expected, legacyValue, static_cast<UInt32>(data_.size()));
++			// Logging is outside the spinlock. Revalidate after that gap, then
++			// retain the recursive SimpleLock across the actual lookup and ID
++			// check. A departed/replaced stack is not successful coverage.
++			VMStackInfo* actual = nullptr;
++			UInt32 embeddedId = 0;
++			bool covered = false;
++			registry->stackLock.Lock();
++			auto* current = registry->allStacks.Find(&probeId);
++			if (current && current->data == expected) {
++				memcpy(&embeddedId, reinterpret_cast<const char*>(current->data) + 0x80, sizeof(embeddedId));
++				if (embeddedId == probeId) {
++					actual = registry->GetStackInfo(probeId);
++					// Never dereference the returned opaque pointer, especially
++					// after unlocking. Read the map-owned Stack while protected.
++					memcpy(&embeddedId, reinterpret_cast<const char*>(current->data) + 0x80, sizeof(embeddedId));
++					covered = true;
++				}
++			}
++			registry->stackLock.Release();
++			if (covered) {
++				_MESSAGE("STACK_LOOKUP_PROBE_END id=%u actual=%p expected=%p embedded_id=%u match=%u", probeId, actual, expected, embeddedId, static_cast<UInt32>(actual == expected && embeddedId == probeId));
++			} else {
++				_MESSAGE("STACK_LOOKUP_PROBE_NOT_COVERED id=%u: stack gone or replaced during logging gap", probeId);
++			}
++		} else {
++			_MESSAGE("STACK_LOOKUP_PROBE_NOT_COVERED: no verified active stack; not a passing coverage test");
++		}
++	}
+ 
+ 	for (UInt32 i=0; i<data_.size(); i++)
+ 	{
+@@ -93,7 +150,9 @@ bool SKSEPersistentObjectStorage::Save(SKSESerializationInterface* intfc)
+ 	if (! WriteData(intfc, &dataSize))
+ 		return false;
+ 
+-	UInt32 filledSize = data_.size() - freeIndices_.size();
++	UInt32 filledSize = data_.size() - freeIndices_.size();
++	if (StackLookupProbeEnabled())
++		_MESSAGE("STACK_STORAGE_SAVE slots=%u filled=%u", dataSize, filledSize);
+ 	if (! WriteData(intfc, &filledSize))
+ 		return false;
+ 
+@@ -150,8 +209,10 @@ bool SKSEPersistentObjectStorage::Load(SKSESerializationInterface* intfc, UInt32
+ 	
+ 	// Rebuild free index list
+ 	for (UInt32 i=0; i<data_.size(); i++)
+-		if (data_[i].obj == NULL)
+-			freeIndices_.push_back(i);
++		if (data_[i].obj == NULL)
++			freeIndices_.push_back(i);
++	if (StackLookupProbeEnabled())
++		_MESSAGE("STACK_STORAGE_LOAD slots=%u filled=%u restored=%u", dataSize, filledSize, static_cast<UInt32>(data_.size() - freeIndices_.size()));
+ 
+ 	return true;
+ }
+diff --git a/skse64/PapyrusVM.cpp b/skse64/PapyrusVM.cpp
+index 5046dba..6a4e3b4 100644
+--- a/skse64/PapyrusVM.cpp
++++ b/skse64/PapyrusVM.cpp
+@@ -173,12 +173,12 @@ VMStackInfo* VMClassRegistry::GetStackInfo(UInt32 stackId)
+ 
+ 	VMStackTableItem* item = allStacks.Find(&stackId);
+ 
+-	if (item != NULL &&
+-		item->data != NULL &&
+-		item->data->unkData != NULL)
+-	{
+-		result = item->data->unkData->stackInfo;
+-	}	
++	// The SSE map stores StackID -> BSTSmartPointer<Stack> directly. The old
++	// LE-era chain reads Stack::pages at +0x18 as another pointer (e.g.6),
++	// then dereferences it during persistent-object save cleanup. Keep the
++	// existing opaque return ABI; callers only test for presence, not fields.
++	if (item != NULL)
++		result = reinterpret_cast<VMStackInfo*>(item->data);
+ 
+ 	stackLock.Release();
+ 
+diff --git a/tests/stack_lookup/CMakeLists.txt b/tests/stack_lookup/CMakeLists.txt
+new file mode 100644
+index 0000000..1cadb89
+--- /dev/null
++++ b/tests/stack_lookup/CMakeLists.txt
+@@ -0,0 +1,19 @@
++cmake_minimum_required(VERSION 3.21)
++project(SKSEStackLookupRegression LANGUAGES CXX)
++enable_testing()
++set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../../skse64/PapyrusVM.cpp")
++# Compile the actual production function, not a copied reimplementation. Mock
++# only its map/lock boundary; the live-game probe verifies the real VM layout.
++file(READ "${CMAKE_CURRENT_SOURCE_DIR}/../../skse64/PapyrusVM.cpp" source)
++string(FIND "${source}" "VMStackInfo* VMClassRegistry::GetStackInfo(UInt32 stackId)" begin)
++string(FIND "${source}" "UInt32 SkyrimVM::ClearInvalidRegistrations(void)" end)
++if(begin LESS 0 OR end LESS begin)
++  message(FATAL_ERROR "Production function boundaries changed; review the fixture")
++endif()
++math(EXPR length "${end} - ${begin}")
++string(SUBSTRING "${source}" ${begin} ${length} body)
++file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/production_lookup.inc" "${body}")
++add_executable(stack_lookup stack_lookup.cpp)
++target_include_directories(stack_lookup PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
++target_compile_features(stack_lookup PRIVATE cxx_std_20)
++add_test(NAME production_stack_lookup COMMAND stack_lookup)
+diff --git a/tests/stack_lookup/README.md b/tests/stack_lookup/README.md
+new file mode 100644
+index 0000000..e1bcdbc
+--- /dev/null
++++ b/tests/stack_lookup/README.md
+@@ -0,0 +1,40 @@
++# Active-stack lookup regression
++
++This harness compiles the production `VMClassRegistry::GetStackInfo` body,
++with only the map and lock boundary mocked. It is not a substitute for an
++in-game layout/serialization test. Run with:
++
++```text
++cmake -S tests/stack_lookup -B build-stack-lookup
++cmake --build build-stack-lookup --config Release
++ctest --test-dir build-stack-lookup -C Release --output-on-failure
++```
++
++Cases cover 65,536 inline-array capacity patterns, direct opaque pointer
++identity, absent IDs, null entries, balanced and nested locking, and no writes
++to the stack. CMake tracks the production source as a configure dependency.
++
++## Runtime diagnostic (default OFF)
++
++Set `SKSE_AUTOMATION_STACK_LOOKUP_PROBE=1` only on an isolated test launch.
++It samples a real running Stack under the VM lock and tests the production
++lookup while retaining the recursive lock. Pointer and embedded ID must agree.
++Logging occurs outside the spinlock; vanished/replaced stacks are NOT_COVERED,
++never passing coverage. No synthetic stacks or persistent objects are created.
++
++`legacy_first_value` deliberately reads the same **eight bytes** at Stack+0x18
++which the obsolete pointer chain read. It is not just the 32-bit capacity:
++adjacent bytes may also appear in that raw word. Stack+0x18 is the small-array
++header, and Stack+0x80 is the ID. Neither this probe nor production consumers
++decode the obsolete `VMStackInfo` fields; treat the return as opaque.
++
++`STACK_STORAGE_SAVE/LOAD` log slot counts only when the diagnostic is enabled.
++Require continued serialization, completed ESS/co-save pairs, a successful
++reload, and a separate diagnostic-OFF save. A zero-active-stack save proves
++no coverage. A controller exit code alone does not prove absence of a crash.
++
++The September 9 controlled old-code run crashes on the actual lookup, while
++the corrected run saves successfully using the same original fixture. The
++probe deliberately forces lookup coverage, so this is not a claim that the
++original user interaction timing was reproduced exactly. Evidence and scope:
++https://github.com/Ensrick/skyrim-mod-assistant/issues/261
+diff --git a/tests/stack_lookup/stack_lookup.cpp b/tests/stack_lookup/stack_lookup.cpp
+new file mode 100644
+index 0000000..4b8f910
+--- /dev/null
++++ b/tests/stack_lookup/stack_lookup.cpp
+@@ -0,0 +1,64 @@
++#include <array>
++#include <cstddef>
++#include <cstdint>
++#include <cstdio>
++#include <cstring>
++#include <stdexcept>
++using UInt32=std::uint32_t;
++struct VMStackInfo {};
++// Preserve the obsolete declared SDK shape so reintroducing its pointer chain
++// compiles but fails this test. Runtime data is an opaque direct Stack pointer.
++struct OldData1 { std::uint32_t a; void* b; std::uint32_t c; VMStackInfo* stackInfo; };
++struct OldData2 { std::uint32_t a; void* b; std::uint32_t c,d; OldData1* unkData; };
++struct VMStackTableItem { UInt32 stackId; OldData2* data; };
++static void require(bool yes) { if(!yes) throw std::runtime_error("stack lookup contract failure"); }
++struct Lock {
++  unsigned depth=0, enters=0, leaves=0;
++  void LockEnter() { ++depth; ++enters; }
++  void Release() { require(depth>0); --depth; ++leaves; }
++};
++struct TestLock : Lock { void Lock() { LockEnter(); } };
++struct Map {
++  TestLock* lock;
++  VMStackTableItem* entry=nullptr;
++  VMStackTableItem* Find(UInt32* id) {
++    require(lock->depth>=1);
++    return entry && entry->stackId==*id ? entry : nullptr;
++  }
++};
++class VMClassRegistry {
++public:
++  TestLock stackLock;
++  Map allStacks{&stackLock};
++  VMStackInfo* GetStackInfo(UInt32);
++};
++#include "production_lookup.inc"
++int main() {
++  try {
++    VMClassRegistry vm;
++    require(vm.GetStackInfo(42)==nullptr);
++    VMStackTableItem entry{42,nullptr};
++    vm.allStacks.entry=&entry;
++    require(vm.GetStackInfo(42)==nullptr);
++    alignas(8) std::array<std::byte,0xA0> bytes{};
++    entry.data=reinterpret_cast<OldData2*>(bytes.data());
++    unsigned cases=0;
++    for(std::uint64_t n=0;n<32768;++n) for(auto flag:{0ull,0x80000000ull}) {
++      bytes.fill(std::byte{0xA5});
++      auto capacity=n|flag;
++      std::memcpy(bytes.data()+0x18,&capacity,8);
++      auto before=bytes;
++      require(vm.GetStackInfo(42)==reinterpret_cast<VMStackInfo*>(bytes.data()));
++      require(vm.GetStackInfo(43)==nullptr);
++      require(bytes==before && vm.stackLock.depth==0 && vm.stackLock.enters==vm.stackLock.leaves);
++      ++cases;
++    }
++	vm.stackLock.Lock();
++	require(vm.GetStackInfo(42)==reinterpret_cast<VMStackInfo*>(bytes.data()));
++	require(vm.stackLock.depth==1);
++	vm.stackLock.Release();
++	require(vm.stackLock.depth==0 && vm.stackLock.enters==vm.stackLock.leaves);
++    std::printf("PASS: %u production direct-stack cases; missing/null entries; locked lookup; balanced unlock; no pointee writes\n",cases);
++    return 0;
++  } catch(const std::exception& e) { std::fprintf(stderr,"FAIL: %s\n",e.what()); return 1; }
++}
+-- 
+2.55.0.windows.4
+

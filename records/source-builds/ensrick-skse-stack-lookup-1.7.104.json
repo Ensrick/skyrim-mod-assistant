@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "component": "SKSE runtime DLL - direct active-stack save lookup repair",
+  "runtime": "1.7.104.0",
+  "version": "3778070-stack-lookup",
+  "source": {
+    "repository": "https://github.com/Ensrick/skse64",
+    "branch": "ensrick/1.7.104-headless",
+    "commit": "3778070a8486359b36e12d3924360d351c417d3b",
+    "base": "872c2d6",
+    "commonCommit": "64e233c096735551f6ac9a773726a8a3960e46cd",
+    "patch": "patches/skse/0001-Fix-direct-active-stack-lookup-during-persistent-obj.patch",
+    "patchSha256": "7067DCD1C9EC8AC33B18C7D8C314E551842EEB85ADF53DDDE8C65BE0368AB9CD",
+    "configuration": "Release",
+    "generator": "Visual Studio 17 2022",
+    "platformToolset": "v143",
+    "workingTreeCaveat": "Existing sheets/Common.props and sheets/Runtime.props edits preserved and not committed; this artifact was built with CMake, not those hand-authored solution property sheets. No binary public release made."
+  },
+  "artifact": {
+    "rootRelativePath": "skse64_1_7_104.dll",
+    "sha256": "240C9B5CFC5CE6D632FF931B96A91219CA71B34AE7D263CF4F688C25DF8AE707",
+    "bytes": 1205760,
+    "pdbSha256": "0BE06C53239A7FD02D88FB9F39B8D6C4BF8F669BAF7C87833255FB117F10E943",
+    "pdbBytes": 16822272,
+    "previousDllSha256": "66450B620A5D21FAA16EAE5383FF6700AE45DA0B4A0E196905257C28120F451E",
+    "controlDiagnosticDllSha256": "3D4512F6672DD99D1F0679C2F46F852BEEDBA2FCE181982954EC26A7D1B162D4",
+    "firstFixedDllSha256": "5C918A9D3CFE277B2F65482D4EBF6E0A7350B32D88789E316AA572C4E8C30AE9",
+    "privateArchive": "records-work/skse-save-20260909/fixed-build",
+    "rollbackArchive": "records-work/skse-save-20260909/before"
+  },
+  "installation": {
+    "installedLocal": "2026-09-09T18:38:21-05:00",
+    "claimOwner": "astra/skse-save-20260909",
+    "scope": "Game-root SKSE tool DLL/PDB; no third-party mod payload changes",
+    "diagnosticDefault": "OFF; enabled only by SKSE_AUTOMATION_STACK_LOOKUP_PROBE=1 in isolated launcher environment",
+    "saveCleaning": false,
+    "saveDeletion": false
+  },
+  "verification": {
+    "nativeCases": 65536,
+    "nativeResult": "PASS: production function, pointer identity, absent/null entries, balanced/nested lock, no pointee writes",
+    "regressionCiRun": 34418266076,
+    "fullBuildCiRun": 34418266068,
+    "ciResult": "PASS",
+    "independentReview": "Claude Fable 5.1 reviewed actual source with no read denials in second pass; scoped code approved, runtime acceptance tracked separately",
+    "runtimeResult": "PASS: controlled old-code crash; corrected pointer/ID-covered saves; three consecutive guarded saves; cold reload and storage-count roundtrip; current Default-clone saves and in-session reload; diagnostic-OFF cold load, save and reload with zero diagnostic lines. No new crash after the intentional old-code control. Scope is the targeted save-time fault, not all modlist gameplay or old-save migration.",
+    "report": "docs/SKSE_SAVE_REPAIR_2026-09-09.md"
+  },
+  "license": "Upstream SKSE terms retained; not MIT. Review SKSE distribution terms before any binary release.",
+  "publicBinaryRelease": "NOT RELEASED; source commit and patch published separately from mod archives"
+}
