@@ -72,6 +72,20 @@ private save is published with this report. No game/controller remains.
 
 ## Remaining release gates
 
+Follow-up native inspection and actual Fable review found ownership transfers
+after the inner routine returns false (`628414..62841C` and `628E24..628E2C`),
+not just the previously identified early callback. A false inner result is
+therefore not proof of synchronous cleanup. The meanings of the intervening
+native calls are not established; no branch bypass or cancellation-release
+change was implemented. Review also rejected treating a naked asynchronously
+published abandoned pointer as generation-safe cleanup.
+
+All four archived lifetime controls (`observe-only`, `enforce`,
+`mixed-refusal`, `snapshot-reader`) contain zero
+`SAVE_ADMISSION_PENDING ... transferred=1` records. The observe-only control
+did not enforce admission; zero there is expected and not coverage. The three
+enforced controls do not establish deferred success/cancellation behavior.
+
 - Native deferred/cancelled stream ownership and late continuity-failure cleanup.
 - Clear in-game refusal feedback; no desktop popup is acceptable.
 - Reproducible production packaging and representative travel/combat coverage.
