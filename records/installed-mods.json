@@ -834,8 +834,11 @@
       "enabled": true,
       "installedUtc": "2026-09-10T01:51:02Z",
       "transaction": "20260910T015101883Z-8fe51167ed3c",
-      "note": "37 records (30 CONT, 7 LVLI), masters Skyrim/Update/Dawnguard/Dragonborn + C.O.I.N.esp. Taken because C.O.I.N. - Coins of Interesting Natures is installed; the combined 'COIN and Lock Related Loot' variant was not, since Lock Related Loot is absent. Placed at load order 84, after C.O.I.N.esp and still ahead of the currency block, so exchangeCurrency keeps its own records. NOT verified in game.",
-      "distribution": "vendor"
+      "note": "37 records (30 CONT, 7 LVLI), masters Skyrim/Update/Dawnguard/Dragonborn + C.O.I.N.esp. Taken because C.O.I.N. - Coins of Interesting Natures is installed; the combined 'COIN and Lock Related Loot' variant was not, since Lock Related Loot is absent. Placed at load order 84, after C.O.I.N.esp and still ahead of the currency block, so exchangeCurrency keeps its own records. NOT verified in game. PARKED 2026-09-09 at the user's instruction - \"Try not to activate new plugins right now, keep them inactive\" - because the parallel session is mid-bisect on a Sep 9 save crash and a new leveled-list plugin would contaminate that evidence. The plugin is UNSTARRED but stays at its vetted load-order slot, so activation later is a one-line plugin-enable with placement already correct. Tracked for activation in issue #264.",
+      "distribution": "vendor",
+      "disabledPlugins": [
+        "CLLF - COIN Patch.esp"
+      ]
     },
     {
       "modId": 26575,
@@ -852,8 +855,11 @@
       "enabled": true,
       "installedUtc": "2026-09-10T01:51:01Z",
       "transaction": "20260910T015100660Z-285dc38dc833",
-      "note": "8 records (7 CONT, 1 LVLI), masters Skyrim + USSEP + Cutting Room Floor.esp. Placed at load order 56, immediately after cutting room floor.esp, since it needs it as a master. NOT verified in game.",
-      "distribution": "vendor"
+      "note": "8 records (7 CONT, 1 LVLI), masters Skyrim + USSEP + Cutting Room Floor.esp. Placed at load order 56, immediately after cutting room floor.esp, since it needs it as a master. NOT verified in game. PARKED 2026-09-09 at the user's instruction - \"Try not to activate new plugins right now, keep them inactive\" - because the parallel session is mid-bisect on a Sep 9 save crash and a new leveled-list plugin would contaminate that evidence. The plugin is UNSTARRED but stays at its vetted load-order slot, so activation later is a one-line plugin-enable with placement already correct. Tracked for activation in issue #264.",
+      "distribution": "vendor",
+      "disabledPlugins": [
+        "CLLF - Cutting Room Floor Patch.esp"
+      ]
     },
     {
       "modId": 6369,
@@ -1034,8 +1040,11 @@
       "enabled": true,
       "installedUtc": "2026-09-10T01:50:59Z",
       "transaction": "20260910T015059263Z-912ba1a2c7d5",
-      "note": "User linked it twice; installed on the second pass after a read-only vet. NOT just a fix mod: alongside container and chance-none fixes it implements Morrowloot's loot rules, so daedric, glass, ebony, dragon, stalhrim, elven, orcish, dwarven and nordic gear no longer appear in random leveled lists. That is a permanent rarity change, stated on the mod page and flagged to the user before install. VETTED BEFORE INSTALLING, archives downloaded and read without touching the profile: 1,239 records - 790 LVLI, 363 CONT, 4 FACT (the Thieves Guild fence services Arnskar, Syndus, Herluin and Vanryth) and 1 ARMA (IronShieldHeavyAA); masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/USSEP, so it forwards 99 USSEP records deliberately. Survey: 0/19, as is Morrowloot; WACCF, which the author recommends alongside, is 4/19 and not installed. PLACEMENT IS THE WHOLE STORY. It installed at plugins.txt 310 like everything else, which would have taken 26 records off exchangeCurrency_enhanced, 3 off Ensrick Currency Integration Patch, 5 off exchangeCurrency_patch_COIN, 22 of Simple Hunting Overhaul's 24 leveled lists, 10 off LostLongSwords and 11 off Sons of Skyrim. Moved to load order 5, immediately after the Unofficial Skyrim Modders Patch, so it is the base layer and every deliberate tuning above it wins - re-verified after the move, all seven of those plugins now own their shared records. Profile files backed up as .bak.v<stamp>-pre-cllf-move. NOT verified in game.",
-      "distribution": "vendor"
+      "note": "User linked it twice; installed on the second pass after a read-only vet. NOT just a fix mod: alongside container and chance-none fixes it implements Morrowloot's loot rules, so daedric, glass, ebony, dragon, stalhrim, elven, orcish, dwarven and nordic gear no longer appear in random leveled lists. That is a permanent rarity change, stated on the mod page and flagged to the user before install. VETTED BEFORE INSTALLING, archives downloaded and read without touching the profile: 1,239 records - 790 LVLI, 363 CONT, 4 FACT (the Thieves Guild fence services Arnskar, Syndus, Herluin and Vanryth) and 1 ARMA (IronShieldHeavyAA); masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/USSEP, so it forwards 99 USSEP records deliberately. Survey: 0/19, as is Morrowloot; WACCF, which the author recommends alongside, is 4/19 and not installed. PLACEMENT IS THE WHOLE STORY. It installed at plugins.txt 310 like everything else, which would have taken 26 records off exchangeCurrency_enhanced, 3 off Ensrick Currency Integration Patch, 5 off exchangeCurrency_patch_COIN, 22 of Simple Hunting Overhaul's 24 leveled lists, 10 off LostLongSwords and 11 off Sons of Skyrim. Moved to load order 5, immediately after the Unofficial Skyrim Modders Patch, so it is the base layer and every deliberate tuning above it wins - re-verified after the move, all seven of those plugins now own their shared records. Profile files backed up as .bak.v<stamp>-pre-cllf-move. NOT verified in game. PARKED 2026-09-09 at the user's instruction - \"Try not to activate new plugins right now, keep them inactive\" - because the parallel session is mid-bisect on a Sep 9 save crash and a new leveled-list plugin would contaminate that evidence. The plugin is UNSTARRED but stays at its vetted load-order slot, so activation later is a one-line plugin-enable with placement already correct. Tracked for activation in issue #264.",
+      "distribution": "vendor",
+      "disabledPlugins": [
+        "Containers and Leveled Lists Fixes.esp"
+      ]
     },
     {
       "modId": 52276,
