@@ -4,6 +4,15 @@ Issue [#262](https://github.com/Ensrick/skyrim-mod-assistant/issues/262) remains
 The original Adventurer3 campaign is not repaired. No original save, removed
 mod, vendor asset, or normal-profile load order was changed by this work.
 
+**Current status, 03:50 CDT:** the admission adapter below remains experimental
+and uninstalled. A separate investigation subsequently proved the original
+Papyrus member overrun and installed the paired bounds guard in clean SKSE
+`e843ba3` / DLL `4E3F618B...`; see
+[the exact-save root cause and runtime evidence](PAPYRUS_MCM_OUT_OF_BOUNDS_2026-09-10.md).
+The CC2F/0FAF/8949 hashes below describe earlier tests, not the currently
+installed build. Fixing that crash does not repair the original campaign's
+missing currency checkpoint or finish the admission lifecycle work.
+
 ## Implemented
 
 The native parser now has an original C ABI, consumable by the older SKSE
@@ -104,7 +113,11 @@ The existing SKSE target already uses static CRT; the generated projects
 confirm `/MT` for SKSE, the bridge, and zlib. The bridge alone uses C++20;
 SKSE was not globally migrated to that language standard.
 
-## Original Papyrus crash — separate investigation
+## Original Papyrus crash — historical preliminary investigation
+
+The following preserves the earlier investigative state. Its unproven
+hypotheses were superseded by the minidump/runtime findings linked above;
+do not use this paragraph as the current root-cause assessment.
 
 Fable reviewed the actual crash and parent checked the pinned executable.
 The immediate fault is an array-reference release of pointer 2, reached from
