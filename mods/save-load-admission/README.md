@@ -70,6 +70,10 @@ This is deterministic regression coverage, not exhaustive fuzzing.
 2. Obtain expected currency fingerprint from the initialized, reviewed bridge,
    verify package readiness/identity and paired active companions. Do not
    trust a fingerprint supplied by the save being checked.
+   Current bridge exposes no such read-only ABI. Its `_initialized` flag is
+   set at initialization entry, before configuration resolution completes;
+   that flag alone must NOT be treated as published readiness. A versioned
+   identity interface should publish only after successful initialization.
 3. Preserve file identity between inspection and engine read (read handles,
    sharing/identity checks and tests), handle memory/I/O/parser exceptions,
    and measure latency/memory under the live hook. No file-lock guarantee is

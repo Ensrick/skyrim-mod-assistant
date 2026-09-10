@@ -59,6 +59,11 @@ upstream GitHub release asset357391855 as preferred mirror; its API digest
 matches the SAME expected hash. Hash verification was not relaxed. The cause
 of the differing hosted response is not established; no foreign bytes built.
 
+Corrected source revision `e148800802b99d582fc3c734d992cae6e8684c78` has
+hosted native run34437999102 PASS on Windows and Linux, including the
+Linux ASan/UBSan test step. This validates the committed core build/tests,
+not runtime integration or original campaign health.
+
 ## Still required
 
 The next adapter must use the exact engine-resolved filename, real loaded
