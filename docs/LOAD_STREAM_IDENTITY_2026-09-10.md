@@ -129,9 +129,10 @@ Muted private run PID34544/controller18068:
 Evidence folder records-work/load-request-20260909/automatic-recovery-healthy-plugins;
 SKSE logSHA256
 `42365562D910F929A8D393BEF128BA9562FB768BD2E2B629AB1D47051FA88A73`.
-Source CI dispatched34441333722(request/plugin tests),34441333932(arguments),
-34441333734(full build); their final results must be checked before claiming
-hosted validation. Canonical report c2f6457 Check34440821935 passed.
+Source CI all completed successfully:34441333722(request/plugin tests on
+Windows/Linux),34441333932(arguments),34441333734(full build). Canonical
+report c2f6457 Check34440821935 passed; acc2c92 Check34441442869 was still
+running at this source-validation checkpoint and is not yet claimed passed.
 
 This closes the observed F9 route unknown for this runtime. It does not prove
 every possible console/external load route, mixed rejected/accepted sequences
