@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "experimental-isolated-only",
+  "installedForNormalPlay": false,
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/268",
+  "parentIssue": 262,
+  "sourceRepository": "https://github.com/Ensrick/skse64",
+  "sourceCommit": "aef6fcbc78f4aaee8bda521188271f5db4258b95",
+  "runtime": "1.7.104",
+  "executableMd5": "113faeb71fd8f62b26d0c8627299ab40",
+  "candidateDllSha256": "D2B87965C54C6268F309CB546F0820344DDEF46C22EBBA5FE48CAFB54B4B4424",
+  "cleanNonAdmissionCandidateSha256": "A776C5C5832A957571C0DADF7BEC9F9894A6F9A0048291927964C6A0C6C7F3FB",
+  "cleanCandidateRuntimeTested": false,
+  "restoredNormalDllSha256": "4E3F618B6A413B6EA3C38E238EBC607E056EEBFC34ED72073DD46BEEA7BD7184",
+  "optInEnvironment": "SKSE_AUTOMATION_TEXTURE_RELEASE_FIX=1",
+  "functionRva": "0x100F190",
+  "requiredSignatureBytes": 147,
+  "patchRva": "0x100F1DE",
+  "patchBytes": "EB2B90",
+  "nativeSignatureBranchChecks": 156,
+  "offlineExactCodeCases": 32,
+  "ciRunsPassed": [34468813475, 34468813418],
+  "firstPositiveTest": {
+    "profile": "Astra Load262 Lifetime texture-fixed-exact",
+    "gamePid": 32524,
+    "successfulLoads": 7,
+    "f5F9Pairs": 5,
+    "normalExitLocal": "2026-09-10T05:58:53-05:00",
+    "sourceSavesAndDefaultPreserved": true,
+    "privateEvidenceDirectory": "records-work/lifetime262-20260910/texture-fixed-exact"
+  },
+  "additionalControls": {
+    "fixOffAdmissionOffSuccessfulLoads": 12,
+    "fixOnAdmissionOffSuccessfulLoads": 12,
+    "f5F9PairsPerAdditionalControl": 10,
+    "originalFaultReproducedInControls": false,
+    "normalFilesRestoredAfterBoth": true
+  },
+  "acceptance": "OPEN: 19 fixed and 12 unpatched successful loads are non-regression evidence, not causal live crash-rate reduction or broad gameplay acceptance",
+  "redistribution": "Own fork source and patch logic only; no proprietary executable, vendor assets, private save, or diagnostic dump published"
+}
