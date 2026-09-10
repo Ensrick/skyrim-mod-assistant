@@ -25,7 +25,7 @@
     "rollbackArchive": "records-work/texture-release-deployment-20260910"
   },
   "installation": {
-    "status": "INSTALLED locally; exact tested DLL/PDB verified",
+    "status": "HISTORICAL installation; superseded 2026-09-10 by ensrick-skse-save-admission-1.7.104.json, retaining this repair",
     "installedLocal": "2026-09-10T06:35:17.6319944-05:00",
     "claimOwner": "astra/lifetime262",
     "scope": "Our game-root SKSE tool DLL/PDB only; no vendor mod assets or SkyrimSE.exe changes",

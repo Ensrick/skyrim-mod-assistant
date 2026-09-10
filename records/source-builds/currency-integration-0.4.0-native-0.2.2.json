@@ -4,7 +4,7 @@
   "nativeVersion": "0.2.2",
   "component": "Ensrick - Currency Native Initialization Fix",
   "parentRelease": "currency-integration-0.4.0.json",
-  "status": "installed; fresh-character and cold-reload admission verified; wider gameplay unverified",
+  "status": "HISTORICAL installation; superseded 2026-09-10 by currency-integration-0.4.0-native-0.2.3.json; prior runtime evidence retained",
   "winningFiles": {
     "SKSE/Plugins/EnsrickCurrencyDenominations.dll": "C8ED83D13E0EEFC0353A20D4C7C40438CD2DF31596B15979994BBB501074007E",
     "SKSE/Plugins/EnsrickCurrencyDenominations.json": "B86CD8524553EE8FB3FB00CD9B231D62997F2E991DED1D3DC80FC4158A99FC21",

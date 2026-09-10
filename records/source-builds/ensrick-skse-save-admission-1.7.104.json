@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "component": "SKSE runtime DLL - always-on native save admission with retained member bounds and texture duplicate-release repairs",
+  "runtime": "1.7.104.0",
+  "source": {
+    "repository": "https://github.com/Ensrick/skse64",
+    "branch": "ensrick/1.7.104-headless",
+    "commit": "16794a70e5ff02f448201e483e39e042fce393b9",
+    "admissionSourceCommit": "b2e0387db460fec3680827252e39060121a2acea",
+    "commonCommit": "64e233c096735551f6ac9a773726a8a3960e46cd",
+    "buildDirectory": "build-admission-release",
+    "generator": "Visual Studio 17 2022",
+    "configuration": "Release",
+    "options": "ENSRICK_SAVE_ADMISSION_RELEASE=ON; ENSRICK_SAVE_ADMISSION_SOURCE_DIR points to canonical mods/save-load-admission/native",
+    "workingTreeCaveat": "Preexisting sheets/Common.props and Runtime.props edits preserved; CMake does not use them"
+  },
+  "artifact": {
+    "rootRelativePath": "skse64_1_7_104.dll",
+    "sha256": "F7435705A0959B100B2D25DA9EDA558F9A1D54399F4FC4666DCF9BA181107ACC",
+    "bytes": 1324544,
+    "pdbSha256": "7F99BBEB53F4BDE5DD78C522B039C1376CD25F797EF69FA43A35A509918BFE42",
+    "pdbBytes": 16781312,
+    "previousDllSha256": "0438215A4938CAC3E91E16B127998718E17A3D6C233F643A40D0CDC7472C1BEA",
+    "previousPdbSha256": "A33BF070B326CC41A62C6E476754F9755AD42AC627E987F062BE2864CC5B62AA",
+    "rollbackArchive": "records-work/admission-release-20260910/normal-before"
+  },
+  "installation": {
+    "status": "INSTALLED locally; installed hashes, gates and bounded normal-build canary verified",
+    "installedLocalDate": "2026-09-10",
+    "claimOwner": "astra/lifetime262",
+    "pairedCurrencyReceipt": "currency-integration-0.4.0-native-0.2.3.json",
+    "admission": "Always ON without environment activation; request, recovery, inner-load and deferred lifetime safeguards",
+    "testInjectors": "Named outer and inner veto injectors compiled out",
+    "diagnosticObservers": "OFF by default",
+    "priorMemberBoundsGuardRetained": true,
+    "priorTextureReleaseRepairRetained": true,
+    "saveCleaning": false,
+    "saveDeletion": false,
+    "newMods": false,
+    "publicBinaryRelease": false
+  },
+  "verification": {
+    "ciRunsPassed": [34484051133, 34484051106, 34484051054, 34484050952],
+    "localTests": "4 lifecycle CTest and 6 probe CTest PASS; full fresh release build PASS",
+    "originalCopy": "Missing-plugin refusal before PreLoad/native entry; visible in-game reason, acknowledgement and main-menu navigation; native Quit/controller0",
+    "healthyCopy": "4 successful loads, generated save/reload, live missing-co-save refusal with unchanged position, restored same co-save retry, measured movement, 90.573s final unpaused interval; native Quit/controller0",
+    "newProtectedCrashLogs": 0,
+    "installedCanary": "No binary swaps/candidate exception/activation flags; 4 successful loads including two F5/F9 and generated Save5 Journal reload; measured movement and saved-position return; native Quit/controller0",
+    "installedCanaryLastPostLoadLocal": "2026-09-10T09:04:53.612-05:00",
+    "installedCanaryLastUnpausedLocal": "2026-09-10T09:06:00.208-05:00",
+    "installedCanaryUnpausedSeconds": 66.596,
+    "installedCanaryControllerExitLocal": "2026-09-10T09:06:07.095-05:00",
+    "installedCanaryPreservedInputs": "Root DLL/PDB, all41 overlay payload files, original save/co-save, source fixture and Default hashes unchanged; normal logger restored",
+    "report": "docs/SAVE_ADMISSION_RELEASE_2026-09-10.md",
+    "scope": "Bounded admission and reload evidence, not recovery of the incompatible original campaign or broad gameplay certification",
+    "issuesStillOpen": [262, 267, 268]
+  },
+  "license": "Upstream SKSE terms retained; not MIT. Source published; no public binary release. Review redistribution separately."
+}
