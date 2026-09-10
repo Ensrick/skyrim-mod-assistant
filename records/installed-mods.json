@@ -3577,6 +3577,27 @@
       "note": "FSMP 4.1.1 (2026-08-26), the build's physics engine. GATE VERIFIED on 1.7.104 with audit/skse_version_data.py, read from the exported struct rather than inferred: versionIndependence=1 (kAddressLibrary_PostAE), versionIndependenceEx=3 = kNoStructUse | kAddressLibraryV5 (V5 bit SET), PE TimeDateStamp 1787774110 = 2026-08-26, above the 1748217600 cutoff. VERDICT PASS. Note its compatibleVersions whitelist lists 1.5.97, 1.7.99, 1.6.1179 and 1.4.15 and does NOT name 1.7.104 - that is not a problem, because a plugin declaring version independence bypasses the runtime whitelist, and kNoStructUse means it touches no game structs. VARIANT: AVX-512. The CPU is an i9-11900 (Rocket Lake, 8C/16T) and reports AVX, AVX2, FMA and AVX512F/BW/DQ/VL all supported (System.Runtime.Intrinsics via pwsh 7.6.5). The installed DLL is byte-identical to raw-vs2022-windows-avx512 (4,241,408 B) and NOT the 4,255,744 B baseline. The archive's other three variants (no-AVX, AVX, AVX2) were not installed. LEGACY MCM NOT INSTALLED: the FOMOD's 'Old FSMP MCM detected: keep its esp for your save-games?' step exists for upgraders; there is no prior FSMP and no save game, so FSMPM - The FSMP MCM.esp was skipped, saving a plugin slot. Modern FSMP uses an in-game SKSE Menu Framework UI instead. CLOTH/HAIR-ONLY POLICY: satisfied by construction. SKSE/Plugins/hdtSkinnedMeshConfigs/configs.json is engine-wide only - solver iterations, wind, culling distance, frame budget, disableSMPHairWhenWigEquipped true, disable1stPersonViewPhysics true - and contains NO body-collision switch. What receives physics is decided entirely by per-outfit .xml files that individual mods ship and reference from their meshes; FSMP ships none, so it animates nothing until a mod supplies one. Body jiggle could only arrive via a CBBE 3BA/SMP body XML, which is not installed. The governing files to watch are SKSE\\Plugins\\hdtSkinnedMeshConfigs\\*.xml (currently none) plus each outfit mod's own XML. No ESP, so no plugin slot consumed. DEDUPE 2026-08-30: an earlier FSMP install from the SAME archive (file 795580) already existed as MO2 mod 'FSMP', installed 2026-08-26T22:22:56Z by the other session and carrying NO ledger row, which is why it was invisible to this intake. Both copies are FSMP 4.1.1 and both PASS the gate; they differ only in build variant. This mod ships the AVX-512 build (hdtsmp64.dll 4,241,408 B, PE stamp 19:55:10Z, SHA-256 6792C6BE05070DBC44D7B24191313B3B...), which is the correct match for the i9-11900's AVX512F/BW/DQ/VL support; the older copy shipped the non-AVX-512 build (4,260,352 B, PE stamp 19:55:21Z). The duplicate was DISABLED, not trashed (transaction 20260830T225338087Z-637a1b6d0612), leaving exactly one enabled provider of SKSE/Plugins/hdtsmp64.dll. See the 'FSMP (disabled duplicate)' ledger row. | PARKED 2026-09-01 for the #142 corruption bisect (eight-DLL wave test, docs/CRASH-2026-08-31-DEEP-DIVE.md). Re-enable per bisect result. | RESTORED 2026-09-01: wave exonerated by bisect launch 5 and root cause fixed (#142 truncated beafarmer.bsa)."
     },
     {
+      "modId": 182307,
+      "modName": "FusRoPatch - CLLF - Cutting Room Floor",
+      "nexusName": "FusRoPatch   CLLF   CRF",
+      "version": "1.0",
+      "fileId": 762512,
+      "fileName": "FusRoPatch CLLF CRF 182307 1.0 2026-06-11T20-38Z s6Og0dY9I.7z",
+      "sizeMb": 0.0,
+      "sha256": "2cfa74862ced68deedbcc0537f650b66b9133b5670d94fab0c41a976c1ce2d82",
+      "plugins": [
+        "FusRoPatch - CLLF - CRF.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-10T02:36:59Z",
+      "transaction": "20260910T023659216Z-be24064414a6",
+      "note": "Rival-looking but COMPLEMENTARY patch for the same pair as mnikjom's own CLLF - Cutting Room Floor Patch. Diffed record-for-record before installing: ZERO shared records. FusRoPatch covers 4 - the Bannered Mare, Frozen Hearth and Candlehearth Hall merchant chests plus LItemSoldierSonsCuirassBest - while mnikjom's covers 8 different ones (Frost River beehive and blacksmith from CRF, Stonehills Aleuc, Heljarchen blacksmith and apothecary, Enthir's chest, POIYisraBurnt, a necklace list). Running both covers 12 records instead of 8 or 4, and neither can override the other. Masters: Skyrim, Update, Dragonborn, Containers and Leveled Lists Fixes.esp, cutting room floor.esp - note it declares CLLF as a master, which mnikjom's own patch does not. ESL-flagged per the mod page. PARKED inactive on the same instruction as the rest of the CLLF cluster, placed at plugins.txt 61 immediately after its sibling patch so activation needs no re-placement. Cannot be activated without CLLF and Cutting Room Floor both active; tracked in issue #264. NOT verified in game.",
+      "disabledPlugins": [
+        "FusRoPatch - CLLF - CRF.esp"
+      ],
+      "distribution": "vendor"
+    },
+    {
       "modId": 134092,
       "modName": "FuzzBeed's Asset Library",
       "nexusName": "FuzzBeed's Resources AIO",
