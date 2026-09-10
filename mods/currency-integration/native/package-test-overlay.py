@@ -6,12 +6,20 @@ and dependency notices accompany the DLL; no vendor/game assets are copied.
 import argparse
 import hashlib
 import json
+import re
 import zipfile
 from pathlib import Path
 
 
 def digest(data):
     return hashlib.sha256(data).hexdigest().upper()
+
+
+def native_version(cmake):
+    matches = re.findall(r'project\(\s*EnsrickCurrencyDenominations\s+VERSION\s+(\d+\.\d+\.\d+)\s+LANGUAGES\s+CXX\s*\)', cmake)
+    if len(matches) != 1:
+        raise ValueError('Expected exactly one versioned native project declaration')
+    return matches[0]
 
 
 def main():
@@ -40,12 +48,13 @@ def main():
         data = (root / relative).read_bytes()
         assert digest(data) == item['sha256'] and len(data) == item['bytes'], relative
         payload[source_prefix + relative] = data
+    version = native_version(payload[source_prefix + 'CMakeLists.txt'].decode('utf-8'))
     payload[source_prefix + 'native-build-receipt.json'] = receipt_bytes
     for name in ('LICENSE.txt', 'NOTICE.txt', 'SOURCE.txt', 'DEPENDENCIES.txt',
                  'COMMONLIBSSE-COPYING.txt', 'COMMONLIBSSE-EXCEPTIONS.md', 'QuickLootIE-LICENSE.txt'):
         payload[name] = (base / 'package' / name).read_bytes()
     args.output.mkdir(parents=True, exist_ok=True)
-    target = args.output / 'Ensrick-Currency-Native-0.2.2-TEST-ONLY.zip'
+    target = args.output / f'Ensrick-Currency-Native-{version}-TEST-ONLY.zip'
     with zipfile.ZipFile(target, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, data in sorted(payload.items()):
             info = zipfile.ZipInfo(name, (2000, 1, 1, 0, 0, 0))
@@ -55,7 +64,8 @@ def main():
     # This test receipt inherits only the unchanged release's winning-file
     # contract, NOT its historical installation/static/runtime assertions.
     candidate = dict(schemaVersion=1, version='0.4.0',
-                     status='native-0.2.2-isolated-test-only-runtime-unverified',
+                     nativeVersion=version,
+                     status=f'native-{version}-isolated-test-only-runtime-unverified',
                      winningFiles=dict(release['winningFiles']),
                      parentRelease='currency-integration-0.4.0.json',
                      nativeBuildReceiptSha256=digest(receipt_bytes),
