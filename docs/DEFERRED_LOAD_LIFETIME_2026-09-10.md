@@ -99,9 +99,11 @@ the base directly, not the nondeleting hook. Review is not runtime evidence.
 
 ## Remaining release gates
 
-- Actual **late inner-failure** callback execution is not covered by this run.
+- Actual **late inner-failure** callback execution is not covered by the first run.
   Native control flow and synthetic false-return cases were inspected/tested;
-  this successful early achievement callback is not a substitute.
+  the early achievement callback is not a substitute. The follow-up below covers
+  our injected pre-target refusal and real downstream callback, not native
+  partially applied-load failure.
 - Destructor coverage assumes the verified native derived ownership paths.
   Arbitrary foreign frees or direct base-destructor bypasses are unsupported.
 - Production packaging, currency fingerprint export and clean diagnostic-off
@@ -110,3 +112,74 @@ the base directly, not the nondeleting hook. Review is not runtime evidence.
   restore removed mods or clean the save to obtain a green test.
 - Representative sustained travel/combat remains #267. The overall goal and
   issues #262/#268 remain open.
+
+## Follow-up: one-shot inner refusal and actual late callback
+
+Source `44f7950ab8554e074fc1849eebe16cecc3348002` adds an experimental-only,
+exact-basename, one-shot environment fault trigger:
+`SKSE_AUTOMATION_REJECT_INNER_ONCE`. It runs only after successful inner admission,
+before snapshot binding, PreLoad and native target entry, under the recursive load
+lock. It cannot turn native success into failure. Missing, oversized, path-bearing
+or unmatched values do nothing; a match is consumed once. The actual-source inner
+tests now pass 137 checks including mismatch, malformed/oversized name, preserved
+reader/name and successful second invocation. The full build and all three CI runs
+`34482263937`, `34482263977`, `34482263875` passed.
+
+Candidate SHA256:
+`A40C95311F7BCDD03C926A230675533117C7EF757198E5AAB9D1FAE6ACD73895`.
+Private profile `Astra Load262 Lifetime inner-veto-once`; Skyrim PID 18772,
+controller PID 18096, 08:23:12–08:27:40 CDT. Same healthy copied input and temporary
+currency build as above; **ordinary Engine Fixes configuration**, no achievement
+override. Protected no-cleanup logger and quiet native-menu testing retained.
+
+The injected first Continue reached inner admission, logged `simulated=1`, returned
+false without PreLoad, and retained generation 1 when the real outer engine
+transferred ownership (`outer_result=0`, sequence 3). Skyrim then displayed:
+“This save uses a different Creations Load Order than your current Load Order.”
+The visible choices were **Save** and **Current**. This prompt followed the forced
+inner false; it does not establish a genuine plugin-order difference.
+
+The **Current** label, selected index 1 and focused button were read back before
+native Accept at 08:25:18.922. **Save was not selected; no stored order or removed
+mods were restored.** The real callback resubmitted the retained stream as
+generation 2; the native load completed at 08:25:26.842. No deliberate outer-veto
+`LOAD_REQUEST_RECOVERY`/CancelLoading was added over this native callback.
+
+The command listener briefly timed out while native Accept synchronously performed
+the load, but its original batch subsequently completed at 08:25:31.928. No input
+was resent because of that timeout. This is separate from the normal Quit batch
+timeout at process exit.
+
+After successful recovery (not between refusal and recovery):
+
+- Created private Save5, then Journal reload succeeded at 08:26:27.504.
+- One F5/F9 cycle succeeded at 08:26:33.924; the full 147-byte live texture-fix
+  signature matched its expected function on repeated reads.
+- Three successful snapshots total: 64,729 / 65,384 / 65,275 bytes, all fully
+  consumed with zero snapshot faults/API rejections; currency initialization
+  reported admission complete after each load.
+- Measured movement changed position from `(24862.389,-4551.821,-2999.7708)` to
+  `(24842.969,-4355.9995,-2997.6848)`, alive, not swimming, controls unblocked and
+  Auto-Move off; final asynchronous position reads were stable.
+- Last unpaused ping was 08:27:33.350, **59.426 seconds** after the latest load.
+  Native Quit confirmation remained responsive and Accept occurred at
+  08:27:38.340. This shorter follow-up is not independently claimed as a 60-second
+  unpaused smoke pass or sustained gameplay certificate.
+
+Controller exited normally at 08:27:40.561. Protected crash directory empty.
+Root/PDB/currency/logger restored, originals/fixture/Default/vendor hashes
+unchanged, claim released and no game/controller remains. Private logs are in
+`records-work/lifetime262-20260910/inner-veto-once/`.
+
+Actual Fable5.1 read-only review session `ab7925e7-2415-44b8-8398-57427deb2313`
+completed (9 turns, exit 0). Parent rejected its proposed inference that this is
+not artificial or fully settles native partial-failure cleanup: the cause is
+explicitly injected, while the downstream callback/resume is real. Native
+post-inner predicates/error arrays can differ on genuine failure. The review's
+claim that consumed-stream retry necessarily reparses garbage also conflicts with
+the previously audited native seek/decompression handling; it was not adopted.
+
+**Release boundary:** the tested pre-target inner-refusal callback now has actual
+ownership/resume evidence. This does not certify native partial-world unwind or
+the populated-error-array callback's other choices. Production packaging and
+diagnostic-off acceptance, campaign decision and broader #267 play remain open.
