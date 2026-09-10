@@ -117,3 +117,22 @@ Five offline transform/policy tests pass, but do not replace runtime evidence.
 Remaining: explicit non-jail start, cold reload, stronger deterministic invalid-
 selection regression and safe invalid-selection recovery before final adoption.
 This narrow progress does not close #262 or the overall crash-recovery goal.
+
+## September10 explicit current-Default control
+
+The vendor (unpatched) explicit City > Solitude path was exercised with a
+genuinely new current-Default character. It reached Tamriel near the Solitude
+waterfront, saved, reloaded, cold-loaded through Continue, and saved/reloaded
+again without the invalid-destination errors. See
+[the bounded report](CURRENT_DEFAULT_WORLD_TEST_2026-09-10.md). This is NOT a
+test of the random jail branch or generic invalid-start recovery, so #263
+remains open and the candidate remains disabled in Default.
+
+Fable5.1 source review identified the required recovery boundary: validate before
+QuestScript.PrepareForStart advances stage20, and have all callers honor
+failure. A bare return inside TeleportPlayer is too late after stage90/autosave
+and disabled controls. Proposed cross-script changes are not applied yet:
+review addon-supplied destinations, restore fade/hotkey/menu registration on
+every failure path, reset stale FinalTeleportMarker, and retain user's choices.
+Do not silently choose another destination or treat same-header readers as
+independent native verification. The exact old random selection remains unknown.
