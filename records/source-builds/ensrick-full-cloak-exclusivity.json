@@ -11,19 +11,19 @@
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/240",
   "reservedBipedSlot": 58,
   "skyPatcherIndex": 28,
-  "installedUtc": "2026-09-09T17:02:35+00:00",
-  "transaction": "20260909T170235928Z-78e0fb62e9f6",
-  "refreshReason": "Crash256 recovery: rebuilt from the current 384-plugin runtime profile after currency native hotfix installation and weapon final-priority repair. Its 240 allowlisted directives remain byte-identical (INI 5716AE2F).",
+  "installedUtc": "2026-09-10T07:36:00+00:00",
+  "transaction": "20260910T073600551Z-b1cd35fab34c",
+  "refreshReason": "Reconciled preexisting FuzzBeed/Thanedom order and four CLLF folders after the final current-order weapon proof. Complete record/config/569-present-mesh reservation rerun; 240 directives remain byte-identical (INI5716AE2F). No active-order, equipment-policy, physics or distribution changes.",
   "enabled": true,
   "modPriority": 295,
   "packageName": "Ensrick-Full-Cloak-Exclusivity-0.1.0.zip",
-  "packageBytes": 126798,
-  "packageSha256": "0593D88CC3C1A65F505E7FA990EAAF8F2A8E1EA6AC357DC11A1CC2F32C60E0DF",
+  "packageBytes": 126899,
+  "packageSha256": "9E9D7BA7BB30B3023FBE712D8E24AC5E61261761C4135073B8889D0B3BF04C21",
   "configPath": "SKSE/Plugins/SkyPatcher/armor/Ensrick Full Cloak Exclusivity/Full Cloaks.ini",
   "configBytes": 20078,
   "configSha256": "5716AE2FF6B0CA0C76EB766E1694ED88A6CC18250DA70A758D7E85EB98F1ECDF",
-  "manifestSha256": "0FA8B077C518C96C26EB9EF4661740596BF024A9819EF5D4ED43E26F1C533081",
-  "layerProofSha256": "AB3E173CBD042ECD3BF1973CF67548C99D301B96EC9E930A5FEB7EEDA1BE073E",
+  "manifestSha256": "8C1F65F9B338E981B1DE76B27EE4CC2F19859B00FA57BFC28D1AE394ABC78D59",
+  "layerProofSha256": "B6B43E6611577C15364B6CAE2034A08550E4B673375FBDCCE13897A25E7089FA",
   "counts": {
     "fullCloakDirectives": 240,
     "excludedItems": 232,
@@ -58,7 +58,7 @@
     "Reservation is profile-specific. Relevant mod/plugin/config/mesh changes require re-audit before reuse."
   ],
   "distribution": "Original MIT source/configuration; no vendor binary assets",
-  "rollback": "Recoverable controller transaction 20260909T170235928Z-78e0fb62e9f6; re-audit any reverted profile.",
+  "rollback": "Recoverable controller transaction 20260910T073600551Z-b1cd35fab34c; re-audit any reverted profile.",
   "sourceCommit": "71e4cd325da5f4ec642bc5994124b8652c2a54d4",
-  "workDirectory": "records-work/crash256-cloak-20260909"
+  "workDirectory": "records-work/member-repair-cloak-20260910"
 }

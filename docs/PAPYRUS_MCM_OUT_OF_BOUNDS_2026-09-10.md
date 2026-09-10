@@ -199,3 +199,10 @@ ESP is inactive). Thus these runs are **not exact-current-Default gameplay proof
 Do not tell the user to launch based on this report. Existing CRF/Lux CELL warning
 and five ledger gaps remain separate tracked work. The root-DLL change warning
 is expected and explained by the new exact receipt, not silently baseline-reset.
+
+Subsequent reconciliation: the four stale proof blockers were repaired by
+regenerating against the unchanged active plugin bytes/current order. Weapon
+ESP/27 sidecars and all240 cloak directives remain byte-identical. Normal
+preflight now has zero blockers; no new gameplay test is implied. See
+`PATCH_PROOF_RECONCILIATION_2026-09-10.md` for exact transactions and remaining
+warnings. This supersedes only the stale-proof status in the preceding paragraph.
