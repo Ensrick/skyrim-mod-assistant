@@ -101,3 +101,20 @@ Original source changes are separately published in our SKSE fork. Upstream
 SKSE terms remain in force (not MIT); no binary public release is approved.
 No vendor mod payload, load order, Keep decision, or original save is altered.
 Existing property-sheet edits and Claude's dirty canonical files are excluded.
+
+## Admission-boundary investigation (not implemented)
+
+Further exact-executable inspection gives a concrete reason not to implement
+a bare `return false` in the SKSE hook. The engine's own early-rejection path
+at `618AF3` calls `61FEF0`, writes `FF` through a saved pointer at `618B06`,
+sets result state and jumps to its shared epilogue at `619381`. Those effects
+would be skipped by returning from the wrapper. Separately, the outer caller
+always invokes `624D70` after the hook and before branching on its result.
+The identities/invariants of those state objects and cleanup calls are not
+yet fully mapped. This is evidence of a nontrivial rejection contract, not
+proof that any proposed interception is safe or unsafe in every context.
+
+Next: trace the normal menu/queued-load request before deserialization or
+character teardown, then verify cancellation leaves the existing session
+usable. Do not bypass the current offline admission gates merely to obtain a
+passing test, and do not turn a missing-content load into silent recovery.
