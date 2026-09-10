@@ -16,6 +16,16 @@ Driver: `py -3 audit/menupilot.py send '<json>' ...` | `tail` | `status` | `pani
 
 ## Safety contract
 
+- September9 **#266 warning:** installed build216F7564 has dangling pointers
+  for `gfx.set` string values and `gfx.invoke` string arguments. Do not use
+  those string operations with that build. Local sourceb3b1b31/candidate1A1D5CEC
+  fixes ownership and passes tested in-game round trips, but permanent
+  deployment is still pending. Query and argument-free operations do not
+  use that defective conversion. See
+  [repair evidence](MENUPILOT_STRING_REPAIR_2026-09-09.md).
+- Never raw-open/raw-close Main Menu to recover a failed load. A controlled
+  attempt stalled the engine. The fixed candidate refuses this operation;
+  use normal game navigation. Fade-in alone does not prove input recovery.
 - Plugin is **inert until a commands.jsonl appears** (poll starts at kInputLoaded,
   250ms interval, `SKYRIM_MENU_PILOT_POLL_MS` overrides).
 - Consume-exactly-once: the file is **renamed before a byte is read**.

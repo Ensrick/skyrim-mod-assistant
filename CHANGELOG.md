@@ -18,6 +18,22 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-09 22:25 — MenuPilot string repair tested, native recovery still FAILED
+
+- **Source:** #262 Continue investigation uncovered #266, a dangling temporary
+  string in own MenuPilot converter. Local sourceb3b1b31 uses managed strings
+  and refuses raw Main Menu lifecycle operations.
+- **What:** Rebuilt/tested candidate1A1D5CEC temporarily. Restored original
+  MenuPilot216F7564 and root SKSE CC2F98A4 afterward. Permanent tool deployment
+  pending; docs prohibit unsafe older-build string operations.
+- **Verification:** Native converter tests and old-code negative control pass.
+  Actual string set/invoke and lifecycle guard pass in isolated main menu.
+  Continue visual state recovers but native navigation **FAILED** even with
+  reliable strings; no load/save/gameplay acceptance. One failed cleanup run
+  timed out75; the final run quit through the game callback with controller0.
+  No new crash log, original saves/Default lists/INI unchanged. Both issues
+  OPEN. [Evidence](docs/MENUPILOT_STRING_REPAIR_2026-09-09.md).
+
 ## 2026-09-09 22:04 — Load-rejection experiment, Continue recovery FAILED
 
 - **Source:** Ongoing crash goal and #262; diagnostic SKSE source7c8ee72.
