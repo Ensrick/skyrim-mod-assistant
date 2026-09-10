@@ -1,0 +1,164 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ensrick <truthisfact@gmail.com>
+Date: Thu, 10 Sep 2026 10:41:06 -0500
+Subject: [PATCH] experiment: bounded mouse input candidate, default off and
+ not runtime accepted
+
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0292335..1cf838b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,0 +47,2 @@ project(${PRODUCT_NAME} VERSION 1.0.0.0 LANGUAGES CXX)
++option(MENUPILOT_EXPERIMENTAL_LOOK "Private finite mouse-look experiment; not a gameplay certificate" OFF)
++
+@@ -89,0 +92,3 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
++if(MENUPILOT_EXPERIMENTAL_LOOK)
++  target_compile_definitions(${PROJECT_NAME} PRIVATE MENUPILOT_EXPERIMENTAL_LOOK=1)
++endif()
+diff --git a/src/look_contract.h b/src/look_contract.h
+new file mode 100644
+index 0000000..d94e105
+--- /dev/null
++++ b/src/look_contract.h
+@@ -0,0 +1,28 @@
++#pragma once
++#include <cstdint>
++#include <optional>
++#include <nlohmann/json.hpp>
++
++namespace menupilot {
++inline constexpr std::size_t kLookLifetimeLimit = 64;
++struct LookDelta { std::int32_t x; std::int32_t y; };
++inline std::optional<LookDelta> ParseLook(const nlohmann::json& command)
++{
++    if (!command.is_object() || !command.contains("dx") || !command.contains("dy")) return {};
++    for (const auto* key : {"dx", "dy"}) {
++        const auto& value = command.at(key);
++        if (!value.is_number_integer()) return {};
++        // Do not compare a JSON uint64 against a negative JSON integer: mixed
++        // signedness can wrap before comparison at the extremes.
++        if (value.is_number_unsigned()) {
++            if (value.get<std::uint64_t>() > 512) return {};
++        } else {
++            const auto signedValue = value.get<std::int64_t>();
++            if (signedValue < -512 || signedValue > 512) return {};
++        }
++    }
++    const LookDelta result{command.at("dx").get<std::int32_t>(), command.at("dy").get<std::int32_t>()};
++    if (result.x == 0 && result.y == 0) return {};
++    return result;
++}
++}
+diff --git a/src/main.cpp b/src/main.cpp
+index a1c4e56..8529ac1 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -27,0 +28 @@
++#include "look_contract.h"
+@@ -653,0 +655,65 @@ namespace
++	#ifdef MENUPILOT_EXPERIMENTAL_LOOK
++	// Private experiment only. Never call the look handler directly or mutate
++	// the engine's input queue. Delta dispatch is not proof of camera motion.
++	void ExecLook(std::uint64_t a_id, const json& a_cmd, steady_type::time_point a_deadline)
++	{
++		auto refuse = [a_id](const char* reason) {
++			Emit("RESULT id={} op=\"input.look\" ok=0 reason=\"{}\"", a_id, reason);
++		};
++		if (steady_type::now() >= a_deadline || g_panicked.load()) {
++			refuse("expired or halted before execution");
++			return;
++		}
++		const auto delta = menupilot::ParseLook(a_cmd);
++		if (!delta) { refuse("dx/dy must be nonzero finite integer deltas within +/-512"); return; }
++		const char* enabled = std::getenv("SKYRIM_MENU_PILOT_EXPERIMENTAL_LOOK");
++		if (!enabled || std::string_view(enabled) != "1" ||
++			REL::Module::get().version() != REL::Version(1, 7, 104, 0)) {
++			refuse("private experiment not enabled for audited runtime"); return;
++		}
++		const auto base = REL::Module::get().base();
++		// Exact native MouseMoveEvent virtuals and the delta consumer (slot5 on
++		// 1.7.104, not the older slot3). Unknown/modified bytes fail closed.
++		const auto mouseVtable = REL::Relocation<std::uintptr_t>(RE::MouseMoveEvent::VTABLE[0]).address();
++		constexpr std::array<std::uintptr_t, 3> targets{0xCFA600, 0x7B4470, 0x7B4830};
++		constexpr std::array<unsigned char, 36> consumer{
++			0x66,0x0f,0x6e,0x42,0x28,0x0f,0x5b,0xc0,0xf3,0x41,0x0f,0x11,
++			0x40,0x08,0x66,0x0f,0x6e,0x4a,0x2c,0x0f,0x5b,0xc9,0x0f,0x57,
++			0x0d,0xa3,0x94,0x3a,0x01,0xf3,0x41,0x0f,0x11,0x48,0x0c,0xc3};
++		if (mouseVtable != base + 0x1A23BC0 ||
++			std::memcmp(reinterpret_cast<const void*>(base + 0x7B3270), consumer.data(), consumer.size()) != 0) {
++			refuse("native mouse layout/consumer differs from audited bytes"); return;
++		}
++		for (std::size_t i = 0; i < targets.size(); ++i) {
++			if (reinterpret_cast<const std::uintptr_t*>(mouseVtable)[i] != base + targets[i]) {
++				refuse("native mouse virtual target mismatch"); return;
++			}
++		}
++		auto* ui = RE::UI::GetSingleton();
++		auto* controls = RE::ControlMap::GetSingleton();
++		auto* mgr = RE::BSInputDeviceManager::GetSingleton();
++		if (!ui || ui->GameIsPaused() || ui->IsMenuOpen("Loading Menu") ||
++			ui->IsMenuOpen("Main Menu") || !controls || !controls->IsLookingControlsEnabled() || !mgr) {
++			refuse("requires unpaused loaded gameplay with look controls enabled"); return;
++		}
++		// Main-thread-only lifetime budget. Retain individual events/string refs
++		// to process exit: no assumption that every installed sink drops them.
++		static std::size_t attempts = 0;
++		if (attempts >= menupilot::kLookLifetimeLimit) { refuse("finite event lifetime budget exhausted"); return; }
++		++attempts;
++		auto* event = RE::malloc_runtime<RE::MouseMoveEvent>(0x30, 0x30);
++		if (!event) { refuse("mouse event allocation failed"); return; }
++		RE::stl::emplace_vtable<RE::MouseMoveEvent>(event);
++		event->device = RE::INPUT_DEVICE::kMouse;
++		event->eventType = RE::INPUT_EVENT_TYPE::kMouseMove;
++		event->next = nullptr;
++		std::construct_at(std::addressof(event->userEvent), "Look");
++		event->idCode = 0xA; // ControlMap's mouse-move axis identifier; not a button.
++		event->Init(delta->x, delta->y);
++		RE::InputEvent* head = event;
++		mgr->SendEvent(&head);
++		Emit("RESULT id={} op=\"input.look\" ok=1 dx={} dy={} retained={} scope=\"dispatch only; observe camera separately\"",
++			a_id, delta->x, delta->y, attempts);
++	}
++	#endif
++
+@@ -658 +724 @@ namespace
+-	// inside SendEvent, so the event is freed immediately afterwards.
++	// inside SendEvent. Events are retained as explained below, not freed.
+@@ -771,0 +838,4 @@ namespace
++		#ifdef MENUPILOT_EXPERIMENTAL_LOOK
++		} else if (op == "input.look") {
++			body = [id, cmd, deadline = steady_type::now() + 2s]() { ExecLook(id, cmd, deadline); };
++		#endif
+diff --git a/tests/look_contract.cpp b/tests/look_contract.cpp
+new file mode 100644
+index 0000000..db908b9
+--- /dev/null
++++ b/tests/look_contract.cpp
+@@ -0,0 +1,26 @@
++#include "../src/look_contract.h"
++#include <cstdio>
++#define CHECK(condition) do { if (!(condition)) { std::fprintf(stderr, "Failed line %d\n", __LINE__); return __LINE__; } } while(false)
++#include <limits>
++
++int main() {
++    using nlohmann::json;
++    using menupilot::ParseLook;
++    CHECK(ParseLook(json{{"dx",512},{"dy",-512}}));
++    CHECK(ParseLook(json{{"dx",-1},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",0},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",513},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",0},{"dy",-513}}));
++    CHECK(!ParseLook(json{{"dx",true},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",1.0},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx","1"},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",nullptr},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",1}}));
++    CHECK(!ParseLook(json::array()));
++    CHECK(!ParseLook(json{{"dx",std::numeric_limits<std::uint64_t>::max()},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",std::numeric_limits<std::int64_t>::min()},{"dy",0}}));
++    CHECK(!ParseLook(json{{"dx",std::numeric_limits<double>::infinity()},{"dy",0}}));
++    const auto d = ParseLook(json{{"dx",5},{"dy",-7}});
++    CHECK(d && d->x==5 && d->y==-7);
++    static_assert(menupilot::kLookLifetimeLimit == 64);
++}
