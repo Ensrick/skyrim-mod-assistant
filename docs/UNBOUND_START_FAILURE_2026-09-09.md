@@ -52,3 +52,28 @@ Acceptance requires a genuinely new character, valid normal MCM destination
 selection, successful world entry, no matching selection/teleport errors, and
 save/reload at that destination. Exercise both random and explicit choices.
 Publish any necessary original patch separately; preserve vendor inputs.
+
+## Static candidate discovered after the run (not yet causal proof)
+
+The supplied `SkyrimUnboundModuleLocations.psc` has a specific invalid-pool path:
+
+-`AfterLoadingAddons`, lines322-325, adds `Hold_Other` to `HoldLists`.
+-`SelectLocation`, lines1106-1110, when jail starts are eligible, adds **every
+  suitable hold** to both random destination pools, rather than intersecting
+  that set with `HoldsWithJail`.
+-Read-only record-cli inspection of the installed original plugin finds
+  `Hold_Other` (`CD7C88:Skyrim Unbound.esp`) empty. The base `HoldLists` and
+  `HoldsWithJail` each contain the same ten real holds; the script then adds
+  Other only to HoldLists. Custom imported holds without a crime faction can
+  create the same discrepancy (`ImportHold`, lines355-357).
+-If random selection returns the empty Other list, it is non-None (bypassing
+  the script's missing-location diagnostic) but not a jail hold or member of a
+  location category. That predicts a None category and None teleport marker,
+  consistent with this run's errors.
+
+Still required: establish winning PEX provenance and relevant record overrides;
+reproduce the exact Other-hold selection with bounded diagnostic logging. Do not
+claim the run's selected FormID was observed: it was not logged. A prospective
+fix should exclude non-jail holds from the jail candidate pool and keep the
+start recoverable when selection is invalid, not remove legitimate Other-area
+locations, choose the user's start, or silently complete the start in the room.
