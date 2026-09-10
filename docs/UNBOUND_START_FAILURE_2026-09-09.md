@@ -75,5 +75,45 @@ Still required: establish winning PEX provenance and relevant record overrides;
 reproduce the exact Other-hold selection with bounded diagnostic logging. Do not
 claim the run's selected FormID was observed: it was not logged. A prospective
 fix should exclude non-jail holds from the jail candidate pool and keep the
-start recoverable when selection is invalid, not remove legitimate Other-area
-locations, choose the user's start, or silently complete the start in the room.
+  start recoverable when selection is invalid, not remove legitimate Other-area
+  locations, choose the user's start, or silently complete the start in the room.
+
+## Candidate implementation and first runtime test
+
+`patches/unbound-jail-pool/prepare.py` now generates a pinned, separate source
+patch. It filters jail candidates against HoldsWithJail while leaving ordinary
+Other-area starts intact. Bounded log entries identify rejected holds and the
+selected destination. No vendor file, persisted variable/property or Default
+selection was changed. Author permissions allow credited bug-fix releases:
+[Nexus permissions](https://www.nexusmods.com/skyrimspecialedition/mods/27962?tab=description).
+The supplied source and installed PEX agree on the faulty branch. A same-
+compiler baseline/candidate disassembly comparison changes only SelectLocation;
+see the patch README for build/decompiler limitations and source requirements.
+
+Candidate PID22824,20:59:03–21:05:04 CDT, private muted desktop:
+
+-Loaded a copy of the genuine fresh character's **pre-start** Save1, not the
+  already-failed start or Adventurer3. PostLoad success20:59:52.123.
+-21:01:19: patch explicitly excluded Other (`44CD7C88`) from the jail pool.
+-21:01:22: selected real Winterhold jail hold (`44451918`). This is newly
+  observed diagnostic evidence; the earlier failed run's selected ID remains
+  unknown and must not be retroactively claimed as measured.
+-21:01:25.887: saved at WinterholdJail; load menu independently showed The Chill.
+-Save3 SHA256 `90b0d0b2be8013396b9565d7d8ad7131eafd6b1926c82add39219eea88fbfabd`;
+  plugin and currency admission pass. In-session reload success21:02:49.345;
+  currency admission6 at21:02:49.480, ledger8.
+-Unpaused responsive ping21:04:05.979, **76.634 seconds after successful load**.
+-Normal in-game Quit to Desktop21:05:02; controller exit0 at21:05:04.672.
+  No fresh crash file, game/MO2 process or pending MenuPilot batch afterward.
+  Private evidence: `records-work/unbound263/runtime-jail/`.
+
+The candidate is **test-only**, source/test profiles `Astra Unbound263 Source`
+and `Astra Unbound263 Test`; Default does not enable it. Both Default list hashes
+and ModOrganizer.ini were restored/unchanged relative to this run's before-image.
+Claude's intervening CLLF installation was present but its plugins inactive;
+do not claim the raw lists are identical to the earlier20:37 control.
+
+Five offline transform/policy tests pass, but do not replace runtime evidence.
+Remaining: explicit non-jail start, cold reload, stronger deterministic invalid-
+selection regression and safe invalid-selection recovery before final adoption.
+This narrow progress does not close #262 or the overall crash-recovery goal.

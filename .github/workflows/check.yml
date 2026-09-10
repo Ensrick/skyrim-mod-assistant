@@ -57,6 +57,12 @@ jobs:
           python audit/launch_verify.py --selftest
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+      - name: Test pinned Unbound jail-pool source transformation
+        shell: pwsh
+        run: |
+          python -m unittest discover -s patches/unbound-jail-pool -p test_prepare.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test private-desktop worker containment
         shell: pwsh
         run: |
