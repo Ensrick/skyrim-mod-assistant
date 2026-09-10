@@ -1,8 +1,8 @@
 # Player-observer implementation review for #267
 
-Status: reviewed design, **not implemented**. Existing private position probes
-and independently checked native/serialized layout remain the current evidence.
-They are not a finished production observer or representative combat test.
+Status: **candidate implemented and live-smoke-tested**, not promoted to the
+canonical toolset. Existing independently checked native/serialized layout
+remains the authority. This is not representative combat acceptance.
 
 Actual Fable5.1 CLI session65216fa7-4b68-4b8b-8c71-4729a7d4915f completed a
 bounded seven-turn read-only review of the existing layout auditor, tests,
@@ -38,5 +38,28 @@ Parent corrections to the proposal:
 - Do not retire the existing generic ControlMap diagnostics merely because a
   new player observer exists. They serve different purposes.
 
-Implementation remains queued after the confirmed USSEP package repair under
-#157. No new DLL/mod or speculative input patch was installed.
+## Candidate implementation, September 10
+
+Actual Fable5.1 CLI session93417b2f-27e4-4e5d-b919-3080858be151 delivered only
+`records-work/player-observer-fable-20260910/`: original observer, adversarial
+tests and handoff. No live settings/mods/saves or canonical source were changed
+by Fable. First root-run suite:32 PASS. Parent identified missing ctypes
+GetModuleInformation signatures and an engine-override identity gap; Fable
+fixed them and added finite-interval/path/churn tests. Actual second suite:
+35 PASS, not the handoff's estimate36. Both delegated CLI jobs completed.
+
+With the root-confirmed private game11120, two stable samples at14:51:24–25Z
+matched the existing independent probe's position, cell1A276, world1A26F and
+raw actor state0. Native Auto-Move start/stop produced coherent changed
+positions in before/after JSON, with the independent probe subsequently
+observing auto-move0 and zero input vectors. See the USSEP repair dossier for
+bounded gameplay and preservation evidence. ReadProcessMemory only; no engine
+calls or process memory writes, and no DLL/mod installed.
+
+Before promotion: review the entire adversarial suite and live adapter,
+strengthen/relabel stability checks for dereferenced cell/world data (currently
+the player cell pointer is rechecked, not every nested field), compare a fresh
+saved INITIAL prefix, test deployed CLI failure paths, and integrate canonical
+documentation/tests. Retain candidate controls/water labels and the explicit
+non-atomic/no-hard-deadline limitations. Do not replace these with another
+general paper review or call this completion of #267 travel/combat acceptance.

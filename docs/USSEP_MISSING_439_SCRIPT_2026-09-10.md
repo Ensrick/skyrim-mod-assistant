@@ -1,7 +1,8 @@
 # USSEP 4.3.9 missing-script investigation
 
-Status: upstream defect confirmed; official corrected package downloaded and
-inspected, **not installed yet**. This advances #157 and the current setup's
+Status: official corrected package installed; dependent generated patches
+refreshed. Fresh-character update completion is observed, but the pre-update
+copied save retains an invalid updater object. This advances #157 and the current setup's
 script health; it does not establish a cause or closure for native crash #262.
 
 ## Evidence
@@ -57,8 +58,9 @@ semantic-flag and form-version comparison found:
 
 Current record inventories for all304 starred profile plugins found only USSEP
 writing those three FormKeys, with zero inventory failures. This is the managed
-starred set, not all384 loaded base/Creation/light plugins. Resolve the base
-ArmorAddons before finalizing update evidence; the old September7 broad
+starred set, not all384 loaded base/Creation/light plugins. Both originating
+ArmorAddons exist in Skyrim.esm, with the expected Argonian/Khajiit races,
+Hands/Forearms slots and first/third-person steel gauntlet paths. The old September7 broad
 conflict report is stale and was not used as proof of current winners.
 
 Main-BSA differences also include seven mesh paths (four changed, three
@@ -69,7 +71,11 @@ RIFF/WAVE; these files use RIFF/XWMA. The diagnostic now accepts that actual
 container type. No decoded-audio/voice-quality equivalence has been established.
 The texture BSA is byte-identical, SHA256
 `d45e6e26fcf83c0a5bb1bacd7dc2d0c1b071853ae6fc0538f62b1d8b84e8ba74`.
-Effective winning mesh providers still need final checks.
+Effective loose mesh winners remain SMIM (Solitude light post), Rally's Market
+Stalls Animated (market stall), Unofficial Material Fix (patio corner), and
+Assorted Mesh Fixes (Gray Quarter door and mounted wolf). Both removed sigil
+stone paths remain supplied by Skyrim - Meshes0.bsa. No replacement priority
+was changed and no new overhaul choice was made.
 
 ## Required implementation and verification
 
@@ -93,8 +99,92 @@ Effective winning mesh providers still need final checks.
    does not grant approval for original-campaign migration or removed mods.
 
 Private staging and read-only comparison script:
-`records-work/ussep439c-20260910/`. No live profile/mod/INI/Keep state changed in
-this investigation. Downloaded archive remains in the managed downloads folder.
+`records-work/ussep439c-20260910/`. The comparison's OLD path describes the
+pre-install live folder; rerunning after installation requires pointing it at
+the preserved old package, not treating the updated live folder as 4.3.9.
+Downloaded archives remain in managed downloads; prior installed folders are
+recoverable through the controller transaction journal.
+
+## September 10 installation and static verification
+
+- Official USSEP transaction `20260910T142918438Z-8d2da5624533`, enabled at
+  unchanged priority15. Main BSA SHA256
+  `4c589b14a6843c341a572a5d25ea47296f046ae25885778c571caef05e6275de`;
+  ESP `c496e65927a75a6209bf0db58ffe62047f5fbf03063a399c6e2ff1ced98548a5`.
+- Default modlist/plugins/loadorder remained byte-exact after each replacement.
+  Only the controller's known comment-header normalization was restored, after
+  exact body comparison. No plugin activation/order or user save changes.
+- Weapon source-driven repeat build and semantic only-Speed comparison passed;
+  all4225 final target/preserve rows passed. The 3504-record ESP and27 localized
+  sidecars remain byte-identical; new input metadata was generated, not waived.
+  Replacement transaction `20260910T143824618Z-7061c29e61f0`, priority246.
+- Cloak reservation regenerated after that replacement: 240 unchanged rules,
+  576 paths,569 present meshes,7 existing absence sentinels, zero parse errors
+  or reserved-slot hits,40 winning runtime configurations. No new physics or
+  distribution behavior. Transaction `20260910T143931305Z-8a0a9933875b`, priority295.
+- Live Keep coverage:235 installed Nexus IDs and235 Keeps, no missing/extra/
+  skipped-installed IDs. First-party artifacts have no invented Nexus IDs.
+- Preflight: zero blockers; five existing warnings remain (Steam overlay cannot
+  be verified on disk, five unledgered enabled folders under #102, this work
+  claim, CRF/resolver CELL006439 difference, old-save currency restriction).
+  This is not comprehensive gameplay certification or a waiver of those issues.
+
+Runtime acceptance is recorded below after both private sessions ended and
+preservation checks finished. #157 remains open for other
+bindings; #262/#267 and the original-campaign decision remain open.
+
+## Runtime contrast: existing copy versus genuine New Game
+
+The controlled copied-save run used the normal installed F7435705 SKSE and
+4DAB6D30 currency pair, not test activation flags. Controller25060/game31944
+ran09:41:14–09:45:02 CDT and exited0 after normal Journal Quit. Continue,
+Journal Save5 and Journal reload succeeded, but the actual Papyrus log twice
+reported `ussepretroactive438script.Process()` on an invalid object, at09:42:33
+and09:44:07. There was no positive439 completion. Therefore the update is
+**not proven to repair already-retained broken updater state**. Do not clean
+that save, reset quests or claim it repaired merely because it loads.
+
+For comparison, private profile `Astra USSEP439c Fresh 20260910` started with
+an empty local-saves directory and genuine New Game. At09:46:43, Papyrus logged
+both `USSEP 4.3.8 Retroactive Updates Complete` and
+`USSEP 4.3.9 Retroactive Updates Complete`. Vendor Unbound's MCM selected
+City→Whiterun (`$SU_City7`) and Begin Your Adventure. The MCM list dialog keeps
+its chosen active entry until Exit/Cancel closes it; Accept alone did not
+close it. One premature page read was undefined; state was reobserved before
+continuing, not treated as a mod failure or forced with console commands.
+
+Fresh Save4 and Save5 loaded successfully at09:52:10.919 and09:53:34.179.
+The bounded co-save readers consumed exactly62204/64527 bytes with fault0 and
+rejected_api_calls0; currency admissions4/7 completed with ledger623. The
+438/439 binding/call failure did not recur in that fresh session. Native
+Auto-Move start/stop moved the character from approximately
+(24876.596,-4695.499,-3003.046) to(24827.049,-4225.86,-2996.447), within the
+same Whiterun cell1A276/world1A26F. An independent read-only probe observed
+auto-move0 and zero input vectors afterward. This is bounded movement evidence,
+not combat, broad travel or an atomic physics snapshot.
+
+Fresh Save5 ESS SHA256
+`0032479db0599e3a7ed53851d2c6c81c7f72d5e957d6158fa19d177fdbe9aabc`;
+co-save `316b4f160010a9da7597997a761f81da5241478d0209151ee3e63d22722106eb`.
+It is a disposable test fixture, **not a silently chosen replacement campaign**.
+Raw logs remain private in `records-work/ussep439c-20260910/runtime-canary/`
+and `runtime-fresh/`. Original Adventurer3 and prior fixture inputs are retained.
+
+The fresh controller24936/game11120 ran09:45:16–09:54:46.851 CDT and exited0
+after normal Quit. The final unpaused ping at09:54:40.076 is65.897 seconds
+after the final PostLoad. Both sessions preserved the pinned original saves,
+prior fixture, Default lists/INIs, root DLL/PDB and all41 currency-overlay
+files. CrashLogger was restored byte-exact; protected crash directory remains
+empty. No owned game/controller remains. These bounded passes do not establish
+an overall crash rate or resolve the original-campaign admission decision.
+
+Fable5.1 CLI session93417b2f-27e4-4e5d-b919-3080858be151 separately implemented
+a read-only observer candidate in private staging. Root's first run passed32
+mocked tests; after review corrections to ctypes signatures, engine-path
+validation and intervals, the actual second suite passed35 tests (not the
+estimated36 in the handoff). Live samples matched the existing independent
+probe's coordinates/cell/world/raw state and detected the measured movement.
+It remains a candidate, not a new installed DLL or a combat acceptance oracle.
 
 ## Other provider findings
 
