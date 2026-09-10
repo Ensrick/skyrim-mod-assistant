@@ -1,0 +1,33 @@
+name: Native save admission core
+on:
+  push:
+    paths:
+      - 'mods/save-load-admission/**'
+      - 'mods/currency-integration/native/src/SaveMarkerPolicy.h'
+      - '.github/workflows/save-admission-core.yml'
+  pull_request:
+    paths:
+      - 'mods/save-load-admission/**'
+      - 'mods/currency-integration/native/src/SaveMarkerPolicy.h'
+      - '.github/workflows/save-admission-core.yml'
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: cmake -S mods/save-load-admission/native -B build-admission
+      - run: cmake --build build-admission --config Release
+      - run: ctest --test-dir build-admission -C Release --output-on-failure
+      - name: Native ASan and UBSan
+        if: runner.os == 'Linux'
+        run: |
+          cmake -S mods/save-load-admission/native -B build-admission-sanitized -DADMISSION_SANITIZERS=ON
+          cmake --build build-admission-sanitized
+          ctest --test-dir build-admission-sanitized --output-on-failure
