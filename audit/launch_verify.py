@@ -1,4 +1,4 @@
-"""Prove a change did not break the game: launch it, reach the menu, load a save.
+"""Bounded boot/load smoke test; not proof of complete modlist stability.
 
 User criterion, 2026-08-31: *"With each change we must successfully launch the
 game and load the save"* and *"It must reach the main menu in under 60 seconds
@@ -18,7 +18,9 @@ or it's a failure."* This is that test, as a pass/fail command.
 
 PASS requires BOTH:
   1. the real main menu open within --menu-budget seconds of process start, and
-  2. a save actually loaded (kPostLoadGame, success).
+  2. a save actually loaded (kPostLoadGame, success), and
+  3. the process survives at least 60 seconds after the latest successful load,
+     without a reported failed load or watchdog hang. This is not a soak test.
 
 Exit 0 PASS, 1 FAIL. Either way a record lands in records/launch-verify-*.md.
 
@@ -64,7 +66,7 @@ the exit code is 88 regardless of the verdict. `--force-kill "<reason>"`
 overrides; the reason is logged. Same check in install_mod.py before an
 install or sort while SkyrimSE.exe is alive.
 """
-import datetime, io, json, os, subprocess, sys, time
+import datetime, io, json, os, re, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -166,6 +168,8 @@ def decide(st, cfg):
     Order matters: the menu budget is checked BEFORE a successful load, because
     the user's criterion is a hard one and a save that loads at t+90s after a
     menu at t+75s is still a failed launch."""
+    if st.get('crash_log'):
+        return True, 'FAIL', f'crash report for this process: {st["crash_log"]}'
     if st['save_ok'] is False:
         return True, 'FAIL', f'the game reported the save load FAILED: {st["detail"]}'
     if not st['alive']:
@@ -179,16 +183,71 @@ def decide(st, cfg):
     if cfg.get('no_autoload') and st['menu_at'] is not None:
         return True, 'MENU-ONLY', (f'main menu at {st["menu_at"]:.1f}s; no save load was '
                                    f'requested (--no-autoload), so this is NOT a PASS')
-    if st['save_at'] is not None:
-        return True, 'PASS', (f'main menu at {st["menu_at"]:.1f}s, save loaded at '
-                              f'{st["save_at"]:.1f}s')
+    # A load-complete callback is not stability evidence: the Sept 9 20:12
+    # recurrence crashed ~1 second after success=1. Negative evidence must
+    # outrank a previous positive callback, including during the settle window.
+    if st['state'] in W.HANG:
+        return True, 'FAIL', f'watchdog verdict {st["state"]}'
+    if st['save_at'] is not None and st['save_ok'] is True:
+        if st['menu_at'] is None or st['elapsed'] - st['save_at'] < 60.0:
+            return False, None, None
+        return True, 'PASS', (f'bounded smoke test only: main menu at {st["menu_at"]:.1f}s, '
+                              f'save loaded at {st["save_at"]:.1f}s; survived '
+                              f'{st["elapsed"] - st["save_at"]:.1f}s afterward')
     if st['menu_at'] is not None and st['elapsed'] > st['menu_at'] + cfg['save_budget']:
         return True, 'FAIL', (f'main menu reached at {st["menu_at"]:.1f}s but the save '
                               f'never finished loading within '
                               f'{cfg["save_budget"]:.0f}s')
-    if st['state'] in W.HANG:
-        return True, 'FAIL', f'watchdog verdict {st["state"]}'
     return False, None, None
+
+
+def latest_load_observation(events, started_at):
+    """A new load invalidates a prior success and restarts the settle clock."""
+    at, ok = None, None
+    for event in events:
+        if event['event'] == 'kPreLoadGame':
+            at, ok = None, None
+        elif event['event'] == 'kPostLoadGame':
+            at, ok = None, 'success=1' in event['rest']
+            wall = probe_wall(event)
+            if wall is not None and ok:
+                at = wall - started_at
+    return at, ok
+
+
+def session_crash(pid, started_at, directory=None):
+    """Catch crash-handler-alive states; exclude other PIDs and stale reports.
+
+    PID plus report timestamp bind evidence to this launch; touching an old
+    report does not make it a new crash. Only bounded headers are read.
+    """
+    directory = directory or W.SKSE_DIR
+    if not os.path.isdir(directory):
+        return None
+    with os.scandir(directory) as candidates:
+        entries = list(candidates)
+    for entry in entries:
+        if not (entry.name.startswith('crash-') and entry.name.endswith('.log')):
+            continue
+        try:
+            if entry.stat().st_mtime < started_at - 1:
+                continue
+            with open(entry.path, encoding='utf-8-sig', errors='replace') as stream:
+                header = stream.read(16384)
+        except OSError:
+            # Cannot certify an unreadable fresh candidate as harmless.
+            return f'{entry.path} (fresh crash evidence unreadable; inconclusive)'
+        owner = re.search(r'^\s*Process ID:\s*(\d+)\s*$', header, re.MULTILINE)
+        if not owner or int(owner[1]) != pid:
+            continue
+        stamp = re.search(r'^CRASH TIME:\s*(.+)$', header, re.MULTILINE)
+        try:
+            when = datetime.datetime.strptime(stamp[1].strip(), '%Y-%m-%d %H:%M:%S').timestamp()
+        except (TypeError, ValueError):
+            return f'{entry.path} (matching PID, invalid crash timestamp)'
+        if when >= started_at - 1:
+            return entry.path
+    return None
 
 
 # ------------------------------------------------------------------ the run
@@ -436,15 +495,14 @@ def verify(cfg):
                     r.phases[label] = probe_wall(e) - r.t0
             save_ok = None
             post = [e for e in r.probe if e['event'] == 'kPostLoadGame']
-            if post and probe_wall(post[-1]):
-                save_ok = 'success=1' in post[-1]['rest']
-                if save_ok and save_at is None:
-                    save_at = probe_wall(post[-1]) - r.t0
-                    r.phases['save loaded'] = save_at
+            save_at, save_ok = latest_load_observation(r.probe, r.t0)
+            if save_at is not None:
+                r.phases['save loaded'] = save_at
 
             done, verdict, reason = decide(
                 {'alive': alive, 'elapsed': elapsed, 'menu_at': menu_at,
                  'save_at': save_at, 'save_ok': save_ok, 'state': state,
+                 'crash_log': session_crash(pid, r.t0),
                  'detail': (post[-1]['rest'] if post else
                             (r.probe[-1]['event'] if r.probe else None))}, cfg)
             if done:
@@ -500,7 +558,7 @@ def write_record(r, cfg):
             if r.human_at_controls else ''),
          f'- reason: {r.reason}',
          f'- criterion: main menu within {cfg["menu_budget"]:.0f}s of process start '
-         f'AND a save loaded'
+         f'AND a save loaded with at least 60s post-load survival (bounded smoke test only)'
          + (' (--no-autoload: save load deliberately skipped, MENU-ONLY is not a PASS)'
             if cfg.get('no_autoload') else ''),
          f'- pid: {r.pid}', '']
@@ -541,7 +599,7 @@ def selftest():
     every cheap signal said the menu was up at ~T+56s and the game was dead."""
     cfg = {'menu_budget': 60.0, 'save_budget': 180.0}
     cases = [
-        ('PASS', 'menu 41.8s, save 65.1s', dict(alive=True, elapsed=70, menu_at=41.8,
+        ('PASS', 'menu 41.8s, save 65.1s, settled', dict(alive=True, elapsed=126, menu_at=41.8,
                                                 save_at=65.1, save_ok=True,
                                                 state='at-menu', detail='')),
         ('FAIL', 'menu over budget', dict(alive=True, elapsed=80, menu_at=75.0,

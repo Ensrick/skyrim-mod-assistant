@@ -5,6 +5,14 @@ Status: targeted fix installed; controlled crash comparison, repeated saves,
 in-session reloads and cold reloads pass, including diagnostics OFF.
 This is distinct from the earlier BTPS ControlMap input-context corruption.
 
+**September 9, 20:12 recurrence:** the user still cannot load the old Adventurer3
+campaign reliably. Its byte-identical earlier failing autosave now crashes in
+engine Papyrus/MCM work, not this immediate save-time lookup. #261's scope is
+only the mechanism tested below, not campaign recovery or modlist acceptance.
+The unresolved recurrence and manual-load admission gap are tracked in
+[#262](https://github.com/Ensrick/skyrim-mod-assistant/issues/262) and
+[the new incident report](CRASH_RECURRENCE_2026-09-09_201250.md).
+
 ## Cause and narrow repair
 
 The 18:11:02 crash occurs in `SKSEPersistentObjectStorage::CleanDroppedStacks`,

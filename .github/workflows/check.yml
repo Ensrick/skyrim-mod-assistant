@@ -49,6 +49,14 @@ jobs:
             exit 1
           }
 
+      - name: Test post-load crash acceptance boundary
+        shell: pwsh
+        run: |
+          python -m unittest discover -s audit -p test_launch_verify_settle.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python audit/launch_verify.py --selftest
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test private-desktop worker containment
         shell: pwsh
         run: |
