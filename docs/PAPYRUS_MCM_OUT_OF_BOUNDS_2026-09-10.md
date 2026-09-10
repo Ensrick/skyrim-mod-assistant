@@ -103,3 +103,14 @@ the exact copied save plus valid member accesses. No save cleaning, substitute
 scripts or reinstated mods. Passing this fault is still not permission to call
 the campaign healthy: missing content, currency checkpoint compatibility,
 load/save/reload and sustained gameplay acceptance remain separate obligations.
+
+Follow-up contract review: destination resolver14D58F0 returns bool and has
+two flag outputs plus a fifth argument (`Variable**`). Its caller14D45C0 skips
+all destination reads/defaults when that bool is false and flags are zero.
+However, the opcode handler at14CEA60 ignores14D45C0's returned bool, destroys
+its temporary source value and continues. **Do not claim a false return aborts
+the whole saved script.** Member reads use14D54C0 and need separate inspection;
+a write-only check could expose another invalid read. Operand kind7 stores its
+encoded member index at+4 (native14A2240); actual member index is encoded-2.
+Fable's proposed function-entry detour is a review suggestion, not implemented
+or accepted wholesale. A smaller verified call-site hook remains an option.
