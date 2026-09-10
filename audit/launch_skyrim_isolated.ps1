@@ -9,6 +9,7 @@ param(
     [string] $SourceProfileName = 'Default',
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
     [string] $LoadTestSave,
+    [string] $CurrencyTestBuild,
     [string] $ClaimOwner = $env:SKYRIM_CLAIM_OWNER
 )
 
@@ -105,6 +106,13 @@ if ($LoadTestSave) {
 }
 $currencyArgs = @('--instance', $instance, '--game-data', (Join-Path $game 'Data'),
     '--profile', $sourceProfileName)
+if ($CurrencyTestBuild) {
+    # Test-only source-bound candidate: isolated settings must be established
+    # before the gate checks them. Default and source profile stay untouched.
+    [IO.File]::WriteAllText($profileSettingsPath, $profileSettings, [Text.UTF8Encoding]::new($false))
+    $currencyArgs = @('--instance', $instance, '--game-data', (Join-Path $game 'Data'),
+        '--profile', $smokeProfileName, '--test-native-build', $CurrencyTestBuild)
+}
 if ($LoadTestSave) { $currencyArgs += @('--save', $testSavePath) }
 & $python (Join-Path $PSScriptRoot 'currency_save_gate.py') @currencyArgs
 if ($LASTEXITCODE -ne 0) { throw 'Currency package/save admission refused; no launch.' }

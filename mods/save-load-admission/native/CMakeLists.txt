@@ -31,6 +31,22 @@ if(WIN32)
   target_compile_definitions(save_admission_lease_tests PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
   target_link_libraries(save_admission_lease_tests PRIVATE save_admission_read_lease)
   add_test(NAME windows_read_lease COMMAND save_admission_lease_tests)
+  # C ABI bridge for the SKSE fork. cxx_std_20 is PRIVATE here and core/lease
+  # are PRIVATE (LINK_ONLY to consumers), so a target linking save_admission_abi
+  # sees only SaveAdmissionAbi.h and is not forced onto C++20. No DLL is built;
+  # the MSVC runtime flavor (MT) is inherited from the superbuild's
+  # CMAKE_MSVC_RUNTIME_LIBRARY exactly like the existing targets.
+  add_library(save_admission_abi STATIC SaveAdmissionAbi.cpp)
+  target_compile_features(save_admission_abi PRIVATE cxx_std_20)
+  target_include_directories(save_admission_abi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+  target_compile_definitions(save_admission_abi PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
+  target_link_libraries(save_admission_abi PRIVATE save_admission_core save_admission_read_lease)
+  # The .c translation unit proves the header is consumable without C++.
+  add_executable(save_admission_abi_tests SaveAdmissionAbiTests.cpp SaveAdmissionAbiConsumer.c)
+  target_compile_features(save_admission_abi_tests PRIVATE cxx_std_20 c_std_11)
+  target_compile_definitions(save_admission_abi_tests PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)
+  target_link_libraries(save_admission_abi_tests PRIVATE save_admission_abi ZLIB::ZLIBSTATIC)
+  add_test(NAME save_admission_abi COMMAND save_admission_abi_tests)
 endif()
 option(ADMISSION_SANITIZERS "Instrument native reader and harnesses with ASan/UBSan" OFF)
 if(ADMISSION_SANITIZERS)

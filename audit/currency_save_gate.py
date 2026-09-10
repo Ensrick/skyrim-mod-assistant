@@ -148,13 +148,62 @@ def read_checkpoint(raw, expected_fingerprint):
     return checkpoint
 
 
-def check_save(instance, game_data, save_path, profile='Default', *, receipt_path=RECEIPT):
+def reviewed_test_dll(build, instance, profile, release):
+    """Explicit source-bound private test exception for the DLL only.
+
+    Never accepts arbitrary replacement receipts or alters the normal release
+    contract. This authorizes testing, not installation or gameplay acceptance.
+    """
+    if not profile.startswith('Astra Load262 ') or any(char in profile for char in '/\\:'):
+        raise ValueError('native candidate requires a dedicated Load262 test profile')
+    settings = (Path(instance) / 'profiles' / profile / 'settings.ini').read_text()
+    values = [row.strip().lower() for row in settings.splitlines()]
+    if values.count('localsaves=true') != 1 or 'localsaves=false' in values:
+        raise ValueError('native candidate requires isolated local saves')
+    build = Path(build).resolve(strict=True)
+    native = json.loads((build / 'native-build-receipt.json').read_text(encoding='utf-8-sig'))
+    source = Path(__file__).resolve().parents[1] / 'mods/currency-integration/native'
+    if (Path(native['sourceRoot']).resolve() != source.resolve()
+            or native['schemaVersion'] != 1 or native['runtime'] != '1.7.104.0'
+            or native['skse'] != '2.3.1'
+            or native['commonLibCommit'] != '90a64a4d65ce659a139137c968f42151bb6ecec9'
+            or native['commonLibTrackedStatus'] != 'clean'
+            or native['runtimeConfig']['sha256'] != release['winningFiles'][CONFIG]):
+        raise ValueError('native candidate build contract mismatch')
+    inputs = native['sourceInputs']
+    seen = set()
+    for item in inputs:
+        relative = Path(item['relativePath'])
+        resolved = (source / relative).resolve(strict=True)
+        if (relative.is_absolute() or '..' in relative.parts
+                or not resolved.is_relative_to(source.resolve()) or resolved in seen):
+            raise ValueError('invalid or duplicate native source input')
+        seen.add(resolved)
+        data = resolved.read_bytes()
+        if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest().upper() != item['sha256']:
+            raise ValueError('native candidate source changed since build')
+    required = {source / name for name in ('src/Plugin.cpp', 'src/AdmissionIdentity.h',
+                                          'CMakeLists.txt', 'build-native.ps1')}
+    if not required.issubset(seen):
+        raise ValueError('native candidate missing critical source inputs')
+    dll = native['dll']
+    data = (build / 'build/Release/EnsrickCurrencyDenominations.dll').read_bytes()
+    if (dll['relativePath'] != DLL or len(data) != dll['bytes']
+            or hashlib.sha256(data).hexdigest().upper() != dll['sha256']):
+        raise ValueError('native candidate binary does not match its source receipt')
+    return dll['sha256']
+
+
+def check_save(instance, game_data, save_path, profile='Default', *, receipt_path=RECEIPT,
+               test_native_build=None):
     """Return launch blockers only when the native package is reachable."""
     try:
         dll = winning_file(instance, game_data, DLL, profile)
         config_path = winning_file(instance, game_data, CONFIG, profile)
         esp = winning_file(instance, game_data, PLUGIN, profile)
         purses = winning_file(instance, game_data, PURSES, profile)
+        if test_native_build and not all((dll, config_path, esp, purses)):
+            return ['native candidate test requires the complete existing currency package']
         if not dll and not config_path and not purses:
             # Legacy profiles are unaffected, but the new reviewed ESP alone
             # cannot be allowed to masquerade as a pre-native installation.
@@ -181,8 +230,9 @@ def check_save(instance, game_data, save_path, profile='Default', *, receipt_pat
         receipt = json.loads(Path(receipt_path).read_text(encoding='utf-8-sig'))
         if receipt['schemaVersion'] != 1 or receipt['version'] != '0.4.0':
             raise ValueError('unsupported reviewed currency release receipt')
+        test_dll = reviewed_test_dll(test_native_build, instance, profile, receipt) if test_native_build else None
         for relative, winner in ((DLL, dll), (CONFIG, config_path), (PLUGIN, esp), (PURSES, purses)):
-            expected = receipt['winningFiles'][relative]
+            expected = test_dll if relative == DLL and test_dll else receipt['winningFiles'][relative]
             if (not isinstance(expected, str) or len(expected) != 64
                     or any(c not in '0123456789abcdefABCDEF' for c in expected)):
                 raise ValueError('invalid reviewed currency winner hash')
@@ -221,12 +271,15 @@ def main(argv=None):
     parser.add_argument('--game-data', type=Path, required=True)
     parser.add_argument('--profile', required=True)
     parser.add_argument('--save', type=Path)
+    parser.add_argument('--test-native-build', type=Path,
+                        help='Source-bound candidate build; dedicated isolated Load262 profiles only')
     args = parser.parse_args(argv)
     # Profile is a single instance-relative name, never an arbitrary path.
     if (args.profile in ('.', '..') or not args.profile.strip()
             or any(char in args.profile for char in '/\\:')):
         parser.error('--profile must be a single profile name')
-    blockers = check_save(args.instance, args.game_data, args.save, args.profile)
+    blockers = check_save(args.instance, args.game_data, args.save, args.profile,
+                          test_native_build=args.test_native_build)
     print(json.dumps({
         'verdict': 'REFUSED' if blockers else 'CURRENCY-ADMITTED',
         'save': str(args.save) if args.save else None,

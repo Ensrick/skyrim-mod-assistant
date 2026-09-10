@@ -262,3 +262,20 @@ profile mutation and add your own items below.
 
 Team lead (Claude) commits + pushes this repo once the above go idle, then writes
 `docs/MORNING-REPORT-2026-09-02.md`.
+
+## 2026-09-10 Astra #262 actual admission integration
+
+- Fable 5.1 ABI draft: complete; parent applied and corrected reserved fields
+  and one faulty assertion. 1,518 bridge checks pass; no autonomous file edits.
+- Fable original-crash and guard reviews: complete. Array-release fault
+  confirmed; invalid-value writer unproven. Missing-plugin remap hypothesis
+  not supported by source. No campaign migration or save cleaning.
+- Parent runtime integration: experimental only. Actual incompatible-save
+  rejection, accepted Continue/Journal/F9, exact co-save handle binding and
+  post-load lease release observed in muted private sessions, all exit 0.
+- Follow-up lifecycle correction builds and passes 25 actual-source checks;
+  that changed build still needs runtime testing. All installed DLLs restored,
+  profile claim released, no game/controller or Fable subprocess of ours left.
+- Remaining release blockers and evidence are in
+  `docs/SAVE_ADMISSION_INTEGRATION_2026-09-10.md` and issue #262. Goal active;
+  neither refusal nor these bounded tests count as original campaign recovery.
