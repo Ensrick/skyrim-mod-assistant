@@ -1,5 +1,19 @@
 # Change log
 
+## 2026-09-10 14:45 — SlavicPotato excluded; his function moves in-house
+
+- **Author excluded** on user instruction: *"Let's exclude this author, make a framework that includes our own simple dual sheath, and make our own display tweaks as well... We need to be ready to make our own version of everything he has. If possible, try to do a better job."* Added to `docs/EXCLUDED_AUTHORS.md` with the replacement plan; skips recorded for 62001, 50049 and 34705 in `records/skip-reasons.jsonl`.
+- **Correction to a first reading.** An initial ledger check reported nothing by this author installed. It queried a `title` key that `records/installed-mods.json` does not have (the key is `modName`). The real state: **Simple Dual Sheath 1.5.9 (50049) enabled**, **SSE Display Tweaks Official 0.5.25 (34705) enabled** and load-bearing for borderless / 119 fps / Havok decoupling / WindowFocusGuard (#149), plus our own `Ensrick - SSE Display Tweaks Configuration` overlay depending on its DLL. The claim in the exclusion doc was corrected in the same pass.
+- **Nothing removed today.** Exclusion rule 1 in its strict form: the function is replaced first, then the mod comes out. Both stay enabled until their replacements pass a launch verification.
+- **No fork taken.** Upstream is MIT and a fork was permitted; an exclusion that reships the excluded author's work under a new name is not an exclusion. The clone made earlier today is parked at `skyrim-tools-source/_reference-ied-dev-DO-NOT-FORK/` for behaviour and config-schema reference only.
+- **New repo** `skyrim-tools-source/EnsrickEquipmentDisplay` (MIT, CommonLibSSE-NG 6.7.1, `VersionIndependence::AddressLibrary`, no version ceiling): SKSE entry, ini settings, `TESObjectREFR::Load3D` vfunc 6A hooks on Character and PlayerCharacter, a `TESEquipEvent` sink, and a `DumpSkeleton` diagnostic that writes an actor's real node tree so slot transforms come from measurement rather than an assumed XPMSSE layout. Design and phase plan in that repo's `docs/DESIGN.md`.
+- **Issues:** #269 rewritten (framework, supersedes the plan to patch `ied-dev`), #271 opened (our own display tweaks, blocked on #269).
+- **Verification:** UNVERIFIED. No game launched; the plugin has not been built to a DLL yet at the time of this entry, and nothing was installed into the profile.
+
+## 2026-09-10 — QuickLoot removal reaffirmed by user
+
+- Removed the already-disabled QuickLoot IE package and installed-ledger row through recoverable MO2 transaction `20260910T161635609Z-0f640d8372b4`; package retained in controller trash. QuickLoot remains Skip, not a recovery dependency to reinstall. Saves untouched. No game launch; gameplay verification not claimed.
+
 **User directive (2026-08-31, verbatim):** "now we're keeping a changelog so we
 can trace every change back to its source. With each change we must
 successfully launch the game and load the save." Launch criterion, verbatim:
