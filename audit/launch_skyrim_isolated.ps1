@@ -10,6 +10,8 @@ param(
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
     [string] $LoadTestSave,
     [string] $CurrencyTestBuild,
+    # Requires a separately reviewed experimental MenuPilot build. Default OFF.
+    [switch] $ExperimentalMenuLook,
     [string] $ClaimOwner = $env:SKYRIM_CLAIM_OWNER
 )
 
@@ -162,6 +164,7 @@ Get-ChildItem Env: | Where-Object {
     $_.Name -like 'SKYRIM_LAUNCH_PROBE_*' -or $_.Name -like 'SKYRIM_MENU_PILOT_*'
 } | ForEach-Object { Remove-Item -LiteralPath ('Env:' + $_.Name) }
 if ($LoadTestSave) { $env:SKYRIM_LAUNCH_PROBE_AUTOLOAD = $LoadTestSave }
+if ($ExperimentalMenuLook) { $env:SKYRIM_MENU_PILOT_EXPERIMENTAL_LOOK = '1' }
 $arguments = @(
     '-p', ('"' + $smokeProfileName + '"'),
     '--timeout', [string]$WaitSeconds,
