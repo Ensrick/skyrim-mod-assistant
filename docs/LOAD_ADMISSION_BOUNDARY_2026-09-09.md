@@ -4,6 +4,11 @@ Related: [#262](https://github.com/Ensrick/skyrim-mod-assistant/issues/262).
 This is a diagnostic experiment, **not** a deployed compatibility policy or
 repair of the Adventurer3 campaign. The public issue stays open.
 
+**22:58 follow-up:** a native `CancelLoading` kUpdate restores the main menu's
+input after rejection in two controlled cycles. This supersedes the earlier
+unexplained recovery failure, not the absence of a production admission policy.
+See [native gate and runtime evidence](LOAD_CANCEL_NATIVE_RECOVERY_2026-09-09.md).
+
 ## Why a new boundary
 
 The mid-load SKSE hook cannot safely be treated as a veto merely by returning

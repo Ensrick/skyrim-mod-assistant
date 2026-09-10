@@ -18,6 +18,21 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-09 22:58 — Native rejected-Continue recovery demonstrated, not deployed
+
+- **Source:** #262 exact-engine input-gate diagnosis; local MenuPilot9be3f58.
+- **What:** Temporary diagnostic command queues the engine's CancelLoading
+  kUpdate, clearing the native input block without memory patches. Corrected
+  first-run rejection configuration to include the documented `.ess` suffix.
+- **Verification:** First run was NOT intercepted (native load returnedfalse),
+  recorded as failed configuration. Corrected PID15848 rejected the exact copy
+  before target entry twice; each native cancellation restored Main and normal
+  navigation. Normal-input Quit, controller0; no crash. Unit16 guard cases and
+  string regressions pass. This is NOT a load/save/gameplay acceptance run.
+  Restored rootCC2F98A4 and installed MenuPilot1A1D5CEC; candidate02FF25E7 not
+  permanently deployed. Original saves/Default lists/INI unchanged. #262 OPEN.
+  [Evidence and next gates](docs/LOAD_CANCEL_NATIVE_RECOVERY_2026-09-09.md).
+
 ## 2026-09-09 22:33 — MenuPilot repair installed; bounded load/save VERIFIED
 
 - **Source:** #266 discovered while investigating #262; local source `b3b1b31`.
