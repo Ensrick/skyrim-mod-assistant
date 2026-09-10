@@ -63,6 +63,12 @@ jobs:
           python -m unittest discover -s audit -p test_skse_mod_event_inventory.py -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+      - name: Test exact-build player layout audit gates
+        shell: pwsh
+        run: |
+          python -m unittest discover -s audit -p test_player_layout_audit.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test pinned Unbound jail-pool source transformation
         shell: pwsh
         run: |

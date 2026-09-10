@@ -28,3 +28,25 @@ formatter can misleadingly describe a string array as boolean. The consumer
 does not use that formatter: it prints the parsed variable type, referenced
 array ID, length and array's own parsed element type. No upstream source was
 modified. Absence of parser errors is not proof of engine/save compatibility.
+
+## Serialized position inspection (experimental)
+
+`SavePlayerLocation.java` uses the same pinned source/dependencies and compile
+command, substituting its class/file name. The default invocation requires the
+player ACHR body to parse fully. That **refused** the current Save5 fixture even
+though the outer ESS parsed; this is not evidence that the save is corrupt.
+
+An explicitly supplied third argument `--prefix-only` permits a bounded INITIAL
+prefix read when full ACHR decoding is unsupported. Types 4 and 6 follow the
+pinned parser's flag rules; the player is the existing RefID14, not a created
+reference. The diagnostic reports `fullAchrParsed=false` and never upgrades that
+to a full-record certificate. Positions/rotations must be finite, and the
+prefix must have its exact size. The serialized field called CELL may contain a
+worldspace (the tested exterior fixture resolves to Tamriel 0000003C); do not
+equate it with the live parent cell automatically. Global data type2 stays opaque.
+
+The prefix agreed with live X/Y and approximately Z, and all three agreed
+exactly immediately after a cold load. Scope and runtime results are recorded
+in `docs/PLAYER_OBSERVATION_2026-09-10.md`. The Java consumer was compiled and
+tested locally on Java24, not by the portable Python CI job. Private ESS files,
+raw reports and compiled parser artifacts are not shipped.
