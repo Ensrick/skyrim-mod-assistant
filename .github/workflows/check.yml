@@ -69,6 +69,12 @@ jobs:
           python -m unittest discover -s audit -p test_player_layout_audit.py -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+      - name: Test read-only player observer with adversarial memory fixtures
+        shell: pwsh
+        run: |
+          python -m unittest discover -s audit -p test_player_observer.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Test pinned Unbound jail-pool source transformation
         shell: pwsh
         run: |
