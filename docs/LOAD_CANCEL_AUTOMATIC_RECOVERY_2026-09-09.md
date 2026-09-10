@@ -74,8 +74,8 @@ Local full DLL build and extracted-production tests pass:
 
 Mocks do not prove engine ABI, preservation or code-write atomicity. Hosted
 Windows/Linux request-probe run34436908793 and load-argument run34436908784
-PASS at this revision. Full build34436908858 was still running when recorded;
-check its final result separately. No Fable verdict is claimed for this change.
+PASS at this revision. Full build34436908858 subsequently PASS, completed
+2026-09-10 04:24:15 UTC. No Fable verdict is claimed for this change.
 
 ## Restored state
 
