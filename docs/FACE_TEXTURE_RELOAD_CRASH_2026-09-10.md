@@ -1,8 +1,19 @@
 # New reload crash: face-customization texture release
 
-Tracker: #268, parent #262. Status: opt-in repair has passed two isolated
-tests totalling19 successful loads; broader acceptance remains open.
-Nothing newly deployed to the normal playing configuration.
+Tracker: #268, parent #262. Status: narrow native texture ownership repair
+**deployed for normal play** at06:35 on09-10, after clean-build canary testing.
+Broader crash attribution/gameplay acceptance and the parent goal remain open.
+Earlier sections below retain the chronological experimental states.
+
+Latest: [ownership/execution audit](TEXTURE_RELEASE_OWNERSHIP_AUDIT_2026-09-10.md)
+and [installed source-build receipt](../records/source-builds/ensrick-skse-texture-release-1.7.104.json).
+Normal root DLL is now0438215A, not the historical4E3F618B mentioned below.
+Source19d34bb,167 native signature/branch/policy checks and64 modelcases pass;
+bothCI34471519768/34471519792 pass. Final diagnostics-off clean canary completed
+7 successful loads, movement and normal Quit without a new crashlog. Normal
+root/PDB replaced under claim, previous pair preserved, original saves/Default
+unchanged. No experimental admission, extra mod, vendor asset, or visual policy
+change was deployed. The guard's exact-function gate and explicit opt-out remain.
 
 ## Reproduction evidence
 

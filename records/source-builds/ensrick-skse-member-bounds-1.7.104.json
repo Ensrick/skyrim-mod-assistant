@@ -29,7 +29,7 @@
     "rollbackArchive": "records-work/load-request-20260909/before"
   },
   "installation": {
-    "status": "INSTALLED locally; exact tested DLL/PDB hashes verified",
+    "status": "SUPERSEDED locally by ensrick-skse-texture-release-1.7.104.json on2026-09-10; paired member guard retained; this receipt preserves historical tested hashes",
     "installedLocal": "2026-09-10T02:21:44-05:00",
     "claimOwner": "astra/member-guard-test",
     "scope": "Game-root SKSE tool DLL/PDB only; no vendor mod payload modifications",

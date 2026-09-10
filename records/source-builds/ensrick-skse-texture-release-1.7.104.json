@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "component": "SKSE runtime DLL - native texture duplicate-release repair plus retained Papyrus member bounds guard",
+  "runtime": "1.7.104.0",
+  "version": "19d34bb-texture-release",
+  "source": {
+    "repository": "https://github.com/Ensrick/skse64",
+    "branch": "ensrick/1.7.104-headless",
+    "commit": "19d34bbbd054369c5fa89a480953a0b40d38d393",
+    "configuration": "Release",
+    "generator": "Visual Studio 17 2022",
+    "compiler": "MSVC 19.44.35223.0",
+    "buildDirectory": "build-texture-release-default",
+    "experimentalAdmissionLinked": false,
+    "workingTreeCaveat": "Unrelated existing sheets/Common.props and sheets/Runtime.props edits preserved, excluded from commits and not used by the CMake build"
+  },
+  "artifact": {
+    "rootRelativePath": "skse64_1_7_104.dll",
+    "sha256": "0438215A4938CAC3E91E16B127998718E17A3D6C233F643A40D0CDC7472C1BEA",
+    "bytes": 1231360,
+    "pdbSha256": "A33BF070B326CC41A62C6E476754F9755AD42AC627E987F062BE2864CC5B62AA",
+    "pdbBytes": 16461824,
+    "previousDllSha256": "4E3F618B6A413B6EA3C38E238EBC607E056EEBFC34ED72073DD46BEEA7BD7184",
+    "previousPdbSha256": "AFE66259AD4E8C60F09222BD4C683913F4AE7471C25021F4E121BA5C6CCCEDE2",
+    "rollbackArchive": "records-work/texture-release-deployment-20260910"
+  },
+  "installation": {
+    "status": "INSTALLED locally; exact tested DLL/PDB verified",
+    "installedLocal": "2026-09-10T06:35:17.6319944-05:00",
+    "claimOwner": "astra/lifetime262",
+    "scope": "Our game-root SKSE tool DLL/PDB only; no vendor mod assets or SkyrimSE.exe changes",
+    "repairDefault": "ON for exact147-byte known function; SKSE.ini [General] EnableTextureDuplicateReleaseFix=0 opts out",
+    "diagnosticObserverDefault": "OFF; no probe used during final canary",
+    "priorMemberBoundsGuardRetained": true,
+    "saveCleaning": false,
+    "saveDeletion": false,
+    "newMods": false,
+    "defaultLoadOrderPreserved": true
+  },
+  "verification": {
+    "signatureBranchPolicyChecks": 167,
+    "exactCodeModelCases": 64,
+    "ciRunsPassed": [34471519768, 34471519792],
+    "observedCleanCandidate": "BF92:7 successful loads,8 sampled before/returned face-cleanup pairs with observed before-count1; not atomic final-branch proof",
+    "finalCanary": "0438: exact failed quicksave copied into private profile; Continue,5F5/F9 pairs,new Save1 journal reload all7PostLoad success; normal default repair on/environment override0; observer and admission off; eachF9 full147byte live repair verified",
+    "lastSuccessfulPostLoadLocal": "2026-09-10T06:33:18.949-05:00",
+    "movementVerifiedLocal": "2026-09-10T06:34:36-05:00",
+    "normalQuitLocal": "2026-09-10T06:35:02.155-05:00",
+    "newPrivateCrashLogs": 0,
+    "sourceSavesAndDefaultHashesUnchanged": true,
+    "preflight": "No blockers; authorized root DLL change observed and manifest refreshed; other preexisting warnings remain",
+    "report": "docs/TEXTURE_RELEASE_OWNERSHIP_AUDIT_2026-09-10.md",
+    "scope": "Narrow ownership-defect correction and bounded load/movement non-regression; no measured live crash-rate reduction, campaign recovery, broad gameplay or GPU leak certification",
+    "overallIssues": "262 and268 OPEN"
+  },
+  "license": "Upstream SKSE terms retained; not MIT. Our original changes are published as source; binary redistribution needs separate license review.",
+  "publicBinaryRelease": "NOT RELEASED"
+}
