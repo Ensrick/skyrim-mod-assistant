@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "component": "SKSE runtime DLL - paired Papyrus object-member bounds guard",
+  "runtime": "1.7.104.0",
+  "version": "e843ba3-member-bounds",
+  "source": {
+    "repository": "https://github.com/Ensrick/skse64",
+    "branch": "ensrick/1.7.104-headless",
+    "commit": "e843ba3c9808b81f253d098c1ea41d3c3ef45102",
+    "guardImplementationCommit": "f81abcc4e0bd8470389ee5f85068dd0aa231484b",
+    "configuration": "Release",
+    "generator": "Visual Studio 17 2022",
+    "compiler": "MSVC 19.44.35223.0",
+    "platformToolset": "v143",
+    "buildDirectory": "build-member-release",
+    "commonDir": "C:/Users/danjo/source/repos/extern/lib/cmake/common",
+    "experimentalAdmissionSourceDirectory": "",
+    "experimentalAdmissionLinked": false,
+    "workingTreeCaveat": "Existing sheets/Common.props and sheets/Runtime.props edits preserved and excluded from commits; fresh CMake build does not consume those hand-authored property sheets. Prior stack lookup and sixth-load-argument repairs retained."
+  },
+  "artifact": {
+    "rootRelativePath": "skse64_1_7_104.dll",
+    "sha256": "4E3F618B6A413B6EA3C38E238EBC607E056EEBFC34ED72073DD46BEEA7BD7184",
+    "bytes": 1225728,
+    "pdbSha256": "AFE66259AD4E8C60F09222BD4C683913F4AE7471C25021F4E121BA5C6CCCEDE2",
+    "pdbBytes": 16437248,
+    "previousDllSha256": "CC2F98A4189E1980B216E0C10C15DBDB65827B44028FBAD11A129FF6D2094591",
+    "previousPdbSha256": "4527910038FF7E3D009B7B7B85EB0FED5D793E1015944E0143D88D783864CFA6",
+    "rollbackArchive": "records-work/load-request-20260909/before"
+  },
+  "installation": {
+    "status": "INSTALLED locally; exact tested DLL/PDB hashes verified",
+    "installedLocal": "2026-09-10T02:21:44-05:00",
+    "claimOwner": "astra/member-guard-test",
+    "scope": "Game-root SKSE tool DLL/PDB only; no vendor mod payload modifications",
+    "guardDefault": "ON; SKSE.ini [General] EnablePapyrusMemberBoundsCheck=0 is the diagnostic opt-out",
+    "saveCleaning": false,
+    "saveDeletion": false,
+    "newMods": false
+  },
+  "verification": {
+    "nativePolicyChecks": 50,
+    "nativeResult": "PASS; bounded metadata-reader policy only, not the native engine ABI",
+    "fullBuildCiRun": 34448891724,
+    "regressionCiRun": 34448891712,
+    "ciResult": "PASS",
+    "releaseOriginalRun": "Exact original copied input loaded through Continue and Journal; each rejected 3 reads and 1 write on zero-variable TrueHUD_MCM; normal exit. Currency ledger refusal remains. No save write.",
+    "releaseHealthyRun": "Diagnostics OFF: cold Continue at02:18:05.288 CDT, new Save8 currency gate PASS, Journal reload at02:19:02.357, F5 quicksave gate PASS, F9 reload at02:19:42.302; all three currency admissions complete; ZERO member rejects. Responsive at02:20:53.174, then normal desktop exit02:20:59.594. No new crash report. Not sustained gameplay certification.",
+    "independentReview": "Actual Fable5.1 session be49bad5-5784-4267-946c-94f92c5aa8a9 read-only review; parent verified findings and rejected speculative type-name/handle assertions using native evidence",
+    "report": "docs/PAPYRUS_MCM_OUT_OF_BOUNDS_2026-09-10.md",
+    "scope": "Targeted reproduced OOB fault and bounded load/save regression; not old-campaign recovery, save compatibility or sustained gameplay certification",
+    "overallIssue": "262 OPEN"
+  },
+  "license": "Upstream SKSE terms retained; not MIT. Binary distribution requires separate review.",
+  "publicBinaryRelease": "NOT RELEASED; original source changes published separately"
+}

@@ -114,3 +114,88 @@ a write-only check could expose another invalid read. Operand kind7 stores its
 encoded member index at+4 (native14A2240); actual member index is encoded-2.
 Fable's proposed function-entry detour is a review suggestion, not implemented
 or accepted wholesale. A smaller verified call-site hook remains an option.
+
+## Paired guard implemented and tested (subsequent work)
+
+The preceding next-work paragraphs describe the pre-implementation checkpoint.
+SKSE source `f81abcc4e0bd8470389ee5f85068dd0aa231484b` now guards BOTH member
+reads at14D54C0 and destination resolution at14D58F0. It checks complete inherited
+variable counts before the engine calculates a slot. Unknown/unreadable layouts
+forward unchanged; known out-of-range accesses use the existing failure return.
+No save data, object refcounts or missing script definitions are rewritten.
+Both complete prologues are signature-checked before installing whole-instruction
+forwarders. Fifty native policy checks and both full-build/Windows-Linux CI pass
+(runs34447827157 and34447827098).
+
+Tested candidate SHA256:
+`B3E411A66B2F6C7DDB06BD6849FAF440656A76AEE82CD587B06FAC7D6A32A0A4`.
+
+| Test | Actual outcome |
+| --- | --- |
+| Exact original, cold Continue | Loaded at01:56:58.206 CDT; 3 member reads and1 write rejected, all TrueHUD_MCM with zero runtime variables. |
+| Exact original, Journal reload | Loaded at01:59:09.655; same four rejects; responsive after130.7s; normal desktop exit. No save written. |
+| Compatible Save7, cold Continue | Loaded at02:03:41.736; currency checkpoint accepted; zero member rejects. |
+| New Save8 and Journal reload | New save passed currency gate; reload admitted at02:04:56.002; zero member rejects. |
+| F5 quicksave and F9 quickload | New quicksave passed currency gate; reload admitted at02:05:56.979; responsive and normal desktop exit; zero member rejects. |
+
+Each session used a copied input, actual engine menu input on the muted private
+desktop, and restored the installed DLL/PDB and CrashLogger configuration after
+exit. No new private crash report was generated. Evidence directories:
+`records-work/load-request-20260909/automatic-recovery-member-original` and
+`automatic-recovery-member-healthy`. Original save hashes remain unchanged.
+
+**Limits:** the old save still receives the correct missing-native-currency-ledger
+refusal, and removed TrueHUD native methods still produce handled Papyrus errors.
+Passing its previously crashing instruction is NOT old-campaign recovery, save
+compatibility, or sustained gameplay certification. Issue262 and the overall
+goal remain open. No old-campaign migration has been authorized.
+
+Fable5.1 session`be49bad5-5784-4267-946c-94f92c5aa8a9` reviewed the implementation
+read-only. Parent checked its findings against actual memory and disassembly:
+its proposed type-name offset+0x18 was wrong (+8 is proven and produces the
+correct runtime name), and14D66D0 checks type classification, not handle validity.
+Those suggestions were not adopted. No blanket independent approval is claimed.
+
+Source`e843ba3` makes this narrowly scoped guard default-on with SKSE.ini
+`[General] EnablePapyrusMemberBoundsCheck=0` as diagnostic opt-out. A fresh release
+build with experimental admission linkage disabled passed separate runtime
+verification and was installed locally at02:21:44 CDT. Exact receipt:
+`records/source-builds/ensrick-skse-member-bounds-1.7.104.json`.
+
+Release DLL SHA256
+`4E3F618B6A413B6EA3C38E238EBC607E056EEBFC34ED72073DD46BEEA7BD7184`.
+Both CI workflows for exact sourcee843ba3 passed (34448891724,34448891712).
+
+- Original Continue02:14:42.289, Journal reload02:15:29.550, each3 reads/1 write
+  rejected on empty TrueHUD_MCM, responsive02:16:17.889; normal exit02:16:25.170.
+  Currency refusal on both loads remained intact. No old-save write.
+- Compatible fixture with optional load diagnostics OFF: Continue02:18:05.288,
+  new Save8 with valid checkpoint, Journal reload02:19:02.357, F5 valid
+  quicksave, F9 reload02:19:42.302; all three currency admissions completed.
+  Zero member rejects, responsive02:20:53.174, normal exit02:20:59.594.
+- Both hooks logged installed/default-enabled in both sessions. Evidence:
+  `automatic-recovery-member-release-original` and
+  `automatic-recovery-member-release-healthy` under the same private root.
+  No new private crash report; CrashLogger configuration byte-restored and
+  original ESS/co-save hashes checked unchanged after these runs.
+- Permanent deployment changed only our game-root SKSE DLL/PDB after all owned
+  game/controller processes ended. PreviousCC2F DLL and matching PDB remain in
+  `records-work/load-request-20260909/before`; installed hashes match the tested
+  pair. No new Nexus mod, Keep change, vendor asset edit or original save change.
+
+This is empirical repair of the demonstrated member-access fault, with bounded
+regression evidence. It does not close issue262 or the user's full crash goal.
+The experimental save-admission lifecycle, missing-content decisions and
+representative gameplay still require work.
+
+Final normal-profile preflight still reports the SAME four preexisting blockers
+documented in `MENUPILOT_STRING_REPAIR_2026-09-09.md`: weapon input order/winner
+proof stale and three cloak fingerprint/proof failures. The earlier reconciliation
+found FuzzBeed Resources/Thanedom exchanged at115/116 plus four CLLF folders;
+this deployment did not reorder or regenerate them. Default lists have write
+timestamps from September9, before these tests. Our isolated source also includes
+the test-only Unbound jail pool and omits Default's enabled CLLF-CRF folder (its
+ESP is inactive). Thus these runs are **not exact-current-Default gameplay proof**.
+Do not tell the user to launch based on this report. Existing CRF/Lux CELL warning
+and five ledger gaps remain separate tracked work. The root-DLL change warning
+is expected and explained by the new exact receipt, not silently baseline-reset.
