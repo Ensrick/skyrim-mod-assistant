@@ -18,6 +18,18 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-09 22:04 — Load-rejection experiment, Continue recovery FAILED
+
+- **Source:** Ongoing crash goal and #262; diagnostic SKSE source7c8ee72.
+- **What:** Temporarily tested an opt-in early request hook in muted isolated
+  profiles. Restored root DLL/PDB CC2F98A4 afterward. No Default list, vendor
+  asset or original save changes. Test copies retained outside profile saves.
+- **Verification:** Healthy forwarding and manual rejection passed bounded
+  save/reload checks. **FAILED:** main-menu Continue blocked the exact bad
+  copy but stranded its menu; worker timed out75, not a normal quit. No new
+  crash report. Not deployed as an admission policy; #262 remains OPEN.
+  [Evidence, restored hashes and limitations](docs/LOAD_ADMISSION_BOUNDARY_2026-09-09.md).
+
 ## 2026-09-09 21:28 — SKSE sixth load-argument repair, bounded verification
 
 - **Source:** User's ongoing crash-repair goal, #262; exact 1.7.104 disassembly
