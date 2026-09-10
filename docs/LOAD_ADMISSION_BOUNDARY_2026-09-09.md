@@ -4,6 +4,12 @@ Related: [#262](https://github.com/Ensrick/skyrim-mod-assistant/issues/262).
 This is a diagnostic experiment, **not** a deployed compatibility policy or
 repair of the Adventurer3 campaign. The public issue stays open.
 
+**23:14 follow-up:** deferred native cancellation recovered two rejected
+Continue attempts automatically, followed by normal Quit. The immediate
+variant was a partial failure. See [automatic recovery evidence and remaining
+gates](LOAD_CANCEL_AUTOMATIC_RECOVERY_2026-09-09.md). No production admission
+policy is deployed and no campaign repair is claimed.
+
 **22:58 follow-up:** a native `CancelLoading` kUpdate restores the main menu's
 input after rejection in two controlled cycles. This supersedes the earlier
 unexplained recovery failure, not the absence of a production admission policy.
