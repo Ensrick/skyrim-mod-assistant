@@ -92,6 +92,8 @@ jobs:
       - name: Test native currency save admission with synthetic co-saves
         shell: pwsh
         run: |
+          python -m unittest discover -s audit -p test_currency_save_cli.py -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s audit -p test_currency_save_gate.py -v
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python -m unittest discover -s audit -p test_currency_tier_contract.py -v

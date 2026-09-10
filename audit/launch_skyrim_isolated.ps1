@@ -103,6 +103,13 @@ if ($LoadTestSave) {
     & $python (Join-Path $PSScriptRoot 'save_plugin_gate.py') $testSavePath --profile $sourceProfile | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Test save failed plugin admission; no launch.' }
 }
+$currencyArgs = @('--instance', $instance, '--game-data', (Join-Path $game 'Data'),
+    '--profile', $sourceProfileName)
+if ($LoadTestSave) { $currencyArgs += @('--save', $testSavePath) }
+& $python (Join-Path $PSScriptRoot 'currency_save_gate.py') @currencyArgs
+if ($LASTEXITCODE -ne 0) { throw 'Currency package/save admission refused; no launch.' }
+# This checks the requested cold-load input only. In-game Continue/Load still
+# needs its own admission mechanism; this is not a manual-load interception.
 [IO.File]::WriteAllText(
     $profileSettingsPath,
     $profileSettings,

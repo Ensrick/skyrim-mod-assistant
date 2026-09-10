@@ -70,3 +70,33 @@ The existing #261 mechanism-level evidence remains valid for its tested scope;
 it is not a whole-modlist or old-campaign acceptance certificate. If that same
 lookup failure recurs, reopen #261. Keep #262 open until its own criteria pass.
 See [crash closure standard](CRASH_CLOSURE_STANDARD.md).
+
+## Follow-up: current-build fresh control and independent review
+
+The later isolated test did launch a genuinely new character, preserving all
+original saves. It successfully initialized MCM and currency, saved, reloaded
+in-session, remained unpaused more than68 seconds after load, and quit normally.
+**It failed normal world entry**, exposing a separate Unbound location-selection
+error tracked in [#263](https://github.com/Ensrick/skyrim-mod-assistant/issues/263).
+See [full control evidence](UNBOUND_START_FAILURE_2026-09-09.md). This is not
+an overall acceptance pass or a repair of Adventurer3; #262 remains open.
+
+The20:12 crash's rotated Papyrus log was recovered before another rotation and
+archived as `records-work/crash-recurrence-20260909-201250/Papyrus.log`. It
+confirms missing TrueHUD_MCM type information, missing LoadConfig, and type
+mismatches in the same live MCM call chain as the crash report.
+
+A separate read-only Fable5.1 review (CLI session
+`7bd2c84c-95fb-4c94-9b0a-734c67163223`, no permission denials, no mutations)
+favored obsolete saved script state but did not rule out a native writer.
+Its suggested Variable/refcount teardown interpretation remains an inference
+until exact binary IDs and instructions are mapped. Returning false from
+SKSE's load hook is **not yet a reviewed safe veto**: caller state, prompts,
+revert timing, flags and message/lock symmetry must be established first.
+The existing hook's false-return path alone is insufficient proof.
+
+Additional hardening: the isolated launcher now invokes the currency gate for
+both menu-only package checks and explicit cold-load checkpoint checks.
+Previously that launcher only checked the save plugin table. Four CLI wiring
+tests plus20 existing currency-gate tests pass. This does not intercept manual
+Continue/Load or certify Papyrus state; those remain separate open requirements.

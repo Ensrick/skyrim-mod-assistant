@@ -4,6 +4,7 @@ SKSE wrapper layout: pinned skse64 Serialization.cpp Header/PluginHeader/
 ChunkHeader. Currency payload: SaveMarkerPolicy.h ECMK v2. Passing proves a
 matching checkpoint, not gameplay correctness or complete save health.
 """
+import argparse
 import hashlib
 import json
 import struct
@@ -212,3 +213,29 @@ def run(fails, warns, *, instance, game_data):
                          'does not approve loading an old save; launch_verify checks the selected co-save.')
     except OSError as error:
         fails.append('currency package presence could not be verified: ' + str(error))
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--instance', type=Path, required=True)
+    parser.add_argument('--game-data', type=Path, required=True)
+    parser.add_argument('--profile', required=True)
+    parser.add_argument('--save', type=Path)
+    args = parser.parse_args(argv)
+    # Profile is a single instance-relative name, never an arbitrary path.
+    if (args.profile in ('.', '..') or not args.profile.strip()
+            or any(char in args.profile for char in '/\\:')):
+        parser.error('--profile must be a single profile name')
+    blockers = check_save(args.instance, args.game_data, args.save, args.profile)
+    print(json.dumps({
+        'verdict': 'REFUSED' if blockers else 'CURRENCY-ADMITTED',
+        'save': str(args.save) if args.save else None,
+        'blockers': blockers,
+        'scope': ('Currency package/checkpoint only; not save health or gameplay '
+                  'certification. Without --save, no saved game is admitted.'),
+    }, indent=2))
+    return 1 if blockers else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
