@@ -91,3 +91,48 @@ readiness identity for package correctness, checkpoint validity for complete
 save health, or rejection for repaired campaign data.
 
 The original Adventurer3 MCM fault and the user's campaign choice remain open.
+
+## Follow-up: engine plugin table and quickload
+
+Fable5.1 drafted the standalone read-only plugin snapshot reader and tests;
+parent reviewed, hardened and integrated an opt-in observer in
+[2eef94f](https://github.com/Ensrick/skse64/commit/2eef94f).
+It uses the actual loaded arrays, checked capacity/count, bounded reads,
+full/light flags, sequential full/light indices and FE light-plugin marker,
+bounded names and ASCII-case duplicate checks. Typed refusals and allocation
+exceptions are contained by the diagnostic wrapper. No disk plugins.txt
+contents are used as the engine's active table. Non-ASCII case equivalence is
+still unresolved, explicitly not certified.
+
+Parent corrections before testing: empty Names fixture helper, FE marker,
+wrapping read spans before callback invocation, dot-directory name rejection,
+and Windows max macro compatibility.72 synthetic checks pass, including
+254full/4096light maxima, and all prior request/observer tests pass. The full
+native plugin compiles with actual GameData offset assertions.
+
+Candidate DLL:
+`7AF80B2F20F0FDCD0B3F7BE2B69890A88BEBB6FC30CF37F06ADD219E555B5975`.
+Muted private run PID34544/controller18068:
+
+- Continue-loaded copied admitted Save7; engine snapshot77full/307light,
+  every name in index order matched independently parsed Save7.
+- Quicksave input created the isolated Quicksave0; the currency gate admitted
+  its actual co-save before quickload was attempted.
+- F9 Quickload reached625FF5 on thread31020 with arg2=1, and exactly matched
+  all4,604,467 buffered bytes. Engine target and PostLoadGame succeeded.
+- Normal Journal Quit/controller0 at05:30:17.279UTC,82seconds after quickload
+  PostLoadGame. No new crash report. Original source fixture unchanged; new
+  quicksave remains in the disposable profile, input copy archived.
+- Root restoredCC2F, no game/controller or live claim remains. Currency0.2.2
+  and MenuPilot unchanged. No permanent deployment or production guard yet.
+
+Evidence folder records-work/load-request-20260909/automatic-recovery-healthy-plugins;
+SKSE logSHA256
+`42365562D910F929A8D393BEF128BA9562FB768BD2E2B629AB1D47051FA88A73`.
+Source CI dispatched34441333722(request/plugin tests),34441333932(arguments),
+34441333734(full build); their final results must be checked before claiming
+hosted validation. Canonical report c2f6457 Check34440821935 passed.
+
+This closes the observed F9 route unknown for this runtime. It does not prove
+every possible console/external load route, mixed rejected/accepted sequences
+under a real policy, or the unresolved original campaign.
