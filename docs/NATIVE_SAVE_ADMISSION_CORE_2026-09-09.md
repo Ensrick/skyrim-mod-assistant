@@ -52,7 +52,12 @@ included. No vendor DLL, game save, mod asset or build output is published.
 
 Hosted Windows/Linux regression and Linux ASan/UBSan workflow added. Its
 actual results must be checked after publication; local tests are not hosted
-CI or engine verification.
+CI or engine verification. First hosted run34437906874 failed at dependency
+download: zlib.net returned bytes with SHA256 f5921a86..., not the pinned
+release. The correct1502830-byte archive is present locally. Switched to the
+upstream GitHub release asset357391855 as preferred mirror; its API digest
+matches the SAME expected hash. Hash verification was not relaxed. The cause
+of the differing hosted response is not established; no foreign bytes built.
 
 ## Still required
 
