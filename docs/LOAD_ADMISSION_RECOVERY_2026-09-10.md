@@ -1,6 +1,7 @@
 # Save admission: native failure ownership and recovery
 
-Status: experimental source correction and bounded runtime regression PASS.
+Status: recovery correction and bounded runtime regression PASS; subsequent
+generation-token hardening built/unit-tested, NOT yet runtime-tested.
 Issue #262 and overall crash/gameplay acceptance remain OPEN. Normal installed
 SKSE does **not** link experimental admission; this report is not deployment
 approval or a campaign migration decision.
@@ -119,3 +120,32 @@ deferred resume policy, actual native failure controls, useful in-game refusal
 reason, clean production integration/package, and broader save/load/gameplay
 acceptance. Preserve fail-closed behavior and record user decisions rather than
 restoring removed mods, cleaning saves or choosing a campaign migration.
+
+## Follow-up: stale outer-request generation
+
+Source `0b916dbeed52ac59f9671d2d607132e7804e686c` adds a RequestToken containing
+the stream address and context generation. `Begin` clears the output first and
+assigns the token under the context gate only after successfully installing the
+new pending context. The outer wrapper carries that token unchanged across
+native execution. `RequestReturned` now requires a nonzero matching generation
+as well as address before it can release a pending context.
+
+Why: if request A finishes its inner load, request B can acquire a new context
+before A's outer wrapper returns. Pointer reuse could otherwise let A release
+B. A deterministic actual-source lifecycle test reproduces this with identical
+address/basename and differing generations. The pointer-only version failed
+at the stale-token assertion; the fixed version passes72checks, including24new
+checks for stale/zero/empty/current tokens, both results and three caller shapes.
+The144-case wrapper suite additionally checks token forwarding across native
+pointer mutation. All five request-probe suites pass; full Windows build passes.
+CI34474662365 and34474662356 both passed. Restored normal-profile preflight
+has no blockers and the same four existing warnings (overlay verification,
+five ledger omissions, resolver ordering, and old-save currency admission).
+
+New experimental DLL SHA-256:
+`23135A0863FF346D604B5825FD1E100BD1C92D7DC652BB0AB6A4B02EDDBC333D`.
+This supersedes the local experimental build output, **not** normal installed
+0438215A. The five successful runtime loads above were E6E2F916, before this
+follow-up; they must not be attributed to23135A08. No live test/deployment of
+the follow-up has occurred. OwnsStream/SnapshotFor/Finish retain their existing
+identity assumptions, so this is not comprehensive lifecycle/ABA protection.
