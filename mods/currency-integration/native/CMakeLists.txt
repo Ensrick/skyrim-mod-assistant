@@ -6,7 +6,7 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 project(
 	EnsrickCurrencyDenominations
-	VERSION 0.2.2
+	VERSION 0.2.3
 	LANGUAGES CXX
 )
 
@@ -53,6 +53,32 @@ add_executable(EnsrickCurrencyQuestStateTests tests/QuestStateTests.cpp)
 target_include_directories(EnsrickCurrencyQuestStateTests PRIVATE src)
 target_compile_options(EnsrickCurrencyQuestStateTests PRIVATE /W4 /WX)
 add_test(NAME EnsrickCurrencyQuestStateTests COMMAND EnsrickCurrencyQuestStateTests)
+
+# Compile the actual initialization and exported accessor bodies against
+# controlled collaborators; an early readiness publication must fail tests.
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS src/Bridge.cpp src/Plugin.cpp)
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/src/Bridge.cpp" bridge_source)
+string(FIND "${bridge_source}" "bool Bridge::Initialize(" identity_begin)
+string(FIND "${bridge_source}" "bool Bridge::ResolveConfiguration(" identity_end)
+if(identity_begin LESS 0 OR identity_end LESS identity_begin)
+  message(FATAL_ERROR "Admission identity test extraction boundaries changed")
+endif()
+math(EXPR identity_length "${identity_end}-${identity_begin}")
+string(SUBSTRING "${bridge_source}" ${identity_begin} ${identity_length} identity_body)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/identity-initialize.inc" "${identity_body}")
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugin.cpp" plugin_source)
+string(FIND "${plugin_source}" "extern \"C\" __declspec(dllexport) std::uint64_t EnsrickCurrency_GetAdmissionFingerprintV1()" export_begin)
+string(FIND "${plugin_source}" "SKSEPluginLoad(" export_end)
+if(export_begin LESS 0 OR export_end LESS export_begin)
+  message(FATAL_ERROR "Admission identity export extraction boundaries changed")
+endif()
+math(EXPR export_length "${export_end}-${export_begin}")
+string(SUBSTRING "${plugin_source}" ${export_begin} ${export_length} export_body)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/identity-export.inc" "${export_body}")
+add_executable(EnsrickCurrencyAdmissionIdentityTests tests/AdmissionIdentityTests.cpp)
+target_include_directories(EnsrickCurrencyAdmissionIdentityTests PRIVATE src "${CMAKE_CURRENT_BINARY_DIR}")
+target_compile_options(EnsrickCurrencyAdmissionIdentityTests PRIVATE /W4 /WX)
+add_test(NAME EnsrickCurrencyAdmissionIdentityTests COMMAND EnsrickCurrencyAdmissionIdentityTests)
 
 option(ENSRICK_BUILD_PLUGIN "Build the SKSE plugin in addition to pure policy tests" ON)
 if(ENSRICK_BUILD_PLUGIN)

@@ -150,6 +150,13 @@ namespace
 	}
 }
 
+// No allocations, UI, game mutations or cross-module ownership in this ABI.
+// Does not construct/access Bridge; safe to query before DataLoaded.
+extern "C" __declspec(dllexport) std::uint64_t EnsrickCurrency_GetAdmissionFingerprintV1() noexcept
+{
+	return Ensrick::Currency::g_publishedAdmissionIdentity.Read();
+}
+
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
 	SetupLogging();

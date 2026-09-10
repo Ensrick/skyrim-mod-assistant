@@ -139,7 +139,7 @@ if (-not $generatorInstanceLine) {
 }
 $generatorInstance = $generatorInstanceLine.Substring($generatorInstanceLine.IndexOf('=') + 1)
 
-& $cmakePath --build $build --config Release --target EnsrickCurrencyPolicyTests EnsrickCurrencyConfigTests EnsrickCurrencyFormLookupTests EnsrickCurrencyQuestStateTests EnsrickCurrencyDenominations
+& $cmakePath --build $build --config Release --target EnsrickCurrencyPolicyTests EnsrickCurrencyConfigTests EnsrickCurrencyFormLookupTests EnsrickCurrencyQuestStateTests EnsrickCurrencyAdmissionIdentityTests EnsrickCurrencyDenominations
 if ($LASTEXITCODE -ne 0) { throw "Native build failed with exit code $LASTEXITCODE" }
 
 & (Join-Path $build 'Release\EnsrickCurrencyPolicyTests.exe')
@@ -149,6 +149,8 @@ if ($LASTEXITCODE -ne 0) { throw "Native policy tests failed with exit code $LAS
 if ($LASTEXITCODE -ne 0) { throw "Native form-lookup tests failed with exit code $LASTEXITCODE" }
 & (Join-Path $build 'Release\EnsrickCurrencyQuestStateTests.exe')
 if ($LASTEXITCODE -ne 0) { throw "Native quest-state tests failed with exit code $LASTEXITCODE" }
+& (Join-Path $build 'Release\EnsrickCurrencyAdmissionIdentityTests.exe')
+if ($LASTEXITCODE -ne 0) { throw "Native admission-identity tests failed with exit code $LASTEXITCODE" }
 
 & (Join-Path $build 'Release\EnsrickCurrencyConfigTests.exe') $runtimeConfigPath
 if ($LASTEXITCODE -ne 0) { throw "Native runtime-config test failed with exit code $LASTEXITCODE" }

@@ -101,6 +101,9 @@ namespace Ensrick::Currency
 				_config.configID,
 				_families.size(),
 				_physicalValues.size());
+			// Publish only after configuration resolution and sink registration
+			// succeed. _initialized is an entry guard, not readiness publication.
+			g_publishedAdmissionIdentity.Publish(_ledgerFingerprint);
 			return true;
 		} catch (const std::exception& error) {
 			logger::critical("initialization failed safely: {}", error.what());

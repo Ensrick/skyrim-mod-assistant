@@ -12,6 +12,11 @@ does not repair, clean, migrate, rewrite or certify a saved game.
 - File and decompressed-body limits256MiB each; checked screenshot arithmetic,
   bounded fields and length/count consistency. World/Papyrus records after
   the plugin table are outside this parser's certification scope.
+- Windows read-sharing lease for paired ESS/co-save input: permits other
+  readers, denies ordinary write/delete handles while held, checks size and
+  identity during reading, and can compare a borrowed engine file handle.
+  The adapter must still resolve the proper path and retain the lease for
+  the required lifetime; this is not yet integrated into any game hook.
 - Plugin filename validation, strict UTF-8, duplicate detection, ASCII
   case-insensitive name comparison and full/light class preservation. Added
   active plugins are permitted; missing plugins or a changed class refuse.
@@ -70,15 +75,21 @@ This is deterministic regression coverage, not exhaustive fuzzing.
 2. Obtain expected currency fingerprint from the initialized, reviewed bridge,
    verify package readiness/identity and paired active companions. Do not
    trust a fingerprint supplied by the save being checked.
-   Current bridge exposes no such read-only ABI. Its `_initialized` flag is
+   Installed bridge0.2.2 exposes no such read-only ABI. Its `_initialized` flag is
    set at initialization entry, before configuration resolution completes;
    that flag alone must NOT be treated as published readiness. A versioned
    identity interface should publish only after successful initialization.
+   Candidate0.2.3 implements that interface in original source; it is not
+   installed or engine-verified yet. See currency native AdmissionIdentity.h.
 3. Preserve file identity between inspection and engine read (read handles,
    sharing/identity checks and tests), handle memory/I/O/parser exceptions,
    and measure latency/memory under the live hook. No file-lock guarantee is
    made by the offline CLI. Non-ASCII case equivalence also needs an explicit
    Windows-compatible policy; current comparison only folds ASCII.
+   WindowsSavePairLease provides normal Windows sharing protection, not a
+   defense against preexisting writable mappings/privileged changes. It does
+   not determine which file object an already-open engine stream references
+   until the adapter supplies that handle to MatchesHandle.
 4. Join the proven diagnostic boundary with race-safe native cancellation and
    useful in-game explanation; prevent stale cancellation from affecting a
    subsequent valid request. Do not use a static filename allowlist.

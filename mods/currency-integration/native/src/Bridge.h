@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Config.h"
+#include "AdmissionIdentity.h"
 #include "LedgerPolicy.h"
 #include "SaveMarkerPolicy.h"
 #include "SourcePolicy.h"
