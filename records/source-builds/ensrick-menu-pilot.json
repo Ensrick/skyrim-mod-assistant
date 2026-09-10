@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "component": "MenuPilot (SKSE file-driven in-game menu/Scaleform/input pilot)",
   "version": "1.0.0.0",
-  "deployPath": "records/source-builds/menu-pilot/SKSE/Plugins/MenuPilot.dll",
+  "deployPath": "C:/Users/danjo/source/repos/mo2-instances/skyrim-se/mods/MenuPilot/SKSE/Plugins/MenuPilot.dll",
   "purpose": "Let the assistant drive the game's own menus headlessly (user order via team lead 2026-09-01). Immediate need: open the Creations/Creation Club menu and trigger the re-download of the owned Farming creation whose ccvsvsse004-beafarmer.bsa was truncated (#142). File-based command bridge, VT2 console-bridge shape: assistant writes commands.jsonl, plugin consumes exactly once, results append to a flushed log.",
   "staged": true,
   "installed": true,
@@ -10,10 +10,10 @@
     "repository": "local only, not pushed",
     "path": "C:/Users/danjo/source/repos/skyrim-tools-source/MenuPilot",
     "branch": "master",
-    "commit": "93e5afa",
+    "commit": "b3b1b31347e7837d1aa39048a231a04ab93bc1b7",
     "pushed": false,
     "license": "GPL-3.0-or-later (links CommonLibSSE-NG)",
-    "files": ["CMakeLists.txt", "CMakePresets.json", "vcpkg.json", "build.cmd", "cmake/version.rc.in", "src/PCH.h", "src/main.cpp"]
+    "files": ["CMakeLists.txt", "CMakePresets.json", "vcpkg.json", "build.cmd", "cmake/version.rc.in", "src/PCH.h", "src/main.cpp", "tests/gfx_string_lifetime/CMakeLists.txt", "tests/gfx_string_lifetime/test.cpp", "tests/gfx_string_lifetime/README.md"]
   },
   "build": {
     "targetRuntime": "SkyrimSE.exe 1.7.104.0",
@@ -31,11 +31,11 @@
   },
   "artifact": {
     "dll": "MenuPilot.dll",
-    "sha256": "216F7564AEC2339CA3AD7ED64A0FDDC14B9F88A715C832711AD6CFF72E12BF1C",
-    "sizeBytes": 2665984,
+    "sha256": "1A1D5CECC6E81D6C4AA3DA2623CBD420A8B9C84577192B8BE305F9335C4CA6B7",
+    "sizeBytes": 2667008,
     "fileVersion": "1.0.0.0",
     "pdb": "MenuPilot.pdb",
-    "pdbSha256": "E873B18376AA58BCC8A4A898E014644963DB1059D6823EEFD6D6E5290605F97D"
+    "pdbSha256": "B9B7B74D2BCC0F1A679B7415FB6E85FB1EEEC378E10EE90EB8692DEB97DC1DB5"
   },
   "behavior": {
     "commandFile": "Documents/My Games/Skyrim Special Edition/SKSE/MenuPilot/commands.jsonl",
@@ -60,25 +60,29 @@
     "creationClubMenu": "RE::CreationClubMenu MENU_NAME=\"Creation Club Menu\", IMenu+MenuEventHandler+GFxFunctionHandler over creationclub.swf - include/RE/C/CreationClubMenu.h"
   },
   "skseGate": {
-    "tool": "py -3 audit/skse_version_data.py records/source-builds/menu-pilot/SKSE/Plugins/MenuPilot.dll",
+    "tool": "py -3 audit/skse_version_data.py ../mo2-instances/skyrim-se/mods/MenuPilot/SKSE/Plugins/MenuPilot.dll",
     "verdict": "PASS (version independent)",
     "versionIndependence": 1,
     "versionIndependenceEx": 1,
-    "peTimestampUtc": "2026-09-01 22:22:50Z"
+    "peTimestampUtc": "2026-09-10 03:18:42Z"
   },
   "installation": {
     "mo2Mod": "MenuPilot",
     "profile": "Default",
     "enabled": true,
-    "note": "mods/MenuPilot/SKSE/Plugins/{MenuPilot.dll,MenuPilot.pdb} + meta.ini; +MenuPilot added to modlist.txt directly below +LaunchProbe via Python while ModOrganizer.exe was not running."
+    "note": "Recoverable controller mod-stage --replace, transaction20260910T032922891Z-aebdcb83ec7d, same priority237 and enabled state. No plugin or vendor changes; previous directory retained by controller. Original September1 source output remains historical, not the current deployed artifact."
   },
   "verified": [
     "Clean configure+build against the exact CommonLibSSE-NG pin, 0 warnings 0 errors (first pass).",
     "skse_version_data.py PASS (version independent), same gate shape as LaunchProbe.",
-    "Every API used was read out of the pinned clib headers (paths above), not assumed."
+    "Every API used was read out of the pinned clib headers (paths above), not assumed.",
+    "September9: actual converter regression and negative control PASS; rebuilt DLL with no build errors.",
+    "PID29288: actual string SetVariable/GetVariable and Invoke/confirmation text round trips PASS; Main Menu lifecycle guard refuses without closing it.",
+    "PID17504: main menu35.594s, admitted Save6 cold load, new Save7, both offline admission gates and manual reload PASS. Root SKSE rejection probe OFF.",
+    "PID17504: unpaused73.692s after reload, HUD string round trip and normal Journal Quit, controller0. No fresh crash. Evidence: docs/MENUPILOT_STRING_REPAIR_2026-09-09.md."
   ],
   "notVerified": [
-    "Runtime behaviour pending the 2026-09-01 pilot test launch - see records/menupilot-cc-discovery-2026-09-01.log and the changelog entry for outcomes."
+    "Not whole-tool or whole-pack certification. Original Adventurer3 recovery and rejected Continue native-input state remain OPEN #262."
   ],
   "rebuild": "cmd /c C:/Users/danjo/source/repos/skyrim-tools-source/MenuPilot/build.cmd",
   "distribution": {

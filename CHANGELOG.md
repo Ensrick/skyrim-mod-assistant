@@ -18,6 +18,20 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-09 22:33 — MenuPilot repair installed; bounded load/save VERIFIED
+
+- **Source:** #266 discovered while investigating #262; local source `b3b1b31`.
+- **What:** Recoverable replacement of own MenuPilot at unchanged priority237,
+  transaction `20260910T032922891Z-aebdcb83ec7d`, DLL `1A1D5CEC`. Managed
+  strings and raw Main Menu lifecycle guard. Baseline root SKSE unchanged.
+- **Verification:** VERIFIED for this tool deployment: main menu35.594s,
+  admitted cold Save6, new Save7, manual reload,73.692s unpaused idle, string
+  round trip and normal Journal Quit/controller0. Private muted desktop only.
+  Ledger zero problems; full preflight NOT green (four stale weapon/cloak
+  proof blockers, profile lists unchanged). Original campaign crash and
+  rejected Continue input recovery remain OPEN #262; no broad stability claim.
+  [Evidence](docs/MENUPILOT_STRING_REPAIR_2026-09-09.md).
+
 ## 2026-09-09 22:25 — MenuPilot string repair tested, native recovery still FAILED
 
 - **Source:** #262 Continue investigation uncovered #266, a dangling temporary
