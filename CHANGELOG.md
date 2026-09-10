@@ -18,6 +18,20 @@ Newest first. Times are local (UTC-5); `installedUtc` stamps in
 `records/installed-mods.json` are UTC. Rules for landing new entries:
 "Changelog discipline" in `docs/CURATION_POLICY.md`.
 
+## 2026-09-09 21:28 — SKSE sixth load-argument repair, bounded verification
+
+- **Source:** User's ongoing crash-repair goal, #262; exact 1.7.104 disassembly
+  and independent Fable 5.1 review found the load hook omitted a consumed byte.
+- **What:** Own SKSE source 73d2f7b and root DLL/PDB CC2F98A4 installed; previous
+  build retained in private rollback archive. No vendor mods, active plugins,
+  Keep entries or original saves changed. Load-argument diagnostic defaults OFF.
+- **Verification:** VERIFIED for isolated startup/cold load/new save/reload:
+  two muted private-desktop runs, menus under 60 seconds, successful loads and
+  67/88 seconds of post-load responsiveness, normal exits and no new crash reports.
+  All 2,048 native cases, 10 pinned binary checks and Windows/Linux/full-build CI pass.
+  **NOT Adventurer3 recovery or overall crash closure; #262 remains open.**
+  [Evidence and limitations](docs/SKSE_LOAD_ARGUMENT_REPAIR_2026-09-09.md).
+
 ## 2026-09-09 20:51 — Containers and Leveled Lists Fixes, vetted and placed early
 
 - **What:** Installed CLLF (26575, v1.2.6) with its Cutting Room Floor and COIN patches, then moved all three out of the tail: main to load order 5 behind the Unofficial Skyrim Modders Patch, CRF patch to 56 behind Cutting Room Floor, COIN patch to 84 behind C.O.I.N. and ahead of the currency block.

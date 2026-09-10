@@ -100,3 +100,11 @@ both menu-only package checks and explicit cold-load checkpoint checks.
 Previously that launcher only checked the save plugin table. Four CLI wiring
 tests plus20 existing currency-gate tests pass. This does not intercept manual
 Continue/Load or certify Papyrus state; those remain separate open requirements.
+
+September9 21:28: a concrete SKSE ABI defect was found and repaired: the load
+hook omitted the engine's sixth argument. Exact binary verification, independent
+Fable review, source tests/CI and isolated diagnostic-on/off load/save/reload
+checks support that narrow repair. They do **not** establish that this caused
+the old MCM crash or repair the saved script state. See
+[load-argument report](SKSE_LOAD_ARGUMENT_REPAIR_2026-09-09.md). The corrected
+root DLL is CC2F98A4; original saves remain unchanged. This issue stays open.

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "component": "SKSE runtime DLL - sixth load-argument forwarding repair",
+  "runtime": "1.7.104.0",
+  "version": "73d2f7b-load-arguments",
+  "source": {
+    "repository": "https://github.com/Ensrick/skse64",
+    "branch": "ensrick/1.7.104-headless",
+    "commit": "73d2f7ba9db08d18423c82edc1442adc433597aa",
+    "base": "3778070a8486359b36e12d3924360d351c417d3b",
+    "configuration": "Release",
+    "generator": "Visual Studio 17 2022",
+    "platformToolset": "v143",
+    "workingTreeCaveat": "Existing sheets/Common.props and sheets/Runtime.props edits preserved and excluded from commit. Build used the existing CMake project, not those hand-authored solution property sheets. Retains prior stack lookup repair."
+  },
+  "artifact": {
+    "rootRelativePath": "skse64_1_7_104.dll",
+    "sha256": "CC2F98A4189E1980B216E0C10C15DBDB65827B44028FBAD11A129FF6D2094591",
+    "bytes": 1205760,
+    "pdbSha256": "4527910038FF7E3D009B7B7B85EB0FED5D793E1015944E0143D88D783864CFA6",
+    "pdbBytes": 16822272,
+    "previousDllSha256": "240C9B5CFC5CE6D632FF931B96A91219CA71B34AE7D263CF4F688C25DF8AE707",
+    "rollbackArchive": "records-work/skse-load-20260909/before"
+  },
+  "installation": {
+    "installedLocal": "2026-09-09T21:20:22-05:00",
+    "claimOwner": "astra/skse-load-arguments",
+    "scope": "Game-root SKSE tool DLL/PDB; no vendor mod payload modifications",
+    "diagnosticDefault": "OFF; enabled only by SKSE_AUTOMATION_LOAD_ARGUMENT_PROBE=1",
+    "saveCleaning": false,
+    "saveDeletion": false,
+    "newMods": false
+  },
+  "verification": {
+    "nativeCases": 2048,
+    "nativeResult": "PASS: actual production hook and declarations; all sixth-byte values and housekeeping cases; engine collaborators mocked",
+    "exactBinaryChecks": 10,
+    "binaryResult": "PASS candidate; old DLL rejected. Manual disassembly verifies incoming byte to outgoing sixth slot, absent in old build.",
+    "regressionCiRun": 34429092151,
+    "fullBuildCiRun": 34429091997,
+    "ciResult": "PASS",
+    "runtimeResult": "Bounded PASS: diagnostic-on cold load, normal new save, in-game reload, 67.138-second post-load responsiveness; diagnostic-OFF cold load and 88.138-second responsiveness; normal exits; no new crash reports. Actual observed sixth byte was zero in every load. Not gameplay certification or repair of Adventurer3.",
+    "independentReview": "Fable5.1 read-only session 6cc49471-80f7-4908-b1e2-61fbe9fb6071 confirmed old-source omission and exact engine stack arithmetic; crash causality not established",
+    "report": "docs/SKSE_LOAD_ARGUMENT_REPAIR_2026-09-09.md",
+    "overallIssue": "262 OPEN"
+  },
+  "license": "Upstream SKSE terms retained; not MIT. Binary distribution requires separate review.",
+  "publicBinaryRelease": "NOT RELEASED; source changes published separately"
+}
