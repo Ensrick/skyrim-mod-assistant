@@ -1,0 +1,185 @@
+unofficial skyrim special edition patch.esp   [USSEP]
+    Power       000618C6  DBSummonAssassin                             Summon Spectral Assassin
+    Power       000E40D5  PowerArgonianHistskin                        Histskin
+    Power       000E5F61  doomSerpentAbility                           The Serpent Stone
+    Power       000E7329  doomRitualAbility                            The Ritual Stone
+    Power       000E732A  doomShadowAbility                            The Shadow Stone
+    LesserPower 020038BA  DLC1VampireMistform                          Mist Form
+    Power       0401DFA4  DLC2StandingStoneBeastSpell                  Conjure Werebear
+    Power       0401DFA5  DLC2StandingStoneWindSpell                   North Wind
+    Power       0401E7F7  DLC2BlackBookHealSpell                       Mora's Boon
+    LesserPower 0401EEC6  DLC2ConjureDremoraMerchant                   Black Market
+    LesserPower 0401FF21  DLC2ConjureDremoraButler                     Secret Servant
+    Power       04024812  DLC2dunSummonKarstaag3Left                   Summon Karstaag
+    Power       04029709  DLC2dunSummonKarstaag2Left                   Summon Karstaag
+    Power       0402970A  DLC2dunSummonKarstaag1Left                   Summon Karstaag
+    LesserPower 04029F12  DLC2ConjureBardInstruments                   Bardic Knowledge
+unofficial skyrim creation club content patch.esl   [Unofficial Skyrim Creation Club Content Patches]
+    LesserPower 0600080C  ccBGSSSE002_BoundQuiver                      Ç
+    Power       17000FDC  ccEEJSSE002_SummonGhost                      ¼
+3DNPC.esp   [Interesting NPCs - Update 4.54]
+    Power       051564A9  WayoftheNine                                 The Blades of the Nine
+    Power       051AE64F  3DNPCSummonVolwulf                           Summon Volwulf
+arnima.esm   [Beyond Reach]
+    LesserPower 0601D119  ArnimaAssassinEnchantPowerSpell              Hidden Prodigy
+    LesserPower 06027B1B  arnimaBurstaggressionspellDamage             Burst of Aggression Damager
+    LesserPower 06027B1C  ArnimaBurstAggressionProperSpell             Breaking Point
+    LesserPower 0603887D  arnimafirespell                              Immolation
+    LesserPower 0604D40B  ArnimaKnightEnchantPowerSpell                Sentinel
+    LesserPower 06054C88  ArnimaDagonLeapSpell                         Dagon's Leap
+    LesserPower 060561C4  ArnimaKnightPushSpell                        Knight Push
+    LesserPower 0605CB8E  ArnimaReaverEnchantPowerSpell                Crimson Reaver
+    LesserPower 06069180  ArnimaDarkKnightEnchantPowerSpell            Glutton Guard
+    LesserPower 06069195  ArnimaKnightPushSpellDark                    Glutton Absorb
+    LesserPower 0606DE46  ArnimaRedSunCloakSpell                       Indomitable Will
+    LesserPower 0606F7EC  ArnimaHolyKnightEnchantPowerSpell            Golden Herald
+    LesserPower 0606F7FA  arnimaReaverSpeedSpell1                      Reaver Speed 1
+    LesserPower 0606F7FB  arnimaReaverSpeedSpell2                      Reaver Speed 2
+    LesserPower 0606F7FD  arnimaReaverSpeedSpell3                      Reaver Speed 3
+    LesserPower 0606F809  ArnimaReaverPushSpell                        Reaver Push
+    LesserPower 0608975E  ArnimaReaverSprintSpell                      Reaver Sprint
+    LesserPower 0609218A  ArnimaFlameEnchantPowerSpell                 Infernal Vessel
+    LesserPower 060B15E0  arnimaspeedspell2                            Arcane Berserker
+    LesserPower 060B7331  arnimaShockExpSpell                          Shock Explosion
+    LesserPower 060B7333  arnimaFrostExpSpell                          Frost Explosion
+    LesserPower 060BA13F  ArnimaEarthEnchantPowerSpell                 Resolute Advance
+    LesserPower 060BA145  ArnimaReflectDamageSpell                     Retaliatory Stance
+    LesserPower 060C4DCF  arnimaspeedspell                             Arcane Marauder
+    LesserPower 060CB557  ArnimaRangerEnchantSpellPin                  Ranger: Anchor Arrow
+    LesserPower 060D3EA6  ArnimaRangerEnchantSpellKB                   Ranger: Linebreaker
+    LesserPower 060D3EAD  ArnimaRangerEnchantSpellArmor                Ranger: Impaler
+    LesserPower 060D8BCF  arnimaBurstaggressionspell                   Burst of Aggression
+    LesserPower 060EDC12  ArnimaWarriorEnchantSpellKB                  Forlorn Vanguard
+    LesserPower 060F6537  ArnimaPlayerTeleportCombatSpell              Deft Form
+    LesserPower 060F6542  ArnimaRainingArrowSpell                      Raining Arrow
+    LesserPower 060FADEA  arnimaspeedspell2NPC                         Arcane Berserker
+    LesserPower 060FED69  ArnimaRainActualArrowSpell                   Ranger: Cutting Hail
+    LesserPower 0611F63A  ArnimaSpurnedEnchantPowerSpell               Spurned One's Onslaught
+    LesserPower 06120BA5  ArnimaRangerEnchantSpellFear                 Ranger: Infernal Eye
+    LesserPower 061D1933  ArnimaFireEchantSpell                        Infernal Finger
+    LesserPower 063531BB  ArnimaRedSunCloakSpellCustodian              Dark Leech
+    LesserPower 064E2C22  ArnimaRedSunCloakSpellMQ9                    Indomitable Will
+BSHeartland.esm   [Beyond Skyrim - Bruma]
+    LesserPower 020B2271  CYRRemanRunestoneSpell                       Runestone Spell
+    LesserPower 020B2275  CYRSidriRunestoneSpell                       Runestone Spell
+    LesserPower 020B2276  CYRHestraRunestoneSpell                      Runestone Spell
+Campfire.esm   [Campfire]
+    LesserPower 020359AA  _Camp_LegacyConfig_Spell                     Options: Campfire
+    LesserPower 0202306B  _Camp_CreateItemSpell                        Create Item
+    LesserPower 02025647  _Camp_HarvestWoodSpell                       Harvest Wood
+    LesserPower 02025BD5  _Camp_CampfireSpell                          Build Campfire
+    LesserPower 020737E5  _Camp_CombinedActionsSpell                   Resourcefulness
+    LesserPower 02035411  _Camp_SurvivalVisionPower                    Instincts
+Vigilant.esm   [VIGILANT EN Voiced]
+    LesserPower 023B4892  zzzCHWSSwordMaraFlame                        Weapon Art: Fire Storm
+    LesserPower 023B4894  zzzCHWSSwordMaraFrost                        Weapon Art: Blizzard
+    LesserPower 023BAA4A  zzzCHWSSwordUmaril                           Weapon Art: Dawnbreaker Gate
+    LesserPower 023BAA50  zzzCHWSStendarrMercy                         Weapon Art: Wrath of Stendarr
+    LesserPower 023BBDDA  zzzCHWSFleshOak                              Weapon Art: Oakflesh
+    LesserPower 023BBDE3  zzzCHWSFleshEbony                            Weapon Art: Umbra
+    LesserPower 023BE4F5  zzzCHWSFleshDragon                           Weapon Art: Dragon Blood
+    LesserPower 023BF884  zzzCHWSFleshEmperor                          Weapon Art: Emperor's Aura
+    LesserPower 023C0C0F  zzzCHWSHealGreat                             Weapon Art: Grand Healing
+    LesserPower 023C0C14  zzzCHWSBaneUndead                            Weapon Art: Bane of the Undead
+    LesserPower 023C1FA9  zzzCHWSGuardianCircle2H                      Weapon Art: Circle of Dibella
+    LesserPower 023C3333  zzzCHWSFleshIron                             Weapon Art: Ironflesh
+    LesserPower 023C3337  zzzCHWSRapidFirex3                           Weapon Art: Rapid Fire
+    LesserPower 023C333B  zzzCHWSRapidFirex2                           Weapon Art: Rapid Fire
+    LesserPower 023C46C9  zzzCHWSSeedingBed                            Weapon Art: Bed of Corruption
+    LesserPower 023C5A52  zzzCHWSGuardianCircle1H                      Weapon Art: Protection of Dibella
+    LesserPower 023C6DDF  zzzCHWSKyneStorm1H                           Weapon Art: Tailwind
+    LesserPower 023C6DE6  zzzCHWSChargeShockwave                       Weapon Art: Shockwave Charge
+    LesserPower 023C8176  zzzCHWSChargeFrostwave                       Weapon Art: Frostwave Charge
+    LesserPower 023CA88C  zzzCHWSBerserk                               Weapon Art: Berserk
+    LesserPower 023CA896  zzzCHWSChargeThunderbolt                     Weapon Art: Thunderbolt Charge
+    LesserPower 023CA89C  zzzCHWSThunderball                           Weapon Art: Thunderball
+    LesserPower 023CA8A2  zzzCHWSChargeThunderboltMass                 Weapon Art: Thunder Storm Charge
+    LesserPower 023CCFB1  zzzCHWSBloodcurseWave                        Weapon Art: Blood Curse Wave
+    LesserPower 023CCFBB  zzzCHWSHealMed                               Weapon Art: Moderate Healing
+    LesserPower 023CCFBC  zzzCHWSHeal                                  Weapon Art: Healing
+    LesserPower 023CE347  zzzCHWSFlameDead                             Weapon Art: Flame of the Dead
+    LesserPower 023CF6DB  zzzCHWSMoonlightJode                         Weapon Art: Moonlight Arrow
+    LesserPower 023CF6E3  zzzCHWSMoonlightJone                         Weapon Art: Moonlight Arrow
+    LesserPower 023D0A6D  zzzCHWSShootingStar                          Weapon Art: Shooting Star
+    LesserPower 023D0A73  zzzCHWSShooting                              Weapon Art: Shooting Stardust
+    LesserPower 023D0A77  zzzCHWSShukuchi                              Weapon Art: Shrink
+    LesserPower 023D1E06  zzzCHWSWhirlwindAhspit2H                     Weapon Art: Whirlwind of Ashpit
+    LesserPower 023D1E0C  zzzCHWSWhirlwindAhspit1H                     Weapon Art: Whirlwind of Ashpit
+    LesserPower 023D319D  zzzCHWSDragonfire2H                          Weapon Art: Dragon Fire
+    LesserPower 023D319E  zzzCHWSDragonfire1H                          Weapon Art: Dragon Fire
+    LesserPower 023D31A7  zzzCHWSHeadHunting                           Weapon Art: Headhunt
+    LesserPower 023D58C4  zzzCHWSBoneDacne                             Weapon Art: Dance of Bones
+    LesserPower 023DA70D  zzzCHWSKabutoWari                            Weapon Art: Skull Breaker
+    LesserPower 023DA718  zzzCHWSStompImpact                           Weapon Art: Earth Rumble
+    LesserPower 023DA721  zzzCHWSStompFrost                            Weapon Art: Frost Rumble
+    LesserPower 023DBAB0  zzzCHWSRainOrder                             Weapon Art: Rain of Order
+    LesserPower 023DBABC  zzzCHWSOrderGate2H                           Weapon Art: Gate of Order
+    LesserPower 023DBABD  zzzCHWSOrderGate1H                           Weapon Art: Gate of Order
+    LesserPower 023DE1E2  zzzCHWSRainThunder                           Weapon Art: Thunder
+    LesserPower 023DE1E3  zzzCHWSRainFrost                             Weapon Art: Hail
+    LesserPower 023DF583  zzzCHWSDragonShoutBlack2H                    Weapon Art: Black Dragon's Shout
+    LesserPower 023DF584  zzzCHWSDragonShoutBlack1H                    Weapon Art: Black Dragon's Shout
+    LesserPower 023DF586  zzzCHWSDragonShoutRed1H                      Weapon Art: Red Dragon's Shout
+    LesserPower 023DF588  zzzCHWSDragonShoutRed2H                      Weapon Art: Red Dragon's Shout
+    LesserPower 023DF58A  zzzCHWSDragonShoutWhite2H                    Weapon Art: White Dragon's Shout
+    LesserPower 023DF58C  zzzCHWSDragonShoutWhite1H                    Weapon Art: White Dragon's Shout
+    LesserPower 023E0913  zzzCHWSRapidThwingWhisper                    Weapon Art: Whisper
+    LesserPower 023E0917  zzzCHWSSmanSman                              Weapon Art: Sman-Sman
+    LesserPower 023E091B  zzzCHWSBerserk2H                             Weapon Art: Berserk
+    LesserPower 023E0921  zzzCHWSBloodcurseWave2H                      Weapon Art: Blood Curse Wave
+    LesserPower 023E9246  zzzCHWSMolagSlash2H                          Weapon Art: Claw of Cruelty
+    LesserPower 023E924B  zzzCHWSMolagSlash1H                          Weapon Art: Claw of Cruelty
+    LesserPower 023E924F  zzzCHWSMolagThronSpread                      Weapon Art: Thorns
+    LesserPower 023EA5DE  zzzCHWSMolagThronLinear                      Weapon Art: Thorns
+    LesserPower 023EA5E4  zzzCHWSCureDisease                           Weapon Art: Late Blessing
+    LesserPower 023EB971  zzzCHWSAntiMagicField                        Weapon Art: Anti-Magic Field
+    LesserPower 0250206E  zzzCHWSSlowTimeDagger                        Weapon Art: Slow Time
+    LesserPower 02502066  zzzCHWSRapidThwingTava2H                     Weapon Art: Winds of Tava
+    LesserPower 02502065  zzzCHWSRapidThwingTava1H                     Weapon Art: Winds of Tava
+    LesserPower 0250206F  zzzCHWSSlowTime2H                            Weapon Art: Slow Time
+    LesserPower 025365F5  zzzCHWSKyneStorm2H                           Weapon Art: Tailwind
+    LesserPower 0253781F  zzzCHWSStaffBlood_Silver                     Weapon Art: Monkey Lesson
+    LesserPower 0253781E  zzzCHWSStaffBlood_Gold                       Weapon Art: Monkey Truth
+    LesserPower 02537813  zzzCHWSStaffBat_Red                          Weapon Art: Bats
+    LesserPower 02537812  zzzCHWSStaffBat_Blue                         Weapon Art: Pale Bats
+    LesserPower 02539C34  zzzCHWSFlameSplatter1H                       Weapon Art: Consuming Fire
+    LesserPower 02539C30  zzzCHWSFlameSplatter2H                       Weapon Art: Consuming Fire
+    LesserPower 02539C25  zzzCHWSStaffHLL_Green                        Weapon Art: Shard of Londa-Vera
+    LesserPower 02539C24  zzzCHWSStaffHLL_Blue                         Weapon Art: Shard of Mnemo-Li
+    LesserPower 02539C17  zzzCHWSStaffDmn_Red                          Weapon Art: Eye of Molag
+    LesserPower 02539C16  zzzCHWSStaffDmn_Blue                         Weapon Art: Cold Eye of Molag
+    LesserPower 02546431  zzzCHWSStaffSkull_Necro                      Weapon Art: Necromantic Skull
+    LesserPower 02559845  zzzCHWSStaffHLL_Green1H                      Weapon Art: Shard of Londa-Vera
+    LesserPower 02559846  zzzCHWSStaffHLL_Blue1H                       Weapon Art: Shard of Mnemo-Li
+    LesserPower 02559848  zzzCHWSStaffDmn_Red1H                        Weapon Art: Eye of Molag
+    LesserPower 0255984A  zzzCHWSStaffDmn_Blue1H                       Weapon Art: Cold Eye of Molag
+Azurite Weathers III.esp   [Azurite Weathers III]
+    LesserPower 0400084F  AzuriteSpell                                 Azurite Meditation
+Inigo.esp   [INIGO]
+    LesserPower 020AA097  InigoStopFightingPower                       Whistle to Inigo
+HLIORemi.esp   [Remiel - Dwemer Specialist]
+    LesserPower 0518BBC6  HLIOCallRemiSpell                            Call Remi
+PROTEUS.esp   [Proteus]
+    LesserPower 040033C2  ZZProteusPlayer                              Proteus - Player
+    LesserPower 04005EF4  ZZProteusWeather                             Proteus - Weather
+    LesserPower 040033C1  ZZProteusArmor                               Proteus - Armor
+    LesserPower 04182D98  ZZProteusSpawner                             Proteus - Spawner
+    LesserPower 04000D62  ZZProteusWeapon                              Proteus - Weapon
+    LesserPower 040033C4  ZZProteusNPC                                 Proteus - NPC
+    LesserPower 0408073D  ZZProteusWheelSpell                          Proteus - Wheel
+    LesserPower 040028F7  ZZProteusSpell                               Proteus - Spell
+    LesserPower 04080740  ZZProteusUtility                             Proteus - Utility
+Apocalypse - Magic of Skyrim.esp   [Apocalypse - Magic of Skyrim]
+    Power       0300CC1B  WB_Alt_Metamagic4_Spell_KnowledgeIsPower_Pow The Power of Knowledge
+    LesserPower 0300DBD7  WB_Ill_Command4_Spell_EnslaveTheWeak_Power   Execute Slave
+Skyrim Unbound.esp   [Skyrim Unbound Reborn]
+    LesserPower 0500CA54  SkyrimUnboundTeleportPower                   Skyrim Unbound - Teleport
+nwsFollowerFramework.esp   [Nether's Follower Framework]
+    LesserPower 05025CA6  nwsCommandAllSpell                           Command Followers
+    LesserPower 0505C4BE  nwsCalmAllies                                Calm Followers
+    LesserPower 0536AE17  nwsRetreatAllies                             Followers Retreat
+    LesserPower 0536AE1B  nwsFindTargetSpell                           Followers Attack Target
+    LesserPower 0536AE1F  nwsAttackTargetSpell                         Followers Attack Found
+    LesserPower 05374C8A  nwsRetreatCancel                             Followers Cancel Retreat
+
+total: 169 power records across the active non-vanilla load order

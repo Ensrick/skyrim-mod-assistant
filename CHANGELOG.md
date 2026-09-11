@@ -1,5 +1,12 @@
 # Change log
 
+## 2026-09-11 — moreHUD identified as both HUD complaints; utility-power audit
+
+- **Both in-game complaints traced to moreHUD (12688, Ahzaab)**, installed and enabled. The plant popups are its `Show Ingredient Effects` widget; "petty" is the target's *soul size*, from the DLL reading `sSoulLevelNamePetty` and friends, not a difficulty rating; the extra bars are `enemystaminameter.swf` and `enemymagickameter.swf` stacked under the vanilla health bar by its `config.txt`. The health bar itself is vanilla, so nothing needs removing. Issue #275, full option inventory included.
+- **Staged** `overlays/ensrick-morehud-config/`: a PapyrusUtil preset turning off the ingredient widget, soul level, and the magicka/stamina meters and their numbers. **Not installed** and inert until loaded from moreHUD's Presets MCM page, because moreHUD keeps settings in the save rather than on disk. Partial presets are safe: `ahzconfigmenu.psc` reads every key with the current value as its default.
+- **New audit tool** `audit/power_audit.py`: reads SPEL/SPIT `type` from every active non-vanilla plugin and lists Powers and Lesser Powers. First run `records/power-audit-2026-09-11.txt`: 169 power records, **23 pure utility** across Proteus (9), Nether's Follower Framework (6), Campfire (4), Remiel, Inigo, Skyrim Unbound and Azurite Weathers. Issue #274 tracks them; the replacement mechanism is the user's call and Fable's to implement. This is not an exclusion rule and no mod is skipped for it.
+- **Verification:** UNVERIFIED. No game launched, no profile mutation, nothing installed.
+
 ## 2026-09-10 23:18 - EnsrickEquipmentDisplay R1 built and launched twice; crash fixed between them
 
 - **Source:** user, 2026-09-10: *"Well, finish it."* #269 (phases R1-R4 of `docs/VISIBLE-EQUIPMENT-PLUGIN-DESIGN-2026-09-10.md`), #36 (the rules). Agent Fable/eed-r1. Tree `skyrim-tools-source/EnsrickEquipmentDisplay`, now on `github.com/Ensrick/EnsrickEquipmentDisplay` (private): `fe6b538` 0.2.1, `1a976ff` 0.3.0, plus 0.3.1 (this entry's fix).
