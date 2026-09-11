@@ -1,5 +1,16 @@
 # Change log
 
+## 2026-09-11 15:26 — Better Third Person Selection removed
+
+- **Removed** on user instruction, *"Remove better third person selection"*, after it was identified as the source of the fading third-person popup over every harvestable plant. Two mods, both recoverable in `.mo2-headless-trash`: `Better Third Person Selection` 0.8.9 (64339, transaction `20260911T202630964Z-f238928d2a07`) and our `Better Third Person Selection 1.7.104 Native Overlay - Ensrick` (`20260911T202630669Z-9bea60396b27`).
+- **Checked before pulling it.** The plugin held exactly one record, the MCM quest `000D62:BetterThirdPersonSelection.esp`, and **no active plugin declared it as a master**. The only other files naming it were two stale build manifests (`Ensrick - Full Cloak Exclusivity`, `Ensrick - Weapon Speed Balance`), which list the load order at generation time and are not dependencies.
+- `plugin-disable` then `mod-trash`; the dangling `BetterThirdPersonSelection.esp` lines were then stripped from `plugins.txt` and `loadorder.txt` in Python with CRLF preserved, backups `*.bak.v20260911-btps-removal`. Active plugins 304 to 303. Ledger rows dropped; `install_mod --verify` is clean of it.
+- **Side effect, intended:** BTPS's `bAdjustMoreHudWidgets = 1` was what pinned moreHUD's text to the floating 3D widget. With BTPS gone, moreHUD's widgets return to their own configured screen positions.
+- **Sunk work noted, not lost:** the source-built 1.7.104 overlay carried the ControlMap repair (`docs/BTPS_CONTROLMAP_REPAIR_2026-09-09.md`, 32768 memory-isolation cases passing). Rebuildable from `records/source-builds/ensrick-btps-controlmap-1.7.104.json` if it ever comes back.
+- **Skip reason recorded** for 64339 in `records/skip-reasons.jsonl`, including the three configuration levers that would have kept it, so the decision is reopenable. The curator still lists it as a Keep; the user applies the skip.
+- **Found while verifying:** `Immersive Equipment Displays` (62001) has an MO2 mod folder, **disabled**, presumably staged by the parallel session as a reference for #269. Its author is excluded. Left alone pending the user's call; it is not in the game.
+- **Verification:** UNVERIFIED. No game launched. Profile mutated under claim `opus/btps-removal`. Weapon Balance and Full Cloak artifacts were already stale (#239) and this re-invalidates them.
+
 ## 2026-09-11 15:20 — Third-person popup traced to BTPS; moreHUD enemy bars turned off
 
 - **Correction.** The third-person fade-in popup is **Better Third Person Selection**, not moreHUD's ingredient widget. BTPS draws a 3D widget on whatever its selection algorithm picks (`fWidgetFadeInDelta = 0.05`, `fWidgetFadeOutDelta = 0.05`, `bIsWidget3DEnabledInThirdPerson = 1`) and its `bAdjustMoreHudWidgets = 1` pins moreHUD's text to that widget, which is why ingredient text appears to float on the plant. moreHUD supplies the text; BTPS supplies the popup. The earlier proposal to disable `AHZShowIngredientWidget` was the wrong lever and is withdrawn: the user wants ingredient effects kept.
