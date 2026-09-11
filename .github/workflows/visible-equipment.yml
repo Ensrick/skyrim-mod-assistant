@@ -1,0 +1,37 @@
+name: Visible Equipment
+on:
+  push:
+    paths: ['mods/visible-equipment/**', '.github/workflows/visible-equipment.yml']
+  pull_request:
+    paths: ['mods/visible-equipment/**', '.github/workflows/visible-equipment.yml']
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: CommonLibSSE-NG at the reviewed revision (6.7.1)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: alandtse/CommonLibSSE-NG
+          ref: 70c1acd5261210982bd52f6d4468a082fe04d798
+          path: _build/commonlib
+          persist-credentials: false
+      - name: Pinned vcpkg registry (the manifest baseline commit)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: microsoft/vcpkg
+          ref: ddd0023b0eee70986e42ed49d9d4afb8098f212e
+          path: _build/vcpkg
+          persist-credentials: false
+      - name: Bootstrap vcpkg
+        shell: pwsh
+        run: ./_build/vcpkg/bootstrap-vcpkg.bat -disableMetrics
+      - name: Build and test
+        shell: pwsh
+        run: |
+          ./mods/visible-equipment/build.ps1 -CommonLibRoot "$pwd/_build/commonlib" -VcpkgRoot "$pwd/_build/vcpkg" -Cmake (Get-Command cmake).Source -BuildDirectory "$pwd/_build/visible-equipment"
+      - name: SKSE version-data gate
+        shell: pwsh
+        run: python audit/skse_version_data.py "$pwd/_build/visible-equipment/Release/VisibleEquipment.dll"
