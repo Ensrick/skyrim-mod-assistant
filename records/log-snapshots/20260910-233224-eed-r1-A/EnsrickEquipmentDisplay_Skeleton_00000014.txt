@@ -1,0 +1,249 @@
+actor    : Adventurer
+formID   : 00000014
+base     : 00000007
+isPlayer : yes
+geometry : omitted
+----------------------------------------------------------------
+skeleton.nif [node] local=(3755.70, -495.67, -207.65) scale=1.030
+  NPC [node] local=(0.00, 0.00, 0.00) scale=1.000
+    NPC Root [Root] [node] local=(0.00, 0.00, 0.00) scale=1.000
+      NPC COM [COM ] [node] local=(2.34, 0.24, 69.08) scale=1.000
+        CME Body [Body] [node] local=(0.00, 0.00, 0.00) scale=1.000
+          CME LBody [LBody] [node] local=(0.00, 0.00, 0.00) scale=1.000
+            NPC Pelvis [Pelv] [node] local=(0.00, 0.00, 0.00) scale=1.000
+              CME Pelvis [Pelv] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                CME L Hip [node] local=(0.00, 0.00, 0.00) scale=1.000
+                  NPC L Thigh [LThg] [node] local=(-6.62, 0.00, 0.00) scale=1.000
+                    CME L Thigh [LThg] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                      NPC L Calf [LClf] [node] local=(0.00, 0.00, 35.60) scale=1.000
+                        CME L Calf [LClf] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                          CME L Knee [LKne] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                            NPC L Foot [Lft ] [node] local=(0.00, 0.00, 27.95) scale=1.000
+                              CME L Foot [Lft ] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                NPC L Toe0 [LToe] [node] local=(0.00, -0.02, 10.66) scale=1.000
+                                  CME L Toe0 [LToe] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                    NPC L Joint 5 [Lft ] [node] local=(-2.27, 0.96, 0.66) scale=1.000
+                                      NPC L Toe 5 [Lft ] [node] local=(2.16, -0.00, 0.00) scale=1.000
+                                    NPC L Joint 4 [Lft ] [node] local=(-0.26, 0.96, 1.28) scale=1.000
+                                      NPC L Toe 4 [Lft ] [node] local=(1.95, 0.00, 0.00) scale=1.000
+                                    NPC L Joint 3 [Lft ] [node] local=(0.86, 0.96, 1.26) scale=1.000
+                                      NPC L Toe 3 [Lft ] [node] local=(1.92, -0.00, 0.00) scale=1.000
+                                    NPC L Joint 2 [Lft ] [node] local=(2.16, 0.96, 0.88) scale=1.000
+                                      NPC L Toe 2 [Lft ] [node] local=(1.59, -0.00, 0.00) scale=1.000
+                                    NPC L Joint 1 [Lft ] [node] local=(3.15, 0.96, -0.34) scale=1.000
+                                      NPC L Toe 1 [Lft ] [node] local=(1.74, 0.00, 0.00) scale=1.000
+                CME R Hip [node] local=(0.00, 0.00, 0.00) scale=1.000
+                  NPC R Thigh [RThg] [node] local=(6.62, 0.00, 0.00) scale=1.000
+                    CME R Thigh [RThg] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                      NPC R Calf [RClf] [node] local=(0.00, 0.00, 35.60) scale=1.000
+                        CME R Calf [RClf] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                          CME R Knee [RKne] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                            NPC R Foot [Rft ] [node] local=(0.00, 0.00, 27.95) scale=1.000
+                              CME R Foot [Rft ] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                NPC R Toe0 [RToe] [node] local=(0.00, -0.02, 10.66) scale=1.000
+                                  CME R Toe0 [RToe] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                    NPC R Joint 5 [Rft ] [node] local=(2.27, 0.96, 0.66) scale=1.000
+                                      NPC R Toe 5 [Rft ] [node] local=(2.16, -0.00, 0.00) scale=1.000
+                                    NPC R Joint 4 [Rft ] [node] local=(0.26, 0.96, 1.28) scale=1.000
+                                      NPC R Toe 4 [Rft ] [node] local=(1.95, 0.00, 0.00) scale=1.000
+                                    NPC R Joint 3 [Rft ] [node] local=(-0.86, 0.96, 1.26) scale=1.000
+                                      NPC R Toe 3 [Rft ] [node] local=(1.92, -0.00, 0.00) scale=1.000
+                                    NPC R Joint 2 [Rft ] [node] local=(-2.16, 0.96, 0.88) scale=1.000
+                                      NPC R Toe 2 [Rft ] [node] local=(1.59, 0.00, 0.00) scale=1.000
+                                    NPC R Joint 1 [Rft ] [node] local=(-3.15, 0.96, -0.35) scale=1.000
+                                      NPC R Toe 1 [Rft ] [node] local=(1.74, 0.00, -0.00) scale=1.000
+                Weapon Pelvis [node] local=(0.00, 0.00, 0.00) scale=1.000
+                  Default Axe [node] local=(0.00, 0.00, 0.00) scale=1.000
+                    CME WeaponAxeDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                      MOV WeaponAxeDefault [node] local=(3.15, 2.65, -4.30) scale=1.000
+                        WeaponAxe [node] local=(20.37, -1.94, -18.91) scale=1.000
+                  Default Dagger [node] local=(0.00, 0.00, 0.00) scale=1.000
+                    CME WeaponDaggerDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                      MOV WeaponDaggerDefault [node] local=(-2.00, 2.00, 0.00) scale=1.000
+                        WeaponDagger [node] local=(-10.65, 7.68, 3.27) scale=1.000
+                  Default Mace [node] local=(0.00, 0.00, 0.00) scale=1.000
+                    CME WeaponMaceDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                      MOV WeaponMaceDefault [node] local=(-0.20, -1.00, 0.20) scale=1.000
+                        WeaponMace [node] local=(14.40, -3.35, 3.36) scale=1.000
+                  Default Sword [node] local=(0.00, 0.00, 0.00) scale=1.000
+                    CME WeaponSwordDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                      MOV WeaponSwordDefault [node] local=(-0.50, 0.00, 0.00) scale=1.000
+                        WeaponSword [node] local=(-13.75, 2.05, 7.07) scale=1.000
+                Skirt [node] local=(0.00, 0.00, 0.00) scale=1.000
+                  SkirtFBone01 [node] local=(0.00, 11.93, 5.73) scale=1.000
+                    SkirtFBone02 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                      SkirtFBone03 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                  SkirtBBone01 [node] local=(0.00, -11.25, 8.95) scale=1.000
+                    SkirtBBone02 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                      SkirtBBone03 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                  SkirtLBone01 [node] local=(-15.08, -1.30, 7.32) scale=1.000
+                    SkirtLBone02 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                      SkirtLBone03 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                  SkirtRBone01 [node] local=(15.08, -1.30, 7.32) scale=1.000
+                    SkirtRBone02 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                      SkirtRBone03 [node] local=(0.00, 0.00, 12.92) scale=1.000
+                Genitals [node] local=(0.00, 0.00, 0.00) scale=1.000
+                  Schlong [node] local=(0.00, 0.00, 0.00) scale=1.000
+                    NPC GenitalsBase [GenBase] [node] local=(0.00, 4.75, -3.40) scale=1.000
+                      CME GenitalsBase [GenBase] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                        GenitalsScrotumLag [node] local=(0.90, 0.04, 0.31) scale=1.000
+                          NPC GenitalsScrotum [GenScrot] [node] local=(-0.02, 3.03, 3.26) scale=1.000
+                        GenitalsLag01 [node] local=(0.69, 0.03, 0.24) scale=1.000
+                          NPC Genitals01 [Gen01] [node] local=(-0.01, 2.63, 0.94) scale=1.000
+                            CME Genitals01 [Gen01] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                              GenitalsLag02 [node] local=(0.35, -0.08, 0.00) scale=1.000
+                                NPC Genitals02 [Gen02] [node] local=(-0.01, 0.84, -0.41) scale=1.000
+                                  CME Genitals02 [Gen02] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                    GenitalsLag03 [node] local=(0.34, -0.08, -0.08) scale=1.000
+                                      NPC Genitals03 [Gen03] [node] local=(0.00, 1.71, 0.00) scale=1.000
+                                        CME Genitals03 [Gen03] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          GenitalsLag04 [node] local=(0.26, -0.16, -0.18) scale=1.000
+                                            NPC Genitals04 [Gen04] [node] local=(0.00, 0.50, 0.00) scale=1.000
+                                              CME Genitals04 [Gen04] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                                GenitalsLag05 [node] local=(0.23, -0.12, -0.24) scale=1.000
+                Anal [node] local=(0.00, 0.00, 0.00) scale=1.000
+                  NPC Anus Deep1 [node] local=(0.00, -4.62, 1.63) scale=1.000
+                    NPC Anus Deep2 [node] local=(0.29, -0.00, 0.92) scale=1.000
+                  NPC RB Anus1 [node] local=(0.75, -5.41, -0.10) scale=1.000
+                    NPC RB Anus2 [node] local=(-0.75, 0.06, 0.43) scale=1.000
+                  NPC LB Anus1 [node] local=(-0.75, -5.41, -0.10) scale=1.000
+                    NPC LB Anus2 [node] local=(-0.75, -0.06, 0.43) scale=1.000
+                  NPC LT Anus1 [node] local=(0.00, -5.76, -0.10) scale=1.000
+                    NPC LT Anus2 [node] local=(-0.75, -0.05, 0.43) scale=1.000
+                  NPC RT Anus1 [node] local=(0.00, -5.07, -0.10) scale=1.000
+                    NPC RT Anus2 [node] local=(-0.75, 0.05, 0.43) scale=1.000
+          CME UBody [UBody] [node] local=(0.00, 0.00, 0.00) scale=1.000
+            NPC Spine [Spn0] [node] local=(0.00, -5.24, 3.79) scale=1.000
+              CME Spine [Spn0] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                NPC Spine1 [Spn1] [node] local=(0.00, 0.00, 8.75) scale=1.000
+                  CME Spine1 [Spn1] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                    NPC Spine2 [Spn2] [node] local=(0.00, -0.02, 9.86) scale=1.000
+                      CME Spine2 [Spn2] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                        NPC Neck [Neck] [node] local=(0.00, 0.03, 22.04) scale=1.000
+                          CME Neck [Neck] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                            NPC Head [Head] [node] local=(0.00, 0.00, 7.39) scale=1.000
+                              NPCEyeBone [node] local=(-0.08, 8.10, 3.71) scale=1.000
+                              NPC Head MagicNode [Hmag] [node] local=(0.00, 11.54, -3.27) scale=1.000
+                              hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 F1 L [node] local=(-4.10, 7.17, 4.56) scale=1.000
+                                hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 F2 L [node] local=(0.00, 7.50, -0.00) scale=1.000
+                              hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 B1 L [node] local=(-4.38, -3.83, 4.79) scale=1.000
+                                hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 B2 L [node] local=(0.00, 9.00, 0.00) scale=1.000
+                              hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 F1 R [node] local=(3.96, 7.26, 4.55) scale=1.000
+                                hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 F2 R [node] local=(-0.00, 7.50, -0.00) scale=1.000
+                              hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 B1 R [node] local=(4.47, -3.73, 4.78) scale=1.000
+                                hdtSSEPhysics_AutoRename_Head_00000001 JG Hair01 B2 R [node] local=(0.00, 9.00, 0.00) scale=1.000
+                        CME R Shoulder [node] local=(0.00, 0.00, 0.00) scale=1.000
+                          NPC R Clavicle [RClv] [node] local=(1.70, 5.89, 19.45) scale=1.000
+                            CME R Clavicle [RClv] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                              NPC R UpperArm [RUar] [node] local=(0.00, 0.00, 14.04) scale=1.000
+                                CME R UpperArm [RUar] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                  NPC R Forearm [RLar] [node] local=(0.00, 0.00, 22.83) scale=1.000
+                                    CME R Forearm [RLar] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                      NPC R Hand [RHnd] [node] local=(0.00, 0.00, 16.05) scale=1.000
+                                        CME R Hand [RHnd] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          AnimObjectR [node] local=(0.00, -2.43, 7.16) scale=1.000
+                                          NPC R Finger10 [RF10] [node] local=(2.54, -0.11, 8.39) scale=1.000
+                                            CME R Finger10 [RF10] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC R Finger11 [RF11] [node] local=(0.00, 0.00, 2.46) scale=1.000
+                                                CME R Finger11 [RF11] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC R Finger30 [RF30] [node] local=(-1.44, -0.64, 7.98) scale=1.000
+                                            CME R Finger30 [RF30] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC R Finger31 [RF31] [node] local=(0.00, 0.00, 2.67) scale=1.000
+                                                CME R Finger31 [RF31] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC R Finger00 [RF00] [node] local=(2.86, -0.92, 3.17) scale=1.000
+                                            CME R Finger00 [RF00] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC R Finger01 [RF01] [node] local=(0.00, 0.00, 3.24) scale=1.000
+                                                CME R Finger01 [RF01] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC R Finger20 [RF20] [node] local=(0.37, -0.08, 8.26) scale=1.000
+                                            CME R Finger20 [RF20] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC R Finger21 [RF21] [node] local=(0.00, 0.00, 3.20) scale=1.000
+                                                CME R Finger21 [RF21] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC R MagicNode [RMag] [node] local=(0.50, -4.29, 8.75) scale=1.000
+                                          PreWEAPON [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                            WEAPON [node] local=(-0.23, -3.14, 7.16) scale=1.000
+                                          NPC R Finger40 [RF40] [node] local=(-3.00, -1.58, 7.42) scale=1.000
+                                            CME R Finger40 [RF40] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC R Finger41 [RF41] [node] local=(0.00, 0.00, 1.76) scale=1.000
+                                                CME R Finger41 [RF41] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                      NPC R ForearmTwist2 [RLt2] [node] local=(0.00, 0.00, 4.64) scale=1.000
+                                      NPC R ForearmTwist1 [RLt1] [node] local=(0.00, 0.00, 10.12) scale=1.000
+                                  NPC R UpperarmTwist1 [RUt1] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                    NPC R UpperarmTwist2 [RUt2] [node] local=(7.04, 0.00, 0.00) scale=1.000
+                              NPC R Pauldron [node] local=(1.41, 2.37, 12.22) scale=1.000
+                        CME L Shoulder [node] local=(0.00, 0.00, 0.00) scale=1.000
+                          NPC L Clavicle [LClv] [node] local=(-1.70, 5.89, 19.45) scale=1.000
+                            CME L Clavicle [LClv] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                              NPC L UpperArm [LUar] [node] local=(0.00, 0.00, 14.04) scale=1.000
+                                CME L UpperArm [LUar] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                  NPC L Forearm [LLar] [node] local=(0.00, 0.00, 22.83) scale=1.000
+                                    CME L Forearm [LLar] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                      NPC L Hand [LHnd] [node] local=(0.00, 0.00, 16.05) scale=1.000
+                                        CME L Hand [LHnd] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          AnimObjectL [node] local=(0.00, -2.43, 7.16) scale=1.000
+                                          NPC L Finger40 [LF40] [node] local=(3.00, -1.58, 7.42) scale=1.000
+                                            CME L Finger40 [LF40] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC L Finger41 [LF41] [node] local=(0.00, 0.00, 1.76) scale=1.000
+                                                CME L Finger41 [LF41] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC L Finger10 [LF10] [node] local=(-2.54, -0.11, 8.39) scale=1.000
+                                            CME L Finger10 [LF10] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC L Finger11 [LF11] [node] local=(0.00, 0.00, 2.46) scale=1.000
+                                                CME L Finger11 [LF11] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC L Finger30 [LF30] [node] local=(1.44, -0.64, 7.98) scale=1.000
+                                            CME L Finger30 [LF30] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC L Finger31 [LF31] [node] local=(0.00, 0.00, 2.67) scale=1.000
+                                                CME L Finger31 [LF31] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC L Finger00 [LF00] [node] local=(-2.86, -0.92, 3.17) scale=1.000
+                                            CME L Finger00 [LF00] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC L Finger01 [LF01] [node] local=(0.00, 0.00, 3.24) scale=1.000
+                                                CME L Finger01 [LF01] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                          NPC L MagicNode [LMag] [node] local=(-0.50, -4.29, 8.75) scale=1.000
+                                          PreSHIELD [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                            SHIELD [node] local=(0.00, -2.43, 7.16) scale=1.000
+                                          NPC L Finger20 [LF20] [node] local=(-0.37, -0.08, 8.26) scale=1.000
+                                            CME L Finger20 [LF20] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                              NPC L Finger21 [LF21] [node] local=(0.00, 0.00, 3.20) scale=1.000
+                                                CME L Finger21 [LF21] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                      NPC L ForearmTwist1 [LLt1] [node] local=(0.00, 0.00, 10.12) scale=1.000
+                                      NPC L ForearmTwist2 [LLt2] [node] local=(0.00, 0.00, 4.64) scale=1.000
+                                  NPC L UpperarmTwist1 [LUt1] [node] local=(0.00, 0.00, 0.00) scale=1.000
+                                    NPC L UpperarmTwist2 [LUt2] [node] local=(7.04, 0.00, 0.00) scale=1.000
+                              NPC L Pauldron [node] local=(-1.62, 1.63, 11.67) scale=1.000
+                        Weapon Spine2 [node] local=(0.00, 0.00, 0.00) scale=1.000
+                          Default Bow and Quiver [node] local=(0.00, 0.00, 0.00) scale=1.000
+                            CME QUIVERDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                              MOV QUIVERDefault [node] local=(2.00, 1.00, 0.00) scale=1.000
+                                QUIVER [node] local=(-7.28, -9.31, -16.72) scale=1.000
+                            CME WeaponBowDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                              MOV WeaponBowDefault [node] local=(0.00, 3.00, 0.00) scale=1.000
+                                WeaponBow [node] local=(-3.56, -13.84, 2.56) scale=1.000
+                          Default WeaponBack [node] local=(0.00, 0.00, 0.00) scale=1.000
+                            CME WeaponBackDefault [node] local=(0.00, 0.00, 0.00) scale=1.000
+                              MOV WeaponBackDefault [node] local=(1.00, -3.00, 0.00) scale=1.000
+                                WeaponBack [node] local=(12.55, -10.09, 28.81) scale=0.960
+                        VampireLord Wings [node] local=(0.00, 0.00, 0.00) scale=1.000
+                          LeftWing1 [node] local=(-5.80, -8.61, 19.73) scale=1.000
+                            LeftWing2 [node] local=(-0.10, -0.25, 12.35) scale=1.000
+                              LeftWing3 [node] local=(-0.26, 0.47, 22.65) scale=1.000
+                                LeftWing4 [node] local=(-0.32, -0.30, 29.46) scale=1.000
+                                  LeftWing5 [node] local=(-0.78, -0.81, 27.28) scale=1.000
+                          RightWing1 [node] local=(5.80, -8.61, 19.73) scale=1.000
+                            RightWing2 [node] local=(0.10, -0.25, 12.35) scale=1.000
+                              RightWing3 [node] local=(0.26, 0.47, 22.65) scale=1.000
+                                RightWing4 [node] local=(0.32, -0.30, 29.46) scale=1.000
+                                  RightWing5 [node] local=(0.78, -0.81, 27.28) scale=1.000
+                  Belly [node] local=(0.00, 0.00, 0.00) scale=1.000
+              MagicEffectsNode [node] local=(0.00, 4.96, 4.86) scale=1.000
+      AnimObjectA [node] local=(-5.00, 0.00, 0.00) scale=1.000
+      AnimObjectB [node] local=(5.00, 0.00, 0.00) scale=1.000
+      Camera Control [node] local=(0.00, 0.00, 0.00) scale=1.000
+      NPC L Item01 [node] local=(-30.35, 3.35, 69.26) scale=1.000
+        NPC L Item02 [node] local=(-0.02, 0.26, 4.25) scale=1.000
+          NPC L Item03 [node] local=(-0.02, 0.26, 4.25) scale=1.000
+      NPC R Item01 [node] local=(30.35, 3.35, 69.26) scale=1.000
+        NPC R Item02 [node] local=(0.02, 0.26, 4.25) scale=1.000
+          NPC R Item03 [node] local=(0.02, 0.26, 4.25) scale=1.000
+  CME Camera3rd [Cam3] [node] local=(0.00, 0.00, 0.00) scale=1.000
+    Camera3rd [Cam3] [node] local=(0.00, -46.79, 121.00) scale=1.000
+      CamSpin [node] local=(0.00, 0.00, 0.00) scale=1.000
+  CharacterBumper [node] local=(0.00, 17.00, 10.00) scale=1.000
+  BSFaceGenNiNodeSkinned [node] local=(0.00, 0.00, 0.00) scale=1.000

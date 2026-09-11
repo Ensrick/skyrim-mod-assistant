@@ -1,0 +1,9 @@
+EED R1 (#269) verification launch C of 3, 2026-09-10 23:48:58, same launcher/profile pattern (clone "Fable EED R1 C 20260910"), same DLL 0.3.1 fc7fc730... and verification ini, claim fable/eed-r1.
+Verdict: NO CRASH, clean quit, controller exit 0; main menu t+34.5 s (23:49:43).
+- pid 42764; "EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00030010) loaded correctly (handle 16)".
+- MenuPilot: $NEW 23:49:48; RaceSex 23:50:04; Adventurer; Equipment: Random OFF, One-Handed Sword, Combination Dual, Staff of Flames (Weapon Set left Random: this run rolled Iron); Solitude; Begin 23:50:50; SolitudeWorld 23:51:05.
+- Player Load3D task 23:49:54: 257 nodes, all 8 roster nodes present, XPMSE 3.60; runtime skeleton dump + placement dump (16 resolved / 0 missing).
+- Rules: 23:50:52 Iron Sword 00012EB7#0 -> hip.right.1h attached to 'WeaponSword'; Iron Sword 00012EB7#1 -> hip.left.1h attached to 'WeaponSwordLeft'; Staff of Flames -> hand.left then equipped -> hand.right. 36 log lines, 0 [error].
+- Ready Weapon draw/sheathe at world+60 s: paused=0, no crash. Soak 23:51:05-23:54:16 alive; PopupGuard intercepted nothing.
+- InventoryMenu dump 23:54:4x: 11 entries incl. Iron Sword x2 (equipState 0) and Staff of Flames (equipState 3); governed weapons 3 == board visible 3.
+- Quit: confirm read back, Accept 23:54:58; controller exit 0.

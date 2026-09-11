@@ -1,0 +1,36 @@
+[23:41:23.121] [info] loaded Data\SKSE\Plugins\EnsrickEquipmentDisplay.ini
+[23:41:23.121] [info] settings: DualSheath Enable=true PlayerOnly=false Staves=true | Rules Enabled=true PlayerOnly=true PackedDaggers=2 | Diagnostics DumpSkeleton=true DumpPlacements=true
+[23:41:23.121] [info] settings: read but not acted on in this build: Rules EnforcePickup=true ReconcileContainerChanges=true (R2) | Staff Enabled=true TwoHandedUnequipsStaff=true (R3) | Compat OarConditions=true OarLegacyPluginAlias=false (R3) | Display FirstPersonStaff=false (R4) ActionEventDrawnState=true (R2)
+[23:41:23.121] [info] EnsrickEquipmentDisplay 0-3-1-0 loading against runtime 1-7-104-0
+[23:41:23.574] [debug] kPostLoad
+[23:41:24.134] [warning] SimpleDualSheath.dll is loaded alongside this plugin; both display the left-hand weapon, expect a double display until one of them is removed
+[23:42:27.205] [info] placements: merged placements.json (12 slot(s), 0 warning(s))
+[23:42:27.205] [debug] placements: no Data\SKSE\Plugins\EnsrickEquipmentDisplay\placements.user.json
+[23:42:27.205] [info] placements: roster hip.right.1h=WeaponSword hip.left.1h=WeaponSwordLeft hip.right.dagger=WeaponDagger hip.left.dagger=WeaponDaggerLeft back.2h=WeaponBack back.bow=WeaponBow hand.left=NPC L Hand [LHnd] hand.right=NPC R Hand [RHnd] backpack.dagger.1=(hidden) backpack.dagger.2=(hidden)
+[23:42:27.205] [info] placements: expecting XPMSE 3.6 skeleton, nif sha256 d922d4a6309672c27ce3fe579353b925abe32841a9f12bc09266627188fd6fbf
+[23:42:27.205] [info] hooked Character::Load3D (vtable 7FF7D8723258, vfunc 0X6A)
+[23:42:27.205] [info] hooked PlayerCharacter::Load3D (vtable 7FF7D87296C0, vfunc 0X6A)
+[23:42:27.205] [info] registered equip event sink
+[23:42:27.205] [info] registered container-changed event sink (refresh trigger; R2 adds the gate)
+[23:42:44.969] [info] kNewGame: scheduling a player refresh
+[23:42:50.198] [info] wrote skeleton dump C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\EnsrickEquipmentDisplay_Skeleton_00000014.txt
+[23:42:50.198] [info] skeleton: player race NordRace (00013746) sex male model 'Actors\Character\Character Assets\skeleton.nif'; tree root 'skeleton.nif' with 257 node(s)
+[23:42:50.198] [info] skeleton: all 8 roster nodes present by name
+[23:42:50.198] [info] skeleton: XPMSE 3.60 on 'NPC' (expected 3.60)
+[23:42:50.198] [info] rules 00000014: board hip.right.1h=- hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 0 packed 0 refused 0 ungoverned 0 requests 0
+[23:42:50.199] [info] placement dump (load3d): 263 node(s) in the tree, 16 placement target(s) resolved, 0 missing, written to C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\EnsrickEquipmentDisplay_Placements_00000014_load3d.txt
+[23:44:29.960] [info] rules 00000014: Steel Sword 00013989#0 [one-handed] -> hip.right.1h (accept)
+[23:44:29.960] [info] rules 00000014: board hip.right.1h=Steel Sword hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 1 packed 0 refused 0 ungoverned 0 requests 1
+[23:44:29.988] [info] attached hip.right.1h 00013989#0 (sword) to 'WeaponSword' on actor 00000014 (drawn=false, culled=false)
+[23:44:30.074] [info] rules 00000014: Steel Sword 00013989#0 [one-handed] -> hip.right.1h (accept)
+[23:44:30.074] [info] rules 00000014: Steel Sword 00013989#1 [one-handed] -> hip.left.1h (accept)
+[23:44:30.074] [info] rules 00000014: board hip.right.1h=Steel Sword hip.left.1h=Steel Sword hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 2 packed 0 refused 0 ungoverned 0 requests 2
+[23:44:30.074] [info] attached hip.left.1h 00013989#1 (sword) to 'WeaponSwordLeft' on actor 00000014 (drawn=false, culled=false)
+[23:44:30.233] [info] rules 00000014: Steel Sword 00013989#0 [one-handed] -> hip.right.1h (accept)
+[23:44:30.233] [info] rules 00000014: Steel Sword 00013989#1 [one-handed] -> hip.left.1h (accept)
+[23:44:30.233] [info] rules 00000014: Staff of Flames 0004DEE0#0 [staff] -> hand.left (accept): not equipped; R3 routes it to storage
+[23:44:30.233] [info] rules 00000014: board hip.right.1h=Steel Sword hip.left.1h=Steel Sword hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=Staff of Flames hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 3 packed 0 refused 0 ungoverned 0 requests 2
+[23:44:31.171] [info] rules 00000014: Staff of Flames 0004DEE0#0 [staff] equipped -> hand.right (accept): in hand; hand display lands in R3
+[23:44:31.171] [info] rules 00000014: Steel Sword 00013989#0 [one-handed] -> hip.right.1h (accept)
+[23:44:31.171] [info] rules 00000014: Steel Sword 00013989#1 [one-handed] -> hip.left.1h (accept)
+[23:44:31.171] [info] rules 00000014: board hip.right.1h=Steel Sword hip.left.1h=Steel Sword hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=Staff of Flames* backpack.dagger.1=- backpack.dagger.2=- | visible 3 packed 0 refused 0 ungoverned 0 requests 2

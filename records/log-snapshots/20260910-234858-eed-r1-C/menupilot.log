@@ -1,0 +1,1350 @@
+[2026-09-10 23:49:08.639] +1ms POPUP_PATCHED api="MessageBoxW" scope="MenuPilot.dll import table"
+[2026-09-10 23:49:08.640] +1ms POPUP_PATCHED api="MessageBoxA" scope="MenuPilot.dll import table"
+[2026-09-10 23:49:08.640] +1ms PILOT_OPEN plugin="MenuPilot" version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\menupilot.log" pid=42764
+[2026-09-10 23:49:08.640] +1ms PLUGIN_LOAD runtime="1.7.104.0" skse_version=33751056
+[2026-09-10 23:49:08.640] +2ms PILOT_READY detail="inert until a commands.jsonl appears after kInputLoaded"
+[2026-09-10 23:49:31.237] +22599ms STAGE name="kInputLoaded"
+[2026-09-10 23:49:31.240] +22602ms POLL_START file="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\commands.jsonl" interval_ms=250
+[2026-09-10 23:49:42.088] +33450ms STAGE name="kDataLoaded"
+[2026-09-10 23:49:46.522] +37883ms BATCH_CLAIMED n=0 stamp="20260911-044946"
+[2026-09-10 23:49:46.522] +37884ms COMMAND id=1 op="menu.list" raw="{'op':'menu.list'}"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=0 name="SkyParkour"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=1 name="BTPS Ovelay Menu"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=2 name="BTPS Menu"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=3 name="Fader Menu"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=4 name="Mist Menu"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=5 name="Main Menu"
+[2026-09-10 23:49:46.524] +37886ms STACK id=1 depth=6 name="Cursor Menu"
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="SkyParkour" open=1 has_view=1
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="SafeZoneMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="InventoryMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="MapMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Login Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="BTPS Menu" open=1 has_view=1
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="RaceSex Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Kinect Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="MessageBoxMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="HUD Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="LoadWaitSpinner" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="GiftMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Console" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Mist Menu" open=1 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Console Native UI Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="TitleSequence Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Credits Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Training Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Cursor Menu" open=1 has_view=1
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Dialogue Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Tutorial Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="FavoritesMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="LevelUp Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Main Menu" open=1 has_view=1
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Fader Menu" open=1 has_view=1
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="BTPS Ovelay Menu" open=1 has_view=1
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Mod Manager Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="ContainerMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Marketplace Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Lockpicking Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37886ms MENU id=1 name="Journal Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="Crafting Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="TweenMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="StatsMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="Loading Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="CustomMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="BarterMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="MagicMenu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="Book Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms MENU id=1 name="Sleep/Wait Menu" open=0 has_view=0
+[2026-09-10 23:49:46.525] +37887ms RESULT id=1 op="menu.list" ok=1 registered=40 open=7 stack=7
+[2026-09-10 23:49:46.525] +37887ms COMMAND id=2 op="gfx.get" raw="{'path':'_root.MenuHolder.Menu_mc.MainList.selectedEntry.text','menu':'Main Menu','op':'gfx.get'}"
+[2026-09-10 23:49:46.533] +37895ms RESULT id=2 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.MainList.selectedEntry.text" type="string" value="$NEW"
+[2026-09-10 23:49:46.534] +37896ms BATCH_DONE n=0 commands=2 archived=1
+[2026-09-10 23:49:47.286] +38647ms BATCH_CLAIMED n=1 stamp="20260911-044947"
+[2026-09-10 23:49:47.286] +38648ms COMMAND id=3 op="gfx.get" raw="{'op':'gfx.get','path':'_root.MenuHolder.Menu_mc.MainList.selectedEntry.text','menu':'Main Menu'}"
+[2026-09-10 23:49:47.289] +38651ms RESULT id=3 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.MainList.selectedEntry.text" type="string" value="$NEW"
+[2026-09-10 23:49:47.293] +38655ms BATCH_DONE n=1 commands=1 archived=1
+[2026-09-10 23:49:47.545] +38907ms BATCH_CLAIMED n=2 stamp="20260911-044947"
+[2026-09-10 23:49:47.545] +38907ms COMMAND id=4 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:49:47.550] +38912ms INPUT_SENT id=4 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:49:47.634] +38996ms INPUT_SENT id=4 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:49:47.634] +38996ms RESULT id=4 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:49:47.634] +38996ms COMMAND id=5 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:49:48.034] +39396ms RESULT id=5 op="wait" ok=1 ms=400
+[2026-09-10 23:49:48.034] +39396ms COMMAND id=6 op="gfx.get" raw="{'op':'gfx.get','path':'_root.MenuHolder.Menu_mc.ConfirmPanel_mc.textField.text','menu':'Main Menu'}"
+[2026-09-10 23:49:48.037] +39399ms RESULT id=6 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.ConfirmPanel_mc.textField.text" type="string" value="Start a new game?"
+[2026-09-10 23:49:48.038] +39400ms BATCH_DONE n=2 commands=3 archived=1
+[2026-09-10 23:49:48.290] +39652ms BATCH_CLAIMED n=3 stamp="20260911-044948"
+[2026-09-10 23:49:48.290] +39652ms COMMAND id=7 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:49:48.298] +39659ms INPUT_SENT id=7 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:49:48.382] +39744ms INPUT_SENT id=7 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:49:48.382] +39744ms RESULT id=7 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:49:48.383] +39744ms BATCH_DONE n=3 commands=1 archived=1
+[2026-09-10 23:50:06.669] +58031ms BATCH_CLAIMED n=4 stamp="20260911-045006"
+[2026-09-10 23:50:06.669] +58031ms COMMAND id=8 op="gfx.get" raw="{'op':'gfx.get','menu':'RaceSex Menu','path':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.textField.text'}"
+[2026-09-10 23:50:06.670] +58032ms RESULT id=8 op="gfx.get" ok=1 menu="RaceSex Menu" path="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.textField.text" type="string" value="Done"
+[2026-09-10 23:50:06.671] +58033ms BATCH_DONE n=4 commands=1 archived=1
+[2026-09-10 23:50:06.922] +58284ms BATCH_CLAIMED n=5 stamp="20260911-045006"
+[2026-09-10 23:50:06.922] +58284ms COMMAND id=9 op="gfx.invoke" raw="{'op':'gfx.invoke','menu':'RaceSex Menu','method':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onPress','args':[]}"
+[2026-09-10 23:50:06.929] +58290ms RESULT id=9 op="gfx.invoke" ok=1 menu="RaceSex Menu" method="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onPress" args=0 ret_type="undefined" ret=""
+[2026-09-10 23:50:06.929] +58291ms COMMAND id=10 op="gfx.invoke" raw="{'op':'gfx.invoke','menu':'RaceSex Menu','method':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onRelease','args':[]}"
+[2026-09-10 23:50:06.938] +58300ms RESULT id=10 op="gfx.invoke" ok=1 menu="RaceSex Menu" method="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onRelease" args=0 ret_type="undefined" ret=""
+[2026-09-10 23:50:06.938] +58300ms COMMAND id=11 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:50:07.339] +58700ms RESULT id=11 op="wait" ok=1 ms=400
+[2026-09-10 23:50:07.339] +58700ms COMMAND id=12 op="gfx.get" raw="{'op':'gfx.get','menu':'MessageBoxMenu','path':'_root.MessageMenu.MessageText.text'}"
+[2026-09-10 23:50:07.348] +58710ms RESULT id=12 op="gfx.get" ok=1 menu="MessageBoxMenu" path="_root.MessageMenu.MessageText.text" type="string" value="Finish and name your character?"
+[2026-09-10 23:50:07.349] +58711ms BATCH_DONE n=5 commands=4 archived=1
+[2026-09-10 23:50:07.600] +58962ms BATCH_CLAIMED n=6 stamp="20260911-045007"
+[2026-09-10 23:50:07.600] +58962ms COMMAND id=13 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:50:07.605] +58967ms INPUT_SENT id=13 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:07.691] +59052ms INPUT_SENT id=13 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:07.691] +59052ms RESULT id=13 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:07.691] +59052ms COMMAND id=14 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:50:08.091] +59453ms RESULT id=14 op="wait" ok=1 ms=400
+[2026-09-10 23:50:08.091] +59453ms COMMAND id=15 op="gfx.get" raw="{'op':'gfx.get','menu':'RaceSex Menu','path':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry._visible'}"
+[2026-09-10 23:50:08.095] +59457ms RESULT id=15 op="gfx.get" ok=1 menu="RaceSex Menu" path="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry._visible" type="bool" value="true"
+[2026-09-10 23:50:08.096] +59458ms BATCH_DONE n=6 commands=3 archived=1
+[2026-09-10 23:50:08.347] +59708ms BATCH_CLAIMED n=7 stamp="20260911-045008"
+[2026-09-10 23:50:08.347] +59709ms COMMAND id=16 op="gfx.get" raw="{'op':'gfx.get','menu':'RaceSex Menu','path':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry.TextInputInstance.textField.text'}"
+[2026-09-10 23:50:08.348] +59710ms RESULT id=16 op="gfx.get" ok=1 menu="RaceSex Menu" path="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry.TextInputInstance.textField.text" type="string" value="Adventurer"
+[2026-09-10 23:50:08.349] +59711ms BATCH_DONE n=7 commands=1 archived=1
+[2026-09-10 23:50:08.850] +60212ms BATCH_CLAIMED n=8 stamp="20260911-045008"
+[2026-09-10 23:50:08.850] +60212ms COMMAND id=17 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:50:08.854] +60216ms INPUT_SENT id=17 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:08.939] +60300ms INPUT_SENT id=17 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:08.939] +60300ms RESULT id=17 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:08.940] +60301ms BATCH_DONE n=8 commands=1 archived=1
+[2026-09-10 23:50:15.953] +67315ms BATCH_CLAIMED n=9 stamp="20260911-045015"
+[2026-09-10 23:50:15.953] +67315ms COMMAND id=18 op="input.tap" raw="{'event':'Journal','op':'input.tap','code':36}"
+[2026-09-10 23:50:15.954] +67316ms INPUT_SENT id=18 device=0 user_event="Journal" code=36 value=1 held=0
+[2026-09-10 23:50:16.042] +67404ms INPUT_SENT id=18 device=0 user_event="Journal" code=36 value=0 held=0.08
+[2026-09-10 23:50:16.042] +67404ms RESULT id=18 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:16.042] +67404ms COMMAND id=19 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:16.443] +67804ms RESULT id=19 op="wait" ok=1 ms=400
+[2026-09-10 23:50:16.443] +67804ms COMMAND id=20 op="gfx.invoke" raw="{'menu':'Journal Menu','method':'_root.QuestJournalFader.Menu_mc.SystemTab.onPress','op':'gfx.invoke','args':[]}"
+[2026-09-10 23:50:16.445] +67807ms RESULT id=20 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onPress" args=0 ret_type="undefined" ret=""
+[2026-09-10 23:50:16.445] +67807ms COMMAND id=21 op="gfx.invoke" raw="{'menu':'Journal Menu','method':'_root.QuestJournalFader.Menu_mc.SystemTab.onRelease','op':'gfx.invoke','args':[]}"
+[2026-09-10 23:50:16.455] +67817ms RESULT id=21 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onRelease" args=0 ret_type="undefined" ret=""
+[2026-09-10 23:50:16.455] +67817ms COMMAND id=22 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex','op':'gfx.get'}"
+[2026-09-10 23:50:16.462] +67824ms RESULT id=22 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex" type="number" value="0"
+[2026-09-10 23:50:16.463] +67825ms BATCH_DONE n=9 commands=5 archived=1
+[2026-09-10 23:50:16.714] +68076ms BATCH_CLAIMED n=10 stamp="20260911-045016"
+[2026-09-10 23:50:16.714] +68076ms COMMAND id=23 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:16.723] +68084ms INPUT_SENT id=23 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:16.807] +68169ms INPUT_SENT id=23 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:16.807] +68169ms RESULT id=23 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:16.807] +68169ms COMMAND id=24 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:16.815] +68177ms INPUT_SENT id=24 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:16.899] +68261ms INPUT_SENT id=24 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:16.899] +68261ms RESULT id=24 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:16.899] +68261ms COMMAND id=25 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:16.908] +68269ms INPUT_SENT id=25 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:16.992] +68353ms INPUT_SENT id=25 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:16.992] +68353ms RESULT id=25 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:16.992] +68353ms COMMAND id=26 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:17.001] +68362ms INPUT_SENT id=26 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:17.084] +68446ms INPUT_SENT id=26 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:17.084] +68446ms RESULT id=26 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:17.084] +68446ms COMMAND id=27 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:17.093] +68454ms INPUT_SENT id=27 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:17.176] +68538ms INPUT_SENT id=27 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:17.176] +68538ms RESULT id=27 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:17.176] +68538ms COMMAND id=28 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:17.185] +68547ms INPUT_SENT id=28 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:17.269] +68631ms INPUT_SENT id=28 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:17.269] +68631ms RESULT id=28 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:17.269] +68631ms COMMAND id=29 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text','op':'gfx.get'}"
+[2026-09-10 23:50:17.277] +68639ms RESULT id=29 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text" type="string" value="$MOD CONFIGURATION"
+[2026-09-10 23:50:17.278] +68640ms BATCH_DONE n=10 commands=7 archived=1
+[2026-09-10 23:50:17.529] +68891ms BATCH_CLAIMED n=11 stamp="20260911-045017"
+[2026-09-10 23:50:17.530] +68891ms COMMAND id=30 op="input.tap" raw="{'event':'Accept','op':'input.tap','code':28}"
+[2026-09-10 23:50:17.538] +68900ms INPUT_SENT id=30 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:17.622] +68984ms INPUT_SENT id=30 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:17.622] +68984ms RESULT id=30 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:17.622] +68984ms COMMAND id=31 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:18.022] +69384ms RESULT id=31 op="wait" ok=1 ms=400
+[2026-09-10 23:50:18.022] +69384ms COMMAND id=32 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._modList._entryList.0.text','op':'gfx.get'}"
+[2026-09-10 23:50:18.025] +69387ms RESULT id=32 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._modList._entryList.0.text" type="string" value=" Skyrim Unbound"
+[2026-09-10 23:50:18.026] +69388ms BATCH_DONE n=11 commands=3 archived=1
+[2026-09-10 23:50:18.277] +69639ms BATCH_CLAIMED n=12 stamp="20260911-045018"
+[2026-09-10 23:50:18.277] +69639ms COMMAND id=33 op="input.tap" raw="{'event':'Down','op':'input.tap','code':208}"
+[2026-09-10 23:50:18.286] +69648ms INPUT_SENT id=33 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:18.370] +69732ms INPUT_SENT id=33 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:18.370] +69732ms RESULT id=33 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:18.370] +69732ms COMMAND id=34 op="input.tap" raw="{'event':'Accept','op':'input.tap','code':28}"
+[2026-09-10 23:50:18.379] +69740ms INPUT_SENT id=34 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:18.462] +69824ms INPUT_SENT id=34 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:18.462] +69824ms RESULT id=34 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:18.462] +69824ms COMMAND id=35 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:18.863] +70224ms RESULT id=35 op="wait" ok=1 ms=400
+[2026-09-10 23:50:18.863] +70225ms COMMAND id=36 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._entryList.1.text','op':'gfx.get'}"
+[2026-09-10 23:50:18.866] +70227ms RESULT id=36 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._entryList.1.text" type="string" value="Starting Location"
+[2026-09-10 23:50:18.866] +70228ms BATCH_DONE n=12 commands=4 archived=1
+[2026-09-10 23:50:19.618] +70980ms BATCH_CLAIMED n=13 stamp="20260911-045019"
+[2026-09-10 23:50:19.619] +70980ms COMMAND id=37 op="input.tap" raw="{'code':203,'op':'input.tap','event':'Left'}"
+[2026-09-10 23:50:19.622] +70984ms INPUT_SENT id=37 device=0 user_event="Left" code=203 value=1 held=0
+[2026-09-10 23:50:19.706] +71068ms INPUT_SENT id=37 device=0 user_event="Left" code=203 value=0 held=0.08
+[2026-09-10 23:50:19.706] +71068ms RESULT id=37 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:19.706] +71068ms COMMAND id=38 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex','menu':'Journal Menu'}"
+[2026-09-10 23:50:19.714] +71076ms RESULT id=38 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex" type="number" value="-1"
+[2026-09-10 23:50:19.715] +71077ms BATCH_DONE n=13 commands=2 archived=1
+[2026-09-10 23:50:19.966] +71328ms BATCH_CLAIMED n=14 stamp="20260911-045019"
+[2026-09-10 23:50:19.967] +71328ms COMMAND id=39 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:19.975] +71337ms INPUT_SENT id=39 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:20.059] +71421ms INPUT_SENT id=39 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:20.059] +71421ms RESULT id=39 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:20.059] +71421ms COMMAND id=40 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:20.068] +71429ms INPUT_SENT id=40 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:20.151] +71513ms INPUT_SENT id=40 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:20.151] +71513ms RESULT id=40 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:20.151] +71513ms COMMAND id=41 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:20.160] +71522ms INPUT_SENT id=41 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:20.244] +71606ms INPUT_SENT id=41 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:20.244] +71606ms RESULT id=41 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:20.244] +71606ms COMMAND id=42 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text','menu':'Journal Menu'}"
+[2026-09-10 23:50:20.252] +71614ms RESULT id=42 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text" type="string" value="Equipment"
+[2026-09-10 23:50:20.253] +71615ms BATCH_DONE n=14 commands=4 archived=1
+[2026-09-10 23:50:20.505] +71866ms BATCH_CLAIMED n=15 stamp="20260911-045020"
+[2026-09-10 23:50:20.505] +71866ms COMMAND id=43 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-10 23:50:20.513] +71875ms INPUT_SENT id=43 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:20.597] +71959ms INPUT_SENT id=43 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:20.597] +71959ms RESULT id=43 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:20.597] +71959ms COMMAND id=44 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:20.997] +72359ms RESULT id=44 op="wait" ok=1 ms=400
+[2026-09-10 23:50:20.997] +72359ms COMMAND id=45 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text','menu':'Journal Menu'}"
+[2026-09-10 23:50:21.000] +72362ms RESULT id=45 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text" type="string" value="Weapon Set"
+[2026-09-10 23:50:21.001] +72363ms BATCH_DONE n=15 commands=3 archived=1
+[2026-09-10 23:50:21.754] +73115ms BATCH_CLAIMED n=16 stamp="20260911-045021"
+[2026-09-10 23:50:21.754] +73116ms COMMAND id=46 op="input.tap" raw="{'op':'input.tap','event':'Right','code':205}"
+[2026-09-10 23:50:21.756] +73118ms INPUT_SENT id=46 device=0 user_event="Right" code=205 value=1 held=0
+[2026-09-10 23:50:21.840] +73202ms INPUT_SENT id=46 device=0 user_event="Right" code=205 value=0 held=0.08
+[2026-09-10 23:50:21.841] +73202ms RESULT id=46 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:21.841] +73202ms COMMAND id=47 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex','menu':'Journal Menu','op':'gfx.get'}"
+[2026-09-10 23:50:21.849] +73211ms RESULT id=47 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="0"
+[2026-09-10 23:50:21.849] +73211ms COMMAND id=48 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text','menu':'Journal Menu','op':'gfx.get'}"
+[2026-09-10 23:50:21.858] +73219ms RESULT id=48 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text" type="string" value="Weapon Set"
+[2026-09-10 23:50:21.859] +73220ms BATCH_DONE n=16 commands=3 archived=1
+[2026-09-10 23:50:22.610] +73972ms BATCH_CLAIMED n=17 stamp="20260911-045022"
+[2026-09-10 23:50:22.610] +73972ms COMMAND id=49 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:22.614] +73975ms INPUT_SENT id=49 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:22.698] +74060ms INPUT_SENT id=49 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:22.698] +74060ms RESULT id=49 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:22.698] +74060ms COMMAND id=50 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:22.707] +74068ms INPUT_SENT id=50 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:22.790] +74152ms INPUT_SENT id=50 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:22.790] +74152ms RESULT id=50 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:22.791] +74152ms COMMAND id=51 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex'}"
+[2026-09-10 23:50:22.799] +74161ms RESULT id=51 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="4"
+[2026-09-10 23:50:22.799] +74161ms COMMAND id=52 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text'}"
+[2026-09-10 23:50:22.807] +74169ms RESULT id=52 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text" type="string" value="Random"
+[2026-09-10 23:50:22.808] +74170ms BATCH_DONE n=17 commands=4 archived=1
+[2026-09-10 23:50:23.810] +75172ms BATCH_CLAIMED n=18 stamp="20260911-045023"
+[2026-09-10 23:50:23.810] +75172ms COMMAND id=53 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-10 23:50:23.816] +75177ms INPUT_SENT id=53 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:23.900] +75261ms INPUT_SENT id=53 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:23.900] +75261ms RESULT id=53 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:23.900] +75261ms COMMAND id=54 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:50:24.300] +75662ms RESULT id=54 op="wait" ok=1 ms=400
+[2026-09-10 23:50:24.300] +75662ms COMMAND id=55 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.4.numValue','op':'gfx.get'}"
+[2026-09-10 23:50:24.303] +75665ms RESULT id=55 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.4.numValue" type="number" value="0"
+[2026-09-10 23:50:24.304] +75666ms BATCH_DONE n=18 commands=3 archived=1
+[2026-09-10 23:50:25.055] +76417ms BATCH_CLAIMED n=19 stamp="20260911-045025"
+[2026-09-10 23:50:25.055] +76417ms COMMAND id=56 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:25.059] +76421ms INPUT_SENT id=56 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:25.143] +76505ms INPUT_SENT id=56 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:25.143] +76505ms RESULT id=56 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:25.143] +76505ms COMMAND id=57 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex','op':'gfx.get'}"
+[2026-09-10 23:50:25.152] +76514ms RESULT id=57 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="6"
+[2026-09-10 23:50:25.152] +76514ms COMMAND id=58 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text','op':'gfx.get'}"
+[2026-09-10 23:50:25.160] +76522ms RESULT id=58 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text" type="string" value="One-Handed"
+[2026-09-10 23:50:25.161] +76523ms BATCH_DONE n=19 commands=3 archived=1
+[2026-09-10 23:50:25.913] +77274ms BATCH_CLAIMED n=20 stamp="20260911-045025"
+[2026-09-10 23:50:25.913] +77275ms COMMAND id=59 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-10 23:50:25.917] +77279ms INPUT_SENT id=59 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:26.001] +77362ms INPUT_SENT id=59 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:26.001] +77362ms RESULT id=59 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:26.001] +77362ms COMMAND id=60 op="wait" raw="{'op':'wait','ms':800}"
+[2026-09-10 23:50:26.801] +78163ms RESULT id=60 op="wait" ok=1 ms=800
+[2026-09-10 23:50:26.801] +78163ms COMMAND id=61 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible'}"
+[2026-09-10 23:50:26.807] +78169ms RESULT id=61 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="bool" value="true"
+[2026-09-10 23:50:26.807] +78169ms COMMAND id=62 op="gfx.dump" raw="{'menu':'Journal Menu','max':80,'op':'gfx.dump','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList','depth':2}"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList" type="array" value="size=8"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].text" type="string" value="Nothing"
+[2026-09-10 23:50:26.816] +78177ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].clipIndex" type="number" value="0"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].itemIndex" type="number" value="0"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].text" type="string" value="Random"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].clipIndex" type="number" value="1"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].itemIndex" type="number" value="1"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].text" type="string" value="Random (No Dagger)"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].clipIndex" type="number" value="2"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].itemIndex" type="number" value="2"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].text" type="string" value="Dagger"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].clipIndex" type="number" value="3"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].itemIndex" type="number" value="3"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].text" type="string" value="Sword"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].clipIndex" type="number" value="4"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].itemIndex" type="number" value="4"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].text" type="string" value="Axe"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].itemIndex" type="number" value="5"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].text" type="string" value="Mace"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].itemIndex" type="number" value="6"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7]" type="object" value="{...}"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].enabled" type="bool" value="true"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].state" type="string" value="normal"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].align" type="string" value="center"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].text" type="string" value="Scimitar"
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:26.816] +78178ms MEMBER id=62 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].itemIndex" type="number" value="7"
+[2026-09-10 23:50:26.816] +78178ms RESULT id=62 op="gfx.dump" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList" depth=2 members_logged=57
+[2026-09-10 23:50:26.817] +78178ms BATCH_DONE n=20 commands=4 archived=1
+[2026-09-10 23:50:27.068] +78430ms BATCH_CLAIMED n=21 stamp="20260911-045027"
+[2026-09-10 23:50:27.068] +78430ms COMMAND id=63 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:27.076] +78438ms INPUT_SENT id=63 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:27.160] +78522ms INPUT_SENT id=63 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:27.160] +78522ms RESULT id=63 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:27.160] +78522ms COMMAND id=64 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:27.169] +78531ms INPUT_SENT id=64 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:27.253] +78615ms INPUT_SENT id=64 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:27.253] +78615ms RESULT id=64 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:27.253] +78615ms COMMAND id=65 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:27.262] +78623ms INPUT_SENT id=65 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:27.345] +78707ms INPUT_SENT id=65 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:27.346] +78707ms RESULT id=65 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:27.346] +78707ms COMMAND id=66 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-10 23:50:27.354] +78716ms INPUT_SENT id=66 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:27.438] +78799ms INPUT_SENT id=66 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:27.438] +78799ms RESULT id=66 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:27.438] +78799ms COMMAND id=67 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text'}"
+[2026-09-10 23:50:27.446] +78808ms RESULT id=67 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text" type="string" value="Sword"
+[2026-09-10 23:50:27.447] +78809ms BATCH_DONE n=21 commands=5 archived=1
+[2026-09-10 23:50:27.698] +79060ms BATCH_CLAIMED n=22 stamp="20260911-045027"
+[2026-09-10 23:50:27.699] +79060ms COMMAND id=68 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-10 23:50:27.707] +79068ms INPUT_SENT id=68 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:27.791] +79153ms INPUT_SENT id=68 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:27.791] +79153ms RESULT id=68 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:27.791] +79153ms COMMAND id=69 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:28.192] +79554ms RESULT id=69 op="wait" ok=1 ms=400
+[2026-09-10 23:50:28.192] +79554ms COMMAND id=70 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex'}"
+[2026-09-10 23:50:28.194] +79556ms RESULT id=70 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex" type="number" value="4"
+[2026-09-10 23:50:28.198] +79560ms BATCH_DONE n=22 commands=3 archived=1
+[2026-09-10 23:50:28.450] +79811ms BATCH_CLAIMED n=23 stamp="20260911-045028"
+[2026-09-10 23:50:28.450] +79811ms COMMAND id=71 op="input.tap" raw="{'code':1,'op':'input.tap','event':'Cancel'}"
+[2026-09-10 23:50:28.454] +79816ms INPUT_SENT id=71 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-10 23:50:28.539] +79901ms INPUT_SENT id=71 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-10 23:50:28.539] +79901ms RESULT id=71 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:28.539] +79901ms COMMAND id=72 op="wait" raw="{'op':'wait','ms':800}"
+[2026-09-10 23:50:29.339] +80701ms RESULT id=72 op="wait" ok=1 ms=800
+[2026-09-10 23:50:29.339] +80701ms COMMAND id=73 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.6.strValue'}"
+[2026-09-10 23:50:29.345] +80707ms RESULT id=73 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.6.strValue" type="string" value="$SU_Sword"
+[2026-09-10 23:50:29.346] +80707ms COMMAND id=74 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible'}"
+[2026-09-10 23:50:29.354] +80716ms RESULT id=74 op="gfx.get" ok=0 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="undefined" value=""
+[2026-09-10 23:50:29.355] +80716ms BATCH_DONE n=23 commands=4 archived=1
+[2026-09-10 23:50:30.107] +81469ms BATCH_CLAIMED n=24 stamp="20260911-045030"
+[2026-09-10 23:50:30.107] +81469ms COMMAND id=75 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:30.110] +81472ms INPUT_SENT id=75 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:30.194] +81556ms INPUT_SENT id=75 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:30.194] +81556ms RESULT id=75 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:30.194] +81556ms COMMAND id=76 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex'}"
+[2026-09-10 23:50:30.203] +81565ms RESULT id=76 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="8"
+[2026-09-10 23:50:30.203] +81565ms COMMAND id=77 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text'}"
+[2026-09-10 23:50:30.211] +81573ms RESULT id=77 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text" type="string" value="One-Handed Combination"
+[2026-09-10 23:50:30.212] +81574ms BATCH_DONE n=24 commands=3 archived=1
+[2026-09-10 23:50:31.215] +82577ms BATCH_CLAIMED n=25 stamp="20260911-045031"
+[2026-09-10 23:50:31.215] +82577ms COMMAND id=78 op="input.tap" raw="{'event':'Accept','code':28,'op':'input.tap'}"
+[2026-09-10 23:50:31.219] +82581ms INPUT_SENT id=78 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:31.304] +82665ms INPUT_SENT id=78 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:31.304] +82665ms RESULT id=78 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:31.304] +82665ms COMMAND id=79 op="wait" raw="{'op':'wait','ms':800}"
+[2026-09-10 23:50:32.104] +83466ms RESULT id=79 op="wait" ok=1 ms=800
+[2026-09-10 23:50:32.104] +83466ms COMMAND id=80 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:32.110] +83472ms RESULT id=80 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="bool" value="true"
+[2026-09-10 23:50:32.110] +83472ms COMMAND id=81 op="gfx.dump" raw="{'depth':2,'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList','menu':'Journal Menu','max':80,'op':'gfx.dump'}"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList" type="array" value="size=4"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0]" type="object" value="{...}"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].enabled" type="bool" value="true"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].state" type="string" value="normal"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].align" type="string" value="center"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].text" type="string" value="Random"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].clipIndex" type="number" value="0"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].itemIndex" type="number" value="0"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1]" type="object" value="{...}"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].enabled" type="bool" value="true"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].state" type="string" value="normal"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].align" type="string" value="center"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].text" type="string" value="Single"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].clipIndex" type="number" value="1"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].itemIndex" type="number" value="1"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2]" type="object" value="{...}"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].enabled" type="bool" value="true"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].state" type="string" value="normal"
+[2026-09-10 23:50:32.119] +83480ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].align" type="string" value="center"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].text" type="string" value="Shield"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].clipIndex" type="number" value="2"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].itemIndex" type="number" value="2"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3]" type="object" value="{...}"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].enabled" type="bool" value="true"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].state" type="string" value="normal"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].align" type="string" value="center"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].text" type="string" value="Dual"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].clipIndex" type="number" value="3"
+[2026-09-10 23:50:32.119] +83481ms MEMBER id=81 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].itemIndex" type="number" value="3"
+[2026-09-10 23:50:32.119] +83481ms RESULT id=81 op="gfx.dump" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList" depth=2 members_logged=29
+[2026-09-10 23:50:32.119] +83481ms BATCH_DONE n=25 commands=4 archived=1
+[2026-09-10 23:50:32.370] +83732ms BATCH_CLAIMED n=26 stamp="20260911-045032"
+[2026-09-10 23:50:32.371] +83732ms COMMAND id=82 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-10 23:50:32.371] +83733ms INPUT_SENT id=82 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:32.455] +83817ms INPUT_SENT id=82 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:32.455] +83817ms RESULT id=82 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:32.455] +83817ms COMMAND id=83 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-10 23:50:32.463] +83825ms INPUT_SENT id=83 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:32.547] +83909ms INPUT_SENT id=83 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:32.547] +83909ms RESULT id=83 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:32.547] +83909ms COMMAND id=84 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-10 23:50:32.556] +83918ms INPUT_SENT id=84 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:32.640] +84002ms INPUT_SENT id=84 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:32.640] +84002ms RESULT id=84 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:32.640] +84002ms COMMAND id=85 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:32.649] +84011ms RESULT id=85 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text" type="string" value="Dual"
+[2026-09-10 23:50:32.650] +84011ms BATCH_DONE n=26 commands=4 archived=1
+[2026-09-10 23:50:33.151] +84513ms BATCH_CLAIMED n=27 stamp="20260911-045033"
+[2026-09-10 23:50:33.151] +84513ms COMMAND id=86 op="input.tap" raw="{'event':'Accept','code':28,'op':'input.tap'}"
+[2026-09-10 23:50:33.152] +84514ms INPUT_SENT id=86 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:33.236] +84598ms INPUT_SENT id=86 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:33.236] +84598ms RESULT id=86 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:33.236] +84598ms COMMAND id=87 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:33.637] +84999ms RESULT id=87 op="wait" ok=1 ms=400
+[2026-09-10 23:50:33.637] +84999ms COMMAND id=88 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:33.640] +85002ms RESULT id=88 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex" type="number" value="3"
+[2026-09-10 23:50:33.641] +85002ms BATCH_DONE n=27 commands=3 archived=1
+[2026-09-10 23:50:33.892] +85253ms BATCH_CLAIMED n=28 stamp="20260911-045033"
+[2026-09-10 23:50:33.892] +85254ms COMMAND id=89 op="input.tap" raw="{'event':'Cancel','code':1,'op':'input.tap'}"
+[2026-09-10 23:50:33.892] +85254ms INPUT_SENT id=89 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-10 23:50:33.976] +85338ms INPUT_SENT id=89 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-10 23:50:33.976] +85338ms RESULT id=89 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:33.976] +85338ms COMMAND id=90 op="wait" raw="{'op':'wait','ms':800}"
+[2026-09-10 23:50:34.777] +86139ms RESULT id=90 op="wait" ok=1 ms=800
+[2026-09-10 23:50:34.777] +86139ms COMMAND id=91 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.8.strValue','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:34.783] +86144ms RESULT id=91 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.8.strValue" type="string" value="$SU_1HDual"
+[2026-09-10 23:50:34.783] +86144ms COMMAND id=92 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:34.791] +86153ms RESULT id=92 op="gfx.get" ok=0 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="undefined" value=""
+[2026-09-10 23:50:34.792] +86154ms BATCH_DONE n=28 commands=4 archived=1
+[2026-09-10 23:50:35.544] +86906ms BATCH_CLAIMED n=29 stamp="20260911-045035"
+[2026-09-10 23:50:35.544] +86906ms COMMAND id=93 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-10 23:50:35.547] +86909ms INPUT_SENT id=93 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:35.631] +86993ms INPUT_SENT id=93 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:35.632] +86993ms RESULT id=93 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:35.632] +86993ms COMMAND id=94 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-10 23:50:35.640] +87002ms INPUT_SENT id=94 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:35.724] +87086ms INPUT_SENT id=94 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:35.724] +87086ms RESULT id=94 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:35.724] +87086ms COMMAND id=95 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-10 23:50:35.733] +87095ms INPUT_SENT id=95 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:35.816] +87178ms INPUT_SENT id=95 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:35.817] +87178ms RESULT id=95 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:35.817] +87178ms COMMAND id=96 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:35.825] +87187ms RESULT id=96 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="14"
+[2026-09-10 23:50:35.825] +87187ms COMMAND id=97 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-10 23:50:35.833] +87195ms RESULT id=97 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList.selectedEntry.text" type="string" value="Staff"
+[2026-09-10 23:50:35.834] +87196ms BATCH_DONE n=29 commands=5 archived=1
+[2026-09-10 23:50:36.586] +87948ms BATCH_CLAIMED n=30 stamp="20260911-045036"
+[2026-09-10 23:50:36.586] +87948ms COMMAND id=98 op="input.tap" raw="{'op':'input.tap','code':28,'event':'Accept'}"
+[2026-09-10 23:50:36.590] +87951ms INPUT_SENT id=98 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:36.674] +88036ms INPUT_SENT id=98 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:36.674] +88036ms RESULT id=98 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:36.674] +88036ms COMMAND id=99 op="wait" raw="{'ms':800,'op':'wait'}"
+[2026-09-10 23:50:37.474] +88836ms RESULT id=99 op="wait" ok=1 ms=800
+[2026-09-10 23:50:37.474] +88836ms COMMAND id=100 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible'}"
+[2026-09-10 23:50:37.480] +88842ms RESULT id=100 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="bool" value="true"
+[2026-09-10 23:50:37.480] +88842ms COMMAND id=101 op="gfx.dump" raw="{'depth':2,'menu':'Journal Menu','max':80,'op':'gfx.dump','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList'}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList" type="array" value="size=23"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].text" type="string" value="Nothing"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].clipIndex" type="number" value="0"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[0].itemIndex" type="number" value="0"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].text" type="string" value="Random"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].clipIndex" type="number" value="1"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[1].itemIndex" type="number" value="1"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].text" type="string" value="Alteration - Random"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].clipIndex" type="number" value="2"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[2].itemIndex" type="number" value="2"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].text" type="string" value="Alteration - Staff of Magelight"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].clipIndex" type="number" value="3"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[3].itemIndex" type="number" value="3"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].text" type="string" value="Conjuration - Random"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].clipIndex" type="number" value="4"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[4].itemIndex" type="number" value="4"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].text" type="string" value="Conjuration - Staff of the Familiar"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[5].itemIndex" type="number" value="5"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].text" type="string" value="Conjuration - Staff of Zombies"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[6].itemIndex" type="number" value="6"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].text" type="string" value="Conjuration - Staff of Flesh"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[7].itemIndex" type="number" value="7"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8].text" type="string" value="Destruction - Random"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[8].itemIndex" type="number" value="8"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9].text" type="string" value="Destruction - Staff of Flames"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[9].itemIndex" type="number" value="9"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10].state" type="string" value="normal"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10].align" type="string" value="center"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10].text" type="string" value="Destruction - Staff of Frostbite"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10].clipIndex" type="undefined" value=""
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[10].itemIndex" type="number" value="10"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[11]" type="object" value="{...}"
+[2026-09-10 23:50:37.489] +88851ms MEMBER id=101 path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList[11].enabled" type="bool" value="true"
+[2026-09-10 23:50:37.489] +88851ms RESULT id=101 op="gfx.dump" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList" depth=2 members_logged=80
+[2026-09-10 23:50:37.490] +88852ms BATCH_DONE n=30 commands=4 archived=1
+[2026-09-10 23:50:37.741] +89103ms BATCH_CLAIMED n=31 stamp="20260911-045037"
+[2026-09-10 23:50:37.741] +89103ms COMMAND id=102 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:37.749] +89111ms INPUT_SENT id=102 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:37.834] +89195ms INPUT_SENT id=102 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:37.834] +89195ms RESULT id=102 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:37.834] +89195ms COMMAND id=103 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:37.842] +89204ms INPUT_SENT id=103 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:37.926] +89288ms INPUT_SENT id=103 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:37.926] +89288ms RESULT id=103 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:37.926] +89288ms COMMAND id=104 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:37.934] +89296ms INPUT_SENT id=104 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.018] +89380ms INPUT_SENT id=104 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.018] +89380ms RESULT id=104 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.018] +89380ms COMMAND id=105 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:38.027] +89389ms INPUT_SENT id=105 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.111] +89473ms INPUT_SENT id=105 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.111] +89473ms RESULT id=105 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.111] +89473ms COMMAND id=106 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:38.119] +89481ms INPUT_SENT id=106 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.203] +89565ms INPUT_SENT id=106 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.203] +89565ms RESULT id=106 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.203] +89565ms COMMAND id=107 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:38.212] +89574ms INPUT_SENT id=107 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.296] +89658ms INPUT_SENT id=107 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.296] +89658ms RESULT id=107 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.296] +89658ms COMMAND id=108 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:38.304] +89666ms INPUT_SENT id=108 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.388] +89750ms INPUT_SENT id=108 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.388] +89750ms RESULT id=108 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.388] +89750ms COMMAND id=109 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:38.397] +89758ms INPUT_SENT id=109 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.480] +89842ms INPUT_SENT id=109 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.480] +89842ms RESULT id=109 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.480] +89842ms COMMAND id=110 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:50:38.489] +89851ms INPUT_SENT id=110 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:38.573] +89935ms INPUT_SENT id=110 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:38.573] +89935ms RESULT id=110 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.573] +89935ms COMMAND id=111 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text'}"
+[2026-09-10 23:50:38.582] +89944ms RESULT id=111 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text" type="string" value="Destruction - Staff of Flames"
+[2026-09-10 23:50:38.582] +89944ms BATCH_DONE n=31 commands=10 archived=1
+[2026-09-10 23:50:38.833] +90195ms BATCH_CLAIMED n=32 stamp="20260911-045038"
+[2026-09-10 23:50:38.834] +90195ms COMMAND id=112 op="input.tap" raw="{'op':'input.tap','code':28,'event':'Accept'}"
+[2026-09-10 23:50:38.834] +90195ms INPUT_SENT id=112 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:38.918] +90279ms INPUT_SENT id=112 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:38.918] +90280ms RESULT id=112 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:38.918] +90280ms COMMAND id=113 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:50:39.318] +90680ms RESULT id=113 op="wait" ok=1 ms=400
+[2026-09-10 23:50:39.318] +90680ms COMMAND id=114 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex'}"
+[2026-09-10 23:50:39.321] +90683ms RESULT id=114 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex" type="number" value="9"
+[2026-09-10 23:50:39.322] +90683ms BATCH_DONE n=32 commands=3 archived=1
+[2026-09-10 23:50:39.823] +91185ms BATCH_CLAIMED n=33 stamp="20260911-045039"
+[2026-09-10 23:50:39.823] +91185ms COMMAND id=115 op="input.tap" raw="{'op':'input.tap','code':1,'event':'Cancel'}"
+[2026-09-10 23:50:39.825] +91187ms INPUT_SENT id=115 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-10 23:50:39.909] +91271ms INPUT_SENT id=115 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-10 23:50:39.909] +91271ms RESULT id=115 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:39.909] +91271ms COMMAND id=116 op="wait" raw="{'ms':800,'op':'wait'}"
+[2026-09-10 23:50:40.709] +92071ms RESULT id=116 op="wait" ok=1 ms=800
+[2026-09-10 23:50:40.709] +92071ms COMMAND id=117 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.14.strValue'}"
+[2026-09-10 23:50:40.716] +92078ms RESULT id=117 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.14.strValue" type="string" value="{$SU_Destruction} - {Staff of Flames}"
+[2026-09-10 23:50:40.716] +92078ms COMMAND id=118 op="gfx.get" raw="{'menu':'Journal Menu','op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible'}"
+[2026-09-10 23:50:40.725] +92086ms RESULT id=118 op="gfx.get" ok=0 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="undefined" value=""
+[2026-09-10 23:50:40.725] +92087ms BATCH_DONE n=33 commands=4 archived=1
+[2026-09-10 23:50:41.477] +92839ms BATCH_CLAIMED n=34 stamp="20260911-045041"
+[2026-09-10 23:50:41.477] +92839ms COMMAND id=119 op="input.tap" raw="{'code':203,'event':'Left','op':'input.tap'}"
+[2026-09-10 23:50:41.481] +92843ms INPUT_SENT id=119 device=0 user_event="Left" code=203 value=1 held=0
+[2026-09-10 23:50:41.565] +92927ms INPUT_SENT id=119 device=0 user_event="Left" code=203 value=0 held=0.08
+[2026-09-10 23:50:41.565] +92927ms RESULT id=119 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:41.565] +92927ms COMMAND id=120 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex','op':'gfx.get'}"
+[2026-09-10 23:50:41.574] +92935ms RESULT id=120 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex" type="number" value="2"
+[2026-09-10 23:50:41.574] +92936ms BATCH_DONE n=34 commands=2 archived=1
+[2026-09-10 23:50:41.826] +93188ms BATCH_CLAIMED n=35 stamp="20260911-045041"
+[2026-09-10 23:50:41.826] +93188ms COMMAND id=121 op="input.tap" raw="{'code':200,'event':'Up','op':'input.tap'}"
+[2026-09-10 23:50:41.834] +93196ms INPUT_SENT id=121 device=0 user_event="Up" code=200 value=1 held=0
+[2026-09-10 23:50:41.918] +93280ms INPUT_SENT id=121 device=0 user_event="Up" code=200 value=0 held=0.08
+[2026-09-10 23:50:41.918] +93280ms RESULT id=121 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:41.918] +93280ms COMMAND id=122 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text','op':'gfx.get'}"
+[2026-09-10 23:50:41.927] +93288ms RESULT id=122 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text" type="string" value="Starting Location"
+[2026-09-10 23:50:41.927] +93289ms BATCH_DONE n=35 commands=2 archived=1
+[2026-09-10 23:50:42.179] +93540ms BATCH_CLAIMED n=36 stamp="20260911-045042"
+[2026-09-10 23:50:42.179] +93541ms COMMAND id=123 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-10 23:50:42.187] +93549ms INPUT_SENT id=123 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:42.271] +93633ms INPUT_SENT id=123 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:42.271] +93633ms RESULT id=123 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:42.271] +93633ms COMMAND id=124 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-10 23:50:42.672] +94033ms RESULT id=124 op="wait" ok=1 ms=400
+[2026-09-10 23:50:42.672] +94033ms COMMAND id=125 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text','op':'gfx.get'}"
+[2026-09-10 23:50:42.674] +94036ms RESULT id=125 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text" type="string" value="Weapon Set"
+[2026-09-10 23:50:42.675] +94037ms BATCH_DONE n=36 commands=3 archived=1
+[2026-09-10 23:50:43.426] +94788ms BATCH_CLAIMED n=37 stamp="20260911-045043"
+[2026-09-10 23:50:43.426] +94788ms COMMAND id=126 op="input.tap" raw="{'op':'input.tap','event':'Right','code':205}"
+[2026-09-10 23:50:43.431] +94792ms INPUT_SENT id=126 device=0 user_event="Right" code=205 value=1 held=0
+[2026-09-10 23:50:43.515] +94877ms INPUT_SENT id=126 device=0 user_event="Right" code=205 value=0 held=0.08
+[2026-09-10 23:50:43.515] +94877ms RESULT id=126 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:43.515] +94877ms COMMAND id=127 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex'}"
+[2026-09-10 23:50:43.523] +94885ms RESULT id=127 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="0"
+[2026-09-10 23:50:43.524] +94886ms BATCH_DONE n=37 commands=2 archived=1
+[2026-09-10 23:50:43.775] +95137ms BATCH_CLAIMED n=38 stamp="20260911-045043"
+[2026-09-10 23:50:43.776] +95137ms COMMAND id=128 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:43.784] +95146ms INPUT_SENT id=128 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:43.868] +95229ms INPUT_SENT id=128 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:43.868] +95229ms RESULT id=128 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:43.868] +95229ms COMMAND id=129 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:43.877] +95239ms INPUT_SENT id=129 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:43.960] +95322ms INPUT_SENT id=129 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:43.960] +95322ms RESULT id=129 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:43.960] +95322ms COMMAND id=130 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:43.969] +95331ms INPUT_SENT id=130 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:44.053] +95414ms INPUT_SENT id=130 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:44.053] +95414ms RESULT id=130 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:44.053] +95414ms COMMAND id=131 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex'}"
+[2026-09-10 23:50:44.061] +95423ms RESULT id=131 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="6"
+[2026-09-10 23:50:44.062] +95424ms BATCH_DONE n=38 commands=4 archived=1
+[2026-09-10 23:50:44.313] +95675ms BATCH_CLAIMED n=39 stamp="20260911-045044"
+[2026-09-10 23:50:44.313] +95675ms COMMAND id=132 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:50:44.322] +95683ms INPUT_SENT id=132 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:44.406] +95767ms INPUT_SENT id=132 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:44.406] +95767ms RESULT id=132 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:44.406] +95767ms COMMAND id=133 op="wait" raw="{'ms':800,'op':'wait'}"
+[2026-09-10 23:50:45.206] +96568ms RESULT id=133 op="wait" ok=1 ms=800
+[2026-09-10 23:50:45.206] +96568ms COMMAND id=134 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible'}"
+[2026-09-10 23:50:45.212] +96574ms RESULT id=134 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="bool" value="true"
+[2026-09-10 23:50:45.213] +96574ms COMMAND id=135 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList.6.text'}"
+[2026-09-10 23:50:45.221] +96582ms RESULT id=135 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._entryList.6.text" type="string" value="Solitude"
+[2026-09-10 23:50:45.221] +96583ms BATCH_DONE n=39 commands=4 archived=1
+[2026-09-10 23:50:45.473] +96834ms BATCH_CLAIMED n=40 stamp="20260911-045045"
+[2026-09-10 23:50:45.473] +96834ms COMMAND id=136 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:45.473] +96835ms INPUT_SENT id=136 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:45.557] +96919ms INPUT_SENT id=136 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:45.557] +96919ms RESULT id=136 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:45.557] +96919ms COMMAND id=137 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:45.566] +96927ms INPUT_SENT id=137 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:45.649] +97011ms INPUT_SENT id=137 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:45.649] +97011ms RESULT id=137 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:45.649] +97011ms COMMAND id=138 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:45.658] +97020ms INPUT_SENT id=138 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:45.742] +97104ms INPUT_SENT id=138 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:45.742] +97104ms RESULT id=138 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:45.742] +97104ms COMMAND id=139 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:45.750] +97112ms INPUT_SENT id=139 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:45.834] +97196ms INPUT_SENT id=139 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:45.834] +97196ms RESULT id=139 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:45.834] +97196ms COMMAND id=140 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:45.843] +97205ms INPUT_SENT id=140 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:45.926] +97288ms INPUT_SENT id=140 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:45.927] +97288ms RESULT id=140 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:45.927] +97288ms COMMAND id=141 op="input.tap" raw="{'op':'input.tap','event':'Down','code':208}"
+[2026-09-10 23:50:45.935] +97297ms INPUT_SENT id=141 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:50:46.019] +97381ms INPUT_SENT id=141 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:50:46.019] +97381ms RESULT id=141 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:46.019] +97381ms COMMAND id=142 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text'}"
+[2026-09-10 23:50:46.028] +97389ms RESULT id=142 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList.selectedEntry.text" type="string" value="Solitude"
+[2026-09-10 23:50:46.029] +97390ms BATCH_DONE n=40 commands=7 archived=1
+[2026-09-10 23:50:46.280] +97642ms BATCH_CLAIMED n=41 stamp="20260911-045046"
+[2026-09-10 23:50:46.280] +97642ms COMMAND id=143 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:50:46.288] +97650ms INPUT_SENT id=143 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:46.372] +97734ms INPUT_SENT id=143 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:46.372] +97734ms RESULT id=143 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:46.373] +97734ms COMMAND id=144 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:50:46.773] +98134ms RESULT id=144 op="wait" ok=1 ms=400
+[2026-09-10 23:50:46.773] +98134ms COMMAND id=145 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex'}"
+[2026-09-10 23:50:46.775] +98137ms RESULT id=145 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog.menuList._selectedIndex" type="number" value="6"
+[2026-09-10 23:50:46.776] +98138ms BATCH_DONE n=41 commands=3 archived=1
+[2026-09-10 23:50:47.028] +98390ms BATCH_CLAIMED n=42 stamp="20260911-045047"
+[2026-09-10 23:50:47.028] +98390ms COMMAND id=146 op="input.tap" raw="{'op':'input.tap','event':'Cancel','code':1}"
+[2026-09-10 23:50:47.036] +98398ms INPUT_SENT id=146 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-10 23:50:47.120] +98482ms INPUT_SENT id=146 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-10 23:50:47.120] +98482ms RESULT id=146 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:47.120] +98482ms COMMAND id=147 op="wait" raw="{'ms':800,'op':'wait'}"
+[2026-09-10 23:50:47.921] +99282ms RESULT id=147 op="wait" ok=1 ms=800
+[2026-09-10 23:50:47.921] +99282ms COMMAND id=148 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.6.strValue'}"
+[2026-09-10 23:50:47.927] +99289ms RESULT id=148 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.6.strValue" type="string" value="$SU_City6"
+[2026-09-10 23:50:47.927] +99289ms COMMAND id=149 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible'}"
+[2026-09-10 23:50:47.935] +99297ms RESULT id=149 op="gfx.get" ok=0 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel.dialog._visible" type="undefined" value=""
+[2026-09-10 23:50:47.936] +99298ms BATCH_DONE n=42 commands=4 archived=1
+[2026-09-10 23:50:48.689] +100050ms BATCH_CLAIMED n=43 stamp="20260911-045048"
+[2026-09-10 23:50:48.689] +100051ms COMMAND id=150 op="input.tap" raw="{'code':203,'op':'input.tap','event':'Left'}"
+[2026-09-10 23:50:48.692] +100054ms INPUT_SENT id=150 device=0 user_event="Left" code=203 value=1 held=0
+[2026-09-10 23:50:48.776] +100138ms INPUT_SENT id=150 device=0 user_event="Left" code=203 value=0 held=0.08
+[2026-09-10 23:50:48.776] +100138ms RESULT id=150 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:48.776] +100138ms COMMAND id=151 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex'}"
+[2026-09-10 23:50:48.784] +100146ms RESULT id=151 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex" type="number" value="1"
+[2026-09-10 23:50:48.785] +100147ms BATCH_DONE n=43 commands=2 archived=1
+[2026-09-10 23:50:49.287] +100649ms BATCH_CLAIMED n=44 stamp="20260911-045049"
+[2026-09-10 23:50:49.287] +100649ms COMMAND id=152 op="input.tap" raw="{'code':200,'op':'input.tap','event':'Up'}"
+[2026-09-10 23:50:49.289] +100651ms INPUT_SENT id=152 device=0 user_event="Up" code=200 value=1 held=0
+[2026-09-10 23:50:49.372] +100734ms INPUT_SENT id=152 device=0 user_event="Up" code=200 value=0 held=0.08
+[2026-09-10 23:50:49.373] +100734ms RESULT id=152 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:49.373] +100734ms COMMAND id=153 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-10 23:50:49.381] +100743ms INPUT_SENT id=153 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:49.465] +100827ms INPUT_SENT id=153 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:49.465] +100827ms RESULT id=153 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:49.465] +100827ms COMMAND id=154 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:50:49.865] +101227ms RESULT id=154 op="wait" ok=1 ms=400
+[2026-09-10 23:50:49.865] +101227ms COMMAND id=155 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text'}"
+[2026-09-10 23:50:49.868] +101230ms RESULT id=155 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text" type="string" value="Begin Your Adventure"
+[2026-09-10 23:50:49.869] +101231ms BATCH_DONE n=44 commands=4 archived=1
+[2026-09-10 23:50:50.120] +101482ms BATCH_CLAIMED n=45 stamp="20260911-045050"
+[2026-09-10 23:50:50.120] +101482ms COMMAND id=156 op="input.tap" raw="{'code':205,'op':'input.tap','event':'Right'}"
+[2026-09-10 23:50:50.120] +101482ms INPUT_SENT id=156 device=0 user_event="Right" code=205 value=1 held=0
+[2026-09-10 23:50:50.204] +101566ms INPUT_SENT id=156 device=0 user_event="Right" code=205 value=0 held=0.08
+[2026-09-10 23:50:50.204] +101566ms RESULT id=156 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:50.204] +101566ms COMMAND id=157 op="gfx.get" raw="{'op':'gfx.get','menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex'}"
+[2026-09-10 23:50:50.213] +101575ms RESULT id=157 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="0"
+[2026-09-10 23:50:50.214] +101576ms BATCH_DONE n=45 commands=2 archived=1
+[2026-09-10 23:50:50.465] +101827ms BATCH_CLAIMED n=46 stamp="20260911-045050"
+[2026-09-10 23:50:50.465] +101827ms COMMAND id=158 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-10 23:50:50.473] +101835ms INPUT_SENT id=158 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:50:50.567] +101929ms INPUT_SENT id=158 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:50:50.568] +101929ms RESULT id=158 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:50:50.568] +101930ms BATCH_DONE n=46 commands=1 archived=1
+[2026-09-10 23:52:06.506] +177868ms BATCH_CLAIMED n=47 stamp="20260911-045206"
+[2026-09-10 23:52:06.506] +177868ms COMMAND id=159 op="input.tap" raw="{'op':'input.tap','event':'Ready Weapon','code':19}"
+[2026-09-10 23:52:06.510] +177872ms INPUT_SENT id=159 device=0 user_event="Ready Weapon" code=19 value=1 held=0
+[2026-09-10 23:52:06.705] +178067ms INPUT_SENT id=159 device=0 user_event="Ready Weapon" code=19 value=0 held=0.08
+[2026-09-10 23:52:06.705] +178067ms RESULT id=159 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:52:06.705] +178067ms COMMAND id=160 op="wait" raw="{'op':'wait','ms':4000}"
+[2026-09-10 23:52:10.762] +182124ms RESULT id=160 op="wait" ok=1 ms=4000
+[2026-09-10 23:52:10.762] +182124ms COMMAND id=161 op="input.tap" raw="{'op':'input.tap','event':'Ready Weapon','code':19}"
+[2026-09-10 23:52:10.956] +182318ms INPUT_SENT id=161 device=0 user_event="Ready Weapon" code=19 value=1 held=0
+[2026-09-10 23:52:11.498] +182859ms INPUT_SENT id=161 device=0 user_event="Ready Weapon" code=19 value=0 held=0.08
+[2026-09-10 23:52:11.498] +182860ms RESULT id=161 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:52:11.498] +182860ms COMMAND id=162 op="wait" raw="{'op':'wait','ms':3000}"
+[2026-09-10 23:52:14.501] +185862ms RESULT id=162 op="wait" ok=1 ms=3000
+[2026-09-10 23:52:14.501] +185862ms COMMAND id=163 op="ping" raw="{'op':'ping'}"
+[2026-09-10 23:52:14.845] +186207ms RESULT id=163 op="ping" ok=1 runtime="1.7.104.0" ui=1 paused=0 menus_on_stack=4
+[2026-09-10 23:52:14.846] +186208ms BATCH_DONE n=47 commands=5 archived=1
+[2026-09-10 23:54:38.417] +329778ms BATCH_CLAIMED n=48 stamp="20260911-045438"
+[2026-09-10 23:54:38.417] +329779ms COMMAND id=164 op="input.tap" raw="{'op':'input.tap','event':'Tween Menu','code':15}"
+[2026-09-10 23:54:38.425] +329787ms INPUT_SENT id=164 device=0 user_event="Tween Menu" code=15 value=1 held=0
+[2026-09-10 23:54:38.508] +329870ms INPUT_SENT id=164 device=0 user_event="Tween Menu" code=15 value=0 held=0.08
+[2026-09-10 23:54:38.508] +329870ms RESULT id=164 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:38.508] +329870ms COMMAND id=165 op="wait" raw="{'op':'wait','ms':800}"
+[2026-09-10 23:54:39.308] +330670ms RESULT id=165 op="wait" ok=1 ms=800
+[2026-09-10 23:54:39.314] +330676ms COMMAND id=166 op="input.tap" raw="{'op':'input.tap','event':'Right','code':205}"
+[2026-09-10 23:54:39.315] +330677ms INPUT_SENT id=166 device=0 user_event="Right" code=205 value=1 held=0
+[2026-09-10 23:54:39.399] +330761ms INPUT_SENT id=166 device=0 user_event="Right" code=205 value=0 held=0.08
+[2026-09-10 23:54:39.399] +330761ms RESULT id=166 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:39.412] +330774ms COMMAND id=167 op="wait" raw="{'op':'wait','ms':600}"
+[2026-09-10 23:54:40.013] +331375ms RESULT id=167 op="wait" ok=1 ms=600
+[2026-09-10 23:54:40.013] +331375ms COMMAND id=168 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-10 23:54:40.017] +331378ms INPUT_SENT id=168 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:54:40.113] +331475ms INPUT_SENT id=168 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:54:40.113] +331475ms RESULT id=168 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:40.113] +331475ms COMMAND id=169 op="wait" raw="{'op':'wait','ms':900}"
+[2026-09-10 23:54:41.014] +332376ms RESULT id=169 op="wait" ok=1 ms=900
+[2026-09-10 23:54:41.014] +332376ms COMMAND id=170 op="gfx.get" raw="{'op':'gfx.get','menu':'InventoryMenu','path':'_root.Menu_mc.inventoryLists.itemList._entryList.length'}"
+[2026-09-10 23:54:41.016] +332378ms RESULT id=170 op="gfx.get" ok=1 menu="InventoryMenu" path="_root.Menu_mc.inventoryLists.itemList._entryList.length" type="number" value="11"
+[2026-09-10 23:54:41.016] +332378ms COMMAND id=171 op="gfx.dump" raw="{'op':'gfx.dump','menu':'InventoryMenu','path':'_root.Menu_mc.inventoryLists.itemList._entryList','depth':2,'max':400}"
+[2026-09-10 23:54:41.030] +332391ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList" type="array" value="size=11"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0]" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].filterFlag" type="number" value="512"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].formType" type="number" value="32"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].itemIndex" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].favorite" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].eslId" type="number" value="2925"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].filteredIndex" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].baseId" type="number" value="531309"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].formId" type="number" value="4261944173"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].type" type="number" value="3"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].infoValue" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].infoValueWeight" type="number" value="17"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].subTypeDisplay" type="string" value="Currency"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].count" type="number" value="6"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].iconLabel" type="string" value="misc_gold"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].equipState" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].infoWeight" type="number" value="0.06"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].clipIndex" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].iconColor" type="number" value="10056451"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].isEquipped" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].text" type="string" value="Copper Septim"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[0].subType" type="number" value="21"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1]" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].filterFlag" type="number" value="512"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].formType" type="number" value="32"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].itemIndex" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].favorite" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].eslId" type="number" value="2084"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].filteredIndex" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].baseId" type="number" value="530468"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].formId" type="number" value="4261943332"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].type" type="number" value="3"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].infoValue" type="number" value="100"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].infoValueWeight" type="number" value="769"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].subTypeDisplay" type="string" value="Currency"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].count" type="number" value="2"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].iconLabel" type="string" value="misc_gold"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].equipState" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].infoWeight" type="number" value="0.13"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].clipIndex" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].iconColor" type="number" value="13421619"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].isEquipped" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].text" type="string" value="Gold Septim"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[1].subType" type="number" value="21"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2]" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].isEnchanted" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].infoArmor" type="number" value="27"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].filterFlag" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].formType" type="number" value="26"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].bestInClass" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].mainPartMask" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].itemIndex" type="number" value="2"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].favorite" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].eslId" type="number" value="3657"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].filteredIndex" type="number" value="2"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].baseId" type="number" value="77385"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].formId" type="number" value="77385"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].type" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].infoValueWeight" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].infoValue" type="number" value="125"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].subTypeDisplay" type="string" value="Body"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].count" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].armor" type="number" value="27"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].iconLabel" type="string" value="armor_body"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].partMask" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].equipState" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].weightClass" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].clipIndex" type="number" value="2"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].material" type="number" value="12"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].weightClassDisplay" type="string" value="Heavy"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].infoWeight" type="number" value="30"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].iconColor" type="number" value="7042437"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].materialDisplay" type="string" value="Iron"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].isEquipped" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].text" type="string" value="Iron Armor"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[2].subType" type="number" value="3"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3]" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].isEnchanted" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].infoArmor" type="number" value="11"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].filterFlag" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].formType" type="number" value="26"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].bestInClass" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].mainPartMask" type="number" value="128"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].itemIndex" type="number" value="3"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].favorite" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].eslId" type="number" value="3659"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].filteredIndex" type="number" value="3"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].baseId" type="number" value="77387"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].formId" type="number" value="77387"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].type" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].infoValueWeight" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].infoValue" type="number" value="25"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].subTypeDisplay" type="string" value="Feet"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].count" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].armor" type="number" value="11"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].iconLabel" type="string" value="armor_feet"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].partMask" type="number" value="128"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].equipState" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].weightClass" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].clipIndex" type="number" value="3"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].material" type="number" value="12"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].weightClassDisplay" type="string" value="Heavy"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].infoWeight" type="number" value="6"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].iconColor" type="number" value="7042437"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].materialDisplay" type="string" value="Iron"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].isEquipped" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].text" type="string" value="Iron Boots"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[3].subType" type="number" value="8"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4]" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].isEnchanted" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].infoArmor" type="number" value="11"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].filterFlag" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].formType" type="number" value="26"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].bestInClass" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].mainPartMask" type="number" value="8"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].itemIndex" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].favorite" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].eslId" type="number" value="3654"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].filteredIndex" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].baseId" type="number" value="77382"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].formId" type="number" value="77382"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].type" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].infoValueWeight" type="number" value="5"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].infoValue" type="number" value="25"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].subTypeDisplay" type="string" value="Hands"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].count" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].armor" type="number" value="11"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].iconLabel" type="string" value="armor_hands"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].partMask" type="number" value="8"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].equipState" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].weightClass" type="number" value="1"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].clipIndex" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].material" type="number" value="12"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].weightClassDisplay" type="string" value="Heavy"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].infoWeight" type="number" value="5"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].iconColor" type="number" value="7042437"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].materialDisplay" type="string" value="Iron"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].isEquipped" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].text" type="string" value="Iron Gauntlets"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[4].subType" type="number" value="5"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5]" type="object" value="{...}"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].isEnchanted" type="bool" value="false"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].infoArmor" type="number" value="16"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].filterFlag" type="number" value="4"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].formType" type="number" value="26"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].bestInClass" type="bool" value="true"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].mainPartMask" type="number" value="2"
+[2026-09-10 23:54:41.030] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].itemIndex" type="number" value="5"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].favorite" type="number" value="0"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].eslId" type="number" value="3661"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].filteredIndex" type="number" value="5"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].baseId" type="number" value="77389"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].formId" type="number" value="77389"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].type" type="number" value="1"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].infoValueWeight" type="number" value="12"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].infoValue" type="number" value="60"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].subTypeDisplay" type="string" value="Head"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].count" type="number" value="1"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].armor" type="number" value="16"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].iconLabel" type="string" value="armor_head"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].partMask" type="number" value="4098"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].equipState" type="number" value="1"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].weightClass" type="number" value="1"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].clipIndex" type="number" value="5"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].material" type="number" value="12"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].weightClassDisplay" type="string" value="Heavy"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].infoWeight" type="number" value="5"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].iconColor" type="number" value="7042437"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].materialDisplay" type="string" value="Iron"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].isEquipped" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].text" type="string" value="Iron Helmet"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[5].subType" type="number" value="1"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6]" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].infoDamage" type="number" value="8"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].isEnchanted" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].filterFlag" type="number" value="2"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].formType" type="number" value="41"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].bestInClass" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].maxRange" type="number" value="0"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].itemIndex" type="number" value="6"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].minRange" type="number" value="0"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].favorite" type="number" value="0"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].eslId" type="number" value="3767"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].stagger" type="number" value="0.75"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].reach" type="number" value="1"
+[2026-09-10 23:54:41.031] +332392ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].equipSlot" type="number" value="81730"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].filteredIndex" type="number" value="6"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].type" type="number" value="2"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].formId" type="number" value="77495"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].baseId" type="number" value="77495"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].infoValueWeight" type="number" value="3"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].speed" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].subTypeDisplay" type="string" value="Sword"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].infoValue" type="number" value="25"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].critDamage" type="number" value="3"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].count" type="number" value="2"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].iconLabel" type="string" value="weapon_sword"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].equipState" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].infoWeight" type="number" value="9"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].clipIndex" type="number" value="6"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].material" type="number" value="12"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].damage" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].iconColor" type="number" value="10790335"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].materialDisplay" type="string" value="Iron"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].isEquipped" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].text" type="string" value="Iron Sword"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].subType" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].isPoisoned" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].baseDamage" type="number" value="7"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[6].weaponType" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7]" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].archetype" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].deliveryType" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].filterFlag" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].formType" type="number" value="46"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].itemIndex" type="number" value="7"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].effectFlags" type="number" value="2099712"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].favorite" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].eslId" type="number" value="2781"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].school" type="number" value="4294967295"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].effectKeywords" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].filteredIndex" type="number" value="7"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].type" type="number" value="6"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].formId" type="number" value="256733"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].baseId" type="number" value="256733"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].infoValueWeight" type="number" value="34"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].skillLevel" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].subTypeDisplay" type="string" value="Health"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].spellName" type="string" value="Potion of Minor Healing"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].useSound" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].resistance" type="number" value="4294967295"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].delayTime" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].iconLabel" type="string" value="potion_health"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].magnitude" type="number" value="25"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].equipState" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].infoWeight" type="number" value="0.5"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].clipIndex" type="number" value="7"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].infoValue" type="number" value="17"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].actorValue" type="number" value="24"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].area" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].iconColor" type="number" value="14364275"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].count" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].effectName" type="string" value="Restore Health"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].isEquipped" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].castTime" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].castType" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].subType" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].flags" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].duration" type="null" value=""
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[7].text" type="string" value="Potion of Minor Healing"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8]" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].filterFlag" type="number" value="512"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].formType" type="number" value="32"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].itemIndex" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].favorite" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].eslId" type="number" value="2083"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].filteredIndex" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].baseId" type="number" value="530467"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].formId" type="number" value="4261943331"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].type" type="number" value="3"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].infoValue" type="number" value="10"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].infoValueWeight" type="number" value="143"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].subTypeDisplay" type="string" value="Currency"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].count" type="number" value="7"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].iconLabel" type="string" value="misc_gold"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].equipState" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].infoWeight" type="number" value="0.07"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].clipIndex" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].iconColor" type="number" value="9207717"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].isEquipped" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].text" type="string" value="Silver Septim"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[8].subType" type="number" value="21"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9]" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].infoDamage" type="null" value=""
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].isEnchanted" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].filterFlag" type="number" value="2"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].formType" type="number" value="41"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].maxRange" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].itemIndex" type="number" value="9"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].minRange" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].favorite" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].eslId" type="number" value="3808"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].stagger" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].reach" type="number" value="1.2999999523162842"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].equipSlot" type="number" value="81730"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].filteredIndex" type="number" value="9"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].type" type="number" value="2"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].formId" type="number" value="319200"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].baseId" type="number" value="319200"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].infoValueWeight" type="number" value="23"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].speed" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].subTypeDisplay" type="string" value="Staff"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].infoValue" type="number" value="183"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].critDamage" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].count" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].iconLabel" type="string" value="weapon_staff"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].equipState" type="number" value="3"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].infoWeight" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].clipIndex" type="number" value="9"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].material" type="null" value=""
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].keywords" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].damage" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].iconColor" type="number" value="10790335"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].materialDisplay" type="string" value="Other"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].isEquipped" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].text" type="string" value="Staff of Flames"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].subType" type="number" value="10"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].isPoisoned" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].baseDamage" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[9].weaponType" type="number" value="8"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10]" type="object" value="{...}"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].infoValueWeight" type="number" value="4"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].enabled" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].infoValue" type="number" value="2"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].subTypeDisplay" type="string" value="Torch"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].count" type="number" value="1"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].iconLabel" type="string" value="misc_torch"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].filterFlag" type="number" value="512"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].equipState" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].infoWeight" type="number" value="0.5"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10]._sortFlag" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].itemIndex" type="number" value="10"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].isStolen" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].favorite" type="number" value="0"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].eslId" type="number" value="1260"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].clipIndex" type="number" value="10"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].skyui_itemDataProcessed" type="bool" value="true"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].isEquipped" type="bool" value="false"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].formType" type="number" value="31"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].text" type="string" value="Torch"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].filteredIndex" type="number" value="10"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].type" type="number" value="3"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].formId" type="number" value="120044"
+[2026-09-10 23:54:41.031] +332393ms MEMBER id=171 path="_root.Menu_mc.inventoryLists.itemList._entryList[10].baseId" type="number" value="120044"
+[2026-09-10 23:54:41.031] +332393ms RESULT id=171 op="gfx.dump" ok=1 menu="InventoryMenu" path="_root.Menu_mc.inventoryLists.itemList._entryList" depth=2 members_logged=384
+[2026-09-10 23:54:41.031] +332393ms COMMAND id=172 op="input.tap" raw="{'op':'input.tap','event':'Cancel','code':1}"
+[2026-09-10 23:54:41.043] +332405ms INPUT_SENT id=172 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-10 23:54:41.143] +332505ms INPUT_SENT id=172 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-10 23:54:41.143] +332505ms RESULT id=172 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:41.143] +332505ms COMMAND id=173 op="wait" raw="{'op':'wait','ms':500}"
+[2026-09-10 23:54:41.644] +333006ms RESULT id=173 op="wait" ok=1 ms=500
+[2026-09-10 23:54:41.644] +333006ms COMMAND id=174 op="input.tap" raw="{'op':'input.tap','event':'Cancel','code':1}"
+[2026-09-10 23:54:41.646] +333008ms INPUT_SENT id=174 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-10 23:54:41.736] +333098ms INPUT_SENT id=174 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-10 23:54:41.736] +333098ms RESULT id=174 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:41.736] +333098ms COMMAND id=175 op="wait" raw="{'op':'wait','ms':500}"
+[2026-09-10 23:54:42.237] +333599ms RESULT id=175 op="wait" ok=1 ms=500
+[2026-09-10 23:54:42.237] +333599ms COMMAND id=176 op="menu.list" raw="{'op':'menu.list'}"
+[2026-09-10 23:54:42.245] +333607ms STACK id=176 depth=0 name="SkyParkour"
+[2026-09-10 23:54:42.245] +333607ms STACK id=176 depth=1 name="BTPS Ovelay Menu"
+[2026-09-10 23:54:42.245] +333607ms STACK id=176 depth=2 name="BTPS Menu"
+[2026-09-10 23:54:42.245] +333607ms STACK id=176 depth=3 name="HUD Menu"
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="SkyParkour" open=1 has_view=1
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="SafeZoneMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="InventoryMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="MapMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Login Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="BTPS Menu" open=1 has_view=1
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="RaceSex Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Kinect Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="MessageBoxMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="HUD Menu" open=1 has_view=1
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="LoadWaitSpinner" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="GiftMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Console" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Mist Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Console Native UI Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="TitleSequence Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Credits Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Training Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Cursor Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Dialogue Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Tutorial Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="FavoritesMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="LevelUp Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Main Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Fader Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="BTPS Ovelay Menu" open=1 has_view=1
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Mod Manager Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="ContainerMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Marketplace Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Lockpicking Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Journal Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Crafting Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="TweenMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="StatsMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Loading Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="CustomMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="BarterMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="MagicMenu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Book Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms MENU id=176 name="Sleep/Wait Menu" open=0 has_view=0
+[2026-09-10 23:54:42.245] +333607ms RESULT id=176 op="menu.list" ok=1 registered=40 open=4 stack=4
+[2026-09-10 23:54:42.247] +333609ms BATCH_DONE n=48 commands=13 archived=1
+[2026-09-10 23:54:43.249] +334611ms BATCH_CLAIMED n=49 stamp="20260911-045443"
+[2026-09-10 23:54:43.249] +334611ms COMMAND id=177 op="input.tap" raw="{'op':'input.tap','code':36,'event':'Journal'}"
+[2026-09-10 23:54:43.262] +334624ms INPUT_SENT id=177 device=0 user_event="Journal" code=36 value=1 held=0
+[2026-09-10 23:54:43.348] +334710ms INPUT_SENT id=177 device=0 user_event="Journal" code=36 value=0 held=0.08
+[2026-09-10 23:54:43.348] +334710ms RESULT id=177 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:43.348] +334710ms COMMAND id=178 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:54:43.752] +335113ms RESULT id=178 op="wait" ok=1 ms=400
+[2026-09-10 23:54:43.752] +335113ms COMMAND id=179 op="gfx.invoke" raw="{'op':'gfx.invoke','menu':'Journal Menu','args':[],'method':'_root.QuestJournalFader.Menu_mc.SystemTab.onPress'}"
+[2026-09-10 23:54:43.757] +335119ms RESULT id=179 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onPress" args=0 ret_type="undefined" ret=""
+[2026-09-10 23:54:43.757] +335119ms COMMAND id=180 op="gfx.invoke" raw="{'op':'gfx.invoke','menu':'Journal Menu','args':[],'method':'_root.QuestJournalFader.Menu_mc.SystemTab.onRelease'}"
+[2026-09-10 23:54:43.772] +335133ms RESULT id=180 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onRelease" args=0 ret_type="undefined" ret=""
+[2026-09-10 23:54:43.772] +335133ms COMMAND id=181 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex','menu':'Journal Menu'}"
+[2026-09-10 23:54:43.776] +335138ms RESULT id=181 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex" type="number" value="0"
+[2026-09-10 23:54:43.777] +335139ms BATCH_DONE n=49 commands=5 archived=1
+[2026-09-10 23:54:44.558] +335920ms BATCH_CLAIMED n=50 stamp="20260911-045444"
+[2026-09-10 23:54:44.559] +335920ms COMMAND id=182 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:44.568] +335930ms INPUT_SENT id=182 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:44.664] +336025ms INPUT_SENT id=182 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:44.664] +336026ms RESULT id=182 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:44.664] +336026ms COMMAND id=183 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:44.696] +336058ms INPUT_SENT id=183 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:44.806] +336167ms INPUT_SENT id=183 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:44.806] +336167ms RESULT id=183 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:44.806] +336168ms COMMAND id=184 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:44.829] +336191ms INPUT_SENT id=184 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:44.913] +336275ms INPUT_SENT id=184 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:44.913] +336275ms RESULT id=184 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:44.913] +336275ms COMMAND id=185 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:44.923] +336285ms INPUT_SENT id=185 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:45.006] +336368ms INPUT_SENT id=185 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:45.006] +336368ms RESULT id=185 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.006] +336368ms COMMAND id=186 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:45.015] +336377ms INPUT_SENT id=186 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:45.098] +336459ms INPUT_SENT id=186 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:45.098] +336459ms RESULT id=186 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.098] +336459ms COMMAND id=187 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:45.107] +336468ms INPUT_SENT id=187 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:45.196] +336558ms INPUT_SENT id=187 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:45.196] +336558ms RESULT id=187 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.196] +336558ms COMMAND id=188 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:45.204] +336566ms INPUT_SENT id=188 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:45.288] +336649ms INPUT_SENT id=188 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:45.288] +336649ms RESULT id=188 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.288] +336649ms COMMAND id=189 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:45.296] +336658ms INPUT_SENT id=189 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:45.380] +336742ms INPUT_SENT id=189 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:45.380] +336742ms RESULT id=189 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.380] +336742ms COMMAND id=190 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:45.389] +336751ms INPUT_SENT id=190 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:45.472] +336834ms INPUT_SENT id=190 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:45.472] +336834ms RESULT id=190 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.472] +336834ms COMMAND id=191 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text','menu':'Journal Menu'}"
+[2026-09-10 23:54:45.481] +336842ms RESULT id=191 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text" type="string" value="$QUIT"
+[2026-09-10 23:54:45.482] +336844ms BATCH_DONE n=50 commands=10 archived=1
+[2026-09-10 23:54:45.733] +337095ms BATCH_CLAIMED n=51 stamp="20260911-045445"
+[2026-09-10 23:54:45.733] +337095ms COMMAND id=192 op="input.tap" raw="{'op':'input.tap','code':28,'event':'Accept'}"
+[2026-09-10 23:54:45.741] +337103ms INPUT_SENT id=192 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:54:45.825] +337187ms INPUT_SENT id=192 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:54:45.825] +337187ms RESULT id=192 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:45.825] +337187ms COMMAND id=193 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:54:46.226] +337587ms RESULT id=193 op="wait" ok=1 ms=400
+[2026-09-10 23:54:46.226] +337587ms COMMAND id=194 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.iSelectedIndex','menu':'Journal Menu'}"
+[2026-09-10 23:54:46.228] +337590ms RESULT id=194 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.iSelectedIndex" type="number" value="-1"
+[2026-09-10 23:54:46.229] +337591ms BATCH_DONE n=51 commands=3 archived=1
+[2026-09-10 23:54:46.731] +338093ms BATCH_CLAIMED n=52 stamp="20260911-045446"
+[2026-09-10 23:54:46.731] +338093ms COMMAND id=195 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:46.733] +338094ms INPUT_SENT id=195 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:46.817] +338179ms INPUT_SENT id=195 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:46.817] +338179ms RESULT id=195 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:46.817] +338179ms COMMAND id=196 op="input.tap" raw="{'op':'input.tap','code':208,'event':'Down'}"
+[2026-09-10 23:54:46.826] +338187ms INPUT_SENT id=196 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-10 23:54:46.909] +338271ms INPUT_SENT id=196 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-10 23:54:46.909] +338271ms RESULT id=196 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:46.909] +338271ms COMMAND id=197 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.selectedEntry.text','menu':'Journal Menu'}"
+[2026-09-10 23:54:46.918] +338280ms RESULT id=197 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.selectedEntry.text" type="string" value="$Desktop"
+[2026-09-10 23:54:46.919] +338281ms BATCH_DONE n=52 commands=3 archived=1
+[2026-09-10 23:54:47.170] +338532ms BATCH_CLAIMED n=53 stamp="20260911-045447"
+[2026-09-10 23:54:47.170] +338532ms COMMAND id=198 op="input.tap" raw="{'op':'input.tap','code':28,'event':'Accept'}"
+[2026-09-10 23:54:47.178] +338540ms INPUT_SENT id=198 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-10 23:54:47.262] +338624ms INPUT_SENT id=198 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-10 23:54:47.262] +338624ms RESULT id=198 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-10 23:54:47.262] +338624ms COMMAND id=199 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-10 23:54:47.663] +339024ms RESULT id=199 op="wait" ok=1 ms=400
+[2026-09-10 23:54:47.663] +339025ms COMMAND id=200 op="gfx.get" raw="{'op':'gfx.get','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.ConfirmPanel.ConfirmText.textField.text','menu':'Journal Menu'}"
+[2026-09-10 23:54:47.666] +339027ms RESULT id=200 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.ConfirmPanel.ConfirmText.textField.text" type="string" value="Quit to desktop?  Any unsaved progress will be lost."
+[2026-09-10 23:54:47.666] +339028ms BATCH_DONE n=53 commands=3 archived=1
+[2026-09-10 23:54:48.168] +339530ms BATCH_CLAIMED n=54 stamp="20260911-045448"
+[2026-09-10 23:54:48.168] +339530ms COMMAND id=201 op="input.tap" raw="{'op':'input.tap','code':28,'event':'Accept'}"
+[2026-09-10 23:54:48.170] +339532ms INPUT_SENT id=201 device=0 user_event="Accept" code=28 value=1 held=0

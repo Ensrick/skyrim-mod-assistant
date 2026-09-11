@@ -1,0 +1,9 @@
+EED R1 (#269) verification launch B of 3, 2026-09-10 23:41:12, same launcher/profile pattern as A (clone "Fable EED R1 B 20260910"), same DLL 0.3.1 fc7fc730... and verification ini, claim fable/eed-r1.
+Verdict: NO CRASH, clean quit, controller exit 0; BUT main menu at t+65.1 s (23:42:28), over the user's 60 s criterion for this attempt (A: 49.6 s; attempt 2: 46.8 s; R0 control: 39.7 s). The plugin's startup work is a JSON parse at kDataLoaded; the spread is not attributed.
+- pid 43796; "EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00030010) loaded correctly (handle 16)".
+- MenuPilot: $NEW 23:42:44; RaceSex 23:42:58; Adventurer; the first MCM open raced the list (retried after closing the Journal); Equipment: Random OFF, One-Handed Sword (fresh profile dialog opens on Nothing: Down x4), Combination Dual, Staff of Flames; Starting Location Solitude; Begin 23:44:27; Save3 SolitudeWorld 23:44:42.
+- Player Load3D task 23:42:50: 257 nodes, all 8 roster nodes present, XPMSE 3.60; placement dump 16 resolved / 0 missing; runtime skeleton dump written.
+- Rules: 23:44:29 Steel Sword 00013989#0 -> hip.right.1h attached to 'WeaponSword'; 23:44:30 Steel Sword 00013989#1 -> hip.left.1h attached to 'WeaponSwordLeft'; Staff of Flames -> hand.left (not equipped), then equipped -> hand.right (in hand; R3). 36 log lines, 0 [error].
+- Ready Weapon draw/sheathe 23:45:4x with both copies attached: paused=0, no crash.
+- Soak 23:44:42-23:47:51 alive; PopupGuard intercepted nothing; InventoryMenu dump 23:48:0x: 8 entries, Steel Sword x2 (equipState 0), Staff of Flames (equipState 3), Steel Armor/Boots/Gauntlets, Torch, Bread, Copper Septim: governed weapons 3 == board visible 3.
+- Quit: confirm "Quit to desktop?  Any unsaved progress will be lost." Accept 23:48:24; controller exit 0.

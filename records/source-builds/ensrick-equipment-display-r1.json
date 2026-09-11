@@ -8,7 +8,8 @@
   "sourceCommits": {
     "0.2.1": "fe6b538 (no-modal CommonLibSSE-NG, /WX, CTest, reproducible build)",
     "0.3.0": "1a976ff (R1, every inventory weapon at its slot)",
-    "0.3.1": "e13993a (clone through NiObject::Clone; R1 launch findings)"
+    "0.3.1": "e13993a (clone through NiObject::Clone; R1 launch findings)",
+    "0.3.2": "732e72a (skeleton dump depth 64, placement dump parent chains; built once, sha256 84bc61e4140fd660fc9ac63a3204323bfb240a5b53ce7fc0647de17a4a910cdb, not launched)"
   },
   "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/269",
   "rulesIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/36",
@@ -43,7 +44,14 @@
     "MenuPilot driver: records/log-snapshots/20260910-231046-eed-r1/eed-r1-ui.ps1 (New/Race/MCM/Keys/Open/Nav/Accept/Begin/Quit; adapted from records-work/ussep439c-fresh-ui-20260910.ps1 and docs/MENUPILOT.md's quit recipe)",
     "py -3 audit/menupilot.py send ... (InventoryMenu dump via Tween Menu -> Right -> Accept)",
     "MO2Headless.exe -p Default mod-disable \"Ensrick - Equipment Display\"",
-    "py -3 audit/claim.py release --owner fable/eed-r1"
+    "py -3 audit/claim.py release --owner fable/eed-r1",
+    "py -3 audit/claim.py acquire --owner fable/eed-r1 --purpose \"R1 verification x3 with left-hand weapon and staff (#269)\" --ttl 90",
+    "pwsh -NoProfile -File mods/weapon-balance/audit.ps1 -FreshnessOnly   (before and after the three launches: sourceFingerprintMatches true, filesWritten 0, no #253 drift)",
+    "MO2Headless.exe -p Default mod-stage <scratchpad eed-r1-stage> \"Ensrick - Equipment Display\" --replace --enable   (clean 0.3.1 DLL fc7fc730..., verification ini + DumpSkeleton=1) -> txn 20260911T043151831Z-65aa62ff921a",
+    "records/installed-mods.json: row 'Ensrick - Equipment Display' appended by atomic replace (tempfile + os.replace), install_mod.py --verify 0 problems; enabled set false at the end",
+    "pwsh -NoProfile -File audit/launch_skyrim_isolated.ps1 -WaitSeconds 900 -TestProfileName 'Fable EED R1 {A,B,C} 20260910' -SourceProfileName Default -ClaimOwner fable/eed-r1   (three launches; the script's ValidateRange raised 600 -> 900 this session)",
+    "MenuPilot per launch: New, Race, MCM, Equipment page (Random off, One-Handed Sword, Combination Dual, Staff = Destruction - Staff of Flames), Starting Location City > Solitude, Begin; Ready Weapon x2 at world+60 s; Tween Menu > Items dump; Journal quit",
+    "MO2Headless.exe -p Default mod-disable \"Ensrick - Equipment Display\" -> txn 20260911T045540356Z-0e8637c5ff31"
   ],
   "buildHistory": [
     "0.2.1 pass 1 (189 s, warm vcpkg): 3/3 tests; first build with the generated declaration read versionIndependenceEx=1 and passed the loader's timestamp guess only because the /Brepro stamp (414355472, 1983) fell below the reject window; the declaration was then written by hand with the V5 bit",
@@ -56,9 +64,22 @@
   "dllSha256": "141576f004fd42f330c6517a42a0184a8a0184bf5082525755cd77a112f059de",
   "dllSha256Note": "0.3.1 as launched in attempt 2 (incremental build). The two clean builds of the same sources (commit e13993a) are byte-identical to each other at sha256 fc7fc73024b9ddd51a78bf6156d1afe95d719a470d177d4b9322ba6ec549ccba (865,280 bytes) but differ from this launched incremental build (same size; the ninja log shows all 13 plugin objects and the PCH were recompiled in the incremental pass). The cause of the incremental-vs-clean difference under /Brepro is not established [unverified]. dist/ and the tree ship the clean bytes; the launched bytes are kept at records-work/eed-r1-20260910/EnsrickEquipmentDisplay-0.3.1-launched-141576f0.dll (ignored) and in the disabled mod folder.",
   "dllBytes": 865280,
-  "dllImports": ["api-ms-win-crt-*", "KERNEL32.dll", "MSVCP140.dll", "ole32.dll", "SHELL32.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll", "VERSION.dll"],
+  "dllImports": [
+    "api-ms-win-crt-*",
+    "KERNEL32.dll",
+    "MSVCP140.dll",
+    "ole32.dll",
+    "SHELL32.dll",
+    "VCRUNTIME140.dll",
+    "VCRUNTIME140_1.dll",
+    "VERSION.dll"
+  ],
   "dllImportNote": "No USER32.dll import at all: MessageBoxA/W, MessageBoxExA/W, FatalAppExitA/W absent (tools/pe_imports.py, CTest no_modal_imports). skse64.log no longer prints the 'automation silent UI: redirected 1 modal import(s)' line R0 saw for the phase-2 DLL.",
-  "dllExports": ["SKSEPlugin_Load", "SKSEPlugin_Query", "SKSEPlugin_Version"],
+  "dllExports": [
+    "SKSEPlugin_Load",
+    "SKSEPlugin_Query",
+    "SKSEPlugin_Version"
+  ],
   "staticVerification": {
     "skseMetadata": "PASS (version independent): name=EnsrickEquipmentDisplay pluginVersion=0.3.1.0 author=Ensrick versionIndependence=1 versionIndependenceEx=3 (NoStructUse + AddressLibraryV5); the PE stamp is a /Brepro content hash and no longer matters to the loader's guess",
     "ctest": "4/4: slot_rules (63 checks: the 52 lifted from the retired mods/visible-equipment scaffold plus 11 for 64-bit tokens, PlaceAt and the PackedDaggers roster), placement_table (90 checks: defaults, shipped placements.json round trip, user overlay, 12 malformed-entry cases), no_modal_imports, no_modal_source",
@@ -105,10 +126,20 @@
       "quit": "Journal -> $QUIT -> $Desktop -> 'Quit to desktop?  Any unsaved progress will be lost.' -> Accept 23:17:29; SkyrimSE/ModOrganizer/MO2Headless gone by 23:17:51; controller exit 0 at 23:17:32; no new crash log (latest remains attempt 1's)",
       "verdict": "PASS for the R1 criteria set by the dispatch: main menu < 60 s, fresh character, R1 hooks and sinks live, the rules engine deciding on real inventory events with item / board / verdict logged, no [error], no crash log, PopupGuard nothing, 180 s soak, clean quit"
     },
-    "notExercised": "the copies' appearance on the body (headless, no eyes); a left-hand weapon (the dual-sheath cull path); packed daggers; a refused copy (a seventh weapon); NPC displays; a save load (fresh character by design, #262/#268). The R1 exit criterion 'user sees every carried weapon at a slot' still needs the user's eyes."
+    "notExercised": "the copies' appearance on the body (headless, no eyes); a left-hand weapon (the dual-sheath cull path); packed daggers; a refused copy (a seventh weapon); NPC displays; a save load (fresh character by design, #262/#268). The R1 exit criterion 'user sees every carried weapon at a slot' still needs the user's eyes.",
+    "protocolThreeLaunches": {
+      "dll": "0.3.1 clean build fc7fc73024b9ddd51a78bf6156d1afe95d719a470d177d4b9322ba6ec549ccba (installed hash verified before launch A)",
+      "gear": "Skyrim Unbound Equipment MCM set through MenuPilot each launch: Random OFF, One-Handed = Sword, One-Handed Combination = Dual, Staff = Destruction - Staff of Flames, Starting Location City > Solitude; Unbound gave two identical one-handed swords (unequipped) and equipped the staff in the right hand",
+      "A": "23:32:24 pid 34632, main menu t+49.6 s, world 23:36:34; Steel Sword 00013989#0 attached to 'WeaponSword', #1 attached to 'WeaponSwordLeft'; Staff of Flames equipped -> hand.right (R3); draw/sheathe with copies attached, paused=0; soak 185 s; 36 log lines 0 [error]; PopupGuard nothing; clean quit 23:40:15, controller exit 0; snapshot records/log-snapshots/20260910-233224-eed-r1-A/",
+      "B": "23:41:12 pid 43796, main menu t+65.1 s (OVER the 60 s criterion; A 49.6, C 34.5, attempt 2 46.8, R0 control 39.7: the spread is not attributed), world 23:44:42; same attach pair (Steel Sword x2 on WeaponSword/WeaponSwordLeft), staff right hand; draw/sheathe OK; soak 189 s; InventoryMenu: Steel Sword x2 equipState 0, Staff of Flames equipState 3 = governed 3 == board visible 3; clean quit 23:48:24, controller exit 0; snapshot 20260910-234112-eed-r1-B/",
+      "C": "23:48:58 pid 42764, main menu t+34.5 s, world 23:51:05; Iron Sword 00012EB7#0/#1 attached to WeaponSword/WeaponSwordLeft (Weapon Set random rolled iron), staff right hand; draw/sheathe OK; soak 191 s; InventoryMenu: Iron Sword x2, Staff of Flames equipState 3; clean quit 23:54:58, controller exit 0; snapshot 20260910-234858-eed-r1-C/",
+      "crashCount": "0 of 3 (0 of 4 with 0.3.1 counting attempt 2); the only crash of the session is attempt 1 on 0.3.0",
+      "runtimeSkeleton": "main-thread skeleton dumps written each launch (DumpSkeleton=1): 243 nodes within the depth-24 cap, 7 MOV, 63 CME, 9 runtime-only hdtSSE/FaceGen nodes; the traversal lists only the right-hand weapon chains under Weapon Pelvis while GetObjectByName finds WeaponSwordLeft and the copy attaches to it (recorded in the tree's docs/NODE_INVENTORY.md; 0.3.2 adds the parent chain to the placement dump)",
+      "notExercised": "a weapon equipped in the LEFT hand (the cull-when-drawn path): Unbound put the staff in the right hand and left both swords unequipped; no keyboard user event equips to the left hand through the inventory; a refused copy; NPCs; visual check"
+    }
   },
-  "profileStateAtExit": "Ensrick - Equipment Display DISABLED (modlist line 56 '-', priority 299), folder keeps the 0.3.1 DLL 141576f0... and the verification ini (Rules Enabled=1, DumpPlacements=1, Level=debug) and placements.json; no plugin added or removed; no order change made by this run; Simple Dual Sheath unchanged (enabled); test profile 'Fable EED R1 20260910' keeps its private saves (Save1..Save3, LocalSaves=true); the user's Saves folder untouched (197 entries before and after); claim fable/eed-r1 released 23:18",
+  "profileStateAtExit": "Ensrick - Equipment Display DISABLED again (mod-disable 20260911T045540356Z-0e8637c5ff31, modlist line 56 '-', priority 299); folder keeps the CLEAN 0.3.1 DLL fc7fc730... and the verification ini (Rules Enabled=1, DumpSkeleton=1, DumpPlacements=1, Level=debug) and placements.json; ledger row present with enabled=false; no plugin or order change (weapon gate PASS before and after); Simple Dual Sheath unchanged (enabled); test profiles 'Fable EED R1 {,A,B,C} 20260910' keep private saves; the user's Saves folder untouched; claim fable/eed-r1 released 23:56",
   "limitations": "Headless runs: nothing visual confirmed. Unbound's random gear gave a warhammer (attempt 1) and a bow plus mace (attempt 2) and then took them back, so after 23:13:20 nothing was displayed for the rest of the soak. The Equipment page of Unbound's MCM was dumped (Random weapons ON) but not changed, for time inside the launcher's 600 s controller budget. Attempt 1's crash is fixed by construction (the engine function is no longer called), proven only by attempt 2 not crashing on two models.",
   "rollback": "Nothing to roll back in the profile (disabled). To remove entirely: mod-trash under a claim. Tree: git revert of 0.3.x keeps 0.2.1's hardening.",
-  "hours": "about 3.3 h wall clock (22:04-23:25) including two builds pairs, two launches and the R0 analysis"
+  "hours": "about 4.0 h wall clock (22:04-00:05) including two build pairs, five launches (attempts 1-2, A, B, C) and the R0 analysis"
 }

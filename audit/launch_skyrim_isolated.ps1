@@ -1,7 +1,7 @@
 #requires -Version 7.0
 [CmdletBinding()]
 param(
-    [ValidateRange(30, 600)]
+    [ValidateRange(30, 900)]
     [int] $WaitSeconds = 120,
     [ValidatePattern('^[A-Za-z0-9 _-]+$')]
     [string] $TestProfileName = 'Codex Smoke - Muted',
