@@ -1,0 +1,9 @@
+EED R1 (#269) verification attempt 1, 2026-09-10 23:01:51, audit/launch_skyrim_isolated.ps1 (private QuietWorker desktop, muted clone "Fable EED R1 20260910" of Default, LocalSaves=true), claim fable/eed-r1.
+Mod "Ensrick - Equipment Display" priority 299, DLL 0.3.0 sha256 413c4fd21ad15f8e096da8404973a2e28183a6b12fdae641cdfb6160dd03569e (EnsrickEquipmentDisplay 1a976ff), ini: verification config (Level=debug FlushLevel=debug, [Rules] Enabled=1 PlayerOnly=1, DumpPlacements=1), placements.json shipped.
+Verdict: CRASH 5 s after world entry, attributed to the plugin.
+- pid 31100; MAIN_MENU_OPEN t+41.0 s; skse64.log "EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00030000) loaded correctly (handle 16)"; 51 loaded, 0 refused; PopupGuard intercepted nothing.
+- MenuPilot: New 23:03:00, Race Done 23:03:22, Unbound MCM (Equipment page dumped: Random weapons ON), Begin Your Adventure 23:05:41 (random location).
+- Player Load3D task 23:03:06: race NordRace male, skeleton.nif, tree 257 nodes, all 8 roster nodes present, XPMSE 3.60; placement dump load3d 16 targets resolved, 0 missing.
+- 23:05:45 rules: Steel Warhammer 0001398A#0 [two-handed] -> back.2h (accept), 1 request.
+- 23:05:50 crash-2026-09-10-23-05-50.log: EXCEPTION_ACCESS_VIOLATION in VCRUNTIME140 memcpy writing at a page boundary; stack: engine NiObject::CreateDeepCopy (70191) <- EnsrickEquipmentDisplay Attach.cpp:159 BuildDisplay <- DisplayManager::Apply/Refresh/RunScheduled (SKSE task) <- BSTaskPool::ProcessTasks. Relevant objects: DeepCopyStream, NiMemStream, bhkRigidBody, TESObjectWEAP Steel Warhammer, NiNode WeaponBackAxeMace.
+- Controller exit 0 at 23:05:56 (game gone). Fix: 0.3.1 clones via NiObject::Clone() and strips collision.

@@ -1,0 +1,14 @@
+EED R1 (#269) verification attempt 2, 2026-09-10 23:10:46, audit/launch_skyrim_isolated.ps1 (private QuietWorker desktop, muted clone "Fable EED R1 20260910" of Default, LocalSaves=true), claim fable/eed-r1.
+Mod "Ensrick - Equipment Display" priority 299, DLL 0.3.1 sha256 141576f004fd42f330c6517a42a0184a8a0184bf5082525755cd77a112f059de (replace txn 20260911T041034582Z-83722a4f8770), same verification ini as attempt 1.
+Verdict: PASS for the R1 criteria (main menu < 60 s, fresh character, hooks and sinks live, rules engine deciding on real inventory events, no [error], no crash, PopupGuard nothing, 180 s soak, clean quit).
+- pid 29276; MAIN_MENU_OPEN t+46.8 s (23:11:43); "EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00030010) loaded correctly (handle 16)"; 51 loaded, 0 refused.
+- MenuPilot: main menu showed $CONTINUE (clone profile has attempt-1 saves), Down -> $NEW, New 23:12:24; RaceSex 23:12:40; Race Done 23:12:54; MCM -> Main page -> Begin Your Adventure 23:13:14 (random gear, random location = MorthalGuardhouseJail).
+- Player Load3D task 23:12:35: NordRace male, skeleton.nif, 257 nodes, all 8 roster nodes present, XPMSE 3.60 (expected 3.60); placement dump load3d: 263 nodes, 16 targets resolved, 0 missing.
+- 23:13:17.655 Hunting Bow 00013985#0 [bow] -> back.bow (accept); attached back.bow to 'WeaponBow'.
+- 23:13:18.068 Iron Mace 00013982#0 [one-handed] -> hip.right.1h (accept); attached hip.right.1h to 'WeaponMace'.
+- 23:13:19.198 Iron Mace equipped -> hip.right.1h (accept): engine-drawn; detached hip.right.1h (our copy comes down, the game draws the sheathed mace itself).
+- 23:13:20.501 board empty, detached back.bow: Unbound removed both weapons. Confirmed by the InventoryMenu dump at 23:17:07: 3 entries, Lockpick, Ragged Boots, Ragged Robes, no weapon. Inventory weapon count 0 == visible 0.
+- Save3 23:13:20 (Unbound autosave), world 23:13:22; soak 23:13:22-23:16:22 alive, no crash, EnsrickEquipmentDisplay.log 33 lines, 0 [error]/[critical]; PopupGuard: only its two phase lines.
+- Quit: Journal -> $QUIT -> $Desktop -> "Quit to desktop?  Any unsaved progress will be lost." -> Accept 23:17:29; processes gone by 23:17:51; controller exit 0 at 23:17:32; no new crash log (latest remains attempt 1's 23-05-50).
+- Not exercised: left-hand weapon (dual-sheath cull path), packed daggers, a refused copy, user's eyes on the copies. No _postload placement dump: kNewGame fired before the player had 3D.
+- Profile after: mod-disable txn 20260911T041816047Z-ef5e107efa22, modlist line 56 "-", folder keeps the 0.3.1 DLL and the verification ini.

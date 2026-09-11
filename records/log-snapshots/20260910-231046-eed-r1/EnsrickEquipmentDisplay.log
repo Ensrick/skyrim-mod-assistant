@@ -1,0 +1,33 @@
+[23:10:56.423] [info] loaded Data\SKSE\Plugins\EnsrickEquipmentDisplay.ini
+[23:10:56.423] [info] settings: DualSheath Enable=true PlayerOnly=false Staves=true | Rules Enabled=true PlayerOnly=true PackedDaggers=2 | Diagnostics DumpSkeleton=false DumpPlacements=true
+[23:10:56.423] [info] settings: read but not acted on in this build: Rules EnforcePickup=true ReconcileContainerChanges=true (R2) | Staff Enabled=true TwoHandedUnequipsStaff=true (R3) | Compat OarConditions=true OarLegacyPluginAlias=false (R3) | Display FirstPersonStaff=false (R4) ActionEventDrawnState=true (R2)
+[23:10:56.423] [info] EnsrickEquipmentDisplay 0-3-1-0 loading against runtime 1-7-104-0
+[23:10:56.721] [debug] kPostLoad
+[23:10:57.122] [warning] SimpleDualSheath.dll is loaded alongside this plugin; both display the left-hand weapon, expect a double display until one of them is removed
+[23:11:41.672] [info] placements: merged placements.json (12 slot(s), 0 warning(s))
+[23:11:41.672] [debug] placements: no Data\SKSE\Plugins\EnsrickEquipmentDisplay\placements.user.json
+[23:11:41.672] [info] placements: roster hip.right.1h=WeaponSword hip.left.1h=WeaponSwordLeft hip.right.dagger=WeaponDagger hip.left.dagger=WeaponDaggerLeft back.2h=WeaponBack back.bow=WeaponBow hand.left=NPC L Hand [LHnd] hand.right=NPC R Hand [RHnd] backpack.dagger.1=(hidden) backpack.dagger.2=(hidden)
+[23:11:41.672] [info] placements: expecting XPMSE 3.6 skeleton, nif sha256 d922d4a6309672c27ce3fe579353b925abe32841a9f12bc09266627188fd6fbf
+[23:11:41.672] [info] hooked Character::Load3D (vtable 7FF6526E3258, vfunc 0X6A)
+[23:11:41.672] [info] hooked PlayerCharacter::Load3D (vtable 7FF6526E96C0, vfunc 0X6A)
+[23:11:41.672] [info] registered equip event sink
+[23:11:41.672] [info] registered container-changed event sink (refresh trigger; R2 adds the gate)
+[23:12:25.862] [info] kNewGame: scheduling a player refresh
+[23:12:35.010] [info] skeleton: player race NordRace (00013746) sex male model 'Actors\Character\Character Assets\skeleton.nif'; tree root 'skeleton.nif' with 257 node(s)
+[23:12:35.011] [info] skeleton: all 8 roster nodes present by name
+[23:12:35.011] [info] skeleton: XPMSE 3.60 on 'NPC' (expected 3.60)
+[23:12:35.011] [info] rules 00000014: board hip.right.1h=- hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 0 packed 0 refused 0 ungoverned 0 requests 0
+[23:12:35.012] [info] placement dump (load3d): 263 node(s) in the tree, 16 placement target(s) resolved, 0 missing, written to C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\EnsrickEquipmentDisplay_Placements_00000014_load3d.txt
+[23:13:17.655] [info] rules 00000014: Hunting Bow 00013985#0 [bow] -> back.bow (accept)
+[23:13:17.655] [info] rules 00000014: board hip.right.1h=- hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=Hunting Bow hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 1 packed 0 refused 0 ungoverned 0 requests 1
+[23:13:17.671] [info] attached back.bow 00013985#0 (bow) to 'WeaponBow' on actor 00000014 (drawn=false, culled=false)
+[23:13:18.068] [info] rules 00000014: Iron Mace 00013982#0 [one-handed] -> hip.right.1h (accept)
+[23:13:18.068] [info] rules 00000014: Hunting Bow 00013985#0 [bow] -> back.bow (accept)
+[23:13:18.068] [info] rules 00000014: board hip.right.1h=Iron Mace hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=Hunting Bow hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 2 packed 0 refused 0 ungoverned 0 requests 2
+[23:13:18.115] [info] attached hip.right.1h 00013982#0 (mace) to 'WeaponMace' on actor 00000014 (drawn=false, culled=false)
+[23:13:19.198] [info] rules 00000014: Iron Mace 00013982#0 [one-handed] equipped -> hip.right.1h (accept): engine-drawn
+[23:13:19.198] [info] rules 00000014: Hunting Bow 00013985#0 [bow] -> back.bow (accept)
+[23:13:19.198] [info] rules 00000014: board hip.right.1h=Iron Mace* hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=Hunting Bow hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 2 packed 0 refused 0 ungoverned 0 requests 1
+[23:13:19.204] [info] detached hip.right.1h 00013982#0 from 'WeaponMace' on actor 00000014 (1 node(s) removed)
+[23:13:20.501] [info] rules 00000014: board hip.right.1h=- hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | visible 0 packed 0 refused 0 ungoverned 0 requests 0
+[23:13:20.501] [info] detached back.bow 00013985#0 from 'WeaponBow' on actor 00000014 (1 node(s) removed)

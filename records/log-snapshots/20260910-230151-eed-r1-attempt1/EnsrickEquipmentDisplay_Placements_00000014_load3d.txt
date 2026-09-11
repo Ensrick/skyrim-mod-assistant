@@ -1,0 +1,78 @@
+EnsrickEquipmentDisplay placement dump for 00000014 (Adventurer), phase load3d
+root 'skeleton.nif', 263 node(s) in the tree
+Rotations are XYZ Euler radians. World is the node's transform at the moment of the dump.
+
+hip.right.1h
+  node 'WeaponSword'
+    local  translate (-13.745, 2.050, 7.066) rotate (-3.4601, -1.3467, -1.2539) scale 1.000
+    world  translate (3766.964, -501.763, -129.330) rotate (2.1728, 1.1933, 1.2737) scale 1.030
+  byType 3 'WeaponAxe'
+    local  translate (20.374, -1.938, -18.914) rotate (-1.6975, 0.9146, 0.4543) scale 1.000
+    world  translate (3744.450, -472.536, -154.179) rotate (-1.9956, -0.9832, 0.2290) scale 1.030
+  byType 4 'WeaponMace'
+    local  translate (14.400, -3.347, 3.359) rotate (-3.3792, 1.4732, 1.4770) scale 1.000
+    world  translate (3739.772, -489.454, -131.891) rotate (-1.9940, -1.3742, 3.3817) scale 1.030
+
+hip.left.1h
+  node 'WeaponSwordLeft'
+    local  translate (11.892, 1.917, 6.666) rotate (-3.4620, 1.3474, 1.2563) scale 1.000
+    world  translate (3739.297, -495.072, -129.799) rotate (-3.7568, -1.3191, -3.3776) scale 1.030
+  byType 3 'WeaponAxeLeft'
+    local  translate (-18.992, -2.994, -19.049) rotate (-1.6977, -0.9149, -0.4541) scale 1.000
+    world  translate (3771.982, -479.585, -154.527) rotate (-3.4742, 1.3218, 0.6412) scale 1.030
+  byType 4 'WeaponMaceLeft'
+    local  translate (-12.369, -3.395, 3.168) rotate (-3.3882, -1.4741, -1.4869) scale 1.000
+    world  translate (3768.638, -496.150, -131.993) rotate (1.8620, 1.2751, 0.9347) scale 1.030
+
+hip.right.dagger
+  node 'WeaponDagger'
+    local  translate (-10.649, 7.679, 3.268) rotate (-1.7030, -0.8210, -3.5430) scale 1.000
+    world  translate (3763.628, -508.792, -133.716) rotate (1.6314, 0.5898, -0.3845) scale 1.030
+
+hip.left.dagger
+  node 'WeaponDaggerLeft'
+    local  translate (8.609, 5.787, 2.991) rotate (-1.7041, 0.8212, 3.5437) scale 1.000
+    world  translate (3738.758, -500.909, -133.943) rotate (1.6670, -1.0522, 0.4311) scale 1.030
+
+back.2h
+  node 'WeaponBack'
+    local  translate (12.549, -10.093, 28.809) rotate (1.5196, -0.0040, 0.3650) scale 0.960
+    world  translate (3743.361, -485.034, -80.368) rotate (-1.8347, 0.2409, 3.5162) scale 0.989
+  byType 6 'WeaponBackAxeMace'
+    local  translate (12.549, -6.345, 28.651) rotate (1.5197, -0.0041, 0.3657) scale 0.960
+    world  translate (3742.461, -488.551, -81.692) rotate (-1.8349, 0.2410, 3.5168) scale 0.989
+
+back.bow
+  node 'WeaponBow'
+    local  translate (-3.558, -13.844, 2.559) rotate (-1.5357, 0.1945, -3.6243) scale 1.000
+    world  translate (3760.626, -482.076, -109.518) rotate (1.4001, -0.4313, -0.4701) scale 1.030
+  byType 9 'WeaponCrossBow'
+    local  translate (-3.558, -10.578, 2.465) rotate (-1.5347, 0.1944, -3.6250) scale 1.000
+    world  translate (3760.519, -482.762, -108.490) rotate (1.3047, -0.4313, -0.4937) scale 1.030
+
+hand.right
+  node 'NPC R Hand [RHnd]'
+    local  translate (0.000, 0.000, 16.047) rotate (0.0473, -0.1144, -1.2665) scale 1.000
+    world  translate (3731.640, -491.478, -136.594) rotate (-3.3870, 0.0967, -1.3928) scale 1.030
+  offset pos (-5.000, 4.500, 11.500) rot (2.001106, 0.196279, -0.367237) scale 1.000
+
+hand.left
+  node 'NPC L Hand [LHnd]'
+    local  translate (0.000, 0.000, 16.047) rotate (-0.0632, 0.0460, 1.1220) scale 1.000
+    world  translate (3773.783, -502.083, -136.518) rotate (-3.5273, -0.0364, 1.0705) scale 1.030
+  offset pos (1.000, 7.000, 12.500) rot (-2.071184, -0.277077, -0.187825) scale 1.000
+
+backpack.dagger.1  hidden (no node)
+
+backpack.dagger.2  hidden (no node)
+
+sheath.staff.right
+  node 'WeaponStaff'
+    local  translate (0.000, -10.078, 2.465) rotate (1.6219, 0.1944, -3.6250) scale 1.000
+    world  translate (3756.836, -482.410, -108.412) rotate (-1.8477, 0.0423, -0.4706) scale 1.030
+
+sheath.staff.left
+  node 'WeaponStaffLeft'
+    local  translate (0.000, -10.578, 2.465) rotate (-1.3451, 0.1944, -0.4835) scale 1.000
+    world  translate (3757.441, -479.971, -107.849) rotate (1.1004, -0.4249, -3.6836) scale 1.030
+

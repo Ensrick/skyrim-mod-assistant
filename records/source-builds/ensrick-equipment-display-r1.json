@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Equipment Display",
+  "componentNote": "EnsrickEquipmentDisplay (working name; the user names his mods), R1 of the #36 rules layer on top of phase 2 (spec docs/VISIBLE-EQUIPMENT-PLUGIN-DESIGN-2026-09-10.md section 13: H1-H4, H8, H11), plus the hardening 0.2.1 and the 0.3.1 crash fix from the first R1 launch. Built, launched twice on the private desktop under claim fable/eed-r1, and left DISABLED in the profile as R0 left it.",
+  "version": "0.3.1 (SKSEPlugin_Version pluginVersion 0.3.1.0; log says 'EnsrickEquipmentDisplay 0-3-1-0'); 0.3.0 was the first launched build (crashed, see runtimeVerification)",
+  "sourceUrl": "https://github.com/Ensrick/EnsrickEquipmentDisplay (private)",
+  "sourcePath": "C:/Users/danjo/source/repos/skyrim-tools-source/EnsrickEquipmentDisplay",
+  "sourceCommits": {
+    "0.2.1": "fe6b538 (no-modal CommonLibSSE-NG, /WX, CTest, reproducible build)",
+    "0.3.0": "1a976ff (R1, every inventory weapon at its slot)",
+    "0.3.1": "e13993a (clone through NiObject::Clone; R1 launch findings)"
+  },
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/269",
+  "rulesIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/36",
+  "runtime": "Skyrim SE 1.7.104; VersionIndependence::AddressLibrary with Independent structs and the AddressLibraryV5 bit (versionIndependence=1, versionIndependenceEx=3), no runtime ceiling; REL resolves through the Address Library at run time",
+  "dependencies": {
+    "CommonLibSSE-NG": {
+      "version": "6.7.1 plus the Ensrick no-modal branch",
+      "commit": "68b6ba48d163093527dc4421861a9333d65ae0ce",
+      "branch": "ensrick/no-modal-fail-v6.7.1",
+      "repository": "https://github.com/Ensrick/CommonLibSSE-NG",
+      "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1-no-modal (openvr submodule 60eb1878 initialised; extern/CommonLibSSE-NG in the tree is a directory symlink to it)",
+      "delta": "upstream 6.7.1 (70c1acd) + e94bc527 (opt-in COMMONLIBSSE_NO_MODAL_ERRORS: report_and_error logs, flushes, TerminateProcess; RUNTIME_SSE_1_7_104) + 68b6ba48 (define it on the library target). The tree defines it with add_compile_definitions before add_subdirectory so every TU, the library's own included, shares the one inline copy.",
+      "pin": "CMakeLists.txt refuses any other revision unless EED_ALLOW_UNPINNED_COMMONLIB=ON",
+      "license": "GPL-3.0-or-later with the modding exception (EXCEPTIONS.md)"
+    },
+    "vcpkg": {
+      "root": "C:/Users/danjo/source/repos/vcpkg",
+      "builtinBaseline": "8d3649ba34aab36914ddd897958599aa0a91b08e",
+      "triplet": "x64-windows-static-md",
+      "manifest": "vcpkg.json (directxmath, directxtk, fmt, nlohmann-json 3.11.3, rapidcsv, simpleini, spdlog 1.13.0, toml11, xbyak)"
+    }
+  },
+  "compiler": "MSVC 19.44.35223 (VS 2022 Community 17.14) x64, CMake preset build-relwithdebinfo-se-only (Ninja, RelWithDebInfo, -UENABLE_SKYRIM_VR), C++23, LTCG; plugin and test targets /W4 /WX /permissive- /Zc:preprocessor /EHsc /utf-8 /Brepro, link /Brepro /OPT:REF /OPT:ICF; dynamic CRT (MultiThreadedDLL)",
+  "commandLines": [
+    "build_1_7_104.cmd  (cd to the tree; vcvars64; cmake --preset build-relwithdebinfo-se-only; cmake --build build/relwithdebinfo-se-only; ctest --test-dir build/relwithdebinfo-se-only --output-on-failure)",
+    "py -3 audit/skse_version_data.py <dll>",
+    "py -3 <tree>/tools/pe_imports.py <dll>   (also CTest no_modal_imports)",
+    "py -3 audit/claim.py acquire --owner fable/eed-r1 --purpose \"R1 verification launch (#269)\" --ttl 90",
+    "MO2Headless.exe -p Default mod-stage <scratchpad eed-r1-stage> \"Ensrick - Equipment Display\" --replace --enable   (attempt 1 install)",
+    "MO2Headless.exe -p Default mod-stage <scratchpad eed-r1-stage> \"Ensrick - Equipment Display\" --replace   (attempt 2, 0.3.1 DLL)",
+    "pwsh -NoProfile -File audit/launch_skyrim_isolated.ps1 -WaitSeconds 600 -TestProfileName 'Fable EED R1 20260910' -SourceProfileName Default -ClaimOwner fable/eed-r1   (started detached; the script caps WaitSeconds at 600)",
+    "MenuPilot driver: records/log-snapshots/20260910-231046-eed-r1/eed-r1-ui.ps1 (New/Race/MCM/Keys/Open/Nav/Accept/Begin/Quit; adapted from records-work/ussep439c-fresh-ui-20260910.ps1 and docs/MENUPILOT.md's quit recipe)",
+    "py -3 audit/menupilot.py send ... (InventoryMenu dump via Tween Menu -> Right -> Accept)",
+    "MO2Headless.exe -p Default mod-disable \"Ensrick - Equipment Display\"",
+    "py -3 audit/claim.py release --owner fable/eed-r1"
+  ],
+  "buildHistory": [
+    "0.2.1 pass 1 (189 s, warm vcpkg): 3/3 tests; first build with the generated declaration read versionIndependenceEx=1 and passed the loader's timestamp guess only because the /Brepro stamp (414355472, 1983) fell below the reject window; the declaration was then written by hand with the V5 bit",
+    "0.2.1 clean 1 and clean 2 (208 s, 249 s): byte-identical, DLL sha256 a8a535183a5fde051b2fd778bc51a80ad0a6c7546578fa3e79e8ed2c75c81dae, 615,936 bytes",
+    "0.3.0 incremental: 1 compile error (logger::log is not an SKSE::log function; spdlog::log), then clean; clean 1 and clean 2 (213 s, 275 s): byte-identical, DLL sha256 413c4fd21ad15f8e096da8404973a2e28183a6b12fdae641cdfb6160dd03569e, 864,256 bytes; installed for attempt 1",
+    "0.3.1 incremental (30 s): DLL sha256 141576f004fd42f330c6517a42a0184a8a0184bf5082525755cd77a112f059de; installed for attempt 2",
+    "0.3.1 clean 1 and clean 2 (230 s, 230 s): byte-identical, DLL sha256 fc7fc73024b9ddd51a78bf6156d1afe95d719a470d177d4b9322ba6ec549ccba, 865,280 bytes; SlotRulesTests.exe 1ea14012... and PlacementTableTests.exe 8ffdb4cb... unchanged from 0.3.0"
+  ],
+  "dllName": "EnsrickEquipmentDisplay.dll",
+  "dllSha256": "141576f004fd42f330c6517a42a0184a8a0184bf5082525755cd77a112f059de",
+  "dllSha256Note": "0.3.1 as launched in attempt 2 (incremental build). The two clean builds of the same sources (commit e13993a) are byte-identical to each other at sha256 fc7fc73024b9ddd51a78bf6156d1afe95d719a470d177d4b9322ba6ec549ccba (865,280 bytes) but differ from this launched incremental build (same size; the ninja log shows all 13 plugin objects and the PCH were recompiled in the incremental pass). The cause of the incremental-vs-clean difference under /Brepro is not established [unverified]. dist/ and the tree ship the clean bytes; the launched bytes are kept at records-work/eed-r1-20260910/EnsrickEquipmentDisplay-0.3.1-launched-141576f0.dll (ignored) and in the disabled mod folder.",
+  "dllBytes": 865280,
+  "dllImports": ["api-ms-win-crt-*", "KERNEL32.dll", "MSVCP140.dll", "ole32.dll", "SHELL32.dll", "VCRUNTIME140.dll", "VCRUNTIME140_1.dll", "VERSION.dll"],
+  "dllImportNote": "No USER32.dll import at all: MessageBoxA/W, MessageBoxExA/W, FatalAppExitA/W absent (tools/pe_imports.py, CTest no_modal_imports). skse64.log no longer prints the 'automation silent UI: redirected 1 modal import(s)' line R0 saw for the phase-2 DLL.",
+  "dllExports": ["SKSEPlugin_Load", "SKSEPlugin_Query", "SKSEPlugin_Version"],
+  "staticVerification": {
+    "skseMetadata": "PASS (version independent): name=EnsrickEquipmentDisplay pluginVersion=0.3.1.0 author=Ensrick versionIndependence=1 versionIndependenceEx=3 (NoStructUse + AddressLibraryV5); the PE stamp is a /Brepro content hash and no longer matters to the loader's guess",
+    "ctest": "4/4: slot_rules (63 checks: the 52 lifted from the retired mods/visible-equipment scaffold plus 11 for 64-bit tokens, PlaceAt and the PackedDaggers roster), placement_table (90 checks: defaults, shipped placements.json round trip, user overlay, 12 malformed-entry cases), no_modal_imports, no_modal_source",
+    "warnings": "none from the tree's translation units in any pass (grep 'warning C' over the build logs is empty; CommonLibSSE's own D9025 flag-override note only)",
+    "deterministicCleanRebuild": "true for every version: 0.2.1 (a8a53518...), 0.3.0 (413c4fd2...) and 0.3.1 (fc7fc730...) each byte-identical across two clean builds with the build directory removed between them; the 0.3.1 incremental build that was launched differs from its clean pair (see dllSha256Note)",
+    "ci": ".github/workflows/build.yml committed in fe6b538 (windows-latest, Ensrick/CommonLibSSE-NG at 68b6ba48d with submodules, microsoft/vcpkg at 8d3649ba bootstrapped, preset build, ctest, hash, artifact); first run not checked from this session",
+    "preflight": "not run to green: 3 pre-existing 'installed with no Keep' blockers (34705, 50049, 62001, the SlavicPotato exclusion) make exit 0 unattainable regardless; the isolated launcher runs no preflight"
+  },
+  "installed": {
+    "modName": "Ensrick - Equipment Display",
+    "modPriority": 299,
+    "placement": "modlist line 56, directly above Ensrick - Popup Guard (298)",
+    "transactions": {
+      "installAttempt1": "20260911T035741438Z-4564731fd40c (mod-stage --replace --enable, 0.3.0 DLL, previousEnabled false)",
+      "replaceAttempt2": "20260911T041034582Z-83722a4f8770 (mod-stage --replace, 0.3.1 DLL)",
+      "revertDisable": "20260911T041816047Z-ef5e107efa22 (mod-disable)"
+    },
+    "iniVerification": "shipped dist/SKSE/Plugins/EnsrickEquipmentDisplay.ini with four keys changed for the run: [Log] Level=debug FlushLevel=debug, [Rules] Enabled=1 (shipped 0), [Diagnostics] DumpPlacements=1 (shipped 0); PlayerOnly=1, PackedDaggers=2 as shipped; placements.json shipped unchanged (12 slots, 0 merge warnings)",
+    "installedDllSha256": "141576f004fd42f330c6517a42a0184a8a0184bf5082525755cd77a112f059de",
+    "installedHashMatches": true,
+    "pluginsAdded": 0,
+    "cloakRefresh": "none: DLL-only mod, reverted at the end; R0's refresh B had shown the 240 cloak directives byte-identical with this mod enabled"
+  },
+  "runtimeVerification": {
+    "attempt1": {
+      "when": "2026-09-10 23:01:51, pid 31100, DLL 0.3.0 413c4fd2..., snapshot records/log-snapshots/20260910-230151-eed-r1-attempt1/",
+      "launch": "MAIN_MENU_OPEN t+41.0 s; skse64.log 'EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00030000) loaded correctly (handle 16)', 51 loaded, 0 refused; plugin log: settings, kPostLoad, SDS guard WARN (SimpleDualSheath.dll loaded, expected), placements merged 0 warnings, roster, both Load3D hooks with vtable addresses, equip and container sinks",
+      "player": "Load3D task 23:03:06: NordRace male 'Actors\\Character\\Character Assets\\skeleton.nif', 257 nodes, all 8 roster nodes present by name, XPMSE 3.60 (expected 3.60); placement dump load3d: 263 nodes, 16 targets resolved, 0 missing",
+      "rules": "23:05:45 Steel Warhammer 0001398A#0 [two-handed] -> back.2h (accept); board back.2h=Steel Warhammer, 1 request",
+      "verdict": "FAIL: crash-2026-09-10-23-05-50.log 5 s after Begin, EXCEPTION_ACCESS_VIOLATION in VCRUNTIME140 memcpy writing at a page boundary, stack: engine NiObject::CreateDeepCopy (AddrLib 70191) <- EnsrickEquipmentDisplay Attach.cpp:159 BuildDisplay <- DisplayManager::Apply <- Refresh <- RunScheduled <- BSTaskPool::ProcessTasks; DeepCopyStream, NiMemStream, bhkRigidBody, NiNode WeaponBackAxeMace on the stack. Attributed to the plugin (its frames are on the stack). PopupGuard intercepted nothing; controller exit 0 at 23:05:56."
+    },
+    "attempt2": {
+      "when": "2026-09-10 23:10:46, pid 29276, DLL 0.3.1 141576f0..., snapshot records/log-snapshots/20260910-231046-eed-r1/",
+      "launch": "MAIN_MENU_OPEN t+46.8 s (23:11:43); 'EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00030010) loaded correctly (handle 16)', 51 loaded, 0 refused; same startup block as attempt 1",
+      "character": "main menu opened on $CONTINUE (the clone profile holds attempt 1's saves), Down -> $NEW, New 23:12:24, RaceSex 23:12:40, Done as 'Adventurer' 23:12:54, Skyrim Unbound MCM Main page, Begin Your Adventure 23:13:14 with random gear and random location (MorthalGuardhouseJail), Save3 23:13:20, world 23:13:22",
+      "player": "Load3D task 23:12:35: NordRace male skeleton.nif, 257 nodes, all 8 roster nodes present, XPMSE 3.60; placement dump load3d 16 targets resolved, 0 missing (EnsrickEquipmentDisplay_Placements_00000014_load3d.txt in the snapshot); no _postload dump because kNewGame fired before the player had 3D",
+      "rulesDecisions": [
+        "23:13:17.655 Hunting Bow 00013985#0 [bow] -> back.bow (accept) | board back.bow=Hunting Bow, visible 1, requests 1 | attached back.bow 00013985#0 (bow) to 'WeaponBow' on actor 00000014 (drawn=false, culled=false)",
+        "23:13:18.068 Iron Mace 00013982#0 [one-handed] -> hip.right.1h (accept); Hunting Bow -> back.bow | visible 2, requests 2 | attached hip.right.1h 00013982#0 (mace) to 'WeaponMace'",
+        "23:13:19.198 Iron Mace equipped -> hip.right.1h (accept): engine-drawn; board hip.right.1h=Iron Mace* | requests 1 | detached hip.right.1h from 'WeaponMace' (1 node removed)",
+        "23:13:20.501 board empty, visible 0, requests 0 | detached back.bow from 'WeaponBow' (1 node removed): Skyrim Unbound removed both weapons; InventoryMenu dump at 23:17:07 listed 3 entries (Lockpick, Ragged Boots, Ragged Robes), no weapon, so inventory weapon count 0 == visible 0"
+      ],
+      "soak": "23:13:22 to 23:16:22 alive (polled every 15 s), no crash log, plugin log 33 lines with 0 [error]/[critical], skse64.log 0 [critical], PopupGuard only its two phase lines",
+      "quit": "Journal -> $QUIT -> $Desktop -> 'Quit to desktop?  Any unsaved progress will be lost.' -> Accept 23:17:29; SkyrimSE/ModOrganizer/MO2Headless gone by 23:17:51; controller exit 0 at 23:17:32; no new crash log (latest remains attempt 1's)",
+      "verdict": "PASS for the R1 criteria set by the dispatch: main menu < 60 s, fresh character, R1 hooks and sinks live, the rules engine deciding on real inventory events with item / board / verdict logged, no [error], no crash log, PopupGuard nothing, 180 s soak, clean quit"
+    },
+    "notExercised": "the copies' appearance on the body (headless, no eyes); a left-hand weapon (the dual-sheath cull path); packed daggers; a refused copy (a seventh weapon); NPC displays; a save load (fresh character by design, #262/#268). The R1 exit criterion 'user sees every carried weapon at a slot' still needs the user's eyes."
+  },
+  "profileStateAtExit": "Ensrick - Equipment Display DISABLED (modlist line 56 '-', priority 299), folder keeps the 0.3.1 DLL 141576f0... and the verification ini (Rules Enabled=1, DumpPlacements=1, Level=debug) and placements.json; no plugin added or removed; no order change made by this run; Simple Dual Sheath unchanged (enabled); test profile 'Fable EED R1 20260910' keeps its private saves (Save1..Save3, LocalSaves=true); the user's Saves folder untouched (197 entries before and after); claim fable/eed-r1 released 23:18",
+  "limitations": "Headless runs: nothing visual confirmed. Unbound's random gear gave a warhammer (attempt 1) and a bow plus mace (attempt 2) and then took them back, so after 23:13:20 nothing was displayed for the rest of the soak. The Equipment page of Unbound's MCM was dumped (Random weapons ON) but not changed, for time inside the launcher's 600 s controller budget. Attempt 1's crash is fixed by construction (the engine function is no longer called), proven only by attempt 2 not crashing on two models.",
+  "rollback": "Nothing to roll back in the profile (disabled). To remove entirely: mod-trash under a claim. Tree: git revert of 0.3.x keeps 0.2.1's hardening.",
+  "hours": "about 3.3 h wall clock (22:04-23:25) including two builds pairs, two launches and the R0 analysis"
+}
