@@ -15,8 +15,15 @@
   "iniAttempt1Sha256": "88dea7c8b5f3e29bf03f1c055adc524f77386ff46140fbc422210d80ea08ce18",
   "iniAttempt2Sha256": "18d3d5fdd7bbd6a51fc46a4ce9843a1f39b744b0c6afcd3d368635671ecd4aca",
   "iniDeltaFromShipped": {
-    "attempt1": {"[Diagnostics] DumpSkeleton": "0 -> 1 (player node dump); everything else shipped: [Log] Level=info FlushLevel=warn, [DualSheath] Enable=1 PlayerOnly=0 Staves=1"},
-    "attempt2": {"[Log] Level": "info -> debug", "[Log] FlushLevel": "warn -> debug", "reason": "attempt 1 crashed with a 0-byte plugin log because FlushLevel=warn never flushed; the diagnostic rerun flushes every line", "[Diagnostics] DumpSkeleton": "1"},
+    "attempt1": {
+      "[Diagnostics] DumpSkeleton": "0 -> 1 (player node dump); everything else shipped: [Log] Level=info FlushLevel=warn, [DualSheath] Enable=1 PlayerOnly=0 Staves=1"
+    },
+    "attempt2": {
+      "[Log] Level": "info -> debug",
+      "[Log] FlushLevel": "warn -> debug",
+      "reason": "attempt 1 crashed with a 0-byte plugin log because FlushLevel=warn never flushed; the diagnostic rerun flushes every line",
+      "[Diagnostics] DumpSkeleton": "1"
+    },
     "leftInstalled": "the disabled mod folder holds the attempt-2 (debug) ini, not the shipped one"
   },
   "commandLines": [
@@ -34,7 +41,10 @@
     "MenuPilot driver: scratchpad eed-r0-ui.ps1 (New/Race/Unbound MCM City>Solitude/Begin/Quit), adapted from records-work/ussep439c-fresh-ui-20260910.ps1 and records-work/load262-menu.ps1"
   ],
   "transactions": {
-    "orderRestore1": ["20260911T024541650Z-bb4a361f6e3f", "20260911T024631041Z-87e607981466"],
+    "orderRestore1": [
+      "20260911T024541650Z-bb4a361f6e3f",
+      "20260911T024631041Z-87e607981466"
+    ],
     "install": "20260911T030741243Z-3d47153d3580",
     "cloakRefreshA_superseded": "20260911T030947452Z-4ab4686cfd4e",
     "orderRestore2": "20260911T031137898Z-d1d586bfc4ad",
@@ -70,12 +80,24 @@
   },
   "skse64Log": {
     "checked": "52 plugins checked (51 in the control), 51 loaded correctly, 0 refused",
-    "lines": ["checking plugin EnsrickEquipmentDisplay.dll", "loading plugin \"EnsrickEquipmentDisplay\"", "automation silent UI: redirected 1 modal import(s) for EnsrickEquipmentDisplay.dll", "plugin EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00010000) loaded correctly (handle 16)"],
+    "lines": [
+      "checking plugin EnsrickEquipmentDisplay.dll",
+      "loading plugin \"EnsrickEquipmentDisplay\"",
+      "automation silent UI: redirected 1 modal import(s) for EnsrickEquipmentDisplay.dll",
+      "plugin EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00010000) loaded correctly (handle 16)"
+    ],
     "finding": "the DLL still imports one modal API (MessageBox family) that the SKSE fork's automation shim had to redirect; the CMakeLists pins the Ensrick no-modal CommonLib branch but the import is present in this build"
   },
   "pluginLog": {
     "attempt1": "0 bytes: FlushLevel=warn buffered every info line and the crash flushed nothing",
-    "attempt2": ["[22:19:48.623] [info] loaded Data\\SKSE\\Plugins\\EnsrickEquipmentDisplay.ini", "[22:19:48.623] [info] EnsrickEquipmentDisplay 0-1-0-0 loading against runtime 1-7-104-0", "[22:20:20.372] [info] hooked Character::Load3D", "[22:20:20.372] [info] hooked PlayerCharacter::Load3D", "[22:20:20.372] [info] registered equip event sink", "[22:22:42.535] [info] wrote skeleton dump C:\\Users\\danjo\\Documents\\My Games\\Skyrim Special Edition\\SKSE\\EnsrickEquipmentDisplay_Skeleton_00000014.txt"],
+    "attempt2": [
+      "[22:19:48.623] [info] loaded Data\\SKSE\\Plugins\\EnsrickEquipmentDisplay.ini",
+      "[22:19:48.623] [info] EnsrickEquipmentDisplay 0-1-0-0 loading against runtime 1-7-104-0",
+      "[22:20:20.372] [info] hooked Character::Load3D",
+      "[22:20:20.372] [info] hooked PlayerCharacter::Load3D",
+      "[22:20:20.372] [info] registered equip event sink",
+      "[22:22:42.535] [info] wrote skeleton dump C:\\Users\\danjo\\Documents\\My Games\\Skyrim Special Edition\\SKSE\\EnsrickEquipmentDisplay_Skeleton_00000014.txt"
+    ],
     "attempt2Absent": "no 'attached ...' debug line, no node-missing warn, no model warn through character creation, the Unbound MCM, Begin, world entry and 181 s in Solitude: DisplayManager::Refresh never found a left-hand weapon or a staff on any refreshed actor, so the dual-sheath attach path was NOT exercised",
     "equipSink": "TESEquipEvent sink registers, but the sink itself logs nothing (only errors); equip events cannot be counted from the log at any level"
   },
@@ -97,7 +119,20 @@
   },
   "doubleDisplayObservation": "Simple Dual Sheath 50049 stayed ENABLED (DESIGN.md removal order). No left-hand weapon or staff was ever equipped in R0, so neither plugin attached a left display and the duplicate-weapon risk was neither observed nor excluded. Both would target the same XPMSSE left-hand nodes when it happens.",
   "runtimeVerification": "Phase 0 evidence PASS on 1.7.104: DLL loads, both Load3D hooks install, equip sink registers, skeleton dump written, no popup, no [critical]. Phase 2 (dual sheath) UNVERIFIED and the run is a FAIL on the crash criterion: 1 of 2 plugin attempts crashed at world entry (new audio-thread signature) while the control passed; the attach path was never exercised; the player tree at Load3D lacks every slot node the SlotTable targets. What remains for phase-2 acceptance: reproduce or clear the world-entry crash (a third attempt or a CrashLogger minidump), a character with a left-hand weapon/staff equipped, then the user's eyes on a sheathed left-hand weapon.",
-  "profileStateAtExit": "Ensrick - Equipment Display DISABLED (modlist line 56 '-', priority 299, folder kept with the debug ini); Ensrick - Full Cloak Exclusivity byte-identical to the pre-R0 package, check_installed []; Default plugin order restored to Astra's 09:39 baseline (weapon gate PASS, filesWritten 0); Simple Dual Sheath unchanged (enabled); XPMSSE unchanged; no plugin added or removed; the user's Saves folder holds the two saves of the interrupted attempt (Save1_09B88E99 21:50:12, Quicksave0_09B88E99 21:52:32 from the human's F5), not moved or deleted; the three test profiles (Fable EED R0 20260910, Fable EED R0 Plugin 20260910, Fable EED R0 Plugin2 20260910) keep their private saves; claim fable/eed-r0 released at the end of R0",
+  "profileStateAtExit": "Ensrick - Equipment Display DISABLED (modlist line 56 '-', priority 299, folder kept with the debug ini); Ensrick - Full Cloak Exclusivity byte-identical to the pre-R0 package, check_installed []; Default plugin order restored to Astra's 09:39 baseline (weapon gate PASS, filesWritten 0); Simple Dual Sheath unchanged (enabled); XPMSSE unchanged; no plugin added or removed; the two saves of the interrupted attempt (Save1_09B88E99, Quicksave0_09B88E99 with their .skse co-saves) were moved out of the user's Saves folder to records-work/eed-r0-throwaway-saves/ at 22:38 on the lead's instruction (see throwawaySavesMoved); the three test profiles (Fable EED R0 20260910, Fable EED R0 Plugin 20260910, Fable EED R0 Plugin2 20260910) keep their private saves; claim fable/eed-r0 released at the end of R0",
   "limitations": "Headless runs on a private desktop: no visual confirmation possible; the fresh Unbound character had no left-hand weapon so the feature under test never ran; equip events are not logged by the sink; attempt 1's plugin log is empty; attempt 2's exit was cut by the controller budget; one crash in two attempts is not a reproduction; the R0 crash's minidump was not captured (CrashLogger minidumps are off in this profile).",
-  "rollback": "Done at the end of R0 (see profileStateAtExit). To remove entirely: mod-trash under a claim; no paired configuration remains."
+  "rollback": "Done at the end of R0 (see profileStateAtExit). To remove entirely: mod-trash under a claim; no paired configuration remains.",
+  "throwawaySavesMoved": {
+    "when": "2026-09-10 22:38 local, lead-approved, game and MO2 closed",
+    "reason": "the interrupted interactive control run wrote its character's saves into the user's Saves folder (Default has LocalSaves=false) and they owned the main-menu Continue slot",
+    "from": "C:/Users/danjo/Documents/My Games/Skyrim Special Edition/Saves/",
+    "to": "C:/Users/danjo/source/repos/skyrim-mod-assistant/records-work/eed-r0-throwaway-saves/",
+    "files": {
+      "Save1_09B88E99_0_416476656E7475726572_SkyrimUnboundRoom01_000002_20260911025012_1_1.ess": "sha256 4eb1358cc1323aa4... 4336009 bytes",
+      "Save1_09B88E99_0_416476656E7475726572_SkyrimUnboundRoom01_000002_20260911025012_1_1.skse": "sha256 f7a9878f5ad92d7b... 37058 bytes",
+      "Quicksave0_09B88E99_0_416476656E7475726572_SkyrimUnboundRoom01_000004_20260911025232_1_1.ess": "sha256 2288d20bb1565410... 4476048 bytes",
+      "Quicksave0_09B88E99_0_416476656E7475726572_SkyrimUnboundRoom01_000004_20260911025232_1_1.skse": "sha256 85d0bc42a4f00ef8... 37309 bytes"
+    },
+    "result": "0 files of character 09B88E99 remain in the user's Saves folder; newest save there is the user's own Save3_43E399CB (2026-09-10 16:10:14) again; moved, not deleted"
+  }
 }
