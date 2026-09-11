@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - visible-equipment SKSE plugin (working name VisibleEquipment; NAME_TBD)",
+  "version": "0.0.1",
+  "milestone": "M0 scaffold (docs/VISIBLE-EQUIPMENT-PLUGIN-DESIGN-2026-09-10.md section 12)",
+  "sourceUrl": "https://github.com/Ensrick/skyrim-mod-assistant",
+  "sourcePath": "mods/visible-equipment",
+  "sourceCommit": "a67fd1caa75dfd0148441c4d670a91b7f42d048e",
+  "sourceFilesDirty": false,
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/269",
+  "issueNote": "Opened under #272, which was closed as a duplicate of #269 at 2026-09-11T01:57:49Z while this build was in progress.",
+  "runtime": "Skyrim SE 1.7.104 declared explicitly (COMPATIBLE_RUNTIMES 1.7.104); M0 installs no hooks and reads no game memory beyond two script event sinks (TESEquipEvent, TESContainerChangedEvent) registered at kDataLoaded; REL resolves through the Address Library at run time (CommonLibSSE-NG IDDB format 5)",
+  "dependencies": {
+    "CommonLibSSE-NG": {
+      "version": "6.7.1",
+      "commit": "70c1acd5261210982bd52f6d4468a082fe04d798",
+      "repository": "https://github.com/alandtse/CommonLibSSE-NG",
+      "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1",
+      "license": "GPL-3.0-or-later with the modding and linking exceptions in EXCEPTIONS.md (both shipped in the package)",
+      "pin": "CMakeLists.txt refuses any other revision unless VISIBLE_EQUIPMENT_ALLOW_UNPINNED_COMMONLIB=ON; same pin as MenuPilot, LaunchProbe and the 1.7.104 rebuilds",
+      "options": "ENABLE_SKYRIM_SE=ON ENABLE_SKYRIM_AE=ON ENABLE_SKYRIM_VR=OFF BUILD_TESTS=OFF SKSE_SUPPORT_XBYAK=OFF"
+    },
+    "vcpkg": {
+      "builtinBaseline": "ddd0023b0eee70986e42ed49d9d4afb8098f212e",
+      "triplet": "x64-windows-static",
+      "manifest": "mods/visible-equipment/vcpkg.json",
+      "resolvedPorts": {
+        "spdlog": "1.17.0",
+        "fmt": "12.2.0",
+        "directxtk": "2026-05-07",
+        "others": "directxmath, nlohmann-json, rapidcsv, simpleini, toml11, xbyak at the same baseline (header-only or unused by M0)"
+      },
+      "licensesShipped": "LICENSE-spdlog.txt, LICENSE-fmt.txt (vcpkg copyright files), LICENSE-CommonLibSSE-NG.txt, LICENSE-CommonLibSSE-NG-EXCEPTIONS.md"
+    }
+  },
+  "compiler": "MSVC 19.44.35207 (Visual Studio 2022 17.14, cl from Community; dumpbin 14.44.35223) x64; plugin and test targets /W4 /WX /permissive- /Zc:preprocessor /EHsc /utf-8 /Brepro, link /Brepro, static CRT (CMAKE_MSVC_RUNTIME_LIBRARY MultiThreaded); global CMAKE_CXX_FLAGS '/permissive- /Zc:preprocessor /EHsc /MP -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DUNICODE -D_UNICODE'; CMake 3.31.6-msvc6, generator 'Visual Studio 17 2022' -A x64; Windows SDK 10.0.26100.0 installed as latest (the build log does not print the SDK version chosen)",
+  "commandLines": [
+    "pwsh: & mods/visible-equipment/build.ps1 -CommonLibRoot C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1 -VcpkgRoot C:/Users/danjo/source/repos/vcpkg -Cmake 'C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe' -BuildDirectory records-work/visible-equipment-0.0.1-build/build1   (run at BelowNormal priority; VCPKG_DISABLE_METRICS=1)",
+    "cmake -S mods/visible-equipment -B <build> -G 'Visual Studio 17 2022' -A x64 -DCOMMONLIB_ROOT=<commonlib> -DCMAKE_TOOLCHAIN_FILE=<vcpkg>/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_CXX_FLAGS=<flags above>",
+    "cmake --build <build> --config Release --parallel",
+    "ctest --test-dir <build> -C Release --output-on-failure",
+    "py -3 audit/skse_version_data.py records-work/visible-equipment-0.0.1-build/build1/Release/VisibleEquipment.dll",
+    "dumpbin -EXPORTS / -IMPORTS / -HEADERS <dll>   (dash-prefixed options: Git Bash mangles /EXPORTS into a path)"
+  ],
+  "buildHistory": [
+    "build1 pass 1 (303 s): CommonLibSSE compiled; plugin TUs compiled clean under /W4 /WX; failed on version.rc (empty PROJECT_VERSION_TWEAK) and on SlotRules.h using the sv literal suffix without the literals namespace in the test TU",
+    "build1 pass 2 (14 s, incremental after fixing both in a67fd1c): success",
+    "build2 (240 s, clean directory, same sources): success"
+  ],
+  "dllName": "VisibleEquipment.dll",
+  "dllBytes": 820224,
+  "dllSha256": "DCECDE467B587F19546F9294C48398C122E984219BF391EDD3F3F0A5C7F2543C",
+  "dllImports": [
+    "KERNEL32.dll",
+    "SHELL32.dll",
+    "USER32.dll",
+    "VERSION.dll",
+    "ole32.dll"
+  ],
+  "dllImportNote": "USER32!MessageBoxW is imported through CommonLibSSE-NG's stl::report_and_fail path, which this module never calls; PopupGuard (!PopupGuard.dll, #255) intercepts it at run time. Removing the import is a candidate NG log-only overlay (spec section 7).",
+  "dllExports": [
+    "SKSEPlugin_Load",
+    "SKSEPlugin_Query",
+    "SKSEPlugin_Version"
+  ],
+  "dllPeTimeDateStamp": "0x20AF131A (548344602): /Brepro content hash, not a clock value",
+  "testExeSha256": "07B5F5524B73615BD9BCBE406692FA382397DD2675429F2342E9B83C76EB55E0",
+  "package": "VisibleEquipment-0.0.1-win64.zip",
+  "packageBytes": 413003,
+  "packageSha256": "CF2DC82F4F0F359B31B05417B244C5E50095D57E95AF4575B0B3451902326C0B",
+  "packageContents": [
+    "SKSE/Plugins/VisibleEquipment.dll",
+    "SKSE/Plugins/VisibleEquipment.ini",
+    "README.md",
+    "LICENSE",
+    "LICENSE-CommonLibSSE-NG.txt",
+    "LICENSE-CommonLibSSE-NG-EXCEPTIONS.md",
+    "LICENSE-spdlog.txt",
+    "LICENSE-fmt.txt"
+  ],
+  "staticVerification": {
+    "skseMetadata": "PASS (explicit compatibleVersions entry for 1.7.104); name=VisibleEquipment pluginVersion=16 (0.0.1.0) author=Ensrick versionIndependence=0 versionIndependenceEx=1 (NoStructUse; the AddressLibraryV5 bit is not declared and is irrelevant under an explicit runtime list) compatibleVersions[0]=0x01070680 (1.7.104.0)",
+    "skseMetadataQuirk": "compatibleVersions[1..15] read back as 1.0.0.0 rather than 0: CommonLibSSE-NG's PluginDeclaration::VersionNumber default-constructs to major 1 (SKSE/Interfaces.h:505-508), so unused array slots are not zero-terminated. Harmless for SKSE's loader (it compares each entry against the running version; 1.0.0.0 is never a real runtime) but worth an upstream note.",
+    "dumpbinExports": "SKSEPlugin_Load, SKSEPlugin_Query, SKSEPlugin_Version",
+    "deterministicCleanRebuild": true,
+    "deterministicEvidence": "build1 (pass 2) and build2 (clean directory) produced byte-identical VisibleEquipment.dll DCECDE46... and SlotRulesTests.exe 07B5F552...; both zips 413003 bytes with identical SHA256 CF2DC82F...",
+    "nativeTestGroups": 1,
+    "nativeChecks": { "slot_rules": 52 },
+    "ctestSummary": "100% tests passed, 0 tests failed out of 1 (build1 pass 2 and build2)",
+    "warnings": "none from mods/visible-equipment translation units in any pass (grep 'warning C' over the build logs, filtered to the plugin paths, is empty)",
+    "publicSourceCi": "PENDING: .github/workflows/visible-equipment.yml committed in a67fd1c; first run is triggered by the push that publishes this receipt and its id is not known at write time",
+    "preflight": "not run: nothing was installed, no launch was attempted"
+  },
+  "runtimeVerification": "UNVERIFIED: the DLL has not been installed into the MO2 profile and no game launch has been attempted; the first M1 task is a verification launch of this scaffold (main menu under 60 s, save load, VisibleEquipment.log startup line present, skse64.log lists the plugin as loaded)",
+  "staged": "none (records-work/visible-equipment-0.0.1-build/build1 and build2 hold the artifacts; records-work is ignored)",
+  "installedUtc": null,
+  "limitations": "M0 does nothing observable in game beyond writing Documents/My Games/Skyrim Special Edition/SKSE/VisibleEquipment.log and counting equip and container-change events. The #36 rule engine is compiled in and unit-tested but not wired to inventory, display or pickup.",
+  "distribution": "Original MIT code (repository LICENSE) statically linked with CommonLibSSE-NG (GPL-3.0-or-later with modding/linking exceptions), spdlog and fmt (MIT); all notices ship in the package. No game assets.",
+  "rollback": "Nothing to roll back; not installed."
+}
