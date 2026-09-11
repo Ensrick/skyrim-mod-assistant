@@ -1,3 +1,9 @@
+# WITHDRAWN 2026-09-10 - do not send
+
+SlavicPotato was excluded the same day (`docs/EXCLUDED_AUTHORS.md`, commit 985c074: no forking, no code copied, his function moved in-house). Asking him to publish the framework so IED could be ported contradicts that decision. Kept only as a record of what was considered; the successor is #269 (own framework) and #36 (rules layer).
+
+---
+
 # Draft: request to SlavicPotato for the IED framework (user sends; edit freely)
 
 **Where to send:** GitHub issue on `SlavicPotato/ied-dev`, or Nexus PM (Immersive Equipment Displays, mod 62001). Not sent by the assistant.
