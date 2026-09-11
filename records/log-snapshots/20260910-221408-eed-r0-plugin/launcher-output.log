@@ -1,0 +1,15 @@
+start 22:14:04
+{
+  "verdict": "CURRENCY-ADMITTED",
+  "save": null,
+  "blockers": [],
+  "scope": "Currency package/checkpoint only; not save health or gameplay certification. Without --save, no saved game is admitted."
+}
+
+Desktop            : Private QuietWorker desktop; never switched to the interactive desktop
+ControllerExitCode : 0
+StartedAt          : 2026-09-11T03:14:05.7354079Z
+FinishedAt         : 2026-09-11T03:16:03.4934283Z
+Certification      : NONE: inspect fresh LaunchProbe, MenuPilot and crash evidence separately.
+
+LAUNCHER_EXIT=0 22:16:03

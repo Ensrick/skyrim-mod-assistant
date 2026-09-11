@@ -1,0 +1,21 @@
+start 22:19:38
+{"dryRun":false,"enabled":true,"mod":"Ensrick - Equipment Display","ok":true,"operation":"mod-stage","previousEnabled":true,"previousPriority":299,"priority":299,"replaced":true,"transaction":"20260911T031938437Z-ae7dfe5b9a2e"}
+B03A776E24FEED796805EE62FDCED7F054706D3E516F44CE285081B669D1E205
+18D3D5FDD7BBD6A51FC46A4CE9843A1F39B744B0C6AFCD3D368635671ECD4ACA
+Level=debug
+FlushLevel=debug
+DumpSkeleton=1
+{
+  "verdict": "CURRENCY-ADMITTED",
+  "save": null,
+  "blockers": [],
+  "scope": "Currency package/checkpoint only; not save health or gameplay certification. Without --save, no saved game is admitted."
+}
+
+Desktop            : Private QuietWorker desktop; never switched to the interactive desktop
+ControllerExitCode : 75
+StartedAt          : 2026-09-11T03:19:39.5552721Z
+FinishedAt         : 2026-09-11T03:29:48.8320498Z
+Certification      : NONE: inspect fresh LaunchProbe, MenuPilot and crash evidence separately.
+
+LAUNCHER_EXIT=75 22:29:52

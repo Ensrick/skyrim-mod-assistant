@@ -1,0 +1,5 @@
+PopupGuard 0.1.0 log opened 2026-09-10 22:19:42.499 pid=38428
+22:19:42.499 hooks: MessageBoxA=ok MessageBoxW=ok MessageBoxExA=ok MessageBoxExW=ok MessageBoxTimeoutA=ok MessageBoxTimeoutW=ok MessageBoxIndirectA=ok MessageBoxIndirectW=ok FatalAppExitA=ok FatalAppExitW=ok
+22:19:42.499 PopupGuard 0.1.0 hooks installed at DLL attach
+22:19:42.499 preload phase; runtime=0x1070680; hooks active 10 of 10
+22:19:42.522 load phase; runtime=0x1070680; hooks active 10 of 10

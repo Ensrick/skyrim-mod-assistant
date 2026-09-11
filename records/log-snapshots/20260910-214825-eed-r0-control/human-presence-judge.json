@@ -1,0 +1,47 @@
+{
+ "human": true,
+ "probe_log": "C:\\Users\\danjo\\Documents\\My Games\\Skyrim Special Edition\\SKSE\\LaunchProbe.log",
+ "pilot_log": "C:\\Users\\danjo\\Documents\\My Games\\Skyrim Special Edition\\SKSE\\MenuPilot\\menupilot.log",
+ "boundary": "21:48:22.254",
+ "boundary_event": "MAIN_MENU_OPEN",
+ "events_after": 33,
+ "unmatched": [
+  {
+   "menu": "Console",
+   "at": "21:48:22.261"
+  },
+  {
+   "menu": "Journal Menu",
+   "at": "21:52:04.145"
+  },
+  {
+   "menu": "Journal Menu",
+   "at": "21:52:25.660"
+  },
+  {
+   "menu": "Journal Menu",
+   "at": "21:52:31.732"
+  },
+  {
+   "menu": "Journal Menu",
+   "at": "21:52:33.468"
+  },
+  {
+   "menu": "Journal Menu",
+   "at": "21:52:35.228"
+  }
+ ],
+ "piloted": [
+  {
+   "menu": "Journal Menu",
+   "at": "21:50:28.817",
+   "op": "input.tap"
+  },
+  {
+   "menu": "Journal Menu",
+   "at": "21:52:29.304",
+   "op": "input.tap"
+  }
+ ],
+ "note": ""
+}

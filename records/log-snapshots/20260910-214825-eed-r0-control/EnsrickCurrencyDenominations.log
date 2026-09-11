@@ -1,0 +1,5 @@
+[2026-09-10 21:47:42.003] [info] Ensrick Currency Denominations 0.2.3 loading on runtime 1-7-104-0 with SKSE 2-3-1-0
+[2026-09-10 21:47:42.004] [info] plugin loaded; waiting for DataLoaded
+[2026-09-10 21:48:20.973] [info] QuickLoot IE is not loaded; vanilla activation/death source paths remain available
+[2026-09-10 21:48:20.973] [info] initialized config ensrick-currency-denominations-v0.4.0 with 18 currency families and 55 recognized physical forms
+[2026-09-10 21:49:46.209] [info] admission 1 complete: family=septim ledger=0

@@ -1,0 +1,6 @@
+[22:19:48.623] [info] loaded Data\SKSE\Plugins\EnsrickEquipmentDisplay.ini
+[22:19:48.623] [info] EnsrickEquipmentDisplay 0-1-0-0 loading against runtime 1-7-104-0
+[22:20:20.372] [info] hooked Character::Load3D
+[22:20:20.372] [info] hooked PlayerCharacter::Load3D
+[22:20:20.372] [info] registered equip event sink
+[22:22:42.535] [info] wrote skeleton dump C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\EnsrickEquipmentDisplay_Skeleton_00000014.txt

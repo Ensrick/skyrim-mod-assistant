@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Equipment Display",
+  "componentNote": "EnsrickEquipmentDisplay (working name; the user names his mods), phase 2 build. R0 = first verification launch. Installed temporarily under claim fable/eed-r0 and left DISABLED at the end of R0 (folder kept).",
+  "version": "0.2.0 per the source CHANGELOG; the DLL's SKSEPlugin_Version reports pluginVersion 0.1.0.0 and the log says 'EnsrickEquipmentDisplay 0-1-0-0' (not bumped in the phase 2 build)",
+  "sourceUrl": "none: skyrim-tools-source/EnsrickEquipmentDisplay has no git remote",
+  "sourcePath": "C:/Users/danjo/source/repos/skyrim-tools-source/EnsrickEquipmentDisplay",
+  "sourceCommit": "662d82f (Record the phase 2 DLL hash); tree clean; NOT edited, built or committed by this run (owned by another session)",
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/269",
+  "runtime": "Skyrim SE 1.7.104; CommonLibSSE-NG 6.7.1 (Ensrick no-modal branch per the source CMakeLists), VersionIndependence::AddressLibrary, no runtime ceiling (per the source repo; not rebuilt here)",
+  "dllName": "EnsrickEquipmentDisplay.dll",
+  "dllBytes": 615936,
+  "dllSha256": "b03a776e24feed796805ee62fdced7f054706d3e516f44ce285081b669d1e205",
+  "iniShippedSha256": "not recorded; dist/SKSE/Plugins/EnsrickEquipmentDisplay.ini 1006 bytes, DumpSkeleton=0",
+  "iniAttempt1Sha256": "88dea7c8b5f3e29bf03f1c055adc524f77386ff46140fbc422210d80ea08ce18",
+  "iniAttempt2Sha256": "18d3d5fdd7bbd6a51fc46a4ce9843a1f39b744b0c6afcd3d368635671ecd4aca",
+  "iniDeltaFromShipped": {
+    "attempt1": {"[Diagnostics] DumpSkeleton": "0 -> 1 (player node dump); everything else shipped: [Log] Level=info FlushLevel=warn, [DualSheath] Enable=1 PlayerOnly=0 Staves=1"},
+    "attempt2": {"[Log] Level": "info -> debug", "[Log] FlushLevel": "warn -> debug", "reason": "attempt 1 crashed with a 0-byte plugin log because FlushLevel=warn never flushed; the diagnostic rerun flushes every line", "[Diagnostics] DumpSkeleton": "1"},
+    "leftInstalled": "the disabled mod folder holds the attempt-2 (debug) ini, not the shipped one"
+  },
+  "commandLines": [
+    "py -3 audit/claim.py acquire --owner fable/eed-r0 --purpose \"R0 verification launch of EnsrickEquipmentDisplay phase 2 (#269)\" --ttl 90",
+    "MO2Headless.exe plugin-priority \"Thanedom Assets.esl\" 38 ; MO2Headless.exe plugin-priority SmoothCam.esl 40   (order restore 1)",
+    "py -3 audit/launch_verify.py --skip-preflight --no-autoload --leave-running --claim-owner fable/eed-r0 --keep-claim --menu-budget 90   (control attempt 1, interactive desktop, interrupted by the user)",
+    "pwsh -File audit/launch_skyrim_isolated.ps1 -WaitSeconds 600 -TestProfileName 'Fable EED R0 20260910' -SourceProfileName Default -ClaimOwner fable/eed-r0   (control attempt 2)",
+    "MO2Headless.exe mod-stage <scratchpad eed-stage> \"Ensrick - Equipment Display\" --enable --priority 299",
+    "py -3 audit/skse_version_data.py <dll> ; py -3 audit/install_mod.py --verify",
+    "cloak refresh: py -3 audit/cloak_exclusivity.py --output <work>/staged ; pwsh audit/generate_nif_slot_layer_proof.ps1 -Receipt <abs>/staged/receipt.json -Output <abs>/layer-proof.json -ToolBin <houseCARL bin> ; py -3 audit/cloak_exclusivity.py --layer-audit <abs>/layer-proof.json --output <work>/package ; MO2Headless.exe mod-stage <work>/package/mod \"Ensrick - Full Cloak Exclusivity\" --replace",
+    "MO2Headless.exe plugin-priority \"Thanedom Assets.esl\" 35   (order restore 2, after the interactive run's exit re-drifted Default)",
+    "pwsh -File audit/launch_skyrim_isolated.ps1 -WaitSeconds 600 -TestProfileName 'Fable EED R0 Plugin 20260910' ...   (plugin attempt 1)",
+    "MO2Headless.exe mod-stage <scratchpad eed-stage-diag> \"Ensrick - Equipment Display\" --replace ; pwsh -File audit/launch_skyrim_isolated.ps1 -WaitSeconds 600 -TestProfileName 'Fable EED R0 Plugin2 20260910' ...   (plugin attempt 2)",
+    "MO2Headless.exe mod-disable \"Ensrick - Equipment Display\" ; MO2Headless.exe mod-stage records-work/ussep439c-cloak-20260910/package/mod \"Ensrick - Full Cloak Exclusivity\" --replace   (revert)",
+    "MenuPilot driver: scratchpad eed-r0-ui.ps1 (New/Race/Unbound MCM City>Solitude/Begin/Quit), adapted from records-work/ussep439c-fresh-ui-20260910.ps1 and records-work/load262-menu.ps1"
+  ],
+  "transactions": {
+    "orderRestore1": ["20260911T024541650Z-bb4a361f6e3f", "20260911T024631041Z-87e607981466"],
+    "install": "20260911T030741243Z-3d47153d3580",
+    "cloakRefreshA_superseded": "20260911T030947452Z-4ab4686cfd4e",
+    "orderRestore2": "20260911T031137898Z-d1d586bfc4ad",
+    "cloakRefreshB": "20260911T031310523Z-bec93b6420f1",
+    "iniReplaceAttempt2": "20260911T031938437Z-ae7dfe5b9a2e",
+    "revertDisable": "20260911T033131024Z-9dd44697e050",
+    "revertCloakRestore": "20260911T033131075Z-568bb6ef77ac"
+  },
+  "modPriority": 299,
+  "placement": "modlist line 56, directly above Ensrick - Popup Guard (298) and Ensrick - Window Focus Guard (297)",
+  "installedDllSha256": "b03a776e24feed796805ee62fdced7f054706d3e516f44ce285081b669d1e205",
+  "installedHashMatches": true,
+  "pluginsAdded": 0,
+  "orderRestore": {
+    "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/253",
+    "finding1": "Baseline preflight 21:37 had the weapon and cloak gates red: Default's enabled plugin order differed from Astra's 09:39 (14:39Z) proofs only by a SmoothCam.esl / Thanedom Assets.esl swap at enabled indices 115/117 (same 384 plugins, no hash change); the user's 14:30 GUI session had written plugins.txt at 14:31.",
+    "backups1": "profiles/Default/{plugins,loadorder,modlist}.txt.bak.v20260910-214600-pre-eed-r0-order-restore",
+    "finding2": "When the user quit control attempt 1 (21:52:40), ModOrganizer.exe headless-run rewrote Default's plugins.txt and loadorder.txt at 21:52:42 and swapped Thanedom Assets.esl / FuzzBeed Resources.esp (indices 115/116). The cloak proof built at 22:08 baked that in and was superseded. The isolated launcher writes only its clone profile (22:06:51, 22:16:03, 22:29:48) and never touched Default.",
+    "backups2": "profiles/Default/{plugins,loadorder}.txt.bak.v20260910-221300-pre-eed-r0-order-restore2",
+    "weaponGateAfter": "PASS freshness-only, inputLoadOrderEntries 383, inputLoadOrderSha256 881F1D7DCA5ED0F79D986AEA2E7A4B37EB661F815506073CBEC8ECEA36435721, filesWritten 0",
+    "orderVsAstraBaseline": "0 diffs (names and sha256) against the manifest fingerprint in records-work/ussep439c-cloak-20260910/package/mod"
+  },
+  "cloakRefresh": {
+    "attemptB": "records-work/eed-r0-cloak-20260910b (correct order, Ensrick - Equipment Display enabled): staging 240 directives config sha256 5716AE2FF6B0CA0C76EB766E1694ED88A6CC18250DA70A758D7E85EB98F1ECDF; layer proof PASS: 302 explicit ARMA paths + 274 weight-zero companions = 576 audited, 569 present, 7 absent sentinels, 0 NIF parse errors, 0 reserved-partition hits, 40 winning SkyPatcher configs; reservation 384 plugins, 8975 ARMO / 4471 ARMA declarations; package zip sha256 869c787df5af63cad08f1bafd2ccf1af590fa55f98ce9e1b30531a34a75754be",
+    "note": "generate_nif_slot_layer_proof.ps1 resolves relative -Receipt/-Output against -ToolBin; pass absolute paths (first attempt failed on that)",
+    "revert": "Ensrick - Full Cloak Exclusivity restored from records-work/ussep439c-cloak-20260910/package/mod (verified byte-identical to the 14:39Z install before R0); check_installed [] with the mod disabled; the installed manifest fingerprint no longer lists Ensrick - Equipment Display"
+  },
+  "staticVerification": {
+    "skseMetadata": "PASS (version independent): name=EnsrickEquipmentDisplay pluginVersion=0.1.0.0 author=Ensrick versionIndependence=1 versionIndependenceEx=1 (V5 bit=NO), PE stamp 1789069937 (2026-09-10 19:52:17Z) after 2025-05-26",
+    "ledgerVerify": "install_mod.py --verify: 0 problem(s); Ensrick - Equipment Display had no ledger row (WARN #102 only), deliberately not added because the mod ends disabled and records/installed-mods.json is dirty from another session",
+    "preflightWithPluginEnabled": "22:13 after cloak refresh B: 3 blockers, all pre-existing 'installed with no Keep' (34705, 50049, 62001 = the SlavicPotato exclusion), 5 warnings; weapon and cloak gates green",
+    "preflightAfterRevert": "22:32-22:36: 3 blockers, all pre-existing no-Keep (34705, 50049, 62001), 5 warnings (the EED ledger-gap warning is gone with the mod disabled); weapon gate PASS freshness-only, inputLoadOrderSha256 881F1D7DCA5ED0F79D986AEA2E7A4B37EB661F815506073CBEC8ECEA36435721, filesWritten 0"
+  },
+  "skse64Log": {
+    "checked": "52 plugins checked (51 in the control), 51 loaded correctly, 0 refused",
+    "lines": ["checking plugin EnsrickEquipmentDisplay.dll", "loading plugin \"EnsrickEquipmentDisplay\"", "automation silent UI: redirected 1 modal import(s) for EnsrickEquipmentDisplay.dll", "plugin EnsrickEquipmentDisplay.dll (00000001 EnsrickEquipmentDisplay 00010000) loaded correctly (handle 16)"],
+    "finding": "the DLL still imports one modal API (MessageBox family) that the SKSE fork's automation shim had to redirect; the CMakeLists pins the Ensrick no-modal CommonLib branch but the import is present in this build"
+  },
+  "pluginLog": {
+    "attempt1": "0 bytes: FlushLevel=warn buffered every info line and the crash flushed nothing",
+    "attempt2": ["[22:19:48.623] [info] loaded Data\\SKSE\\Plugins\\EnsrickEquipmentDisplay.ini", "[22:19:48.623] [info] EnsrickEquipmentDisplay 0-1-0-0 loading against runtime 1-7-104-0", "[22:20:20.372] [info] hooked Character::Load3D", "[22:20:20.372] [info] hooked PlayerCharacter::Load3D", "[22:20:20.372] [info] registered equip event sink", "[22:22:42.535] [info] wrote skeleton dump C:\\Users\\danjo\\Documents\\My Games\\Skyrim Special Edition\\SKSE\\EnsrickEquipmentDisplay_Skeleton_00000014.txt"],
+    "attempt2Absent": "no 'attached ...' debug line, no node-missing warn, no model warn through character creation, the Unbound MCM, Begin, world entry and 181 s in Solitude: DisplayManager::Refresh never found a left-hand weapon or a staff on any refreshed actor, so the dual-sheath attach path was NOT exercised",
+    "equipSink": "TESEquipEvent sink registers, but the sink itself logs nothing (only errors); equip events cannot be counted from the log at any level"
+  },
+  "skeletonDump": {
+    "file": "EnsrickEquipmentDisplay_Skeleton_00000014.txt, 16348 bytes, written at player Load3D during the New Game load (22:15:12 / 22:22:42), sha256 d3ad97291c1f8658919ef6aa35b50c06b33dda5e3c7219f30c96da3bb213b8f6 identical in both attempts",
+    "content": "actor Adventurer 00000014 base 00000007 isPlayer yes, geometry omitted; third-person tree (Camera3rd [Cam3], NPC Spine2, TNG genital bones, skirt bones); 167 node lines, 56 CME nodes, 0 MOV nodes; NPC L Hand / NPC R Hand, PreWEAPON/WEAPON, PreSHIELD/SHIELD, the three MagicNodes and AnimObjectA/B/L/R present; 11 nodes sit at the DumpSkeletonMaxDepth=24 cap (finger and genital chains)",
+    "missing": "every slot node the phase 2 SlotTable targets: Weapon Pelvis, Weapon Spine2, Default Sword/Dagger/Axe/Mace/Staff, WeaponSword, WeaponSwordLeft, WeaponDagger*, WeaponAxe*, WeaponMace*, WeaponStaff*, WeaponBack, WeaponBow, QUIVER, ShieldBack. NODE_INVENTORY.md expects 543 nodes / 71 attach candidates from XPMSSE's skeleton.nif (75410 bytes, sole loose provider, priority 10, enabled). In the NIF, Weapon Pelvis hangs off NPC Pelvis [Pelv] at shallow depth; in the runtime dump NPC Pelvis has one child (CME Pelvis) and no Weapon Pelvis, so the depth cap does not explain it.",
+    "meaning": "At the moment the Load3D hook fires for the player on a New Game, the tree the plugin sees carries none of the XPMSSE weapon-slot subtrees. Whether they are attached later (skee64/RaceMenu or the engine after the first Load3D) or the hook observed an intermediate tree is not established by R0. FindSlotNode would fail for every slot on this tree; it never ran because no left-hand weapon was equipped."
+  },
+  "controlRun": {
+    "attempt1": "21:48 launch_verify --no-autoload --leave-running on the interactive desktop, Default, pid 30716: MENU-ONLY main menu t+47.6 s, 51 checked / 0 refused; MenuPilot New Game, character creation and the Unbound MCM worked, then a human took the controls (5 unpiloted Journal opens from 21:52:02, F5 quicksave 21:52:32) and quit at ~21:52:40; no crash log; audit/human_presence.py = HUMAN_AT_CONTROLS; OS input idle 41 s; foreground window Firefox. INTERRUPTED, not a crash. records/log-snapshots/20260910-214825-eed-r0-control/",
+    "attempt2": "21:57 audit/launch_skyrim_isolated.ps1 (private QuietWorker desktop, muted clone 'Fable EED R0 20260910' of Default, LocalSaves=true), pid 37420: MAIN_MENU_OPEN t+39.7 s; 51 checked / 50 loaded / 0 refused; New Game -> RaceSex Done -> Adventurer -> Unbound MCM City > Solitude -> Begin 22:00:14 -> Save3_FA0B4EB1 SolitudeWorld 22:00:29; 355 s unpaused gameplay, no crash log, 0 [critical], no Unbound script errors; Journal Quit to Desktop 22:06:49, controller exit 0. PASS. records/log-snapshots/20260910-215743-eed-r0-control/",
+    "verdict": "PASS"
+  },
+  "pluginRun": {
+    "attempt1": "22:14 isolated clone 'Fable EED R0 Plugin 20260910', shipped ini + DumpSkeleton=1, pid 25748: MAIN_MENU_OPEN t+39.9 s; identical MenuPilot sequence; Begin accepted 22:15:54.07, Journal closed 22:15:54.13, Fader Menu 22:15:54.35; CRASH 22:16:00 (crash-2026-09-10-22-16-00.log, uptime 112 s): EXCEPTION_ACCESS_VIOLATION at SkyrimSE.exe+0CD19BD 'call [rax+0x20]' rax=0, AddrLib 67751+0x16D <- 67727+0x12E <- 67746+0x71 <- 68445+0x3D <- KERNEL32 thread start, BSAudioManagerThread* on the stack (an audio-manager worker thread, not the main thread); EnsrickEquipmentDisplay.dll loaded (0x7FFF9A520000) but not on the stack; this address, these IDs and BSAudioManagerThread appear in none of the 20 earlier crash logs (2026-09-01..09-09). PopupGuard intercepted nothing. FAIL. records/log-snapshots/20260910-221408-eed-r0-plugin/",
+    "attempt2": "22:19 isolated clone 'Fable EED R0 Plugin2 20260910', diagnostic ini (Level=debug FlushLevel=debug), pid 38428: MAIN_MENU_OPEN t+39.3 s; same sequence (RaceSex opened 60 s after the world load this time); Begin 22:25:16; Save3_3F17F175 SolitudeWorld 22:25:18; 181 s unpaused gameplay, no crash log, ping ok; Journal Quit to Desktop confirm read back 22:28:37 and Accept 22:28:38; the controller's 600 s budget expired at ~22:29:39 and returned 75 while the process trio was still present at 22:28:48, so the clean exit is UNVERIFIED (no artifact shows whether the game finished quitting on its own). NO CRASH; the attempt-1 crash did not reproduce. records/log-snapshots/20260910-221942-eed-r0-plugin2/",
+    "verdict": "FAIL (1 crash in 2 attempts at the Unbound world-entry step where the control passed; not reproducible on the second attempt; attribution to the plugin not established, but the signature is new to this install)"
+  },
+  "doubleDisplayObservation": "Simple Dual Sheath 50049 stayed ENABLED (DESIGN.md removal order). No left-hand weapon or staff was ever equipped in R0, so neither plugin attached a left display and the duplicate-weapon risk was neither observed nor excluded. Both would target the same XPMSSE left-hand nodes when it happens.",
+  "runtimeVerification": "Phase 0 evidence PASS on 1.7.104: DLL loads, both Load3D hooks install, equip sink registers, skeleton dump written, no popup, no [critical]. Phase 2 (dual sheath) UNVERIFIED and the run is a FAIL on the crash criterion: 1 of 2 plugin attempts crashed at world entry (new audio-thread signature) while the control passed; the attach path was never exercised; the player tree at Load3D lacks every slot node the SlotTable targets. What remains for phase-2 acceptance: reproduce or clear the world-entry crash (a third attempt or a CrashLogger minidump), a character with a left-hand weapon/staff equipped, then the user's eyes on a sheathed left-hand weapon.",
+  "profileStateAtExit": "Ensrick - Equipment Display DISABLED (modlist line 56 '-', priority 299, folder kept with the debug ini); Ensrick - Full Cloak Exclusivity byte-identical to the pre-R0 package, check_installed []; Default plugin order restored to Astra's 09:39 baseline (weapon gate PASS, filesWritten 0); Simple Dual Sheath unchanged (enabled); XPMSSE unchanged; no plugin added or removed; the user's Saves folder holds the two saves of the interrupted attempt (Save1_09B88E99 21:50:12, Quicksave0_09B88E99 21:52:32 from the human's F5), not moved or deleted; the three test profiles (Fable EED R0 20260910, Fable EED R0 Plugin 20260910, Fable EED R0 Plugin2 20260910) keep their private saves; claim fable/eed-r0 released at the end of R0",
+  "limitations": "Headless runs on a private desktop: no visual confirmation possible; the fresh Unbound character had no left-hand weapon so the feature under test never ran; equip events are not logged by the sink; attempt 1's plugin log is empty; attempt 2's exit was cut by the controller budget; one crash in two attempts is not a reproduction; the R0 crash's minidump was not captured (CrashLogger minidumps are off in this profile).",
+  "rollback": "Done at the end of R0 (see profileStateAtExit). To remove entirely: mod-trash under a claim; no paired configuration remains."
+}

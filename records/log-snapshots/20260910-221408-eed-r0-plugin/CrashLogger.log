@@ -1,0 +1,91 @@
+[22:14:14.801] [34884] [I] CrashLogger v1-25-0-0
+[22:14:14.802] [34884] [I] Crash Logs will be written to C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE
+[22:14:14.802] [34884] [I] installed crash handlers
+[22:14:14.802] [34884] [I] Thread dump hotkey monitoring started (Ctrl+Shift+F12)
+[22:14:14.802] [34884] [I] CrashLogger has finished loading.
+[22:16:00.633] [34668] [I] Cleaned up old file: crash-2026-09-01-17-12-51.log
+[22:16:00.649] [34668] [I] Symcache not found at not defined
+[22:16:00.649] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD (searchPath Data/SKSE/Plugins)
+[22:16:00.659] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD	PDB signature mismatch
+[22:16:00.661] [23580] [I] Found unhandled type:	(ScrapHeap*)	.?AVScrapHeap@@ [ScrapHeap]
+[22:16:00.661] [23580] [I] Found unhandled type:	(ScrapHeap*)	.?AVIMemoryStore@@ [IMemoryStore]
+[22:16:00.661] [7028 ] [I] Found unhandled type:	(BSAudioManagerThread*)	.?AVBSAudioManagerThread@@ [BSAudioManagerThread]
+[22:16:00.661] [7028 ] [I] Found unhandled type:	(BSAudioManagerThread*)	.?AVBSThread@@ [BSThread]
+[22:16:00.661] [23580] [I] Found unhandled type:	(ScrapHeap*)	.?AVIMemoryStoreBase@@ [IMemoryStoreBase]
+[22:16:00.662] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCA161 (searchPath Data/SKSE/Plugins)
+[22:16:00.664] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCA161	PDB signature mismatch
+[22:16:00.666] [28788] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE (searchPath Data/SKSE/Plugins)
+[22:16:00.667] [28788] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE	PDB signature mismatch
+[22:16:00.669] [43244] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+3273950 (searchPath Data/SKSE/Plugins)
+[22:16:00.670] [43244] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+3273950	PDB signature mismatch
+[22:16:00.671] [24976] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1 (searchPath Data/SKSE/Plugins)
+[22:16:00.673] [24976] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1	PDB signature mismatch
+[22:16:00.674] [43248] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+3273950 (searchPath Data/SKSE/Plugins)
+[22:16:00.676] [43248] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+3273950	PDB signature mismatch
+[22:16:00.677] [41992] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNEL32.DLL+002CD87 (searchPath Data/SKSE/Plugins)
+[22:16:00.679] [41992] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNEL32.DLL+002CD87	PDB signature mismatch
+[22:16:00.680] [19680] [I] Attempting to load pdb for C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC (searchPath Data/SKSE/Plugins)
+[22:16:00.683] [19680] [I] Failed to open pdb for dll C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC	PDB signature mismatch
+[22:16:00.684] [35656] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNELBASE.dll+010ED90 (searchPath Data/SKSE/Plugins)
+[22:16:00.686] [35656] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNELBASE.dll+010ED90	PDB signature mismatch
+[22:16:00.687] [29904] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD (searchPath Data/SKSE/Plugins)
+[22:16:00.689] [29904] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD	PDB signature mismatch
+[22:16:00.690] [25008] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+32756F0 (searchPath Data/SKSE/Plugins)
+[22:16:00.692] [25008] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+32756F0	PDB signature mismatch
+[22:16:00.692] [34668] [I] Backfilled 10 void* pointers with known object information across all analysis
+[22:16:00.772] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD (searchPath Data/SKSE/Plugins)
+[22:16:00.773] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD	PDB signature mismatch
+[22:16:00.774] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD (searchPath Data/SKSE/Plugins)
+[22:16:00.775] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD	PDB signature mismatch
+[22:16:00.776] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE (searchPath Data/SKSE/Plugins)
+[22:16:00.777] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE	PDB signature mismatch
+[22:16:00.778] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE (searchPath Data/SKSE/Plugins)
+[22:16:00.779] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE	PDB signature mismatch
+[22:16:00.779] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1 (searchPath Data/SKSE/Plugins)
+[22:16:00.780] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1	PDB signature mismatch
+[22:16:00.781] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1 (searchPath Data/SKSE/Plugins)
+[22:16:00.782] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1	PDB signature mismatch
+[22:16:00.783] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD (searchPath Data/SKSE/Plugins)
+[22:16:00.784] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD	PDB signature mismatch
+[22:16:00.785] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD (searchPath Data/SKSE/Plugins)
+[22:16:00.786] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD	PDB signature mismatch
+[22:16:00.787] [34668] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNEL32.DLL+002CD87 (searchPath Data/SKSE/Plugins)
+[22:16:00.788] [34668] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNEL32.DLL+002CD87	PDB signature mismatch
+[22:16:00.789] [34668] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNEL32.DLL+002CD87 (searchPath Data/SKSE/Plugins)
+[22:16:00.790] [34668] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNEL32.DLL+002CD87	PDB signature mismatch
+[22:16:00.791] [34668] [I] Attempting to load pdb for C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC (searchPath Data/SKSE/Plugins)
+[22:16:00.792] [34668] [I] Failed to open pdb for dll C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC	PDB signature mismatch
+[22:16:00.793] [34668] [I] Attempting to load pdb for C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC (searchPath Data/SKSE/Plugins)
+[22:16:00.794] [34668] [I] Failed to open pdb for dll C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC	PDB signature mismatch
+[22:16:00.919] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD (searchPath Data/SKSE/Plugins)
+[22:16:00.920] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD	PDB signature mismatch
+[22:16:00.921] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD (searchPath Data/SKSE/Plugins)
+[22:16:00.922] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD19BD	PDB signature mismatch
+[22:16:00.923] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE (searchPath Data/SKSE/Plugins)
+[22:16:00.924] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE	PDB signature mismatch
+[22:16:00.925] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE (searchPath Data/SKSE/Plugins)
+[22:16:00.926] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCF6CE	PDB signature mismatch
+[22:16:00.927] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1 (searchPath Data/SKSE/Plugins)
+[22:16:00.928] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1	PDB signature mismatch
+[22:16:00.929] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1 (searchPath Data/SKSE/Plugins)
+[22:16:00.930] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CD10A1	PDB signature mismatch
+[22:16:00.931] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD (searchPath Data/SKSE/Plugins)
+[22:16:00.932] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD	PDB signature mismatch
+[22:16:00.933] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD (searchPath Data/SKSE/Plugins)
+[22:16:00.934] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CEB1DD	PDB signature mismatch
+[22:16:00.935] [34668] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNEL32.DLL+002CD87 (searchPath Data/SKSE/Plugins)
+[22:16:00.936] [34668] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNEL32.DLL+002CD87	PDB signature mismatch
+[22:16:00.937] [34668] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNEL32.DLL+002CD87 (searchPath Data/SKSE/Plugins)
+[22:16:00.938] [34668] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNEL32.DLL+002CD87	PDB signature mismatch
+[22:16:00.939] [34668] [I] Attempting to load pdb for C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC (searchPath Data/SKSE/Plugins)
+[22:16:00.939] [34668] [I] Failed to open pdb for dll C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC	PDB signature mismatch
+[22:16:00.940] [34668] [I] Attempting to load pdb for C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC (searchPath Data/SKSE/Plugins)
+[22:16:00.941] [34668] [I] Failed to open pdb for dll C:/WINDOWS/SYSTEM32/ntdll.dll+00ACAEC	PDB signature mismatch
+[22:16:00.942] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCA161 (searchPath Data/SKSE/Plugins)
+[22:16:00.943] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCA161	PDB signature mismatch
+[22:16:00.944] [34668] [I] Attempting to load pdb for C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCA161 (searchPath Data/SKSE/Plugins)
+[22:16:00.945] [34668] [I] Failed to open pdb for dll C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/SkyrimSE.exe+0CCA161	PDB signature mismatch
+[22:16:00.946] [34668] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNELBASE.dll+010ED90 (searchPath Data/SKSE/Plugins)
+[22:16:00.947] [34668] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNELBASE.dll+010ED90	PDB signature mismatch
+[22:16:00.948] [34668] [I] Attempting to load pdb for C:/WINDOWS/System32/KERNELBASE.dll+010ED90 (searchPath Data/SKSE/Plugins)
+[22:16:00.949] [34668] [I] Failed to open pdb for dll C:/WINDOWS/System32/KERNELBASE.dll+010ED90	PDB signature mismatch

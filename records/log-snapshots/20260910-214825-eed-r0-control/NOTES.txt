@@ -1,0 +1,7 @@
+EED R0 (#269) CONTROL attempt 1, 2026-09-10 21:48, launch_verify --no-autoload --leave-running on the INTERACTIVE desktop, Default profile, NO EnsrickEquipmentDisplay installed.
+Verdict: INTERRUPTED by a human at the controls (#164); NOT a crash (no crash-*.log, CrashLogger.log untouched after startup 21:47:41).
+- MENU-ONLY harness verdict: main menu t+47.6 s (pid 30716), kInputLoaded 32.4 s, kDataLoaded 46.4 s; skse64.log 51 plugins checked, 0 refused.
+- MenuPilot: $NEW -> "Start a new game?" -> RaceSex Done -> "Finish and name your character?" -> Adventurer -> Unbound autosave Save1_09B88E99 (SkyrimUnboundRoom01) 21:50:12 -> Journal/MCM/Skyrim Unbound/Starting Location/City dialog reached (Solitude selected, dialog state 8).
+- From 21:52:02 the Journal opened/closed with no pilot command (5 unmatched opens), F5 quicksave Quicksave0_09B88E99 at 21:52:32, process gone by 21:53:00. human-presence-judge.json = HUMAN_AT_CONTROLS; OS input idle 41 s at 21:54:24; foreground window Firefox/YouTube. The full-screen game on the user's desktop was the interruption.
+- Both saves of this throwaway character remain in Documents\My Games\Skyrim Special Edition\Saves (LocalSaves=false on Default); not deleted or moved by the assistant.
+- Superseded by records/log-snapshots/20260910-215743-eed-r0-control/ (private-desktop rerun).
