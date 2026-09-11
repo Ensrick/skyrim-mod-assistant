@@ -1,5 +1,13 @@
 # Change log
 
+## 2026-09-11 15:20 — Third-person popup traced to BTPS; moreHUD enemy bars turned off
+
+- **Correction.** The third-person fade-in popup is **Better Third Person Selection**, not moreHUD's ingredient widget. BTPS draws a 3D widget on whatever its selection algorithm picks (`fWidgetFadeInDelta = 0.05`, `fWidgetFadeOutDelta = 0.05`, `bIsWidget3DEnabledInThirdPerson = 1`) and its `bAdjustMoreHudWidgets = 1` pins moreHUD's text to that widget, which is why ingredient text appears to float on the plant. moreHUD supplies the text; BTPS supplies the popup. The earlier proposal to disable `AHZShowIngredientWidget` was the wrong lever and is withdrawn: the user wants ingredient effects kept.
+- **Installed** `Ensrick - moreHUD Configuration` (transaction `20260911T191858288Z-ed206fc7316c`, enabled, priority 354), a PapyrusUtil preset turning off `AHZShowEnemyMagickaMeter`, `AHZShowEnemyStaminaMeter`, both numeric stats, and `AHZShowEnemySoulLevel`. Enemy level, health and name untouched, per *"I don't mind seeing their level, health, and name."*
+- **The preset is inert until loaded from the MCM.** moreHUD keeps settings in globals that live in the save, so no file on disk can change them; the preset has to be picked once on moreHUD's Presets page. Nothing was driven headlessly and no save was touched.
+- **BTPS levers recorded but not applied** in #275: a `Flora` filter preset (`bEnableFiltersForNativeSelection = 0` is already set, so the vanilla crosshair stays exempt and plants remain harvestable), or `bIsWidget3DEnabledInThirdPerson = 0`, or `bAdjustMoreHudWidgets = 0`. The user's call.
+- **Verification:** UNVERIFIED. Profile mutated under claim `opus/morehud`, released. No game launched.
+
 ## 2026-09-11 — moreHUD identified as both HUD complaints; utility-power audit
 
 - **Both in-game complaints traced to moreHUD (12688, Ahzaab)**, installed and enabled. The plant popups are its `Show Ingredient Effects` widget; "petty" is the target's *soul size*, from the DLL reading `sSoulLevelNamePetty` and friends, not a difficulty rating; the extra bars are `enemystaminameter.swf` and `enemymagickameter.swf` stacked under the vanilla health bar by its `config.txt`. The health bar itself is vanilla, so nothing needs removing. Issue #275, full option inventory included.
