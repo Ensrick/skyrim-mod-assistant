@@ -1,0 +1,28 @@
+[2026-09-11 15:47:58.356] +2ms POPUP_PATCHED api="MessageBoxW" scope="LaunchProbe.dll import table"
+[2026-09-11 15:47:58.357] +3ms POPUP_PATCHED api="MessageBoxA" scope="LaunchProbe.dll import table"
+[2026-09-11 15:47:58.357] +3ms PROBE_OPEN plugin="LaunchProbe" plugin_version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\LaunchProbe.log"
+[2026-09-11 15:47:58.358] +3ms DLL_ATTACH wall="2026-09-11 15:47:58.354" detail="static initializer; SKSE skips SKSEPlugin_Query for PluginVersionData plug-ins"
+[2026-09-11 15:47:58.358] +4ms PLUGIN_LOAD runtime_skse="1.7.104.0" runtime_module="1.7.104.0" skse_version=33751056 is_editor=0 pid=44680
+[2026-09-11 15:47:58.358] +4ms CONFIG autoload_enabled=0 autoload_save="" delay_ms=1500 heartbeat_ms=0
+[2026-09-11 15:47:58.360] +5ms LISTENER_REGISTERED sender="SKSE"
+[2026-09-11 15:47:58.360] +5ms PROBE_READY
+[2026-09-11 15:47:58.751] +397ms SKSE_MESSAGE name="kPostLoad" sender="SKSE" type=0 data_len=0
+[2026-09-11 15:47:58.751] +397ms SINK_REGISTERED stage="kPostLoad" event="RE::MenuOpenCloseEvent"
+[2026-09-11 15:47:59.088] +733ms SKSE_MESSAGE name="kPostPostLoad" sender="SKSE" type=1 data_len=0
+[2026-09-11 15:48:21.497] +23143ms SKSE_MESSAGE name="kInputLoaded" sender="SKSE" type=6 data_len=0
+[2026-09-11 15:48:22.832] +24477ms MENU_OPEN name="SkyParkour"
+[2026-09-11 15:48:22.839] +24485ms MENU_OPEN name="Loading Menu"
+[2026-09-11 15:48:22.851] +24497ms MENU_OPEN name="Mist Menu"
+[2026-09-11 15:48:22.855] +24501ms MENU_OPEN name="Fader Menu"
+[2026-09-11 15:48:22.864] +24509ms MENU_OPEN name="LoadWaitSpinner"
+[2026-09-11 15:48:33.750] +35396ms SKSE_MESSAGE name="kDataLoaded" sender="SKSE" type=8 data_len=0
+[2026-09-11 15:48:34.828] +36473ms MENU_OPEN name="Main Menu"
+[2026-09-11 15:48:34.828] +36474ms MAIN_MENU_OPEN constant="Main Menu" ui_is_menu_open=1 has_movie_view=1
+[2026-09-11 15:48:34.831] +36477ms MENU_OPEN name="Cursor Menu"
+[2026-09-11 15:48:34.835] +36480ms MENU_OPEN name="Console"
+[2026-09-11 15:48:34.835] +36480ms MENU_CLOSE name="Console"
+[2026-09-11 15:48:34.835] +36480ms MENU_CLOSE name="Cursor Menu"
+[2026-09-11 15:48:34.836] +36481ms MENU_CLOSE name="LoadWaitSpinner"
+[2026-09-11 15:48:34.836] +36481ms MENU_CLOSE name="Loading Menu"
+[2026-09-11 15:48:34.842] +36488ms MENU_OPEN name="Cursor Menu"
+[2026-09-11 15:59:08.227] +669872ms SKSE_MESSAGE name="kNewGame" sender="SKSE" type=7 data_len=8

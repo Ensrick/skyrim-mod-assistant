@@ -1,0 +1,395 @@
+[2026-09-11 16:54:22.323] +1ms POPUP_PATCHED api="MessageBoxW" scope="MenuPilot.dll import table"
+[2026-09-11 16:54:22.323] +1ms POPUP_PATCHED api="MessageBoxA" scope="MenuPilot.dll import table"
+[2026-09-11 16:54:22.323] +1ms PILOT_OPEN plugin="MenuPilot" version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\menupilot.log" pid=40356
+[2026-09-11 16:54:22.323] +1ms PLUGIN_LOAD runtime="1.7.104.0" skse_version=33751056
+[2026-09-11 16:54:22.324] +2ms PILOT_READY detail="inert until a commands.jsonl appears after kInputLoaded"
+[2026-09-11 16:54:47.691] +25370ms STAGE name="kInputLoaded"
+[2026-09-11 16:54:47.695] +25373ms POLL_START file="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\commands.jsonl" interval_ms=250
+[2026-09-11 16:55:01.026] +38704ms STAGE name="kDataLoaded"
+[2026-09-11 16:55:07.229] +44907ms BATCH_CLAIMED n=0 stamp="20260911-215507"
+[2026-09-11 16:55:07.229] +44907ms COMMAND id=1 op="gfx.get" raw="{'menu':'Main Menu','op':'gfx.get','path':'_root.MenuHolder.Menu_mc.MainList.selectedEntry.text'}"
+[2026-09-11 16:55:07.235] +44913ms RESULT id=1 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.MainList.selectedEntry.text" type="string" value="$NEW"
+[2026-09-11 16:55:07.236] +44914ms BATCH_DONE n=0 commands=1 archived=1
+[2026-09-11 16:55:07.988] +45667ms BATCH_CLAIMED n=1 stamp="20260911-215507"
+[2026-09-11 16:55:07.989] +45667ms COMMAND id=2 op="gfx.get" raw="{'op':'gfx.get','menu':'Main Menu','path':'_root.MenuHolder.Menu_mc.MainList.selectedEntry.text'}"
+[2026-09-11 16:55:07.991] +45670ms RESULT id=2 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.MainList.selectedEntry.text" type="string" value="$NEW"
+[2026-09-11 16:55:07.992] +45670ms BATCH_DONE n=1 commands=1 archived=1
+[2026-09-11 16:55:08.494] +46173ms BATCH_CLAIMED n=2 stamp="20260911-215508"
+[2026-09-11 16:55:08.494] +46173ms COMMAND id=3 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-11 16:55:08.496] +46174ms INPUT_SENT id=3 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:08.580] +46258ms INPUT_SENT id=3 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:08.580] +46258ms RESULT id=3 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:08.580] +46258ms COMMAND id=4 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:08.981] +46659ms RESULT id=4 op="wait" ok=1 ms=400
+[2026-09-11 16:55:08.981] +46659ms COMMAND id=5 op="gfx.get" raw="{'op':'gfx.get','menu':'Main Menu','path':'_root.MenuHolder.Menu_mc.ConfirmPanel_mc.textField.text'}"
+[2026-09-11 16:55:08.983] +46661ms RESULT id=5 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.ConfirmPanel_mc.textField.text" type="string" value="Start a new game?"
+[2026-09-11 16:55:08.984] +46662ms BATCH_DONE n=2 commands=3 archived=1
+[2026-09-11 16:55:09.235] +46913ms BATCH_CLAIMED n=3 stamp="20260911-215509"
+[2026-09-11 16:55:09.235] +46914ms COMMAND id=6 op="input.tap" raw="{'op':'input.tap','event':'Accept','code':28}"
+[2026-09-11 16:55:09.244] +46922ms INPUT_SENT id=6 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:09.327] +47006ms INPUT_SENT id=6 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:09.328] +47006ms RESULT id=6 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:09.328] +47007ms BATCH_DONE n=3 commands=1 archived=1
+[2026-09-11 16:55:24.105] +61784ms BATCH_CLAIMED n=4 stamp="20260911-215524"
+[2026-09-11 16:55:24.105] +61784ms COMMAND id=7 op="gfx.get" raw="{'menu':'RaceSex Menu','path':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.textField.text','op':'gfx.get'}"
+[2026-09-11 16:55:24.109] +61788ms RESULT id=7 op="gfx.get" ok=1 menu="RaceSex Menu" path="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.textField.text" type="string" value="Done"
+[2026-09-11 16:55:24.110] +61789ms BATCH_DONE n=4 commands=1 archived=1
+[2026-09-11 16:55:24.361] +62040ms BATCH_CLAIMED n=5 stamp="20260911-215524"
+[2026-09-11 16:55:24.361] +62040ms COMMAND id=8 op="gfx.invoke" raw="{'menu':'RaceSex Menu','args':[],'method':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onPress','op':'gfx.invoke'}"
+[2026-09-11 16:55:24.364] +62043ms RESULT id=8 op="gfx.invoke" ok=1 menu="RaceSex Menu" method="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onPress" args=0 ret_type="undefined" ret=""
+[2026-09-11 16:55:24.364] +62043ms COMMAND id=9 op="gfx.invoke" raw="{'menu':'RaceSex Menu','args':[],'method':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onRelease','op':'gfx.invoke'}"
+[2026-09-11 16:55:24.374] +62052ms RESULT id=9 op="gfx.invoke" ok=1 menu="RaceSex Menu" method="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.bottomBar.buttonPanel.button0.onRelease" args=0 ret_type="undefined" ret=""
+[2026-09-11 16:55:24.374] +62053ms COMMAND id=10 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:24.774] +62453ms RESULT id=10 op="wait" ok=1 ms=400
+[2026-09-11 16:55:24.774] +62453ms COMMAND id=11 op="gfx.get" raw="{'menu':'MessageBoxMenu','path':'_root.MessageMenu.MessageText.text','op':'gfx.get'}"
+[2026-09-11 16:55:24.779] +62457ms RESULT id=11 op="gfx.get" ok=1 menu="MessageBoxMenu" path="_root.MessageMenu.MessageText.text" type="string" value="Finish and name your character?"
+[2026-09-11 16:55:24.780] +62458ms BATCH_DONE n=5 commands=4 archived=1
+[2026-09-11 16:55:25.031] +62709ms BATCH_CLAIMED n=6 stamp="20260911-215525"
+[2026-09-11 16:55:25.031] +62709ms COMMAND id=12 op="input.tap" raw="{'event':'Accept','code':28,'op':'input.tap'}"
+[2026-09-11 16:55:25.035] +62714ms INPUT_SENT id=12 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:25.118] +62796ms INPUT_SENT id=12 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:25.118] +62797ms RESULT id=12 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:25.118] +62797ms COMMAND id=13 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:25.519] +63198ms RESULT id=13 op="wait" ok=1 ms=400
+[2026-09-11 16:55:25.519] +63198ms COMMAND id=14 op="gfx.get" raw="{'menu':'RaceSex Menu','path':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry._visible','op':'gfx.get'}"
+[2026-09-11 16:55:25.524] +63203ms RESULT id=14 op="gfx.get" ok=1 menu="RaceSex Menu" path="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry._visible" type="bool" value="true"
+[2026-09-11 16:55:25.525] +63204ms BATCH_DONE n=6 commands=3 archived=1
+[2026-09-11 16:55:26.027] +63706ms BATCH_CLAIMED n=7 stamp="20260911-215526"
+[2026-09-11 16:55:26.027] +63706ms COMMAND id=15 op="gfx.get" raw="{'menu':'RaceSex Menu','path':'_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry.TextInputInstance.textField.text','op':'gfx.get'}"
+[2026-09-11 16:55:26.033] +63712ms RESULT id=15 op="gfx.get" ok=1 menu="RaceSex Menu" path="_root.RaceSexMenuBaseInstance.RaceSexPanelsInstance.textEntry.TextInputInstance.textField.text" type="string" value="Adventurer"
+[2026-09-11 16:55:26.034] +63713ms BATCH_DONE n=7 commands=1 archived=1
+[2026-09-11 16:55:26.285] +63964ms BATCH_CLAIMED n=8 stamp="20260911-215526"
+[2026-09-11 16:55:26.285] +63964ms COMMAND id=16 op="input.tap" raw="{'event':'Accept','code':28,'op':'input.tap'}"
+[2026-09-11 16:55:26.291] +63969ms INPUT_SENT id=16 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:26.381] +64060ms INPUT_SENT id=16 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:26.381] +64060ms RESULT id=16 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:26.382] +64061ms BATCH_DONE n=8 commands=1 archived=1
+[2026-09-11 16:55:33.144] +70823ms BATCH_CLAIMED n=9 stamp="20260911-215533"
+[2026-09-11 16:55:33.144] +70823ms COMMAND id=17 op="input.tap" raw="{'code':36,'op':'input.tap','event':'Journal'}"
+[2026-09-11 16:55:33.148] +70826ms INPUT_SENT id=17 device=0 user_event="Journal" code=36 value=1 held=0
+[2026-09-11 16:55:33.229] +70907ms INPUT_SENT id=17 device=0 user_event="Journal" code=36 value=0 held=0.08
+[2026-09-11 16:55:33.229] +70907ms RESULT id=17 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:33.229] +70907ms COMMAND id=18 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:33.629] +71308ms RESULT id=18 op="wait" ok=1 ms=400
+[2026-09-11 16:55:33.629] +71308ms COMMAND id=19 op="gfx.invoke" raw="{'method':'_root.QuestJournalFader.Menu_mc.SystemTab.onPress','args':[],'op':'gfx.invoke','menu':'Journal Menu'}"
+[2026-09-11 16:55:33.633] +71311ms RESULT id=19 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onPress" args=0 ret_type="undefined" ret=""
+[2026-09-11 16:55:33.633] +71311ms COMMAND id=20 op="gfx.invoke" raw="{'method':'_root.QuestJournalFader.Menu_mc.SystemTab.onRelease','args':[],'op':'gfx.invoke','menu':'Journal Menu'}"
+[2026-09-11 16:55:33.642] +71321ms RESULT id=20 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onRelease" args=0 ret_type="undefined" ret=""
+[2026-09-11 16:55:33.642] +71321ms COMMAND id=21 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex','op':'gfx.get'}"
+[2026-09-11 16:55:33.649] +71328ms RESULT id=21 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex" type="number" value="0"
+[2026-09-11 16:55:33.650] +71328ms BATCH_DONE n=9 commands=5 archived=1
+[2026-09-11 16:55:33.901] +71579ms BATCH_CLAIMED n=10 stamp="20260911-215533"
+[2026-09-11 16:55:33.901] +71580ms COMMAND id=22 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:33.909] +71588ms INPUT_SENT id=22 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:33.994] +71672ms INPUT_SENT id=22 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:33.994] +71672ms RESULT id=22 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:33.994] +71672ms COMMAND id=23 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:34.002] +71681ms INPUT_SENT id=23 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:34.086] +71765ms INPUT_SENT id=23 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:34.086] +71765ms RESULT id=23 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:34.086] +71765ms COMMAND id=24 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:34.095] +71774ms INPUT_SENT id=24 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:34.179] +71857ms INPUT_SENT id=24 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:34.179] +71857ms RESULT id=24 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:34.179] +71857ms COMMAND id=25 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:34.187] +71866ms INPUT_SENT id=25 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:34.271] +71949ms INPUT_SENT id=25 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:34.271] +71949ms RESULT id=25 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:34.271] +71950ms COMMAND id=26 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:34.279] +71958ms INPUT_SENT id=26 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:34.363] +72042ms INPUT_SENT id=26 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:34.364] +72042ms RESULT id=26 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:34.364] +72042ms COMMAND id=27 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:34.372] +72051ms INPUT_SENT id=27 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:34.456] +72134ms INPUT_SENT id=27 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:34.456] +72134ms RESULT id=27 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:34.456] +72134ms COMMAND id=28 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text','op':'gfx.get'}"
+[2026-09-11 16:55:34.464] +72143ms RESULT id=28 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text" type="string" value="$MOD CONFIGURATION"
+[2026-09-11 16:55:34.465] +72144ms BATCH_DONE n=10 commands=7 archived=1
+[2026-09-11 16:55:34.717] +72395ms BATCH_CLAIMED n=11 stamp="20260911-215534"
+[2026-09-11 16:55:34.717] +72395ms COMMAND id=29 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-11 16:55:34.725] +72403ms INPUT_SENT id=29 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:34.809] +72487ms INPUT_SENT id=29 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:34.809] +72487ms RESULT id=29 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:34.809] +72487ms COMMAND id=30 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:35.209] +72888ms RESULT id=30 op="wait" ok=1 ms=400
+[2026-09-11 16:55:35.209] +72888ms COMMAND id=31 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._modList._entryList.0.text','op':'gfx.get'}"
+[2026-09-11 16:55:35.212] +72891ms RESULT id=31 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._modList._entryList.0.text" type="string" value=" Skyrim Unbound"
+[2026-09-11 16:55:35.213] +72892ms BATCH_DONE n=11 commands=3 archived=1
+[2026-09-11 16:55:35.715] +73393ms BATCH_CLAIMED n=12 stamp="20260911-215535"
+[2026-09-11 16:55:35.715] +73393ms COMMAND id=32 op="input.tap" raw="{'code':208,'op':'input.tap','event':'Down'}"
+[2026-09-11 16:55:35.717] +73395ms INPUT_SENT id=32 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:35.801] +73479ms INPUT_SENT id=32 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:35.801] +73479ms RESULT id=32 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:35.801] +73479ms COMMAND id=33 op="input.tap" raw="{'code':28,'op':'input.tap','event':'Accept'}"
+[2026-09-11 16:55:35.809] +73487ms INPUT_SENT id=33 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:35.893] +73572ms INPUT_SENT id=33 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:35.893] +73572ms RESULT id=33 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:35.893] +73572ms COMMAND id=34 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:36.294] +73972ms RESULT id=34 op="wait" ok=1 ms=400
+[2026-09-11 16:55:36.294] +73972ms COMMAND id=35 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._entryList.1.text','op':'gfx.get'}"
+[2026-09-11 16:55:36.296] +73975ms RESULT id=35 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._entryList.1.text" type="string" value="Starting Location"
+[2026-09-11 16:55:36.297] +73976ms BATCH_DONE n=12 commands=4 archived=1
+[2026-09-11 16:55:38.052] +75730ms BATCH_CLAIMED n=13 stamp="20260911-215538"
+[2026-09-11 16:55:38.052] +75730ms COMMAND id=36 op="input.tap" raw="{'event':'Left','code':203,'op':'input.tap'}"
+[2026-09-11 16:55:38.053] +75731ms INPUT_SENT id=36 device=0 user_event="Left" code=203 value=1 held=0
+[2026-09-11 16:55:38.137] +75815ms INPUT_SENT id=36 device=0 user_event="Left" code=203 value=0 held=0.08
+[2026-09-11 16:55:38.137] +75815ms RESULT id=36 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:38.137] +75816ms COMMAND id=37 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:38.145] +75824ms RESULT id=37 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex" type="number" value="-1"
+[2026-09-11 16:55:38.146] +75825ms BATCH_DONE n=13 commands=2 archived=1
+[2026-09-11 16:55:38.648] +76326ms BATCH_CLAIMED n=14 stamp="20260911-215538"
+[2026-09-11 16:55:38.648] +76327ms COMMAND id=38 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:38.650] +76328ms RESULT id=38 op="gfx.get" ok=0 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text" type="undefined" value=""
+[2026-09-11 16:55:38.650] +76328ms COMMAND id=39 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:38.658] +76336ms RESULT id=39 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex" type="number" value="-1"
+[2026-09-11 16:55:38.659] +76337ms BATCH_DONE n=14 commands=2 archived=1
+[2026-09-11 16:55:38.909] +76588ms BATCH_CLAIMED n=15 stamp="20260911-215538"
+[2026-09-11 16:55:38.910] +76588ms COMMAND id=40 op="input.tap" raw="{'event':'Down','code':208,'op':'input.tap'}"
+[2026-09-11 16:55:38.910] +76588ms INPUT_SENT id=40 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 16:55:38.994] +76672ms INPUT_SENT id=40 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 16:55:38.994] +76673ms RESULT id=40 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:38.994] +76673ms COMMAND id=41 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:39.394] +77073ms RESULT id=41 op="wait" ok=1 ms=400
+[2026-09-11 16:55:39.395] +77074ms BATCH_DONE n=15 commands=2 archived=1
+[2026-09-11 16:55:39.647] +77325ms BATCH_CLAIMED n=16 stamp="20260911-215539"
+[2026-09-11 16:55:39.647] +77325ms COMMAND id=42 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:39.650] +77328ms RESULT id=42 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList.selectedEntry.text" type="string" value="Main"
+[2026-09-11 16:55:39.650] +77328ms COMMAND id=43 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:39.658] +77337ms RESULT id=43 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._subList._selectedIndex" type="number" value="0"
+[2026-09-11 16:55:39.659] +77337ms BATCH_DONE n=16 commands=2 archived=1
+[2026-09-11 16:55:40.161] +77839ms BATCH_CLAIMED n=17 stamp="20260911-215540"
+[2026-09-11 16:55:40.161] +77839ms COMMAND id=44 op="input.tap" raw="{'event':'Accept','code':28,'op':'input.tap'}"
+[2026-09-11 16:55:40.163] +77841ms INPUT_SENT id=44 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:40.246] +77925ms INPUT_SENT id=44 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:40.247] +77925ms RESULT id=44 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:40.247] +77925ms COMMAND id=45 op="wait" raw="{'ms':400,'op':'wait'}"
+[2026-09-11 16:55:40.647] +78325ms RESULT id=45 op="wait" ok=1 ms=400
+[2026-09-11 16:55:40.647] +78325ms COMMAND id=46 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:40.650] +78328ms RESULT id=46 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._entryList.0.text" type="string" value="Begin Your Adventure"
+[2026-09-11 16:55:40.651] +78329ms BATCH_DONE n=17 commands=3 archived=1
+[2026-09-11 16:55:40.902] +78580ms BATCH_CLAIMED n=18 stamp="20260911-215540"
+[2026-09-11 16:55:40.902] +78580ms COMMAND id=47 op="input.tap" raw="{'event':'Right','code':205,'op':'input.tap'}"
+[2026-09-11 16:55:40.902] +78580ms INPUT_SENT id=47 device=0 user_event="Right" code=205 value=1 held=0
+[2026-09-11 16:55:40.986] +78665ms INPUT_SENT id=47 device=0 user_event="Right" code=205 value=0 held=0.08
+[2026-09-11 16:55:40.986] +78665ms RESULT id=47 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:40.986] +78665ms COMMAND id=48 op="gfx.get" raw="{'path':'_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex','op':'gfx.get','menu':'Journal Menu'}"
+[2026-09-11 16:55:40.995] +78673ms RESULT id=48 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.ConfigPanel._optionsList._selectedIndex" type="number" value="0"
+[2026-09-11 16:55:40.996] +78674ms BATCH_DONE n=18 commands=2 archived=1
+[2026-09-11 16:55:41.247] +78925ms BATCH_CLAIMED n=19 stamp="20260911-215541"
+[2026-09-11 16:55:41.247] +78925ms COMMAND id=49 op="input.tap" raw="{'event':'Accept','code':28,'op':'input.tap'}"
+[2026-09-11 16:55:41.255] +78933ms INPUT_SENT id=49 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:55:41.339] +79017ms INPUT_SENT id=49 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:55:41.339] +79017ms RESULT id=49 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:55:41.340] +79018ms BATCH_DONE n=19 commands=1 archived=1
+[2026-09-11 16:57:08.229] +165908ms BATCH_CLAIMED n=20 stamp="20260911-215708"
+[2026-09-11 16:57:08.229] +165908ms COMMAND id=50 op="input.tap" raw="{'code':15,'event':'Tween','op':'input.tap'}"
+[2026-09-11 16:57:08.235] +165913ms INPUT_SENT id=50 device=0 user_event="Tween" code=15 value=1 held=0
+[2026-09-11 16:57:08.321] +166000ms INPUT_SENT id=50 device=0 user_event="Tween" code=15 value=0 held=0.08
+[2026-09-11 16:57:08.321] +166000ms RESULT id=50 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:57:08.321] +166000ms COMMAND id=51 op="wait" raw="{'op':'wait','ms':1200}"
+[2026-09-11 16:57:09.521] +167200ms RESULT id=51 op="wait" ok=1 ms=1200
+[2026-09-11 16:57:09.522] +167200ms COMMAND id=52 op="input.tap" raw="{'code':205,'event':'Right','op':'input.tap'}"
+[2026-09-11 16:57:09.523] +167202ms INPUT_SENT id=52 device=0 user_event="Right" code=205 value=1 held=0
+[2026-09-11 16:57:09.609] +167288ms INPUT_SENT id=52 device=0 user_event="Right" code=205 value=0 held=0.08
+[2026-09-11 16:57:09.609] +167288ms RESULT id=52 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:57:09.609] +167288ms COMMAND id=53 op="wait" raw="{'op':'wait','ms':600}"
+[2026-09-11 16:57:10.210] +167888ms RESULT id=53 op="wait" ok=1 ms=600
+[2026-09-11 16:57:10.210] +167888ms COMMAND id=54 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-11 16:57:10.219] +167897ms INPUT_SENT id=54 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 16:57:10.306] +167985ms INPUT_SENT id=54 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 16:57:10.306] +167985ms RESULT id=54 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:57:10.306] +167985ms COMMAND id=55 op="wait" raw="{'op':'wait','ms':2000}"
+[2026-09-11 16:57:12.307] +169985ms RESULT id=55 op="wait" ok=1 ms=2000
+[2026-09-11 16:57:12.307] +169985ms COMMAND id=56 op="menu.list" raw="{'op':'menu.list'}"
+[2026-09-11 16:57:12.316] +169994ms STACK id=56 depth=0 name="SkyParkour"
+[2026-09-11 16:57:12.316] +169994ms STACK id=56 depth=1 name="HUD Menu"
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="SkyParkour" open=1 has_view=1
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Kinect Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Login Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Sleep/Wait Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="CustomMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="StatsMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Tutorial Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Credits Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="MagicMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Training Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Main Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="LevelUp Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="BarterMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="LoadWaitSpinner" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Book Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Fader Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="GiftMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="FavoritesMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="HUD Menu" open=1 has_view=1
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="MessageBoxMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Dialogue Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="TitleSequence Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="TweenMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Cursor Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="MapMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="InventoryMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Journal Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="SafeZoneMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Mist Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Lockpicking Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Marketplace Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="RaceSex Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Console" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Crafting Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Console Native UI Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Loading Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="Mod Manager Menu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms MENU id=56 name="ContainerMenu" open=0 has_view=0
+[2026-09-11 16:57:12.316] +169994ms RESULT id=56 op="menu.list" ok=1 registered=38 open=2 stack=2
+[2026-09-11 16:57:12.317] +169995ms BATCH_DONE n=20 commands=7 archived=1
+[2026-09-11 16:57:12.818] +170497ms BATCH_CLAIMED n=21 stamp="20260911-215712"
+[2026-09-11 16:57:12.819] +170497ms COMMAND id=57 op="gfx.dump" raw="{'menu':'InventoryMenu','path':'_root.Menu_mc.inventoryLists.itemList._entryList','depth':1,'max':200,'op':'gfx.dump'}"
+[2026-09-11 16:57:12.821] +170500ms RESULT id=57 op="gfx.dump" ok=0 menu="InventoryMenu" reason="no movie view (menu closed?)"
+[2026-09-11 16:57:12.822] +170501ms BATCH_DONE n=21 commands=1 archived=1
+[2026-09-11 16:57:13.073] +170752ms BATCH_CLAIMED n=22 stamp="20260911-215713"
+[2026-09-11 16:57:13.074] +170752ms COMMAND id=58 op="input.tap" raw="{'code':1,'event':'Cancel','op':'input.tap'}"
+[2026-09-11 16:57:13.081] +170759ms INPUT_SENT id=58 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-11 16:57:13.168] +170846ms INPUT_SENT id=58 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-11 16:57:13.168] +170847ms RESULT id=58 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:57:13.168] +170847ms COMMAND id=59 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-11 16:57:13.568] +171247ms RESULT id=59 op="wait" ok=1 ms=400
+[2026-09-11 16:57:13.568] +171247ms COMMAND id=60 op="input.tap" raw="{'code':1,'event':'Cancel','op':'input.tap'}"
+[2026-09-11 16:57:13.573] +171252ms INPUT_SENT id=60 device=0 user_event="Cancel" code=1 value=1 held=0
+[2026-09-11 16:57:13.662] +171340ms INPUT_SENT id=60 device=0 user_event="Cancel" code=1 value=0 held=0.08
+[2026-09-11 16:57:13.662] +171340ms RESULT id=60 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 16:57:13.662] +171340ms COMMAND id=61 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-11 16:57:14.062] +171740ms RESULT id=61 op="wait" ok=1 ms=400
+[2026-09-11 16:57:14.062] +171740ms COMMAND id=62 op="menu.list" raw="{'op':'menu.list'}"
+[2026-09-11 16:57:14.071] +171750ms STACK id=62 depth=0 name="SkyParkour"
+[2026-09-11 16:57:14.071] +171750ms STACK id=62 depth=1 name="HUD Menu"
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="SkyParkour" open=1 has_view=1
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Kinect Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Login Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Sleep/Wait Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="CustomMenu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="StatsMenu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Tutorial Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Credits Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="MagicMenu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Training Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Main Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="LevelUp Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="BarterMenu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="LoadWaitSpinner" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Book Menu" open=0 has_view=0
+[2026-09-11 16:57:14.071] +171750ms MENU id=62 name="Fader Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="GiftMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="FavoritesMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="HUD Menu" open=1 has_view=1
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="MessageBoxMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Dialogue Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="TitleSequence Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="TweenMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Cursor Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="MapMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="InventoryMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Journal Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="SafeZoneMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Mist Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Lockpicking Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Marketplace Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="RaceSex Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Console" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Crafting Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Console Native UI Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Loading Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="Mod Manager Menu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms MENU id=62 name="ContainerMenu" open=0 has_view=0
+[2026-09-11 16:57:14.072] +171750ms RESULT id=62 op="menu.list" ok=1 registered=38 open=2 stack=2
+[2026-09-11 16:57:14.073] +171751ms BATCH_DONE n=22 commands=5 archived=1
+[2026-09-11 17:00:21.928] +359606ms BATCH_CLAIMED n=23 stamp="20260911-220021"
+[2026-09-11 17:00:21.928] +359607ms COMMAND id=63 op="input.tap" raw="{'code':36,'event':'Journal','op':'input.tap'}"
+[2026-09-11 17:00:21.935] +359613ms INPUT_SENT id=63 device=0 user_event="Journal" code=36 value=1 held=0
+[2026-09-11 17:00:22.016] +359694ms INPUT_SENT id=63 device=0 user_event="Journal" code=36 value=0 held=0.08
+[2026-09-11 17:00:22.016] +359694ms RESULT id=63 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:22.016] +359694ms COMMAND id=64 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-11 17:00:22.417] +360095ms RESULT id=64 op="wait" ok=1 ms=400
+[2026-09-11 17:00:22.417] +360095ms COMMAND id=65 op="gfx.invoke" raw="{'menu':'Journal Menu','method':'_root.QuestJournalFader.Menu_mc.SystemTab.onPress','op':'gfx.invoke','args':[]}"
+[2026-09-11 17:00:22.419] +360098ms RESULT id=65 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onPress" args=0 ret_type="undefined" ret=""
+[2026-09-11 17:00:22.419] +360098ms COMMAND id=66 op="gfx.invoke" raw="{'menu':'Journal Menu','method':'_root.QuestJournalFader.Menu_mc.SystemTab.onRelease','op':'gfx.invoke','args':[]}"
+[2026-09-11 17:00:22.429] +360108ms RESULT id=66 op="gfx.invoke" ok=1 menu="Journal Menu" method="_root.QuestJournalFader.Menu_mc.SystemTab.onRelease" args=0 ret_type="undefined" ret=""
+[2026-09-11 17:00:22.429] +360108ms COMMAND id=67 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex','op':'gfx.get'}"
+[2026-09-11 17:00:22.436] +360114ms RESULT id=67 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.iSelectedIndex" type="number" value="0"
+[2026-09-11 17:00:22.437] +360115ms BATCH_DONE n=23 commands=5 archived=1
+[2026-09-11 17:00:22.939] +360617ms BATCH_CLAIMED n=24 stamp="20260911-220022"
+[2026-09-11 17:00:22.939] +360617ms COMMAND id=68 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:22.940] +360619ms INPUT_SENT id=68 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.024] +360703ms INPUT_SENT id=68 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.024] +360703ms RESULT id=68 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.024] +360703ms COMMAND id=69 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.033] +360711ms INPUT_SENT id=69 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.117] +360795ms INPUT_SENT id=69 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.117] +360795ms RESULT id=69 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.117] +360795ms COMMAND id=70 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.125] +360804ms INPUT_SENT id=70 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.209] +360887ms INPUT_SENT id=70 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.209] +360887ms RESULT id=70 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.209] +360887ms COMMAND id=71 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.218] +360896ms INPUT_SENT id=71 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.301] +360980ms INPUT_SENT id=71 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.302] +360980ms RESULT id=71 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.302] +360980ms COMMAND id=72 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.310] +360989ms INPUT_SENT id=72 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.394] +361072ms INPUT_SENT id=72 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.394] +361072ms RESULT id=72 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.394] +361072ms COMMAND id=73 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.403] +361081ms INPUT_SENT id=73 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.486] +361165ms INPUT_SENT id=73 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.486] +361165ms RESULT id=73 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.486] +361165ms COMMAND id=74 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.495] +361173ms INPUT_SENT id=74 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.579] +361257ms INPUT_SENT id=74 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.579] +361257ms RESULT id=74 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.579] +361257ms COMMAND id=75 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.587] +361266ms INPUT_SENT id=75 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.671] +361350ms INPUT_SENT id=75 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.671] +361350ms RESULT id=75 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.671] +361350ms COMMAND id=76 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:23.680] +361358ms INPUT_SENT id=76 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:23.764] +361442ms INPUT_SENT id=76 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:23.764] +361442ms RESULT id=76 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:23.764] +361442ms COMMAND id=77 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text','op':'gfx.get'}"
+[2026-09-11 17:00:23.772] +361451ms RESULT id=77 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.CategoryList_mc.List_mc.selectedEntry.text" type="string" value="$QUIT"
+[2026-09-11 17:00:23.773] +361452ms BATCH_DONE n=24 commands=10 archived=1
+[2026-09-11 17:00:24.025] +361703ms BATCH_CLAIMED n=25 stamp="20260911-220024"
+[2026-09-11 17:00:24.025] +361703ms COMMAND id=78 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-11 17:00:24.033] +361711ms INPUT_SENT id=78 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 17:00:24.117] +361795ms INPUT_SENT id=78 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 17:00:24.117] +361795ms RESULT id=78 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:24.117] +361795ms COMMAND id=79 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-11 17:00:24.517] +362196ms RESULT id=79 op="wait" ok=1 ms=400
+[2026-09-11 17:00:24.517] +362196ms COMMAND id=80 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.iSelectedIndex','op':'gfx.get'}"
+[2026-09-11 17:00:24.520] +362198ms RESULT id=80 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.iSelectedIndex" type="number" value="-1"
+[2026-09-11 17:00:24.521] +362199ms BATCH_DONE n=25 commands=3 archived=1
+[2026-09-11 17:00:24.772] +362451ms BATCH_CLAIMED n=26 stamp="20260911-220024"
+[2026-09-11 17:00:24.773] +362451ms COMMAND id=81 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:24.781] +362459ms INPUT_SENT id=81 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:24.865] +362543ms INPUT_SENT id=81 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:24.865] +362543ms RESULT id=81 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:24.865] +362543ms COMMAND id=82 op="input.tap" raw="{'code':208,'event':'Down','op':'input.tap'}"
+[2026-09-11 17:00:24.873] +362552ms INPUT_SENT id=82 device=0 user_event="Down" code=208 value=1 held=0
+[2026-09-11 17:00:24.957] +362635ms INPUT_SENT id=82 device=0 user_event="Down" code=208 value=0 held=0.08
+[2026-09-11 17:00:24.957] +362636ms RESULT id=82 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:24.957] +362636ms COMMAND id=83 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.selectedEntry.text','op':'gfx.get'}"
+[2026-09-11 17:00:24.966] +362644ms RESULT id=83 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.PCQuitList.selectedEntry.text" type="string" value="$Desktop"
+[2026-09-11 17:00:24.967] +362645ms BATCH_DONE n=26 commands=3 archived=1
+[2026-09-11 17:00:25.218] +362897ms BATCH_CLAIMED n=27 stamp="20260911-220025"
+[2026-09-11 17:00:25.218] +362897ms COMMAND id=84 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-11 17:00:25.226] +362904ms INPUT_SENT id=84 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 17:00:25.310] +362988ms INPUT_SENT id=84 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 17:00:25.310] +362989ms RESULT id=84 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 17:00:25.310] +362989ms COMMAND id=85 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-11 17:00:25.711] +363389ms RESULT id=85 op="wait" ok=1 ms=400
+[2026-09-11 17:00:25.711] +363389ms COMMAND id=86 op="gfx.get" raw="{'menu':'Journal Menu','path':'_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.ConfirmPanel.ConfirmText.textField.text','op':'gfx.get'}"
+[2026-09-11 17:00:25.713] +363392ms RESULT id=86 op="gfx.get" ok=1 menu="Journal Menu" path="_root.QuestJournalFader.Menu_mc.SystemFader.Page_mc.ConfirmPanel.ConfirmText.textField.text" type="string" value="Quit to desktop?  Any unsaved progress will be lost."
+[2026-09-11 17:00:25.714] +363393ms BATCH_DONE n=27 commands=3 archived=1
+[2026-09-11 17:00:25.966] +363644ms BATCH_CLAIMED n=28 stamp="20260911-220025"
+[2026-09-11 17:00:25.966] +363644ms COMMAND id=87 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-11 17:00:25.974] +363652ms INPUT_SENT id=87 device=0 user_event="Accept" code=28 value=1 held=0

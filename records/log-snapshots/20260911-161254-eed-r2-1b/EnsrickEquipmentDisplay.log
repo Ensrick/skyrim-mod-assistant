@@ -1,0 +1,132 @@
+[16:13:04.421] [info] loaded Data\SKSE\Plugins\EnsrickEquipmentDisplay.ini
+[16:13:04.421] [info] settings: DualSheath Enable=true PlayerOnly=false Staves=true | Rules Enabled=true PlayerOnly=true EnforcePickup=true ReconcileContainerChanges=true PackedDaggers=2 PackedDaggersNeedBackpack=false BackpackKeyword='' | Storage StashPlugin='' StashFormID=0 | Display ActionEventDrawnState=true | Diagnostics DumpSkeleton=false DumpPlacements=true SelfTest=true SelfTestDelaySeconds=25
+[16:13:04.421] [info] settings: read but not acted on in this build: Staff Enabled=true TwoHandedUnequipsStaff=true (R3) | Compat OarConditions=true OarLegacyPluginAlias=false (R3) | Display FirstPersonStaff=false (R4)
+[16:13:04.421] [warning] settings: [Diagnostics] SelfTest=1: the R2 self-test will add, drop and pick up iron weapons on the player 25 s after the game loads; this is a verification setting, not for play
+[16:13:04.421] [info] EnsrickEquipmentDisplay 0-4-1-0 loading against runtime 1-7-104-0
+[16:13:04.625] [debug] kPostLoad
+[16:13:04.873] [warning] SimpleDualSheath.dll is loaded alongside this plugin; both display the left-hand weapon, expect a double display until one of them is removed
+[16:13:36.562] [info] placements: merged placements.json (12 slot(s), 0 warning(s))
+[16:13:36.562] [debug] placements: no Data\SKSE\Plugins\EnsrickEquipmentDisplay\placements.user.json
+[16:13:36.562] [info] placements: roster hip.right.1h=WeaponSword hip.left.1h=WeaponSwordLeft hip.right.dagger=WeaponDagger hip.left.dagger=WeaponDaggerLeft back.2h=WeaponBack back.bow=WeaponBow hand.left=NPC L Hand [LHnd] hand.right=NPC R Hand [RHnd] backpack.dagger.1=(hidden) backpack.dagger.2=(hidden)
+[16:13:36.562] [info] placements: expecting XPMSE 3.6 skeleton, nif sha256 d922d4a6309672c27ce3fe579353b925abe32841a9f12bc09266627188fd6fbf
+[16:13:36.562] [info] storage: no stash configured ([Storage] StashPlugin/StashFormID); overflow is dropped at the actor's feet
+[16:13:36.562] [info] hooked Character::Load3D (vtable 7FF62D543258, vfunc 0X6A)
+[16:13:36.562] [info] hooked PlayerCharacter::Load3D (vtable 7FF62D5496C0, vfunc 0X6A)
+[16:13:36.562] [info] hooked PlayerCharacter::PickUpObject (vtable 7FF62D5496C0, vfunc 0XCC)
+[16:13:36.562] [info] hooked PlayerCharacter::AddObjectToContainer (vtable 7FF62D5496C0, vfunc 0X5A)
+[16:13:36.562] [info] registered equip event sink
+[16:13:36.562] [info] registered container-changed event sink (refresh and reconcile)
+[16:13:36.562] [info] registered SKSE action event sink (kEndDraw / kEndSheathe)
+[16:13:45.233] [info] kNewGame: scheduling a player refresh
+[16:13:45.233] [info] selftest: armed on kNewGame; first step in 25 s
+[16:13:50.668] [info] skeleton: player race NordRace (00013746) sex male model 'Actors\Character\Character Assets\skeleton.nif'; tree root 'skeleton.nif' with 257 node(s)
+[16:13:50.669] [info] skeleton: all 8 roster nodes present by name
+[16:13:50.669] [info] skeleton: XPMSE 3.60 on 'NPC' (expected 3.60)
+[16:13:50.669] [info] rules 00000014: board hip.right.1h=- hip.left.1h=- hip.right.dagger=- hip.left.dagger=- back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=- backpack.dagger.2=- | inventory 0 = visible 0 + packed 0 + refused 0 | ungoverned 0 | packed slots 2 | requests 0
+[16:13:50.670] [info] placement dump (load3d): 263 node(s) in the tree, 16 placement target(s) resolved, 0 missing, written to C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\EnsrickEquipmentDisplay_Placements_00000014_load3d.txt
+[16:14:10.238] [info] selftest: step 1: governed weapons in the inventory before: 0
+[16:14:10.238] [info] selftest: scripted add of Iron Dagger 0001397E x4 (AddObjectToContainer, no source)
+[16:14:10.239] [debug] add: Iron Dagger 0001397E x4 [dagger] via AddObjectToContainer (no source: script or reward) 00000000: accept (4 free slot(s))
+[16:14:10.239] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:10.239] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:10.239] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:10.239] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:10.239] [info] rules 00000014: board hip.right.1h=- hip.left.1h=- hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 4 = visible 2 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 2
+[16:14:10.269] [info] attached hip.right.dagger 0001397E#0 (dagger) to 'WeaponDagger' on actor 00000014 (drawn=false, culled=false)
+[16:14:10.269] [info] attached hip.left.dagger 0001397E#1 (dagger) to 'WeaponDaggerLeft' on actor 00000014 (drawn=false, culled=false)
+[16:14:13.246] [info] selftest check 1: PASS: four daggers in the inventory (found 4)
+[16:14:13.246] [info] selftest: step 2
+[16:14:13.246] [info] selftest: scripted add of Iron Sword 00012EB7 x1 (AddObjectToContainer, no source)
+[16:14:13.246] [debug] add: Iron Sword 00012EB7 x1 [one-handed] via AddObjectToContainer (no source: script or reward) 00000000: accept (2 free slot(s))
+[16:14:13.246] [info] selftest: scripted add of Iron War Axe 00013790 x1 (AddObjectToContainer, no source)
+[16:14:13.246] [debug] add: Iron War Axe 00013790 x1 [one-handed] via AddObjectToContainer (no source: script or reward) 00000000: accept (1 free slot(s))
+[16:14:13.246] [info] rules 00000014: Iron Sword 00012EB7#0 [one-handed] -> hip.right.1h (accept)
+[16:14:13.246] [info] rules 00000014: Iron War Axe 00013790#0 [one-handed] -> hip.left.1h (accept)
+[16:14:13.246] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:13.246] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:13.246] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:13.246] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:13.246] [info] rules 00000014: board hip.right.1h=Iron Sword hip.left.1h=Iron War Axe hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 6 = visible 4 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 4
+[16:14:13.263] [info] attached hip.right.1h 00012EB7#0 (sword) to 'WeaponSword' on actor 00000014 (drawn=false, culled=false)
+[16:14:13.273] [info] attached hip.left.1h 00013790#0 (axe) to 'WeaponAxeLeft' on actor 00000014 (drawn=false, culled=false)
+[16:14:16.249] [info] selftest check 2: PASS: sword and axe in the inventory (found 1 and 1)
+[16:14:16.249] [info] selftest check 3: PASS: six governed weapons carried (found 6)
+[16:14:16.249] [info] selftest: step 3: a third one-handed weapon with both hip slots taken
+[16:14:16.249] [info] selftest: scripted add of Iron Mace 00013982 x1 (AddObjectToContainer, no source)
+[16:14:16.249] [info] container gate: Iron Mace 00013982 x1 [one-handed] via AddObjectToContainer (no source: script or reward) 00000000: no free slot (1 needed, 0 placed, 0 free); the copy is let in and moved out on the next frame
+[16:14:16.250] [info] storage: Iron Mace 00013982 x1 dropped at actor 00000014's feet as reference FF000877 (inventory 1 -> 0)
+[16:14:16.250] [info] reconcile: Iron Mace 00013982 x1 arrived on actor 00000014 via AddObjectToContainer (no source: script or reward) with no free slot (1 refused on the board): storage (no source) -> dropped at your feet; inventory 1 -> 0; HUD "No free slot for Iron Mace: dropped at your feet"
+[16:14:20.258] [info] selftest check 4: PASS: mace not in the inventory after the reconcile (found 0)
+[16:14:20.258] [info] selftest check 5: PASS: mace exists as a dropped reference (FF000877)
+[16:14:20.258] [info] selftest: step 4: equip the sword in the right hand and the axe in the left
+[16:14:20.259] [info] rules 00000014: Iron Sword 00012EB7#0 [one-handed] equipped -> hip.right.1h (accept): engine-drawn
+[16:14:20.259] [info] rules 00000014: Iron War Axe 00013790#0 [one-handed] equipped -> hip.left.1h (accept)
+[16:14:20.259] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:20.259] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:20.259] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:20.259] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:20.259] [info] rules 00000014: board hip.right.1h=Iron Sword* hip.left.1h=Iron War Axe* hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 6 = visible 4 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 3
+[16:14:20.259] [info] detached hip.right.1h 00012EB7#0 from 'WeaponSword' on actor 00000014 (1 node(s) removed)
+[16:14:23.267] [info] selftest check 6: PASS: sword equipped in the right hand (found 00012EB7)
+[16:14:23.267] [info] selftest check 7: PASS: axe equipped in the left hand (found 00013790)
+[16:14:23.267] [info] selftest: step 5: draw
+[16:14:26.276] [info] selftest check 8: FAIL: weapon drawn
+[16:14:26.276] [info] selftest: step 6: sheathe
+[16:14:29.285] [info] selftest check 9: PASS: weapon sheathed
+[16:14:29.285] [info] selftest: step 7: PickUpObject on the dropped mace FF000877 with both hip slots taken
+[16:14:29.285] [info] pickup refused: Iron Mace 00013982 x1 [one-handed] from reference FF000877: no free slot (1 needed, 0 placed, 0 free); the reference stays in the world; HUD "No free slot for Iron Mace"
+[16:14:32.293] [info] selftest check 10: PASS: mace still not in the inventory after the refused pickup (found 0)
+[16:14:32.293] [info] selftest check 11: PASS: mace reference still in the world (FF000877)
+[16:14:32.293] [info] selftest: step 8: drop the sword to free hip.right.1h
+[16:14:32.294] [info] rules 00000014: Iron War Axe 00013790#0 [one-handed] equipped -> hip.left.1h (accept)
+[16:14:32.294] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:32.294] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:32.294] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:32.294] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:32.294] [info] rules 00000014: board hip.right.1h=- hip.left.1h=Iron War Axe* hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 5 = visible 3 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 3
+[16:14:35.302] [info] selftest check 12: PASS: sword dropped (inventory 0, reference FF000879)
+[16:14:35.302] [info] selftest: step 9: PickUpObject on the mace with hip.right.1h free
+[16:14:35.302] [debug] pickup: Iron Mace 00013982 x1 [one-handed] from reference FF000877: accept (1 free slot(s))
+[16:14:35.303] [info] rules 00000014: Iron War Axe 00013790#0 [one-handed] equipped -> hip.left.1h (accept)
+[16:14:35.303] [info] rules 00000014: Iron Mace 00013982#0 [one-handed] -> hip.right.1h (accept)
+[16:14:35.303] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:35.303] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:35.303] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:35.303] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:35.303] [info] rules 00000014: board hip.right.1h=Iron Mace hip.left.1h=Iron War Axe* hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 6 = visible 4 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 4
+[16:14:35.303] [info] attached hip.right.1h 00013982#0 (mace) to 'WeaponMace' on actor 00000014 (drawn=false, culled=false)
+[16:14:38.310] [info] selftest check 13: PASS: mace picked up (found 1)
+[16:14:38.310] [info] selftest: nearest container in the cell is 4484131E 'Large Sack' (399 units away)
+[16:14:38.310] [info] selftest: step 10: move the mace into container 4484131E
+[16:14:38.311] [info] rules 00000014: Iron War Axe 00013790#0 [one-handed] equipped -> hip.left.1h (accept)
+[16:14:38.311] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:38.311] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:38.311] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:38.311] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:38.311] [info] rules 00000014: board hip.right.1h=- hip.left.1h=Iron War Axe* hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 5 = visible 3 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 3
+[16:14:38.311] [info] detached hip.right.1h 00013982#0 from 'WeaponMace' on actor 00000014 (1 node(s) removed)
+[16:14:41.319] [info] selftest check 14: PASS: mace in the container (player 0, container 1)
+[16:14:41.319] [info] selftest: step 11: pick the sword back up from FF000879
+[16:14:41.319] [debug] pickup: Iron Sword 00012EB7 x1 [one-handed] from reference FF000879: accept (1 free slot(s))
+[16:14:41.320] [info] rules 00000014: Iron War Axe 00013790#0 [one-handed] equipped -> hip.left.1h (accept)
+[16:14:41.320] [info] rules 00000014: Iron Sword 00012EB7#0 [one-handed] -> hip.right.1h (accept)
+[16:14:41.320] [info] rules 00000014: Iron Dagger 0001397E#0 [dagger] -> hip.right.dagger (accept)
+[16:14:41.320] [info] rules 00000014: Iron Dagger 0001397E#1 [dagger] -> hip.left.dagger (accept)
+[16:14:41.320] [info] rules 00000014: Iron Dagger 0001397E#2 [dagger] -> backpack.dagger.1 (accept): packed, hidden
+[16:14:41.320] [info] rules 00000014: Iron Dagger 0001397E#3 [dagger] -> backpack.dagger.2 (accept): packed, hidden
+[16:14:41.320] [info] rules 00000014: board hip.right.1h=Iron Sword hip.left.1h=Iron War Axe* hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger | inventory 6 = visible 4 + packed 2 + refused 0 | ungoverned 0 | packed slots 2 | requests 4
+[16:14:41.320] [info] attached hip.right.1h 00012EB7#0 (sword) to 'WeaponSword' on actor 00000014 (drawn=false, culled=false)
+[16:14:44.328] [info] selftest check 15: PASS: sword picked up again (found 1)
+[16:14:44.328] [info] selftest: step 12: take the mace back from container 4484131E with both hip slots taken (RemoveItem to the player)
+[16:14:44.328] [info] container gate: Iron Mace 00013982 x1 [one-handed] via AddObjectToContainer (from a reference) 4484131E: no free slot (1 needed, 0 placed, 0 free); the copy is let in and moved out on the next frame
+[16:14:44.328] [info] reconcile: Iron Mace 00013982 x1 arrived on actor 00000014 via AddObjectToContainer (from a reference) with no free slot (1 refused on the board): source 4484131E 'Large Sack' -> returned to Large Sack; inventory 1 -> 0; HUD "No free slot for Iron Mace: returned to Large Sack"
+[16:14:48.337] [info] selftest check 16: PASS: mace back in the container after the refused transfer (player 0, container 1)
+[16:14:48.337] [info] selftest check 17: PASS: nothing refused on the final board (0 refused)
+[16:14:48.337] [info] selftest check 18: PASS: rule 1: inventory 6 == visible 4 + packed 2
+[16:14:48.337] [info] selftest: final board hip.right.1h=Iron Sword hip.left.1h=Iron War Axe* hip.right.dagger=Iron Dagger hip.left.dagger=Iron Dagger back.2h=- back.bow=- hand.left=- hand.right=- backpack.dagger.1=Iron Dagger backpack.dagger.2=Iron Dagger
+[16:14:48.337] [info] selftest: complete: 18 check(s), 1 failure(s)
+[16:25:42.769] [info] hip.left.1h 00013790#0 on 'WeaponAxeLeft' on actor 00000014: culled while drawn (drawn=true)
+[16:25:47.107] [info] container gate: Steel Mace 00013988 x1 [one-handed] via AddObjectToContainer (no source: script or reward) 00000000: no free slot (1 needed, 0 placed, 0 free); the copy is let in and moved out on the next frame
+[16:25:47.119] [info] storage: Steel Mace 00013988 x1 dropped at actor 00000014's feet as reference FF000877 (inventory 1 -> 0)
+[16:25:47.119] [info] reconcile: Steel Mace 00013988 x1 arrived on actor 00000014 via AddObjectToContainer (no source: script or reward) with no free slot (1 refused on the board): storage (no source) -> dropped at your feet; inventory 1 -> 0; HUD "No free slot for Steel Mace: dropped at your feet"
+[16:25:48.132] [info] hip.left.1h 00013790#0 on 'WeaponAxeLeft' on actor 00000014: visible again (drawn=false)

@@ -1,0 +1,686 @@
+[09/11/2026 - 04:54:49PM] Papyrus log opened (PC)
+[09/11/2026 - 04:54:49PM] Update budget: 1.200000ms (Extra tasklet budget: 1.200000ms, Load screen budget: 500.000000ms)
+[09/11/2026 - 04:54:49PM] Memory page: 128 (min) 512 (max) 153600 (max total)
+[09/11/2026 - 04:54:49PM] warning: Failed to load script order file - initial load time may be slow
+[09/11/2026 - 04:54:53PM] Cannot open store for class "MAG_BlessingStorageScript", missing file?
+[09/11/2026 - 04:54:53PM] Cannot open store for class "ccBGSSSE038_AssassinEnableScript", missing file?
+[09/11/2026 - 04:54:53PM] Cannot open store for class "DefaultDebugMagicEffect", missing file?
+[09/11/2026 - 04:54:53PM] Cannot open store for class "ccBGSSSE067_ScourgeDremoraScript", missing file?
+[09/11/2026 - 04:54:55PM] Cannot open store for class "BSKAsylumDispelScript", missing file?
+[09/11/2026 - 04:54:55PM] Cannot open store for class "CYR_SF_CYRMountainWatchMS02Av_020E5B6C", missing file?
+[09/11/2026 - 04:54:55PM] error: Unable to bind script CYR_SF_CYRMountainWatchMS02Av_020E5B6C to  (190E5B6C) because their base types do not match
+[09/11/2026 - 04:54:55PM] Cannot open store for class "ddunequiphandlerscript", missing file?
+[09/11/2026 - 04:54:55PM] Cannot open store for class "ddunequipmcmscript", missing file?
+[09/11/2026 - 04:54:56PM] Cannot open store for class "fissinterface", missing file?
+[09/11/2026 - 04:54:57PM] Cannot open store for class "TensionPickScript", missing file?
+[09/11/2026 - 04:54:57PM] Cannot open store for class "ww42hugfollowerscript", missing file?
+[09/11/2026 - 04:55:00PM] Cannot open store for class "CYRKvatchMS05VarondoLabDoorScript", missing file?
+[09/11/2026 - 04:55:00PM] error: Unable to bind script CYRKvatchMS05VarondoLabDoorScript to  (190F68DB) because their base types do not match
+[09/11/2026 - 04:55:09PM] error: Unable to bind script AnvilDencheckjusticar to alias Justicar on quest AnvilDenQuest (1E01ED3C) because their base types do not match
+[09/11/2026 - 04:55:09PM] error: Property Remi on script HLIOCombatPackageEvalScript attached to alias Remi on quest HLIORemiFollower (31014C11) cannot be bound because alias Remi on quest HLIORemiFollower (31014C11) is not the right type
+[09/11/2026 - 04:55:09PM] error: Unable to bind script HLIOMQ1Script to alias PC on quest HLIOMQ1 (3146FA55) because their base types do not match
+[09/11/2026 - 04:55:09PM] warning: Property C2LLine on script HLIOScrapAttackContScript attached to alias Remi on quest HLIORedcapBanter (3157CB7D) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] error: Unable to bind script HLIORedcapScrapDeath to alias scrap on quest HLIORedcapBanter (3157CB7D) because their base types do not match
+[09/11/2026 - 04:55:09PM] error: Unable to bind script HLIONimhekilled to alias Nimhe on quest HLIOStartingQuest (310E4852) because their base types do not match
+[09/11/2026 - 04:55:09PM] warning: Property USSEPElevatorPowerRequiredMessage on script blackreachExitElevatorScript attached to  (000EF7BA) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property USSEPElevatorPowerRequiredMessage on script blackreachExitElevatorScript attached to  (000EF7AA) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property Alias_CaravanLeaderA on script QF_MQ201Malborn_0004CECE attached to MQ201Malborn (0004CECE) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property nwsInterpolate on script nwsfollowercontrollerscript attached to nwsFollowerController (4500434F) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property WIDeadBodyCleanupCell on script SHO_PickUpCarCass attached to SimpleHuntingOverhaul (FE0AFE7F) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property USSEPElevatorPowerRequiredMessage on script blackreachExitElevatorScript attached to  (000EF7B9) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property LocTypeCity on script byohrelationshipadoptionscript attached to BYOHRelationshipAdoption (030042B4) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property USSEPElevatorPowerRequiredMessage on script blackreachExitElevatorScript attached to  (000EF7B8) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property USSEPElevatorPowerRequiredMessage on script blackreachExitElevatorScript attached to  (000EF933) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:09PM] warning: Property USSEPElevatorPowerRequiredMessage on script blackreachExitElevatorScript attached to  (000EF79B) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:10PM] error: Native static function StopNFCDetection could find no matching static function on linked type Game. Function will not be bound.
+[09/11/2026 - 04:55:10PM] error: Native static function StartNFCDetection could find no matching static function on linked type Game. Function will not be bound.
+[09/11/2026 - 04:55:10PM] error: Native static function SaveSuccessfulAmiiboUsage could find no matching static function on linked type Game. Function will not be bound.
+[09/11/2026 - 04:55:10PM] error: Native static function GetSecondsSinceLastAmiiboUsage could find no matching static function on linked type Game. Function will not be bound.
+[09/11/2026 - 04:55:10PM] error: Native static function GetLocalizedNameForAmiibo could find no matching static function on linked type Game. Function will not be bound.
+[09/11/2026 - 04:55:10PM] error: Native static function IsAmiiboSupported could find no matching static function on linked type Game. Function will not be bound.
+[09/11/2026 - 04:55:10PM] BEYOND REACH: ArnimaFactSetUpdateCheckQuestScript: First time loading game. Setting factions. Faction script version is 0
+[09/11/2026 - 04:55:10PM] =====[ VioLens - A Killmove Mod: JContainers Detected & Version Valid, Profile System Enabled ]=====
+[09/11/2026 - 04:55:10PM] [ahzconfigmenu <AHZConfigMenu02 (FE05180E)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [ProteusMCMScript <ZZProteusMCMQuest (3217DC8D)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [VigMCMScript <zzzVigMCM (1C4881EA)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [nwsfollowermcmscript <nwsFollowerMCM (45034A76)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [WB_MCMQuest_Script <WB_SkyUI_Quest (3404013A)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 377
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 377
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 377
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 380
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 380
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 380
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 380
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: Cannot access an element of a None array
+stack:
+	[SKI_FavoritesManagerInstance (FE05682A)].ski_favoritesmanager.GetGroupHotkeys() - "SKI_FavoritesManager.psc" Line 380
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnConfigInit() - "SKI_ConfigMenu.psc" Line 128
+	[SKI_ConfigMenuInstance (FE056820)].MCM_ConfigBase.OnGameReload() - "SKI_ConfigBase.psc" Line 114
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnGameReload() - "SKI_ConfigMenu.psc" Line 142
+	[SKI_ConfigMenuInstance (FE056820)].SKI_ConfigMenu.OnInit() - "SKI_ConfigBase.psc" Line 85
+[09/11/2026 - 04:55:10PM] error: File "ImGladYoureHere.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 61
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "018Auri.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 74
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "Khash The Argonian.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 76
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "BPUFXelzazFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 78
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "BPUFXelzazFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 80
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "BPUFXelzazFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 82
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "FA01RedcapFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 92
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "FA01RedcapFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 94
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "GORE.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 96
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "Yazakh.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 98
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] error: File "DK_Thogra.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 100
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] [ski_favoritesmanager <SKI_FavoritesManagerInstance (FE05682A)>]: Updating to script version 2
+[09/11/2026 - 04:55:10PM] [ski_favoritesmanager <SKI_FavoritesManagerInstance (FE05682A)>]: Updating to script version 3
+[09/11/2026 - 04:55:10PM] error: File "AX ValSerano.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.ModCheck() - "HLIOModCheckerScript.psc" Line 33
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.CheckForInstalledMods() - "HLIOModCheckerScript.psc" Line 110
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOModCheckerScript.OnInit() - "HLIOModCheckerScript.psc" Line 52
+[09/11/2026 - 04:55:10PM] [ski_favoritesmanager <SKI_FavoritesManagerInstance (FE05682A)>]: Updating to script version 4
+[09/11/2026 - 04:55:10PM] [ARTH_RFYL_ConfigMenu <ARTHRFYLMCMQuest (43000005)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [ColHlp_MCMScript <ColHlp_MCM (FE077D63)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [WT_MCMScript <WTMCM (20AC1487)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] Setting pet and player relationship to ally
+[09/11/2026 - 04:55:10PM] error: Native static function GetNodeTransformScaleMode does not match existing signature on linked type NiOverride. Function will not be bound.
+[09/11/2026 - 04:55:10PM] [SmoothCamMCM <SmoothCamMCM (FE054800)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [Precision_MCM <Precision_MCM_Quest (FE0ED800)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [ski_activeeffectswidget <SKI_ActiveEffectsWidgetInstance (FE056822)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [ski_activeeffectswidget <SKI_ActiveEffectsWidgetInstance (FE056822)>]: Updating to script version 2
+[09/11/2026 - 04:55:10PM] error: Cannot call RegisterDragonAttack() on a None object, aborting function call
+stack:
+	[ (1701D3B2)].dragonactorscript.OnLocationChange() - "dragonActorSCRIPT.psc" Line 135
+[09/11/2026 - 04:55:10PM] warning: Assigning None to a non-object variable named "::temp10"
+stack:
+	[ (1701D3B2)].dragonactorscript.OnLocationChange() - "dragonActorSCRIPT.psc" Line 135
+[09/11/2026 - 04:55:10PM] [_camp_skyuiconfigpanelscript <_Camp_SkyUIConfigPanel (1B0225A6)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [Campfire][Info] Upgrading MCM script to version 4
+[09/11/2026 - 04:55:10PM] [JR_LucienConfigMenu <JRLucienMCM (3E326B34)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [TNG_MCM <TNG_MCM (FE04EF00)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [XPMSEMCM <XPMSEMCM (39000888)>] INITIALIZED
+[09/11/2026 - 04:55:10PM] [VL_ConfigMenu <VL_ConfigMenu (3A005901)>] INITIALIZED
+[09/11/2026 - 04:55:15PM] DLC1: Starting DLC1 Initialization quest.
+[09/11/2026 - 04:55:15PM] [DLC2_QF_DLC2_MQ04_02016E02 <DLC2Init (04016E02)>] DLC2Init quest START
+[09/11/2026 - 04:55:15PM] PATCH 1.9 QUEST HAS STARTED
+[09/11/2026 - 04:55:15PM] error: Native static function GetFlags could find no matching static function on linked type FNIS. Function will not be bound.
+[09/11/2026 - 04:55:15PM] [Campfire] Performing first-time setup.
+[09/11/2026 - 04:55:15PM] [SmoothCamMCM <SmoothCamMCM (FE054800)>]: Registered SmoothCam at MCM.
+[09/11/2026 - 04:55:15PM] [Campfire]======================================================================================================
+[09/11/2026 - 04:55:15PM] [Campfire]     Campfire is now performing compatibility checks. Papyrus warnings about missing or               
+[09/11/2026 - 04:55:15PM] [Campfire]             unloaded files may follow. This is NORMAL and can be ignored.   		                   
+[09/11/2026 - 04:55:15PM] [Campfire]======================================================================================================
+[09/11/2026 - 04:55:15PM] [_camp_skyuiconfigpanelscript <_Camp_SkyUIConfigPanel (1B0225A6)>]: Registered campfire at MCM.
+[09/11/2026 - 04:55:15PM] [VL_ConfigMenu <VL_ConfigMenu (3A005901)>]: Registered VioLens at MCM.
+[09/11/2026 - 04:55:15PM] [Campfire] Registered Campfire Skill System mod: Campfire.esm
+[09/11/2026 - 04:55:15PM] [Campfire] Detected SKSE version 2.030100 (expected 1.070300 or newer, success!)
+[09/11/2026 - 04:55:15PM] error: File "SkyUI.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 266
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:15PM] [Campfire] Loaded: SkyUI_SE.esp
+[09/11/2026 - 04:55:15PM] error: File "SkyrimVR.esm" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 272
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:15PM] [Campfire] Loaded: Dawnguard.esm
+[09/11/2026 - 04:55:15PM] [Campfire] Loaded: Dragonborn.esm
+[09/11/2026 - 04:55:15PM] [Campfire] Loaded: HearthFires.esm
+[09/11/2026 - 04:55:15PM] error: File "Imp's More Complex Needs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 335
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:15PM] error: File "RealisticNeedsandDiseases.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 351
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:15PM] error: File "iNeed.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 377
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:15PM] error: File "Frostfall.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 399
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:15PM] error: File "LastSeed.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 418
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:16PM] [XPMSEMCM <XPMSEMCM (39000888)>]: Registered XPMSE at MCM.
+[09/11/2026 - 04:55:16PM] InitWidgetLoader()
+[09/11/2026 - 04:55:16PM] [TNG_MCM <TNG_MCM (FE04EF00)>]: Registered T.N.G. at MCM.
+[09/11/2026 - 04:55:16PM] [ahzconfigmenu <AHZConfigMenu02 (FE05180E)>]: Registered moreHUD at MCM.
+[09/11/2026 - 04:55:16PM] [SKI_ConfigMenu <SKI_ConfigMenuInstance (FE056820)>] INITIALIZED
+[09/11/2026 - 04:55:16PM] [ProteusMCMScript <ZZProteusMCMQuest (3217DC8D)>]: Registered PROTEUS at MCM.
+[09/11/2026 - 04:55:16PM] [Precision_MCM <Precision_MCM_Quest (FE0ED800)>]: Registered precision at MCM.
+[09/11/2026 - 04:55:17PM] error: File "Equipping Overhaul.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.IsPluginLoaded() - "_Camp_Compatibility.psc" Line 645
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.RunCompatibility() - "_Camp_Compatibility.psc" Line 623
+	[alias _Camp_PlayerAlias on quest _Camp_MainQuest (1B022033)]._camp_compatibility.OnPlayerLoadGame() - "_Camp_Compatibility.psc" Line 133
+	[_Camp_MainQuest (1B022033)]._camp_main.OnInit() - "_Camp_Main.psc" Line 22
+[09/11/2026 - 04:55:17PM] [Campfire]======================================================================================================
+[09/11/2026 - 04:55:17PM] [Campfire]                            Campfire compatibility check complete.   		                           
+[09/11/2026 - 04:55:17PM] [Campfire]======================================================================================================
+[09/11/2026 - 04:55:17PM] FISHING: Checking for updates.
+[09/11/2026 - 04:55:18PM] [DLC2_QF_DLC2_MQ04_02016E02 <DLC2Init (04016E02)>] DLC2Init quest DONE
+[09/11/2026 - 04:55:18PM] PATCH 1.4 QUEST HAS STARTED
+[09/11/2026 - 04:55:18PM] UDGP 1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.1.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.1.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.2.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.2.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] XPMSE MainQuest Initialization successful.
+[09/11/2026 - 04:55:18PM] UHFP 1.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 1.1.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 1.1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 1.1.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 2.0.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 2.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 2.0.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 2.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 2.0.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UHFP 2.0.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] All retroactive updates for UHFP fixes have been processed.
+[09/11/2026 - 04:55:18PM] USKP 1.0 through 1.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.2.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.3.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.3.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.3.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.2.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.2.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 1.2.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 2.0.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 2.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 2.0.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 2.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 2.0.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDGP 2.0.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 1.3.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDBP 1.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDBP 1.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.0.9 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.1.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] USKP 2.1.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] DLC1: DLC1 Initialization quest done.
+[09/11/2026 - 04:55:18PM] USKP 2.1.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] All retroactive updates for USKP fixes have been processed.
+[09/11/2026 - 04:55:18PM] UDGP 2.1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] All retroactive updates for UDGP fixes have been processed.
+[09/11/2026 - 04:55:18PM] UDBP 1.0.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDBP 1.0.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDBP 2.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDBP 2.0.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:18PM] UDBP 2.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.9 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.0.9 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] [skyrimunboundmcmscript <SkyrimUnboundMCM (440012C6)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] [VigMCMScript <zzzVigMCM (1C4881EA)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] [WT_MCMScript <WTMCM (20AC1487)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] UDBP 2.1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.1.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] All retroactive updates for UDBP fixes have been processed.
+[09/11/2026 - 04:55:19PM] [VigMCMScript <zzzVigMCM (1C4881EA)>]: Registered Vigilant at MCM.
+[09/11/2026 - 04:55:19PM] [ColHlp_MCMScript <ColHlp_MCM (FE077D63)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] [WB_MCMQuest_Script <WB_SkyUI_Quest (3404013A)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] APOC 7.05 DEBUG: Reset Ritual tracker!
+[09/11/2026 - 04:55:19PM] UDBP 2.1.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] UDBP 2.1.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:19PM] All retroactive updates for UDBP fixes have been processed.
+[09/11/2026 - 04:55:19PM] warning: Property WIDeadBodyCleanupCell on script SHO_PickUpCarCass attached to SimpleHuntingOverhaul (FE0AFE7F) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:19PM] warning: Property nwsInterpolate on script nwsfollowercontrollerscript attached to nwsFollowerController (4500434F) cannot be initialized because the script no longer contains that property
+[09/11/2026 - 04:55:19PM] [WT_MCMScript <WTMCM (20AC1487)>]: Registered Wyrmstooth at MCM.
+[09/11/2026 - 04:55:19PM] [ARTH_RFYL_ConfigMenu <ARTHRFYLMCMQuest (43000005)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] [JR_LucienConfigMenu <JRLucienMCM (3E326B34)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] [nwsfollowermcmscript <nwsFollowerMCM (45034A76)>] INITIALIZED
+[09/11/2026 - 04:55:19PM] [ColHlp_MCMScript <ColHlp_MCM (FE077D63)>]: Registered Collectibles Helper at MCM.
+[09/11/2026 - 04:55:19PM] [WB_MCMQuest_Script <WB_SkyUI_Quest (3404013A)>]: Registered Apocalypse Spells at MCM.
+[09/11/2026 - 04:55:19PM] [ARTH_RFYL_ConfigMenu <ARTHRFYLMCMQuest (43000005)>]: Registered Run For Your Lives at MCM.
+[09/11/2026 - 04:55:20PM] [nwsfollowermcmscript <nwsFollowerMCM (45034A76)>]: Registered $FF_ModName at MCM.
+[09/11/2026 - 04:55:20PM] [JR_LucienConfigMenu <JRLucienMCM (3E326B34)>]: Registered Lucien at MCM.
+[09/11/2026 - 04:55:27PM] CRF: Initialization Script Complete.
+[09/11/2026 - 04:55:27PM] VM is freezing...
+[09/11/2026 - 04:55:27PM] VM is frozen
+[09/11/2026 - 04:55:27PM] Saving game...
+[09/11/2026 - 04:55:27PM] VM is thawing...
+[09/11/2026 - 04:55:27PM] APOC 7.05 DEBUG: Reset Ritual tracker!
+[09/11/2026 - 04:55:28PM] USLEEP 3.0.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:28PM] USLEEP 3.0.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:28PM] USLEEP 3.0.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:28PM] USLEEP 3.0.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:28PM] USLEEP 3.0.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:28PM] USLEEP 3.0.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:28PM] All retroactive updates for USLEEP fixes have been processed.
+[09/11/2026 - 04:55:28PM] error: File "018Auri.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 81
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "Khash The Argonian.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 85
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "BPUFXelzazFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 89
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "BPUFXelzazFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 93
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "BPUFXelzazFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 97
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "FA01RedcapFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 117
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "FA01RedcapFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 121
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "GORE.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 125
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "Yazakh.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 129
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "DK_Thogra.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 133
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:28PM] error: File "AX ValSerano.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.ModCheck() - "HLIOBackupChecker.psc" Line 59
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.CheckForInstalledMods() - "HLIOBackupChecker.psc" Line 153
+	[alias playerAlias on quest HLIOModChecker (312B1B38)].HLIOBackupChecker.OnInit() - "HLIOBackupChecker.psc" Line 68
+[09/11/2026 - 04:55:29PM] USSEP 4.0.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.0.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.0.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.1.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.1.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.1.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.1.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.1 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.4 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.2.9 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.3.0 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.3.2 Retroactive Updates Complete
+[09/11/2026 - 04:55:29PM] USSEP 4.3.3 Retroactive Updates Complete
+[09/11/2026 - 04:55:30PM] USSEP 4.3.5 Retroactive Updates Complete
+[09/11/2026 - 04:55:30PM] USSEP 4.3.6 Retroactive Updates Complete
+[09/11/2026 - 04:55:30PM] USSEP 4.3.7 Retroactive Updates Complete
+[09/11/2026 - 04:55:30PM] USSEP 4.3.8 Retroactive Updates Complete
+[09/11/2026 - 04:55:30PM] USSEP 4.3.9 Retroactive Updates Complete
+[09/11/2026 - 04:55:30PM] Lucien is checking for compatible mods. Will return harmless errors if not found.
+[09/11/2026 - 04:55:30PM] error: File "AmazingFollowerTweaks.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 48
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "018Auri.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 80
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "018Auri.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 81
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "CeliatheKettleMaidenFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 82
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "HothFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 83
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "SofiaFollower.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 84
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "Recorder Follower Base.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 85
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "EMCompViljaSkyrim.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 86
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 87
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 88
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 89
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 90
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 91
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 92
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 93
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 94
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 95
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 96
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 97
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "AnnaNPCs.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 98
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "0Kaidan.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 99
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "0Kaidan.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 100
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "Croc.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 101
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "Croc.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 102
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "MVF1FollowerBeta.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 103
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "MVF1FollowerBeta.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheck() - "JR_ModChecker.psc" Line 119
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 104
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "MVF1FollowerBeta.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 105
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "Keld-Nar.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheckLoc() - "JR_ModChecker.psc" Line 128
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 110
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "Helarchen Creek.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheckLoc() - "JR_ModChecker.psc" Line 128
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 111
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] error: File "Telengard.esp" does not exist or is not currently loaded.
+stack:
+	<unknown self>.Game.GetFormFromFile() - "<native>" Line ?
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.ModCheckLoc() - "JR_ModChecker.psc" Line 128
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.CheckAllMods() - "JR_ModChecker.psc" Line 112
+	[alias playerAlias on quest JRLucienModHandler (3E32BC44)].JR_ModChecker.OnInit() - "JR_ModChecker.psc" Line 5
+[09/11/2026 - 04:55:30PM] [skyrimunboundmcmscript <SkyrimUnboundMCM (440012C6)>]: Registered  Skyrim Unbound at MCM.
+[09/11/2026 - 04:55:30PM] [SKI_ConfigMenu <SKI_ConfigMenuInstance (FE056820)>]: Registered SKY UI at MCM.
+[09/11/2026 - 04:55:32PM] [EnsrickCurrency] Enforced physical-currency defaults: C.O.I.N. autoExchange=false, verbose=false; M.I.N.T. conversion=0.
+[09/11/2026 - 04:55:32PM] [DES_CoinMenuScript <DES_CoinMenu (FE06E899)>] INITIALIZED
+[09/11/2026 - 04:55:43PM] [DES_CoinMenuScript <DES_CoinMenu (FE06E899)>]: Registered C.O.I.N. at MCM.
+[09/11/2026 - 04:55:47PM] VM is freezing...
+[09/11/2026 - 04:55:47PM] VM is frozen
+[09/11/2026 - 04:55:47PM] Saving game...
+[09/11/2026 - 04:55:47PM] VM is thawing...
+[09/11/2026 - 04:55:49PM] VM is freezing...
+[09/11/2026 - 04:55:49PM] VM is frozen
+[09/11/2026 - 04:55:49PM] Saving game...
+[09/11/2026 - 04:55:49PM] VM is thawing...
+[09/11/2026 - 04:56:07PM] BGSSSE002: Magic arrows and Spell Tomes added to vendor and NPC lists
+[09/11/2026 - 04:56:08PM] BGSSSE035: Quest Started Stage 0
+[09/11/2026 - 04:56:36PM] APOCALYPSE DEBUG: Initialising Populate Lists script...
+[09/11/2026 - 04:56:36PM] APOCALYPSE DEBUG: Populating leveled lists... Books...
+[09/11/2026 - 04:56:46PM] APOCALYPSE DEBUG: Populating leveled lists... Scrolls...
+[09/11/2026 - 04:56:48PM] APOCALYPSE DEBUG: Populating leveled lists... Staves...
+[09/11/2026 - 04:56:51PM] APOCALYPSE DEBUG: Populating leveled lists...Done

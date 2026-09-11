@@ -1,0 +1,32 @@
+[2026-09-11 15:47:58.387] +2ms POPUP_PATCHED api="MessageBoxW" scope="MenuPilot.dll import table"
+[2026-09-11 15:47:58.388] +3ms POPUP_PATCHED api="MessageBoxA" scope="MenuPilot.dll import table"
+[2026-09-11 15:47:58.388] +4ms PILOT_OPEN plugin="MenuPilot" version="1.0.0.0" log="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\menupilot.log" pid=44680
+[2026-09-11 15:47:58.388] +4ms PLUGIN_LOAD runtime="1.7.104.0" skse_version=33751056
+[2026-09-11 15:47:58.391] +7ms PILOT_READY detail="inert until a commands.jsonl appears after kInputLoaded"
+[2026-09-11 15:48:21.498] +23113ms STAGE name="kInputLoaded"
+[2026-09-11 15:48:21.500] +23116ms POLL_START file="C:\Users\danjo\Documents\My Games\Skyrim Special Edition\SKSE\MenuPilot\commands.jsonl" interval_ms=250
+[2026-09-11 15:48:33.750] +35366ms STAGE name="kDataLoaded"
+[2026-09-11 15:58:59.430] +661046ms BATCH_CLAIMED n=0 stamp="20260911-205859"
+[2026-09-11 15:58:59.431] +661047ms COMMAND id=1 op="gfx.get" raw="{'menu':'Main Menu','op':'gfx.get','path':'_root.MenuHolder.Menu_mc.MainList.selectedEntry.text'}"
+[2026-09-11 15:58:59.438] +661053ms RESULT id=1 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.MainList.selectedEntry.text" type="string" value="$NEW"
+[2026-09-11 15:58:59.438] +661054ms BATCH_DONE n=0 commands=1 archived=1
+[2026-09-11 15:59:06.450] +668065ms BATCH_CLAIMED n=1 stamp="20260911-205906"
+[2026-09-11 15:59:06.450] +668065ms COMMAND id=2 op="gfx.get" raw="{'path':'_root.MenuHolder.Menu_mc.MainList.selectedEntry.text','menu':'Main Menu','op':'gfx.get'}"
+[2026-09-11 15:59:06.454] +668070ms RESULT id=2 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.MainList.selectedEntry.text" type="string" value="$NEW"
+[2026-09-11 15:59:06.455] +668070ms BATCH_DONE n=1 commands=1 archived=1
+[2026-09-11 15:59:06.706] +668322ms BATCH_CLAIMED n=2 stamp="20260911-205906"
+[2026-09-11 15:59:06.706] +668322ms COMMAND id=3 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-11 15:59:06.715] +668330ms INPUT_SENT id=3 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 15:59:06.799] +668414ms INPUT_SENT id=3 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 15:59:06.799] +668414ms RESULT id=3 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 15:59:06.799] +668414ms COMMAND id=4 op="wait" raw="{'op':'wait','ms':400}"
+[2026-09-11 15:59:07.200] +668815ms RESULT id=4 op="wait" ok=1 ms=400
+[2026-09-11 15:59:07.200] +668815ms COMMAND id=5 op="gfx.get" raw="{'path':'_root.MenuHolder.Menu_mc.ConfirmPanel_mc.textField.text','menu':'Main Menu','op':'gfx.get'}"
+[2026-09-11 15:59:07.202] +668818ms RESULT id=5 op="gfx.get" ok=1 menu="Main Menu" path="_root.MenuHolder.Menu_mc.ConfirmPanel_mc.textField.text" type="string" value="Start a new game?"
+[2026-09-11 15:59:07.203] +668818ms BATCH_DONE n=2 commands=3 archived=1
+[2026-09-11 15:59:07.454] +669070ms BATCH_CLAIMED n=3 stamp="20260911-205907"
+[2026-09-11 15:59:07.455] +669070ms COMMAND id=6 op="input.tap" raw="{'code':28,'event':'Accept','op':'input.tap'}"
+[2026-09-11 15:59:07.463] +669078ms INPUT_SENT id=6 device=0 user_event="Accept" code=28 value=1 held=0
+[2026-09-11 15:59:07.547] +669162ms INPUT_SENT id=6 device=0 user_event="Accept" code=28 value=0 held=0.08
+[2026-09-11 15:59:07.547] +669162ms RESULT id=6 op="input.tap" ok=1 down_ok=1 up_ok=1 hold_ms=80
+[2026-09-11 15:59:07.547] +669163ms BATCH_DONE n=3 commands=1 archived=1

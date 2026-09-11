@@ -1,0 +1,21 @@
+[15:47:58.288] [info] loaded Data\SKSE\Plugins\EnsrickEquipmentDisplay.ini
+[15:47:58.288] [info] settings: DualSheath Enable=true PlayerOnly=false Staves=true | Rules Enabled=true PlayerOnly=true EnforcePickup=true ReconcileContainerChanges=true PackedDaggers=2 PackedDaggersNeedBackpack=false BackpackKeyword='' | Storage StashPlugin='' StashFormID=0 | Display ActionEventDrawnState=true | Diagnostics DumpSkeleton=false DumpPlacements=true SelfTest=true SelfTestDelaySeconds=25
+[15:47:58.288] [info] settings: read but not acted on in this build: Staff Enabled=true TwoHandedUnequipsStaff=true (R3) | Compat OarConditions=true OarLegacyPluginAlias=false (R3) | Display FirstPersonStaff=false (R4)
+[15:47:58.288] [warning] settings: [Diagnostics] SelfTest=1: the R2 self-test will add, drop and pick up iron weapons on the player 25 s after the game loads; this is a verification setting, not for play
+[15:47:58.288] [info] EnsrickEquipmentDisplay 0-4-0-0 loading against runtime 1-7-104-0
+[15:47:58.751] [debug] kPostLoad
+[15:47:59.085] [warning] SimpleDualSheath.dll is loaded alongside this plugin; both display the left-hand weapon, expect a double display until one of them is removed
+[15:48:33.670] [info] placements: merged placements.json (12 slot(s), 0 warning(s))
+[15:48:33.670] [debug] placements: no Data\SKSE\Plugins\EnsrickEquipmentDisplay\placements.user.json
+[15:48:33.670] [info] placements: roster hip.right.1h=WeaponSword hip.left.1h=WeaponSwordLeft hip.right.dagger=WeaponDagger hip.left.dagger=WeaponDaggerLeft back.2h=WeaponBack back.bow=WeaponBow hand.left=NPC L Hand [LHnd] hand.right=NPC R Hand [RHnd] backpack.dagger.1=(hidden) backpack.dagger.2=(hidden)
+[15:48:33.670] [info] placements: expecting XPMSE 3.6 skeleton, nif sha256 d922d4a6309672c27ce3fe579353b925abe32841a9f12bc09266627188fd6fbf
+[15:48:33.670] [info] storage: no stash configured ([Storage] StashPlugin/StashFormID); overflow is dropped at the actor's feet
+[15:48:33.670] [info] hooked Character::Load3D (vtable 7FF62D543258, vfunc 0X6A)
+[15:48:33.670] [info] hooked PlayerCharacter::Load3D (vtable 7FF62D5496C0, vfunc 0X6A)
+[15:48:33.670] [info] hooked PlayerCharacter::PickUpObject (vtable 7FF62D5496C0, vfunc 0XCC)
+[15:48:33.670] [info] hooked PlayerCharacter::AddObjectToContainer (vtable 7FF62D5496C0, vfunc 0X5A)
+[15:48:33.670] [info] registered equip event sink
+[15:48:33.670] [info] registered container-changed event sink (refresh and reconcile)
+[15:48:33.670] [info] registered SKSE action event sink (kEndDraw / kEndSheathe)
+[15:59:08.226] [info] kNewGame: scheduling a player refresh
+[15:59:08.226] [info] selftest: armed on kNewGame; first step in 25 s

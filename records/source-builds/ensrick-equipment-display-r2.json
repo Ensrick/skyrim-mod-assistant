@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Equipment Display",
+  "componentNote": "EnsrickEquipmentDisplay (working name; the user names his mods), R2 of the #36 rules layer (limit = slots) on top of R1, plus the 0.3.3 build-determinism fix. Built in the r2 worktree, launched three times on the private desktop under claim fable/eed-r2, and left DISABLED in the profile as R1 left it.",
+  "version": "0.4.3 (SKSEPlugin_Version pluginVersion 0.4.3.0); launched builds: 0.4.0 (launch 1, hung), 0.4.1 (launch 1b), 0.4.2 (launch 2), 0.4.3 (launch 3); see runtimeVerification",
+  "sourceUrl": "https://github.com/Ensrick/EnsrickEquipmentDisplay (private), branch r2",
+  "sourcePath": "C:/Users/danjo/source/repos/skyrim-tools-source/EnsrickEquipmentDisplay-r2 (git worktree of the tree at C:/Users/danjo/source/repos/skyrim-tools-source/EnsrickEquipmentDisplay)",
+  "sourceCommits": {
+    "0.3.2": "732e72a (eed-r1: skeleton dump depth 64, placement dump parent chains; version record left at 0.3.1.0)",
+    "0.3.3": "b051084 (reproducible bytes from every link; version record 0.3.3.0)",
+    "0.4.0": "6f98590 (R2, limit = slots)",
+    "0.4.1": "d4208d9 (the self-test waits on its own thread)",
+    "0.4.2": "bf75d6f (the self-test waits for live play)",
+    "0.4.3": "d9cd9b0 (the self-test starts from an empty board)"
+  },
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/269",
+  "rulesIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/36",
+  "runtime": "Skyrim SE 1.7.104; VersionIndependence::AddressLibrary with Independent structs and the AddressLibraryV5 bit (versionIndependence=1, versionIndependenceEx=3), no runtime ceiling",
+  "dependencies": {
+    "CommonLibSSE-NG": {
+      "version": "6.7.1 plus the Ensrick no-modal branch",
+      "commit": "68b6ba48d163093527dc4421861a9333d65ae0ce",
+      "branch": "ensrick/no-modal-fail-v6.7.1",
+      "repository": "https://github.com/Ensrick/CommonLibSSE-NG",
+      "checkoutPath": "C:/Users/danjo/source/repos/skyrim-tools-source/CommonLibSSE-NG-6.7.1-no-modal (extern/CommonLibSSE-NG in the worktree is a directory junction to it)",
+      "pin": "CMakeLists.txt refuses any other revision unless EED_ALLOW_UNPINNED_COMMONLIB=ON",
+      "license": "GPL-3.0-or-later with the modding exception (EXCEPTIONS.md)"
+    },
+    "vcpkg": {
+      "root": "C:/Users/danjo/source/repos/vcpkg",
+      "builtinBaseline": "8d3649ba34aab36914ddd897958599aa0a91b08e",
+      "triplet": "x64-windows-static-md",
+      "manifest": "vcpkg.json (directxmath, directxtk, fmt, nlohmann-json 3.11.3, rapidcsv, simpleini, spdlog 1.13.0, toml11, xbyak)"
+    }
+  },
+  "compiler": "MSVC 19.44.35223 (VS 2022 Community 17.14) x64, CMake preset build-relwithdebinfo-se-only (Ninja, RelWithDebInfo, -UENABLE_SKYRIM_VR), C++23, LTCG; plugin and test targets /W4 /WX /permissive- /Zc:preprocessor /EHsc /utf-8 /Brepro, link /Brepro /PDBALTPATH:%_PDB% /OPT:REF /OPT:ICF with the PDB removed before every link; dynamic CRT (MultiThreadedDLL)",
+  "commandLines": [
+    "build_1_7_104.cmd  (cd to the worktree; vcvars64; cmake --preset build-relwithdebinfo-se-only; cmake --build build/relwithdebinfo-se-only; ctest --test-dir build/relwithdebinfo-se-only --output-on-failure)",
+    "py -3 audit/skse_version_data.py <dll>",
+    "py -3 <tree>/tools/pe_imports.py <dll>   (also CTest no_modal_imports)",
+    "py -3 <tree>/tools/pe_reproducible.py <dll>   (also CTest reproducible_link)",
+    "py -3 audit/claim.py acquire --owner fable/eed-r2 --purpose \"R2 verification launches x3 (#269)\" --ttl 150 --wait 3600",
+    "MO2Headless.exe mod-stage <scratchpad eed-r2-stage> \"Ensrick - Equipment Display\" --replace --enable",
+    "pwsh -NoProfile -File records-work/eed-r2-run.ps1 -Attempt <n>   (hash gate: installed DLL sha256 == this receipt's dllSha256, else no launch; verify_order CLEAN; detached audit/launch_skyrim_isolated.ps1 -WaitSeconds 900; MenuPilot via records-work/eed-r2-ui.ps1; waits for the plugin self-test summary; 180 s soak; Journal quit; archive)",
+    "MO2Headless.exe mod-disable \"Ensrick - Equipment Display\"",
+    "py -3 audit/claim.py release --owner fable/eed-r2"
+  ],
+  "determinism": {
+    "rootCause": "R1 launched 141576f0... while two clean builds of the same sources gave fc7fc730.... Byte diff: 73 bytes in 8 ranges (PE header TimeDateStamp, the debug-directory and export-directory stamps, the CodeView GUID and age, the IMAGE_DEBUG_TYPE_REPRO hash); .text, .rdata code and .data identical. The CodeView age was 2 in the launched DLL and 1 in the clean pair: an incremental link reuses the PDB left in the build directory and increments its age; the age sits in the image, and /Brepro derives the timestamp, the GUID and the Repro hash from the image contents, so all of them change with it.",
+    "reproduction": "2026-09-11 ~00:00: touch src/main.cpp in the 0.3.1 clean build directory (fc7fc730) and cmake --build: sha256 141576f004fd42f330c6517a42a0184a8a0184bf5082525755cd77a112f059de, CodeView age 2, identical to the R1 launched DLL.",
+    "fix": "CMakeLists.txt 0.3.3 (b051084): add_custom_command PRE_LINK removing $<TARGET_PDB_FILE> for the DLL and both test executables (every link is a first link, age 1); /PDBALTPATH:%_PDB% so the CodeView record names the PDB by file name and the bytes do not depend on the checkout path; CTest reproducible_link (tools/pe_reproducible.py: Repro entry present, CodeView age 1, bare PDB name; R1's launched DLL fails it on the age and the path).",
+    "proof": "0.3.2-numbered sources in the main checkout with the PRE_LINK rule: clean e0171f1563675945f3b6716d0659fc29c9be0905945a00a092e44c30e19105b5; touch main.cpp and rebuild e0171f15...; touch PCH.h so all 13 objects recompile (R1's situation) and rebuild e0171f15.... 0.3.3 in the r2 worktree: two clean builds 41753869560d3575fad8c7963508411a8e8f4c061684cb1ab5deda6d4700906d. 0.4.0: see buildHistory.",
+    "verificationGate": "records-work/eed-r2-run.ps1 refuses to launch unless sha256(installed DLL) == this receipt's dllSha256; the installed DLL is copied from the clean build, never from an incremental one."
+  },
+  "buildHistory": [
+    "0.3.3 clean 1 and clean 2 (worktree, build directory removed between them): byte-identical, DLL sha256 41753869560d3575fad8c7963508411a8e8f4c061684cb1ab5deda6d4700906d, 866,304 bytes; CTest 4/4 then 5/5 after the reproducible_link gate was registered (no relink, same hash)",
+    "0.4.0 pass 1: 5 compile errors in one line (wingdi.h GetObject macro, RE::DEFAULT_OBJECT enum name); pass 2 clean: DLL 38c467f14fc7b4ecb737fcc0494a1545074440608900140908ad4a558d37b6b4 946,176 bytes, 0 warnings, CTest 5/5 (slot_rules 69, placement_table 90), version gate PASS 0.4.0.0, no modal import",
+    "0.4.0 clean 1 (00:15-00:19) and clean 2 (15:44-15:48, build directory removed between them): byte-identical to each other and to the incremental pass 2, DLL sha256 38c467f14fc7b4ecb737fcc0494a1545074440608900140908ad4a558d37b6b4, 946,176 bytes; SlotRulesTests.exe 68b992b7... and PlacementTableTests.exe 71c9b1af... all three times; CTest 5/5 each; committed as 6f98590 on branch r2",
+    "0.4.0 launch 1 (15:47-16:02): hung the main thread at kNewGame (records/log-snapshots/20260911-154746-eed-r2-1/NOTES.txt): SelfTest::Tick re-queued itself with AddTask, and SKSE drains the task queue until empty each frame; fixed in 0.4.1",
+    "0.4.1 incremental pass 1, clean 1 and clean 2 (build directory removed between the clean builds): byte-identical, DLL sha256 f5c8f2c04a05ee295e12959025666139b528df0e0e9ea2b289a2e19c9d8b7071, 946,176 bytes; test executables unchanged; CTest 5/5 each; committed as d4208d9 on branch r2",
+    "0.4.1 launch 1b (16:12-16:27): 17 of 18 self-test checks PASS in the Unbound start room under the open Journal (check 8 draw failed: animations do not run while paused); cull-when-drawn proven at world entry; ended by the 900 s controller budget before the quit (records/log-snapshots/20260911-161254-eed-r2-1b/NOTES.txt)",
+    "0.4.2 (self-test waits while UI::GameIsPaused) incremental pass 1, clean 1 and clean 2: byte-identical, DLL sha256 15d555ffdbb01d015c8069d882d3c01b49b98f2f2aee9098bcd9e880af8a0a31, 947,200 bytes; CTest 5/5 each; committed as bf75d6f on branch r2",
+    "0.4.2 launch 2 (16:36-16:44): PASS on the launch criteria (main menu 32.4 s, world entry, soak 180 s, Journal quit, exit 0, no crash); 7 of 18 self-test checks counted Unbound's two pre-existing maces (records/log-snapshots/20260911-163659-eed-r2-2/NOTES.txt)",
+    "0.4.3 (self-test step 0 clears the board) incremental pass 1, clean 1 and clean 2: byte-identical, DLL sha256 2b0ad9dfae97da82afe36ed9d8b92fcfb81b863474d5baa81a6b6a7b5fdfe81b, 948,736 bytes; CTest 5/5 each"
+  ],
+  "dllName": "EnsrickEquipmentDisplay.dll",
+  "dllSha256": "2b0ad9dfae97da82afe36ed9d8b92fcfb81b863474d5baa81a6b6a7b5fdfe81b",
+  "dllSha256Note": "The clean-pair hash of 0.4.3, the build of launch 3 and the build left installed (disabled); records-work/eed-r2-run.ps1 verifies the installed DLL against this value before every launch. Earlier launched builds: 0.4.0 38c467f1... (launch 1, hung), 0.4.1 f5c8f2c0... (launch 1b), 0.4.2 15d555ff... (launch 2).",
+  "dllBytes": 948736,
+  "dllImports": [
+    "api-ms-win-crt-*",
+    "KERNEL32.dll",
+    "MSVCP140.dll",
+    "ole32.dll",
+    "SHELL32.dll",
+    "VCRUNTIME140.dll",
+    "VCRUNTIME140_1.dll",
+    "VERSION.dll"
+  ],
+  "dllImportNote": "No USER32.dll import: MessageBoxA/W, MessageBoxExA/W, FatalAppExitA/W absent (tools/pe_imports.py, CTest no_modal_imports).",
+  "dllExports": [
+    "SKSEPlugin_Load",
+    "SKSEPlugin_Query",
+    "SKSEPlugin_Version"
+  ],
+  "staticVerification": {
+    "skseMetadata": "PASS (version independent): name=EnsrickEquipmentDisplay pluginVersion=0.4.3.0 author=Ensrick versionIndependence=1 versionIndependenceEx=3 (NoStructUse + AddressLibraryV5)",
+    "ctest": "5/5: slot_rules (69 checks: 63 from R1 plus 6 for SlotBoard::FreeCount), placement_table (90), no_modal_imports, reproducible_link, no_modal_source",
+    "warnings": "none from the tree's translation units (grep 'warning C' over the build logs is empty; CommonLibSSE's own D9025 flag-override note only)",
+    "deterministicCleanRebuild": "true: 0.3.3 two clean builds 41753869...; 0.4.0 two clean and one incremental 38c467f1...; 0.4.1 two clean and one incremental f5c8f2c0...; 0.4.2 two clean and one incremental 15d555ff...; 0.4.3 two clean and one incremental 2b0ad9df... (the 0.3.3 fix makes an incremental relink give the clean bytes; R1's 141576f0 vs fc7fc730 difference was the PDB age, see determinism)",
+    "ci": ".github/workflows/build.yml unchanged (runs ctest, which now includes reproducible_link); branch r2 pushed, run not checked from this session"
+  },
+  "r2Implements": {
+    "H5": "kPostLoad / kPostPostLoad / kPostLoadGame / kNewGame forwarded (since 0.3.0); kNewGame and kPostLoadGame also arm the self-test",
+    "H6-pickup": "PlayerCharacter::PickUpObject (vfunc 0xCC) hooked on the player's own vtable: Rules::CanAccept rebuilds the board from the live inventory and places the copies being picked up; kRefuseNoSlot -> the engine is not called, the reference stays in the world, HUD 'No free slot for <name>', info log 'pickup refused: ...'",
+    "H6-container": "PlayerCharacter::AddObjectToContainer (vfunc 0x5A): the engine calls it from inside the source's RemoveItem, so an inline refusal would delete the copy; the copy is let in, the refusal is logged, and the reconcile moves it out one frame later",
+    "H6-drawn": "[Display] ActionEventDrawnState=1 registers SKSE::GetActionEventSource() (kEndDraw / kEndSheathe) beside the graph-tag sink; culling changes log 'culled while drawn' / 'visible again'",
+    "reconcile": "Rules/Reconcile: TESContainerChangedEvent arrivals on a governed actor and the gate's refusals both schedule a main-thread reconcile; copies of the arriving form with no slot are returned to the source container/actor (unless the BarterMenu is open) else Storage::Deposit; HUD 'No free slot for <name>: returned to <source> | dropped at your feet | stored in <stash>'; never a delete; a save that already overflows is not touched",
+    "H10-storage": "Rules/Storage: [Storage] StashPlugin + StashFormID resolve a persistent container reference through TESDataHandler::LookupForm; unset or unresolved -> Actor::DropObject at the actor's feet (engine drop, reference logged). The plugin-shipped ESL stash (one CONT, one CELL, one REFR, decision D1) is Creation Kit work and is NOT in this build (CK-first doctrine: said, not scripted); the ini key lets any persistent chest serve meanwhile",
+    "rule2-D4": "two packed dagger slots unconditional; [Rules] PackedDaggersNeedBackpack=1 + BackpackKeyword gates them on a worn item carrying the keyword; board line prints 'packed slots N'",
+    "rule3": "CanAccept has no quest parameter (static_assert on ExemptFromSlotRules at the decision point); plan lines print ' quest' on flagged copies",
+    "board": "board line 'inventory N = visible V + packed P + refused R | ungoverned U | packed slots S | requests Q'",
+    "selfTest": "[Diagnostics] SelfTest=1 (off by default): scripted scenario on the player through the engine's real paths, one 'selftest check N: PASS|FAIL' line each and a summary; used because a headless launch cannot aim the crosshair at a dropped weapon"
+  },
+  "installed": {
+    "modName": "Ensrick - Equipment Display",
+    "modPriority": 299,
+    "transactions": {
+      "install0.4.0": "20260911T204639096Z-e32001842319 (mod-stage --replace --enable, previousEnabled false)",
+      "replace0.4.1": "20260911T211239133Z-c2baee4ad02a",
+      "replace0.4.2": "20260911T213648747Z-db9f4165dfe3",
+      "replace0.4.3": "20260911T215400382Z-69955a164f0f",
+      "revertDisable": "20260911T220143286Z-0a26f13a8778 (mod-disable)"
+    },
+    "iniVerification": "shipped dist/SKSE/Plugins/EnsrickEquipmentDisplay.ini with these keys changed for the run: [Log] Level=debug FlushLevel=debug, [Rules] Enabled=1 (shipped 0), [Diagnostics] DumpPlacements=1 (shipped 0), SelfTest=1 (shipped 0), SelfTestDelaySeconds=25 (launches 1 and 1b) then 75 (launches 2 and 3); PlayerOnly=1, EnforcePickup=1, ReconcileContainerChanges=1, PackedDaggers=2, PackedDaggersNeedBackpack=0, [Storage] empty as shipped; placements.json shipped unchanged",
+    "installedDllSha256": "2b0ad9dfae97da82afe36ed9d8b92fcfb81b863474d5baa81a6b6a7b5fdfe81b",
+    "installedHashMatches": true,
+    "pluginsAdded": 0,
+    "cloakRefresh": "none: DLL-only mod, reverted at the end; R0 had shown the 240 cloak directives byte-identical with this mod enabled",
+    "placement": "modlist line 55 (was 56 in R1; another session removed one entry meanwhile), priority 299"
+  },
+  "runtimeVerification": {
+    "protocol": "four isolated private-desktop launches (audit/launch_skyrim_isolated.ps1, muted clone of Default, LocalSaves=true), fresh Skyrim Unbound character each via MenuPilot (records-work/eed-r2-ui.ps1), the plugin self-test ([Diagnostics] SelfTest=1) as the scripted driver of every rule, 180 s soak, Journal quit; records-work/eed-r2-run.ps1 gated each launch on sha256(installed DLL) == this receipt's dllSha256 and on verify_order CLEAN",
+    "launch1": {
+      "when": "2026-09-11 15:47:46, pid 44680, DLL 0.4.0 38c467f1..., snapshot records/log-snapshots/20260911-154746-eed-r2-1/",
+      "mainMenuSeconds": 36.5,
+      "verdict": "FAIL, attributed: the main thread hung at kNewGame (15:59:08) with no crash; spindump showed the thread spinning in ntdll heap calls under this DLL's frames and skse64 task-queue frames (minidump in the snapshot). Cause: SelfTest::Tick re-added itself with AddTask while its step was not due, and SKSE drains its task queue until empty every frame. Ended by the controller budget (exit 75, 16:02:48). Fixed in 0.4.1 (timer thread). Not a #273 recurrence: a hang, no crash log."
+    },
+    "launch1b": {
+      "when": "2026-09-11 16:12:54, pid 36284, DLL 0.4.1 f5c8f2c0..., snapshot records/log-snapshots/20260911-161254-eed-r2-1b/",
+      "mainMenuSeconds": 33.3,
+      "verdict": "rules evidence PASS, launch protocol INCOMPLETE: self-test 17 of 18 in the Unbound start room while the Journal/MCM was open (check 8, the draw, cannot play under a menu); cull-when-drawn proven at world entry 16:25:42/48 on WeaponAxeLeft; Unbound's own Steel Mace AddItem hit the D2 route (dropped at the feet); no crash in 15 min; the 900 s controller budget ended the run (exit 75) before the soak and quit, after the orchestrator's Begin step misnavigated and was redone by hand."
+    },
+    "launch2": {
+      "when": "2026-09-11 16:36:59, pid 36812, DLL 0.4.2 15d555ff..., snapshot records/log-snapshots/20260911-163659-eed-r2-2/",
+      "mainMenuSeconds": 32.4,
+      "verdict": "PASS on the launch criteria: world entry BoulderfallCave01, self-test on a live actor (draw check PASS), 180 s soak alive, Journal quit confirmed, SkyrimSE gone 16:44:10, ControllerExitCode 0, 0 [error], no crash, PopupGuard nothing. 7 of 18 self-test checks read FAIL because Unbound's random gear had two Iron Maces on both hips before the scenario; every such failure is the rules refusing correctly (gate + reconcile dropped the scripted sword, axe and mace; PickUpObject refused; the container transfer worked). Fixed in 0.4.3 (step 0 clears the board)."
+    },
+    "launch3": {
+      "when": "2026-09-11 16:54:11, pid 40356, DLL 0.4.3 2b0ad9df..., snapshot records/log-snapshots/20260911-165411-eed-r2-3/",
+      "mainMenuSeconds": 39.8,
+      "verdict": "PASS: world entry MarkarthTemple, self-test 18 of 18 on a live actor, 180 s soak alive, Journal quit confirmed, SkyrimSE gone 17:00:36, ControllerExitCode 0, plugin log 138 lines with 0 [error]/[critical], no crash log, PopupGuard nothing.",
+      "evidence": [
+        "every carried weapon shown: board line 'inventory 6 = visible 4 + packed 2 + refused 0' (16:57:03) with attached lines hip.right.dagger -> WeaponDagger, hip.left.dagger -> WeaponDaggerLeft, hip.right.1h -> WeaponSword, hip.left.1h -> WeaponAxeLeft",
+        "left-hand weapon: axe equipped in the left hand (check 7) and attached to WeaponAxeLeft; 16:56:38.601 'hip.left.1h 00013790#0 on WeaponAxeLeft: culled while drawn (drawn=true)'; 16:56:42.033 'visible again (drawn=false)' (culled, not detached: the copy stays attached and is hidden while drawn)",
+        "two daggers packed: Iron Dagger #2 and #3 -> backpack.dagger.1/2 'packed, hidden'; #0 and #1 are normal body-slot weapons attached on the hip nodes",
+        "pickup refused: 16:56:44.036 'pickup refused: Iron Mace 00013982 x1 [one-handed] from reference FF000B20: no free slot (1 needed, 0 placed, 0 free); the reference stays in the world; HUD No free slot for Iron Mace'; check 10 inventory 0 afterwards, check 11 reference alive; driven by the plugin calling PlayerCharacter::PickUpObject on the reference it had dropped (scripted caller, real hook path), because MenuPilot cannot aim the crosshair",
+        "D2 scripted add: 16:56:31 'container gate: Iron Mace ... via AddObjectToContainer (no source: script or reward) ... no free slot' -> 'storage: Iron Mace x1 dropped at actor 00000014 feet as reference FF000B20 (inventory 1 -> 0)' -> 'reconcile: ... storage (no source) -> dropped at your feet; HUD No free slot for Iron Mace: dropped at your feet' (no stash configured, so route-to-storage is the drop fallback)",
+        "container transfer reconcile: mace moved into Sack 000CBED4 (check 14), taken back with both hips full: 'container gate: ... (from a reference) 000CBED4: no free slot' -> 'reconcile: ... source 000CBED4 Sack -> returned to Sack; inventory 1 -> 0' (check 16: player 0, container 1)",
+        "accepted pickup once a slot freed: 16:56:50 'pickup: Iron Mace ... accept (1 free slot(s))', attached hip.right.1h -> WeaponMace",
+        "quest item: NOT exercised (no quest-flagged weapon in any launch)",
+        "inventory-menu dump: NOT obtained (the Tween menu never opened from MenuPilot in any R2 launch); the plugin's own inventory read is the board line"
+      ]
+    },
+    "crashCount": "0 crashes in 4 launches (launch 1 was a hang without a crash log; the latest crash log remains 2026-09-10 23:05:50 from R1 attempt 1); the #273 audio-thread signature was not seen",
+    "mainMenuSeconds": [
+      36.5,
+      33.3,
+      32.4,
+      39.8
+    ],
+    "selfTestNote": "The self-test is the plugin's own scripted scenario ([Diagnostics] SelfTest=1, off by default): the hooks and sinks it exercises are the ones a real pickup uses, only the caller is scripted; every check line is in the plugin log",
+    "weaponSwordLeftParentChain": "placement dump (0.3.2 parent chains, launch 3): WeaponSwordLeft hangs at skeleton.nif > NPC > NPC Root [Root] > NPC COM [COM ] > CME Body [Body] > CME LBody [LBody] > NPC Pelvis [Pelv] > CME Pelvis [Pelv] > Weapon Pelvis > Default Sword > CME WeaponSwordLeftDefault > MOV WeaponSwordLeftDefault > WeaponSwordLeft, local translate (11.892, 1.917, 6.666): the same CME/MOV style chain as the right-hand node, matching docs/NODE_INVENTORY.md; WeaponAxeLeft and WeaponDaggerLeft likewise under Weapon Pelvis"
+  },
+  "profileStateAtExit": "Ensrick - Equipment Display DISABLED (modlist line 55 '-', priority 299); the folder keeps the 0.4.3 DLL 2b0ad9df..., the verification ini (Rules Enabled=1, SelfTest=1, SelfTestDelaySeconds=75, DumpPlacements=1, Level=debug) and placements.json; no plugin added or removed; verify_order CLEAN before and after (303 active); Simple Dual Sheath unchanged (enabled); test profiles 'Fable EED R2 {1,1b,2,3} 20260911' keep private saves; the user's Saves folder untouched; claim fable/eed-r2 released 17:02; the ledger row is updated in the working tree only (records/installed-mods.json carries another session's hunks and is not committed here)",
+  "limitations": "Headless: nothing visual confirmed. The refusal and the left-hand equip were driven by the plugin's self-test (a scripted caller through the real engine paths), not by a human activating a world weapon. Route-to-storage ran as the drop fallback: no stash reference is configured and the plugin-shipped ESL stash (D1) is Creation Kit work not done here. Quest items not exercised. InventoryMenu dump not obtained. The left copy is culled while drawn, not detached. NPCs not governed (PlayerOnly=1). Launch 1b's quit was cut by the controller budget; launches 2 and 3 quit cleanly.",
+  "rollback": "Nothing to roll back in the profile (disabled at exit). To remove entirely: mod-trash under a claim. Tree: git revert of 0.4.0 keeps 0.3.3's determinism fix; revert of 0.3.3 keeps 0.3.2.",
+  "hours": "about 4.5 h of work across 2026-09-10 23:40-00:20 and 2026-09-11 15:42-17:15, plus a 15 h idle gap waiting on a background-build notification that never arrived"
+}
