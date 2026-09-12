@@ -1,5 +1,19 @@
 # Change log
 
+## 2026-09-11 23:03 — Barzing author sweep: 4 installed, 11 skipped
+
+- **New tool** `audit/author_mods.py`. Nexus v1 has no by-author endpoint and profile pages are client-rendered, so a plain fetch returns 403 and an empty shell. This queries the **v2 GraphQL** `mods` endpoint with an `uploader` filter, which is what the profile page itself uses. Enumerated Barzing's 15 SSE mods; also used for deno46's 2.
+- **Installed, all four verified CommonLibSSE-NG with Address Library before install** (`SKSEPlugin_Version` exported, versionlib present), so scenario 1, native on 1.7.104:
+  - `Urgent Escape` 64073 v1.1 file 267342, `UrgentEscape.esp` enabled, txn `20260912T040317044Z-32f1f148181b`. ESL plugin, no DLL. Picked the standard v1.1 MAIN over the "No Jump" variant deliberately: that one rebinds jump while sneaking, and Better Jumping SE and SkyParkour v3 are installed.
+  - `Favorites Menu Revival` 183549, `FavoritesMenu_Fix.esp` enabled, txn `20260912T040322836Z-78efc3c223e0`. Requirements SKSE, SkyUI, Infinity UI, all present; bundles its own BZG_Favorites helper.
+  - `BZG INI` 181764, DLL only, txn `20260912T040323901Z-5ae12bd06cc5`. Runtime ini read/write from Papyrus; relevant to #276.
+  - `BZG Spells and Shouts Cleaner` 181797, `SpellsAndShoutsCleaner.esp` enabled, txn `20260912T040324704Z-eb7bb838df9a`. Magic-menu cleanup plus hotkey casting with real animations; the user named it as a candidate answer to **#274**, utility powers cluttering the Magic menu.
+- **Keeps queued** for all four; they apply on the next Nexus page load.
+- **11 skips logged** with reasons in `records/skip-reasons.jsonl`: 8 on my recommendation and confirmed by the user (no-base patches 42841/159810/181866, modder resources 181762/181370, 164370 at ~10 MCM menus, 64860 DLL-only for an uninstalled 1.5.97 base, 191455 for a ControlMap collision that does not exist here), and 3 the user called on preference alone with no technical objection (102806, 183747, 157440).
+- **Resolver gate clean:** none of the three new plugins overrides a guarded record after the resolver block.
+- **Consequence to fix before any launch:** the three new plugins invalidate the weapon-balance and full-cloak artifacts again (input count 385 vs manifest 382). Not regenerated here; that work is claimed by the parallel session, which is out of usage until 2026-09-12 evening.
+- **Verification:** UNVERIFIED. No game launched. Profile mutated under claim `opus/barzing-installs`.
+
 ## 2026-09-11 18:47 - EnsrickEquipmentDisplay R3 (the staff rule, the ESL stash, Walking Stick parity) built, launched three times, one reconcile gap fixed between launches; verified as far as the receipt says, left DISABLED
 
 - **Source:** user, 2026-09-10: *"Well, finish it."* #269 (phases R1-R4 of `docs/VISIBLE-EQUIPMENT-PLUGIN-DESIGN-2026-09-10.md`, R3 = sections 5.5-5.8, H5, H9, H10), #36 (the staff rule of 2026-09-10: a staff is in a hand or in long-term storage), #270 (Walking Stick), decisions D1 (ESL stash), D2 (route to storage), D3 (two-handed equip sends the staff to storage) in #269. Agent Fable/eed-r3. Tree `skyrim-tools-source/EnsrickEquipmentDisplay` (`github.com/Ensrick/EnsrickEquipmentDisplay`, private), branch `r3` on eed-r2's `ed0482e` 0.4.4: `2ec6769` 0.5.0 sources, `85fed10` 0.5.0 build record, `edd2c06` 0.5.1; `main` fast-forwarded to `edd2c06`, the main worktree updated.
