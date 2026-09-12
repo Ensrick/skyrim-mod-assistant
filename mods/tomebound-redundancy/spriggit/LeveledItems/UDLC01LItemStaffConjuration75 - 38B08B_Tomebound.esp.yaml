@@ -1,0 +1,30 @@
+FormKey: 38B08B:Tomebound.esp
+EditorID: UDLC01LItemStaffConjuration75
+Flags:
+- CalculateFromAllLevelsLessThanOrEqualPlayer
+- CalculateForEachItemInCount
+Entries:
+- Data:
+    Level: 1
+    Reference: 283B83:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283B84:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283B86:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283B87:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283BB5:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4883C4:Tomebound.esp
+    Count: 1

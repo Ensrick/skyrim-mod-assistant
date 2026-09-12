@@ -2504,6 +2504,23 @@
     },
     {
       "modId": 0,
+      "modName": "Ensrick - Tomebound Redundancy Patch",
+      "nexusName": "Ensrick-owned redundancy patch (first-party, replaces Nexus 32231)",
+      "fileName": "built from mods/tomebound-redundancy/spriggit with Spriggit 0.41.0",
+      "version": "0.1.0",
+      "fileId": 0,
+      "sizeMb": 0.006,
+      "sha256": "d2cbc8ef1d303733537f40bca35b559d82723f6a1aa5e7bae32c54cc77d53c5d",
+      "plugins": [
+        "Ensrick - Tomebound Redundancy Patch.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-12T17:19:35Z",
+      "transaction": "20260912T171909113Z-2c8bb3cad0eb",
+      "note": "ESL-flagged, override-only: 22 container records (13 Tomebound LVLI, 9 Apocalypse FLST), 0 new forms. Removes 30 distribution entries for 17 redundant items across 7 decided duplicate pairs; spells, tomes, scrolls and staves themselves are untouched and stay consoleable. Teleport/fast-travel content is out of scope (issue #67). Decisions and the rejected third-party claims are in mods/tomebound-redundancy/policy.json and README.md; provenance in records/source-builds/ensrick-tomebound-redundancy.json."
+    },
+    {
+      "modId": 0,
       "modName": "Ensrick - Vanilla Hair Remake SMP NPC Compatibility",
       "nexusName": "Ensrick-owned VHR SMP NPC compatibility overlay",
       "version": "2026-08-30",
@@ -7906,6 +7923,24 @@
       "transaction": "20260907T193707718Z-df22da3a2774",
       "note": "User: \"I like A Thanedom of Dirfjord.\" v1.0, file v1.1 (2023-04-20), 176 endorsements, 2.6 MB, by Axis1211. Adds the Thanedom of Dirfjord in the far south - Asen clan town with a smith, general store and inn, plus one short quest for 500 gold. Requires Thanedom Assets and USSEP, both present. ThanedomDirfjord.esp: 1,044 records (882 REFR, 27 ACHR, 26 PACK, 21 NPC_, 15 CELL), masters Skyrim/Update/Dawnguard/HearthFires/Dragonborn/USSEP/Thanedom Assets.esl. Packaged as a BSA. plugins.txt 292. NOT verified in game.",
       "distribution": "vendor"
+    },
+    {
+      "modId": 21403,
+      "modName": "The Elder Scrolls - Tomebound",
+      "nexusName": "The Elder Scrolls - Tomebound",
+      "version": "1.2.3",
+      "fileId": 106611,
+      "fileName": "The Elder Scrolls - Tomebound-21403-1-2-3-1568332235.zip",
+      "sizeMb": 7.65,
+      "sha256": "905e57fbfc1d083b6a1b57c34ddf055def4246d0fb285e88ec714d77bdb37a03",
+      "plugins": [
+        "Tomebound - Immersive Sounds Patch.esp",
+        "Tomebound.esp"
+      ],
+      "enabled": true,
+      "installedUtc": "2026-09-12T16:40:48Z",
+      "transaction": "20260912T164047850Z-c992664e1ae9",
+      "fomodPlan": "records/fomod-plans/21403-tomebound-1.2.3.json"
     },
     {
       "modId": 141327,

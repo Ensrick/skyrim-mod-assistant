@@ -1,0 +1,94 @@
+FormKey: 38B081:Tomebound.esp
+EditorID: UDLC01LItemScroll75Skill
+Flags:
+- CalculateFromAllLevelsLessThanOrEqualPlayer
+- CalculateForEachItemInCount
+Entries:
+- Data:
+    Level: 1
+    Reference: 23CBD3:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274733:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27473D:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27475C:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274762:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274766:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279876:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279882:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27988A:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27988E:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279896:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27989A:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27989D:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798AC:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798C4:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9D9:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 49C7CC:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69DB:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69DF:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69E3:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69DD:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69E1:Tomebound.esp
+    Count: 1

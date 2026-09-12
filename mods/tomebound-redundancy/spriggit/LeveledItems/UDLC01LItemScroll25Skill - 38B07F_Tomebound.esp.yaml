@@ -1,0 +1,138 @@
+FormKey: 38B07F:Tomebound.esp
+EditorID: UDLC01LItemScroll25Skill
+Flags:
+- CalculateFromAllLevelsLessThanOrEqualPlayer
+- CalculateForEachItemInCount
+Entries:
+- Data:
+    Level: 1
+    Reference: 23CBC7:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 23CBC8:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 23CBCD:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274730:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274741:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27474B:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274753:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274759:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27475D:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27476B:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27476C:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27476E:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 274772:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279874:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279875:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279878:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 279894:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798A2:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798A6:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798B6:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798BA:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798BC:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 2798C6:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9CB:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9CC:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9CD:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9CF:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9D1:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 27E9D3:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 49C7C8:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69D0:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69D1:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4A69D3:Tomebound.esp
+    Count: 1

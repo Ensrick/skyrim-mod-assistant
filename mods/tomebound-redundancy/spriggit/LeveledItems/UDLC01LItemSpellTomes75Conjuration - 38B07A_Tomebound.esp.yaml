@@ -1,0 +1,50 @@
+FormKey: 38B07A:Tomebound.esp
+EditorID: UDLC01LItemSpellTomes75Conjuration
+Flags:
+- CalculateFromAllLevelsLessThanOrEqualPlayer
+- CalculateForEachItemInCount
+Entries:
+- Data:
+    Level: 1
+    Reference: 1815FF:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 181602:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 181605:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 181608:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283BBE:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283BBF:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283BC0:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283BC1:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283BC2:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 36CA42:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4883B8:Tomebound.esp
+    Count: 1

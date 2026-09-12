@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Tomebound Redundancy Patch",
+  "outputPlugin": "Ensrick - Tomebound Redundancy Patch.esp",
+  "scope": "Distribution only: entries are removed from leveled lists (Tomebound) and distribution form lists (Apocalypse). No SPEL, BOOK, SCRL or WEAP record is edited or deleted, so every affected item stays fully functional and obtainable with player.additem / player.addspell.",
+  "outOfScope": {
+    "teleport": "Tomebound's Planewalk line (13 tomes), Mark, Recall and Apocalypse's Milestones / Monarch Mark are deliberately untouched. Fast travel is a design question tracked in issue #67, not a redundancy question."
+  },
+  "removals": {
+    "Tomebound.esp": {
+      "1EBB97:Tomebound.esp": { "name": "Spell Tome: Conjure Lich", "group": "conjure-lich" },
+      "274735:Tomebound.esp": { "name": "Scroll of Conjure Lich", "group": "conjure-lich" },
+      "283B85:Tomebound.esp": { "name": "Staff of the Lich", "group": "conjure-lich" },
+      "1815DF:Tomebound.esp": { "name": "Spell Tome: Ice Barrage", "group": "ice-barrage" },
+      "27987C:Tomebound.esp": { "name": "Scroll of Ice Barrage", "group": "ice-barrage" },
+      "283B97:Tomebound.esp": { "name": "Staff of Ice Barrages", "group": "ice-barrage" },
+      "1815E0:Tomebound.esp": { "name": "Spell Tome: Shock Barrage", "group": "shock-barrage" },
+      "2798B2:Tomebound.esp": { "name": "Scroll of Shock Barrage", "group": "shock-barrage" },
+      "283B99:Tomebound.esp": { "name": "Staff of Shock Barrages", "group": "shock-barrage" },
+      "1815FD:Tomebound.esp": { "name": "Spell Tome: Conjure Skeleton Minion", "group": "skeleton-minion" },
+      "274749:Tomebound.esp": { "name": "Scroll of Conjure Skeleton Minion", "group": "skeleton-minion" },
+      "1EBB96:Tomebound.esp": { "name": "Spell Tome: Conjure Skeleton Warlock", "group": "skeleton-warlock" },
+      "274747:Tomebound.esp": { "name": "Scroll of Conjure Skeleton Warlock", "group": "skeleton-warlock" }
+    },
+    "Apocalypse - Magic of Skyrim.esp": {
+      "03C527:Apocalypse - Magic of Skyrim.esp": { "name": "Spell Tome: Detonate Lock", "group": "unlock" },
+      "03A9C1:Apocalypse - Magic of Skyrim.esp": { "name": "Scroll of Detonate Lock", "group": "unlock" },
+      "03E5FD:Apocalypse - Magic of Skyrim.esp": { "name": "Spell Tome: Dispel Magic", "group": "dispel" },
+      "0388F0:Apocalypse - Magic of Skyrim.esp": { "name": "Scroll of Dispel Magic", "group": "dispel" }
+    }
+  },
+  "groups": {
+    "conjure-lich": {
+      "duplicatePair": [
+        "Conjure Lich (08429A:Tomebound.esp, Expert perk 0C44BD, cost 366)",
+        "Conjure Lich (01236A:Apocalypse - Magic of Skyrim.esp, Adept perk 0C44BC, cost 244)"
+      ],
+      "evidence": "Identical display name. Both are a single SummonCreature effect, 60 s, FireAndForget / TargetLocation, summoning an NPC whose Name is literally 'Lich' at PcLevelMult 1 (Tomebound UDLC01_CONJ_EncLich 084298, Apocalypse WB_Con_Undead_Actor_ConjureLich 011301).",
+      "kept": "Apocalypse",
+      "reason": "Apocalypse's is rung 3 of a designed five-rung undead ladder (WB_Con_Undead1..Undead5) whose Master capstone Conjure Nether Lich (Undead5, 0128FA) stays distributed, so removing rung 3 would leave a hole in a ladder the rest of its conjuration line is built around. Tomebound's Lich is a standalone Expert spell and its own Skeleton and Draugr ladders stay complete without it. The lore-port tiebreak does not apply: the Lich is not a player summon in Morrowind or Oblivion, so neither entry is a lore-sourced original."
+    },
+    "ice-barrage": {
+      "duplicatePair": [
+        "Ice Barrage (17C4AF:Tomebound.esp, Adept perk 0C44C0, cost 164)",
+        "Frost Nova (1347EE:Apocalypse - Magic of Skyrim.esp, Adept perk 0C44C0, cost 136)"
+      ],
+      "evidence": "Same perk tier (both HalfCostPerk 0C44C0, Adept Destruction), same area 25, same rider set: Slow of magnitude 50 for 3 s plus a 3 s Paralysis. Tomebound deals 35 in one ring, Apocalypse 30/15/15 across three rings.",
+      "kept": "Apocalypse",
+      "reason": "Same tier, same area and equivalent riders make these one spell entered twice. Apocalypse's implementation is the richer one (tiered damage rings rather than a flat ring) and sits inside its Frost ladder. 'Barrage' is not a Morrowind or Oblivion spell name, so Tomebound holds no lore claim here."
+    },
+    "shock-barrage": {
+      "duplicatePair": [
+        "Shock Barrage (17C4B3:Tomebound.esp, Adept perk 0C44C0, cost 169)",
+        "Shock Nova (00186D:Apocalypse - Magic of Skyrim.esp, Expert perk 0C44C1, cost 375)"
+      ],
+      "evidence": "Identical signature rider: Disintegrate, magnitude 200, duration 1 s, area 25. Same area, same delivery. Tomebound's sits one perk tier lower, at less than half the magicka cost.",
+      "kept": "Apocalypse",
+      "reason": "This is not two spells side by side, it is Apocalypse's Expert capstone undercut by a cheaper Adept copy of itself: same disintegrate rider, same area, 169 magicka against 375. Keeping Tomebound's would make the Apocalypse spell pointless to ever buy."
+    },
+    "skeleton-minion": {
+      "duplicatePair": [
+        "Conjure Skeleton Minion (074F72:Tomebound.esp, Adept perk 0C44BB, cost 143)",
+        "Conjure Skeleton Minion (00085B:ccvsvsse003-necroarts.esl, Novice perk 0F2CA7, cost 107)"
+      ],
+      "evidence": "Identical display name. Both are SummonCreature, 60 s, FireAndForget / TargetLocation, summoning a skeleton minion. The Creation Club tome is distributed through ccVSVSSE003_LITEM_SpellTomes00.",
+      "kept": "Creation Club (Necromantic Grimoire)",
+      "reason": "The Creation Club version is base-game Anniversary Edition content the rest of the build assumes, and it is rung 1 of the Grimoire's own skeleton ladder (Minion, Marksman, Champion, Warlock, Bone Colossus, Ancient Deathpriest). Patching a Bethesda Creation Club plugin's leveled lists would add a master and a maintenance burden for no gain. Not a Morrowind or Oblivion port, so the lore tiebreak does not apply."
+    },
+    "skeleton-warlock": {
+      "duplicatePair": [
+        "Conjure Skeleton Warlock (1E6A8D:Tomebound.esp, Expert perk 0C44BD, cost 351)",
+        "Conjure Skeleton Warlock (00084E:ccvsvsse003-necroarts.esl, Expert perk 0C44BD, cost 258)"
+      ],
+      "evidence": "Identical display name AND identical perk tier (both HalfCostPerk 0C44BD, Expert Conjuration). Both are SummonCreature, 60 s, FireAndForget / TargetLocation. The strongest duplicate in the set: same name, same tier, same function.",
+      "kept": "Creation Club (Necromantic Grimoire)",
+      "reason": "Same reasoning as Conjure Skeleton Minion: base-game Anniversary Edition content, part of the Grimoire's skeleton ladder, and the more deeply integrated of the two."
+    },
+    "unlock": {
+      "duplicatePair": [
+        "Open Novice / Apprentice / Adept / Expert Lock (246DE2, 246DE3, 246DE5, 246DE7:Tomebound.esp)",
+        "Detonate Lock (00AB69:Apocalypse - Magic of Skyrim.esp, Expert perk 0C44B9, cost 595)"
+      ],
+      "evidence": "Tomebound adds a complete four-rank Alteration unlocking ladder from Novice (cost 30) to Expert (cost 244). Apocalypse's lock content is a single rung, EditorID WB_Alt_Unlock4_Spell_DetonateLock, at the same Expert perk (0C44B9) as Tomebound's top rank, for 595 magicka. A scan of all 373 Apocalypse spells finds no other Unlock rung.",
+      "kept": "Tomebound",
+      "reason": "This is the lore-port case the rule names: 'Open' is the Morrowind and Oblivion Alteration spell and Tomebound ports the whole graded ladder, while Apocalypse's single rung is the generic stand-in for it. Removing Apocalypse's one-rung line breaks no ladder, because there is no ladder to break."
+    },
+    "dispel": {
+      "duplicatePair": [
+        "Dispel (153CA0:Tomebound.esp, Novice Restoration 0F2CAA, cost 47)",
+        "Dispel Magic (00BB25:Apocalypse - Magic of Skyrim.esp, Novice Illusion 0F2CA9, cost 55)"
+      ],
+      "evidence": "Both are Novice-tier self-cast dispels at near-identical cost. A scan of all 373 Apocalypse spells finds exactly one Dispel rung, EditorID WB_Ill_Dispel1_Spell_DispelMagic, so no ladder depends on it.",
+      "kept": "Tomebound",
+      "reason": "Dispel is the Morrowind and Oblivion Mysticism spell and Tomebound is the lore-sourced port; Apocalypse's is the generic copy moved into Illusion. Apocalypse's covers a 40-unit area against Tomebound's self-only, which is the one respect in which the removed entry is the better one, recorded here so the choice can be revisited."
+    }
+  },
+  "rejectedClaims": [
+    {
+      "claim": "Apocalypse's Scorching Hands is redundant with Tomebound's Touch spells (third-party patch 32231).",
+      "verdict": "REJECTED on the records.",
+      "evidence": "Scorching Hands (02388C) is Concentration / Aimed, Expert (0C44C1), magnitude 80 over an area of 3. Tomebound's Burning Touch (102C00) and Flame Touch (13F870) are FireAndForget / TargetActor single hits of 10 and 25 at Novice and Apprentice. Different cast type, different tier, an order of magnitude apart in output. Not the same spell."
+    },
+    {
+      "claim": "Tomebound's hindrance tomes are redundant because Apocalypse adds its own slow-related spells (third-party patch 32231).",
+      "verdict": "REJECTED on the records.",
+      "evidence": "A scan of all 373 spells in the installed Apocalypse 10.3.0 finds no Slow, Snare or Hinder ladder at all. Tomebound's Hinder (10CE1A) has no Apocalypse rival, so it stays."
+    },
+    {
+      "claim": "Apocalypse's disease spells are redundant with Tomebound's poison spells (third-party patch 32231).",
+      "verdict": "REJECTED on the records.",
+      "evidence": "Apocalypse ships a designed four-rung disease ladder (WB_Res_Disease2 Necroplague, Disease3 Horrid Wilting, Disease4 Serpent's Scale, Disease5 Life's Finale), all script archetypes with spreading and proc behaviour. Tomebound's poisons (Foul Poison 014C0F, Noxious Poison 019D17) are plain damage-over-time on Health with a paralysis rider. Same theme, different mechanism; removing either would delete real content rather than a duplicate."
+    },
+    {
+      "claim": "Tomebound's Barrage tomes are redundant because Apocalypse has Nova spells (third-party patch 32231).",
+      "verdict": "PARTLY REJECTED.",
+      "evidence": "True for Ice Barrage (Frost Nova) and Shock Barrage (Shock Nova). False for Flame Barrage (1815DE): a scan of all Apocalypse spells finds only two Nova spells, Frost and Shock. Removing all three Barrages, as the third-party patch does, would leave the fire line with no area burst at that tier. Flame Barrage is kept."
+    },
+    {
+      "claim": "Anniversary Edition and Creation Club content make much of Tomebound redundant (Simple Tomebound, 181265).",
+      "verdict": "LARGELY REJECTED after checking every name collision against the records.",
+      "evidence": "Of the vanilla and Creation Club spells sharing a name with a Tomebound spell, Night Eye (Khajiit power and werewolf ability), Poison and Poison Cloak (spider and Gloomwraith NPC abilities), Silence (a perk effect and Neloth's scripted spell), Waterwalking (a Dragonborn ability), Weakness to Fire (the vampire ability line) and Burden (a Ruin's Edge bow enchantment) are all NPC abilities, racial powers, perk effects, vampire abilities or weapon enchantments. None has a spell tome anywhere among the 155 vanilla and Creation Club tomes on disk, so none is obtainable as a player spell and none makes Tomebound's version redundant. Only three real collisions exist, all with Necromantic Grimoire: Conjure Skeleton Minion, Conjure Skeleton Warlock and Soul Split."
+    },
+    {
+      "claim": "Tomebound's Soul Split collides with Necromantic Grimoire's Soul Split.",
+      "verdict": "NAME COLLISION ONLY, both kept.",
+      "evidence": "Tomebound's Soul Split (03833A) is Expert (0C44BD), Aimed, draining Health, Magicka and Stamina by 45 for 30 s plus a Soul Trap. The Creation Club's (000874:ccvsvsse003-necroarts.esl) is Adept (0C44BB), TargetActor, one effect for 60 s. Mechanically different spells that happen to share a name. Removing either would cost real content, so both stay and the shared name is recorded here for the user to decide."
+    }
+  ]
+}

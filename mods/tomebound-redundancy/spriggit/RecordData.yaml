@@ -1,0 +1,19 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: '0.41'
+ModKey: Ensrick - Tomebound Redundancy Patch.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Flags:
+  - Small
+  Author: Ensrick
+  Description: Removes redundant Tomebound and Apocalypse entries from spell tome,
+    scroll and staff distribution. Spells, tomes, scrolls and staves themselves are
+    untouched. Override-only, ESL-flagged, generated from policy.json.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Apocalypse - Magic of Skyrim.esp
+    FileSize: 0
+  - Master: Tomebound.esp
+    FileSize: 0

@@ -1,0 +1,23 @@
+FormKey: 385F6C:Tomebound.esp
+EditorID: UDLC01LitemSpellTomes50AllDestruction
+ChanceNone: 1
+Flags:
+- UseAll
+Global: 0F258A:Skyrim.esm
+Entries:
+- Data:
+    Level: 1
+    Reference: 1815D2:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 1815D3:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 1815D4:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 1815DE:Tomebound.esp
+    Count: 1

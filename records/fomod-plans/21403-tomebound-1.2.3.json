@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "note": "The Elder Scrolls - Tomebound 1.2.3 (Nexus file 106611). FOMOD group 1 = the mod itself (01 Tomebound/data plus the four 00 Loose Files/*/data trees, exactly the folders its ModuleConfig.xml maps for the 'The Elder Scrolls - Tomebound' plugin). Group 2 = optional patches; only the Immersive Sounds patch is taken, because Immersive Sounds - Compendium is the only one of the six patch targets active in the Default profile (Better Vampires, Path of Sorcery, Sacrosanct, Ordinator and Elemental Staffs SE are all absent - no perk overhaul is installed at all).",
+  "mappings": [
+    { "source": "The Elder Scrolls - Tomebound - Lore Spell Additions/01 Tomebound/data", "destination": "." },
+    { "source": "The Elder Scrolls - Tomebound - Lore Spell Additions/00 Loose Files/Meshes/data", "destination": "." },
+    { "source": "The Elder Scrolls - Tomebound - Lore Spell Additions/00 Loose Files/Textures/data", "destination": "." },
+    { "source": "The Elder Scrolls - Tomebound - Lore Spell Additions/00 Loose Files/Scripts/data", "destination": "." },
+    { "source": "The Elder Scrolls - Tomebound - Lore Spell Additions/00 Loose Files/Sounds/data", "destination": "." },
+    { "source": "The Elder Scrolls - Tomebound - Lore Spell Additions/02 Patches/05 Immersive Sounds/data", "destination": "." }
+  ]
+}

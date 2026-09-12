@@ -1,0 +1,14 @@
+FormKey: 38B08F:Tomebound.esp
+EditorID: UDLC01LItemStaffDestruction50
+Flags:
+- CalculateFromAllLevelsLessThanOrEqualPlayer
+- CalculateForEachItemInCount
+Entries:
+- Data:
+    Level: 1
+    Reference: 27E9D5:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283B95:Tomebound.esp
+    Count: 1

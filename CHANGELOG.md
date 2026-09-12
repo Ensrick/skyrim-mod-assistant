@@ -1,5 +1,116 @@
 # Change log
 
+## 2026-09-12 — Tomebound installed; first-party redundancy patch replaces the third-party one
+
+- **Source:** the user, on adding The Elder Scrolls - Tomebound: *"Add it to
+  keeps, and make the patch."* and, pointing at Nexus 181265 (Simple Tomebound):
+  *"Maybe this is relevant? Get to it!"* He chose a first-party patch over the
+  third-party duplicate-spells patch (Nexus 32231) rather than inherit another
+  author's taste.
+- **Installed** The Elder Scrolls - Tomebound - Lore Spell Additions (21403,
+  Elyem, v1.2.3, file 106611, archive SHA-256 `905E57FB…`), txn
+  `20260912T164047850Z-c992664e1ae9`, FOMOD plan
+  `records/fomod-plans/21403-tomebound-1.2.3.json` — main mod plus the Immersive
+  Sounds patch, the only one of its six optional patch targets that is installed.
+  Keep 21403 applied with uploader attribution in
+  `decisions-applied-20260912-114052.json`. 1141 records, 1023 of them new:
+  147 spell tomes, 109 scrolls, 48 staves.
+- **NOT ESL-flagged, deliberately.** Tomebound's 1023 new forms carry local
+  FormIDs from `00FB02` to `4E870A`, all above the `0xFFF` ESL ceiling, so
+  flagging needs FormID compaction. The pinned toolchain cannot do that
+  headlessly (xEdit is blocked on a Delphi 12 licence) and compaction would also
+  have to remap the references its Immersive Sounds patch makes into it. It is
+  not needed either: the profile uses **64 of its 254 full plugin slots**.
+- **New first-party patch** `Ensrick - Tomebound Redundancy Patch`
+  (`mods/tomebound-redundancy`), ESL-flagged ESP, SHA-256 `D2CBC8EF…`, 6,292
+  bytes, txn `20260912T171909113Z-2c8bb3cad0eb`. 22 override records
+  (13 Tomebound `LVLI`, 9 Apocalypse `FLST`), **0 new forms**, built from a
+  committed Spriggit YAML tree rather than a C# generator, per
+  `docs/CK_FIRST_DOCTRINE.md`. Two builds byte-identical; the built plugin
+  re-serializes to the source tree with 0 records differing.
+- **Architecture finding that shaped the patch:** neither mod distributes
+  through vanilla leveled lists. Tomebound injects 69 of its own lists via quest
+  `UDLC01AddMagicItemsQuest`; Apocalypse copies 83 of its own form lists in via
+  populate quests and overrides **zero** vanilla lists. A patch that edited
+  vanilla lists would have done nothing.
+- **What it removes:** 30 distribution entries for 17 items across 7 decided
+  duplicate pairs — Conjure Lich, Ice Barrage, Shock Barrage, Conjure Skeleton
+  Minion and Conjure Skeleton Warlock lose Tomebound's copy; Detonate Lock and
+  Dispel Magic lose Apocalypse's. Spells, tomes, scrolls and staves themselves
+  are untouched and stay consoleable, matching the behaviour of the patch it
+  replaces. Every decision and its record evidence is in
+  `mods/tomebound-redundancy/policy.json` and the README decision table.
+- **Four third-party claims rejected on the records**, which is why this is not
+  a copy of Nexus 32231: Scorching Hands is Concentration/Expert against
+  Tomebound's FireAndForget Novice touch spells, not a duplicate; Apocalypse
+  10.3.0 has **no** slow or hinder ladder at all, so Tomebound's Hinder has no
+  rival; Apocalypse's disease line is a four-rung script ladder, not Tomebound's
+  plain poison damage; and **Flame Barrage has no Nova counterpart**, so
+  removing all three Barrages would have left the fire line with no area burst.
+  Simple Tomebound's Anniversary Edition premise also largely fails: Night Eye,
+  Poison, Poison Cloak, Silence, Waterwalking, Weakness to Fire and Burden are
+  NPC abilities, racial powers, perks or enchantments with **no spell tome among
+  the 155 vanilla and Creation Club tomes on disk**. Only three real collisions
+  exist, all with Necromantic Grimoire.
+- **Out of scope:** the teleport and fast-travel spells (Tomebound's 13
+  Planewalk tomes, Mark, Recall; Apocalypse's Milestones and Monarch Mark) are
+  untouched and raised on #67 as a design question.
+- **Load order:** LOOT placed the patch at 251 of 309 active, after Tomebound
+  (81) and Apocalypse (104). The same sort moved `WeaponBalancePatch.esp` off
+  the end of the order, which its own audit requires ("output plugin is not the
+  unique final active profile plugin"); it was moved back to last, CRLF
+  preserved, backups `*.bak.v20260912T171940Z-pre-tomebound-sort`.
+- **Artifacts regenerated** for the new plugin count: weapon balance for 388
+  inputs (3504 WEAP overrides, PASS, `filesWritten 0`, install txn
+  `20260912T172758186Z-3a4ea9727bf1`) and the full-cloak reservation (240 full
+  cloaks, 28,680 pairwise exclusions, `check_installed` CLEAN).
+- **Verification:** `verify_order` CLEAN, `install_mod --verify` 0 problems,
+  `keep_coverage` and `preflight` end at only the two known no-Keep rows
+  (34705 SSE Display Tweaks, 50049 Simple Dual Sheath).
+  Isolated private-desktop launch, third attempt, **PASS**: main menu 43.5 s,
+  fresh Skyrim Unbound character, world entry 12:45:21, 180 s soak, 0 crash
+  logs, 0 Papyrus `[error]` lines, 0 popup interceptions, clean Journal quit.
+  Logs `records/log-snapshots/20260912-124313-tomebound-3`.
+- **UNVERIFIED:** that the removed entries are actually gone from merchant stock
+  in play. The records are proven statically; the shop shelves need the user's
+  play session on a fresh character, because both mods distribute by quest
+  script on new-game init and existing saves take 10+ in-game days to reset
+  leveled lists. Tracked as its own issue.
+- **Blocker found, not ours.** The first two launch attempts died before the
+  main menu: `BZG_Favorites.dll` (Favorites Menu Revival, 183549) and then
+  `BZG_INI.dll` (BZG INI, 181764) each logged `[critical] failed to open address
+  library file` and took the process with them. Both came from the 2026-09-11
+  23:03 Barzing sweep, whose entry above states all four were verified against
+  the Address Library before install; the runtime contradicts that. The Address
+  Library mod is enabled and does contain `versionlib-1-6-1130-0.bin`, and every
+  other plugin read it fine on 09-11. The three Barzing DLL mods were disabled
+  for the verification launch and restored immediately after — `modlist.txt` is
+  byte-identical to the pre-disable backup — so **this run does not certify
+  them**. Filed separately.
+
+## 2026-09-12 — Julio005 recommended skips accepted; Tabula Rasa retained as a secondary survey snapshot
+
+- **Source:** user, 2026-09-12: *"Tabula Rasa could be a good comparison for
+  our survey, if it's kept well up to date, so Skip, but first taken notes"*
+  and *"I agree with the skip you recommended. Apply them"*.
+- **What:** recorded 39 exact, reversible Skip decisions with per-page reasons,
+  dependency triggers, related IDs where established, and measured audit notes
+  in `records/skip-reasons.jsonl`. The grouped mapping is
+  `records/julio005-skip-decisions-and-tabula-rasa-2026-09-12.md`. Six were
+  already Skip; guarded relay receipt `decisions-applied-20260912-115207.json`
+  applied the other 33, and live state confirms all 39.
+- **Tabula Rasa:** retained exact optional inventory file 788128 v0.0.3.4
+  (2026-08-10; 421 rows/418 active; SHA-256
+  `452B2C48DA3C5B7D1C339D6403F4F21D5B94E4E3B5A3AC968199E3BCBA6FE581`).
+  It is current enough for secondary comparison, but targets 1.6.1170, has 11
+  endorsements, and includes ten of Julio005's own pages, which cannot count as
+  independent support for his work.
+- **Boundary:** no mod, plugin, load order, game file, or author-level status
+  changed. Landscape Seam Fixer remains Unreviewed; the installed Hjaalmarch
+  patch remains Keep; preference pages were not changed.
+- **Verification:** documentation and curator-state change only; no game launch
+  required or performed.
+
 ## 2026-09-11 23:03 — Barzing author sweep: 4 installed, 11 skipped
 
 - **New tool** `audit/author_mods.py`. Nexus v1 has no by-author endpoint and profile pages are client-rendered, so a plain fetch returns 403 and an empty shell. This queries the **v2 GraphQL** `mods` endpoint with an `uploader` filter, which is what the profile page itself uses. Enumerated Barzing's 15 SSE mods; also used for deno46's 2.

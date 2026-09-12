@@ -1,0 +1,15 @@
+FormKey: 38B090:Tomebound.esp
+EditorID: UDLC01LItemStaffDestruction50NPC50
+ChanceNone: 0.5
+Flags:
+- CalculateFromAllLevelsLessThanOrEqualPlayer
+- CalculateForEachItemInCount
+Entries:
+- Data:
+    Level: 1
+    Reference: 27E9D5:Tomebound.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 283B95:Tomebound.esp
+    Count: 1

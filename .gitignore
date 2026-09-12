@@ -332,6 +332,18 @@ dist/
 !/overlays/ensrick-death-hound-loot-fix/SKSE/Plugins/SkyPatcher/leveledList/zz Ensrick Death Hound/*.ini
 !/records/block-animation-198-2026-09-02.md
 
+# Tomebound redundancy patch: source only, matching wolf-territorial-patch.
+# The YAML tree is the source of truth; package/ holds the built plugin and is
+# regenerable from regenerate.ps1, so it is never committed.
+!/mods/tomebound-redundancy/
+!/mods/tomebound-redundancy/README.md
+!/mods/tomebound-redundancy/policy.json
+!/mods/tomebound-redundancy/regenerate.ps1
+!/mods/tomebound-redundancy/build_spriggit.py
+!/mods/tomebound-redundancy/spriggit/
+!/mods/tomebound-redundancy/spriggit/**
+/mods/tomebound-redundancy/package/
+
 # Wolf territorial patch (#42): source only, matching guard-scaling-patch.
 # The generator work dirs hold a 304 MB NuGet cache and built plugins; both are
 # regenerable from regenerate.ps1 and must never be committed.

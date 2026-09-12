@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Tomebound Redundancy Patch",
+  "version": "0.1.0",
+  "date": "2026-09-12",
+  "issue": "teleport scope tracked on #67; in-game acceptance tracked on its own issue",
+  "sourcePath": "mods/tomebound-redundancy",
+  "policyPath": "mods/tomebound-redundancy/policy.json",
+  "policySha256": "082438F0CADF4C37C098B344ACC71DE062AB8B06AB332F5AE03D2629F98CBEB6",
+  "builderPath": "mods/tomebound-redundancy/build_spriggit.py",
+  "builderSha256": "EA60FF3D4AA36BE4CF66F46BE14F60ACCA4338162E3AB5B00FD2206E46853E76",
+  "spriggitPath": "mods/tomebound-redundancy/spriggit",
+  "spriggitTreeSha256": "0683C0031075F5F0E04A73DF129AE21E62F5B3E57DD8EF7CE369C5E1590565F2",
+  "spriggitFiles": 24,
+  "regenerate": "pwsh mods/tomebound-redundancy/regenerate.ps1",
+  "outputPlugin": "Ensrick - Tomebound Redundancy Patch.esp",
+  "outputSha256": "D2CBC8EF1D303733537F40BCA35B559D82723F6A1AA5E7BAE32C54CC77D53C5D",
+  "outputBytes": 6292,
+  "replaces": "third-party Nexus 32231 'Apocalypse and Tomebound Duplicate Spells Patch' - not installed; the user chose a first-party patch instead of inheriting another author's taste",
+  "notAdopted": {
+    "181265": "Simple Tomebound (Grendel116) - not adopted. Its Anniversary Edition redundancy premise was checked record by record and largely does not hold, and its teleport removals are a design choice that belongs to #67",
+    "32231": "the third-party duplicate-spells patch this replaces",
+    "141586": "NSV - Tomebound keyword file (Dmigra) - future option only; it requires NPC Spell Variance, which is not installed"
+  },
+  "generator": {
+    "tool": "Spriggit 0.41.0 (Ensrick/Spriggit@8edce84, toolchain.json tools.spriggit)",
+    "package": "Spriggit.Yaml.Skyrim 0.41.0",
+    "method": "The YAML tree is the committed source of truth and the plugin is deserialized from it. No C# generator and no Synthesis patcher: the change is 22 record overrides, which the project can already round-trip as text (docs/CK_FIRST_DOCTRINE.md)."
+  },
+  "output": {
+    "eslFlaggedEsp": true,
+    "overrideOnly": true,
+    "records": 22,
+    "recordTypes": {
+      "LeveledItem": 13,
+      "FormList": 9
+    },
+    "newForms": 0,
+    "masters": [
+      "Skyrim.esm",
+      "Apocalypse - Magic of Skyrim.esp",
+      "Tomebound.esp"
+    ],
+    "entriesRemoved": 30,
+    "distinctItemsRemoved": 17,
+    "detail": [
+      {
+        "formKey": "385F62:Tomebound.esp",
+        "editorId": "UDLC01LItemSpellTomes25AllConjuration",
+        "type": "LeveledItems",
+        "entriesBefore": 9,
+        "entriesAfter": 8,
+        "removed": [
+          "Spell Tome: Conjure Skeleton Minion"
+        ]
+      },
+      {
+        "formKey": "385F67:Tomebound.esp",
+        "editorId": "UDLC01LItemSpellTomes25Conjuration",
+        "type": "LeveledItems",
+        "entriesBefore": 9,
+        "entriesAfter": 8,
+        "removed": [
+          "Spell Tome: Conjure Skeleton Minion"
+        ]
+      },
+      {
+        "formKey": "385F6C:Tomebound.esp",
+        "editorId": "UDLC01LitemSpellTomes50AllDestruction",
+        "type": "LeveledItems",
+        "entriesBefore": 6,
+        "entriesAfter": 4,
+        "removed": [
+          "Spell Tome: Ice Barrage",
+          "Spell Tome: Shock Barrage"
+        ]
+      },
+      {
+        "formKey": "385F71:Tomebound.esp",
+        "editorId": "UDLC01LitemSpellTomes50Destruction",
+        "type": "LeveledItems",
+        "entriesBefore": 6,
+        "entriesAfter": 4,
+        "removed": [
+          "Spell Tome: Ice Barrage",
+          "Spell Tome: Shock Barrage"
+        ]
+      },
+      {
+        "formKey": "385F75:Tomebound.esp",
+        "editorId": "UDLC01LItemSpellTomes75AllConjuration",
+        "type": "LeveledItems",
+        "entriesBefore": 13,
+        "entriesAfter": 11,
+        "removed": [
+          "Spell Tome: Conjure Skeleton Warlock",
+          "Spell Tome: Conjure Lich"
+        ]
+      },
+      {
+        "formKey": "38B07A:Tomebound.esp",
+        "editorId": "UDLC01LItemSpellTomes75Conjuration",
+        "type": "LeveledItems",
+        "entriesBefore": 13,
+        "entriesAfter": 11,
+        "removed": [
+          "Spell Tome: Conjure Lich",
+          "Spell Tome: Conjure Skeleton Warlock"
+        ]
+      },
+      {
+        "formKey": "38B07F:Tomebound.esp",
+        "editorId": "UDLC01LItemScroll25Skill",
+        "type": "LeveledItems",
+        "entriesBefore": 34,
+        "entriesAfter": 33,
+        "removed": [
+          "Scroll of Conjure Skeleton Minion"
+        ]
+      },
+      {
+        "formKey": "38B080:Tomebound.esp",
+        "editorId": "UDLC01LItemScroll50Skill",
+        "type": "LeveledItems",
+        "entriesBefore": 31,
+        "entriesAfter": 29,
+        "removed": [
+          "Scroll of Ice Barrage",
+          "Scroll of Shock Barrage"
+        ]
+      },
+      {
+        "formKey": "38B081:Tomebound.esp",
+        "editorId": "UDLC01LItemScroll75Skill",
+        "type": "LeveledItems",
+        "entriesBefore": 24,
+        "entriesAfter": 22,
+        "removed": [
+          "Scroll of Conjure Lich",
+          "Scroll of Conjure Skeleton Warlock"
+        ]
+      },
+      {
+        "formKey": "38B08B:Tomebound.esp",
+        "editorId": "UDLC01LItemStaffConjuration75",
+        "type": "LeveledItems",
+        "entriesBefore": 7,
+        "entriesAfter": 6,
+        "removed": [
+          "Staff of the Lich"
+        ]
+      },
+      {
+        "formKey": "38B08C:Tomebound.esp",
+        "editorId": "UDLC01LItemStaffConjuration75NPC",
+        "type": "LeveledItems",
+        "entriesBefore": 7,
+        "entriesAfter": 6,
+        "removed": [
+          "Staff of the Lich"
+        ]
+      },
+      {
+        "formKey": "38B08F:Tomebound.esp",
+        "editorId": "UDLC01LItemStaffDestruction50",
+        "type": "LeveledItems",
+        "entriesBefore": 4,
+        "entriesAfter": 2,
+        "removed": [
+          "Staff of Ice Barrages",
+          "Staff of Shock Barrages"
+        ]
+      },
+      {
+        "formKey": "38B090:Tomebound.esp",
+        "editorId": "UDLC01LItemStaffDestruction50NPC50",
+        "type": "LeveledItems",
+        "entriesBefore": 4,
+        "entriesAfter": 2,
+        "removed": [
+          "Staff of Ice Barrages",
+          "Staff of Shock Barrages"
+        ]
+      },
+      {
+        "formKey": "11BB85:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemScroll00Skill",
+        "type": "FormLists",
+        "entriesBefore": 13,
+        "entriesAfter": 12,
+        "removed": [
+          "Scroll of Dispel Magic"
+        ]
+      },
+      {
+        "formKey": "11BB89:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemScroll75Skill",
+        "type": "FormLists",
+        "entriesBefore": 31,
+        "entriesAfter": 30,
+        "removed": [
+          "Scroll of Detonate Lock"
+        ]
+      },
+      {
+        "formKey": "11BB8D:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes00AllIllusion",
+        "type": "FormLists",
+        "entriesBefore": 3,
+        "entriesAfter": 2,
+        "removed": [
+          "Spell Tome: Dispel Magic"
+        ]
+      },
+      {
+        "formKey": "11BB8F:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes00AllSpells",
+        "type": "FormLists",
+        "entriesBefore": 15,
+        "entriesAfter": 14,
+        "removed": [
+          "Spell Tome: Dispel Magic"
+        ]
+      },
+      {
+        "formKey": "11BB93:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes00Illusion",
+        "type": "FormLists",
+        "entriesBefore": 3,
+        "entriesAfter": 2,
+        "removed": [
+          "Spell Tome: Dispel Magic"
+        ]
+      },
+      {
+        "formKey": "11BB95:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes00Spells",
+        "type": "FormLists",
+        "entriesBefore": 15,
+        "entriesAfter": 14,
+        "removed": [
+          "Spell Tome: Dispel Magic"
+        ]
+      },
+      {
+        "formKey": "11BBB0:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes75AllAlteration",
+        "type": "FormLists",
+        "entriesBefore": 9,
+        "entriesAfter": 8,
+        "removed": [
+          "Spell Tome: Detonate Lock"
+        ]
+      },
+      {
+        "formKey": "11BBB5:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes75Alteration",
+        "type": "FormLists",
+        "entriesBefore": 9,
+        "entriesAfter": 8,
+        "removed": [
+          "Spell Tome: Detonate Lock"
+        ]
+      },
+      {
+        "formKey": "11BBBA:Apocalypse - Magic of Skyrim.esp",
+        "editorId": "WB_F_LItemSpellTomes75Spells",
+        "type": "FormLists",
+        "entriesBefore": 45,
+        "entriesAfter": 44,
+        "removed": [
+          "Spell Tome: Detonate Lock"
+        ]
+      }
+    ]
+  },
+  "decisions": {
+    "duplicatePairsResolved": 7,
+    "keptTomebound": [
+      "unlock: the Open Lock ladder over Detonate Lock",
+      "dispel: Dispel over Dispel Magic"
+    ],
+    "keptApocalypse": [
+      "conjure-lich",
+      "ice-barrage: Frost Nova",
+      "shock-barrage: Shock Nova"
+    ],
+    "keptCreationClub": [
+      "skeleton-minion",
+      "skeleton-warlock"
+    ],
+    "rejectedClaims": 6,
+    "seePolicyAndReadme": "every decision, its record evidence and its reason live in policy.json and README.md"
+  },
+  "distributionArchitecture": {
+    "tomebound": "69 of its own LeveledItems, injected into merchant chests by quest UDLC01AddMagicItemsQuest (385F60), plus one Dawnguard container edit (DLC1VendorChestFeran 010479). Its five vanilla LVLI overrides add no entries of its own.",
+    "apocalypse": "83 of its own WB_F_* FormLists, copied into the vanilla lists by its populate quests. It overrides zero vanilla leveled lists.",
+    "consequence": "A patch that edited vanilla leveled lists would change nothing. This patch overrides each mod's own containers."
+  },
+  "inputs": {
+    "profile": "Default",
+    "activePluginsAtBuild": 309,
+    "effectiveLoadOrderEntries": 395,
+    "effectiveLoadOrderSha256": "E6395C19D669F5C19761358FDD4C1A9AD57413478FD6BF1F52076E84303E7325",
+    "pluginsTxtSha256": "53C9BE81672C326D3B12E92E8D4A9578A093853B2AECF9DAC1136236170CC425",
+    "loadorderTxtSha256": "AC25B703EE303D30356CC317BC4564D5E69470166E8EB8BD5E26E3C01404B1CA",
+    "tomeboundEspSha256": "D6D76BD3C1F8851EFC1099A5E23FC5BB0E4E708564B956E601DDC793EE52EEFC",
+    "apocalypseEspSha256": "B0A9632372F2117F7D96583E1522B42758F414129D3572F848B8F7AC65681384",
+    "conflictCheck": "Tomebound's LVLI records and Apocalypse's FLST records are unconflicted in this profile. The only active plugin mastering Apocalypse is WeaponBalancePatch.esp (3504 WEAP, no lists); the only one mastering Tomebound is its own Immersive Sounds patch (14 MGEF). Each patched record is therefore a copy of the load-order winner."
+  },
+  "validation": {
+    "deterministicRuns": 2,
+    "byteIdenticalRuns": true,
+    "spriggitRoundTrip": "the built plugin re-serializes to a 22-record tree with 0 records differing from the committed source",
+    "removalAudit": "every one of the 17 policy items matched at least one list; 30 entry instances removed; no field other than the entry list differs from the source record; kept entries preserve source order; 0 defects",
+    "emptyListGuard": "the builder refuses to empty a list; the smallest patched container retains 2 entries",
+    "eslFlagChecked": true,
+    "newFormsChecked": 0
+  },
+  "install": {
+    "mo2Mod": "Ensrick - Tomebound Redundancy Patch",
+    "stageTransaction": "20260912T171909113Z-2c8bb3cad0eb",
+    "pluginEnableTransaction": "20260912T171913498Z-c000107cc591",
+    "loadOrderPosition": "251 of 309 active, after Tomebound.esp (81) and Apocalypse (104), placed by LOOT"
+  },
+  "runtimeVerification": {
+    "attempts": 3,
+    "attempt1": "FAILED TO LAUNCH, not caused by this patch: Favorites Menu Revival ships BZG_Favorites.dll, which logged '[critical] failed to open address library file' and took the process down before the main menu",
+    "attempt2": "FAILED TO LAUNCH, same defect in BZG_INI.dll from BZG INI",
+    "attempt3": "PASS, with all three Barzing DLL mods temporarily disabled and then restored: main menu 43.5 s (under 60 s), fresh Skyrim Unbound character, world entry at 12:45:21, 180 s soak, 0 crash logs, 0 Papyrus error lines, 0 popup interceptions, clean Journal quit to desktop, launcher exited",
+    "archive": "records/log-snapshots/20260912-124313-tomebound-3",
+    "profileRestored": "modlist.txt byte-identical to the pre-disable backup; plugins.txt identical apart from the controller's own header comment line; 309 active",
+    "UNVERIFIED": "That the removed entries are actually absent from merchant stock in a played game. The static receipts prove the records; only a play session proves the shop shelves. Both mods distribute by quest script on new-game init, so this wants a fresh character; on an existing save leveled lists take 10+ in-game days to reset."
+  },
+  "gates": {
+    "verifyOrder": "CLEAN (309 active, 397 discoverable)",
+    "installModVerify": "0 problems",
+    "keepCoverage": "only the two pre-existing no-Keep rows (34705, 50049)",
+    "weaponBalance": "regenerated for 388 inputs, 3504 WEAP overrides, PASS, filesWritten 0",
+    "fullCloak": "regenerated, check_installed CLEAN, 240 full cloaks, 28680 pairwise exclusions",
+    "preflight": "ends at the two known no-Keep rows only"
+  },
+  "sourceLicense": "Not distributable: override-only and asset-free, but every record is a copy of a Tomebound or Apocalypse record, so the plugin is a derivative work of both. Built locally, never uploaded.",
+  "vendorMod": {
+    "nexusId": 21403,
+    "name": "The Elder Scrolls - Tomebound - Lore Spell Additions",
+    "author": "Elyem",
+    "uploader": "Elyem (Nexus user 52509866)",
+    "version": "1.2.3",
+    "fileId": 106611,
+    "archiveSha256": "905E57FBFC1D083B6A1B57C34DDF055DEF4246D0FB285E88EC714D77BDB37A03",
+    "installTransaction": "20260912T164047850Z-c992664e1ae9",
+    "fomodPlan": "records/fomod-plans/21403-tomebound-1.2.3.json",
+    "fomodChoice": "the main mod plus the Immersive Sounds patch only; the other five optional patches target mods that are not installed",
+    "content": "1141 records, 1023 of them new: 147 spell tomes, 109 scrolls and 48 staves distributed through 69 of its own leveled lists",
+    "eslFlaggable": false,
+    "eslReason": "Tomebound.esp holds 1023 new forms whose local FormIDs run from 00FB02 to 4E870A, every one of them above the 0xFFF ESL ceiling. Flagging it would require FormID compaction, which the pinned toolchain cannot do headlessly (xEdit is blocked on a Delphi 12 licence, TOOLCHAIN.md) and which would also have to remap the references its Immersive Sounds patch makes into it. Not attempted, and not needed: the profile uses only 64 of its 254 full plugin slots, so a full slot is not scarce. The patch itself is ESL-flagged and costs no slot."
+  }
+}
