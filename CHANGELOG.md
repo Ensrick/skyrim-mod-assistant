@@ -1,5 +1,11 @@
 # Change log
 
+## 2026-09-12 13:15 - Barzing DLL mods disabled; the build can reach the main menu again
+
+- **What:** Disabled the three Barzing mods whose bundled DLLs abort the launch on runtime 1.7.104 - `Favorites Menu Revival` (183549), `BZG INI` (181764) and `BZG Spells and Shouts Cleaner` (181797), installed in the 2026-09-11 23:03 sweep - and deactivated the two plugins they left dangling (`FavoritesMenu_Fix.esp`, `SpellsAndShoutsCleaner.esp`). Mod folders kept; ledger rows set `enabled=false` with the reason. Active plugins 309 -> 307. Weapon Speed Balance regenerated for the 386-entry input set (plugin bytes unchanged, `52A5E2C4...`; final-winner audit PASS; package `F9A74BBA...`; `mod-install --replace`) and the Full Cloak Exclusivity reservation rebuilt for the new fingerprint.
+- **Source:** [#279](https://github.com/Ensrick/skyrim-mod-assistant/issues/279). Agent `tomebound` hit the failure twice during its own verification (`BZG_Favorites.dll` then `BZG_INI.dll`, each logging `failed to open address library file`), worked around it by disabling them for one launch, and restored them enabled and still broken. The user cannot start the game in that state, so they are disabled until rebuilt. Cause, consistent with `reference_po3_skse_plugin_rebuild_1_7_104`: those DLLs read Address Library format 1/2, and 1.7.104 ships format 5.
+- **Verification:** **VERIFIED 2026-09-12.** Isolated private-desktop launch on profile clone `Fable BZG Verify 20260912`: `MAIN_MENU_OPEN` at **36.4 s** (criterion 60 s), 49 SKSE plugins loaded, **0 refused**, zero `BZG_` lines in `skse64.log`, no new crash log (newest remains `crash-2026-09-10-23-05-50.log`). `verify_order.py` CLEAN at 307 active / 395 discoverable; `install_mod.py --verify` 0 problems; preflight down to the two expected no-Keep rows (34705, 50049), which clear when their replacements verify. Rebuilding the three mods forward is **not** done and is tracked in #279.
+
 ## 2026-09-12 — Tomebound installed; first-party redundancy patch replaces the third-party one
 
 - **Source:** the user, on adding The Elder Scrolls - Tomebound: *"Add it to

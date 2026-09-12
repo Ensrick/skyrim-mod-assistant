@@ -673,9 +673,10 @@
       "sizeMb": 0.25,
       "sha256": "a81719b9226cb2d2ee09bcd369951d0ecd851452b8d26ad6c36f806a2c9ff37e",
       "plugins": [],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-09-12T04:03:23Z",
-      "transaction": "20260912T040323901Z-5ae12bd06cc5"
+      "transaction": "20260912T040323901Z-5ae12bd06cc5",
+      "disabledReason": "Aborts launch on runtime 1.7.104: the bundled BZG_*.dll cannot read the format-5 Address Library (#279). Disabled 2026-09-12 to restore a launchable build; mod folder kept, rebuild-forward pending."
     },
     {
       "modId": 181797,
@@ -689,9 +690,10 @@
       "plugins": [
         "SpellsAndShoutsCleaner.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-09-12T04:03:25Z",
-      "transaction": "20260912T040324704Z-eb7bb838df9a"
+      "transaction": "20260912T040324704Z-eb7bb838df9a",
+      "disabledReason": "Aborts launch on runtime 1.7.104: the bundled BZG_*.dll cannot read the format-5 Address Library (#279). Disabled 2026-09-12 to restore a launchable build; mod folder kept, rebuild-forward pending."
     },
     {
       "modId": 51439,
@@ -3509,9 +3511,10 @@
       "plugins": [
         "FavoritesMenu_Fix.esp"
       ],
-      "enabled": true,
+      "enabled": false,
       "installedUtc": "2026-09-12T04:03:23Z",
-      "transaction": "20260912T040322836Z-78efc3c223e0"
+      "transaction": "20260912T040322836Z-78efc3c223e0",
+      "disabledReason": "Aborts launch on runtime 1.7.104: the bundled BZG_*.dll cannot read the format-5 Address Library (#279). Disabled 2026-09-12 to restore a launchable build; mod folder kept, rebuild-forward pending."
     },
     {
       "modId": 172417,

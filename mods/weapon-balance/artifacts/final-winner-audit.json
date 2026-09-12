@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "status": "pass",
+  "mode": "installed-final-winners",
+  "plugin": "WeaponBalancePatch.esp",
+  "checkedRecords": 4225,
+  "changedRecordsFinalProvider": "WeaponBalancePatch.esp",
+  "selectionReportSha256": "02DBCDBE9EFF16C7B0CF2C984CCC413E21E8C4FBD58C9B41F40C82BC9F0F2080"
+}
