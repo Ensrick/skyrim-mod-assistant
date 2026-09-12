@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "component": "Ensrick - Equipment Display",
+  "componentNote": "EnsrickEquipmentDisplay (working name; the user names his mods), R3 of the #36 rules layer (the staff rule, the ESL stash, Walking Stick parity through Open Animation Replacer's public conditions API) on top of R2 (0.4.4). Built in the r3 worktree, launched three times on the private desktop under claim fable/eed-r3, and left DISABLED in the profile as R2 left it.",
+  "version": "0.5.0 (SKSEPlugin_Version pluginVersion 0.5.0.0); see runtimeVerification for the launched build",
+  "sourceUrl": "https://github.com/Ensrick/EnsrickEquipmentDisplay (private), branch r3",
+  "sourcePath": "C:/Users/danjo/source/repos/skyrim-tools-source/EnsrickEquipmentDisplay-r3 (git worktree of the tree at C:/Users/danjo/source/repos/skyrim-tools-source/EnsrickEquipmentDisplay; extern/CommonLibSSE-NG is a directory junction to ../CommonLibSSE-NG-6.7.1-no-modal)",
+  "sourceCommits": {
+    "0.4.4": "ed0482e (eed-r2: the self-test timer thread stops at DLL detach; origin/main at the start of R3)",
+    "0.5.0": "2ec6769 (R3 sources on top of ed0482e) + 85fed10 (build record); branch r3, pushed"
+  },
+  "issue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/269",
+  "rulesIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/36",
+  "walkingStickIssue": "https://github.com/Ensrick/skyrim-mod-assistant/issues/270",
+  "runtime": "Skyrim SE 1.7.104; VersionIndependence::AddressLibrary with Independent structs and the AddressLibraryV5 bit (versionIndependence=1, versionIndependenceEx=3), no runtime ceiling",
+  "dependencies": {
+    "CommonLibSSE-NG": {
+      "version": "6.7.1 plus the Ensrick no-modal branch",
+      "commit": "68b6ba48d163093527dc4421861a9333d65ae0ce",
+      "branch": "ensrick/no-modal-fail-v6.7.1",
+      "repository": "https://github.com/Ensrick/CommonLibSSE-NG",
+      "pin": "CMakeLists.txt refuses any other revision unless EED_ALLOW_UNPINNED_COMMONLIB=ON",
+      "license": "GPL-3.0-or-later with the modding exception (EXCEPTIONS.md)"
+    },
+    "OpenAnimationReplacer-API": {
+      "what": "the three public API headers of Open Animation Replacer 3.2.1 (Ersh), copied verbatim into extern/OpenAnimationReplacer-API/ as the header itself invites; the .cpp half rewritten over REX::W32 so no <Windows.h> and no new import",
+      "source": "skyrim-tools-source/OpenAnimationReplacer-1.7.104 (fork Ensrick/OpenAnimationReplacer at 99f140e)",
+      "sha256": {
+        "OpenAnimationReplacerAPI-Conditions.h": "3ee39711b33e2def71db8fa63c8c4479952ad064e784c4c1a87dae4fc3b73e86",
+        "OpenAnimationReplacer-ConditionTypes.h": "94172605a19418214d97dd4be40aee143104366bf1bc27588d87285189aa56ca",
+        "OpenAnimationReplacer-SharedTypes.h": "b5780f4ce9802e8fd6a0a1a83ad2b6ab17a0ee918e717498fcb2efaf3b29a94d"
+      },
+      "license": "GPL-3.0 with OAR's Modding Exception (COPYING, EXCEPTIONS); Ersh is not an excluded author",
+      "runtimeConsumer": "Open Animation Replacer 3.2.1 installed and enabled in the profile (mod 'Open Animation Replacer', OpenAnimationReplacer.dll FileVersion 3.2.1.0)"
+    },
+    "vcpkg": {
+      "root": "C:/Users/danjo/source/repos/vcpkg",
+      "builtinBaseline": "8d3649ba34aab36914ddd897958599aa0a91b08e",
+      "triplet": "x64-windows-static-md",
+      "manifest": "vcpkg.json (directxmath, directxtk, fmt, nlohmann-json 3.11.3, rapidcsv, simpleini, spdlog 1.13.0, toml11, xbyak)"
+    },
+    "Spriggit": {
+      "what": "converts the ESL's YAML source to the plugin (tools/build_esl.ps1)",
+      "version": "0.41.0 (Spriggit.Yaml.Skyrim), local build skyrim-tools-source/Spriggit (branch ensrick-security-dependencies-0.41.0, 5a68e919)",
+      "recordCli": "skyrim-tools-source/skyrim-record-cli bin/Release/net10.0 (plugin-info, records, audit-links)"
+    }
+  },
+  "compiler": "MSVC 19.44.35223 (VS 2022 Community 17.14) x64, CMake preset build-relwithdebinfo-se-only (Ninja, RelWithDebInfo, -UENABLE_SKYRIM_VR), C++23, LTCG; plugin, test and CommonLibSSE targets /d1trimfile:<checkout>\\; plugin and test targets /W4 /WX /permissive- /Zc:preprocessor /EHsc /utf-8 /Brepro, link /Brepro /PDBALTPATH:%_PDB% /OPT:REF /OPT:ICF with the PDB removed before every link; dynamic CRT (MultiThreadedDLL)",
+  "commandLines": [
+    "build_1_7_104.cmd  (cd to the worktree; vcvars64; cmake --preset build-relwithdebinfo-se-only; cmake --build build/relwithdebinfo-se-only; ctest --test-dir build/relwithdebinfo-se-only --output-on-failure)",
+    "pwsh tools/build_esl.ps1   (Spriggit deserialize x2 byte-identical, serialize back and diff the YAML, skyrim-record-cli plugin-info/records/audit-links, dist/EnsrickEquipmentDisplay.esl)",
+    "py -3 tools/oar_requiredplugin_rewrite.py <Walking Stick OAR folder> records-work/walking-stick-120966/converted/<...> --json-only",
+    "py -3 audit/skse_version_data.py <dll>",
+    "py -3 <tree>/tools/pe_imports.py <dll>   (also CTest no_modal_imports)",
+    "py -3 <tree>/tools/pe_reproducible.py <dll>   (also CTest reproducible_link)",
+    "py -3 <tree>/tools/pe_no_path.py <dll> <tree>   (also CTest no_checkout_path)",
+    "py -3 audit/claim.py acquire --owner fable/eed-r3 --purpose \"R3 verification launches (#269)\" --ttl 90 --wait 3600",
+    "MO2Headless.exe mod-stage <scratchpad eed-r3-stage> \"Ensrick - Equipment Display\" --replace --enable; MO2Headless.exe plugin-enable EnsrickEquipmentDisplay.esl",
+    "pwsh -NoProfile -File records-work/eed-r3-run.ps1 -Attempt <n> -Phase launch|test|soak   (hash gates on the DLL and the ESL, plugins.txt gate, verify_order CLEAN, detached audit/launch_skyrim_isolated.ps1 -WaitSeconds 1500, MenuPilot via records-work/eed-r3-ui.ps1 incl. Unbound's Equipment page, the plugin self-test summary, 180 s soak, Journal quit, archive)",
+    "MO2Headless.exe plugin-disable EnsrickEquipmentDisplay.esl; MO2Headless.exe mod-disable \"Ensrick - Equipment Display\"",
+    "py -3 audit/claim.py release --owner fable/eed-r3"
+  ],
+  "determinism": {
+    "rule": "two clean builds byte-identical, and equal to the incremental build of the same commit; plus, new in 0.5.0, independent of the checkout directory",
+    "checkoutPathFinding": "0.4.3 built in the r2 worktree (receipt 2b0ad9df...) and the identical commit built in the r3 worktree (ff45388f...) differ: 21 absolute paths under <checkout>/extern/CommonLibSSE-NG/ (IDDB.cpp, API.cpp, Interfaces.cpp, BSTArray.h, BSSimpleList.h, InventoryEntryData.h, Module.h, IDDB.h ...) sit in the image through std::source_location in the library's own logging and assertion helpers, so /PDBALTPATH alone never made the bytes path-independent; the 0.3.3 claim was only true within one directory",
+    "fix": "/d1trimfile:<native checkout path>\\ on the plugin, the four test executables and the CommonLibSSE target (CMakeLists.txt 0.5.0); CTest no_checkout_path (tools/pe_no_path.py) fails when the checkout directory name occurs in the DLL in either separator style or UTF-16",
+    "proof": "CTest no_checkout_path PASS on every 0.5.0 build (the string EnsrickEquipmentDisplay-r3 absent from the DLL in utf-8 and utf-16); the cross-worktree comparison itself (a second checkout at another path) was not repeated after the fix in this session"
+  },
+  "buildHistory": [
+    "0.4.3 baseline in the r3 worktree (d9cd9b0, before any R3 edit): CTest 5/5, DLL ff45388f83ae1cfc14ffc3b491d360881964028eb4b9b574dc3af979a48ebc98 = NOT the R2 receipt's 2b0ad9df for the same commit (the checkout-path finding under determinism)",
+    "0.5.0 pass 1: one compile error (wingdi.h GetObject macro in Rules/Staff.cpp, the same trap the self-test already guards); fixed",
+    "0.5.0 pass 2 (incremental, sources on top of 0.4.3) and clean 1 (build directory removed): byte-identical, DLL ed9b422ce06acb92174c7a240e1c0d3012cab811008deea2f8f42bfe7bee1d5f 1,029,632 bytes, CTest 9/9, version gate PASS 0.5.0.0, no modal import, no checkout path",
+    "rebase: eed-r2 fast-forwarded origin/main to 0.4.4 ed0482e (DllMain stop flag for the self-test timer thread) during R3; r3 rebased onto it, the stop flag extended to the gate poll and the deferred follow-ups (Defer::Shutdown from the same DllMain)",
+    "0.5.0 pass 3 (incremental after the rebase), clean 1 and clean 2 (build directory removed between them): byte-identical, DLL d29d1850ecc025c9e20b98d40bf3c9bc7b44d8030b1b9f2f0b32362fb9041de5 1,030,144 bytes; SlotRulesTests.exe 68b992b7..., PlacementTableTests.exe a5f812ba..., GateRulesTests.exe 20a9ca51..., OarConditionsTests.exe 8131fbd5... all three times; 0 warnings; CTest 9/9 each; committed as 2ec6769 (sources) and the build-record commit on branch r3",
+    "EnsrickEquipmentDisplay.esl: first conversion truncated the header description at a '#' (YAML comment) and differed from its round trip in 6 files (default-valued fields, group Unknown fields, the persistent flag's enum rendering); source corrected to the canonical form; final conversion 885eb320cf18331645577e29f05d60f0e43b200f2a7da394b40b85c5c2575593 872 bytes, two conversions identical, exact round trip of all 6 YAML files"
+  ],
+  "dllName": "EnsrickEquipmentDisplay.dll",
+  "dllSha256": "92b122770820141a5385cab64f7f712af6e840ebc8a44b32b51d7db8409e1875",
+  "dllSha256Note": "The clean-pair hash of 0.5.1, the build of launches 2 and 3 and the build left installed (disabled); records-work/eed-r3-run.ps1 verifies the installed DLL against this value before every launch. Launch 1 ran 0.5.0 d29d1850ecc025c9e20b98d40bf3c9bc7b44d8030b1b9f2f0b32362fb9041de5.",
+  "dllBytes": 1030144,
+  "eslName": "EnsrickEquipmentDisplay.esl",
+  "eslSha256": "885eb320cf18331645577e29f05d60f0e43b200f2a7da394b40b85c5c2575593",
+  "eslBytes": 872,
+  "eslRecords": {
+    "source": "esl/EnsrickEquipmentDisplay.esl.spriggit (Spriggit YAML written by hand from the Mutagen field names of Skyrim.esm PlayerHouseChest and WIDeadBodyCleanupCell; skyrim-record-cli record-fields)",
+    "header": "ESL-flagged (Small), master Skyrim.esm, author Ensrick",
+    "records": [
+      "000800 CONT EEDLongTermStorage 'Long-term Storage', Meshes\\Clutter\\Upperclass\\UpperChest01.nif, no respawn",
+      "000801 CELL EEDStorageCell (interior, block 5 / sub-block 6, white ambient, no fog, no lighting template)",
+      "000802 REFR EEDLongTermStorageRef, persistent (0x400), base 000800, in 000801 at the origin"
+    ],
+    "vanillaRecordsTouched": 0,
+    "audit": "skyrim-record-cli plugin-info: masters [Skyrim.esm], 3 records (Cell 1, Container 1, PlacedObject 1); audit-links against Skyrim.esm: 2 links checked, 0 unresolved; two Spriggit conversions byte-identical (885eb320...); serialize-back reproduces all 6 source YAML files exactly",
+    "runtimeLookup": "TESDataHandler::LookupForm(0x802, \"EnsrickEquipmentDisplay.esl\") ([Storage] StashPlugin/StashFormID defaults)"
+  },
+  "dllImports": [
+    "api-ms-win-crt-*",
+    "KERNEL32.dll",
+    "MSVCP140.dll",
+    "ole32.dll",
+    "SHELL32.dll",
+    "VCRUNTIME140.dll",
+    "VCRUNTIME140_1.dll",
+    "VERSION.dll"
+  ],
+  "dllImportNote": "No USER32.dll import: MessageBoxA/W, MessageBoxExA/W, FatalAppExitA/W absent (tools/pe_imports.py, CTest no_modal_imports). The OAR API lookup uses REX::W32::GetModuleHandleA / GetProcAddress (KERNEL32).",
+  "dllExports": [
+    "SKSEPlugin_Load",
+    "SKSEPlugin_Query",
+    "SKSEPlugin_Version"
+  ],
+  "staticVerification": {
+    "skseMetadata": "PASS (version independent): name=EnsrickEquipmentDisplay pluginVersion=0.5.0.0 author=Ensrick versionIndependence=1 versionIndependenceEx=3 (NoStructUse + AddressLibraryV5)",
+    "ctest": "9/9: slot_rules (69), placement_table (90), gate_rules (14), oar_conditions (20), no_modal_imports, reproducible_link, no_checkout_path, oar_rewrite (8), no_modal_source",
+    "warnings": "none from the tree's translation units and none from the copied OAR API headers under /W4 /WX (grep 'warning C' over the build logs is empty; CommonLibSSE's own D9025 flag-override note only)",
+    "deterministicCleanRebuild": "true: pass 3 (incremental after the rebase onto 0.4.4), clean 1 and clean 2 (build directory removed between them) all d29d1850...; before the rebase, pass 2 (incremental) and its clean rebuild both ed9b422c... on the same sources; the four test executables identical each time",
+    "walkingStickConverter": "tools/oar_requiredplugin_rewrite.py over Walking Stick 1.1.1's OAR folder (records-work/walking-stick-120966/extracted, zip sha256 90bf8aa90b15731dab6d5df22bdfc1e97570dfee0ddf4998105ff20f7b05db89, Nexus 120966 file 508070): 4 config.json files, 5 conditions rewritten in 3 files (Stick on Left Hand 2, Stick on Right Hand 2, Bladestaff 1) to requiredPlugin EnsrickEquipmentDisplay 0.5.0.0; output records-work/walking-stick-120966/converted/; the .hkx animations untouched; Walking Stick itself NOT installed (#270 is a later curation step)",
+    "ci": ".github/workflows/build.yml unchanged in shape (runs ctest, now 9 gates); branch r3 pushed, run not checked from this session"
+  },
+  "r3Implements": {
+    "rule4-staff": "Rules/Staff: a staff is pinned to hand.left / hand.right on the board when equipped and shown there (copy under NPC L Hand [LHnd] / NPC R Hand [RHnd] with Walking Stick's offsets, culled while drawn); a staff that is not in a hand takes no slot. A staff that reaches the inventory (pickup, script, container) is equipped into a free hand one frame later, off-hand first (Rules::StaffHand), and only a copy with no hand is refused by the reconcile (returned to its source, else the stash). A staff that leaves a hand (unequip, or a two-handed weapon / bow taking both hands = D3) is deposited one frame later with one HUD line; the follow-up waits while a menu or loading screen is up. The pickup gate accepts a staff only into a free hand ('No free hand for <name>').",
+    "gates": "Rules/GateRules (pure, CTest) + Rules/Gates (ActorState::IsSwimming, GetSitSleepState, GetOccupiedFurniture, Actor::IsOnMount) + TESFurnitureEvent sink + Display/GatePoll (250 ms thread, one main-thread task at a time, only while an actor has a hand display, stops at DLL detach): the hand copy is hidden while any of equipped / !swimming / !sitting / !furniture / !mounted fails; one log line per transition",
+    "H9-hints": "Rules/PlacementHints: per (actor, gear node) under a shared mutex; every plan publishes gear node 11 (staff, right hand) and 12 (left) = the slot's hint 16 while shown, 0 while gated or absent; cleared on Forget and at kNewGame / kPostLoadGame",
+    "oarConditions": "Rules/OarConditions at kPostLoad through OAR_API::Conditions::GetAPI (V3): IED_GearNodePlacementHint (Gear node ID numeric, Comparison, Weapon placement ID numeric) and IED_GearNodeEquippedPlacementHint (Left hand bool, Comparison, Weapon placement ID numeric), the two Walking Stick's JSON uses, registered under this plugin's name and version; [Compat] OarLegacyPluginAlias=1 registers the second under the literal legacy name at 1.0.1.0. The other four names that provider defined are NOT registered (their component names are documented nowhere this tree may read; Nexus 98308's description names only 'Gear node ID' / 'Node name' for one of them).",
+    "D1-stash": "dist/EnsrickEquipmentDisplay.esl (see eslRecords); [Storage] defaults to it; Storage::Deposit moves copies with TESObjectREFR::RemoveItem(..., toRef); dropping at the feet remains only the fallback when the reference does not resolve, with a warning naming the plugin",
+    "D2-final": "the reconcile's overflow lands in the stash (same Storage::Deposit call site as R2); the self-test proves it with the Iron Mace",
+    "D3": "a two-handed equip over a held staff: the engine's own unequip fires TESEquipEvent(unequipped) for the staff, and the one-frame-later follow-up finds it in no hand and deposits it",
+    "selfTest": "25 steps (13 from R2 with the stash instead of the drop, then the R3 steps: staff to the stash with both hands taken; staff into the free left hand with the hand.left copy, hints 12=16 / 11=0 and the two OAR conditions built through their own factories and evaluated on the player; draw/sheathe cull; the furniture gate on the nearest chair/bench via ActivateRef then IdleFurnitureExit; unequip to the stash; the staff again then an Iron Greatsword equipped over it)"
+  },
+  "installed": {
+    "modName": "Ensrick - Equipment Display",
+    "modPriority": 299,
+    "transactions": "INSTALL_TXN_PLACEHOLDER",
+    "iniVerification": "shipped dist/SKSE/Plugins/EnsrickEquipmentDisplay.ini with these keys changed for the run: [Log] Level=debug FlushLevel=debug, [Rules] Enabled=1 (shipped 0), [Diagnostics] DumpPlacements=1 (shipped 0), SelfTest=1 (shipped 0), SelfTestDelaySeconds=75 (shipped 25); [Storage] StashPlugin=EnsrickEquipmentDisplay.esl StashFormID=0x802, [Staff] Enabled=1, [Compat] OarConditions=1 OarLegacyPluginAlias=0 as shipped; placements.json shipped unchanged",
+    "installedDllSha256": "92b122770820141a5385cab64f7f712af6e840ebc8a44b32b51d7db8409e1875",
+    "installedEslSha256": "885eb320cf18331645577e29f05d60f0e43b200f2a7da394b40b85c5c2575593",
+    "pluginsAdded": 1,
+    "pluginName": "EnsrickEquipmentDisplay.esl",
+    "loot": "LOOT_PLACEHOLDER",
+    "weaponAndCloakRefresh": "REFRESH_PLACEHOLDER"
+  },
+  "runtimeVerification": {
+    "protocol": "three fresh-character launches, private desktop (audit/launch_skyrim_isolated.ps1), muted clone profile, LocalSaves=true; Skyrim Unbound driven by MenuPilot; self-test for paths unreachable by hand",
+    "verdict": "PASS on the launch criteria for launches 2 and 3 (0.5.1); launch 1 (0.5.0) passed the launch criteria and exposed one real defect, fixed before launch 2",
+    "launches": [
+      {
+        "n": 1,
+        "build": "0.5.0 d29d1850",
+        "snapshot": "records/log-snapshots/20260911-180247-eed-r3-1",
+        "mainMenuSeconds": 45,
+        "selfTest": "49 checks, 8 failures",
+        "crashLogs": 0,
+        "errorLines": 0,
+        "notes": "Failures: Skyrim Unbound hands its starting gear out ~13 s after Begin and collided with scenario steps 2-3 (self-test side); the no-seat skip also skipped the unequip step (self-test side); and ONE REAL DEFECT: reconcile judged an arrival only by refused copies of the arriving form while the plan places by form id, so an arriving axe displaced a carried mace and the mace stayed refused. Fixed in 0.5.1 (plan with and without the arriving copies, bounce the arrival by the difference)."
+      },
+      {
+        "n": 2,
+        "build": "0.5.1 92b12277",
+        "snapshot": "records/log-snapshots/20260911-182320-eed-r3-2",
+        "mainMenuSeconds": 36,
+        "selfTest": "55 checks, 0 failures",
+        "crashLogs": 0,
+        "errorLines": 0,
+        "notes": "Start = Sleeping Giant Inn so the furniture gate was reachable: 'gate poll: gates now [sitting furniture]; refreshing' -> 'hidden by gate !sitting', hint 12 = 0 -> stand -> 'visible again', hint 16. Displacement defect proven closed: the arrival left and 'returned to Chest'."
+      },
+      {
+        "n": 3,
+        "build": "0.5.1 92b12277",
+        "snapshot": "records/log-snapshots/20260911-183138-eed-r3-3",
+        "mainMenuSeconds": 38,
+        "selfTest": "55 checks, 0 failures",
+        "crashLogs": 0,
+        "errorLines": 0,
+        "notes": "Confirmation run. Final board check: inventory 7 == visible 5 + packed 2."
+      }
+    ],
+    "crashCount": "0 of 3 (and 0 of 12 across R1+R2+R3 launches; #273 has not recurred)",
+    "mainMenuSeconds": [
+      45,
+      36,
+      38
+    ],
+    "rulesEvidence": {
+      "oarConditions": "OAR's own log: 'RequestPluginAPI_Conditions called, InterfaceVersion 3 (Plugin name: EnsrickEquipmentDisplay 0-5-0-0)'; ours: 'condition registered: IED_GearNodePlacementHint / IED_GearNodeEquippedPlacementHint under EnsrickEquipmentDisplay: OK'. In-process evaluation of all four cases (11==16 false, 12==16 true, left=false false, left=true true).",
+      "stash": "resolved 'FE054802 Long-term Storage' persistent=true in cell FE054801; staff deposits observed on unequip, on the D3 two-handed equip, and on arrival with both hands taken (including Unbound's own AddItem path)",
+      "staffRule": "arrival with the left hand free -> 'equipping it there (rule 4, off-hand first)' -> attached hand.left to 'NPC L Hand [LHnd]', hint gear node 12 = 16",
+      "cullOnDraw": "'culled while drawn' / 'visible again' on draw and sheathe",
+      "d2Final": "overflow with hips full -> deposited to the stash; nothing dropped (R2's interim drop is superseded)",
+      "gates": "furniture exercised (launch 2); swimming and riding NOT exercised"
+    },
+    "notExercised": [
+      "swimming gate",
+      "riding gate",
+      "visual appearance on the body (headless protocol; needs the user's eyes)",
+      "NPC displays",
+      "save/load persistence of hand state (R4)"
+    ],
+    "profileAtExit": "mod 'Ensrick - Equipment Display' DISABLED (modlist line 55 '-') and EnsrickEquipmentDisplay.esl deactivated; 303 active plugins; weapon-balance and full-cloak proofs regenerated for the 303 set; preflight = only the two expected no-Keep rows (34705 SSE Display Tweaks, 50049 Simple Dual Sheath), which clear when their replacements verify; claim released",
+    "completedBy": "fields filled in by the lead session after agent eed-r3 hit its model usage limit mid-close-out; every value is read from the archived snapshots listed above"
+  },
+  "profileStateAtExit": "PROFILE_PLACEHOLDER",
+  "limitations": "LIMITATIONS_PLACEHOLDER",
+  "rollback": "Profile: the mod ends disabled with the plugin disabled; to remove entirely, mod-trash under a claim. Tree: git revert of 0.5.0 keeps 0.4.4.",
+  "hours": "HOURS_PLACEHOLDER",
+  "licence": "Relicensed MIT -> GPL-3.0-or-later on 2026-09-11 (tree commit 522862b, 0.5.2) per the user's decision; see skyrim-mod-assistant #277. Static link against CommonLibSSE-NG (GPL-3.0-or-later) plus the OAR API headers (GPL-3.0 with Modding Exception)."
+}
